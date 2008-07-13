@@ -50,4 +50,18 @@ public final class ObjectUtility {
         }
         return true;
     }
+
+    /**
+     * Returns the hash code of the specified Object as returned by its
+     * {@link Object#hashCode() hashCode} method or {@code 0} if the specified
+     * Object is {@code null}.
+     * 
+     * @param object
+     *        Object of which the hash code is returned
+     * @return integer specifying the hash code of Object; {@code 0} if
+     *         {@code object} is {@code null}
+     */
+    public static int hashCode(Object object) {
+        return object != null ? object.hashCode() : 0;
+    }
 }

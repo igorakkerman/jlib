@@ -73,7 +73,7 @@ implements IndexList<Element> {
         return maxIndex;
     }
 
-    // @see java.util.Collection#size()
+    // @see org.jlib.core.collections.Collection#size()
     @Override
     public int size() {
         return maxIndex - minIndex + 1;

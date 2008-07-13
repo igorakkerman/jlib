@@ -64,9 +64,9 @@ public class TimeInterval {
     private int seconds;
 
     /**
-     * Adds this TimeInterval to the date of the specified calendar. The
-     * specified calendar is left unchanged within the operation. A new
-     * {@code Calendar} instance with the new date is returned.
+     * Adds this TimeInterval to the date of the specified Calendar. The
+     * specified calendar is left unchanged within the operation. A new {@code
+     * Calendar} instance with the new date is returned.
      * 
      * @param calendar
      *        Calendar to add this TimeInterval to; the specified Calendar is
