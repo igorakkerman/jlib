@@ -46,13 +46,11 @@ public class SystemUtility {
      * @throws PropertyNotSetException
      *         if the specified system property is not set
      */
-    public static String getProperty(String propertyName) {
+    public static String getProperty(String propertyName)
+    throws PropertyNotSetException {
         String propertyValue = System.getProperty(propertyName);
         if (propertyValue == null)
             throw new PropertyNotSetException(propertyName);
         return propertyValue;
     }
-
-    /** the system's line separator */
-    public final static String LINE_SEPARATOR = System.getProperty("line.separator");
 }

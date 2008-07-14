@@ -20,6 +20,12 @@ package org.jlib.core.string;
  * @author Igor Akkerman
  */
 public class StringUtility {
+    
+    /** property name of the system's line separator */
+    public static final String LINE_SEPARATOR_PROPERTYNAME = "line.separator";
+
+    /** the system's line separator */
+    public static final String LINE_SEPARATOR = System.getProperty(LINE_SEPARATOR_PROPERTYNAME); 
 
     /** String padding options */
     public enum PaddingType {

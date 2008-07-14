@@ -15,7 +15,7 @@
 package org.jlib.core.system;
 
 /**
- * Exception thrown when trying to retreive the value of a SystemUtility property that is not set.
+ * Exception thrown when trying to retrieve the value of a SystemUtility property that is not set.
  * 
  * @author Igor Akkerman
  */
