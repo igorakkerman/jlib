@@ -17,4 +17,4 @@
  * 
  * @author Igor Akkerman
  */
-package org.jlib.core.io.encoding.base64;
+package org.jlib.core.codec.base64;

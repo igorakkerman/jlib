@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.quotedprintable;
+package org.jlib.core.codec.quotedprintable;
 
 import java.io.IOException;
 

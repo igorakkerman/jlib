@@ -12,10 +12,10 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.base64;
+package org.jlib.core.codec.base64;
 
-import static org.jlib.core.io.encoding.base64.Base64Utility.PAD;
-import static org.jlib.core.io.encoding.base64.Base64Utility.base64Alphabet;
+import static org.jlib.core.codec.base64.Base64Utility.PAD;
+import static org.jlib.core.codec.base64.Base64Utility.base64Alphabet;
 
 import java.io.FilterOutputStream;
 import java.io.IOException;

@@ -18,4 +18,4 @@
  * 
  * @author Igor Akkerman
  */
-package org.jlib.core.io.encoding.quotedprintable;
+package org.jlib.core.codec.quotedprintable;

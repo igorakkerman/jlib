@@ -12,9 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.quotedprintable;
+package org.jlib.core.codec.quotedprintable;
 
-import static org.jlib.core.io.encoding.quotedprintable.QuotedPrintableUtility.decodeOctet;
+import static org.jlib.core.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
 import static org.jlib.core.io.IOUtility.toSignedByte;
 import static org.jlib.core.io.IOUtility.toUnsignedInt;
 
