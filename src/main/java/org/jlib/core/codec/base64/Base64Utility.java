@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.base64;
+package org.jlib.core.codec.base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -33,8 +33,10 @@ public abstract class Base64Utility {
     /** base64 padding character */
     public static final byte PAD = '=';
 
-    /** no constructor */
-    private Base64Utility() {}
+    /** no visible constructor */
+    private Base64Utility() {
+    	// no visible constructor
+    }
 
     /**
      * Encodes the specified byte array using base64 encoding.

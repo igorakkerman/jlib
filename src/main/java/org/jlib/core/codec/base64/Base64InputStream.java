@@ -12,9 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.base64;
+package org.jlib.core.codec.base64;
 
-import static org.jlib.core.io.encoding.base64.Base64Utility.mapBase64Character;
+import static org.jlib.core.codec.base64.Base64Utility.mapBase64Character;
 
 import java.io.FilterInputStream;
 import java.io.IOException;
@@ -45,8 +45,7 @@ extends FilterInputStream {
     private int outputBufferPosition = 0;
 
     /**
-     * Creates a new filter input stream decoding the specified base64 input
-     * stream.
+     * Creates a new filter input stream decoding the specified base64 input stream.
      * 
      * @param sourceInputStream
      *        input stream to be decoded
@@ -55,7 +54,7 @@ extends FilterInputStream {
         super(sourceInputStream);
     }
 
-    // documented in super class
+    // @see java.io.FilterInputStream#read()
     @Override
     public int read()
     throws IOException {
@@ -93,15 +92,13 @@ extends FilterInputStream {
     }
 
     /**
-     * Reads a block of four base64 characters writing their values into the
-     * input buffer.
+     * Reads a block of four base64 characters writing their values into the input buffer.
      * 
      * @throws EndOfBase64StreamException
-     *         if the end of the base64 stream was reached before the next
-     *         block; this exception does not signal an error
+     *         if the end of the base64 stream was reached before the next block; this exception does not signal an
+     *         error
      * @throws UnexpectedEndOfBase64StreamException
-     *         if the base64 block was not completed at the end of the base64
-     *         stream
+     *         if the base64 block was not completed at the end of the base64 stream
      * @throws IOException
      *         if an I/O error occurs
      */
@@ -159,8 +156,7 @@ extends FilterInputStream {
     }
 
     /**
-     * Returns the number of padding characters in the currently read base64
-     * block.
+     * Returns the number of padding characters in the currently read base64 block.
      * 
      * @return integer specifying the number of padding characters
      * @throws IllegalBase64BlockPadException
@@ -183,8 +179,7 @@ extends FilterInputStream {
     }
 
     /**
-     * Clears all padding characters in the input buffer. Their positions are
-     * set to 0.
+     * Clears all padding characters in the input buffer. Their positions are set to 0.
      */
     private void clearPaddingCharacters() {
         if (inputBuffer[2] == PAD) {
