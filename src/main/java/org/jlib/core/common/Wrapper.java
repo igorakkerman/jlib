@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.system;
+package org.jlib.core.common;
 
 /**
  * <p>
@@ -61,7 +61,7 @@ package org.jlib.core.system;
  */
 public class Wrapper<WrappedObject> {
 
-    /**
+	/**
      * Creates a new Wrapper for the specified Object.
      * 
      * @param <WrappedObject>
@@ -76,9 +76,6 @@ public class Wrapper<WrappedObject> {
 
     /** Object wrapped by this Wrapper */
     private WrappedObject wrappedObject;
-
-    /** no default constructor */
-    private Wrapper() {}
 
     /**
      * Creates a new Wrapper of the specified Type.
