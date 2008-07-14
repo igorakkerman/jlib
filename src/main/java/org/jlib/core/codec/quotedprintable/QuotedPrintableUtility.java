@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.io.encoding.quotedprintable;
+package org.jlib.core.codec.quotedprintable;
 
 import static org.jlib.core.io.IOUtility.parseHexNumberAsByte;
 import static org.jlib.core.io.IOUtility.toUnsignedInt;
@@ -31,8 +31,10 @@ import java.io.OutputStream;
  */
 public abstract class QuotedPrintableUtility {
 
-    /** no constructor */
-    private QuotedPrintableUtility() {}
+    /** no visible constructor */
+    private QuotedPrintableUtility() {
+        // no visible constructor
+    }
 
     /**
      * Encodes the specified byte array using quoted printable encoding.
