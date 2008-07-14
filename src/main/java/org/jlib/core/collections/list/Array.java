@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
- *
- *    http://www.jlib.org
- *
+ * 
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
- *
+ * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.collections.list;
@@ -160,7 +160,7 @@ implements Cloneable {
      * @param maxIndex
      *        integer specifying the maximum index of this Array
      * @throws IllegalArgumentException
-     *         if {@code  minIndex < 0 || maxIndex < minIndex}
+     *         if {@code minIndex < 0 || maxIndex < minIndex}
      */
     public Array(int minIndex, int maxIndex) {
         super();
@@ -168,26 +168,22 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Elements. That is, the index of the
-     * first Element of the specified list in this Array is 0. The fixed size of this
-     * Array is the size of the specified list.
+     * Creates a new Array containing the specified Elements. That is, the index of the first Element of the specified
+     * list in this Array is 0. The fixed size of this Array is the size of the specified list.
      * 
      * @param elements
-     *        comma separated list of Elements to store or Java array containing those
-     *        Elements
+     *        comma separated list of Elements to store or Java array containing those Elements
      */
     public Array(Element... elements) {
         this(0, elements);
     }
 
     /**
-     * Creates a new Array containing the specified Integer Elements. That is, the index
-     * of the first Element of the specified list in this Array is 0. The fixed size of
-     * this Array is the size of the specified list.
+     * Creates a new Array containing the specified Integer Elements. That is, the index of the first Element of the
+     * specified list in this Array is 0. The fixed size of this Array is the size of the specified list.
      * 
      * @param elements
-     *        comma separated list of Integer Elements to store or Java array containing
-     *        those Elements
+     *        comma separated list of Integer Elements to store or Java array containing those Elements
      * @return the new Array of Integers
      */
     public static Array<Integer> newIntegerArray(Integer... elements) {
@@ -195,15 +191,14 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Elements having a specified minimum
-     * index. That is, the index of the first Element of the specified list in this Array
-     * can be specified. The fixed size of this Array is the size of the specified list.
+     * Creates a new Array containing the specified Elements having a specified minimum index. That is, the index of the
+     * first Element of the specified list in this Array can be specified. The fixed size of this Array is the size of
+     * the specified list.
      * 
      * @param minIndex
      *        integer specifying the minimum index of this Array
      * @param elements
-     *        comma separated list of Elements to store or Java array containing those
-     *        Elements
+     *        comma separated list of Elements to store or Java array containing those Elements
      */
     public Array(int minIndex, Element... elements) {
         super();
@@ -217,16 +212,14 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Integer Elements having a specified
-     * minimum index. That is, the index of the first Element of the specified list in
-     * this Array can be specified. The fixed size of this Array is the size of the
-     * specified list.
+     * Creates a new Array containing the specified Integer Elements having a specified minimum index. That is, the
+     * index of the first Element of the specified list in this Array can be specified. The fixed size of this Array is
+     * the size of the specified list.
      * 
      * @param minIndex
      *        integer specifying the minimum index of this Array
      * @param elements
-     *        comma separated list of Integer elements to store or Java array containing
-     *        those Elements
+     *        comma separated list of Integer elements to store or Java array containing those Elements
      * @return the new Array of Integers
      */
     public static Array<Integer> newIntegerArrayFrom(int minIndex, Integer... elements) {
@@ -234,9 +227,8 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Collection. The index
-     * of the first Element of the specified Collection in this Array is 0. The fixed size
-     * of this Array is the size of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Collection. The index of the first Element of the
+     * specified Collection in this Array is 0. The fixed size of this Array is the size of the specified Collection.
      * 
      * @param collection
      *        Collection of which the Elements are copied to this Array
@@ -248,20 +240,19 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Collection having a
-     * specified minimum index. That is, the index of the first Element of the specified
-     * collection in this Array can be specified. The fixed size of this Array is the size
-     * of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Collection having a specified minimum index. That
+     * is, the index of the first Element of the specified collection in this Array can be specified. The fixed size of
+     * this Array is the size of the specified Collection.
      * 
      * @param minIndex
-     *        integer specifying the minimum index of this Array. The first Element of
-     *        {@code collection} is stored at this index of this Array.
+     *        integer specifying the minimum index of this Array. The first Element of {@code collection} is stored at
+     *        this index of this Array.
      * @param collection
      *        Collection of which the Elements are copied to this Array
      * @throws NullPointerException
      *         if {@code collection} is {@code null}
      * @throws IllegalArgumentException
-     *         if {@code  minIndex < 0}
+     *         if {@code minIndex < 0}
      */
     public Array(int minIndex, java.util.Collection<Element> collection) {
         super();
@@ -291,7 +282,7 @@ implements Cloneable {
      * @param maxIndex
      *        integer specifying the maximum index of this Array
      * @throws IllegalArgumentException
-     *         if {@code  minIndex < 0 || minIndex > maxIndex}
+     *         if {@code minIndex < 0 || minIndex > maxIndex}
      */
     @SuppressWarnings("hiding")
     private void construct(int minIndex, int maxIndex) {
@@ -342,7 +333,8 @@ implements Cloneable {
 
     // @see org.jlib.core.collections.AbstractCollection#containsAll(org.jlib.core.collections.Collection)
     // overridden for efficiency
-    public boolean containsAll(java.util.Collection<?> javaCollection) {
+    @Override
+    public boolean containsAll(java.util.Collection< ? > javaCollection) {
         return backingList.containsAll(javaCollection);
     }
 
@@ -358,10 +350,11 @@ implements Cloneable {
 
     // @see org.jlib.core.collections.list.IndexList#equals(java.lang.Object)
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Array<?>))
+    public boolean equals(Object otherObject) {
+        if (!(otherObject instanceof Array< ? >))
             return false;
-        Array<?> array = (Array<?>) object;
-        return minIndex == array.minIndex && maxIndex == array.maxIndex && backingList.equals(array.backingList);
+        Array< ? > otherArray = (Array< ? >) otherObject;
+        return minIndex == otherArray.minIndex && maxIndex == otherArray.maxIndex &&
+               backingList.equals(otherArray.backingList);
     }
 }
