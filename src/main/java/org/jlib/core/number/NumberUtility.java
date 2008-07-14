@@ -28,8 +28,10 @@ public class NumberUtility {
     /** hexadecimal characters */
     public static final char[] HEXCHARACTERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
-    /** no default constructor */
-    private NumberUtility() {}
+    /** no visible constructor */
+    private NumberUtility() {
+        // no visible constructor
+    }
 
     /**
      * Parses a hexadecimal digit of the specified character.

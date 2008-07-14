@@ -73,6 +73,7 @@ implements Collection<Element>, java.util.Collection<Element> {
     }
 
     // @see java.util.AbstractCollection#contains(java.lang.Object)
+    @Override
     public boolean contains(Object object) {
         return backedCollection.contains(object);
     }
@@ -90,16 +91,19 @@ implements Collection<Element>, java.util.Collection<Element> {
     }
 
     // @see java.util.AbstractCollection#containsAll(java.util.Collection)
+    @Override
     public boolean containsAll(java.util.Collection<?> javaCollection) {
         return backedCollection.containsAll(javaCollection);
     }
 
     // @see java.util.AbstractCollection#isEmpty()
+    @Override
     public boolean isEmpty() {
         return backedCollection.isEmpty();
     }
 
     // @see java.util.AbstractCollection#toArray()
+    @Override
     @SuppressWarnings("unchecked")
     public Element[] toArray() {
         return (Element[]) super.toArray();
@@ -129,6 +133,7 @@ implements Collection<Element>, java.util.Collection<Element> {
      * @return {@code true} if the backed jlib Collection is equal to
      *         {@code otherObject}; {@code false} otherwise
      */
+    @Override
     public boolean equals(Object otherObject) {
         if (otherObject instanceof ImmutableJavaCollection)
             return backedCollection.equals(((ImmutableJavaCollection<?>) otherObject).backedCollection);

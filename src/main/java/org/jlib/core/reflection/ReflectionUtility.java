@@ -35,8 +35,10 @@ import org.jlib.core.system.SystemUtility;
 // @SuppressWarnings("unchecked")
 public class ReflectionUtility {
 
-    /** no constructor */
-    private ReflectionUtility() {};
+    /** no visible constructor */
+    private ReflectionUtility() {
+        // no visible constructor
+    }
 
     /**
      * <p>

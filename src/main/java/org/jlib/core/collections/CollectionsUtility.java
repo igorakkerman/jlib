@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.collections;
@@ -24,14 +24,16 @@ import java.util.Set;
  */
 public class CollectionsUtility {
 
-    /** no default constructor */
-    private CollectionsUtility() {}
+    /** no visible constructor */
+    private CollectionsUtility() {
+        // no visible constructor
+    }
 
     /**
      * Creates a Set containing the elements of the specified array.
      * 
      * @param <SetElement>
-     *        type of the elements in the Set; super type of {@code <ArrayElement>} 
+     *        type of the elements in the Set; super type of {@code <ArrayElement>}
      * @param <ArrayElement>
      *        type of the elements in the array
      * @param array

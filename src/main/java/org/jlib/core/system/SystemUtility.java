@@ -21,8 +21,10 @@ package org.jlib.core.system;
  */
 public class SystemUtility {
 
-    /** no default constructor */
-    private SystemUtility() {}
+    /** no visible constructor */
+    private SystemUtility() {
+        // no visible constructor
+    }
 
     /**
      * Returns the value of the system property indicated by the specified key.

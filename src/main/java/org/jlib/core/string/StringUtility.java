@@ -43,8 +43,10 @@ public class StringUtility {
         BACKFRONT
     }
 
-    /** no default constructor */
-    private StringUtility() {};
+    /** no visible constructor */
+    private StringUtility() {
+        // no visible constructor
+    }
 
     /**
      * Pads the specified String with the blank character at the back to the specified length.

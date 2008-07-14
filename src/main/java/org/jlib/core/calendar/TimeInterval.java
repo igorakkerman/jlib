@@ -172,6 +172,7 @@ public class TimeInterval {
      * 
      * @return String containing all values of this TimeInterval
      */
+    @Override
     public String toString() {
         return "TimeInterval[" + "days=" + days + ", " + "hours=" + hours + ", " + "minutes=" + minutes + ", "
                + "seconds=" + seconds + "]";

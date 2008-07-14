@@ -26,8 +26,10 @@ import java.io.OutputStream;
  */
 public abstract class IOUtility {
 
-    /** no default constructor */
-    private IOUtility() {}
+    /** no visible constructor */
+    private IOUtility() {
+        // no visible constructor
+    }
     
     /**
      * <p>
