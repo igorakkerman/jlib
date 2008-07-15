@@ -77,12 +77,12 @@ public class NumberUtility {
      * @return binary String representation of {@code bite}
      */
     public static String toBinaryString(byte bite) {
-        StringBuffer bitStringBuffer = new StringBuffer(8);
+        StringBuilder bitStringBuilder = new StringBuilder(8);
 
         for (int digitIndex = 7; digitIndex >= 0; digitIndex --)
-            bitStringBuffer.append((bite >> digitIndex) & 1);
+            bitStringBuilder.append((bite >> digitIndex) & 1);
 
-        return bitStringBuffer.toString();
+        return bitStringBuilder.toString();
     }
 
     /**
@@ -94,11 +94,11 @@ public class NumberUtility {
      * @return binary String representation of {@code integer}
      */
     public static String toBinaryString(int integer) {
-        StringBuffer bitStringBuffer = new StringBuffer(32);
+        StringBuilder bitStringBuilder = new StringBuilder(32);
 
         for (int digitIndex = 31; digitIndex >= 0; digitIndex --)
-            bitStringBuffer.append((integer >> digitIndex) & 1);
+            bitStringBuilder.append((integer >> digitIndex) & 1);
 
-        return bitStringBuffer.toString();
+        return bitStringBuilder.toString();
     }
 }

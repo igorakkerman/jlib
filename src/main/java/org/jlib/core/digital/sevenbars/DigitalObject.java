@@ -59,20 +59,20 @@ extends org.jlib.core.digital.DigitalObject {
     // @see java.lang.Object#toString()
     @Override
     public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(LINE_SEPARATOR);
-        stringBuffer.append(isDigitalElementActive(Bar.TOP_BAR) ? " -" : "");
-        stringBuffer.append(LINE_SEPARATOR);
-        stringBuffer.append(isDigitalElementActive(Bar.TOP_LEFT_BAR) ? "| " : "  ");
-        stringBuffer.append(isDigitalElementActive(Bar.TOP_RIGHT_BAR) ? "|" : "");
-        stringBuffer.append(LINE_SEPARATOR);
-        stringBuffer.append(isDigitalElementActive(Bar.MIDDLE_BAR) ? " -" : "");
-        stringBuffer.append(LINE_SEPARATOR);
-        stringBuffer.append(isDigitalElementActive(Bar.BOTTOM_LEFT_BAR) ? "| " : "  ");
-        stringBuffer.append(isDigitalElementActive(Bar.BOTTOM_RIGHT_BAR) ? "|" : "");
-        stringBuffer.append(LINE_SEPARATOR);
-        stringBuffer.append(isDigitalElementActive(Bar.BOTTOM_BAR) ? " - " : "  ");
-        stringBuffer.append(LINE_SEPARATOR);
-        return stringBuffer.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(isDigitalElementActive(Bar.TOP_BAR) ? " -" : "");
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(isDigitalElementActive(Bar.TOP_LEFT_BAR) ? "| " : "  ");
+        stringBuilder.append(isDigitalElementActive(Bar.TOP_RIGHT_BAR) ? "|" : "");
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(isDigitalElementActive(Bar.MIDDLE_BAR) ? " -" : "");
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(isDigitalElementActive(Bar.BOTTOM_LEFT_BAR) ? "| " : "  ");
+        stringBuilder.append(isDigitalElementActive(Bar.BOTTOM_RIGHT_BAR) ? "|" : "");
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(isDigitalElementActive(Bar.BOTTOM_BAR) ? " - " : "  ");
+        stringBuilder.append(LINE_SEPARATOR);
+        return stringBuilder.toString();
     }
 }

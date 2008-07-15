@@ -149,19 +149,19 @@ implements IndexList<Element> {
         IndexListIterator<Element> iterator = indexListIterator();
         boolean hasNext = iterator.hasNext();
 
-        StringBuffer stringBuffer = new StringBuffer(8 * size());
+        StringBuilder stringBuilder = new StringBuilder(8 * size());
 
-        stringBuffer.append('[');
+        stringBuilder.append('[');
         while (hasNext) {
-            stringBuffer.append(iterator.nextIndex());
-            stringBuffer.append('=');
-            stringBuffer.append(iterator.next());
+            stringBuilder.append(iterator.nextIndex());
+            stringBuilder.append('=');
+            stringBuilder.append(iterator.next());
             hasNext = iterator.hasNext();
             if (hasNext)
-                stringBuffer.append(", ");
+                stringBuilder.append(", ");
         }
-        stringBuffer.append(']');
+        stringBuilder.append(']');
 
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 }

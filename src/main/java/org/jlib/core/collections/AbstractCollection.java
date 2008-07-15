@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.collections;
@@ -20,10 +20,8 @@ import java.util.LinkedList;
 import org.jlib.core.common.ObjectUtility;
 
 /**
- * Skeletal implementation of a Collection. A concrete Collection implementation
- * needs only to extend this class and implement the
- * {@link Collection#iterator()} method. Other methods may be overridden for
- * efficiency reasons.
+ * Skeletal implementation of a Collection. A concrete Collection implementation needs only to extend this class and
+ * implement the {@link Collection#iterator()} method. Other methods may be overridden for efficiency reasons.
  * 
  * @param <Element>
  *        type of elements held in the Collection
@@ -70,13 +68,12 @@ implements Collection<Element> {
     }
 
     /**
-     * Returns whether this Collection contains all of the Elements returned by
-     * the Iterator of the specified Iterable.
+     * Returns whether this Collection contains all of the Elements returned by the Iterator of the specified Iterable.
      * 
      * @param iterable
      *        Iterable creating the Iterator returning the Elements to verify
-     * @return {@code true} if this Collection contains all of the Elements
-     *         contained by {@code otherCollection}; {@code false} otherwise
+     * @return {@code true} if this Collection contains all of the Elements contained by {@code otherCollection};
+     *         {@code false} otherwise
      */
     private boolean containsAll(Iterable<?> iterable) {
         for (Object object : iterable)
@@ -107,30 +104,27 @@ implements Collection<Element> {
     }
 
     /**
-     * Returns whether this Collection is equal to the specified Object. The
-     * implementation in this class defines the Objects equal if all of the
-     * following conditions are satisfied:
+     * Returns whether this Collection is equal to the specified Object. The implementation in this class defines the
+     * Objects equal if all of the following conditions are satisfied:
      * <ul>
      * <li>the specified Object is not {@code null}</li>
      * <li>this Object and the specified Object are instances of the same class</li>
-     * <li>if the Iterators returned by the {@code iterator} methods of this
-     * Collection and the specified Collection (it is a Collection by the
-     * previous condition) return equal Elements in the same order; two Elements
-     * are said to be equal if they are both {@code null} or the comparison
-     * using the {@code equals} method returns {@code true}</li>
+     * <li>if the Iterators returned by the {@code iterator} methods of this Collection and the specified Collection (it
+     * is a Collection by the previous condition) return equal Elements in the same order; two Elements are said to be
+     * equal if they are both {@code null} or the comparison using the {@link Object#equals(Object) equals} method
+     * returns {@code true}</li>
      * </ul>
      * 
      * @param otherObject
-     *        Object to which this Collection is compared
-     * @return {@code true} if all of the conditions stated above are satisfied;
-     *         {@code false} otherwise
+     *        Object to compare to this Collection
+     * @return {@code true} if all of the conditions stated above are satisfied; {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
         Collection<?> otherCollection = (Collection<?>) otherObject;
-        Iterator<?> thisIterator = otherCollection.iterator();
+        Iterator<?> thisIterator = iterator();
         Iterator<?> otherIterator = otherCollection.iterator();
         boolean thisHasNext;
         do {

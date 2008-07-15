@@ -1,18 +1,17 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
- * File:    CollectionAdapter.java
- * Project: jlib.core
+ * http://www.jlib.org
+ * 
+ * File: CollectionAdapter.java Project: jlib.core
  * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.collections;
@@ -23,13 +22,13 @@ import org.jlib.core.collections.list.EditableList;
 
 /**
  * <p>
- * Adapter allowing an immutable jlib Collection to be used as an immutable Java
- * Collection. This Collection is backed by the jlib Collection.
+ * Adapter allowing an immutable jlib Collection to be used as an immutable Java Collection. This Collection is backed
+ * by the jlib Collection.
  * </p>
  * <p>
- * Having a Java Collection backing an immutable jlib Collection makes sense for
- * a Collection like an {@link EditableList}, where the contained Elements may
- * change even though no Element can be added to the List or removed from it.
+ * Having a Java Collection backing an immutable jlib Collection makes sense for a Collection like an
+ * {@link EditableList}, where the contained Elements may change even though no Element can be added to the List or
+ * removed from it.
  * </p>
  * 
  * @param <Element>
@@ -44,8 +43,7 @@ implements Collection<Element>, java.util.Collection<Element> {
     private final Collection<Element> backedCollection;
 
     /**
-     * Creates a new ImmutableJavaCollection backing the specified jlib
-     * Collection.
+     * Creates a new ImmutableJavaCollection backing the specified jlib Collection.
      * 
      * @param backedCollection
      *        jlib Collection to adapt
@@ -111,34 +109,23 @@ implements Collection<Element>, java.util.Collection<Element> {
 
     /**
      * <p>
-     * Returns whether this Collection is equal to the specified Object. The
-     * specification of this method in this class does not extend the general
-     * contract for Object equality defined by the {@link Object#equals} method.
+     * Returns whether this Collection is equal to the specified Object. The specification of this method in this class
+     * does not extend the general contract for Object equality defined by the {@link Object#equals} method.
      * </p>
      * <p>
-     * However, the implementation in this class defines the Objects equal if
-     * all of the following conditions are satisfied:
+     * However, the implementation in this class defines the Objects equal if the specified Object is itself an
+     * ImmutableJavaCollection and the jlib Collections backed by this Collection and the specified Collection,
+     * respectively, are equal by their {@code equals} methods.
      * </p>
-     * <ul>
-     * <li>the specified Object is itself an ImmutableJavaCollection and the
-     * jlib Collections backed by this Collection and the specified Collection,
-     * respectively, are equal by their {@code equals} methods.</li>
-     * <li>the specified Object is not an ImmutableJavaCollection and the jlib
-     * Collection backed by this Collection is equal to the specified Object by
-     * its {@code equals} method</li>
-     * </ul>
      * 
      * @param otherObject
      *        Object to which the backed jlib Collection is compared
-     * @return {@code true} if the backed jlib Collection is equal to
-     *         {@code otherObject}; {@code false} otherwise
+     * @return {@code true} if the backed jlib Collection is equal to {@code otherObject}; {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {
-        if (otherObject instanceof ImmutableJavaCollection)
-            return backedCollection.equals(((ImmutableJavaCollection<?>) otherObject).backedCollection);
-
-        return backedCollection.equals(otherObject);
+        return otherObject instanceof ImmutableJavaCollection &&
+               backedCollection.equals(((ImmutableJavaCollection<?>) otherObject).backedCollection);
     }
 
     // @see java.lang.Object#hashCode()

@@ -105,36 +105,36 @@ public class StringUtility {
         if (currentLength >= length)
             return string;
 
-        StringBuffer stringBuffer = new StringBuffer(length);
+        StringBuilder stringBuilder = new StringBuilder(length);
 
         switch (paddingType) {
             case FRONT:
                 for (; currentLength < length; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
-                stringBuffer.append(string);
+                    stringBuilder.append(paddingCharacter);
+                stringBuilder.append(string);
                 break;
             case BACK:
-                stringBuffer.append(string);
+                stringBuilder.append(string);
                 for (; currentLength < length; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
+                    stringBuilder.append(paddingCharacter);
                 break;
             case FRONTBACK:
                 halfLength = (currentLength + length + 1) / 2;
                 for (; currentLength < halfLength; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
-                stringBuffer.append(string);
+                    stringBuilder.append(paddingCharacter);
+                stringBuilder.append(string);
                 for (; currentLength < length; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
+                    stringBuilder.append(paddingCharacter);
                 break;
             case BACKFRONT:
                 halfLength = (currentLength + length) / 2;
                 for (; currentLength < halfLength; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
-                stringBuffer.append(string);
+                    stringBuilder.append(paddingCharacter);
+                stringBuilder.append(string);
                 for (; currentLength < length; currentLength ++)
-                    stringBuffer.append(paddingCharacter);
+                    stringBuilder.append(paddingCharacter);
         }
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 
 }

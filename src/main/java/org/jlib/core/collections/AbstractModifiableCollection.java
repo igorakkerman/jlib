@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.collections;
@@ -28,9 +28,8 @@ extends AbstractCollection<Element>
 implements ModifiableCollection<Element> {
 
     /**
-     * Java Collection used as delegate for some methods allowing the
-     * {@code AbstractModifiableCollection} class to implement the
-     * {@link java.util.Collection} interface.
+     * Java Collection used as delegate for some methods allowing the {@code AbstractModifiableCollection} class to
+     * implement the {@link java.util.Collection} interface.
      * 
      * @param <DelegateElement>
      *        type of elements held in the Collection
@@ -46,8 +45,7 @@ implements ModifiableCollection<Element> {
          * Creates a new DelegateModifiableCollection.
          * 
          * @param baseCollection
-         *        ModifiableCollection for which this Java Collection is used as
-         *        delegate
+         *        ModifiableCollection for which this Java Collection is used as delegate
          */
         DelegateCollection(ModifiableCollection<DelegateElement> baseCollection) {
             super();
@@ -59,7 +57,7 @@ implements ModifiableCollection<Element> {
         public int size() {
             return baseCollection.size();
         }
-        
+
         // @see java.util.AbstractCollection#contains(java.lang.Object)
         @Override
         public boolean contains(Object object) {
@@ -90,14 +88,11 @@ implements ModifiableCollection<Element> {
     }
 
     /**
-     * Adds all Elements returned by the Iterator of the specified Iterable to
-     * this Collection.
+     * Adds all Elements returned by the Iterator of the specified Iterable to this Collection.
      * 
      * @param iterable
-     *        Iterable creating the Iterator returning the Elements to add to
-     *        this Collection
-     * @return {@code true} if this Collection has been modified by this
-     *         operation; {@code false} otherwise
+     *        Iterable creating the Iterator returning the Elements to add to this Collection
+     * @return {@code true} if this Collection has been modified by this operation; {@code false} otherwise
      */
     private boolean addAll(Iterable<? extends Element> iterable) {
         boolean modified = false;
@@ -139,14 +134,11 @@ implements ModifiableCollection<Element> {
     }
 
     /**
-     * Removes all Elements returned by the Iterator of the specified Iterable
-     * from this Collection.
+     * Removes all Elements returned by the Iterator of the specified Iterable from this Collection.
      * 
      * @param iterable
-     *        Iterable creating the Iterator returning the Elements to remove
-     *        from this Collection
-     * @return {@code true} if this Collection has been modified by this
-     *         operation; {@code false} otherwise
+     *        Iterable creating the Iterator returning the Elements to remove from this Collection
+     * @return {@code true} if this Collection has been modified by this operation; {@code false} otherwise
      */
     private boolean removeAll(Iterable<?> iterable) {
         boolean modified = false;
@@ -200,7 +192,8 @@ implements ModifiableCollection<Element> {
 
     // @see java.util.Collection#toArray(T[])
     // implemented only in this class (not already in AbstractCollection)
-    // because it is only specified by java.util.Collection and not needed otherwise
+    // because it is only specified by java.util.Collection, not by org.jlib.core.collections.Collection
+    // Thus, it is not needed to implement the jlib Collection interface
     @Override
     public <ArrayElement> ArrayElement[] toArray(ArrayElement[] array) {
         return delegateCollection.toArray(array);
