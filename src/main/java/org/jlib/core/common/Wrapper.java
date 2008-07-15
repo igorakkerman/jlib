@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.common;
@@ -19,40 +19,41 @@ package org.jlib.core.common;
  * Wrapper of any kind of Objects allowing a quasi call-by-reference semantic.
  * </p>
  * <p>
- * For example, a method could be used to convert a specified wrapped String to lower case:
+ * For example, a method could be used to convert a specified wrapped String to
+ * lower case:
  * </p>
  * 
  * <pre>
  * {@literal
- * private static void toLowerCase(Wrapper<String> wrappedString)
+ * private static void toLowerCase(Wrapper&lt;String&gt; wrappedString)
  * throws NullPointerException {
  *     wrappedString.set(wrappedString.get().toLowerCase());
  * }}
  * </pre>
- * 
  * <p>
  * The modified String can then be unwrapped:
  * </p>
- * 
  * <pre>
  * {@literal
- * String big = "HelLO!";
- * Wrapper<String> wrapped = wrap(big);  // Wrapper.wrap by static import
- * toLowerCase(wrapped);
- * String small = wrapped.get();
- * System.out.println(big + " >= " + wrapped + " = " + small);}
- * </pre>
- * 
- * This code prints
- * 
- * <pre>
- * {@literal
- * HelLO! >= hello! = hello!}
+ *     String big = &quot;HelLO!&quot;;
+ *     Wrapper&lt;String&gt; wrapped = wrap(big); // Wrapper.wrap by static import
+ *     toLowerCase(wrapped);
+ *     String small = wrapped.get();
+ *     System.out.println(big + "<=" + wrapped + "=" + small);
+ * }
  * </pre>
  * 
  * <p>
- * Note that the {@code toString()} method of this class returns the {@code toString()} result from
- * the wrapped Object.
+ * This code prints
+ * </p>
+ * <pre>
+ * {@literal
+ * HelLO! &gt;= hello! = hello!}
+ * </pre>
+ * 
+ * <p>
+ * Note that the {@link #toString()} method of this class returns the
+ * {@link WrappedObject#toString()} result from the wrapped Object.
  * </p>
  * 
  * @param <WrappedObject>
@@ -61,7 +62,7 @@ package org.jlib.core.common;
  */
 public class Wrapper<WrappedObject> {
 
-	/**
+    /**
      * Creates a new Wrapper for the specified Object.
      * 
      * @param <WrappedObject>
@@ -108,14 +109,14 @@ public class Wrapper<WrappedObject> {
     }
 
     /**
-     * Returns whether the Object wrapped by the specified Wrapper is equal to the Object wrapped by
-     * this wrapper.
+     * Returns whether the Object wrapped by the specified Wrapper is equal to
+     * the Object wrapped by this wrapper.
      * 
      * @param otherObject
      *        other Wrapper
-     * @return {@code true} if the object wrapped by the specified Wrapper is equal to the Object
-     *         wrapped by this wrapper or if both wrapped Objects are {@code null}; {@code false}
-     *         otherwise
+     * @return {@code true} if the object wrapped by the specified Wrapper is
+     *         equal to the Object wrapped by this wrapper or if both wrapped
+     *         Objects are {@code null}; {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {

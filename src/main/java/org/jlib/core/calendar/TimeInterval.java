@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.calendar;
@@ -174,8 +174,8 @@ public class TimeInterval {
      */
     @Override
     public String toString() {
-        return "TimeInterval[" + "days=" + days + ", " + "hours=" + hours + ", " + "minutes=" + minutes + ", "
-               + "seconds=" + seconds + "]";
+        return "TimeInterval[" + "days=" + days + ", " + "hours=" + hours + ", " + "minutes=" + minutes + ", " +
+               "seconds=" + seconds + "]";
     }
 
     // @see java.lang.Object#equals(java.lang.Object)
@@ -184,8 +184,8 @@ public class TimeInterval {
         if (!(otherObject instanceof TimeInterval))
             return false;
         TimeInterval otherTimeInterval = (TimeInterval) otherObject;
-        return otherTimeInterval.days == days && otherTimeInterval.hours == hours
-               && otherTimeInterval.minutes == minutes && otherTimeInterval.seconds == seconds;
+        return otherTimeInterval.days == days && otherTimeInterval.hours == hours &&
+               otherTimeInterval.minutes == minutes && otherTimeInterval.seconds == seconds;
     }
 
     // @see java.lang.Object#hashCode()
