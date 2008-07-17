@@ -22,9 +22,7 @@ package org.jlib.core.common;
 public final class ObjectUtility {
 
     /** no visible constructor */
-    private ObjectUtility() {
-    	// no visible constructor
-    }
+    private ObjectUtility() {}
 
     /**
      * Compares the specified Objects for mutual equality. This method calls two

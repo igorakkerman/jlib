@@ -33,12 +33,10 @@ import org.jlib.core.system.SystemUtility;
  * @author Igor Akkerman
  */
 // @SuppressWarnings("unchecked")
-public class ReflectionUtility {
+public final class ReflectionUtility {
 
     /** no visible constructor */
-    private ReflectionUtility() {
-        // no visible constructor
-    }
+    private ReflectionUtility() {}
 
     /**
      * <p>

@@ -22,12 +22,10 @@ import java.util.Set;
  * 
  * @author Igor Akkerman
  */
-public class CollectionsUtility {
+public class CollectionUtility {
 
     /** no visible constructor */
-    private CollectionsUtility() {
-        // no visible constructor
-    }
+    private CollectionUtility() {}
 
     /**
      * Creates a Set containing the elements of the specified array.

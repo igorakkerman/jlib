@@ -1,15 +1,15 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.system;
@@ -19,12 +19,10 @@ package org.jlib.core.system;
  * 
  * @author Igor Akkerman
  */
-public class SystemUtility {
+public final class SystemUtility {
 
     /** no visible constructor */
-    private SystemUtility() {
-        // no visible constructor
-    }
+    private SystemUtility() {}
 
     /**
      * Returns the value of the system property indicated by the specified key.
@@ -34,8 +32,8 @@ public class SystemUtility {
      * 
      * @param propertyName
      *        String specifying the name of the system property
-     * @return String specifying the value of the system property with
-     *         {@code propertyName}
+     * @return String specifying the value of the system property with {@code
+     *         propertyName}
      * @throws SecurityException
      *         if a security manager exists and its {@code checkPropertyAccess}
      *         method doesn't allow access to the specified system property

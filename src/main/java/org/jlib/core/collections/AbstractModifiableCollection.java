@@ -181,7 +181,7 @@ implements ModifiableCollection<Element> {
     @Override
     public boolean retainAll(Object... elements) {
         // necessary as we need the contains() method fot the elements list
-        return retainAll(CollectionsUtility.asSet(elements));
+        return retainAll(CollectionUtility.asSet(elements));
     }
 
     // @see org.jlib.core.collections.ModifiableCollection#retainAll(org.jlib.core.collections.Collection)

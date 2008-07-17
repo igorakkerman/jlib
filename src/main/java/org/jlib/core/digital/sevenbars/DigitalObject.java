@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
-import org.jlib.core.collections.CollectionsUtility;
+import org.jlib.core.collections.CollectionUtility;
 import org.jlib.core.digital.DigitalElement;
 
 import static org.jlib.core.string.StringUtility.LINE_SEPARATOR;
@@ -41,7 +41,7 @@ extends org.jlib.core.digital.DigitalObject {
      */
     DigitalObject() {
         super();
-        legalDigitalElements = Collections.unmodifiableSet(CollectionsUtility.asSet(Bar.values()));
+        legalDigitalElements = Collections.unmodifiableSet(CollectionUtility.asSet(Bar.values()));
     }
 
     // @see org.jlib.core.common.digital.DigitalObject#getLegalDigitalElements()

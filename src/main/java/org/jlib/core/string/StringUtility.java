@@ -19,7 +19,7 @@ package org.jlib.core.string;
  * 
  * @author Igor Akkerman
  */
-public class StringUtility {
+public final class StringUtility {
     
     /** property name of the system's line separator */
     public static final String LINE_SEPARATOR_PROPERTYNAME = "line.separator";
@@ -28,7 +28,7 @@ public class StringUtility {
     public static final String LINE_SEPARATOR = System.getProperty(LINE_SEPARATOR_PROPERTYNAME); 
 
     /** String padding options */
-    public enum PaddingType {
+    public static enum PaddingType {
         
         /** front padding */
         FRONT,
@@ -50,9 +50,7 @@ public class StringUtility {
     }
 
     /** no visible constructor */
-    private StringUtility() {
-        // no visible constructor
-    }
+    private StringUtility() {}
 
     /**
      * Pads the specified String with the blank character at the back to the specified length.

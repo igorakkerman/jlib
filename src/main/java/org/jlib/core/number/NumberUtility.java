@@ -23,15 +23,13 @@ import org.jlib.core.string.StringUtility;
  * 
  * @author Igor Akkerman
  */
-public class NumberUtility {
+public final class NumberUtility {
 
     /** hexadecimal characters */
     public static final char[] HEXCHARACTERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /** no visible constructor */
-    private NumberUtility() {
-        // no visible constructor
-    }
+    private NumberUtility() {}
 
     /**
      * Parses a hexadecimal digit of the specified character.

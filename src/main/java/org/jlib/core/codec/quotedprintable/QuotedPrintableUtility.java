@@ -29,12 +29,10 @@ import java.io.OutputStream;
  * 
  * @author Igor Akkerman
  */
-public abstract class QuotedPrintableUtility {
+public final class QuotedPrintableUtility {
 
     /** no visible constructor */
-    private QuotedPrintableUtility() {
-        // no visible constructor
-    }
+    private QuotedPrintableUtility() {}
 
     /**
      * Encodes the specified byte array using quoted printable encoding.

@@ -24,12 +24,10 @@ import java.io.OutputStream;
  * 
  * @author Igor Akkerman
  */
-public abstract class IOUtility {
+public final class IOUtility {
 
     /** no visible constructor */
-    private IOUtility() {
-        // no visible constructor
-    }
+    private IOUtility() {}
     
     /**
      * <p>
