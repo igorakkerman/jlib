@@ -14,10 +14,10 @@
 
 package org.jlib.core.number;
 
+import org.jlib.core.operator.AssociativeBinaryOperator;
 import org.jlib.core.operator.BinaryOperator;
-import org.jlib.core.operator.BinaryOperatorWithIdentityElement;
-import org.jlib.core.operators.AssociativeBinaryOperator;
-import org.jlib.core.operators.CommutativeBinaryOperator;
+import org.jlib.core.operator.CommutativeBinaryOperator;
+import org.jlib.core.operator.IdentityElementBinaryOperator;
 
 /**
  * BinaryOperator on Integers performing the <i>plus</i> operation.
@@ -25,8 +25,8 @@ import org.jlib.core.operators.CommutativeBinaryOperator;
  * @author Igor Akkerman
  */
 public class IntegerPlusOperator
-implements BinaryOperator<Integer, Integer, Integer>, AssociativeBinaryOperator<Integer>, CommutativeBinaryOperator<Integer>,
-           BinaryOperatorWithIdentityElement<Integer> {
+implements BinaryOperator<Integer, Integer, Integer>, AssociativeBinaryOperator<Integer>,
+CommutativeBinaryOperator<Integer>, IdentityElementBinaryOperator<Integer> {
 
     /** no visible constructor */
     IntegerPlusOperator() {}
@@ -46,9 +46,9 @@ implements BinaryOperator<Integer, Integer, Integer>, AssociativeBinaryOperator<
         return leftArgument + rightArgument;
     }
 
-    // @see org.jlib.core.operators.BinaryOperatorWithIdentityElement#neutralElement()
+    // @see org.jlib.core.operator.IdentityElementBinaryOperator#identityElement()
     @Override
-    public Integer neutralElement() {
+    public Integer identityElement() {
         return 0;
     }
 }
