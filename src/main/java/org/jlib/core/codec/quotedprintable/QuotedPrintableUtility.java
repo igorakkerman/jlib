@@ -16,7 +16,7 @@ package org.jlib.core.codec.quotedprintable;
 
 import static org.jlib.core.io.IOUtility.parseHexNumberAsByte;
 import static org.jlib.core.io.IOUtility.toUnsignedInt;
-import static org.jlib.core.number.NumberUtility.HEXCHARACTERS;
+import static org.jlib.core.number.NumberUtility.HEX_DIGIT_CHARACTERS;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -97,8 +97,8 @@ public final class QuotedPrintableUtility {
 
         byte[] octet = new byte[3];
         octet[0] = '=';
-        octet[1] = (byte) HEXCHARACTERS[(intValue & 0xF0) >> 4];
-        octet[2] = (byte) HEXCHARACTERS[intValue & 0x0F];
+        octet[1] = (byte) HEX_DIGIT_CHARACTERS[(intValue & 0xF0) >> 4];
+        octet[2] = (byte) HEX_DIGIT_CHARACTERS[intValue & 0x0F];
 
         return octet;
     }

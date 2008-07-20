@@ -14,6 +14,7 @@
 
 package org.jlib.core.string;
 
+
 /**
  * Utility class providing static methods for String operations and manipulations.
  * 
@@ -134,5 +135,4 @@ public final class StringUtility {
         }
         return stringBuilder.toString();
     }
-
 }

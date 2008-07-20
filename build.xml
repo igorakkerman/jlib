@@ -24,7 +24,7 @@
     <property name="api.years" value="2006-2008" />
     <property name="api.author" value="Igor Akkerman" />
     <property name="api.rootpackage" value="org.jlib.core" />
-    <property name="api.sourcedir" value="src" />
+    <property name="api.sourcedir" value="src/main/java" />
     <property name="api.libpath" value="" />
     <property name="api.bindir" value="bin" />
     <property name="api.examplesdir" value="examples" />

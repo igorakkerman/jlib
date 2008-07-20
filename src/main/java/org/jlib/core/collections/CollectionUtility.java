@@ -22,7 +22,7 @@ import java.util.Set;
  * 
  * @author Igor Akkerman
  */
-public class CollectionUtility {
+public final class CollectionUtility {
 
     /** no visible constructor */
     private CollectionUtility() {}
@@ -31,7 +31,8 @@ public class CollectionUtility {
      * Creates a Set containing the elements of the specified array.
      * 
      * @param <SetElement>
-     *        type of the elements in the Set; super type of {@code <ArrayElement>}
+     *        type of the elements in the Set; super type of {@code
+     *        <ArrayElement>}
      * @param <ArrayElement>
      *        type of the elements in the array
      * @param array
