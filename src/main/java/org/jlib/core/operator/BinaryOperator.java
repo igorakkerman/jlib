@@ -1,4 +1,4 @@
-package org.jlib.core.operator;
+package org.jlib.core.operators;
 
 /**
  * Binary function operating on two arguments and returning a result.
@@ -12,28 +12,6 @@ package org.jlib.core.operator;
  * @author Igor Akkerman
  */
 public interface BinaryOperator<FirstArgument, SecondArgument, Result> {
-
-    /**
-     * plus operation (addition) on Integers (first argument plus second
-     * argument)
-     */
-    public static final BinaryOperator<Integer, Integer, Integer> INTEGER_PLUS = new BinaryOperator<Integer, Integer, Integer>() {
-
-        public Integer operate(Integer firstArgument, Integer secondArgument) {
-            return firstArgument + secondArgument;
-        }
-    };
-
-    /**
-     * minus operation (subtraction) on Integers (first argument minus second
-     * argument)
-     */
-    public static final BinaryOperator<Integer, Integer, Integer> INTEGER_MINUS = new BinaryOperator<Integer, Integer, Integer>() {
-
-        public Integer operate(Integer firstArgument, Integer secondArgument) {
-            return firstArgument - secondArgument;
-        }
-    };
 
     /**
      * Performs the operation of this BinaryOperator on the specified arguments.
