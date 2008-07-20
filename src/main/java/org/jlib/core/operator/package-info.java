@@ -18,5 +18,5 @@
  * 
  * @author Igor Akkerman
  */
-package org.jlib.core.operators;
+package org.jlib.core.operator;
 

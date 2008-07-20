@@ -1,4 +1,4 @@
-package org.jlib.core.operators;
+package org.jlib.core.operator;
 
 /**
  * Binary function operating on two arguments and returning a result.

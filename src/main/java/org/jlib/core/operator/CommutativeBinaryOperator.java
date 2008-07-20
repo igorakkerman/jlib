@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.operators;
+package org.jlib.core.operator;
 
 /**
  * Commutative BinaryOperator. Tagging interface to indicate that a

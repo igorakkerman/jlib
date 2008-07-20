@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.operators;
+package org.jlib.core.operator;
 
 /**
  * BinaryOperator with a neutral element.
@@ -21,16 +21,16 @@ package org.jlib.core.operators;
  * 
  * @param <Value>
  *        type of the values on which the BinaryOperator operates,
- *        that is, type of the arguments and the reult of the BinaryOperator
+ *        that is, type of the arguments and the result of the BinaryOperator
  */
-public interface IdentityElementBinaryOperator<Argument>
-extends BinaryOperator<Argument, Argument, Argument> {
+public interface IdentityElementBinaryOperator<Value>
+extends BinaryOperator<Value, Value, Value> {
 
     /**
      * Returns the identity Element of this BinaryOperator.
      * 
-     * @return Argument representing the identity Element of this
+     * @return Value representing the identity Element of this
      *         BinaryOperator
      */
-    public Argument Identity Element();
+    public Value identityElement();
 }
