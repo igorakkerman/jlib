@@ -22,20 +22,20 @@ import org.jlib.core.collections.list.EditableList;
 
 /**
  * <p>
- * Adapter allowing an immutable jlib Collection to be used as an immutable Java Collection. This Collection is backed
- * by the jlib Collection.
+ * Adapter allowing an immutable jlib Collection to be used as an unmodifiable Java
+ * Collection. An UnmodifiableJavaCollection is backed by the jlib Collection.
  * </p>
  * <p>
- * Having a Java Collection backing an immutable jlib Collection makes sense for a Collection like an
- * {@link EditableList}, where the contained Elements may change even though no Element can be added to the List or
- * removed from it.
+ * Having a Java Collection backing an immutable jlib Collection makes sense for
+ * a Collection like an {@link EditableList}, where the contained Elements may
+ * change even though no Element can be added to the List or removed from it.
  * </p>
  * 
  * @param <Element>
  *        type of the elements held in the Collection
  * @author Igor Akkerman
  */
-public class ImmutableJavaCollection<Element>
+public class UnmodifiableJavaCollection<Element>
 extends java.util.AbstractCollection<Element>
 implements Collection<Element>, java.util.Collection<Element> {
 
@@ -43,14 +43,15 @@ implements Collection<Element>, java.util.Collection<Element> {
     private final Collection<Element> backedCollection;
 
     /**
-     * Creates a new ImmutableJavaCollection backing the specified jlib Collection.
+     * Creates a new UnmodifiableJavaCollection backing the specified jlib
+     * Collection.
      * 
      * @param backedCollection
-     *        jlib Collection to adapt
+     *        jlib Collection backed by this UnmodifiableJavaCollection
      * @throws NullPointerException
      *         if {@code backedCollection == null}
      */
-    public ImmutableJavaCollection(Collection<Element> backedCollection)
+    public UnmodifiableJavaCollection(Collection<Element> backedCollection)
     throws NullPointerException {
         super();
         if (backedCollection == null)
@@ -109,23 +110,26 @@ implements Collection<Element>, java.util.Collection<Element> {
 
     /**
      * <p>
-     * Returns whether this Collection is equal to the specified Object. The specification of this method in this class
-     * does not extend the general contract for Object equality defined by the {@link Object#equals} method.
+     * Returns whether this Collection is equal to the specified Object. The
+     * specification of this method in this class does not extend the general
+     * contract for Object equality defined by the {@link Object#equals} method.
      * </p>
      * <p>
-     * However, the implementation in this class defines the Objects equal if the specified Object is itself an
-     * ImmutableJavaCollection and the jlib Collections backed by this Collection and the specified Collection,
+     * However, the implementation in this class defines the Objects equal if
+     * the specified Object is itself an UnmodifiableJavaCollection and the jlib
+     * Collections backed by this Collection and the specified Collection,
      * respectively, are equal by their {@code equals} methods.
      * </p>
      * 
      * @param otherObject
      *        Object to which the backed jlib Collection is compared
-     * @return {@code true} if the backed jlib Collection is equal to {@code otherObject}; {@code false} otherwise
+     * @return {@code true} if the backed jlib Collection is equal to {@code
+     *         otherObject}; {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {
-        return otherObject instanceof ImmutableJavaCollection &&
-               backedCollection.equals(((ImmutableJavaCollection<?>) otherObject).backedCollection);
+        return otherObject instanceof UnmodifiableJavaCollection &&
+               backedCollection.equals(((UnmodifiableJavaCollection<?>) otherObject).backedCollection);
     }
 
     // @see java.lang.Object#hashCode()

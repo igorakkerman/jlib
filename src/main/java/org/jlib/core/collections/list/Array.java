@@ -170,22 +170,26 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Elements. That is, the index of the first Element of the specified
-     * list in this Array is 0. The fixed size of this Array is the size of the specified list.
+     * Creates a new Array containing the specified Elements. That is, the index
+     * of the first Element of the specified list in this Array is 0. The fixed
+     * size of this Array is the size of the specified list.
      * 
      * @param elements
-     *        comma separated list of Elements to store or Java array containing those Elements
+     *        comma separated list of Elements to store or Java array containing
+     *        those Elements
      */
     public Array(Element... elements) {
         this(0, elements);
     }
 
     /**
-     * Creates a new Array containing the specified Integer Elements. That is, the index of the first Element of the
-     * specified list in this Array is 0. The fixed size of this Array is the size of the specified list.
+     * Creates a new Array containing the specified Integer Elements. That is,
+     * the index of the first Element of the specified list in this Array is 0.
+     * The fixed size of this Array is the size of the specified list.
      * 
      * @param elements
-     *        comma separated list of Integer Elements to store or Java array containing those Elements
+     *        comma separated list of Integer Elements to store or Java array
+     *        containing those Elements
      * @return the new Array of Integers
      */
     public static Array<Integer> newIntegerArray(Integer... elements) {
@@ -193,14 +197,16 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Elements having a specified minimum index. That is, the index of the
-     * first Element of the specified list in this Array can be specified. The fixed size of this Array is the size of
-     * the specified list.
+     * Creates a new Array containing the specified Elements having a specified
+     * minimum index. That is, the index of the first Element of the specified
+     * list in this Array can be specified. The fixed size of this Array is the
+     * size of the specified list.
      * 
      * @param minIndex
      *        integer specifying the minimum index of this Array
      * @param elements
-     *        comma separated list of Elements to store or Java array containing those Elements
+     *        comma separated list of Elements to store or Java array containing
+     *        those Elements
      */
     public Array(int minIndex, Element... elements) {
         super();
@@ -214,14 +220,16 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the specified Integer Elements having a specified minimum index. That is, the
-     * index of the first Element of the specified list in this Array can be specified. The fixed size of this Array is
-     * the size of the specified list.
+     * Creates a new Array containing the specified Integer Elements having a
+     * specified minimum index. That is, the index of the first Element of the
+     * specified list in this Array can be specified. The fixed size of this
+     * Array is the size of the specified list.
      * 
      * @param minIndex
      *        integer specifying the minimum index of this Array
      * @param elements
-     *        comma separated list of Integer elements to store or Java array containing those Elements
+     *        comma separated list of Integer elements to store or Java array
+     *        containing those Elements
      * @return the new Array of Integers
      */
     public static Array<Integer> newIntegerArrayFrom(int minIndex, Integer... elements) {
@@ -229,8 +237,10 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Collection. The index of the first Element of the
-     * specified Collection in this Array is 0. The fixed size of this Array is the size of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Collection.
+     * The index of the first Element of the specified Collection in this Array
+     * is 0. The fixed size of this Array is the size of the specified
+     * Collection.
      * 
      * @param collection
      *        Collection of which the Elements are copied to this Array
@@ -242,8 +252,10 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Java Collection. The index of the first Element of the
-     * specified Collection in this Array is 0. The fixed size of this Array is the size of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Java
+     * Collection. The index of the first Element of the specified Collection in
+     * this Array is 0. The fixed size of this Array is the size of the
+     * specified Collection.
      * 
      * @param collection
      *        Java Collection of which the Elements are copied to this Array
@@ -255,13 +267,15 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Collection having a specified minimum index. That
-     * is, the index of the first Element of the specified collection in this Array can be specified. The fixed size of
-     * this Array is the size of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Collection
+     * having a specified minimum index. That is, the index of the first Element
+     * of the specified collection in this Array can be specified. The fixed
+     * size of this Array is the size of the specified Collection.
      * 
      * @param minIndex
-     *        integer specifying the minimum index of this Array. The first Element of {@code collection} is stored at
-     *        this index of this Array.
+     *        integer specifying the minimum index of this Array. The first
+     *        Element of {@code collection} is stored at this index of this
+     *        Array.
      * @param collection
      *        Collection of which the Elements are copied to this Array
      * @throws NullPointerException
@@ -284,13 +298,15 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new Array containing the Elements of the specified Collection having a specified minimum index. That
-     * is, the index of the first Element of the specified collection in this Array can be specified. The fixed size of
-     * this Array is the size of the specified Collection.
+     * Creates a new Array containing the Elements of the specified Collection
+     * having a specified minimum index. That is, the index of the first Element
+     * of the specified collection in this Array can be specified. The fixed
+     * size of this Array is the size of the specified Collection.
      * 
      * @param minIndex
-     *        integer specifying the minimum index of this Array. The first Element of {@code collection} is stored at
-     *        this index of this Array.
+     *        integer specifying the minimum index of this Array. The first
+     *        Element of {@code collection} is stored at this index of this
+     *        Array.
      * @param collection
      *        Collection of which the Elements are copied to this Array
      * @throws NullPointerException
@@ -302,9 +318,9 @@ implements Cloneable {
         super();
         if (minIndex < 0)
             throw new IllegalArgumentException();
-        
+
         backingList = new ArrayList<Element>(collection);
-        
+
         this.minIndex = minIndex;
         this.maxIndex = minIndex + backingList.size() - 1;
     }
@@ -378,7 +394,7 @@ implements Cloneable {
     // @see org.jlib.core.collections.AbstractCollection#containsAll(org.jlib.core.collections.Collection)
     // overridden for efficiency
     @Override
-    public boolean containsAll(java.util.Collection< ? > javaCollection) {
+    public boolean containsAll(java.util.Collection<?> javaCollection) {
         return backingList.containsAll(javaCollection);
     }
 
@@ -395,9 +411,9 @@ implements Cloneable {
     // @see org.jlib.core.collections.list.IndexList#equals(java.lang.Object)
     @Override
     public boolean equals(Object otherObject) {
-        if (!(otherObject instanceof Array< ? >))
+        if (!(otherObject instanceof Array<?>))
             return false;
-        Array< ? > otherArray = (Array< ? >) otherObject;
+        Array<?> otherArray = (Array<?>) otherObject;
         return minIndex == otherArray.minIndex && maxIndex == otherArray.maxIndex &&
                backingList.equals(otherArray.backingList);
     }
