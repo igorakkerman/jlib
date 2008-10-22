@@ -28,8 +28,7 @@ extends Exception {
     private String className;
 
     /**
-     * Creates a new ClassInstantiationException if a class with the specified
-     * name cannot be instantiated.
+     * Creates a new ClassInstantiationException.
      * 
      * @param className
      *        name of the class that cannot be instantiated
