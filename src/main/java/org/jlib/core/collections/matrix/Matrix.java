@@ -453,10 +453,10 @@ extends AbstractCollection<Element> {
     }
 
     /**
-     * Returns the number of fields in this Matrix. The size is equal to
+     * Returns the number of cells in this Matrix. The size is equal to
      * {@code getWidth() * getHeight()}.
      *
-     * @return integer specifying the number of fields
+     * @return integer specifying the number of cells
      */
     @Override
     public int size() {
