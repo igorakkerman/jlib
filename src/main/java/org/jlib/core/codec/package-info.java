@@ -17,5 +17,5 @@
  * 
  * @author Igor Akkerman
  */
-package org.jlib.core.io.encoding;
+package org.jlib.core.codec;
 
