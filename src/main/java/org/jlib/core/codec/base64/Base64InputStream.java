@@ -95,8 +95,8 @@ extends FilterInputStream {
      * Reads a block of four base64 characters writing their values into the input buffer.
      * 
      * @throws EndOfBase64StreamException
-     *         if the end of the base64 stream was reached before the next block; this exception does not signal an
-     *         error
+     *         if the end of the base64 stream was reached before the next block;
+     *         this exception does not signal an error
      * @throws UnexpectedEndOfBase64StreamException
      *         if the base64 block was not completed at the end of the base64 stream
      * @throws IOException
@@ -104,18 +104,18 @@ extends FilterInputStream {
      */
     private void readBase64Block()
     throws EndOfBase64StreamException, UnexpectedEndOfBase64StreamException, IOException {
-        int readChar;
-        int charValue;
-        boolean illegalCharRead;
+        int readCharacter;
+        int characterValue;
+        boolean illegalCharacterRead;
 
-        for (int i = 0; i <= 3; i ++) {
+        for (int characterIndex = 0; characterIndex <= 3; characterIndex ++) {
             do {
                 try {
-                    readChar = in.read();
+                    readCharacter = in.read();
 
                     // end of stream handling
-                    if (readChar == -1) {
-                        if (i == 0) {
+                    if (readCharacter == -1) {
+                        if (characterIndex == 0) {
                             throw new EndOfBase64StreamException();
                         }
                         else {
@@ -123,15 +123,15 @@ extends FilterInputStream {
                         }
                     }
 
-                    charValue = mapBase64Character(readChar);
-                    inputBuffer[i] = charValue;
-                    illegalCharRead = false;
+                    characterValue = mapBase64Character(readCharacter);
+                    inputBuffer[characterIndex] = characterValue;
+                    illegalCharacterRead = false;
                 }
-                catch (IllegalBase64CharacterException ib64ce) {
-                    illegalCharRead = true;
+                catch (IllegalBase64CharacterException exception) {
+                    illegalCharacterRead = true;
                 }
             }
-            while (illegalCharRead);
+            while (illegalCharacterRead);
         }
     }
 
@@ -145,14 +145,14 @@ extends FilterInputStream {
     throws IllegalBase64BlockPadException {
 
         // get number of padding characters and clear them in the input buffer
-        int numPads = getNumPaddingCharacters();
+        int paddingCharactersCount = getPaddingCharactersCount();
         clearPaddingCharacters();
 
         outputBuffer[0] = inputBuffer[0] << 2 | (inputBuffer[1] & 0x30) >> 4;
         outputBuffer[1] = (inputBuffer[1] & 0x0F) << 4 | (inputBuffer[2] & 0x3C) >> 2;
         outputBuffer[2] = (inputBuffer[2] & 0x03) << 6 | inputBuffer[3];
 
-        outputBufferSize = 3 - numPads;
+        outputBufferSize = 3 - paddingCharactersCount;
     }
 
     /**
@@ -162,7 +162,7 @@ extends FilterInputStream {
      * @throws IllegalBase64BlockPadException
      *         if the read base64 block contains illegal padding characters
      */
-    private int getNumPaddingCharacters()
+    private int getPaddingCharactersCount()
     throws IllegalBase64BlockPadException {
         boolean[] pad = new boolean[4];
         for (int i = 0; i <= 3; i ++)
