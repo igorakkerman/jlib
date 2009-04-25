@@ -120,7 +120,7 @@ public class Wrapper<WrappedObject> {
      */
     @Override
     public boolean equals(Object otherObject) {
-        if (!(otherObject instanceof Wrapper))
+        if (!(otherObject instanceof Wrapper<?>))
             return false;
 
         Object otherWrappedObject = ((Wrapper<?>) otherObject).get();
@@ -128,6 +128,12 @@ public class Wrapper<WrappedObject> {
         return wrappedObject != null ? wrappedObject.equals(otherWrappedObject) : otherWrappedObject == null;
     }
 
+    // @see java.lang.Object#hashCode()
+    @Override
+    public int hashCode() {
+        return wrappedObject != null ? wrappedObject.hashCode() : 0;
+    }
+    
     /**
      * Returns the String representation of the wrapped Object.
      * 

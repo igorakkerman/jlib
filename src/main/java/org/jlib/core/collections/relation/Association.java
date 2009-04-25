@@ -66,7 +66,7 @@ public class Association<LeftObject, RightObject> {
     // @see java.lang.Object#equals(java.lang.Object)
     @Override
     public boolean equals(Object otherObject) {
-        if (!(otherObject instanceof Association))
+        if (!(otherObject instanceof Association<?, ?>))
             return false;
         Association<?, ?> otherAssociation = (Association<?, ?>) otherObject;
         Object otherLeftObject = otherAssociation.left();

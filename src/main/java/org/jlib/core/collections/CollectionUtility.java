@@ -170,7 +170,7 @@ public final class CollectionUtility {
             throw new IllegalArgumentException();
 
         IndexList<Value> list =
-            collection instanceof IndexList ? (IndexList<Value>) collection : new Array<Value>(1, collection);
+            collection instanceof IndexList<?> ? (IndexList<Value>) collection : new Array<Value>(1, collection);
 
         int listIndex = list.maxIndex();
         int minListIndex = list.minIndex();

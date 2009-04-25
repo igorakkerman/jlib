@@ -128,7 +128,7 @@ implements Collection<Element>, java.util.Collection<Element> {
      */
     @Override
     public boolean equals(Object otherObject) {
-        return otherObject instanceof UnmodifiableJavaCollection &&
+        return otherObject instanceof UnmodifiableJavaCollection<?> &&
                backedCollection.equals(((UnmodifiableJavaCollection<?>) otherObject).backedCollection);
     }
 
