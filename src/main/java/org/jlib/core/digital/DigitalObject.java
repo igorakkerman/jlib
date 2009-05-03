@@ -43,7 +43,7 @@ implements Cloneable {
      */
     public boolean isDigitalElementActive(DigitalElement digitalElement)
     throws IllegalDigitalElementException {
-        acceptDigitalElement(digitalElement);
+        assertDigitalElementLegal(digitalElement);
         return activeDigitalElements.contains(digitalElement);
     }
 
@@ -61,7 +61,7 @@ implements Cloneable {
      */
     public void setDigitalElementActive(DigitalElement digitalElement, boolean active)
     throws IllegalDigitalElementException {
-        acceptDigitalElement(digitalElement);
+        assertDigitalElementLegal(digitalElement);
         if (active)
             activeDigitalElements.add(digitalElement);
         else
@@ -111,8 +111,9 @@ implements Cloneable {
      * @param digitalElement
      *        DigitalElement to accept
      * @throws IllegalDigitalElementException
+     *         if {@code digitalElement} is illegal
      */
-    private void acceptDigitalElement(DigitalElement digitalElement)
+    private void assertDigitalElementLegal(DigitalElement digitalElement)
     throws IllegalDigitalElementException {
         if (!getLegalDigitalElements().contains(digitalElement))
             throw new IllegalDigitalElementException(this, digitalElement);
