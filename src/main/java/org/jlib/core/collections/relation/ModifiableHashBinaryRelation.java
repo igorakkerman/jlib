@@ -29,11 +29,6 @@ import org.jlib.core.collections.Collection;
  *        type of the objects on the right hand side of the BinaryRelation
  * @author Igor Akkerman
  */
-/**
- * @param <LeftObject>
- * @param <RightObject>
- * @author Igor Akkerman
- */
 public class ModifiableHashBinaryRelation<LeftObject, RightObject>
 extends HashBinaryRelation<LeftObject, RightObject>
 implements ModifiableBinaryRelation<LeftObject, RightObject> {
