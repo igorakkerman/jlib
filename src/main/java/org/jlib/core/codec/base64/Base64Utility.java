@@ -28,7 +28,10 @@ import java.io.OutputStream;
 public final class Base64Utility {
 
     /** base64 alphabet */
-    public static final byte[] base64Alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
+    public static final byte[] base64Alphabet =
+        {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+         'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+         's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
 
     /** base64 padding character */
     public static final byte PAD = '=';
@@ -92,8 +95,8 @@ public final class Base64Utility {
      * 
      * @param base64Character
      *        integer specifying the base64 character
-     * @return integer value represented by {@code base64Char}; -1 if
-     *         {@code base64Char} is the padding character
+     * @return integer value represented by {@code base64Char}; -1 if {@code
+     *         base64Char} is the padding character
      * @throws IllegalBase64CharacterException
      *         if the specified character does not belong to the base64 alphabet
      */
