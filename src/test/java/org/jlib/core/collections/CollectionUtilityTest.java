@@ -16,14 +16,14 @@ package org.jlib.core.collections;
 
 import org.junit.Test;
 
-import org.jlib.core.collections.list.Array;
-
-import static org.junit.Assert.assertEquals;
-
-import static org.jlib.core.collections.CollectionUtility.applyToAll;
-import static org.jlib.core.collections.CollectionUtility.applyToAllRightAssociative;
-import static org.jlib.core.number.NumberOperators.INTEGER_MINUS;
-import static org.jlib.core.number.NumberOperators.INTEGER_PLUS;
+//import org.jlib.core.collections.list.Array;
+//
+//import static org.junit.Assert.assertEquals;
+//
+//import static org.jlib.core.collections.CollectionUtility.applyToAll;
+//import static org.jlib.core.collections.CollectionUtility.applyToAllRightAssociative;
+//import static org.jlib.core.number.NumberOperators.INTEGER_MINUS;
+//import static org.jlib.core.number.NumberOperators.INTEGER_PLUS;
 
 /**
  * Test of the CollectionUtility class.
