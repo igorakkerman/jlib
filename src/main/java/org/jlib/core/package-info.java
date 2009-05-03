@@ -13,7 +13,7 @@
  */
 
 /**
- * jlib packages providing basic functionality.
+ * jlib packages providing core functionality.
  * 
  * @author Igor Akkerman
  */
