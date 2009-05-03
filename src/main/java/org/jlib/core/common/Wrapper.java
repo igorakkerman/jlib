@@ -24,11 +24,10 @@ package org.jlib.core.common;
  * </p>
  * 
  * <pre>
- * {@literal
  * private static void toLowerCase(Wrapper&lt;String&gt; wrappedString)
  * throws NullPointerException {
  *     wrappedString.set(wrappedString.get().toLowerCase());
- * }}
+ * }
  * </pre>
  * <p>
  * The modified String can then be unwrapped:
