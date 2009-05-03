@@ -1,13 +1,13 @@
 /*
  * jlib - The Free Java Library
  * 
- * http://www.jlib.org
+ *     http://www.jlib.org
  * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
  * 
- * COMMON PUBLIC LICENSE VERSION 1.0
+ *     COMMON PUBLIC LICENSE VERSION 1.0
  * 
  * http://www.opensource.org/licenses/cpl1.0.php
  */
@@ -287,7 +287,7 @@ public class TimeInterval {
      * 
      * @return {@code true} if the specified Object is an instance of
      *         TimeInterval and the {@link #getOverallSeconds()} methods of both
-     *         TimeIntervals return the same value
+     *         TimeIntervals return the same value; {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {
