@@ -105,15 +105,13 @@ import org.jlib.core.collections.Collection;
  * The latter form takes the minimum index as first argument.
  * 
  * <pre>
- * {@literal
  * // possible but not handy
- * Array<Integer> integerArray = new Array<Integer>(new Integer[] {1, 2, 3, 4, 5, 6});
- * Array<Integer> integerArray = new Array<Integer>(1, new Integer[] {1, 2, 3, 4, 5, 6});
+ * Array&lt;Integer&gt; integerArray = new Array&lt;Integer&gt;(new Integer[] {1, 2, 3, 4, 5, 6});
+ * Array&lt;Integer&gt; integerArray = new Array&lt;Integer&gt;(1, new Integer[] {1, 2, 3, 4, 5, 6});
  *
  * // easier to use (needs the static import of the factory method(s))
- * Array<Integer> integerArray = newIntegerArray(1, 2, 3, 4, 5);
- * Array<Integer> integerArray = newIntegerArrayFrom(1, 1, 2, 3, 4, 5);
- * }
+ * Array&lt;Integer&gt; integerArray = newIntegerArray(1, 2, 3, 4, 5);
+ * Array&lt;Integer&gt; integerArray = newIntegerArrayFrom(1, 1, 2, 3, 4, 5);
  * </pre>
  * 
  * </li>
