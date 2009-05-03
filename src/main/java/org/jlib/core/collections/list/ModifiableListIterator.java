@@ -62,7 +62,7 @@ extends EditableListIterator<Element>, Iterator<Element> {
      * </p>
      * 
      * @throws IllegalStateException
-     *         if {@link #next()} or {@link #prev()} have not been called
+     *         if {@link #next()} or {@link #previous()} have not been called
      *         initially or after the last call to {@link #add(Object)} or
      *         {@link #remove()}
      */
