@@ -14,7 +14,9 @@
 
 package org.jlib.core.calendar;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -42,26 +44,26 @@ public class TimeIntervalTest {
 
     @Test
     public void testOneYear1() {
-        assertEquals(CALENDAR20080101, ONE_YEAR.addTo(CALENDAR20070101));
+        assertThat(CALENDAR20080101, is(equalTo(ONE_YEAR.addTo(CALENDAR20070101))));
     }
 
     @Test
     public void testOneYear2() {
-        assertEquals(CALENDAR20080301, ONE_YEAR.addTo(CALENDAR20070301));
+        assertThat(CALENDAR20080301, is(equalTo(ONE_YEAR.addTo(CALENDAR20070301))));
     }
 
     @Test
     public void test365Days1() {
-        assertEquals(CALENDAR20080101, THREESIXTYFIVE_DAYS.addTo(CALENDAR20070101));
+        assertThat(CALENDAR20080101, is(equalTo(THREESIXTYFIVE_DAYS.addTo(CALENDAR20070101))));
     }
 
     @Test
     public void test366Days1() {
-        assertEquals(CALENDAR20080301, THREESIXTYSIX_DAYS.addTo(CALENDAR20070301));
+        assertThat(CALENDAR20080301, is(equalTo(THREESIXTYSIX_DAYS.addTo(CALENDAR20070301))));
     }
 
     @Test
     public void testLeapYear() {
-        assertEquals(CALENDAR20090101, ONE_YEAR.addTo(CALENDAR20080101));
+        assertThat(CALENDAR20090101, is(equalTo(ONE_YEAR.addTo(CALENDAR20080101))));
     }
 }
