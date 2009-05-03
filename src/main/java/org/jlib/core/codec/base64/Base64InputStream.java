@@ -104,14 +104,12 @@ extends FilterInputStream {
      */
     private void readBase64Block()
     throws EndOfBase64StreamException, UnexpectedEndOfBase64StreamException, IOException {
-        int readCharacter;
-        int characterValue;
-        boolean illegalCharacterRead;
 
         for (int characterIndex = 0; characterIndex <= 3; characterIndex ++) {
+            boolean illegalCharacterRead;
             do {
                 try {
-                    readCharacter = in.read();
+                    int readCharacter = in.read();
 
                     // end of stream handling
                     if (readCharacter == -1) {
@@ -123,7 +121,7 @@ extends FilterInputStream {
                         }
                     }
 
-                    characterValue = mapBase64Character(readCharacter);
+                    int characterValue = mapBase64Character(readCharacter);
                     inputBuffer[characterIndex] = characterValue;
                     illegalCharacterRead = false;
                 }
