@@ -17,10 +17,10 @@ import org.jlib.core.system.SystemUtility;
  * </p>
  * <p>
  * Additionally, when using the methods of the class {@link Class} for
- * instantiating classes using reflection, a heap of Exceptions have to be
- * caught. Usually, the application that uses these methods makes no difference
- * why the instantiation failed. They simply catch {@code Throwable} to perform
- * the exception handling. This is not a clean way to handle this problem.
+ * instantiating classes using reflection, many Exceptions have to be caught.
+ * Usually, the application that uses these methods makes no difference why the
+ * instantiation failed. They simply catch {@code Throwable} to perform the
+ * exception handling. This is not a clean way to handle this problem.
  * </p>
  * <p>
  * In contrast, the methods of this class throw one single checked exception,
@@ -32,7 +32,6 @@ import org.jlib.core.system.SystemUtility;
  * 
  * @author Igor Akkerman
  */
-// @SuppressWarnings("unchecked")
 public final class ReflectionUtility {
 
     /** no visible constructor */
@@ -43,12 +42,12 @@ public final class ReflectionUtility {
      * Creates a new instance of the specified class.
      * </p>
      * <p>
-     * This method calls {@link Class#newInstance()}. If it throws an
-     * Exception, it is wrapped into a {@code ClassInstantiationException} and
-     * thrown by this method.
+     * This method calls {@link Class#newInstance()}. If it throws an Exception,
+     * it is wrapped into a {@code ClassInstantiationException} and thrown by
+     * this method.
      * </p>
      * 
-     * @param <Type>
+     * @param <Obj>
      *        type of the object to create
      * @param clazz
      *        Class to instantiate
@@ -56,7 +55,7 @@ public final class ReflectionUtility {
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails
      */
-    public static <Type> Type newInstanceOf(Class<? extends Type> clazz)
+    public static <Obj> Obj newInstanceOf(Class<? extends Obj> clazz)
     throws ClassInstantiationException {
         try {
             return clazz.newInstance();
@@ -75,12 +74,11 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a
-     * {@code ClassInstantiationException}, which is then thrown by this
-     * method.
+     * Throwable of any kind, it is wrapped into a {@code
+     * ClassInstantiationException}, which is then thrown by this method.
      * </p>
      * 
-     * @param <Type>
+     * @param <Obj>
      *        type of the object to create
      * @param object
      *        Object instance of the class to instantiate
@@ -89,9 +87,9 @@ public final class ReflectionUtility {
      *         if the instantiation of the specified class fails
      */
     @SuppressWarnings("unchecked")
-    public static <Type> Type newInstanceOf(Type object)
+    public static <Obj> Obj newInstanceOf(Obj object)
     throws ClassInstantiationException {
-        return newInstanceOf((Class<? extends Type>) object.getClass());
+        return newInstanceOf((Class<? extends Obj>) object.getClass());
     }
 
     /**
@@ -100,12 +98,11 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a
-     * {@code ClassInstantiationException}, which is then thrown by this
-     * method.
+     * Throwable of any kind, it is wrapped into a {@code
+     * ClassInstantiationException}, which is then thrown by this method.
      * </p>
      * 
-     * @param <Type>
+     * @param <Obj>
      *        type of the object to create
      * @param className
      *        String specifying the name of the class to instantiate
@@ -113,15 +110,15 @@ public final class ReflectionUtility {
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails or the
      *         instantiated object is not an instance of the class represented
-     *         by {@code Type} or a subclass
+     *         by {@code Obj} or a subclass
      */
     @SuppressWarnings("unchecked")
-    public static <Type> Type newInstanceOf(String className)
+    public static <Obj> Obj newInstanceOf(String className)
     throws ClassInstantiationException {
-        Class<? extends Type> clazz;
+        Class<? extends Obj> clazz;
         try {
-            clazz = (Class<? extends Type>) Class.forName(className);
-            Type instance = newInstanceOf(clazz);
+            clazz = (Class<? extends Obj>) Class.forName(className);
+            Obj instance = newInstanceOf(clazz);
             return instance;
         }
         catch (ClassNotFoundException exception) {
@@ -136,7 +133,7 @@ public final class ReflectionUtility {
      * Creates a new instance of the class defined in the specified system
      * property.
      * 
-     * @param <Type>
+     * @param <Obj>
      *        type of the object to create
      * @param propertyName
      *        String specifying the name of the system property in which the
@@ -145,10 +142,8 @@ public final class ReflectionUtility {
      * @throws SecurityException
      *         if a security manager exists and its {@code checkPropertyAccess}
      *         method doesn't allow access to the specified system property
-     * @throws NullPointerException
-     *         if {@code propertyName == null}
      * @throws IllegalArgumentException
-     *         if (@code propertyName} is the empty String
+     *         if (@code propertyName} is {@code null} or the empty String
      * @throws PropertyNotSetException
      *         if the specified system property is not set
      * @throws ClassInstantiationException
@@ -156,18 +151,18 @@ public final class ReflectionUtility {
      *         <li>if the specified system property is not set (cause is a
      *         {@link PropertyNotSetException}) or</li>
      *         <li>if the instantiation of the specified class fails (cause is
-     *         one of the exceptions thrown by {@link Class#forName(String)})
-     *         or</li>
+     *         one of the exceptions thrown by {@link Class#forName(String)}) or
+     *         </li>
      *         <li>the instantiated object is not an instance of the class
-     *         represented by {@code Type} or a subclass (cause is a
+     *         represented by {@code Obj} or a subclass (cause is a
      *         {@link ClassCastException}).
      *         </ul>
      */
     @SuppressWarnings("unchecked")
-    public static <Type> Type newInstanceByProperty(String propertyName)
-    throws SecurityException, NullPointerException, PropertyNotSetException, ClassInstantiationException {
+    public static <Obj> Obj newInstanceByProperty(String propertyName)
+    throws SecurityException, PropertyNotSetException, ClassInstantiationException {
         String className = SystemUtility.getProperty(propertyName);
-        return (Type) newInstanceOf(className); 
+        return (Obj) newInstanceOf(className);
         // the cast is necessary for javac, not for the Eclipse compiler
     }
 }
