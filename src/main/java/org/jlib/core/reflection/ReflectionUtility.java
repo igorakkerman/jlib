@@ -155,7 +155,7 @@ public final class ReflectionUtility {
      *         </li>
      *         <li>the instantiated object is not an instance of the class
      *         represented by {@code Obj} or a subclass (cause is a
-     *         {@link ClassCastException}).
+     *         {@link ClassCastException}).</li>
      *         </ul>
      */
     @SuppressWarnings("unchecked")
