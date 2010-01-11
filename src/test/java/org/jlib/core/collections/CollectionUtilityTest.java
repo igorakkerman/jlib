@@ -32,6 +32,8 @@ import org.junit.Test;
  */
 public class CollectionUtilityTest {
 
+    // TODO migrate unit tests
+    
     @Test
     public void testDummy() {}
     
