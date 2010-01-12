@@ -107,5 +107,6 @@ extends Iterable<Element> {
      * @return {@code true} if {@code object} is equal to this Collection;
      *         {@code false} otherwise
      */
+    @Override
     public boolean equals(Object otherObject);
 }

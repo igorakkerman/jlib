@@ -126,7 +126,7 @@ extends AbstractEditableIndexList<Element>
 implements Cloneable {
 
     /** ArrayList containing the Elements of this Array */
-    private ArrayList<Element> backingList;
+    private ArrayList<Element> backedList;
 
     /**
      * Creates a new empty Array.
@@ -144,7 +144,8 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code size < 0}
      */
-    public Array(int size) {
+    public Array(int size) 
+    throws IllegalArgumentException {
         super();
         if (size != 0)
             construct(0, size - 1);
@@ -162,7 +163,8 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0 || maxIndex < minIndex}
      */
-    public Array(int minIndex, int maxIndex) {
+    public Array(int minIndex, int maxIndex)
+    throws IllegalArgumentException {
         super();
         construct(minIndex, maxIndex);
     }
@@ -214,7 +216,7 @@ implements Cloneable {
             construct();
 
         for (int index = 0; index < elements.length; index ++)
-            backingList.set(index, elements[index]);
+            backedList.set(index, elements[index]);
     }
 
     /**
@@ -245,7 +247,8 @@ implements Cloneable {
      * @throws NullPointerException
      *         if {@code collection} is {@code null}
      */
-    public Array(Collection<Element> collection) {
+    public Array(Collection<Element> collection)
+    throws NullPointerException {
         this(0, collection);
     }
 
@@ -260,7 +263,8 @@ implements Cloneable {
      * @throws NullPointerException
      *         if {@code collection} is {@code null}
      */
-    public Array(java.util.Collection<Element> collection) {
+    public Array(java.util.Collection<Element> collection)
+    throws NullPointerException {
         this(0, collection);
     }
 
@@ -281,15 +285,16 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0}
      */
-    public Array(int minIndex, Collection<Element> collection) {
+    public Array(int minIndex, Collection<Element> collection)
+    throws NullPointerException, IllegalArgumentException {
         super();
         if (minIndex < 0)
             throw new IllegalArgumentException();
 
         int collectionSize = collection.size();
-        backingList = new ArrayList<Element>(collectionSize);
+        backedList = new ArrayList<Element>(collectionSize);
         for (Element collectionElement : collection)
-            backingList.add(collectionElement);
+            backedList.add(collectionElement);
 
         this.minIndex = minIndex;
         this.maxIndex = minIndex + collectionSize - 1;
@@ -312,22 +317,23 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0}
      */
-    public Array(int minIndex, java.util.Collection<Element> collection) {
+    public Array(int minIndex, java.util.Collection<Element> collection)
+    throws NullPointerException, IllegalArgumentException {
         super();
         if (minIndex < 0)
             throw new IllegalArgumentException();
 
-        backingList = new ArrayList<Element>(collection);
+        backedList = new ArrayList<Element>(collection);
 
         this.minIndex = minIndex;
-        this.maxIndex = minIndex + backingList.size() - 1;
+        this.maxIndex = minIndex + backedList.size() - 1;
     }
 
     /**
      * Constructs this Array as empty.
      */
     private void construct() {
-        backingList = new ArrayList<Element>(0);
+        backedList = new ArrayList<Element>(0);
         minIndex = -1;
         maxIndex = -2;
     }
@@ -343,14 +349,15 @@ implements Cloneable {
      *         if {@code minIndex < 0 || minIndex > maxIndex}
      */
     @SuppressWarnings("hiding")
-    private void construct(int minIndex, int maxIndex) {
+    private void construct(int minIndex, int maxIndex)
+    throws IllegalArgumentException {
         if (minIndex < 0 || minIndex > maxIndex)
             throw new IllegalArgumentException();
 
         int size = maxIndex - minIndex + 1;
-        backingList = new ArrayList<Element>(size);
+        backedList = new ArrayList<Element>(size);
         for (int index = 0; index < size; index ++)
-            backingList.add(null);
+            backedList.add(null);
 
         this.minIndex = minIndex;
         this.maxIndex = maxIndex;
@@ -362,7 +369,7 @@ implements Cloneable {
     public Element get(int index)
     throws ListIndexOutOfBoundsException {
         try {
-            return backingList.get(index - minIndex);
+            return backedList.get(index - minIndex);
         }
         catch (IndexOutOfBoundsException exception) {
             throw new ListIndexOutOfBoundsException(index);
@@ -374,7 +381,7 @@ implements Cloneable {
     throws ListIndexOutOfBoundsException {
         try {
             Element oldElement = get(index);
-            backingList.set(index - minIndex, element);
+            backedList.set(index - minIndex, element);
             return oldElement;
         }
         catch (IndexOutOfBoundsException exception) {
@@ -386,14 +393,14 @@ implements Cloneable {
     @Override
     // overridden for efficiency
     public boolean contains(Object object) {
-        return backingList.contains(object);
+        return backedList.contains(object);
     }
 
     // @see org.jlib.core.collections.AbstractCollection#containsAll(org.jlib.core.collections.Collection)
     // overridden for efficiency
     @Override
     public boolean containsAll(java.util.Collection<?> javaCollection) {
-        return backingList.containsAll(javaCollection);
+        return backedList.containsAll(javaCollection);
     }
 
     // @see java.lang.Object#clone()
@@ -402,7 +409,7 @@ implements Cloneable {
     public Object clone()
     throws CloneNotSupportedException {
         Array<Element> clonedArray = (Array<Element>) super.clone();
-        clonedArray.backingList = (ArrayList<Element>) backingList.clone();
+        clonedArray.backedList = (ArrayList<Element>) backedList.clone();
         return clonedArray;
     }
 
@@ -413,6 +420,12 @@ implements Cloneable {
             return false;
         Array<?> otherArray = (Array<?>) otherObject;
         return minIndex == otherArray.minIndex && maxIndex == otherArray.maxIndex &&
-               backingList.equals(otherArray.backingList);
+               backedList.equals(otherArray.backedList);
+    }
+    
+    // @see org.jlib.core.collections.AbstractCollection#hashCode()
+    @Override
+    public int hashCode() {
+        return minIndex + maxIndex + backedList.hashCode();
     }
 }

@@ -285,6 +285,9 @@ public class TimeInterval {
     /**
      * Compares the specified Object to this TimeInterval.
      * 
+     * @param otherObject
+     *        Object to compare to this TimeInterval
+     * 
      * @return {@code true} if the specified Object is an instance of
      *         TimeInterval and the {@link #getOverallSeconds()} methods of both
      *         TimeIntervals return the same value; {@code false} otherwise

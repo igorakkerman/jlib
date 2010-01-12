@@ -133,6 +133,80 @@ public final class StringUtility {
                 for (; currentLength < length; currentLength ++)
                     stringBuilder.append(paddingCharacter);
         }
+        return stringBuffer.toString();
+    }
+
+    public static String wrapOnWhitespace(String string, int lineWidth) {
+        int stringLength = string.length();
+        if (stringLength <= lineWidth)
+            return string;
+
+        StringBuilder stringBuilder = new StringBuilder(stringLength << 1);
+        
+        try {
+        stringBuilder.append();
+        
+        int nextWhitespaceIndex;
+        
+        nextWhitespaceIndex = indexOfWhitespace(string, whitespaceIndex + 1, endIndex);
+
+        
+        
+        
+        int nextLIne
+        for (int whitespaceIndex = 0; whitespaceIndex < stringLength; whitespaceIndex ++) {
+            newWhitespaceIndex = subStringUntilNextWhitespace(stringBuilder, string, whitespaceIndex, );
+            if (newWhitespaceIndex != whitespaceIndex) { 
+                stringBuilder.append(LINE_SEPARATOR);
+                whitespaceIndex = newWhitespaceIndex;
+            }
+        }
+
         return stringBuilder.toString();
+    }
+    private static int indexOfWhitespace(String string, int startIndex, int endIndex)
+    throws NoWhitespaceCharacterException, NullPointerException, IndexOutOfBoundsException {
+        for (int stringIndex = startIndex; stringIndex <= endIndex; stringIndex ++) {
+            if (Character.isWhitespace(string.charAt(stringIndex)))
+                return stringIndex;
+        }
+        throw new NoWhitespaceCharacterException();
+    }
+
+    public int subStringUntilNextWhitespace(StringBuilder stringBuilder, String string, int startIndex,
+    int maximumLength) {
+        int overIndex = Math.min(string.length(), startIndex + maximumLength);
+        char character;
+        int stringIndex;
+        for (stringIndex = startIndex; stringIndex < overIndex; stringIndex ++) {
+            character = string.charAt(stringIndex);
+            if (Character.isWhitespace(character))
+                return stringIndex;
+            stringBuilder.append(character);
+        }
+        return stringIndex - 1;
+    }
+
+    private interface State {
+
+        public int go(StringBuilder stringBuilder, String string, int startIndex, int maximumLength);
+    }
+
+    private class LineStart
+    implements State {
+        public int go(StringBuilder stringBuilder, String string, int startIndex, int maximumLength) {};
+    }
+    }
+
+    private class LineMiddle
+    implements State {
+
+    }
+
+    private class dingsResult {
+
+        private int lastReadCharacterIndex;
+
+        private State nextState();
     }
 }

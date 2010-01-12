@@ -14,13 +14,13 @@
 
 package org.jlib.core.codec.quotedprintable;
 
-import static org.jlib.core.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
-import static org.jlib.core.io.IOUtility.toSignedByte;
-import static org.jlib.core.io.IOUtility.toUnsignedInt;
-
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.jlib.core.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
+import static org.jlib.core.io.IOUtility.toSignedByte;
+import static org.jlib.core.io.IOUtility.toUnsignedInt;
 
 /**
  * FilterInputStream performing a quoted-printable decoding of a source InputStream.

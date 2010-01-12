@@ -17,12 +17,15 @@ package org.jlib.core.number;
 import org.jlib.core.operator.BinaryOperator;
 
 /**
- * Defines a number of {@link BinaryOperator BinaryOperators} on numbers. 
+ * Provides a set of {@link BinaryOperator BinaryOperators} on numbers. 
  *
  * @author Igor Akkerman
  */
 public final class NumberOperators {
 
+    /** no visible default constructor */
+    private NumberOperators() { }
+    
     /**
      * BinaryOperator on Integers performing the <i>plus</i> operation
      * (first argument plus second argument).

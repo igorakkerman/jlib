@@ -14,14 +14,12 @@
 
 package org.jlib.core.calendar;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.equalTo;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.junit.Test;
+
+import static junit.framework.Assert.assertEquals;
 
 /**
  * JUnit test suite for TimeInterval. 

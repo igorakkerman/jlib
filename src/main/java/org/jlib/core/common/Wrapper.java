@@ -108,14 +108,16 @@ public class Wrapper<WrappedObject> {
     }
 
     /**
-     * Returns whether the Object wrapped by the specified Wrapper is equal to
-     * the Object wrapped by this wrapper.
+     * Returns whether the specified Object is also a Wrapper and the Object
+     * wrapped by the specified Wrapper is equal to the Object wrapped by this
+     * wrapper.
      * 
      * @param otherObject
      *        other Wrapper
-     * @return {@code true} if the object wrapped by the specified Wrapper is
-     *         equal to the Object wrapped by this wrapper or if both wrapped
-     *         Objects are {@code null}; {@code false} otherwise
+     * @return {@code true} if the specified Object is a Wrapper and the Object
+     *         wrapped by the specified Wrapper is equal to the Object wrapped
+     *         by this wrapper or if both wrapped Objects are {@code null};
+     *         {@code false} otherwise
      */
     @Override
     public boolean equals(Object otherObject) {
@@ -124,13 +126,13 @@ public class Wrapper<WrappedObject> {
 
         Object otherWrappedObject = ((Wrapper<?>) otherObject).get();
 
-        return wrappedObject != null ? wrappedObject.equals(otherWrappedObject) : otherWrappedObject == null;
+        return ObjectUtility.equalOrNull(wrappedObject, otherWrappedObject);
     }
 
     // @see java.lang.Object#hashCode()
     @Override
     public int hashCode() {
-        return wrappedObject != null ? wrappedObject.hashCode() : 0;
+        return ObjectUtility.hashCode(wrappedObject);
     }
     
     /**

@@ -54,7 +54,8 @@ implements IndexList<Element> {
      * @throws IllegalArgumentException
      *         if {@code  minIndex < 0 || minIndex > maxIndex}
      */
-    protected AbstractIndexList(int minIndex, int maxIndex) {
+    protected AbstractIndexList(int minIndex, int maxIndex)
+    throws IllegalArgumentException {
         super();
         if (minIndex < 0 || minIndex > maxIndex)
             throw new IllegalArgumentException();
@@ -64,11 +65,13 @@ implements IndexList<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#minIndex()
+    @Override
     public int minIndex() {
         return minIndex;
     }
 
     // @see org.jlib.core.collections.list.IndexList#maxIndex()
+    @Override
     public int maxIndex() {
         return maxIndex;
     }

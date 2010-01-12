@@ -1,13 +1,14 @@
 package org.jlib.core.number;
 
-import static org.jlib.core.number.NumberUtility.isEven;
-import static org.jlib.core.number.NumberUtility.isOdd;
-import static org.jlib.core.number.NumberUtility.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import static org.jlib.core.number.NumberUtility.isEven;
+import static org.jlib.core.number.NumberUtility.isOdd;
+import static org.jlib.core.number.NumberUtility.parseHexDigit;
 
 
 public class NumberUtilityTest {

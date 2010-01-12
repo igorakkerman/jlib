@@ -14,11 +14,11 @@
 
 package org.jlib.core.codec.base64;
 
-import static org.jlib.core.codec.base64.Base64Utility.mapBase64Character;
-
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.jlib.core.codec.base64.Base64Utility.mapBase64Character;
 
 /**
  * FilterInputStream performing a base64 decoding of a source InputStream.
@@ -78,7 +78,7 @@ extends FilterInputStream {
         while (true);
     }
 
-    // documented in super class
+    // @see java.io.FilterInputStream#read(byte[], int, int)
     @Override
     public int read(byte[] buffer, int offset, int length)
     throws IOException {
@@ -188,7 +188,7 @@ extends FilterInputStream {
         }
     }
 
-    // documented in super class
+    // @see java.io.FilterInputStream#available()
     @Override
     public int available() {
         return 4 - outputBufferPosition;

@@ -13,12 +13,12 @@
  */
 package org.jlib.core.codec.quotedprintable;
 
-import static org.jlib.core.io.IOUtility.toSignedByte;
-import static org.jlib.core.io.IOUtility.toUnsignedInt;
-
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import static org.jlib.core.io.IOUtility.toSignedByte;
+import static org.jlib.core.io.IOUtility.toUnsignedInt;
 
 /**
  * FilterOutputStream performing a quoted-printable encoding for a target OutputStream.

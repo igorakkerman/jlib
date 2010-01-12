@@ -159,7 +159,8 @@ extends AbstractCollection<Element> {
      * @throws IllegalArgumentException
      *         if {@code width < 0 || height < 0}
      */
-    public Matrix(int width, int height) {
+    public Matrix(int width, int height)
+    throws IllegalArgumentException {
         super();
         if (width != 0 && height != 0) {
             construct(0, width - 1, 0, height - 1, DEFAULTITERATIONORDER);

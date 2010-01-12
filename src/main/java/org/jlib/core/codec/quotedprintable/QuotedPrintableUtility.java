@@ -14,15 +14,15 @@
 
 package org.jlib.core.codec.quotedprintable;
 
-import static org.jlib.core.io.IOUtility.parseHexNumberAsByte;
-import static org.jlib.core.io.IOUtility.toUnsignedInt;
-import static org.jlib.core.number.NumberUtility.HEX_DIGIT_CHARACTERS;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import static org.jlib.core.io.IOUtility.parseHexNumberAsByte;
+import static org.jlib.core.io.IOUtility.toUnsignedInt;
+import static org.jlib.core.number.NumberUtility.HEX_DIGIT_CHARACTERS;
 
 /**
  * Utility class for quoted-printable encoding operations.

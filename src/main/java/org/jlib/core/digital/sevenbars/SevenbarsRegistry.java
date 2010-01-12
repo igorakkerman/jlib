@@ -21,9 +21,17 @@ import org.jlib.core.digital.ObjectMapper;
 import org.jlib.core.digital.ObjectMapperRegistry;
 
 /**
+ * Registry holding an instance of the used digital object components for the seven bars implementation.
+ * The following components are registered:
+ * <ul>
+ *     <li>DigitalObjectsFactory</li>
+ *     <li>ObjectMapper</li>
+ *     <li>DigitMapper</li>
+ * </ul>
+ * 
  * @author Igor Akkerman
  */
-public class SevenbarsRegistry
+public final class SevenbarsRegistry
 implements DigitalObjectsFactoryRegistry, ObjectMapperRegistry, DigitMapperRegistry {
 
     /** sole instance of this class */

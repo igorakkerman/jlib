@@ -1,23 +1,23 @@
 /*
  * jlib - The Free Java Library
  * 
- *    http://www.jlib.org
- *    
+ * http://www.jlib.org
+ * 
  * Copyright (c) 2006-2008 Igor Akkerman
  * 
  * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.eclipse.org/legal/cpl-v10.html
+ * 
+ * COMMON PUBLIC LICENSE VERSION 1.0
+ * 
+ * http://www.eclipse.org/legal/cpl-v10.html
  */
 
 package org.jlib.core.io;
 
-import static org.jlib.core.number.NumberUtility.parseHexDigit;
-
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import static org.jlib.core.number.NumberUtility.parseHexDigit;
 
 /**
  * Utility class providing static methods for input/output operations.
@@ -28,7 +28,7 @@ public final class IOUtility {
 
     /** no visible constructor */
     private IOUtility() {}
-    
+
     /**
      * <p>
      * Converts the specified signed byte value into an unsigned integer value
@@ -88,16 +88,15 @@ public final class IOUtility {
      *         if the array contains illegal characters
      */
     public static byte parseHexNumberAsByte(byte[] hexCharacters)
-    throws NumberFormatException {
+    throws ArrayIndexOutOfBoundsException, NumberFormatException {
         return parseHexNumberAsByte(hexCharacters, 0);
     }
 
     /**
      * Parses a hexadecimal signed byte value at the specified offst in
      * specified array containing the two hexadecimal digit characters as bytes.
-     * The character order is assumed to be big-endian, that is,
-     * {@code hexCharacter[offset]} holds the most significant hexadecimal
-     * character.
+     * The character order is assumed to be big-endian, that is, {@code
+     * hexCharacter[offset]} holds the most significant hexadecimal character.
      * 
      * @param hexCharacters
      *        array of bytes containing the hexadecimal digit characters
@@ -110,7 +109,7 @@ public final class IOUtility {
      *         if the array contains illegal characters at the parsed indices
      */
     public static byte parseHexNumberAsByte(byte[] hexCharacters, int offset)
-    throws NumberFormatException {
+    throws ArrayIndexOutOfBoundsException, NumberFormatException {
         return (byte) (parseHexDigit((char) hexCharacters[offset]) << 4 | parseHexDigit((char) hexCharacters[offset + 1]));
     }
 }

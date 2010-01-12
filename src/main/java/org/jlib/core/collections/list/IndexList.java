@@ -143,9 +143,10 @@ extends List<Element>, RandomAccess {
      * {@code element2} are equal if and only if both are {@code null} or both are equal by the
      * {@code equals()} method.
      *
-     * @param indexList
+     * @param otherIndexList
      *        Object to compare to this IndexList
      * @return {@code true} if {@code indexList} is equal to this IndexList; {@code false} otherwise
      */
-    public boolean equals(Object indexList);
+    public boolean equals(Object otherIndexList);
+    
 }

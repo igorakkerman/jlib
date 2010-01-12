@@ -14,12 +14,12 @@
 
 package org.jlib.core.codec.base64;
 
-import static org.jlib.core.codec.base64.Base64Utility.PAD;
-import static org.jlib.core.codec.base64.Base64Utility.base64Alphabet;
-
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import static org.jlib.core.codec.base64.Base64Utility.BASE64_ALPHABET;
+import static org.jlib.core.codec.base64.Base64Utility.PAD;
 /**
  * FilterOutputStream performing a base64 encoding for a target OutputStream.
  * 
@@ -73,10 +73,10 @@ extends FilterOutputStream {
     throws IOException {
         if (inputBufferSize > 0) {
             // fill output buffer
-            outputBuffer[0] = base64Alphabet[(inputBuffer[0] & 0xFC) >> 2];
-            outputBuffer[1] = base64Alphabet[(inputBuffer[0] & 0x03) << 4 | (inputBuffer[1] & 0xF0) >> 4];
-            outputBuffer[2] = base64Alphabet[(inputBuffer[1] & 0x0F) << 2 | (inputBuffer[2] & 0xC0) >> 6];
-            outputBuffer[3] = base64Alphabet[inputBuffer[2] & 0x3F];
+            outputBuffer[0] = BASE64_ALPHABET[(inputBuffer[0] & 0xFC) >> 2];
+            outputBuffer[1] = BASE64_ALPHABET[(inputBuffer[0] & 0x03) << 4 | (inputBuffer[1] & 0xF0) >> 4];
+            outputBuffer[2] = BASE64_ALPHABET[(inputBuffer[1] & 0x0F) << 2 | (inputBuffer[2] & 0xC0) >> 6];
+            outputBuffer[3] = BASE64_ALPHABET[inputBuffer[2] & 0x3F];
 
             // fill with padding characters
             if (inputBufferSize == 1) {

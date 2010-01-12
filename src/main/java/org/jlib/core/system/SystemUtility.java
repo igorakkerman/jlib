@@ -25,24 +25,24 @@ public final class SystemUtility {
     private SystemUtility() {}
 
     /**
-     * Returns the value of the system property with the specified name. The
-     * difference to the {@link System#getProperty(String)} method is that this
-     * method throws a RuntimeException if the specified key is not set, whereas
+     * Returns the value of the system property indicated by the specified key.
+     * The difference to the {@link System#getProperty(String)} method is that
+     * this method throws an Exception if the specified key is not set, whereas
      * the other method would return {@code null}.
      * 
      * @param propertyName
      *        String specifying the name of the system property
      * @return String specifying the value of the system property with {@code
      *         propertyName}
+     * @throws SecurityException
+     *         if a security manager exists and its {@code checkPropertyAccess}
+     *         method doesn't allow access to the specified system property
+     * @throws NullPointerException
+     *         if {@code key} is null
+     * @throws IllegalArgumentException
+     *         if {@code key} is an empty String
      * @throws PropertyNotSetException
      *         if the specified system property is not set
-     * @throws SecurityException
-     *         if a security manager exists and its
-     *         {@link SecurityManager#checkPropertyAccess(String)
-     *         checkPropertyAccess} method does not allow access to the
-     *         specified system property
-     * @throws IllegalArgumentException
-     *         if {@code propertyName} is null or an empty String
      */
     public static String getProperty(String propertyName)
     throws PropertyNotSetException {
