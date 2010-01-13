@@ -15,18 +15,22 @@
 package org.jlib.core.string;
 
 /**
- * Formatter of a String to fit in fixed width lines.
+ * Formatter of a String using the strategy defined by the implementation of this interface.
  * 
  * @author Igor Akkerman
  */
 public interface StringFormatter {
 
+    // TODO: replace by format(Appendable)
+    //       create static methods in StringUtility class formatting a String or Appendable
+    //       using the strategy defined by an implementation of this interface
+    
     /**
-     * Formats the specified String to fit in lines with the specified width.
+     * Formats the specified String.
      * 
      * @param string
      *        String to format
      * @return formatted String
      */
-    public String format(String text);
+    public String format(String string);
 }

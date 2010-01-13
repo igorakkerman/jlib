@@ -28,28 +28,6 @@ public final class StringUtility {
     /** the system's line separator */
     public static final String LINE_SEPARATOR = System.getProperty(LINE_SEPARATOR_PROPERTYNAME); 
 
-    /** String padding options */
-    public static enum PaddingType {
-        
-        /** front padding */
-        FRONT,
-
-        /** back padding */
-        BACK,
-
-        /**
-         * equal front and back padding. If the number of characters to pad is odd, the front will
-         * be padded with one character more than the back
-         */
-        FRONTBACK,
-
-        /**
-         * equal front and back padding. If the number of characters to pad is odd, the back will be
-         * padded with one character more than the front
-         */
-        BACKFRONT
-    }
-
     /** no visible constructor */
     private StringUtility() {}
 
@@ -106,7 +84,7 @@ public final class StringUtility {
 
         StringBuilder stringBuilder = new StringBuilder(length);
 
-        // TODO: create OO design
+        // TODO: use StringFormatter strategies instead
         switch (paddingType) {
             case FRONT:
                 for (; currentLength < length; currentLength ++)

@@ -19,7 +19,9 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * JUnit test suite for TimeInterval. 
@@ -27,6 +29,7 @@ import static junit.framework.Assert.assertEquals;
  * @author Igor Akkerman
  */
 public class TimeIntervalTest {
+    
     private static final Calendar CALENDAR20070101 = new GregorianCalendar(2007, Calendar.JANUARY, 01);
     private static final Calendar CALENDAR20070301 = new GregorianCalendar(2007, Calendar.MARCH, 01);
     private static final Calendar CALENDAR20080101 = new GregorianCalendar(2008, Calendar.JANUARY, 01);

@@ -19,7 +19,6 @@ package org.jlib.core.string;
 /**
  * Left aligning String formatter. The String is formatted to fit in a fixed width line.
  *
- *
  * @author Igor Akkerman
  */
 public class LeftAlignStringFormatter {

@@ -16,7 +16,7 @@ package org.jlib.core.number;
 
 import org.jlib.core.string.StringUtility;
 
-import static org.jlib.core.string.StringUtility.PaddingType.FRONT;
+import static org.jlib.core.string.PaddingType.FRONT;
 
 /**
  * Utility class providing static methods for number operations and
