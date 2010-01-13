@@ -32,9 +32,11 @@ implements DigitalObjectsFactory {
     }
 
     // @see org.jlib.core.common.digital.DigitalObjectsFactory#newDigitalObject()
+    @Override
     public abstract DigitalObject newDigitalObject();
 
     // @see org.jlib.core.common.digital.DigitalObjectsFactory#newDigitalObject(java.util.Collection)
+    @Override
     public DigitalObject newDigitalObject(Collection<DigitalElement> activeDigitalElements) {
         DigitalObject digitalObject = newDigitalObject();
         digitalObject.setActiveDigitalElements(activeDigitalElements);
@@ -42,6 +44,7 @@ implements DigitalObjectsFactory {
     }
 
     // @see org.jlib.core.common.digital.DigitalObjectsFactory#newDigitalObject(org.jlib.core.common.digital.DigitalElement[])
+    @Override
     public DigitalObject newDigitalObject(DigitalElement... activeDigitalElements) {
         DigitalObject digitalObject = newDigitalObject();
         for (DigitalElement digitalElement : activeDigitalElements)
@@ -50,6 +53,7 @@ implements DigitalObjectsFactory {
     }
 
     // @see org.jlib.core.common.digital.DigitalObjectsFactory#newDigitalObject(java.lang.Object)
+    @Override
     public DigitalObject newDigitalObject(Object object)
     throws NoSuchDigitalObjectException {
         DigitalObject prototypeDigitalObject = getPrototypeDigitalObjects().getDigitalObject(object);

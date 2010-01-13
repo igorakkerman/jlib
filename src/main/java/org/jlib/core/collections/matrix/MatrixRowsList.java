@@ -41,6 +41,7 @@ extends AbstractIndexList<MatrixRow<Element>> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#get(int)
+    @Override
     public MatrixRow<Element> get(int index)
     throws IndexOutOfBoundsException {
         return matrix.row(index);

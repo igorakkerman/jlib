@@ -147,6 +147,7 @@ extends List<Element>, RandomAccess {
      *        Object to compare to this IndexList
      * @return {@code true} if {@code indexList} is equal to this IndexList; {@code false} otherwise
      */
+    @Override
     public boolean equals(Object otherIndexList);
     
 }

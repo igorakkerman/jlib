@@ -101,11 +101,13 @@ implements MatrixColumn<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#get(int)
+    @Override
     public Element get(int index) {
         return matrix.get(columnIndex, index);
     }
 
     // @see org.jlib.core.collections.list.EditableIndexList#set(int, java.lang.Object)
+    @Override
     public Element set(int index, Element element)
     throws ListIndexOutOfBoundsException {
         Element oldElement = get(index);
@@ -114,21 +116,25 @@ implements MatrixColumn<Element> {
     }
 
     // @see org.jlib.core.collections.matrix.MatrixColumn#getMatrix()
+    @Override
     public final Matrix<Element> getMatrix() {
         return matrix;
     }
 
     // @see org.jlib.core.collections.matrix.MatrixColumn#getMinRowIndex()
+    @Override
     public final int getMinRowIndex() {
         return minRowIndex;
     }
 
     // @see org.jlib.core.collections.matrix.MatrixColumn#getMaxRowIndex()
+    @Override
     public final int getMaxRowIndex() {
         return maxRowIndex;
     }
 
     // @see org.jlib.core.collections.matrix.MatrixColumn#getColumnIndex()
+    @Override
     public final int getColumnIndex() {
         return columnIndex;
     }

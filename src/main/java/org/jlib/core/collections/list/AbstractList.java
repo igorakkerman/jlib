@@ -38,6 +38,7 @@ implements List<Element> {
     }
 
     // @see org.jlib.core.collections.list.List#toJavaList()
+    @Override
     public java.util.List<Element> toJavaList() {
         java.util.List<Element> list = new ArrayList<Element>(size());
         for (Element element : this)

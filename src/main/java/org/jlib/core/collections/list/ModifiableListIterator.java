@@ -66,6 +66,7 @@ extends EditableListIterator<Element>, Iterator<Element> {
      *         initially or after the last call to {@link #add(Object)} or
      *         {@link #remove()}
      */
+    @Override
     public void remove()
     throws IllegalStateException;
 }

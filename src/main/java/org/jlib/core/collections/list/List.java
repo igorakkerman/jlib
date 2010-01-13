@@ -34,6 +34,7 @@ extends Collection<Element> {
      *
      * @return Iterator over this List
      */
+    @Override
     public Iterator<Element> iterator();
 
     /**
@@ -57,6 +58,7 @@ extends Collection<Element> {
      *        Object to compare to this List
      * @return {@code true} if {@code list} is equal to this List; {@code false} otherwise
      */
+    @Override
     public boolean equals(Object list);
 
     /**

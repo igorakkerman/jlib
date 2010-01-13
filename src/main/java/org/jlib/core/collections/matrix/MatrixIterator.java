@@ -88,12 +88,14 @@ implements Iterator<Element> {
     }
 
     // @see java.util.Iterator#hasNext()
+    @Override
     public boolean hasNext() {
         return minColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= maxColumnIndex
                && minRowIndex <= nextElementRowIndex && nextElementRowIndex <= maxRowIndex;
     }
 
     // @see java.util.Iterator#next()
+    @Override
     public Element next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
@@ -119,6 +121,7 @@ implements Iterator<Element> {
      * @throws UnsupportedOperationException
      *         always
      */
+    @Override
     public void remove()
     throws UnsupportedOperationException {
         throw new UnsupportedOperationException();

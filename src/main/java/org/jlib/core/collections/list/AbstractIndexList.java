@@ -83,6 +83,7 @@ implements IndexList<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#indexOf(java.lang.Object)
+    @Override
     public int indexOf(Element element) {
         Element listElement;
         for (int index = minIndex; index <= maxIndex; index ++) {
@@ -94,6 +95,7 @@ implements IndexList<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#lastIndexOf(java.lang.Object)
+    @Override
     public int lastIndexOf(Element element) {
         Element listElement;
         for (int index = maxIndex; index >= minIndex; index --) {
@@ -105,22 +107,26 @@ implements IndexList<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#indexListIterator()
+    @Override
     public IndexListIterator<Element> indexListIterator() {
         return indexListIterator(minIndex);
     }
 
     // @see org.jlib.core.collections.list.IndexList#indexListIterator(int)
+    @Override
     public IndexListIterator<Element> indexListIterator(int startIndex)
     throws ListIndexOutOfBoundsException {
         return new DefaultIndexListIterator<Element>(this, startIndex);
     }
 
     // @see org.jlib.core.collections.list.List#listIterator()
+    @Override
     public ListIterator<Element> listIterator() {
         return indexListIterator();
     }
 
     // @see org.jlib.core.collections.list.IndexList#subJavaList(int, int)
+    @Override
     public java.util.List<Element> subJavaList(int fromIndex, int toIndex)
     throws IllegalArgumentException, ListIndexOutOfBoundsException {
         if (fromIndex > toIndex)
@@ -134,6 +140,7 @@ implements IndexList<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexList#subIndexList(int, int)
+    @Override
     public IndexList<Element> subList(int fromIndex, int toIndex)
     throws IllegalArgumentException, ListIndexOutOfBoundsException {
         if (fromIndex > toIndex)

@@ -47,16 +47,19 @@ implements Iterator<Element> {
     }
 
     // @see java.util.Iterator#hasNext()
+    @Override
     public boolean hasNext() {
         return backingIterator.hasNext();
     }
 
     // @see java.util.Iterator#next()
+    @Override
     public Element next() {
         return backingIterator.next();
     }
 
     // @see java.util.Iterator#remove()
+    @Override
     public void remove() {
         throw new UnsupportedOperationException();
     }

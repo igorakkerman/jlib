@@ -66,11 +66,13 @@ implements IndexListIterator<Element> {
     }
 
     // @see org.jlib.core.collections.list.ListIterator#hasNext()
+    @Override
     public boolean hasNext() {
         return nextIndex() <= list.maxIndex();
     }
 
     // @see org.jlib.core.collections.list.ListIterator#next()
+    @Override
     public Element next()
     throws NoSuchElementException {
         if (!hasNext())
@@ -82,11 +84,13 @@ implements IndexListIterator<Element> {
     }
 
     // @see org.jlib.core.collections.list.ListIterator#hasPrevious()
+    @Override
     public boolean hasPrevious() {
         return previousIndex() >= list.minIndex();
     }
 
     // @see org.jlib.core.collections.list.ListIterator#previous()
+    @Override
     public Element previous()
     throws NoSuchElementException {
         if (!hasPrevious())
@@ -98,11 +102,13 @@ implements IndexListIterator<Element> {
     }
 
     // @see org.jlib.core.collections.list.IndexListIterator#previousIndex()
+    @Override
     public int previousIndex() {
         return nextElementIndex - 1;
     }
 
     // @see org.jlib.core.collections.list.IndexListIterator#nextIndex()
+    @Override
     public int nextIndex() {
         return nextElementIndex;
     }

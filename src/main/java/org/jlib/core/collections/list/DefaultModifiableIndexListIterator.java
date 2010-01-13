@@ -61,6 +61,7 @@ implements ModifiableIndexListIterator<Element> {
     }
 
     // @see org.jlib.core.collections.list.ModifiableListIterator#add(java.lang.Object)
+    @Override
     public void add(Element element)
     throws IllegalStateException {
         if (!modificationReady)
@@ -72,6 +73,7 @@ implements ModifiableIndexListIterator<Element> {
     }
 
     // @see org.jlib.core.collections.list.ModifiableListIterator#remove()
+    @Override
     public void remove() {
         if (!modificationReady)
             throw new IllegalStateException();
