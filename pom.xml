@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>org.jlib</groupId>
-        <artifactId>jlib.config</artifactId>
+        <artifactId>base</artifactId>
         <version>0.5-SNAPSHOT</version>
     </parent>
 
@@ -17,13 +17,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.5</version>
+            <version>4.8.1</version>
         </dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>1.2RC3</version>
-		</dependency>
     </dependencies>
 
     <build>
