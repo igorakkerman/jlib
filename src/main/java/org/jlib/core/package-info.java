@@ -12,6 +12,8 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
+// TODO: change Javadoc references from @code to @link
+
 /**
  * jlib packages providing core functionality.
  * 

@@ -12,6 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
+// TODO: transform into interface, create ArrayListsMatrix
+// TODO: MatrixIndexOutOfBoundsException
+
 package org.jlib.core.collections.matrix;
 
 import java.util.AbstractCollection;

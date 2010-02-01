@@ -12,6 +12,8 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
+// TODO: refer to JDK collections (instead of Java collections)
+
 /**
  * jlib Collection framework adding new types of Collections and clean
  * Collection hierarchies.

@@ -120,15 +120,15 @@ implements Collection<Element> {
      * @return {@code true} if all of the conditions stated above are satisfied; {@code false} otherwise
      */
     @Override
+    // TODO: create reference to external implementation (Visitor?)
     public boolean equals(Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
         Collection<?> otherCollection = (Collection<?>) otherObject;
         Iterator<?> thisIterator = iterator();
         Iterator<?> otherIterator = otherCollection.iterator();
-        boolean thisHasNext;
         do {
-            thisHasNext = thisIterator.hasNext();
+            boolean thisHasNext = thisIterator.hasNext();
             if (thisHasNext != otherIterator.hasNext())
                 return false;
             if (!thisHasNext)
@@ -141,6 +141,7 @@ implements Collection<Element> {
 
     // @see java.lang.Object#hashCode()
     @Override
+    // TODO: create reference to external implementatin (Visitor?)
     public int hashCode() {
         int hashCode = 0;
         for (Element element : this)

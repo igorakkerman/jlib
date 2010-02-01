@@ -35,7 +35,7 @@ public final class SystemUtility {
      * @return String specifying the value of the system property with {@code
      *         propertyName}
      * @throws SecurityException
-     *         if a security manager exists and its {@code checkPropertyAccess}
+     *         if a security manager exists and its {@link SecurityManager#checkPropertyAccess}
      *         method doesn't allow access to the specified system property
      * @throws NullPointerException
      *         if {@code key} is null
