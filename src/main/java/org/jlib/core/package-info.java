@@ -16,7 +16,7 @@
 // TODO: change Javadoc references from @code to @link
 
 /**
- * jlib packages providing core functionality.
+ * jlib core functionality.
  * 
  * @author Igor Akkerman
  */
