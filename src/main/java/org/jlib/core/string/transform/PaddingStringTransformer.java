@@ -63,15 +63,40 @@ implements StringTransformer {
      *        {@code true} if an additional padding character should be used;
      *        {@code false} otherwise
      */
-    protected abstract void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired);
+    protected abstract void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder,
+                                boolean additionalPaddingCharacterRequired);
 
-    
     /**
      * Returns the padding character used by this PaddingStringTransformer.
-     *
+     * 
      * @return the padding character
      */
     protected char getPaddingCharacter() {
         return paddingCharacter;
+    }
+
+    // @see java.lang.Object#toString()
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[finalStringLength=" + finalStringLength + ", paddingCharacter='" +
+               paddingCharacter + "']";
+    }
+
+    // @see java.lang.Object#equals(java.lang.Object)
+    @Override
+    public boolean equals(Object otherObject) {
+        if (otherObject == null || !getClass().equals(otherObject.getClass()))
+            return false;
+
+        PaddingStringTransformer otherPaddingStringTransformer = (PaddingStringTransformer) otherObject;
+
+        return finalStringLength == otherPaddingStringTransformer.finalStringLength &&
+               paddingCharacter == otherPaddingStringTransformer.paddingCharacter;
+    }
+    
+    // @see java.lang.Object#hashCode()
+    @Override
+    public int hashCode() {
+        return finalStringLength << 16 + paddingCharacter;
     }
 }
