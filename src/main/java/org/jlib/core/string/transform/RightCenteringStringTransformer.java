@@ -40,8 +40,8 @@ extends PaddingStringTransformer {
 
     // @see org.jlib.core.string.transform.PaddingStringTransformer#pad(java.lang.StringBuilder)
     @Override
-    public void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacter) {
-        if (additionalPaddingCharacter)
+    public void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired) {
+        if (additionalPaddingCharacterRequired)
             halfPadBuilder.append(getPaddingCharacter());
 
         stringBuilder.insert(0, halfPadBuilder);

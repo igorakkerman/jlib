@@ -59,11 +59,11 @@ implements StringTransformer {
      *        {@link StringBuilder} containing the String to transform
      * @param halfPadBuilder
      *        {@link StringBuilder}
-     * @param additionalPaddingCharacter
+     * @param additionalPaddingCharacterRequired
      *        {@code true} if an additional padding character should be used;
      *        {@code false} otherwise
      */
-    protected abstract void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacter);
+    protected abstract void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired);
 
     
     /**
