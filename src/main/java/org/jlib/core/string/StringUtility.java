@@ -15,6 +15,8 @@
 package org.jlib.core.string;
 
 
+// TODO: create method String transform(String, StringTransformer...)
+
 /**
  * Utility class providing static methods for String operations and manipulations.
  * 
@@ -84,7 +86,7 @@ public final class StringUtility {
 
         StringBuilder stringBuilder = new StringBuilder(length);
 
-        // TODO: use StringFormatter strategies instead
+        // TODO: use StringTransformer strategies instead
         switch (paddingType) {
             case FRONT:
                 for (; currentLength < length; currentLength ++)
