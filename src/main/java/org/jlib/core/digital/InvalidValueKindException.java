@@ -14,7 +14,7 @@
 
 package org.jlib.core.digital;
 
-import static org.jlib.core.string.StringUtility.LINE_SEPARATOR;
+import static org.jlib.core.text.StringUtility.LINE_SEPARATOR;
 
 /**
  * Exception thrown when a DigitalObject does not represent a value of a certain

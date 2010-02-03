@@ -21,7 +21,7 @@ import java.util.Set;
 import org.jlib.core.collections.CollectionUtility;
 import org.jlib.core.digital.DigitalElement;
 
-import static org.jlib.core.string.StringUtility.LINE_SEPARATOR;
+import static org.jlib.core.text.StringUtility.LINE_SEPARATOR;
 
 /**
  * DigitalObject in the seven-bars representation.
