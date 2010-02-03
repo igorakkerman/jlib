@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import static org.hamcrest.core.Is.is;
+
+import org.jlib.core.text.transformation.LeftAligningStringTransformer;
+import org.jlib.core.text.transformation.StringTransformer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
