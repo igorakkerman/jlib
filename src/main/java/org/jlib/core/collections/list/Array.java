@@ -46,11 +46,10 @@ import org.jlib.core.collections.Collection;
  * numbers from 1 to 10:
  * 
  * <pre>
- * {@literal
  * // good(?) old Java array                      // cool(!) new jlib Array class
- * Integer[] integerArray = new Integer[10];      Array<Integer> integerArray = new Array<Integer>(1, 10);
+ * Integer[] integerArray = new Integer[10];      Array&lt;Integer&gt; integerArray = new Array&lt;Integer&gt;(1, 10);
  * for (int i = 1; i <= 10; i ++)                 for (int i = 1; i <= 10; i ++)
- *     integerArray[i - 1] = i;                       integerArray.set(i, i); }
+ *     integerArray[i - 1] = i;                       integerArray.set(i, i);
  * </pre>
  * 
  * </li>
@@ -156,17 +155,17 @@ implements Cloneable {
     /**
      * Creates a new Array initially filled with {@code null} Elements.
      * 
-     * @param minIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this Array
-     * @param maxIndex
+     * @param maximumIndex
      *        integer specifying the maximum index of this Array
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0 || maxIndex < minIndex}
      */
-    public Array(int minIndex, int maxIndex)
+    public Array(int minimumIndex, int maximumIndex)
     throws IllegalArgumentException {
         super();
-        construct(minIndex, maxIndex);
+        construct(minimumIndex, maximumIndex);
     }
 
     /**
@@ -202,16 +201,16 @@ implements Cloneable {
      * list in this Array can be specified. The fixed size of this Array is the
      * size of the specified list.
      * 
-     * @param minIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this Array
      * @param elements
      *        comma separated list of Elements to store or Java array containing
      *        those Elements
      */
-    public Array(int minIndex, Element... elements) {
+    public Array(int minimumIndex, Element... elements) {
         super();
         if (elements.length != 0)
-            construct(minIndex, minIndex + elements.length - 1);
+            construct(minimumIndex, minimumIndex + elements.length - 1);
         else
             construct();
 
@@ -225,15 +224,15 @@ implements Cloneable {
      * specified list in this Array can be specified. The fixed size of this
      * Array is the size of the specified list.
      * 
-     * @param minIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this Array
      * @param elements
      *        comma separated list of Integer elements to store or Java array
      *        containing those Elements
      * @return the new Array of Integers
      */
-    public static Array<Integer> newIntegerArrayFrom(int minIndex, Integer... elements) {
-        return new Array<Integer>(minIndex, elements);
+    public static Array<Integer> newIntegerArrayFrom(int minimumIndex, Integer... elements) {
+        return new Array<Integer>(minimumIndex, elements);
     }
 
     /**
@@ -244,11 +243,10 @@ implements Cloneable {
      * 
      * @param collection
      *        Collection of which the Elements are copied to this Array
-     * @throws NullPointerException
+     * @throws IllegalArgumentException
      *         if {@code collection} is {@code null}
      */
-    public Array(Collection<Element> collection)
-    throws NullPointerException {
+    public Array(Collection<Element> collection){
         this(0, collection);
     }
 
@@ -348,7 +346,6 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0 || minIndex > maxIndex}
      */
-    @SuppressWarnings("hiding")
     private void construct(int minIndex, int maxIndex)
     throws IllegalArgumentException {
         if (minIndex < 0 || minIndex > maxIndex)
