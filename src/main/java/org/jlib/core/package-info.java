@@ -18,8 +18,9 @@ TODO: change Javadoc references from @code to @link
 TODO:
     - remove all uses of NullPointerException
     - create NullArgumentException extends IllegalArgumentException (like Apache Commons)
-    - create aspect disallowing null arguments ANYWHERE(!) then remove checks for null arguments
-      (contradiction to obliviousness?)
+    - create aspect/annotation disallowing null arguments ANYWHERE(!)
+      then remove checks for null arguments
+      (aspects: contradiction to obliviousness?)
 */
 
 /**
