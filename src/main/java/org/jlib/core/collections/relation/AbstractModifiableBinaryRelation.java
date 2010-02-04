@@ -112,18 +112,15 @@ implements ModifiableBinaryRelation<LeftObject, RightObject> {
     }
 
     // @see java.util.Collection#remove(java.lang.Object)
-    @SuppressWarnings("unchecked")
     @Override
     public boolean remove(Object object) {
-        try {
-            // wrong type of the Object (not Association<?, ?>) may cause a ClassCastException here
-            Association<LeftObject, RightObject> association = (Association<LeftObject, RightObject>) object;
-            // wrong parameter types of the Association Objects may cause a ClassCastException here
-            return remove(association.left(), association.right());
-        }
-        catch (ClassCastException e) {
+        if (!(object instanceof Association<?, ?>))
             return false;
-        }
+        
+        @SuppressWarnings("unchecked")
+        Association<LeftObject, RightObject> association = (Association<LeftObject, RightObject>) object;
+
+        return remove(association.left(), association.right());
     }
 
     @Override

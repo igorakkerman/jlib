@@ -43,7 +43,7 @@ implements BinaryRelation<LeftObject, RightObject> {
     public Iterator<Association<LeftObject, RightObject>> iterator() {
         return new BinaryRelationIterator<LeftObject, RightObject>(this);
     }
-    
+
     // @see org.jlib.core.collections.relation.BinaryRelation#contains(java.lang.Object, java.lang.Object)
     @Override
     public boolean contains(LeftObject leftObject, RightObject rightObject) {
@@ -51,17 +51,14 @@ implements BinaryRelation<LeftObject, RightObject> {
     }
 
     // @see org.jlib.core.collections.Collection#contains(java.lang.Object)
-    @SuppressWarnings("unchecked")
     @Override
     public boolean contains(Object object) {
-        try {
-            // wrong type of the Object (not Association<?, ?>) may cause a ClassCastException here
-            Association<LeftObject, RightObject> association = (Association<LeftObject, RightObject>) object;
-            // wrong parameter types of the Association Objects may cause a ClassCastException here
-            return contains(association.left(), association.right());
-        }
-        catch (ClassCastException e) {
+        if (!(object instanceof Association<?, ?>))
             return false;
-        }
+
+        @SuppressWarnings("unchecked")
+        Association<LeftObject, RightObject> association = (Association<LeftObject, RightObject>) object;
+        
+        return contains(association.left(), association.right());
     }
 }

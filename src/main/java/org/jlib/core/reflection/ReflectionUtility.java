@@ -112,19 +112,15 @@ public final class ReflectionUtility {
      *         instantiated object is not an instance of the class represented
      *         by {@code Obj} or a subclass
      */
-    @SuppressWarnings("unchecked")
     public static <Obj> Obj newInstanceOf(String className)
     throws ClassInstantiationException {
-        Class<? extends Obj> clazz;
         try {
-            clazz = (Class<? extends Obj>) Class.forName(className);
+            @SuppressWarnings("unchecked")
+            Class<? extends Obj> clazz = (Class<? extends Obj>) Class.forName(className);
             Obj instance = newInstanceOf(clazz);
             return instance;
         }
         catch (ClassNotFoundException exception) {
-            throw new ClassInstantiationException(className, exception);
-        }
-        catch (ClassCastException exception) {
             throw new ClassInstantiationException(className, exception);
         }
     }
@@ -162,7 +158,7 @@ public final class ReflectionUtility {
     public static <Obj> Obj newInstanceByProperty(String propertyName)
     throws SecurityException, PropertyNotSetException, ClassInstantiationException {
         String className = SystemUtility.getProperty(propertyName);
+        // the cast is necessary to the Sun compiler, not to the Eclipse compiler
         return (Obj) newInstanceOf(className);
-        // the cast is necessary for javac, not for the Eclipse compiler
     }
 }
