@@ -12,8 +12,15 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-// TODO: replace toString, equals, hashCode
-// TODO: change Javadoc references from @code to @link
+/*
+TODO: replace toString, equals, hashCode
+TODO: change Javadoc references from @code to @link
+TODO:
+    - remove all uses of NullPointerException
+    - create NullArgumentException extends IllegalArgumentException (like Apache Commons)
+    - create aspect disallowing null arguments ANYWHERE(!) then remove checks for null arguments
+      (contradiction to obliviousness?)
+*/
 
 /**
  * jlib core functionality.
