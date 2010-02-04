@@ -75,7 +75,7 @@ implements StringTransformer {
      *        argument list of {@link StringTransformer StringTransformers}
      *        additionally composing this CompositeStringTransformer
      */
-    public void addStringTransformers(StringTransformer... stringTransformers) {
+    public void addStringTransformers(@SuppressWarnings("hiding") StringTransformer... stringTransformers) {
         Collections.addAll(this.stringTransformers, stringTransformers);
     }
 
@@ -87,7 +87,7 @@ implements StringTransformer {
      *        {@link List} of {@link StringTransformer StringTransformers}
      *        additionally composing this CompositeStringTransformer
      */
-    public void addStringTransformers(List<? extends StringTransformer> stringTransformers) {
+    public void addStringTransformers(@SuppressWarnings("hiding") List<? extends StringTransformer> stringTransformers) {
         this.stringTransformers.addAll(stringTransformers);
     }
 
@@ -109,18 +109,19 @@ implements StringTransformer {
      * CompositeStringTransformer composed by {@link StringTransformer
      * StringTransformers} equal to those of this CompositeStringTransformer.
      * 
-     * @param otherObject {@link Object} to compare to this CompositeStringTransformer
+     * @param otherObject
+     *        {@link Object} to compare to this CompositeStringTransformer
      */
     @Override
     public boolean equals(Object otherObject) {
         if (!(otherObject instanceof CompositeStringTransformer))
             return false;
-        
+
         CompositeStringTransformer otherCompositeStringTransformer = (CompositeStringTransformer) otherObject;
-        
+
         return stringTransformers.equals(otherCompositeStringTransformer.stringTransformers);
     }
-    
+
     // @see java.lang.Object#hashCode()
     @Override
     public int hashCode() {
