@@ -52,16 +52,12 @@ public class ObjectMapper<ValueObject> {
      *         if {@code digitalObject} does not represent a value of the valid
      *         kind
      */
+    // TODO: check if the Exception catching can't be avoided in favor to an earlier verification
     @SuppressWarnings("unchecked")
     public ValueObject valueOf(DigitalObject digitalObject)
     throws InvalidValueKindException {
         try {
-            // syntactic cast: after type erasure this will be an Object
-            // and the result will be casted by the caller
             return (ValueObject) prototypeDigitalObjects.getValue(digitalObject);
-        }
-        catch (ClassCastException exception) {
-            throw new InvalidValueKindException(digitalObject);
         }
         catch (UnknownDigitalObjectException exception) {
             throw new InvalidValueKindException(digitalObject);
@@ -69,7 +65,7 @@ public class ObjectMapper<ValueObject> {
     }
 
     /**
-     * Returns whether the specified DigitalObject represents the value of the
+     * Verifies whether the specified DigitalObject represents the value of the
      * kind for which this ObjectMapper provides utility methods.
      * 
      * @param digitalObject

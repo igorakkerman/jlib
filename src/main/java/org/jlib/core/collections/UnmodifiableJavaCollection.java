@@ -101,9 +101,10 @@ implements Collection<Element>, java.util.Collection<Element> {
 
     // @see java.util.AbstractCollection#toArray()
     @Override
-    @SuppressWarnings("unchecked")
     public Element[] toArray() {
-        return (Element[]) super.toArray();
+        @SuppressWarnings("unchecked")
+        Element[] array = (Element[]) super.toArray();
+        return array;
     }
 
     /**

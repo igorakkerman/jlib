@@ -84,14 +84,15 @@ implements Collection<Element> {
 
     // @see org.jlib.core.collections.Collection#toArray()
     @Override
-    @SuppressWarnings("unchecked")
     public Element[] toArray() {
         int size = size();
-        Object[] array = new Object[size];
+        @SuppressWarnings("unchecked")
+        Element[] array = (Element[]) new Object[size];
         int index = 0;
         for (Element element : this)
             array[index ++] = element;
-        return (Element[]) array;
+
+        return array;
     }
 
     // @see org.jlib.core.collections.Collection#toJavaCollection()

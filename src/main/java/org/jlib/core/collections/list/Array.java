@@ -20,11 +20,12 @@ import org.jlib.core.collections.Collection;
 
 /**
  * <p>
- * Fixed sized array. Replacement for the standard Java arrays with special features.
+ * Fixed sized array. Replacement for the standard Java arrays with special
+ * features.
  * </p>
  * <p>
- * The only syntactical difference to Java arrays lies in the syntax of setting and
- * getting objects and getting the array size:
+ * The only syntactical difference to Java arrays lies in the notation for
+ * retrieving and providing values and retrieving the array size:
  * </p>
  * 
  * <pre>
@@ -40,10 +41,11 @@ import org.jlib.core.collections.Collection;
  * Special features:
  * </p>
  * <ul>
- * <li> Minimum and maximum index: <br/> On instantiation, you can specify the minimum and
- * the maximum index of the Array. Thus, no offset is necessary for Arrays starting at
- * other indices than 0. The following example illustrates how an Array is filled with
- * numbers from 1 to 10:
+ * <li>Minimum and maximum index: <br/>
+ * On instantiation, you can specify the minimum and the maximum index of the
+ * Array. Thus, no offset is necessary for Arrays starting at other indices than
+ * 0. The following example illustrates how an Array is filled with numbers from
+ * 1 to 10:
  * 
  * <pre>
  * // good(?) old Java array                      // cool(!) new jlib Array class
@@ -53,12 +55,13 @@ import org.jlib.core.collections.Collection;
  * </pre>
  * 
  * </li>
- * <li> Conformance to the Java Collections framework <br/> The class implements the
- * {@code java.util.Collection} interface and thus behaves like all Java Collections.
- * </li>
+ * <li>Conformance to the Java Collections framework <br/>
+ * The class implements the {@code java.util.Collection} interface and thus
+ * behaves like all Java Collections.</li>
  * <br />
- * <li> Full support for generics:<br/> The Java arrays do not support generic classes.
- * For example, you cannot create an array of String lists:
+ * <li>Full support for generics:<br/>
+ * The Java arrays do not support generic classes. For example, you cannot
+ * create an array of String lists:
  * 
  * <pre>
  * {@literal
@@ -70,7 +73,8 @@ import org.jlib.core.collections.Collection;
  * </pre>
  * 
  * </li>
- * <li> Easy to create:<br />
+ * <li>
+ * Easy to create:<br />
  * 
  * <pre>
  * {@literal
@@ -81,8 +85,8 @@ import org.jlib.core.collections.Collection;
  * Array<String> stringArray = new Array<String>(1, "jlib", "is", "cool!");}
  * </pre>
  * 
- * A small problem arises if you want to create Arrays of Integers. The Java autoboxing
- * feature forbids the following Array creation:
+ * To create Arrays of Integers. The Java
+ * autoboxing feature forbids the following Array creation:
  * 
  * <pre>
  * {@literal
@@ -96,12 +100,13 @@ import org.jlib.core.collections.Collection;
  * {@literal The constructor Array<Integer>(Integer[]) is ambiguous}
  * </pre>
  * 
- * It doesn't know whether the first parameter is meant as the minimum index of the Array
- * or the first Element of the list. You could pass a Java array of Integers instead which
- * is the equivalent to the list form for the argument {@code Integer... elements} but
- * this class provides an easier way: the factory methods
- * {@link #newIntegerArray(Integer[])} or {@link #newIntegerArrayFrom(int, Integer[])}.
- * The latter form takes the minimum index as first argument.
+ * It doesn't know whether the first parameter is meant as the minimum index of
+ * the Array or the first Element of the list. You could pass a Java array of
+ * Integers instead which is the equivalent to the list form for the argument
+ * {@code Integer... elements} but this class provides an easier way: the
+ * factory methods {@link #newIntegerArray(Integer[])} or
+ * {@link #newIntegerArrayFrom(int, Integer[])}. The latter form takes the
+ * minimum index as first argument.
  * 
  * <pre>
  * // possible but not handy
@@ -143,7 +148,7 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code size < 0}
      */
-    public Array(int size) 
+    public Array(int size)
     throws IllegalArgumentException {
         super();
         if (size != 0)
@@ -246,7 +251,7 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code collection} is {@code null}
      */
-    public Array(Collection<Element> collection){
+    public Array(Collection<Element> collection) {
         this(0, collection);
     }
 
@@ -346,7 +351,7 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code minIndex < 0 || minIndex > maxIndex}
      */
-    private void construct(int minIndex, int maxIndex)
+    private void construct(@SuppressWarnings("hiding") int minIndex, @SuppressWarnings("hiding") int maxIndex)
     throws IllegalArgumentException {
         if (minIndex < 0 || minIndex > maxIndex)
             throw new IllegalArgumentException();
@@ -421,7 +426,7 @@ implements Cloneable {
         return minIndex == otherArray.minIndex && maxIndex == otherArray.maxIndex &&
                backedList.equals(otherArray.backedList);
     }
-    
+
     // @see org.jlib.core.collections.AbstractCollection#hashCode()
     @Override
     public int hashCode() {
