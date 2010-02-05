@@ -7,14 +7,16 @@ import org.jlib.core.text.transformation.LeftAligningStringTransformer;
 import org.jlib.core.text.transformation.StringTransformer;
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
+import org.junit.runner.RunWith;
 
 /**
  * Test case for LeftAligningStringTransformer.
  * 
  * @author Igor Akkerman
  */
-//@RunWith(Theories.class)
+@RunWith(Theories.class)
 public class LeftAligningStringTransformerTest {
 
     private static class Data {
