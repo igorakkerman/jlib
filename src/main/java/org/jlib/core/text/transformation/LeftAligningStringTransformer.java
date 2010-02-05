@@ -43,6 +43,6 @@ extends PaddingStringTransformer {
         stringBuilder.append(halfPadBuilder);
         stringBuilder.append(halfPadBuilder);
         if (additionalPaddingCharacterRequired)
-            halfPadBuilder.append(getPaddingCharacter());
+            stringBuilder.append(getPaddingCharacter());
     }
 }
