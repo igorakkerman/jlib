@@ -480,7 +480,7 @@ extends AbstractCollection<Element> {
      */
     @Override
     public Iterator<Element> iterator() {
-        return matrixIteratorFactory.newMatrixIterator(this);
+        return iterator(matrixIteratorFactory);
     }
 
     /**
