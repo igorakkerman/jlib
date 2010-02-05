@@ -1,89 +1,59 @@
 package org.jlib.core.string.transform;
 
-import static org.junit.Assert.*;
-
-import static org.hamcrest.core.IsEqual.equalTo;
-
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 import org.jlib.core.text.transformation.LeftAligningStringTransformer;
 import org.jlib.core.text.transformation.StringTransformer;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theory;
 
 /**
  * Test case for LeftAligningStringTransformer.
  * 
  * @author Igor Akkerman
  */
+//@RunWith(Theories.class)
 public class LeftAligningStringTransformerTest {
 
-    @Test
-    public void testTransformEmptyEmpty() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(0, 'x');
-        StringBuilder stringBuilder = new StringBuilder(0);
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("")));
-    }
+    private static class Data {
+        public String id;
+        public int finalStringLength;
+        public String inputString;
+        public String expectedTransformedString;
 
-    @Test
-    public void testTransformEmptyEven() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(10, 'x');
-        StringBuilder stringBuilder = new StringBuilder(0);
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("xxxxxxxxxx")));
+        public Data(String id, int finalStringLength, String inputString, String expectedTransformedString) {
+            super();
+            this.id = id;
+            this.finalStringLength = finalStringLength;
+            this.inputString = inputString;
+            this.expectedTransformedString = expectedTransformedString;
+        }
+        
+        @Override
+        public String toString() {
+            return "(" + id + ": " + finalStringLength + ", \"" + inputString + "\", \"" + expectedTransformedString + "\")";
+        }
     }
-
-    @Test
-    public void testTransformEmptyOdd() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(9, 'x');
-        StringBuilder stringBuilder = new StringBuilder(0);
+    
+    @DataPoints public static Data[] data =
+        { 
+          new Data("empty, zero", 0, "", ""), 
+          new Data("empty, even", 10, "", "xxxxxxxxxx"),
+          new Data("empty, odd", 9, "", "xxxxxxxxx"),
+          new Data("even, less, even", 4, "abcdef", "abcdef"),
+          new Data("even, less, odd" , 3, "abcdef", "abcdef"),
+          new Data("odd, less, even", 4, "abcdefg", "abcdefg" ),
+          new Data("odd, less, odd", 3, "abcdefg", "abcdefg" ),
+          new Data("even, more, even", 10, "abcdef", "abcdefxxxx"),
+        };
+    
+    @Theory
+    public void testTransform(Data data) {
+        StringTransformer stringTransformer = new LeftAligningStringTransformer(data.finalStringLength, 'x');
+        StringBuilder stringBuilder = new StringBuilder(data.inputString);
         stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("xxxxxxxxx")));
+        Assert.assertThat(data.toString(), stringBuilder.toString(), is(equalTo(data.expectedTransformedString)));
     }
-
-    @Test
-    public void testTransformEvenLessEven() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(4, 'x');
-        StringBuilder stringBuilder = new StringBuilder("abcdef");
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("abcdef")));
-    }
-
-    @Test
-    public void testTransformEvenLessOdd() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(3, 'x');
-        StringBuilder stringBuilder = new StringBuilder("abcdef");
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("abcdef")));
-    }
-
-    @Test
-    public void testTransformOddLessEven() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(4, 'x');
-        StringBuilder stringBuilder = new StringBuilder("abcdefg");
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("abcdefg")));
-    }
-
-    @Test
-    public void testTransformOddLessOdd() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(3, 'x');
-        StringBuilder stringBuilder = new StringBuilder("abcdefg");
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("abcdefg")));
-    }
-
-    @Test
-    public void testTransformEvenMoreEven() {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(10, 'x');
-        StringBuilder stringBuilder = new StringBuilder("abcdef");
-        stringTransformer.transform(stringBuilder);
-        Assert.assertThat(stringBuilder.toString(), is(equalTo("")));
-    }
-
 }
