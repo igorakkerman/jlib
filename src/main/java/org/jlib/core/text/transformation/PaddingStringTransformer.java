@@ -44,7 +44,7 @@ implements StringTransformer {
         int halfPadLength = padLength / 2;
 
         StringBuilder halfPadBuilder = new StringBuilder(halfPadLength);
-        for (int halfPadIndex = 0; halfPadIndex < padLength; halfPadIndex ++)
+        for (int halfPadIndex = 0; halfPadIndex < halfPadLength; halfPadIndex ++)
             halfPadBuilder.append(paddingCharacter);
 
         pad(stringBuilder, halfPadBuilder, isOdd(padLength));
