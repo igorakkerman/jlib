@@ -25,6 +25,7 @@ TODO:
                 generally unspecified if null arguments are used!
       - create annotation for method parameters @Nullable
         declaring null arguments as being allowed (only for special cases)
+TODO: change license to Apache License 2.0
 */
 
 /**
