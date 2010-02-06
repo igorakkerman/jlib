@@ -36,22 +36,9 @@ public class TimeIntervalTest {
     private static final Calendar CALENDAR20080301 = new GregorianCalendar(2008, Calendar.MARCH, 01);
     private static final Calendar CALENDAR20090101 = new GregorianCalendar(2009, Calendar.JANUARY, 01);
     private static final Calendar CALENDAR20090301 = new GregorianCalendar(2009, Calendar.MARCH, 01);
-    private static final TimeInterval ONE_YEAR = new TimeInterval(1, 0, 0, 0, 0, 0);
-    private static final TimeInterval ONE_MONTH = new TimeInterval(0, 1, 0, 0, 0, 0);
-    private static final TimeInterval ONE_DAY = new TimeInterval(0, 0, 1, 0, 0, 0);
-    private static final TimeInterval THREESIXTYFIVE_DAYS = new TimeInterval(0, 0, 365, 0, 0, 0);
-    private static final TimeInterval THREESIXTYSIX_DAYS = new TimeInterval(0, 0, 366, 0, 0, 0);
-    private static final TimeInterval ONE_AND_A_HALF_YEARS = new TimeInterval(1, 6, 0, 0, 0, 0);
-
-    @Test
-    public void testOneYear1() {
-        assertThat(CALENDAR20080101, is(equalTo(ONE_YEAR.addTo(CALENDAR20070101))));
-    }
-
-    @Test
-    public void testOneYear2() {
-        assertThat(CALENDAR20080301, is(equalTo(ONE_YEAR.addTo(CALENDAR20070301))));
-    }
+    private static final TimeInterval ONE_DAY = new TimeInterval(1, 0, 0, 0);
+    private static final TimeInterval THREESIXTYFIVE_DAYS = new TimeInterval(365, 0, 0, 0);
+    private static final TimeInterval THREESIXTYSIX_DAYS = new TimeInterval(366, 0, 0, 0);
 
     @Test
     public void test365Days1() {
@@ -61,10 +48,5 @@ public class TimeIntervalTest {
     @Test
     public void test366Days1() {
         assertThat(CALENDAR20080301, is(equalTo(THREESIXTYSIX_DAYS.addTo(CALENDAR20070301))));
-    }
-
-    @Test
-    public void testLeapYear() {
-        assertThat(CALENDAR20090101, is(equalTo(ONE_YEAR.addTo(CALENDAR20080101))));
     }
 }
