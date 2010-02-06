@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
  *        type of elements stored in the Matrix
  * @author Igor Akkerman
  */
-abstract class MatrixIterator<Element>
+public abstract class MatrixIterator<Element>
 implements Iterator<Element> {
 
     /** matrix containing the elements */
