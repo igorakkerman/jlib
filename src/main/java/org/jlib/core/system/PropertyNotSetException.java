@@ -15,12 +15,12 @@
 package org.jlib.core.system;
 
 /**
- * Exception thrown when trying to retrieve the value of a SystemUtility property that is not set.
+ * Exception thrown when trying to retrieve the value of a property that is not set.
  * 
  * @author Igor Akkerman
  */
 public class PropertyNotSetException
-extends RuntimeException {
+extends Exception {
 
     /** name of the property that is not set */
     private String propertyName;
