@@ -27,7 +27,7 @@ package org.jlib.core.collections.matrix;
  *        type of elements stored in the Matrix
  * @author Igor Akkerman
  */
-class VerticalMatrixIterator<Element>
+public final class VerticalMatrixIterator<Element>
 extends MatrixIterator<Element> {
 
     /**

@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Iterator over a Matrix.
- *
+ * 
  * @param <Element>
  *        type of elements stored in the Matrix
  * @author Igor Akkerman
@@ -50,7 +50,7 @@ implements Iterator<Element> {
 
     /**
      * Creates a new MatrixIterator for the specified Matrix.
-     *
+     * 
      * @param matrix
      *        Matrix to traverse
      */
@@ -59,8 +59,9 @@ implements Iterator<Element> {
     }
 
     /**
-     * Creates a new MatrixIterator for the specified portion of the specified Matrix.
-     *
+     * Creates a new MatrixIterator for the specified portion of the specified
+     * Matrix.
+     * 
      * @param matrix
      *        Matrix to traverse
      * @param minColumnIndex
@@ -90,16 +91,15 @@ implements Iterator<Element> {
     // @see java.util.Iterator#hasNext()
     @Override
     public boolean hasNext() {
-        return minColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= maxColumnIndex
-               && minRowIndex <= nextElementRowIndex && nextElementRowIndex <= maxRowIndex;
+        return minColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= maxColumnIndex &&
+               minRowIndex <= nextElementRowIndex && nextElementRowIndex <= maxRowIndex;
     }
 
     // @see java.util.Iterator#next()
     @Override
     public Element next() {
-        if (!hasNext()) {
+        if (!hasNext())
             throw new NoSuchElementException();
-        }
 
         Element element = matrix.get(nextElementColumnIndex, nextElementRowIndex);
 
@@ -109,15 +109,15 @@ implements Iterator<Element> {
     }
 
     /**
-     * Sets the column and row of this MatrixIterator to the column and row of the next
-     * Element to be traversed.
+     * Sets the column and row of this MatrixIterator to the column and row of
+     * the next Element to be traversed.
      */
     protected abstract void updateNextElementIndices();
 
     /**
-     * Always throws a {@code UnsupportedOperationException} since Elements in a Matrix
-     * cannot be removed.
-     *
+     * Always throws a {@code UnsupportedOperationException} since Elements
+     * cnanot be removed from a Matrix.
+     * 
      * @throws UnsupportedOperationException
      *         always
      */

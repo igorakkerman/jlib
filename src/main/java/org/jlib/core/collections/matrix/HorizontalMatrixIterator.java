@@ -27,7 +27,7 @@ package org.jlib.core.collections.matrix;
  *        type of elements stored in the Matrix
  * @author Igor Akkerman
  */
-class HorizontalMatrixIterator<Element>
+public final class HorizontalMatrixIterator<Element>
 extends MatrixIterator<Element> {
 
     /**
@@ -36,7 +36,7 @@ extends MatrixIterator<Element> {
      * @param matrix
      *        Matrix to traverse
      */
-    protected HorizontalMatrixIterator(Matrix<Element> matrix) {
+    public HorizontalMatrixIterator(Matrix<Element> matrix) {
         super(matrix);
     }
 

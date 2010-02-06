@@ -496,9 +496,28 @@ extends AbstractCollection<Element> {
                                             @SuppressWarnings("hiding") MatrixIteratorFactory<Element> matrixIteratorFactory) {
         return matrixIteratorFactory.newMatrixIterator(this);
     }
+    
+    /**
+     * Returns a new {@link HorizontalMatrixIterator} over the Elements of this Matrix.
+     *
+     * @return new {@link HorizontalMatrixIterator} for this Matrix
+     */
+    public MatrixIterator<Element> horizontalIterator() {
+        return new HorizontalMatrixIterator<Element>(this);
+    }
 
     /**
-     * Registers the {@link MatrixIteratorFactory} used to create {@link Iterator Ite}
+     * Returns a new {@link VerticalMatrixIterator} over the Elements of this Matrix.
+     *
+     * @return new {@link VerticalMatrixIterator} for this Matrix
+     */
+    public MatrixIterator<Element> verticalIterator() {
+        return new VerticalMatrixIterator<Element>(this);
+    }
+
+    /**
+     * Registers the {@link MatrixIteratorFactory} used to create {@link Iterator Iterators}
+     * returned by {@link #iterator()}.
      *
      * @param matrixIteratorFactory
      *        default {@link MatrixIteratorFactory} to use to create
@@ -509,7 +528,8 @@ extends AbstractCollection<Element> {
     }
     
     /**
-     * Returns an Iterator of the Elements in a single column of this Matrix.
+     * Returns an {@link EditableIndexListIterator} over the Elements of a single
+     * column of this Matrix.
      * 
      * @param columnIndex
      *        integer specifying the index of the column to traverse
@@ -520,7 +540,7 @@ extends AbstractCollection<Element> {
     }
 
     /**
-     * Returns an EditableIndexListIterator over the Elements of a single row of
+     * Returns an {@link EditableIndexListIterator} over the Elements of a single row of
      * this Matrix.
      * 
      * @param rowIndex
