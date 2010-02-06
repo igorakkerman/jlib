@@ -19,8 +19,9 @@ package org.jlib.core.calendar;
 import java.util.Calendar;
 
 /**
- * Time interval in years, months, days, hours, minutes and seconds. Adding the
- * interval to a calendar adds all values to the calendar's date.
+ * Time interval in years, months, daysCount, hoursCount, minutesCount and
+ * secondsCount. Adding the interval to a calendar adds all values to the
+ * calendar's date.
  * 
  * @author Igor Akkerman
  */
@@ -35,49 +36,23 @@ public class TimeInterval {
     /** number of hours per day */
     public static final int HOURS_PER_DAY = 24;
 
-    /**
-     * number of days per month as used for the comparison of two time intervals
-     */
-    public static final int DAYS_PER_MONTH = 30;
-
-    /** number of months per year */
-    public static final int MONTHS_PER_YEAR = 12;
-
     /** number of seconds per hour */
     public static final int SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 
     /** number of seconds per day */
     public static final int SECONDS_PER_DAY = SECONDS_PER_HOUR * HOURS_PER_DAY;
 
-    /**
-     * number of seconds per month as used for the comparison of two time
-     * intervals
-     */
-    public static final int SECONDS_PER_MONTH = SECONDS_PER_DAY * DAYS_PER_MONTH;
-
-    /**
-     * number of seconds per year as used for the comparison of two time
-     * intervals
-     */
-    public static final int SECONDS_PER_YEAR = SECONDS_PER_MONTH * MONTHS_PER_YEAR;
-
-    /** number of years */
-    private int years;
-
-    /** number of months */
-    private int months;
-
     /** number of days */
-    private int days;
+    private int daysCount;
 
     /** number of hours */
-    private int hours;
+    private int hoursCount;
 
     /** number of minutes */
-    private int minutes;
+    private int minutesCount;
 
     /** number of seconds */
-    private int seconds;
+    private int secondsCount;
 
     /**
      * Creates a new TimeInterval with no length.
@@ -87,43 +62,33 @@ public class TimeInterval {
     }
 
     /**
-     * Creates a new TimeInterval with the specified length.
+     * Creates a new TimeInterval specified by the number of days.
      * 
-     * @param years
-     *        integer specifying the number of years of this TimeInterval
-     * @param months
-     *        integer specifying the number of months of this TimeInterval
-     * @param days
+     * @param daysCount
      *        integer specifying the number of days of this TimeInterval
      */
-    public TimeInterval(int years, int months, int days) {
-        super();
-        this.years = years;
-        this.months = months;
-        this.days = days;
+    public TimeInterval(int daysCount) {
+        this();
+        this.daysCount = daysCount;
     }
 
     /**
      * Creates a new TimeInterval with the specified length.
      * 
-     * @param years
-     *        integer specifying the number of years of this TimeInterval
-     * @param months
-     *        integer specifying the number of months of this TimeInterval
-     * @param days
+     * @param daysCount
      *        integer specifying the number of days of this TimeInterval
-     * @param hours
+     * @param hoursCount
      *        integer specifying the number of hours of this TimeInterval
-     * @param minutes
+     * @param minutesCount
      *        integer specifying the number of minutes of this TimeInterval
-     * @param seconds
+     * @param secondsCount
      *        integer specifying the number of seconds of this TimeInterval
      */
-    public TimeInterval(int years, int months, int days, int hours, int minutes, int seconds) {
-        this(years, months, days);
-        this.hours = hours;
-        this.minutes = minutes;
-        this.seconds = seconds;
+    public TimeInterval(int daysCount, int hoursCount, int minutesCount, int secondsCount) {
+        this(daysCount);
+        this.hoursCount = hoursCount;
+        this.minutesCount = minutesCount;
+        this.secondsCount = secondsCount;
     }
 
     /**
@@ -138,51 +103,11 @@ public class TimeInterval {
      */
     public Calendar addTo(Calendar calendar) {
         calendar = (Calendar) calendar.clone();
-        calendar.add(Calendar.YEAR, years);
-        calendar.add(Calendar.MONTH, months);
-        calendar.add(Calendar.DAY_OF_MONTH, days);
-        calendar.add(Calendar.HOUR, hours);
-        calendar.add(Calendar.MINUTE, minutes);
-        calendar.add(Calendar.SECOND, seconds);
+        calendar.add(Calendar.DAY_OF_MONTH, daysCount);
+        calendar.add(Calendar.HOUR, hoursCount);
+        calendar.add(Calendar.MINUTE, minutesCount);
+        calendar.add(Calendar.SECOND, secondsCount);
         return calendar;
-    }
-
-    /**
-     * Returns the years of this TimeInterval.
-     * 
-     * @return integer specifying the number of years
-     */
-    public int getYears() {
-        return years;
-    }
-
-    /**
-     * Registers the years of this TimeInterval.
-     * 
-     * @param years
-     *        integer specifying the number of years
-     */
-    public void setYears(int years) {
-        this.years = years;
-    }
-
-    /**
-     * Returns the months of this TimeInterval.
-     * 
-     * @return integer specifying the number of months
-     */
-    public int getMonths() {
-        return months;
-    }
-
-    /**
-     * Registers the months of this TimeInterval.
-     * 
-     * @param months
-     *        integer specifying the number of months
-     */
-    public void setMonths(int months) {
-        this.months = months;
     }
 
     /**
@@ -190,18 +115,18 @@ public class TimeInterval {
      * 
      * @return integer specifying the number of number of days
      */
-    public int getDays() {
-        return days;
+    public int getDaysCount() {
+        return daysCount;
     }
 
     /**
      * Registers the number of days of this TimeInterval.
      * 
-     * @param days
+     * @param daysCount
      *        integer specifying the number of days
      */
-    public void setDays(int days) {
-        this.days = days;
+    public void setDaysCount(int daysCount) {
+        this.daysCount = daysCount;
     }
 
     /**
@@ -210,36 +135,36 @@ public class TimeInterval {
      * @return integer specifying the number of number of hours
      */
     public int getHours() {
-        return hours;
+        return hoursCount;
     }
 
     /**
      * Registers the number of hours of this TimeInterval.
      * 
-     * @param hours
+     * @param hoursCount
      *        integer specifying the number of number of hours
      */
-    public void setHours(int hours) {
-        this.hours = hours;
+    public void setHoursCount(int hoursCount) {
+        this.hoursCount = hoursCount;
     }
 
     /**
-     * Returns the minutes of this TimeInterval.
+     * Returns the number of minutes of this TimeInterval.
      * 
      * @return integer specifying the number of number of minutes
      */
-    public int getMinutes() {
-        return minutes;
+    public int getMinutesCount() {
+        return minutesCount;
     }
 
     /**
      * Registers the number of minutes of this TimeInterval.
      * 
-     * @param minutes
+     * @param minutesCount
      *        integer specifying the number of number of minutes
      */
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+    public void setMinutesCount(int minutesCount) {
+        this.minutesCount = minutesCount;
     }
 
     /**
@@ -247,18 +172,18 @@ public class TimeInterval {
      * 
      * @return integer specifying the number of number of seconds
      */
-    public int getSeconds() {
-        return seconds;
+    public int getSecondsCount() {
+        return secondsCount;
     }
 
     /**
      * Registers the number of seconds of this TimeInterval.
      * 
-     * @param seconds
+     * @param secondsCount
      *        integer specifying the number of number of seconds
      */
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
+    public void setSecondsCount(int secondsCount) {
+        this.secondsCount = secondsCount;
     }
 
     /**
@@ -268,20 +193,19 @@ public class TimeInterval {
      */
     @Override
     public String toString() {
-        return "TimeInterval[" + "years=" + years + ", " + "months=" + months + "days=" + days + ", " + "hours=" +
-               hours + ", " + "minutes=" + minutes + ", " + "seconds=" + seconds + "]";
+        return "TimeInterval[" + "daysCount=" + daysCount + ", " + "hoursCount=" + hoursCount + ", " + "minutesCount=" +
+               minutesCount + ", " + "secondsCount=" + secondsCount + "]";
     }
 
     /**
-     * Returns the overall number of seconds of this TimeInterval. The number of
-     * days per month is assumed to be {@value #DAYS_PER_MONTH}.
+     * Returns the overall number of seconds of this TimeInterval.
      * 
      * @return long integer specifying the overall number of seconds of this
      *         TimeInterval
      */
     public long getOverallSeconds() {
-        return years * SECONDS_PER_YEAR + months * SECONDS_PER_MONTH + days * SECONDS_PER_DAY + hours *
-               SECONDS_PER_HOUR + minutes * SECONDS_PER_MINUTE + seconds;
+        return daysCount * SECONDS_PER_DAY + hoursCount * SECONDS_PER_HOUR + minutesCount * SECONDS_PER_MINUTE +
+               secondsCount;
     }
 
     /**
