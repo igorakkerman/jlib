@@ -436,13 +436,43 @@ extends AbstractCollection<Element> {
      * @return {@link Iterable} creating {@link HorizontalMatrixIterator
      *         HorizontalMatrixIterators}.
      */
-    public Iterable<Element> horizontallyIterated() {
+    public Iterable<Element> getHorizontalMatrixIteratorFactory() {
         return horizontalMatrixIteratorFactory;
     }
-
+    
     /**
      * Returns an {@link Iterable} creating {@link VerticalMatrixIterator
      * VerticalMatrixIterators}.
+     * 
+     * @return {@link Iterable} creating {@link VerticalMatrixIterator
+     *         VerticalMatrixIterators}.
+     */
+    public Iterable<Element> getVerticalMatrixIteratorFactory() {
+        return verticalMatrixIteratorFactory;
+    }
+    
+    /**
+     * Returns an {@link Iterable} creating {@link HorizontalMatrixIterator
+     * HorizontalMatrixIterators}. Syntactic sugar for
+     * {@link #getHorizontalMatrixIteratorFactory()} in enhanced for loops:
+     * <pre>
+     *     for (Element element : matrix.horizontallyIterated()) ...
+     * </pre>
+     * 
+     * @return {@link Iterable} creating {@link HorizontalMatrixIterator
+     *         HorizontalMatrixIterators}.
+     */
+    public Iterable<Element> horizontallyIterated() {
+        return horizontalMatrixIteratorFactory;
+    }
+    
+    /**
+     * Returns an {@link Iterable} creating {@link VerticalMatrixIterator
+     * VerticalMatrixIterators}. Syntactic sugar for
+     * {@link #getVerticalMatrixIteratorFactory()} in enhanced for loops:
+     * <pre>
+     *     for (Element element : matrix.verticallyIterated()) ...
+     * </pre>
      * 
      * @return {@link Iterable} creating {@link VerticalMatrixIterator
      *         VerticalMatrixIterators}.
@@ -463,6 +493,14 @@ extends AbstractCollection<Element> {
         this.iteratorFactory = iteratorFactory;
     }
 
+    /**
+     * Registers a {@link HorizontalMatrixIteratorFactory} to use to create {@link Iterator
+     * Iterators} returned by {@link #iterator()}.
+     */
+    public void setHorizontallyIterated() {
+        setIteratorFactory(horizontalMatrixIteratorFactory);
+    }
+    
     /**
      * Returns an {@link EditableIndexListIterator} over the Elements of a
      * single column of this Matrix.
