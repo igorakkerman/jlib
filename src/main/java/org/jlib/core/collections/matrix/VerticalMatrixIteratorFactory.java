@@ -2,40 +2,37 @@ package org.jlib.core.collections.matrix;
 
 /**
  * {@link MatrixIteratorFactory} creating {@link VerticalMatrixIterator
- * VerticalMatrixIterators}.
+ * VerticalMatrixIterators} over the Elements of a {@link Matrix}.
  * 
  * @param <Element>
  *        type of the elements stored in the {@link Matrix}
  * @author Igor Akkerman
  */
 public class VerticalMatrixIteratorFactory<Element>
-implements MatrixIteratorFactory<Element> {
-
-    /** sole VerticalMatrixIteratorFactory instance */
-    private static final VerticalMatrixIteratorFactory<?> INSTANCE = new VerticalMatrixIteratorFactory<Object>();
+extends MatrixIteratorFactory<Element> {
 
     /**
-     * Returns the sole VerticalMatrixIteratorFactory instance.
-     * 
-     * @param <Element>
-     *        type of the elements stored in the {@link Matrix}
-     * @return sole VerticalMatrixIteratorFactory instance
+     * Creates a new VerticalMatrixIteratorFactory for a {@link Matrix} specified at a
+     * later instant using {@link #setMatrix(Matrix)}.
      */
-    @SuppressWarnings("unchecked")
-    public static <Element> VerticalMatrixIteratorFactory<Element> getInstance() {
-        return (VerticalMatrixIteratorFactory<Element>) INSTANCE;
-    }
-
-    /**
-     * Creates a new VerticalMatrixIteratorFactory.
-     */
-    private VerticalMatrixIteratorFactory() {
+    public VerticalMatrixIteratorFactory() {
         super();
     }
 
-    // @see org.jlib.core.collections.matrix.MatrixIteratorFactories.MatrixIteratorFactory#newMatrixIterator()
+    /**
+     * Creates a new VerticalMatrixIteratorFactory for the specified {@link Matrix}.
+     * 
+     * @param matrix
+     *        {@link Matrix} for which the {@link MatrixIterator
+     *        MatrixIterators} are being created
+     */
+    public VerticalMatrixIteratorFactory(Matrix<Element> matrix) {
+        super(matrix);
+    }
+
+    // @see java.lang.Iterable#iterator()
     @Override
-    public MatrixIterator<Element> newMatrixIterator(Matrix<Element> matrix) {
-        return new VerticalMatrixIterator<Element>(matrix);
+    public MatrixIterator<Element> iterator() {
+        return new VerticalMatrixIterator<Element>(getMatrix());
     }
 }

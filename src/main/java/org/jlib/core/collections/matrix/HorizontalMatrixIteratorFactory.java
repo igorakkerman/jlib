@@ -2,40 +2,37 @@ package org.jlib.core.collections.matrix;
 
 /**
  * {@link MatrixIteratorFactory} creating {@link HorizontalMatrixIterator
- * HorizontalMatrixIterators}.
+ * HorizontalMatrixIterators} over the Elements of a {@link Matrix}.
  * 
  * @param <Element>
  *        type of the elements stored in the {@link Matrix}
  * @author Igor Akkerman
  */
 public class HorizontalMatrixIteratorFactory<Element>
-implements MatrixIteratorFactory<Element> {
-
-    /** sole HorizontalMatrixIteratorFactory instance */
-    private static final HorizontalMatrixIteratorFactory<?> INSTANCE = new HorizontalMatrixIteratorFactory<Object>();
+extends MatrixIteratorFactory<Element> {
 
     /**
-     * Returns the sole HorizontalMatrixIteratorFactory instance.
-     * 
-     * @param <Element>
-     *        type of the elements stored in the {@link Matrix}
-     * @return sole HorizontalMatrixIteratorFactory instance
+     * Creates a new HorizontalMatrixIteratorFactory for a {@link Matrix} specified at a
+     * later instant using {@link #setMatrix(Matrix)}.
      */
-    @SuppressWarnings("unchecked")
-    public static <Element> HorizontalMatrixIteratorFactory<Element> getInstance() {
-        return (HorizontalMatrixIteratorFactory<Element>) INSTANCE;
-    }
-
-    /**
-     * Creates a new HorizontalMatrixIteratorFactory.
-     */
-    private HorizontalMatrixIteratorFactory() {
+    public HorizontalMatrixIteratorFactory() {
         super();
     }
 
-    // @see org.jlib.core.collections.matrix.MatrixIteratorFactories.MatrixIteratorFactory#newMatrixIterator()
+    /**
+     * Creates a new HorizontalMatrixIteratorFactory for the specified {@link Matrix}.
+     * 
+     * @param matrix
+     *        {@link Matrix} for which the {@link MatrixIterator
+     *        MatrixIterators} are being created
+     */
+    public HorizontalMatrixIteratorFactory(Matrix<Element> matrix) {
+        super(matrix);
+    }
+
+    // @see java.lang.Iterable#iterator()
     @Override
-    public MatrixIterator<Element> newMatrixIterator(Matrix<Element> matrix) {
-        return new HorizontalMatrixIterator<Element>(matrix);
+    public MatrixIterator<Element> iterator() {
+        return new HorizontalMatrixIterator<Element>(getMatrix());
     }
 }

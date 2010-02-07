@@ -85,9 +85,9 @@ import org.jlib.core.collections.list.ListIndexOutOfBoundsException;
  * </li>
  * </ul>
  * <p>
- * A default algorithm of how this Matrix is traversed by the Iterator returned
- * by {@link #iterator()} can be defined specifying a default
- * {@link MatrixIteratorFactory}.
+ * A default algorithm of how this Matrix is traversed by
+ * {@link Iterator Iterators} returned by {@link #iterator()} can be defined
+ * specifying a default {@link Iterable} as iterable provider.
  * </p>
  * <p>
  * A Matrix has a fixed size, thus no Elements can be added to or removed from
@@ -101,10 +101,6 @@ import org.jlib.core.collections.list.ListIndexOutOfBoundsException;
  */
 public class Matrix<Element>
 extends AbstractCollection<Element> {
-
-    /** default {@link MatrixIteratorFactory} */
-    public static final MatrixIteratorFactory<?> DEFAULT_MATRIX_ITERATOR_FACTORY =
-        HorizontalMatrixIteratorFactory.getInstance();
 
     /** number of columns */
     private int width;
@@ -124,11 +120,26 @@ extends AbstractCollection<Element> {
     /** maximum row index */
     private int maxRowIndex;
 
-    /** factory for {@link MatrixIterator MatrixIterators} */
-    private MatrixIteratorFactory<Element> matrixIteratorFactory;
+    /**
+     * {@link Iterable} used to create {@link Iterator Iterators} over the
+     * Elements of this Matrix by {@link #iterator()}
+     */
+    private Iterable<Element> iteratorFactory;
 
     /** Matrix data */
     private Array<Array<Element>> matrixData;
+
+    /**
+     * {@link Iterable} creating {@link HorizontalMatrixIterator
+     * HorizontalMatrixIterators} over this Matrix
+     */
+    private final Iterable<Element> horizontalMatrixIteratorFactory = new HorizontalMatrixIteratorFactory<Element>(this);
+
+    /**
+     * {@link Iterable} creating {@link VerticalMatrixIterator
+     * VerticalMatrixIterators} over this Matrix
+     */
+    private final Iterable<Element> verticalMatrixIteratorFactory = new VerticalMatrixIteratorFactory<Element>(this);
 
     /**
      * Creates a new empty Matrix.
@@ -138,9 +149,7 @@ extends AbstractCollection<Element> {
     }
 
     /**
-     * Creates a new Matrix of the specified width and height and the default
-     * iteration order. The default {@link MatrixIteratorFactory} is specified
-     * by {@link #DEFAULT_MATRIX_ITERATOR_FACTORY}.
+     * Creates a new Matrix of the specified width and height.
      * 
      * @param width
      *        integer specifying the number of columns of this matrix
@@ -149,12 +158,11 @@ extends AbstractCollection<Element> {
      * @throws IllegalArgumentException
      *         if {@code width < 0 || height < 0}
      */
-    @SuppressWarnings("unchecked")
     public Matrix(int width, int height)
     throws IllegalArgumentException {
         super();
         if (width != 0 && height != 0) {
-            construct(0, width - 1, 0, height - 1, (MatrixIteratorFactory<Element>) DEFAULT_MATRIX_ITERATOR_FACTORY);
+            construct(0, width - 1, 0, height - 1);
         }
         else {
             minRowIndex = -1;
@@ -169,8 +177,7 @@ extends AbstractCollection<Element> {
 
     /**
      * Creates a new Matrix with the specified minimum and maximum column and
-     * row indices using the default {@link MatrixIteratorFactory} specified by
-     * {@link #DEFAULT_MATRIX_ITERATOR_FACTORY}.
+     * row indices.
      * 
      * @param minColumnIndex
      *        minimum column index
@@ -184,66 +191,9 @@ extends AbstractCollection<Element> {
      *         if {@code minColumnIndex < 0 || maxColumnIndex < minColumnIndex
      *         || minRowIndex < 0 || maxRowIndex < minRowIndex}
      */
-    @SuppressWarnings("unchecked")
     public Matrix(int minColumnIndex, int maxColumnIndex, int minRowIndex, int maxRowIndex) {
         super();
-        construct(minColumnIndex, maxColumnIndex, minRowIndex, maxRowIndex,
-                  (MatrixIteratorFactory<Element>) DEFAULT_MATRIX_ITERATOR_FACTORY);
-    }
-
-    /**
-     * Creates a new Matrix of the specified width and height using the
-     * specified default {@link MatrixIteratorFactory}.
-     * 
-     * @param width
-     *        integer specifying the number of columns of this matrix
-     * @param height
-     *        integer specifying the number of rows of this matrix
-     * @param matrixIteratorFactory
-     *        default {@link MatrixIteratorFactory} to use when creating the
-     *        Iterator returned by {@link #iterator()}
-     * @throws IllegalArgumentException
-     *         if {@code width < 0 || height < 0}
-     */
-    public Matrix(int width, int height, MatrixIteratorFactory<Element> matrixIteratorFactory) {
-        super();
-        if (width != 0 && height != 0) {
-            construct(0, width - 1, 0, height - 1, matrixIteratorFactory);
-        }
-        else {
-            minRowIndex = -1;
-            maxRowIndex = -1;
-            minColumnIndex = -1;
-            maxColumnIndex = -1;
-            this.width = width;
-            this.height = height;
-            matrixData = new Array<Array<Element>>();
-        }
-    }
-
-    /**
-     * Creates a new Matrix with the specified minimum and maximum column and
-     * row indices using the specified default {@link MatrixIteratorFactory}.
-     * 
-     * @param minColumnIndex
-     *        minimum column index
-     * @param maxColumnIndex
-     *        maximum column index
-     * @param minRowIndex
-     *        minimum row index
-     * @param maxRowIndex
-     *        maximum row index
-     * @param matrixIteratorFactory
-     *        default {@link MatrixIteratorFactory} to use when creating the
-     *        Iterator returned by {@link #iterator()}
-     * @throws IllegalArgumentException
-     *         if {@code minColumnIndex < 0 || maxColumnIndex < minColumnIndex
-     *         || minRowIndex < 0 || maxRowIndex < minRowIndex}
-     */
-    public Matrix(int minColumnIndex, int maxColumnIndex, int minRowIndex, int maxRowIndex,
-                  MatrixIteratorFactory<Element> matrixIteratorFactory) {
-        super();
-        construct(minColumnIndex, maxColumnIndex, minRowIndex, maxRowIndex, matrixIteratorFactory);
+        construct(minColumnIndex, maxColumnIndex, minRowIndex, maxRowIndex);
     }
 
     /**
@@ -257,9 +207,6 @@ extends AbstractCollection<Element> {
      *        minimum row index
      * @param maxRowIndex
      *        maximum row index
-     * @param matrixIteratorFactory
-     *        default {@link MatrixIteratorFactory} to use to create
-     *        {@link Iterator Iterators} returned by {@link #iterator()}
      * @throws IllegalArgumentException
      *         if {@code minColumnIndex < 0 || maxColumnIndex < minColumnIndex
      *         || minRowIndex < 0 || maxRowIndex < minRowIndex}
@@ -267,8 +214,7 @@ extends AbstractCollection<Element> {
 
     private void construct(@SuppressWarnings("hiding") int minColumnIndex,
                            @SuppressWarnings("hiding") int maxColumnIndex, @SuppressWarnings("hiding") int minRowIndex,
-                           @SuppressWarnings("hiding") int maxRowIndex,
-                           @SuppressWarnings("hiding") MatrixIteratorFactory<Element> matrixIteratorFactory) {
+                           @SuppressWarnings("hiding") int maxRowIndex) {
         if (minColumnIndex < 0 || minColumnIndex > maxColumnIndex || minRowIndex < 0 || minRowIndex > maxRowIndex)
             throw new IllegalArgumentException();
 
@@ -283,7 +229,7 @@ extends AbstractCollection<Element> {
         for (int rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex ++)
             matrixData.set(rowIndex, new Array<Element>(minColumnIndex, maxColumnIndex));
 
-        this.matrixIteratorFactory = matrixIteratorFactory;
+        iteratorFactory = new HorizontalMatrixIteratorFactory<Element>(this);
     }
 
     /**
@@ -471,65 +417,55 @@ extends AbstractCollection<Element> {
     }
 
     /**
-     * Creates an {@link Iterator} traversing the Elements of this Matrix using
-     * the current default {@link MatrixIteratorFactory} of this Matrix.
+     * Creates an {@link Iterator} traversing the Elements of this Matrix. The
+     * provider of Iterators
      * 
      * @return a new Iterator for this Matrix
      * 
-     * @see #setMatrixIteratorFactory(MatrixIteratorFactory)
+     * @see #setIteratorFactory(Iterable)
      */
     @Override
     public Iterator<Element> iterator() {
-        return iterator(matrixIteratorFactory);
+        return iteratorFactory.iterator();
     }
 
     /**
-     * Creates a {@link MatrixIterator} traversing the Elements of this Matrix
-     * using the specified {@link MatrixIteratorFactory} of this Matrix.
+     * Returns an {@link Iterable} creating {@link HorizontalMatrixIterator
+     * HorizontalMatrixIterators}.
      * 
-     * @param matrixIteratorFactory
-     *        {@link MatrixIteratorFactory} used to create the
-     *        {@link MatrixIterator}
-     * @return new {@link MatrixIterator} for this Matrix
+     * @return {@link Iterable} creating {@link HorizontalMatrixIterator
+     *         HorizontalMatrixIterators}.
      */
-    public MatrixIterator<Element> iterator(
-                                            @SuppressWarnings("hiding") MatrixIteratorFactory<Element> matrixIteratorFactory) {
-        return matrixIteratorFactory.newMatrixIterator(this);
-    }
-    
-    /**
-     * Returns a new {@link HorizontalMatrixIterator} over the Elements of this Matrix.
-     *
-     * @return new {@link HorizontalMatrixIterator} for this Matrix
-     */
-    public MatrixIterator<Element> horizontalIterator() {
-        return new HorizontalMatrixIterator<Element>(this);
+    public Iterable<Element> horizontallyIterated() {
+        return horizontalMatrixIteratorFactory;
     }
 
     /**
-     * Returns a new {@link VerticalMatrixIterator} over the Elements of this Matrix.
-     *
-     * @return new {@link VerticalMatrixIterator} for this Matrix
+     * Returns an {@link Iterable} creating {@link VerticalMatrixIterator
+     * VerticalMatrixIterators}.
+     * 
+     * @return {@link Iterable} creating {@link VerticalMatrixIterator
+     *         VerticalMatrixIterators}.
      */
-    public MatrixIterator<Element> verticalIterator() {
-        return new VerticalMatrixIterator<Element>(this);
+    public Iterable<Element> verticallyIterated() {
+        return verticalMatrixIteratorFactory;
     }
 
     /**
-     * Registers the {@link MatrixIteratorFactory} used to create {@link Iterator Iterators}
-     * returned by {@link #iterator()}.
-     *
-     * @param matrixIteratorFactory
-     *        default {@link MatrixIteratorFactory} to use to create
-     *        {@link Iterator Iterators} returned by {@link #iterator()}
+     * Registers the {@link Iterable} to use to create {@link Iterator
+     * Iterators} returned by {@link #iterator()}.
+     * 
+     * @param iteratorFactory
+     *        {@link Iterable} to use to create {@link Iterator Iterators}
+     *        returned by {@link #iterator()}
      */
-    public void setMatrixIteratorFactory(MatrixIteratorFactory<Element> matrixIteratorFactory) {
-        this.matrixIteratorFactory = matrixIteratorFactory;
+    public void setIteratorFactory(Iterable<Element> iteratorFactory) {
+        this.iteratorFactory = iteratorFactory;
     }
-    
+
     /**
-     * Returns an {@link EditableIndexListIterator} over the Elements of a single
-     * column of this Matrix.
+     * Returns an {@link EditableIndexListIterator} over the Elements of a
+     * single column of this Matrix.
      * 
      * @param columnIndex
      *        integer specifying the index of the column to traverse
@@ -540,8 +476,8 @@ extends AbstractCollection<Element> {
     }
 
     /**
-     * Returns an {@link EditableIndexListIterator} over the Elements of a single row of
-     * this Matrix.
+     * Returns an {@link EditableIndexListIterator} over the Elements of a
+     * single row of this Matrix.
      * 
      * @param rowIndex
      *        integer specifying the index of the row to traverse
