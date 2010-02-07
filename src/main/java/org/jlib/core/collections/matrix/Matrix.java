@@ -121,25 +121,25 @@ extends AbstractCollection<Element> {
     private int maxRowIndex;
 
     /**
-     * {@link Iterable} used to create {@link Iterator Iterators} over the
+     * {@link MatrixIteratorFactory} used to create {@link Iterator Iterators} over the
      * Elements of this Matrix by {@link #iterator()}
      */
-    private Iterable<Element> iteratorFactory;
+    private MatrixIteratorFactory<Element> iteratorFactory;
 
     /** Matrix data */
     private Array<Array<Element>> matrixData;
 
     /**
-     * {@link Iterable} creating {@link HorizontalMatrixIterator
+     * {@link MatrixIteratorFactory} creating {@link HorizontalMatrixIterator
      * HorizontalMatrixIterators} over this Matrix
      */
-    private final Iterable<Element> horizontalMatrixIteratorFactory = new HorizontalMatrixIteratorFactory<Element>(this);
+    private final MatrixIteratorFactory<Element> horizontalIteratorFactory = new HorizontalMatrixIteratorFactory<Element>(this);
 
     /**
-     * {@link Iterable} creating {@link VerticalMatrixIterator
+     * {@link MatrixIteratorFactory} creating {@link VerticalMatrixIterator
      * VerticalMatrixIterators} over this Matrix
      */
-    private final Iterable<Element> verticalMatrixIteratorFactory = new VerticalMatrixIteratorFactory<Element>(this);
+    private final MatrixIteratorFactory<Element> verticalIteratorFactory = new VerticalMatrixIteratorFactory<Element>(this);
 
     /**
      * Creates a new empty Matrix.
@@ -172,6 +172,8 @@ extends AbstractCollection<Element> {
             this.width = width;
             this.height = height;
             matrixData = new Array<Array<Element>>();
+
+            iteratorFactory = horizontalIteratorFactory;
         }
     }
 
@@ -229,7 +231,7 @@ extends AbstractCollection<Element> {
         for (int rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex ++)
             matrixData.set(rowIndex, new Array<Element>(minColumnIndex, maxColumnIndex));
 
-        iteratorFactory = new HorizontalMatrixIteratorFactory<Element>(this);
+        iteratorFactory = horizontalIteratorFactory;
     }
 
     /**
@@ -422,7 +424,7 @@ extends AbstractCollection<Element> {
      * 
      * @return a new Iterator for this Matrix
      * 
-     * @see #setIteratorFactory(Iterable)
+     * @see #setIteratorFactory(MatrixIteratorFactory)
      */
     @Override
     public Iterator<Element> iterator() {
@@ -436,8 +438,8 @@ extends AbstractCollection<Element> {
      * @return {@link Iterable} creating {@link HorizontalMatrixIterator
      *         HorizontalMatrixIterators}.
      */
-    public Iterable<Element> getHorizontalMatrixIteratorFactory() {
-        return horizontalMatrixIteratorFactory;
+    public Iterable<Element> getHorizontalIteratorFactory() {
+        return horizontalIteratorFactory;
     }
     
     /**
@@ -447,58 +449,69 @@ extends AbstractCollection<Element> {
      * @return {@link Iterable} creating {@link VerticalMatrixIterator
      *         VerticalMatrixIterators}.
      */
-    public Iterable<Element> getVerticalMatrixIteratorFactory() {
-        return verticalMatrixIteratorFactory;
+    public Iterable<Element> getVerticalIteratorFactory() {
+        return verticalIteratorFactory;
     }
     
     /**
-     * Returns an {@link Iterable} creating {@link HorizontalMatrixIterator
-     * HorizontalMatrixIterators}. Syntactic sugar for
-     * {@link #getHorizontalMatrixIteratorFactory()} in enhanced for loops:
+     * Returns a {@link MatrixIteratorFactory} creating
+     * {@link HorizontalMatrixIterator HorizontalMatrixIterators}.
+     * Syntactic sugar for
+     * {@link #getHorizontalIteratorFactory()} in enhanced for loops:
      * <pre>
      *     for (Element element : matrix.horizontallyIterated()) ...
      * </pre>
      * 
-     * @return {@link Iterable} creating {@link HorizontalMatrixIterator
-     *         HorizontalMatrixIterators}.
+     * @return {@link MatrixIteratorFactory} creating
+     *         {@link HorizontalMatrixIterator HorizontalMatrixIterators}.
      */
-    public Iterable<Element> horizontallyIterated() {
-        return horizontalMatrixIteratorFactory;
+    public MatrixIteratorFactory<Element> horizontallyIterated() {
+        return horizontalIteratorFactory;
     }
     
     /**
-     * Returns an {@link Iterable} creating {@link VerticalMatrixIterator
-     * VerticalMatrixIterators}. Syntactic sugar for
-     * {@link #getVerticalMatrixIteratorFactory()} in enhanced for loops:
+     * Returns a {@link MatrixIteratorFactory} creating
+     * {@link VerticalMatrixIterator VerticalMatrixIterators}.
+     * Syntactic sugar for
+     * {@link #getVerticalIteratorFactory()} in enhanced for loops:
      * <pre>
      *     for (Element element : matrix.verticallyIterated()) ...
      * </pre>
      * 
-     * @return {@link Iterable} creating {@link VerticalMatrixIterator
-     *         VerticalMatrixIterators}.
+     * @return {@link MatrixIteratorFactory} creating 
+     *         {@link VerticalMatrixIterator VerticalMatrixIterators}.
      */
-    public Iterable<Element> verticallyIterated() {
-        return verticalMatrixIteratorFactory;
+    public MatrixIteratorFactory<Element> verticallyIterated() {
+        return verticalIteratorFactory;
     }
 
     /**
-     * Registers the {@link Iterable} to use to create {@link Iterator
-     * Iterators} returned by {@link #iterator()}.
+     * Registers the {@link MatrixIteratorFactory} to use to create
+     * {@link Iterator Iterators} returned by {@link #iterator()}.
      * 
      * @param iteratorFactory
      *        {@link Iterable} to use to create {@link Iterator Iterators}
      *        returned by {@link #iterator()}
      */
-    public void setIteratorFactory(Iterable<Element> iteratorFactory) {
+    public void setIteratorFactory(MatrixIteratorFactory<Element> iteratorFactory) {
         this.iteratorFactory = iteratorFactory;
+        this.iteratorFactory.setMatrix(this);
     }
 
     /**
-     * Registers a {@link HorizontalMatrixIteratorFactory} to use to create {@link Iterator
-     * Iterators} returned by {@link #iterator()}.
+     * Specify that a {@link HorizontalMatrixIteratorFactory} should be used to create
+     * {@link Iterator Iterators} returned by {@link #iterator()}.
      */
     public void setHorizontallyIterated() {
-        setIteratorFactory(horizontalMatrixIteratorFactory);
+        setIteratorFactory(horizontalIteratorFactory);
+    }
+    
+    /**
+     * Specify that a {@link VerticalMatrixIteratorFactory} should be used to create
+     * {@link Iterator Iterators} returned by {@link #iterator()}.
+     */
+    public void setVerticallyIterated() {
+        setIteratorFactory(verticalIteratorFactory);
     }
     
     /**
