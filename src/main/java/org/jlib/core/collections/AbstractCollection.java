@@ -134,7 +134,7 @@ implements Collection<Element> {
                 return false;
             if (!thisHasNext)
                 return true;
-            if (!ObjectUtility.equalOrNull(thisIterator.next(), otherIterator.next()))
+            if (!ObjectUtility.equal(thisIterator.next(), otherIterator.next()))
                 return false;
         }
         while (true);

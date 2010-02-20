@@ -25,8 +25,8 @@ public final class ObjectUtility {
     private ObjectUtility() {}
 
     /**
-     * Compares the specified Objects for mutual equality. This method calls two
-     * Objects {@code object1}, {@code object2} equal if
+     * Compares the specified Objects for mutual equality. Two Objects
+     * {@code object1}, {@code object2} are considered equal if
      * {@code object1 == object2 == null} or {@code object1.equals(object2)}.
      * 
      * @param objects
@@ -34,7 +34,7 @@ public final class ObjectUtility {
      * @return {@code true} if all specified Objects are equal or if the
      *         specified list of Objects is empty; {@code false} otherwise
      */
-    public static final boolean equalOrNull(Object... objects) {
+    public static final boolean equal(Object... objects) {
         if (objects.length == 0)
             return true;
         Object firstObject = objects[0];

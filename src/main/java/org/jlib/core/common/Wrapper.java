@@ -78,7 +78,14 @@ public class Wrapper<WrappedObject> {
     private WrappedObject wrappedObject;
 
     /**
-     * Creates a new Wrapper of the specified Type.
+     * Creates a new Wrapper initially wrapping no element.
+     */
+    private Wrapper() {
+        super();
+    }
+
+    /**
+     * Creates a new Wrapper wrapping the specified WrappedObject.
      * 
      * @param wrappedObject
      *        Object wrapped by this Wrapper
@@ -124,9 +131,9 @@ public class Wrapper<WrappedObject> {
         if (!(otherObject instanceof Wrapper<?>))
             return false;
 
-        Object otherWrappedObject = ((Wrapper<?>) otherObject).get();
+        Object otherWrappedObject = ((Wrapper<?>) otherObject).wrappedObject;
 
-        return ObjectUtility.equalOrNull(wrappedObject, otherWrappedObject);
+        return ObjectUtility.equal(wrappedObject, otherWrappedObject);
     }
 
     // @see java.lang.Object#hashCode()
