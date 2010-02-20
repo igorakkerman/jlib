@@ -80,7 +80,7 @@ public class Wrapper<WrappedObject> {
     /**
      * Creates a new Wrapper initially wrapping no element.
      */
-    private Wrapper() {
+    public Wrapper() {
         super();
     }
 
@@ -90,7 +90,7 @@ public class Wrapper<WrappedObject> {
      * @param wrappedObject
      *        Object wrapped by this Wrapper
      */
-    private Wrapper(WrappedObject wrappedObject) {
+    public Wrapper(WrappedObject wrappedObject) {
         super();
         this.wrappedObject = wrappedObject;
     }
