@@ -16,11 +16,32 @@ implements Iterator<Character> {
      * 
      * @param iteratedCharSequence
      *        {@link CharSequence} to iterate
-     * @return new CharSequenceIterator over the {@link Character Characters}
-     *         of the specified {@link CharSequence}
+     * @return new CharSequenceIterator over the {@link Character Characters} of
+     *         the specified {@link CharSequence}
      */
     public static CharSequenceIterator iterator(CharSequence iteratedCharSequence) {
         return new CharSequenceIterator(iteratedCharSequence);
+    }
+
+    /**
+     * Returns an {@link Iterable} creating {@link CharSequenceIterator
+     * CharSequenceIterators} over the {@link Character Characters} of a
+     * {@link CharSequence}.
+     * 
+     * @param iterableCharSequence
+     *        {@link CharSequence} to iterate
+     * @return {@link Iterable} creating {@link CharSequenceIterator
+     *         CharSequenceIterators} over the {@link Character Characters} of a
+     *         {@link CharSequence}
+     */
+    public static Iterable<Character> iterable(final CharSequence iterableCharSequence) {
+        return new Iterable<Character>() {
+
+            @Override
+            public Iterator<Character> iterator() {
+                return new CharSequenceIterator(iterableCharSequence);
+            }
+        };
     }
 
     /** {@link CharSequence} iterated by this CharSequenceIterator */

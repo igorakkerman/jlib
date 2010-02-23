@@ -1,5 +1,7 @@
 package org.jlib.core.text;
 
+import java.util.Iterator;
+
 /**
  * Iterator over the {@link Character Characters} of a {@link StringBuilder}.
  * 
@@ -19,6 +21,27 @@ extends CharSequenceIterator {
      */
     public static StringBuilderIterator iterator(StringBuilder iteratedStringBuilder) {
         return new StringBuilderIterator(iteratedStringBuilder);
+    }
+
+    /**
+     * Returns an {@link Iterable} creating {@link StringBuilderIterator
+     * StringBuilderIterators} over the {@link Character Characters} of a
+     * {@link StringBuilder}.
+     * 
+     * @param iterableStringBuilder
+     *        {@link StringBuilder} to iterate
+     * @return {@link Iterable} creating {@link StringBuilderIterator
+     *         StringBuilderIterators} over the {@link Character Characters} of a
+     *         {@link StringBuilder}
+     */
+    public static Iterable<Character> iterable(final StringBuilder iterableStringBuilder) {
+        return new Iterable<Character>() {
+
+            @Override
+            public Iterator<Character> iterator() {
+                return new StringBuilderIterator(iterableStringBuilder);
+            }
+        };
     }
 
     /** StringBuilder iterated by this StringBuilderIterator */
