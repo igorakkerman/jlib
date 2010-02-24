@@ -1,6 +1,7 @@
 package org.jlib.core.text;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Iterator over the {@link Character Characters} of a {@link CharSequence}.
@@ -101,7 +102,7 @@ implements Iterator<Character> {
     protected int nextCharacterIndex;
 
     /** index of last iterated character */
-    private final int lastCharacterIndex;
+    protected int lastCharacterIndex;
 
     /**
      * Creates a new CharSequenceIterator over the {@link Character Characters}
@@ -186,12 +187,14 @@ implements Iterator<Character> {
     // @see java.util.Iterator#hasNext()
     @Override
     public boolean hasNext() {
-        return nextCharacterIndex <= lastCharacterIndex;
+        return nextCharacterIndex <= lastCharacterIndex && nextCharacterIndex < iteratedCharSequence.length();
     }
 
     // @see java.util.Iterator#next()
     @Override
     public Character next() {
+        if (!hasNext())
+            throw new NoSuchElementException("['" + iteratedCharSequence + "', " + nextCharacterIndex + "]");
         return iteratedCharSequence.charAt(nextCharacterIndex ++);
     }
 
