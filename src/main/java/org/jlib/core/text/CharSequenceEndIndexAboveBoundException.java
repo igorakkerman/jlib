@@ -1,9 +1,9 @@
 package org.jlib.core.text;
 
-
 /**
- * Exception thrown when an end index of a {@link CharSequence} is above its upper bound.
- *
+ * Exception thrown when an end index of a {@link CharSequence} is above its
+ * upper bound.
+ * 
  * @author Igor Akkerman
  */
 public class CharSequenceEndIndexAboveBoundException
@@ -15,10 +15,10 @@ extends CharSequenceIndexOutOfBoundsException {
      * 
      * @param charSequence
      *        {@link CharSequence} for which the index is above the upper bound
-     * @param index
-     *        integer specifying the invalid index
+     * @param endIndex
+     *        integer specifying the invalid end index
      */
-    public CharSequenceEndIndexAboveBoundException(CharSequence charSequence, int index) {
-        super(charSequence, index);
+    public CharSequenceEndIndexAboveBoundException(CharSequence charSequence, int endIndex) {
+        super(charSequence, endIndex);
     }
 }

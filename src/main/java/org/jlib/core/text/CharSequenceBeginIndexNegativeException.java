@@ -15,10 +15,10 @@ extends CharSequenceIndexOutOfBoundsException {
      * 
      * @param charSequence
      *        {@link CharSequence} for which the index is negative
-     * @param index
-     *        integer specifying the invalid index
+     * @param beginIndex
+     *        integer specifying the invalid begin index
      */
-    public CharSequenceBeginIndexNegativeException(CharSequence charSequence, int index) {
-        super(charSequence, index);
+    public CharSequenceBeginIndexNegativeException(CharSequence charSequence, int beginIndex) {
+        super(charSequence, beginIndex);
     }
 }
