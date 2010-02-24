@@ -1,7 +1,6 @@
 package org.jlib.core.text;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Iterator over the {@link Character Characters} of a {@link StringBuilder}.
@@ -97,6 +96,9 @@ extends CharSequenceIterator {
 
     /** {@link StringBuilder} iterated by this StringBuilderIterator */
     private final StringBuilder iteratedStringBuilder;
+    
+    /** last {@link Character} returned by {@link #next()} */
+    private Character lastReturnedCharacter;
 
     /**
      * Creates a new StringBuilderIterator over the {@link Character Characters}
@@ -157,14 +159,25 @@ extends CharSequenceIterator {
         this.iteratedStringBuilder = iteratedStringBuilder;
     }
 
+    // @see org.jlib.core.text.CharSequenceIterator#next()
+    @Override
+    public Character next() {
+        lastReturnedCharacter = super.next();
+        return lastReturnedCharacter;
+    }
+    
     /**
      * Deletes the last {@link Character} returned by this StringBuilderIterator
      * from the {@link StringBuilder}.
+     * 
+     * @throws IllegalStateException
+     *         if no 
      */
     @Override
     public void remove() {
-        if (nextCharacterIndex >= iteratedStringBuilder.length())
-            throw new NoSuchElementException("['" + iteratedStringBuilder + "', " + nextCharacterIndex + "]");
+        if (lastReturnedCharacter == null)
+            throw new IllegalStateException();
+
         iteratedStringBuilder.deleteCharAt(nextCharacterIndex - 1);
         lastCharacterIndex --;
     }
