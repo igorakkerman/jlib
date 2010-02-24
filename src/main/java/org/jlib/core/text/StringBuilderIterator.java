@@ -98,8 +98,8 @@ extends CharSequenceIterator {
     private final StringBuilder iteratedStringBuilder;
     
     /** last {@link Character} returned by {@link #next()} */
-    private Character lastReturnedCharacter;
-
+    private Character lastReturnedCharacter = null;
+    
     /**
      * Creates a new StringBuilderIterator over the {@link Character Characters}
      * of the specified {@link StringBuilder}.
@@ -171,7 +171,7 @@ extends CharSequenceIterator {
      * from the {@link StringBuilder}.
      * 
      * @throws IllegalStateException
-     *         if no 
+     *         if no {@link Character} has been returned yet
      */
     @Override
     public void remove() {
