@@ -1,4 +1,4 @@
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 import java.util.Formatter;
 import java.util.Locale;

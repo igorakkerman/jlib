@@ -1,4 +1,4 @@
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 import java.util.Formatter;
 import java.util.Locale;
@@ -96,7 +96,7 @@ implements StringTransformer {
             this.values[valueIndex + 1] = values[valueIndex];
     }
 
-    // @see org.jlib.core.text.transformation.StringTransformer#transform(java.lang.StringBuilder)
+    // @see org.jlib.core.text.transformer.StringTransformer#transform(java.lang.StringBuilder)
     @Override
     public void transform(StringBuilder stringBuilder) {
         values[originalStringValueIndex] = stringBuilder.toString();

@@ -1,10 +1,10 @@
-package org.jlib.core.string.transform;
+package org.jlib.core.string.transformer;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-import org.jlib.core.text.transformation.LeftAligningStringTransformer;
-import org.jlib.core.text.transformation.StringTransformer;
+import org.jlib.core.text.transformer.LeftAligningStringTransformer;
+import org.jlib.core.text.transformer.StringTransformer;
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;

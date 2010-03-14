@@ -14,7 +14,7 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.text.transformation.StringTransformer;
+import org.jlib.core.text.transformer.StringTransformer;
 
 // TODO: create method String transform(String, StringTransformer...)
 

@@ -1,4 +1,4 @@
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,7 +91,7 @@ implements StringTransformer {
         this.stringTransformers.addAll(stringTransformers);
     }
 
-    // @see org.jlib.core.text.transformation.StringTransformer#transform(java.lang.StringBuilder)
+    // @see org.jlib.core.text.transformer.StringTransformer#transform(java.lang.StringBuilder)
     @Override
     public void transform(StringBuilder stringBuilder) {
         for (StringTransformer stringTransformer : stringTransformers)

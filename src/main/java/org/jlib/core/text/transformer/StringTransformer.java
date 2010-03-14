@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 /**
  * Transformer of a String using the strategy defined by the implementation of

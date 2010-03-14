@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 /**
  * {@link StringTransformer} centering a substring in a String of the specified
@@ -38,7 +38,7 @@ extends PaddingStringTransformer {
         super(finalStringLength, paddingCharacter);
     }
 
-    // @see org.jlib.core.text.transformation.PaddingStringTransformer#pad(java.lang.StringBuilder)
+    // @see org.jlib.core.text.transformer.PaddingStringTransformer#pad(java.lang.StringBuilder)
     @Override
     public void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired) {
         stringBuilder.insert(0, halfPadBuilder);

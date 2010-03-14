@@ -14,10 +14,10 @@
 
 /**
  * jlib String transformation utilities. This package provides a simple interface for String transformation
- * {@link org.jlib.core.text.transformation.StringTransformer} and several implementations. The package facade
- * {@link org.jlib.core.text.transformation.StringTransformers} provides easy access to the provided transformers.
+ * {@link org.jlib.core.text.transformer.StringTransformer} and several implementations. The package facade
+ * {@link org.jlib.core.text.transformer.StringTransformers} provides easy access to the provided transformers.
  * 
  * @author Igor Akkerman
  */
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 

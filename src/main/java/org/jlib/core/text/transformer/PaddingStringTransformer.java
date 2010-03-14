@@ -1,4 +1,4 @@
-package org.jlib.core.text.transformation;
+package org.jlib.core.text.transformer;
 
 import static org.jlib.core.number.NumberUtility.isOdd;
 
@@ -31,7 +31,7 @@ implements StringTransformer {
         this.paddingCharacter = paddingCharacter;
     }
 
-    // @see org.jlib.core.text.transformation.StringTransformer#transform(java.lang.StringBuilder)
+    // @see org.jlib.core.text.transformer.StringTransformer#transform(java.lang.StringBuilder)
     @Override
     public void transform(StringBuilder stringBuilder) {
         if (stringBuilder.length() >= finalStringLength)
