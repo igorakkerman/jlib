@@ -100,7 +100,7 @@ import org.jlib.core.collections.Collection;
  * {@literal The constructor Array<Integer>(Integer[]) is ambiguous}
  * </pre>
  * 
- * It doesn't know whether the first parameter is meant as the minimum index of
+ * It doesn't know whether the first parameter is meant to be the minimum index of
  * the Array or the first Element of the list. You could pass a Java array of
  * Integers instead which is the equivalent to the list form for the argument
  * {@code Integer... elements} but this class provides an easier way: the
