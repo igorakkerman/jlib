@@ -85,6 +85,7 @@ import org.jlib.core.collections.list.ListIndexOutOfBoundsException;
  * </li>
  * </ul>
  * <p>
+ * <!-- TODO: update documentation -->
  * A default algorithm of how this Matrix is traversed by
  * {@link Iterator Iterators} returned by {@link #iterator()} can be defined
  * specifying a default {@link Iterable} as iterable provider.
