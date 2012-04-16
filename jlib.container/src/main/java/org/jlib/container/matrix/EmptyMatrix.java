@@ -1,19 +1,45 @@
 package org.jlib.container.matrix;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.EmptyIndexSequence;
 import org.jlib.container.sequence.IndexSequence;
 
 /**
- * Empty {@link Matrix}.
- *
+ * Empty {@link Matrix}. Implemented as a singleton.
+ * 
  * @author Igor Akkerman
  * 
- * @param <Entry> type of entries of the {@link Matrix}
+ * @param <Entry>
+ *        type of entries of the {@link Matrix}
  */
-public class EmptyMatrix<Entry> implements Matrix<Entry> {
+public class EmptyMatrix<Entry>
+implements Matrix<Entry> {
+
+    /** empty array */
+    private static final Object[] EMPTY_ARRAY = new Object[0];
+
+    /** sole {@link EmptyMatrix} instance */
+    private static final EmptyMatrix<?> INSTANCE = new EmptyMatrix<>();
+
+    /**
+     * Returns the sole {@link EmptyMatrix} instance.
+     * 
+     * @return sole {@link EmptyMatrix} instance
+     */
+    public static EmptyMatrix<?> getInstance() {
+        return INSTANCE;
+    }
+
+    /**
+     * Creates a new {@link EmptyMatrix}.
+     */
+    private EmptyMatrix() {
+        super();
+    }
 
     @Override
     public boolean isEmpty() {
@@ -36,33 +62,35 @@ public class EmptyMatrix<Entry> implements Matrix<Entry> {
     }
 
     @Override
-    public boolean containsAll(final Entry... elements) {
+    public boolean containsAll(@SuppressWarnings("unchecked") final Entry... elements) {
         return false;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Entry> toCollection() {
-        return null;
+        return Collections.EMPTY_SET;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Entry[] toArray() {
-        return null;
+        return (Entry[]) EMPTY_ARRAY;
     }
 
     @Override
     public Iterator<Entry> iterator() {
-        return null;
+        return EmptyMatrixIterator.getInstance();
     }
 
     @Override
     public IndexSequence<MatrixRow<Entry>> getRows() {
-        return null;
+        return EmptyIndexSequence.getInstance();
     }
 
     @Override
     public IndexSequence<MatrixColumn<Entry>> getColumns() {
-        return null;
+        return EmptyIndexSequence.getInstance();
     }
 
     @Override
@@ -82,7 +110,7 @@ public class EmptyMatrix<Entry> implements Matrix<Entry> {
 
     @Override
     public MatrixIterator<Entry> createIterator() {
-        return null;
+        return;
     }
 
     @Override

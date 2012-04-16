@@ -146,7 +146,7 @@ extends Container<Element>, MatrixIterable<Element> {
      * traversed is specified using
      * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
      * 
-     * @return a new {@link AbstractMatrixIterator} for this ArraySequenceMatrix
+     * @return a new {@link AbstractMatrixIterator} over this {@link Matrix}
      * 
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder
@@ -163,6 +163,7 @@ extends Container<Element>, MatrixIterable<Element> {
      * <p>
      * Example:
      * </p>
+     * 
      * <pre>
      * for (Integer matrixEntry : matrix.iteratedInOrder(VERTICAL)
      *     System.out.print(matrixEntry + " ");

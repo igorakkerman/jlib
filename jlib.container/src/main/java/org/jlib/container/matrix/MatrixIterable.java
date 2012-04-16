@@ -12,6 +12,11 @@ package org.jlib.container.matrix;
 public interface MatrixIterable<Element>
 extends Iterable<Element> {
 
-    @Override
-    public MatrixIterator<Element> iterator();
+    /**
+     * Returns a new {@link MatrixIterator} traversing the Entries of this
+     * {@link MatrixIterable}.
+     * 
+     * @return {@link MatrixIterator} over this {@link MatrixIterable}
+     */
+    public MatrixIterator<Element> createIterator();
 }
