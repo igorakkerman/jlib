@@ -16,6 +16,7 @@ import org.jlib.container.sequence.IndexSequence;
  * of setting and getting objects:
  * </p>
  * 
+ * TODO: fix this example (Matrix is an interface now)
  * <pre>
  * {
  *     &#064;literal
@@ -150,6 +151,7 @@ extends Container<Element>, MatrixIterable<Element> {
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder
      */
+    @Override
     public MatrixIterator<Element> createIterator();
 
     /**
