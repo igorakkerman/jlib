@@ -33,9 +33,9 @@ implements ReplaceIndexSequence<Element> {
 
 
     @Override
-    public void set(int index, Element element)
+    public void replace(int index, Element element)
     throws SequenceIndexOutOfBoundsException {
-        getDelegateSequence().set(index, element);
+        getDelegateSequence().replace(index, element);
     }
 
 

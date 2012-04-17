@@ -26,7 +26,7 @@ implements IndexSequence<Element> {
      * and maximum indices. Classes extending this class must initialize the
      * Element store.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the initial minimum index of this ArraySequence
      * 
      * @param maximumIndex
@@ -124,7 +124,7 @@ implements IndexSequence<Element> {
 
         final ReplaceIndexSequence<Element> sequence = new ArraySequence<Element>(fromIndex, toIndex);
         for (int index = fromIndex; index <= toIndex; index ++)
-            sequence.set(index, get(index));
+            sequence.replace(index, get(index));
 
         return sequence;
     }

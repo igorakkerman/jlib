@@ -14,8 +14,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.sequence.AddIndexSequence.AddIndexSequenceIterator;
-
 /**
  * {@link ReplaceIndexSequence} that allows Elements to be added and removed.
  * 
@@ -26,13 +24,6 @@ import org.jlib.container.sequence.AddIndexSequence.AddIndexSequenceIterator;
  */
 public interface RemoveIndexSequence<Element>
 extends RemoveSequence<Element>, IndexSequence<Element> {
-
-    // unifying interface to satisfy the Eclipse compiler
-    // @formatter:off
-    @SuppressWarnings("javadoc")
-    public static interface RemoveIndexSequenceIterator<RemoveIndexSequenceElement>
-    extends RemoveSequenceIterator<RemoveIndexSequenceElement>, IndexSequenceIterator<RemoveIndexSequenceElement> {}
-    // @formatter:on
 
     /**
      * Returns a {@link RemoveIndexSequenceIterator} traversing the Elements of

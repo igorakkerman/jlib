@@ -27,13 +27,6 @@ import org.jlib.container.Container;
 public interface AddIndexSequence<Element>
 extends AddSequence<Element>, IndexSequence<Element> {
 
-    // unifying interface to satisfy the Eclipse compiler
-    // @formatter:off
-    @SuppressWarnings("javadoc")
-    public static interface AddIndexSequenceIterator<AddIndexSequenceElement>
-    extends AddSequenceIterator<AddIndexSequenceElement>, IndexSequenceIterator<AddIndexSequenceElement> {}
-    // @formatter:on
-
     /**
      * Returns a AddIndexSequenceIterator traversing the Elements of this
      * Sequence in proper sequence. Initially, the Iterator points to the

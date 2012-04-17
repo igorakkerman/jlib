@@ -19,12 +19,11 @@
 package org.jlib.container.matrix;
 
 import java.util.Iterator;
-import java.util.ListIterator;
 
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.sequence.ArraySequence;
-import org.jlib.container.sequence.ReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.IndexSequence;
+import org.jlib.container.sequence.ReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.SequenceIterator;
 
@@ -240,7 +239,7 @@ extends AbstractContainer<Element> {
 
         matrixData = new ArraySequence<ArraySequence<Element>>(minimumRowIndex, maximumRowIndex);
         for (int rowIndex = minimumRowIndex; rowIndex <= maximumRowIndex; rowIndex ++)
-            matrixData.set(rowIndex, new ArraySequence<Element>(minimumColumnIndex, maximumColumnIndex));
+            matrixData.replace(rowIndex, new ArraySequence<Element>(minimumColumnIndex, maximumColumnIndex));
 
         defaultIterationOrder = MatrixUtility.HORIZONTAL;
     }
@@ -281,7 +280,7 @@ extends AbstractContainer<Element> {
      *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
      */
     public void set(int columnIndex, int rowIndex, Element element) {
-        matrixData.get(rowIndex).set(columnIndex, element);
+        matrixData.get(rowIndex).replace(columnIndex, element);
     }
 
     /**
@@ -444,7 +443,7 @@ extends AbstractContainer<Element> {
      * @see MatrixIterationOrder
      */
     @Override
-    public AbstractMatrixIterator<Element>createIterator() {
+    public MatrixIterator<Element>createIterator() {
         return defaultIterationOrder.createIterator(this);
     }
 
@@ -468,8 +467,8 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the column to traverse
      * @return a new column {@link SequenceIterator} for this ArraySequenceMatrix
      */
-    public ReplaceIndexSequenceIterator<Element> columnIterator(int columnIndex) {
-        return column(columnIndex).iterator();
+    public ReplaceIndexSequenceIterator<Element> createColumnIterator(int columnIndex) {
+        return column(columnIndex).createIterator();
     }
 
     /**
@@ -480,32 +479,8 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the row to traverse
      * @return a new row {@link SequenceIterator} for this ArraySequenceMatrix
      */
-    public ReplaceIndexSequenceIterator<Element> rowIterator(int rowIndex) {
-        return row(rowIndex).iterator();
-    }
-
-    /**
-     * Returns a {@link ListIterator} over a single column of
-     * this ArraySequenceMatrix.
-     * 
-     * @param columnIndex
-     *        integer specifying the index of the column to traverse
-     * @return a new column Iterator for this ArraySequenceMatrix
-     */
-    public ListIterator<Element> columnIterator(int columnIndex) {
-        return column(columnIndex).iterator();
-    }
-
-    /**
-     * Returns a {@link ListIterator} over a single row of this
-     * ArraySequenceMatrix.
-     * 
-     * @param rowIndex
-     *        integer specifying the index of the row to traverse
-     * @return a new row Iterator for this ArraySequenceMatrix
-     */
-    public ListIterator<Element> rowIterator(int rowIndex) {
-        return row(rowIndex).iterator();
+    public ReplaceIndexSequenceIterator<Element> createRowIterator(int rowIndex) {
+        return row(rowIndex).createIterator();
     }
 
     @Override

@@ -174,7 +174,7 @@ implements Cloneable {
         /**
          * Creates a new NonEmptyArraySequence.
          * 
-         * @param firstIndex
+         * @param minimumIndex
          *        integer specifying the minimum index of this
          *        NonEmptyArraySequence
          * @param elements
@@ -198,7 +198,7 @@ implements Cloneable {
 
         // @see org.jlib.container.sequence.ReplaceIndexSequence#set(int, java.lang.Object)
         @Override
-        public void set(final int index, final Element element)
+        public void replace(final int index, final Element element)
         throws SequenceIndexOutOfBoundsException {
             try {
                 delegateList.set(index - firstIndex, element);
@@ -251,7 +251,7 @@ implements Cloneable {
     /**
      * Creates a new ArraySequence initially filled with {@code null} Elements.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this ArraySequence
      * @param maximumIndex
      *        integer specifying the maximum index of this ArraySequence
@@ -315,7 +315,7 @@ implements Cloneable {
      * specified sequence in this ArraySequence can be specified. The fixed size
      * of this ArraySequence is the size of the specified sequence.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this ArraySequence
      * @param elements
      *        comma separated sequence of Elements to store or Java array
@@ -326,7 +326,7 @@ implements Cloneable {
         this(minimumIndex, minimumIndex + elements.length - 1);
 
         for (int elementsIndex = 0, arrayIndex = minimumIndex; elementsIndex < elements.length; elementsIndex ++, arrayIndex ++)
-            delegateSequence.set(arrayIndex, elements[elementsIndex]);
+            delegateSequence.replace(arrayIndex, elements[elementsIndex]);
     }
 
     /**
@@ -335,7 +335,7 @@ implements Cloneable {
      * of the specified sequence in this ArraySequence can be specified. The
      * fixed size of this ArraySequence is the size of the specified sequence.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this ArraySequence
      * @param elements
      *        comma separated sequence of Integer elements to store or Java
@@ -381,7 +381,7 @@ implements Cloneable {
      * specified. The fixed size of this ArraySequence is the size of the
      * specified Container.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this ArraySequence. The
      *        first Element of {@code collection} is stored at this index of
      *        this ArraySequence.
@@ -396,7 +396,7 @@ implements Cloneable {
 
         int arrayIndex = minimumIndex;
         for (final Iterator<Element> collectionIterator = elements.iterator(); collectionIterator.hasNext(); arrayIndex ++)
-            delegateSequence.set(arrayIndex, collectionIterator.next());
+            delegateSequence.replace(arrayIndex, collectionIterator.next());
     }
 
     /**
@@ -406,7 +406,7 @@ implements Cloneable {
      * specified. The fixed size of this ArraySequence is the size of the
      * specified Container.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the minimum index of this ArraySequence. The
      *        first Element of {@code collection} is stored at this index of
      *        this ArraySequence.
@@ -423,7 +423,7 @@ implements Cloneable {
 
         int arrayIndex = minimumIndex;
         for (final Iterator<Element> collectionIterator = collection.iterator(); collectionIterator.hasNext(); arrayIndex ++)
-            delegateSequence.set(arrayIndex, collectionIterator.next());
+            delegateSequence.replace(arrayIndex, collectionIterator.next());
     }
 
     @Override

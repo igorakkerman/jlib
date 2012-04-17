@@ -25,7 +25,7 @@ package org.jlib.container.sequence;
  */
 public class DefaultAddIndexSequenceIterator<Element>
 extends DefaultIndexSequenceIterator<Element>
-implements AddSequenceIterator<Element>, IndexSequenceIterator<Element> {
+implements AddIndexSequenceIterator<Element> {
 
     /** ReplaceIndexSequence traversed by this Iterator */
     private AddIndexSequence<Element> sequence;
@@ -69,7 +69,7 @@ implements AddSequenceIterator<Element>, IndexSequenceIterator<Element> {
     @Override
     public void add(final Element element)
     throws IllegalStateException {
-        if (!modificationReady)
+        if (! modificationReady)
             throw new IllegalStateException();
 
         sequence.add(nextElementIndex ++, element);
@@ -77,8 +77,7 @@ implements AddSequenceIterator<Element>, IndexSequenceIterator<Element> {
         modificationReady = false;
     }
 
-    // @see
-    // org.jlib.container.sequence.DefaultReplaceIndexSequenceIterator#next()
+    // @see org.jlib.container.sequence.DefaultReplaceIndexSequenceIterator#next()
     @Override
     public Element next() {
         // this order in case of an exception
@@ -87,8 +86,7 @@ implements AddSequenceIterator<Element>, IndexSequenceIterator<Element> {
         return nextElement;
     }
 
-    // @see
-    // org.jlib.container.sequence.DefaultReplaceIndexSequenceIterator#previous()
+    // @see org.jlib.container.sequence.DefaultReplaceIndexSequenceIterator#previous()
     @Override
     public Element previous() {
         // this order in case of an exception

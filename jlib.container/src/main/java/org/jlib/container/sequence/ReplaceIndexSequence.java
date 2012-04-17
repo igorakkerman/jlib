@@ -25,8 +25,8 @@ public interface ReplaceIndexSequence<Element>
 extends ReplaceSequence<Element>, IndexSequence<Element> {
 
     /**
-     * Stores the specified Element at the specified index in this
-     * IndexSequence.
+     * Replaces the Element at the specified index in this
+     * IndexSequence by the specified Elements.
      * 
      * @param index
      *        integer specifying the index
@@ -38,7 +38,7 @@ extends ReplaceSequence<Element>, IndexSequence<Element> {
      *         if {@code index < getMinimumIndex() || index > getMaximumIndex()}
      */
     // TODO: add set method with ReplaceElementListener
-    public void set(final int index, final Element element)
+    public void replace(final int index, final Element element)
     throws SequenceIndexOutOfBoundsException;
 
     /**

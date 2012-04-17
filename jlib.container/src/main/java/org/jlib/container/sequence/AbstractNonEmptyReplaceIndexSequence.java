@@ -31,7 +31,7 @@ implements ReplaceIndexSequence<Element> {
      * Creates a new {@link AbstractNonEmptyReplaceIndexSequence} with the
      * specified minimum and maximum indices.
      * 
-     * @param firstIndex
+     * @param minimumIndex
      *        integer specifying the initial minimum index of this ArraySequence
      * 
      * @param maximumIndex

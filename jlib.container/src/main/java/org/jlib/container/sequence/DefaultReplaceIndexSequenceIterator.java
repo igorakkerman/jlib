@@ -66,6 +66,6 @@ implements ReplaceIndexSequenceIterator<Element> {
 
     @Override
     public void replace(final Element element) {
-        replaceIndexSequence.set(lastRetreivedElementIndex(), element);
+        replaceIndexSequence.replace(lastRetreivedElementIndex(), element);
     }
 }

@@ -110,7 +110,7 @@ implements Matrix<Entry> {
 
     @Override
     public MatrixIterator<Entry> createIterator() {
-        return;
+        return EmptyMatrixIterator.getInstance();
     }
 
     @Override

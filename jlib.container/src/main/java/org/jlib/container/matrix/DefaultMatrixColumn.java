@@ -116,7 +116,7 @@ implements MatrixColumn<Element> {
     }
 
     @Override
-    public void set(int index, Element element)
+    public void replace(int index, Element element)
     throws SequenceIndexOutOfBoundsException {
         matrix.set(columnIndex, index, element);
     }
