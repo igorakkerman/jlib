@@ -42,7 +42,7 @@ extends AbstractMatrixIterator<Element> {
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementColumnIndex < matrix.maximumColumnIndex())
+        if (nextElementColumnIndex < matrix.lastColumnIndex())
             nextElementColumnIndex ++;
         else
             updateNextEntityIndices();
@@ -50,7 +50,7 @@ extends AbstractMatrixIterator<Element> {
 
     @Override
     protected void updateNextEntityIndices() {
-        nextElementColumnIndex = matrix.minimumColumnIndex();
+        nextElementColumnIndex = matrix.firstColumnIndex();
         nextElementRowIndex ++;
     }    
 }

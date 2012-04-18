@@ -100,7 +100,7 @@ implements MatrixColumn<Element> {
         this.minimumRowIndex = minimumRowIndex;
         this.maximumRowIndex = maximumRowIndex;
 
-        if (columnIndex < matrix.minimumColumnIndex() || columnIndex > matrix.maximumColumnIndex())
+        if (columnIndex < matrix.firstColumnIndex() || columnIndex > matrix.lastColumnIndex())
             throw new SequenceIndexOutOfBoundsException(this, columnIndex);
 
         if (minimumRowIndex < matrix.minimumRowIndex())

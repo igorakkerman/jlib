@@ -31,10 +31,10 @@ implements Iterator<Element>, MatrixIterator<Element> {
     protected ArraySequenceMatrix<Element> matrix;
 
     /** minimum column index */
-    protected int minimumColumnIndex;
+    protected int firstColumnIndex;
 
     /** maximum column index */
-    protected int maximumColumnIndex;
+    protected int lastColumnIndex;
 
     /** minimum row index */
     protected int minimumRowIndex;
@@ -55,7 +55,7 @@ implements Iterator<Element>, MatrixIterator<Element> {
      *        ArraySequenceMatrix to traverse
      */
     protected AbstractMatrixIterator(ArraySequenceMatrix<Element> matrix) {
-        this(matrix, matrix.minimumColumnIndex(), matrix.maximumColumnIndex(), matrix.minimumRowIndex(), matrix.maximumRowIndex());
+        this(matrix, matrix.firstColumnIndex(), matrix.lastColumnIndex(), matrix.minimumRowIndex(), matrix.maximumRowIndex());
     }
 
     /**
@@ -64,33 +64,33 @@ implements Iterator<Element>, MatrixIterator<Element> {
      * 
      * @param matrix
      *        ArraySequenceMatrix to traverse
-     * @param minimumColumnIndex
+     * @param firstColumnIndex
      *        integer specifying the minimum column index of the ArraySequenceMatrix portion
-     * @param maximumColumnIndex
+     * @param lastColumnIndex
      *        integer specifying the maximum column index of the ArraySequenceMatrix portion
      * @param minimumRowIndex
      *        integer specifying the minimum row index of the ArraySequenceMatrix portion
      * @param maximumRowIndex
      *        integer specifying the maximum row index of the ArraySequenceMatrix portion
      */
-    protected AbstractMatrixIterator(ArraySequenceMatrix<Element> matrix, int minimumColumnIndex, int maximumColumnIndex, int minimumRowIndex,
+    protected AbstractMatrixIterator(ArraySequenceMatrix<Element> matrix, int firstColumnIndex, int lastColumnIndex, int minimumRowIndex,
                              int maximumRowIndex) {
         super();
 
         this.matrix = matrix;
 
-        this.minimumColumnIndex = minimumColumnIndex;
-        this.maximumColumnIndex = maximumColumnIndex;
+        this.firstColumnIndex = firstColumnIndex;
+        this.lastColumnIndex = lastColumnIndex;
         this.minimumRowIndex = minimumRowIndex;
         this.maximumRowIndex = maximumRowIndex;
 
-        nextElementColumnIndex = minimumColumnIndex;
-        nextElementRowIndex = maximumColumnIndex;
+        nextElementColumnIndex = firstColumnIndex;
+        nextElementRowIndex = lastColumnIndex;
     }
 
     @Override
     public boolean hasNext() {
-        return minimumColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= maximumColumnIndex &&
+        return firstColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= lastColumnIndex &&
                minimumRowIndex <= nextElementRowIndex && nextElementRowIndex <= maximumRowIndex;
     }
 
