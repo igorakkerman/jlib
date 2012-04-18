@@ -18,7 +18,7 @@ import org.jlib.container.sequence.AbstractNonEmptyReplaceIndexSequence;
 import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
- * Default implementation of the MatrixColumn interface.
+ * Default implementation of the IndexMatrixColumn interface.
  * 
  * @param <Element>
  *        type of the elements held in the ArraySequenceMatrix
@@ -27,14 +27,14 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  */
 class DefaultMatrixColumn<Element>
 extends AbstractNonEmptyReplaceIndexSequence<Element>
-implements MatrixColumn<Element> {
+implements IndexMatrixColumn<Element> {
 
-    /** ArraySequenceMatrix of which this MatrixColumn represents the range of a column */
+    /** ArraySequenceMatrix of which this IndexMatrixColumn represents the range of a column */
     private ArraySequenceMatrix<Element> matrix;
 
     /**
      * integer specifying the index of the column in the ArraySequenceMatrix that this
-     * MatrixColumn represents
+     * IndexMatrixColumn represents
      */
     private int columnIndex;
 
@@ -45,14 +45,14 @@ implements MatrixColumn<Element> {
     private int lastRowindex;
 
     /**
-     * Creates a new MatrixColumn representing the specified column of the
+     * Creates a new IndexMatrixColumn representing the specified column of the
      * specified ArraySequenceMatrix.
      * 
      * @param matrix
-     *        ArraySequenceMatrix of which this MatrixColumn represents a column
+     *        ArraySequenceMatrix of which this IndexMatrixColumn represents a column
      * @param columnIndex
      *        integer specifying the index of the column in the ArraySequenceMatrix that this
-     *        MatrixColumn represents
+     *        IndexMatrixColumn represents
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code columnIndex} is not a valid column index of
      *         {@code matrix}
@@ -63,15 +63,15 @@ implements MatrixColumn<Element> {
     }
 
     /**
-     * Creates a new MatrixColumn representing the specified range of the
+     * Creates a new IndexMatrixColumn representing the specified range of the
      * specified column of the specified ArraySequenceMatrix.
      * 
      * @param matrix
-     *        ArraySequenceMatrix of which this MatrixColumn represents the range of a column
+     *        ArraySequenceMatrix of which this IndexMatrixColumn represents the range of a column
      * 
      * @param columnIndex
      *        integer specifying the index of the column in the ArraySequenceMatrix that this
-     *        MatrixColumn represents
+     *        IndexMatrixColumn represents
      * 
      * @param firstRowIndex
      *        integer specifying the first row index of the range of the

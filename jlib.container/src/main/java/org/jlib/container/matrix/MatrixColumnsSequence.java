@@ -24,7 +24,7 @@ import org.jlib.container.sequence.AbstractNonEmptyIndexSequence;
  * @author Igor Akkerman
  */
 class MatrixColumnsSequence<Element>
-extends AbstractNonEmptyIndexSequence<MatrixColumn<Element>> {
+extends AbstractNonEmptyIndexSequence<IndexMatrixColumn<Element>> {
 
     /** ArraySequenceMatrix owning the Columns */
     private ArraySequenceMatrix<Element> matrix;
@@ -42,7 +42,7 @@ extends AbstractNonEmptyIndexSequence<MatrixColumn<Element>> {
     }
 
     @Override
-    public MatrixColumn<Element> get(int index)
+    public IndexMatrixColumn<Element> get(int index)
     throws IndexOutOfBoundsException {
         return matrix.column(index);
     }

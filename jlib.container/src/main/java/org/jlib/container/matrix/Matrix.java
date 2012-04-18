@@ -3,7 +3,7 @@ package org.jlib.container.matrix;
 import java.util.Iterator;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.IndexSequence;
+import org.jlib.container.sequence.Sequence;
 
 // @formatter:off
 /**
@@ -104,38 +104,40 @@ public interface Matrix<Entry>
 extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
-     * Returns the Sequence of the MatrixRows of this ArraySequenceMatrix.
+     * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
+     * specified as a {@link MatrixSubsequence}.
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixRow<Entry>> getRows();
+    public Sequence<? extends MatrixSubsequence<Entry>> getRows();
 
     /**
-     * Returns the Sequence of the MatrixColumns of this ArraySequenceMatrix.
+     * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
+     * specified as a {@link MatrixSubsequence}.
      * 
-     * @return IndexSequence of the MatrixColumns of this ArraySequenceMatrix
+     * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixColumn<Entry>> getColumns();
+    public Sequence<? extends MatrixSubsequence<Entry>> getColumns();
 
     /**
-     * Returns the width of this ArraySequenceMatrix.
+     * Returns the width of this {@link Matrix}.
      * 
      * @return integer specifying the width
      */
     public int getWidth();
 
     /**
-     * Returns the height of this ArraySequenceMatrix.
+     * Returns the height of this {@link Matrix}.
      * 
      * @return integer specifying the height
      */
     public int getHeight();
 
     /**
-     * Returns the number of cells in this ArraySequenceMatrix. The size is
+     * Returns the number of Entries in this ArraySequenceMatrix. The size is
      * equal to {@code getWidth() * getHeight()}.
      * 
-     * @return integer specifying the number of cells
+     * @return integer specifying the number of Entries
      */
     @Override
     public int getSize();
@@ -146,7 +148,8 @@ extends Container<Entry>, MatrixIterable<Entry> {
      * traversed is specified using
      * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
      * 
-     * @return a new {@link AbstractIndexMatrixIterator} over this {@link Matrix}
+     * @return a new {@link AbstractIndexMatrixIterator} over this
+     *         {@link Matrix}
      * 
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder

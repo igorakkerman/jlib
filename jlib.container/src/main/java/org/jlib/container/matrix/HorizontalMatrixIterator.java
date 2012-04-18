@@ -28,7 +28,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public final class HorizontalMatrixIterator<Element>
-extends AbstractIndexMatrixIterator<Element> {
+extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
 
     /**
      * Creates a new HorizontalMatrixIterator for the specified ArraySequenceMatrix.

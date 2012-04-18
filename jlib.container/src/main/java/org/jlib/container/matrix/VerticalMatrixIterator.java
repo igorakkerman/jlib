@@ -28,7 +28,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public final class VerticalMatrixIterator<Element>
-extends AbstractIndexMatrixIterator<Element> {
+extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
 
     /**
      * Creates a new VerticalMatrixIterator for the specified ArraySequenceMatrix.

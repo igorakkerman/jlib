@@ -21,10 +21,11 @@ import org.jlib.container.sequence.AbstractNonEmptyIndexSequence;
  *
  * @param <Element>
  *        type of the elements in the ArraySequenceMatrix
+ *        
  * @author Igor Akkerman
  */
 class MatrixRowsSequence<Element>
-extends AbstractNonEmptyIndexSequence<MatrixRow<Element>> {
+extends AbstractNonEmptyIndexSequence<IndexMatrixRow<Element>> {
 
     /** ArraySequenceMatrix owning the Rows */
     private ArraySequenceMatrix<Element> matrix;
@@ -41,8 +42,8 @@ extends AbstractNonEmptyIndexSequence<MatrixRow<Element>> {
     }
 
     @Override
-    public MatrixRow<Element> get(int index)
+    public IndexMatrixRow<Element> get(int index)
     throws IndexOutOfBoundsException {
-        return matrix.row(index);
+        return matrix.getRow(index);
     }
 }

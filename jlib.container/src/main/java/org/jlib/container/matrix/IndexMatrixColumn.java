@@ -23,40 +23,40 @@ import org.jlib.container.sequence.ReplaceIndexSequence;
  *        type of elements in the ArraySequenceMatrix
  * @author Igor Akkerman
  */
-public interface MatrixColumn<Element>
+public interface IndexMatrixColumn<Element>
 extends ReplaceIndexSequence<Element> {
 
     /**
-     * Returns the ArraySequenceMatrix of which this MatrixColumn represents the column or the range of
+     * Returns the ArraySequenceMatrix of which this IndexMatrixColumn represents the column or the range of
      * a column.
      *
-     * @return ArraySequenceMatrix of which this MatrixColumn represents the column or the range of a
+     * @return ArraySequenceMatrix of which this IndexMatrixColumn represents the column or the range of a
      *         column
      */
     public ArraySequenceMatrix<Element> getMatrix();
 
     /**
-     * Returns the first row index of the range of the column that this MatrixColumn
+     * Returns the first row index of the range of the column that this IndexMatrixColumn
      * represents.
      *
      * @return integer specifying the first row index of the range of the column that
-     *         this MatrixColumn represents
+     *         this IndexMatrixColumn represents
      */
     public RowIndex getFirstRowIndex();
 
     /**
-     * Returns the last row index of the range of the column that this MatrixColumn
+     * Returns the last row index of the range of the column that this IndexMatrixColumn
      * represents.
      *
      * @return integer specifying the last row index of the range of the column that
-     *         this MatrixColumn represents
+     *         this IndexMatrixColumn represents
      */
     public RowIndex getMaximumRowIndex();
 
     /**
-     * Returns the index of the column that this MatrixColumn represents.
+     * Returns the index of the column that this IndexMatrixColumn represents.
      *
-     * @return integer specifying the index of the column that this MatrixColumn
+     * @return integer specifying the index of the column that this IndexMatrixColumn
      *         represents
      */
     public ColumnIndex getColumnIndex();

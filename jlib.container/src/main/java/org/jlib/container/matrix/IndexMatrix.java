@@ -62,18 +62,18 @@ extends Matrix<Element> {
     public void set(final ColumnIndex columnIndex, final RowIndex rowIndex, final Element element);
 
     /**
-     * Returns a MatrixColumn representing the specified column of this
+     * Returns a IndexMatrixColumn representing the specified column of this
      * ArraySequenceMatrix.
      * 
      * @param columnIndex
      *        integer specifying the index of the column
      * 
-     * @return MatrixColumn representing the column with {@code nextColumnIndex}
+     * @return IndexMatrixColumn representing the column with {@code nextColumnIndex}
      */
-    public MatrixColumn<Element> getColumn(final ColumnIndex columnIndex);
+    public IndexMatrixColumn<Element> getColumn(final ColumnIndex columnIndex);
 
     /**
-     * Returns a MatrixColumn representing the specified portion of the
+     * Returns a IndexMatrixColumn representing the specified portion of the
      * specified column of this ArraySequenceMatrix.
      * 
      * @param columnIndex
@@ -87,25 +87,25 @@ extends Matrix<Element> {
      *        integer specifying the last row index of the portion of the
      *        column
      * 
-     * @return MatrixColumn representing the specified portion of the column
+     * @return IndexMatrixColumn representing the specified portion of the column
      *         with {@code nextColumnIndex}
      */
-    public MatrixColumn<Element> getColumn(final ColumnIndex columnIndex, final RowIndex firstRowIndex,
+    public IndexMatrixColumn<Element> getColumn(final ColumnIndex columnIndex, final RowIndex firstRowIndex,
                                            final RowIndex lastRowindex);
 
     /**
-     * Returns a MatrixRow representing the specified row of this
+     * Returns a IndexMatrixRow representing the specified row of this
      * ArraySequenceMatrix.
      * 
      * @param rowIndex
      *        integer specifying the index of the row
      * 
-     * @return MatrixRow representing the row with {@code nextRowIndex}
+     * @return IndexMatrixRow representing the row with {@code nextRowIndex}
      */
-    public MatrixRow<Element> getRow(final RowIndex rowIndex);
+    public IndexMatrixRow<Element> getRow(final RowIndex rowIndex);
 
     /**
-     * Returns a MatrixRow representing the specified portion of the specified
+     * Returns a IndexMatrixRow representing the specified portion of the specified
      * row of this ArraySequenceMatrix.
      * 
      * @param rowIndex
@@ -119,10 +119,10 @@ extends Matrix<Element> {
      *        integer specifying the last column index of the portion of the
      *        row
      * 
-     * @return MatrixRow representing the specified portion of the row with
+     * @return IndexMatrixRow representing the specified portion of the row with
      *         {@code nextRowIndex}
      */
-    public MatrixRow<Element> getRow(final RowIndex rowIndex, final ColumnIndex firstColumnIndex, final ColumnIndex lastColumnIndex);
+    public IndexMatrixRow<Element> getRow(final RowIndex rowIndex, final ColumnIndex firstColumnIndex, final ColumnIndex lastColumnIndex);
 
     /**
      * Returns the first column index of this ArraySequenceMatrix.

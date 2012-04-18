@@ -202,19 +202,19 @@ extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry>
     }
 
     /**
-     * Returns a MatrixColumn representing the specified column of this
+     * Returns a IndexMatrixColumn representing the specified column of this
      * ArraySequenceMatrix.
      * 
      * @param columnIndex
      *        integer specifying the index of the column
-     * @return MatrixColumn representing the column with {@code nextColumnIndex}
+     * @return IndexMatrixColumn representing the column with {@code nextColumnIndex}
      */
-    public MatrixColumn<Entry> column(int columnIndex) {
+    public IndexMatrixColumn<Entry> column(int columnIndex) {
         return new DefaultMatrixColumn<Entry>(this, columnIndex);
     }
 
     /**
-     * Returns a MatrixColumn representing the specified portion of the
+     * Returns a IndexMatrixColumn representing the specified portion of the
      * specified column of this ArraySequenceMatrix.
      * 
      * @param columnIndex
@@ -225,28 +225,28 @@ extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry>
      * @param lastRowindex
      *        integer specifying the last row index of the portion of the
      *        column
-     * @return MatrixColumn representing the specified portion of the column
+     * @return IndexMatrixColumn representing the specified portion of the column
      *         with {@code nextColumnIndex}
      */
-    public MatrixColumn<Entry> column(RowIndex columnIndex, @SuppressWarnings("hiding") int firstRowIndex,
+    public IndexMatrixColumn<Entry> column(RowIndex columnIndex, @SuppressWarnings("hiding") int firstRowIndex,
                                         @SuppressWarnings("hiding") int lastRowindex) {
         return new DefaultMatrixColumn<Entry>(this, columnIndex, firstRowIndex, lastRowindex);
     }
 
     /**
-     * Returns a MatrixRow representing the specified row of this
+     * Returns a IndexMatrixRow representing the specified row of this
      * ArraySequenceMatrix.
      * 
      * @param rowIndex
      *        integer specifying the index of the row
-     * @return MatrixRow representing the row with {@code nextRowIndex}
+     * @return IndexMatrixRow representing the row with {@code nextRowIndex}
      */
-    public MatrixRow<Entry> row(int rowIndex) {
+    public IndexMatrixRow<Entry> row(int rowIndex) {
         return new DefaultMatrixRow<Entry>(this, rowIndex);
     }
 
     /**
-     * Returns a MatrixRow representing the specified portion of the specified
+     * Returns a IndexMatrixRow representing the specified portion of the specified
      * row of this ArraySequenceMatrix.
      * 
      * @param rowIndex
@@ -257,11 +257,11 @@ extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry>
      * @param lastColumnIndex
      *        integer specifying the last column index of the portion of the
      *        row
-     * @return MatrixRow representing the specified portion of the row with
+     * @return IndexMatrixRow representing the specified portion of the row with
      *         {@code nextRowIndex}
      */
     // TODO: maybe it would be more appropriate to name these kinds of parameters using start/end or first/last
-    public MatrixRow<Entry> row(ColumnIndex rowIndex, @SuppressWarnings("hiding") int firstColumnIndex,
+    public IndexMatrixRow<Entry> row(ColumnIndex rowIndex, @SuppressWarnings("hiding") int firstColumnIndex,
                                   @SuppressWarnings("hiding") ColumnIndex lastColumnIndex) {
         return new DefaultMatrixRow<Entry>(this, rowIndex, firstColumnIndex, lastColumnIndex);
     }
@@ -271,16 +271,16 @@ extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry>
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixRow<Entry>> rowsSequence() {
+    public IndexSequence<IndexMatrixRow<Entry>> rowsSequence() {
         return new MatrixRowsSequence<Entry>(this);
     }
 
     /**
      * Returns the Sequence of the MatrixColumns of this ArraySequenceMatrix.
      * 
-     * @return {@link IndexSequence} of the {@link MatrixColumn MatrixColumns} of this {@link ArraySequenceMatrix}
+     * @return {@link IndexSequence} of the {@link IndexMatrixColumn MatrixColumns} of this {@link ArraySequenceMatrix}
      */
-    public IndexSequence<MatrixColumn<Entry>> columnsSequence() {
+    public IndexSequence<IndexMatrixColumn<Entry>> columnsSequence() {
         return new MatrixColumnsSequence<Entry>(this);
     }
 
@@ -379,6 +379,7 @@ extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry>
      *        {@link MatrixIterationOrder} used by default {@link Iterator
      *        Iterators}
      */
+    @Override
     public void setDefaultIterationOrder(final MatrixIterationOrder defaultIterationOrder) {
         this.defaultIterationOrder = defaultIterationOrder;
     }

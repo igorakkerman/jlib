@@ -18,7 +18,7 @@ import org.jlib.container.sequence.AbstractNonEmptyReplaceIndexSequence;
 import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
- * Default implementation of the MatrixRow interface.
+ * Default implementation of the IndexMatrixRow interface.
  *
  * @author Igor Akkerman
  * @param <Element>
@@ -26,12 +26,12 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  */
 class DefaultMatrixRow<Element>
 extends AbstractNonEmptyReplaceIndexSequence<Element>
-implements MatrixRow<Element> {
+implements IndexMatrixRow<Element> {
 
-    /** ArraySequenceMatrix of which this MatrixRow represents the range of a row */
+    /** ArraySequenceMatrix of which this IndexMatrixRow represents the range of a row */
     private ArraySequenceMatrix<Element> matrix;
 
-    /** integer specifying the index of the row in the ArraySequenceMatrix that this MatrixRow represents */
+    /** integer specifying the index of the row in the ArraySequenceMatrix that this IndexMatrixRow represents */
     private int rowIndex;
 
     /** integer specifying the first column index of the range of the row */
@@ -41,12 +41,12 @@ implements MatrixRow<Element> {
     private ColumnIndex lastColumnIndex;
 
     /**
-     * Creates a new MatrixRow representing the specified row of the specified ArraySequenceMatrix.
+     * Creates a new IndexMatrixRow representing the specified row of the specified ArraySequenceMatrix.
      *
      * @param matrix
-     *        ArraySequenceMatrix of which this MatrixRow represents a row
+     *        ArraySequenceMatrix of which this IndexMatrixRow represents a row
      * @param rowIndex
-     *        integer specifying the index of the row in the ArraySequenceMatrix that this MatrixRow represents
+     *        integer specifying the index of the row in the ArraySequenceMatrix that this IndexMatrixRow represents
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code rowIndex} is not a valid row index of {@code matrix}
      */
@@ -56,13 +56,13 @@ implements MatrixRow<Element> {
     }
 
     /**
-     * Creates a new MatrixRow representing the specified range of the specified row of the
+     * Creates a new IndexMatrixRow representing the specified range of the specified row of the
      * specified ArraySequenceMatrix.
      *
      * @param matrix
-     *        ArraySequenceMatrix of which this MatrixRow represents the range of a row
+     *        ArraySequenceMatrix of which this IndexMatrixRow represents the range of a row
      * @param rowIndex
-     *        integer specifying the index of the row in the ArraySequenceMatrix that this MatrixRow represents
+     *        integer specifying the index of the row in the ArraySequenceMatrix that this IndexMatrixRow represents
      * @param firstColumnIndex
      *        integer specifying the first column index of the range of the row
      * @param lastColumnIndex
@@ -117,12 +117,12 @@ implements MatrixRow<Element> {
     }
 
     @Override
-    public final ColumnIndex getMinColumnIndex() {
+    public final ColumnIndex getFirstColumnIndex() {
         return firstColumnIndex;
     }
 
     @Override
-    public final ColumnIndex getMaxColumnIndex() {
+    public final ColumnIndex getLastColumnIndex() {
         return lastColumnIndex;
     }
 }
