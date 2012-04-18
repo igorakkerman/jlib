@@ -42,15 +42,15 @@ extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementColumnIndex < matrix.getLastColumnIndex())
-            nextElementColumnIndex ++;
+        if (nextElementint < matrix.getLastint())
+            nextElementint ++;
         else
             updateNextEntityIndices();
     }
 
     @Override
     protected void updateNextEntityIndices() {
-        nextElementColumnIndex = matrix.getFirstColumnIndex();
-        nextElementRowIndex ++;
+        nextElementint = matrix.getFirstint();
+        nextElementint ++;
     }    
 }

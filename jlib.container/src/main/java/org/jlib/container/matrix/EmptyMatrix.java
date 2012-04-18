@@ -84,12 +84,12 @@ implements Matrix<Entry> {
     }
 
     @Override
-    public IndexSequence<IndexMatrixRow<Entry>> getRows() {
+    public IndexSequence<IndexSequence<Entry>> getRows() {
         return EmptyIndexSequence.getInstance();
     }
 
     @Override
-    public IndexSequence<IndexMatrixColumn<Entry>> getColumns() {
+    public IndexSequence<IndexSequence<Entry>> getColumns() {
         return EmptyIndexSequence.getInstance();
     }
 

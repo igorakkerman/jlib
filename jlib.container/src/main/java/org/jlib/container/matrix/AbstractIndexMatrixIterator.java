@@ -20,10 +20,10 @@ import java.util.NoSuchElementException;
 /**
  * Iterator over a {@link IndexMatrix}.
  * 
- * @param <ColumnIndex>
+ * @param <int>
  *        type of column indices
  * 
- * @param <RowIndex>
+ * @param <int>
  *        type of row indices
  * 
  * @param <Entry>
@@ -31,29 +31,29 @@ import java.util.NoSuchElementException;
  * 
  * @author Igor Akkerman
  */
-public abstract class AbstractIndexMatrixIterator<Entry, ColumnIndex, RowIndex>
+public abstract class AbstractIndexMatrixIterator<Entry, int, int>
 implements Iterator<Entry>, MatrixIterator<Entry> {
 
     /** matrix containing the elements */
     protected ArraySequenceMatrix<Entry> matrix;
 
     /** first column index */
-    protected ColumnIndex firstColumnIndex;
+    protected int firstint;
 
     /** last column index */
-    protected ColumnIndex lastColumnIndex;
+    protected int lastint;
 
     /** first row index */
-    protected RowIndex firstRowIndex;
+    protected int firstint;
 
     /** last row index */
     protected int lastRowindex;
 
     /** column index of the next Element */
-    protected ColumnIndex nextElementColumnIndex;
+    protected int nextElementint;
 
     /** row index of the next Element */
-    protected RowIndex nextElementRowIndex;
+    protected int nextElementint;
 
     /**
      * Creates a new AbstractIndexMatrixIterator for the specified
@@ -63,8 +63,8 @@ implements Iterator<Entry>, MatrixIterator<Entry> {
      *        ArraySequenceMatrix to traverse
      */
     protected AbstractIndexMatrixIterator(final ArraySequenceMatrix<Entry> matrix) {
-        this(matrix, matrix.getFirstColumnIndex(), matrix.getLastColumnIndex(), matrix.getFirstRowIndex(),
-             matrix.getLastRowIndex());
+        this(matrix, matrix.getFirstint(), matrix.getLastint(), matrix.getFirstint(),
+             matrix.getLastint());
     }
 
     /**
@@ -73,38 +73,38 @@ implements Iterator<Entry>, MatrixIterator<Entry> {
      * 
      * @param matrix
      *        ArraySequenceMatrix to traverse
-     * @param firstColumnIndex
+     * @param firstint
      *        integer specifying the first column index of the
      *        ArraySequenceMatrix portion
-     * @param lastColumnIndex
+     * @param lastint
      *        integer specifying the last column index of the
      *        ArraySequenceMatrix portion
-     * @param firstRowIndex
+     * @param firstint
      *        integer specifying the first row index of the ArraySequenceMatrix
      *        portion
      * @param lastRowindex
      *        integer specifying the last row index of the ArraySequenceMatrix
      *        portion
      */
-    protected AbstractIndexMatrixIterator(final ArraySequenceMatrix<Entry> matrix, final ColumnIndex firstColumnIndex,
-                                          final ColumnIndex lastColumnIndex, RowIndex firstRowIndex, int lastRowindex) {
+    protected AbstractIndexMatrixIterator(final ArraySequenceMatrix<Entry> matrix, final int firstint,
+                                          final int lastint, int firstint, int lastRowindex) {
         super();
 
         this.matrix = matrix;
 
-        this.firstColumnIndex = firstColumnIndex;
-        this.lastColumnIndex = lastColumnIndex;
-        this.firstRowIndex = firstRowIndex;
-        this.lastRowIndex = maximumRowindex;
+        this.firstint = firstint;
+        this.lastint = lastint;
+        this.firstint = firstint;
+        this.lastint = maximumRowindex;
 
-        nextElementColumnIndex = firstColumnIndex;
-        nextElementRowIndex = lastColumnIndex;
+        nextElementint = firstint;
+        nextElementint = lastint;
     }
 
     @Override
     public boolean hasNext() {
-        return firstColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= lastColumnIndex &&
-               firstRowIndex <= nextElementRowIndex && nextElementRowIndex <= lastRowindex;
+        return firstint <= nextElementint && nextElementint <= lastint &&
+               firstint <= nextElementint && nextElementint <= lastRowindex;
     }
 
     @Override
@@ -112,7 +112,7 @@ implements Iterator<Entry>, MatrixIterator<Entry> {
         if (! hasNext())
             throw new NoSuchElementException();
 
-        Entry element = matrix.get(nextElementColumnIndex, nextElementRowIndex);
+        Entry element = matrix.get(nextElementint, nextElementint);
 
         updateNextElementIndices();
 

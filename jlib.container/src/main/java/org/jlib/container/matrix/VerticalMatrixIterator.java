@@ -42,8 +42,8 @@ extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementRowIndex < matrix.getLastRowIndex())
-            nextElementRowIndex ++;
+        if (nextElementint < matrix.getLastint())
+            nextElementint ++;
         else 
             updateNextEntityIndices();
         
@@ -51,7 +51,7 @@ extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
 
     @Override
     protected void updateNextEntityIndices() {
-        nextElementColumnIndex ++;
-        nextElementRowIndex = matrix.getFirstRowIndex();
+        nextElementint ++;
+        nextElementint = matrix.getFirstint();
     }    
 }

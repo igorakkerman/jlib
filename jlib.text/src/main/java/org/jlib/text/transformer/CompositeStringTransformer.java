@@ -1,6 +1,5 @@
 package org.jlib.text.transformer;
 
-import org.jlib.container.sequence.ArrayAddIndexSequence;
 import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
 

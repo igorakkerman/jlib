@@ -105,19 +105,19 @@ extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
-     * specified as a {@link MatrixSubsequence}.
+     * provided as a {@link Sequence}.
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public Sequence<? extends MatrixSubsequence<Entry>> getRows();
+    public Sequence<? extends Sequence<Entry>> getRows();
 
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
-     * specified as a {@link MatrixSubsequence}.
+     * provided as a {@link Sequence}.
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public Sequence<? extends MatrixSubsequence<Entry>> getColumns();
+    public Sequence<? extends Sequence<Entry>> getColumns();
 
     /**
      * Returns the width of this {@link Matrix}.

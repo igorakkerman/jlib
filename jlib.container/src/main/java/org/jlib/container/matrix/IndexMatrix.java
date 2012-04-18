@@ -1,24 +1,19 @@
 package org.jlib.container.matrix;
 
+import org.jlib.container.sequence.IndexSequence;
 import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
  * Indexed {@link Matrix}.
  * 
- * @param <Element>
+ * @param <Entry>
  *        type of the elements held in the ArraySequenceMatrix
- * 
- * @param <ColumnIndex>
- *        type of column indices
- * 
- * @param <RowIndex>
- *        type of row indices
  * 
  * @author Igor Akkerman
  */
 
-public interface IndexMatrix<ColumnIndex, RowIndex, Element>
-extends Matrix<Element> {
+public interface IndexMatrix<Entry>
+extends Matrix<Entry> {
 
     /**
      * Returns the Element stored at the specified column and row in this
@@ -34,47 +29,27 @@ extends Matrix<Element> {
      *         ArraySequenceMatrix
      * 
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code nextColumnIndex < getMinColumnIndex() ||
-     *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
-     *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
+     *         if {@code nextint < getMinint() ||
+     *         nextint > getMaxint() || nextint <
+     *         getMinint || nextint > getMaxint()}
      */
-    public Element get(final ColumnIndex columnIndex, final RowIndex rowIndex)
+    public Entry get(final int columnIndex, final int rowIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Registers the Element to store at the specified column and row in this
-     * ArraySequenceMatrix.
-     * 
-     * @param columnIndex
-     *        integer specifying the column of the Element to store
-     * 
-     * @param rowIndex
-     *        integer specifying the row of the Element to store
-     * 
-     * @param element
-     *        Element to store. {@code null} is a valid Element.
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code nextColumnIndex < getMinColumnIndex() ||
-     *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
-     *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
-     */
-    public void set(final ColumnIndex columnIndex, final RowIndex rowIndex, final Element element);
-
-    /**
-     * Returns a IndexMatrixColumn representing the specified column of this
+     * Returns a {@link IndexSequence} representing the specified column of this
      * ArraySequenceMatrix.
      * 
      * @param columnIndex
      *        integer specifying the index of the column
      * 
-     * @return IndexMatrixColumn representing the column with {@code nextColumnIndex}
+     * @return IndexMatrixColumn representing the column with {@code nextint}
      */
-    public IndexMatrixColumn<Element> getColumn(final ColumnIndex columnIndex);
+    public IndexSequence<Entry> getColumn(final int columnIndex);
 
     /**
      * Returns a IndexMatrixColumn representing the specified portion of the
-     * specified column of this ArraySequenceMatrix.
+     * specified column of this {@link IndexMatrix}.
      * 
      * @param columnIndex
      *        integer specifying the index of the column
@@ -83,30 +58,28 @@ extends Matrix<Element> {
      *        integer specifying the first row index of the portion of the
      *        column
      * 
-     * @param lastRowindex
-     *        integer specifying the last row index of the portion of the
-     *        column
+     * @param lastRowIndex
+     *        integer specifying the last row index of the portion of the column
      * 
-     * @return IndexMatrixColumn representing the specified portion of the column
-     *         with {@code nextColumnIndex}
+     * @return IndexMatrixColumn representing the specified portion of the
+     *         column with {@code nextint}
      */
-    public IndexMatrixColumn<Element> getColumn(final ColumnIndex columnIndex, final RowIndex firstRowIndex,
-                                           final RowIndex lastRowindex);
+    public IndexSequence<Entry> getColumn(final int columnIndex, final int firstRowIndex, final int lastRowIndex);
 
     /**
-     * Returns a IndexMatrixRow representing the specified row of this
-     * ArraySequenceMatrix.
+     * Returns a {@link IndexSequence} representing the specified row of this
+     * {@link IndexMatrix}.
      * 
      * @param rowIndex
      *        integer specifying the index of the row
      * 
-     * @return IndexMatrixRow representing the row with {@code nextRowIndex}
+     * @return IndexMatrixRow representing the row with {@code nextint}
      */
-    public IndexMatrixRow<Element> getRow(final RowIndex rowIndex);
+    public IndexSequence<Entry> getRow(final int rowIndex);
 
     /**
-     * Returns a IndexMatrixRow representing the specified portion of the specified
-     * row of this ArraySequenceMatrix.
+     * Returns a {@link IndexSequence} representing the specified portion of the
+     * specified row of this {@link IndexMatrix}.
      * 
      * @param rowIndex
      *        integer specifying the index of the row
@@ -116,39 +89,38 @@ extends Matrix<Element> {
      *        row
      * 
      * @param lastColumnIndex
-     *        integer specifying the last column index of the portion of the
-     *        row
+     *        integer specifying the last column index of the portion of the row
      * 
      * @return IndexMatrixRow representing the specified portion of the row with
-     *         {@code nextRowIndex}
+     *         {@code nextint}
      */
-    public IndexMatrixRow<Element> getRow(final RowIndex rowIndex, final ColumnIndex firstColumnIndex, final ColumnIndex lastColumnIndex);
+    public IndexSequence<Entry> getRow(final int rowIndex, final int firstColumnIndex, final int lastColumnIndex);
 
     /**
-     * Returns the first column index of this ArraySequenceMatrix.
+     * Returns the first column index of this {@link IndexMatrix}.
      * 
-     * @return integer specifying the minimum column of this ArraySequenceMatrix
+     * @return integer specifying the minimum column of this {@link IndexMatrix}
      */
-    public ColumnIndex getFirstColumnIndex();
+    public int getFirsColumnIndex();
 
     /**
-     * Returns the last column index of this ArraySequenceMatrix.
+     * Returns the last column index of this {@link IndexMatrix}.
      * 
-     * @return integer specifying the maximum column of this ArraySequenceMatrix
+     * @return integer specifying the maximum column of this {@link IndexMatrix}
      */
-    public ColumnIndex getLastColumnIndex();
+    public int getLastColumnIndex();
 
     /**
-     * Returns the first row index of this ArraySequenceMatrix.
+     * Returns the first row index of this {@link IndexMatrix}.
      * 
-     * @return integer specifying the minimum row of this ArraySequenceMatrix
+     * @return integer specifying the minimum row of this {@link IndexMatrix}
      */
-    public RowIndex getFirstRowIndex();
+    public int getFirstRowIndex();
 
     /**
-     * Returns the last row index of this ArraySequenceMatrix.
+     * Returns the last row index of this {@link IndexMatrix}.
      * 
-     * @return integer specifying the maximum row of this ArraySequenceMatrix
+     * @return integer specifying the maximum row of this {@link IndexMatrix}
      */
-    public RowIndex getLastRowIndex();
+    public int getLastRowIndex();
 }
