@@ -15,7 +15,7 @@
 package org.jlib.container.matrix;
 
 /**
- * AbstractMatrixIterator traversing the elements of a ArraySequenceMatrix horizontally. That is, the traversal algorithm is as follows:
+ * AbstractIndexMatrixIterator traversing the elements of a ArraySequenceMatrix horizontally. That is, the traversal algorithm is as follows:
  *
  * <pre>{@literal
  * foreach row
@@ -28,7 +28,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public final class HorizontalMatrixIterator<Element>
-extends AbstractMatrixIterator<Element> {
+extends AbstractIndexMatrixIterator<Element> {
 
     /**
      * Creates a new HorizontalMatrixIterator for the specified ArraySequenceMatrix.
@@ -42,7 +42,7 @@ extends AbstractMatrixIterator<Element> {
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementColumnIndex < matrix.lastColumnIndex())
+        if (nextElementColumnIndex < matrix.getLastColumnIndex())
             nextElementColumnIndex ++;
         else
             updateNextEntityIndices();
@@ -50,7 +50,7 @@ extends AbstractMatrixIterator<Element> {
 
     @Override
     protected void updateNextEntityIndices() {
-        nextElementColumnIndex = matrix.firstColumnIndex();
+        nextElementColumnIndex = matrix.getFirstColumnIndex();
         nextElementRowIndex ++;
     }    
 }

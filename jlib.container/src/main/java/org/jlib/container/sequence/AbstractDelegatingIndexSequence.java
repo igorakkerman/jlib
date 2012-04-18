@@ -42,14 +42,14 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public int getMinimumIndex() {
-        return getDelegateSequence().getMinimumIndex();
+    public int getFirstIndex() {
+        return getDelegateSequence().getFirstIndex();
     }
 
 
     @Override
-    public int getMaximumIndex() {
-        return getDelegateSequence().getMaximumIndex();
+    public int getLastIndex() {
+        return getDelegateSequence().getLastIndex();
     }
 
 
@@ -66,16 +66,16 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public List<Element> subList(final int fromIndex, final int toIndex)
+    public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        return getDelegateSequence().subList(fromIndex, toIndex);
+        return getDelegateSequence().createSubList(fromIndex, toIndex);
     }
 
 
     @Override
-    public IndexSequence<Element> subSequence(final int fromIndex, final int toIndex)
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        return getDelegateSequence().subSequence(fromIndex, toIndex);
+        return getDelegateSequence().createSubSequence(fromIndex, toIndex);
     }
 
     @Override

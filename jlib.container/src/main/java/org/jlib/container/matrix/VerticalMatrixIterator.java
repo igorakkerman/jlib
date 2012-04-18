@@ -15,7 +15,7 @@
 package org.jlib.container.matrix;
 
 /**
- * AbstractMatrixIterator traversing the elements of a ArraySequenceMatrix vertically. That is, the traversal algorithm is as follows:
+ * AbstractIndexMatrixIterator traversing the elements of a ArraySequenceMatrix vertically. That is, the traversal algorithm is as follows:
  *
  * <pre>{@literal
  * for each column
@@ -28,7 +28,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public final class VerticalMatrixIterator<Element>
-extends AbstractMatrixIterator<Element> {
+extends AbstractIndexMatrixIterator<Element> {
 
     /**
      * Creates a new VerticalMatrixIterator for the specified ArraySequenceMatrix.
@@ -42,7 +42,7 @@ extends AbstractMatrixIterator<Element> {
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementRowIndex < matrix.maximumRowIndex())
+        if (nextElementRowIndex < matrix.getLastRowIndex())
             nextElementRowIndex ++;
         else 
             updateNextEntityIndices();
@@ -52,6 +52,6 @@ extends AbstractMatrixIterator<Element> {
     @Override
     protected void updateNextEntityIndices() {
         nextElementColumnIndex ++;
-        nextElementRowIndex = matrix.minimumRowIndex();
+        nextElementRowIndex = matrix.getFirstRowIndex();
     }    
 }

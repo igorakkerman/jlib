@@ -19,55 +19,50 @@ implements IndexSequence<Element> {
     protected int firstIndex;
 
     /** current maximum index of this sequence */
-    protected int maximumIndex;
+    protected int lastIndex;
 
     /**
      * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
      * and maximum indices. Classes extending this class must initialize the
      * Element store.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the initial minimum index of this ArraySequence
      * 
-     * @param maximumIndex
+     * @param lastIndex
      *        integer specifying the maximum index of this ArraySequence
      * 
      * @throws IllegalArgumentException
-     *         if {@code  maximumIndex < firstIndex}
+     *         if {@code  lastIndex < firstIndex}
      */
-    public AbstractNonEmptyIndexSequence(int minimumIndex, int maximumIndex) {
+    public AbstractNonEmptyIndexSequence(final int firstIndex, final int lastIndex) {
         super();
 
-        this.firstIndex = minimumIndex;
-        this.maximumIndex = maximumIndex;
+        this.firstIndex = firstIndex;
+        this.lastIndex = lastIndex;
 
-        if (maximumIndex < minimumIndex)
-            throw new IllegalArgumentException("maximumIndex == " + maximumIndex + " < " + minimumIndex +
-                                               " == firstIndex");
+        if (lastIndex < firstIndex)
+            throw new IllegalArgumentException("lastIndex == " + lastIndex + " < " + firstIndex + " == firstIndex");
     }
 
-
     @Override
-    public int getMinimumIndex() {
+    public int getFirstIndex() {
         return firstIndex;
     }
 
-
     @Override
-    public int getMaximumIndex() {
-        return maximumIndex;
+    public int getLastIndex() {
+        return lastIndex;
     }
-
 
     @Override
     public int getSize() {
-        return maximumIndex - firstIndex + 1;
+        return lastIndex - firstIndex + 1;
     }
-
 
     @Override
     public int indexOf(final Element searchedElement) {
-        for (int index = firstIndex; index <= maximumIndex; index ++) {
+        for (int index = firstIndex; index <= lastIndex; index ++) {
             final Element sequenceElement = get(index);
             if (sequenceElement == searchedElement || sequenceElement != null &&
                 sequenceElement.equals(searchedElement))
@@ -76,11 +71,10 @@ implements IndexSequence<Element> {
         return -1;
     }
 
-
     @Override
     public int lastIndexOf(final Element element) {
         Element sequenceElement;
-        for (int index = maximumIndex; index >= firstIndex; index --) {
+        for (int index = lastIndex; index >= firstIndex; index --) {
             sequenceElement = get(index);
             if (sequenceElement == element || sequenceElement != null && sequenceElement.equals(element))
                 return index;
@@ -88,22 +82,19 @@ implements IndexSequence<Element> {
         return -1;
     }
 
-
     @Override
     public IndexSequenceIterator<Element> createIterator() {
         return createIterator(firstIndex);
     }
 
-
     @Override
-    public IndexSequenceIterator<Element> createIterator(int startIndex)
+    public IndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultIndexSequenceIterator<Element>(this, startIndex);
     }
 
-
     @Override
-    public List<Element> subList(int fromIndex, int toIndex)
+    public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         if (fromIndex > toIndex)
             throw new IllegalArgumentException();
@@ -115,9 +106,8 @@ implements IndexSequence<Element> {
         return list;
     }
 
-
     @Override
-    public IndexSequence<Element> subSequence(int fromIndex, int toIndex)
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         if (fromIndex > toIndex)
             throw new IllegalArgumentException();
@@ -129,12 +119,11 @@ implements IndexSequence<Element> {
         return sequence;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder(8 * getSize());
 
-        final IndexSequenceIterator<Element> iterator =createIterator();
+        final IndexSequenceIterator<Element> iterator = createIterator();
 
         stringBuilder.append('[');
 

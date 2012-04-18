@@ -146,7 +146,7 @@ extends Container<Entry>, MatrixIterable<Entry> {
      * traversed is specified using
      * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
      * 
-     * @return a new {@link AbstractMatrixIterator} over this {@link Matrix}
+     * @return a new {@link AbstractIndexMatrixIterator} over this {@link Matrix}
      * 
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder

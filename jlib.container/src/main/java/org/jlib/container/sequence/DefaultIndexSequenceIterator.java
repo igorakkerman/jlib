@@ -43,7 +43,7 @@ implements IndexSequenceIterator<Element> {
      *        IndexSequence to traverse
      */
     protected DefaultIndexSequenceIterator(final IndexSequence<Element> sequence) {
-        this(sequence, sequence.getMinimumIndex());
+        this(sequence, sequence.getFirstIndex());
     }
 
     /**
@@ -55,7 +55,7 @@ implements IndexSequenceIterator<Element> {
      * @param startIndex
      *        integer specifying the start index of the traversal
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code startIndex < sequence.getMinimumIndex() || startIndex > sequence.getMaximumIndex()}
+     *         if {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
     protected DefaultIndexSequenceIterator(final IndexSequence<Element> sequence, int startIndex)
     throws SequenceIndexOutOfBoundsException {
@@ -67,7 +67,7 @@ implements IndexSequenceIterator<Element> {
 
     @Override
     public boolean hasNext() {
-        return nextIndex() <= sequence.getMaximumIndex();
+        return nextIndex() <= sequence.getLastIndex();
     }
 
     @Override
@@ -83,7 +83,7 @@ implements IndexSequenceIterator<Element> {
 
     @Override
     public boolean hasPrevious() {
-        return previousIndex() >= sequence.getMinimumIndex();
+        return previousIndex() >= sequence.getFirstIndex();
     }
 
     @Override

@@ -36,7 +36,7 @@ extends AbstractNonEmptyIndexSequence<MatrixRow<Element>> {
      *        ArraySequenceMatrix owning the Rows
      */
     MatrixRowsSequence(ArraySequenceMatrix<Element> matrix) {
-        super(matrix.minimumRowIndex(), matrix.maximumRowIndex());
+        super(matrix.getFirstRowIndex(), matrix.getLastRowIndex());
         this.matrix = matrix;
     }
 

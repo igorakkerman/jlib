@@ -31,22 +31,22 @@ implements ReplaceIndexSequence<Element> {
      * Creates a new {@link AbstractNonEmptyReplaceIndexSequence} with the
      * specified minimum and maximum indices.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the initial minimum index of this ArraySequence
      * 
-     * @param maximumIndex
+     * @param lastIndex
      *        integer specifying the maximum index of this ArraySequence
      * 
      * @throws IllegalArgumentException
-     *         if {@code  maximumIndex < firstIndex}
+     *         if {@code  lastIndex < firstIndex}
      */
-    public AbstractNonEmptyReplaceIndexSequence(int minimumIndex, int maximumIndex) {
-        super(minimumIndex, maximumIndex);
+    public AbstractNonEmptyReplaceIndexSequence(int firstIndex, int lastIndex) {
+        super(firstIndex, lastIndex);
     }
 
     @Override
     public ReplaceIndexSequenceIterator<Element> createIterator() {
-        return createIterator(getMinimumIndex());
+        return createIterator(getFirstIndex());
     }
 
     @Override

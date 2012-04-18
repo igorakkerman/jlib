@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 import org.jlib.container.Container;
 
 /**
- * Empty {@link ReplaceIndexSequence}. Its {@link #getMinimumIndex()} and
- * {@link #getMaximumIndex()} methods always throw an
+ * Empty {@link ReplaceIndexSequence}. Its {@link #getFirstIndex()} and
+ * {@link #getLastIndex()} methods always throw an
  * {@link IllegalStateException}.
  * 
  * @param <Element>
@@ -98,13 +98,13 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public int getMinimumIndex() {
+    public int getFirstIndex() {
         throw new IllegalStateException();
     }
 
 
     @Override
-    public int getMaximumIndex() {
+    public int getLastIndex() {
         throw new IllegalStateException();
     }
 
@@ -124,7 +124,7 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public IndexSequence<Element> subSequence(final int fromIndex, final int toIndex)
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         throw new SequenceIndexOutOfBoundsException(this, fromIndex);
     }
@@ -151,7 +151,7 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public List<Element> subList(final int fromIndex, final int toIndex)
+    public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         throw new SequenceIndexOutOfBoundsException(this, fromIndex);
     }

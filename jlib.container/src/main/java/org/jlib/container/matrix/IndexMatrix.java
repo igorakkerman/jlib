@@ -79,19 +79,19 @@ extends Matrix<Element> {
      * @param columnIndex
      *        integer specifying the index of the column
      * 
-     * @param minimumRowIndex
-     *        integer specifying the minimum row index of the portion of the
+     * @param firstRowIndex
+     *        integer specifying the first row index of the portion of the
      *        column
      * 
-     * @param maximumRowIndex
-     *        integer specifying the maximum row index of the portion of the
+     * @param lastRowindex
+     *        integer specifying the last row index of the portion of the
      *        column
      * 
      * @return MatrixColumn representing the specified portion of the column
      *         with {@code nextColumnIndex}
      */
-    public MatrixColumn<Element> getColumn(final ColumnIndex columnIndex, final RowIndex minimumRowIndex,
-                                           final int maximumRowIndex);
+    public MatrixColumn<Element> getColumn(final ColumnIndex columnIndex, final RowIndex firstRowIndex,
+                                           final RowIndex lastRowindex);
 
     /**
      * Returns a MatrixRow representing the specified row of this
@@ -112,41 +112,41 @@ extends Matrix<Element> {
      *        integer specifying the index of the row
      * 
      * @param firstColumnIndex
-     *        integer specifying the minimum column index of the portion of the
+     *        integer specifying the first column index of the portion of the
      *        row
      * 
      * @param lastColumnIndex
-     *        integer specifying the maximum column index of the portion of the
+     *        integer specifying the last column index of the portion of the
      *        row
      * 
      * @return MatrixRow representing the specified portion of the row with
      *         {@code nextRowIndex}
      */
-    public MatrixRow<Element> getRow(final RowIndex rowIndex, final int firstColumnIndex, final int lastColumnIndex);
+    public MatrixRow<Element> getRow(final RowIndex rowIndex, final ColumnIndex firstColumnIndex, final ColumnIndex lastColumnIndex);
 
     /**
-     * Returns the minimum column index of this ArraySequenceMatrix.
+     * Returns the first column index of this ArraySequenceMatrix.
      * 
      * @return integer specifying the minimum column of this ArraySequenceMatrix
      */
     public ColumnIndex getFirstColumnIndex();
 
     /**
-     * Returns the maximum column index of this ArraySequenceMatrix.
+     * Returns the last column index of this ArraySequenceMatrix.
      * 
      * @return integer specifying the maximum column of this ArraySequenceMatrix
      */
     public ColumnIndex getLastColumnIndex();
 
     /**
-     * Returns the minimum row index of this ArraySequenceMatrix.
+     * Returns the first row index of this ArraySequenceMatrix.
      * 
      * @return integer specifying the minimum row of this ArraySequenceMatrix
      */
     public RowIndex getFirstRowIndex();
 
     /**
-     * Returns the maximum row index of this ArraySequenceMatrix.
+     * Returns the last row index of this ArraySequenceMatrix.
      * 
      * @return integer specifying the maximum row of this ArraySequenceMatrix
      */

@@ -46,7 +46,7 @@ import org.jlib.container.Container;
  * </p>
  * <ul>
  * <li>Minimum and maximum index: <br/>
- * On instantiation, you can specify the minimum and the maximum index of the
+ * On instantiation, you can specify the first and the maximum index of the
  * ArraySequence. Thus, no offset is necessary for Arrays starting at other indices than
  * 0. The following example illustrates how an ArraySequence is filled with numbers from
  * 1 to 10:
@@ -158,30 +158,30 @@ implements Cloneable {
          * @param firstIndex
          *        integer specifying the minimum index of this
          *        {@link NonEmptyArraySequence}
-         * @param maximumIndex
+         * @param lastIndex
          *        integer specifying the maximum index of this
          *        {@link NonEmptyArraySequence}
          */
         @SuppressWarnings("javadoc")
-        public NonEmptyArraySequence(final int minimumIndex, final int maximumIndex) {
-            super(minimumIndex, maximumIndex);
+        public NonEmptyArraySequence(final int firstIndex, final int lastIndex) {
+            super(firstIndex, lastIndex);
 
             delegateList = new ArrayList<Element>(getSize());
-            for (int index = minimumIndex; index <= maximumIndex; index ++)
+            for (int index = firstIndex; index <= lastIndex; index ++)
                 delegateList.add(null);
         }
 
         /**
          * Creates a new NonEmptyArraySequence.
          * 
-         * @param minimumIndex
+         * @param firstIndex
          *        integer specifying the minimum index of this
          *        NonEmptyArraySequence
          * @param elements
          *        Elements added to this NonEmptyArraySequence
          */
-        private NonEmptyArraySequence(final int minimumIndex, final List<Element> elements) {
-            super(minimumIndex, minimumIndex + elements.size() - 1);
+        private NonEmptyArraySequence(final int firstIndex, final List<Element> elements) {
+            super(firstIndex, firstIndex + elements.size() - 1);
 
             this.delegateList = new ArrayList<Element>(elements);
         }
@@ -190,7 +190,7 @@ implements Cloneable {
         @Override
         public Element get(final int index)
         throws SequenceIndexOutOfBoundsException {
-            if (index < firstIndex || index > maximumIndex)
+            if (index < firstIndex || index > lastIndex)
                 throw new SequenceIndexOutOfBoundsException(this, index);
 
             return delegateList.get(index - firstIndex);
@@ -224,7 +224,7 @@ implements Cloneable {
 
         // @see java.lang.Object#clone()
         @Override
-        public Object clone() {
+        public NonEmptyArraySequence<Element> clone() {
             return new NonEmptyArraySequence<Element>(firstIndex, delegateList);
         }
 
@@ -234,14 +234,14 @@ implements Cloneable {
             if (!(otherObject instanceof NonEmptyArraySequence<?>))
                 return false;
             final NonEmptyArraySequence<?> otherArray = (NonEmptyArraySequence<?>) otherObject;
-            return firstIndex == otherArray.firstIndex && maximumIndex == otherArray.maximumIndex &&
+            return firstIndex == otherArray.firstIndex && lastIndex == otherArray.lastIndex &&
                    delegateList.equals(otherArray.delegateList);
         }
 
         // @see org.jlib.container.AbstractContainer#hashCode()
         @Override
         public int hashCode() {
-            return 3 * firstIndex + 5 * maximumIndex + delegateList.hashCode();
+            return 3 * firstIndex + 5 * lastIndex + delegateList.hashCode();
         }
     }
 
@@ -251,18 +251,18 @@ implements Cloneable {
     /**
      * Creates a new ArraySequence initially filled with {@code null} Elements.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence
-     * @param maximumIndex
+     * @param lastIndex
      *        integer specifying the maximum index of this ArraySequence
      * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0 || maximumIndex < firstIndex}
+     *         if {@code firstIndex < 0 || lastIndex < firstIndex}
      */
-    public ArraySequence(final int minimumIndex, final int maximumIndex)
+    public ArraySequence(final int firstIndex, final int lastIndex)
     throws IllegalArgumentException {
         super();
 
-        delegateSequence = new NonEmptyArraySequence<Element>(minimumIndex, maximumIndex);
+        delegateSequence = new NonEmptyArraySequence<Element>(firstIndex, lastIndex);
     }
 
     /**
@@ -311,39 +311,39 @@ implements Cloneable {
 
     /**
      * Creates a new ArraySequence containing the specified Elements having a
-     * specified minimum index. That is, the index of the first Element of the
+     * specified first index. That is, the index of the first Element of the
      * specified sequence in this ArraySequence can be specified. The fixed size
      * of this ArraySequence is the size of the specified sequence.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence
      * @param elements
      *        comma separated sequence of Elements to store or Java array
      *        containing those Elements
      */
     @SafeVarargs
-    public ArraySequence(final int minimumIndex, final Element... elements) {
-        this(minimumIndex, minimumIndex + elements.length - 1);
+    public ArraySequence(final int firstIndex, final Element... elements) {
+        this(firstIndex, firstIndex + elements.length - 1);
 
-        for (int elementsIndex = 0, arrayIndex = minimumIndex; elementsIndex < elements.length; elementsIndex ++, arrayIndex ++)
+        for (int elementsIndex = 0, arrayIndex = firstIndex; elementsIndex < elements.length; elementsIndex ++, arrayIndex ++)
             delegateSequence.replace(arrayIndex, elements[elementsIndex]);
     }
 
     /**
      * Creates a new ArraySequence containing the specified Integer Elements
-     * having a specified minimum index. That is, the index of the first Element
+     * having a specified first index. That is, the index of the first Element
      * of the specified sequence in this ArraySequence can be specified. The
      * fixed size of this ArraySequence is the size of the specified sequence.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence
      * @param elements
      *        comma separated sequence of Integer elements to store or Java
      *        array containing those Elements
      * @return the new ArraySequence of Integers
      */
-    public static ArraySequence<Integer> createIntegerArrayFrom(final int minimumIndex, final Integer... elements) {
-        return new ArraySequence<Integer>(minimumIndex, elements);
+    public static ArraySequence<Integer> createIntegerArrayFrom(final int firstIndex, final Integer... elements) {
+        return new ArraySequence<Integer>(firstIndex, elements);
     }
 
     /**
@@ -376,12 +376,12 @@ implements Cloneable {
 
     /**
      * Creates a new ArraySequence containing the Elements of the specified
-     * Container having a specified minimum index. That is, the index of the
+     * Container having a specified first index. That is, the index of the
      * first Element of the specified collection in this ArraySequence can be
      * specified. The fixed size of this ArraySequence is the size of the
      * specified Container.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence. The
      *        first Element of {@code collection} is stored at this index of
      *        this ArraySequence.
@@ -390,23 +390,23 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0}
      */
-    public ArraySequence(final int minimumIndex, final Container<Element> elements)
+    public ArraySequence(final int firstIndex, final Container<Element> elements)
     throws IllegalArgumentException {
-        this(minimumIndex, minimumIndex + elements.getSize() - 1);
+        this(firstIndex, firstIndex + elements.getSize() - 1);
 
-        int arrayIndex = minimumIndex;
+        int arrayIndex = firstIndex;
         for (final Iterator<Element> collectionIterator = elements.iterator(); collectionIterator.hasNext(); arrayIndex ++)
             delegateSequence.replace(arrayIndex, collectionIterator.next());
     }
 
     /**
      * Creates a new ArraySequence containing the Elements of the specified
-     * Container having a specified minimum index. That is, the index of the
+     * Container having a specified first index. That is, the index of the
      * first Element of the specified collection in this ArraySequence can be
      * specified. The fixed size of this ArraySequence is the size of the
      * specified Container.
      * 
-     * @param minimumIndex
+     * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence. The
      *        first Element of {@code collection} is stored at this index of
      *        this ArraySequence.
@@ -417,11 +417,11 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0}
      */
-    public ArraySequence(final int minimumIndex, final Collection<Element> collection)
+    public ArraySequence(final int firstIndex, final Collection<Element> collection)
     throws NullPointerException, IllegalArgumentException {
-        this(minimumIndex, minimumIndex + collection.size() - 1);
+        this(firstIndex, firstIndex + collection.size() - 1);
 
-        int arrayIndex = minimumIndex;
+        int arrayIndex = firstIndex;
         for (final Iterator<Element> collectionIterator = collection.iterator(); collectionIterator.hasNext(); arrayIndex ++)
             delegateSequence.replace(arrayIndex, collectionIterator.next());
     }

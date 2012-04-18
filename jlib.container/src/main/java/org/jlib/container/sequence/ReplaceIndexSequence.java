@@ -35,7 +35,7 @@ extends ReplaceSequence<Element>, IndexSequence<Element> {
      *        Element to store
      * 
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index < getMinimumIndex() || index > getMaximumIndex()}
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     // TODO: add set method with ReplaceElementListener
     public void replace(final int index, final Element element)
@@ -46,7 +46,7 @@ extends ReplaceSequence<Element>, IndexSequence<Element> {
      * IndexSequence in proper sequence. Initially, the Iterator points to the
      * beginning of this IndexSequence, that is, the Element returned by the
      * first call to {@link ReplaceIndexSequenceIterator#next()} is the Element
-     * stored at {@link #getMinimumIndex()}.
+     * stored at {@link #getFirstIndex()}.
      * 
      * @return ReplaceIndexSequenceIterator over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence
@@ -69,7 +69,7 @@ extends ReplaceSequence<Element>, IndexSequence<Element> {
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
-     *         {@code startIndex < getMinimumIndex() || startIndex > getMaximumIndex()}
+     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
     public ReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)

@@ -34,11 +34,11 @@ implements MatrixRow<Element> {
     /** integer specifying the index of the row in the ArraySequenceMatrix that this MatrixRow represents */
     private int rowIndex;
 
-    /** integer specifying the minimum column index of the range of the row */
-    private int firstColumnIndex;
+    /** integer specifying the first column index of the range of the row */
+    private ColumnIndex firstColumnIndex;
 
-    /** integer specifying the maximum column index of the range of the row */
-    private int lastColumnIndex;
+    /** integer specifying the last column index of the range of the row */
+    private ColumnIndex lastColumnIndex;
 
     /**
      * Creates a new MatrixRow representing the specified row of the specified ArraySequenceMatrix.
@@ -52,7 +52,7 @@ implements MatrixRow<Element> {
      */
     protected DefaultMatrixRow(ArraySequenceMatrix<Element> matrix, int rowIndex)
     throws SequenceIndexOutOfBoundsException {
-        this(matrix, rowIndex, matrix.firstColumnIndex(), matrix.lastColumnIndex());
+        this(matrix, rowIndex, matrix.getFirstColumnIndex(), matrix.getLastColumnIndex());
     }
 
     /**
@@ -64,9 +64,9 @@ implements MatrixRow<Element> {
      * @param rowIndex
      *        integer specifying the index of the row in the ArraySequenceMatrix that this MatrixRow represents
      * @param firstColumnIndex
-     *        integer specifying the minimum column index of the range of the row
+     *        integer specifying the first column index of the range of the row
      * @param lastColumnIndex
-     *        integer specifying the maximum column index of the range of the row
+     *        integer specifying the last column index of the range of the row
      * @throws IllegalArgumentException
      *         if {@code firstColumnIndex > lastColumnIndex}
      * @throws SequenceIndexOutOfBoundsException
@@ -74,7 +74,7 @@ implements MatrixRow<Element> {
      *         {@code firstColumnIndex} or {@code lastColumnIndex} is not a valid column index of
      *         {@code matrix}
      */
-    protected DefaultMatrixRow(ArraySequenceMatrix<Element> matrix, int rowIndex, int firstColumnIndex, int lastColumnIndex)
+    protected DefaultMatrixRow(ArraySequenceMatrix<Element> matrix, ColumnIndex rowIndex, int firstColumnIndex, int lastColumnIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         super(firstColumnIndex, lastColumnIndex);
         this.matrix = matrix;
@@ -85,13 +85,13 @@ implements MatrixRow<Element> {
         if (firstColumnIndex > lastColumnIndex)
             throw new IllegalArgumentException();
 
-        if (rowIndex < matrix.minimumRowIndex() || rowIndex > matrix.maximumRowIndex())
+        if (rowIndex < matrix.getFirstRowIndex() || rowIndex > matrix.getLastRowIndex())
             throw new SequenceIndexOutOfBoundsException(this, rowIndex);
 
-        if (firstColumnIndex < matrix.firstColumnIndex())
+        if (firstColumnIndex < matrix.getFirstColumnIndex())
             throw new SequenceIndexOutOfBoundsException(this, firstColumnIndex);
 
-        if (lastColumnIndex > matrix.lastColumnIndex())
+        if (lastColumnIndex > matrix.getLastColumnIndex())
             throw new SequenceIndexOutOfBoundsException(this, lastColumnIndex);
     }
 
@@ -112,17 +112,17 @@ implements MatrixRow<Element> {
     }
 
     @Override
-    public final int getRowIndex() {
+    public final RowIndex getRowIndex() {
         return rowIndex;
     }
 
     @Override
-    public final int getMinColumnIndex() {
+    public final ColumnIndex getMinColumnIndex() {
         return firstColumnIndex;
     }
 
     @Override
-    public final int getMaxColumnIndex() {
+    public final ColumnIndex getMaxColumnIndex() {
         return lastColumnIndex;
     }
 }

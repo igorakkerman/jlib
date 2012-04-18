@@ -38,11 +38,11 @@ implements MatrixColumn<Element> {
      */
     private int columnIndex;
 
-    /** integer specifying the minimum row index of the range of the column */
-    private int minimumRowIndex;
+    /** integer specifying the first row index of the range of the column */
+    private RowIndex firstRowIndex;
 
-    /** integer specifying the maximum row index of the range of the column */
-    private int maximumRowIndex;
+    /** integer specifying the last row index of the range of the column */
+    private int lastRowindex;
 
     /**
      * Creates a new MatrixColumn representing the specified column of the
@@ -59,7 +59,7 @@ implements MatrixColumn<Element> {
      */
     protected DefaultMatrixColumn(ArraySequenceMatrix<Element> matrix, int columnIndex)
     throws SequenceIndexOutOfBoundsException {
-        this(matrix, columnIndex, matrix.minimumRowIndex(), matrix.maximumRowIndex());
+        this(matrix, columnIndex, matrix.getFirstRowIndex(), matrix.getLastRowIndex());
     }
 
     /**
@@ -73,41 +73,41 @@ implements MatrixColumn<Element> {
      *        integer specifying the index of the column in the ArraySequenceMatrix that this
      *        MatrixColumn represents
      * 
-     * @param minimumRowIndex
-     *        integer specifying the minimum row index of the range of the
+     * @param firstRowIndex
+     *        integer specifying the first row index of the range of the
      *        column
      * 
-     * @param maximumRowIndex
-     *        integer specifying the maximum row index of the range of the
+     * @param lastRowindex
+     *        integer specifying the last row index of the range of the
      *        column
      * 
      * @throws IllegalArgumentException
-     *         if {@code minimumRowIndex > maximumRowIndex}
+     *         if {@code firstRowIndex > lastRowindex}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code columnIndex} is not a valid column index of
-     *         {@code matrix} or either {@code minimumRowIndex} or
-     *         {@code maximumRowIndex} is not a valid row index of
+     *         {@code matrix} or either {@code firstRowIndex} or
+     *         {@code lastRowindex} is not a valid row index of
      *         {@code matrix}
      */
-    public DefaultMatrixColumn(ArraySequenceMatrix<Element> matrix, int columnIndex, int minimumRowIndex, int maximumRowIndex)
+    public DefaultMatrixColumn(ArraySequenceMatrix<Element> matrix, RowIndex columnIndex, int firstRowIndex, int lastRowindex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
 
-        super(minimumRowIndex, maximumRowIndex);
+        super(firstRowIndex, lastRowindex);
 
         this.matrix = matrix;
         this.columnIndex = columnIndex;
-        this.minimumRowIndex = minimumRowIndex;
-        this.maximumRowIndex = maximumRowIndex;
+        this.firstRowIndex = firstRowIndex;
+        this.lastRowIndex = maximumRowindex;
 
-        if (columnIndex < matrix.firstColumnIndex() || columnIndex > matrix.lastColumnIndex())
+        if (columnIndex < matrix.getFirstColumnIndex() || columnIndex > matrix.getLastColumnIndex())
             throw new SequenceIndexOutOfBoundsException(this, columnIndex);
 
-        if (minimumRowIndex < matrix.minimumRowIndex())
-            throw new SequenceIndexOutOfBoundsException(this, minimumRowIndex);
+        if (firstRowIndex < matrix.getFirstRowIndex())
+            throw new SequenceIndexOutOfBoundsException(this, firstRowIndex);
 
-        if (maximumRowIndex > matrix.maximumRowIndex())
-            throw new SequenceIndexOutOfBoundsException(this, maximumRowIndex);
+        if (lastRowIndex > matrix.getLastRowindex())
+            throw new SequenceIndexOutOfBoundsException(this, lastRowindex);
     }
 
     @Override
@@ -127,17 +127,17 @@ implements MatrixColumn<Element> {
     }
 
     @Override
-    public final int getMinimumRowIndex() {
-        return minimumRowIndex;
+    public final RowIndex getFirstRowIndex() {
+        return firstRowIndex;
     }
 
     @Override
-    public final int getMaximumRowIndex() {
-        return maximumRowIndex;
+    public final RowIndex getMaximumRowIndex() {
+        return lastRowindex;
     }
 
     @Override
-    public final int getColumnIndex() {
+    public final ColumnIndex getColumnIndex() {
         return columnIndex;
     }
 }

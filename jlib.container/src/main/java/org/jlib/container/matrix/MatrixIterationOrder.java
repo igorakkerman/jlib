@@ -9,12 +9,12 @@ package org.jlib.container.matrix;
 public interface MatrixIterationOrder {
 
     /**
-     * Creates a new {@link AbstractMatrixIterator} for the specified {@link Matrix}
+     * Creates a new {@link AbstractIndexMatrixIterator} for the specified {@link Matrix}
      * 
      * @param matrix
      *        {@link Matrix} to traverse
      * 
-     * @return new {@link AbstractMatrixIterator} over the Elements of
+     * @return new {@link AbstractIndexMatrixIterator} over the Elements of
      *         {@code matrix}
      */
     public <Element> MatrixIterator<Element> createIterator(final ArraySequenceMatrix<Element> matrix);

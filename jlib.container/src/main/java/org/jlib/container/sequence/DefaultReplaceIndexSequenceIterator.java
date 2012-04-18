@@ -39,7 +39,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      *        ReplaceIndexSequence to traverse
      */
     protected DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence) {
-        this(replaceIndexSequence, replaceIndexSequence.getMinimumIndex());
+        this(replaceIndexSequence, replaceIndexSequence.getFirstIndex());
     }
 
     /**
@@ -55,7 +55,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      * 
      * @throws IndexOutOfBoundsException
      *         if
-     *         {@code startIndex < replaceIndexSequence.getMinimumIndex() || startIndex > replaceIndexSequence.getMaximumIndex()}
+     *         {@code startIndex < replaceIndexSequence.getFirstIndex() || startIndex > replaceIndexSequence.getLastIndex()}
      */
     protected DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence, int startIndex)
     throws IndexOutOfBoundsException {

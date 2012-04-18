@@ -36,22 +36,22 @@ extends ReplaceIndexSequence<Element> {
     public ArraySequenceMatrix<Element> getMatrix();
 
     /**
-     * Returns the minimum row index of the range of the column that this MatrixColumn
+     * Returns the first row index of the range of the column that this MatrixColumn
      * represents.
      *
-     * @return integer specifying the minimum row index of the range of the column that
+     * @return integer specifying the first row index of the range of the column that
      *         this MatrixColumn represents
      */
-    public int getMinimumRowIndex();
+    public RowIndex getFirstRowIndex();
 
     /**
-     * Returns the maximum row index of the range of the column that this MatrixColumn
+     * Returns the last row index of the range of the column that this MatrixColumn
      * represents.
      *
-     * @return integer specifying the maximum row index of the range of the column that
+     * @return integer specifying the last row index of the range of the column that
      *         this MatrixColumn represents
      */
-    public int getMaximumRowIndex();
+    public RowIndex getMaximumRowIndex();
 
     /**
      * Returns the index of the column that this MatrixColumn represents.
@@ -59,6 +59,6 @@ extends ReplaceIndexSequence<Element> {
      * @return integer specifying the index of the column that this MatrixColumn
      *         represents
      */
-    public int getColumnIndex();
+    public ColumnIndex getColumnIndex();
 
 }

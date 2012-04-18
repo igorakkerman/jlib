@@ -36,31 +36,31 @@ extends Sequence<Element>, RandomAccess {
      *        integer specifying the index of the stored Element
      * @return Element stored at {@code index}
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index < getMinimumIndex() || index > getMaximumIndex()}
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     public Element get(final int index)
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns the minimum index of this IndexSequence.
+     * Returns the first index of this indexSequence.
      * 
      * @return integer specifying the minimum index
      */
-    public int getMinimumIndex();
+    public int getFirstIndex();
 
     /**
-     * Returns the maximum index of this IndexSequence.
+     * Returns the last index of this indexSequence.
      * 
      * @return integer specifying the maximum index
      */
-    public int getMaximumIndex();
+    public int getLastIndex();
 
     /**
      * Returns an IndexSequenceIterator traversing the Elements of this
      * IndexSequence in proper sequence. Initially, the Iterator points to the
      * beginning of this IndexSequence, that is, the Element returned by the
      * first call to {@code nextIndex()} is the Element stored at
-     * {@code getMinimumIndex()}.
+     * {@code getFirstIndex()}.
      * 
      * @return {@link IndexSequenceIterator} over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence
@@ -83,7 +83,7 @@ extends Sequence<Element>, RandomAccess {
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
-     *         {@code startIndex < getMinimumIndex() || startIndex > getMaximumIndex()}
+     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     public IndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
@@ -129,9 +129,9 @@ extends Sequence<Element>, RandomAccess {
      *         if {@code fromIndex > toIndex}
      * @throws SequenceIndexOutOfBoundsException
      *         if
-     *         {@code fromIndex < getMinimumIndex() || toIndex > getMaximumIndex()}
+     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
      */
-    public List<Element> subList(final int fromIndex, final int toIndex)
+    public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException;
 
     /**
@@ -148,9 +148,9 @@ extends Sequence<Element>, RandomAccess {
      *         if {@code fromIndex > toIndex}
      * @throws SequenceIndexOutOfBoundsException
      *         if
-     *         {@code fromIndex < getMinimumIndex() || toIndex > getMaximumIndex()}
+     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
      */
-    public IndexSequence<Element> subSequence(final int fromIndex, final int toIndex)
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException;
 
     /**

@@ -28,97 +28,15 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.SequenceIterator;
 
 /**
- * <p>
- * Fixed sized matrix. Replacement for two-dimensional arrays with special
- * features.
- * </p>
- * <p>
- * The only syntactical difference to two-dimensinal arrays lies in the syntax
- * of setting and getting objects:
- * </p>
+ * {@link IndexMatrix} backed by an {@link ArraySequence}.
  * 
- * <pre>
- * 
- * {
- *     &#064;literal
- *     // good(?) old two-dimensional array           // cool(!) new jlib ArraySequenceMatrix class
- *     String[][] stringMatrix = new String[10][5];
- *     ArraySequenceMatrix&lt;String&gt; stringMatrix = new ArraySequenceMatrix&lt;String&gt;(10, 5);
- *     stringMatrix[2][3] = &quot;Too old!&quot;;
- *     stringMatrix.set(2, 3, &quot;Brand-new!&quot;);
- *     String s = stringMatrix[2][3];
- *     String s = stringMatrix.get(2, 3);
- * }
- * </pre>
- * 
- * <p>
- * Special features:
- * </p>
- * <ul>
- * <li>Minimum and maximum width and height:<br/>
- * On instantiation, you can specify the minimum and the maximum width and
- * height of the ArraySequenceMatrix. Thus, no offset is necessary for matrices
- * starting at other indices than 0. The following example illustrates how a
- * (4x2)-ArraySequenceMatrix with indices starting at 1, in which every entry is
- * the product of the column and row number:
- * 
- * <pre>
- * 
- * {
- *     &#064;literal
- *     // good(?) old two-dimensional array             // cool(!) new jlib ArraySequenceMatrix class
- *     Integer[][] integerMatrix = new Integer[4][2];
- *     ArraySequenceMatrix&lt;Integer&gt; integerMatrix = new ArraySequenceMatrix&lt;Integer&gt;(4, 2);
- *     for (int row = 1; row &lt;= 2; row ++)
- *         for (int row = 1; row &lt;= 2; row ++)
- *             for (int col = 1; col &lt;= 4; col ++)
- *                 for (int col = 1; col &lt;= 4; col ++)
- *                     integerMatrix[col - 1][row - 1] = col * row;
- *     integerMatrix.set(col, row, col * row);
- * }
- * </pre>
- * 
- * </li>
- * <li>Conformance to the Collections Framework <br/>
- * The class implements the {@code Collection} interface and thus behaves like
- * all Collections.</li>
- * <br />
- * <li>Full support for generics:<br/>
- * The Java arrays do not support generic classes. For example, you cannot
- * create an array of String Sequences:
- * 
- * <pre>
- * 
- * {
- *     &#064;literal
- *     // FORBIDDEN!
- *     Set&lt;String&gt;[][] stringSetMatrix = new Set&lt;String&gt;[4][2];
- * 
- *     // PERMITTED!
- *     ArraySequenceMatrix&lt;Set&lt;String&gt;&gt; stringSetMatrix = new ArraySequenceMatrix&lt;Set&lt;String&gt;&gt;(4, 2);
- * }
- * </pre>
- * 
- * </li>
- * </ul>
- * <p>
- * <!-- TODO: update documentation --> A default algorithm of how this
- * ArraySequenceMatrix is traversed by {@link Iterator Iterators} returned by
- * {@link #iterator()} can be defined specifying a default {@link Iterable} as
- * iterable provider.
- * </p>
- * <p>
- * A ArraySequenceMatrix has a fixed size, thus no Elements can be added to or
- * removed from it. The corresponding methods for adding and removing Elements
- * all throw an {@link UnsupportedOperationException}.
- * </p>
- * 
- * @param <Element>
- *        type of the elements held in the ArraySequenceMatrix
+ * @param <Entry>
+ *        type of the entries held in the {@link ArraySequenceMatrix}
+ *        
  * @author Igor Akkerman
  */
-public class ArraySequenceMatrix<Element>
-extends AbstractContainer<Element> {
+public class ArraySequenceMatrix<Entry>
+extends AbstractContainer<Entry> implements IndexMatrix<Integer, Integer, Entry> {
 
     /** number of columns */
     private int width;
@@ -126,20 +44,20 @@ extends AbstractContainer<Element> {
     /** number of rows */
     private int height;
 
-    /** minimum column index */
-    private int firstColumnIndex;
+    /** first column index */
+    private ColumnIndex firstColumnIndex;
 
-    /** maximum column index */
-    private int lastColumnIndex;
+    /** last column index */
+    private ColumnIndex lastColumnIndex;
 
-    /** minimum row index */
-    private int minimumRowIndex;
+    /** first row index */
+    private RowIndex firstRowIndex;
 
-    /** maximum row index */
-    private int maximumRowIndex;
+    /** last row index */
+    private int lastRowindex;
 
     /** ArraySequenceMatrix data */
-    private ArraySequence<ArraySequence<Element>> matrixData;
+    private ArraySequence<ArraySequence<Entry>> matrixData;
 
     /**
      * {@link MatrixIterationOrder} used by each {@link Iterator} returned by
@@ -171,13 +89,13 @@ extends AbstractContainer<Element> {
             construct(0, width - 1, 0, height - 1);
         }
         else {
-            minimumRowIndex = -1;
-            maximumRowIndex = -1;
+            firstRowIndex = -1;
+            lastRowindex = -1;
             firstColumnIndex = -1;
             lastColumnIndex = -1;
             this.width = width;
             this.height = height;
-            matrixData = new ArraySequence<ArraySequence<Element>>();
+            matrixData = new ArraySequence<ArraySequence<Entry>>();
 
             defaultIterationOrder = MatrixUtility.HORIZONTAL;
         }
@@ -188,58 +106,58 @@ extends AbstractContainer<Element> {
      * column and row indices.
      * 
      * @param firstColumnIndex
-     *        minimum column index
+     *        first column index
      * @param lastColumnIndex
-     *        maximum column index
-     * @param minimumRowIndex
-     *        minimum row index
-     * @param maximumRowIndex
-     *        maximum row index
+     *        last column index
+     * @param firstRowIndex
+     *        first row index
+     * @param lastRowindex
+     *        last row index
      * @throws IllegalArgumentException
      *         if
      *         {@code firstColumnIndex < 0 || lastColumnIndex < firstColumnIndex
-     *         || minimumRowIndex < 0 || maximumRowIndex < minimumRowIndex}
+     *         || firstRowIndex < 0 || lastRowIndex < firstRowindex}
      */
-    public ArraySequenceMatrix(int firstColumnIndex, int lastColumnIndex, int minimumRowIndex, int maximumRowIndex) {
+    public ArraySequenceMatrix(ColumnIndex firstColumnIndex, RowIndex lastColumnIndex, int firstRowIndex, int lastRowindex) {
         super();
-        construct(firstColumnIndex, lastColumnIndex, minimumRowIndex, maximumRowIndex);
+        construct(firstColumnIndex, lastColumnIndex, firstRowIndex, lastRowindex);
     }
 
     /**
      * Constructs this ArraySequenceMatrix.
      * 
      * @param firstColumnIndex
-     *        minimum column index
+     *        first column index
      * @param lastColumnIndex
-     *        maximum column index
-     * @param minimumRowIndex
-     *        minimum row index
-     * @param maximumRowIndex
-     *        maximum row index
+     *        last column index
+     * @param firstRowIndex
+     *        first row index
+     * @param lastRowindex
+     *        last row index
      * @throws IllegalArgumentException
      *         if
      *         {@code firstColumnIndex < 0 || lastColumnIndex < firstColumnIndex
-     *         || minimumRowIndex < 0 || maximumRowIndex < minimumRowIndex}
+     *         || firstRowIndex < 0 || lastRowIndex < firstRowindex}
      */
 
-    private void construct(@SuppressWarnings("hiding") int firstColumnIndex,
-                           @SuppressWarnings("hiding") int lastColumnIndex,
-                           @SuppressWarnings("hiding") int minimumRowIndex,
-                           @SuppressWarnings("hiding") int maximumRowIndex) {
-        if (firstColumnIndex < 0 || firstColumnIndex > lastColumnIndex || minimumRowIndex < 0 ||
-            minimumRowIndex > maximumRowIndex)
+    private void construct(@SuppressWarnings("hiding") ColumnIndex firstColumnIndex,
+                           @SuppressWarnings("hiding") ColumnIndex lastColumnIndex,
+                           @SuppressWarnings("hiding") RowIndex firstRowIndex,
+                           @SuppressWarnings("hiding") int lastRowindex) {
+        if (firstColumnIndex < 0 || firstColumnIndex > lastColumnIndex || firstRowIndex < 0 ||
+            firstRowIndex > lastRowindex)
             throw new IllegalArgumentException();
 
         this.firstColumnIndex = firstColumnIndex;
         this.lastColumnIndex = lastColumnIndex;
-        this.minimumRowIndex = minimumRowIndex;
-        this.maximumRowIndex = maximumRowIndex;
+        this.firstRowIndex = firstRowIndex;
+        this.lastRowIndex = maximumRowindex;
         this.width = lastColumnIndex - firstColumnIndex + 1;
-        this.height = maximumRowIndex - minimumRowIndex + 1;
+        this.height = lastRowIndex - firstRowindex + 1;
 
-        matrixData = new ArraySequence<ArraySequence<Element>>(minimumRowIndex, maximumRowIndex);
-        for (int rowIndex = minimumRowIndex; rowIndex <= maximumRowIndex; rowIndex ++)
-            matrixData.replace(rowIndex, new ArraySequence<Element>(firstColumnIndex, lastColumnIndex));
+        matrixData = new ArraySequence<ArraySequence<Entry>>(firstRowIndex, lastRowindex);
+        for (RowIndex rowIndex = firstRowIndex; rowIndex <= lastRowIndex; rowindex ++)
+            matrixData.replace(rowIndex, new ArraySequence<Entry>(firstColumnIndex, lastColumnIndex));
 
         defaultIterationOrder = MatrixUtility.HORIZONTAL;
     }
@@ -259,7 +177,7 @@ extends AbstractContainer<Element> {
      *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
      *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
      */
-    public Element get(int columnIndex, int rowIndex)
+    public Entry get(int columnIndex, int rowIndex)
     throws SequenceIndexOutOfBoundsException {
         return matrixData.get(rowIndex).get(columnIndex);
     }
@@ -279,7 +197,7 @@ extends AbstractContainer<Element> {
      *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
      *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
      */
-    public void set(int columnIndex, int rowIndex, Element element) {
+    public void set(int columnIndex, int rowIndex, Entry element) {
         matrixData.get(rowIndex).replace(columnIndex, element);
     }
 
@@ -291,8 +209,8 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the column
      * @return MatrixColumn representing the column with {@code nextColumnIndex}
      */
-    public MatrixColumn<Element> column(int columnIndex) {
-        return new DefaultMatrixColumn<Element>(this, columnIndex);
+    public MatrixColumn<Entry> column(int columnIndex) {
+        return new DefaultMatrixColumn<Entry>(this, columnIndex);
     }
 
     /**
@@ -301,18 +219,18 @@ extends AbstractContainer<Element> {
      * 
      * @param columnIndex
      *        integer specifying the index of the column
-     * @param minimumRowIndex
-     *        integer specifying the minimum row index of the portion of the
+     * @param firstRowIndex
+     *        integer specifying the first row index of the portion of the
      *        column
-     * @param maximumRowIndex
-     *        integer specifying the maximum row index of the portion of the
+     * @param lastRowindex
+     *        integer specifying the last row index of the portion of the
      *        column
      * @return MatrixColumn representing the specified portion of the column
      *         with {@code nextColumnIndex}
      */
-    public MatrixColumn<Element> column(int columnIndex, @SuppressWarnings("hiding") int minimumRowIndex,
-                                        @SuppressWarnings("hiding") int maximumRowIndex) {
-        return new DefaultMatrixColumn<Element>(this, columnIndex, minimumRowIndex, maximumRowIndex);
+    public MatrixColumn<Entry> column(RowIndex columnIndex, @SuppressWarnings("hiding") int firstRowIndex,
+                                        @SuppressWarnings("hiding") int lastRowindex) {
+        return new DefaultMatrixColumn<Entry>(this, columnIndex, firstRowIndex, lastRowindex);
     }
 
     /**
@@ -323,8 +241,8 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the row
      * @return MatrixRow representing the row with {@code nextRowIndex}
      */
-    public MatrixRow<Element> row(int rowIndex) {
-        return new DefaultMatrixRow<Element>(this, rowIndex);
+    public MatrixRow<Entry> row(int rowIndex) {
+        return new DefaultMatrixRow<Entry>(this, rowIndex);
     }
 
     /**
@@ -334,18 +252,18 @@ extends AbstractContainer<Element> {
      * @param rowIndex
      *        integer specifying the index of the row
      * @param firstColumnIndex
-     *        integer specifying the minimum column index of the portion of the
+     *        integer specifying the first column index of the portion of the
      *        row
      * @param lastColumnIndex
-     *        integer specifying the maximum column index of the portion of the
+     *        integer specifying the last column index of the portion of the
      *        row
      * @return MatrixRow representing the specified portion of the row with
      *         {@code nextRowIndex}
      */
     // TODO: maybe it would be more appropriate to name these kinds of parameters using start/end or first/last
-    public MatrixRow<Element> row(int rowIndex, @SuppressWarnings("hiding") int firstColumnIndex,
-                                  @SuppressWarnings("hiding") int lastColumnIndex) {
-        return new DefaultMatrixRow<Element>(this, rowIndex, firstColumnIndex, lastColumnIndex);
+    public MatrixRow<Entry> row(ColumnIndex rowIndex, @SuppressWarnings("hiding") int firstColumnIndex,
+                                  @SuppressWarnings("hiding") ColumnIndex lastColumnIndex) {
+        return new DefaultMatrixRow<Entry>(this, rowIndex, firstColumnIndex, lastColumnIndex);
     }
 
     /**
@@ -353,53 +271,57 @@ extends AbstractContainer<Element> {
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixRow<Element>> rowsSequence() {
-        return new MatrixRowsSequence<Element>(this);
+    public IndexSequence<MatrixRow<Entry>> rowsSequence() {
+        return new MatrixRowsSequence<Entry>(this);
     }
 
     /**
      * Returns the Sequence of the MatrixColumns of this ArraySequenceMatrix.
      * 
-     * @return IndexSequence of the MatrixColumns of this ArraySequenceMatrix
+     * @return {@link IndexSequence} of the {@link MatrixColumn MatrixColumns} of this {@link ArraySequenceMatrix}
      */
-    public IndexSequence<MatrixColumn<Element>> columnsSequence() {
-        return new MatrixColumnsSequence<Element>(this);
+    public IndexSequence<MatrixColumn<Entry>> columnsSequence() {
+        return new MatrixColumnsSequence<Entry>(this);
     }
 
     /**
-     * Returns the minimum column index of this ArraySequenceMatrix.
+     * Returns the first column index of this ArraySequenceMatrix.
      * 
-     * @return integer specifying the minimum column of this ArraySequenceMatrix
+     * @return {@link Integer} specifying the minimum column of this ArraySequenceMatrix
      */
-    public int firstColumnIndex() {
+    @Override
+    public Integer getFirstColumnIndex() {
         return firstColumnIndex;
     }
 
     /**
-     * Returns the maximum column index of this ArraySequenceMatrix.
+     * Returns the last column index of this ArraySequenceMatrix.
      * 
-     * @return integer specifying the maximum column of this ArraySequenceMatrix
+     * @return {@link Integer} specifying the maximum column of this ArraySequenceMatrix
      */
-    public int lastColumnIndex() {
+    @Override
+    public Integer getLastColumnIndex() {
         return lastColumnIndex;
     }
 
     /**
-     * Returns the minimum row index of this ArraySequenceMatrix.
+     * Returns the first row index of this ArraySequenceMatrix.
      * 
-     * @return integer specifying the minimum row of this ArraySequenceMatrix
+     * @return {@link Integer} specifying the minimum row of this ArraySequenceMatrix
      */
-    public int minimumRowIndex() {
-        return minimumRowIndex;
+    @Override
+    public Integer getFirstRowIndex() {
+        return firstRowIndex;
     }
 
     /**
-     * Returns the maximum row index of this ArraySequenceMatrix.
+     * Returns the last row index of this ArraySequenceMatrix.
      * 
-     * @return integer specifying the maximum row of this ArraySequenceMatrix
+     * @return {@link Integer} specifying the maximum row of this ArraySequenceMatrix
      */
-    public int maximumRowIndex() {
-        return maximumRowIndex;
+    @Override
+    public Integer getLastRowIndex() {
+        return lastRowindex;
     }
 
     /**
@@ -407,7 +329,8 @@ extends AbstractContainer<Element> {
      * 
      * @return integer specifying the width
      */
-    public int width() {
+    @Override
+    public int getWidth() {
         return width;
     }
 
@@ -416,7 +339,8 @@ extends AbstractContainer<Element> {
      * 
      * @return integer specifying the height
      */
-    public int height() {
+    @Override
+    public int getHeight() {
         return height;
     }
 
@@ -432,18 +356,18 @@ extends AbstractContainer<Element> {
     }
 
     /**
-     * Creates a {@link AbstractMatrixIterator} traversing the Elements of this
+     * Creates a {@link AbstractIndexMatrixIterator} traversing the Elements of this
      * {@link ArraySequenceMatrix}. The order in which the Elements are
      * traversed is specified using
      * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
      * 
-     * @return a new {@link AbstractMatrixIterator} for this ArraySequenceMatrix
+     * @return a new {@link AbstractIndexMatrixIterator} for this ArraySequenceMatrix
      * 
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder
      */
     @Override
-    public MatrixIterator<Element>createIterator() {
+    public MatrixIterator<Entry>createIterator() {
         return defaultIterationOrder.createIterator(this);
     }
 
@@ -467,7 +391,7 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the column to traverse
      * @return a new column {@link SequenceIterator} for this ArraySequenceMatrix
      */
-    public ReplaceIndexSequenceIterator<Element> createColumnIterator(int columnIndex) {
+    public ReplaceIndexSequenceIterator<Entry> createColumnIterator(int columnIndex) {
         return column(columnIndex).createIterator();
     }
 
@@ -479,7 +403,7 @@ extends AbstractContainer<Element> {
      *        integer specifying the index of the row to traverse
      * @return a new row {@link SequenceIterator} for this ArraySequenceMatrix
      */
-    public ReplaceIndexSequenceIterator<Element> createRowIterator(int rowIndex) {
+    public ReplaceIndexSequenceIterator<Entry> createRowIterator(int rowIndex) {
         return row(rowIndex).createIterator();
     }
 

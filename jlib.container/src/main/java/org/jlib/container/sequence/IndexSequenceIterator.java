@@ -29,7 +29,7 @@ extends SequenceIterator<Element> {
      * Returns the previous Element of this Iterator.
      * 
      * @return the previous Element of this Iterator; returns
-     *         {@code getMinimumIndex() - 1} if there is no previous Element
+     *         {@code getFirstIndex() - 1} if there is no previous Element
      */
     public int previousIndex();
 
@@ -37,7 +37,7 @@ extends SequenceIterator<Element> {
      * Returns the next Element of this Iterator.
      * 
      * @return the next Element of this Iterator; returns
-     *         {@code getMaximumIndex() + 1} if there is no next Element
+     *         {@code getLastIndex() + 1} if there is no next Element
      * 
      * @throws IllegalStateException
      *         if no Element has been returned by this

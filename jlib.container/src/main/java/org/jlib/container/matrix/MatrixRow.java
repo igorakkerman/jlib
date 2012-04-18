@@ -38,23 +38,23 @@ extends ReplaceIndexSequence<Element> {
      *
      * @return integer specifying the index of the row that this MatrixRow represents
      */
-    public int getRowIndex();
+    public RowIndex getRowIndex();
 
     /**
-     * Returns the minimum column index of the range of the row that this MatrixColumn
+     * Returns the first column index of the range of the row that this MatrixColumn
      * represents.
      *
-     * @return integer specifying the minimum column index of the range of the row that
+     * @return integer specifying the first column index of the range of the row that
      *         this MatrixColumn represents
      */
-    public int getMinColumnIndex();
+    public ColumnIndex getMinColumnIndex();
 
     /**
-     * Returns the maximum column index of the range of the row that this MatrixColumn
+     * Returns the last column index of the range of the row that this MatrixColumn
      * represents.
      *
-     * @return integer specifying the maximum column index of the range of the row that
+     * @return integer specifying the last column index of the range of the row that
      *         this MatrixColumn represents
      */
-    public int getMaxColumnIndex();
+    public ColumnIndex getMaxColumnIndex();
 }

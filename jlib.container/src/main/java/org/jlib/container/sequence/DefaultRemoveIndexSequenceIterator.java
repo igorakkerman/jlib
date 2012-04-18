@@ -54,7 +54,7 @@ implements RemoveSequenceIterator<Element>, IndexSequenceIterator<Element> {
      * @param startIndex
      *        integer specifying the start index of the traversal
      * @throws IndexOutOfBoundsException
-     *         if {@code startIndex < matrix.getMinimumIndex() || matrix.maximumIndex > startIndex}
+     *         if {@code startIndex < matrix.getFirstIndex() || matrix.lastIndex > startindex}
      */
     protected DefaultRemoveIndexSequenceIterator(final RemoveIndexSequence<Element> sequence, int startIndex)
     throws IndexOutOfBoundsException {

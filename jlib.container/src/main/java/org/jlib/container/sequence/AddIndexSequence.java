@@ -32,7 +32,7 @@ extends AddSequence<Element>, IndexSequence<Element> {
      * Sequence in proper sequence. Initially, the Iterator points to the
      * beginning of this Sequence, that is, the Element returned by the first
      * call to {@link AddIndexSequenceIterator#next()} is the Element stored at
-     * {@link #getMinimumIndex()}.
+     * {@link #getFirstIndex()}.
      * 
      * @return AddIndexSequenceIterator over this IndexSequence initially
      *         pointing to the beginning of this Sequence
@@ -55,7 +55,7 @@ extends AddSequence<Element>, IndexSequence<Element> {
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
-     *         {@code startIndex < getMinimumIndex() || startIndex > getMaximumIndex()}
+     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
     public AddIndexSequenceIterator<Element> createIterator(int startIndex)

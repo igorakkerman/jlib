@@ -42,7 +42,7 @@ implements AddIndexSequence<Element> {
      *        integer specifying the initial last index
      * 
      * @throws IllegalArgumentException
-     *         if {@code  maximumIndex < firstIndex}
+     *         if {@code  lastIndex < firstIndex}
      */
     public AbstractNonEmptyAddIndexSequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);

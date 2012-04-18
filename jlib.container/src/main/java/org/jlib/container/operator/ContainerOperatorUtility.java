@@ -174,11 +174,11 @@ public final class ContainerOperatorUtility {
             container instanceof IndexSequence<?> ? (IndexSequence<Value>) container
                                                  : new ArraySequence<Value>(1, container);
 
-        int sequenceIndex = sequence.getMaximumIndex();
-        int minimumSequenceIndex = sequence.getMinimumIndex();
+        int sequenceIndex = sequence.getLastIndex();
+        int firstSequenceIndex = sequence.getMinimumindex();
 
         Value result = sequence.get(sequenceIndex);
-        while (-- sequenceIndex >= minimumSequenceIndex)
+        while (-- sequenceIndex >= firstSequenceindex)
             result = operator.operate(sequence.get(sequenceIndex), result);
 
         return result;

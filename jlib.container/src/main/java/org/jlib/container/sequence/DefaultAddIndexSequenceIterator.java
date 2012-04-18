@@ -57,7 +57,7 @@ implements AddIndexSequenceIterator<Element> {
      *        integer specifying the start index of the traversal
      * @throws IndexOutOfBoundsException
      *         if
-     *         {@code startIndex < matrix.getMinimumIndex() || matrix.maximumIndex > startIndex}
+     *         {@code startIndex < matrix.getFirstIndex() || matrix.lastIndex > startindex}
      */
     protected DefaultAddIndexSequenceIterator(final AddIndexSequence<Element> sequence, int startIndex)
     throws IndexOutOfBoundsException {
