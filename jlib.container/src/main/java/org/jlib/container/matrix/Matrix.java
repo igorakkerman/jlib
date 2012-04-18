@@ -94,28 +94,28 @@ import org.jlib.container.sequence.IndexSequence;
  * all throw an {@link UnsupportedOperationException}.
  * </p>
  * 
- * @param <Element>
- *        type of the elements held in the ArraySequenceMatrix
- *        TODO: change from <Element> to <Entry> as called in a Matrix
+ * @param <Entry>
+ *        type of the entries of the {@link Matrix}
+ *        
  * @author Igor Akkerman
  */
 //@formatter:on
-public interface Matrix<Element>
-extends Container<Element>, MatrixIterable<Element> {
+public interface Matrix<Entry>
+extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
      * Returns the Sequence of the MatrixRows of this ArraySequenceMatrix.
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixRow<Element>> getRows();
+    public IndexSequence<MatrixRow<Entry>> getRows();
 
     /**
      * Returns the Sequence of the MatrixColumns of this ArraySequenceMatrix.
      * 
      * @return IndexSequence of the MatrixColumns of this ArraySequenceMatrix
      */
-    public IndexSequence<MatrixColumn<Element>> getColumns();
+    public IndexSequence<MatrixColumn<Entry>> getColumns();
 
     /**
      * Returns the width of this ArraySequenceMatrix.
@@ -152,7 +152,7 @@ extends Container<Element>, MatrixIterable<Element> {
      * @see MatrixIterationOrder
      */
     @Override
-    public MatrixIterator<Element> createIterator();
+    public MatrixIterator<Entry> createIterator();
 
     /**
      * <p>
@@ -176,7 +176,7 @@ extends Container<Element>, MatrixIterable<Element> {
      *         traversing the Elements of this {@link Matrix} using the
      *         specified {@link MatrixIterationOrder}.
      */
-    public MatrixIterable<Element> iteratedInOrder(final MatrixIterationOrder iterationOrder);
+    public MatrixIterable<Entry> iteratedInOrder(final MatrixIterationOrder iterationOrder);
 
     /**
      * Registers the {@link MatrixIterationOrder} used by each {@link Iterator}
