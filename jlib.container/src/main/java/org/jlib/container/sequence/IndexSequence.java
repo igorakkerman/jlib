@@ -99,7 +99,7 @@ extends Sequence<Element>, RandomAccess {
      * @throws NoSuchElementException
      *         if this IndexSequence does not contain {@code element}
      */
-    public int indexOf(final Element element)
+    public int getFirstIndexOf(final Element element)
     throws NoSuchElementException;
 
     /**
@@ -113,7 +113,7 @@ extends Sequence<Element>, RandomAccess {
      * @throws NoSuchElementException
      *         if this IndexSequence does not contain {@code element}
      */
-    public int lastIndexOf(final Element element)
+    public int getLastIndexOf(final Element element)
     throws NoSuchElementException;
 
     /**

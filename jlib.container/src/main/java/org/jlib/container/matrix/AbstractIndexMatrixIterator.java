@@ -17,94 +17,90 @@ package org.jlib.container.matrix;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+// TODO: convert to AbstractMatrixIterator using matrix.getRows() and matrix.getColumns();
+
 /**
  * Iterator over a {@link IndexMatrix}.
  * 
- * @param <int>
- *        type of column indices
- * 
- * @param <int>
- *        type of row indices
- * 
  * @param <Entry>
- *        type of entries stored in the ArraySequenceMatrix
+ *        type of entries stored in the IndexMatrix
  * 
  * @author Igor Akkerman
  */
-public abstract class AbstractIndexMatrixIterator<Entry, int, int>
-implements Iterator<Entry>, MatrixIterator<Entry> {
+public abstract class AbstractIndexMatrixIterator<Entry>
+extends AbstractMatrixIterator<Entry> {
 
     /** matrix containing the elements */
-    protected ArraySequenceMatrix<Entry> matrix;
+    protected IndexMatrix<Entry> matrix;
 
     /** first column index */
-    protected int firstint;
+    protected Integer firstColumnIndex;
 
     /** last column index */
-    protected int lastint;
+    protected Integer lastColumnIndex;
 
     /** first row index */
-    protected int firstint;
+    protected Integer firstRowIndex;
 
     /** last row index */
-    protected int lastRowindex;
+    protected Integer lastRowIndex;
 
     /** column index of the next Element */
-    protected int nextElementint;
+    protected Integer nextElementColumnIndex;
 
     /** row index of the next Element */
-    protected int nextElementint;
+    protected Integer nextElementRowIndex;
 
     /**
      * Creates a new AbstractIndexMatrixIterator for the specified
-     * ArraySequenceMatrix.
+     * IndexMatrix.
      * 
      * @param matrix
-     *        ArraySequenceMatrix to traverse
+     *        IndexMatrix to traverse
      */
-    protected AbstractIndexMatrixIterator(final ArraySequenceMatrix<Entry> matrix) {
-        this(matrix, matrix.getFirstint(), matrix.getLastint(), matrix.getFirstint(),
-             matrix.getLastint());
+    protected AbstractIndexMatrixIterator(final IndexMatrix<Entry> matrix) {
+        this(matrix, matrix.getFirstColumnIndex(), matrix.getLastColumnIndex(), matrix.getFirstRowIndex(),
+             matrix.getLastRowIndex());
     }
 
     /**
      * Creates a new AbstractIndexMatrixIterator for the specified portion of
-     * the specified ArraySequenceMatrix.
+     * the specified IndexMatrix.
      * 
      * @param matrix
-     *        ArraySequenceMatrix to traverse
-     * @param firstint
+     *        IndexMatrix to traverse
+     * @param firstColumnIndex
      *        integer specifying the first column index of the
-     *        ArraySequenceMatrix portion
-     * @param lastint
+     *        IndexMatrix portion
+     * @param lastColumnIndex
      *        integer specifying the last column index of the
-     *        ArraySequenceMatrix portion
-     * @param firstint
-     *        integer specifying the first row index of the ArraySequenceMatrix
+     *        IndexMatrix portion
+     * @param firstRowIndex
+     *        integer specifying the first row index of the IndexMatrix
      *        portion
-     * @param lastRowindex
-     *        integer specifying the last row index of the ArraySequenceMatrix
+     * @param lastRowIndex
+     *        integer specifying the last row index of the IndexMatrix
      *        portion
      */
-    protected AbstractIndexMatrixIterator(final ArraySequenceMatrix<Entry> matrix, final int firstint,
-                                          final int lastint, int firstint, int lastRowindex) {
+    protected AbstractIndexMatrixIterator(final IndexMatrix<Entry> matrix, final int firstColumnIndex,
+                                          final int lastColumnIndex, int firstRowIndex, int lastRowIndex) {
         super();
 
         this.matrix = matrix;
 
-        this.firstint = firstint;
-        this.lastint = lastint;
-        this.firstint = firstint;
-        this.lastint = maximumRowindex;
+        this.firstColumnIndex = firstColumnIndex;
+        this.lastColumnIndex = lastColumnIndex;
+        this.firstRowIndex = firstRowIndex;
+        this.lastRowIndex = lastRowIndex;
 
-        nextElementint = firstint;
-        nextElementint = lastint;
+        nextElementColumnIndex = firstColumnIndex;
+        nextElementRowIndex = lastColumnIndex;
     }
 
     @Override
     public boolean hasNext() {
-        return firstint <= nextElementint && nextElementint <= lastint &&
-               firstint <= nextElementint && nextElementint <= lastRowindex;
+        return firstColumnIndex <= nextElementColumnIndex && nextElementColumnIndex <= lastColumnIndex &&
+               firstRowIndex <= nextElementRowIndex && nextElementRowIndex <= lastRowIndex;
     }
 
     @Override
@@ -112,7 +108,7 @@ implements Iterator<Entry>, MatrixIterator<Entry> {
         if (! hasNext())
             throw new NoSuchElementException();
 
-        Entry element = matrix.get(nextElementint, nextElementint);
+        Entry element = matrix.get(nextElementColumnIndex, nextElementRowIndex);
 
         updateNextElementIndices();
 
@@ -142,7 +138,7 @@ implements Iterator<Entry>, MatrixIterator<Entry> {
 
     /**
      * Always throws a {@code UnsupportedOperationException} since Elements
-     * cnanot be removed from a ArraySequenceMatrix.
+     * cnanot be removed from a IndexMatrix.
      * 
      * @throws UnsupportedOperationException
      *         always

@@ -109,7 +109,7 @@ extends Container<Entry>, MatrixIterable<Entry> {
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public Sequence<? extends Sequence<Entry>> getRows();
+    public Sequence<? extends Sequence<Entry>> getColumns();
 
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
@@ -117,17 +117,17 @@ extends Container<Entry>, MatrixIterable<Entry> {
      * 
      * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
      */
-    public Sequence<? extends Sequence<Entry>> getColumns();
+    public Sequence<? extends Sequence<Entry>> getRows();
 
     /**
-     * Returns the width of this {@link Matrix}.
+     * Returns the number of columns of this {@link Matrix}.
      * 
      * @return integer specifying the width
      */
     public int getWidth();
 
     /**
-     * Returns the height of this {@link Matrix}.
+     * Returns the number or rows of this {@link Matrix}.
      * 
      * @return integer specifying the height
      */

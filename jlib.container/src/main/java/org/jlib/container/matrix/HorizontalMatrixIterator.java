@@ -28,7 +28,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public final class HorizontalMatrixIterator<Element>
-extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
+extends AbstractMatrixIterator<Element> {
 
     /**
      * Creates a new HorizontalMatrixIterator for the specified ArraySequenceMatrix.
@@ -36,21 +36,21 @@ extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
      * @param matrix
      *        ArraySequenceMatrix to traverse
      */
-    public HorizontalMatrixIterator(ArraySequenceMatrix<Element> matrix) {
+    public HorizontalMatrixIterator(final Matrix<Element> matrix) {
         super(matrix);
     }
 
     @Override
     protected void updateNextElementIndices() {
-        if (nextElementint < matrix.getLastint())
-            nextElementint ++;
+        if (nextElementColumnIndex < matrix.getLastColumnIndex())
+            nextElementColumnIndex ++;
         else
             updateNextEntityIndices();
     }
 
     @Override
     protected void updateNextEntityIndices() {
-        nextElementint = matrix.getFirstint();
-        nextElementint ++;
+        nextElementColumnIndex = matrix.getFirstColumnIndex();
+        nextElementRowIndex ++;
     }    
 }

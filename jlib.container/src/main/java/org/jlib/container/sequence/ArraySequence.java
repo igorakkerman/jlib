@@ -158,6 +158,7 @@ implements Cloneable {
          * @param firstIndex
          *        integer specifying the minimum index of this
          *        {@link NonEmptyArraySequence}
+         *        
          * @param lastIndex
          *        integer specifying the maximum index of this
          *        {@link NonEmptyArraySequence}
@@ -177,6 +178,7 @@ implements Cloneable {
          * @param firstIndex
          *        integer specifying the minimum index of this
          *        NonEmptyArraySequence
+         *        
          * @param elements
          *        Elements added to this NonEmptyArraySequence
          */
@@ -253,8 +255,10 @@ implements Cloneable {
      * 
      * @param firstIndex
      *        integer specifying the minimum index of this ArraySequence
+     *        
      * @param lastIndex
      *        integer specifying the maximum index of this ArraySequence
+     *        
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0 || lastIndex < firstIndex}
      */
@@ -303,6 +307,7 @@ implements Cloneable {
      * @param elements
      *        comma separated sequence of Integer Elements to store or Java
      *        array containing those Elements
+     * 
      * @return the new ArraySequence of Integers
      */
     public static ArraySequence<Integer> createIntegerArray(final Integer... elements) {

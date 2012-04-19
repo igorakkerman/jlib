@@ -61,7 +61,7 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public int indexOf(final Element searchedElement) {
+    public int getFirstIndexOf(final Element searchedElement) {
         for (int index = firstIndex; index <= lastIndex; index ++) {
             final Element sequenceElement = get(index);
             if (sequenceElement == searchedElement || sequenceElement != null &&
@@ -72,7 +72,7 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public int lastIndexOf(final Element element) {
+    public int getLastIndexOf(final Element element) {
         Element sequenceElement;
         for (int index = lastIndex; index >= firstIndex; index --) {
             sequenceElement = get(index);

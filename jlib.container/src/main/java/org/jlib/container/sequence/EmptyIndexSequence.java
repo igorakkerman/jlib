@@ -110,14 +110,14 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public int indexOf(final Element element)
+    public int getFirstIndexOf(final Element element)
     throws NoSuchElementException {
         throw new NoSuchElementException();
     }
 
 
     @Override
-    public int lastIndexOf(final Element element)
+    public int getLastIndexOf(final Element element)
     throws NoSuchElementException {
         throw new NoSuchElementException();
     }

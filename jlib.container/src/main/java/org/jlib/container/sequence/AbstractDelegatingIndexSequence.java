@@ -54,14 +54,14 @@ implements IndexSequence<Element> {
 
 
     @Override
-    public int indexOf(final Element element) {
-        return getDelegateSequence().indexOf(element);
+    public int getFirstIndexOf(final Element element) {
+        return getDelegateSequence().getFirstIndexOf(element);
     }
 
 
     @Override
-    public int lastIndexOf(final Element element) {
-        return getDelegateSequence().lastIndexOf(element);
+    public int getLastIndexOf(final Element element) {
+        return getDelegateSequence().getLastIndexOf(element);
     }
 
 
