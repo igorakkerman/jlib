@@ -15,43 +15,33 @@
 package org.jlib.container.matrix;
 
 /**
- * AbstractIndexMatrixIterator traversing the elements of a ArraySequenceMatrix vertically. That is, the traversal algorithm is as follows:
- *
- * <pre>{@literal
- * for each column
- *     for each row
+ * AbstractIndexMatrixIterator traversing the elements of a
+ * {@link FlexiblyTraversableMatrix} horizontally. That is, the traversal
+ * algorithm is as follows:
+ * 
+ * <pre>
+ * {@literal
+ * foreach column
+ *     foreach row
  *         process element at (column, row)}
  * </pre>
- *
- * @param <Element>
+ * 
+ * @param <Entry>
  *        type of elements stored in the ArraySequenceMatrix
+ *        
  * @author Igor Akkerman
  */
-public final class VerticalMatrixIterator<Element>
-extends AbstractIndexMatrixIterator<Element, Integer, Integer> {
+public final class VerticalMatrixIterator<Entry>
+extends EntityMatrixIterator<Entry> {
 
     /**
-     * Creates a new VerticalMatrixIterator for the specified ArraySequenceMatrix.
-     *
+     * Creates a new {@link VerticalMatrixIterator} for the specified
+     * {@link FlexiblyTraversableMatrix}.
+     * 
      * @param matrix
-     *        ArraySequenceMatrix to traverse
+     *        {@link FlexiblyTraversableMatrix} to traverse
      */
-    protected VerticalMatrixIterator(ArraySequenceMatrix<Element> matrix) {
-        super(matrix);
+    public VerticalMatrixIterator(final FlexiblyTraversableMatrix<Entry> matrix) {
+        super(matrix, matrix.getColumns());
     }
-
-    @Override
-    protected void updateNextElementIndices() {
-        if (nextElementint < matrix.getLastint())
-            nextElementint ++;
-        else 
-            updateNextEntityIndices();
-        
-    }
-
-    @Override
-    protected void updateNextEntityIndices() {
-        nextElementint ++;
-        nextElementint = matrix.getFirstint();
-    }    
 }

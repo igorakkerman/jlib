@@ -15,42 +15,33 @@
 package org.jlib.container.matrix;
 
 /**
- * AbstractIndexMatrixIterator traversing the elements of a ArraySequenceMatrix horizontally. That is, the traversal algorithm is as follows:
- *
- * <pre>{@literal
+ * AbstractIndexMatrixIterator traversing the elements of a
+ * {@link FlexiblyTraversableMatrix} horizontally. That is, the traversal
+ * algorithm is as follows:
+ * 
+ * <pre>
+ * {@literal
  * foreach row
  *     foreach column
  *         process element at (column, row)}
  * </pre>
- *
- * @param <Element>
- *        type of elements stored in the ArraySequenceMatrix
+ * 
+ * @param <Entry>
+ *        type of elements stored in the {@link Matrix}
+ *        
  * @author Igor Akkerman
  */
-public final class HorizontalMatrixIterator<Element>
-extends AbstractMatrixIterator<Element> {
+public final class HorizontalMatrixIterator<Entry>
+extends EntityMatrixIterator<Entry> {
 
     /**
-     * Creates a new HorizontalMatrixIterator for the specified ArraySequenceMatrix.
-     *
+     * Creates a new {@link HorizontalMatrixIterator} for the specified
+     * {@link FlexiblyTraversableMatrix}.
+     * 
      * @param matrix
-     *        ArraySequenceMatrix to traverse
+     *        {@link FlexiblyTraversableMatrix} to traverse
      */
-    public HorizontalMatrixIterator(final Matrix<Element> matrix) {
-        super(matrix);
+    public HorizontalMatrixIterator(final FlexiblyTraversableMatrix<Entry> matrix) {
+        super(matrix, matrix.getRows());
     }
-
-    @Override
-    protected void updateNextElementIndices() {
-        if (nextElementColumnIndex < matrix.getLastColumnIndex())
-            nextElementColumnIndex ++;
-        else
-            updateNextEntityIndices();
-    }
-
-    @Override
-    protected void updateNextEntityIndices() {
-        nextElementColumnIndex = matrix.getFirstColumnIndex();
-        nextElementRowIndex ++;
-    }    
 }
