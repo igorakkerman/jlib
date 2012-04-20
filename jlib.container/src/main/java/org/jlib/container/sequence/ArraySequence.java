@@ -185,7 +185,7 @@ implements Cloneable {
         private NonEmptyArraySequence(final int firstIndex, final List<Element> elements) {
             super(firstIndex, firstIndex + elements.size() - 1);
 
-            this.delegateList = new ArrayList<Element>(elements);
+            delegateList = new ArrayList<Element>(elements);
         }
 
         // @see org.jlib.container.sequence.IndexSequence#get(int)
@@ -202,19 +202,16 @@ implements Cloneable {
         @Override
         public void replace(final int index, final Element element)
         throws SequenceIndexOutOfBoundsException {
-            try {
-                delegateList.set(index - firstIndex, element);
-            }
-            catch (final IndexOutOfBoundsException exception) {
+            if (index < firstIndex || index > lastIndex)
                 throw new SequenceIndexOutOfBoundsException(this, index);
-            }
+
+            delegateList.set(index - firstIndex, element);
         }
 
-        // @see org.jlib.container.AbstractContainer#contains(java.lang.Object)
         @Override
         // overridden for efficiency
-        public boolean contains(final Object object) {
-            return delegateList.contains(object);
+        public boolean contains(final Element element) {
+            return delegateList.contains(element);
         }
 
         // @see org.jlib.container.AbstractContainer#containsAll(Container)
@@ -276,7 +273,7 @@ implements Cloneable {
      *        integer specifying the size of this ArraySequence
      * 
      * @throws IllegalArgumentException
-     *         if {@code size < 0}
+     *         if {@code size <= 0}
      */
     public ArraySequence(final int size)
     throws IllegalArgumentException {

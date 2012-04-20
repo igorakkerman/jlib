@@ -11,7 +11,7 @@ import org.jlib.container.ReplaceContainer;
  * @author Igor Akkerman
  */
 public interface ReplaceMatrix<Entry>
-extends ReplaceContainer<Entry> {
+extends Matrix<Entry>, ReplaceContainer<Entry> {
 
     @Override
     public ReplaceMatrixIterator<Entry> createIterator();

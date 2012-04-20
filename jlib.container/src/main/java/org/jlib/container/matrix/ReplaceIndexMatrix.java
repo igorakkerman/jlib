@@ -10,7 +10,8 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  * 
  * @author Igor Akkerman
  */
-public interface ReplaceIndexMatrix<Entry> {
+public interface ReplaceIndexMatrix<Entry>
+extends IndexMatrix<Entry> {
 
     /**
      * Registers the Element to store at the specified column and row in this

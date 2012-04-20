@@ -56,7 +56,7 @@ extends Container<Element> {
      *         {@code false} otherwise
      */
     @Override
-    public boolean equals(Object otherObject);
+    public boolean equals(final Object otherObject);
 
     /**
      * <p>

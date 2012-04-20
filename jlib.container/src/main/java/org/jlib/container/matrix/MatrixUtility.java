@@ -37,8 +37,8 @@ public final class MatrixUtility {
     public static final MatrixIterationOrder HORIZONTAL = new MatrixIterationOrder() {
 
         @Override
-        public <Element> MatrixIterator<Element> createIterator(final ArraySequenceMatrix<Element> matrix) {
-            return new HorizontalMatrixIterator<Element>(matrix);
+        public <Element> MatrixIterator<Element> createIterator(final RandomTraversalMatrix<Element> matrix) {
+            return new EntityMatrixIterator<Element>(matrix, matrix.getRows());
         }
     };
 
@@ -55,8 +55,8 @@ public final class MatrixUtility {
     public static final MatrixIterationOrder VERTICAL = new MatrixIterationOrder() {
 
         @Override
-        public <Element> MatrixIterator<Element> createIterator(final ArraySequenceMatrix<Element> matrix) {
-            return new VerticalMatrixIterator<Element>(matrix);
+        public <Element> MatrixIterator<Element> createIterator(final RandomTraversalMatrix<Element> matrix) {
+            return new EntityMatrixIterator<Element>(matrix, matrix.getColumns());
         }
     };
 }

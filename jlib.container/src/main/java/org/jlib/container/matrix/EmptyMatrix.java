@@ -3,6 +3,7 @@ package org.jlib.container.matrix;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.RandomAccess;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.EmptyIndexSequence;
@@ -17,7 +18,7 @@ import org.jlib.container.sequence.IndexSequence;
  *        type of entries of the {@link Matrix}
  */
 public class EmptyMatrix<Entry>
-implements Matrix<Entry> {
+implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
 
     /** empty array */
     private static final Object[] EMPTY_ARRAY = new Object[0];
@@ -79,8 +80,13 @@ implements Matrix<Entry> {
     }
 
     @Override
-    public Iterator<Entry> iterator() {
+    public ReplaceMatrixIterator<Entry> createIterator() {
         return EmptyMatrixIterator.getInstance();
+    }
+
+    @Override
+    public Iterator<Entry> iterator() {
+        return createIterator();
     }
 
     @Override
@@ -109,11 +115,6 @@ implements Matrix<Entry> {
     }
 
     @Override
-    public MatrixIterator<Entry> createIterator() {
-        return EmptyMatrixIterator.getInstance();
-    }
-
-    @Override
     public MatrixIterable<Entry> iteratedInOrder(final MatrixIterationOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
@@ -123,5 +124,4 @@ implements Matrix<Entry> {
     public void setDefaultIterationOrder(final MatrixIterationOrder defaultIterationOrder) {
         // the iteration order is void in an EmptyMatrix
     }
-
 }

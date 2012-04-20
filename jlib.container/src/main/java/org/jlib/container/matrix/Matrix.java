@@ -3,7 +3,6 @@ package org.jlib.container.matrix;
 import java.util.Iterator;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.Sequence;
 
 // @formatter:off
 /**
@@ -104,22 +103,6 @@ public interface Matrix<Entry>
 extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
-     * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
-     * provided as a {@link Sequence}.
-     * 
-     * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
-     */
-    public Sequence<? extends Sequence<Entry>> getColumns();
-
-    /**
-     * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
-     * provided as a {@link Sequence}.
-     * 
-     * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
-     */
-    public Sequence<? extends Sequence<Entry>> getRows();
-
-    /**
      * Returns the number of columns of this {@link Matrix}.
      * 
      * @return integer specifying the width
@@ -143,51 +126,13 @@ extends Container<Entry>, MatrixIterable<Entry> {
     public int getSize();
 
     /**
-     * Creates a {@link MatrixIterator} traversing the Elements of this
-     * {@link ArraySequenceMatrix}. The order in which the Elements are
-     * traversed is specified using
-     * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
+     * Creates a {@link MatrixIterator} traversing the Entries of this
+     * {@link ArraySequenceMatrix} in the default order. The default order may
+     * be defined by the concrete implementation or even made customizable.
      * 
-     * @return a new {@link AbstractIndexMatrixIterator} over this
-     *         {@link Matrix}
-     * 
-     * @see #setDefaultIterationOrder(MatrixIterationOrder)
-     * @see MatrixIterationOrder
+     * @return a new {@link MatrixIterator} over the Entries of
+     *         this {@link Matrix}
      */
     @Override
     public MatrixIterator<Entry> createIterator();
-
-    /**
-     * <p>
-     * Returns a {@link MatrixIterable} providing a {@link MatrixIterator}
-     * traversing the Elements of this {@link Matrix} using the specified
-     * {@link MatrixIterationOrder}.
-     * </p>
-     * <p>
-     * Example:
-     * </p>
-     * 
-     * <pre>
-     * for (Integer matrixEntry : matrix.iteratedInOrder(VERTICAL)
-     *     System.out.print(matrixEntry + " ");
-     * </pre>
-     * 
-     * @param iterationOrder
-     *        {@link MatrixIterationOrder} used by the returned {@link Iterable}
-     * 
-     * @return {@link MatrixIterable} providing a {@link MatrixIterator}
-     *         traversing the Elements of this {@link Matrix} using the
-     *         specified {@link MatrixIterationOrder}.
-     */
-    public MatrixIterable<Entry> iteratedInOrder(final MatrixIterationOrder iterationOrder);
-
-    /**
-     * Registers the {@link MatrixIterationOrder} used by each {@link Iterator}
-     * returned by {@link #iterator()}.
-     * 
-     * @param defaultIterationOrder
-     *        {@link MatrixIterationOrder} used by default {@link Iterator
-     *        Iterators}
-     */
-    public void setDefaultIterationOrder(final MatrixIterationOrder defaultIterationOrder);
 }

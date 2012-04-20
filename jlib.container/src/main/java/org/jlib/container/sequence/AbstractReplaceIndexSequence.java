@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-
 /**
  * Skeletal implementation of an {@link ReplaceIndexSequence}.
  * 
@@ -23,5 +22,11 @@ implements ReplaceIndexSequence<Element> {
     @Override
     public ReplaceIndexSequenceIterator<Element> createIterator() {
         return new DefaultReplaceIndexSequenceIterator<>(this);
+    }
+    
+    @Override
+    public ReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return new DefaultReplaceIndexSequenceIterator<>(this, startIndex);
     }
 }

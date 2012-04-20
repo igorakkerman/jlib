@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * @author Igor Akkerman
  */
 public class EmptyMatrixIterator<Entry>
-implements MatrixIterator<Entry> {
+implements ReplaceMatrixIterator<Entry> {
 
     /** sole {@link EmptyMatrixIterator} instance */
     private static final EmptyMatrixIterator<?> INSTANCE = new EmptyMatrixIterator<>();
@@ -44,14 +44,26 @@ implements MatrixIterator<Entry> {
     }
 
     @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
+    public boolean hasNextEntity() {
+        return false;
     }
 
     @Override
-    public void nextEntity()
+    public void gotoNextEntity()
     throws IllegalStateException {
         throw new IllegalStateException();
+    }
+
+    @Override
+    public void replace(final Entry element)
+    throws IllegalStateException {
+        throw new IllegalStateException();
+    }
+
+    @Override
+    public void remove()
+    throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 
 }
