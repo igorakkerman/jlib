@@ -14,12 +14,10 @@
 
 package org.jlib.container.sequence;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.SequenceFillStateRegistry.SequenceFillState;
 
 // @formatter:off   
 /**
@@ -132,304 +130,56 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 // @formatter:on
+
+// TODO: allow negative indices
+
 public class ArraySequence<Element>
-extends AbstractDelegatingReplaceIndexSequence<Element>
+extends AbstractDelegatingIndexSequence<Element>
 implements Cloneable {
 
-    /**
-     * Non-empty {@link ReplaceIndexSequence} backed by an {@link ArrayList}.
-     * 
-     * @param <Element>
-     *        type of elements held in the {@link Sequence}
-     * 
-     * @author Igor Akkerman
-     */
-    private static class NonEmptyArraySequence<Element>
-    extends AbstractNonEmptyReplaceIndexSequence<Element>
-    implements Cloneable {
+    class SequenceFillState {
 
-        /** delegate {@link List} of this {@link ArraySequence} */
-        private final List<Element> delegateList;
+        private SequenceFillState addElementFillState;
 
-        /**
-         * Creates a new {@link NonEmptyArraySequence} with the specified
-         * minimum and maximum indices initialized with {@code null} values.
-         * 
-         * @param firstIndex
-         *        integer specifying the minimum index of this
-         *        {@link NonEmptyArraySequence}
-         *        
-         * @param lastIndex
-         *        integer specifying the maximum index of this
-         *        {@link NonEmptyArraySequence}
-         */
-        @SuppressWarnings("javadoc")
-        public NonEmptyArraySequence(final int firstIndex, final int lastIndex) {
-            super(firstIndex, lastIndex);
+        private SequenceFillState removeElementFillState;
 
-            delegateList = new ArrayList<Element>(getSize());
-            for (int index = firstIndex; index <= lastIndex; index ++)
-                delegateList.add(null);
+        /** delegate {@link ReplaceIndexSequence} */
+        private final ReplaceIndexSequence<Element> delegateSequence;
+
+        ReplaceIndexSequence<Element> getDelegateSequence() {
+            return delegateSequence;
         }
 
-        /**
-         * Creates a new NonEmptyArraySequence.
-         * 
-         * @param firstIndex
-         *        integer specifying the minimum index of this
-         *        NonEmptyArraySequence
-         *        
-         * @param elements
-         *        Elements added to this NonEmptyArraySequence
-         */
-        private NonEmptyArraySequence(final int firstIndex, final List<Element> elements) {
-            super(firstIndex, firstIndex + elements.size() - 1);
-
-            delegateList = new ArrayList<Element>(elements);
+        SequenceFillState() {
+            super();
         }
 
-        // @see org.jlib.container.sequence.IndexSequence#get(int)
-        @Override
-        public Element get(final int index)
-        throws SequenceIndexOutOfBoundsException {
-            if (index < firstIndex || index > lastIndex)
-                throw new SequenceIndexOutOfBoundsException(this, index);
-
-            return delegateList.get(index - firstIndex);
+        
+        SequenceFillState getAddElementFillState() {
+            return addElementFillState;
         }
 
-        // @see org.jlib.container.sequence.ReplaceIndexSequence#set(int, java.lang.Object)
-        @Override
-        public void replace(final int index, final Element element)
-        throws SequenceIndexOutOfBoundsException {
-            if (index < firstIndex || index > lastIndex)
-                throw new SequenceIndexOutOfBoundsException(this, index);
-
-            delegateList.set(index - firstIndex, element);
+        
+        void setAddElementFillState(SequenceFillState addElementFillState) {
+            this.addElementFillState = addElementFillState;
         }
 
-        @Override
-        // overridden for efficiency
-        public boolean contains(final Element element) {
-            return delegateList.contains(element);
+        
+        SequenceFillState getRemoveElementFillState() {
+            return removeElementFillState;
         }
 
-        // @see org.jlib.container.AbstractContainer#containsAll(Container)
-        // overridden for efficiency
-        @Override
-        public boolean containsAll(final Collection<? extends Element> collection) {
-            return delegateList.containsAll(collection);
-        }
-
-        // @see java.lang.Object#clone()
-        @Override
-        public NonEmptyArraySequence<Element> clone() {
-            return new NonEmptyArraySequence<Element>(firstIndex, delegateList);
-        }
-
-        // @see org.jlib.container.sequence.IndexSequence#equals(java.lang.Object)
-        @Override
-        public boolean equals(final Object otherObject) {
-            if (!(otherObject instanceof NonEmptyArraySequence<?>))
-                return false;
-            final NonEmptyArraySequence<?> otherArray = (NonEmptyArraySequence<?>) otherObject;
-            return firstIndex == otherArray.firstIndex && lastIndex == otherArray.lastIndex &&
-                   delegateList.equals(otherArray.delegateList);
-        }
-
-        // @see org.jlib.container.AbstractContainer#hashCode()
-        @Override
-        public int hashCode() {
-            return 3 * firstIndex + 5 * lastIndex + delegateList.hashCode();
+        
+        void setRemoveElementFillState(SequenceFillState removeElementFillState) {
+            this.removeElementFillState = removeElementFillState;
         }
     }
 
-    /** delegate {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequence<Element> delegateSequence;
-
-    /**
-     * Creates a new ArraySequence initially filled with {@code null} Elements.
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence
-     *        
-     * @param lastIndex
-     *        integer specifying the maximum index of this ArraySequence
-     *        
-     * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0 || lastIndex < firstIndex}
-     */
-    public ArraySequence(final int firstIndex, final int lastIndex)
-    throws IllegalArgumentException {
-        super();
-
-        delegateSequence = new NonEmptyArraySequence<Element>(firstIndex, lastIndex);
-    }
-
-    /**
-     * Creates a new ArraySequence initially filled with {@code null} Elements.
-     * 
-     * @param size
-     *        integer specifying the size of this ArraySequence
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code size <= 0}
-     */
-    public ArraySequence(final int size)
-    throws IllegalArgumentException {
-        this(0, size - 1);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the specified Elements. That is,
-     * the index of the first Element of the specified sequence in this
-     * ArraySequence is 0. The fixed size of this ArraySequence is the size of
-     * the specified sequence.
-     * 
-     * @param elements
-     *        comma separated sequence of Elements to store or Java array
-     *        containing those Elements
-     */
-    @SafeVarargs
-    public ArraySequence(final Element... elements) {
-        this(0, elements);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the specified Integer Elements.
-     * That is, the index of the first Element of the specified sequence in this
-     * ArraySequence is 0. The fixed size of this ArraySequence is the size of
-     * the specified sequence.
-     * 
-     * @param elements
-     *        comma separated sequence of Integer Elements to store or Java
-     *        array containing those Elements
-     * 
-     * @return the new ArraySequence of Integers
-     */
-    public static ArraySequence<Integer> createIntegerArray(final Integer... elements) {
-        return new ArraySequence<Integer>(0, elements);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the specified Elements having a
-     * specified first index. That is, the index of the first Element of the
-     * specified sequence in this ArraySequence can be specified. The fixed size
-     * of this ArraySequence is the size of the specified sequence.
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence
-     * @param elements
-     *        comma separated sequence of Elements to store or Java array
-     *        containing those Elements
-     */
-    @SafeVarargs
-    public ArraySequence(final int firstIndex, final Element... elements) {
-        this(firstIndex, firstIndex + elements.length - 1);
-
-        for (int elementsIndex = 0, arrayIndex = firstIndex; elementsIndex < elements.length; elementsIndex ++, arrayIndex ++)
-            delegateSequence.replace(arrayIndex, elements[elementsIndex]);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the specified Integer Elements
-     * having a specified first index. That is, the index of the first Element
-     * of the specified sequence in this ArraySequence can be specified. The
-     * fixed size of this ArraySequence is the size of the specified sequence.
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence
-     * @param elements
-     *        comma separated sequence of Integer elements to store or Java
-     *        array containing those Elements
-     * @return the new ArraySequence of Integers
-     */
-    public static ArraySequence<Integer> createIntegerArrayFrom(final int firstIndex, final Integer... elements) {
-        return new ArraySequence<Integer>(firstIndex, elements);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the Elements of the specified
-     * Container. The index of the first Element of the specified Container in
-     * this ArraySequence is 0. The fixed size of this ArraySequence is the size
-     * of the specified Container.
-     * 
-     * @param collection
-     *        Container of which the Elements are copied to this ArraySequence
-     * @throws IllegalArgumentException
-     *         if {@code collection} is {@code null}
-     */
-    public ArraySequence(final Container<Element> collection) {
-        this(0, collection);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the Elements of the specified Java
-     * Container. The index of the first Element of the specified Container in
-     * this ArraySequence is 0. The fixed size of this ArraySequence is the size
-     * of the specified Container.
-     * 
-     * @param collection
-     *        Collection of which the Elements are copied to this ArraySequence
-     */
-    public ArraySequence(final Collection<Element> collection) {
-        this(0, collection);
-    }
-
-    /**
-     * Creates a new ArraySequence containing the Elements of the specified
-     * Container having a specified first index. That is, the index of the
-     * first Element of the specified collection in this ArraySequence can be
-     * specified. The fixed size of this ArraySequence is the size of the
-     * specified Container.
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence. The
-     *        first Element of {@code collection} is stored at this index of
-     *        this ArraySequence.
-     * @param elements
-     *        Container of which the Elements are copied to this ArraySequence
-     * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0}
-     */
-    public ArraySequence(final int firstIndex, final Container<Element> elements)
-    throws IllegalArgumentException {
-        this(firstIndex, firstIndex + elements.getSize() - 1);
-
-        int arrayIndex = firstIndex;
-        for (final Iterator<Element> collectionIterator = elements.iterator(); collectionIterator.hasNext(); arrayIndex ++)
-            delegateSequence.replace(arrayIndex, collectionIterator.next());
-    }
-
-    /**
-     * Creates a new ArraySequence containing the Elements of the specified
-     * Container having a specified first index. That is, the index of the
-     * first Element of the specified collection in this ArraySequence can be
-     * specified. The fixed size of this ArraySequence is the size of the
-     * specified Container.
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence. The
-     *        first Element of {@code collection} is stored at this index of
-     *        this ArraySequence.
-     * @param collection
-     *        Container of which the Elements are copied to this ArraySequence
-     * @throws NullPointerException
-     *         if {@code collection} is {@code null}
-     * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0}
-     */
-    public ArraySequence(final int firstIndex, final Collection<Element> collection)
-    throws NullPointerException, IllegalArgumentException {
-        this(firstIndex, firstIndex + collection.size() - 1);
-
-        int arrayIndex = firstIndex;
-        for (final Iterator<Element> collectionIterator = collection.iterator(); collectionIterator.hasNext(); arrayIndex ++)
-            delegateSequence.replace(arrayIndex, collectionIterator.next());
-    }
+    private SequenceFillState sequenceFillState;
 
     @Override
-    protected ReplaceIndexSequence<Element> getDelegateSequence() {
-        return delegateSequence;
+    protected IndexSequence<Element> getDelegateSequence() {
+        return sequenceFillState.getDelegateSequence();
     }
+
 }

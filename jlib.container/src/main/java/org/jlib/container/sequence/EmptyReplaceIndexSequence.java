@@ -28,7 +28,7 @@ implements ReplaceIndexSequence<Element> {
     /**
      * Creates a new {@link EmptyReplaceIndexSequence}.
      */
-    public EmptyReplaceIndexSequence() {
+    private EmptyReplaceIndexSequence() {
         super();
     }
 
