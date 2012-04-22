@@ -137,49 +137,4 @@ public class ArraySequence<Element>
 extends AbstractDelegatingIndexSequence<Element>
 implements Cloneable {
 
-    class SequenceFillState {
-
-        private SequenceFillState addElementFillState;
-
-        private SequenceFillState removeElementFillState;
-
-        /** delegate {@link ReplaceIndexSequence} */
-        private final ReplaceIndexSequence<Element> delegateSequence;
-
-        ReplaceIndexSequence<Element> getDelegateSequence() {
-            return delegateSequence;
-        }
-
-        SequenceFillState() {
-            super();
-        }
-
-        
-        SequenceFillState getAddElementFillState() {
-            return addElementFillState;
-        }
-
-        
-        void setAddElementFillState(SequenceFillState addElementFillState) {
-            this.addElementFillState = addElementFillState;
-        }
-
-        
-        SequenceFillState getRemoveElementFillState() {
-            return removeElementFillState;
-        }
-
-        
-        void setRemoveElementFillState(SequenceFillState removeElementFillState) {
-            this.removeElementFillState = removeElementFillState;
-        }
-    }
-
-    private SequenceFillState sequenceFillState;
-
-    @Override
-    protected IndexSequence<Element> getDelegateSequence() {
-        return sequenceFillState.getDelegateSequence();
-    }
-
 }
