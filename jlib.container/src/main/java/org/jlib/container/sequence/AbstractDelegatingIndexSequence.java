@@ -6,7 +6,7 @@ import java.util.List;
  * {@link Sequence} delegating all calls to its methods to the equivalent
  * methods of a delegate {@link IndexSequence}. The delegate {@link Sequence}
  * may be modified at any time allowing to dynamically switch to the contents
- * and the behaviour of another {@link IndexSequence}.
+ * and the behavior of another {@link IndexSequence}.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
@@ -17,21 +17,11 @@ public abstract class AbstractDelegatingIndexSequence<Element>
 extends AbstractDelegatingSequence<Element>
 implements IndexSequence<Element> {
 
-    /** {@link SequenceFillState} of this {@link AbstractDelegatingIndexSequence} */
-    // TODO: move sequenceFillState to AbstractAddDelegatingIndexSequence
-    private final SequenceFillState<Element> sequenceFillState;
-
     /**
      * Creates a new {@link AbstractDelegatingIndexSequence}.
-     * 
-     * @param initialSequenceFillState
-     *        initial {@link SequenceFillState} of this
-     *        {@link AbstractDelegatingIndexSequence}
      */
-    protected AbstractDelegatingIndexSequence(final SequenceFillState<Element> initialSequenceFillState) {
+    protected AbstractDelegatingIndexSequence() {
         super();
-
-        sequenceFillState = initialSequenceFillState;
     }
 
     /**
@@ -41,9 +31,7 @@ implements IndexSequence<Element> {
      * @return the delegate {@link IndexSequence}
      */
     @Override
-    protected IndexSequence<Element> getDelegateSequence() {
-        return sequenceFillState.getDelegateSequence();
-    }
+    protected abstract IndexSequence<Element> getDelegateSequence();
 
     @Override
     public Element get(final int index)
