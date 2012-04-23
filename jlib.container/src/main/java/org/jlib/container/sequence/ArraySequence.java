@@ -14,10 +14,7 @@
 
 package org.jlib.container.sequence;
 
-import java.util.Iterator;
-
-import org.jlib.container.Container;
-import org.jlib.container.sequence.SequenceFillStateRegistry.SequenceFillState;
+import java.util.Arrays;
 
 // @formatter:off   
 /**
@@ -103,24 +100,6 @@ import org.jlib.container.sequence.SequenceFillStateRegistry.SequenceFillState;
  * {@literal The constructor ArraySequence<Integer>(Integer[]) is ambiguous}
  * </pre>
  * 
- * It doesn't know whether the first parameter is meant to be the minimum index of
- * the ArraySequence or the first Element of the sequence. You could pass a Java array of
- * Integers instead which is the equivalent to the sequence form for the argument
- * {@code Integer... elements} but this class provides an easier way: the
- * factory methods {@link #createIntegerArray(Integer[])} or
- * {@link #createIntegerArrayFrom(int, Integer[])}. The latter form takes the
- * minimum index as first argument.
- * 
- * <pre>
- * // possible but not handy
- * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(new Integer[] {1, 2, 3, 4, 5, 6});
- * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(1, new Integer[] {1, 2, 3, 4, 5, 6});
- *
- * // easier to use (needs the static import of the factory method(s))
- * ArraySequence&lt;Integer&gt; integerArray = createIntegerArray(1, 2, 3, 4, 5);
- * ArraySequence&lt;Integer&gt; integerArray = createIntegerArrayFrom(1, 1, 2, 3, 4, 5);
- * </pre>
- * 
  * </li>
  * </ul>
  * 
@@ -134,7 +113,99 @@ import org.jlib.container.sequence.SequenceFillStateRegistry.SequenceFillState;
 // TODO: allow negative indices
 
 public class ArraySequence<Element>
-extends AbstractDelegatingIndexSequence<Element>
+extends AbstractNonEmptyIndexSequence<Element>
 implements Cloneable {
 
+    /** delegate array of this {@link ArraySequence} */
+    private final Object[] delegateArray;
+
+    /**
+     * Creates a new {@link ArraySequence} with the specified minimum and
+     * maximum indices initialized with {@code null} values.
+     * 
+     * @param firstIndex
+     *        integer specifying the minimum index of this {@link ArraySequence}
+     * 
+     * @param lastIndex
+     *        integer specifying the maximum index of this {@link ArraySequence}
+     */
+    public ArraySequence(final int firstIndex, final int lastIndex) {
+        super(firstIndex, lastIndex);
+
+        final int size = getSize();
+
+        delegateArray = new Object[size];
+    }
+
+    // @see org.jlib.container.sequence.IndexSequence#get(int)
+    @Override
+    public Element get(final int index)
+    throws SequenceIndexOutOfBoundsException {
+        assertIndexValid(index);
+
+        return getDelegateArrayElement(index - firstIndex);
+    }
+
+    /**
+     * Asserts that the specified index is inside the valid bounds of this
+     * {@link ArraySequence}.
+     * 
+     * @param index
+     *        integer specifying the index to verify
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index} is out of the {@link ArraySequence} bounds
+     */
+    protected void assertIndexValid(final int index)
+    throws SequenceIndexOutOfBoundsException {
+        if (index < firstIndex || index > lastIndex)
+            throw new SequenceIndexOutOfBoundsException(this, index);
+    }
+
+    /**
+     * Returns the Element stored in the delegate array at the specified index.
+     * Provides a typesafe access to the (non generic) array.
+     * 
+     * @param arrayIndex
+     *        index of the Element in the array
+     * 
+     * @return Element stored at {@code arrayIndex} in the array
+     */
+    @SuppressWarnings("unchecked")
+    private Element getDelegateArrayElement(final int arrayIndex) {
+        return (Element) delegateArray[arrayIndex];
+    }
+
+    // @see java.lang.Object#clone()
+    @Override
+    public ArraySequence<Element> clone() {
+        final ArraySequence<Element> cloneSequence = new ArraySequence<Element>(firstIndex, lastIndex);
+
+        final int delegateArrayLength = delegateArray.length;
+
+        final Object[] cloneSequenceDelegateArray = cloneSequence.delegateArray;
+
+        for (int delegateArrayIndex = 0; delegateArrayIndex < delegateArrayLength; delegateArrayIndex ++)
+            cloneSequenceDelegateArray[delegateArrayIndex] = delegateArray[delegateArrayIndex];
+
+        return cloneSequence;
+    }
+
+    // @see org.jlib.container.sequence.IndexSequence#equals(java.lang.Object)
+    @Override
+    public boolean equals(final Object otherObject) {
+        if (!(otherObject instanceof ArraySequence<?>))
+            return false;
+
+        final ArraySequence<?> otherSequence = (ArraySequence<?>) otherObject;
+
+        return firstIndex == otherSequence.firstIndex && lastIndex == otherSequence.lastIndex &&
+               Arrays.equals(delegateArray, otherSequence.delegateArray);
+    }
+
+    // @see org.jlib.container.AbstractContainer#hashCode()
+    @Override
+    public int hashCode() {
+        return 3 * firstIndex + 5 * lastIndex + Arrays.hashCode(delegateArray);
+    }
 }

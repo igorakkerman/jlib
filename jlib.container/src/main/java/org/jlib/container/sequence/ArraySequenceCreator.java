@@ -18,7 +18,30 @@ extends SequenceCreator<ArraySequence<?>> {
         return null;
     }
 
-    
+    /**
+     * It doesn't know whether the first parameter is meant to be the minimum
+     * index of the ArraySequence or the first Element of the sequence. You
+     * could pass a Java array of Integers instead which is the equivalent to
+     * the sequence form for the argument {@code Integer... elements} but this
+     * class provides an easier way: the factory methods
+     * {@link #createIntegerArray(Integer[])} or
+     * {@link #createIntegerArrayFrom(int, Integer[])}. The latter form takes
+     * the minimum index as first argument.
+     * 
+     * <pre>
+     * 
+     * // possible but not handy
+     * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(new Integer[] { 1, 2, 3, 4, 5, 6 });
+     * 
+     * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(1, new Integer[] { 1, 2, 3, 4, 5, 6 });
+     * 
+     * // easier to use (needs the static import of the factory method(s))
+     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArray(1, 2, 3, 4, 5);
+     * 
+     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArrayFrom(1, 1, 2, 3, 4, 5);
+     * </pre>
+     */
+
     /**
      * Creates a new ArraySequence initially filled with {@code null} Elements.
      * 

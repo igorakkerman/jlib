@@ -2,6 +2,7 @@ package org.jlib.container.sequence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Non-empty {@link IndexSequence}.
@@ -61,25 +62,22 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public int getFirstIndexOf(final Element searchedElement) {
-        for (int index = firstIndex; index <= lastIndex; index ++) {
-            final Element sequenceElement = get(index);
-            if (sequenceElement == searchedElement || sequenceElement != null &&
-                sequenceElement.equals(searchedElement))
+    public int getFirstIndexOf(final Element searchedElement)
+    throws NoSuchElementException {
+        for (int index = firstIndex; index <= lastIndex; index ++)
+            if (get(index).equals(searchedElement))
                 return index;
-        }
-        return -1;
+
+        throw new NoSuchElementException();
     }
 
     @Override
-    public int getLastIndexOf(final Element element) {
-        Element sequenceElement;
-        for (int index = lastIndex; index >= firstIndex; index --) {
-            sequenceElement = get(index);
-            if (sequenceElement == element || sequenceElement != null && sequenceElement.equals(element))
+    public int getLastIndexOf(final Element searchedElement) {
+        for (int index = lastIndex; index >= firstIndex; index --)
+            if (get(index).equals(searchedElement))
                 return index;
-        }
-        return -1;
+
+        throw new NoSuchElementException();
     }
 
     @Override
@@ -112,7 +110,9 @@ implements IndexSequence<Element> {
         if (fromIndex > toIndex)
             throw new IllegalArgumentException();
 
-        final ReplaceIndexSequence<Element> sequence = new ArraySequence<Element>(fromIndex, toIndex);
+        final ReplaceIndexSequence<Element> sequence =
+            ArraySequenceCreator.<Element> createArraySequence(fromIndex, toIndex);
+
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replace(index, get(index));
 
