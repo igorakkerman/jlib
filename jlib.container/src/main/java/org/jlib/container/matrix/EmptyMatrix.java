@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.EmptyIndexSequence;
+import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IndexSequence;
 
 /**
@@ -91,12 +91,12 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
 
     @Override
     public IndexSequence<IndexSequence<Entry>> getRows() {
-        return EmptyIndexSequence.getInstance();
+        return EmptySequence.getInstance();
     }
 
     @Override
     public IndexSequence<IndexSequence<Entry>> getColumns() {
-        return EmptyIndexSequence.getInstance();
+        return EmptySequence.getInstance();
     }
 
     @Override

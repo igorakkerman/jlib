@@ -3,7 +3,7 @@ package org.jlib.container.sequence;
 import java.util.NoSuchElementException;
 
 /**
- * {@link IndexSequenceIterator} of an {@link EmptyIndexSequence}.
+ * {@link IndexSequenceIterator} of an {@link EmptySequence}.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}

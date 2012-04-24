@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.AbstractNonEmptyIndexSequence;
+import org.jlib.container.sequence.AbstractIndexSequence;
 
 /**
  * Entity of an {@link IndexMatrix} like a column or row.
@@ -11,7 +11,7 @@ import org.jlib.container.sequence.AbstractNonEmptyIndexSequence;
  * @author Igor Akkerman
  */
 abstract class IndexMatrixEntity<Entry>
-extends AbstractNonEmptyIndexSequence<Entry> {
+extends AbstractIndexSequence<Entry> {
 
     /** {@link IndexMatrix} owning this {@link IndexMatrixEntity} */
     private final IndexMatrix<Entry> matrix;

@@ -110,13 +110,11 @@ import java.util.Arrays;
  */
 // @formatter:on
 
-// TODO: allow negative indices
-
-public class ArraySequence<Element>
-extends AbstractNonEmptyIndexSequence<Element>
+class ArraySequence<Element>
+extends AbstractIndexSequence<Element>
 implements Cloneable {
 
-    /** delegate array of this {@link ArraySequence} */
+    /** array holding the Elements of this {@link ArraySequence} */
     private final Object[] delegateArray;
 
     /**
@@ -129,7 +127,7 @@ implements Cloneable {
      * @param lastIndex
      *        integer specifying the maximum index of this {@link ArraySequence}
      */
-    public ArraySequence(final int firstIndex, final int lastIndex) {
+    protected ArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
 
         final int size = getSize();
@@ -143,23 +141,41 @@ implements Cloneable {
     throws SequenceIndexOutOfBoundsException {
         assertIndexValid(index);
 
-        return getDelegateArrayElement(index - firstIndex);
+        return getDelegateArrayElement(getDelegateArrayIndex(index));
     }
 
     /**
-     * Asserts that the specified index is inside the valid bounds of this
+     * Replaces the Element at the specified index in this IndexSequence by the
+     * specified Elements.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param element
+     *        Element to store
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
+     */
+    protected void replace(final int index, final Element element)
+    throws SequenceIndexOutOfBoundsException {
+        assertIndexValid(index);
+
+        replaceDelegateArrayElement(getDelegateArrayIndex(index), element);
+    }
+
+    /**
+     * Returns the delegate array index in the specified index in this
      * {@link ArraySequence}.
      * 
      * @param index
-     *        integer specifying the index to verify
+     *        integer specifying the index of the Element in the
+     *        {@link ArraySequence}
      * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index} is out of the {@link ArraySequence} bounds
+     * @return integer specifying the corresponding index in the delegate array
      */
-    protected void assertIndexValid(final int index)
-    throws SequenceIndexOutOfBoundsException {
-        if (index < firstIndex || index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(this, index);
+    protected int getDelegateArrayIndex(final int index) {
+        return index - getFirstIndex();
     }
 
     /**
@@ -172,14 +188,28 @@ implements Cloneable {
      * @return Element stored at {@code arrayIndex} in the array
      */
     @SuppressWarnings("unchecked")
-    private Element getDelegateArrayElement(final int arrayIndex) {
+    protected Element getDelegateArrayElement(final int arrayIndex) {
         return (Element) delegateArray[arrayIndex];
+    }
+
+    /**
+     * Replaces the Element stored in the delegate array at the specified index.
+     * Provides a typesafe access to the (non generic) array.
+     * 
+     * @param arrayIndex
+     *        integer specifying the index of the Element in the array
+     * 
+     * @param element
+     *        the replacing Element
+     */
+    protected void replaceDelegateArrayElement(final int arrayIndex, final Element element) {
+        delegateArray[arrayIndex] = element;
     }
 
     // @see java.lang.Object#clone()
     @Override
     public ArraySequence<Element> clone() {
-        final ArraySequence<Element> cloneSequence = new ArraySequence<Element>(firstIndex, lastIndex);
+        final ArraySequence<Element> cloneSequence = new ArraySequence<Element>(getFirstIndex(), getLastIndex());
 
         final int delegateArrayLength = delegateArray.length;
 
@@ -199,13 +229,13 @@ implements Cloneable {
 
         final ArraySequence<?> otherSequence = (ArraySequence<?>) otherObject;
 
-        return firstIndex == otherSequence.firstIndex && lastIndex == otherSequence.lastIndex &&
+        return getFirstIndex() == otherSequence.getFirstIndex() && getLastIndex() == otherSequence.getLastIndex() &&
                Arrays.equals(delegateArray, otherSequence.delegateArray);
     }
 
     // @see org.jlib.container.AbstractContainer#hashCode()
     @Override
     public int hashCode() {
-        return 3 * firstIndex + 5 * lastIndex + Arrays.hashCode(delegateArray);
+        return 3 * getFirstIndex() + 5 * getLastIndex() + Arrays.hashCode(delegateArray);
     }
 }

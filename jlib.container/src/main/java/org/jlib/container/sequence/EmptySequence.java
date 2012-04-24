@@ -9,20 +9,19 @@ import org.jlib.container.Container;
 
 /**
  * Empty {@link ReplaceIndexSequence}. Its {@link #getFirstIndex()} and
- * {@link #getLastIndex()} methods always throw an
- * {@link IllegalStateException}.
+ * {@link #getLastIndex()} methods always throw an {@link IllegalStateException}
+ * .
  * 
  * @param <Element>
  *        type of the elements
  * 
  * @author Igor Akkerman
  */
-public class EmptyIndexSequence<Element>
-extends AbstractIndexSequence<Element>
-implements IndexSequence<Element> {
+public class EmptySequence<Element>
+extends AbstractSequence<Element> {
 
     /** sole instance of this class */
-    private static final EmptyIndexSequence<?> INSTANCE = new EmptyIndexSequence<Object>();
+    private static final EmptySequence<?> INSTANCE = new EmptySequence<Object>();
 
     /**
      * Returns the sole instance of this class.
@@ -30,14 +29,14 @@ implements IndexSequence<Element> {
      * @return sole {@link ReplaceIndexSequence}
      */
     @SuppressWarnings("unchecked")
-    public static <Element> EmptyIndexSequence<Element> getInstance() {
-        return (EmptyIndexSequence<Element>) INSTANCE;
+    public static <Element> EmptySequence<Element> getInstance() {
+        return (EmptySequence<Element>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptyIndexSequence}.
+     * Creates a new {@link EmptySequence}.
      */
-    protected EmptyIndexSequence() {
+    protected EmptySequence() {
         super();
     }
 
@@ -46,49 +45,41 @@ implements IndexSequence<Element> {
         return EmptyIndexSequenceIterator.getInstance();
     }
 
-
     @Override
     public ReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         throw new SequenceIndexOutOfBoundsException(this, startIndex);
     }
 
-
     @Override
     public int getSize() {
         return 0;
     }
-
 
     @Override
     public boolean isEmpty() {
         return true;
     }
 
-
     @Override
-    public boolean contains(Element element) {
+    public boolean contains(final Element element) {
         return false;
     }
 
-
     @Override
-    public boolean containsAll(Container<? extends Element> elements) {
+    public boolean containsAll(final Container<? extends Element> elements) {
         return false;
     }
 
-
     @Override
-    public boolean containsAll(Collection<? extends Element> elements) {
+    public boolean containsAll(final Collection<? extends Element> elements) {
         return false;
     }
-
 
     @Override
     public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
         return false;
     }
-
 
     @Override
     public Element get(final int index)
@@ -96,18 +87,15 @@ implements IndexSequence<Element> {
         throw new SequenceIndexOutOfBoundsException(this, index);
     }
 
-
     @Override
     public int getFirstIndex() {
         throw new IllegalStateException();
     }
 
-
     @Override
     public int getLastIndex() {
         throw new IllegalStateException();
     }
-
 
     @Override
     public int getFirstIndexOf(final Element element)
@@ -115,13 +103,11 @@ implements IndexSequence<Element> {
         throw new NoSuchElementException();
     }
 
-
     @Override
     public int getLastIndexOf(final Element element)
     throws NoSuchElementException {
         throw new NoSuchElementException();
     }
-
 
     @Override
     public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
@@ -129,26 +115,22 @@ implements IndexSequence<Element> {
         throw new SequenceIndexOutOfBoundsException(this, fromIndex);
     }
 
-
     @Override
     @SuppressWarnings("unchecked")
     public List<Element> toList() {
         return Collections.unmodifiableList(Collections.EMPTY_LIST);
     }
 
-
     @Override
     public List<Element> toCollection() {
         return toList();
     }
-
 
     @Override
     @SuppressWarnings("unchecked")
     public Element[] toArray() {
         return (Element[]) new Object[0];
     }
-
 
     @Override
     public List<Element> createSubList(final int fromIndex, final int toIndex)

@@ -9,7 +9,7 @@ package org.jlib.container.sequence;
  * @author Igor Akkerman
  */
 public class EmptyReplaceIndexSequence<Element>
-extends EmptyIndexSequence<Element>
+extends EmptySequence<Element>
 implements ReplaceIndexSequence<Element> {
 
     /** sole instance of this class */
