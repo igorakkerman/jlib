@@ -22,6 +22,57 @@ implements IndexSequence<Element> {
     /** current maximum index of this sequence */
     private final int lastIndex;
 
+    @Override
+    public final Element get(final int index)
+    throws SequenceIndexOutOfBoundsException {
+        assertIndexValid(index);
+
+        return getStoredElement(index);
+    }
+
+    /**
+     * Returns the Element stored at the specified index expecting the index to
+     * be valid.
+     * 
+     * @param index
+     *        integer specifying the valid index
+     * 
+     * @return Element stored at {@code index}
+     */
+    protected abstract Element getStoredElement(final int index);
+
+    /**
+     * Replaces the Element stored at the specified index in this IndexSequence
+     * by the specified Element.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param element
+     *        Element to store
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
+     */
+    protected final void replace(final int index, final Element element)
+    throws SequenceIndexOutOfBoundsException {
+        assertIndexValid(index);
+
+        replaceStoredElement(index, element);
+    }
+
+    /**
+     * Replaces the Element stored at the specified index in this IndexSequence
+     * by the specified Element expecting the index to be valid.
+     * 
+     * @param index
+     *        integer specifying the valid index
+     * 
+     * @param element
+     *        Element to store
+     */
+    protected abstract void replaceStoredElement(final int index, final Element element);
+
     /**
      * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
      * and maximum indices. Classes extending this class must initialize the
@@ -107,24 +158,48 @@ implements IndexSequence<Element> {
         return new DefaultIndexSequenceIterator<Element>(this, startIndex);
     }
 
+    /**
+     * Asserts that the specified from and to indices are valid, that is,
+     * {@code getFirstIndex() <= fromIndex <= toIndex <= getLastIndex()}.
+     * 
+     * @param fromIndex
+     *        integer specifying the from index
+     * 
+     * @param toIndex
+     *        integer specifying the to index
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code fromIndex > toIndex}
+     */
+    private void assertIndexRangeValid(final int fromIndex, final int toIndex) {
+        if (fromIndex < firstIndex)
+            throw new SequenceIndexOutOfBoundsException(this, fromIndex, "fromIndex == " + fromIndex + " < " +
+                                                                         firstIndex + " == firstIndex");
+        if (toIndex > lastIndex)
+            throw new SequenceIndexOutOfBoundsException(this, toIndex, "toIndex == " + toIndex + " < " + lastIndex +
+                                                                       " == lastIndex");
+
+        if (toIndex < fromIndex)
+            throw new InvalidSequenceIndexRangeException(this, fromIndex, toIndex);
+    }
+
     @Override
     public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        if (fromIndex > toIndex)
-            throw new IllegalArgumentException();
+        assertIndexRangeValid(fromIndex, toIndex);
 
-        final List<Element> list = new ArrayList<Element>(getSize());
+        final List<Element> subList = new ArrayList<Element>(getSize());
+
         for (int index = fromIndex; index <= toIndex; index ++)
-            list.add(get(index));
+            subList.add(getStoredElement(index));
 
-        return list;
+        return subList;
     }
 
     @Override
     public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        if (fromIndex > toIndex)
-            throw new IllegalArgumentException();
+        assertIndexRangeValid(fromIndex, toIndex);
 
         final ReplaceIndexSequence<Element> sequence =
             ArraySequenceCreator.<Element> createSequence(fromIndex, toIndex);
@@ -133,6 +208,17 @@ implements IndexSequence<Element> {
             sequence.replace(index, get(index));
 
         return sequence;
+    }
+
+    @Override
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
+    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
+        final ReplaceIndexSequence<Element> subSequence = new ArraySequence<>(toIndex - fromIndex + 1);
+
+        for (int index = fromIndex; index <= toIndex; index ++)
+            subSequence.replace(index, get(index));
+
+        return subSequence;
     }
 
     @Override
@@ -193,32 +279,4 @@ implements IndexSequence<Element> {
 
         throw new NoSuchElementException(element.toString());
     }
-
-    @Override
-    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        final ReplaceIndexSequence<Element> subSequence = new ArraySequence<>(toIndex - fromIndex + 1);
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            subSequence.replace(index, get(index));
-
-        return subSequence;
-    }
-
-    @Override
-    public List<Element> createSubList(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        final List<Element> subList = new ArrayList<Element>(toIndex - fromIndex + 1);
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            subList.add(get(index));
-
-        return subList;
-    }
-
-    @Override
-    public int getSize() {
-        return getLastIndex() - getFirstIndex() + 1;
-    }
-
 }

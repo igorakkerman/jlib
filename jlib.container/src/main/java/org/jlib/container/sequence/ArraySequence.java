@@ -135,32 +135,32 @@ implements Cloneable {
         delegateArray = new Object[size];
     }
 
-    // @see org.jlib.container.sequence.IndexSequence#get(int)
+    /**
+     * Returns the Element stored at the specified index expecting the index to
+     * be valid.
+     * 
+     * @param index
+     *        integer specifying the valid index
+     * 
+     * @return Element stored at {@code index}
+     */
     @Override
-    public Element get(final int index)
-    throws SequenceIndexOutOfBoundsException {
-        assertIndexValid(index);
-
+    protected Element getStoredElement(final int index) {
         return getDelegateArrayElement(getDelegateArrayIndex(index));
     }
 
     /**
-     * Replaces the Element at the specified index in this IndexSequence by the
-     * specified Elements.
+     * Replaces the Element stored at the specified index in this IndexSequence
+     * by the specified Element expecting the index to be valid.
      * 
      * @param index
-     *        integer specifying the index
+     *        integer specifying the valid index
      * 
      * @param element
      *        Element to store
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    protected void replace(final int index, final Element element)
-    throws SequenceIndexOutOfBoundsException {
-        assertIndexValid(index);
-
+    @Override
+    protected void replaceStoredElement(final int index, final Element element) {
         replaceDelegateArrayElement(getDelegateArrayIndex(index), element);
     }
 
