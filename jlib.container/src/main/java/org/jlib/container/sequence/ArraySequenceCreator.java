@@ -88,12 +88,16 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      *        containing those Elements
      */
     @Override
-    @SafeVarargs
-    public ArraySequence<Element> createSequence(final int firstIndex, final Element... elements) {
-        createSequence(firstIndex, firstIndex + elements.length - 1);
+    public ArraySequence<Element> createSequence(final int firstIndex,
+                                                 @SuppressWarnings("unchecked") final Element... elements) {
+        final int lastIndex = firstIndex + elements.length - 1;
 
-        for (int elementsIndex = 0, arrayIndex = firstIndex; elementsIndex < elements.length; elementsIndex ++, arrayIndex ++)
-            replace(index, elements[elementsIndex]);
+        final ArraySequence<Element> sequence = createSequence(firstIndex, lastIndex);
+
+        for (int index = firstIndex, arrayIndex = 0; index <= lastIndex; index ++, arrayIndex ++)
+            sequence.replace(index, elements[arrayIndex]);
+
+        return sequence;
     }
 
     /**
@@ -111,8 +115,8 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      * 
      * @return the new ArraySequence of Integers
      */
-    public ArraySequence<Integer> createIntegerArrayFrom(final int firstIndex, final Integer... elements) {
-        return new ArraySequence<Integer>(firstIndex, elements);
+    public ArraySequence<Integer> createIntegerSequence(final int firstIndex, final Integer... elements) {
+        return createSequence(firstIndex, (Integer[]) elements);
     }
 
     /**
