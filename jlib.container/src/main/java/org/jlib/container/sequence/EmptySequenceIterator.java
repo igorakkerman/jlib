@@ -10,41 +10,38 @@ import java.util.NoSuchElementException;
  * 
  * @author Igor Akkerman
  */
-public class EmptyIndexSequenceIterator<Element>
-implements IndexSequenceIterator<Element> {
+public class EmptySequenceIterator<Element>
+implements SequenceIterator<Element> {
 
     /** sole instance of this class */
-    private static final EmptyIndexSequenceIterator<?> INSTANCE = new EmptyIndexSequenceIterator<Object>();
+    private static final EmptySequenceIterator<?> INSTANCE = new EmptySequenceIterator<>();
 
     /**
      * Returns the sole instance of this class.
      * 
-     * @return sole {@link ReplaceIndexSequenceIterator}
+     * @return sole {@link EmptySequenceIterator}
      */
     @SuppressWarnings("unchecked")
-    public static <Element> EmptyIndexSequenceIterator<Element> getInstance() {
-        return (EmptyIndexSequenceIterator<Element>) INSTANCE;
+    public static <Element> EmptySequenceIterator<Element> getInstance() {
+        return (EmptySequenceIterator<Element>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptyIndexSequenceIterator}.
+     * Creates a new {@link EmptySequenceIterator}.
      */
-    protected EmptyIndexSequenceIterator() {
+    protected EmptySequenceIterator() {
         super();
     }
-
 
     @Override
     public boolean hasPrevious() {
         return false;
     }
 
-
     @Override
     public boolean hasNext() {
         return false;
     }
-
 
     @Override
     public Element previous()
@@ -52,27 +49,14 @@ implements IndexSequenceIterator<Element> {
         throw new NoSuchElementException();
     }
 
-
     @Override
     public Element next()
     throws NoSuchElementException {
         throw new NoSuchElementException();
     }
 
-
     @Override
-    public int previousIndex() {
-        throw new NoSuchElementException();
-    }
-
-
-    @Override
-    public int nextIndex() {
-        throw new NoSuchElementException();
-    }
-
-    @Override
-    public void remove() 
+    public void remove()
     throws UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
