@@ -8,7 +8,22 @@ import org.jlib.container.Container;
 public class ArraySequenceCreator<Element>
 extends IndexSequenceCreator<ArraySequence<Element>, Element> {
 
-    public ArraySequenceCreator() {
+    /** sole {@link ArraySequenceCreator} instance */
+    private static final ArraySequenceCreator<?> INSTANCE = new ArraySequenceCreator<>();
+
+    /**
+     * Returns the sole {@link ArraySequenceCreator} instance.
+     * 
+     * @return sole {@link ArraySequenceCreator} instance
+     */
+    public static ArraySequenceCreator<?> getInstance() {
+        return INSTANCE;
+    }
+
+    /**
+     * Creates a new {@link ArraySequenceCreator}.
+     */
+    private ArraySequenceCreator() {
         super();
     }
 
@@ -23,6 +38,15 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      * the minimum index as first argument.
      * 
      * <pre>
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
      * 
      * 
      * 
