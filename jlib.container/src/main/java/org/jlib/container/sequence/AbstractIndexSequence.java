@@ -129,22 +129,23 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public int getFirstIndexOf(final Element searchedElement)
+    public int getFirstIndexOf(final Element element)
     throws NoSuchElementException {
         for (int index = firstIndex; index <= lastIndex; index ++)
-            if (get(index).equals(searchedElement))
+            if (getStoredElement(index).equals(element))
                 return index;
 
-        throw new NoSuchElementException();
+        throw new NoSuchElementException(element.toString());
     }
 
     @Override
-    public int getLastIndexOf(final Element searchedElement) {
+    public int getLastIndexOf(final Element element)
+    throws NoSuchElementException {
         for (int index = lastIndex; index >= firstIndex; index --)
-            if (get(index).equals(searchedElement))
+            if (getStoredElement(index).equals(element))
                 return index;
 
-        throw new NoSuchElementException();
+        throw new NoSuchElementException(element.toString());
     }
 
     @Override
@@ -155,7 +156,7 @@ implements IndexSequence<Element> {
     @Override
     public IndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultIndexSequenceIterator<Element>(this, startIndex);
+        return new DefaultIndexSequenceIterator<>(this, startIndex);
     }
 
     /**
@@ -243,40 +244,5 @@ implements IndexSequence<Element> {
         stringBuilder.append(']');
 
         return stringBuilder.toString();
-    }
-
-    @Override
-    public IndexSequenceIterator<Element> createIterator() {
-        return new DefaultIndexSequenceIterator<>(this);
-    }
-
-    @Override
-    public IndexSequenceIterator<Element> createIterator(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
-        return new DefaultIndexSequenceIterator<>(this, startIndex);
-    }
-
-    @Override
-    public int getFirstIndexOf(final Element element)
-    throws NoSuchElementException {
-        final int lastIndex = getLastIndex();
-
-        for (int index = getFirstIndex(); index <= lastIndex; index ++)
-            if (get(index).equals(element))
-                return index;
-
-        throw new NoSuchElementException(element.toString());
-    }
-
-    @Override
-    public int getLastIndexOf(final Element element)
-    throws NoSuchElementException {
-        final int firstIndex = getFirstIndex();
-
-        for (int index = getLastIndex(); index >= firstIndex; index --)
-            if (get(index).equals(element))
-                return index;
-
-        throw new NoSuchElementException(element.toString());
     }
 }

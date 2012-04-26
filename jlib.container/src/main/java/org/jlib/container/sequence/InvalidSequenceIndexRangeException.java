@@ -12,6 +12,9 @@ extends RuntimeException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6780143195522448143L;
 
+    /** the {@link IndexSequence} */
+    private final IndexSequence<?> sequence;
+
     /** from index */
     private final int fromIndex;
 
@@ -19,19 +22,35 @@ extends RuntimeException {
     private final int toIndex;
 
     /**
-     * Creates a new InvalidSequenceIndexRangeException.
+     * Creates a new {@link InvalidSequenceIndexRangeException}.
+     * 
+     * @param sequence
+     *        {@link IndexSequence} for which this
+     *        {@link InvalidSequenceIndexRangeException} is thrown
      * 
      * @param fromIndex
      *        integer specifying the from index
+     * 
      * @param toIndex
      *        integer specifying the to index
      * 
      */
-    public InvalidSequenceIndexRangeException(final int fromIndex, final int toIndex) {
+    public InvalidSequenceIndexRangeException(final IndexSequence<?> sequence, final int fromIndex, final int toIndex) {
         super("fromIndex == " + fromIndex + " > " + toIndex + " == toIndex: ");
 
+        this.sequence = sequence;
         this.fromIndex = fromIndex;
         this.toIndex = toIndex;
+    }
+
+    /**
+     * Returns the {@link IndexSequence} of this
+     * InvalidSequenceIndexRangeException
+     * 
+     * @return the IndexSequence
+     */
+    public IndexSequence<?> getSequence() {
+        return sequence;
     }
 
     /**
