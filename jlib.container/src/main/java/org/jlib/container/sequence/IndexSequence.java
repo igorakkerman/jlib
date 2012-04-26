@@ -19,7 +19,8 @@ import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 
 /**
- * Ordered random access sequence with minimum and maximum indices.
+ * Non-empty {@link Sequence} allowing random access to its Elements using their
+ * index. The index may range from a specified minimum to a specified maximum.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
@@ -34,7 +35,9 @@ extends Sequence<Element>, RandomAccess {
      * 
      * @param index
      *        integer specifying the index of the stored Element
+     * 
      * @return Element stored at {@code index}
+     * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
@@ -78,8 +81,8 @@ extends Sequence<Element>, RandomAccess {
      *        integer specifying the index of the first Element returned by the
      *        Iterator
      * 
-     * @return IndexSequenceIterator over this IndexSequence initially pointing to
-     *         the beginning of this IndexSequence
+     * @return IndexSequenceIterator over this IndexSequence initially pointing
+     *         to the beginning of this IndexSequence
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
@@ -127,12 +130,12 @@ extends Sequence<Element>, RandomAccess {
      * @return Sequence containing the specified Elements
      * @throws IllegalArgumentException
      *         if {@code fromIndex > toIndex}
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexRangeException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
      */
     public List<Element> createSubList(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException;
+    throws IllegalArgumentException, InvalidSequenceIndexRangeException;
 
     /**
      * Returns an IndexSequence containing the Elements stored in this

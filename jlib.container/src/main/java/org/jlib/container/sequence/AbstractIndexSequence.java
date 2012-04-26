@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * Non-empty {@link IndexSequence}.
+ * Skeletal implementation of an {@link IndexSequence}.
  * 
  * @param <Element>
  *        type of the elements of the sequence
