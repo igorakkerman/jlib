@@ -78,7 +78,7 @@ implements IndexSequence<Element> {
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    protected final void replace(final int index, final Element element)
+    protected void replace(final int index, final Element element)
     throws SequenceIndexOutOfBoundsException {
         assertIndexValid(index);
 
