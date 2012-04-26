@@ -16,8 +16,9 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      * 
      * @return sole {@link ArraySequenceCreator} instance
      */
-    public static ArraySequenceCreator<?> getInstance() {
-        return INSTANCE;
+    @SuppressWarnings("unchecked")
+    public static <Element> ArraySequenceCreator<Element> getInstance() {
+        return (ArraySequenceCreator<Element>) INSTANCE;
     }
 
     /**
@@ -37,37 +38,20 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      * {@link #createIntegerArrayFrom(int, Integer[])}. The latter form takes
      * the minimum index as first argument.
      * 
-     * <pre>
+     * {@literal
+     * // possible but not handy ArraySequence&lt;Integer&gt; integerArray = new
+     * ArraySequence&lt;Integer&gt;(new Integer[] 1, 2, 3, 4, 5, 6 }
+     * );
      * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * // possible but not handy
-     * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(new Integer[] { 1, 2, 3, 4, 5, 6 });
-     * 
-     * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(1, new Integer[] { 1, 2, 3, 4, 5, 6 });
+     * ArraySequence&lt;Integer&gt; integerArray = new
+     * ArraySequence&lt;Integer&gt;(1, new Integer[] { 1, 2, 3, 4, 5, 6 });
      * 
      * // easier to use (needs the static import of the factory method(s))
-     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArray(1, 2, 3, 4, 5);
+     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArray(1, 2, 3,
+     * 4, 5);
      * 
-     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArrayFrom(1, 1, 2, 3, 4, 5);
-     * </pre>
+     * ArraySequence&lt;Integer&gt; integerArray = createIntegerArrayFrom(1, 1,
+     * 2, 3, 4, 5); }
      */
 
     @Override

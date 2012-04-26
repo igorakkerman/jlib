@@ -22,6 +22,30 @@ implements IndexSequence<Element> {
     /** current maximum index of this sequence */
     private final int lastIndex;
 
+    /**
+     * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
+     * and maximum indices. Classes extending this class must initialize the
+     * Element store.
+     * 
+     * @param firstIndex
+     *        integer specifying the initial minimum index of this ArraySequence
+     * 
+     * @param lastIndex
+     *        integer specifying the maximum index of this ArraySequence
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code  lastIndex < firstIndex}
+     */
+    public AbstractIndexSequence(final int firstIndex, final int lastIndex) {
+        super();
+
+        this.firstIndex = firstIndex;
+        this.lastIndex = lastIndex;
+
+        if (firstIndex < lastIndex)
+            throw new InvalidSequenceIndexRangeException(this, firstIndex, lastIndex);
+    }
+
     @Override
     public final Element get(final int index)
     throws SequenceIndexOutOfBoundsException {
@@ -73,61 +97,6 @@ implements IndexSequence<Element> {
      */
     protected abstract void replaceStoredElement(final int index, final Element element);
 
-    /**
-     * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
-     * and maximum indices. Classes extending this class must initialize the
-     * Element store.
-     * 
-     * @param firstIndex
-     *        integer specifying the initial minimum index of this ArraySequence
-     * 
-     * @param lastIndex
-     *        integer specifying the maximum index of this ArraySequence
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code  lastIndex < firstIndex}
-     */
-    public AbstractIndexSequence(final int firstIndex, final int lastIndex) {
-        super();
-
-        this.firstIndex = firstIndex;
-        this.lastIndex = lastIndex;
-
-        if (lastIndex < firstIndex)
-            throw new IllegalArgumentException("lastIndex == " + lastIndex + " < " + firstIndex + " == firstIndex");
-    }
-
-    /**
-     * Asserts that the specified index is inside the valid bounds of this
-     * {@link AbstractIndexSequence}.
-     * 
-     * @param index
-     *        integer specifying the index to verify
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index} is out of the {@link ArraySequence} bounds
-     */
-    protected void assertIndexValid(final int index)
-    throws SequenceIndexOutOfBoundsException {
-        if (index < firstIndex || index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(this, index);
-    }
-
-    @Override
-    public int getFirstIndex() {
-        return firstIndex;
-    }
-
-    @Override
-    public int getLastIndex() {
-        return lastIndex;
-    }
-
-    @Override
-    public int getSize() {
-        return lastIndex - firstIndex + 1;
-    }
-
     @Override
     public int getFirstIndexOf(final Element element)
     throws NoSuchElementException {
@@ -159,6 +128,49 @@ implements IndexSequence<Element> {
         return new DefaultIndexSequenceIterator<>(this, startIndex);
     }
 
+    @Override
+    public List<Element> createSubList(final int fromIndex, final int toIndex)
+    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
+        assertIndexRangeValid(fromIndex, toIndex);
+
+        final List<Element> subList = new ArrayList<Element>(getSize());
+
+        for (int index = fromIndex; index <= toIndex; index ++)
+            subList.add(getStoredElement(index));
+
+        return subList;
+    }
+
+    @Override
+    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
+    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
+        assertIndexRangeValid(fromIndex, toIndex);
+
+        final ArraySequence<Element> sequence =
+            ArraySequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
+
+        for (int index = fromIndex; index <= toIndex; index ++)
+            sequence.replaceStoredElement(index, getStoredElement(index));
+
+        return sequence;
+    }
+
+    /**
+     * Asserts that the specified index is inside the valid bounds of this
+     * {@link AbstractIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index to verify
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index} is out of the {@link ArraySequence} bounds
+     */
+    protected void assertIndexValid(final int index)
+    throws SequenceIndexOutOfBoundsException {
+        if (index < firstIndex || index > lastIndex)
+            throw new SequenceIndexOutOfBoundsException(this, index);
+    }
+
     /**
      * Asserts that the specified from and to indices are valid, that is,
      * {@code getFirstIndex() <= fromIndex <= toIndex <= getLastIndex()}.
@@ -185,41 +197,18 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public List<Element> createSubList(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        assertIndexRangeValid(fromIndex, toIndex);
-
-        final List<Element> subList = new ArrayList<Element>(getSize());
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            subList.add(getStoredElement(index));
-
-        return subList;
+    public int getFirstIndex() {
+        return firstIndex;
     }
 
     @Override
-    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        assertIndexRangeValid(fromIndex, toIndex);
-
-        final ReplaceIndexSequence<Element> sequence =
-            ArraySequenceCreator.<Element> createSequence(fromIndex, toIndex);
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            sequence.replace(index, get(index));
-
-        return sequence;
+    public int getLastIndex() {
+        return lastIndex;
     }
 
     @Override
-    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        final ReplaceIndexSequence<Element> subSequence = new ArraySequence<>(toIndex - fromIndex + 1);
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            subSequence.replace(index, get(index));
-
-        return subSequence;
+    public int getSize() {
+        return lastIndex - firstIndex + 1;
     }
 
     @Override
@@ -231,7 +220,7 @@ implements IndexSequence<Element> {
         stringBuilder.append('[');
 
         stringBuilder.append(iterator.nextIndex());
-        stringBuilder.append('=');
+        stringBuilder.append(": ");
         stringBuilder.append(iterator.next());
 
         while (iterator.hasNext()) {
