@@ -43,22 +43,6 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
     throws IllegalArgumentException;
 
     /**
-     * Creates a new initially blank {@link Sequence}.
-     * 
-     * @param size
-     *        integer specifying the size of the {@link Sequence}
-     * 
-     * @return the newly created {@link Sequence}
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code size <= 0}
-     */
-    public Sequenze createSequence(final int size)
-    throws IllegalArgumentException {
-        return createSequence(0, size - 1);
-    }
-
-    /**
      * Creates a new {@link Sequence} containing the specified Elements. That
      * is, the index of the first Element of the specified sequence in this
      * Sequence is 0. The fixed size of the {@link Sequence} is the size of the
@@ -70,24 +54,8 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
      * 
      * @return the newly created {@link Sequence}
      */
-    public Sequenze createSequence(final Element... elements) {
+    public final Sequenze createSequence(final Element... elements) {
         return createSequence(0, elements);
-    }
-
-    /**
-     * Creates a new {@link Sequence} containing the specified Integer Elements.
-     * That is, the index of the first Element of the specified sequence in this
-     * Sequence is 0. The fixed size of the {@link Sequence} is the size of the
-     * specified sequence.
-     * 
-     * @param elements
-     *        comma separated sequence of Integer Elements to store or Java
-     *        array containing those Elements
-     * 
-     * @return the newly created {@link Sequence}
-     */
-    public Sequenze createIntegerSequence(final Integer... elements) {
-        return createSequence((Element[]) elements);
     }
 
     /**
@@ -105,34 +73,38 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
      * 
      * @return the newly created {@link Sequence}
      */
-    public Sequenze createSequence(final int firstIndex, @SuppressWarnings("unchecked") final Element... elements) {
+    public Sequenze createSequence(final int firstIndex, final Element... elements) {
         final int elementsCount = elements.length;
 
         final int lastIndex = firstIndex + elementsCount - 1;
 
-        final AbstractIndexSequence<Element> sequence = createSequence(firstIndex, lastIndex);
+        final Sequenze sequence = createSequence(firstIndex, lastIndex);
 
-        for (int elementIndex = firstIndex, arrayElementIndex = 0; elementIndex <= lastIndex; elementIndex ++, arrayElementIndex ++)
-            sequence.replace(elementIndex, elements[arrayElementIndex]);
+        for (int index = firstIndex, arrayElementIndex = 0; index <= lastIndex; index ++, arrayElementIndex ++)
+            sequence.replace(index, elements[arrayElementIndex]);
 
+        return sequence;
     }
 
     /**
-     * Creates a new {@link Sequence} containing the specified Integer Elements
-     * having a specified first index. That is, the index of the first Element
-     * of the specified sequence in the {@link Sequence} can be specified. The
-     * fixed size of the {@link Sequence} is the size of the specified sequence.
+     * Creates a new {@link IndexSequence} with a first index of {@code 0} and
+     * the specified size.
      * 
-     * @param firstIndex
-     *        integer specifying the minimum index of the {@link Sequence}
+     * @param size
+     *        integer specifying the size of the new {@link IndexSequence}
      * 
-     * @param elements
-     *        comma separated sequence of Integer elements to store or Java
-     *        array containing those Elements
+     * @return the new {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @throws IllegalArgumentException
+     *         if {@code size < 1}
      */
-    public abstract Sequenze createIntegerSequenceFrom(final int firstIndex, final Integer... elements);
+    public Sequenze createSequence(final int size)
+    throws IllegalArgumentException {
+        if (size < 1)
+            throw new IllegalArgumentException("size == " + size + " < 1");
+
+        return createSequence(0, size - 1);
+    }
 
     /**
      * Creates a new {@link Sequence} containing the Elements of the specified
@@ -140,7 +112,7 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
      * the {@link Sequence} is 0. The fixed size of the {@link Sequence} is the
      * size of the specified Container.
      * 
-     * @param collection
+     * @param container
      *        Container of which the Elements are copied to the {@link Sequence}
      * 
      * @return the newly created {@link Sequence}
@@ -148,7 +120,9 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
      * @throws IllegalArgumentException
      *         if {@code collection} is {@code null}
      */
-    public abstract Sequenze createSequence(final Container<Element> collection);
+    public final Sequenze createSequence(final Container<Element> container) {
+        return createSequence(0, container);
+    }
 
     /**
      * Creates a new {@link Sequence} containing the Elements of the specified
@@ -162,7 +136,9 @@ public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequenc
      * 
      * @return the newly created {@link Sequence}
      */
-    public abstract Sequenze createSequence(final Collection<Element> collection);
+    public final Sequenze createSequence(final Collection<Element> collection) {
+        return createSequence(0, collection);
+    }
 
     /**
      * Creates a new {@link Sequence} containing the Elements of the specified
