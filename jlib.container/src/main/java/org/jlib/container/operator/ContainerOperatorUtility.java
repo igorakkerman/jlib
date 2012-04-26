@@ -19,13 +19,14 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.ArraySequence;
+import org.jlib.container.sequence.ArraySequenceCreator;
 import org.jlib.container.sequence.IndexSequence;
 import org.jlib.core.operator.BinaryOperator;
 import org.jlib.core.operator.IdentityElementBinaryOperator;
 
 /**
- * Utility class providing methods applying {@link BinaryOperator BinaryOperators} on {@link Container Containers}.
+ * Utility class providing methods applying {@link BinaryOperator
+ * BinaryOperators} on {@link Container Containers}.
  * 
  * @author Igor Akkerman
  */
@@ -46,9 +47,9 @@ public final class ContainerOperatorUtility {
      *        the source array
      * @return Set containing the Elements of {@code array}
      */
-    public static <SetElement, ArrayElement extends SetElement> Set<SetElement> asSet(ArrayElement[] array) {
-        Set<SetElement> set = new HashSet<SetElement>(array.length);
-        for (ArrayElement element : array)
+    public static <SetElement, ArrayElement extends SetElement> Set<SetElement> asSet(final ArrayElement[] array) {
+        final Set<SetElement> set = new HashSet<SetElement>(array.length);
+        for (final ArrayElement element : array)
             set.add(element);
         return set;
     }
@@ -72,12 +73,13 @@ public final class ContainerOperatorUtility {
      * @throws IllegalArgumentException
      *         if {@code collection} is empty
      */
-    public static <Value> Value applyToAll(Container<Value> collection, BinaryOperator<Value, Value, Value> operator)
+    public static <Value> Value applyToAll(final Container<Value> collection,
+                                           final BinaryOperator<Value, Value, Value> operator)
     throws IllegalArgumentException {
         if (collection.isEmpty())
             throw new IllegalArgumentException();
 
-        Iterator<Value> collectionIterator = collection.iterator();
+        final Iterator<Value> collectionIterator = collection.iterator();
 
         Value result = collectionIterator.next();
 
@@ -110,7 +112,8 @@ public final class ContainerOperatorUtility {
      *         elements of {@code collection}; the {@code operator}'s identity
      *         element if {@code collection} is empty
      */
-    public static <Value> Value applyToAll(Container<Value> collection, IdentityElementBinaryOperator<Value> operator) {
+    public static <Value> Value applyToAll(final Container<Value> collection,
+                                           final IdentityElementBinaryOperator<Value> operator) {
         return applyToAll(collection, operator, operator.identityElement());
     }
 
@@ -136,8 +139,9 @@ public final class ContainerOperatorUtility {
      *         elements of {@code collection}; {@code identityElement} if
      *         {@code collection} is empty
      */
-    public static <Value> Value applyToAll(Container<Value> collection, BinaryOperator<Value, Value, Value> operator,
-                                           Value identityElement) {
+    public static <Value> Value applyToAll(final Container<Value> collection,
+                                           final BinaryOperator<Value, Value, Value> operator,
+                                           final Value identityElement) {
         if (collection.isEmpty())
             return identityElement;
 
@@ -163,19 +167,20 @@ public final class ContainerOperatorUtility {
      * @throws IllegalArgumentException
      *         if {@code collection} is empty
      */
-    public static <Value> Value applyToAllRightAssociative(Container<Value> container,
-                                                           BinaryOperator<Value, Value, Value> operator)
+    public static <Value> Value applyToAllRightAssociative(final Container<Value> container,
+                                                           final BinaryOperator<Value, Value, Value> operator)
     throws IllegalArgumentException {
 
         if (container.isEmpty())
             throw new IllegalArgumentException();
 
-        IndexSequence<Value> sequence =
+        final IndexSequence<Value> sequence =
             container instanceof IndexSequence<?> ? (IndexSequence<Value>) container
-                                                 : new ArraySequence<Value>(1, container);
+                                                 : ArraySequenceCreator.<Value> getInstance().createSequence(1,
+                                                                                                             container);
 
         int sequenceIndex = sequence.getLastIndex();
-        int firstSequenceIndex = sequence.getMinimumindex();
+        final int firstSequenceIndex = sequence.getMinimumindex();
 
         Value result = sequence.get(sequenceIndex);
         while (-- sequenceIndex >= firstSequenceindex)
@@ -207,8 +212,8 @@ public final class ContainerOperatorUtility {
      *         elements of {@code collection}; the {@code operator}'s identity
      *         element if {@code collection} is empty
      */
-    public static <Value> Value applyToAllRightAssociative(Container<Value> collection,
-                                                           IdentityElementBinaryOperator<Value> operator) {
+    public static <Value> Value applyToAllRightAssociative(final Container<Value> collection,
+                                                           final IdentityElementBinaryOperator<Value> operator) {
         return applyToAllRightAssociative(collection, operator, operator.identityElement());
     }
 
@@ -234,9 +239,9 @@ public final class ContainerOperatorUtility {
      *         elements of {@code collection}; {@code identityElement} if
      *         {@code collection} is empty
      */
-    public static <Value> Value applyToAllRightAssociative(Container<Value> collection,
-                                                           BinaryOperator<Value, Value, Value> operator,
-                                                           Value identityElement) {
+    public static <Value> Value applyToAllRightAssociative(final Container<Value> collection,
+                                                           final BinaryOperator<Value, Value, Value> operator,
+                                                           final Value identityElement) {
         if (collection.isEmpty())
             return identityElement;
 
