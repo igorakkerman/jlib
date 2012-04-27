@@ -12,7 +12,7 @@ public abstract class AbstractMatrix<Entry>
 implements Matrix<Entry> {
     
     /**
-     * Returns the number of cells in this ArraySequenceMatrix. The size is
+     * Returns the number of cells in this ArrayMatrix. The size is
      * equal to {@code getWidth() * getHeight()}.
      * 
      * @return integer specifying the number of cells

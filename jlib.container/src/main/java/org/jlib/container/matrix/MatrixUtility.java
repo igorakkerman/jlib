@@ -15,7 +15,7 @@
 package org.jlib.container.matrix;
 
 /**
- * Order in which a {@link ArraySequenceMatrix} is iterated.
+ * Order in which a {@link ArrayMatrix} is iterated.
  * 
  * @author Igor Akkerman
  */

@@ -19,9 +19,9 @@ import org.jlib.container.Container;
  * <pre>
  * {
  *     &#064;literal
- *     // good(?) old two-dimensional array           // cool(!) new jlib ArraySequenceMatrix class
+ *     // good(?) old two-dimensional array           // cool(!) new jlib ArrayMatrix class
  *     String[][] stringMatrix = new String[10][5];
- *     ArraySequenceMatrix&lt;String&gt; stringMatrix = new ArraySequenceMatrix&lt;String&gt;(10, 5);
+ *     ArrayMatrix&lt;String&gt; stringMatrix = new ArrayMatrix&lt;String&gt;(10, 5);
  *     stringMatrix[2][3] = &quot;Too old!&quot;;
  *     stringMatrix.set(2, 3, &quot;Brand-new!&quot;);
  *     String s = stringMatrix[2][3];
@@ -35,9 +35,9 @@ import org.jlib.container.Container;
  * <ul>
  * <li>Minimum and maximum width and height:<br/>
  * On instantiation, you can specify the minimum and the maximum width and
- * height of the ArraySequenceMatrix. Thus, no offset is necessary for matrices
+ * height of the ArrayMatrix. Thus, no offset is necessary for matrices
  * starting at other indices than 0. The following example illustrates how a
- * (4x2)-ArraySequenceMatrix with indices starting at 1, in which every entry is
+ * (4x2)-ArrayMatrix with indices starting at 1, in which every entry is
  * the product of the column and row number:
  * 
  * <pre>
@@ -45,9 +45,9 @@ import org.jlib.container.Container;
  * 
  * {
  *     &#064;literal
- *     // good(?) old two-dimensional array             // cool(!) new jlib ArraySequenceMatrix class
+ *     // good(?) old two-dimensional array             // cool(!) new jlib ArrayMatrix class
  *     Integer[][] integerMatrix = new Integer[4][2];
- *     ArraySequenceMatrix&lt;Integer&gt; integerMatrix = new ArraySequenceMatrix&lt;Integer&gt;(4, 2);
+ *     ArrayMatrix&lt;Integer&gt; integerMatrix = new ArrayMatrix&lt;Integer&gt;(4, 2);
  *     for (int row = 1; row &lt;= 2; row ++)
  *         for (int row = 1; row &lt;= 2; row ++)
  *             for (int col = 1; col &lt;= 4; col ++)
@@ -75,7 +75,7 @@ import org.jlib.container.Container;
  *     Set&lt;String&gt;[][] stringSetMatrix = new Set&lt;String&gt;[4][2];
  * 
  *     // PERMITTED!
- *     ArraySequenceMatrix&lt;Set&lt;String&gt;&gt; stringSetMatrix = new ArraySequenceMatrix&lt;Set&lt;String&gt;&gt;(4, 2);
+ *     ArrayMatrix&lt;Set&lt;String&gt;&gt; stringSetMatrix = new ArrayMatrix&lt;Set&lt;String&gt;&gt;(4, 2);
  * }
  * </pre>
  * 
@@ -83,12 +83,12 @@ import org.jlib.container.Container;
  * </ul>
  * <p>
  * <!-- TODO: update documentation --> A default algorithm of how this
- * ArraySequenceMatrix is traversed by {@link Iterator Iterators} returned by
+ * ArrayMatrix is traversed by {@link Iterator Iterators} returned by
  * {@link #iterator()} can be defined specifying a default {@link Iterable} as
  * iterable provider.
  * </p>
  * <p>
- * A ArraySequenceMatrix has a fixed size, thus no Elements can be added to or
+ * A ArrayMatrix has a fixed size, thus no Elements can be added to or
  * removed from it. The corresponding methods for adding and removing Elements
  * all throw an {@link UnsupportedOperationException}.
  * </p>
@@ -117,7 +117,7 @@ extends Container<Entry>, MatrixIterable<Entry> {
     public int getHeight();
 
     /**
-     * Returns the number of Entries in this ArraySequenceMatrix. The size is
+     * Returns the number of Entries in this ArrayMatrix. The size is
      * equal to {@code getWidth() * getHeight()}.
      * 
      * @return integer specifying the number of Entries
@@ -127,7 +127,7 @@ extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
      * Creates a {@link MatrixIterator} traversing the Entries of this
-     * {@link ArraySequenceMatrix} in the default order. The default order may
+     * {@link ArrayMatrix} in the default order. The default order may
      * be defined by the concrete implementation or even made customizable.
      * 
      * @return a new {@link MatrixIterator} over the Entries of

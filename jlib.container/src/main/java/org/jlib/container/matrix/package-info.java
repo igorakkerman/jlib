@@ -13,7 +13,7 @@
  */
 
 /**
- * jlib ArraySequenceMatrix and ArraySequenceMatrix Iterators.
+ * jlib ArrayMatrix and ArrayMatrix Iterators.
  * 
  * @author Igor Akkerman
  */

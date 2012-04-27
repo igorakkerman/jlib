@@ -9,7 +9,7 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  * Indexed {@link Matrix} providing {@link RandomAccess} to its entries.
  * 
  * @param <Entry>
- *        type of the elements held in the ArraySequenceMatrix
+ *        type of the elements held in the ArrayMatrix
  * 
  * @author Igor Akkerman
  */
@@ -28,7 +28,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      *        integer specifying the row of the stored Element
      * 
      * @return Element stored at the specified position in this
-     *         ArraySequenceMatrix
+     *         ArrayMatrix
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code nextint < getMinint() ||

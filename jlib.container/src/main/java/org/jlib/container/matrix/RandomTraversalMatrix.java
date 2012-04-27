@@ -28,7 +28,7 @@ extends Matrix<Entry> {
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
      * provided as a {@link Sequence}.
      * 
-     * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
+     * @return IndexSequence of the MatrixRows of this ArrayMatrix
      */
     public Sequence<? extends Sequence<Entry>> getColumns();
 
@@ -36,7 +36,7 @@ extends Matrix<Entry> {
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
      * provided as a {@link Sequence}.
      * 
-     * @return IndexSequence of the MatrixRows of this ArraySequenceMatrix
+     * @return IndexSequence of the MatrixRows of this ArrayMatrix
      */
     public Sequence<? extends Sequence<Entry>> getRows();
 

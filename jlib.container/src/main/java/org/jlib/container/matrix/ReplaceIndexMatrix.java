@@ -15,7 +15,7 @@ extends IndexMatrix<Entry> {
 
     /**
      * Registers the Element to store at the specified column and row in this
-     * ArraySequenceMatrix.
+     * ArrayMatrix.
      * 
      * @param columnIndex
      *        integer specifying the column of the Element to store
