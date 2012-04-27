@@ -111,7 +111,7 @@ import java.util.Arrays;
 // @formatter:on
 
 class ArraySequence<Element>
-extends AbstractIndexSequence<Element>
+extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
     /** array holding the Elements of this {@link ArraySequence} */

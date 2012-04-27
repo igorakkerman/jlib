@@ -16,7 +16,7 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 @SuppressWarnings("unchecked")
-public abstract class IndexSequenceCreator<Sequenze extends AbstractIndexSequence<Element>, Element> {
+public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexSequence<Element>, Element> {
 
     /**
      * Creates a new {@link IndexSequenceCreator}.

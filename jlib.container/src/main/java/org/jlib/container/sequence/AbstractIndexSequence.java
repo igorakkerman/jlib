@@ -65,38 +65,6 @@ implements IndexSequence<Element> {
      */
     protected abstract Element getStoredElement(final int index);
 
-    /**
-     * Replaces the Element stored at the specified index in this IndexSequence
-     * by the specified Element.
-     * 
-     * @param index
-     *        integer specifying the index
-     * 
-     * @param element
-     *        Element to store
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index < getFirstIndex() || index > getLastIndex()}
-     */
-    protected void replace(final int index, final Element element)
-    throws SequenceIndexOutOfBoundsException {
-        assertIndexValid(index);
-
-        replaceStoredElement(index, element);
-    }
-
-    /**
-     * Replaces the Element stored at the specified index in this IndexSequence
-     * by the specified Element expecting the index to be valid.
-     * 
-     * @param index
-     *        integer specifying the valid index
-     * 
-     * @param element
-     *        Element to store
-     */
-    protected abstract void replaceStoredElement(final int index, final Element element);
-
     @Override
     public int getFirstIndexOf(final Element element)
     throws NoSuchElementException {

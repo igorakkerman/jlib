@@ -40,13 +40,13 @@ extends IndexMatrixEntity<Entry> {
     }
 
     /**
-     * Returns the Entry stored at the specified row index in this {@link IndexMatrixColumn}.
+     * Returns the Entry stored at the specified row index in this
+     * {@link IndexMatrixColumn}.
      * 
      * @return Entry stored at {@code rowIndex}
      */
     @Override
-    public Entry get(final int rowIndex)
-    throws IndexOutOfBoundsException {
+    protected Entry getStoredElement(final int rowIndex) {
         return getMatrix().get(rowIndex, getEntityIndex());
     }
 }

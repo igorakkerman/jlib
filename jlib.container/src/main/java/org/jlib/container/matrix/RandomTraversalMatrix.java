@@ -1,6 +1,7 @@
 package org.jlib.container.matrix;
 
 import java.util.Iterator;
+import java.util.RandomAccess;
 
 import org.jlib.container.sequence.Sequence;
 
@@ -9,7 +10,9 @@ import org.jlib.container.sequence.Sequence;
  * columns or rows can be retrieved and the {@link Matrix} can be traversed by a
  * custom {@link MatrixIterator}. The default {@link MatrixIterator} returned by
  * {@link #createIterator()} and {@link #iterator()} can be customized using
- * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
+ * {@link #setDefaultIterationOrder(MatrixIterationOrder)}. A
+ * {@link RandomTraversalMatrix} is not necessarily a {@link RandomAccess}
+ * {@link Matrix}.
  * 
  * @param <Entry>
  *        type of the entries of the Matrix

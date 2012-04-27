@@ -8,6 +8,7 @@ import java.util.RandomAccess;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IndexSequence;
+import org.jlib.container.sequence.Sequence;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.
@@ -90,12 +91,12 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public IndexSequence<IndexSequence<Entry>> getRows() {
+    public Sequence<IndexSequence<Entry>> getRows() {
         return EmptySequence.getInstance();
     }
 
     @Override
-    public IndexSequence<IndexSequence<Entry>> getColumns() {
+    public Sequence<IndexSequence<Entry>> getColumns() {
         return EmptySequence.getInstance();
     }
 
