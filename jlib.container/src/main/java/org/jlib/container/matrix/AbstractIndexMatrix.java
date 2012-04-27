@@ -9,19 +9,19 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  * 
  * @param <Entry>
  *        type of the entries of the {@link IndexMatrix}
- *        
+ * 
  * @author Igor Akkerman
  */
 public abstract class AbstractIndexMatrix<Entry>
 extends AbstractMatrix<Entry>
 implements IndexMatrix<Entry> {
-    
+
     @Override
     public Sequence<? extends IndexMatrixColumn<Entry>> getColumns() {
         return new AbstractIndexSequence<IndexMatrixColumn<Entry>>() {
-            
+
             @Override
-            public IndexMatrixColumn<Entry> get(int columnIndex)
+            public IndexMatrixColumn<Entry> get(final int columnIndex)
             throws SequenceIndexOutOfBoundsException {
                 return getColumn(columnIndex);
             }
@@ -41,9 +41,9 @@ implements IndexMatrix<Entry> {
     @Override
     public Sequence<? extends IndexMatrixRow<Entry>> getRows() {
         return new AbstractIndexSequence<IndexMatrixRow<Entry>>() {
-            
+
             @Override
-            public IndexMatrixRow<Entry> get(int rowIndex)
+            public IndexMatrixRow<Entry> get(final int rowIndex)
             throws SequenceIndexOutOfBoundsException {
                 return getRow(rowIndex);
             }
@@ -59,6 +59,5 @@ implements IndexMatrix<Entry> {
             }
         };
     }
-    
-    
+
 }

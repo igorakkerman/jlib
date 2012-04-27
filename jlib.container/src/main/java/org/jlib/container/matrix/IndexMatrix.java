@@ -15,7 +15,7 @@ import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
  */
 
 public interface IndexMatrix<Entry>
-extends RandomTraversalMatrix<Entry>, RandomAccess {
+extends RandomTraversalMatrix<Entry> {
 
     /**
      * Returns the Element stored at the specified column and row in this
