@@ -1,7 +1,6 @@
 package org.jlib.container.matrix;
 
 import java.util.Iterator;
-import java.util.RandomAccess;
 
 import org.jlib.container.sequence.Sequence;
 
@@ -20,7 +19,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface RandomTraversalMatrix<Entry>
-extends Matrix<Entry>, RandomAccess {
+extends Matrix<Entry> {
 
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
