@@ -114,4 +114,26 @@ implements IndexMatrix<Entry> {
             }
         };
     }
+
+    protected void assertIndicesValid(final int columnIndex, final int rowIndex)
+    throws MatrixIndexOutOfBoundsException {
+
+        if (columnIndex < firstColumnIndex)
+            throw new MatrixIndexOutOfBoundsException(this, columnIndex, rowIndex, "columnIndex == " + columnIndex +
+                                                                                   " < " + firstColumnIndex +
+                                                                                   " firstColumnIndex");
+
+        if (columnIndex > lastColumnIndex)
+            throw new MatrixIndexOutOfBoundsException(this, columnIndex, rowIndex, "columnIndex == " + columnIndex +
+                                                                                   " > " + lastColumnIndex +
+                                                                                   " lastColumnIndex");
+
+        if (rowIndex < firstRowIndex)
+            throw new MatrixIndexOutOfBoundsException(this, columnIndex, rowIndex, "rowIndex == " + rowIndex + " < " +
+                                                                                   firstRowIndex + " firstRowIndex");
+
+        if (rowIndex > lastRowIndex)
+            throw new MatrixIndexOutOfBoundsException(this, columnIndex, rowIndex, "rowIndex == " + rowIndex + " > " +
+                                                                                   lastRowIndex + " lastRowIndex");
+    }
 }
