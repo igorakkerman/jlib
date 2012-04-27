@@ -2,6 +2,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.AbstractIndexSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.
@@ -93,7 +94,23 @@ implements IndexMatrix<Entry> {
         return lastRowIndex;
     }
 
+    /**
+     * Returns the Element stored at the specified column and row in this
+     * ArrayMatrix.
+     * 
+     * @param columnIndex
+     *        integer specifying the column of the stored Element
+     * @param rowIndex
+     *        integer specifying the row of the stored Element
+     * @return Element stored at the specified position in this ArrayMatrix
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code nextColumnIndex < getMinColumnIndex() ||
+     *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
+     *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
+     */
     @Override
+    public Entry get(final int columnIndex, final int rowIndex)
+    throws SequenceIndexOutOfBoundsException {    @Override
     public Sequence<? extends IndexMatrixColumn<Entry>> getColumns() {
         return new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
 

@@ -60,4 +60,78 @@ public abstract class IndexMatrixCreator<Metrix extends IndexMatrix<Entry>, Entr
         if (dimensionValue < 1)
             throw new IllegalArgumentException(dimensionName + " == " + dimensionValue + " < 1");
     }
+
+
+    /**
+     * Creates a new ArrayMatrix of the specified width and height.
+     * 
+     * @param width
+     *        integer specifying the number of columns of this matrix
+     * 
+     * @param height
+     *        integer specifying the number of rows of this matrix
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code width < 0 || height < 0}
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayMatrix(final int width, final int height)
+    throws IllegalArgumentException {
+        super();
+    }
+
+    /**
+     * Creates a new ArrayMatrix with the specified minimum and maximum column
+     * and row indices.
+     * 
+     * @param firstColumnIndex
+     *        first column index
+     * @param lastColumnIndex
+     *        last column index
+     * @param firstRowIndex
+     *        first row index
+     * @param lastRowIndex
+     *        last row index
+     * @throws IllegalArgumentException
+     *         if
+     *         {@code firstColumnIndex < 0 || lastColumnIndex < firstColumnIndex
+     *         || firstRowIndex < 0 || lastRowIndex < firstRowIndex}
+     */
+    public ArrayMatrix(final int firstColumnIndex, final int lastColumnIndex, final int firstRowIndex,
+                       final int lastRowIndex) {
+        super();
+        construct(firstColumnIndex, lastColumnIndex, firstRowIndex, lastRowIndex);
+    }
+
+    /**
+     * Constructs this ArrayMatrix.
+     * 
+     * @param firstColumnIndex
+     *        first column index
+     * @param lastColumnIndex
+     *        last column index
+     * @param firstRowIndex
+     *        first row index
+     * @param lastRowIndex
+     *        last row index
+     * @throws IllegalArgumentException
+     *         if
+     *         {@code firstColumnIndex < 0 || lastColumnIndex < firstColumnIndex
+     *         || firstRowIndex < 0 || lastRowIndex < firstRowIndex}
+     */
+
+    private void construct(@SuppressWarnings("hiding") final int firstColumnIndex,
+                           @SuppressWarnings("hiding") final int lastColumnIndex,
+                           @SuppressWarnings("hiding") final int firstRowIndex,
+                           @SuppressWarnings("hiding") final int lastRowIndex) {
+        if (firstColumnIndex < 0 || firstColumnIndex > lastColumnIndex || firstRowIndex < 0 ||
+            firstRowIndex > lastRowIndex)
+            throw new IllegalArgumentException();
+
+        matrixData = new ArraySequence<ArraySequence<Entry>>(firstRowIndex, lastRowIndex);
+        for (int rowIndex = firstRowIndex; rowIndex <= lastRowIndex; rowIndex ++)
+            matrixData.replace(rowIndex, new ArraySequence<Entry>(firstColumnIndex, lastColumnIndex));
+
+        defaultIterationOrder = MatrixUtility.HORIZONTAL;
+    }
 }
