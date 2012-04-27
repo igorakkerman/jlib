@@ -15,10 +15,12 @@ extends AbstractIndexSequence<Element> {
      * Creates a new {@link InitializeableIndexSequence}.
      * 
      * @param firstIndex
-     *        integer specifying the initial minimum index of this IIS
+     *        integer specifying the initial minimum index of this
+     *        {@link InitializeableIndexSequence}
      * 
      * @param lastIndex
-     *        integer specifying the maximum index of this ArraySequence
+     *        integer specifying the maximum index of this
+     *        {@link InitializeableIndexSequence}
      * 
      * @throws InvalidSequenceIndexRangeException
      *         if {@code  lastIndex < firstIndex}

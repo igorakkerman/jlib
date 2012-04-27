@@ -135,8 +135,13 @@ implements IndexSequence<Element> {
      */
     protected void assertIndexValid(final int index)
     throws SequenceIndexOutOfBoundsException {
-        if (index < firstIndex || index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(this, index);
+        if (index < firstIndex)
+            throw new SequenceIndexOutOfBoundsException(this, index, "index == " + index + " < " + firstIndex +
+                                                                     " == firstIndex");
+
+        if (index > lastIndex)
+            throw new SequenceIndexOutOfBoundsException(this, index, "index == " + index + " > " + lastIndex +
+                                                                     " == lastIndex");
     }
 
     /**

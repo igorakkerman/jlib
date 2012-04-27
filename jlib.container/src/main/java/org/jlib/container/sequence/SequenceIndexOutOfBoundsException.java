@@ -34,21 +34,6 @@ extends IndexOutOfBoundsException {
 
     /**
      * Creates a new SequenceIndexOutOfBoundsException for the specified invalid
-     * invalidIndex.
-     * 
-     * @param sequence
-     *        {@link IndexSequence} accessed with the invalid index
-     * @param invalidIndex
-     *        integer specifying the invalid invalidIndex
-     */
-    public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex) {
-        super(String.valueOf(invalidIndex));
-        this.sequence = sequence;
-        this.invalidIndex = invalidIndex;
-    }
-
-    /**
-     * Creates a new SequenceIndexOutOfBoundsException for the specified invalid
      * invalidIndex and the specified message.
      * 
      * @param sequence
