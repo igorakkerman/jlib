@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.jlib.container.Container;
 
 /**
- * Creator of instances of a certain type of {@link Sequence Sequences}.
+ * Creator of instances of a certain subtype of {@link IndexSequence}.
  * 
  * @param <Sequenze>
  *        type of the created {@link Sequence} instances
