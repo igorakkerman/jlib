@@ -2,7 +2,6 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.AbstractIndexSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.
@@ -96,46 +95,23 @@ implements IndexMatrix<Entry> {
 
     @Override
     public Sequence<? extends IndexMatrixColumn<Entry>> getColumns() {
-        return new AbstractIndexSequence<IndexMatrixColumn<Entry>>() {
+        return new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
 
             @Override
-            public IndexMatrixColumn<Entry> get(final int columnIndex)
-            throws SequenceIndexOutOfBoundsException {
+            public IndexMatrixColumn<Entry> getStoredElement(final int columnIndex) {
                 return getColumn(columnIndex);
-            }
-
-            @Override
-            public int getFirstIndex() {
-                return getFirstColumnIndex();
-            }
-
-            @Override
-            public int getLastIndex() {
-                return getLastColumnIndex();
             }
         };
     }
 
     @Override
     public Sequence<? extends IndexMatrixRow<Entry>> getRows() {
-        return new AbstractIndexSequence<IndexMatrixRow<Entry>>() {
+        return new AbstractIndexSequence<IndexMatrixRow<Entry>>(firstRowIndex, lastRowIndex) {
 
             @Override
-            public IndexMatrixRow<Entry> get(final int rowIndex)
-            throws SequenceIndexOutOfBoundsException {
+            public IndexMatrixRow<Entry> getStoredElement(final int rowIndex) {
                 return getRow(rowIndex);
-            }
-
-            @Override
-            public int getFirstIndex() {
-                return getFirstRowIndex();
-            }
-
-            @Override
-            public int getLastIndex() {
-                return getLastRowIndex();
             }
         };
     }
-
 }
