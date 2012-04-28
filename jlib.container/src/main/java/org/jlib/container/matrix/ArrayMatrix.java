@@ -21,7 +21,6 @@ package org.jlib.container.matrix;
 import java.util.Iterator;
 
 import org.jlib.container.sequence.IndexSequence;
-import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
 
 /**
  * {@link IndexMatrix} backed by an {@link ArraySequence}.
@@ -44,28 +43,14 @@ implements IndexMatrix<Entry> {
      */
     private MatrixIterationOrder defaultIterationOrder;
 
-
+    @Override
+    protected Entry getStoredEntry(final int columnIndex, final int rowIndex) {
         return matrixData[columnIndex][rowIndex];
     }
 
-    /**
-     * Registers the Element to store at the specified column and row in this
-     * ArrayMatrix.
-     * 
-     * @param columnIndex
-     *        integer specifying the column of the Element to store
-     * @param rowIndex
-     *        integer specifying the row of the Element to store
-     * @param element
-     *        Element to store. {@code null} is a valid Element.
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code nextColumnIndex < getMinColumnIndex() ||
-     *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
-     *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
-     */
     @Override
-    public void replace(final int columnIndex, final int rowIndex, final Entry element) {
-        matrixData[rowIndex).replace(columnIndex, element);
+    protected void replaceStoredEntry(final int columnIndex, final int rowIndex, final Entry entry) {
+        matrixData[columnIndex][rowIndex] = entry;
     }
 
     /**
