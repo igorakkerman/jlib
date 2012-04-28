@@ -109,8 +109,16 @@ implements IndexMatrix<Entry> {
      *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}
      */
     @Override
-    public Entry get(final int columnIndex, final int rowIndex)
-    throws SequenceIndexOutOfBoundsException {    @Override
+    public final Entry get(final int columnIndex, final int rowIndex)
+    throws MatrixIndexOutOfBoundsException {
+        assertIndicesValid(columnIndex, rowIndex);
+
+        return getStoredEntry(columnIndex, rowIndex);
+    }
+
+    protected abstract Entry getStoredEntry(final int columnIndex, final int rowIndex);
+
+    @Override
     public Sequence<? extends IndexMatrixColumn<Entry>> getColumns() {
         return new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
 
