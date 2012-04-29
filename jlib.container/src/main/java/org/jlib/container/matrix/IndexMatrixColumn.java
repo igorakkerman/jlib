@@ -39,14 +39,22 @@ extends IndexMatrixEntity<Entry> {
         super(matrix, columnIndex);
     }
 
+    protected IndexMatrixColumn(final IndexMatrix<Entry> matrix, final int columnIndex, final int firstRowIndex,
+                                final int lastRowIndex) {
+        super(matrix, columnIndex, firstRowIndex, lastRowIndex);
+    }
+
     /**
      * Returns the Entry stored at the specified row index in this
      * {@link IndexMatrixColumn}.
+     * 
+     * @param rowIndex
+     *        integer specifying the row index
      * 
      * @return Entry stored at {@code rowIndex}
      */
     @Override
     protected Entry getStoredElement(final int rowIndex) {
-        return getMatrixEntry(rowIndex, getEntityIndex());
+        return getMatrixEntry(getEntityIndex(), rowIndex);
     }
 }

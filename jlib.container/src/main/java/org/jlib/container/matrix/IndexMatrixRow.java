@@ -29,25 +29,32 @@ extends IndexMatrixEntity<Entry> {
      * Creates a new {@link IndexMatrixRow} representation of the specified row
      * of the specified {@link IndexMatrix}.
      * 
-     * @param indexMatrix
+     * @param matrix
      *        {@link IndexMatrix} owning this {@link IndexMatrixRow}
      * 
      * @param rowIndex
      *        integer specifying the index of this {@link IndexMatrixRow}
      */
-    IndexMatrixRow(final IndexMatrix<Entry> indexMatrix, final int rowIndex) {
-        super(indexMatrix, rowIndex);
+    protected IndexMatrixRow(final IndexMatrix<Entry> matrix, final int rowIndex) {
+        super(matrix, rowIndex);
+    }
+
+    protected IndexMatrixRow(final IndexMatrix<Entry> matrix, final int rowIndex, final int firstColumnIndex,
+                             final int lastColumnIndex) {
+        super(matrix, rowIndex, firstColumnIndex, lastColumnIndex);
     }
 
     /**
      * Returns the Entry stored at the specified column index in this
      * {@link IndexMatrixRow}.
      * 
+     * @param columnIndex
+     *        integer specifying the column index
+     * 
      * @return Entry stored at {@code columnIndex}
      */
     @Override
-    protected Entry getStoredElement(final int columnIndex)
-    throws IndexOutOfBoundsException {
+    protected Entry getStoredElement(final int columnIndex) {
         return getMatrixEntry(columnIndex, getEntityIndex());
     }
 }

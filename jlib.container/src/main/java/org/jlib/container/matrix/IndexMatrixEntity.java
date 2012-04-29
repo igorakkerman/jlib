@@ -30,7 +30,22 @@ extends AbstractIndexSequence<Entry> {
      *        integer specifying the index of this {@link IndexMatrixEntity}
      */
     protected IndexMatrixEntity(final IndexMatrix<Entry> matrix, final int entityIndex) {
-        super(matrix.getFirstRowIndex(), matrix.getLastRowIndex());
+        this(matrix, entityIndex, matrix.getFirstRowIndex(), matrix.getLastRowIndex());
+    }
+
+    /**
+     * Creates a new {@link IndexMatrixEntity} representation of the specified
+     * entity of the specified {@link IndexMatrix}.
+     * 
+     * @param matrix
+     *        {@link IndexMatrix} owning this {@link IndexMatrixEntity}
+     * 
+     * @param entityIndex
+     *        integer specifying the index of this {@link IndexMatrixEntity}
+     */
+    protected IndexMatrixEntity(final IndexMatrix<Entry> matrix, final int entityIndex,
+                                final int firstEntityEntryIndex, final int lastEntityEntryIndex) {
+        super(firstEntityEntryIndex, lastEntityEntryIndex);
 
         this.matrix = matrix;
         this.entityIndex = entityIndex;
