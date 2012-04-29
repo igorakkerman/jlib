@@ -35,7 +35,7 @@ extends IndexMatrixEntity<Entry> {
      * @param columnIndex
      *        integer specifying the index of this {@link IndexMatrixColumn}
      */
-    IndexMatrixColumn(final IndexMatrix<Entry> matrix, final int columnIndex) {
+    protected IndexMatrixColumn(final IndexMatrix<Entry> matrix, final int columnIndex) {
         super(matrix, columnIndex);
     }
 
@@ -47,6 +47,6 @@ extends IndexMatrixEntity<Entry> {
      */
     @Override
     protected Entry getStoredElement(final int rowIndex) {
-        return getMatrix().get(rowIndex, getEntityIndex());
+        return getMatrixEntry(rowIndex, getEntityIndex());
     }
 }

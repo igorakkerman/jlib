@@ -7,7 +7,7 @@ import org.jlib.container.sequence.AbstractIndexSequence;
  * 
  * @param <Entry>
  *        type of the entries of the {@link IndexMatrix}
- *        
+ * 
  * @author Igor Akkerman
  */
 abstract class IndexMatrixEntity<Entry>
@@ -20,8 +20,8 @@ extends AbstractIndexSequence<Entry> {
     private final int entityIndex;
 
     /**
-     * Creates a new {@link IndexMatrixEntity} representation of the specified entity
-     * of the specified {@link IndexMatrix}.
+     * Creates a new {@link IndexMatrixEntity} representation of the specified
+     * entity of the specified {@link IndexMatrix}.
      * 
      * @param matrix
      *        {@link IndexMatrix} owning this {@link IndexMatrixEntity}
@@ -35,19 +35,27 @@ extends AbstractIndexSequence<Entry> {
         this.matrix = matrix;
         this.entityIndex = entityIndex;
     }
-    
+
     /**
-     * Returns the {@link IndexMatrix} owning this {@link IndexMatrixEntity}.
-     *
-     * @return {@link IndexMatrix} owning this {@link IndexMatrixEntity}
+     * Returns the specified Entry of the {@link IndexMatrix} owning this
+     * {@link IndexMatrixEntity}.
+     * 
+     * @param columnIndex
+     *        integer specifying the column index
+     * 
+     * @param rowIndex
+     *        integer specifying the row index
+     * 
+     * @return Entry stored at the specified {@code columnIndex} and
+     *         {@code rowIndex}
      */
-    protected IndexMatrix<Entry> getMatrix() {
-        return matrix;
+    protected Entry getMatrixEntry(final int columnIndex, final int rowIndex) {
+        return matrix.get(columnIndex, rowIndex);
     }
-    
+
     /**
      * Returns the index of this {@link IndexMatrixEntity}.
-     *
+     * 
      * @return integer specifying the index of this {@link IndexMatrixEntity}
      */
     protected int getEntityIndex() {

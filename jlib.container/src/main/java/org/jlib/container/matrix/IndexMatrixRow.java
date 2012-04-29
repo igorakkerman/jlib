@@ -48,6 +48,6 @@ extends IndexMatrixEntity<Entry> {
     @Override
     protected Entry getStoredElement(final int columnIndex)
     throws IndexOutOfBoundsException {
-        return getMatrix().get(columnIndex, getEntityIndex());
+        return getMatrixEntry(columnIndex, getEntityIndex());
     }
 }
