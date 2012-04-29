@@ -188,23 +188,38 @@ implements IndexSequence<Element> {
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder(8 * getSize());
 
-        final IndexSequenceIterator<Element> iterator = createIterator();
+        final IndexSequenceIterator<Element> elementsIterator = createIterator();
 
         stringBuilder.append('[');
 
-        stringBuilder.append(iterator.nextIndex());
-        stringBuilder.append(": ");
-        stringBuilder.append(iterator.next());
+        getNextElementString(stringBuilder, elementsIterator);
 
-        while (iterator.hasNext()) {
+        while (elementsIterator.hasNext()) {
             stringBuilder.append(", ");
-            stringBuilder.append(iterator.nextIndex());
-            stringBuilder.append('=');
-            stringBuilder.append(iterator.next());
+            getNextElementString(stringBuilder, elementsIterator);
         }
 
         stringBuilder.append(']');
 
         return stringBuilder.toString();
+    }
+
+    /**
+     * Appends a {@link String} representation of the next Element returned by
+     * the specified {@link IndexSequenceIterator} to the specified
+     * {@link StringBuilder}.
+     * 
+     * @param stringBuilder
+     *        {@link StringBuilder} to which the Element representation is
+     *        appended
+     * 
+     * @param elementsIterator
+     *        {@link IndexSequenceIterator} providing the Element
+     */
+    private void getNextElementString(final StringBuilder stringBuilder,
+                                      final IndexSequenceIterator<Element> elementsIterator) {
+        stringBuilder.append(elementsIterator.nextIndex());
+        stringBuilder.append(": ");
+        stringBuilder.append(elementsIterator.next());
     }
 }
