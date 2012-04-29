@@ -12,7 +12,6 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-// TODO: transform into interface, create ArraySequencesMatrix
 // TODO: MatrixIndexOutOfBoundsException
 // TODO: separate empty matrices from ArrayMatrix class or use delegates
 
@@ -34,8 +33,11 @@ public class ArrayMatrix<Entry>
 extends InitializeableIndexMatrix<Entry>
 implements IndexMatrix<Entry> {
 
-    /** matrix data */
-    private Entry[][] matrixData;
+    /**
+     * delegate array of Entry items containing the data of this
+     * {@link ArrayMatrix}
+     */
+    private Entry[][] delegateArray;
 
     /**
      * {@link MatrixIterationOrder} used by each {@link Iterator} returned by
@@ -45,12 +47,28 @@ implements IndexMatrix<Entry> {
 
     @Override
     protected Entry getStoredEntry(final int columnIndex, final int rowIndex) {
-        return matrixData[columnIndex][rowIndex];
+        return getDelegateArrayEntry(getDelegateArrayColumnIndex(columnIndex), rowIndex);
     }
 
     @Override
     protected void replaceStoredEntry(final int columnIndex, final int rowIndex, final Entry entry) {
-        matrixData[columnIndex][rowIndex] = entry;
+        replaceDelegateArrayEntry(getDelegateArrayColumnIndex(columnIndex), getDelegateArrayRowIndex(rowIndex), entry);
+    }
+
+    private void replaceDelegateArrayEntry(final int arrayColumnIndex, final int arrayRowIndex, final Entry entry) {
+        delegateArray[arrayColumnIndex][arrayRowIndex] = entry;
+    }
+
+    private Entry getDelegateArrayEntry(final int arrayColumnIndex, final int arrayRowIndex) {
+        return delegateArray[arrayColumnIndex][arrayRowIndex];
+    }
+
+    private int getDelegateArrayColumnIndex(final int columnIndex) {
+        return columnIndex - getFirstColumnIndex();
+    }
+
+    private int getDelegateArrayRowIndex(final int rowIndex) {
+        return rowIndex - getFirstRowIndex();
     }
 
     /**
@@ -231,6 +249,6 @@ implements IndexMatrix<Entry> {
 
     @Override
     public String toString() {
-        return matrixData.toString();
+        return delegateArray.toString();
     }
 }
