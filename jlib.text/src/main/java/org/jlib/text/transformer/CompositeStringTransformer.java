@@ -16,7 +16,7 @@ implements StringTransformer {
      * {@link Sequence} of {@link StringTransformer StringTransformers}
      * composing this CompositeStringTransformer
      */
-    private AddSequence<StringTransformer> stringTransformers;
+    private final AddSequence<StringTransformer> stringTransformers;
 
     /**
      * Creates a new CompositeStringTransformer initially composed by the
@@ -24,8 +24,8 @@ implements StringTransformer {
      */
     public CompositeStringTransformer() {
         super();
-        
-        stringTransformers = new ArrayAddIndexSequence<StringTransformer>();
+
+        stringTransformers = new AddArraySequence<StringTransformer>();
     }
 
     /**
@@ -37,7 +37,7 @@ implements StringTransformer {
      *        {@link Sequence} of {@link StringTransformer StringTransformers}
      *        initially composing this CompositeStringTransformer
      */
-    public CompositeStringTransformer(Sequence<? extends StringTransformer> stringTransformers) {
+    public CompositeStringTransformer(final Sequence<? extends StringTransformer> stringTransformers) {
         this();
         addStringTransformers(stringTransformers);
     }
@@ -51,7 +51,7 @@ implements StringTransformer {
      *        argument sequence of {@link StringTransformer StringTransformers}
      *        initially composing this CompositeStringTransformer
      */
-    public CompositeStringTransformer(StringTransformer... stringTransformers) {
+    public CompositeStringTransformer(final StringTransformer... stringTransformers) {
         this();
         addStringTransformers(stringTransformers);
     }
@@ -64,7 +64,7 @@ implements StringTransformer {
      *        {@link StringTransformer} additionally composing this
      *        CompositeStringTransformer
      */
-    public void addStringTransformer(StringTransformer stringTransformer) {
+    public void addStringTransformer(final StringTransformer stringTransformer) {
         stringTransformers.add(stringTransformer);
     }
 
@@ -77,7 +77,7 @@ implements StringTransformer {
      *        argument list of {@link StringTransformer StringTransformers}
      *        additionally composing this CompositeStringTransformer
      */
-    public void addStringTransformers(StringTransformer... additionalStringTransformers) {
+    public void addStringTransformers(final StringTransformer... additionalStringTransformers) {
         stringTransformers.addAll(additionalStringTransformers);
     }
 
@@ -94,13 +94,11 @@ implements StringTransformer {
         stringTransformers.addAll(additionalStringTransformers);
     }
 
-
     @Override
-    public void transform(StringBuilder stringBuilder) {
-        for (StringTransformer stringTransformer : stringTransformers)
+    public void transform(final StringBuilder stringBuilder) {
+        for (final StringTransformer stringTransformer : stringTransformers)
             stringTransformer.transform(stringBuilder);
     }
-
 
     @Override
     public String toString() {
@@ -116,15 +114,14 @@ implements StringTransformer {
      *        {@link Object} to compare to this CompositeStringTransformer
      */
     @Override
-    public boolean equals(Object otherObject) {
+    public boolean equals(final Object otherObject) {
         if (!(otherObject instanceof CompositeStringTransformer))
             return false;
 
-        CompositeStringTransformer otherCompositeStringTransformer = (CompositeStringTransformer) otherObject;
+        final CompositeStringTransformer otherCompositeStringTransformer = (CompositeStringTransformer) otherObject;
 
         return stringTransformers.equals(otherCompositeStringTransformer.stringTransformers);
     }
-
 
     @Override
     public int hashCode() {
