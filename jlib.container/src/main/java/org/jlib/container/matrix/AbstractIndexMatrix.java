@@ -107,11 +107,14 @@ implements IndexMatrix<Entry> {
      * AbstractIndexMatrix.
      * 
      * @param columnIndex
-     *        integer specifying the column of the stored Element
+     *        integer specifying the column index of the stored Element
+     * 
      * @param rowIndex
-     *        integer specifying the row of the stored Element
+     *        integer specifying the row index of the stored Element
+     * 
      * @return Element stored at the specified position in this
      *         AbstractIndexMatrix
+     * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code nextColumnIndex < getMinColumnIndex() ||
      *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
@@ -125,6 +128,20 @@ implements IndexMatrix<Entry> {
         return getStoredEntry(columnIndex, rowIndex);
     }
 
+    /**
+     * Returns the Element stored at the specified column and row in this
+     * AbstractIndexMatrix, assuming that the specified column and row indices
+     * are valid.
+     * 
+     * @param columnIndex
+     *        integer specifying the valid column index of the stored Element
+     * 
+     * @param rowIndex
+     *        integer specifying the valid row index of the stored Element
+     * 
+     * @return Element stored at the specified position in this
+     *         AbstractIndexMatrix
+     */
     protected abstract Entry getStoredEntry(final int columnIndex, final int rowIndex);
 
     /**
@@ -162,6 +179,20 @@ implements IndexMatrix<Entry> {
         };
     }
 
+    /**
+     * Asserts that the specified column and row indices are within the index
+     * bounds of this {@link IndexMatrix}.
+     * 
+     * @param columnIndex
+     *        integer specifying the column index
+     * 
+     * @param rowIndex
+     *        integer specifying the row index
+     * 
+     * @throws MatrixIndexOutOfBoundsException
+     *         if
+     *         {@code columnIndex < getFirstColumnIndex() || columnIndex > getLastColumnIndex() || rowIndex < getFirstRowIndex() || rowIndex > getLastRowIndex()}
+     */
     protected void assertIndicesValid(final int columnIndex, final int rowIndex)
     throws MatrixIndexOutOfBoundsException {
 
@@ -190,7 +221,7 @@ implements IndexMatrix<Entry> {
      * traversed is specified using
      * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
      * 
-     * @return a new {@link MatrixIterator} for this AbstractIndexMatrix
+     * @return new {@link MatrixIterator} for this AbstractIndexMatrix
      * 
      * @see #setDefaultIterationOrder(MatrixIterationOrder)
      * @see MatrixIterationOrder

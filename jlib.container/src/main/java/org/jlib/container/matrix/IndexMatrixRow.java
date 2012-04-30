@@ -39,6 +39,22 @@ extends IndexMatrixEntity<Entry> {
         super(matrix, rowIndex);
     }
 
+    /**
+     * Creates a new {@link IndexMatrixColumn} representation of the specified
+     * part of the specified row of the specified {@link IndexMatrix}.
+     * 
+     * @param matrix
+     *        {@link IndexMatrix} owning this {@link IndexMatrixRow}
+     * 
+     * @param rowIndex
+     *        integer specifying the index of this {@link IndexMatrixRow}
+     * 
+     * @param firstColumnIndex
+     *        integer specifying the first row index of the column part
+     * 
+     * @param lastColumnIndex
+     *        integer specifying the last row index of the column part
+     */
     protected IndexMatrixRow(final IndexMatrix<Entry> matrix, final int rowIndex, final int firstColumnIndex,
                              final int lastColumnIndex) {
         super(matrix, rowIndex, firstColumnIndex, lastColumnIndex);

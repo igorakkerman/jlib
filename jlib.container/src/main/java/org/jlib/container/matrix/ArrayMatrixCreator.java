@@ -31,26 +31,6 @@ extends IndexMatrixCreator<ArrayMatrix<Entry>, Entry> {
         super();
     }
 
-    /**
-     * Creates a new {@link ArrayMatrix} with the specified minimum and maximum
-     * column and row indices.
-     * 
-     * @param firstColumnIndex
-     *        first column index
-     * 
-     * @param lastColumnIndex
-     *        last column index
-     * 
-     * @param firstRowIndex
-     *        first row index
-     * 
-     * @param lastRowIndex
-     *        last row index
-     * 
-     * @throws IllegalArgumentException
-     *         if lastColumnIndex < firstColumnIndex || lastRowIndex <
-     *         firstRowIndex}
-     */
     @Override
     public ArrayMatrix<Entry> createMatrix(final int firstColumnIndex, final int firstRowIndex,
                                            final int lastColumnIndex, final int lastRowIndex) {

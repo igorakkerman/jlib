@@ -35,13 +35,19 @@ extends AbstractIndexSequence<Entry> {
 
     /**
      * Creates a new {@link IndexMatrixEntity} representation of the specified
-     * entity of the specified {@link IndexMatrix}.
+     * part of the specified entity of the specified {@link IndexMatrix}.
      * 
      * @param matrix
      *        {@link IndexMatrix} owning this {@link IndexMatrixEntity}
      * 
      * @param entityIndex
      *        integer specifying the index of this {@link IndexMatrixEntity}
+     * 
+     * @param firstEntityEntryIndex
+     *        integer specifying the first index of the entity part
+     * 
+     * @param lastEntityEntryIndex
+     *        integer specifying the last index of the entity part
      */
     protected IndexMatrixEntity(final IndexMatrix<Entry> matrix, final int entityIndex,
                                 final int firstEntityEntryIndex, final int lastEntityEntryIndex) {
