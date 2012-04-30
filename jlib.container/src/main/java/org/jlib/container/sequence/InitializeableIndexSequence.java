@@ -1,7 +1,7 @@
 package org.jlib.container.sequence;
 
 /**
- * Skeletal implementation of an {@link IndexSequence} that can be initialized.
+ * {@link AbstractIndexSequence} that can be initialized.
  * 
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
