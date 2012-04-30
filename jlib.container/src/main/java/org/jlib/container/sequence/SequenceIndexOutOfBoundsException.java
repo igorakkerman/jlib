@@ -38,14 +38,17 @@ extends IndexOutOfBoundsException {
      * 
      * @param sequence
      *        {@link IndexSequence} accessed with the invalid index
+     * 
      * @param invalidIndex
      *        integer specifying the invalid invalidIndex
+     * 
      * @param message
-     *        String specifying the message
+     *        String specifying the message explaining the invalid access
      */
     public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex,
                                              final String message) {
         super(message + "[" + invalidIndex + "]");
+
         this.sequence = sequence;
         this.invalidIndex = invalidIndex;
     }
