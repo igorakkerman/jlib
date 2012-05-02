@@ -40,8 +40,7 @@ extends Container<Element> {
      * @param element
      *        Element to remove
      * @throws IllegalArgumentException
-     *         if this {@link RemoveContainer} does not contain
-     *         {@code Element}
+     *         if this {@link RemoveContainer} does not contain {@code Element}
      */
     public void remove(final Element element)
     throws IllegalArgumentException;
@@ -78,8 +77,8 @@ extends Container<Element> {
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i>
-     * the Elements contained by the specified {@link Container}.
+     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
+     * Elements contained by the specified {@link Container}.
      * 
      * @param elements
      *        {@link Container} containing the Elements to retain
@@ -87,8 +86,8 @@ extends Container<Element> {
     public void retainAll(final Container<? extends Element> elements);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i>
-     * the Elements contained by the specified {@link Collection}.
+     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
+     * Elements contained by the specified {@link Collection}.
      * 
      * @param elements
      *        {@link Collection} containing the Elements to retain
@@ -96,8 +95,8 @@ extends Container<Element> {
     public void retainAll(final Collection<? extends Element> elements);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i>
-     * the specified Elements.
+     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
+     * specified Elements.
      * 
      * @param elements
      *        vararg list of Elements to retain

@@ -39,10 +39,11 @@ extends Container<Element> {
      * 
      * @param element
      *        Element to add
+     * 
      * @throws IllegalArgumentException
      *         if {@code element} cannot be added, for instance, if this
-     *         {@link AddContainer} does not allow the multiple addition
-     *         of an Element and already contains {@code element}
+     *         {@link AddContainer} does not allow the multiple addition of an
+     *         Element and already contains {@code element}
      */
     public void add(final Element element);
 
