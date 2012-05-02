@@ -23,32 +23,32 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public class DefaultAddIndexSequenceIterator<Element>
-extends DefaultIndexSequenceIterator<Element>
+public class DefaultAddReplaceIndexSequenceIterator<Element>
+extends DefaultReplaceIndexSequenceIterator<Element>
 implements AddIndexSequenceIterator<Element> {
 
     /** ReplaceIndexSequence traversed by this Iterator */
-    private AddIndexSequence<Element> sequence;
+    private final AddIndexSequence<Element> sequence;
 
     /** ready for modifying operation (add/remove) */
     // TODO: replace flag with State pattern: ModificationReady, NotModificationReady
     private boolean modificationReady;
 
     /**
-     * Creates a new DefaultAddIndexSequenceIterator for the specified
+     * Creates a new DefaultAddReplaceIndexSequenceIterator for the specified
      * AddIndexSequence.
      * 
      * @param sequence
      *        AddIndexSequence to traverse
      */
-    protected DefaultAddIndexSequenceIterator(final AddIndexSequence<Element> sequence) {
+    protected <Sequenze extends AddIndexSequence<Element> & ReplaceIndexSequence<Element>> DefaultAddReplaceIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
 
         this.sequence = sequence;
     }
 
     /**
-     * Creates a new DefaultAddIndexSequenceIterator for the specified
+     * Creates a new DefaultAddReplaceIndexSequenceIterator for the specified
      * AddIndexSequence.
      * 
      * @param sequence
@@ -59,7 +59,8 @@ implements AddIndexSequenceIterator<Element> {
      *         if
      *         {@code startIndex < matrix.getFirstIndex() || matrix.lastIndex > startindex}
      */
-    protected DefaultAddIndexSequenceIterator(final AddIndexSequence<Element> sequence, int startIndex)
+    protected <Sequenze extends AddIndexSequence<Element> & ReplaceIndexSequence<Element>> DefaultAddReplaceIndexSequenceIterator(final Sequenze sequence,
+                                                                                                                                  final int startIndex)
     throws IndexOutOfBoundsException {
         super(sequence, startIndex);
 
@@ -69,10 +70,10 @@ implements AddIndexSequenceIterator<Element> {
     @Override
     public void add(final Element element)
     throws IllegalStateException {
-        if (! modificationReady)
+        if (!modificationReady)
             throw new IllegalStateException();
 
-        sequence.add(nextElementIndex ++, element);
+        sequence.insert(nextElementIndex ++, element);
 
         modificationReady = false;
     }
@@ -81,7 +82,7 @@ implements AddIndexSequenceIterator<Element> {
     @Override
     public Element next() {
         // this order in case of an exception
-        Element nextElement = super.next();
+        final Element nextElement = super.next();
         modificationReady = true;
         return nextElement;
     }
@@ -90,7 +91,7 @@ implements AddIndexSequenceIterator<Element> {
     @Override
     public Element previous() {
         // this order in case of an exception
-        Element previousElement = super.previous();
+        final Element previousElement = super.previous();
         modificationReady = true;
         return previousElement;
     }

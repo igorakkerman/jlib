@@ -71,7 +71,7 @@ implements AddBijection<LeftValue, RightValue> {
         // @see org.jlib.container.binaryrelation.AddBinaryRelation#add(java.lang.Object, java.lang.Object)
         @Override
         public void add(DelegateLeftValue leftValue, DelegateRightValue rightValue) {
-            baseBijection.add(leftValue, rightValue);
+            baseBijection.insert(leftValue, rightValue);
         }
 
         // @see org.jlib.container.binaryrelation.AddBinaryRelation#remove(java.lang.Object, java.lang.Object)

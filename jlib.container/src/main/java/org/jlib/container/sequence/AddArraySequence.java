@@ -17,7 +17,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  */
 public class AddArraySequence<Element>
 extends ReplaceArraySequence<Element>
-implements AddSequence<Element> {
+implements AddIndexSequence<Element> {
 
     /**
      * Creates a new {@link AddArraySequence} with the specified first and last
@@ -38,7 +38,7 @@ implements AddSequence<Element> {
 
     @Override
     public void add(final Element element) {
-        // TODO: implement
+        // FIXME: implement
     }
 
     @Override
@@ -56,7 +56,18 @@ implements AddSequence<Element> {
         ContainerUtility.addAll(this, iterable(elements));
     }
 
-    public <Iter extends AddIndexSequenceIterator<Element> & ReplaceIndexSequenceIterator<Element>> Iter createIterator() {
-        return new DefaultAddIndexSequenceIterator<Element>(this);
+    @Override
+    public DefaultAddReplaceIndexSequenceIterator<Element> createIterator() {
+        return new DefaultAddReplaceIndexSequenceIterator<Element>(this);
+    }
+
+    @Override
+    public void insert(final int index, final Element element) {
+        // FIXME: implement
+    }
+
+    @Override
+    public void insert(final int index, final Container<? extends Element> elements) {
+        // FIXME: implement
     }
 }

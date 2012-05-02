@@ -71,7 +71,7 @@ extends AddSequence<Element>, IndexSequence<Element> {
      * @param element
      *        Element to add
      */
-    public void add(int index, Element element);
+    public void insert(int index, Element element);
 
     /**
      * Inserts all Elements of the specified Container at the specified index of
@@ -84,5 +84,5 @@ extends AddSequence<Element>, IndexSequence<Element> {
      * @param elements
      *        Container holding the Elements to add
      */
-    public void addAll(int index, Container<? extends Element> elements);
+    public void insert(int index, Container<? extends Element> elements);
 }

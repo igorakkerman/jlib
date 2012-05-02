@@ -22,7 +22,7 @@ package org.jlib.container.sequence;
  *        
  * @author Igor Akkerman
  */
-public class DefaultRemoveIndexSequenceIterator<Element>
+public class DefaultRemoveAddReplaceIndexSequenceIterator<Element>
 extends DefaultIndexSequenceIterator<Element>
 implements RemoveSequenceIterator<Element>, IndexSequenceIterator<Element> {
 
@@ -33,20 +33,20 @@ implements RemoveSequenceIterator<Element>, IndexSequenceIterator<Element> {
     private boolean modificationReady;
 
     /**
-     * Creates a new {@link DefaultAddIndexSequenceIterator} over the specified
+     * Creates a new {@link DefaultAddReplaceIndexSequenceIterator} over the specified
      * {@link RemoveIndexSequence}.
      *
      * @param sequence
      *        {@link RemoveIndexSequence} to traverse
      */
-    protected DefaultRemoveIndexSequenceIterator(final RemoveIndexSequence<Element> sequence) {
+    protected DefaultRemoveAddReplaceIndexSequenceIterator(final RemoveIndexSequence<Element> sequence) {
         super(sequence);
         
         this.sequence = sequence;
     }
 
     /**
-     * Creates a new DefaultRemoveIndexSequenceIterator for the specified
+     * Creates a new DefaultRemoveAddReplaceIndexSequenceIterator for the specified
      * AddIndexSequence.
      *
      * @param sequence
@@ -56,7 +56,7 @@ implements RemoveSequenceIterator<Element>, IndexSequenceIterator<Element> {
      * @throws IndexOutOfBoundsException
      *         if {@code startIndex < matrix.getFirstIndex() || matrix.lastIndex > startindex}
      */
-    protected DefaultRemoveIndexSequenceIterator(final RemoveIndexSequence<Element> sequence, int startIndex)
+    protected DefaultRemoveAddReplaceIndexSequenceIterator(final RemoveIndexSequence<Element> sequence, int startIndex)
     throws IndexOutOfBoundsException {
         super(sequence, startIndex);
         
