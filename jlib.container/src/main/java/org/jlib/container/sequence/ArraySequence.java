@@ -115,7 +115,7 @@ extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
     /** array holding the Elements of this {@link ArraySequence} */
-    private final Object[] delegateArray;
+    private Object[] delegateArray;
 
     /**
      * Creates a new {@link ArraySequence} with the specified minimum and
@@ -237,5 +237,23 @@ implements Cloneable {
     @Override
     public int hashCode() {
         return 3 * getFirstIndex() + 5 * getLastIndex() + Arrays.hashCode(delegateArray);
+    }
+
+    /**
+     * Asserts that the delegate array has the specified expected capacity,
+     * replacing it by a larger {@code null} padded copy, if necessary.
+     * 
+     * @param expectedCapacity
+     *        integer specifying the expected capacity
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code expectedCapacity < 1}
+     */
+    protected void assertCapacity(final int expectedCapacity) {
+        if (expectedCapacity < 1)
+            throw new IllegalArgumentException("expectedCapacity == " + expectedCapacity + " < 1");
+
+        if (delegateArray.length < expectedCapacity)
+            delegateArray = Arrays.copyOf(delegateArray, expectedCapacity);
     }
 }

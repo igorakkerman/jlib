@@ -32,17 +32,23 @@ implements AddIndexSequence<Element> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    public AddArraySequence(final int firstIndex, final int lastIndex) {
+    protected AddArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
     @Override
     public void add(final Element element) {
-        // FIXME: implement
+        final int newLastIndex = getLastIndex() + 1;
+
+        assertCapacity(getSize() + 1);
+        setLastIndex(newLastIndex);
+        replaceStoredElement(newLastIndex, element);
     }
 
     @Override
     public void addAll(final Container<? extends Element> elements) {
+        final int new LastIndex = getLastIndex() + elements.getSize();
+        
         ContainerUtility.addAll(this, elements);
     }
 

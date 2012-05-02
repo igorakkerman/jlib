@@ -17,10 +17,10 @@ extends AbstractNonEmptySequence<Element>
 implements IndexSequence<Element> {
 
     /** current minimum index of this sequence */
-    private final int firstIndex;
+    private int firstIndex;
 
     /** current maximum index of this sequence */
-    private final int lastIndex;
+    private int lastIndex;
 
     /**
      * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
@@ -221,5 +221,25 @@ implements IndexSequence<Element> {
         stringBuilder.append(elementsIterator.nextIndex());
         stringBuilder.append(": ");
         stringBuilder.append(elementsIterator.next());
+    }
+
+    /**
+     * Registers the first index of this {@link AbstractIndexSequence}.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     */
+    protected void setFirstIndex(final int firstIndex) {
+        this.firstIndex = firstIndex;
+    }
+
+    /**
+     * Registers the last index of this {@link AbstractIndexSequence}.
+     * 
+     * @param lastIndex
+     *        integer specifying the last index
+     */
+    protected void setLastIndex(final int lastIndex) {
+        this.lastIndex = lastIndex;
     }
 }
