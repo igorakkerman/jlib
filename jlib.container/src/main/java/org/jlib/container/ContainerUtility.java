@@ -27,21 +27,38 @@ import org.jlib.container.collection.CollectionUtility;
  */
 public final class ContainerUtility {
 
-    /** no visible constructor */
+    /** No visible constructor. */
     private ContainerUtility() {}
 
     /**
-     * Removes all specified Elements from the specified {@link AddContainer}.
+     * Adds all Elements provided by the specified {@link Iterable} to the
+     * specified {@link AddContainer}.
+     * 
+     * @param container
+     *        {@link AddContainer} to which the Elements are added
+     * 
+     * @param elements
+     *        {@link Iterable} providing the Elements to add
+     */
+    public static <Element> void addAll(final AddContainer<Element> container,
+                                        final Iterable<? extends Element> elements) {
+        for (final Element element : elements)
+            container.add(element);
+    }
+
+    /**
+     * Removes all Elements provided by the specified {@link Iterable} from the
+     * specified {@link AddContainer}.
      * 
      * @param container
      *        {@link AddContainer} containing the Elements
      * 
      * @param elements
-     *        vararg list of Elements to remove
+     *        {@link Iterable} providing the Elements to remove
      */
     public static <Element> void removeAll(final RemoveContainer<Element> container,
-                                           @SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        for (Element element : elements)
+                                           final Iterable<? extends Element> elements) {
+        for (final Element element : elements)
             container.remove(element);
     }
 
@@ -96,7 +113,7 @@ public final class ContainerUtility {
      *        {@link Collection} containing the Elements to retain
      */
     public static <Element, RetainedElement extends Element> void retainAll(final RemoveContainer<Element> container,
-                                                                            @SuppressWarnings({ "unchecked", /* "varargs" */}) RetainedElement... elements) {
+                                                                            @SuppressWarnings({ "unchecked", /* "varargs" */}) final RetainedElement... elements) {
         // necessary as we need the contains() method fot the elements sequence
         retainAll(container, CollectionUtility.toSet(elements));
     }

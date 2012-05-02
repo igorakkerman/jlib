@@ -69,6 +69,15 @@ extends Container<Element> {
     public void removeAll(final Collection<? extends Element> elements);
 
     /**
+     * Removes all Elements provided by the specified {@link Iterable} from this
+     * {@link AddContainer}.
+     * 
+     * @param elements
+     *        {@link Iterable} providing the Elements to remove
+     */
+    public void removeAll(final Iterable<? extends Element> elements);
+
+    /**
      * Removes all specified Elements from this {@link RemoveContainer}.
      * 
      * @param elements

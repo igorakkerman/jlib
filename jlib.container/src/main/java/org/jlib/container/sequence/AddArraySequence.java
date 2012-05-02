@@ -3,6 +3,9 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.container.ContainerUtility;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceArraySequence} to which Elements can be added.
@@ -40,20 +43,17 @@ implements AddSequence<Element> {
 
     @Override
     public void addAll(final Container<? extends Element> elements) {
-        for (final Element element : elements)
-            add(element);
+        ContainerUtility.addAll(this, elements);
     }
 
     @Override
     public void addAll(final Collection<? extends Element> elements) {
-        for (final Element element : elements)
-            add(element);
+        ContainerUtility.addAll(this, elements);
     }
 
     @Override
     public void addAll(@SuppressWarnings("unchecked") final Element... elements) {
-        for (final Element element : elements)
-            add(element);
+        ContainerUtility.addAll(this, iterable(elements));
     }
 
     public <Iter extends AddIndexSequenceIterator<Element> & ReplaceIndexSequenceIterator<Element>> Iter createIterator() {

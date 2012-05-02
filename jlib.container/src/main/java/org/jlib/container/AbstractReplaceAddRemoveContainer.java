@@ -16,6 +16,8 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 /**
  * Skeletal implementation of a AddContainer.
  * 
@@ -40,42 +42,35 @@ implements RemoveContainer<Element> {
     }
 
     @Override
-    public void removeAll(Container<? extends Element> elements) {
+    public void removeAll(final Container<? extends Element> elements) {
         removeAll((Iterable<? extends Element>) elements);
     }
 
     @Override
-    public void removeAll(Collection<? extends Element> elements) {
+    public void removeAll(final Collection<? extends Element> elements) {
         removeAll((Iterable<? extends Element>) elements);
     }
 
-    /**
-     * Removes all Elements provided by the specified {@link Iterable} from this
-     * {@link AddContainer}.
-     * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to remove
-     */
-    private void removeAll(final Iterable<? extends Element> elements) {
-        for (Element element : elements)
+    public void removeAll(final Iterable<? extends Element> elements) {
+        for (final Element element : elements)
             remove(element);
     }
 
     @Override
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        ContainerUtility.removeAll(this, elements);
+        ContainerUtility.removeAll(this, iterable(elements));
     }
 
     @Override
     public void retainAll(final Container<? extends Element> elements) {
         ContainerUtility.retainAll(this, elements);
     }
-    
+
     @Override
     public void retainAll(final Collection<? extends Element> elements) {
         ContainerUtility.retainAll(this, elements);
     }
-    
+
     @Override
     public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
         ContainerUtility.retainAll(this, elements);
