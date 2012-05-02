@@ -49,21 +49,21 @@ public final class ReflectionUtility {
      * 
      * @param <Obj>
      *        type of the object to create
+     * 
      * @param clazz
      *        Class to instantiate
+     * 
      * @return a new instance of {@code clazz}
+     * 
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails
      */
-    public static <Obj> Obj newInstanceOf(Class<? extends Obj> clazz)
+    public static <Obj> Obj newInstanceOf(final Class<? extends Obj> clazz)
     throws ClassInstantiationException {
         try {
             return clazz.newInstance();
         }
-        catch (InstantiationException exception) {
-            throw new ClassInstantiationException(clazz, exception);
-        }
-        catch (IllegalAccessException exception) {
+        catch (final InstantiationException | IllegalAccessException exception) {
             throw new ClassInstantiationException(clazz, exception);
         }
     }
@@ -74,8 +74,8 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a {@code
-     * ClassInstantiationException}, which is then thrown by this method.
+     * Throwable of any kind, it is wrapped into a
+     * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
      * 
      * @param <Obj>
@@ -87,7 +87,7 @@ public final class ReflectionUtility {
      *         if the instantiation of the specified class fails
      */
     @SuppressWarnings("unchecked")
-    public static <Obj> Obj newInstanceOf(Obj object)
+    public static <Obj> Obj newInstanceOf(final Obj object)
     throws ClassInstantiationException {
         return newInstanceOf((Class<? extends Obj>) object.getClass());
     }
@@ -98,8 +98,8 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a {@code
-     * ClassInstantiationException}, which is then thrown by this method.
+     * Throwable of any kind, it is wrapped into a
+     * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
      * 
      * @param <Obj>
@@ -112,15 +112,15 @@ public final class ReflectionUtility {
      *         instantiated object is not an instance of the class represented
      *         by {@code Obj} or a subclass
      */
-    public static <Obj> Obj newInstanceOf(String className)
+    public static <Obj> Obj newInstanceOf(final String className)
     throws ClassInstantiationException {
         try {
             @SuppressWarnings("unchecked")
-            Class<? extends Obj> clazz = (Class<? extends Obj>) Class.forName(className);
-            Obj instance = newInstanceOf(clazz);
+            final Class<? extends Obj> clazz = (Class<? extends Obj>) Class.forName(className);
+            final Obj instance = newInstanceOf(clazz);
             return instance;
         }
-        catch (ClassNotFoundException exception) {
+        catch (final ClassNotFoundException exception) {
             throw new ClassInstantiationException(className, exception);
         }
     }
@@ -155,9 +155,9 @@ public final class ReflectionUtility {
      *         </ul>
      */
     @SuppressWarnings("unchecked")
-    public static <Obj> Obj newInstanceByProperty(String propertyName)
+    public static <Obj> Obj newInstanceByProperty(final String propertyName)
     throws SecurityException, PropertyNotSetException, ClassInstantiationException {
-        String className = SystemUtility.getProperty(propertyName);
+        final String className = SystemUtility.getProperty(propertyName);
         // the cast is necessary to the Sun compiler, not to the Eclipse compiler
         return (Obj) newInstanceOf(className);
     }
