@@ -13,7 +13,7 @@
  */
 
 /**
- * jlib Sequences and SequenceIterators.
+ * jlib framework for ordered sequences.
  * 
  * @author Igor Akkerman
  */
