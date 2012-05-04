@@ -19,13 +19,26 @@ extends AbstractNonEmptySequence<Element> {
     private final Element element;
 
     /** current {@link IteratorState} */
-    private IteratorState<Element> currentState;
+    private SequenceIteratorState<Element> currentState;
+
+    /** sole instance of {@link SoleElementPreviousState} */
+    private final SequenceIteratorState<Element> soleElementPreviousState = new SoleElementPreviousState();
+
+    /** sole instance of {@link SoleElementNextState} */
+    private final SequenceIteratorState<Element> soleElementNextState = new SoleElementNextState();
 
     /**
      * Sole Element {@link IteratorState} (initial state).
      */
-    private class SoleElementState
-    extends IteratorState<Element> {
+    private class SoleElementNextState
+    extends SequenceIteratorState<Element> {
+
+        /**
+         * Creates a new {@link SoleElementNextState}.
+         */
+        public SoleElementNextState() {
+            super();
+        }
 
         @Override
         public boolean hasNext() {
@@ -38,16 +51,39 @@ extends AbstractNonEmptySequence<Element> {
         }
 
         @Override
-        public IteratorState<Element> getNextState() {
-            return new NoNextElementState();
+        public SequenceIteratorState<Element> getNextState() {
+            return soleElementPreviousState;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return false;
+        }
+
+        @Override
+        public Element previous()
+        throws NoSuchElementException {
+            throw new NoSuchElementException();
+        }
+
+        @Override
+        public SequenceIteratorState<Element> getPreviousState() {
+            return this;
         }
     }
 
     /**
      * No next Element {@link IteratorState} (post-initial state).
      */
-    private class NoNextElementState
-    extends IteratorState<Element> {
+    private class SoleElementPreviousState
+    extends SequenceIteratorState<Element> {
+
+        /**
+         * Creates a new {@link SoleElementPreviousState}.
+         */
+        public SoleElementPreviousState() {
+            super();
+        }
 
         @Override
         public boolean hasNext() {
@@ -61,8 +97,24 @@ extends AbstractNonEmptySequence<Element> {
         }
 
         @Override
-        public IteratorState<Element> getNextState() {
+        public SequenceIteratorState<Element> getNextState() {
             return this;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return true;
+        }
+
+        @Override
+        public Element previous()
+        throws NoSuchElementException {
+            return element;
+        }
+
+        @Override
+        public SequenceIteratorState<Element> getPreviousState() {
+            return soleElementNextState;
         }
     }
 
@@ -75,7 +127,7 @@ extends AbstractNonEmptySequence<Element> {
     public SingletonSequence(final Element element) {
         this.element = element;
 
-        currentState = new SoleElementState();
+        currentState = new SoleElementNextState();
     }
 
     @Override
@@ -84,13 +136,18 @@ extends AbstractNonEmptySequence<Element> {
 
             @Override
             public boolean hasPrevious() {
-                return false;
+                return currentState.hasPrevious();
             }
 
             @Override
             public Element previous()
             throws NoSuchElementException {
-                throw new NoSuchElementException();
+                try {
+                    return currentState.previous();
+                }
+                finally {
+                    currentState = currentState.getPreviousState();
+                }
             }
 
             @Override
@@ -101,9 +158,12 @@ extends AbstractNonEmptySequence<Element> {
             @Override
             public Element next()
             throws NoSuchElementException {
-                final Element nextElement = currentState.next();
-                currentState = currentState.getNextState();
-                return nextElement;
+                try {
+                    return currentState.next();
+                }
+                finally {
+                    currentState = currentState.getNextState();
+                }
             }
         };
     }
