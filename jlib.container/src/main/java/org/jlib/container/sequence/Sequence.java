@@ -14,7 +14,6 @@
 
 package org.jlib.container.sequence;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.container.Container;
@@ -24,14 +23,15 @@ import org.jlib.container.Container;
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
 public interface Sequence<Element>
 extends Container<Element> {
 
     /**
-     * Returns a {@link SequenceIterator} traversing the Elements of this Sequence
-     * in proper sequence. The Element returned by the first call to
+     * Returns a {@link SequenceIterator} traversing the Elements of this
+     * Sequence in proper sequence. The Element returned by the first call to
      * {@link SequenceIterator#next()} is the first Element in the Sequence.
      * 
      * @return SequenceIterator over this Sequence
@@ -85,14 +85,4 @@ extends Container<Element> {
      * @return {@link List} containing the Elements stored in this Sequence
      */
     public List<Element> toList();
-
-    /**
-     * Returns an Iterator traversing the Elements of this Sequence in proper
-     * sequence. The Element returned by the first call to {@code next()} is the
-     * first Element in the Sequence.
-     * 
-     * @return Iterator over this Sequence
-     */
-    @Override
-    public Iterator<Element> iterator();
 }

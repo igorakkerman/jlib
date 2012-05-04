@@ -25,14 +25,5 @@ import org.jlib.container.AddContainer;
  */
 public interface AddSequence<Element>
 extends Sequence<Element>, AddContainer<Element> {
-
-    /**
-     * Returns a {@link SequenceIterator} traversing the Elements of this
-     * {@link AddSequence} in proper order.
-     * 
-     * @return {@link SequenceIterator} traversing the Elements of this Sequence
-     *         in proper order
-     */
-    @Override
-    public SequenceIterator<Element> createIterator();
+    // unifying Sequence and AddContainer interfaces
 }

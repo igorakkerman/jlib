@@ -14,9 +14,8 @@
 
 package org.jlib.container.sequence;
 
-
 /**
- * {@link ReplaceIndexSequence} that allows Elements to be added and removed.
+ * {@link IndexSequence} that allows Elements to be added.
  * 
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
@@ -25,38 +24,5 @@ package org.jlib.container.sequence;
  */
 public interface AddIndexSequence<Element>
 extends AddSequence<Element>, IndexSequence<Element> {
-
-    /**
-     * Returns a InsertIndexSequenceIterator traversing the Elements of this
-     * Sequence in proper sequence. Initially, the Iterator points to the
-     * beginning of this Sequence, that is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
-     * {@link #getFirstIndex()}.
-     * 
-     * @return InsertIndexSequenceIterator over this IndexSequence initially
-     *         pointing to the beginning of this Sequence
-     */
-    @Override
-    public InsertIndexSequenceIterator<Element> createIterator();
-
-    /**
-     * Returns a InsertIndexSequenceIterator traversing the Elements of this
-     * Sequence in proper sequence. That is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
-     * the specified start index.
-     * 
-     * @param startIndex
-     *        integer specifying the index of the first Element returned by the
-     *        Iterator
-     * 
-     * @return InsertIndexSequenceIterator over this Sequence initially pointing to
-     *         the beginning of this Sequence
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
-     */
-    @Override
-    public InsertIndexSequenceIterator<Element> createIterator(int startIndex)
-    throws SequenceIndexOutOfBoundsException;
+    // unifying AddSequence and IndexSequence
 }

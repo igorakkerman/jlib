@@ -17,7 +17,7 @@ package org.jlib.container.sequence;
 /**
  * <p>
  * {@link SequenceIterator} over a {@link ReplaceIndexSequence} and
- * {@link AddIndexSequence}.
+ * {@link InsertIndexSequence}.
  * </p>
  * <p>
  * This interface simply unites the capabilities of the interfaces
@@ -29,7 +29,7 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public interface AddReplaceIndexSequenceIterator<Element>
+public interface InsertReplaceIndexSequenceIterator<Element>
 extends ReplaceIndexSequenceIterator<Element>, InsertIndexSequenceIterator<Element> {
     // intentionally left blank
 }

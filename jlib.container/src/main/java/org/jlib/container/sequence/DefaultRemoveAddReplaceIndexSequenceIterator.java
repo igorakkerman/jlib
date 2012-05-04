@@ -33,7 +33,7 @@ implements RemoveSequenceIterator<Element>, IndexSequenceIterator<Element> {
     private boolean modificationReady;
 
     /**
-     * Creates a new {@link DefaultAddReplaceIndexSequenceIterator} over the specified
+     * Creates a new {@link DefaultInsertReplaceIndexSequenceIterator} over the specified
      * {@link RemoveIndexSequence}.
      *
      * @param sequence

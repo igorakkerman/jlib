@@ -15,52 +15,55 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link InsertSequenceIterator} and {@link IndexSequenceIterator} over an
- * {@link AddIndexSequence}.
+ * {@link SequenceIterator} over the Elements of a {@link ReplaceIndexSequence}
+ * and {@link InsertIndexSequence}.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class DefaultAddReplaceIndexSequenceIterator<Element>
+public class DefaultInsertReplaceIndexSequenceIterator<Element>
 extends DefaultReplaceIndexSequenceIterator<Element>
-implements AddReplaceIndexSequenceIterator<Element> {
+implements InsertReplaceIndexSequenceIterator<Element> {
 
     /** ReplaceIndexSequence traversed by this Iterator */
-    private final AddIndexSequence<Element> sequence;
+    private final InsertIndexSequence<Element> sequence;
 
     /** ready for modifying operation (add/remove) */
     // TODO: replace flag with State pattern: ModificationReady, NotModificationReady
     private boolean modificationReady;
 
     /**
-     * Creates a new DefaultAddReplaceIndexSequenceIterator for the specified
+     * Creates a new DefaultInsertReplaceIndexSequenceIterator for the specified
      * AddIndexSequence.
      * 
      * @param sequence
      *        AddIndexSequence to traverse
      */
-    protected <Sequenze extends AddIndexSequence<Element> & ReplaceIndexSequence<Element>> DefaultAddReplaceIndexSequenceIterator(final Sequenze sequence) {
+    protected <Sequenze extends ReplaceIndexSequence<Element> & InsertIndexSequence<Element>> DefaultInsertReplaceIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
 
         this.sequence = sequence;
     }
 
     /**
-     * Creates a new DefaultAddReplaceIndexSequenceIterator for the specified
+     * Creates a new DefaultInsertReplaceIndexSequenceIterator for the specified
      * AddIndexSequence.
      * 
      * @param sequence
-     *        AddIndexSequence to traverse
+     *        {@link ReplaceIndexSequence} and {@link InsertIndexSequence} to
+     *        traverse
+     * 
      * @param startIndex
      *        integer specifying the start index of the traversal
+     * 
      * @throws IndexOutOfBoundsException
      *         if
      *         {@code startIndex < matrix.getFirstIndex() || matrix.lastIndex > startindex}
      */
-    protected <Sequenze extends AddIndexSequence<Element> & ReplaceIndexSequence<Element>> DefaultAddReplaceIndexSequenceIterator(final Sequenze sequence,
-                                                                                                                                  final int startIndex)
+    protected <Sequenze extends ReplaceIndexSequence<Element> & InsertIndexSequence<Element>> DefaultInsertReplaceIndexSequenceIterator(final Sequenze sequence,
+                                                                                                                                        final int startIndex)
     throws IndexOutOfBoundsException {
         super(sequence, startIndex);
 

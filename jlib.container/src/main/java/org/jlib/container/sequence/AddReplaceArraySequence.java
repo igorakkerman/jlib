@@ -67,34 +67,7 @@ implements AddIndexSequence<Element> {
     }
 
     @Override
-    public DefaultAddReplaceIndexSequenceIterator<Element> createIterator() {
-        return new DefaultAddReplaceIndexSequenceIterator<Element>(this);
-    }
-
-    @Override
-    public void insert(final int index, final Element element) {
-        insert(index, singleton(element));
-    }
-
-    @Override
-    public void insert(final int index, final Container<? extends Element> elements) {
-        final int insertedElementsCount = elements.getSize();
-
-        final int newSize = getSize() + insertedElementsCount;
-        final int delegateArrayInsertIndex = getDelegateArrayIndex(index);
-
-        assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedElementsCount);
-
-        int delegateArrayIndex = delegateArrayInsertIndex;
-        for (final Element element : elements)
-            replaceDelegateArrayElement(delegateArrayIndex ++, element);
-
-        setLastIndex(getLastIndex() + insertedElementsCount);
-    }
-
-    @Override
-    public AddReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
-        return new DefaultAddReplaceIndexSequenceIterator<Element>(this, startIndex);
+    public ReplaceIndexSequenceIterator<Element> createIterator() {
+        return new DefaultReplaceIndexSequenceIterator<Element>(this);
     }
 }
