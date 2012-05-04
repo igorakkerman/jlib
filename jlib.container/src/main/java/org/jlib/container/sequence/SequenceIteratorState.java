@@ -10,9 +10,8 @@ import org.jlib.core.iterator.IteratorState;
  * 
  * @author Igor Akkerman
  */
-public abstract class SequenceIteratorState<Element>
-extends IteratorState<Element>
-implements SequenceIterator<Element> {
+public interface SequenceIteratorState<Element>
+extends IteratorState<Element>, SequenceIterator<Element> {
 
     /**
      * Returns the previous {@link IteratorState}

@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  * @author Igor Akkerman
  */
 public abstract class BeginningOfSequenceIteratorState<Element>
-extends SequenceIteratorState<Element> {
+extends AbstractSequenceIteratorState<Element> {
 
     @Override
     public boolean hasPrevious() {
