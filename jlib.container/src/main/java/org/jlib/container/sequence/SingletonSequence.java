@@ -18,9 +18,6 @@ extends AbstractNonEmptySequence<Element> {
     /** sole element of this {@link SingletonSequence} */
     private final Element element;
 
-    /** current {@link IteratorState} */
-    private SequenceIteratorState<Element> currentState;
-
     /** sole instance of {@link BeginningOfSequenceState} */
     private final SequenceIteratorState<Element> beginningOfSequenceState = new BeginningOfSequenceState();
 
@@ -84,46 +81,11 @@ extends AbstractNonEmptySequence<Element> {
      */
     public SingletonSequence(final Element element) {
         this.element = element;
-
-        currentState = new BeginningOfSequenceState();
     }
 
     @Override
     public SequenceIterator<Element> createIterator() {
-        return new AbstractSequenceIterator<Element>() {
-
-            @Override
-            public boolean hasPrevious() {
-                return currentState.hasPrevious();
-            }
-
-            @Override
-            public Element previous()
-            throws NoSuchElementException {
-                try {
-                    return currentState.previous();
-                }
-                finally {
-                    currentState = currentState.getPreviousState();
-                }
-            }
-
-            @Override
-            public boolean hasNext() {
-                return currentState.hasNext();
-            }
-
-            @Override
-            public Element next()
-            throws NoSuchElementException {
-                try {
-                    return currentState.next();
-                }
-                finally {
-                    currentState = currentState.getNextState();
-                }
-            }
-        };
+        return new StateSequenceIterator<Element>(beginningOfSequenceState);
     }
 
     @Override
