@@ -21,28 +21,23 @@ extends AbstractNonEmptySequence<Element> {
     /** current {@link IteratorState} */
     private SequenceIteratorState<Element> currentState;
 
-    /** sole instance of {@link SoleElementPreviousState} */
-    private final SequenceIteratorState<Element> soleElementPreviousState = new SoleElementPreviousState();
+    /** sole instance of {@link BeginningOfSequenceState} */
+    private final SequenceIteratorState<Element> beginningOfSequenceState = new BeginningOfSequenceState();
 
-    /** sole instance of {@link SoleElementNextState} */
-    private final SequenceIteratorState<Element> soleElementNextState = new SoleElementNextState();
+    /** sole instance of {@link EndOfSequenceState} */
+    private final SequenceIteratorState<Element> endOfSequenceState = new EndOfSequenceState();
 
     /**
      * Sole Element {@link IteratorState} (initial state).
      */
-    private class SoleElementNextState
-    extends SequenceIteratorState<Element> {
+    private class BeginningOfSequenceState
+    extends BeginningOfSequenceIteratorState<Element> {
 
         /**
-         * Creates a new {@link SoleElementNextState}.
+         * Creates a new {@link BeginningOfSequenceState}.
          */
-        public SoleElementNextState() {
+        public BeginningOfSequenceState() {
             super();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return true;
         }
 
         @Override
@@ -52,58 +47,21 @@ extends AbstractNonEmptySequence<Element> {
 
         @Override
         public SequenceIteratorState<Element> getNextState() {
-            return soleElementPreviousState;
-        }
-
-        @Override
-        public boolean hasPrevious() {
-            return false;
-        }
-
-        @Override
-        public Element previous()
-        throws NoSuchElementException {
-            throw new NoSuchElementException();
-        }
-
-        @Override
-        public SequenceIteratorState<Element> getPreviousState() {
-            return this;
+            return endOfSequenceState;
         }
     }
 
     /**
      * No next Element {@link IteratorState} (post-initial state).
      */
-    private class SoleElementPreviousState
-    extends SequenceIteratorState<Element> {
+    private class EndOfSequenceState
+    extends EndOfSequenceIteratorState<Element> {
 
         /**
-         * Creates a new {@link SoleElementPreviousState}.
+         * Creates a new {@link EndOfSequenceState}.
          */
-        public SoleElementPreviousState() {
+        public EndOfSequenceState() {
             super();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        @Override
-        public Element next()
-        throws NoSuchElementException {
-            throw new NoSuchElementException();
-        }
-
-        @Override
-        public SequenceIteratorState<Element> getNextState() {
-            return this;
-        }
-
-        @Override
-        public boolean hasPrevious() {
-            return true;
         }
 
         @Override
@@ -114,7 +72,7 @@ extends AbstractNonEmptySequence<Element> {
 
         @Override
         public SequenceIteratorState<Element> getPreviousState() {
-            return soleElementNextState;
+            return beginningOfSequenceState;
         }
     }
 
@@ -127,7 +85,7 @@ extends AbstractNonEmptySequence<Element> {
     public SingletonSequence(final Element element) {
         this.element = element;
 
-        currentState = new SoleElementNextState();
+        currentState = new BeginningOfSequenceState();
     }
 
     @Override
