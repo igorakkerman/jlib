@@ -15,7 +15,7 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link AddSequenceIterator} and {@link IndexSequenceIterator} over an
+ * {@link InsertSequenceIterator} and {@link IndexSequenceIterator} over an
  * {@link AddIndexSequence}.
  * 
  * @param <Element>
@@ -68,7 +68,7 @@ implements AddReplaceIndexSequenceIterator<Element> {
     }
 
     @Override
-    public void add(final Element element)
+    public void insert(final Element element)
     throws IllegalStateException {
         if (!modificationReady)
             throw new IllegalStateException();

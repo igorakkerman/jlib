@@ -29,10 +29,10 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
      * Returns a {@link RemoveIndexSequenceIterator} traversing the Elements of
      * this Sequence in proper sequence. Initially, the Iterator points to the
      * beginning of this Sequence, that is, the Element returned by the first
-     * call to {@link AddIndexSequenceIterator#next()} is the Element stored at
+     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
      * {@link #getFirstIndex()}.
      * 
-     * @return AddIndexSequenceIterator over this IndexSequence initially
+     * @return InsertIndexSequenceIterator over this IndexSequence initially
      *         pointing to the beginning of this Sequence
      */
     @Override
@@ -41,14 +41,14 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
     /**
      * Returns a RemoveIndexSequenceIterator traversing the Elements of this
      * Sequence in proper sequence. That is, the Element returned by the first
-     * call to {@link AddIndexSequenceIterator#next()} is the Element stored at
+     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
      * the specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Element returned by the
      *        Iterator
      * 
-     * @return AddIndexSequenceIterator over this Sequence initially pointing to
+     * @return InsertIndexSequenceIterator over this Sequence initially pointing to
      *         the beginning of this Sequence
      * 
      * @throws SequenceIndexOutOfBoundsException

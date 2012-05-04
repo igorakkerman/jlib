@@ -79,7 +79,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         // @see Collection#add(java.lang.Object)
         @Override
         public void add(final Association<DelegateLeftValue, DelegateRightValue> association) {
-            baseBinaryRelation.add(association);
+            baseBinaryRelation.insert(association);
         }
 
         // @see Collection#remove(java.lang.Object)

@@ -27,12 +27,12 @@ public interface AddSequence<Element>
 extends Sequence<Element>, AddContainer<Element> {
 
     /**
-     * Returns a AddSequenceIterator traversing the Elements of this
-     * Sequence in proper order.
+     * Returns a {@link SequenceIterator} traversing the Elements of this
+     * {@link AddSequence} in proper order.
      * 
-     * @return AddSequenceIterator traversing the Elements of this Sequence
+     * @return {@link SequenceIterator} traversing the Elements of this Sequence
      *         in proper order
      */
     @Override
-    public AddSequenceIterator<Element> createIterator();
+    public SequenceIterator<Element> createIterator();
 }

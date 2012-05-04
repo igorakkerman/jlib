@@ -14,25 +14,26 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.AddContainer;
 
 /**
- * {@link ReplaceSequence} that allows Elements to be added and removed.
+ * {@link Sequence} that allows Elements to be inserted.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public interface RemoveSequence<Element>
-extends Sequence<Element>, RemoveContainer<Element> {
+public interface InsertSequence<Element>
+extends Sequence<Element> {
 
     /**
-     * Returns a {@link RemoveSequenceIterator} traversing the Elements of this
-     * Sequence in proper order.
+     * Returns a InsertSequenceIterator traversing the Elements of this Sequence in
+     * proper order.
      * 
      * @return InsertSequenceIterator traversing the Elements of this Sequence in
      *         proper order
      */
     @Override
-    public RemoveSequenceIterator<Element> createIterator();
+    public InsertSequenceIterator<Element> createIterator();
 }

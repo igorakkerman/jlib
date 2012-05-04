@@ -77,7 +77,7 @@ implements AddIndexSequence<Element> {
     }
 
     @Override
-    public void insert(final int index, final Iterable<? extends Element> elements) {
+    public void insert(final int index, final Container<? extends Element> elements) {
         final int insertedElementsCount = elements.getSize();
 
         final int newSize = getSize() + insertedElementsCount;

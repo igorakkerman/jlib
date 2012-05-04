@@ -10,6 +10,6 @@ import java.util.ListIterator;
  * @author Igor Akkerman
  */
 public interface SequenceListIterator<Element>
-extends ReplaceIndexSequenceIterator<Element>, AddIndexSequenceIterator<Element>, ListIterator<Element> {
+extends ReplaceIndexSequenceIterator<Element>, InsertIndexSequenceIterator<Element>, ListIterator<Element> {
     // unifying interface
 }

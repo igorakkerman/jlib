@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.container.Container;
 
 /**
  * {@link ReplaceIndexSequence} that allows Elements to be added and removed.
@@ -23,12 +24,12 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public interface AddIndexSequence<Element>
-extends AddSequence<Element>, IndexSequence<Element> {
+public interface InsertIndexSequence<Element>
+extends InsertSequence<Element>, IndexSequence<Element> {
 
     /**
-     * Returns a InsertIndexSequenceIterator traversing the Elements of this
-     * Sequence in proper sequence. Initially, the Iterator points to the
+     * Returns an {@link InsertIndexSequenceIterator} traversing the Elements of
+     * this Sequence in proper sequence. Initially, the Iterator points to the
      * beginning of this Sequence, that is, the Element returned by the first
      * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
      * {@link #getFirstIndex()}.
@@ -59,4 +60,29 @@ extends AddSequence<Element>, IndexSequence<Element> {
     @Override
     public InsertIndexSequenceIterator<Element> createIterator(int startIndex)
     throws SequenceIndexOutOfBoundsException;
+
+    /**
+     * Inserts the specified Element at the specified index in this
+     * IndexSequence.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param element
+     *        Element to add
+     */
+    public void insert(int index, Element element);
+
+    /**
+     * Inserts all Elements of the specified Container at the specified index of
+     * this IndexSequence. The Elements are inserted in the order they are
+     * returned by the Container's Iterator.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param elements
+     *        Container holding the Elements to add
+     */
+    public void insert(int index, Container<? extends Element> elements);
 }

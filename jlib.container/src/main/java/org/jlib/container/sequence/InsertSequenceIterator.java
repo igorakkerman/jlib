@@ -15,14 +15,14 @@
 package org.jlib.container.sequence;
 
 /**
- * Iterator over a {@link AddSequence}.
+ * Iterator over a {@link InsertSequence}.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface AddSequenceIterator<Element>
+public interface InsertSequenceIterator<Element>
 extends SequenceIterator<Element> {
 
     /**
@@ -41,13 +41,12 @@ extends SequenceIterator<Element> {
      * </p>
      * 
      * @param element
-     *        Element to add
+     *        Element to insert
      * 
      * @throws IllegalStateException
      *         if {@link #next()} or {@link #previous()} have not been called
-     *         initially or after the last call to {@link #add(Object)} or
-     *         {@link #remove()}
+     *         initially or after the last call to {@link #insert(Object)}
      */
-    public void add(Element element)
+    public void insert(Element element)
     throws IllegalStateException;
 }
