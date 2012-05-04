@@ -2,7 +2,7 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
-import org.jlib.container.IteratorState;
+import org.jlib.core.iterator.IteratorState;
 
 /**
  * Sequence containing exactly one Element.
