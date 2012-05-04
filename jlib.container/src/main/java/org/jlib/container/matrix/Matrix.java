@@ -64,7 +64,7 @@ import org.jlib.container.Container;
  * <br />
  * <li>Full support for generics:<br/>
  * The Java arrays do not support generic classes. For example, you cannot
- * create an array of String Sequences:
+ * create an array of String SequenceUtility:
  * 
  * <pre>
  * 

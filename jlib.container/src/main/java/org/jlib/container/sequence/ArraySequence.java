@@ -115,7 +115,7 @@ extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
     /** array holding the Elements of this {@link ArraySequence} */
-    private Object[] delegateArray;
+    private Element[] delegateArray;
 
     /**
      * Creates a new {@link ArraySequence} with the specified minimum and
@@ -127,12 +127,13 @@ implements Cloneable {
      * @param lastIndex
      *        integer specifying the maximum index of this {@link ArraySequence}
      */
+    @SuppressWarnings("unchecked")
     protected ArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
 
         final int size = getSize();
 
-        delegateArray = new Object[size];
+        delegateArray = (Element[]) new Object[size];
     }
 
     /**
@@ -187,9 +188,8 @@ implements Cloneable {
      * 
      * @return Element stored at {@code arrayIndex} in the array
      */
-    @SuppressWarnings("unchecked")
     protected Element getDelegateArrayElement(final int arrayIndex) {
-        return (Element) delegateArray[arrayIndex];
+        return delegateArray[arrayIndex];
     }
 
     /**
@@ -200,7 +200,7 @@ implements Cloneable {
      *        integer specifying the index of the Element in the array
      * 
      * @param element
-     *        the replacing Element
+     *        replacing Element
      */
     protected void replaceDelegateArrayElement(final int arrayIndex, final Element element) {
         delegateArray[arrayIndex] = element;
@@ -250,10 +250,58 @@ implements Cloneable {
      *         if {@code expectedCapacity < 1}
      */
     protected void assertCapacity(final int expectedCapacity) {
-        if (expectedCapacity < 1)
-            throw new IllegalArgumentException("expectedCapacity == " + expectedCapacity + " < 1");
+        assertExpectedCapacityValid(expectedCapacity);
 
         if (delegateArray.length < expectedCapacity)
             delegateArray = Arrays.copyOf(delegateArray, expectedCapacity);
+    }
+
+    /**
+     * Asserts that the delegate array has the specified expected capacity,
+     * replacing it by a larger {@code null} padded copy, if necessary.
+     * 
+     * @param expectedCapacity
+     *        integer specifying the expected capacity
+     * 
+     * @param insertIndex
+     *        integer specifying the insert index
+     * 
+     * @param holeSize
+     *        integer specifying the size of the hole
+     * 
+     * @throws IllegalArgumentException
+     *         if
+     *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
+     */
+    protected void assertCapacityWithHole(final int expectedCapacity, final int insertIndex, final int holeSize) {
+        assertExpectedCapacityValid(expectedCapacity);
+
+        if (getSize() + holeSize > expectedCapacity)
+            throw new IllegalArgumentException("getSize() + elements.length == " + getSize() + " + " + holeSize +
+                                               " > " + expectedCapacity + " == expectedCapacity");
+        @SuppressWarnings("unchecked")
+        final Element[] newDelegateArray =
+            delegateArray.length < expectedCapacity ? (Element[]) new Object[expectedCapacity] : delegateArray;
+
+        System.arraycopy(delegateArray, 0, newDelegateArray, 0, insertIndex);
+        System.arraycopy(delegateArray, insertIndex, newDelegateArray, insertIndex + holeSize, getSize() - insertIndex);
+        Arrays.fill(newDelegateArray, getSize() + expectedCapacity, newDelegateArray.length, null);
+
+        delegateArray = newDelegateArray;
+    }
+
+    /**
+     * Asserts that the specified expected capacity is valid.
+     * 
+     * @param expectedCapacity
+     *        integer specifying the expected capacity
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code expectedCapacity < 1}
+     */
+    private void assertExpectedCapacityValid(final int expectedCapacity)
+    throws IllegalArgumentException {
+        if (expectedCapacity < 1)
+            throw new IllegalArgumentException("expectedCapacity == " + expectedCapacity + " < 1");
     }
 }

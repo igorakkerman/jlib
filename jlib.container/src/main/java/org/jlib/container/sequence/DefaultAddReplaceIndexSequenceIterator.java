@@ -25,7 +25,7 @@ package org.jlib.container.sequence;
  */
 public class DefaultAddReplaceIndexSequenceIterator<Element>
 extends DefaultReplaceIndexSequenceIterator<Element>
-implements AddIndexSequenceIterator<Element> {
+implements AddReplaceIndexSequenceIterator<Element> {
 
     /** ReplaceIndexSequence traversed by this Iterator */
     private final AddIndexSequence<Element> sequence;

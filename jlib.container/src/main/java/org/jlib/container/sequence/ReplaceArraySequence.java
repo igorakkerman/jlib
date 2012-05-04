@@ -21,7 +21,7 @@ implements ReplaceIndexSequence<Element> {
      * @param lastIndex
      *        last index of this {@link ReplaceArraySequence}
      */
-    public ReplaceArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
