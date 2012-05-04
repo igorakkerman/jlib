@@ -1,9 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.util.NoSuchElementException;
-
-import org.jlib.core.iterator.IteratorState;
-
 /**
  * Sequence containing exactly one Element.
  * 
@@ -18,52 +14,26 @@ extends AbstractNonEmptySequence<Element> {
     /** sole element of this {@link SingletonSequence} */
     private final Element element;
 
-    /** sole instance of {@link BeginningOfSequenceState} */
-    private final SequenceIteratorState<Element> beginningOfSequenceState = new BeginningOfSequenceState();
+    /** beginning of the {@link SingletonSequence} {@link SequenceIteratorState} */
+    private final SequenceIteratorState<Element> beginningOfSequenceState =
+        new BeginningOfSequenceIteratorState<Element>() {
 
-    /** sole instance of {@link EndOfSequenceState} */
-    private final SequenceIteratorState<Element> endOfSequenceState = new EndOfSequenceState();
+            @Override
+            public Element next() {
+                return element;
+            }
 
-    /**
-     * Sole Element {@link IteratorState} (initial state).
-     */
-    private class BeginningOfSequenceState
-    extends BeginningOfSequenceIteratorState<Element> {
+            @Override
+            public SequenceIteratorState<Element> getNextState() {
+                return endOfSequenceState;
+            }
+        };
 
-        /**
-         * Creates a new {@link BeginningOfSequenceState}.
-         */
-        public BeginningOfSequenceState() {
-            super();
-        }
-
-        @Override
-        public Element next() {
-            return element;
-        }
+    /** end of the {@link SingletonSequence} {@link SequenceIteratorState} */
+    private final SequenceIteratorState<Element> endOfSequenceState = new EndOfSequenceIteratorState<Element>() {
 
         @Override
-        public SequenceIteratorState<Element> getNextState() {
-            return endOfSequenceState;
-        }
-    }
-
-    /**
-     * No next Element {@link IteratorState} (post-initial state).
-     */
-    private class EndOfSequenceState
-    extends EndOfSequenceIteratorState<Element> {
-
-        /**
-         * Creates a new {@link EndOfSequenceState}.
-         */
-        public EndOfSequenceState() {
-            super();
-        }
-
-        @Override
-        public Element previous()
-        throws NoSuchElementException {
+        public Element previous() {
             return element;
         }
 
@@ -71,7 +41,7 @@ extends AbstractNonEmptySequence<Element> {
         public SequenceIteratorState<Element> getPreviousState() {
             return beginningOfSequenceState;
         }
-    }
+    };
 
     /**
      * Creates a new {@link SingletonSequence} with the specified Element.
