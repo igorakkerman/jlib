@@ -59,39 +59,6 @@ extends Sequence<Element>, RandomAccess {
     public int getLastIndex();
 
     /**
-     * Returns an IndexSequenceIterator traversing the Elements of this
-     * IndexSequence in proper sequence. Initially, the Iterator points to the
-     * beginning of this IndexSequence, that is, the Element returned by the
-     * first call to {@code nextIndex()} is the Element stored at
-     * {@code getFirstIndex()}.
-     * 
-     * @return {@link IndexSequenceIterator} over this IndexSequence initially
-     *         pointing to the beginning of this IndexSequence
-     */
-    @Override
-    public IndexSequenceIterator<Element> createIterator();
-
-    /**
-     * Returns an {@link IndexSequenceIterator} traversing the Elements of this
-     * IndexSequence in proper sequence. That is, the Element returned by the
-     * first call to {@code nextIndex()} is the Element stored at the specified
-     * start index.
-     * 
-     * @param startIndex
-     *        integer specifying the index of the first Element returned by the
-     *        Iterator
-     * 
-     * @return IndexSequenceIterator over this IndexSequence initially pointing
-     *         to the beginning of this IndexSequence
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
-     */
-    public IndexSequenceIterator<Element> createIterator(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
-
-    /**
      * Returns the index of the first occurrence of the specified Element in
      * this IndexSequence.
      * 
@@ -155,6 +122,39 @@ extends Sequence<Element>, RandomAccess {
      */
     public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException;
+
+    /**
+     * Returns an IndexSequenceIterator traversing the Elements of this
+     * IndexSequence in proper sequence. Initially, the Iterator points to the
+     * beginning of this IndexSequence, that is, the Element returned by the
+     * first call to {@code nextIndex()} is the Element stored at
+     * {@code getFirstIndex()}.
+     * 
+     * @return {@link IndexSequenceIterator} over this IndexSequence initially
+     *         pointing to the beginning of this IndexSequence
+     */
+    @Override
+    public IndexSequenceIterator<Element> createIterator();
+
+    /**
+     * Returns an {@link IndexSequenceIterator} traversing the Elements of this
+     * IndexSequence in proper sequence. That is, the Element returned by the
+     * first call to {@code nextIndex()} is the Element stored at the specified
+     * start index.
+     * 
+     * @param startIndex
+     *        integer specifying the index of the first Element returned by the
+     *        Iterator
+     * 
+     * @return IndexSequenceIterator over this IndexSequence initially pointing
+     *         to the beginning of this IndexSequence
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if
+     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
+     */
+    public IndexSequenceIterator<Element> createIterator(final int startIndex)
+    throws SequenceIndexOutOfBoundsException;
 
     /**
      * Verifies whether the specified Object is an IndexSequence with the same
