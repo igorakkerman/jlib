@@ -3,13 +3,28 @@ package org.jlib.text;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
+ * <p>
  * Iterator over the {@link Character Characters} of a {@link CharSequence}.
+ * </p>
+ * 
+ * <p>
+ * This implementation's {@link #remove()} method throws an
+ * {@link UnsupportedOperationException} as a general {@link CharSequence} does
+ * not support deletion of {@link Character Characters}.
+ * </p>
+ * <p>
+ * Subclasses may use covariance and imeplement this method for
+ * {@link CharSequence CharSequences} supporting deletion of {@link Character
+ * Characters}.
+ * </p>
  * 
  * @author Igor Akkerman
  */
 public class CharSequenceIterator
-implements Iterator<Character> {
+extends AbstractIterator<Character> {
 
     /**
      * Returns an {@link Iterable} creating CharSequenceIterators over the
@@ -111,7 +126,7 @@ implements Iterator<Character> {
      * @param iteratedCharSequence
      *        {@link CharSequence} to iterate
      */
-    public CharSequenceIterator(CharSequence iteratedCharSequence) {
+    public CharSequenceIterator(final CharSequence iteratedCharSequence) {
         // a call to another constructor would throw an Exception for an empty iteratedCharSequence
         // also, the indices checks are skipped here
         this.iteratedCharSequence = iteratedCharSequence;
@@ -134,7 +149,7 @@ implements Iterator<Character> {
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
      */
-    public CharSequenceIterator(CharSequence iteratedCharSequence, int firstCharacterIndex) {
+    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex) {
         if (firstCharacterIndex < 0)
             throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
 
@@ -166,7 +181,8 @@ implements Iterator<Character> {
      * @throws CharSequenceEndIndexAboveBoundException
      *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
      */
-    public CharSequenceIterator(CharSequence iteratedCharSequence, int firstCharacterIndex, int lastCharacterIndex)
+    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
+                                final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
     CharSequenceEndIndexAboveBoundException {
         if (firstCharacterIndex < 0)
@@ -184,35 +200,15 @@ implements Iterator<Character> {
         this.lastCharacterIndex = lastCharacterIndex;
     }
 
-
     @Override
     public boolean hasNext() {
         return nextCharacterIndex <= lastCharacterIndex && nextCharacterIndex < iteratedCharSequence.length();
     }
-
 
     @Override
     public Character next() {
         if (!hasNext())
             throw new NoSuchElementException("['" + iteratedCharSequence + "', " + nextCharacterIndex + "]");
         return iteratedCharSequence.charAt(nextCharacterIndex ++);
-    }
-
-    /**
-     * <p>
-     * This implementation throws an {@link UnsupportedOperationException} as a
-     * general {@link CharSequence} does not support deletion of
-     * {@link Character Characters}.
-     * </p>
-     * <p>
-     * Subclasses may use covariance and imeplement this method for
-     * {@link CharSequence CharSequences} supporting deletion of
-     * {@link Character Characters}.
-     * </p>
-     */
-    @Override
-    public void remove()
-    throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
     }
 }

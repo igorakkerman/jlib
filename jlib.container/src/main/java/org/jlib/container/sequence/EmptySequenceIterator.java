@@ -2,6 +2,8 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * {@link IndexSequenceIterator} of an {@link EmptySequence}.
  * 
@@ -11,6 +13,7 @@ import java.util.NoSuchElementException;
  * @author Igor Akkerman
  */
 public class EmptySequenceIterator<Element>
+extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
 
     /** sole instance of this class */
@@ -53,11 +56,5 @@ implements SequenceIterator<Element> {
     public Element next()
     throws NoSuchElementException {
         throw new NoSuchElementException();
-    }
-
-    @Override
-    public void remove()
-    throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
     }
 }

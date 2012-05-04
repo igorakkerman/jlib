@@ -1,6 +1,6 @@
 package org.jlib.container.sequence;
 
-import org.jlib.container.AbstractIterator;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * Skeletal implementation of a {@link SequenceIterator}.

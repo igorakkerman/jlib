@@ -1,5 +1,7 @@
 package org.jlib.container;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * Iterator state.
  * 

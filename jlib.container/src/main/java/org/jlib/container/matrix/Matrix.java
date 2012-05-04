@@ -87,11 +87,6 @@ import org.jlib.container.Container;
  * {@link #iterator()} can be defined specifying a default {@link Iterable} as
  * iterable provider.
  * </p>
- * <p>
- * A ArrayMatrix has a fixed size, thus no Elements can be added to or
- * removed from it. The corresponding methods for adding and removing Elements
- * all throw an {@link UnsupportedOperationException}.
- * </p>
  * 
  * @param <Entry>
  *        type of the entries of the {@link Matrix}
@@ -117,8 +112,8 @@ extends Container<Entry>, MatrixIterable<Entry> {
     public int getHeight();
 
     /**
-     * Returns the number of Entries in this ArrayMatrix. The size is
-     * equal to {@code getWidth() * getHeight()}.
+     * Returns the number of Entries in this ArrayMatrix. The size is equal to
+     * {@code getWidth() * getHeight()}.
      * 
      * @return integer specifying the number of Entries
      */
@@ -127,11 +122,11 @@ extends Container<Entry>, MatrixIterable<Entry> {
 
     /**
      * Creates a {@link MatrixIterator} traversing the Entries of this
-     * {@link ArrayMatrix} in the default order. The default order may
-     * be defined by the concrete implementation or even made customizable.
+     * {@link ArrayMatrix} in the default order. The default order may be
+     * defined by the concrete implementation or even made customizable.
      * 
-     * @return a new {@link MatrixIterator} over the Entries of
-     *         this {@link Matrix}
+     * @return a new {@link MatrixIterator} over the Entries of this
+     *         {@link Matrix}
      */
     @Override
     public MatrixIterator<Entry> createIterator();

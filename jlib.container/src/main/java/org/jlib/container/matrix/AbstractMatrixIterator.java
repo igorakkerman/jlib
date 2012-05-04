@@ -1,5 +1,7 @@
 package org.jlib.container.matrix;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * Skeletal implementation of a {@link MatrixIterator}.
  * 
@@ -9,6 +11,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public abstract class AbstractMatrixIterator<Entry>
+extends AbstractIterator<Entry>
 implements MatrixIterator<Entry> {
 
     /** {@link Matrix} traversed by this {@link AbstractMatrixIterator} */
@@ -33,18 +36,5 @@ implements MatrixIterator<Entry> {
      */
     protected Matrix<Entry> getMatrix() {
         return matrix;
-    }
-
-    /**
-     * Always throws a {@code UnsupportedOperationException} since a single Entry
-     * cnanot be removed from a {@link Matrix}.
-     * 
-     * @throws UnsupportedOperationException
-     *         always
-     */
-    @Override
-    public void remove()
-    throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
     }
 }

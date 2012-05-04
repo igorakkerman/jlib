@@ -2,6 +2,8 @@ package org.jlib.core.array;
 
 import java.util.Iterator;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * {@link Iterator} over the elements of an array.
  * 
@@ -11,7 +13,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public class ArrayIterator<Element>
-implements Iterator<Element> {
+extends AbstractIterator<Element> {
 
     /** array to traverse */
     private final Element[] array;
@@ -58,11 +60,4 @@ implements Iterator<Element> {
     public Element next() {
         return array[currentIndex ++];
     }
-
-    // @see java.util.Iterator#remove()
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
-
 }

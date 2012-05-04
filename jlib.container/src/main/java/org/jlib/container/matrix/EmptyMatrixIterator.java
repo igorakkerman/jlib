@@ -2,6 +2,8 @@ package org.jlib.container.matrix;
 
 import java.util.NoSuchElementException;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * {@link MatrixIterator} of an {@link EmptyMatrix}. Implemented as a singleton.
  * 
@@ -11,6 +13,7 @@ import java.util.NoSuchElementException;
  * @author Igor Akkerman
  */
 public class EmptyMatrixIterator<Entry>
+extends AbstractIterator<Entry>
 implements ReplaceMatrixIterator<Entry> {
 
     /** sole {@link EmptyMatrixIterator} instance */
@@ -59,11 +62,4 @@ implements ReplaceMatrixIterator<Entry> {
     throws IllegalStateException {
         throw new IllegalStateException();
     }
-
-    @Override
-    public void remove()
-    throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
-    }
-
 }

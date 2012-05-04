@@ -16,14 +16,18 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * {@link IndexSequenceIterator} traversing the elements in the proper order.
- *
+ * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
 public class DefaultIndexSequenceIterator<Element>
+extends AbstractIterator<Element>
 implements IndexSequenceIterator<Element> {
 
     /** IndexSequence to traverse */
@@ -36,9 +40,9 @@ implements IndexSequenceIterator<Element> {
     private int lastRetrievedElementIndex;
 
     /**
-     * Creates a new DefaultIndexSequenceIterator over the Elements of the specified
-     * ReplaceIndexSequence.
-     *
+     * Creates a new DefaultIndexSequenceIterator over the Elements of the
+     * specified ReplaceIndexSequence.
+     * 
      * @param sequence
      *        IndexSequence to traverse
      */
@@ -47,17 +51,21 @@ implements IndexSequenceIterator<Element> {
     }
 
     /**
-     * Creates a new DefaultReplaceIndexSequenceIterator over the Elements of the specified
-     * IndexSequence starting the traversal at the specified index.
-     *
+     * Creates a new DefaultReplaceIndexSequenceIterator over the Elements of
+     * the specified IndexSequence starting the traversal at the specified
+     * index.
+     * 
      * @param sequence
      *        ReplaceIndexSequence to traverse
+     * 
      * @param startIndex
      *        integer specifying the start index of the traversal
+     * 
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
+     *         if
+     *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    protected DefaultIndexSequenceIterator(final IndexSequence<Element> sequence, int startIndex)
+    protected DefaultIndexSequenceIterator(final IndexSequence<Element> sequence, final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         super();
         this.sequence = sequence;
@@ -109,15 +117,10 @@ implements IndexSequenceIterator<Element> {
 
     /**
      * Returns the index of the last retreived Element.
-     *
+     * 
      * @return integer specifying the index
      */
     protected int lastRetreivedElementIndex() {
         return lastRetrievedElementIndex;
-    }
-
-    @Override
-    public void remove() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
     }
 }

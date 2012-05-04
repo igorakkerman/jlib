@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.jlib.core.iterator.AbstractIterator;
+
 /**
  * Iterator over the Associations of a BinaryRelation.
  * 
@@ -28,7 +30,7 @@ import java.util.NoSuchElementException;
  * @author Igor Akkerman
  */
 class BinaryRelationIterator<LeftValue, RightValue>
-implements Iterator<Association<LeftValue, RightValue>> {
+extends AbstractIterator<Association<LeftValue, RightValue>> {
 
     /** BinaryRelation traversed by this Iterator */
     private final BinaryRelation<LeftValue, RightValue> binaryRelation;
@@ -37,7 +39,7 @@ implements Iterator<Association<LeftValue, RightValue>> {
      * Iterator over the LeftValues of the BinaryRelation traversed by this
      * Iterator
      */
-    private Iterator<LeftValue> leftValuesIterator;
+    private final Iterator<LeftValue> leftValuesIterator;
 
     /**
      * Iterator over the RightValues of the BinaryRelation traversed by this
@@ -54,7 +56,7 @@ implements Iterator<Association<LeftValue, RightValue>> {
      * @param binaryRelation
      *        BinaryRelation traversed by this Iterator
      */
-    protected BinaryRelationIterator(BinaryRelation<LeftValue, RightValue> binaryRelation) {
+    protected BinaryRelationIterator(final BinaryRelation<LeftValue, RightValue> binaryRelation) {
         super();
         this.binaryRelation = binaryRelation;
         leftValuesIterator = binaryRelation.leftValues().iterator();
@@ -92,10 +94,5 @@ implements Iterator<Association<LeftValue, RightValue>> {
             throw new NoSuchElementException();
 
         return new Association<LeftValue, RightValue>(leftValue, rightValuesIterator.next());
-    }
-
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
     }
 }
