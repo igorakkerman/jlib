@@ -26,11 +26,20 @@ public interface RemoveIndexSequence<Element>
 extends RemoveSequence<Element>, IndexSequence<Element> {
 
     /**
+     * Removes from this IndexSequence the Element stored at the specified
+     * index.
+     * 
+     * @param index
+     *        integer specifying the index
+     */
+    public void remove(final int index);
+
+    /**
      * Returns a {@link RemoveIndexSequenceIterator} traversing the Elements of
      * this Sequence in proper sequence. Initially, the Iterator points to the
      * beginning of this Sequence, that is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
-     * {@link #getFirstIndex()}.
+     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored
+     * at {@link #getFirstIndex()}.
      * 
      * @return InsertIndexSequenceIterator over this IndexSequence initially
      *         pointing to the beginning of this Sequence
@@ -41,15 +50,15 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
     /**
      * Returns a RemoveIndexSequenceIterator traversing the Elements of this
      * Sequence in proper sequence. That is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
-     * the specified start index.
+     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored
+     * at the specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Element returned by the
      *        Iterator
      * 
-     * @return InsertIndexSequenceIterator over this Sequence initially pointing to
-     *         the beginning of this Sequence
+     * @return InsertIndexSequenceIterator over this Sequence initially pointing
+     *         to the beginning of this Sequence
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
@@ -58,13 +67,4 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
     @Override
     public RemoveIndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * Removes from this IndexSequence the Element stored at the specified
-     * index.
-     * 
-     * @param index
-     *        integer specifying the index
-     */
-    public void remove(final int index);
 }
