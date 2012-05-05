@@ -10,6 +10,8 @@ import org.jlib.container.ContainerUtility;
 import org.jlib.container.RemoveContainer;
 import org.jlib.container.RemoveContainerIterator;
 
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link AddContainer}. A
  * {@link CollectionAddRemoveContainer} is backed by a {@link Collection}
@@ -56,17 +58,17 @@ implements AddContainer<Element>, RemoveContainer<Element> {
     }
 
     @Override
-    public void removeAll() {
-        getDelegateCollection().clear();
-    }
-
-    @Override
     public void remove(final Element element)
     throws IllegalArgumentException {
-        boolean removed = getDelegateCollection().remove(element);
+        final boolean removed = getDelegateCollection().remove(element);
 
         if (!removed)
             throw new IllegalArgumentException(element.toString());
+    }
+
+    @Override
+    public void removeAll() {
+        getDelegateCollection().clear();
     }
 
     @Override
@@ -81,6 +83,11 @@ implements AddContainer<Element>, RemoveContainer<Element> {
 
     @Override
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
+        ContainerUtility.removeAll(this, iterable(elements));
+    }
+
+    @Override
+    public void removeAll(final Iterable<? extends Element> elements) {
         ContainerUtility.removeAll(this, elements);
     }
 
@@ -103,6 +110,7 @@ implements AddContainer<Element>, RemoveContainer<Element> {
     public RemoveContainerIterator<Element> createIterator() {
         final Iterator<Element> delegateIterator = getDelegateCollection().iterator();
         return new RemoveContainerIterator<Element>() {
+
             @Override
             public boolean hasNext() {
                 return delegateIterator.hasNext();
@@ -119,4 +127,5 @@ implements AddContainer<Element>, RemoveContainer<Element> {
             }
         };
     }
+
 }
