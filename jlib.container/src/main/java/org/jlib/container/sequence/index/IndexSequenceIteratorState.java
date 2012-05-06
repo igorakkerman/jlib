@@ -5,16 +5,58 @@ import java.util.NoSuchElementException;
 import org.jlib.container.sequence.AbstractSequenceIteratorState;
 import org.jlib.container.sequence.SequenceIteratorState;
 
-public class IndexSsequenceIteratorState<Element>
+public class IndexSequenceIteratorState<Element>
 extends AbstractSequenceIteratorState<Element> {
 
     private final StateIndexSequenceIterator<Element> parentIterator;
 
+    private final IndexSequence<Element> sequence;
+
+    private int lastReturnedElementIndex;
+
     /**
      * Creates a new {@link IndexSequenceIteratorState}.
      */
-    public IndexSsequenceIteratorState(final StateIndexSequenceIterator<Element> parentIterator) {
+    public IndexSequenceIteratorState(final StateIndexSequenceIterator<Element> parentIterator) {
         this.parentIterator = parentIterator;
+        sequence = parentIterator.getSequence();
+    }
+
+    @Override
+    public boolean hasNext() {
+        return parentIterator.getNextElementIndex() <= sequence.getLastIndex();
+    }
+
+    @Override
+    public Element next()
+    throws NoSuchElementException {
+        if (!hasNext())
+            throw new NoSuchElementException();
+
+        final int nextElementIndex = parentIterator.getNextElementIndex();
+        final Element nextElement = sequence.get(nextElementIndex);
+
+        parentIterator.setNextElementIndex(nextElementIndex + 1);
+
+        lastReturnedElementIndex = nextElementIndex;
+
+        return nextElement;
+    }
+
+    @Override
+    public boolean hasPrevious() {
+        return getPreviousElementIndex() >= sequence.getFirstIndex();
+    }
+
+    @Override
+    public Element previous()
+    throws NoSuchElementException {
+        if (!hasPrevious())
+            throw new NoSuchElementException();
+
+        lastRetrievedElementIndex = -- nextElementIndex;
+
+        return sequence.get(nextElementIndex);
     }
 
     @Override
@@ -24,28 +66,6 @@ extends AbstractSequenceIteratorState<Element> {
 
     @Override
     public SequenceIteratorState<Element> getNextState() {
-        return null;
+        return parentIterator.getElementReturnedState(lastReturnedElementIndex);
     }
-
-    @Override
-    public boolean hasNext() {
-        return false;
-    }
-
-    @Override
-    public Element next() {
-        return null;
-    }
-
-    @Override
-    public boolean hasPrevious() {
-        return false;
-    }
-
-    @Override
-    public Element previous()
-    throws NoSuchElementException {
-        return null;
-    }
-
 }

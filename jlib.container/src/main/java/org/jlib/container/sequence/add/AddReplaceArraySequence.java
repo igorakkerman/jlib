@@ -5,8 +5,8 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.array.ReplaceArraySequence;
 import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceArraySequence;
 import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;

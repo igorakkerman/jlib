@@ -136,7 +136,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      * @param replaceIndexSequence
      *        ReplaceIndexSequence to traverse
      */
-    protected DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence) {
+    public DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence) {
         this(replaceIndexSequence, replaceIndexSequence.getFirstIndex());
     }
 
@@ -155,8 +155,8 @@ implements ReplaceIndexSequenceIterator<Element> {
      *         if
      *         {@code startIndex < replaceIndexSequence.getFirstIndex() || startIndex > replaceIndexSequence.getLastIndex()}
      */
-    protected DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence,
-                                                  final int startIndex)
+    public DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence,
+                                               final int startIndex)
     throws IndexOutOfBoundsException {
         super(replaceIndexSequence, startIndex);
 

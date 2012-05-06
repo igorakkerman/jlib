@@ -17,6 +17,7 @@ package org.jlib.container.sequence.index;
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SequenceIteratorState;
 import org.jlib.container.sequence.StateSequenceIterator;
 
 /**
@@ -37,35 +38,9 @@ implements IndexSequenceIterator<Element> {
     /** index of the next Item in the {@link IndexSequence} */
     private int nextElementIndex;
 
-    @Override
-    public boolean hasNext() {}
+    private IndexSequenceIteratorState<Element> elementReturnedState;
 
-    @Override
-    public Element next()
-    throws NoSuchElementException {
-        if (!hasNext())
-            throw new NoSuchElementException();
-
-        lastRetrievedElementIndex = nextElementIndex;
-
-        return sequence.get(nextElementIndex ++);
-    }
-
-    @Override
-    public boolean hasPrevious() {
-        return getPreviousElementIndex() >= sequence.getFirstIndex();
-    }
-
-    @Override
-    public Element previous()
-    throws NoSuchElementException {
-        if (!hasPrevious())
-            throw new NoSuchElementException();
-
-        lastRetrievedElementIndex = -- nextElementIndex;
-
-        return sequence.get(nextElementIndex);
-    }
+    private IndexSequenceIteratorState<Element> noElementReturnedState;
 
     /**
      * Creates a new StateIndexSequenceIterator over the Elements of the
@@ -135,5 +110,15 @@ implements IndexSequenceIterator<Element> {
      */
     IndexSequence<Element> getSequence() {
         return sequence;
+    }
+
+    /**
+     * TODO:
+     * 
+     * @param lastReturnedElementIndex
+     * @return
+     */
+    public SequenceIteratorState<Element> getElementReturnedState(final int lastReturnedElementIndex) {
+        elementReturnedState;
     }
 }

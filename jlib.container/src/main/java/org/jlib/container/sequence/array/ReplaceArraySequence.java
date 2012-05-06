@@ -1,8 +1,10 @@
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.array;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.array.ArraySequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.replace.ReplaceIndexSequence;
+import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
 /**
  * {@link ArraySequence} allowing its Elements to be replaced.

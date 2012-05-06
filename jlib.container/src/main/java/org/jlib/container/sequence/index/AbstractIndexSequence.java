@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
-import org.jlib.container.sequence.array.ArraySequence;
 import org.jlib.container.sequence.array.ArraySequenceCreator;
+import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
 /**
  * Skeletal implementation of an {@link IndexSequence}.
@@ -118,7 +118,7 @@ implements IndexSequence<Element> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(fromIndex, toIndex);
 
-        final ArraySequence<Element> sequence =
+        final ReplaceIndexSequence<Element> sequence =
             ArraySequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
 
         for (int index = fromIndex; index <= toIndex; index ++)
