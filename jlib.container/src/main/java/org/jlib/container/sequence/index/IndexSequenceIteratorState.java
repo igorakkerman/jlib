@@ -19,6 +19,7 @@ extends AbstractSequenceIteratorState<Element> {
      */
     public IndexSequenceIteratorState(final StateIndexSequenceIterator<Element> parentIterator) {
         this.parentIterator = parentIterator;
+
         sequence = parentIterator.getSequence();
     }
 
