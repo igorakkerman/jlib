@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.AbstractIndexSequence;
+import org.jlib.container.sequence.index.AbstractIndexSequence;
 
 /**
  * Entity of an {@link IndexMatrix} like a column or row.

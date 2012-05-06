@@ -1,6 +1,6 @@
 package org.jlib.collections.sequence;
 
-import org.jlib.container.sequence.ArraySequence;
+import org.jlib.container.sequence.array.ArraySequence;
 
 /**
  * JUnit test for {@link ArraySequence} class.

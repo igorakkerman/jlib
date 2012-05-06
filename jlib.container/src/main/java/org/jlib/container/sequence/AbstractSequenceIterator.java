@@ -13,5 +13,13 @@ import org.jlib.core.iterator.AbstractIterator;
 public abstract class AbstractSequenceIterator<Element>
 extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
+
     // join AbstractIterator with SequenceIterator
+
+    /**
+     * Creates a new {@link AbstractSequenceIterator}.
+     */
+    public AbstractSequenceIterator() {
+        super();
+    }
 }

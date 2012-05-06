@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.EmptySequence;
-import org.jlib.container.sequence.IndexSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.empty.EmptySequence;
+import org.jlib.container.sequence.index.IndexSequence;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.

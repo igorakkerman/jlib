@@ -2,9 +2,9 @@ package org.jlib.container.matrix;
 
 import java.util.Iterator;
 
-import org.jlib.container.sequence.AbstractIndexSequence;
-import org.jlib.container.sequence.IndexSequence;
-import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.AbstractIndexSequence;
+import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.

@@ -11,5 +11,13 @@ package org.jlib.container.sequence;
 public abstract class AbstractSequenceIteratorState<Element>
 extends AbstractSequenceIterator<Element>
 implements SequenceIteratorState<Element> {
+
     // unifying class
+
+    /**
+     * Creates a new {@link AbstractSequenceIteratorState}.
+     */
+    public AbstractSequenceIteratorState() {
+        super();
+    }
 }

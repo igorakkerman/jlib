@@ -17,6 +17,7 @@ package org.jlib.container.sequence;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
 /**
  * TODO: how about using the name Traverser instead of Iterator? Iterator of a
  * sequence.

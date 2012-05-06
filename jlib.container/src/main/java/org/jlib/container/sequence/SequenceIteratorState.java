@@ -14,13 +14,19 @@ public interface SequenceIteratorState<Element>
 extends IteratorState<Element>, SequenceIterator<Element> {
 
     /**
-     * Returns the previous {@link IteratorState}
+     * Returns the {@link SequenceIteratorState} switched to after
+     * {@link #previous()}.
      * 
-     * @return previous {@link IteratorState}
+     * @return {@link SequenceIteratorState} after {@link #previous()}
      */
     public abstract SequenceIteratorState<Element> getPreviousState();
 
+    /**
+     * Returns the {@link SequenceIteratorState} switched to after
+     * {@link #next()}.
+     * 
+     * @return {@link SequenceIteratorState} after {@link #next()}
+     */
     @Override
     public abstract SequenceIteratorState<Element> getNextState();
-
 }

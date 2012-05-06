@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * {@link IndexMatrix} allowing the replacement of entries.

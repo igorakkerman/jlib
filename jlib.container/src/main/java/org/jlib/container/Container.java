@@ -22,11 +22,11 @@ import java.util.Iterator;
  * 
  * @param <Element>
  *        type of elements held in the {@link Container}
- *
+ * 
  * @author Igor Akkerman
  */
 //TODO: add operations passing ModificationListeners to the methods
-//TODO: 
+//TODO: Container don't have Elements, they have Items. Sets have Elements!
 public interface Container<Element>
 extends Iterable<Element> {
 
@@ -85,13 +85,14 @@ extends Iterable<Element> {
      * @return {@code true} if this Container contains all of the
      *         {@code objects}; {@code false} otherwise
      */
-    public boolean containsAll(@SuppressWarnings({"unchecked", /* "varargs" */}) final Element... elements);
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
 
     /**
      * Returns a Collection containing all of the Elements of this Container in
      * the proper order as returned by this Container's Iterator.
      * 
-     * @return {@link Collection} containing all of the Elements of this Container
+     * @return {@link Collection} containing all of the Elements of this
+     *         Container
      */
     public Collection<Element> toCollection();
 
@@ -104,10 +105,10 @@ extends Iterable<Element> {
      * @return array containing all of the Elements of this Container
      */
     public Element[] toArray();
-    
+
     /**
      * Creates a new {@link Iterator} over this {@link Container}.
-     *
+     * 
      * @return newly created {@link Iterator}
      */
     public Iterator<Element> createIterator();

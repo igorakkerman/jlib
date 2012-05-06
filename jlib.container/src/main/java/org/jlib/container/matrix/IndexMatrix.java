@@ -2,8 +2,8 @@ package org.jlib.container.matrix;
 
 import java.util.RandomAccess;
 
-import org.jlib.container.sequence.IndexSequence;
-import org.jlib.container.sequence.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * Indexed {@link Matrix} providing {@link RandomAccess} to its entries.

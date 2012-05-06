@@ -2,6 +2,7 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
+
 /**
  * {@link SequenceIteratorState} when a {@link SequenceIterator} has reached the
  * end of the non-empty {@link Sequence}.
