@@ -2,11 +2,8 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
-import org.jlib.container.sequence.replace.ReplaceStateSequenceIterator;
-
 /**
- * {@link AbstractSequenceIterator} using {@link SequenceIteratorState}
- * instances.
+ * {@link SequenceIterator} using {@link SequenceIteratorState} instances.
  * 
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
@@ -20,7 +17,7 @@ extends AbstractSequenceIterator<Element> {
     private SequenceIteratorState<Element> currentState;
 
     /**
-     * Creates a new {@link ReplaceStateSequenceIterator}.
+     * Creates a new {@link StateSequenceIterator}.
      * 
      * @param initialState
      *        initial {@link SequenceIteratorState}
