@@ -47,7 +47,7 @@ extends AbstractIndexSequence<Element> {
      */
     protected void replace(final int index, final Element element)
     throws SequenceIndexOutOfBoundsException {
-        assertIndexValid(index);
+        IndexSequenceUtility.assertIndexValid(this, index);
 
         replaceStoredElement(index, element);
     }

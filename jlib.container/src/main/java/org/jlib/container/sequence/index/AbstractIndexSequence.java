@@ -8,6 +8,9 @@ import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.array.ArraySequenceCreator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
+import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
+import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
+
 /**
  * Skeletal implementation of an {@link IndexSequence}.
  * 
@@ -53,7 +56,7 @@ implements IndexSequence<Element> {
     @Override
     public final Element get(final int index)
     throws SequenceIndexOutOfBoundsException {
-        assertIndexValid(index);
+        assertIndexValid(this, index);
 
         return getStoredElement(index);
     }
@@ -103,7 +106,7 @@ implements IndexSequence<Element> {
     @Override
     public List<Element> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        assertIndexRangeValid(fromIndex, toIndex);
+        assertIndexRangeValid(this, fromIndex, toIndex);
 
         final List<Element> subList = new ArrayList<Element>(getSize());
 
@@ -116,7 +119,7 @@ implements IndexSequence<Element> {
     @Override
     public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        assertIndexRangeValid(fromIndex, toIndex);
+        assertIndexRangeValid(this, fromIndex, toIndex);
 
         final ReplaceIndexSequence<Element> sequence =
             ArraySequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
@@ -125,52 +128,6 @@ implements IndexSequence<Element> {
             sequence.replaceStoredElement(index, getStoredElement(index));
 
         return sequence;
-    }
-
-    /**
-     * Asserts that the specified index is inside the valid bounds of this
-     * {@link AbstractIndexSequence}.
-     * 
-     * @param index
-     *        integer specifying the index to verify
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index} is out of the {@link ArraySequence} bounds
-     */
-    protected void assertIndexValid(final int index)
-    throws SequenceIndexOutOfBoundsException {
-        if (index < firstIndex)
-            throw new SequenceIndexOutOfBoundsException(this, index, "index == " + index + " < " + firstIndex +
-                                                                     " == firstIndex");
-
-        if (index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(this, index, "index == " + index + " > " + lastIndex +
-                                                                     " == lastIndex");
-    }
-
-    /**
-     * Asserts that the specified from and to indices are valid, that is,
-     * {@code getFirstIndex() <= fromIndex <= toIndex <= getLastIndex()}.
-     * 
-     * @param fromIndex
-     *        integer specifying the from index
-     * 
-     * @param toIndex
-     *        integer specifying the to index
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code fromIndex > toIndex}
-     */
-    private void assertIndexRangeValid(final int fromIndex, final int toIndex) {
-        if (fromIndex < firstIndex)
-            throw new SequenceIndexOutOfBoundsException(this, fromIndex, "fromIndex == " + fromIndex + " < " +
-                                                                         firstIndex + " == firstIndex");
-        if (toIndex > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(this, toIndex, "toIndex == " + toIndex + " < " + lastIndex +
-                                                                       " == lastIndex");
-
-        if (toIndex < fromIndex)
-            throw new InvalidSequenceIndexRangeException(this, fromIndex, toIndex);
     }
 
     @Override

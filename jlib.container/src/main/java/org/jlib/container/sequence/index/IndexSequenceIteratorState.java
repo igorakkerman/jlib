@@ -1,21 +1,35 @@
 package org.jlib.container.sequence.index;
 
-import java.util.NoSuchElementException;
-
 import org.jlib.container.sequence.AbstractSequenceIteratorState;
+import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
 
+/**
+ * {@link SequenceIteratorState} of an {@link IndexSequenceIterator}.
+ * 
+ * @param <Element>
+ *        type of the elements held in the {@link Sequence}
+ * 
+ * @author Igor Akkerman
+ */
 public class IndexSequenceIteratorState<Element>
 extends AbstractSequenceIteratorState<Element> {
 
+    /** parent {@link StateIndexSequenceIterator} */
     private final StateIndexSequenceIterator<Element> parentIterator;
 
+    /** traversed {@link IndexSequence} */
     private final IndexSequence<Element> sequence;
 
+    /** index of the last returned Element */
     private int lastReturnedElementIndex;
 
     /**
      * Creates a new {@link IndexSequenceIteratorState}.
+     * 
+     * @param parentIterator
+     *        {@link StateIndexSequenceIterator} owning this
+     *        {@link IndexSequenceIteratorState}
      */
     public IndexSequenceIteratorState(final StateIndexSequenceIterator<Element> parentIterator) {
         this.parentIterator = parentIterator;
@@ -30,39 +44,48 @@ extends AbstractSequenceIteratorState<Element> {
 
     @Override
     public Element next()
-    throws NoSuchElementException {
-        if (!hasNext())
-            throw new NoSuchElementException();
+    throws NoSuchSequenceElementException {
+        try {
+            final int nextElementIndex = parentIterator.getNextElementIndex();
+            final Element nextElement = sequence.get(nextElementIndex);
 
-        final int nextElementIndex = parentIterator.getNextElementIndex();
-        final Element nextElement = sequence.get(nextElementIndex);
+            parentIterator.setNextElementIndex(nextElementIndex + 1);
 
-        parentIterator.setNextElementIndex(nextElementIndex + 1);
+            lastReturnedElementIndex = nextElementIndex;
 
-        lastReturnedElementIndex = nextElementIndex;
-
-        return nextElement;
+            return nextElement;
+        }
+        catch (final SequenceIndexOutOfBoundsException exception) {
+            throw new NoSuchSequenceElementException(exception);
+        }
     }
 
     @Override
     public boolean hasPrevious() {
-        return getPreviousElementIndex() >= sequence.getFirstIndex();
+        return parentIterator.getPreviousElementIndex() >= sequence.getFirstIndex();
     }
 
     @Override
     public Element previous()
-    throws NoSuchElementException {
-        if (!hasPrevious())
-            throw new NoSuchElementException();
+    throws NoSuchSequenceElementException {
+        try {
+            final int previousElementIndex = parentIterator.getPreviousElementIndex();
+            final Element previousElement = sequence.get(previousElementIndex);
 
-        lastRetrievedElementIndex = -- nextElementIndex;
+            parentIterator.setNextElementIndex(previousElementIndex);
 
-        return sequence.get(nextElementIndex);
+            lastReturnedElementIndex = previousElementIndex;
+
+            return previousElement;
+        }
+        catch (final SequenceIndexOutOfBoundsException exception) {
+            throw new NoSuchSequenceElementException(exception);
+        }
     }
 
     @Override
     public SequenceIteratorState<Element> getPreviousState() {
-        return null;
+        return parentIterator.getElementReturnedState(lastReturnedElementIndex);
     }
 
     @Override

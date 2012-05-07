@@ -70,7 +70,9 @@ implements IndexSequenceIterator<Element> {
      */
     protected StateIndexSequenceIterator(final IndexSequence<Element> sequence, final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        super();
+        super(noElementReturnedState);
+
+        sequence.
 
         this.sequence = sequence;
 
@@ -79,9 +81,9 @@ implements IndexSequenceIterator<Element> {
 
     @Override
     public int getPreviousElementIndex()
-    throws NoSuchElementException {
+    throws NoSuchSequenceElementException {
         if (!hasNext())
-            throw new NoSuchElementException();
+            throw new NoSuchSequenceElementException();
 
         return nextElementIndex - 1;
     }
