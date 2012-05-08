@@ -56,7 +56,7 @@ extends AbstractNonEmptySequence<Element> {
 
     @Override
     public SequenceIterator<Element> createIterator() {
-        return new StateSequenceIterator<Element>(beginningOfSequenceState);
+        return new SequenceStateIterator<Element>(beginningOfSequenceState);
     }
 
     @Override

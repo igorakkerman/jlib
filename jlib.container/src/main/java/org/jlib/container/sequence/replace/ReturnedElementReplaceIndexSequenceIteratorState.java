@@ -19,7 +19,7 @@ implements ReplaceSequenceIteratorState<Element> {
     /**
      * Creates a new {@link ReturnedElementReplaceIndexSequenceIteratorState}.
      */
-    public ReturnedElementReplaceIndexSequenceIteratorState(final StateReplaceIndexSequenceIterator<Element> parentIterator) {
+    public ReturnedElementReplaceIndexSequenceIteratorState(final ReplaceIndexSequenceStateIterator<Element> parentIterator) {
         super(parentIterator);
 
         sequence = parentIterator.getSequence();

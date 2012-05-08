@@ -10,29 +10,29 @@ import java.util.NoSuchElementException;
  * 
  * @author Igor Akkerman
  */
-public class StateSequenceIterator<Element>
+public class SequenceStateIterator<Element>
 extends AbstractSequenceIterator<Element> {
 
     /** current {@link SequenceIteratorState} */
     private SequenceIteratorState<Element> currentState;
 
     /**
-     * Creates a new {@link StateSequenceIterator}.
+     * Creates a new {@link SequenceStateIterator}.
      * 
      * @param initialState
      *        initial {@link SequenceIteratorState}
      */
-    public StateSequenceIterator(final SequenceIteratorState<Element> initialState) {
+    public SequenceStateIterator(final SequenceIteratorState<Element> initialState) {
         currentState = initialState;
     }
 
     @Override
-    public boolean hasPrevious() {
+    public final boolean hasPrevious() {
         return currentState.hasPrevious();
     }
 
     @Override
-    public Element previous()
+    public final Element previous()
     throws NoSuchElementException {
         final Element previousElement = currentState.previous();
 
@@ -42,12 +42,12 @@ extends AbstractSequenceIterator<Element> {
     }
 
     @Override
-    public boolean hasNext() {
+    public final boolean hasNext() {
         return currentState.hasNext();
     }
 
     @Override
-    public Element next()
+    public final Element next()
     throws NoSuchElementException {
         final Element nextElement = currentState.next();
 

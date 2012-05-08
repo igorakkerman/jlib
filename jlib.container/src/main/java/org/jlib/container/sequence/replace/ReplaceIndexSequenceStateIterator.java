@@ -1,31 +1,35 @@
 package org.jlib.container.sequence.replace;
 
-import org.jlib.container.sequence.index.StateIndexSequenceIterator;
+import org.jlib.container.sequence.index.IndexSequenceIteratorState;
 
 /**
  * 
  * 
  * @author Igor Akkerman
  */
-public class StateReplaceIndexSequenceIterator<Element>
+public class ReplaceIndexSequenceStateIterator<Element>
 extends StateIndexSequenceIterator<Element>
 implements ReplaceIndexSequenceIterator<Element> {
 
     private ReplaceIndexSequence<Element> sequence;
 
+    private IndexSequenceIteratorState<Element> elementReturnedState;
+
+    private IndexSequenceIteratorState<Element> noElementReturnedState;
+
     /**
-     * Creates a new {@link StateReplaceIndexSequenceIterator}.
+     * Creates a new {@link ReplaceIndexSequenceStateIterator}.
      */
-    public StateReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> sequence) {
+    public ReplaceIndexSequenceStateIterator(final ReplaceIndexSequence<Element> sequence) {
         super(sequence);
 
         this.sequence = sequence;
     }
 
     /**
-     * Creates a new {@link StateReplaceIndexSequenceIterator}.
+     * Creates a new {@link ReplaceIndexSequenceStateIterator}.
      */
-    public StateReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> sequence, final int startIndex) {
+    public ReplaceIndexSequenceStateIterator(final ReplaceIndexSequence<Element> sequence, final int startIndex) {
         super(sequence, startIndex);
     }
 

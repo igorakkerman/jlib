@@ -100,7 +100,7 @@ implements IndexSequence<Element> {
     @Override
     public IndexSequenceIterator<Element> createIterator(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new StateIndexSequenceIterator<>(this, startIndex);
+        return new IndexSequenceStateIterator<>(this, startIndex);
     }
 
     @Override
@@ -108,7 +108,7 @@ implements IndexSequence<Element> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final List<Element> subList = new ArrayList<Element>(getSize());
+        final List<Element> subList = new ArrayList<>(getSize());
 
         for (int index = fromIndex; index <= toIndex; index ++)
             subList.add(getStoredElement(index));

@@ -15,8 +15,8 @@ import org.jlib.container.sequence.SequenceIteratorState;
 public class IndexSequenceIteratorState<Element>
 extends AbstractSequenceIteratorState<Element> {
 
-    /** parent {@link StateIndexSequenceIterator} */
-    private final StateIndexSequenceIterator<Element> parentIterator;
+    /** global {@link IndexSequenceIteratorGlobalState} */
+    private final IndexSequenceIteratorGlobalState<Element> globalState;
 
     /** traversed {@link IndexSequence} */
     private final IndexSequence<Element> sequence;
@@ -27,13 +27,13 @@ extends AbstractSequenceIteratorState<Element> {
     /**
      * Creates a new {@link IndexSequenceIteratorState}.
      * 
-     * @param parentIterator
-     *        {@link StateIndexSequenceIterator} owning this
+     * @param globalState
+     *        {@link IndexSequenceIteratorGlobalState} used by this
      *        {@link IndexSequenceIteratorState}
      */
-    public IndexSequenceIteratorState(final StateIndexSequenceIterator<Element> parentIterator) {
-        this.parentIterator = parentIterator;
+    public IndexSequenceIteratorState(final IndexSequenceIteratorGlobalState<Element> globalState) {
 
+        this.globalState = globalState;
         sequence = parentIterator.getSequence();
     }
 

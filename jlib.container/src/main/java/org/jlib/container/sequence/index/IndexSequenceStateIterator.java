@@ -14,11 +14,10 @@
 
 package org.jlib.container.sequence.index;
 
-import java.util.NoSuchElementException;
-
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
-import org.jlib.container.sequence.StateSequenceIterator;
+import org.jlib.container.sequence.SequenceStateIterator;
+import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
 /**
  * {@link IndexSequenceIterator} traversing the elements in the proper order.
@@ -28,19 +27,11 @@ import org.jlib.container.sequence.StateSequenceIterator;
  * 
  * @author Igor Akkerman
  */
-public class StateIndexSequenceIterator<Element>
-extends StateSequenceIterator<Element>
+public class IndexSequenceStateIterator<Element>
+extends SequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
-    /** IndexSequence to traverse */
-    private final IndexSequence<Element> sequence;
-
-    /** index of the next Item in the {@link IndexSequence} */
-    private int nextElementIndex;
-
-    private IndexSequenceIteratorState<Element> elementReturnedState;
-
-    private IndexSequenceIteratorState<Element> noElementReturnedState;
+    private IndexSequenceIteratorGlobalState<Element> globalState;
 
     /**
      * Creates a new StateIndexSequenceIterator over the Elements of the
@@ -49,7 +40,7 @@ implements IndexSequenceIterator<Element> {
      * @param sequence
      *        IndexSequence to traverse
      */
-    protected StateIndexSequenceIterator(final IndexSequence<Element> sequence) {
+    protected IndexSequenceStateIterator(final IndexSequence<Element> sequence) {
         this(sequence, sequence.getFirstIndex());
     }
 
@@ -68,21 +59,33 @@ implements IndexSequenceIterator<Element> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    protected StateIndexSequenceIterator(final IndexSequence<Element> sequence, final int startIndex)
+    protected IndexSequenceStateIterator(final IndexSequence<Element> sequence, final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        super(noElementReturnedState);
-
-        sequence.
+        super(createInitialState(sequence, startIndex));
 
         this.sequence = sequence;
 
         nextElementIndex = startIndex;
     }
 
+    /**
+     * 
+     * 
+     * @param sequence
+     * @param startIndex
+     * @return
+     */
+    private IndexSequenceIteratorState<Element> createInitialState(final IndexSequence<Element> sequence,
+                                                                   final int startIndex) {
+        globalState = new IndexSequenceIteratorGlobalState<>(sequence, startIndex);
+
+        return new IndexSequenceIteratorState<>(globalState);
+    }
+
     @Override
     public int getPreviousElementIndex()
     throws NoSuchSequenceElementException {
-        if (!hasNext())
+        if (!hasPrevious())
             throw new NoSuchSequenceElementException();
 
         return nextElementIndex - 1;
@@ -90,6 +93,9 @@ implements IndexSequenceIterator<Element> {
 
     @Override
     public int getNextElementIndex() {
+        if (!hasNext())
+            throw new NoSuchSequenceElementException();
+
         return nextElementIndex;
     }
 
