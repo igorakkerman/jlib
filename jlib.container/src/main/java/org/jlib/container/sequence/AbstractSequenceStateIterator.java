@@ -3,27 +3,36 @@ package org.jlib.container.sequence;
 import java.util.NoSuchElementException;
 
 /**
- * {@link SequenceIterator} using {@link SequenceIteratorState} instances.
+ * Skeletal implementation of a {@link SequenceIterator} using
+ * {@link SequenceIteratorState} instances.
  * 
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class SequenceStateIterator<Element>
+public abstract class AbstractSequenceStateIterator<Element>
 extends AbstractSequenceIterator<Element> {
 
     /** current {@link SequenceIteratorState} */
     private SequenceIteratorState<Element> currentState;
 
     /**
-     * Creates a new {@link SequenceStateIterator}.
-     * 
-     * @param initialState
-     *        initial {@link SequenceIteratorState}
+     * Creates a new {@link AbstractSequenceStateIterator}.
      */
-    public SequenceStateIterator(final SequenceIteratorState<Element> initialState) {
-        currentState = initialState;
+    public AbstractSequenceStateIterator() {
+        super();
+    }
+
+    /**
+     * Registers the current {@link SequenceIteratorState} of this
+     * {@link AbstractSequenceStateIterator}.
+     * 
+     * @param currentState
+     *        current {@link SequenceIteratorState}
+     */
+    protected void setCurrentState(final SequenceIteratorState<Element> currentState) {
+        this.currentState = currentState;
     }
 
     @Override

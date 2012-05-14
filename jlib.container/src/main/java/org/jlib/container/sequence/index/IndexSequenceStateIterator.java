@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.AbstractSequenceStateIterator;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
 import org.jlib.container.sequence.SequenceStateIterator;
@@ -28,14 +29,14 @@ import org.jlib.container.sequence.replace.ReplaceIndexSequence;
  * @author Igor Akkerman
  */
 public class IndexSequenceStateIterator<Element>
-extends SequenceStateIterator<Element>
+extends AbstractSequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
-    private IndexSequenceIteratorGlobalState<Element> globalState;
+    private final IndexSequenceIteratorState<Element> initialState;
 
     /**
-     * Creates a new StateIndexSequenceIterator over the Elements of the
-     * specified ReplaceIndexSequence.
+     * Creates a new {@link IndexSequenceStateIterator} over the Elements of the
+     * specified {@link IndexSequence} beginning at its first index.
      * 
      * @param sequence
      *        IndexSequence to traverse
@@ -61,22 +62,16 @@ implements IndexSequenceIterator<Element> {
      */
     protected IndexSequenceStateIterator(final IndexSequence<Element> sequence, final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        super(createInitialState(sequence, startIndex));
+        super();
+
+        createInitialState(sequence, startIndex);
 
         this.sequence = sequence;
 
         nextElementIndex = startIndex;
     }
 
-    /**
-     * 
-     * 
-     * @param sequence
-     * @param startIndex
-     * @return
-     */
-    private IndexSequenceIteratorState<Element> createInitialState(final IndexSequence<Element> sequence,
-                                                                   final int startIndex) {
+    private void createInitialState(final IndexSequence<Element> sequence, final int startIndex) {
         globalState = new IndexSequenceIteratorGlobalState<>(sequence, startIndex);
 
         return new IndexSequenceIteratorState<>(globalState);
