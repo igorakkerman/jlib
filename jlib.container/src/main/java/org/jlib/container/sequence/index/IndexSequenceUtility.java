@@ -91,8 +91,8 @@ public final class IndexSequenceUtility {
      * equivalent to the sequence form for the argument
      * {@code Integer... elements} but the newly created class provides an
      * easier way: the factory methods
-     * {@link #createIntegerIndexSequence(IndexSequenceCreator, Integer...)} or
-     * {@link #createIntegerIndexSequenceFrom(IndexSequenceCreator, int, Integer[])}. The latter form takes
+     * {@link #createIntegerIndexSequence(InitializeableIndexSequenceCreator, Integer...)} or
+     * {@link #createIntegerIndexSequenceFrom(InitializeableIndexSequenceCreator, int, Integer[])}. The latter form takes
      * the minimum index as first argument.
      * </p>
      * 
@@ -112,7 +112,7 @@ public final class IndexSequenceUtility {
      *        type of the {@link InitializeableIndexSequence} created
      * 
      * @param indexSequenceCreator
-     *        {@link IndexSequenceCreator} to use
+     *        {@link InitializeableIndexSequenceCreator} to use
      * 
      * @param firstIndex
      *        integer specifying the minimum index
@@ -123,7 +123,7 @@ public final class IndexSequenceUtility {
      * @return new {@link IndexSequence} of {@link Integer} Elements
      */
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequenceFrom(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequenceFrom(final InitializeableIndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                           final int firstIndex, final Integer... elements) {
         // @formatter:on
         return indexSequenceCreator.createSequence(firstIndex, elements);
@@ -138,7 +138,7 @@ public final class IndexSequenceUtility {
      *        type of the {@link InitializeableIndexSequence} created
      * 
      * @param indexSequenceCreator
-     *        {@link IndexSequenceCreator} to use
+     *        {@link InitializeableIndexSequenceCreator} to use
      * 
      * @param elements
      *        comma separated sequence of {@link Integer} elements to store
@@ -147,7 +147,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequence(final InitializeableIndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                       final Integer... elements) {
         // @formatter:on
         return createIntegerIndexSequenceFrom(indexSequenceCreator, 0, elements);
