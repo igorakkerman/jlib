@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
+import org.jlib.container.sequence.array.ArraySequenceCreator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
@@ -121,7 +122,7 @@ implements IndexSequence<Element> {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
         final ReplaceIndexSequence<Element> sequence =
-            ReplaceIndexSequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
+            ArraySequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
 
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replaceStoredElement(index, getStoredElement(index));

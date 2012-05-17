@@ -10,16 +10,19 @@ import org.jlib.container.sequence.index.IndexSequenceCreator;
 /**
  * {@link IndexSequenceCreator} for {@link ArraySequence} instances.
  * 
+ * @param <Sequenze>
+ *        type of the created {@link ArraySequence} instances
+ * 
  * @param <Element>
- *        type of the elements held in every created {@link Sequence}
+ *        type of the elements held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class ArraySequenceCreator<Element>
-extends IndexSequenceCreator<ArraySequence<Element>, Element> {
+public class ArraySequenceCreator<Sequenze extends ArraySequence<Element>, Element>
+extends IndexSequenceCreator<Sequenze, Element> {
 
     /** sole {@link ArraySequenceCreator} instance */
-    private static final ArraySequenceCreator<?> INSTANCE = new ArraySequenceCreator<>();
+    private static final ArraySequenceCreator<?, ?> INSTANCE = new ArraySequenceCreator<>();
 
     /**
      * Returns the sole {@link ArraySequenceCreator} instance.
@@ -27,8 +30,8 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      * @return sole {@link ArraySequenceCreator} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Element> ArraySequenceCreator<Element> getInstance() {
-        return (ArraySequenceCreator<Element>) INSTANCE;
+    public static <Sequenze extends ArraySequence<Element>, Element> ArraySequenceCreator<Sequenze, Element> getInstance() {
+        return (ArraySequenceCreator<Sequenze, Element>) INSTANCE;
     }
 
     // @formatter:off   
@@ -73,7 +76,7 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
      */
     // @formatter:on
     public static ArraySequence<Integer> createIntegerSequenceFrom(final int firstIndex, final Integer... elements) {
-        return ArraySequenceCreator.<Integer> getInstance().createSequence(firstIndex, elements);
+        return ArraySequenceCreator.<ArraySequence<Integer>, Integer> getInstance().createSequence(firstIndex, elements);
     }
 
     /**
@@ -101,7 +104,7 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
     @Override
     public ArraySequence<Element> createSequence(final int firstIndex, final int lastIndex)
     throws IllegalArgumentException {
-        return new ArraySequence<>(firstIndex, lastIndex);
+        return new ArraySequence<Element>(firstIndex, lastIndex);
     }
 
     /**
@@ -132,19 +135,20 @@ extends IndexSequenceCreator<ArraySequence<Element>, Element> {
     }
 
     /**
-     * Creates a new ArraySequence containing the Elements of the specified
-     * Container having a specified first index. That is, the index of the first
-     * Element of the specified collection in this ArraySequence can be
-     * specified. The fixed size of this ArraySequence is the size of the
-     * specified Container.
+     * Creates a new {@link ArraySequence} containing the Elements of the
+     * specified Container having a specified first index. That is, the index of
+     * the first Element of the specified collection in this
+     * {@link ArraySequence} can be specified. The fixed size of this
+     * ArraySequence is the size of the specified Container.
      * 
      * @param firstIndex
-     *        integer specifying the minimum index of this ArraySequence. The
-     *        first Element of {@code collection} is stored at this index of
-     *        this ArraySequence.
+     *        integer specifying the first index of this ArraySequence. The
+     *        Elements of {@code collection} are stored beginning from this
+     *        index of this {@link ArraySequence}
      * 
      * @param collection
-     *        Container of which the Elements are copied to this ArraySequence
+     *        {@link Collection} containing the Elements of the new
+     *        {@link ArraySequence}
      * 
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0}
