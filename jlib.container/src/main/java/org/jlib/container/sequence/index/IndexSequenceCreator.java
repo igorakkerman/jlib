@@ -3,21 +3,20 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.Sequence;
 
 /**
  * Creator of instances of a certain subtype of {@link IndexSequence}.
  * 
- * @param <Sequenze>
- *        type of the created {@link Sequence} instances
- * 
  * @param <Element>
- *        type of the elements held in the {@link Sequence}
+ *        type of the elements held in the {@link IndexSequence}
+ * 
+ * @param <Sequenze>
+ *        type of the created {@link IndexSequence}
  * 
  * @author Igor Akkerman
  */
 @SuppressWarnings("unchecked")
-public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexSequence<Element>, Element> {
+public abstract class IndexSequenceCreator<Element, Sequenze extends InitializeableIndexSequence<Element>> {
 
     /**
      * Creates a new {@link IndexSequenceCreator}.
@@ -27,15 +26,15 @@ public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexS
     }
 
     /**
-     * Creates a new initially blank {@link Sequence}.
+     * Creates a new initially blank {@link InitializeableIndexSequence}. s
      * 
      * @param firstIndex
-     *        integer specifying the first index of the {@link Sequence}
+     *        integer specifying the first index of the {@link IndexSequence}
      * 
      * @param lastIndex
-     *        integer specifying the last index of the {@link Sequence}
+     *        integer specifying the last index of the {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @return the newly created {@link IndexSequence}
      * 
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0 || lastIndex < firstIndex}
@@ -44,35 +43,34 @@ public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexS
     throws IllegalArgumentException;
 
     /**
-     * Creates a new {@link Sequence} containing the specified Elements. That
-     * is, the index of the first Element of the specified sequence in this
-     * Sequence is 0. The fixed size of the {@link Sequence} is the size of the
-     * specified sequence.
+     * Creates a new {@link IndexSequence} containing the specified Elements.
+     * That is, the index of the first Element of the specified sequence in this
+     * Sequence is 0. The fixed size of the {@link IndexSequence} is the size of
+     * the specified sequence.
      * 
      * @param elements
-     *        comma separated sequence of Elements to store or Java array
-     *        containing those Elements
+     *        comma separated sequence of Elements to store
      * 
-     * @return the newly created {@link Sequence}
+     * @return the newly created {@link IndexSequence}
      */
     public final Sequenze createSequence(final Element... elements) {
         return createSequence(0, elements);
     }
 
     /**
-     * Creates a new {@link Sequence} containing the specified Elements having a
-     * specified first index. That is, the index of the first Element of the
-     * specified sequence in the {@link Sequence} can be specified. The fixed
-     * size of the {@link Sequence} is the size of the specified sequence.
+     * Creates a new {@link IndexSequence} containing the specified Elements
+     * having a specified first index. That is, the index of the first Element
+     * of the specified sequence in the {@link IndexSequence} can be specified.
+     * The fixed size of the {@link IndexSequence} is the size of the specified
+     * sequence.
      * 
      * @param firstIndex
-     *        integer specifying the minimum index of the {@link Sequence}
+     *        integer specifying the first index of the {@link IndexSequence}
      * 
      * @param elements
-     *        comma separated sequence of Elements to store or Java array
-     *        containing those Elements
+     *        comma separated sequence of Elements to store
      * 
-     * @return the newly created {@link Sequence}
+     * @return newly created {@link IndexSequence}
      */
     public Sequenze createSequence(final int firstIndex, final Element... elements) {
         final int elementsCount = elements.length;
@@ -108,15 +106,16 @@ public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexS
     }
 
     /**
-     * Creates a new {@link Sequence} containing the Elements of the specified
-     * Container. The index of the first Element of the specified Container in
-     * the {@link Sequence} is 0. The fixed size of the {@link Sequence} is the
-     * size of the specified Container.
+     * Creates a new {@link IndexSequence} containing the Elements of the
+     * specified Container. The index of the first Element of the specified
+     * Container in the {@link IndexSequence} is 0. The fixed size of the
+     * {@link IndexSequence} is the size of the specified Container.
      * 
      * @param container
-     *        Container of which the Elements are copied to the {@link Sequence}
+     *        Container of which the Elements are copied to the
+     *        {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @return the newly created {@link IndexSequence}
      * 
      * @throws IllegalArgumentException
      *         if {@code collection} is {@code null}
@@ -126,60 +125,71 @@ public abstract class IndexSequenceCreator<Sequenze extends InitializeableIndexS
     }
 
     /**
-     * Creates a new {@link Sequence} containing the Elements of the specified
-     * Java Container. The index of the first Element of the specified Container
-     * in the {@link Sequence} is 0. The fixed size of the {@link Sequence} is
-     * the size of the specified Container.
+     * Creates a new {@link IndexSequence} containing the Elements of the
+     * specified Java Container. The index of the first Element of the specified
+     * Container in the {@link IndexSequence} is 0. The fixed size of the
+     * {@link IndexSequence} is the size of the specified Container.
      * 
      * @param collection
      *        Collection of which the Elements are copied to the
-     *        {@link Sequence}
+     *        {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @return the newly created {@link IndexSequence}
      */
     public final Sequenze createSequence(final Collection<Element> collection) {
         return createSequence(0, collection);
     }
 
     /**
-     * Creates a new {@link Sequence} containing the Elements of the specified
-     * Container having a specified first index. That is, the index of the first
-     * Element of the specified collection in the {@link Sequence} can be
-     * specified. The fixed size of the {@link Sequence} is the size of the
-     * specified Container.
+     * Creates a new {@link IndexSequence} containing the Elements of the
+     * specified Container having a specified first index. That is, the index of
+     * the first Element of the specified collection in the
+     * {@link IndexSequence} can be specified. The fixed size of the
+     * {@link IndexSequence} is the size of the specified Container.
      * 
      * @param firstIndex
-     *        integer specifying the minimum index of the {@link Sequence}. The
-     *        first Element of {@code collection} is stored at this index of
-     *        this Sequence.
+     *        integer specifying the first index of the {@link IndexSequence}.
+     *        The first Element of {@code collection} is stored at this index of
+     *        the newly created {@link IndexSequence}.
      * 
      * @param elements
-     *        Container of which the Elements are copied to the {@link Sequence}
+     *        Container of which the Elements are copied to the
+     *        {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @return the newly created {@link IndexSequence}
      * 
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0}
      */
-    public abstract Sequenze createSequence(final int firstIndex, final Container<Element> elements)
-    throws IllegalArgumentException;
+    public Sequenze createSequence(final int firstIndex, final Container<Element> elements)
+    throws IllegalArgumentException {
+        final Sequenze sequence = createSequence(firstIndex, firstIndex + elements.getSize() - 1);
+
+        int index = firstIndex;
+
+        for (final Element element : elements)
+            sequence.replaceStoredElement(index ++, element);
+
+        return sequence;
+    }
 
     /**
-     * Creates a new {@link Sequence} containing the Elements of the specified
-     * Container having a specified first index. That is, the index of the first
-     * Element of the specified collection in the {@link Sequence} can be
-     * specified. The fixed size of the {@link Sequence} is the size of the
-     * specified Container.
+     * Creates a new {@link IndexSequence} containing the Elements of the
+     * specified Container having a specified first index. That is, the index of
+     * the first Element of the specified collection in the
+     * {@link IndexSequence} can be specified. The fixed size of the
+     * {@link IndexSequence} is the size of the specified Container.
      * 
      * @param firstIndex
-     *        integer specifying the minimum index of the {@link Sequence}. The
-     *        first Element of {@code collection} is stored at this index of
-     *        this Sequence.
+     *        integer specifying the first index of the {@link IndexSequence}.
+     *        The first Element of {@code collection} is stored at this index of
+     *        the newly created {@link IndexSequence}.
      * 
      * @param collection
-     *        Container of which the Elements are copied to the {@link Sequence}
+     *        Container of which the Elements are copied to the
+     *        {@link IndexSequence}
      * 
-     * @return the newly created {@link Sequence}
+     * @return newly created {@link IndexSequence}
      * 
      * @throws IllegalArgumentException
      *         if {@code firstIndex < 0}
