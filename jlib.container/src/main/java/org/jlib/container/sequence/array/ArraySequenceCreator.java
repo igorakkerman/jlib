@@ -4,7 +4,8 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InitializeableIndexSequenceCreator;
 
 /**
- * {@link InitializeableIndexSequenceCreator} forinstances.
+ * {@link InitializeableIndexSequenceCreator} for {@link ArraySequence}
+ * instances.
  * 
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
