@@ -1,6 +1,7 @@
 package org.jlib.container.sequence.array;
 
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequence;
@@ -17,6 +18,17 @@ import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 public class ReplaceArraySequence<Element>
 extends ArraySequence<Element>
 implements ReplaceIndexSequence<Element> {
+
+    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} */
+    public static final IndexSequenceCreator<ReplaceArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<ReplaceArraySequence<?>>() {
+
+            @Override
+            public ReplaceArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
+            throws IllegalArgumentException {
+                return new ReplaceArraySequence<Object>(firstIndex, lastIndex);
+            }
+        };
 
     /**
      * Creates a new {@link ReplaceArraySequence}.

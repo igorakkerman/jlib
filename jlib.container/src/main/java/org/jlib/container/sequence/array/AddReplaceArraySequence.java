@@ -1,11 +1,12 @@
-package org.jlib.container.sequence.add;
+package org.jlib.container.sequence.array;
 
 import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.array.ReplaceArraySequence;
+import org.jlib.container.sequence.add.AddIndexSequence;
+import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
@@ -23,6 +24,17 @@ import static org.jlib.core.array.ArrayUtility.iterable;
 public class AddReplaceArraySequence<Element>
 extends ReplaceArraySequence<Element>
 implements AddIndexSequence<Element> {
+
+    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} */
+    public static final IndexSequenceCreator<AddReplaceArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<AddReplaceArraySequence<?>>() {
+
+            @Override
+            public AddReplaceArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
+            throws IllegalArgumentException {
+                return new AddReplaceArraySequence<Object>(firstIndex, lastIndex);
+            }
+        };
 
     /**
      * Creates a new {@link AddReplaceArraySequence} with the specified first

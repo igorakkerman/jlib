@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.add.AddReplaceArraySequence;
+import org.jlib.container.sequence.array.AddReplaceArraySequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.insert.InsertAddReplaceArraySequence;
 

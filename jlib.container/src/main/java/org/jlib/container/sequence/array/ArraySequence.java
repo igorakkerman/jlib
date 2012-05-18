@@ -17,6 +17,7 @@ package org.jlib.container.sequence.array;
 import java.util.Arrays;
 
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InitializeableIndexSequence;
 
 // @formatter:off   
@@ -116,6 +117,16 @@ import org.jlib.container.sequence.index.InitializeableIndexSequence;
 class ArraySequence<Element>
 extends InitializeableIndexSequence<Element>
 implements Cloneable {
+
+    /** {@link IndexSequenceCreator} of {@link ArraySequence} */
+    public static final IndexSequenceCreator<ArraySequence<?>> CREATOR = new IndexSequenceCreator<ArraySequence<?>>() {
+
+        @Override
+        public ArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
+        throws IllegalArgumentException {
+            return new ArraySequence<Object>(firstIndex, lastIndex);
+        }
+    };
 
     /** array holding the Elements of this {@link ArraySequence} */
     private Element[] delegateArray;
@@ -283,8 +294,9 @@ implements Cloneable {
             throw new IllegalArgumentException("getSize() + elements.length == " + getSize() + " + " + holeSize +
                                                " > " + expectedCapacity + " == expectedCapacity");
         @SuppressWarnings("unchecked")
-        final Element[] newDelegateArray =
-            delegateArray.length < expectedCapacity ? (Element[]) new Object[expectedCapacity] : delegateArray;
+        final Element[] newDelegateArray = delegateArray.length < expectedCapacity
+            ? (Element[]) new Object[expectedCapacity]
+            : delegateArray;
 
         System.arraycopy(delegateArray, 0, newDelegateArray, 0, insertIndex);
         System.arraycopy(delegateArray, insertIndex, newDelegateArray, insertIndex + holeSize, getSize() - insertIndex);

@@ -1,5 +1,8 @@
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
+import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -75,6 +78,238 @@ public final class IndexSequenceUtility {
             throw new InvalidSequenceIndexRangeException(sequence, fromIndex, toIndex);
     }
 
+    /**
+     * Returns a new {@link IndexSequence} created by the specified
+     * {@link IndexSequenceCreator} with the specified first and last indices.
+     * 
+     * @param <Element>
+     *        type of elements held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
+     * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} used for creation
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param lastIndex
+     *        integer specifying the lastindex
+     * 
+     * @return newly created {@link IndexSequence}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                                          final int firstIndex, final int lastIndex) {
+        return indexSequenceCreator.createSequence(firstIndex, lastIndex);
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the
+     * specified Elements. That is, the index of the first Element of the
+     * specified sequence in this Sequence is 0. The fixed size of the
+     * {@link InitializeableIndexSequence} is the size of the specified
+     * sequence.
+     * 
+     * @param elements
+     *        comma separated sequence of Elements to store
+     * 
+     * @return the newly created {@link InitializeableIndexSequence}
+     */
+    @SafeVarargs
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+                  Sequenze createASequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                                           final Element... elements) {
+    // @formatter:on
+        return createSequence(indexSequenceCreator, 0, elements);
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the
+     * specified Elements having a specified first index. That is, the index of
+     * the first Element of the specified sequence in the
+     * {@link InitializeableIndexSequence} can be specified. The fixed size of
+     * the {@link InitializeableIndexSequence} is the size of the specified
+     * sequence.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index of the
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @param elements
+     *        comma separated sequence of Elements to store
+     * 
+     * @return newly created {@link InitializeableIndexSequence}
+     */
+    @SafeVarargs
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                                          final int firstIndex, final Element... elements) {
+    // @formatter:on
+        final int elementsCount = elements.length;
+
+        final int lastIndex = firstIndex + elementsCount - 1;
+
+        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, lastIndex);
+
+        for (int index = firstIndex, arrayElementIndex = 0; index <= lastIndex; index ++, arrayElementIndex ++)
+            sequence.replace(index, elements[arrayElementIndex]);
+
+        return sequence;
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} with a first index of
+     * {@code 0} and the specified size.
+     * 
+     * @param size
+     *        integer specifying the size of the new
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @return the new {@link InitializeableIndexSequence}
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code size < 1}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                                          final int size)
+    throws IllegalArgumentException {
+    // @formatter:on
+        if (size < 1)
+            throw new IllegalArgumentException("size == " + size + " < 1");
+
+        return createSequence(indexSequenceCreator, 0, size - 1);
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the Elements
+     * of the specified Container. The index of the first Element of the
+     * specified Container in the {@link InitializeableIndexSequence} is 0. The
+     * fixed size of the {@link InitializeableIndexSequence} is the size of the
+     * specified Container.
+     * 
+     * @param container
+     *        Container of which the Elements are copied to the
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @return the newly created {@link InitializeableIndexSequence}
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code collection} is {@code null}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                            final Container<Element> container) {
+    // @formatter:on
+        return createSequence(indexSequenceCreator, 0, container);
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the Elements
+     * of the specified Java Container. The index of the first Element of the
+     * specified Container in the {@link InitializeableIndexSequence} is 0. The
+     * fixed size of the {@link InitializeableIndexSequence} is the size of the
+     * specified Container.
+     * 
+     * @param collection
+     *        Collection of which the Elements are copied to the
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @return the newly created {@link InitializeableIndexSequence}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                            final Collection<Element> collection) {
+    // @formatter:on
+        return createSequence(indexSequenceCreator, 0, collection);
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the Elements
+     * of the specified Container having a specified first index. That is, the
+     * index of the first Element of the specified collection in the
+     * {@link InitializeableIndexSequence} can be specified. The fixed size of
+     * the {@link InitializeableIndexSequence} is the size of the specified
+     * Container.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index of the
+     *        {@link InitializeableIndexSequence}. The first Element of
+     *        {@code collection} is stored at this index of the newly created
+     *        {@link InitializeableIndexSequence}.
+     * 
+     * @param elements
+     *        Container of which the Elements are copied to the
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @return the newly created {@link InitializeableIndexSequence}
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code firstIndex < 0}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                            final int firstIndex, final Container<Element> elements)
+    throws IllegalArgumentException {
+    // @formatter:on
+        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + elements.getSize() - 1);
+
+        int index = firstIndex;
+
+        for (final Element element : elements)
+            sequence.replaceStoredElement(index ++, element);
+
+        return sequence;
+    }
+
+    /**
+     * Creates a new {@link InitializeableIndexSequence} containing the Elements
+     * of the specified Container having a specified first index. That is, the
+     * index of the first Element of the specified collection in the
+     * {@link InitializeableIndexSequence} can be specified. The fixed size of
+     * the {@link InitializeableIndexSequence} is the size of the specified
+     * Container.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index of the
+     *        {@link InitializeableIndexSequence}. The first Element of
+     *        {@code collection} is stored at this index of the newly created
+     *        {@link InitializeableIndexSequence}.
+     * 
+     * @param elements
+     *        {@link Collection} containing the Elements for the
+     *        {@link InitializeableIndexSequence}
+     * 
+     * @return newly created {@link InitializeableIndexSequence}
+     * 
+     * @throws IllegalArgumentException
+     *         if {@code firstIndex < 0}
+     */
+    // @formatter:off
+    public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
+    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                            final int firstIndex, final Collection<Element> elements)
+    throws IllegalArgumentException {
+    // @formatter:on
+        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + elements.size() - 1);
+
+        int index = firstIndex;
+
+        for (final Element element : elements)
+            sequence.replaceStoredElement(index ++, element);
+
+        return sequence;
+    }
+
     // @formatter:off
     /**
      * <p>
@@ -123,10 +358,10 @@ public final class IndexSequenceUtility {
      * @return new {@link IndexSequence} of {@link Integer} Elements
      */
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequenceFrom(final InitializeableIndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
-                                                          final int firstIndex, final Integer... elements) {
+                  Sequenze createIntegerSequenceFrom(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                                                     final int firstIndex, final Integer... elements) {
         // @formatter:on
-        return indexSequenceCreator.createSequence(firstIndex, elements);
+        return createASequence(indexSequenceCreator, firstIndex, elements);
     }
 
     /**
@@ -147,9 +382,9 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequence(final InitializeableIndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
                                                       final Integer... elements) {
         // @formatter:on
-        return createIntegerIndexSequenceFrom(indexSequenceCreator, 0, elements);
+        return createIntegerSequenceFrom(indexSequenceCreator, 0, elements);
     }
 }
