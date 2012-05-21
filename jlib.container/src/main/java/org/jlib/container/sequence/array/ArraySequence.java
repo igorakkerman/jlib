@@ -114,19 +114,31 @@ import org.jlib.container.sequence.index.InitializeableIndexSequence;
  */
 // @formatter:on
 
-class ArraySequence<Element>
+public class ArraySequence<Element>
 extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
-    /** {@link IndexSequenceCreator} of {@link ArraySequence} */
-    public static final IndexSequenceCreator<ArraySequence<?>> CREATOR = new IndexSequenceCreator<ArraySequence<?>>() {
+    /** {@link IndexSequenceCreator} of {@link ArraySequence} insstances */
+    private static final IndexSequenceCreator<? extends ArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<ArraySequence<?>>() {
 
-        @Override
-        public ArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
-        throws IllegalArgumentException {
-            return new ArraySequence<Object>(firstIndex, lastIndex);
-        }
-    };
+            @Override
+            public ArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
+            throws IllegalArgumentException {
+                return new ArraySequence<Object>(firstIndex, lastIndex);
+            }
+        };
+
+    /**
+     * Returns the {@link IndexSequenceCreator} of {@link ArraySequence}
+     * instances.
+     * 
+     * @return {@link IndexSequenceCreator} of {@link ArraySequence} instances
+     */
+    @SuppressWarnings("unchecked")
+    public static <Element> IndexSequenceCreator<? extends ArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<ArraySequence<Element>>) CREATOR;
+    }
 
     /** array holding the Elements of this {@link ArraySequence} */
     private Element[] delegateArray;

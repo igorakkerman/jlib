@@ -19,8 +19,8 @@ public class ReplaceArraySequence<Element>
 extends ArraySequence<Element>
 implements ReplaceIndexSequence<Element> {
 
-    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} */
-    public static final IndexSequenceCreator<ReplaceArraySequence<?>> CREATOR =
+    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} instances */
+    public static final IndexSequenceCreator<? extends ReplaceArraySequence<?>> CREATOR =
         new IndexSequenceCreator<ReplaceArraySequence<?>>() {
 
             @Override
@@ -29,6 +29,18 @@ implements ReplaceIndexSequence<Element> {
                 return new ReplaceArraySequence<Object>(firstIndex, lastIndex);
             }
         };
+
+    /**
+     * Returns the {@link IndexSequenceCreator} of {@link ReplaceArraySequence}
+     * instances.
+     * 
+     * @return {@link IndexSequenceCreator} of {@link ReplaceArraySequence}
+     *         instances
+     */
+    @SuppressWarnings("unchecked")
+    public static <Element> IndexSequenceCreator<? extends ReplaceArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<ReplaceArraySequence<Element>>) CREATOR;
+    }
 
     /**
      * Creates a new {@link ReplaceArraySequence}.

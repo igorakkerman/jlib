@@ -25,8 +25,8 @@ public class AddReplaceArraySequence<Element>
 extends ReplaceArraySequence<Element>
 implements AddIndexSequence<Element> {
 
-    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} */
-    public static final IndexSequenceCreator<AddReplaceArraySequence<?>> CREATOR =
+    /** {@link IndexSequenceCreator} of {@link AddReplaceArraySequence} instances */
+    public static final IndexSequenceCreator<? extends AddReplaceArraySequence<?>> CREATOR =
         new IndexSequenceCreator<AddReplaceArraySequence<?>>() {
 
             @Override
@@ -35,6 +35,18 @@ implements AddIndexSequence<Element> {
                 return new AddReplaceArraySequence<Object>(firstIndex, lastIndex);
             }
         };
+
+    /**
+     * Returns the {@link IndexSequenceCreator} of
+     * {@link AddReplaceArraySequence} instances.
+     * 
+     * @return {@link IndexSequenceCreator} of {@link AddReplaceArraySequence}
+     *         instances
+     */
+    @SuppressWarnings("unchecked")
+    public static <Element> IndexSequenceCreator<? extends AddReplaceArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<AddReplaceArraySequence<Element>>) CREATOR;
+    }
 
     /**
      * Creates a new {@link AddReplaceArraySequence} with the specified first

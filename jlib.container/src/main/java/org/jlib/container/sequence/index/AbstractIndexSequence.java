@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
-import org.jlib.container.sequence.array.ArraySequenceCreator;
+import org.jlib.container.sequence.array.ArraySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
@@ -120,9 +120,8 @@ implements IndexSequence<Element> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final InitializeableIndexSequence<Element> sequence =
-            ArraySequenceCreator.<Element> getInstance().createSequence(fromIndex, toIndex);
-
+        final IndexSequence<Element> sequence =
+            (IndexSequence<Element>) ArraySequence.CREATOR.createSequence(fromIndex, toIndex);
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replaceStoredElement(index, getStoredElement(index));
 

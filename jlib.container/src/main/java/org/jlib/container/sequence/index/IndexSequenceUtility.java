@@ -16,34 +16,6 @@ public final class IndexSequenceUtility {
     private IndexSequenceUtility() {}
 
     /**
-     * Asserts that the specified index is inside the valid bounds of the
-     * specified {@link IndexSequence}.
-     * 
-     * @param sequence
-     *        verified {@link IndexSequence}
-     * 
-     * @param index
-     *        integer specifying the index to verify
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index} is out of the {@link IndexSequence} bounds
-     */
-    public static void assertIndexValid(final IndexSequence<?> sequence, final int index)
-    throws SequenceIndexOutOfBoundsException {
-        final int firstIndex = sequence.getFirstIndex();
-
-        if (index < firstIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " < " + firstIndex +
-                                                                         " == firstIndex");
-
-        final int lastIndex = sequence.getLastIndex();
-
-        if (index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " > " + lastIndex +
-                                                                         " == lastIndex");
-    }
-
-    /**
      * Asserts that the specified <em>from</em> and <em>to</em> indices are
      * valid, that is,
      * {@code sequence.getFirstIndex() <= fromIndex <= toIndex <= sequence.getLastIndex()}
@@ -113,6 +85,9 @@ public final class IndexSequenceUtility {
      * {@link InitializeableIndexSequence} is the size of the specified
      * sequence.
      * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
+     * 
      * @param elements
      *        comma separated sequence of Elements to store
      * 
@@ -134,6 +109,9 @@ public final class IndexSequenceUtility {
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
      * sequence.
+     * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
      * 
      * @param firstIndex
      *        integer specifying the first index of the
@@ -166,6 +144,9 @@ public final class IndexSequenceUtility {
      * Creates a new {@link InitializeableIndexSequence} with a first index of
      * {@code 0} and the specified size.
      * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
+     * 
      * @param size
      *        integer specifying the size of the new
      *        {@link InitializeableIndexSequence}
@@ -194,6 +175,9 @@ public final class IndexSequenceUtility {
      * fixed size of the {@link InitializeableIndexSequence} is the size of the
      * specified Container.
      * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
+     * 
      * @param container
      *        Container of which the Elements are copied to the
      *        {@link InitializeableIndexSequence}
@@ -218,6 +202,9 @@ public final class IndexSequenceUtility {
      * fixed size of the {@link InitializeableIndexSequence} is the size of the
      * specified Container.
      * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
+     * 
      * @param collection
      *        Collection of which the Elements are copied to the
      *        {@link InitializeableIndexSequence}
@@ -239,6 +226,9 @@ public final class IndexSequenceUtility {
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
      * Container.
+     * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
      * 
      * @param firstIndex
      *        integer specifying the first index of the
@@ -278,6 +268,9 @@ public final class IndexSequenceUtility {
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
      * Container.
+     * 
+     * @param indexSequenceCreator
+     *        {@link IndexSequenceCreator} to use
      * 
      * @param firstIndex
      *        integer specifying the first index of the
@@ -326,8 +319,8 @@ public final class IndexSequenceUtility {
      * equivalent to the sequence form for the argument
      * {@code Integer... elements} but the newly created class provides an
      * easier way: the factory methods
-     * {@link #createIntegerIndexSequence(InitializeableIndexSequenceCreator, Integer...)} or
-     * {@link #createIntegerIndexSequenceFrom(InitializeableIndexSequenceCreator, int, Integer[])}. The latter form takes
+     * {@link #createIntegerIndexSequence(IndexSequenceCreator, Integer...)} or
+     * {@link #createIntegerIndexSequenceFrom(IndexSequenceCreator, int, Integer[])}. The latter form takes
      * the minimum index as first argument.
      * </p>
      * 
@@ -347,7 +340,7 @@ public final class IndexSequenceUtility {
      *        type of the {@link InitializeableIndexSequence} created
      * 
      * @param indexSequenceCreator
-     *        {@link InitializeableIndexSequenceCreator} to use
+     *        {@link IndexSequenceCreator} to use
      * 
      * @param firstIndex
      *        integer specifying the minimum index
@@ -358,10 +351,10 @@ public final class IndexSequenceUtility {
      * @return new {@link IndexSequence} of {@link Integer} Elements
      */
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerSequenceFrom(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequenceFrom(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
                                                      final int firstIndex, final Integer... elements) {
         // @formatter:on
-        return createASequence(indexSequenceCreator, firstIndex, elements);
+        return createSequence(indexSequenceCreator, firstIndex, elements);
     }
 
     /**
@@ -373,7 +366,7 @@ public final class IndexSequenceUtility {
      *        type of the {@link InitializeableIndexSequence} created
      * 
      * @param indexSequenceCreator
-     *        {@link InitializeableIndexSequenceCreator} to use
+     *        {@link IndexSequenceCreator} to use
      * 
      * @param elements
      *        comma separated sequence of {@link Integer} elements to store
@@ -385,6 +378,34 @@ public final class IndexSequenceUtility {
                   Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
                                                       final Integer... elements) {
         // @formatter:on
-        return createIntegerSequenceFrom(indexSequenceCreator, 0, elements);
+        return createIntegerIndexSequenceFrom(indexSequenceCreator, 0, elements);
+    }
+
+    /**
+     * Asserts that the specified index is inside the valid bounds of the
+     * specified {@link IndexSequence}.
+     * 
+     * @param sequence
+     *        verified {@link IndexSequence}
+     * 
+     * @param index
+     *        integer specifying the index to verify
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index} is out of the {@link IndexSequence} bounds
+     */
+    public static void assertIndexValid(final IndexSequence<?> sequence, final int index)
+    throws SequenceIndexOutOfBoundsException {
+        final int firstIndex = sequence.getFirstIndex();
+
+        if (index < firstIndex)
+            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " < " + firstIndex +
+                                                                         " == firstIndex");
+
+        final int lastIndex = sequence.getLastIndex();
+
+        if (index > lastIndex)
+            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " > " + lastIndex +
+                                                                         " == lastIndex");
     }
 }
