@@ -2,7 +2,6 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
-
 /**
  * {@link SequenceIteratorState} when a {@link SequenceIterator} is at the
  * beginning of the non-empty {@link Sequence}.
@@ -14,6 +13,13 @@ import java.util.NoSuchElementException;
  */
 public abstract class BeginningOfSequenceIteratorState<Element>
 extends AbstractSequenceIteratorState<Element> {
+
+    /**
+     * Creates a new {@link BeginningOfSequenceIteratorState}.
+     */
+    public BeginningOfSequenceIteratorState() {
+        super();
+    }
 
     @Override
     public boolean hasPrevious() {

@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * 
  * @author Igor Akkerman
  */
-public abstract class AbstractSequenceStateIterator<Element>
+public class AbstractSequenceStateIterator<Element>
 extends AbstractSequenceIterator<Element> {
 
     /** current {@link SequenceIteratorState} */
@@ -19,9 +19,14 @@ extends AbstractSequenceIterator<Element> {
 
     /**
      * Creates a new {@link AbstractSequenceStateIterator}.
+     * 
+     * @param initialState
+     *        initial {@link SequenceIteratorState}
      */
-    public AbstractSequenceStateIterator() {
+    protected AbstractSequenceStateIterator(final SequenceIteratorState<Element> initialState) {
         super();
+
+        currentState = initialState;
     }
 
     /**

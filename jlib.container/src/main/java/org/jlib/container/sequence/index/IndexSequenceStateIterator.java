@@ -15,10 +15,9 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceStateIterator;
+import org.jlib.container.sequence.BeginningOfSequenceIteratorState;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
-import org.jlib.container.sequence.SequenceStateIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
 /**
  * {@link IndexSequenceIterator} traversing the elements in the proper order.
@@ -32,7 +31,7 @@ public class IndexSequenceStateIterator<Element>
 extends AbstractSequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
-    private final IndexSequenceIteratorState<Element> initialState;
+//    private final IndexSequenceIteratorState<Element> initialState;
 
     /**
      * Creates a new {@link IndexSequenceStateIterator} over the Elements of the
@@ -64,17 +63,46 @@ implements IndexSequenceIterator<Element> {
     throws SequenceIndexOutOfBoundsException {
         super();
 
-        createInitialState(sequence, startIndex);
+        final IndexSequenceCursor<Element> cursor = new IndexSequenceCursor<Element>(sequence, startIndex) {
+
+            @Override
+            SequenceIteratorState<Element> getElementReturnedState() {
+                
+            }
+            
+        };
+
+        beginningOfSequenceState = new BeginningOfSequenceIteratorState() {
+
+            @Override
+            public SequenceIteratorState getNextState() {
+                return middleOfSequenceState;
+            }
+
+            @Override
+            public Object next() {
+            }
+        };
+            
+
+        createInitialState(final sequence, startIndex);
 
         this.sequence = sequence;
 
         nextElementIndex = startIndex;
     }
 
-    private void createInitialState(final IndexSequence<Element> sequence, final int startIndex) {
-        globalState = new IndexSequenceIteratorGlobalState<>(sequence, startIndex);
+    private IndexSequenceIteratorState<Element> selectInitialState(final IndexSequenceCursor<Element> cursor) {
+        final int currentIndex = cursor.getNextElementIndex();
+        final IndexSequence<Element> sequence = cursor.getSequence();
 
-        return new IndexSequenceIteratorState<>(globalState);
+        if (currentIndex == sequence.getFirstIndex())
+            return beginningOfSequenceState;
+
+        if (currentIndex == sequence.getLastIndex())
+            return endOfSequenceState;
+
+        return middleOfSequenceState;
     }
 
     @Override
@@ -115,13 +143,4 @@ implements IndexSequenceIterator<Element> {
         return sequence;
     }
 
-    /**
-     * TODO:
-     * 
-     * @param lastReturnedElementIndex
-     * @return
-     */
-    public SequenceIteratorState<Element> getElementReturnedState(final int lastReturnedElementIndex) {
-        elementReturnedState;
-    }
 }

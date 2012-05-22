@@ -19,6 +19,7 @@ import java.util.Arrays;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InitializeableIndexSequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 // @formatter:off   
 /**
@@ -124,7 +125,7 @@ implements Cloneable {
 
             @Override
             public ArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
-            throws IllegalArgumentException {
+            throws InvalidSequenceIndexRangeException {
                 return new ArraySequence<Object>(firstIndex, lastIndex);
             }
         };

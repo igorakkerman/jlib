@@ -2,6 +2,7 @@ package org.jlib.container.sequence.array;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
+import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequence;
@@ -19,13 +20,15 @@ public class ReplaceArraySequence<Element>
 extends ArraySequence<Element>
 implements ReplaceIndexSequence<Element> {
 
-    /** {@link IndexSequenceCreator} of {@link ReplaceArraySequence} instances */
-    public static final IndexSequenceCreator<? extends ReplaceArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<ReplaceArraySequence<?>>() {
+    /**
+     * {@link IndexSequenceCreator} of {@link ReplaceArraySequence} insstances
+     */
+    private static final IndexSequenceCreator<?, ? extends ReplaceArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceArraySequence<Object>>() {
 
             @Override
-            public ReplaceArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
-            throws IllegalArgumentException {
+            public ReplaceArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            throws InvalidSequenceIndexRangeException {
                 return new ReplaceArraySequence<Object>(firstIndex, lastIndex);
             }
         };
@@ -38,8 +41,8 @@ implements ReplaceIndexSequence<Element> {
      *         instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<? extends ReplaceArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<ReplaceArraySequence<Element>>) CREATOR;
+    public static <Element> IndexSequenceCreator<Element, ? extends ReplaceArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<Element, ReplaceArraySequence<Element>>) CREATOR;
     }
 
     /**

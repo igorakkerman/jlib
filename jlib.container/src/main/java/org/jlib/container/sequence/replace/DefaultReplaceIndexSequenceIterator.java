@@ -18,7 +18,6 @@ import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
-import org.jlib.container.sequence.index.StateIndexSequenceIterator;
 
 /**
  * Iterator over an ReplaceIndexSequence using a random access data store.
@@ -37,16 +36,16 @@ implements ReplaceIndexSequenceIterator<Element> {
      */
     private final ReplaceIndexSequence<Element> replaceIndexSequence;
 
-    private final ReplaceSequenceIteratorState unretrieved = new ReplaceSequenceIteratorState<Element>() {
+    private final ReplaceSequenceIteratorState UNRETRIEVED = new ReplaceSequenceIteratorState<Element>() {
 
         @Override
         public SequenceIteratorState<Element> getPreviousState() {
-            return retrieved;
+            return RETRIEVED;
         }
 
         @Override
         public SequenceIteratorState<Element> getNextState() {
-            return retrieved;
+            return RETRIEVED;
         }
 
         @Override
@@ -83,7 +82,7 @@ implements ReplaceIndexSequenceIterator<Element> {
         }
     };
 
-    private final ReplaceSequenceIteratorState retrieved = new ReplaceSequenceIteratorState<Element>() {
+    private final ReplaceSequenceIteratorState RETRIEVED = new ReplaceSequenceIteratorState<Element>() {
 
         @Override
         public SequenceIteratorState<Element> getPreviousState() {

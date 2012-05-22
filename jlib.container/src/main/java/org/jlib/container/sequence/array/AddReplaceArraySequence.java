@@ -7,6 +7,7 @@ import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.add.AddIndexSequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
+import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
@@ -25,13 +26,16 @@ public class AddReplaceArraySequence<Element>
 extends ReplaceArraySequence<Element>
 implements AddIndexSequence<Element> {
 
-    /** {@link IndexSequenceCreator} of {@link AddReplaceArraySequence} instances */
-    public static final IndexSequenceCreator<? extends AddReplaceArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<AddReplaceArraySequence<?>>() {
+    /**
+     * {@link IndexSequenceCreator} of {@link AddReplaceArraySequence}
+     * insstances
+     */
+    private static final IndexSequenceCreator<?, ? extends AddReplaceArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, AddReplaceArraySequence<Object>>() {
 
             @Override
-            public AddReplaceArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
-            throws IllegalArgumentException {
+            public AddReplaceArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            throws InvalidSequenceIndexRangeException {
                 return new AddReplaceArraySequence<Object>(firstIndex, lastIndex);
             }
         };
@@ -44,8 +48,8 @@ implements AddIndexSequence<Element> {
      *         instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<? extends AddReplaceArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<AddReplaceArraySequence<Element>>) CREATOR;
+    public static <Element> IndexSequenceCreator<Element, ? extends AddReplaceArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<Element, AddReplaceArraySequence<Element>>) CREATOR;
     }
 
     /**

@@ -1,13 +1,13 @@
 package org.jlib.container.sequence.index;
 
 /**
- * Exception thrown if an invalid index range has been used with an
- * {@link IndexSequence}.
+ * {@link IllegalArgumentException} thrown if an invalid index range has been
+ * used with an {@link IndexSequence}.
  * 
  * @author Igor Akkerman
  */
 public class InvalidSequenceIndexRangeException
-extends RuntimeException {
+extends IllegalArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 6780143195522448143L;
