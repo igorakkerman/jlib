@@ -119,15 +119,25 @@ extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
     /** {@link IndexSequenceCreator} of {@link ArraySequence} insstances */
-    private static final IndexSequenceCreator<? extends ArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<ArraySequence<?>>() {
+    private static final IndexSequenceCreator<?, ? extends ArraySequence<?>> CREATOR = createCreator();
+
+    /**
+     * Creates a new {@link IndexSequenceCreator} of {@link ArraySequence}
+     * instances.
+     * 
+     * @return newly created {@link IndexSequenceCreator}
+     */
+    private static <Element> IndexSequenceCreator<Element, ArraySequence<Element>> createCreator() {
+
+        return new IndexSequenceCreator<Element, ArraySequence<Element>>() {
 
             @Override
-            public ArraySequence<?> createSequence(final int firstIndex, final int lastIndex)
+            public ArraySequence<Element> createSequence(final int firstIndex, final int lastIndex)
             throws IllegalArgumentException {
-                return new ArraySequence<Object>(firstIndex, lastIndex);
+                return new ArraySequence<Element>(firstIndex, lastIndex);
             }
         };
+    }
 
     /**
      * Returns the {@link IndexSequenceCreator} of {@link ArraySequence}
@@ -136,8 +146,8 @@ implements Cloneable {
      * @return {@link IndexSequenceCreator} of {@link ArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<? extends ArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<ArraySequence<Element>>) CREATOR;
+    public static <Element> IndexSequenceCreator<Element, ? extends ArraySequence<Element>> getCreator() {
+        return (IndexSequenceCreator<Element, ArraySequence<Element>>) CREATOR;
     }
 
     /** array holding the Elements of this {@link ArraySequence} */
