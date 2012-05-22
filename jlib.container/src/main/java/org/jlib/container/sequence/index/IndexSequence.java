@@ -47,18 +47,34 @@ extends Sequence<Element>, RandomAccess {
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns the first index of this indexSequence.
+     * Returns the first index of this {@link IndexSequence}.
      * 
      * @return integer specifying the minimum index
      */
     public int getFirstIndex();
 
     /**
-     * Returns the last index of this indexSequence.
+     * Returns the last index of this {@link IndexSequence}.
      * 
      * @return integer specifying the maximum index
      */
     public int getLastIndex();
+
+    /**
+     * Returns the Element stored at the first index in this
+     * {@link IndexSequence}.
+     * 
+     * @return first Element
+     */
+    public Element getFirst();
+
+    /**
+     * Returns the Element stored at the last index in this
+     * {@link IndexSequence}.
+     * 
+     * @return last Element
+     */
+    public Element getLast();
 
     /**
      * Returns the index of the first occurrence of the specified Element in

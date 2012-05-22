@@ -119,25 +119,15 @@ extends InitializeableIndexSequence<Element>
 implements Cloneable {
 
     /** {@link IndexSequenceCreator} of {@link ArraySequence} insstances */
-    private static final IndexSequenceCreator<?, ? extends ArraySequence<?>> CREATOR = createCreator();
-
-    /**
-     * Creates a new {@link IndexSequenceCreator} of {@link ArraySequence}
-     * instances.
-     * 
-     * @return newly created {@link IndexSequenceCreator}
-     */
-    private static <Element> IndexSequenceCreator<Element, ArraySequence<Element>> createCreator() {
-
-        return new IndexSequenceCreator<Element, ArraySequence<Element>>() {
+    private static final IndexSequenceCreator<?, ? extends ArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ArraySequence<Object>>() {
 
             @Override
-            public ArraySequence<Element> createSequence(final int firstIndex, final int lastIndex)
+            public ArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws IllegalArgumentException {
-                return new ArraySequence<Element>(firstIndex, lastIndex);
+                return new ArraySequence<Object>(firstIndex, lastIndex);
             }
         };
-    }
 
     /**
      * Returns the {@link IndexSequenceCreator} of {@link ArraySequence}

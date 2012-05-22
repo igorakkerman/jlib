@@ -5,15 +5,18 @@ import org.jlib.container.sequence.Sequence;
 /**
  * Creator of instances of a specific subtype of {@link Sequence}.
  * 
+ * @param <Element>
+ *        type of the elements held in the {@link Sequence}
+ * 
  * @param <Sequenze>
- *        type of the created {@link Sequence} instances
+ *        type of the created {@link IndexSequence} instances
  * 
  * @author Igor Akkerman
  */
 public interface IndexSequenceCreator<Element, Sequenze extends InitializeableIndexSequence<Element>> {
 
     /**
-     * Creates the {@link IndexSequence} with the specified first and last
+     * Creates a new {@link IndexSequence} with the specified first and last
      * indices.
      * 
      * @param firstIndex
@@ -24,8 +27,9 @@ public interface IndexSequenceCreator<Element, Sequenze extends InitializeableIn
      * 
      * @return newly created {@link IndexSequence}
      * 
-     * @throws IllegalArgumentException 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code lastIndex < firstIndex}
      */
     public Sequenze createSequence(int firstIndex, int lastIndex)
-    throws IllegalArgumentException;
+    throws InvalidSequenceIndexRangeException;
 }

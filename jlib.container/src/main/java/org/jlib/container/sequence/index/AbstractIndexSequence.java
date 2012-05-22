@@ -72,6 +72,16 @@ implements IndexSequence<Element> {
     protected abstract Element getStoredElement(final int index);
 
     @Override
+    public Element getFirst() {
+        return getStoredElement(firstIndex);
+    }
+
+    @Override
+    public Element getLast() {
+        return getStoredElement(lastIndex);
+    }
+
+    @Override
     public int getFirstIndexOf(final Element element)
     throws NoSuchElementException {
         for (int index = firstIndex; index <= lastIndex; index ++)
@@ -120,8 +130,8 @@ implements IndexSequence<Element> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final IndexSequence<Element> sequence =
-            (IndexSequence<Element>) ArraySequence.CREATOR.createSequence(fromIndex, toIndex);
+        final InitializeableIndexSequence<Element> sequence =
+            ArraySequence.<Element> getCreator().createSequence(fromIndex, toIndex);
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replaceStoredElement(index, getStoredElement(index));
 
