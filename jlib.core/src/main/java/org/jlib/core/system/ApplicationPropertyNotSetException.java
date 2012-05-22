@@ -15,18 +15,19 @@
 package org.jlib.core.system;
 
 /**
- * Exception thrown when trying to retrieve the value of a property that is not set.
+ * {@link IllegalStateException} thrown when trying to retrieve the value of a
+ * property that is not set.
  * 
  * @author Igor Akkerman
  */
 public class ApplicationPropertyNotSetException
-extends RuntimeException {
+extends IllegalStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8781400138384560958L;
-    
+
     /** name of the property that is not set */
-    private String propertyName;
+    private final String propertyName;
 
     /**
      * Creates a new ApplicationPropertyNotSetException.
@@ -34,7 +35,7 @@ extends RuntimeException {
      * @param propertyName
      *        String specifying the name of the property that is not set
      */
-    public ApplicationPropertyNotSetException(String propertyName) {
+    public ApplicationPropertyNotSetException(final String propertyName) {
         super();
         this.propertyName = propertyName;
     }
@@ -47,7 +48,6 @@ extends RuntimeException {
     public String getPropertyName() {
         return propertyName;
     }
-
 
     @Override
     public String toString() {
