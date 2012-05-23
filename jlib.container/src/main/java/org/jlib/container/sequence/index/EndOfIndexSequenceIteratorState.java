@@ -44,6 +44,12 @@ implements IndexSequenceIteratorState<Element> {
     }
 
     @Override
+    public Element previous()
+    throws NoSuchSequenceElementException {
+        return sequence.getLast();
+    }
+
+    @Override
     public IndexSequenceIteratorState<Element> getNextState() {
         return this;
     }

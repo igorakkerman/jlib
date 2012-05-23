@@ -80,23 +80,12 @@ implements IndexSequenceIterator<Element> {
         beginningOfSequenceState = new BeginningOfIndexSequenceIteratorState<Element>(sequence) {
 
             @Override
-            public Element next() {
-                return sequence.getFirst();
-            }
-
-            @Override
             public IndexSequenceIteratorState<Element> getNextState() {
                 return middleOfSequenceState;
             }
         };
 
         endOfSequenceState = new EndOfIndexSequenceIteratorState<Element>(sequence) {
-
-            @Override
-            public Element previous()
-            throws NoSuchSequenceElementException {
-                return sequence.getLast();
-            }
 
             @Override
             public IndexSequenceIteratorState<Element> getPreviousState() {

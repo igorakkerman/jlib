@@ -44,6 +44,11 @@ implements IndexSequenceIteratorState<Element> {
     }
 
     @Override
+    public Element next() {
+        return sequence.getFirst();
+    }
+
+    @Override
     public IndexSequenceIteratorState<Element> getPreviousState() {
         return this;
     }
