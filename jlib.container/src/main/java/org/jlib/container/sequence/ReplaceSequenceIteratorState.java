@@ -1,7 +1,4 @@
-package org.jlib.container.sequence.replace;
-
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIteratorState;
+package org.jlib.container.sequence;
 
 /**
  * State of a {@link ReplaceSequenceIterator}.
@@ -15,10 +12,11 @@ public interface ReplaceSequenceIteratorState<Element>
 extends SequenceIteratorState<Element>, ReplaceSequenceIterator<Element> {
 
     /**
-     * Returns the {@link SequenceIteratorState} switched to after
+     * Returns the {@link SequenceIteratorState} switched to after a call to
      * {@link #replace(Object)}.
      * 
-     * @return {@link ReplaceSequenceIteratorState} after {@link #next()}
+     * @return {@link ReplaceSequenceIteratorState} after a call to
+     *         {@link #replace(Object)}
      */
     public ReplaceSequenceIteratorState<Element> getReplaceState();
 }

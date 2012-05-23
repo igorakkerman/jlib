@@ -6,10 +6,10 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.add.AddIndexSequence;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;

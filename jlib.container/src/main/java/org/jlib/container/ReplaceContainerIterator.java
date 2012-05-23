@@ -2,7 +2,7 @@ package org.jlib.container;
 
 import java.util.Iterator;
 
-import org.jlib.container.sequence.replace.ReplaceSequenceIterator;
+import org.jlib.container.sequence.ReplaceSequenceIterator;
 
 /**
  * {@link Iterator} over an {@link ReplaceContainer} allowing

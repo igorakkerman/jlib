@@ -12,11 +12,12 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.AbstractSequenceIteratorState;
+import org.jlib.container.sequence.ReplaceSequenceIteratorState;
 import org.jlib.container.sequence.Sequence;
 
 /**

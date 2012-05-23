@@ -1,12 +1,12 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
-import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
-import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
 /**
  * {@link ArraySequence} allowing its Elements to be replaced.

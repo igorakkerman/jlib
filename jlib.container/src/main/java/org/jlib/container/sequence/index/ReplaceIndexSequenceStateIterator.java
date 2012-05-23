@@ -1,6 +1,5 @@
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.index.IndexSequenceIteratorState;
 
 /**
  * 

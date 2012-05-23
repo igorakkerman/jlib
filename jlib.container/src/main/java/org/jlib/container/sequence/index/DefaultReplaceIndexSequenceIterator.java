@@ -12,10 +12,12 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
 import java.util.NoSuchElementException;
 
+import org.jlib.container.sequence.NoElementToReplaceException;
+import org.jlib.container.sequence.ReplaceSequenceIteratorState;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
 
@@ -34,7 +36,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      * ReplaceIndexSequence traversed by this
      * {@link DefaultReplaceIndexSequenceIterator}
      */
-    private final ReplaceIndexSequence<Element> replaceIndexSequence;
+    private final ReplaceIndexSequence<Element> sequence;
 
     private final ReplaceSequenceIteratorState UNRETRIEVED = new ReplaceSequenceIteratorState<Element>() {
 
@@ -132,7 +134,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      * Creates a new {@link DefaultReplaceIndexSequenceIterator} over the
      * Elements of the specified ReplaceIndexSequence.
      * 
-     * @param replaceIndexSequence
+     * @param sequence
      *        ReplaceIndexSequence to traverse
      */
     public DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence) {
@@ -144,7 +146,7 @@ implements ReplaceIndexSequenceIterator<Element> {
      * Elements of the specified IndexSequence starting the traversal at the
      * specified index.
      * 
-     * @param replaceIndexSequence
+     * @param sequence
      *        ReplaceIndexSequence to traverse
      * 
      * @param startIndex
@@ -152,23 +154,23 @@ implements ReplaceIndexSequenceIterator<Element> {
      * 
      * @throws IndexOutOfBoundsException
      *         if
-     *         {@code startIndex < replaceIndexSequence.getFirstIndex() || startIndex > replaceIndexSequence.getLastIndex()}
+     *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
     public DefaultReplaceIndexSequenceIterator(final ReplaceIndexSequence<Element> replaceIndexSequence,
                                                final int startIndex)
     throws IndexOutOfBoundsException {
         super(replaceIndexSequence, startIndex);
 
-        this.replaceIndexSequence = replaceIndexSequence;
+        this.sequence = replaceIndexSequence;
         modificationReady = false;
     }
 
     @Override
     public void replace(final Element element) {
         if (!modificationReady)
-            throw new IllegalStateException();
+            throw new NoElementToReplaceException(sequence);
 
-        replaceIndexSequence.replace(getLastRetreivedElementIndex(), element);
+        sequence.replace(getLastRetreivedElementIndex(), element);
     }
 
     @Override

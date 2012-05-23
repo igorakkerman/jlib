@@ -12,11 +12,10 @@
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * IndexSequence that allows its Elements to be modified.

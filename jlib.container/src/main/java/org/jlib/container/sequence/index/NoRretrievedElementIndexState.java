@@ -1,4 +1,4 @@
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
 import java.util.NoSuchElementException;
 

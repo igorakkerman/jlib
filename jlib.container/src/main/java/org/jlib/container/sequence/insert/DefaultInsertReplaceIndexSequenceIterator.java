@@ -16,8 +16,8 @@ package org.jlib.container.sequence.insert;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
-import org.jlib.container.sequence.replace.DefaultReplaceIndexSequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
 /**
  * {@link SequenceIterator} over the Elements of a {@link ReplaceIndexSequence}

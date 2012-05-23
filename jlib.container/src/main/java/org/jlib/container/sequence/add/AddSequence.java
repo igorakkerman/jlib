@@ -15,8 +15,8 @@
 package org.jlib.container.sequence.add;
 
 import org.jlib.container.AddContainer;
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.replace.ReplaceSequence;
 
 /**
  * {@link ReplaceSequence} that allows Elements to be added and removed.

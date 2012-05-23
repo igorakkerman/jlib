@@ -1,13 +1,7 @@
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.index.IndexSequenceIteratorState;
+import org.jlib.container.sequence.ReplaceSequenceIteratorState;
 
-/**
- * 
- * 
- * @author Igor Akkerman
- * @param <Element>
- */
 public class ReturnedElementReplaceIndexSequenceIteratorState<Element>
 extends IndexSequenceIteratorState<Element>
 implements ReplaceSequenceIteratorState<Element> {

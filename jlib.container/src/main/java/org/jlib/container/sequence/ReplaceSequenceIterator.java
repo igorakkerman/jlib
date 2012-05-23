@@ -12,11 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence;
 
 import org.jlib.container.ReplaceContainerIterator;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIterator;
 
 /**
  * Iterator of an ReplaceSequence.
@@ -35,11 +33,11 @@ extends ReplaceContainerIterator<Element>, SequenceIterator<Element> {
      * @param element
      *        Element by which the former Element is replaced
      * 
-     * @throws IllegalStateException
+     * @throws NoElementToReplaceException
      *         if no Element has been returned by this
      *         {@link ReplaceSequenceIterator}
      */
     @Override
     public void replace(final Element element)
-    throws IllegalStateException;
+    throws NoElementToReplaceException;
 }

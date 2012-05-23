@@ -17,8 +17,8 @@ package org.jlib.container.sequence.insert;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
 
 /**
  * {@link ReplaceIndexSequence} that allows Elements to be added and removed.

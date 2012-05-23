@@ -12,10 +12,10 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.replace;
+package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ReplaceSequenceIterator;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequenceIterator;
 
 /**
  * <p>

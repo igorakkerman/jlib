@@ -8,7 +8,7 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
 /**
  * Empty {@link Sequence}.

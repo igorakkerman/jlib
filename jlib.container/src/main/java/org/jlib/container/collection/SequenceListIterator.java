@@ -4,8 +4,8 @@ import java.util.ListIterator;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.insert.InsertIndexSequenceIterator;
-import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
 /**
  * {@link SequenceIterator} that can be used as {@link ListIterator}.

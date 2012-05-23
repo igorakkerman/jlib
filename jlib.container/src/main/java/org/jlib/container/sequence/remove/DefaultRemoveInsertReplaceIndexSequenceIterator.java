@@ -17,10 +17,10 @@ package org.jlib.container.sequence.remove;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.add.AddIndexSequence;
 import org.jlib.container.sequence.index.IndexSequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.insert.DefaultInsertReplaceIndexSequenceIterator;
 import org.jlib.container.sequence.insert.InsertIndexSequence;
-import org.jlib.container.sequence.replace.ReplaceIndexSequence;
-import org.jlib.container.sequence.replace.ReplaceIndexSequenceIterator;
 
 /**
  * {@link ReplaceIndexSequenceIterator} over a {@link AddIndexSequence}.
