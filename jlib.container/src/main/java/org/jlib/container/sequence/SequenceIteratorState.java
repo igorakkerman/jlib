@@ -19,7 +19,7 @@ extends IteratorState<Element>, SequenceIterator<Element> {
      * 
      * @return {@link SequenceIteratorState} after {@link #previous()}
      */
-    public abstract SequenceIteratorState<Element> getPreviousState();
+    public SequenceIteratorState<Element> getPreviousState();
 
     /**
      * Returns the {@link SequenceIteratorState} switched to after
@@ -28,5 +28,5 @@ extends IteratorState<Element>, SequenceIterator<Element> {
      * @return {@link SequenceIteratorState} after {@link #next()}
      */
     @Override
-    public abstract SequenceIteratorState<Element> getNextState();
+    public SequenceIteratorState<Element> getNextState();
 }

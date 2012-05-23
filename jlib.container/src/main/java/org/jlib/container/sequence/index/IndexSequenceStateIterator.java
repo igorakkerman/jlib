@@ -31,7 +31,11 @@ public class IndexSequenceStateIterator<Element>
 extends AbstractSequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
-//    private final IndexSequenceIteratorState<Element> initialState;
+    private final SequenceIteratorState<Element> beginningOfSequenceState;
+
+    private final SequenceIteratorState<Element> middleOfSequenceState;
+
+    private final SequenceIteratorState<Element> endOfSequenceState;
 
     /**
      * Creates a new {@link IndexSequenceStateIterator} over the Elements of the
@@ -61,38 +65,26 @@ implements IndexSequenceIterator<Element> {
      */
     protected IndexSequenceStateIterator(final IndexSequence<Element> sequence, final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        super();
-
-        final IndexSequenceCursor<Element> cursor = new IndexSequenceCursor<Element>(sequence, startIndex) {
-
-            @Override
-            SequenceIteratorState<Element> getElementReturnedState() {
-                
-            }
-            
-        };
-
-        beginningOfSequenceState = new BeginningOfSequenceIteratorState() {
-
-            @Override
-            public SequenceIteratorState getNextState() {
-                return middleOfSequenceState;
-            }
-
-            @Override
-            public Object next() {
-            }
-        };
-            
-
-        createInitialState(final sequence, startIndex);
-
-        this.sequence = sequence;
-
-        nextElementIndex = startIndex;
+        super(selectInitialState(sequence, startIndex));
     }
 
-    private IndexSequenceIteratorState<Element> selectInitialState(final IndexSequenceCursor<Element> cursor) {
+    private SequenceIteratorState<Element> selectInitialState(final IndexSequence<Element> sequence,
+                                                              final int startIndex) {
+
+        final SequenceIteratorState<Element> beginningOfSequenceState =
+            new BeginningOfSequenceIteratorState<Element>() {
+
+                @Override
+                public Element next() {
+                    return sequence.getFirst();
+                }
+
+                @Override
+                public SequenceIteratorState<Element> getNextState() {
+                    return middleOfSequenceState;
+                }
+            };
+
         final int currentIndex = cursor.getNextElementIndex();
         final IndexSequence<Element> sequence = cursor.getSequence();
 
