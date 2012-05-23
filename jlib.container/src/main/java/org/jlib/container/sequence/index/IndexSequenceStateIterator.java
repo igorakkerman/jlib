@@ -152,6 +152,6 @@ implements IndexSequenceIterator<Element> {
 
     @Override
     protected void setCurrentStateToNext() {
-        currentState = currentState.getPreviousState();
+        currentState = currentState.getNextState();
     }
 }
