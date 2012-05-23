@@ -65,7 +65,7 @@ extends AbstractSequenceIteratorState<Element> {
      * @return Element stored at {@code elementIndex}
      */
     protected abstract Element getSequenceElement(final int elementIndex);
-
+    
     @Override
     public SequenceIteratorState<Element> getPreviousState() {
         return getReturnedElementState();

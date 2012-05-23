@@ -115,6 +115,7 @@ implements IndexSequenceIterator<Element> {
                 return endOfSequenceState;
 
             middleOfSequenceState.setNextElementIndex(nextElementIndex);
+
             return middleOfSequenceState;
         }
     }
