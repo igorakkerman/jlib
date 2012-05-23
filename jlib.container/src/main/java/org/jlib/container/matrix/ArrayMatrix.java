@@ -23,8 +23,7 @@ package org.jlib.container.matrix;
  * @author Igor Akkerman
  */
 public class ArrayMatrix<Entry>
-extends InitializeableIndexMatrix<Entry>
-implements IndexMatrix<Entry> {
+extends InitializeableIndexMatrix<Entry> {
 
     /**
      * delegate array of Entry items containing the data of this

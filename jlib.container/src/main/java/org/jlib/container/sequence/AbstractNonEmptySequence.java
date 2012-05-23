@@ -9,8 +9,7 @@ package org.jlib.container.sequence;
  * @author Igor Akkerman
  */
 public abstract class AbstractNonEmptySequence<Element>
-extends AbstractSequence<Element>
-implements Sequence<Element> {
+extends AbstractSequence<Element> {
 
     /**
      * Creates a new AbstractNonEmptySequence.
@@ -18,7 +17,6 @@ implements Sequence<Element> {
     public AbstractNonEmptySequence() {
         super();
     }
-
 
     @Override
     public final boolean isEmpty() {

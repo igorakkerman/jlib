@@ -27,11 +27,11 @@ import org.jlib.container.Container;
  * 
  * @param <Element>
  *        type of the elements held in the {@link Container}
+ * 
  * @author Igor Akkerman
  */
 public class ContainerCollection<Element>
-extends AbstractCollection<Element>
-implements Collection<Element> {
+extends AbstractCollection<Element> {
 
     /** adapted and backed {@link Container} */
     private final Container<Element> delegateContainer;
