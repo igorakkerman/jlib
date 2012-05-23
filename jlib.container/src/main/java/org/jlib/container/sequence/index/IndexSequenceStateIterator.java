@@ -33,21 +33,37 @@ extends AbstractSequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
     /**
-     * Initialized of
+     * Initializer of an {@link IndexSequenceStateIterator} creating the
+     * {@link SequenceIteratorState} instances. An own class is necessary as the
+     * {@link SequenceIteratorState} instances reference themselves.
      * 
+     * @param <Element>
+     *        type of elements held in the {@link Sequence}
      * 
      * @author Igor Akkerman
      */
     private static class Initializer<Element> {
 
+        /** traversed {@link IndexSequence} */
         private final IndexSequence<Element> sequence;
 
+        /** beginning of the {@link IndexSequence} */
         private final SequenceIteratorState<Element> beginningOfSequenceState;
 
+        /** middle of the {@link IndexSequence} */
         private final MiddleOfIndexSequenceIteratorState<Element> middleOfSequenceState;
 
+        /** end of the {@link IndexSequence} */
         private final SequenceIteratorState<Element> endOfSequenceState;
 
+        /**
+         * Creates a new
+         * {@link org.jlib.container.sequence.index.IndexSequenceStateIterator.Initializer}
+         * for the specified {@link IndexSequence}.
+         * 
+         * @param sequence
+         *        traversed {@link IndexSequence}
+         */
         private Initializer(final IndexSequence<Element> sequence) {
 
             this.sequence = sequence;
@@ -85,7 +101,7 @@ implements IndexSequenceIterator<Element> {
 
                 @Override
                 protected SequenceIteratorState<Element> getReturnedElementState() {
-                    return Initializer.this.getCurrentState(getNextElementIndex());
+                    return getCurrentState(getNextElementIndex());
                 }
 
                 @Override
