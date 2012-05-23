@@ -73,7 +73,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                                           final int firstIndex, final int lastIndex) {
         return indexSequenceCreator.createSequence(firstIndex, lastIndex);
     }
@@ -96,7 +96,7 @@ public final class IndexSequenceUtility {
     @SafeVarargs
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-                  Sequenze createASequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createASequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                                            final Element... elements) {
     // @formatter:on
         return createSequence(indexSequenceCreator, 0, elements);
@@ -125,7 +125,7 @@ public final class IndexSequenceUtility {
     @SafeVarargs
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                                           final int firstIndex, final Element... elements) {
     // @formatter:on
         final int elementsCount = elements.length;
@@ -158,7 +158,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-                  Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                                           final int size)
     throws IllegalArgumentException {
     // @formatter:on
@@ -189,7 +189,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+    Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                             final Container<Element> container) {
     // @formatter:on
         return createSequence(indexSequenceCreator, 0, container);
@@ -213,7 +213,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+    Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                             final Collection<Element> collection) {
     // @formatter:on
         return createSequence(indexSequenceCreator, 0, collection);
@@ -247,7 +247,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+    Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                             final int firstIndex, final Container<Element> elements)
     throws IllegalArgumentException {
     // @formatter:on
@@ -289,7 +289,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Element, Sequenze extends InitializeableIndexSequence<Element>> 
-    Sequenze createSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+    Sequenze createSequence(final IndexSequenceCreator<Element, Sequenze> indexSequenceCreator,
                             final int firstIndex, final Collection<Element> elements)
     throws IllegalArgumentException {
     // @formatter:on
@@ -351,7 +351,7 @@ public final class IndexSequenceUtility {
      * @return new {@link IndexSequence} of {@link Integer} Elements
      */
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequenceFrom(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequenceFrom(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                      final int firstIndex, final Integer... elements) {
         // @formatter:on
         return createSequence(indexSequenceCreator, firstIndex, elements);
@@ -375,7 +375,7 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Sequenze extends InitializeableIndexSequence<Integer>> 
-                  Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Sequenze> indexSequenceCreator,
+                  Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                       final Integer... elements) {
         // @formatter:on
         return createIntegerIndexSequenceFrom(indexSequenceCreator, 0, elements);
