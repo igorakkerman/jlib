@@ -12,49 +12,17 @@ import org.jlib.container.sequence.SequenceIteratorState;
  * 
  * @author Igor Akkerman
  */
-public class MiddleOfIndexSequenceIteratorState<Element>
+public abstract class MiddleOfIndexSequenceIteratorState<Element>
 extends AbstractSequenceIteratorState<Element> {
-
-//    /** index of the last returned Element */
-//    private int lastReturnedElementIndex;
-
-    /** traversed sequence */
-    private final IndexSequence<Element> sequence;
 
     /** index of the next Element */
     private int nextElementIndex;
 
-    /** beginning of {@link IndexSequence} {@link SequenceIteratorState} */
-    private final SequenceIteratorState<Element> beginningOfSequenceState;
-
-    /** end of {@link IndexSequence} {@link SequenceIteratorState} */
-    private final SequenceIteratorState<Element> endOfSequenceState;
-
     /**
      * Creates a new {@link MiddleOfIndexSequenceIteratorState}.
-     * 
-     * @param sequence
-     *        traversed {@link IndexSequence}
-     * 
-     * @param nextElementIndex
-     *        integer specifying the index of the Element returned by
-     *        {@link #next()}
-     * 
-     * @param beginningOfSequenceState
-     *        {@link SequenceIteratorState} used at the beginning of the
-     *        {@link IndexSequence}
-     * 
-     * @param endOfSequenceState
-     *        {@link SequenceIteratorState} used at the end of the
-     *        {@link IndexSequence}
      */
-    public MiddleOfIndexSequenceIteratorState(final IndexSequence<Element> sequence, final int nextElementIndex,
-                                              final SequenceIteratorState<Element> beginningOfSequenceState,
-                                              final SequenceIteratorState<Element> endOfSequenceState) {
-        this.sequence = sequence;
-        this.nextElementIndex = nextElementIndex;
-        this.beginningOfSequenceState = beginningOfSequenceState;
-        this.endOfSequenceState = endOfSequenceState;
+    public MiddleOfIndexSequenceIteratorState() {
+        super();
     }
 
     @Override
@@ -71,7 +39,7 @@ extends AbstractSequenceIteratorState<Element> {
     public Element next()
     throws NoSuchSequenceElementException {
         try {
-            return sequence.get(nextElementIndex ++);
+            return getSequenceElement(nextElementIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoSuchSequenceElementException(exception);
@@ -81,20 +49,25 @@ extends AbstractSequenceIteratorState<Element> {
     @Override
     public Element previous() {
         try {
-            return sequence.get(nextElementIndex -- - 1);
+            return getSequenceElement(nextElementIndex -- - 1);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoSuchSequenceElementException(exception);
         }
     }
 
-    @Override
-    public SequenceIteratorState<Element> getPreviousState() {
-        return getReturnedElementState();
-    }
+    /**
+     * Returns the Element stored at the specified index in the {@link Sequence}
+     * 
+     * @param elementIndex
+     *        integer specifying the index of the Element
+     * 
+     * @return Element stored at {@code elementIndex}
+     */
+    protected abstract Element getSequenceElement(final int elementIndex);
 
     @Override
-    public SequenceIteratorState<Element> getNextState() {
+    public SequenceIteratorState<Element> getPreviousState() {
         return getReturnedElementState();
     }
 
@@ -103,13 +76,29 @@ extends AbstractSequenceIteratorState<Element> {
      * 
      * @return new {@link SequenceIteratorState}
      */
-    private SequenceIteratorState<Element> getReturnedElementState() {
-        if (nextElementIndex == sequence.getFirstIndex() - 1)
-            return beginningOfSequenceState;
+    protected abstract SequenceIteratorState<Element> getReturnedElementState();
 
-        if (nextElementIndex == sequence.getLastIndex())
-            return endOfSequenceState;
+    @Override
+    public SequenceIteratorState<Element> getNextState() {
+        return getReturnedElementState();
+    }
 
-        return this;
+    /**
+     * Returns the index of the next Element of the {@link IndexSequence}.
+     * 
+     * @return integer specifying the index of the next Element
+     */
+    public int getNextElementIndex() {
+        return nextElementIndex;
+    }
+
+    /**
+     * Registers the index of the next Element of the {@link IndexSequence}.
+     * 
+     * @param nextElementIndex
+     *        integer specifying the index of the next Element
+     */
+    public void setNextElementIndex(final int nextElementIndex) {
+        this.nextElementIndex = nextElementIndex;
     }
 }
