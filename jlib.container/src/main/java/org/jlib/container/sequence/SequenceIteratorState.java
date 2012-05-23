@@ -14,7 +14,7 @@ public interface SequenceIteratorState<Element>
 extends IteratorState<Element>, SequenceIterator<Element> {
 
     /**
-     * Returns the {@link SequenceIteratorState} switched to after
+     * Returns the {@link SequenceIteratorState} switched to after a call to
      * {@link #previous()}.
      * 
      * @return {@link SequenceIteratorState} after {@link #previous()}
@@ -22,7 +22,7 @@ extends IteratorState<Element>, SequenceIterator<Element> {
     public SequenceIteratorState<Element> getPreviousState();
 
     /**
-     * Returns the {@link SequenceIteratorState} switched to after
+     * Returns the {@link SequenceIteratorState} switched to after a call to
      * {@link #next()}.
      * 
      * @return {@link SequenceIteratorState} after {@link #next()}

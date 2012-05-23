@@ -13,16 +13,25 @@ import org.jlib.container.sequence.SequenceIteratorState;
  * @author Igor Akkerman
  */
 public abstract class MiddleOfIndexSequenceIteratorState<Element>
-extends AbstractSequenceIteratorState<Element> {
+extends AbstractSequenceIteratorState<Element>
+implements IndexSequenceIteratorState<Element> {
 
     /** index of the next Element */
     private int nextElementIndex;
 
+    /** traversed {@link IndexSequence} */
+    private final IndexSequence<Element> sequence;
+
     /**
      * Creates a new {@link MiddleOfIndexSequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link IndexSequence}
      */
-    public MiddleOfIndexSequenceIteratorState() {
+    public MiddleOfIndexSequenceIteratorState(final IndexSequence<Element> sequence) {
         super();
+
+        this.sequence = sequence;
     }
 
     @Override
@@ -63,11 +72,22 @@ extends AbstractSequenceIteratorState<Element> {
      *        integer specifying the index of the Element
      * 
      * @return Element stored at {@code elementIndex}
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code elementIndex} is out of the index bounds
      */
-    protected abstract Element getSequenceElement(final int elementIndex);
-    
+    private Element getSequenceElement(final int elementIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return sequence.get(elementIndex);
+    }
+
     @Override
-    public SequenceIteratorState<Element> getPreviousState() {
+    public IndexSequenceIteratorState<Element> getPreviousState() {
+        return getReturnedElementState();
+    }
+
+    @Override
+    public IndexSequenceIteratorState<Element> getNextState() {
         return getReturnedElementState();
     }
 
@@ -76,18 +96,14 @@ extends AbstractSequenceIteratorState<Element> {
      * 
      * @return new {@link SequenceIteratorState}
      */
-    protected abstract SequenceIteratorState<Element> getReturnedElementState();
+    protected abstract IndexSequenceIteratorState<Element> getReturnedElementState();
 
     @Override
-    public SequenceIteratorState<Element> getNextState() {
-        return getReturnedElementState();
+    public int getPreviousElementIndex() {
+        return nextElementIndex - 1;
     }
 
-    /**
-     * Returns the index of the next Element of the {@link IndexSequence}.
-     * 
-     * @return integer specifying the index of the next Element
-     */
+    @Override
     public int getNextElementIndex() {
         return nextElementIndex;
     }

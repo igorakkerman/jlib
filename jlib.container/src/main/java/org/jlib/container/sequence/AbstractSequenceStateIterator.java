@@ -11,62 +11,67 @@ import java.util.NoSuchElementException;
  * 
  * @author Igor Akkerman
  */
-public class AbstractSequenceStateIterator<Element>
+public abstract class AbstractSequenceStateIterator<Element>
 extends AbstractSequenceIterator<Element> {
-
-    /** current {@link SequenceIteratorState} */
-    private SequenceIteratorState<Element> currentState;
 
     /**
      * Creates a new {@link AbstractSequenceStateIterator}.
-     * 
-     * @param initialState
-     *        initial {@link SequenceIteratorState}
      */
-    protected AbstractSequenceStateIterator(final SequenceIteratorState<Element> initialState) {
+    protected AbstractSequenceStateIterator() {
         super();
-
-        currentState = initialState;
-    }
-
-    /**
-     * Registers the current {@link SequenceIteratorState} of this
-     * {@link AbstractSequenceStateIterator}.
-     * 
-     * @param currentState
-     *        current {@link SequenceIteratorState}
-     */
-    protected void setCurrentState(final SequenceIteratorState<Element> currentState) {
-        this.currentState = currentState;
     }
 
     @Override
     public final boolean hasPrevious() {
-        return currentState.hasPrevious();
+        return getCurrentState().hasPrevious();
     }
 
     @Override
     public final Element previous()
     throws NoSuchElementException {
-        final Element previousElement = currentState.previous();
+        final Element previousElement = getCurrentState().previous();
 
-        currentState = currentState.getPreviousState();
+        setCurrentStateToPrevious();
 
         return previousElement;
     }
 
     @Override
     public final boolean hasNext() {
-        return currentState.hasNext();
+        return getCurrentState().hasNext();
     }
 
     @Override
     public final Element next()
     throws NoSuchElementException {
-        final Element nextElement = currentState.next();
+        final Element nextElement = getCurrentState().next();
 
-        currentState = currentState.getNextState();
+        setCurrentStateToNext();
 
         return nextElement;
     }
+
+    /**
+     * Returns the current {@link SequenceIteratorState} of this
+     * {@link AbstractSequenceStateIterator}.
+     * 
+     * @return current {@link SequenceIteratorState}
+     */
+    protected abstract SequenceIteratorState<Element> getCurrentState();
+
+    /**
+     * Registers the current {@link SequenceIteratorState} of this
+     * {@link AbstractSequenceStateIterator} to the
+     * {@link SequenceIteratorState} returned by
+     * {@code getCurrentState().getPreviousState()}.
+     */
+    protected abstract void setCurrentStateToPrevious();
+
+    /**
+     * Registers the current {@link SequenceIteratorState} of this
+     * {@link AbstractSequenceStateIterator} to the
+     * {@link SequenceIteratorState} returned by
+     * {@code getCurrentState().getNextState()}.
+     */
+    protected abstract void setCurrentStateToNext();
 }

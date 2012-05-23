@@ -15,8 +15,6 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceStateIterator;
-import org.jlib.container.sequence.BeginningOfSequenceIteratorState;
-import org.jlib.container.sequence.EndOfSequenceIteratorState;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
 
@@ -32,109 +30,20 @@ public class IndexSequenceStateIterator<Element>
 extends AbstractSequenceStateIterator<Element>
 implements IndexSequenceIterator<Element> {
 
-    /**
-     * Initializer of an {@link IndexSequenceStateIterator} creating the
-     * {@link SequenceIteratorState} instances. An own class is necessary as the
-     * {@link SequenceIteratorState} instances reference themselves.
-     * 
-     * @param <Element>
-     *        type of elements held in the {@link Sequence}
-     * 
-     * @author Igor Akkerman
-     */
-    private static class Initializer<Element> {
+    /** traversed {@link IndexSequence} */
+    private final IndexSequence<Element> sequence;
 
-        /** traversed {@link IndexSequence} */
-        private final IndexSequence<Element> sequence;
+    /** beginning of the {@link IndexSequence} */
+    private final IndexSequenceIteratorState<Element> beginningOfSequenceState;
 
-        /** beginning of the {@link IndexSequence} */
-        private final SequenceIteratorState<Element> beginningOfSequenceState;
+    /** middle of the {@link IndexSequence} */
+    private final MiddleOfIndexSequenceIteratorState<Element> middleOfSequenceState;
 
-        /** middle of the {@link IndexSequence} */
-        private final MiddleOfIndexSequenceIteratorState<Element> middleOfSequenceState;
+    /** end of the {@link IndexSequence} */
+    private final IndexSequenceIteratorState<Element> endOfSequenceState;
 
-        /** end of the {@link IndexSequence} */
-        private final SequenceIteratorState<Element> endOfSequenceState;
-
-        /**
-         * Creates a new
-         * {@link org.jlib.container.sequence.index.IndexSequenceStateIterator.Initializer}
-         * for the specified {@link IndexSequence}.
-         * 
-         * @param sequence
-         *        traversed {@link IndexSequence}
-         */
-        private Initializer(final IndexSequence<Element> sequence) {
-
-            this.sequence = sequence;
-
-            beginningOfSequenceState = new BeginningOfSequenceIteratorState<Element>() {
-
-                @Override
-                public Element next() {
-                    return sequence.getFirst();
-                }
-
-                @Override
-                public SequenceIteratorState<Element> getNextState() {
-                    return middleOfSequenceState;
-                }
-            };
-
-            endOfSequenceState = new EndOfSequenceIteratorState<Element>() {
-
-                @Override
-                public Element previous()
-                throws NoSuchSequenceElementException {
-                    return sequence.getLast();
-                }
-
-                @Override
-                public SequenceIteratorState<Element> getPreviousState() {
-                    middleOfSequenceState.setNextElementIndex(sequence.getLastIndex() - 1);
-
-                    return middleOfSequenceState;
-                }
-            };
-
-            middleOfSequenceState = new MiddleOfIndexSequenceIteratorState<Element>() {
-
-                @Override
-                protected SequenceIteratorState<Element> getReturnedElementState() {
-                    return getCurrentState(getNextElementIndex());
-                }
-
-                @Override
-                protected Element getSequenceElement(final int elementIndex) {
-                    return sequence.get(elementIndex);
-                }
-            };
-        }
-
-        /**
-         * Returns the new {@link SequenceIteratorState} after an Element has
-         * been returned and the specified index of the next Element has been
-         * set.
-         * 
-         * @param nextElementIndex
-         *        integer specifying the index of the next Element;
-         *        {@code sequence.getLastIndex + 1} represents the end of the
-         *        {@link IndexSequence}
-         * 
-         * @return new {@link SequenceIteratorState}
-         */
-        private SequenceIteratorState<Element> getCurrentState(final int nextElementIndex) {
-            if (nextElementIndex == sequence.getFirstIndex())
-                return beginningOfSequenceState;
-
-            if (nextElementIndex == sequence.getLastIndex() + 1)
-                return endOfSequenceState;
-
-            middleOfSequenceState.setNextElementIndex(nextElementIndex);
-
-            return middleOfSequenceState;
-        }
-    }
+    /** current {@link IndexSequenceIteratorState} */
+    private IndexSequenceIteratorState<Element> currentState;
 
     /**
      * Creates a new {@link IndexSequenceStateIterator} over the Elements of the
@@ -164,18 +73,96 @@ implements IndexSequenceIterator<Element> {
      */
     protected IndexSequenceStateIterator(final IndexSequence<Element> sequence, final int initialNextIndex)
     throws SequenceIndexOutOfBoundsException {
-        super(new Initializer<Element>(sequence).getCurrentState(initialNextIndex));
+        super();
+
+        this.sequence = sequence;
+
+        beginningOfSequenceState = new BeginningOfIndexSequenceIteratorState<Element>(sequence) {
+
+            @Override
+            public Element next() {
+                return sequence.getFirst();
+            }
+
+            @Override
+            public IndexSequenceIteratorState<Element> getNextState() {
+                return middleOfSequenceState;
+            }
+        };
+
+        endOfSequenceState = new EndOfIndexSequenceIteratorState<Element>(sequence) {
+
+            @Override
+            public Element previous()
+            throws NoSuchSequenceElementException {
+                return sequence.getLast();
+            }
+
+            @Override
+            public IndexSequenceIteratorState<Element> getPreviousState() {
+                middleOfSequenceState.setNextElementIndex(sequence.getLastIndex() - 1);
+
+                return middleOfSequenceState;
+            }
+        };
+
+        middleOfSequenceState = new MiddleOfIndexSequenceIteratorState<Element>(sequence) {
+
+            @Override
+            protected IndexSequenceIteratorState<Element> getReturnedElementState() {
+                return getCurrentState(getNextElementIndex());
+            }
+        };
+
+        currentState = getCurrentState(initialNextIndex);
+    }
+
+    /**
+     * Returns the new {@link SequenceIteratorState} after an Element has been
+     * returned and the specified index of the next Element has been set.
+     * 
+     * @param nextElementIndex
+     *        integer specifying the index of the next Element;
+     *        {@code sequence.getLastIndex + 1} represents the end of the
+     *        {@link IndexSequence}
+     * 
+     * @return new {@link IndexSequenceIteratorState}
+     */
+    private IndexSequenceIteratorState<Element> getCurrentState(final int nextElementIndex) {
+        if (nextElementIndex == sequence.getFirstIndex())
+            return beginningOfSequenceState;
+
+        if (nextElementIndex == sequence.getLastIndex() + 1)
+            return endOfSequenceState;
+
+        middleOfSequenceState.setNextElementIndex(nextElementIndex);
+
+        return middleOfSequenceState;
     }
 
     @Override
-    public int getPreviousElementIndex() {
-        // TODO: implement
-        return 0;
+    public int getPreviousElementIndex()
+    throws NoSuchSequenceElementException {
+        return currentState.getPreviousElementIndex();
     }
 
     @Override
     public int getNextElementIndex() {
-        // TODO: implement
-        return 0;
+        return currentState.getNextElementIndex();
+    }
+
+    @Override
+    protected IndexSequenceIteratorState<Element> getCurrentState() {
+        return currentState;
+    }
+
+    @Override
+    protected void setCurrentStateToPrevious() {
+        currentState = currentState.getPreviousState();
+    }
+
+    @Override
+    protected void setCurrentStateToNext() {
+        currentState = currentState.getPreviousState();
     }
 }

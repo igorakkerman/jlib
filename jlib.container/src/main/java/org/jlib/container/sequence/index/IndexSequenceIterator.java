@@ -22,7 +22,7 @@ import org.jlib.container.sequence.SequenceIterator;
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
- *        
+ * 
  * @author Igor Akkerman
  */
 public interface IndexSequenceIterator<Element>
@@ -31,10 +31,13 @@ extends SequenceIterator<Element> {
     /**
      * Returns the previous Element of this Iterator.
      * 
-     * @return the previous Element of this Iterator; returns
-     *         {@code getFirstIndex() - 1} if there is no previous Element
+     * @return the previous Element of this Iterator
+     * 
+     * @throws NoSuchSequenceElementException
+     *         sif there is no previous Element
      */
-    public int getPreviousElementIndex();
+    public int getPreviousElementIndex()
+    throws NoSuchSequenceElementException;
 
     /**
      * Returns the next Element of this Iterator.
@@ -42,9 +45,9 @@ extends SequenceIterator<Element> {
      * @return the next Element of this Iterator; returns
      *         {@code getLastIndex() + 1} if there is no next Element
      * 
-     * @throws IllegalStateException
-     *         if no Element has been returned by this
-     *         {@link IndexSequenceIterator}
+     * @throws NoSuchSequenceElementException
+     *         sif there is no next Element
      */
-    public int getNextElementIndex();
+    public int getNextElementIndex()
+    throws NoSuchSequenceElementException;
 }

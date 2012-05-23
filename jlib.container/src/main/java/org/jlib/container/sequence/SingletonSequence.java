@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-
 /**
  * Sequence containing exactly one Element.
  * 
@@ -56,7 +55,7 @@ extends AbstractNonEmptySequence<Element> {
 
     @Override
     public SequenceIterator<Element> createIterator() {
-        return new AbstractSequenceStateIterator<Element>(beginningOfSequenceState);
+        return new DefaultSequenceStateIterator<Element>(beginningOfSequenceState);
     }
 
     @Override
