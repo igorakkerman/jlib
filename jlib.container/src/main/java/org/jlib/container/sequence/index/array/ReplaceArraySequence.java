@@ -1,4 +1,4 @@
-package org.jlib.container.sequence.array;
+package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;

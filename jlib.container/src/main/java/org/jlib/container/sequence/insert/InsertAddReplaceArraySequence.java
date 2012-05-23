@@ -2,8 +2,8 @@ package org.jlib.container.sequence.insert;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.array.AddReplaceArraySequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.array.AddReplaceArraySequence;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 

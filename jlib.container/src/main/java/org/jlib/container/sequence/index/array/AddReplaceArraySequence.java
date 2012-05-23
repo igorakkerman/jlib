@@ -1,4 +1,4 @@
-package org.jlib.container.sequence.array;
+package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 

@@ -12,7 +12,7 @@
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.array;
+package org.jlib.container.sequence.index.array;
 
 import java.util.Arrays;
 

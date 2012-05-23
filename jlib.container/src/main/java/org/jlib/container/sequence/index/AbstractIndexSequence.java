@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
-import org.jlib.container.sequence.array.ArraySequence;
+import org.jlib.container.sequence.index.array.ArraySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
