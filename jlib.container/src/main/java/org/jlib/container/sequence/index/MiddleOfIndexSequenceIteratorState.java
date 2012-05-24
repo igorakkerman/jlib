@@ -54,7 +54,7 @@ implements IndexSequenceIteratorState<Element> {
             return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceElementException(exception);
+            throw new NoSuchSequenceElementException(sequence, exception);
         }
     }
 
@@ -64,7 +64,7 @@ implements IndexSequenceIteratorState<Element> {
             return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex -- - 1);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceElementException(exception);
+            throw new NoSuchSequenceElementException(sequence, exception);
         }
     }
 
