@@ -1,7 +1,7 @@
 package org.jlib.text.transformer;
 
+import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.add.AddSequence;
 
 /**
  * {@link StringTransformer} transforming Strings using a sequence of specified
