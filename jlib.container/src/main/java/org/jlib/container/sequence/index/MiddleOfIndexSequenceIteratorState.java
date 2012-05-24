@@ -23,6 +23,7 @@ implements IndexSequenceIteratorState<Element> {
     /** traversed {@link IndexSequence} */
     private final IndexSequence<Element> sequence;
 
+    /** index of recently returned Element */
     private int recentlyReturnedElementIndex;
 
     /**
@@ -119,5 +120,15 @@ implements IndexSequenceIteratorState<Element> {
      */
     public void setNextElementIndex(final int nextElementIndex) {
         this.nextElementIndex = nextElementIndex;
+    }
+
+    /**
+     * Returns the index of the recently returned Element by this
+     * {@link MiddleOfIndexSequenceIteratorState}.
+     * 
+     * @return integer specifying the recentlyReturnedElementIndex
+     */
+    protected int getRecentlyRetrievedElementIndex() {
+        return recentlyReturnedElementIndex;
     }
 }
