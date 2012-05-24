@@ -13,5 +13,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public interface ReplaceIndexSequenceIteratorState<Element>
 extends IndexSequenceIteratorState<Element>, ReplaceSequenceIteratorState<Element> {
-    // unifying
+
+    @Override
+    public ReplaceIndexSequenceIteratorState<Element> getReplacedState();
 }
