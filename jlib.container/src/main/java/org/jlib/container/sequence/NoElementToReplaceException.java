@@ -2,18 +2,16 @@ package org.jlib.container.sequence;
 
 /**
  * {@link IllegalStateException} thrown when
- * {@link ReplaceSequenceIterator#replace(Object)} has been called without.
+ * {@link ReplaceSequenceIterator#replace(Object)} has been called without a
+ * previously returned Element.
  * 
  * @author Igor Akkerman
  */
 public class NoElementToReplaceException
-extends IllegalStateException {
+extends IllegalSequenceStateException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 7078599807599575854L;
-
-    /** traversed {@link ReplaceSequence} */
-    private final ReplaceSequence<?> sequence;
+    private static final long serialVersionUID = -4930329712329638796L;
 
     /**
      * Creates a new {@link NoElementToReplaceException}.
@@ -22,32 +20,6 @@ extends IllegalStateException {
      *        traversed {@link ReplaceSequence}
      */
     public NoElementToReplaceException(final ReplaceSequence<?> sequence) {
-        super(sequence.toString());
-
-        this.sequence = sequence;
-    }
-
-    /**
-     * Creates a new {@link NoElementToReplaceException}.
-     * 
-     * @param sequence
-     *        traversed {@link ReplaceSequence}
-     * 
-     * @param message
-     *        String specifying the error message
-     */
-    public NoElementToReplaceException(final ReplaceSequence<?> sequence, final String message) {
-        super(message);
-
-        this.sequence = sequence;
-    }
-
-    /**
-     * Returns the traversed {@link ReplaceSequence}.
-     * 
-     * @return traversed {@link ReplaceSequence}
-     */
-    public ReplaceSequence<?> getSequence() {
-        return sequence;
+        super(sequence);
     }
 }
