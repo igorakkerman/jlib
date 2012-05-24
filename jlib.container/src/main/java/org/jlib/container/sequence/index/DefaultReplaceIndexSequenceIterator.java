@@ -79,7 +79,7 @@ implements ReplaceIndexSequenceIterator<Element> {
         throws IllegalStateException {}
 
         @Override
-        public ReplaceSequenceIteratorState<Element> getReplaceState() {
+        public ReplaceSequenceIteratorState<Element> getReplacedState() {
             return null;
         }
     };
@@ -125,7 +125,7 @@ implements ReplaceIndexSequenceIterator<Element> {
         throws IllegalStateException {}
 
         @Override
-        public ReplaceSequenceIteratorState<Element> getReplaceState() {
+        public ReplaceSequenceIteratorState<Element> getReplacedState() {
             return null;
         }
     };

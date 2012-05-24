@@ -18,5 +18,5 @@ extends SequenceIteratorState<Element>, ReplaceSequenceIterator<Element> {
      * @return {@link ReplaceSequenceIteratorState} after a call to
      *         {@link #replace(Object)}
      */
-    public ReplaceSequenceIteratorState<Element> getReplaceState();
+    public ReplaceSequenceIteratorState<Element> getReplacedState();
 }

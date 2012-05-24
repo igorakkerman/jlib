@@ -37,7 +37,7 @@ implements ReplaceSequenceIteratorState<Element> {
     }
 
     @Override
-    public ReplaceSequenceIteratorState<Element> getReplaceState() {
+    public ReplaceSequenceIteratorState<Element> getReplacedState() {
         return null;
     }
 }

@@ -2,7 +2,6 @@ package org.jlib.container.sequence.index;
 
 import java.util.NoSuchElementException;
 
-import org.jlib.container.sequence.AbstractSequenceIteratorState;
 import org.jlib.container.sequence.SequenceIteratorState;
 
 /**
@@ -10,19 +9,17 @@ import org.jlib.container.sequence.SequenceIteratorState;
  * 
  * @author Igor Akkerman
  */
-public class NoRretrievedElementIndexState<Element>
-extends AbstractSequenceIteratorState<Element> {
+public class NoElementIndexSequenceIteratorState<Element>
+extends AbstractIndexSequenceIteratorState<Element> {
 
     private final StateIndexSequenceIterator<Element> parentIterator;
 
     private int nextElementIndex;
 
     /**
-     * Creates a new {@link NoRretrievedElementIndexState}.
+     * Creates a new {@link NoElementIndexSequenceIteratorState}.
      */
-    public NoRretrievedElementIndexState(final StateIndexSequenceIterator<Element> parentIterator) {
-        this.parentIterator = parentIterator;
-    }
+    public NoElementIndexSequenceIteratorState() {}
 
     @Override
     public SequenceIteratorState<Element> getPreviousState() {
