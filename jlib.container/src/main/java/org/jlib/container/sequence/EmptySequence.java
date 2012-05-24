@@ -1,13 +1,10 @@
-package org.jlib.container.sequence.empty;
+package org.jlib.container.sequence;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.AbstractSequence;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIterator;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
 /**

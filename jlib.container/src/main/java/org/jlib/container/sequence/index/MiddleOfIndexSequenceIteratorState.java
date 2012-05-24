@@ -1,6 +1,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceIteratorState;
+import org.jlib.container.sequence.NoSuchSequenceElementException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
 
@@ -21,6 +22,8 @@ implements IndexSequenceIteratorState<Element> {
 
     /** traversed {@link IndexSequence} */
     private final IndexSequence<Element> sequence;
+
+    private int recentlyReturnedElementIndex;
 
     /**
      * Creates a new {@link MiddleOfIndexSequenceIteratorState}.
@@ -48,7 +51,7 @@ implements IndexSequenceIteratorState<Element> {
     public Element next()
     throws NoSuchSequenceElementException {
         try {
-            return getSequenceElement(nextElementIndex ++);
+            return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoSuchSequenceElementException(exception);
@@ -58,7 +61,7 @@ implements IndexSequenceIteratorState<Element> {
     @Override
     public Element previous() {
         try {
-            return getSequenceElement(nextElementIndex -- - 1);
+            return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex -- - 1);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoSuchSequenceElementException(exception);

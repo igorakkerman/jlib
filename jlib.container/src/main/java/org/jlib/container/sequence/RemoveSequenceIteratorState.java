@@ -1,7 +1,5 @@
-package org.jlib.container.sequence.remove;
+package org.jlib.container.sequence;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIteratorState;
 
 /**
  * State of a {@link RemoveSequenceIterator}.

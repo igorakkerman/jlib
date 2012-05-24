@@ -1,12 +1,12 @@
-package org.jlib.container.sequence.remove;
+package org.jlib.container.sequence;
 
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.RemoveIndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.array.AddReplaceArraySequence;
-import org.jlib.container.sequence.insert.InsertAddReplaceArraySequence;
+import org.jlib.container.sequence.index.array.InsertAddReplaceArraySequence;
 
 /**
  * {@link AddReplaceArraySequence} into which Elements can be inserted.

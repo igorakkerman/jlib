@@ -12,11 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.remove;
+package org.jlib.container.sequence;
 
 import org.jlib.container.RemoveContainer;
-import org.jlib.container.sequence.ReplaceSequence;
-import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link ReplaceSequence} that allows Elements to be added and removed.

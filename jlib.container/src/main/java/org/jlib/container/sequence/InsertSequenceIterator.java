@@ -12,10 +12,8 @@
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.insert;
+package org.jlib.container.sequence;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIterator;
 
 /**
  * Iterator over a {@link InsertSequence}.

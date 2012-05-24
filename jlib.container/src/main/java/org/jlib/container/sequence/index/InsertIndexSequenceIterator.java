@@ -1,8 +1,8 @@
-package org.jlib.container.sequence.insert;
+package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.InsertSequenceIterator;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
-import org.jlib.container.sequence.index.IndexSequenceIterator;
 
 /**
  * {@link SequenceIterator} over the elements of an {@link InsertIndexSequence}.

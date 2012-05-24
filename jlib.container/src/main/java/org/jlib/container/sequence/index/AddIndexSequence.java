@@ -12,10 +12,10 @@
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.add;
+package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequence;
 
 /**
  * {@link IndexSequence} that allows Elements to be added.

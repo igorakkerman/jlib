@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.NoSuchSequenceElementException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
 

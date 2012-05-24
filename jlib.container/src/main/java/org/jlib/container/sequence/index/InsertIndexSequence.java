@@ -12,13 +12,11 @@
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.insert;
+package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * {@link ReplaceIndexSequence} that allows Elements to be added and removed.

@@ -1,9 +1,7 @@
-package org.jlib.container.sequence.empty;
+package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIterator;
 import org.jlib.container.sequence.index.IndexSequenceIterator;
 import org.jlib.core.iterator.AbstractIterator;
 

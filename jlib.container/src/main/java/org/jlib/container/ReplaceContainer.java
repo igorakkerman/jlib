@@ -1,7 +1,7 @@
 package org.jlib.container;
 
+import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.add.AddSequence;
 
 /**
  * <p>

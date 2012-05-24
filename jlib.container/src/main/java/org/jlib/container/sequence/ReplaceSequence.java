@@ -15,7 +15,6 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.ReplaceContainer;
-import org.jlib.container.sequence.add.AddSequence;
 
 /**
  * <p>

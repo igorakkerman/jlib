@@ -1,6 +1,6 @@
-package org.jlib.container.sequence.remove;
+package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.index.IndexSequenceIterator;
+import org.jlib.container.sequence.RemoveSequenceIterator;
 
 @SuppressWarnings("javadoc")
 public interface RemoveIndexSequenceIterator<RemoveIndexSequenceElement>
