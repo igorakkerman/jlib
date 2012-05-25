@@ -6,10 +6,13 @@ package org.jlib.container.sequence;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class AbstractSequenceIteratorState<Element>
-extends AbstractSequenceIterator<Element>
+public abstract class AbstractSequenceIteratorState<Element, Sequenze extends Sequence<Element>>
+extends AbstractSequenceIterator<Element, Sequenze>
 implements SequenceIteratorState<Element> {
 
     // unifying class

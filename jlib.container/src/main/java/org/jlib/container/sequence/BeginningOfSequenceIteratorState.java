@@ -9,10 +9,13 @@ import java.util.NoSuchElementException;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class BeginningOfSequenceIteratorState<Element>
-extends AbstractSequenceIteratorState<Element> {
+public abstract class BeginningOfSequenceIteratorState<Element, Sequenze extends Sequence<Element>>
+extends AbstractSequenceIteratorState<Element, Sequenze> {
 
     /**
      * Creates a new {@link BeginningOfSequenceIteratorState}.

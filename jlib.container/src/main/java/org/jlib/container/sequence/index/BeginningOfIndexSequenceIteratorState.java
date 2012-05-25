@@ -12,41 +12,36 @@ import org.jlib.container.sequence.SequenceIterator;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class BeginningOfIndexSequenceIteratorState<Element>
-extends BeginningOfSequenceIteratorState<Element>
+public abstract class BeginningOfIndexSequenceIteratorState<Element, Sequenze extends IndexSequence<Element>>
+extends BeginningOfSequenceIteratorState<Element, Sequenze>
 implements IndexSequenceIteratorState<Element> {
-
-    /** traversed {@link IndexSequence} */
-    private final IndexSequence<Element> sequence;
 
     /**
      * Creates a new {@link BeginningOfIndexSequenceIteratorState}.
-     * 
-     * @param sequence
-     *        traversed {@link IndexSequence}
      */
-    public BeginningOfIndexSequenceIteratorState(final IndexSequence<Element> sequence) {
+    public BeginningOfIndexSequenceIteratorState() {
         super();
-
-        this.sequence = sequence;
     }
 
     @Override
     public int getPreviousElementIndex()
     throws NoSuchSequenceElementException {
-        throw new NoSuchSequenceElementException(sequence);
+        throw new NoSuchSequenceElementException(getSequence());
     }
 
     @Override
     public int getNextElementIndex() {
-        return sequence.getFirstIndex();
+        return getSequence().getFirstIndex();
     }
 
     @Override
     public Element next() {
-        return sequence.getFirst();
+        return getSequence().getFirst();
     }
 
     @Override

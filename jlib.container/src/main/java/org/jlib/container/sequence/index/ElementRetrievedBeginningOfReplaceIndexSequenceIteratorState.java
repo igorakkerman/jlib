@@ -1,6 +1,5 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.BeginningOfSequenceIteratorState;
 import org.jlib.container.sequence.NoElementToReplaceException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIterator;
@@ -15,22 +14,15 @@ import org.jlib.container.sequence.SequenceIterator;
  * @author Igor Akkerman
  */
 public abstract class ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState<Element>
-extends BeginningOfSequenceIteratorState<Element>
+extends BeginningOfIndexSequenceIteratorState<Element>
 implements ReplaceIndexSequenceIteratorState<Element> {
 
-    /** traversed {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequence<Element> sequence;
-
     /**
-     * Creates a new {@link ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState}.
-     * 
-     * @param sequence
-     *        traversed {@link ReplaceIndexSequence}
+     * Creates a new
+     * {@link ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState}.
      */
-    public ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState(final ReplaceIndexSequence<Element> sequence) {
+    public ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState() {
         super();
-
-        this.sequence = sequence;
     }
 
     @Override
@@ -41,6 +33,6 @@ implements ReplaceIndexSequenceIteratorState<Element> {
     @Override
     public void replace(final Element element)
     throws NoElementToReplaceException {
-        sequence.replace(sequence.getFirstIndex(), element);
+        getSequence().replace(getSequence().getFirstIndex(), element);
     }
 }

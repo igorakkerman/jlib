@@ -8,9 +8,12 @@ import org.jlib.core.iterator.AbstractIterator;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class AbstractSequenceIterator<Element>
+public abstract class AbstractSequenceIterator<Element, Sequenze extends Sequence<Element>>
 extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
 
@@ -26,5 +29,5 @@ implements SequenceIterator<Element> {
      * 
      * @return traversed {@link Sequence}
      */
-    protected abstract Sequence<Element> getSequence();
+    protected abstract Sequenze getSequence();
 }

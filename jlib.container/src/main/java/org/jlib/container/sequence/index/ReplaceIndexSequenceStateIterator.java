@@ -15,6 +15,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceStateIterator;
+import org.jlib.container.sequence.NoElementToReplaceException;
 import org.jlib.container.sequence.NoSuchSequenceElementException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceIteratorState;
@@ -157,4 +158,14 @@ implements ReplaceIndexSequenceIterator<Element> {
     protected void setCurrentStateToNext() {
         currentState = currentState.getNextState();
     }
+
+    @Override
+    public void replace(final Element element)
+    throws NoElementToReplaceException {}
+
+    @Override
+    protected ReplaceIndexSequence<Element> getSequence() {
+        return sequence;
+    }
+
 }

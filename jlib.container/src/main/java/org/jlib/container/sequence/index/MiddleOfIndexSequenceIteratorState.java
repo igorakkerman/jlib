@@ -11,31 +11,26 @@ import org.jlib.container.sequence.SequenceIteratorState;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class MiddleOfIndexSequenceIteratorState<Element>
-extends AbstractSequenceIteratorState<Element>
+public abstract class MiddleOfIndexSequenceIteratorState<Element, Sequenze extends IndexSequence<Element>>
+extends AbstractSequenceIteratorState<Element, Sequenze>
 implements IndexSequenceIteratorState<Element> {
 
     /** index of the next Element */
     private int nextElementIndex;
-
-    /** traversed {@link IndexSequence} */
-    private final IndexSequence<Element> sequence;
 
     /** index of recently returned Element */
     private int recentlyReturnedElementIndex;
 
     /**
      * Creates a new {@link MiddleOfIndexSequenceIteratorState}.
-     * 
-     * @param sequence
-     *        traversed {@link IndexSequence}
      */
-    public MiddleOfIndexSequenceIteratorState(final IndexSequence<Element> sequence) {
+    public MiddleOfIndexSequenceIteratorState() {
         super();
-
-        this.sequence = sequence;
     }
 
     @Override
@@ -55,7 +50,7 @@ implements IndexSequenceIteratorState<Element> {
             return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceElementException(sequence, exception);
+            throw new NoSuchSequenceElementException(getSequence(), exception);
         }
     }
 
@@ -65,7 +60,7 @@ implements IndexSequenceIteratorState<Element> {
             return getSequenceElement(recentlyReturnedElementIndex = nextElementIndex -- - 1);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceElementException(sequence, exception);
+            throw new NoSuchSequenceElementException(getSequence(), exception);
         }
     }
 
@@ -82,7 +77,7 @@ implements IndexSequenceIteratorState<Element> {
      */
     private Element getSequenceElement(final int elementIndex)
     throws SequenceIndexOutOfBoundsException {
-        return sequence.get(elementIndex);
+        return getSequence().get(elementIndex);
     }
 
     @Override

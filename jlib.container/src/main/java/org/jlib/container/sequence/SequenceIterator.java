@@ -16,7 +16,6 @@ package org.jlib.container.sequence;
 
 import java.util.Iterator;
 
-
 /**
  * {@link Iterator} over the Elements of a {@link Sequence}.
  * 
