@@ -18,7 +18,7 @@ import org.jlib.container.sequence.RemoveSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link ReplaceIndexSequence} that allows Elements to be added and removed.
+ * {@link IndexSequence} that allows Elements to be removed.
  * 
  * @param <Element>
  *        type of elements held in the {@link Sequence}
