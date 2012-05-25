@@ -15,5 +15,12 @@ public interface ReplaceIndexSequenceIteratorState<Element>
 extends IndexSequenceIteratorState<Element>, ReplaceSequenceIteratorState<Element> {
 
     @Override
+    public ReplaceIndexSequenceIteratorState<Element> getNextState();
+
+    @Override
+    public ReplaceIndexSequenceIteratorState<Element> getPreviousState();
+
+    @Override
     public ReplaceIndexSequenceIteratorState<Element> getReplacedState();
+
 }
