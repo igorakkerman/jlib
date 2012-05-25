@@ -22,5 +22,4 @@ extends IndexSequenceIteratorState<Element>, ReplaceSequenceIteratorState<Elemen
 
     @Override
     public ReplaceIndexSequenceIteratorState<Element> getReplacedState();
-
 }
