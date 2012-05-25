@@ -14,12 +14,17 @@ public abstract class AbstractSequenceIterator<Element>
 extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
 
-    // unifying AbstractIterator with SequenceIterator
-
     /**
      * Creates a new {@link AbstractSequenceIterator}.
      */
     public AbstractSequenceIterator() {
         super();
     }
+
+    /**
+     * Returns the traversed {@link Sequence}.
+     * 
+     * @return traversed {@link Sequence}
+     */
+    protected abstract Sequence<Element> getSequence();
 }
