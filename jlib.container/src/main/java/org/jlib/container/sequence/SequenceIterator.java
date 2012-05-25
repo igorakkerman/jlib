@@ -16,7 +16,6 @@ package org.jlib.container.sequence;
 
 import java.util.Iterator;
 
-
 /**
  * {@link Iterator} over the Elements of a {@link Sequence}.
  * 
@@ -67,4 +66,11 @@ extends Iterator<Element> {
     @Override
     public Element next()
     throws NoSuchSequenceElementException;
+
+    /**
+     * Returns the traversed {@link Sequence}
+     * 
+     * @return traversed {@link Sequence}
+     */
+    public Sequence<Element> getSequence();
 }
