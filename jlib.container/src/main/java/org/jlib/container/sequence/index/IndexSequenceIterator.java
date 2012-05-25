@@ -51,12 +51,4 @@ extends SequenceIterator<Element> {
      */
     public int getNextElementIndex()
     throws NoSuchSequenceElementException;
-
-    /**
-     * Returns the traversed {@link IndexSequence}
-     * 
-     * @return traversed {@link IndexSequence}
-     */
-    @Override
-    public IndexSequence<Element> getSequence();
 }
