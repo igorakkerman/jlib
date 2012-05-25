@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence;
 
+
 /**
  * Iterator over a {@link InsertSequence}.
  * 
@@ -49,12 +50,4 @@ extends SequenceIterator<Element> {
      */
     public void insert(Element element)
     throws IllegalStateException;
-
-    /**
-     * Returns the traversed {@link InsertSequence}
-     * 
-     * @return traversed {@link InsertSequence}
-     */
-    @Override
-    public InsertSequence<Element> getSequence();
 }
