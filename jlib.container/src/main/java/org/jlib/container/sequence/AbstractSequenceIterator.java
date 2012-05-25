@@ -14,7 +14,7 @@ public abstract class AbstractSequenceIterator<Element>
 extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
 
-    // join AbstractIterator with SequenceIterator
+    // unifying AbstractIterator with SequenceIterator
 
     /**
      * Creates a new {@link AbstractSequenceIterator}.
