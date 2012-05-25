@@ -30,12 +30,4 @@ extends SequenceIterator<Element>, RemoveContainerIterator<Element> {
     @Override
     public void remove()
     throws IllegalStateException;
-
-    /**
-     * Returns the traversed {@link RemoveSequence}
-     * 
-     * @return traversed {@link RemoveSequence}
-     */
-    @Override
-    public RemoveSequence<Element> getSequence();
 }
