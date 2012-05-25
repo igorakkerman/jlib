@@ -36,7 +36,7 @@ implements IndexSequenceIteratorState<Element> {
     @Override
     public int getPreviousElementIndex()
     throws NoSuchSequenceElementException {
-        throw new NoSuchSequenceElementException();
+        throw new NoSuchSequenceElementException(sequence);
     }
 
     @Override
