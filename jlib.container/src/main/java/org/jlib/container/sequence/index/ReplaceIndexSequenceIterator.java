@@ -32,5 +32,12 @@ import org.jlib.container.sequence.Sequence;
  */
 public interface ReplaceIndexSequenceIterator<Element>
 extends ReplaceSequenceIterator<Element>, IndexSequenceIterator<Element> {
-    // intentionally left blank
+
+    /**
+     * Returns the traversed {@link ReplaceIndexSequence}
+     * 
+     * @return traversed {@link ReplaceIndexSequence}
+     */
+    @Override
+    public ReplaceIndexSequence<Element> getSequence();
 }
