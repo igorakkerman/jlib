@@ -40,12 +40,4 @@ extends ReplaceContainerIterator<Element>, SequenceIterator<Element> {
     @Override
     public void replace(final Element element)
     throws NoElementToReplaceException;
-
-    /**
-     * Returns the traversed {@link ReplaceSequence}
-     * 
-     * @return traversed {@link ReplaceSequence}
-     */
-    @Override
-    public ReplaceSequence<Element> getSequence();
 }
