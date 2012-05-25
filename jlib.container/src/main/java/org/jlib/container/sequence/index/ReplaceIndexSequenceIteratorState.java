@@ -11,8 +11,11 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
+// @formatter:off
 public interface ReplaceIndexSequenceIteratorState<Element>
-extends IndexSequenceIteratorState<Element>, ReplaceSequenceIteratorState<Element> {
+extends IndexSequenceIteratorState<Element>, ReplaceSequenceIteratorState<Element>,
+        ReplaceIndexSequenceIterator<Element> {
+// @formatter:on
 
     @Override
     public ReplaceIndexSequenceIteratorState<Element> getNextState();
