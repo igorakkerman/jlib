@@ -16,7 +16,7 @@ extends AbstractNonEmptySequence<Element> {
 
     /** beginning of the {@link SingletonSequence} {@link SequenceIteratorState} */
     private final SequenceIteratorState<Element> beginningOfSequenceState =
-        new BeginningOfSequenceIteratorState<Element>() {
+        new BeginningOfSequenceIteratorState<Element, SingletonSequence<Element>>(this) {
 
             @Override
             public Element next() {
@@ -30,18 +30,19 @@ extends AbstractNonEmptySequence<Element> {
         };
 
     /** end of the {@link SingletonSequence} {@link SequenceIteratorState} */
-    private final SequenceIteratorState<Element> endOfSequenceState = new EndOfSequenceIteratorState<Element>() {
+    private final SequenceIteratorState<Element> endOfSequenceState =
+        new EndOfSequenceIteratorState<Element, SingletonSequence<Element>>(this) {
 
-        @Override
-        public Element previous() {
-            return element;
-        }
+            @Override
+            public Element previous() {
+                return element;
+            }
 
-        @Override
-        public SequenceIteratorState<Element> getPreviousState() {
-            return beginningOfSequenceState;
-        }
-    };
+            @Override
+            public SequenceIteratorState<Element> getPreviousState() {
+                return beginningOfSequenceState;
+            }
+        };
 
     /**
      * Creates a new {@link SingletonSequence} with the specified Element.
@@ -55,7 +56,7 @@ extends AbstractNonEmptySequence<Element> {
 
     @Override
     public SequenceIterator<Element> createIterator() {
-        return new DefaultSequenceStateIterator<Element>(beginningOfSequenceState);
+        return new InitializedSequenceStateIterator<Element, SingletonSequence<Element>>(this, beginningOfSequenceState);
     }
 
     @Override

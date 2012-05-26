@@ -6,23 +6,29 @@ package org.jlib.container.sequence;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public class DefaultSequenceStateIterator<Element>
-extends AbstractSequenceStateIterator<Element> {
+public class InitializedSequenceStateIterator<Element, Sequenze extends Sequence<Element>>
+extends AbstractSequenceStateIterator<Element, Sequenze> {
 
     /** current {@link SequenceIteratorState} */
     private SequenceIteratorState<Element> currentState;
 
     /**
-     * Creates a new {@link DefaultSequenceStateIterator} for the specified
+     * Creates a new {@link InitializedSequenceStateIterator} for the specified
      * initial {@link SequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      * 
      * @param initialState
      *        initial {@link SequenceIteratorState}
      */
-    public DefaultSequenceStateIterator(final SequenceIteratorState<Element> initialState) {
-        super();
+    public InitializedSequenceStateIterator(final Sequenze sequence, final SequenceIteratorState<Element> initialState) {
+        super(sequence);
 
         currentState = initialState;
     }

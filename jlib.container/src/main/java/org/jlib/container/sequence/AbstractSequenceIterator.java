@@ -17,10 +17,16 @@ public abstract class AbstractSequenceIterator<Element, Sequenze extends Sequenc
 extends AbstractIterator<Element>
 implements SequenceIterator<Element> {
 
+    /** traversed {@link Sequence} */
+    private Sequenze sequence;
+
     /**
      * Creates a new {@link AbstractSequenceIterator}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      */
-    public AbstractSequenceIterator() {
+    public AbstractSequenceIterator(final Sequenze sequence) {
         super();
     }
 
@@ -29,5 +35,7 @@ implements SequenceIterator<Element> {
      * 
      * @return traversed {@link Sequence}
      */
-    protected abstract Sequenze getSequence();
+    protected Sequenze getSequence() {
+        return sequence;
+    }
 }

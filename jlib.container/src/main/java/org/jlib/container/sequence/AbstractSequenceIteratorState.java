@@ -19,8 +19,11 @@ implements SequenceIteratorState<Element> {
 
     /**
      * Creates a new {@link AbstractSequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      */
-    public AbstractSequenceIteratorState() {
-        super();
+    public AbstractSequenceIteratorState(final Sequenze sequence) {
+        super(sequence);
     }
 }
