@@ -327,7 +327,7 @@ implements Cloneable {
      * @throws IllegalArgumentException
      *         if {@code expectedCapacity < 1}
      */
-    private void assertExpectedCapacityValid(final int expectedCapacity)
+    protected void assertExpectedCapacityValid(final int expectedCapacity)
     throws IllegalArgumentException {
         if (expectedCapacity < 1)
             throw new IllegalArgumentException("expectedCapacity == " + expectedCapacity + " < 1");
