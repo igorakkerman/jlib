@@ -11,18 +11,24 @@ import org.jlib.container.sequence.SequenceIterator;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState<Element>
-extends BeginningOfIndexSequenceIteratorState<Element>
+public abstract class ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState<Element, Sequenze extends ReplaceIndexSequence<Element>>
+extends BeginningOfIndexSequenceIteratorState<Element, Sequenze>
 implements ReplaceIndexSequenceIteratorState<Element> {
 
     /**
      * Creates a new
      * {@link ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      */
-    public ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState() {
-        super();
+    public ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState(final Sequenze sequence) {
+        super(sequence);
     }
 
     @Override

@@ -2,6 +2,7 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.InsertSequenceIteratorState;
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -13,8 +14,8 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public abstract class MiddleOfInsertReplaceIndexSequenceIteratorState<Element>
-extends MiddleOfReplaceIndexSequenceIteratorState<Element>
+public abstract class MiddleOfInsertReplaceIndexSequenceIteratorState<Element, Sequenze extends InsertSequence<Element> & ReplaceSequence<Element> & IndexSequence<Element>>
+extends MiddleOfReplaceIndexSequenceIteratorState<Element, Sequenze>
 implements InsertSequenceIteratorState<Element> {
 
     /**
@@ -27,9 +28,5 @@ implements InsertSequenceIteratorState<Element> {
     @Override
     public ReplaceIndexSequenceIteratorState<Element> getReplacedState() {
         return this;
-    }
-
-    public <Sequenze extends ReplaceIndexSequence<Element> & InsertSequence<Element>> Sequenze getSequence() {
-        return null;
     }
 }

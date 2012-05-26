@@ -19,9 +19,12 @@ extends AbstractSequenceIteratorState<Element, Sequenze> {
 
     /**
      * Creates a new {@link EndOfSequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      */
-    public EndOfSequenceIteratorState() {
-        super();
+    public EndOfSequenceIteratorState(final Sequenze sequence) {
+        super(sequence);
     }
 
     @Override

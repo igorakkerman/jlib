@@ -12,14 +12,14 @@ import org.jlib.container.sequence.SequenceIterator;
  * @param <Element>
  *        type of the elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class EndOfIndexSequenceIteratorState<Element>
-extends EndOfSequenceIteratorState<Element>
+public abstract class EndOfIndexSequenceIteratorState<Element, Sequenze extends IndexSequence<Element>>
+extends EndOfSequenceIteratorState<Element, Sequenze>
 implements IndexSequenceIteratorState<Element> {
-
-    /** traversed {@link IndexSequence} */
-    private final IndexSequence<Element> sequence;
 
     /**
      * Creates a new {@link EndOfIndexSequenceIteratorState}.
@@ -27,27 +27,25 @@ implements IndexSequenceIteratorState<Element> {
      * @param sequence
      *        traversed {@link IndexSequence}
      */
-    public EndOfIndexSequenceIteratorState(final IndexSequence<Element> sequence) {
-        super();
-
-        this.sequence = sequence;
+    public EndOfIndexSequenceIteratorState(final Sequenze sequence) {
+        super(sequence);
     }
 
     @Override
     public int getPreviousElementIndex() {
-        return sequence.getLastIndex();
+        return getSequence().getLastIndex();
     }
 
     @Override
     public int getNextElementIndex()
     throws NoSuchSequenceElementException {
-        throw new NoSuchSequenceElementException(sequence);
+        throw new NoSuchSequenceElementException(getSequence());
     }
 
     @Override
     public Element previous()
     throws NoSuchSequenceElementException {
-        return sequence.getLast();
+        return getSequence().getLast();
     }
 
     @Override

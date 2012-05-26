@@ -25,20 +25,20 @@ import org.jlib.container.sequence.SequenceIteratorState;
  * @param <Element>
  *        type of elements held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public class IndexSequenceStateIterator<Element>
-extends AbstractSequenceStateIterator<Element>
+public class IndexSequenceStateIterator<Element, Sequenze extends IndexSequence<Element>>
+extends AbstractSequenceStateIterator<Element, Sequenze>
 implements IndexSequenceIterator<Element> {
-
-    /** traversed {@link IndexSequence} */
-    private final IndexSequence<Element> sequence;
 
     /** beginning of the {@link IndexSequence} */
     private final IndexSequenceIteratorState<Element> beginningOfSequenceState;
 
     /** middle of the {@link IndexSequence} */
-    private final MiddleOfIndexSequenceIteratorState<Element> middleOfSequenceState;
+    private final MiddleOfIndexSequenceIteratorState<Element, Sequenze> middleOfSequenceState;
 
     /** end of the {@link IndexSequence} */
     private final IndexSequenceIteratorState<Element> endOfSequenceState;
@@ -53,7 +53,7 @@ implements IndexSequenceIterator<Element> {
      * @param sequence
      *        IndexSequence to traverse
      */
-    protected IndexSequenceStateIterator(final IndexSequence<Element> sequence) {
+    protected IndexSequenceStateIterator(final Sequenze sequence) {
         this(sequence, sequence.getFirstIndex());
     }
 
@@ -72,13 +72,11 @@ implements IndexSequenceIterator<Element> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    protected IndexSequenceStateIterator(final IndexSequence<Element> sequence, final int initialNextIndex)
+    protected IndexSequenceStateIterator(final Sequenze sequence, final int initialNextIndex)
     throws SequenceIndexOutOfBoundsException {
-        super();
+        super(sequence);
 
-        this.sequence = sequence;
-
-        beginningOfSequenceState = new BeginningOfIndexSequenceIteratorState<Element>(sequence) {
+        beginningOfSequenceState = new BeginningOfIndexSequenceIteratorState<Element, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceIteratorState<Element> getNextState() {
@@ -86,7 +84,7 @@ implements IndexSequenceIterator<Element> {
             }
         };
 
-        endOfSequenceState = new EndOfIndexSequenceIteratorState<Element>(sequence) {
+        endOfSequenceState = new EndOfIndexSequenceIteratorState<Element, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceIteratorState<Element> getPreviousState() {
@@ -96,7 +94,7 @@ implements IndexSequenceIterator<Element> {
             }
         };
 
-        middleOfSequenceState = new MiddleOfIndexSequenceIteratorState<Element>(sequence) {
+        middleOfSequenceState = new MiddleOfIndexSequenceIteratorState<Element, Sequenze>(sequence) {
 
             @Override
             protected IndexSequenceIteratorState<Element> getReturnedElementState() {
@@ -119,10 +117,10 @@ implements IndexSequenceIterator<Element> {
      * @return new {@link IndexSequenceIteratorState}
      */
     private IndexSequenceIteratorState<Element> getCurrentState(final int nextElementIndex) {
-        if (nextElementIndex == sequence.getFirstIndex())
+        if (nextElementIndex == getSequence().getFirstIndex())
             return beginningOfSequenceState;
 
-        if (nextElementIndex == sequence.getLastIndex() + 1)
+        if (nextElementIndex == getSequence().getLastIndex() + 1)
             return endOfSequenceState;
 
         middleOfSequenceState.setNextElementIndex(nextElementIndex);

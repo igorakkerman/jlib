@@ -23,9 +23,12 @@ implements IndexSequenceIteratorState<Element> {
 
     /**
      * Creates a new {@link BeginningOfIndexSequenceIteratorState}.
+     * 
+     * @param sequence
+     *        traversed {@link IndexSequence}
      */
-    public BeginningOfIndexSequenceIteratorState() {
-        super();
+    public BeginningOfIndexSequenceIteratorState(final Sequenze sequence) {
+        super(sequence);
     }
 
     @Override
