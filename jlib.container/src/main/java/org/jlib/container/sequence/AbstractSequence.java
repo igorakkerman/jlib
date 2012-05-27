@@ -8,14 +8,14 @@ import org.jlib.container.AbstractContainer;
 /**
  * Skeletal implementation of a {@link Sequence}.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of the items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public abstract class AbstractSequence<Element>
-extends AbstractContainer<Element>
-implements Sequence<Element> {
+public abstract class AbstractSequence<Item>
+extends AbstractContainer<Item>
+implements Sequence<Item> {
 
     /**
      * Creates a new {@link AbstractSequence}.
@@ -25,15 +25,15 @@ implements Sequence<Element> {
     }
 
     @Override
-    public List<Element> toCollection() {
+    public List<Item> toCollection() {
         return toList();
     }
 
     @Override
-    public List<Element> toList() {
-        final List<Element> sequence = new ArrayList<Element>(getSize());
-        for (final Element element : this)
-            sequence.add(element);
+    public List<Item> toList() {
+        final List<Item> sequence = new ArrayList<Item>(getSize());
+        for (final Item item : this)
+            sequence.add(item);
         return sequence;
     }
 }

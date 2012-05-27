@@ -18,14 +18,14 @@ import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IndexSequence} that allows Elements to be added.
+ * {@link IndexSequence} that allows Items to be added.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of the items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface AddIndexSequence<Element>
-extends AddSequence<Element>, IndexSequence<Element> {
+public interface AddIndexSequence<Item>
+extends AddSequence<Item>, IndexSequence<Item> {
     // unifying AddSequence and IndexSequence
 }

@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
@@ -31,10 +31,10 @@ implements IndexMatrix<Entry> {
     private final int lastRowIndex;
 
     /**
-     * {@link MatrixIterationOrder} used by each {@link Iterator} returned by
+     * {@link MatrixTraversalOrder} used by each {@link Traverser} returned by
      * {@link #iterator()}.
      */
-    private MatrixIterationOrder defaultIterationOrder;
+    private MatrixTraversalOrder defaultIterationOrder;
 
     /**
      * Creates a new {@link AbstractIndexMatrix}.
@@ -103,16 +103,16 @@ implements IndexMatrix<Entry> {
     }
 
     /**
-     * Returns the Element stored at the specified column and row in this
+     * Returns the Item stored at the specified column and row in this
      * AbstractIndexMatrix.
      * 
      * @param columnIndex
-     *        integer specifying the column index of the stored Element
+     *        integer specifying the column index of the stored Item
      * 
      * @param rowIndex
-     *        integer specifying the row index of the stored Element
+     *        integer specifying the row index of the stored Item
      * 
-     * @return Element stored at the specified position in this
+     * @return Item stored at the specified position in this
      *         AbstractIndexMatrix
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -129,17 +129,17 @@ implements IndexMatrix<Entry> {
     }
 
     /**
-     * Returns the Element stored at the specified column and row in this
+     * Returns the Item stored at the specified column and row in this
      * AbstractIndexMatrix, assuming that the specified column and row indices
      * are valid.
      * 
      * @param columnIndex
-     *        integer specifying the valid column index of the stored Element
+     *        integer specifying the valid column index of the stored Item
      * 
      * @param rowIndex
-     *        integer specifying the valid row index of the stored Element
+     *        integer specifying the valid row index of the stored Item
      * 
-     * @return Element stored at the specified position in this
+     * @return Item stored at the specified position in this
      *         AbstractIndexMatrix
      */
     protected abstract Entry getStoredEntry(final int columnIndex, final int rowIndex);
@@ -155,7 +155,7 @@ implements IndexMatrix<Entry> {
         return new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
 
             @Override
-            public IndexMatrixColumn<Entry> getStoredElement(final int columnIndex) {
+            public IndexMatrixColumn<Entry> getStoredItem(final int columnIndex) {
                 return getColumn(columnIndex);
             }
         };
@@ -173,7 +173,7 @@ implements IndexMatrix<Entry> {
         return new AbstractIndexSequence<IndexMatrixRow<Entry>>(firstRowIndex, lastRowIndex) {
 
             @Override
-            public IndexMatrixRow<Entry> getStoredElement(final int rowIndex) {
+            public IndexMatrixRow<Entry> getStoredItem(final int rowIndex) {
                 return getRow(rowIndex);
             }
         };
@@ -216,47 +216,47 @@ implements IndexMatrix<Entry> {
     }
 
     /**
-     * Creates a {@link MatrixIterator} traversing the Elements of this
-     * {@link AbstractIndexMatrix}. The order in which the Elements are
+     * Creates a {@link MatrixTraverser} traversing the Items of this
+     * {@link AbstractIndexMatrix}. The order in which the Items are
      * traversed is specified using
-     * {@link #setDefaultIterationOrder(MatrixIterationOrder)}.
+     * {@link #setDefaultIterationOrder(MatrixTraversalOrder)}.
      * 
-     * @return new {@link MatrixIterator} for this AbstractIndexMatrix
+     * @return new {@link MatrixTraverser} for this AbstractIndexMatrix
      * 
-     * @see #setDefaultIterationOrder(MatrixIterationOrder)
-     * @see MatrixIterationOrder
+     * @see #setDefaultIterationOrder(MatrixTraversalOrder)
+     * @see MatrixTraversalOrder
      */
     @Override
-    public MatrixIterator<Entry> createIterator() {
-        return defaultIterationOrder.createIterator(this);
+    public MatrixTraverser<Entry> createTraverser() {
+        return defaultIterationOrder.createTraverser(this);
     }
 
     @Override
-    public MatrixIterable<Entry> iteratedInOrder(final MatrixIterationOrder iterationOrder) {
-        return new MatrixIterable<Entry>() {
+    public MatrixTraversible<Entry> iteratedInOrder(final MatrixTraversalOrder iterationOrder) {
+        return new MatrixTraversible<Entry>() {
 
             @Override
-            public MatrixIterator<Entry> createIterator() {
-                return iterationOrder.createIterator(AbstractIndexMatrix.this);
+            public MatrixTraverser<Entry> createTraverser() {
+                return iterationOrder.createTraverser(AbstractIndexMatrix.this);
             }
 
             @Override
-            public Iterator<Entry> iterator() {
-                return createIterator();
+            public Traverser<Entry> iterator() {
+                return createTraverser();
             }
         };
     }
 
     /**
-     * Registers the {@link MatrixIterationOrder} used by each {@link Iterator}
+     * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
      * returned by {@link #iterator()}.
      * 
      * @param defaultIterationOrder
-     *        {@link MatrixIterationOrder} used by default {@link Iterator
-     *        Iterators}
+     *        {@link MatrixTraversalOrder} used by default {@link Traverser
+     *        Traversers}
      */
     @Override
-    public void setDefaultIterationOrder(final MatrixIterationOrder defaultIterationOrder) {
+    public void setDefaultIterationOrder(final MatrixTraversalOrder defaultIterationOrder) {
         this.defaultIterationOrder = defaultIterationOrder;
     }
 

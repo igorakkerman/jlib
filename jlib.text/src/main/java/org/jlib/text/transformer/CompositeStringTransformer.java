@@ -57,7 +57,7 @@ implements StringTransformer {
     }
 
     /**
-     * Adds the specified {@link StringTransformer} as composing element of this
+     * Adds the specified {@link StringTransformer} as composing item of this
      * CompositeStringTransformer.
      * 
      * @param stringTransformer
@@ -70,7 +70,7 @@ implements StringTransformer {
 
     /**
      * Adds the {@link StringTransformer StringTransformers} specified in an
-     * argument sequence as composing element of this
+     * argument sequence as composing item of this
      * CompositeStringTransformer.
      * 
      * @param additionalStringTransformers
@@ -83,7 +83,7 @@ implements StringTransformer {
 
     /**
      * Adds the {@link StringTransformer StringTransformers} specified in an
-     * argument sequence as composing elements of this
+     * argument sequence as composing items of this
      * CompositeStringTransformer.
      * 
      * @param additionalStringTransformers

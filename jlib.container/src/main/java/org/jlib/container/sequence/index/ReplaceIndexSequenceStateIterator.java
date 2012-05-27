@@ -14,96 +14,96 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AbstractSequenceStateIterator;
-import org.jlib.container.sequence.NoElementToReplaceException;
-import org.jlib.container.sequence.NoSuchSequenceElementException;
+import org.jlib.container.sequence.AbstractSequenceStateTraverser;
+import org.jlib.container.sequence.NoItemToReplaceException;
+import org.jlib.container.sequence.NoSuchSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceIteratorState;
+import org.jlib.container.sequence.SequenceTraverserState;
 
 /**
- * {@link ReplaceIndexSequenceIterator} traversing the elements in the proper
+ * {@link ReplaceIndexSequenceTraverser} traversing the items in the proper
  * order.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class ReplaceIndexSequenceStateIterator<Element>
-extends AbstractSequenceStateIterator<Element>
-implements ReplaceIndexSequenceIterator<Element> {
+public class ReplaceIndexSequenceStateTraverser<Item>
+extends AbstractSequenceStateTraverser<Item>
+implements ReplaceIndexSequenceTraverser<Item> {
 
     /** traversed {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequence<Element> sequence;
+    private final ReplaceIndexSequence<Item> sequence;
 
     /** beginning of the {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequenceIteratorState<Element> beginningOfSequenceState;
+    private final ReplaceIndexSequenceTraverserState<Item> beginningOfSequenceState;
 
     /** middle of the {@link ReplaceIndexSequence} */
-    private final MiddleOfReplaceIndexSequenceIteratorState<Element> middleOfSequenceState;
+    private final MiddleOfReplaceIndexSequenceTraverserState<Item> middleOfSequenceState;
 
     /** end of the {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequenceIteratorState<Element> endOfSequenceState;
+    private final ReplaceIndexSequenceTraverserState<Item> endOfSequenceState;
 
-    /** current {@link ReplaceIndexSequenceIteratorState} */
-    private ReplaceIndexSequenceIteratorState<Element> currentState;
+    /** current {@link ReplaceIndexSequenceTraverserState} */
+    private ReplaceIndexSequenceTraverserState<Item> currentState;
 
     /**
-     * Creates a new {@link ReplaceIndexSequenceStateIterator} over the Elements
+     * Creates a new {@link ReplaceIndexSequenceStateTraverser} over the Items
      * of the specified {@link ReplaceIndexSequence} beginning at its first
      * index.
      * 
      * @param sequence
      *        ReplaceIndexSequence to traverse
      */
-    protected ReplaceIndexSequenceStateIterator(final ReplaceIndexSequence<Element> sequence) {
+    protected ReplaceIndexSequenceStateTraverser(final ReplaceIndexSequence<Item> sequence) {
         this(sequence, sequence.getFirstIndex());
     }
 
     /**
-     * Creates a new DefaultReplaceReplaceIndexSequenceIterator over the
-     * Elements of the specified ReplaceIndexSequence starting the traversal at
+     * Creates a new DefaultReplaceReplaceIndexSequenceTraverser over the
+     * Items of the specified ReplaceIndexSequence starting the traversal at
      * the specified index.
      * 
      * @param sequence
      *        ReplaceReplaceIndexSequence to traverse
      * 
      * @param initialNextIndex
-     *        integer specifying the index of the initial next Element
+     *        integer specifying the index of the initial next Item
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    protected ReplaceIndexSequenceStateIterator(final ReplaceIndexSequence<Element> sequence, final int initialNextIndex)
+    protected ReplaceIndexSequenceStateTraverser(final ReplaceIndexSequence<Item> sequence, final int initialNextIndex)
     throws SequenceIndexOutOfBoundsException {
         super();
 
         this.sequence = sequence;
 
-        beginningOfSequenceState = new ElementRetrievedBeginningOfReplaceIndexSequenceIteratorState<Element>(sequence) {
+        beginningOfSequenceState = new ItemRetrievedBeginningOfReplaceIndexSequenceTraverserState<Item>(sequence) {
 
             @Override
-            public ReplaceIndexSequenceIteratorState<Element> getNextState() {
+            public ReplaceIndexSequenceTraverserState<Item> getNextState() {
                 return middleOfSequenceState;
             }
         };
 
-        endOfSequenceState = new EndOfReplaceIndexSequenceIteratorState<Element>(sequence) {
+        endOfSequenceState = new EndOfReplaceIndexSequenceTraverserState<Item>(sequence) {
 
             @Override
-            public ReplaceIndexSequenceIteratorState<Element> getPreviousState() {
-                middleOfSequenceState.setNextElementIndex(sequence.getLastIndex() - 1);
+            public ReplaceIndexSequenceTraverserState<Item> getPreviousState() {
+                middleOfSequenceState.setNextItemIndex(sequence.getLastIndex() - 1);
 
                 return middleOfSequenceState;
             }
         };
 
-        middleOfSequenceState = new MiddleOfReplaceIndexSequenceIteratorState<Element>(sequence) {
+        middleOfSequenceState = new MiddleOfReplaceIndexSequenceTraverserState<Item>(sequence) {
 
             @Override
-            protected ReplaceIndexSequenceIteratorState<Element> getReturnedElementState() {
-                return getCurrentState(getNextElementIndex());
+            protected ReplaceIndexSequenceTraverserState<Item> getReturnedItemState() {
+                return getCurrentState(getNextItemIndex());
             }
         };
 
@@ -111,41 +111,41 @@ implements ReplaceIndexSequenceIterator<Element> {
     }
 
     /**
-     * Returns the new {@link SequenceIteratorState} after an Element has been
-     * returned and the specified index of the next Element has been set.
+     * Returns the new {@link SequenceTraverserState} after an Item has been
+     * returned and the specified index of the next Item has been set.
      * 
-     * @param nextElementIndex
-     *        integer specifying the index of the next Element;
+     * @param nextItemIndex
+     *        integer specifying the index of the next Item;
      *        {@code sequence.getLastIndex + 1} represents the end of the
      *        {@link ReplaceIndexSequence}
      * 
-     * @return new {@link ReplaceIndexSequenceIteratorState}
+     * @return new {@link ReplaceIndexSequenceTraverserState}
      */
-    private ReplaceIndexSequenceIteratorState<Element> getCurrentState(final int nextElementIndex) {
-        if (nextElementIndex == sequence.getFirstIndex())
+    private ReplaceIndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
+        if (nextItemIndex == sequence.getFirstIndex())
             return beginningOfSequenceState;
 
-        if (nextElementIndex == sequence.getLastIndex() + 1)
+        if (nextItemIndex == sequence.getLastIndex() + 1)
             return endOfSequenceState;
 
-        middleOfSequenceState.setNextElementIndex(nextElementIndex);
+        middleOfSequenceState.setNextItemIndex(nextItemIndex);
 
         return middleOfSequenceState;
     }
 
     @Override
-    public int getPreviousElementIndex()
-    throws NoSuchSequenceElementException {
-        return currentState.getPreviousElementIndex();
+    public int getPreviousItemIndex()
+    throws NoSuchSequenceItemException {
+        return currentState.getPreviousItemIndex();
     }
 
     @Override
-    public int getNextElementIndex() {
-        return currentState.getNextElementIndex();
+    public int getNextItemIndex() {
+        return currentState.getNextItemIndex();
     }
 
     @Override
-    protected ReplaceIndexSequenceIteratorState<Element> getCurrentState() {
+    protected ReplaceIndexSequenceTraverserState<Item> getCurrentState() {
         return currentState;
     }
 
@@ -160,11 +160,11 @@ implements ReplaceIndexSequenceIterator<Element> {
     }
 
     @Override
-    public void replace(final Element element)
-    throws NoElementToReplaceException {}
+    public void replace(final Item item)
+    throws NoItemToReplaceException {}
 
     @Override
-    protected ReplaceIndexSequence<Element> getSequence() {
+    protected ReplaceIndexSequence<Item> getSequence() {
         return sequence;
     }
 

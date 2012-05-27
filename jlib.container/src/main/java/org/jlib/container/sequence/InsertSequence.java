@@ -16,23 +16,23 @@ package org.jlib.container.sequence;
 
 
 /**
- * {@link Sequence} that allows Elements to be inserted.
+ * {@link Sequence} that allows Items to be inserted.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface InsertSequence<Element>
-extends Sequence<Element> {
+public interface InsertSequence<Item>
+extends Sequence<Item> {
 
     /**
-     * Returns a InsertSequenceIterator traversing the Elements of this Sequence
+     * Returns a InsertSequenceTraverser traversing the Items of this Sequence
      * in proper order.
      * 
-     * @return {@link InsertSequenceIterator} traversing the Elements of this
+     * @return {@link InsertSequenceTraverser} traversing the Items of this
      *         Sequence in proper order
      */
     @Override
-    public InsertSequenceIterator<Element> createIterator();
+    public InsertSequenceTraverser<Item> createTraverser();
 }

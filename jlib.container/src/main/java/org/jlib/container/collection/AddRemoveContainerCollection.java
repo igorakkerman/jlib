@@ -10,18 +10,18 @@ import org.jlib.container.RemoveContainer;
  * {@link AddRemoveContainerCollection} is backed by a {@link AddContainer}
  * specified at initialization.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Collection}
+ * @param <Item>
+ *        type of the items held in the {@link Collection}
  * @author Igor Akkerman
  */
-public class AddRemoveContainerCollection<Element>
-extends ContainerCollection<Element> {
+public class AddRemoveContainerCollection<Item>
+extends ContainerCollection<Item> {
 
     /** adapted and backed {@link AddContainer} */
-    private final AddContainer<Element> delegateAddContainer;
+    private final AddContainer<Item> delegateAddContainer;
 
     /** adapted and backed {@link RemoveContainer} */
-    private final RemoveContainer<Element> delegateRemoveContainer;
+    private final RemoveContainer<Item> delegateRemoveContainer;
 
     /**
      * Creates a new {@link AddRemoveContainerCollection} backed by the
@@ -31,7 +31,7 @@ extends ContainerCollection<Element> {
      *        {@link AddContainer} backing this
      *        {@link AddRemoveContainerCollection}
      */
-    public <DelegateContainer extends AddContainer<Element> & RemoveContainer<Element>> AddRemoveContainerCollection(final DelegateContainer delegateContainer) {
+    public <DelegateContainer extends AddContainer<Item> & RemoveContainer<Item>> AddRemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 
         delegateAddContainer = delegateContainer;
@@ -39,16 +39,16 @@ extends ContainerCollection<Element> {
     }
 
     @Override
-    public boolean add(final Element element) {
-        delegateAddContainer.add(element);
+    public boolean add(final Item item) {
+        delegateAddContainer.add(item);
 
         // TODO: implement modification listener model
         return true;
     }
 
     @Override
-    public boolean addAll(Collection<? extends Element> elements) {
-        delegateAddContainer.addAll(elements);
+    public boolean addAll(Collection<? extends Item> items) {
+        delegateAddContainer.addAll(items);
 
         // TODO: implement modification listener model
         return true;
@@ -56,8 +56,8 @@ extends ContainerCollection<Element> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean remove(final Object element) {
-        delegateRemoveContainer.remove((Element) element);
+    public boolean remove(final Object item) {
+        delegateRemoveContainer.remove((Item) item);
 
         // TODO: implement modification listener model
         return true;

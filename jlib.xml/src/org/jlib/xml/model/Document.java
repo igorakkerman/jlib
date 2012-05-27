@@ -9,19 +9,19 @@ public interface Document
 extends Node {
 
     /**
-     * Returns the root element of this document.
+     * Returns the root item of this document.
      * 
-     * @return root element of this document
+     * @return root item of this document
      */
-    public Element getRootElement();
+    public Item getRootItem();
 
     /**
-     * Registers a new root element for this document.
+     * Registers a new root item for this document.
      * 
-     * @param rootElement
-     *        new root element of this document
+     * @param rootItem
+     *        new root item of this document
      */
-    public void setRootElement(Element rootElement);
+    public void setRootItem(Item rootItem);
 
     /**
      * Adds a namespace to this document.

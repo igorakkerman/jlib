@@ -9,7 +9,7 @@ import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
  * Indexed {@link Matrix} providing {@link RandomAccess} to its entries.
  * 
  * @param <Entry>
- *        type of the elements held in the ArrayMatrix
+ *        type of the items held in the ArrayMatrix
  * 
  * @author Igor Akkerman
  */
@@ -18,16 +18,16 @@ public interface IndexMatrix<Entry>
 extends RandomTraversalMatrix<Entry>, RandomAccess {
 
     /**
-     * Returns the Element stored at the specified column and row in this
+     * Returns the Item stored at the specified column and row in this
      * {@link IndexMatrix}.
      * 
      * @param columnIndex
-     *        integer specifying the column of the stored Element
+     *        integer specifying the column of the stored Item
      * 
      * @param rowIndex
-     *        integer specifying the row of the stored Element
+     *        integer specifying the row of the stored Item
      * 
-     * @return Element stored at the specified position in this
+     * @return Item stored at the specified position in this
      *         ArrayMatrix
      * 
      * @throws SequenceIndexOutOfBoundsException

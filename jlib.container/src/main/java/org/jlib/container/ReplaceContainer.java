@@ -5,27 +5,27 @@ import org.jlib.container.sequence.Sequence;
 
 /**
  * <p>
- * Container that allows its Elements to be modified using an
- * {@link ReplaceContainerIterator}.
+ * Container that allows its Items to be modified using an
+ * {@link ReplaceContainerTraverser}.
  * </p>
  * <p>
  * It does not necessarily allow modification of the {@link Container}, that is,
- * this interface does not provide methods for adding and removing Elements. See
+ * this interface does not provide methods for adding and removing Items. See
  * {@link AddSequence} for this functionality.
  * </p>
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface ReplaceContainer<Element>
-extends Container<Element> {
+public interface ReplaceContainer<Item>
+extends Container<Item> {
 
     /**
-     * Creates a new {@link ReplaceContainerIterator} over this {@link ReplaceContainer}.
+     * Creates a new {@link ReplaceContainerTraverser} over this {@link ReplaceContainer}.
      * 
-     * @return newly created {@link ReplaceContainerIterator}
+     * @return newly created {@link ReplaceContainerTraverser}
      */
     @Override
-    public ReplaceContainerIterator<Element> createIterator();
+    public ReplaceContainerTraverser<Item> createTraverser();
 }

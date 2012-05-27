@@ -2,28 +2,28 @@ package org.jlib.container.sequence;
 
 /**
  * {@link IllegalStateException} thrown when an expected {@link Sequence}
- * element does not exist.
+ * item does not exist.
  * 
  * @author Igor Akkerman
  */
-public class NoSuchSequenceElementException
+public class NoSuchSequenceItemException
 extends IllegalSequenceStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 5261616206496944873L;
 
     /**
-     * Creates a new {@link NoSuchSequenceElementException}.
+     * Creates a new {@link NoSuchSequenceItemException}.
      * 
      * @param sequence
      *        referenced {@link Sequence}
      */
-    public NoSuchSequenceElementException(final Sequence<?> sequence) {
+    public NoSuchSequenceItemException(final Sequence<?> sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link NoSuchSequenceElementException} with the specified
+     * Creates a new {@link NoSuchSequenceItemException} with the specified
      * cause.
      * 
      * @param sequence
@@ -31,9 +31,9 @@ extends IllegalSequenceStateException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link NoSuchSequenceElementException}
+     *        {@link NoSuchSequenceItemException}
      */
-    public NoSuchSequenceElementException(final Sequence<?> sequence, final Throwable cause) {
+    public NoSuchSequenceItemException(final Sequence<?> sequence, final Throwable cause) {
         super(sequence, cause);
     }
 }

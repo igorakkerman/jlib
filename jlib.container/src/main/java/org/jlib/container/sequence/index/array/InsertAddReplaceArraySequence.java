@@ -2,24 +2,24 @@ package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultInsertReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.DefaultInsertReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InsertIndexSequence;
-import org.jlib.container.sequence.index.InsertReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.InsertReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
 /**
- * {@link AddReplaceArraySequence} into which Elements can be inserted.
+ * {@link AddReplaceArraySequence} into which Items can be inserted.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class InsertAddReplaceArraySequence<Element>
-extends AddReplaceArraySequence<Element>
-implements InsertIndexSequence<Element> {
+public class InsertAddReplaceArraySequence<Item>
+extends AddReplaceArraySequence<Item>
+implements InsertIndexSequence<Item> {
 
     /**
      * Creates a new {@link InsertAddReplaceArraySequence} with the specified
@@ -39,34 +39,34 @@ implements InsertIndexSequence<Element> {
     }
 
     @Override
-    public void insert(final int index, final Element element) {
-        insert(index, singleton(element));
+    public void insert(final int index, final Item item) {
+        insert(index, singleton(item));
     }
 
     @Override
-    public void insert(final int index, final Container<? extends Element> elements) {
-        final int insertedElementsCount = elements.getSize();
+    public void insert(final int index, final Container<? extends Item> items) {
+        final int insertedItemsCount = items.getSize();
 
-        final int newSize = getSize() + insertedElementsCount;
+        final int newSize = getSize() + insertedItemsCount;
         final int delegateArrayInsertIndex = getDelegateArrayIndex(index);
 
-        assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedElementsCount);
+        assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);
 
         int delegateArrayIndex = delegateArrayInsertIndex;
-        for (final Element element : elements)
-            replaceDelegateArrayElement(delegateArrayIndex ++, element);
+        for (final Item item : items)
+            replaceDelegateArrayItem(delegateArrayIndex ++, item);
 
-        setLastIndex(getLastIndex() + insertedElementsCount);
+        setLastIndex(getLastIndex() + insertedItemsCount);
     }
 
     @Override
-    public InsertReplaceIndexSequenceIterator<Element> createIterator() {
-        return createIterator(getFirstIndex());
+    public InsertReplaceIndexSequenceTraverser<Item> createTraverser() {
+        return createTraverser(getFirstIndex());
     }
 
     @Override
-    public InsertReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
+    public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultInsertReplaceIndexSequenceIterator<Element>(this, startIndex);
+        return new DefaultInsertReplaceIndexSequenceTraverser<Item>(this, startIndex);
     }
 }

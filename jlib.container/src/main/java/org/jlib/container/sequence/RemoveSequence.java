@@ -17,22 +17,22 @@ package org.jlib.container.sequence;
 import org.jlib.container.RemoveContainer;
 
 /**
- * {@link ReplaceSequence} that allows Elements to be added and removed.
+ * {@link ReplaceSequence} that allows Items to be added and removed.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface RemoveSequence<Element>
-extends Sequence<Element>, RemoveContainer<Element> {
+public interface RemoveSequence<Item>
+extends Sequence<Item>, RemoveContainer<Item> {
 
     /**
-     * Returns a {@link RemoveSequenceIterator} traversing the Elements of this
+     * Returns a {@link RemoveSequenceTraverser} traversing the Items of this
      * Sequence in proper order.
      * 
-     * @return InsertSequenceIterator traversing the Elements of this Sequence in
+     * @return InsertSequenceTraverser traversing the Items of this Sequence in
      *         proper order
      */
     @Override
-    public RemoveSequenceIterator<Element> createIterator();
+    public RemoveSequenceTraverser<Item> createTraverser();
 }

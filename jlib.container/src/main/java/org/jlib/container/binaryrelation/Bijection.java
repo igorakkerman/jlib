@@ -14,7 +14,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import java.util.NoSuchElementException;
+import java.util.NoSuchItemException;
 
 /**
  * One-To-One association of Objects with other Objects. The further Objects are
@@ -45,11 +45,11 @@ extends BinaryRelation<LeftValue, RightValue> {
      *        
      * @return RightValue associated with {@code leftValue}
      * 
-     * @throws NoSuchElementException
+     * @throws NoSuchItemException
      *         if no RightValue is associated with {@code leftValue}
      */
     public RightValue right(LeftValue leftValue)
-    throws NoSuchElementException;
+    throws NoSuchItemException;
 
     /**
      * Returns the LeftValue associated with the specified RightValue by this
@@ -60,9 +60,9 @@ extends BinaryRelation<LeftValue, RightValue> {
      *        
      * @return LeftValue associated with {@code rightValue}
      * 
-     * @throws NoSuchElementException
+     * @throws NoSuchItemException
      *         if no LeftValue is associated with {@code rightValue}
      */
     public LeftValue left(RightValue rightValue)
-    throws NoSuchElementException;
+    throws NoSuchItemException;
 }

@@ -2,7 +2,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.NoSuchItemException;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.index.array.ArraySequence;
@@ -13,14 +13,14 @@ import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndex
 /**
  * Skeletal implementation of an {@link IndexSequence}.
  * 
- * @param <Element>
- *        type of the elements of the sequence
+ * @param <Item>
+ *        type of the items of the sequence
  * 
  * @author Igor Akkerman
  */
-public abstract class AbstractIndexSequence<Element>
-extends AbstractNonEmptySequence<Element>
-implements IndexSequence<Element> {
+public abstract class AbstractIndexSequence<Item>
+extends AbstractNonEmptySequence<Item>
+implements IndexSequence<Item> {
 
     /** current minimum index of this sequence */
     private int firstIndex;
@@ -31,7 +31,7 @@ implements IndexSequence<Element> {
     /**
      * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
      * and maximum indices. Classes extending this class must initialize the
-     * Element store.
+     * Item store.
      * 
      * @param firstIndex
      *        integer specifying the initial minimum index of this ArraySequence
@@ -53,87 +53,87 @@ implements IndexSequence<Element> {
     }
 
     @Override
-    public final Element get(final int index)
+    public final Item get(final int index)
     throws SequenceIndexOutOfBoundsException {
         assertIndexValid(this, index);
 
-        return getStoredElement(index);
+        return getStoredItem(index);
     }
 
     /**
-     * Returns the Element stored at the specified index expecting the index to
+     * Returns the Item stored at the specified index expecting the index to
      * be valid.
      * 
      * @param index
      *        integer specifying the valid index
      * 
-     * @return Element stored at {@code index}
+     * @return Item stored at {@code index}
      */
-    protected abstract Element getStoredElement(final int index);
+    protected abstract Item getStoredItem(final int index);
 
     @Override
-    public Element getFirst() {
-        return getStoredElement(firstIndex);
+    public Item getFirst() {
+        return getStoredItem(firstIndex);
     }
 
     @Override
-    public Element getLast() {
-        return getStoredElement(lastIndex);
+    public Item getLast() {
+        return getStoredItem(lastIndex);
     }
 
     @Override
-    public int getFirstIndexOf(final Element element)
-    throws NoSuchElementException {
+    public int getFirstIndexOf(final Item item)
+    throws NoSuchItemException {
         for (int index = firstIndex; index <= lastIndex; index ++)
-            if (getStoredElement(index).equals(element))
+            if (getStoredItem(index).equals(item))
                 return index;
 
-        throw new NoSuchElementException(element.toString());
+        throw new NoSuchItemException(item.toString());
     }
 
     @Override
-    public int getLastIndexOf(final Element element)
-    throws NoSuchElementException {
+    public int getLastIndexOf(final Item item)
+    throws NoSuchItemException {
         for (int index = lastIndex; index >= firstIndex; index --)
-            if (getStoredElement(index).equals(element))
+            if (getStoredItem(index).equals(item))
                 return index;
 
-        throw new NoSuchElementException(element.toString());
+        throw new NoSuchItemException(item.toString());
     }
 
     @Override
-    public IndexSequenceIterator<Element> createIterator() {
-        return createIterator(firstIndex);
+    public IndexSequenceTraverser<Item> createTraverser() {
+        return createTraverser(firstIndex);
     }
 
     @Override
-    public IndexSequenceIterator<Element> createIterator(final int startIndex)
+    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new IndexSequenceStateIterator<>(this, startIndex);
+        return new IndexSequenceStateTraverser<>(this, startIndex);
     }
 
     @Override
-    public List<Element> createSubList(final int fromIndex, final int toIndex)
+    public List<Item> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final List<Element> subList = new ArrayList<>(getSize());
+        final List<Item> subList = new ArrayList<>(getSize());
 
         for (int index = fromIndex; index <= toIndex; index ++)
-            subList.add(getStoredElement(index));
+            subList.add(getStoredItem(index));
 
         return subList;
     }
 
     @Override
-    public IndexSequence<Element> createSubSequence(final int fromIndex, final int toIndex)
+    public IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final InitializeableIndexSequence<Element> sequence =
-            ArraySequence.<Element> getCreator().createSequence(fromIndex, toIndex);
+        final InitializeableIndexSequence<Item> sequence =
+            ArraySequence.<Item> getCreator().createSequence(fromIndex, toIndex);
         for (int index = fromIndex; index <= toIndex; index ++)
-            sequence.replaceStoredElement(index, getStoredElement(index));
+            sequence.replaceStoredItem(index, getStoredItem(index));
 
         return sequence;
     }
@@ -157,15 +157,15 @@ implements IndexSequence<Element> {
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder(8 * getSize());
 
-        final IndexSequenceIterator<Element> elementsIterator = createIterator();
+        final IndexSequenceTraverser<Item> itemsTraverser = createTraverser();
 
         stringBuilder.append('[');
 
-        getNextElementString(stringBuilder, elementsIterator);
+        getNextItemString(stringBuilder, itemsTraverser);
 
-        while (elementsIterator.hasNext()) {
+        while (itemsTraverser.hasNext()) {
             stringBuilder.append(", ");
-            getNextElementString(stringBuilder, elementsIterator);
+            getNextItemString(stringBuilder, itemsTraverser);
         }
 
         stringBuilder.append(']');
@@ -174,22 +174,22 @@ implements IndexSequence<Element> {
     }
 
     /**
-     * Appends a {@link String} representation of the next Element returned by
-     * the specified {@link IndexSequenceIterator} to the specified
+     * Appends a {@link String} representation of the next Item returned by
+     * the specified {@link IndexSequenceTraverser} to the specified
      * {@link StringBuilder}.
      * 
      * @param stringBuilder
-     *        {@link StringBuilder} to which the Element representation is
+     *        {@link StringBuilder} to which the Item representation is
      *        appended
      * 
-     * @param elementsIterator
-     *        {@link IndexSequenceIterator} providing the Element
+     * @param itemsTraverser
+     *        {@link IndexSequenceTraverser} providing the Item
      */
-    private void getNextElementString(final StringBuilder stringBuilder,
-                                      final IndexSequenceIterator<Element> elementsIterator) {
-        stringBuilder.append(elementsIterator.getNextElementIndex());
+    private void getNextItemString(final StringBuilder stringBuilder,
+                                      final IndexSequenceTraverser<Item> itemsTraverser) {
+        stringBuilder.append(itemsTraverser.getNextItemIndex());
         stringBuilder.append(": ");
-        stringBuilder.append(elementsIterator.next());
+        stringBuilder.append(itemsTraverser.next());
     }
 
     /**

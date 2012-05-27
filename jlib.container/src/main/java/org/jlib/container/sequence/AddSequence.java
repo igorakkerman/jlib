@@ -17,13 +17,13 @@ package org.jlib.container.sequence;
 import org.jlib.container.AddContainer;
 
 /**
- * {@link ReplaceSequence} that allows Elements to be added and removed.
+ * {@link ReplaceSequence} that allows Items to be added and removed.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface AddSequence<Element>
-extends Sequence<Element>, AddContainer<Element> {
+public interface AddSequence<Item>
+extends Sequence<Item>, AddContainer<Item> {
     // unifying Sequence and AddContainer interfaces
 }

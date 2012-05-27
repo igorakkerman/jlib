@@ -26,12 +26,12 @@ import org.jlib.core.ObjectUtility;
  * {@link Container#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public abstract class AbstractContainer<Element>
-implements Container<Element> {
+public abstract class AbstractContainer<Item>
+implements Container<Item> {
 
     /**
      * Creates a new empty Container.
@@ -41,64 +41,64 @@ implements Container<Element> {
     }
 
     @Override
-    public boolean contains(final Element element) {
-        for (final Object containedElement : this)
-            if (containedElement.equals(element))
+    public boolean contains(final Item item) {
+        for (final Object containedItem : this)
+            if (containedItem.equals(item))
                 return true;
         return false;
     }
 
     @Override
-    public boolean containsAll(final Container<? extends Element> elements) {
-        return containsAll((Iterable<? extends Element>) elements);
+    public boolean containsAll(final Container<? extends Item> items) {
+        return containsAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        for (Element element : elements)
-            if (! contains(element))
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        for (final Item item : items)
+            if (!contains(item))
                 return false;
         return true;
     }
 
     @Override
-    public boolean containsAll(final Collection<? extends Element> elements) {
-        return containsAll((Iterable<? extends Element>) elements);
+    public boolean containsAll(final Collection<? extends Item> items) {
+        return containsAll((Iterable<? extends Item>) items);
     }
 
     /**
-     * Verifies whether this Container contains all of the Elements returned by
-     * the Iterator of the specified Iterable.
+     * Verifies whether this Container contains all of the Items returned by the
+     * Traverser of the specified Iterable.
      * 
-     * @param elements
-     *        Iterable creating the Iterator returning the Elements to verify
-     * @return {@code true} if this Container contains all of the Elements
+     * @param items
+     *        Iterable creating the Traverser returning the Items to verify
+     * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
-    private boolean containsAll(final Iterable<? extends Element> elements) {
-        for (Element element : elements)
-            if (! contains(element))
+    private boolean containsAll(final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            if (!contains(item))
                 return false;
         return true;
     }
 
     @Override
-    public Element[] toArray() {
-        int size = getSize();
+    public Item[] toArray() {
+        final int size = getSize();
         @SuppressWarnings("unchecked")
-        final Element[] targetArray = (Element[]) new Object[size];
+        final Item[] targetArray = (Item[]) new Object[size];
         int index = 0;
-        for (Element element : this)
-            targetArray[index ++] = element;
+        for (final Item item : this)
+            targetArray[index ++] = item;
 
         return targetArray;
     }
 
     @Override
-    public Collection<Element> toCollection() {
-        Collection<Element> collection = new LinkedList<Element>();
-        for (Element element : this)
-            collection.add(element);
+    public Collection<Item> toCollection() {
+        final Collection<Item> collection = new LinkedList<Item>();
+        for (final Item item : this)
+            collection.add(item);
         return collection;
     }
 
@@ -109,10 +109,10 @@ implements Container<Element> {
      * <ul>
      * <li>the specified {@link Object} is not {@code null}</li>
      * <li>this Object and the specified Object are instances of the same class</li>
-     * <li>if the Iterator returned by the {@link #iterator()} method of this
+     * <li>if the Traverser returned by the {@link #iterator()} method of this
      * Container and the specified Container (it is a Container by the previous
-     * condition) return equal Elements in the same order; two Elements are said
-     * to be equal if they are both {@code null} or the comparison using the
+     * condition) return equal Items in the same order; two Items are said to be
+     * equal if they are both {@code null} or the comparison using the
      * {@link Object#equals(Object) equals} method returns {@code true}</li>
      * </ul>
      * 
@@ -124,19 +124,19 @@ implements Container<Element> {
     @Override
     // TODO: use Apache Commons Lang
     public boolean equals(final Object otherObject) {
-        if (otherObject == null || ! getClass().equals(otherObject.getClass()))
+        if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
         final Container<?> otherContainer = (Container<?>) otherObject;
-        final Iterator<?> thisIterator =  iterator();
-        final Iterator<?> otherIterator = otherContainer.iterator();
+        final Traverser<?> thisTraverser = createTraverser();
+        final Traverser<?> otherTraverser = otherContainer.createTraverser();
         do {
-            // TODO: use size() to verify that both Containers have the same number of elements and rely on that fact
-            boolean thisHasNext = thisIterator.hasNext();
-            if (thisHasNext != otherIterator.hasNext())
+            // TODO: use size() to verify that both Containers have the same number of items and rely on that fact
+            final boolean thisHasNext = thisTraverser.hasNext();
+            if (thisHasNext != otherTraverser.hasNext())
                 return false;
-            if (! thisHasNext)
+            if (!thisHasNext)
                 return true;
-            if (! ObjectUtility.equal(thisIterator.next(), otherIterator.next()))
+            if (!ObjectUtility.equal(thisTraverser.next(), otherTraverser.next()))
                 return false;
         }
         while (true);
@@ -146,8 +146,10 @@ implements Container<Element> {
     // TODO: use Apache Commons Lang
     public int hashCode() {
         int hashCode = 0;
-        for (Element element : this)
-            hashCode += element != null ? element.hashCode() : 0;
+        for (final Item item : this)
+            hashCode += item != null
+                ? item.hashCode()
+                : 0;
         return hashCode;
     }
 
@@ -155,9 +157,9 @@ implements Container<Element> {
     public boolean isEmpty() {
         return getSize() == 0;
     }
-    
+
     @Override
-    public final Iterator<Element> iterator() {
-        return createIterator();
+    public final Iterator<Item> iterator() {
+        return new TraversibleIterator<>(this);
     }
 }

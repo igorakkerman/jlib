@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.Container;
 
@@ -83,7 +83,7 @@ import org.jlib.container.Container;
  * </ul>
  * <p>
  * <!-- TODO: update documentation --> A default algorithm of how this
- * ArrayMatrix is traversed by {@link Iterator Iterators} returned by
+ * ArrayMatrix is traversed by {@link Traverser Traversers} returned by
  * {@link #iterator()} can be defined specifying a default {@link Iterable} as
  * iterable provider.
  * </p>
@@ -95,7 +95,7 @@ import org.jlib.container.Container;
  */
 //@formatter:on
 public interface Matrix<Entry>
-extends Container<Entry>, MatrixIterable<Entry> {
+extends Container<Entry>, MatrixTraversible<Entry> {
 
     /**
      * Returns the number of columns of this {@link Matrix}.
@@ -121,13 +121,13 @@ extends Container<Entry>, MatrixIterable<Entry> {
     public int getSize();
 
     /**
-     * Creates a {@link MatrixIterator} traversing the Entries of this
+     * Creates a {@link MatrixTraverser} traversing the Entries of this
      * {@link ArrayMatrix} in the default order. The default order may be
      * defined by the concrete implementation or even made customizable.
      * 
-     * @return a new {@link MatrixIterator} over the Entries of this
+     * @return a new {@link MatrixTraverser} over the Entries of this
      *         {@link Matrix}
      */
     @Override
-    public MatrixIterator<Entry> createIterator();
+    public MatrixTraverser<Entry> createTraverser();
 }

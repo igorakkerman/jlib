@@ -2,7 +2,7 @@ package org.jlib.container.matrix;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
@@ -49,22 +49,22 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public boolean contains(final Entry element) {
+    public boolean contains(final Entry item) {
         return false;
     }
 
     @Override
-    public boolean containsAll(final Container<? extends Entry> elements) {
+    public boolean containsAll(final Container<? extends Entry> items) {
         return false;
     }
 
     @Override
-    public boolean containsAll(final Collection<? extends Entry> elements) {
+    public boolean containsAll(final Collection<? extends Entry> items) {
         return false;
     }
 
     @Override
-    public boolean containsAll(@SuppressWarnings("unchecked") final Entry... elements) {
+    public boolean containsAll(@SuppressWarnings("unchecked") final Entry... items) {
         return false;
     }
 
@@ -81,13 +81,13 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public ReplaceMatrixIterator<Entry> createIterator() {
-        return EmptyMatrixIterator.getInstance();
+    public ReplaceMatrixTraverser<Entry> createTraverser() {
+        return EmptyMatrixTraverser.getInstance();
     }
 
     @Override
-    public Iterator<Entry> iterator() {
-        return createIterator();
+    public Traverser<Entry> iterator() {
+        return createTraverser();
     }
 
     @Override
@@ -116,13 +116,13 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public MatrixIterable<Entry> iteratedInOrder(final MatrixIterationOrder iterationOrder) {
+    public MatrixTraversible<Entry> iteratedInOrder(final MatrixTraversalOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
     }
 
     @Override
-    public void setDefaultIterationOrder(final MatrixIterationOrder defaultIterationOrder) {
+    public void setDefaultIterationOrder(final MatrixTraversalOrder defaultIterationOrder) {
         // the iteration order is void in an EmptyMatrix
     }
 }

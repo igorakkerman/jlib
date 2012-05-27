@@ -6,25 +6,25 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AddIndexSequence;
-import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
- * {@link ReplaceArraySequence} to which Elements can be added.
+ * {@link ReplaceArraySequence} to which Items can be added.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class AddReplaceArraySequence<Element>
-extends ReplaceArraySequence<Element>
-implements AddIndexSequence<Element> {
+public class AddReplaceArraySequence<Item>
+extends ReplaceArraySequence<Item>
+implements AddIndexSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link AddReplaceArraySequence}
@@ -48,8 +48,8 @@ implements AddIndexSequence<Element> {
      *         instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<Element, ? extends AddReplaceArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<Element, AddReplaceArraySequence<Element>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends AddReplaceArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, AddReplaceArraySequence<Item>>) CREATOR;
     }
 
     /**
@@ -70,36 +70,36 @@ implements AddIndexSequence<Element> {
     }
 
     @Override
-    public void add(final Element element) {
-        addAll(singleton(element));
+    public void add(final Item item) {
+        addAll(singleton(item));
     }
 
     @Override
-    public void addAll(final Container<? extends Element> elements) {
-        final int addedElementsCount = elements.getSize();
+    public void addAll(final Container<? extends Item> items) {
+        final int addedItemsCount = items.getSize();
 
-        assertCapacity(getSize() + addedElementsCount);
+        assertCapacity(getSize() + addedItemsCount);
 
-        int elementArrayIndex = getSize();
+        int itemArrayIndex = getSize();
 
-        for (final Element element : elements)
-            replaceDelegateArrayElement(elementArrayIndex ++, element);
+        for (final Item item : items)
+            replaceDelegateArrayItem(itemArrayIndex ++, item);
 
-        setLastIndex(getLastIndex() + addedElementsCount);
+        setLastIndex(getLastIndex() + addedItemsCount);
     }
 
     @Override
-    public void addAll(final Collection<? extends Element> elements) {
-        ContainerUtility.addAll(this, elements);
+    public void addAll(final Collection<? extends Item> items) {
+        ContainerUtility.addAll(this, items);
     }
 
     @Override
-    public void addAll(@SuppressWarnings("unchecked") final Element... elements) {
-        ContainerUtility.addAll(this, iterable(elements));
+    public void addAll(@SuppressWarnings("unchecked") final Item... items) {
+        ContainerUtility.addAll(this, iterable(items));
     }
 
     @Override
-    public ReplaceIndexSequenceIterator<Element> createIterator() {
-        return new DefaultReplaceIndexSequenceIterator<Element>(this);
+    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceIndexSequenceTraverser<Item>(this);
     }
 }

@@ -1,33 +1,33 @@
 package org.jlib.xml;
 
 /**
- * Exception thrown when an element specified by name or path does not exist.
+ * Exception thrown when an item specified by name or path does not exist.
  * 
  * @author Igor Akkerman
  *
  */
-public class NoSuchElementException
+public class NoSuchItemException
 extends Exception {
 
-    // name or path of the element
-    private String elementName;
+    // name or path of the item
+    private String itemName;
     
     /**
-     * Creates a new NoSuchElementException.
+     * Creates a new NoSuchItemException.
      *
-     * @param elementName
-     *        string specifying the name or path of the element
+     * @param itemName
+     *        string specifying the name or path of the item
      */
-    public NoSuchElementException(String elementName) {
-        this.elementName = elementName;
+    public NoSuchItemException(String itemName) {
+        this.itemName = itemName;
     }
     
     /**
-     * Returns a string representation of this NoSuchElementException.
+     * Returns a string representation of this NoSuchItemException.
      * 
-     * @return string representation of this NoSuchElementException
+     * @return string representation of this NoSuchItemException
      */
     public String toString() {
-        return "NoSuchElementException[" + elementName + "]";
+        return "NoSuchItemException[" + itemName + "]";
     }
 }

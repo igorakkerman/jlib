@@ -14,5 +14,5 @@ public interface ReplaceMatrix<Entry>
 extends Matrix<Entry>, ReplaceContainer<Entry> {
 
     @Override
-    public ReplaceMatrixIterator<Entry> createIterator();
+    public ReplaceMatrixTraverser<Entry> createTraverser();
 }

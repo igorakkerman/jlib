@@ -12,10 +12,10 @@ public interface DocumentFactory {
     public Document createDocument();
     
     /**
-     * Creates a new document with the specified root element.
+     * Creates a new document with the specified root item.
      * 
-     * @param rootElement
-     *        root element of the new document
+     * @param rootItem
+     *        root item of the new document
      */
-    public Document createDocument(Element rootElement);
+    public Document createDocument(Item rootItem);
 }

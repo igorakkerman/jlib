@@ -19,40 +19,40 @@ import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link ReplaceIndexSequence} that allows Elements to be added and removed.
+ * {@link ReplaceIndexSequence} that allows Items to be added and removed.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of the items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface InsertIndexSequence<Element>
-extends InsertSequence<Element>, IndexSequence<Element> {
+public interface InsertIndexSequence<Item>
+extends InsertSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Returns an {@link InsertIndexSequenceIterator} traversing the Elements of
-     * this Sequence in proper sequence. Initially, the Iterator points to the
-     * beginning of this Sequence, that is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
+     * Returns an {@link InsertIndexSequenceTraverser} traversing the Items of
+     * this Sequence in proper sequence. Initially, the Traverser points to the
+     * beginning of this Sequence, that is, the Item returned by the first
+     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored at
      * {@link #getFirstIndex()}.
      * 
-     * @return InsertIndexSequenceIterator over this IndexSequence initially
+     * @return InsertIndexSequenceTraverser over this IndexSequence initially
      *         pointing to the beginning of this Sequence
      */
     @Override
-    public InsertIndexSequenceIterator<Element> createIterator();
+    public InsertIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns a InsertIndexSequenceIterator traversing the Elements of this
-     * Sequence in proper sequence. That is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored at
+     * Returns a InsertIndexSequenceTraverser traversing the Items of this
+     * Sequence in proper sequence. That is, the Item returned by the first
+     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored at
      * the specified start index.
      * 
      * @param startIndex
-     *        integer specifying the index of the first Element returned by the
-     *        Iterator
+     *        integer specifying the index of the first Item returned by the
+     *        Traverser
      * 
-     * @return InsertIndexSequenceIterator over this Sequence initially pointing to
+     * @return InsertIndexSequenceTraverser over this Sequence initially pointing to
      *         the beginning of this Sequence
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -60,31 +60,31 @@ extends InsertSequence<Element>, IndexSequence<Element> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
-    public InsertIndexSequenceIterator<Element> createIterator(int startIndex)
+    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Inserts the specified Element at the specified index in this
+     * Inserts the specified Item at the specified index in this
      * IndexSequence.
      * 
      * @param index
      *        integer specifying the index
      * 
-     * @param element
-     *        Element to add
+     * @param item
+     *        Item to add
      */
-    public void insert(int index, Element element);
+    public void insert(int index, Item item);
 
     /**
-     * Inserts all Elements of the specified Container at the specified index of
-     * this IndexSequence. The Elements are inserted in the order they are
-     * returned by the Container's Iterator.
+     * Inserts all Items of the specified Container at the specified index of
+     * this IndexSequence. The Items are inserted in the order they are
+     * returned by the Container's Traverser.
      * 
      * @param index
      *        integer specifying the index
      * 
-     * @param elements
-     *        Container holding the Elements to add
+     * @param items
+     *        Container holding the Items to add
      */
-    public void insert(int index, Container<? extends Element> elements);
+    public void insert(int index, Container<? extends Item> items);
 }

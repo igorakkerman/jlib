@@ -20,56 +20,56 @@ import java.util.Collection;
 
 /**
  * <p>
- * Container that supports addition and removal of Elements.
+ * Container that supports addition and removal of Items.
  * </p>
  * <p>
  * Note: In jlib, {@code null} is not a value. Hence, {@link Container
- * Containers} may <em>not</em> contain null elements
+ * Containers} may <em>not</em> contain null items
  * </p>
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public interface AddContainer<Element>
-extends Container<Element> {
+public interface AddContainer<Item>
+extends Container<Item> {
 
     /**
-     * Adds the specified Element to this {@link AddContainer}.
+     * Adds the specified Item to this {@link AddContainer}.
      * 
-     * @param element
-     *        Element to add
+     * @param item
+     *        Item to add
      * 
      * @throws IllegalArgumentException
-     *         if {@code element} cannot be added, for instance, if this
+     *         if {@code item} cannot be added, for instance, if this
      *         {@link AddContainer} does not allow the multiple addition of an
-     *         Element and already contains {@code element}
+     *         Item and already contains {@code item}
      */
-    public void add(final Element element);
+    public void add(final Item item);
 
     /**
-     * Adds all Elements contained by the specified {@link Container} to this
+     * Adds all Items contained by the specified {@link Container} to this
      * {@link AddContainer}.
      * 
-     * @param elements
-     *        {@link Container} containing the Elements to add
+     * @param items
+     *        {@link Container} containing the Items to add
      */
-    public void addAll(final Container<? extends Element> elements);
+    public void addAll(final Container<? extends Item> items);
 
     /**
-     * Adds all Elements contained by the specified {@link Collection} to this
+     * Adds all Items contained by the specified {@link Collection} to this
      * {@link AddContainer}.
      * 
-     * @param elements
-     *        {@link Collection} containing the Elements to add
+     * @param items
+     *        {@link Collection} containing the Items to add
      */
-    public void addAll(final Collection<? extends Element> elements);
+    public void addAll(final Collection<? extends Item> items);
 
     /**
-     * Adds all specified Elements to this {@link AddContainer}.
+     * Adds all specified Items to this {@link AddContainer}.
      * 
-     * @param elements
-     *        vararg list of Elements to add
+     * @param items
+     *        vararg list of Items to add
      */
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
+    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 }

@@ -14,7 +14,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.AbstractContainer;
 
@@ -39,8 +39,8 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Iterator<Association<LeftValue, RightValue>> iterator() {
-        return new BinaryRelationIterator<LeftValue, RightValue>(this);
+    public Traverser<Association<LeftValue, RightValue>> iterator() {
+        return new BinaryRelationTraverser<LeftValue, RightValue>(this);
     }
 
     @Override

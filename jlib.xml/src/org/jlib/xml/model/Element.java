@@ -3,62 +3,62 @@ package org.jlib.xml;
 import java.util.List;
 
 /**
- * XML element.
+ * XML item.
  * 
  * @author Igor Akkerman
  */
-public interface Element extends Node {
+public interface Item extends Node {
     /**
-     * Adds an element to this element.
+     * Adds an item to this item.
      * 
-     * @param element
-     *        element to add
+     * @param item
+     *        item to add
      */
-    public void addElement(Element element);
+    public void addItem(Item item);
     
     /**
-     * Creates a new text element and adds it to this element.
+     * Creates a new text item and adds it to this item.
      * 
-     * @param elementName
-     *        string specifying the name of the new child text element
+     * @param itemName
+     *        string specifying the name of the new child text item
      * @param text
-     *        string specifying the text of the new child text element
+     *        string specifying the text of the new child text item
      *        
-     * @return the newly created and added text element
+     * @return the newly created and added text item
      */
-    public Element addTextElement(String elementName, String elementText);
+    public Item addTextItem(String itemName, String itemText);
     
     /**
-     * Returns the text of this element.
+     * Returns the text of this item.
      * 
-     * @return stirng specifying the text of this element
+     * @return stirng specifying the text of this item
      */
     public String getText();
     
     /**
-     * Returns the list of child elements of this element.
+     * Returns the list of child items of this item.
      * 
-     * @return list of the child elements
+     * @return list of the child items
      */
-    public List<Element> getChildElements();
+    public List<Item> getChildItems();
     
     /**
-     * Returns the first child element of this element with the specified name.
+     * Returns the first child item of this item with the specified name.
      * 
-     * @param childElementName
-     *        string specifying the name of the child element
+     * @param childItemName
+     *        string specifying the name of the child item
      *        
-     * @return the first child element of this element with the specified name
+     * @return the first child item of this item with the specified name
      * 
-     * @throws NoSuchElementException
-     *         if this element does not have a child element with the specified name
+     * @throws NoSuchItemException
+     *         if this item does not have a child item with the specified name
      */
-    public Element getChildElement(String elementName)
-    throws NoSuchElementException;
+    public Item getChildItem(String itemName)
+    throws NoSuchItemException;
 
     /**
-     * Registers an attribute of this element with the specified name and value.
-     * If this element already contains an attribute with the specified name,
+     * Registers an attribute of this item with the specified name and value.
+     * If this item already contains an attribute with the specified name,
      * it is replaced.
      * 
      * @param attributeName
@@ -69,7 +69,7 @@ public interface Element extends Node {
     public void setAttribute(String attributeName, String attributeValue);
     
     /**
-     * Returns the value of the attribute of this element with the specified name.
+     * Returns the value of the attribute of this item with the specified name.
      * 
      * @param attributeName
      *        string specifying the name of the attribute
@@ -77,23 +77,23 @@ public interface Element extends Node {
      * @return string specifying the value of the attribute
      * 
      * @throws NoSuchAttributeException
-     *         if this element does not have an attribute with the specified name
+     *         if this item does not have an attribute with the specified name
      */
     public String getAttribute(String attributeName)
     throws NoSuchAttributeException;
     
     /**
-     * Returns the namespace of this element.
+     * Returns the namespace of this item.
      * 
-     * @return namespace of this element
+     * @return namespace of this item
      */
     public Namespace getNamespace();
     
     /**
-     * Registers a new namespace for this element.
+     * Registers a new namespace for this item.
      * 
      * @param namespace
-     *        new namespace for this element
+     *        new namespace for this item
      */
     public void setNamespace(Namespace namespace);
 }

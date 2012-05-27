@@ -21,13 +21,13 @@ import static org.jlib.core.array.ArrayUtility.iterable;
 /**
  * Skeletal implementation of a AddContainer.
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public abstract class AbstractReplaceAddRemoveContainer<Element>
-extends AbstractReplaceAddContainer<Element>
-implements RemoveContainer<Element> {
+public abstract class AbstractReplaceAddRemoveContainer<Item>
+extends AbstractReplaceAddContainer<Item>
+implements RemoveContainer<Item> {
 
     /**
      * Creates a new AddContainer.
@@ -42,37 +42,37 @@ implements RemoveContainer<Element> {
     }
 
     @Override
-    public void removeAll(final Container<? extends Element> elements) {
-        removeAll((Iterable<? extends Element>) elements);
+    public void removeAll(final Container<? extends Item> items) {
+        removeAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public void removeAll(final Collection<? extends Element> elements) {
-        removeAll((Iterable<? extends Element>) elements);
+    public void removeAll(final Collection<? extends Item> items) {
+        removeAll((Iterable<? extends Item>) items);
     }
 
-    public void removeAll(final Iterable<? extends Element> elements) {
-        for (final Element element : elements)
-            remove(element);
-    }
-
-    @Override
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        ContainerUtility.removeAll(this, iterable(elements));
+    public void removeAll(final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            remove(item);
     }
 
     @Override
-    public void retainAll(final Container<? extends Element> elements) {
-        ContainerUtility.retainAll(this, elements);
+    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.removeAll(this, iterable(items));
     }
 
     @Override
-    public void retainAll(final Collection<? extends Element> elements) {
-        ContainerUtility.retainAll(this, elements);
+    public void retainAll(final Container<? extends Item> items) {
+        ContainerUtility.retainAll(this, items);
     }
 
     @Override
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        ContainerUtility.retainAll(this, elements);
+    public void retainAll(final Collection<? extends Item> items) {
+        ContainerUtility.retainAll(this, items);
+    }
+
+    @Override
+    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.retainAll(this, items);
     }
 }

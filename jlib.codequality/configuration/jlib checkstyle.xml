@@ -33,7 +33,7 @@
         <module name="FileLength"/>
         <module name="MethodLength"/>
         <module name="ParameterNumber"/>
-        <module name="EmptyForIteratorPad"/>
+        <module name="EmptyForTraverserPad"/>
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceAfter"/>
         <module name="ParenPad"/>

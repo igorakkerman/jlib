@@ -19,33 +19,33 @@ import java.util.List;
 import org.jlib.container.Container;
 
 /**
- * Ordered sequence of elements.
+ * Ordered sequence of items.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface Sequence<Element>
-extends Container<Element> {
+public interface Sequence<Item>
+extends Container<Item> {
 
     /**
-     * Returns a {@link SequenceIterator} traversing the Elements of this
-     * Sequence in proper sequence. The Element returned by the first call to
-     * {@link SequenceIterator#next()} is the first Element in the Sequence.
+     * Returns a {@link SequenceTraverser} traversing the Items of this
+     * Sequence in proper sequence. The Item returned by the first call to
+     * {@link SequenceTraverser#next()} is the first Item in the Sequence.
      * 
-     * @return SequenceIterator over this Sequence
+     * @return SequenceTraverser over this Sequence
      */
     @Override
-    public SequenceIterator<Element> createIterator();
+    public SequenceTraverser<Item> createTraverser();
 
     /**
      * <p>
      * Verifies whether the specified Object is a Sequence containing equal
-     * Elements as this Sequence.
+     * Items as this Sequence.
      * </p>
      * <p>
-     * Two Elements {@code element1} and {@code element2} are equal if and only
+     * Two Items {@code item1} and {@code item2} are equal if and only
      * if both are {@code null} or both are equal by the {@link #equals(Object)}
      * method.
      * </p>
@@ -60,21 +60,21 @@ extends Container<Element> {
 
     /**
      * <p>
-     * Returns a {@link List} containing all Elements stored in this Sequence in
+     * Returns a {@link List} containing all Items stored in this Sequence in
      * proper sequence.
      * </p>
      * <p>
      * The method duplicates the functionality of the {@link #toList()} method.
      * </p>
      * 
-     * @return {@link List} containing the Elements stored in this Sequence
+     * @return {@link List} containing the Items stored in this Sequence
      */
     @Override
-    public List<Element> toCollection();
+    public List<Item> toCollection();
 
     /**
      * <p>
-     * Returns a {@link List} containing all Elements stored in this Sequence in
+     * Returns a {@link List} containing all Items stored in this Sequence in
      * proper sequence.
      * </p>
      * <p>
@@ -82,7 +82,7 @@ extends Container<Element> {
      * method and has been introduced .
      * </p>
      * 
-     * @return {@link List} containing the Elements stored in this Sequence
+     * @return {@link List} containing the Items stored in this Sequence
      */
-    public List<Element> toList();
+    public List<Item> toList();
 }

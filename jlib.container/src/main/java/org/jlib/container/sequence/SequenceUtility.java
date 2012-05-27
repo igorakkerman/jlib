@@ -11,14 +11,14 @@ public final class SequenceUtility {
     private SequenceUtility() {}
 
     /**
-     * Creates a new {@link Sequence} containing solely the specified Element.
+     * Creates a new {@link Sequence} containing solely the specified Item.
      * 
-     * @param element
-     *        sole Element of the new {@link Sequence}
+     * @param item
+     *        sole Item of the new {@link Sequence}
      * 
      * @return new singleton {@link Sequence}
      */
-    public static <Element> Sequence<Element> singleton(final Element element) {
-        return new SingletonSequence<Element>(element);
+    public static <Item> Sequence<Item> singleton(final Item item) {
+        return new SingletonSequence<Item>(item);
     }
 }

@@ -15,7 +15,7 @@
 package org.jlib.container;
 
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.Set;
 
 import org.jlib.container.collection.CollectionUtility;
@@ -31,90 +31,90 @@ public final class ContainerUtility {
     private ContainerUtility() {}
 
     /**
-     * Adds all Elements provided by the specified {@link Iterable} to the
+     * Adds all Items provided by the specified {@link Iterable} to the
      * specified {@link AddContainer}.
      * 
      * @param container
-     *        {@link AddContainer} to which the Elements are added
+     *        {@link AddContainer} to which the Items are added
      * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to add
+     * @param items
+     *        {@link Iterable} providing the Items to add
      */
-    public static <Element> void addAll(final AddContainer<Element> container,
-                                        final Iterable<? extends Element> elements) {
-        for (final Element element : elements)
-            container.add(element);
+    public static <Item> void addAll(final AddContainer<Item> container,
+                                        final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            container.add(item);
     }
 
     /**
-     * Removes all Elements provided by the specified {@link Iterable} from the
+     * Removes all Items provided by the specified {@link Iterable} from the
      * specified {@link AddContainer}.
      * 
      * @param container
-     *        {@link AddContainer} containing the Elements
+     *        {@link AddContainer} containing the Items
      * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to remove
+     * @param items
+     *        {@link Iterable} providing the Items to remove
      */
-    public static <Element> void removeAll(final RemoveContainer<Element> container,
-                                           final Iterable<? extends Element> elements) {
-        for (final Element element : elements)
-            container.remove(element);
+    public static <Item> void removeAll(final RemoveContainer<Item> container,
+                                           final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            container.remove(item);
     }
 
     /**
-     * Removes all Elements from the specified {@link AddContainer}
-     * <i>except</i> the Elements provided by the specified {@link Iterable}.
+     * Removes all Items from the specified {@link AddContainer}
+     * <i>except</i> the Items provided by the specified {@link Iterable}.
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Elements to remove
+     *        {@link RemoveContainer} containing the Items to remove
      * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to retain
+     * @param items
+     *        {@link Iterable} providing the Items to retain
      */
-    public static <Element> void retainAll(final RemoveContainer<Element> container,
-                                           final Iterable<? extends Element> elements) {
-        final Set<Element> retainedElementsSet = CollectionUtility.toSet(elements);
+    public static <Item> void retainAll(final RemoveContainer<Item> container,
+                                           final Iterable<? extends Item> items) {
+        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
-        final Iterator<Element> containerIterator = container.iterator();
-        while (containerIterator.hasNext())
-            if (!retainedElementsSet.contains(containerIterator.next()))
-                containerIterator.remove();
+        final Traverser<Item> containerTraverser = container.iterator();
+        while (containerTraverser.hasNext())
+            if (!retainedItemsSet.contains(containerTraverser.next()))
+                containerTraverser.remove();
     }
 
     /**
-     * Removes all Elements from the specified {@link AddContainer}
-     * <i>except</i> for the Elements contained by the specified
+     * Removes all Items from the specified {@link AddContainer}
+     * <i>except</i> for the Items contained by the specified
      * {@link Collection}.
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Elements to remove
+     *        {@link RemoveContainer} containing the Items to remove
      * 
-     * @param elements
-     *        {@link Collection} containing the Elements to retain
+     * @param items
+     *        {@link Collection} containing the Items to retain
      */
-    public static <Element> void retainAll(final RemoveContainer<Element> container,
-                                           final Collection<? extends Element> elements) {
-        final Iterator<Element> elementsIterator = container.iterator();
-        while (elementsIterator.hasNext())
-            if (!elements.contains(elementsIterator.next()))
-                elementsIterator.remove();
+    public static <Item> void retainAll(final RemoveContainer<Item> container,
+                                           final Collection<? extends Item> items) {
+        final Traverser<Item> itemsTraverser = container.iterator();
+        while (itemsTraverser.hasNext())
+            if (!items.contains(itemsTraverser.next()))
+                itemsTraverser.remove();
     }
 
     /**
-     * Removes all Elements from the specified {@link AddContainer}
-     * <i>except</i> for the Elements contained by the specified
+     * Removes all Items from the specified {@link AddContainer}
+     * <i>except</i> for the Items contained by the specified
      * {@link Collection}.
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Elements to remove
+     *        {@link RemoveContainer} containing the Items to remove
      * 
-     * @param elements
-     *        {@link Collection} containing the Elements to retain
+     * @param items
+     *        {@link Collection} containing the Items to retain
      */
-    public static <Element, RetainedElement extends Element> void retainAll(final RemoveContainer<Element> container,
-                                                                            @SuppressWarnings({ "unchecked", /* "varargs" */}) final RetainedElement... elements) {
-        // necessary as we need the contains() method fot the elements sequence
-        retainAll(container, CollectionUtility.toSet(elements));
+    public static <Item, RetainedItem extends Item> void retainAll(final RemoveContainer<Item> container,
+                                                                            @SuppressWarnings({ "unchecked", /* "varargs" */}) final RetainedItem... items) {
+        // necessary as we need the contains() method fot the items sequence
+        retainAll(container, CollectionUtility.toSet(items));
     }
 }

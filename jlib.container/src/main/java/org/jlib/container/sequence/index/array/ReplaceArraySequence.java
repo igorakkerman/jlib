@@ -1,24 +1,24 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequenceIterator;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
- * {@link ArraySequence} allowing its Elements to be replaced.
+ * {@link ArraySequence} allowing its Items to be replaced.
  * 
- * @param <Element>
- *        type of the elements of the {@link Sequence}
+ * @param <Item>
+ *        type of the items of the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public class ReplaceArraySequence<Element>
-extends ArraySequence<Element>
-implements ReplaceIndexSequence<Element> {
+public class ReplaceArraySequence<Item>
+extends ArraySequence<Item>
+implements ReplaceIndexSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link ReplaceArraySequence} insstances
@@ -41,8 +41,8 @@ implements ReplaceIndexSequence<Element> {
      *         instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<Element, ? extends ReplaceArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<Element, ReplaceArraySequence<Element>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceArraySequence<Item>>) CREATOR;
     }
 
     /**
@@ -60,19 +60,19 @@ implements ReplaceIndexSequence<Element> {
 
     @Override
     // raising visibility from protected to public
-    public void replace(final int index, final Element element)
+    public void replace(final int index, final Item item)
     throws SequenceIndexOutOfBoundsException {
-        super.replace(index, element);
+        super.replace(index, item);
     }
 
     @Override
-    public ReplaceIndexSequenceIterator<Element> createIterator() {
-        return new DefaultReplaceIndexSequenceIterator<>(this);
+    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultReplaceIndexSequenceIterator<>(this, startIndex);
+        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 }

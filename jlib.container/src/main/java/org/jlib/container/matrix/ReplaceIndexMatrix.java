@@ -14,17 +14,17 @@ public interface ReplaceIndexMatrix<Entry>
 extends IndexMatrix<Entry> {
 
     /**
-     * Registers the Element to store at the specified column and row in this
+     * Registers the Item to store at the specified column and row in this
      * ArrayMatrix.
      * 
      * @param columnIndex
-     *        integer specifying the column of the Element to store
+     *        integer specifying the column of the Item to store
      * 
      * @param rowIndex
-     *        integer specifying the row of the Element to store
+     *        integer specifying the row of the Item to store
      * 
      * @param entry
-     *        Element to store.
+     *        Item to store.
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code nextint < getMinint() ||

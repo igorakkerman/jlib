@@ -1,62 +1,62 @@
 package org.jlib.container.sequence;
 
 /**
- * Sequence containing exactly one Element.
+ * Sequence containing exactly one Item.
  * 
- * @param <Element>
- *        type of the element held in the {@link Sequence}
+ * @param <Item>
+ *        type of the item held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-class SingletonSequence<Element>
-extends AbstractNonEmptySequence<Element> {
+class SingletonSequence<Item>
+extends AbstractNonEmptySequence<Item> {
 
-    /** sole element of this {@link SingletonSequence} */
-    private final Element element;
+    /** sole item of this {@link SingletonSequence} */
+    private final Item item;
 
-    /** beginning of the {@link SingletonSequence} {@link SequenceIteratorState} */
-    private final SequenceIteratorState<Element> beginningOfSequenceState =
-        new BeginningOfSequenceIteratorState<Element, SingletonSequence<Element>>(this) {
+    /** beginning of the {@link SingletonSequence} {@link SequenceTraverserState} */
+    private final SequenceTraverserState<Item> beginningOfSequenceState =
+        new BeginningOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
-            public Element next() {
-                return element;
+            public Item next() {
+                return item;
             }
 
             @Override
-            public SequenceIteratorState<Element> getNextState() {
+            public SequenceTraverserState<Item> getNextState() {
                 return endOfSequenceState;
             }
         };
 
-    /** end of the {@link SingletonSequence} {@link SequenceIteratorState} */
-    private final SequenceIteratorState<Element> endOfSequenceState =
-        new EndOfSequenceIteratorState<Element, SingletonSequence<Element>>(this) {
+    /** end of the {@link SingletonSequence} {@link SequenceTraverserState} */
+    private final SequenceTraverserState<Item> endOfSequenceState =
+        new EndOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
-            public Element previous() {
-                return element;
+            public Item previous() {
+                return item;
             }
 
             @Override
-            public SequenceIteratorState<Element> getPreviousState() {
+            public SequenceTraverserState<Item> getPreviousState() {
                 return beginningOfSequenceState;
             }
         };
 
     /**
-     * Creates a new {@link SingletonSequence} with the specified Element.
+     * Creates a new {@link SingletonSequence} with the specified Item.
      * 
-     * @param element
-     *        sole Element in this {@link SingletonSequence}
+     * @param item
+     *        sole Item in this {@link SingletonSequence}
      */
-    public SingletonSequence(final Element element) {
-        this.element = element;
+    public SingletonSequence(final Item item) {
+        this.item = item;
     }
 
     @Override
-    public SequenceIterator<Element> createIterator() {
-        return new InitializedSequenceStateIterator<Element, SingletonSequence<Element>>(this, beginningOfSequenceState);
+    public SequenceTraverser<Item> createTraverser() {
+        return new InitializedSequenceStateTraverser<Item, SingletonSequence<Item>>(this, beginningOfSequenceState);
     }
 
     @Override

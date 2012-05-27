@@ -18,15 +18,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.NoSuchItemException;
 import java.util.Set;
 
 import org.jlib.container.Container;
 
 /**
- * Bijection implemented using hashing for left and right hand side elements.
+ * Bijection implemented using hashing for left and right hand side items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the bijection
@@ -163,7 +163,7 @@ implements Bijection<LeftValue, RightValue> {
         if (rightValue != null)
             return rightValue;
         else
-            throw new NoSuchElementException(leftValue.toString());
+            throw new NoSuchItemException(leftValue.toString());
     }
 
     @Override
@@ -172,7 +172,7 @@ implements Bijection<LeftValue, RightValue> {
         if (leftValue != null)
             return leftValue;
         else
-            throw new NoSuchElementException(rightValue.toString());
+            throw new NoSuchItemException(rightValue.toString());
     }
 
     @Override
@@ -196,8 +196,8 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    public Iterator<Association<LeftValue, RightValue>> iterator() {
-        return new BinaryRelationIterator<LeftValue, RightValue>(this);
+    public Traverser<Association<LeftValue, RightValue>> iterator() {
+        return new BinaryRelationTraverser<LeftValue, RightValue>(this);
     }
 
     @Override

@@ -1,20 +1,20 @@
 package org.jlib.core.iterator;
 
-import java.util.Iterator;
+import java.util.Traverser;
 
 /**
- * Iterator state.
+ * Traverser state.
  * 
  * @param <Item>
- *        type of the items traversed by the {@link Iterator}.
+ *        type of the items traversed by the {@link Traverser}.
  */
-public interface IteratorState<Item>
-extends Iterator<Item> {
+public interface TraverserState<Item>
+extends Traverser<Item> {
 
     /**
-     * Returns the next {@link IteratorState}
+     * Returns the next {@link TraverserState}
      * 
-     * @return next {@link IteratorState}
+     * @return next {@link TraverserState}
      */
-    public IteratorState<Item> getNextState();
+    public TraverserState<Item> getNextState();
 }

@@ -5,13 +5,13 @@ import org.jlib.container.sequence.Sequence;
 /**
  * {@link AbstractIndexSequence} that can be initialized.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of the items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public abstract class InitializeableIndexSequence<Element>
-extends AbstractIndexSequence<Element> {
+public abstract class InitializeableIndexSequence<Item>
+extends AbstractIndexSequence<Item> {
 
     /**
      * Creates a new {@link InitializeableIndexSequence}.
@@ -33,36 +33,36 @@ extends AbstractIndexSequence<Element> {
     }
 
     /**
-     * Replaces the Element stored at the specified index in this
-     * {@link InitializeableIndexSequence} by the specified Element.
+     * Replaces the Item stored at the specified index in this
+     * {@link InitializeableIndexSequence} by the specified Item.
      * 
      * @param index
      *        integer specifying the index
      * 
-     * @param element
-     *        Element to store
+     * @param item
+     *        Item to store
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    protected void replace(final int index, final Element element)
+    protected void replace(final int index, final Item item)
     throws SequenceIndexOutOfBoundsException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
-        replaceStoredElement(index, element);
+        replaceStoredItem(index, item);
     }
 
     /**
-     * Replaces the Element stored at the specified index in this
-     * {@link InitializeableIndexSequence} by the specified Element expecting
+     * Replaces the Item stored at the specified index in this
+     * {@link InitializeableIndexSequence} by the specified Item expecting
      * the index to be valid.
      * 
      * @param index
      *        integer specifying the valid index
      * 
-     * @param element
-     *        Element to store
+     * @param item
+     *        Item to store
      */
-    protected abstract void replaceStoredElement(final int index, final Element element);
+    protected abstract void replaceStoredItem(final int index, final Item item);
 
 }

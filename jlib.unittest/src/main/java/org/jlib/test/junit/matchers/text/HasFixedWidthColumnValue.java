@@ -5,7 +5,7 @@ import org.hamcrest.Factory;
 import org.hamcrest.TypeSafeMatcher;
 import org.jlib.core.Wrapper;
 
-import static org.jlib.core.text.CharSequenceIterator.iterable;
+import static org.jlib.core.text.CharSequenceTraverser.iterable;
 
 public class HasFixedWidthColumnValue
 extends TypeSafeMatcher<String> {

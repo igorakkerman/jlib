@@ -24,7 +24,7 @@ import org.jlib.container.Container;
 
 /**
  * BinaryRelation implemented using hashing for left and right hand side
- * elements.
+ * items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation

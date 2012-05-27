@@ -16,7 +16,7 @@ package org.jlib.container.collection;
 
 import java.util.AbstractCollection;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.Container;
 
@@ -25,16 +25,16 @@ import org.jlib.container.Container;
  * {@link ContainerCollection} is backed by a {@link Container} specified at
  * initialization.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Container}
+ * @param <Item>
+ *        type of the items held in the {@link Container}
  * 
  * @author Igor Akkerman
  */
-public class ContainerCollection<Element>
-extends AbstractCollection<Element> {
+public class ContainerCollection<Item>
+extends AbstractCollection<Item> {
 
     /** adapted and backed {@link Container} */
-    private final Container<Element> delegateContainer;
+    private final Container<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
@@ -43,14 +43,14 @@ extends AbstractCollection<Element> {
      * @param delegateContainer
      *        {@link Container} backing this {@link ContainerCollection}
      */
-    public ContainerCollection(final Container<Element> delegateContainer) {
+    public ContainerCollection(final Container<Item> delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
     }
 
     @Override
-    public Iterator<Element> iterator() {
+    public Traverser<Item> iterator() {
         return delegateContainer.iterator();
     }
 
@@ -63,14 +63,14 @@ extends AbstractCollection<Element> {
     @SuppressWarnings("unchecked")
     public boolean contains(final Object object) {
         // (pretty) safe cast thanks to type erasure
-        return delegateContainer.contains((Element) object);
+        return delegateContainer.contains((Item) object);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean containsAll(final Collection<?> elements) {
+    public boolean containsAll(final Collection<?> items) {
         // (pretty) safe cast thanks to type erasure
-        return delegateContainer.containsAll((Collection<? extends Element>) elements);
+        return delegateContainer.containsAll((Collection<? extends Item>) items);
     }
 
     @Override
@@ -80,8 +80,8 @@ extends AbstractCollection<Element> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Element[] toArray() {
-        return (Element[]) super.toArray();
+    public Item[] toArray() {
+        return (Item[]) super.toArray();
     }
 
     /**

@@ -2,13 +2,13 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.AddContainer;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.RemoveContainer;
-import org.jlib.container.RemoveContainerIterator;
+import org.jlib.container.RemoveContainerTraverser;
 
 import static org.jlib.core.array.ArrayUtility.iterable;
 
@@ -17,13 +17,13 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * {@link CollectionAddRemoveContainer} is backed by a {@link Collection}
  * specified at initialization.
  * 
- * @param <Element>
- *        type of the elements held in the {@link Container}
+ * @param <Item>
+ *        type of the items held in the {@link Container}
  * @author Igor Akkerman
  */
-public class CollectionAddRemoveContainer<Element>
-extends CollectionContainer<Element>
-implements AddContainer<Element>, RemoveContainer<Element> {
+public class CollectionAddRemoveContainer<Item>
+extends CollectionContainer<Item>
+implements AddContainer<Item>, RemoveContainer<Item> {
 
     /**
      * Creates a new {@link CollectionAddRemoveContainer} backed by the
@@ -33,37 +33,37 @@ implements AddContainer<Element>, RemoveContainer<Element> {
      *        {@link Collection} backing this
      *        {@link CollectionAddRemoveContainer}
      */
-    public CollectionAddRemoveContainer(final Collection<Element> delegateCollection) {
+    public CollectionAddRemoveContainer(final Collection<Item> delegateCollection) {
         super(delegateCollection);
     }
 
     @Override
-    public void add(final Element element) {
-        getDelegateCollection().add(element);
+    public void add(final Item item) {
+        getDelegateCollection().add(item);
     }
 
     @Override
-    public void addAll(final Collection<? extends Element> elements) {
-        getDelegateCollection().addAll(elements);
+    public void addAll(final Collection<? extends Item> items) {
+        getDelegateCollection().addAll(items);
     }
 
     @Override
-    public void addAll(final Container<? extends Element> elements) {
+    public void addAll(final Container<? extends Item> items) {
         getDelegateCollection().addAll(getDelegateCollection());
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        Collections.addAll(getDelegateCollection(), elements);
+    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        Collections.addAll(getDelegateCollection(), items);
     }
 
     @Override
-    public void remove(final Element element)
+    public void remove(final Item item)
     throws IllegalArgumentException {
-        final boolean removed = getDelegateCollection().remove(element);
+        final boolean removed = getDelegateCollection().remove(item);
 
         if (!removed)
-            throw new IllegalArgumentException(element.toString());
+            throw new IllegalArgumentException(item.toString());
     }
 
     @Override
@@ -72,58 +72,58 @@ implements AddContainer<Element>, RemoveContainer<Element> {
     }
 
     @Override
-    public void removeAll(final Collection<? extends Element> elements) {
-        getDelegateCollection().removeAll(elements);
+    public void removeAll(final Collection<? extends Item> items) {
+        getDelegateCollection().removeAll(items);
     }
 
     @Override
-    public void removeAll(final Container<? extends Element> elements) {
-        CollectionUtility.removeAll(getDelegateCollection(), elements);
+    public void removeAll(final Container<? extends Item> items) {
+        CollectionUtility.removeAll(getDelegateCollection(), items);
     }
 
     @Override
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        ContainerUtility.removeAll(this, iterable(elements));
+    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.removeAll(this, iterable(items));
     }
 
     @Override
-    public void removeAll(final Iterable<? extends Element> elements) {
-        ContainerUtility.removeAll(this, elements);
+    public void removeAll(final Iterable<? extends Item> items) {
+        ContainerUtility.removeAll(this, items);
     }
 
     @Override
-    public void retainAll(final Collection<? extends Element> elements) {
-        getDelegateCollection().retainAll(elements);
+    public void retainAll(final Collection<? extends Item> items) {
+        getDelegateCollection().retainAll(items);
     }
 
     @Override
-    public void retainAll(final Container<? extends Element> elements) {
-        ContainerUtility.retainAll(this, elements);
+    public void retainAll(final Container<? extends Item> items) {
+        ContainerUtility.retainAll(this, items);
     }
 
     @Override
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        ContainerUtility.retainAll(this, elements);
+    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.retainAll(this, items);
     }
 
     @Override
-    public RemoveContainerIterator<Element> createIterator() {
-        final Iterator<Element> delegateIterator = getDelegateCollection().iterator();
-        return new RemoveContainerIterator<Element>() {
+    public RemoveContainerTraverser<Item> createTraverser() {
+        final Traverser<Item> delegateTraverser = getDelegateCollection().iterator();
+        return new RemoveContainerTraverser<Item>() {
 
             @Override
             public boolean hasNext() {
-                return delegateIterator.hasNext();
+                return delegateTraverser.hasNext();
             }
 
             @Override
-            public Element next() {
-                return delegateIterator.next();
+            public Item next() {
+                return delegateTraverser.next();
             }
 
             @Override
             public void remove() {
-                delegateIterator.remove();
+                delegateTraverser.remove();
             }
         };
     }

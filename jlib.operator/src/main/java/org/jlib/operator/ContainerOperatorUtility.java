@@ -15,14 +15,14 @@
 package org.jlib.operator;
 
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.Set;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.ArraySequenceCreator;
 import org.jlib.container.sequence.IndexSequence;
 import org.jlib.core.operator.BinaryOperator;
-import org.jlib.core.operator.IdentityElementBinaryOperator;
+import org.jlib.core.operator.IdentityItemBinaryOperator;
 
 /**
  * Utility class providing methods applying {@link BinaryOperator
@@ -36,28 +36,28 @@ public final class ContainerOperatorUtility {
     private ContainerOperatorUtility() {}
 
     /**
-     * Creates a Set containing the elements of the specified array.
+     * Creates a Set containing the items of the specified array.
      * 
-     * @param <SetElement>
-     *        type of the elements in the Set; super type of
-     *        {@code <ArrayElement>}
-     * @param <ArrayElement>
-     *        type of the elements in the array
+     * @param <SetItem>
+     *        type of the items in the Set; super type of
+     *        {@code <ArrayItem>}
+     * @param <ArrayItem>
+     *        type of the items in the array
      * @param array
      *        the source array
-     * @return Set containing the Elements of {@code array}
+     * @return Set containing the Items of {@code array}
      */
-    public static <SetElement, ArrayElement extends SetElement> Set<SetElement> asSet(final ArrayElement[] array) {
-        final Set<SetElement> set = new HashSet<SetElement>(array.length);
-        for (final ArrayElement element : array)
-            set.add(element);
+    public static <SetItem, ArrayItem extends SetItem> Set<SetItem> asSet(final ArrayItem[] array) {
+        final Set<SetItem> set = new HashSet<SetItem>(array.length);
+        for (final ArrayItem item : array)
+            set.add(item);
         return set;
     }
 
     /**
-     * Applies the specified BinaryOperator on the elements of the specified non
+     * Applies the specified BinaryOperator on the items of the specified non
      * empty Container with left associativity. Let <i>a</i>, <i>b</i>,
-     * <i>c</i>, ... be the first elements returned by the Container's Iterator
+     * <i>c</i>, ... be the first items returned by the Container's Traverser
      * in the correct order, and let the BinaryOperator be represented by
      * <i>*</i>. Then this method returns the result of <i>((a*b)*c)*...</i>.
      * 
@@ -69,7 +69,7 @@ public final class ContainerOperatorUtility {
      * @param operator
      *        BinaryOperator applied to {@code collection}
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}
+     *         items of {@code collection}
      * @throws IllegalArgumentException
      *         if {@code collection} is empty
      */
@@ -79,79 +79,79 @@ public final class ContainerOperatorUtility {
         if (collection.isEmpty())
             throw new IllegalArgumentException();
 
-        final Iterator<Value> collectionIterator = collection.iterator();
+        final Traverser<Value> collectionTraverser = collection.iterator();
 
-        Value result = collectionIterator.next();
+        Value result = collectionTraverser.next();
 
-        while (collectionIterator.hasNext())
-            result = operator.operate(result, collectionIterator.next());
+        while (collectionTraverser.hasNext())
+            result = operator.operate(result, collectionTraverser.next());
 
         return result;
     }
 
     /**
-     * Applies the specified IdentityElementBinaryOperator on the elements of
+     * Applies the specified IdentityItemBinaryOperator on the items of
      * the specified Container with left associativity, returning the operator's
-     * identity element if the Container is empty. Let <i>a</i>, <i>b</i>,
-     * <i>c</i>, ... be the first elements returned by the Container's Iterator
+     * identity item if the Container is empty. Let <i>a</i>, <i>b</i>,
+     * <i>c</i>, ... be the first items returned by the Container's Traverser
      * in the correct order, and let the operator be represented by <i>*</i>.
      * Then this method returns the result of <i>((a*b)*c)*...</i>. If the
      * Container is empty, the value returned by the operator's
-     * {@link IdentityElementBinaryOperator#identityElement()} method is
+     * {@link IdentityItemBinaryOperator#identityItem()} method is
      * returned.
      * 
      * @param <Value>
-     *        type of the values to which the IdentityElementBinaryOperator is
+     *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
      * @param collection
-     *        Container of Values on which the IdentityElementBinaryOperator is
+     *        Container of Values on which the IdentityItemBinaryOperator is
      *        applied
      * @param operator
-     *        IdentityElementBinaryOperator applied to {@code collection}
+     *        IdentityItemBinaryOperator applied to {@code collection}
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}; the {@code operator}'s identity
-     *         element if {@code collection} is empty
+     *         items of {@code collection}; the {@code operator}'s identity
+     *         item if {@code collection} is empty
      */
     public static <Value> Value applyToAll(final Container<Value> collection,
-                                           final IdentityElementBinaryOperator<Value> operator) {
-        return applyToAll(collection, operator, operator.identityElement());
+                                           final IdentityItemBinaryOperator<Value> operator) {
+        return applyToAll(collection, operator, operator.identityItem());
     }
 
     /**
-     * Applies the specified BinaryOperator on the elements of the specified
+     * Applies the specified BinaryOperator on the items of the specified
      * Container with left associativity, returning the specified identity
-     * element if the Container is empty. Let <i>a</i>, <i>b</i>, <i>c</i>, ...
-     * be the first elements returned by the non empty Container's Iterator in
+     * item if the Container is empty. Let <i>a</i>, <i>b</i>, <i>c</i>, ...
+     * be the first items returned by the non empty Container's Traverser in
      * the correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>((a*b)*c)*...</i>.
      * 
      * @param <Value>
-     *        type of the values to which the IdentityElementBinaryOperator is
+     *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
      * @param collection
-     *        Container of Values on which the IdentityElementBinaryOperator is
+     *        Container of Values on which the IdentityItemBinaryOperator is
      *        applied
      * @param operator
      *        BinaryOperator applied to {@code collection}
-     * @param identityElement
+     * @param identityItem
      *        Value to return if {@code collection} is empty
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}; {@code identityElement} if
+     *         items of {@code collection}; {@code identityItem} if
      *         {@code collection} is empty
      */
     public static <Value> Value applyToAll(final Container<Value> collection,
                                            final BinaryOperator<Value, Value, Value> operator,
-                                           final Value identityElement) {
+                                           final Value identityItem) {
         if (collection.isEmpty())
-            return identityElement;
+            return identityItem;
 
         return applyToAll(collection, operator);
     }
 
     /**
-     * Applies the specified BinaryOperator on the elements of the specified non
+     * Applies the specified BinaryOperator on the items of the specified non
      * empty Container with right associativity. Let ..., <i>x</i>, <i>y</i>,
-     * <i>z</i> be the last elements returned by the Container's Iterator in the
+     * <i>z</i> be the last items returned by the Container's Traverser in the
      * correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>...*(x*(y*z))</i>.
      * 
@@ -163,7 +163,7 @@ public final class ContainerOperatorUtility {
      * @param operator
      *        BinaryOperator applied to {@code collection}
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}
+     *         items of {@code collection}
      * @throws IllegalArgumentException
      *         if {@code collection} is empty
      */
@@ -190,60 +190,60 @@ public final class ContainerOperatorUtility {
     }
 
     /**
-     * Applies the specified IdentityElementBinaryOperator on the elements of
+     * Applies the specified IdentityItemBinaryOperator on the items of
      * the specified Container with right associativity, returning the
-     * operator's identity element if the Container is empty. Let ..., <i>x</i>,
-     * <i>y</i>, <i>z</i> be the last elements returned by the Container's
-     * Iterator in the correct order, and let the operator be represented by
+     * operator's identity item if the Container is empty. Let ..., <i>x</i>,
+     * <i>y</i>, <i>z</i> be the last items returned by the Container's
+     * Traverser in the correct order, and let the operator be represented by
      * <i>*</i>. Then this method returns the result of <i>...*(x*(y*z))</i>. If
      * the Container is empty, the value returned by the operator's
-     * {@link IdentityElementBinaryOperator#identityElement()} method is
+     * {@link IdentityItemBinaryOperator#identityItem()} method is
      * returned.
      * 
      * @param <Value>
-     *        type of the values to which the IdentityElementBinaryOperator is
+     *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
      * @param collection
-     *        Container of Values on which the IdentityElementBinaryOperator is
+     *        Container of Values on which the IdentityItemBinaryOperator is
      *        applied
      * @param operator
-     *        IdentityElementBinaryOperator applied to {@code collection}
+     *        IdentityItemBinaryOperator applied to {@code collection}
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}; the {@code operator}'s identity
-     *         element if {@code collection} is empty
+     *         items of {@code collection}; the {@code operator}'s identity
+     *         item if {@code collection} is empty
      */
     public static <Value> Value applyToAllRightAssociative(final Container<Value> collection,
-                                                           final IdentityElementBinaryOperator<Value> operator) {
-        return applyToAllRightAssociative(collection, operator, operator.identityElement());
+                                                           final IdentityItemBinaryOperator<Value> operator) {
+        return applyToAllRightAssociative(collection, operator, operator.identityItem());
     }
 
     /**
-     * Applies the specified IdentityElementBinaryOperator on the elements of
+     * Applies the specified IdentityItemBinaryOperator on the items of
      * the specified Container with right associativity, returning the specified
-     * identity element if the Container is empty. Let ..., <i>x</i>, <i>y</i>,
-     * <i>z</i> be the last elements returned by the Container's Iterator in the
+     * identity item if the Container is empty. Let ..., <i>x</i>, <i>y</i>,
+     * <i>z</i> be the last items returned by the Container's Traverser in the
      * correct order, and let the operator be represented by <i>*</i>. Then this
      * method returns the result of <i>...*(x*(y*z))</i>.
      * 
      * @param <Value>
-     *        type of the values to which the IdentityElementBinaryOperator is
+     *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
      * @param collection
-     *        Container of Values on which the IdentityElementBinaryOperator is
+     *        Container of Values on which the IdentityItemBinaryOperator is
      *        applied
      * @param operator
      *        BinaryOperator applied to {@code collection}
-     * @param identityElement
+     * @param identityItem
      *        Value to return if {@code collection} is empty
      * @return Value returned after {@code operator} has been applied to all
-     *         elements of {@code collection}; {@code identityElement} if
+     *         items of {@code collection}; {@code identityItem} if
      *         {@code collection} is empty
      */
     public static <Value> Value applyToAllRightAssociative(final Container<Value> collection,
                                                            final BinaryOperator<Value, Value, Value> operator,
-                                                           final Value identityElement) {
+                                                           final Value identityItem) {
         if (collection.isEmpty())
-            return identityElement;
+            return identityItem;
 
         return applyToAll(collection, operator);
     }

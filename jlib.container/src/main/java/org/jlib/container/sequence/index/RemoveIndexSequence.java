@@ -18,18 +18,18 @@ import org.jlib.container.sequence.RemoveSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IndexSequence} that allows Elements to be removed.
+ * {@link IndexSequence} that allows Items to be removed.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface RemoveIndexSequence<Element>
-extends RemoveSequence<Element>, IndexSequence<Element> {
+public interface RemoveIndexSequence<Item>
+extends RemoveSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Removes from this IndexSequence the Element stored at the specified
+     * Removes from this IndexSequence the Item stored at the specified
      * index.
      * 
      * @param index
@@ -38,29 +38,29 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
     public void remove(final int index);
 
     /**
-     * Returns a {@link RemoveIndexSequenceIterator} traversing the Elements of
-     * this Sequence in proper sequence. Initially, the Iterator points to the
-     * beginning of this Sequence, that is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored
+     * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
+     * this Sequence in proper sequence. Initially, the Traverser points to the
+     * beginning of this Sequence, that is, the Item returned by the first
+     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored
      * at {@link #getFirstIndex()}.
      * 
-     * @return InsertIndexSequenceIterator over this IndexSequence initially
+     * @return InsertIndexSequenceTraverser over this IndexSequence initially
      *         pointing to the beginning of this Sequence
      */
     @Override
-    public RemoveIndexSequenceIterator<Element> createIterator();
+    public RemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns a RemoveIndexSequenceIterator traversing the Elements of this
-     * Sequence in proper sequence. That is, the Element returned by the first
-     * call to {@link InsertIndexSequenceIterator#next()} is the Element stored
+     * Returns a RemoveIndexSequenceTraverser traversing the Items of this
+     * Sequence in proper sequence. That is, the Item returned by the first
+     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored
      * at the specified start index.
      * 
      * @param startIndex
-     *        integer specifying the index of the first Element returned by the
-     *        Iterator
+     *        integer specifying the index of the first Item returned by the
+     *        Traverser
      * 
-     * @return InsertIndexSequenceIterator over this Sequence initially pointing
+     * @return InsertIndexSequenceTraverser over this Sequence initially pointing
      *         to the beginning of this Sequence
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -68,6 +68,6 @@ extends RemoveSequence<Element>, IndexSequence<Element> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
-    public RemoveIndexSequenceIterator<Element> createIterator(final int startIndex)
+    public RemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

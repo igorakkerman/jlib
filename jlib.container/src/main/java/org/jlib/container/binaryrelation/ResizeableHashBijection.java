@@ -15,7 +15,7 @@
 package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.Set;
 
 import org.jlib.container.Container;
@@ -197,7 +197,7 @@ implements AddBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public Iterator<Association<LeftValue, RightValue>> iterator() {
+    public Traverser<Association<LeftValue, RightValue>> iterator() {
         return delegateBijection.iterator();
     }
 

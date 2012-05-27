@@ -19,9 +19,9 @@
  * @author Igor Akkerman
  */
 // TODO: when implemented modification listener model, implement standard listeners like:
-//         boolean listener returning whether an element has been modified
-//         int counting listener returning the number of modified elements
-//         List<Element> listener returning the modified/removed elements
+//         boolean listener returning whether an item has been modified
+//         int counting listener returning the number of modified items
+//         List<Item> listener returning the modified/removed items
 
 // TODO: have a look at Guava
 // TODO: add/correct package-info.java for all packages

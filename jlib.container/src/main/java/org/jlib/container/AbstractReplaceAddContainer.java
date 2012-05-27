@@ -19,13 +19,13 @@ import java.util.Collection;
 /**
  * Skeletal implementation of a AddContainer.
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public abstract class AbstractReplaceAddContainer<Element>
-extends AbstractContainer<Element>
-implements AddContainer<Element> {
+public abstract class AbstractReplaceAddContainer<Item>
+extends AbstractContainer<Item>
+implements AddContainer<Item> {
 
     /**
      * Creates a new AddContainer.
@@ -35,30 +35,30 @@ implements AddContainer<Element> {
     }
 
     @Override
-    public void addAll(Collection<? extends Element> elements) {
-        addAll((Iterable<? extends Element>) elements);
+    public void addAll(Collection<? extends Item> items) {
+        addAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public void addAll(Container<? extends Element> elements) {
-        addAll((Iterable<? extends Element>) elements);
+    public void addAll(Container<? extends Item> items) {
+        addAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
-        for (Element element : elements)
-            add(element);
+    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        for (Item item : items)
+            add(item);
     }
 
     /**
-     * Adds all Elements provided by the specified {@link Iterable} to this
+     * Adds all Items provided by the specified {@link Iterable} to this
      * {@link AddContainer}.
      * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to add
+     * @param items
+     *        {@link Iterable} providing the Items to add
      */
-    private void addAll(final Iterable<? extends Element> elements) {
-        for (Element element : elements)
-            add(element);
+    private void addAll(final Iterable<? extends Item> items) {
+        for (Item item : items)
+            add(item);
     }
 }

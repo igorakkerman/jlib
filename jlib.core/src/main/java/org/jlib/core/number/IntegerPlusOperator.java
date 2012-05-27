@@ -17,7 +17,7 @@ package org.jlib.core.number;
 import org.jlib.core.operator.AssociativeBinaryOperator;
 import org.jlib.core.operator.BinaryOperator;
 import org.jlib.core.operator.CommutativeBinaryOperator;
-import org.jlib.core.operator.IdentityElementBinaryOperator;
+import org.jlib.core.operator.IdentityItemBinaryOperator;
 
 /**
  * BinaryOperator on Integers performing the <i>plus</i> operation.
@@ -26,7 +26,7 @@ import org.jlib.core.operator.IdentityElementBinaryOperator;
  */
 public class IntegerPlusOperator
 implements BinaryOperator<Integer, Integer, Integer>, AssociativeBinaryOperator<Integer>,
-CommutativeBinaryOperator<Integer>, IdentityElementBinaryOperator<Integer> {
+CommutativeBinaryOperator<Integer>, IdentityItemBinaryOperator<Integer> {
 
     /** no visible constructor */
     IntegerPlusOperator() {}
@@ -47,7 +47,7 @@ CommutativeBinaryOperator<Integer>, IdentityElementBinaryOperator<Integer> {
     }
 
     @Override
-    public Integer identityElement() {
+    public Integer identityItem() {
         return 0;
     }
 }

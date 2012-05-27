@@ -1,7 +1,7 @@
 package org.jlib.container.collection;
 
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Traverser;
 
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.Container;
@@ -11,15 +11,15 @@ import org.jlib.container.Container;
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public class CollectionContainer<Element>
-extends AbstractContainer<Element> {
+public class CollectionContainer<Item>
+extends AbstractContainer<Item> {
 
     /** adapted and backed {@link Collection} */
-    private final Collection<Element> delegateCollection;
+    private final Collection<Item> delegateCollection;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
@@ -28,7 +28,7 @@ extends AbstractContainer<Element> {
      * @param delegateCollection
      *        {@link Collection} backing this {@link CollectionContainer}
      */
-    public CollectionContainer(final Collection<Element> delegateCollection) {
+    public CollectionContainer(final Collection<Item> delegateCollection) {
         this.delegateCollection = delegateCollection;
     }
 
@@ -40,27 +40,27 @@ extends AbstractContainer<Element> {
 
     // implemented for efficiency
     @Override
-    public Iterator<Element> createIterator() {
+    public Traverser<Item> createTraverser() {
         return delegateCollection.iterator();
     }
     
     // implemented for efficiency
     @Override
-    public boolean contains(Element element) {
-        return delegateCollection.contains(element);
+    public boolean contains(Item item) {
+        return delegateCollection.contains(item);
     }
 
     // implemented for efficiency
     @Override
-    public boolean containsAll(Collection<? extends Element> collection) {
+    public boolean containsAll(Collection<? extends Item> collection) {
         return delegateCollection.containsAll(collection);
     }
 
     // implemented for efficiency
     @Override
     @SuppressWarnings("unchecked")
-    public Element[] toArray() {
-        return (Element[]) delegateCollection.toArray();
+    public Item[] toArray() {
+        return (Item[]) delegateCollection.toArray();
     }
 
     /**
@@ -69,7 +69,7 @@ extends AbstractContainer<Element> {
      * 
      * @return delegate {@link Collection} of this {@link CollectionContainer}
      */
-    protected Collection<Element> getDelegateCollection() {
+    protected Collection<Item> getDelegateCollection() {
         return delegateCollection;
     }
 }

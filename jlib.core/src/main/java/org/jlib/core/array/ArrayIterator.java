@@ -1,22 +1,22 @@
 package org.jlib.core.array;
 
-import java.util.Iterator;
+import java.util.Traverser;
 
-import org.jlib.core.iterator.AbstractIterator;
+import org.jlib.core.iterator.AbstractTraverser;
 
 /**
- * {@link Iterator} over the elements of an array.
+ * {@link Traverser} over the items of an array.
  * 
- * @param <Element>
- *        type of the elements held in the array
+ * @param <Item>
+ *        type of the items held in the array
  * 
  * @author Igor Akkerman
  */
-public class ArrayIterator<Element>
-extends AbstractIterator<Element> {
+public class ArrayTraverser<Item>
+extends AbstractTraverser<Item> {
 
     /** array to traverse */
-    private final Element[] array;
+    private final Item[] array;
 
     /** length of the array */
     private final int arrayLength;
@@ -25,17 +25,17 @@ extends AbstractIterator<Element> {
     private int currentIndex = 0;
 
     /**
-     * Creates a new {@link ArrayIterator}.
+     * Creates a new {@link ArrayTraverser}.
      * 
      * @param array
      *        array to traverse
      */
-    public ArrayIterator(final Element[] array) {
+    public ArrayTraverser(final Item[] array) {
         this(array, 0);
     }
 
     /**
-     * Creates a new {@link ArrayIterator} beginning the iteration at the
+     * Creates a new {@link ArrayTraverser} beginning the iteration at the
      * specified initial index.
      * 
      * @param array
@@ -43,21 +43,21 @@ extends AbstractIterator<Element> {
      * @param initialIndex
      *        integer specifying the initial index
      */
-    public ArrayIterator(final Element[] array, final int initialIndex) {
+    public ArrayTraverser(final Item[] array, final int initialIndex) {
         this.array = array;
         arrayLength = array.length;
         currentIndex = initialIndex;
     }
 
-    // @see java.util.Iterator#hasNext()
+    // @see java.util.Traverser#hasNext()
     @Override
     public boolean hasNext() {
         return currentIndex <= arrayLength - 1;
     }
 
-    // @see java.util.Iterator#next()
+    // @see java.util.Traverser#next()
     @Override
-    public Element next() {
+    public Item next() {
         return array[currentIndex ++];
     }
 }

@@ -108,15 +108,15 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * </li>
  * </ul>
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  *        
  * @author Igor Akkerman
  */
 // @formatter:on
 
-public class ArraySequence<Element>
-extends InitializeableIndexSequence<Element>
+public class ArraySequence<Item>
+extends InitializeableIndexSequence<Item>
 implements Cloneable {
 
     /** {@link IndexSequenceCreator} of {@link ArraySequence} insstances */
@@ -137,12 +137,12 @@ implements Cloneable {
      * @return {@link IndexSequenceCreator} of {@link ArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Element> IndexSequenceCreator<Element, ? extends ArraySequence<Element>> getCreator() {
-        return (IndexSequenceCreator<Element, ArraySequence<Element>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ArraySequence<Item>>) CREATOR;
     }
 
-    /** array holding the Elements of this {@link ArraySequence} */
-    private Element[] delegateArray;
+    /** array holding the Items of this {@link ArraySequence} */
+    private Item[] delegateArray;
 
     /**
      * Creates a new {@link ArraySequence} with the specified minimum and
@@ -160,36 +160,36 @@ implements Cloneable {
 
         final int size = getSize();
 
-        delegateArray = (Element[]) new Object[size];
+        delegateArray = (Item[]) new Object[size];
     }
 
     /**
-     * Returns the Element stored at the specified index expecting the index to
+     * Returns the Item stored at the specified index expecting the index to
      * be valid.
      * 
      * @param index
      *        integer specifying the valid index
      * 
-     * @return Element stored at {@code index}
+     * @return Item stored at {@code index}
      */
     @Override
-    protected Element getStoredElement(final int index) {
-        return getDelegateArrayElement(getDelegateArrayIndex(index));
+    protected Item getStoredItem(final int index) {
+        return getDelegateArrayItem(getDelegateArrayIndex(index));
     }
 
     /**
-     * Replaces the Element stored at the specified index in this IndexSequence
-     * by the specified Element expecting the index to be valid.
+     * Replaces the Item stored at the specified index in this IndexSequence
+     * by the specified Item expecting the index to be valid.
      * 
      * @param index
      *        integer specifying the valid index
      * 
-     * @param element
-     *        Element to store
+     * @param item
+     *        Item to store
      */
     @Override
-    protected void replaceStoredElement(final int index, final Element element) {
-        replaceDelegateArrayElement(getDelegateArrayIndex(index), element);
+    protected void replaceStoredItem(final int index, final Item item) {
+        replaceDelegateArrayItem(getDelegateArrayIndex(index), item);
     }
 
     /**
@@ -197,7 +197,7 @@ implements Cloneable {
      * {@link ArraySequence}.
      * 
      * @param index
-     *        integer specifying the index of the Element in the
+     *        integer specifying the index of the Item in the
      *        {@link ArraySequence}
      * 
      * @return integer specifying the corresponding index in the delegate array
@@ -207,36 +207,36 @@ implements Cloneable {
     }
 
     /**
-     * Returns the Element stored in the delegate array at the specified index.
+     * Returns the Item stored in the delegate array at the specified index.
      * Provides a typesafe access to the (non generic) array.
      * 
      * @param arrayIndex
-     *        index of the Element in the array
+     *        index of the Item in the array
      * 
-     * @return Element stored at {@code arrayIndex} in the array
+     * @return Item stored at {@code arrayIndex} in the array
      */
-    protected Element getDelegateArrayElement(final int arrayIndex) {
+    protected Item getDelegateArrayItem(final int arrayIndex) {
         return delegateArray[arrayIndex];
     }
 
     /**
-     * Replaces the Element stored in the delegate array at the specified index.
+     * Replaces the Item stored in the delegate array at the specified index.
      * Provides a typesafe access to the (non generic) array.
      * 
      * @param arrayIndex
-     *        integer specifying the index of the Element in the array
+     *        integer specifying the index of the Item in the array
      * 
-     * @param element
-     *        replacing Element
+     * @param item
+     *        replacing Item
      */
-    protected void replaceDelegateArrayElement(final int arrayIndex, final Element element) {
-        delegateArray[arrayIndex] = element;
+    protected void replaceDelegateArrayItem(final int arrayIndex, final Item item) {
+        delegateArray[arrayIndex] = item;
     }
 
     // @see java.lang.Object#clone()
     @Override
-    public ArraySequence<Element> clone() {
-        final ArraySequence<Element> cloneSequence = new ArraySequence<Element>(getFirstIndex(), getLastIndex());
+    public ArraySequence<Item> clone() {
+        final ArraySequence<Item> cloneSequence = new ArraySequence<Item>(getFirstIndex(), getLastIndex());
 
         final int delegateArrayLength = delegateArray.length;
 
@@ -304,11 +304,11 @@ implements Cloneable {
         assertExpectedCapacityValid(expectedCapacity);
 
         if (getSize() + holeSize > expectedCapacity)
-            throw new IllegalArgumentException("getSize() + elements.length == " + getSize() + " + " + holeSize +
+            throw new IllegalArgumentException("getSize() + items.length == " + getSize() + " + " + holeSize +
                                                " > " + expectedCapacity + " == expectedCapacity");
         @SuppressWarnings("unchecked")
-        final Element[] newDelegateArray = delegateArray.length < expectedCapacity
-            ? (Element[]) new Object[expectedCapacity]
+        final Item[] newDelegateArray = delegateArray.length < expectedCapacity
+            ? (Item[]) new Object[expectedCapacity]
             : delegateArray;
 
         System.arraycopy(delegateArray, 0, newDelegateArray, 0, insertIndex);

@@ -18,7 +18,7 @@ package org.jlib.container.matrix;
  * Row of an {@link IndexMatrix}.
  * 
  * @param <Entry>
- *        type of the elements in the IndexMatrix
+ *        type of the items in the IndexMatrix
  * 
  * @author Igor Akkerman
  */
@@ -70,7 +70,7 @@ extends IndexMatrixEntity<Entry> {
      * @return Entry stored at {@code columnIndex}
      */
     @Override
-    protected Entry getStoredElement(final int columnIndex) {
+    protected Entry getStoredItem(final int columnIndex) {
         return getMatrixEntry(columnIndex, getEntityIndex());
     }
 }

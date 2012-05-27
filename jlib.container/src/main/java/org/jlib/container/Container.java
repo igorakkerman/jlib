@@ -15,101 +15,92 @@
 package org.jlib.container;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
- * Container of elements.
+ * Container of items.
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * 
  * @author Igor Akkerman
  */
 //TODO: add operations passing ModificationListeners to the methods
-//TODO: Container don't have Elements, they have Items. Sets have Elements!
-public interface Container<Element>
-extends Iterable<Element> {
+//TODO: Container don't have Items, they have Items. Sets have Items!
+public interface Container<Item>
+extends Traversible<Item>, Iterable<Item> {
 
     /**
-     * Returns the number of Elements in this Container.
+     * Returns the number of Items in this Container.
      * 
-     * @return integer specifying the number of Elements in this Container
+     * @return integer specifying the number of Items in this Container
      */
     public int getSize();
 
     /**
-     * Verifies whether this Container contains no Elements.
+     * Verifies whether this Container contains no Items.
      * 
-     * @return {@code true} if this Container contains no Elements;
-     *         {@code false} otherwise
+     * @return {@code true} if this Container contains no Items; {@code false}
+     *         otherwise
      */
     public boolean isEmpty();
 
     /**
      * Verifies whether this Container contains the specified Object.
      * 
-     * @param element
-     *        Element to verify
+     * @param item
+     *        Item to verify
      * @return {@code true} if this Container contains {@code object};
      *         {@code false} otherwise
      */
-    public boolean contains(final Element element);
+    public boolean contains(final Item item);
 
     /**
-     * Verifies whether this Container contains all of the Elements in the
+     * Verifies whether this Container contains all of the Items in the
      * specified Container.
      * 
-     * @param elements
-     *        Container containing the Elements to verify
-     * @return {@code true} if this Container contains all of the Elements
+     * @param items
+     *        Container containing the Items to verify
+     * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
-    public boolean containsAll(final Container<? extends Element> elements);
+    public boolean containsAll(final Container<? extends Item> items);
 
     /**
-     * Verifies whether this Container contains all of the Elements in the
+     * Verifies whether this Container contains all of the Items in the
      * specified Collection.
      * 
-     * @param elements
-     *        Collection containing the Elements to verify
-     * @return {@code true} if this Container contains all of the Elements
+     * @param items
+     *        Collection containing the Items to verify
+     * @return {@code true} if this Container contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      */
-    public boolean containsAll(final Collection<? extends Element> elements);
+    public boolean containsAll(final Collection<? extends Item> items);
 
     /**
-     * Verifies whether this Container contains all of the specified Elements.
+     * Verifies whether this Container contains all of the specified Items.
      * 
-     * @param elements
-     *        comma separated sequence of Elements to verify
+     * @param items
+     *        comma separated sequence of Items to verify
      * @return {@code true} if this Container contains all of the
      *         {@code objects}; {@code false} otherwise
      */
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
-     * Returns a Collection containing all of the Elements of this Container in
-     * the proper order as returned by this Container's Iterator.
+     * Returns a Collection containing all of the Items of this Container in the
+     * proper order as returned by this Container's Traverser.
      * 
-     * @return {@link Collection} containing all of the Elements of this
-     *         Container
+     * @return {@link Collection} containing all of the Items of this Container
      */
-    public Collection<Element> toCollection();
+    public Collection<Item> toCollection();
 
     /**
-     * Returns an array containing all of the Elements of this Container in the
-     * proper order as returned by this Container's Iterator.
+     * Returns an array containing all of the Items of this Container in the
+     * proper order as returned by this Container's Traverser.
      * 
      * TODO: where can toArray() be overridden for optimization
      * 
-     * @return array containing all of the Elements of this Container
+     * @return array containing all of the Items of this Container
      */
-    public Element[] toArray();
-
-    /**
-     * Creates a new {@link Iterator} over this {@link Container}.
-     * 
-     * @return newly created {@link Iterator}
-     */
-    public Iterator<Element> createIterator();
+    public Item[] toArray();
 }

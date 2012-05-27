@@ -18,56 +18,56 @@ import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * IndexSequence that allows its Elements to be modified.
+ * IndexSequence that allows its Items to be modified.
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface ReplaceIndexSequence<Element>
-extends ReplaceSequence<Element>, IndexSequence<Element> {
+public interface ReplaceIndexSequence<Item>
+extends ReplaceSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Replaces the Element at the specified index in this
-     * IndexSequence by the specified Elements.
+     * Replaces the Item at the specified index in this
+     * IndexSequence by the specified Items.
      * 
      * @param index
      *        integer specifying the index
      * 
-     * @param element
-     *        Element to store
+     * @param item
+     *        Item to store
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    // TODO: add set method with ReplaceElementListener
-    public void replace(final int index, final Element element)
+    // TODO: add set method with ReplaceItemListener
+    public void replace(final int index, final Item item)
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns an ReplaceIndexSequenceIterator traversing the Elements of this
-     * IndexSequence in proper sequence. Initially, the Iterator points to the
-     * beginning of this IndexSequence, that is, the Element returned by the
-     * first call to {@link ReplaceIndexSequenceIterator#next()} is the Element
+     * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
+     * IndexSequence in proper sequence. Initially, the Traverser points to the
+     * beginning of this IndexSequence, that is, the Item returned by the
+     * first call to {@link ReplaceIndexSequenceTraverser#next()} is the Item
      * stored at {@link #getFirstIndex()}.
      * 
-     * @return ReplaceIndexSequenceIterator over this IndexSequence initially
+     * @return ReplaceIndexSequenceTraverser over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence
      */
     @Override
-    public ReplaceIndexSequenceIterator<Element> createIterator();
+    public ReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns an ReplaceIndexSequenceIterator traversing the Elements of this
-     * IndexSequence in proper sequence. That is, the Element returned by the
-     * first call to {@link ReplaceIndexSequenceIterator#next()} is the Element
+     * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
+     * IndexSequence in proper sequence. That is, the Item returned by the
+     * first call to {@link ReplaceIndexSequenceTraverser#next()} is the Item
      * stored at the specified start index.
      * 
      * @param startIndex
-     *        integer specifying the index of the first Element returned by the
-     *        Iterator
+     *        integer specifying the index of the first Item returned by the
+     *        Traverser
      * 
-     * @return ReplaceIndexSequenceIterator over this IndexSequence initially
+     * @return ReplaceIndexSequenceTraverser over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -75,6 +75,6 @@ extends ReplaceSequence<Element>, IndexSequence<Element> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
-    public ReplaceIndexSequenceIterator<Element> createIterator(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

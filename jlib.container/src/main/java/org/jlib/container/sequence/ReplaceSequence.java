@@ -18,35 +18,35 @@ import org.jlib.container.ReplaceContainer;
 
 /**
  * <p>
- * Sequence that allows its Elements to be modified using an
- * ReplaceSequenceIterator.
+ * Sequence that allows its Items to be modified using an
+ * ReplaceSequenceTraverser.
  * </p>
  * <p>
  * It does not necessarily allow modification of the sequence, that is, this
- * interface does not provide methods for adding and removing Elements. See
+ * interface does not provide methods for adding and removing Items. See
  * {@link AddSequence} for this functionality.
  * </p>
  * 
- * @param <Element>
- *        type of elements held in the {@link Sequence}
+ * @param <Item>
+ *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface ReplaceSequence<Element>
-extends ReplaceContainer<Element>, Sequence<Element> {
+public interface ReplaceSequence<Item>
+extends ReplaceContainer<Item>, Sequence<Item> {
 
     /**
      * <p>
-     * Returns an ReplaceSequenceIterator traversing the Elements of this
+     * Returns an ReplaceSequenceTraverser traversing the Items of this
      * Sequence in proper order.
      * </p>
      * <p>
-     * The {@link ReplaceSequenceIterator#replace(Object) set} method of the
-     * {@link SequenceIterator} can be used to modify Elements in this Sequence.
+     * The {@link ReplaceSequenceTraverser#replace(Object) set} method of the
+     * {@link SequenceTraverser} can be used to modify Items in this Sequence.
      * </p>
      * 
-     * @return ReplaceSequenceIterator traversing the Elements of this Sequence
+     * @return ReplaceSequenceTraverser traversing the Items of this Sequence
      *         in proper order
      */
     @Override
-    public ReplaceSequenceIterator<Element> createIterator();
+    public ReplaceSequenceTraverser<Item> createTraverser();
 }

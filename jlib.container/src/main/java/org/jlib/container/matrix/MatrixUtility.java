@@ -31,14 +31,14 @@ public final class MatrixUtility {
      * {@literal
      * foreach row
      *     foreach column
-     *         process element at (column, row)}
+     *         process item at (column, row)}
      * </pre>
      */
-    public static final MatrixIterationOrder HORIZONTAL = new MatrixIterationOrder() {
+    public static final MatrixTraversalOrder HORIZONTAL = new MatrixTraversalOrder() {
 
         @Override
-        public <Element> MatrixIterator<Element> createIterator(final RandomTraversalMatrix<Element> matrix) {
-            return new EntityMatrixIterator<Element>(matrix, matrix.getRows());
+        public <Item> MatrixTraverser<Item> createTraverser(final RandomTraversalMatrix<Item> matrix) {
+            return new EntityMatrixTraverser<Item>(matrix, matrix.getRows());
         }
     };
 
@@ -49,14 +49,14 @@ public final class MatrixUtility {
      * {@literal
      * foreach column
      *     foreach row
-     *         process element at (column, row)}
+     *         process item at (column, row)}
      * </pre>
      */
-    public static final MatrixIterationOrder VERTICAL = new MatrixIterationOrder() {
+    public static final MatrixTraversalOrder VERTICAL = new MatrixTraversalOrder() {
 
         @Override
-        public <Element> MatrixIterator<Element> createIterator(final RandomTraversalMatrix<Element> matrix) {
-            return new EntityMatrixIterator<Element>(matrix, matrix.getColumns());
+        public <Item> MatrixTraverser<Item> createTraverser(final RandomTraversalMatrix<Item> matrix) {
+            return new EntityMatrixTraverser<Item>(matrix, matrix.getColumns());
         }
     };
 }

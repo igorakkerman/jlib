@@ -20,104 +20,104 @@ import java.util.Collection;
 
 /**
  * <p>
- * Container that supports addition and removal of Elements.
+ * Container that supports addition and removal of Items.
  * </p>
  * <p>
  * Note: In jlib, {@code null} is not a value. Hence, {@link Container
- * Containers} may <em>not</em> contain null elements
+ * Containers} may <em>not</em> contain null items
  * </p>
  * 
- * @param <Element>
- *        type of elements held in the {@link Container}
+ * @param <Item>
+ *        type of items held in the {@link Container}
  * @author Igor Akkerman
  */
-public interface RemoveContainer<Element>
-extends Container<Element> {
+public interface RemoveContainer<Item>
+extends Container<Item> {
 
     /**
-     * Removes the specified Element of this {@link RemoveContainer}.
+     * Removes the specified Item of this {@link RemoveContainer}.
      * 
-     * @param element
-     *        Element to remove
+     * @param item
+     *        Item to remove
      * @throws IllegalArgumentException
-     *         if this {@link RemoveContainer} does not contain {@code Element}
+     *         if this {@link RemoveContainer} does not contain {@code Item}
      */
-    public void remove(final Element element)
+    public void remove(final Item item)
     throws IllegalArgumentException;
 
     /**
-     * Removes all Elements of this {@link RemoveContainer}.
+     * Removes all Items of this {@link RemoveContainer}.
      */
     public void removeAll();
 
     /**
-     * Removes all Elements contained by the specified {@link Container} from
+     * Removes all Items contained by the specified {@link Container} from
      * this {@link RemoveContainer}.
      * 
-     * @param elements
-     *        {@link Container} containing the Elements to remove
+     * @param items
+     *        {@link Container} containing the Items to remove
      */
-    public void removeAll(final Container<? extends Element> elements);
+    public void removeAll(final Container<? extends Item> items);
 
     /**
-     * Removes all Elements contained by the specified {@link Collection} from
+     * Removes all Items contained by the specified {@link Collection} from
      * this {@link RemoveContainer}.
      * 
-     * @param elements
-     *        {@link Collection} containing the Elements to remove
+     * @param items
+     *        {@link Collection} containing the Items to remove
      */
-    public void removeAll(final Collection<? extends Element> elements);
+    public void removeAll(final Collection<? extends Item> items);
 
     /**
-     * Removes all Elements provided by the specified {@link Iterable} from this
+     * Removes all Items provided by the specified {@link Iterable} from this
      * {@link AddContainer}.
      * 
-     * @param elements
-     *        {@link Iterable} providing the Elements to remove
+     * @param items
+     *        {@link Iterable} providing the Items to remove
      */
-    public void removeAll(final Iterable<? extends Element> elements);
+    public void removeAll(final Iterable<? extends Item> items);
 
     /**
-     * Removes all specified Elements from this {@link RemoveContainer}.
+     * Removes all specified Items from this {@link RemoveContainer}.
      * 
-     * @param elements
-     *        vararg list of Elements to remove
+     * @param items
+     *        vararg list of Items to remove
      */
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
+    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
-     * Elements contained by the specified {@link Container}.
+     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * Items contained by the specified {@link Container}.
      * 
-     * @param elements
-     *        {@link Container} containing the Elements to retain
+     * @param items
+     *        {@link Container} containing the Items to retain
      */
-    public void retainAll(final Container<? extends Element> elements);
+    public void retainAll(final Container<? extends Item> items);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
-     * Elements contained by the specified {@link Collection}.
+     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * Items contained by the specified {@link Collection}.
      * 
-     * @param elements
-     *        {@link Collection} containing the Elements to retain
+     * @param items
+     *        {@link Collection} containing the Items to retain
      */
-    public void retainAll(final Collection<? extends Element> elements);
+    public void retainAll(final Collection<? extends Item> items);
 
     /**
-     * Removes all Elements from this {@link RemoveContainer} <i>except</i> the
-     * specified Elements.
+     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * specified Items.
      * 
-     * @param elements
-     *        vararg list of Elements to retain
+     * @param items
+     *        vararg list of Items to retain
      */
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements);
+    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
-     * Creates a new {@link RemoveContainerIterator} over this
+     * Creates a new {@link RemoveContainerTraverser} over this
      * {@link RemoveContainer}.
      * 
-     * @return newly created {@link RemoveContainerIterator}
+     * @return newly created {@link RemoveContainerTraverser}
      */
     @Override
-    public RemoveContainerIterator<Element> createIterator();
+    public RemoveContainerTraverser<Item> createTraverser();
 }

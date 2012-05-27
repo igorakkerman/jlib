@@ -15,14 +15,14 @@
 package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Traverser;
 import java.util.Set;
 
 import org.jlib.container.Container;
 
 /**
  * AddBinaryRelation implemented using hashing for left and right hand
- * side elements.
+ * side items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
@@ -190,7 +190,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Iterator<Association<LeftValue, RightValue>> iterator() {
+    public Traverser<Association<LeftValue, RightValue>> iterator() {
         return delegateBinaryRelation.iterator();
     }
 
@@ -200,8 +200,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... elements) {
-        delegateBinaryRelation.addAll(elements);
+    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... items) {
+        delegateBinaryRelation.addAll(items);
     }
 
     @Override
@@ -210,8 +210,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... elements) {
-        delegateBinaryRelation.removeAll(elements);
+    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... items) {
+        delegateBinaryRelation.removeAll(items);
     }
 
     @Override
@@ -220,8 +220,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... elements) {
-        delegateBinaryRelation.retainAll(elements);
+    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... items) {
+        delegateBinaryRelation.retainAll(items);
     }
 
     @Override

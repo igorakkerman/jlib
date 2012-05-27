@@ -15,7 +15,7 @@
 package org.jlib.core.operator;
 
 /**
- * BinaryOperator with a neutral element.
+ * BinaryOperator with a neutral item.
  * 
  * @author Igor Akkerman
  * 
@@ -23,14 +23,14 @@ package org.jlib.core.operator;
  *        type of the values on which the BinaryOperator operates,
  *        that is, type of the arguments and the result of the BinaryOperator
  */
-public interface IdentityElementBinaryOperator<Value>
+public interface IdentityItemBinaryOperator<Value>
 extends BinaryOperator<Value, Value, Value> {
 
     /**
-     * Returns the identity Element of this BinaryOperator.
+     * Returns the identity Item of this BinaryOperator.
      * 
-     * @return Value representing the identity Element of this
+     * @return Value representing the identity Item of this
      *         BinaryOperator
      */
-    public Value identityElement();
+    public Value identityItem();
 }

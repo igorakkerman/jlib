@@ -10,13 +10,13 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
 /**
  * Empty {@link Sequence}.
  * 
- * @param <Element>
- *        type of the elements
+ * @param <Item>
+ *        type of the items
  * 
  * @author Igor Akkerman
  */
-public class EmptySequence<Element>
-extends AbstractSequence<Element> {
+public class EmptySequence<Item>
+extends AbstractSequence<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();
@@ -27,8 +27,8 @@ extends AbstractSequence<Element> {
      * @return sole {@link ReplaceIndexSequence}
      */
     @SuppressWarnings("unchecked")
-    public static <Element> EmptySequence<Element> getInstance() {
-        return (EmptySequence<Element>) INSTANCE;
+    public static <Item> EmptySequence<Item> getInstance() {
+        return (EmptySequence<Item>) INSTANCE;
     }
 
     /**
@@ -39,8 +39,8 @@ extends AbstractSequence<Element> {
     }
 
     @Override
-    public SequenceIterator<Element> createIterator() {
-        return EmptySequenceIterator.getInstance();
+    public SequenceTraverser<Item> createTraverser() {
+        return EmptySequenceTraverser.getInstance();
     }
 
     @Override
@@ -54,35 +54,35 @@ extends AbstractSequence<Element> {
     }
 
     @Override
-    public boolean contains(final Element element) {
+    public boolean contains(final Item item) {
         return false;
     }
 
     @Override
-    public boolean containsAll(final Container<? extends Element> elements) {
+    public boolean containsAll(final Container<? extends Item> items) {
         return false;
     }
 
     @Override
-    public boolean containsAll(final Collection<? extends Element> elements) {
+    public boolean containsAll(final Collection<? extends Item> items) {
         return false;
     }
 
     @Override
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Element... elements) {
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
         return false;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Element> toList() {
+    public List<Item> toList() {
         return Collections.unmodifiableList(Collections.EMPTY_LIST);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Element[] toArray() {
-        return (Element[]) new Object[0];
+    public Item[] toArray() {
+        return (Item[]) new Object[0];
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity
