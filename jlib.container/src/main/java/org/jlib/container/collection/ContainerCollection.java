@@ -16,7 +16,7 @@ package org.jlib.container.collection;
 
 import java.util.AbstractCollection;
 import java.util.Collection;
-import java.util.Traverser;
+import java.util.Iterator;
 
 import org.jlib.container.Container;
 
@@ -50,7 +50,7 @@ extends AbstractCollection<Item> {
     }
 
     @Override
-    public Traverser<Item> iterator() {
+    public Iterator<Item> iterator() {
         return delegateContainer.iterator();
     }
 

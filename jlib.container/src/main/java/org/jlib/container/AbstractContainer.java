@@ -159,7 +159,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final Iterator<Item> iterator() {
+    public Iterator<Item> iterator() {
         return new TraversibleIterator<>(this);
     }
 }

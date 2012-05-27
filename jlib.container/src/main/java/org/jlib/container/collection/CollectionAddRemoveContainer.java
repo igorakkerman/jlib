@@ -2,13 +2,12 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Traverser;
 
 import org.jlib.container.AddContainer;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.RemoveContainer;
-import org.jlib.container.RemoveContainerTraverser;
+import org.jlib.container.RemoveTraverser;
 
 import static org.jlib.core.array.ArrayUtility.iterable;
 
@@ -107,25 +106,8 @@ implements AddContainer<Item>, RemoveContainer<Item> {
     }
 
     @Override
-    public RemoveContainerTraverser<Item> createTraverser() {
-        final Traverser<Item> delegateTraverser = getDelegateCollection().iterator();
-        return new RemoveContainerTraverser<Item>() {
-
-            @Override
-            public boolean hasNext() {
-                return delegateTraverser.hasNext();
-            }
-
-            @Override
-            public Item next() {
-                return delegateTraverser.next();
-            }
-
-            @Override
-            public void remove() {
-                delegateTraverser.remove();
-            }
-        };
+    public RemoveTraverser<Item> createTraverser() {
+        return new RemoveIterableTraverser<>(getDelegateCollection());
     }
 
 }

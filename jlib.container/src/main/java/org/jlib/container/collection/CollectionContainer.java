@@ -1,10 +1,11 @@
 package org.jlib.container.collection;
 
 import java.util.Collection;
-import java.util.Traverser;
+import java.util.Iterator;
 
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.Container;
+import org.jlib.container.Traverser;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link Container}. A
@@ -38,21 +39,26 @@ extends AbstractContainer<Item> {
         return delegateCollection.size();
     }
 
-    // implemented for efficiency
     @Override
     public Traverser<Item> createTraverser() {
-        return delegateCollection.iterator();
+        return new IterableTraverser<>(this);
     }
-    
+
     // implemented for efficiency
     @Override
-    public boolean contains(Item item) {
+    public Iterator<Item> iterator() {
+        return delegateCollection.iterator();
+    }
+
+    // implemented for efficiency
+    @Override
+    public boolean contains(final Item item) {
         return delegateCollection.contains(item);
     }
 
     // implemented for efficiency
     @Override
-    public boolean containsAll(Collection<? extends Item> collection) {
+    public boolean containsAll(final Collection<? extends Item> collection) {
         return delegateCollection.containsAll(collection);
     }
 

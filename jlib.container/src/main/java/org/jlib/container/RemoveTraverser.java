@@ -1,19 +1,18 @@
 package org.jlib.container;
 
-
 /**
- * {@link Traverser} over a {@link RemoveContainer}.
+ * {@link Traverser} allowing returned Items to be removed.
  * 
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of traversed items
  * 
  * @author Igor Akkerman
  */
-public interface RemoveContainerTraverser<Item>
+public interface RemoveTraverser<Item>
 extends Traverser<Item> {
 
     /**
-     * Removes the last Item returned by this {@link RemoveContainerTraverser} .
+     * Removes the last Item returned by this {@link RemoveTraverser} .
      * 
      * @throws IllegalStateException
      *         if not called immediately after a call to {@link #next()} or an

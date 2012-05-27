@@ -51,8 +51,8 @@ extends Container<Item> {
     public void removeAll();
 
     /**
-     * Removes all Items contained by the specified {@link Container} from
-     * this {@link RemoveContainer}.
+     * Removes all Items contained by the specified {@link Container} from this
+     * {@link RemoveContainer}.
      * 
      * @param items
      *        {@link Container} containing the Items to remove
@@ -60,8 +60,8 @@ extends Container<Item> {
     public void removeAll(final Container<? extends Item> items);
 
     /**
-     * Removes all Items contained by the specified {@link Collection} from
-     * this {@link RemoveContainer}.
+     * Removes all Items contained by the specified {@link Collection} from this
+     * {@link RemoveContainer}.
      * 
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -113,11 +113,10 @@ extends Container<Item> {
     public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
-     * Creates a new {@link RemoveContainerTraverser} over this
-     * {@link RemoveContainer}.
+     * Creates a new {@link RemoveTraverser} over this {@link RemoveContainer}.
      * 
-     * @return newly created {@link RemoveContainerTraverser}
+     * @return newly created {@link RemoveTraverser}
      */
     @Override
-    public RemoveContainerTraverser<Item> createTraverser();
+    public RemoveTraverser<Item> createTraverser();
 }
