@@ -1,9 +1,8 @@
 package org.jlib.container.sequence;
 
-
 /**
  * {@link SequenceTraverserState} when a {@link SequenceTraverser} is at the
- * beginning of the non-empty {@link Sequence}.
+ * head of the non-empty {@link Sequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -13,16 +12,16 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public abstract class BeginningOfSequenceTraverserState<Item, Sequenze extends Sequence<Item>>
+public abstract class HeadOfSequenceTraverserState<Item, Sequenze extends Sequence<Item>>
 extends AbstractSequenceTraverserState<Item, Sequenze> {
 
     /**
-     * Creates a new {@link BeginningOfSequenceTraverserState}.
+     * Creates a new {@link HeadOfSequenceTraverserState}.
      * 
      * @param sequence
      *        traversed {@link Sequence}
      */
-    public BeginningOfSequenceTraverserState(final Sequenze sequence) {
+    public HeadOfSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
     }
 

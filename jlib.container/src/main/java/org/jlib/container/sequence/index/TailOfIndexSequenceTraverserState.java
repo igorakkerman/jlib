@@ -1,6 +1,6 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.EndOfSequenceTraverserState;
+import org.jlib.container.sequence.TailOfSequenceTraverserState;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
@@ -18,17 +18,17 @@ import org.jlib.container.sequence.SequenceTraverser;
  * 
  * @author Igor Akkerman
  */
-public abstract class EndOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
-extends EndOfSequenceTraverserState<Item, Sequenze>
+public abstract class TailOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
+extends TailOfSequenceTraverserState<Item, Sequenze>
 implements IndexSequenceTraverserState<Item> {
 
     /**
-     * Creates a new {@link EndOfIndexSequenceTraverserState}.
+     * Creates a new {@link TailOfIndexSequenceTraverserState}.
      * 
      * @param sequence
      *        traversed {@link IndexSequence}
      */
-    public EndOfIndexSequenceTraverserState(final Sequenze sequence) {
+    public TailOfIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
     }
 

@@ -16,7 +16,7 @@ extends AbstractNonEmptySequence<Item> {
 
     /** beginning of the {@link SingletonSequence} {@link SequenceTraverserState} */
     private final SequenceTraverserState<Item> beginningOfSequenceState =
-        new BeginningOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
+        new HeadOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
             public Item getNextItem() {
@@ -31,7 +31,7 @@ extends AbstractNonEmptySequence<Item> {
 
     /** end of the {@link SingletonSequence} {@link SequenceTraverserState} */
     private final SequenceTraverserState<Item> endOfSequenceState =
-        new EndOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
+        new TailOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
             public Item previous() {

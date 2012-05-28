@@ -2,7 +2,7 @@ package org.jlib.container.sequence;
 
 /**
  * {@link SequenceTraverserState} when a {@link SequenceTraverser} has reached
- * the end of the non-empty {@link Sequence}.
+ * the tail of the non-empty {@link Sequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -12,16 +12,16 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public abstract class EndOfSequenceTraverserState<Item, Sequenze extends Sequence<Item>>
+public abstract class TailOfSequenceTraverserState<Item, Sequenze extends Sequence<Item>>
 extends AbstractSequenceTraverserState<Item, Sequenze> {
 
     /**
-     * Creates a new {@link EndOfSequenceTraverserState}.
+     * Creates a new {@link TailOfSequenceTraverserState}.
      * 
      * @param sequence
      *        traversed {@link Sequence}
      */
-    public EndOfSequenceTraverserState(final Sequenze sequence) {
+    public TailOfSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
     }
 

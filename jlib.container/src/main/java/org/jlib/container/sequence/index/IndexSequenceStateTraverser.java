@@ -75,7 +75,7 @@ implements IndexSequenceTraverser<Item> {
     throws SequenceIndexOutOfBoundsException {
         super(sequence);
 
-        beginningOfSequenceState = new BeginningOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
+        beginningOfSequenceState = new HeadOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceTraverserState<Item> getNextState() {
@@ -83,7 +83,7 @@ implements IndexSequenceTraverser<Item> {
             }
         };
 
-        endOfSequenceState = new EndOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
+        endOfSequenceState = new TailOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceTraverserState<Item> getPreviousState() {

@@ -1,13 +1,11 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.BeginningOfSequenceTraverserState;
+import org.jlib.container.sequence.HeadOfSequenceTraverserState;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceTraverser;
 
 /**
- * {@link IndexSequenceTraverserState} when a {@link SequenceTraverser} is at
- * the beginning of an {@link IndexSequence}.
+ * {@link HeadOfSequenceTraverserState} for an {@link IndexSequenceTraverser}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -17,17 +15,17 @@ import org.jlib.container.sequence.SequenceTraverser;
  * 
  * @author Igor Akkerman
  */
-public abstract class BeginningOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
-extends BeginningOfSequenceTraverserState<Item, Sequenze>
+public abstract class HeadOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
+extends HeadOfSequenceTraverserState<Item, Sequenze>
 implements IndexSequenceTraverserState<Item> {
 
     /**
-     * Creates a new {@link BeginningOfIndexSequenceTraverserState}.
+     * Creates a new {@link HeadOfIndexSequenceTraverserState}.
      * 
      * @param sequence
      *        traversed {@link IndexSequence}
      */
-    public BeginningOfIndexSequenceTraverserState(final Sequenze sequence) {
+    public HeadOfIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
     }
 
