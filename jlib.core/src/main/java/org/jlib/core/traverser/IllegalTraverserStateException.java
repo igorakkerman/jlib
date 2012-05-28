@@ -1,6 +1,5 @@
 package org.jlib.core.traverser;
 
-
 /**
  * Exception thrown when an illegal state has been reached in a
  * {@link Traverser}.
