@@ -15,10 +15,9 @@
 package org.jlib.container.binaryrelation;
 
 import java.util.HashSet;
-import java.util.Traverser;
-import java.util.NoSuchItemException;
 
-import org.jlib.core.iterator.AbstractIterator;
+import org.jlib.container.NoSuchItemException;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Traverser over the Associations of a BinaryRelation.
@@ -30,7 +29,7 @@ import org.jlib.core.iterator.AbstractIterator;
  * @author Igor Akkerman
  */
 class BinaryRelationTraverser<LeftValue, RightValue>
-extends AbstractIterator<Association<LeftValue, RightValue>> {
+implements Traverser<Association<LeftValue, RightValue>> {
 
     /** BinaryRelation traversed by this Traverser */
     private final BinaryRelation<LeftValue, RightValue> binaryRelation;
@@ -59,7 +58,7 @@ extends AbstractIterator<Association<LeftValue, RightValue>> {
     protected BinaryRelationTraverser(final BinaryRelation<LeftValue, RightValue> binaryRelation) {
         super();
         this.binaryRelation = binaryRelation;
-        leftValuesTraverser = binaryRelation.leftValues().iterator();
+        leftValuesTraverser = new IteratorTraverser<Item>(binaryRelation.leftValues().iterator());
         if (leftValuesTraverser.hasNextItem())
             getNextLeftValue();
         else

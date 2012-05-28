@@ -14,9 +14,8 @@
 
 package org.jlib.container.binaryrelation;
 
-import java.util.Traverser;
-
 import org.jlib.container.AbstractContainer;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Skeletal implementation of a BinaryRelation.
@@ -39,17 +38,17 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Traverser<Association<LeftValue, RightValue>> iterator() {
+    public Traverser<Association<LeftValue, RightValue>> createTraverser() {
         return new BinaryRelationTraverser<LeftValue, RightValue>(this);
     }
 
     @Override
-    public boolean contains(LeftValue leftValue, RightValue rightValue) {
+    public boolean contains(final LeftValue leftValue, final RightValue rightValue) {
         return hasLeft(leftValue) && rightSet(leftValue).contains(rightValue);
     }
 
     @Override
-    public boolean contains(Association<LeftValue, RightValue> association) {
+    public boolean contains(final Association<LeftValue, RightValue> association) {
         return contains(association.left(), association.right());
     }
 }
