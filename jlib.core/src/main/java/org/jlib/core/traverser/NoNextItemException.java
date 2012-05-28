@@ -15,4 +15,14 @@ extends IllegalTraverserStateException {
     public NoNextItemException() {
         super();
     }
+
+    /**
+     * Creates a new {@link NoNextItemException} with the specified cause.
+     * 
+     * @param cause
+     *        {@link Throwable} that caused this {@link NoNextItemException}
+     */
+    public NoNextItemException(final Throwable cause) {
+        super(cause);
+    }
 }
