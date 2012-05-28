@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.util.NoSuchItemException;
 
 /**
  * Skeletal implementation of a {@link SequenceTraverser} using
@@ -34,7 +33,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
 
     @Override
     public final Item previous()
-    throws NoSuchItemException {
+    throws NoPreviousSequenceItemException {
         final Item previousItem = getCurrentState().previous();
 
         setCurrentStateToPrevious();
@@ -49,7 +48,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
 
     @Override
     public final Item getNextItem()
-    throws NoSuchItemException {
+    throws NoNextSequenceItemException {
         final Item nextItem = getCurrentState().getNextItem();
 
         setCurrentStateToNext();
