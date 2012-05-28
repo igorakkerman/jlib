@@ -133,8 +133,8 @@ implements Container<Item> {
         final Traverser<?> otherTraverser = otherContainer.createTraverser();
         do {
             // TODO: use size() to verify that both Containers have the same number of items and rely on that fact
-            final boolean thisHasNext = thisTraverser.hasNext();
-            if (thisHasNext != otherTraverser.hasNext())
+            final boolean thisHasNext = thisTraverser.hasNextItem();
+            if (thisHasNext != otherTraverser.hasNextItem())
                 return false;
             if (!thisHasNext)
                 return true;
