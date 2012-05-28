@@ -15,8 +15,6 @@ public abstract class AbstractSequenceTraverserState<Item, Sequenze extends Sequ
 extends AbstractSequenceTraverser<Item, Sequenze>
 implements SequenceTraverserState<Item> {
 
-    // unifying class
-
     /**
      * Creates a new {@link AbstractSequenceTraverserState}.
      * 
