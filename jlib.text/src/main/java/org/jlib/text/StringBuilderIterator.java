@@ -1,6 +1,6 @@
 package org.jlib.text;
 
-import java.util.Traverser;
+
 
 /**
  * Traverser over the {@link Character Characters} of a {@link StringBuilder}.

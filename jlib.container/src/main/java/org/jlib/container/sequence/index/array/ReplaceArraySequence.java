@@ -1,11 +1,9 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**

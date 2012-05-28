@@ -15,7 +15,7 @@
 package org.jlib.operator;
 
 import java.util.HashSet;
-import java.util.Traverser;
+
 import java.util.Set;
 
 import org.jlib.container.Container;

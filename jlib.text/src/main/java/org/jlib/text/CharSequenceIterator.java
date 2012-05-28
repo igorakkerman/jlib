@@ -1,6 +1,6 @@
 package org.jlib.text;
 
-import java.util.Traverser;
+
 import java.util.NoSuchItemException;
 
 import org.jlib.core.iterator.AbstractIterator;

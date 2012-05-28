@@ -15,7 +15,6 @@
 package org.jlib.container.sequence.index;
 
 import java.util.List;
-import java.util.NoSuchItemException;
 import java.util.RandomAccess;
 
 import org.jlib.container.sequence.Sequence;
@@ -61,52 +60,50 @@ extends Sequence<Item>, RandomAccess {
     public int getLastIndex();
 
     /**
-     * Returns the Item stored at the first index in this
-     * {@link IndexSequence}.
+     * Returns the Item stored at the first index in this {@link IndexSequence}.
      * 
      * @return first Item
      */
-    public Item getFirst();
+    public Item getFirstItem();
 
     /**
-     * Returns the Item stored at the last index in this
-     * {@link IndexSequence}.
+     * Returns the Item stored at the last index in this {@link IndexSequence}.
      * 
      * @return last Item
      */
-    public Item getLast();
+    public Item getLastItem();
 
     /**
-     * Returns the index of the first occurrence of the specified Item in
-     * this IndexSequence.
+     * Returns the index of the first occurrence of the specified Item in this
+     * IndexSequence.
      * 
      * @param item
      *        Item to find
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
-     * @throws NoSuchItemException
+     * @throws NoSuchSequenceItemException
      *         if this IndexSequence does not contain {@code item}
      */
     public int getFirstIndexOf(final Item item)
-    throws NoSuchItemException;
+    throws NoSuchSequenceItemException;
 
     /**
-     * Returns the index of the first occurrence of the specified Item in
-     * this IndexSequence.
+     * Returns the index of the first occurrence of the specified Item in this
+     * IndexSequence.
      * 
      * @param item
      *        Item to find
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
-     * @throws NoSuchItemException
+     * @throws NoSuchSequenceItemException
      *         if this IndexSequence does not contain {@code item}
      */
     public int getLastIndexOf(final Item item)
-    throws NoSuchItemException;
+    throws NoSuchSequenceItemException;
 
     /**
-     * Returns a {@link List} containing the Items stored in this
-     * IndexSequence in the specified index range in proper sequence.
+     * Returns a {@link List} containing the Items stored in this IndexSequence
+     * in the specified index range in proper sequence.
      * 
      * @param fromIndex
      *        integer specifying the index of the first Item
@@ -144,9 +141,9 @@ extends Sequence<Item>, RandomAccess {
     /**
      * Returns an IndexSequenceTraverser traversing the Items of this
      * IndexSequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this IndexSequence, that is, the Item returned by the
-     * first call to {@code nextIndex()} is the Item stored at
-     * {@code getFirstIndex()}.
+     * beginning of this IndexSequence, that is, the Item returned by the first
+     * call to {@code nextIndex()} is the Item stored at {@code getFirstIndex()}
+     * .
      * 
      * @return {@link IndexSequenceTraverser} over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence
@@ -156,9 +153,9 @@ extends Sequence<Item>, RandomAccess {
 
     /**
      * Returns an {@link IndexSequenceTraverser} traversing the Items of this
-     * IndexSequence in proper sequence. That is, the Item returned by the
-     * first call to {@code nextIndex()} is the Item stored at the specified
-     * start index.
+     * IndexSequence in proper sequence. That is, the Item returned by the first
+     * call to {@code nextIndex()} is the Item stored at the specified start
+     * index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item returned by the
@@ -176,10 +173,9 @@ extends Sequence<Item>, RandomAccess {
 
     /**
      * Verifies whether the specified Object is an IndexSequence with the same
-     * minimum and maximum indices and contains equal Items at the same
-     * indices. Two Items {@code item1} and {@code item2} are equal if
-     * and only if both are {@code null} or both are equal by the
-     * {@code equals()} method.
+     * minimum and maximum indices and contains equal Items at the same indices.
+     * Two Items {@code item1} and {@code item2} are equal if and only if both
+     * are {@code null} or both are equal by the {@code equals()} method.
      * 
      * @param otherIndexSequence
      *        Object to compare to this IndexSequence

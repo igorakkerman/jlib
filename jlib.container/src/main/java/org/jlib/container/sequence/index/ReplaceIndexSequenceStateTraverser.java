@@ -16,7 +16,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceStateTraverser;
 import org.jlib.container.sequence.NoItemToReplaceException;
-import org.jlib.container.sequence.NoSuchSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverserState;
 
@@ -61,9 +60,9 @@ implements ReplaceIndexSequenceTraverser<Item> {
     }
 
     /**
-     * Creates a new DefaultReplaceReplaceIndexSequenceTraverser over the
-     * Items of the specified ReplaceIndexSequence starting the traversal at
-     * the specified index.
+     * Creates a new DefaultReplaceReplaceIndexSequenceTraverser over the Items
+     * of the specified ReplaceIndexSequence starting the traversal at the
+     * specified index.
      * 
      * @param sequence
      *        ReplaceReplaceIndexSequence to traverse

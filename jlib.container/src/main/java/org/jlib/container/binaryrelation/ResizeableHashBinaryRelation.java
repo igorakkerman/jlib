@@ -15,7 +15,7 @@
 package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
-import java.util.Traverser;
+
 import java.util.Set;
 
 import org.jlib.container.Container;

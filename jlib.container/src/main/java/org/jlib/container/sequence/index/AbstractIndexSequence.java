@@ -72,12 +72,12 @@ implements IndexSequence<Item> {
     protected abstract Item getStoredItem(final int index);
 
     @Override
-    public Item getFirst() {
+    public Item getFirstItem() {
         return getStoredItem(firstIndex);
     }
 
     @Override
-    public Item getLast() {
+    public Item getLastItem() {
         return getStoredItem(lastIndex);
     }
 

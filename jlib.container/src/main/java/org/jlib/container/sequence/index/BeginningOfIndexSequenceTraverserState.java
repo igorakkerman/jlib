@@ -1,13 +1,13 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.BeginningOfSequenceTraverserState;
-import org.jlib.container.sequence.NoSuchSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
 
 /**
- * {@link IndexSequenceTraverserState} when a {@link SequenceTraverser} is at the
- * beginning of an {@link IndexSequence}.
+ * {@link IndexSequenceTraverserState} when a {@link SequenceTraverser} is at
+ * the beginning of an {@link IndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -33,8 +33,8 @@ implements IndexSequenceTraverserState<Item> {
 
     @Override
     public int getPreviousItemIndex()
-    throws NoSuchSequenceItemException {
-        throw new NoSuchSequenceItemException(getSequence());
+    throws NoPreviousSequenceItemException {
+        throw new NoPreviousSequenceItemException(getSequence());
     }
 
     @Override
@@ -44,7 +44,7 @@ implements IndexSequenceTraverserState<Item> {
 
     @Override
     public Item getNextItem() {
-        return getSequence().getFirst();
+        return getSequence().getFirstItem();
     }
 
     @Override

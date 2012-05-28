@@ -44,7 +44,7 @@ implements IndexSequenceTraverserState<Item> {
 
     @Override
     public Item getNextItem() {
-        return getSequence().getFirst();
+        return getSequence().getFirstItem();
     }
 
     @Override

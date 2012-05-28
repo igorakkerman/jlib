@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Traverser;
+
 import java.util.Map;
 import java.util.NoSuchItemException;
 import java.util.Set;

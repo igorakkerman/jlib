@@ -15,7 +15,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceStateTraverser;
-import org.jlib.container.sequence.NoSuchSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverserState;
 
@@ -58,9 +58,8 @@ implements IndexSequenceTraverser<Item> {
     }
 
     /**
-     * Creates a new DefaultReplaceIndexSequenceTraverser over the Items of
-     * the specified IndexSequence starting the traversal at the specified
-     * index.
+     * Creates a new DefaultReplaceIndexSequenceTraverser over the Items of the
+     * specified IndexSequence starting the traversal at the specified index.
      * 
      * @param sequence
      *        ReplaceIndexSequence to traverse
@@ -130,7 +129,7 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public int getPreviousItemIndex()
-    throws NoSuchSequenceItemException {
+    throws NoPreviousSequenceItemException {
         return currentState.getPreviousItemIndex();
     }
 
