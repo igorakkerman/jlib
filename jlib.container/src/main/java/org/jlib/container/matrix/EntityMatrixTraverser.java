@@ -14,15 +14,14 @@
 
 package org.jlib.container.matrix;
 
-import java.util.Traverser;
-
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * AbstractIndexMatrixTraverser traversing the items of a
- * {@link RandomTraversalMatrix} entity-wise. An entity can be defined by
- * the concrete implementation, examples would be columns, rows or other
+ * {@link RandomTraversalMatrix} entity-wise. An entity can be defined by the
+ * concrete implementation, examples would be columns, rows or other
  * submatrixes.
  * 
  * @param <Entry>
@@ -48,13 +47,13 @@ extends AbstractMatrixTraverser<Entry> {
      * 
      * @param matrix
      *        {@link RandomTraversalMatrix} to traverse
-     *        
+     * 
      * @param entities
      *        {@link Sequence} of all entities, each specified as a
      *        {@link Sequence} of entries of the {@link Matrix}
      */
     public EntityMatrixTraverser(final RandomTraversalMatrix<Entry> matrix,
-                                final Sequence<? extends Sequence<Entry>> entities) {
+                                 final Sequence<? extends Sequence<Entry>> entities) {
         super(matrix);
 
         entitiesTraverser = entities.createTraverser();
@@ -79,7 +78,7 @@ extends AbstractMatrixTraverser<Entry> {
 
     @Override
     public Entry getNextItem() {
-        if ( !entityTraverser.hasNextItem())
+        if (!entityTraverser.hasNextItem())
             gotoNextEntity();
 
         return entityTraverser.getNextItem();

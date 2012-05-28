@@ -1,8 +1,7 @@
 package org.jlib.container.matrix;
 
-import java.util.Traverser;
-
 import org.jlib.container.Container;
+import org.jlib.core.traverser.Traverser;
 
 // @formatter:off
 /**

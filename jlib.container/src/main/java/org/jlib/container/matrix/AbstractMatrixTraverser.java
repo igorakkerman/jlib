@@ -1,6 +1,5 @@
 package org.jlib.container.matrix;
 
-import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * Skeletal implementation of a {@link MatrixTraverser}.
@@ -11,7 +10,6 @@ import org.jlib.core.iterator.AbstractIterator;
  * @author Igor Akkerman
  */
 public abstract class AbstractMatrixTraverser<Entry>
-extends AbstractIterator<Entry>
 implements MatrixTraverser<Entry> {
 
     /** {@link Matrix} traversed by this {@link AbstractMatrixTraverser} */

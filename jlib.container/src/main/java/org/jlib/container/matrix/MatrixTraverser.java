@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import java.util.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * {@link Traverser} over a {@link Matrix}.

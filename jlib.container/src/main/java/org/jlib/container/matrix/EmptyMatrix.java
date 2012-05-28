@@ -2,7 +2,7 @@ package org.jlib.container.matrix;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Traverser;
+import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
@@ -86,8 +86,8 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public Traverser<Entry> iterator() {
-        return createTraverser();
+    public Iterator<Entry> iterator() {
+        return Collections.emptyIterator();
     }
 
     @Override

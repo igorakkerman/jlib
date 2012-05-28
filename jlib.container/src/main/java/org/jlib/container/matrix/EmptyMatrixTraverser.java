@@ -1,11 +1,10 @@
 package org.jlib.container.matrix;
 
-import java.util.NoSuchItemException;
-
-import org.jlib.core.iterator.AbstractIterator;
+import org.jlib.core.traverser.NoNextItemException;
 
 /**
- * {@link MatrixTraverser} of an {@link EmptyMatrix}. Implemented as a singleton.
+ * {@link MatrixTraverser} of an {@link EmptyMatrix}. Implemented as a
+ * singleton.
  * 
  * @param <Entry>
  *        type of entries of the {@link Matrix}
@@ -13,7 +12,6 @@ import org.jlib.core.iterator.AbstractIterator;
  * @author Igor Akkerman
  */
 public class EmptyMatrixTraverser<Entry>
-extends AbstractIterator<Entry>
 implements ReplaceMatrixTraverser<Entry> {
 
     /** sole {@link EmptyMatrixTraverser} instance */
@@ -43,7 +41,7 @@ implements ReplaceMatrixTraverser<Entry> {
 
     @Override
     public Entry getNextItem() {
-        throw new NoSuchItemException();
+        throw new NoNextItemException();
     }
 
     @Override

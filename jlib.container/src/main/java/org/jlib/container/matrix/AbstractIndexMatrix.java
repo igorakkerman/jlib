@@ -1,10 +1,9 @@
 package org.jlib.container.matrix;
 
-import java.util.Traverser;
-
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.
@@ -112,8 +111,7 @@ implements IndexMatrix<Entry> {
      * @param rowIndex
      *        integer specifying the row index of the stored Item
      * 
-     * @return Item stored at the specified position in this
-     *         AbstractIndexMatrix
+     * @return Item stored at the specified position in this AbstractIndexMatrix
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code nextColumnIndex < getMinColumnIndex() ||
@@ -139,8 +137,7 @@ implements IndexMatrix<Entry> {
      * @param rowIndex
      *        integer specifying the valid row index of the stored Item
      * 
-     * @return Item stored at the specified position in this
-     *         AbstractIndexMatrix
+     * @return Item stored at the specified position in this AbstractIndexMatrix
      */
     protected abstract Entry getStoredEntry(final int columnIndex, final int rowIndex);
 
@@ -217,8 +214,8 @@ implements IndexMatrix<Entry> {
 
     /**
      * Creates a {@link MatrixTraverser} traversing the Items of this
-     * {@link AbstractIndexMatrix}. The order in which the Items are
-     * traversed is specified using
+     * {@link AbstractIndexMatrix}. The order in which the Items are traversed
+     * is specified using
      * {@link #setDefaultIterationOrder(MatrixTraversalOrder)}.
      * 
      * @return new {@link MatrixTraverser} for this AbstractIndexMatrix
@@ -238,11 +235,6 @@ implements IndexMatrix<Entry> {
             @Override
             public MatrixTraverser<Entry> createTraverser() {
                 return iterationOrder.createTraverser(AbstractIndexMatrix.this);
-            }
-
-            @Override
-            public Traverser<Entry> iterator() {
-                return createTraverser();
             }
         };
     }
