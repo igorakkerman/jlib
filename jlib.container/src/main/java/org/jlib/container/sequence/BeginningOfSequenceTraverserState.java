@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.util.NoSuchItemException;
 
 /**
  * {@link SequenceTraverserState} when a {@link SequenceTraverser} is at the
@@ -34,8 +33,8 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
 
     @Override
     public Item previous()
-    throws NoSuchItemException {
-        throw new NoSuchItemException();
+    throws NoPreviousSequenceItemException {
+        throw new NoPreviousSequenceItemException(getSequence());
     }
 
     @Override

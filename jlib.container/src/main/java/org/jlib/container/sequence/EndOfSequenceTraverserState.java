@@ -1,10 +1,8 @@
 package org.jlib.container.sequence;
 
-import java.util.NoSuchItemException;
-
 /**
- * {@link SequenceTraverserState} when a {@link SequenceTraverser} has reached the
- * end of the non-empty {@link Sequence}.
+ * {@link SequenceTraverserState} when a {@link SequenceTraverser} has reached
+ * the end of the non-empty {@link Sequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -34,8 +32,8 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
 
     @Override
     public Item getNextItem()
-    throws NoSuchItemException {
-        throw new NoSuchItemException();
+    throws NoNextSequenceItemException {
+        throw new NoNextSequenceItemException(getSequence());
     }
 
     @Override
