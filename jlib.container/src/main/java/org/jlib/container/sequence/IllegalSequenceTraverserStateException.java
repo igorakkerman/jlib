@@ -9,7 +9,7 @@ import org.jlib.core.traverser.IllegalTraverserStateException;
  * 
  * @author Igor Akkerman
  */
-public abstract class IllegalSequenceStateException
+public abstract class IllegalSequenceTraverserStateException
 extends IllegalTraverserStateException {
 
     /** serialVersionUID */
@@ -19,17 +19,17 @@ extends IllegalTraverserStateException {
     private final Sequence<?> sequence;
 
     /**
-     * Creates a new {@link IllegalSequenceStateException}.
+     * Creates a new {@link IllegalSequenceTraverserStateException}.
      * 
      * @param sequence
      *        referenced {@link Sequence}
      */
-    public IllegalSequenceStateException(final Sequence<?> sequence) {
+    public IllegalSequenceTraverserStateException(final Sequence<?> sequence) {
         this(sequence, (Throwable) null);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceStateException} with the specified
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
      * error message.
      * 
      * @param sequence
@@ -38,12 +38,12 @@ extends IllegalTraverserStateException {
      * @param errorMessage
      *        {@link String} specifying the error message
      */
-    public IllegalSequenceStateException(final Sequence<?> sequence, final String errorMessage) {
+    public IllegalSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage) {
         this(sequence, errorMessage, null);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceStateException} with the specified
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
      * cause.
      * 
      * @param sequence
@@ -51,14 +51,14 @@ extends IllegalTraverserStateException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalSequenceStateException}
+     *        {@link IllegalSequenceTraverserStateException}
      */
-    public IllegalSequenceStateException(final Sequence<?> sequence, final Throwable cause) {
+    public IllegalSequenceTraverserStateException(final Sequence<?> sequence, final Throwable cause) {
         this(sequence, "{1}", cause);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceStateException} with the specified
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
      * error message and cause.
      * 
      * @param sequence
@@ -69,9 +69,9 @@ extends IllegalTraverserStateException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalSequenceStateException}
+     *        {@link IllegalSequenceTraverserStateException}
      */
-    public IllegalSequenceStateException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
+    public IllegalSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
         super(MessageFormat.format(errorMessage, sequence), cause);
 
         this.sequence = sequence;

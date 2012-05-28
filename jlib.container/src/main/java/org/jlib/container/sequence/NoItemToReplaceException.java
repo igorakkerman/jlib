@@ -8,7 +8,7 @@ package org.jlib.container.sequence;
  * @author Igor Akkerman
  */
 public class NoItemToReplaceException
-extends IllegalSequenceStateException {
+extends IllegalSequenceTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -4930329712329638796L;

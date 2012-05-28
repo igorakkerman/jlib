@@ -1,13 +1,13 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link IllegalSequenceStateException} thrown when there is no next Item to
+ * {@link IllegalSequenceTraverserStateException} thrown when there is no next Item to
  * return by a {@link SequenceTraverser}.
  * 
  * @author Igor Akkerman
  */
 public class NoNextSequenceItemException
-extends IllegalSequenceStateException {
+extends IllegalSequenceTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 3286617731417853890L;
