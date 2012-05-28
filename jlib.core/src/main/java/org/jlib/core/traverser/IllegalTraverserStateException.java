@@ -29,4 +29,19 @@ extends RuntimeException {
     public IllegalTraverserStateException(final Throwable cause) {
         super(cause);
     }
+
+    /**
+     * Creates a new {@link IllegalTraverserStateException}.
+     * 
+     * @param message
+     *        {@link String} specifying the error message
+     * 
+     * @param cause
+     *        {@link Throwable} that caused this
+     *        {@link IllegalThreadStateException}
+     */
+    public IllegalTraverserStateException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+
 }
