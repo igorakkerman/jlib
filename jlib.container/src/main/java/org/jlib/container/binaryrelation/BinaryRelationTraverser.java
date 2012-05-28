@@ -17,6 +17,8 @@ package org.jlib.container.binaryrelation;
 import java.util.HashSet;
 
 import org.jlib.container.NoSuchItemException;
+import org.jlib.container.collection.IterableTraverser;
+import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 
 /**
@@ -24,8 +26,10 @@ import org.jlib.core.traverser.Traverser;
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the binaryRelation
+ * 
  * @param <RightValue>
  *        type of the objects on the right hand side of the binaryRelation
+ * 
  * @author Igor Akkerman
  */
 class BinaryRelationTraverser<LeftValue, RightValue>
@@ -58,11 +62,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
     protected BinaryRelationTraverser(final BinaryRelation<LeftValue, RightValue> binaryRelation) {
         super();
         this.binaryRelation = binaryRelation;
-        leftValuesTraverser = new IteratorTraverser<Item>(binaryRelation.leftValues().iterator());
+        leftValuesTraverser = new IterableTraverser<>(binaryRelation.leftValues());
         if (leftValuesTraverser.hasNextItem())
             getNextLeftValue();
         else
-            rightValuesTraverser = new HashSet<RightValue>().iterator();
+            rightValuesTraverser = new IterableTraverser<>(new HashSet<RightValue>());
     }
 
     /**
@@ -70,7 +74,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
      */
     private void getNextLeftValue() {
         leftValue = leftValuesTraverser.getNextItem();
-        rightValuesTraverser = binaryRelation.rightSet(leftValue).iterator();
+        rightValuesTraverser = new IterableTraverser<>(binaryRelation.rightSet(leftValue));
     }
 
     @Override
@@ -90,7 +94,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
     public Association<LeftValue, RightValue> getNextItem()
     throws NoSuchItemException {
         if (!hasNextItem())
-            throw new NoSuchItemException();
+            throw new NoNextItemException();
 
         return new Association<LeftValue, RightValue>(leftValue, rightValuesTraverser.getNextItem());
     }
