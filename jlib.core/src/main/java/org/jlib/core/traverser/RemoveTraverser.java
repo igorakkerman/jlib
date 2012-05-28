@@ -14,10 +14,10 @@ extends Traverser<Item> {
     /**
      * Removes the last Item returned by this {@link RemoveTraverser} .
      * 
-     * @throws IllegalStateException
-     *         if not called immediately after a call to {@link #getNextItem()} or an
-     *         appropriate method
+     * @throws NoItemToRemoveException
+     *         if not called immediately after a call to {@link #getNextItem()}
+     *         or an appropriate method
      */
     public void remove()
-    throws IllegalStateException;
+    throws NoItemToRemoveException;
 }
