@@ -1,12 +1,15 @@
 package org.jlib.container;
 
 /**
- * Exception thrown when a requested
+ * Exception thrown when a requested Item is now found.
  * 
  * @author Igor Akkerman
  */
 public class NoSuchItemException
 extends IllegalStateException {
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = 7038464143575268543L;
 
     /** requested Item */
     private final Object item;
