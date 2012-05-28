@@ -40,11 +40,11 @@ extends Traverser<Item> {
      * 
      * @return the previous Item
      * 
-     * @throws NoSuchSequenceItemException
+     * @throws NoPreviousSequenceItemException
      *         if there is no previous Item
      */
     public Item previous()
-    throws NoSuchSequenceItemException;
+    throws NoPreviousSequenceItemException;
 
     /**
      * Verifies whether this {@link SequenceTraverser} has a next Item.
@@ -60,10 +60,10 @@ extends Traverser<Item> {
      * 
      * @return the next Item
      * 
-     * @throws NoSuchSequenceItemException
+     * @throws NoNextSequenceItemException
      *         if there is no next Item
      */
     @Override
     public Item getNextItem()
-    throws NoSuchSequenceItemException;
+    throws NoNextSequenceItemException;
 }
