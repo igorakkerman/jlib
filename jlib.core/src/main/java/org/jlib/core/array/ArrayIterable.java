@@ -1,6 +1,6 @@
 package org.jlib.core.array;
 
-import java.util.Traverser;
+import java.util.Iterator;
 
 /**
  * Wrapper for an array allowing it to be used as {@link Iterable}.
@@ -28,7 +28,7 @@ implements Iterable<Item> {
 
     // @see java.lang.Iterable#iterator()
     @Override
-    public Traverser<Item> iterator() {
-        return new ArrayTraverser<Item>(array);
+    public Iterator<Item> iterator() {
+        return new ArrayIterator<Item>(array);
     }
 }
