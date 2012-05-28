@@ -2,8 +2,9 @@ package org.jlib.container.sequence;
 
 import java.util.NoSuchElementException;
 
+import org.jlib.container.NoSuchItemException;
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
-import org.jlib.core.iterator.AbstractTraverser;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * {@link IndexSequenceTraverser} of an {@link EmptySequence}.
@@ -14,7 +15,7 @@ import org.jlib.core.iterator.AbstractTraverser;
  * @author Igor Akkerman
  */
 public class EmptySequenceTraverser<Item>
-extends AbstractTraverser<Item>
+extends AbstractIterator<Item>
 implements SequenceTraverser<Item> {
 
     /** sole instance of this class */
@@ -43,7 +44,7 @@ implements SequenceTraverser<Item> {
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return false;
     }
 
@@ -54,7 +55,7 @@ implements SequenceTraverser<Item> {
     }
 
     @Override
-    public Item next()
+    public Item getNextItem()
     throws NoSuchItemException {
         throw new NoSuchItemException();
     }

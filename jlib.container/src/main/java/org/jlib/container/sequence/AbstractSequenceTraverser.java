@@ -1,6 +1,6 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.iterator.AbstractTraverser;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * Skeletal implementation of a {@link SequenceTraverser}.
@@ -14,7 +14,7 @@ import org.jlib.core.iterator.AbstractTraverser;
  * @author Igor Akkerman
  */
 public abstract class AbstractSequenceTraverser<Item, Sequenze extends Sequence<Item>>
-extends AbstractTraverser<Item>
+extends AbstractIterator<Item>
 implements SequenceTraverser<Item> {
 
     /** traversed {@link Sequence} */

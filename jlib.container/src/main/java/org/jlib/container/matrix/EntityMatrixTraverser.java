@@ -63,25 +63,25 @@ extends AbstractMatrixTraverser<Entry> {
 
     @Override
     public boolean hasNextEntity() {
-        return entitiesTraverser.hasNext();
+        return entitiesTraverser.hasNextItem();
     }
 
     @Override
     public void gotoNextEntity()
     throws IllegalStateException {
-        entityTraverser = entitiesTraverser.next().createTraverser();
+        entityTraverser = entitiesTraverser.getNextItem().createTraverser();
     }
 
     @Override
-    public boolean hasNext() {
-        return entityTraverser.hasNext() || hasNextEntity();
+    public boolean hasNextItem() {
+        return entityTraverser.hasNextItem() || hasNextEntity();
     }
 
     @Override
-    public Entry next() {
-        if ( !entityTraverser.hasNext())
+    public Entry getNextItem() {
+        if ( !entityTraverser.hasNextItem())
             gotoNextEntity();
 
-        return entityTraverser.next();
+        return entityTraverser.getNextItem();
     }
 }

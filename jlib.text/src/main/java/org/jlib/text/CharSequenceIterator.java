@@ -3,7 +3,7 @@ package org.jlib.text;
 import java.util.Traverser;
 import java.util.NoSuchItemException;
 
-import org.jlib.core.iterator.AbstractTraverser;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * <p>
@@ -24,7 +24,7 @@ import org.jlib.core.iterator.AbstractTraverser;
  * @author Igor Akkerman
  */
 public class CharSequenceTraverser
-extends AbstractTraverser<Character> {
+extends AbstractIterator<Character> {
 
     /**
      * Returns an {@link Iterable} creating CharSequenceTraversers over the

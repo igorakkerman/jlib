@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * {@link Traverser} over the Items of a {@link Sequence}.
@@ -53,7 +53,7 @@ extends Traverser<Item> {
      *         {@code false} otherwise
      */
     @Override
-    public boolean hasNext();
+    public boolean hasNextItem();
 
     /**
      * Returns the next Item of this {@link SequenceTraverser}.
@@ -64,6 +64,6 @@ extends Traverser<Item> {
      *         if there is no next Item
      */
     @Override
-    public Item next()
+    public Item getNextItem()
     throws NoSuchSequenceItemException;
 }

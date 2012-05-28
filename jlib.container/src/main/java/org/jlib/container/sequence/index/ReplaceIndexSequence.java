@@ -48,7 +48,7 @@ extends ReplaceSequence<Item>, IndexSequence<Item> {
      * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
      * IndexSequence in proper sequence. Initially, the Traverser points to the
      * beginning of this IndexSequence, that is, the Item returned by the
-     * first call to {@link ReplaceIndexSequenceTraverser#next()} is the Item
+     * first call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
      * stored at {@link #getFirstIndex()}.
      * 
      * @return ReplaceIndexSequenceTraverser over this IndexSequence initially
@@ -60,7 +60,7 @@ extends ReplaceSequence<Item>, IndexSequence<Item> {
     /**
      * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
      * IndexSequence in proper sequence. That is, the Item returned by the
-     * first call to {@link ReplaceIndexSequenceTraverser#next()} is the Item
+     * first call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
      * stored at the specified start index.
      * 
      * @param startIndex

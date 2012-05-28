@@ -1,17 +1,14 @@
-package org.jlib.container;
-
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link Traverser} over an {@link ReplaceContainer} allowing the modification
- * of the last traversed Item.
+ * {@link Traverser} over replaceable Items.
  * 
  * @param <Item>
- *        type of the items held in the {@link Container}
+ *        type of the traversed items
  * 
  * @author Igor Akkerman
  */
-public interface ReplaceContainerTraverser<Item>
+public interface ReplaceTraverser<Item>
 extends Traverser<Item> {
 
     /**
@@ -22,8 +19,7 @@ extends Traverser<Item> {
      *        Item by which the former Item is replaced
      * 
      * @throws IllegalStateException
-     *         if no Item has been returned by this
-     *         {@link ReplaceSequenceTraverser}
+     *         if no Item has been returned by this {@link ReplaceTraverser}
      */
     public void replace(final Item newItem)
     throws IllegalStateException;

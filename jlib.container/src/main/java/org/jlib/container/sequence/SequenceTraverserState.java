@@ -1,6 +1,6 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.iterator.TraverserState;
+import org.jlib.core.traverser.TraverserState;
 
 /**
  * State of a {@link SequenceTraverser}.
@@ -23,9 +23,9 @@ extends TraverserState<Item>, SequenceTraverser<Item> {
 
     /**
      * Returns the {@link SequenceTraverserState} switched to after a call to
-     * {@link #next()}.
+     * {@link #getNextItem()}.
      * 
-     * @return {@link SequenceTraverserState} after {@link #next()}
+     * @return {@link SequenceTraverserState} after {@link #getNextItem()}
      */
     @Override
     public SequenceTraverserState<Item> getNextState();

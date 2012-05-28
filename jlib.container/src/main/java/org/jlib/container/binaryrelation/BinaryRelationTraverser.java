@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Traverser;
 import java.util.NoSuchItemException;
 
-import org.jlib.core.iterator.AbstractTraverser;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * Traverser over the Associations of a BinaryRelation.
@@ -30,7 +30,7 @@ import org.jlib.core.iterator.AbstractTraverser;
  * @author Igor Akkerman
  */
 class BinaryRelationTraverser<LeftValue, RightValue>
-extends AbstractTraverser<Association<LeftValue, RightValue>> {
+extends AbstractIterator<Association<LeftValue, RightValue>> {
 
     /** BinaryRelation traversed by this Traverser */
     private final BinaryRelation<LeftValue, RightValue> binaryRelation;
@@ -60,7 +60,7 @@ extends AbstractTraverser<Association<LeftValue, RightValue>> {
         super();
         this.binaryRelation = binaryRelation;
         leftValuesTraverser = binaryRelation.leftValues().iterator();
-        if (leftValuesTraverser.hasNext())
+        if (leftValuesTraverser.hasNextItem())
             getNextLeftValue();
         else
             rightValuesTraverser = new HashSet<RightValue>().iterator();
@@ -70,16 +70,16 @@ extends AbstractTraverser<Association<LeftValue, RightValue>> {
      * Retrieves the next LeftValue.
      */
     private void getNextLeftValue() {
-        leftValue = leftValuesTraverser.next();
+        leftValue = leftValuesTraverser.getNextItem();
         rightValuesTraverser = binaryRelation.rightSet(leftValue).iterator();
     }
 
     @Override
-    public boolean hasNext() {
-        if (rightValuesTraverser.hasNext())
+    public boolean hasNextItem() {
+        if (rightValuesTraverser.hasNextItem())
             return true;
 
-        if (!leftValuesTraverser.hasNext())
+        if (!leftValuesTraverser.hasNextItem())
             return false;
 
         getNextLeftValue();
@@ -88,11 +88,11 @@ extends AbstractTraverser<Association<LeftValue, RightValue>> {
     }
 
     @Override
-    public Association<LeftValue, RightValue> next()
+    public Association<LeftValue, RightValue> getNextItem()
     throws NoSuchItemException {
-        if (!hasNext())
+        if (!hasNextItem())
             throw new NoSuchItemException();
 
-        return new Association<LeftValue, RightValue>(leftValue, rightValuesTraverser.next());
+        return new Association<LeftValue, RightValue>(leftValue, rightValuesTraverser.getNextItem());
     }
 }

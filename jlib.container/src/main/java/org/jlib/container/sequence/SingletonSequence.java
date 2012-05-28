@@ -19,7 +19,7 @@ extends AbstractNonEmptySequence<Item> {
         new BeginningOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
-            public Item next() {
+            public Item getNextItem() {
                 return item;
             }
 

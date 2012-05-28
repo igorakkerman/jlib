@@ -2,11 +2,12 @@ package org.jlib.container;
 
 import org.jlib.container.sequence.AddSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * <p>
  * Container that allows its Items to be modified using an
- * {@link ReplaceContainerTraverser}.
+ * {@link ReplaceTraverser}.
  * </p>
  * <p>
  * It does not necessarily allow modification of the {@link Container}, that is,
@@ -22,10 +23,10 @@ public interface ReplaceContainer<Item>
 extends Container<Item> {
 
     /**
-     * Creates a new {@link ReplaceContainerTraverser} over this {@link ReplaceContainer}.
+     * Creates a new {@link ReplaceTraverser} over this {@link ReplaceContainer}.
      * 
-     * @return newly created {@link ReplaceContainerTraverser}
+     * @return newly created {@link ReplaceTraverser}
      */
     @Override
-    public ReplaceContainerTraverser<Item> createTraverser();
+    public ReplaceTraverser<Item> createTraverser();
 }

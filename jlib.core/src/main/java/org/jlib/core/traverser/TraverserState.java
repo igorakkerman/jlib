@@ -1,6 +1,4 @@
-package org.jlib.core.iterator;
-
-import java.util.Traverser;
+package org.jlib.core.traverser;
 
 /**
  * Traverser state.

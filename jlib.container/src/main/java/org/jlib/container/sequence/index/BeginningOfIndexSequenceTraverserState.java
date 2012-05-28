@@ -43,7 +43,7 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public Item next() {
+    public Item getNextItem() {
         return getSequence().getFirst();
     }
 

@@ -1,4 +1,4 @@
-package org.jlib.container;
+package org.jlib.core.traverser;
 
 /**
  * {@link Traverser} allowing returned Items to be removed.
@@ -15,7 +15,7 @@ extends Traverser<Item> {
      * Removes the last Item returned by this {@link RemoveTraverser} .
      * 
      * @throws IllegalStateException
-     *         if not called immediately after a call to {@link #next()} or an
+     *         if not called immediately after a call to {@link #getNextItem()} or an
      *         appropriate method
      */
     public void remove()

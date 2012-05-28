@@ -32,7 +32,7 @@ extends Container<Item> {
     /**
      * Returns a {@link SequenceTraverser} traversing the Items of this
      * Sequence in proper sequence. The Item returned by the first call to
-     * {@link SequenceTraverser#next()} is the first Item in the Sequence.
+     * {@link SequenceTraverser#getNextItem()} is the first Item in the Sequence.
      * 
      * @return SequenceTraverser over this Sequence
      */

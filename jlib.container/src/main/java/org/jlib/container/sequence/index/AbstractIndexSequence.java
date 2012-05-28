@@ -2,8 +2,8 @@ package org.jlib.container.sequence.index;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchItemException;
 
+import org.jlib.container.NoSuchItemException;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.index.array.ArraySequence;
 
@@ -61,8 +61,8 @@ implements IndexSequence<Item> {
     }
 
     /**
-     * Returns the Item stored at the specified index expecting the index to
-     * be valid.
+     * Returns the Item stored at the specified index expecting the index to be
+     * valid.
      * 
      * @param index
      *        integer specifying the valid index
@@ -163,7 +163,7 @@ implements IndexSequence<Item> {
 
         getNextItemString(stringBuilder, itemsTraverser);
 
-        while (itemsTraverser.hasNext()) {
+        while (itemsTraverser.hasNextItem()) {
             stringBuilder.append(", ");
             getNextItemString(stringBuilder, itemsTraverser);
         }
@@ -174,22 +174,20 @@ implements IndexSequence<Item> {
     }
 
     /**
-     * Appends a {@link String} representation of the next Item returned by
-     * the specified {@link IndexSequenceTraverser} to the specified
+     * Appends a {@link String} representation of the next Item returned by the
+     * specified {@link IndexSequenceTraverser} to the specified
      * {@link StringBuilder}.
      * 
      * @param stringBuilder
-     *        {@link StringBuilder} to which the Item representation is
-     *        appended
+     *        {@link StringBuilder} to which the Item representation is appended
      * 
      * @param itemsTraverser
      *        {@link IndexSequenceTraverser} providing the Item
      */
-    private void getNextItemString(final StringBuilder stringBuilder,
-                                      final IndexSequenceTraverser<Item> itemsTraverser) {
+    private void getNextItemString(final StringBuilder stringBuilder, final IndexSequenceTraverser<Item> itemsTraverser) {
         stringBuilder.append(itemsTraverser.getNextItemIndex());
         stringBuilder.append(": ");
-        stringBuilder.append(itemsTraverser.next());
+        stringBuilder.append(itemsTraverser.getNextItem());
     }
 
     /**

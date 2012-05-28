@@ -19,6 +19,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.jlib.core.ObjectUtility;
+import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.TraversibleIterator;
 
 /**
  * Skeletal implementation of a Container. A concrete Container implementation
@@ -136,7 +138,7 @@ implements Container<Item> {
                 return false;
             if (!thisHasNext)
                 return true;
-            if (!ObjectUtility.equal(thisTraverser.next(), otherTraverser.next()))
+            if (!ObjectUtility.equal(thisTraverser.getNextItem(), otherTraverser.getNextItem()))
                 return false;
         }
         while (true);

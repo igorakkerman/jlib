@@ -42,12 +42,12 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return true;
     }
 
     @Override
-    public Item next()
+    public Item getNextItem()
     throws NoSuchSequenceItemException {
         try {
             return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex ++);

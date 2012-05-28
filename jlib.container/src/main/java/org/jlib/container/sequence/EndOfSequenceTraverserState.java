@@ -28,12 +28,12 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return false;
     }
 
     @Override
-    public Item next()
+    public Item getNextItem()
     throws NoSuchItemException {
         throw new NoSuchItemException();
     }

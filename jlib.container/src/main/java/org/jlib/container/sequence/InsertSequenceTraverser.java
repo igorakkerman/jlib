@@ -33,11 +33,11 @@ extends SequenceTraverser<Item> {
      * </p>
      * <p>
      * The Item is inserted immediately before the next Item that would
-     * have been returned by {@link #next()} and immediately after the previous
+     * have been returned by {@link #getNextItem()} and immediately after the previous
      * Item that would have been returned by {@link #previous()}.
      * </p>
      * <p>
-     * A subsequent call to {@link #next()} would be unaffected, and a
+     * A subsequent call to {@link #getNextItem()} would be unaffected, and a
      * subsequent call to {@link #previous()} would return the new item.
      * </p>
      * 
@@ -45,7 +45,7 @@ extends SequenceTraverser<Item> {
      *        Item to insert
      * 
      * @throws IllegalStateException
-     *         if {@link #next()} or {@link #previous()} have not been called
+     *         if {@link #getNextItem()} or {@link #previous()} have not been called
      *         initially or after the last call to {@link #insert(Object)}
      */
     public void insert(Item item)

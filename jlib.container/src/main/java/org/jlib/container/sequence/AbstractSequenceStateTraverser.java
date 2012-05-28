@@ -43,14 +43,14 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     }
 
     @Override
-    public final boolean hasNext() {
-        return getCurrentState().hasNext();
+    public final boolean hasNextItem() {
+        return getCurrentState().hasNextItem();
     }
 
     @Override
-    public final Item next()
+    public final Item getNextItem()
     throws NoSuchItemException {
-        final Item nextItem = getCurrentState().next();
+        final Item nextItem = getCurrentState().getNextItem();
 
         setCurrentStateToNext();
 

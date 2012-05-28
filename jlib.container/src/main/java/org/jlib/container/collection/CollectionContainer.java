@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.Container;
-import org.jlib.container.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link Container}. A

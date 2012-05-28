@@ -2,13 +2,15 @@ package org.jlib.container.sequence;
 
 import java.text.MessageFormat;
 
+import org.jlib.core.traverser.IllegalTraverserStateException;
+
 /**
- * {@link IllegalStateException} referencing a {@link Sequence}.
+ * {@link IllegalTraverserStateException} referencing a {@link Sequence}.
  * 
  * @author Igor Akkerman
  */
 public abstract class IllegalSequenceStateException
-extends IllegalStateException {
+extends IllegalTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7078599807599575854L;

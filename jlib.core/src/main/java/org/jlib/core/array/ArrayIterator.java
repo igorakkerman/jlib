@@ -2,7 +2,7 @@ package org.jlib.core.array;
 
 import java.util.Traverser;
 
-import org.jlib.core.iterator.AbstractTraverser;
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * {@link Traverser} over the items of an array.
@@ -13,7 +13,7 @@ import org.jlib.core.iterator.AbstractTraverser;
  * @author Igor Akkerman
  */
 public class ArrayTraverser<Item>
-extends AbstractTraverser<Item> {
+extends AbstractIterator<Item> {
 
     /** array to traverse */
     private final Item[] array;
@@ -51,13 +51,13 @@ extends AbstractTraverser<Item> {
 
     // @see java.util.Traverser#hasNext()
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return currentIndex <= arrayLength - 1;
     }
 
     // @see java.util.Traverser#next()
     @Override
-    public Item next() {
+    public Item getNextItem() {
         return array[currentIndex ++];
     }
 }

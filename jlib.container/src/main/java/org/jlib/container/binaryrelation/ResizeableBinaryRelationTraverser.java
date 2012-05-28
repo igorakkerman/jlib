@@ -47,9 +47,9 @@ extends BinaryRelationTraverser<LeftValue, RightValue> {
     }
     
     @Override
-    public Association<LeftValue, RightValue> next()
+    public Association<LeftValue, RightValue> getNextItem()
     throws NoSuchItemException {
-        lastItemReturned = super.next();
+        lastItemReturned = super.getNextItem();
         return lastItemReturned;
     }
     

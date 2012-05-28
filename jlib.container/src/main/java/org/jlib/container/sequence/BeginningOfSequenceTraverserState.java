@@ -44,7 +44,7 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return true;
     }
 }

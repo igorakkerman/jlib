@@ -16,6 +16,8 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.traverser.RemoveTraverser;
+
 // TODO: add operations passing ModificationListeners to the methods
 
 /**

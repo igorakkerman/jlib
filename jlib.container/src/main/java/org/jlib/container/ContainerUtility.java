@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.container.collection.CollectionUtility;
+import org.jlib.core.traverser.RemoveTraverser;
 
 /**
  * Utility class providing methods operating on {@link Container Containers}.
@@ -73,8 +74,8 @@ public final class ContainerUtility {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = container.createTraverser();
-        while (containerTraverser.hasNext())
-            if (!retainedItemsSet.contains(containerTraverser.next()))
+        while (containerTraverser.hasNextItem())
+            if (!retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove();
     }
 
@@ -90,8 +91,8 @@ public final class ContainerUtility {
      */
     public static <Item> void retainAll(final RemoveContainer<Item> container, final Collection<? extends Item> items) {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
-        while (itemsTraverser.hasNext())
-            if (!items.contains(itemsTraverser.next()))
+        while (itemsTraverser.hasNextItem())
+            if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
     }
 

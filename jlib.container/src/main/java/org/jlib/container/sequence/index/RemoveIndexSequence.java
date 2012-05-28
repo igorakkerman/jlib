@@ -41,7 +41,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
      * this Sequence in proper sequence. Initially, the Traverser points to the
      * beginning of this Sequence, that is, the Item returned by the first
-     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored
+     * call to {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored
      * at {@link #getFirstIndex()}.
      * 
      * @return InsertIndexSequenceTraverser over this IndexSequence initially
@@ -53,7 +53,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
     /**
      * Returns a RemoveIndexSequenceTraverser traversing the Items of this
      * Sequence in proper sequence. That is, the Item returned by the first
-     * call to {@link InsertIndexSequenceTraverser#next()} is the Item stored
+     * call to {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored
      * at the specified start index.
      * 
      * @param startIndex

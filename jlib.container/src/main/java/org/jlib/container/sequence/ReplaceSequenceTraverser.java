@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ReplaceContainerTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Traverser of an ReplaceSequence.
@@ -24,7 +24,7 @@ import org.jlib.container.ReplaceContainerTraverser;
  * @author Igor Akkerman
  */
 public interface ReplaceSequenceTraverser<Item>
-extends ReplaceContainerTraverser<Item>, SequenceTraverser<Item> {
+extends ReplaceTraverser<Item>, SequenceTraverser<Item> {
 
     /**
      * Replaces the last Item returned by {@code previous()} or

@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import org.jlib.container.ReplaceContainerTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Traverser over the Entries of a {@link ReplaceMatrix}.
@@ -11,6 +11,6 @@ import org.jlib.container.ReplaceContainerTraverser;
  * @author Igor Akkerman
  */
 public interface ReplaceMatrixTraverser<Entry>
-extends MatrixTraverser<Entry>, ReplaceContainerTraverser<Entry> {
+extends MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
     // unifying interface
 }

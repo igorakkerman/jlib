@@ -16,6 +16,8 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.traverser.Traversible;
+
 /**
  * Container of items.
  * 
@@ -25,7 +27,6 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 //TODO: add operations passing ModificationListeners to the methods
-//TODO: Container don't have Items, they have Items. Sets have Items!
 public interface Container<Item>
 extends Traversible<Item>, Iterable<Item> {
 

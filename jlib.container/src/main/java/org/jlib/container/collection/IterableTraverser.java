@@ -2,7 +2,7 @@ package org.jlib.container.collection;
 
 import java.util.Iterator;
 
-import org.jlib.container.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * {@link Traverser} over an {@link Iterable}.
@@ -32,12 +32,12 @@ implements Traverser<Item> {
     }
 
     @Override
-    public Item next() {
+    public Item getNextItem() {
         return delegateIterator.next();
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNextItem() {
         return delegateIterator.hasNext();
     }
 

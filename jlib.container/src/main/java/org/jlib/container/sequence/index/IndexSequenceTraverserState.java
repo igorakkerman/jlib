@@ -25,9 +25,9 @@ extends SequenceTraverserState<Item>, IndexSequenceTraverser<Item> {
 
     /**
      * Returns the {@link IndexSequenceTraverserState} switched to after a call
-     * to {@link #next()}.
+     * to {@link #getNextItem()}.
      * 
-     * @return {@link IndexSequenceTraverserState} after {@link #next()}
+     * @return {@link IndexSequenceTraverserState} after {@link #getNextItem()}
      */
     @Override
     public IndexSequenceTraverserState<Item> getNextState();

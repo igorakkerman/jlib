@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.RemoveContainerTraverser;
+import org.jlib.core.traverser.RemoveTraverser;
 
 /**
  * Traverser over a {@link RemoveSequence}.
@@ -25,7 +25,7 @@ import org.jlib.container.RemoveContainerTraverser;
  * @author Igor Akkerman
  */
 public interface RemoveSequenceTraverser<Item>
-extends SequenceTraverser<Item>, RemoveContainerTraverser<Item> {
+extends SequenceTraverser<Item>, RemoveTraverser<Item> {
 
     @Override
     public void remove()

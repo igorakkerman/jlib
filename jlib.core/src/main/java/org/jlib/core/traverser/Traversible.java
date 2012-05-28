@@ -1,4 +1,4 @@
-package org.jlib.container;
+package org.jlib.core.traverser;
 
 /**
  * {@link Object} traversible by a {@link Traverser}.
@@ -11,7 +11,7 @@ package org.jlib.container;
 public interface Traversible<Item> {
 
     /**
-     * Returns a new {@link Traverser} of this {@link Traversible}.
+     * Returns a new {@link Traverser} over this {@link Traversible}.
      * 
      * @return newly created {@link Traverser}
      */

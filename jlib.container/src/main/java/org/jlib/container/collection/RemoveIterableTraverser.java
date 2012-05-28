@@ -2,8 +2,8 @@ package org.jlib.container.collection;
 
 import java.util.Iterator;
 
-import org.jlib.container.RemoveTraverser;
-import org.jlib.container.Traverser;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * {@link Traverser} over an {@link Iterable}.
