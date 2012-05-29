@@ -27,10 +27,10 @@ public interface ReplaceSequenceTraverser<Item>
 extends ReplaceTraverser<Item>, SequenceTraverser<Item> {
 
     /**
-     * Replaces the last Item returned by {@code previous()} or
-     * {@code next()} with the specified value.
+     * Replaces the last Item returned by {@code previous()} or {@code next()}
+     * with the specified value.
      * 
-     * @param item
+     * @param newItem
      *        Item by which the former Item is replaced
      * 
      * @throws NoItemToReplaceException
@@ -38,6 +38,6 @@ extends ReplaceTraverser<Item>, SequenceTraverser<Item> {
      *         {@link ReplaceSequenceTraverser}
      */
     @Override
-    public void replace(final Item item)
+    public void replace(final Item newItem)
     throws NoItemToReplaceException;
 }
