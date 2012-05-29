@@ -34,7 +34,7 @@ extends AbstractNonEmptySequence<Item> {
         new TailOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
 
             @Override
-            public Item previous() {
+            public Item getPreviousItem() {
                 return item;
             }
 

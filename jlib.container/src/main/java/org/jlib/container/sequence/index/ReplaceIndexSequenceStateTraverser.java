@@ -159,7 +159,7 @@ implements ReplaceIndexSequenceTraverser<Item> {
     }
 
     @Override
-    public void replace(final Item item)
+    public void replace(final Item newItem)
     throws NoItemToReplaceException {}
 
     @Override

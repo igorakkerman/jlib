@@ -15,9 +15,9 @@ extends TraverserState<Item>, SequenceTraverser<Item> {
 
     /**
      * Returns the {@link SequenceTraverserState} switched to after a call to
-     * {@link #previous()}.
+     * {@link #getPreviousItem()}.
      * 
-     * @return {@link SequenceTraverserState} after {@link #previous()}
+     * @return {@link SequenceTraverserState} after {@link #getPreviousItem()}
      */
     public SequenceTraverserState<Item> getPreviousState();
 

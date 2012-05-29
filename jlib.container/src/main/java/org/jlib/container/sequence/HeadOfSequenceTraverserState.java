@@ -31,7 +31,7 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
     }
 
     @Override
-    public Item previous()
+    public Item getPreviousItem()
     throws NoPreviousSequenceItemException {
         throw new NoPreviousSequenceItemException(getSequence());
     }

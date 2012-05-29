@@ -43,7 +43,7 @@ extends Traverser<Item> {
      * @throws NoPreviousSequenceItemException
      *         if there is no previous Item
      */
-    public Item previous()
+    public Item getPreviousItem()
     throws NoPreviousSequenceItemException;
 
     /**

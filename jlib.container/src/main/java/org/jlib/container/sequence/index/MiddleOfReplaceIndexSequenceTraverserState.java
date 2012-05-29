@@ -34,7 +34,26 @@ implements ReplaceIndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public void replace(final Item item) {
-        getSequence().replace(getRecentlyRetrievedItemIndex(), item);
+    public void replace(final Item newItem) {
+        getSequence().replace(getRecentlyRetrievedItemIndex(), newItem);
+    }
+
+    /** index of the last accessed item */
+    private int lastAccessedItemIndex;
+
+    /**
+     * Registers the lastAccessedItemIndex of this
+     * {@link AccessedMiddleOfReplaceIndexSequenceTraverserState}.
+     * 
+     * @param lastAccessedItemIndex
+     *        integer specifying the lastAccessedItemIndex
+     */
+    public void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
+        this.lastAccessedItemIndex = lastAccessedItemIndex;
+    }
+
+    @Override
+    public void replace(final Item newItem) {
+        getSequence().replace(lastAccessedItemIndex, newItem);
     }
 }

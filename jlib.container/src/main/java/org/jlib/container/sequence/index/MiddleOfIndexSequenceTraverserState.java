@@ -59,7 +59,7 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public Item previous() {
+    public Item getPreviousItem() {
         try {
             return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex -- - 1);
         }

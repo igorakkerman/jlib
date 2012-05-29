@@ -32,9 +32,9 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     }
 
     @Override
-    public final Item previous()
+    public final Item getPreviousItem()
     throws NoPreviousSequenceItemException {
-        final Item previousItem = getCurrentState().previous();
+        final Item previousItem = getCurrentState().getPreviousItem();
 
         setCurrentStateToPrevious();
 

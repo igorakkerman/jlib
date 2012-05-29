@@ -34,18 +34,18 @@ extends SequenceTraverser<Item> {
      * <p>
      * The Item is inserted immediately before the next Item that would
      * have been returned by {@link #getNextItem()} and immediately after the previous
-     * Item that would have been returned by {@link #previous()}.
+     * Item that would have been returned by {@link #getPreviousItem()}.
      * </p>
      * <p>
      * A subsequent call to {@link #getNextItem()} would be unaffected, and a
-     * subsequent call to {@link #previous()} would return the new item.
+     * subsequent call to {@link #getPreviousItem()} would return the new item.
      * </p>
      * 
      * @param item
      *        Item to insert
      * 
      * @throws IllegalStateException
-     *         if {@link #getNextItem()} or {@link #previous()} have not been called
+     *         if {@link #getNextItem()} or {@link #getPreviousItem()} have not been called
      *         initially or after the last call to {@link #insert(Object)}
      */
     public void insert(Item item)

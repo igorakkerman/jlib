@@ -47,7 +47,7 @@ extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
     }
 
     @Override
-    public Item previous()
+    public Item getPreviousItem()
     throws NoSuchElementException {
         throw new NoSuchElementException();
     }

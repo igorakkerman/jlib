@@ -17,7 +17,7 @@ package org.jlib.container.binaryrelation;
 import java.util.HashSet;
 
 import org.jlib.container.NoSuchItemException;
-import org.jlib.container.collection.IterableTraverser;
+import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 
