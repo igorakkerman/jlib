@@ -36,6 +36,11 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
+    public IndexSequenceTraverserState<Item> getPreviousState() {
+        return this;
+    }
+
+    @Override
     public int getNextItemIndex() {
         return getSequence().getFirstIndex();
     }
@@ -43,10 +48,5 @@ implements IndexSequenceTraverserState<Item> {
     @Override
     public Item getNextItem() {
         return getSequence().getFirstItem();
-    }
-
-    @Override
-    public IndexSequenceTraverserState<Item> getPreviousState() {
-        return this;
     }
 }

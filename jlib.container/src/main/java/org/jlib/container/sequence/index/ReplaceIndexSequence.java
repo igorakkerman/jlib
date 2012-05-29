@@ -28,8 +28,8 @@ public interface ReplaceIndexSequence<Item>
 extends ReplaceSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Replaces the Item at the specified index in this
-     * IndexSequence by the specified Items.
+     * Replaces the Item at the specified index in this IndexSequence by the
+     * specified Items.
      * 
      * @param index
      *        integer specifying the index
@@ -40,15 +40,14 @@ extends ReplaceSequence<Item>, IndexSequence<Item> {
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    // TODO: add set method with ReplaceItemListener
     public void replace(final int index, final Item item)
     throws SequenceIndexOutOfBoundsException;
 
     /**
      * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
      * IndexSequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this IndexSequence, that is, the Item returned by the
-     * first call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
+     * beginning of this IndexSequence, that is, the Item returned by the first
+     * call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
      * stored at {@link #getFirstIndex()}.
      * 
      * @return ReplaceIndexSequenceTraverser over this IndexSequence initially
@@ -59,8 +58,8 @@ extends ReplaceSequence<Item>, IndexSequence<Item> {
 
     /**
      * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
-     * IndexSequence in proper sequence. That is, the Item returned by the
-     * first call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
+     * IndexSequence in proper sequence. That is, the Item returned by the first
+     * call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
      * stored at the specified start index.
      * 
      * @param startIndex

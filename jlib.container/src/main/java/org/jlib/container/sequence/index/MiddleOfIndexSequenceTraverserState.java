@@ -1,7 +1,8 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceTraverserState;
-import org.jlib.container.sequence.NoSuchSequenceItemException;
+import org.jlib.container.sequence.NoNextSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverserState;
 
@@ -14,10 +15,13 @@ import org.jlib.container.sequence.SequenceTraverserState;
  * @param <Sequenze>
  *        type of the traversed {@link Sequence}
  * 
+ * @param <State>
+ *        type of the targeted {@link IndexSequenceTraverserState}
+ * 
  * @author Igor Akkerman
  */
-public abstract class MiddleOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
-extends AbstractSequenceTraverserState<Item, Sequenze>
+public abstract class MiddleOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>, State extends IndexSequenceTraverserState<Item>>
+extends AbstractSequenceTraverserState<Item, Sequenze, State>
 implements IndexSequenceTraverserState<Item> {
 
     /** index of the next Item */
@@ -53,7 +57,7 @@ implements IndexSequenceTraverserState<Item> {
             return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceItemException(getSequence(), exception);
+            throw new NoNextSequenceItemException(getSequence(), exception);
         }
     }
 
@@ -63,7 +67,7 @@ implements IndexSequenceTraverserState<Item> {
             return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex -- - 1);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoSuchSequenceItemException(getSequence(), exception);
+            throw new NoPreviousSequenceItemException(getSequence(), exception);
         }
     }
 
