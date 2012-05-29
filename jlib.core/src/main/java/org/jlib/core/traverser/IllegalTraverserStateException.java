@@ -7,7 +7,7 @@ package org.jlib.core.traverser;
  * @author Igor Akkerman
  */
 public abstract class IllegalTraverserStateException
-extends RuntimeException {
+extends IllegalStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -5070211173782251202L;
