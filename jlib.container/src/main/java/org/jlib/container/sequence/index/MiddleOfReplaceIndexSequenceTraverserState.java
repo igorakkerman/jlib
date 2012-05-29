@@ -3,23 +3,29 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link MiddleOfIndexSequenceTraverserState} of a
- * {@link ReplaceIndexSequenceTraverser}.
+ * {@link MiddleOfIndexSequenceTraverserState} targeting a
+ * {@link ReplaceIndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
  * 
+ * @param <Sequenze>
+ *        type of the traversed {@link ReplaceIndexSequence}
+ * 
  * @author Igor Akkerman
  */
-public abstract class MiddleOfReplaceIndexSequenceTraverserState<Item>
-extends MiddleOfIndexSequenceTraverserState<Item>
+public abstract class MiddleOfReplaceIndexSequenceTraverserState<Item, Sequenze extends ReplaceIndexSequence<Item>>
+extends MiddleOfIndexSequenceTraverserState<Item, Sequenze>
 implements ReplaceIndexSequenceTraverserState<Item> {
 
     /**
      * Creates a new {@link MiddleOfReplaceIndexSequenceTraverserState}.
+     * 
+     * @param sequence
+     *        traversed {@link Sequence}
      */
-    public MiddleOfReplaceIndexSequenceTraverserState() {
-        super();
+    public MiddleOfReplaceIndexSequenceTraverserState(final Sequenze sequence) {
+        super(sequence);
     }
 
     @Override

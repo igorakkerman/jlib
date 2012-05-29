@@ -75,34 +75,31 @@ implements IndexSequenceTraverser<Item> {
     throws SequenceIndexOutOfBoundsException {
         super(sequence);
 
-        beginningOfSequenceState =
-            new HeadOfIndexSequenceTraverserState<Item, Sequenze, IndexSequenceTraverserState<Item>>(sequence) {
+        beginningOfSequenceState = new HeadOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
-                @Override
-                public IndexSequenceTraverserState<Item> getNextState() {
-                    return middleOfSequenceState;
-                }
-            };
+            @Override
+            public IndexSequenceTraverserState<Item> getNextState() {
+                return middleOfSequenceState;
+            }
+        };
 
-        endOfSequenceState =
-            new TailOfIndexSequenceTraverserState<Item, Sequenze, IndexSequenceTraverserState<Item>>(sequence) {
+        endOfSequenceState = new TailOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
-                @Override
-                public IndexSequenceTraverserState<Item> getPreviousState() {
-                    middleOfSequenceState.setNextItemIndex(sequence.getLastIndex() - 1);
+            @Override
+            public IndexSequenceTraverserState<Item> getPreviousState() {
+                middleOfSequenceState.setNextItemIndex(sequence.getLastIndex() - 1);
 
-                    return middleOfSequenceState;
-                }
-            };
+                return middleOfSequenceState;
+            }
+        };
 
-        middleOfSequenceState =
-            new MiddleOfIndexSequenceTraverserState<Item, Sequenze, IndexSequenceTraverserState<Item>>(sequence) {
+        middleOfSequenceState = new MiddleOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
-                @Override
-                protected IndexSequenceTraverserState<Item> getReturnedItemState() {
-                    return getCurrentState(getNextItemIndex());
-                }
-            };
+            @Override
+            protected IndexSequenceTraverserState<Item> getReturnedItemState() {
+                return getCurrentState(getNextItemIndex());
+            }
+        };
 
         currentState = getCurrentState(initialNextIndex);
     }
