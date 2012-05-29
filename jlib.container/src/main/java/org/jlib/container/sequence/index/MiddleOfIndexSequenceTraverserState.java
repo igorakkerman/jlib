@@ -15,13 +15,10 @@ import org.jlib.container.sequence.SequenceTraverserState;
  * @param <Sequenze>
  *        type of the traversed {@link Sequence}
  * 
- * @param <State>
- *        type of the targeted {@link IndexSequenceTraverserState}
- * 
  * @author Igor Akkerman
  */
-public abstract class MiddleOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>, State extends IndexSequenceTraverserState<Item>>
-extends AbstractSequenceTraverserState<Item, Sequenze, State>
+public abstract class MiddleOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
+extends AbstractSequenceTraverserState<Item, Sequenze>
 implements IndexSequenceTraverserState<Item> {
 
     /** index of the next Item */
