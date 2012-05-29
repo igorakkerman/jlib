@@ -19,6 +19,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * 
  * @param <Item>
  *        type of the items held in the {@link Container}
+ * 
  * @author Igor Akkerman
  */
 public class CollectionAddRemoveContainer<Item>
