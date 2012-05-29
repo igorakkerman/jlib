@@ -7,6 +7,7 @@ import org.jlib.container.AddContainer;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.RemoveContainer;
+import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
 import static org.jlib.core.array.ArrayUtility.iterable;

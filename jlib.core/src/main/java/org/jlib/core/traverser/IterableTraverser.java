@@ -25,6 +25,8 @@ implements Traverser<Item> {
      *        {@link Iterable} to traverse
      */
     public IterableTraverser(final Iterable<Item> iterable) {
+        super();
+
         delegateIterator = iterable.iterator();
     }
 

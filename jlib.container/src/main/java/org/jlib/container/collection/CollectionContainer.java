@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.Container;
+import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
 /**
