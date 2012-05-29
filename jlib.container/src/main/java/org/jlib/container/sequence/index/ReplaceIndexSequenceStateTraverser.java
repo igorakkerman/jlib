@@ -29,7 +29,7 @@ import org.jlib.container.sequence.SequenceTraverserState;
  * @author Igor Akkerman
  */
 public class ReplaceIndexSequenceStateTraverser<Item>
-extends AbstractSequenceStateTraverser<Item>
+extends AbstractSequenceStateTraverser<Item, ReplaceIndexSequence<Item>>
 implements ReplaceIndexSequenceTraverser<Item> {
 
     /** traversed {@link ReplaceIndexSequence} */
@@ -39,7 +39,7 @@ implements ReplaceIndexSequenceTraverser<Item> {
     private final ReplaceIndexSequenceTraverserState<Item> beginningOfSequenceState;
 
     /** middle of the {@link ReplaceIndexSequence} */
-    private final MiddleOfReplaceIndexSequenceTraverserState<Item> middleOfSequenceState;
+    private final MiddleOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>> middleOfSequenceState;
 
     /** end of the {@link ReplaceIndexSequence} */
     private final ReplaceIndexSequenceTraverserState<Item> endOfSequenceState;
@@ -76,17 +76,16 @@ implements ReplaceIndexSequenceTraverser<Item> {
      */
     protected ReplaceIndexSequenceStateTraverser(final ReplaceIndexSequence<Item> sequence, final int initialNextIndex)
     throws SequenceIndexOutOfBoundsException {
-        super();
+        super(sequence);
 
-        this.sequence = sequence;
+        beginningOfSequenceState =
+            new AccessedHeadOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
 
-        beginningOfSequenceState = new ItemRetrievedBeginningOfReplaceIndexSequenceTraverserState<Item>(sequence) {
-
-            @Override
-            public ReplaceIndexSequenceTraverserState<Item> getNextState() {
-                return middleOfSequenceState;
-            }
-        };
+                @Override
+                public ReplaceIndexSequenceTraverserState<Item> getNextState() {
+                    return middleOfSequenceState;
+                }
+            };
 
         endOfSequenceState = new EndOfReplaceIndexSequenceTraverserState<Item>(sequence) {
 

@@ -1,11 +1,11 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverserState;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IndexSequenceTraverserState} and {@link ReplaceSequenceTraverserState}
- * .
+ * {@link IndexSequenceTraverserState} referencing a {@link ReplaceSequence} .
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}

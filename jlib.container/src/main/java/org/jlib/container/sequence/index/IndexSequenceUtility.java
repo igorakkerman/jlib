@@ -3,6 +3,8 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.NoItemAccessedException;
+import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -104,8 +106,8 @@ public final class IndexSequenceUtility {
 
     /**
      * Creates a new {@link InitializeableIndexSequence} containing the
-     * specified Items having a specified first index. That is, the index of
-     * the first Item of the specified sequence in the
+     * specified Items having a specified first index. That is, the index of the
+     * first Item of the specified sequence in the
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
      * sequence.
@@ -169,11 +171,11 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link InitializeableIndexSequence} containing the Items
-     * of the specified Container. The index of the first Item of the
-     * specified Container in the {@link InitializeableIndexSequence} is 0. The
-     * fixed size of the {@link InitializeableIndexSequence} is the size of the
-     * specified Container.
+     * Creates a new {@link InitializeableIndexSequence} containing the Items of
+     * the specified Container. The index of the first Item of the specified
+     * Container in the {@link InitializeableIndexSequence} is 0. The fixed size
+     * of the {@link InitializeableIndexSequence} is the size of the specified
+     * Container.
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -196,8 +198,8 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link InitializeableIndexSequence} containing the Items
-     * of the specified Java Container. The index of the first Item of the
+     * Creates a new {@link InitializeableIndexSequence} containing the Items of
+     * the specified Java Container. The index of the first Item of the
      * specified Container in the {@link InitializeableIndexSequence} is 0. The
      * fixed size of the {@link InitializeableIndexSequence} is the size of the
      * specified Container.
@@ -220,8 +222,8 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link InitializeableIndexSequence} containing the Items
-     * of the specified Container having a specified first index. That is, the
+     * Creates a new {@link InitializeableIndexSequence} containing the Items of
+     * the specified Container having a specified first index. That is, the
      * index of the first Item of the specified collection in the
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
@@ -262,8 +264,8 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link InitializeableIndexSequence} containing the Items
-     * of the specified Container having a specified first index. That is, the
+     * Creates a new {@link InitializeableIndexSequence} containing the Items of
+     * the specified Container having a specified first index. That is, the
      * index of the first Item of the specified collection in the
      * {@link InitializeableIndexSequence} can be specified. The fixed size of
      * the {@link InitializeableIndexSequence} is the size of the specified
@@ -407,5 +409,32 @@ public final class IndexSequenceUtility {
         if (index > lastIndex)
             throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " > " + lastIndex +
                                                                          " == lastIndex");
+    }
+
+    /**
+     * Replaces the last Item of the specified {@link ReplaceIndexSequence}
+     * accessed by the specified {@link AbstractIndexSequenceTraverserState} by
+     * the specified new Item.
+     * 
+     * @param sequence
+     *        traversed {@link ReplaceIndexSequence}
+     * 
+     * @param traverserState
+     *        {@link AbstractIndexSequenceTraverserState} replacing the Item
+     * 
+     * @param newItem
+     *        Item replacing the former registered Item
+     */
+    // @formatter:off
+    static <Item, Sequenze extends ReplaceIndexSequence<Item>> 
+    void replaceLastAccessedItem(final Sequenze sequence, final AbstractIndexSequenceTraverserState<Item, Sequenze> traverserState,
+                                 final Item newItem) {
+    // @formatter:on
+        try {
+            sequence.replace(traverserState.getLastAccessedItemIndex(), newItem);
+        }
+        catch (final NoItemAccessedException exception) {
+            throw new NoItemToReplaceException(sequence);
+        }
     }
 }

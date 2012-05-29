@@ -116,7 +116,7 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public Item getPreviousItem()
+    public final Item getPreviousItem()
     throws NoPreviousSequenceItemException {
         setLastAccessedItemIndex(getPreviousItemIndex());
 
@@ -136,7 +136,7 @@ implements IndexSequenceTraverserState<Item> {
     throws NoPreviousSequenceItemException;
 
     @Override
-    public Item getNextItem()
+    public final Item getNextItem()
     throws NoNextSequenceItemException {
         setLastAccessedItemIndex(getNextItemIndex());
 

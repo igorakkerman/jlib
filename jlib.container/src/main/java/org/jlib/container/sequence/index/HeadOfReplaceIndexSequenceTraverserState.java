@@ -1,5 +1,6 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.ReplaceSequenceTraverserState;
 import org.jlib.container.sequence.Sequence;
 
@@ -16,7 +17,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public abstract class HeadOfReplaceIndexSequenceTraverserState<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends HeadOfIndexSequenceTraverserState<Item, Sequenze>
+extends HeadOfIndex<SequenceTraverserState<Item, Sequenze>
 implements ReplaceIndexSequenceTraverserState<Item> {
 
     /**
@@ -27,6 +28,12 @@ implements ReplaceIndexSequenceTraverserState<Item> {
      */
     public HeadOfReplaceIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
+    }
+
+    @Override
+    public void replace(final Item newItem)
+    throws NoItemToReplaceException {
+        IndexSequenceUtility.replaceLastAccessedItem(getSequence(), this, newItem);
     }
 
     @Override

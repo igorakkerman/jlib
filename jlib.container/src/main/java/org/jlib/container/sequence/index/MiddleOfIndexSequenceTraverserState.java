@@ -1,6 +1,5 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AbstractSequenceTraverserState;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
@@ -18,14 +17,10 @@ import org.jlib.container.sequence.SequenceTraverserState;
  * @author Igor Akkerman
  */
 public abstract class MiddleOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
-extends AbstractSequenceTraverserState<Item, Sequenze>
-implements IndexSequenceTraverserState<Item> {
+extends AbstractIndexSequenceTraverserState<Item, Sequenze> {
 
     /** index of the next Item */
     private int nextItemIndex;
-
-    /** index of recently returned Item */
-    private int recentlyReturnedItemIndex;
 
     /**
      * Creates a new {@link MiddleOfIndexSequenceTraverserState}.
@@ -48,10 +43,10 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item doGetNextItem()
     throws NoSuchSequenceItemException {
         try {
-            return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex ++);
+            return getSequenceItem(nextItemIndex ++);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoNextSequenceItemException(getSequence(), exception);
@@ -59,9 +54,9 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public Item getPreviousItem() {
+    public Item doGetPreviousItem() {
         try {
-            return getSequenceItem(recentlyReturnedItemIndex = nextItemIndex -- - 1);
+            return getSequenceItem(-- nextItemIndex);
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
             throw new NoPreviousSequenceItemException(getSequence(), exception);
@@ -119,15 +114,5 @@ implements IndexSequenceTraverserState<Item> {
      */
     public void setNextItemIndex(final int nextItemIndex) {
         this.nextItemIndex = nextItemIndex;
-    }
-
-    /**
-     * Returns the index of the recently returned Item by this
-     * {@link MiddleOfIndexSequenceTraverserState}.
-     * 
-     * @return integer specifying the recentlyReturnedItemIndex
-     */
-    protected int getRecentlyRetrievedItemIndex() {
-        return recentlyReturnedItemIndex;
     }
 }
