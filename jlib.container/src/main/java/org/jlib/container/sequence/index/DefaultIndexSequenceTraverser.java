@@ -135,28 +135,18 @@ implements IndexSequenceTraverser<Item> {
     @Override
     public int getPreviousItemIndex()
     throws NoPreviousItemException {
-        try {
-            final int previousItemIndex = nextItemIndex - 1;
+        if (!isPreviousItemAccessible())
+            throw new NoPreviousItemException(getSequence());
 
-            IndexSequenceUtility.assertIndexValid(getSequence(), previousItemIndex);
-
-            return previousItemIndex;
-        }
-        catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoPreviousItemException(getSequence(), exception);
-        }
+        return nextItemIndex - 1;
     }
 
     @Override
     public int getNextItemIndex() {
-        try {
-            IndexSequenceUtility.assertIndexValid(getSequence(), nextItemIndex);
+        if (!isNextItemAccessible())
+            throw new NoPreviousItemException(getSequence());
 
-            return nextItemIndex;
-        }
-        catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoPreviousItemException(getSequence(), exception);
-        }
+        return nextItemIndex;
     }
 
     /**
