@@ -3,6 +3,10 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.HeadOfSequenceTraverserState;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.reference.InitializedValueHolder;
+import org.jlib.core.reference.NoValueSetException;
+import org.jlib.core.reference.UninitializedValueHolder;
+import org.jlib.core.reference.ValueHolder;
 
 /**
  * {@link HeadOfSequenceTraverserState} for an {@link IndexSequenceTraverser}.
@@ -19,6 +23,9 @@ public abstract class HeadOfIndexSequenceTraverserState<Item, Sequenze extends I
 extends HeadOfSequenceTraverserState<Item, Sequenze>
 implements IndexSequenceTraverserState<Item> {
 
+    /** {@link ValueHolder} for the index of the last accessed Item */
+    private ValueHolder<Integer> lastAccessedItemIndexHolder;
+
     /**
      * Creates a new {@link HeadOfIndexSequenceTraverserState}.
      * 
@@ -27,6 +34,14 @@ implements IndexSequenceTraverserState<Item> {
      */
     public HeadOfIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
+
+        lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
+
+            @Override
+            public void set(final Integer index) {
+                lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
+            }
+        };
     }
 
     @Override
@@ -48,5 +63,22 @@ implements IndexSequenceTraverserState<Item> {
     @Override
     public Item getNextItem() {
         return getSequence().getFirstItem();
+    }
+
+    @Override
+    public int getLastAccessedItemIndex()
+    throws NoValueSetException {
+        return lastAccessedItemIndexHolder.get();
+    }
+
+    /**
+     * Registers the index of the last Item accessed by this
+     * {@link AbstractIndexSequenceTraverserState}.
+     * 
+     * @param lastAccessedItemIndex
+     *        integer specifying the index
+     */
+    protected void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
+        lastAccessedItemIndexHolder.set(lastAccessedItemIndex);
     }
 }

@@ -1,10 +1,13 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceTraverser;
-import org.jlib.container.sequence.NoItemAccessedException;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.reference.InitializedValueHolder;
+import org.jlib.core.reference.NoValueSetException;
+import org.jlib.core.reference.UninitializedValueHolder;
+import org.jlib.core.reference.ValueHolder;
 
 /**
  * Skeletal implementation of an {@link IndexSequenceTraverserState}.
@@ -21,35 +24,8 @@ public abstract class AbstractIndexSequenceTraverserState<Item, Sequenze extends
 extends AbstractSequenceTraverser<Item, Sequenze>
 implements IndexSequenceTraverserState<Item> {
 
-    /**
-     * Holder of an {@link IndexSequence} index.
-     * 
-     * @author Igor Akkerman
-     */
-    private static interface IndexHolder {
-
-        /**
-         * Returns the registered index.
-         * 
-         * @return integer specifying the registered index
-         * 
-         * @throws NoItemAccessedException
-         *         if no index has been registered
-         */
-        int getIndex()
-        throws NoItemAccessedException;
-
-        /**
-         * Registers the lastAccessedItemIndexHolder.
-         * 
-         * @param index
-         *        integer specifying the index
-         */
-        void setIndex(final int index);
-    }
-
-    /** {@link IndexHolder} of the index of the last accessed Item */
-    private IndexHolder lastAccessedItemIndexHolder;
+    /** {@link ValueHolder} for the index of the last accessed Item */
+    private ValueHolder<Integer> lastAccessedItemIndexHolder;
 
     /**
      * Creates a new {@link AbstractIndexSequenceTraverserState}.
@@ -60,48 +36,19 @@ implements IndexSequenceTraverserState<Item> {
     public AbstractIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
 
-        lastAccessedItemIndexHolder = new IndexHolder() {
+        lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
 
             @Override
-            public int getIndex()
-            throws NoItemAccessedException {
-                throw new NoItemAccessedException();
-            }
-
-            @Override
-            public void setIndex(final int index) {
-                lastAccessedItemIndexHolder = new IndexHolder() {
-
-                    int index;
-
-                    @Override
-                    public int getIndex() {
-                        return index;
-                    }
-
-                    @Override
-                    public void setIndex(final int index) {
-                        this.index = index;
-                    }
-                };
-
-                lastAccessedItemIndexHolder.setIndex(index);
+            public void set(final Integer index) {
+                lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
             }
         };
     }
 
-    /**
-     * Returns the index of the last Item accessed by this
-     * {@link AbstractIndexSequenceTraverserState}.
-     * 
-     * @return {@link IndexHolder} specifying the lastAccessedItemIndexHolder
-     * 
-     * @throws NoItemAccessedException
-     *         if no Item has been accessed yet
-     */
-    protected int getLastAccessedItemIndex()
-    throws NoItemAccessedException {
-        return lastAccessedItemIndexHolder.getIndex();
+    @Override
+    public int getLastAccessedItemIndex()
+    throws NoValueSetException {
+        return lastAccessedItemIndexHolder.get();
     }
 
     /**
@@ -112,7 +59,7 @@ implements IndexSequenceTraverserState<Item> {
      *        integer specifying the index
      */
     protected void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
-        lastAccessedItemIndexHolder.setIndex(lastAccessedItemIndex);
+        lastAccessedItemIndexHolder.set(lastAccessedItemIndex);
     }
 
     @Override

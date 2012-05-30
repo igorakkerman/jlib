@@ -3,9 +3,9 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.NoItemAccessedException;
 import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.reference.NoValueSetException;
 
 /**
  * {@link IndexSequence} utility.
@@ -427,13 +427,13 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     static <Item, Sequenze extends ReplaceIndexSequence<Item>> 
-    void replaceLastAccessedItem(final Sequenze sequence, final AbstractIndexSequenceTraverserState<Item, Sequenze> traverserState,
+    void replaceLastAccessedItem(final Sequenze sequence, final IndexSequenceTraverserState<Item> traverserState,
                                  final Item newItem) {
     // @formatter:on
         try {
             sequence.replace(traverserState.getLastAccessedItemIndex(), newItem);
         }
-        catch (final NoItemAccessedException exception) {
+        catch (final NoValueSetException exception) {
             throw new NoItemToReplaceException(sequence);
         }
     }

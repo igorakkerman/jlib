@@ -79,7 +79,7 @@ implements ReplaceIndexSequenceTraverser<Item> {
         super(sequence);
 
         beginningOfSequenceState =
-            new AccessedHeadOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
+            new HeadOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
 
                 @Override
                 public ReplaceIndexSequenceTraverserState<Item> getNextState() {

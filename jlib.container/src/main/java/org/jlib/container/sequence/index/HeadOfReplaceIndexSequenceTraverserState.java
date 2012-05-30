@@ -17,7 +17,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public abstract class HeadOfReplaceIndexSequenceTraverserState<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends HeadOfIndex<SequenceTraverserState<Item, Sequenze>
+extends HeadOfIndexSequenceTraverserState<Item, Sequenze>
 implements ReplaceIndexSequenceTraverserState<Item> {
 
     /**
