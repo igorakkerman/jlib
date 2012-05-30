@@ -55,6 +55,6 @@ extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
     @Override
     public Item getNextItem()
     throws NoSuchItemException {
-        throw new NoNextSequenceItemException(getSequence());
+        throw new NoNextItemException(getSequence());
     }
 }

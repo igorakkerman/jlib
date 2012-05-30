@@ -6,24 +6,24 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public class NoPreviousSequenceItemException
+public class NoPreviousItemException
 extends IllegalSequenceTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 3286617731417853890L;
 
     /**
-     * Creates a new {@link NoPreviousSequenceItemException}.
+     * Creates a new {@link NoPreviousItemException}.
      * 
      * @param sequence
      *        traversed {@link Sequence}
      */
-    public NoPreviousSequenceItemException(final Sequence<?> sequence) {
+    public NoPreviousItemException(final Sequence<?> sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link NoPreviousSequenceItemException}.
+     * Creates a new {@link NoPreviousItemException}.
      * 
      * @param sequence
      *        traversed {@link Sequence}
@@ -31,7 +31,7 @@ extends IllegalSequenceTraverserStateException {
      * @param cause
      *        {@link Throwable} that caused this {@link Exception}
      */
-    public NoPreviousSequenceItemException(final Sequence<?> sequence, final Throwable cause) {
+    public NoPreviousItemException(final Sequence<?> sequence, final Throwable cause) {
         super(sequence, cause);
     }
 }

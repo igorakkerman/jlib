@@ -44,11 +44,11 @@ extends ReplaceSequence<Item>, IndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns an ReplaceIndexSequenceTraverser traversing the Items of this
-     * IndexSequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this IndexSequence, that is, the Item returned by the first
-     * call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
-     * stored at {@link #getFirstIndex()}.
+     * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
+     * this IndexSequence in proper sequence. Initially, the Traverser points to
+     * the beginning of this IndexSequence, that is, the Item returned by the
+     * first call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the
+     * Item stored at {@link #getFirstIndex()}.
      * 
      * @return ReplaceIndexSequenceTraverser over this IndexSequence initially
      *         pointing to the beginning of this IndexSequence

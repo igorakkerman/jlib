@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-
 /**
  * Sequence containing exactly one Item.
  * 
@@ -15,35 +14,65 @@ extends AbstractNonEmptySequence<Item> {
     /** sole item of this {@link SingletonSequence} */
     private final Item item;
 
-    /** beginning of the {@link SingletonSequence} {@link SequenceTraverserState} */
-    private final SequenceTraverserState<Item> beginningOfSequenceState =
-        new HeadOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
+    /** current delegate {@link SequenceTraverser} */
+    private SequenceTraverser<Item> currentDelegateTraverser;
 
-            @Override
-            public Item getNextItem() {
-                return item;
-            }
+    /** delegate {@link SequenceTraverser} at the {@link SingletonSequence} head */
+    private final SequenceTraverser<Item> headTraverser = new AbstractSequenceTraverser<Item, Sequence<Item>>(this) {
 
-            @Override
-            public SequenceTraverserState<Item> getNextState() {
-                return endOfSequenceState;
-            }
-        };
+        @Override
+        public boolean isPreviousItemAccessible() {
+            return false;
+        }
 
-    /** end of the {@link SingletonSequence} {@link SequenceTraverserState} */
-    private final SequenceTraverserState<Item> endOfSequenceState =
-        new TailOfSequenceTraverserState<Item, SingletonSequence<Item>>(this) {
+        @Override
+        public Item getPreviousItem()
+        throws NoPreviousItemException {
+            throw new NoPreviousItemException(SingletonSequence.this);
+        }
 
-            @Override
-            public Item getPreviousItem() {
-                return item;
-            }
+        @Override
+        public boolean isNextItemAccessible() {
+            return true;
+        }
 
-            @Override
-            public SequenceTraverserState<Item> getPreviousState() {
-                return beginningOfSequenceState;
-            }
-        };
+        @Override
+        public Item getNextItem() {
+            currentDelegateTraverser = tailTraverser;
+
+            return item;
+        }
+    };
+
+    /**
+     * delegate {@link SequenceTraverser} at the {@link SingletonSequence}
+     * tailTraverser
+     */
+    private final SequenceTraverser<Item> tailTraverser = new AbstractSequenceTraverser<Item, Sequence<Item>>(this) {
+
+        @Override
+        public boolean isPreviousItemAccessible() {
+            return true;
+        }
+
+        @Override
+        public Item getPreviousItem()
+        throws NoPreviousItemException {
+            currentDelegateTraverser = headTraverser;
+
+            return item;
+        }
+
+        @Override
+        public boolean isNextItemAccessible() {
+            return false;
+        }
+
+        @Override
+        public Item getNextItem() {
+            throw new NoPreviousItemException(SingletonSequence.this);
+        }
+    };
 
     /**
      * Creates a new {@link SingletonSequence} with the specified Item.
@@ -57,7 +86,31 @@ extends AbstractNonEmptySequence<Item> {
 
     @Override
     public SequenceTraverser<Item> createTraverser() {
-        return new InitializedSequenceStateTraverser<Item, SingletonSequence<Item>>(this, beginningOfSequenceState);
+        return new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
+
+            @Override
+            public boolean isPreviousItemAccessible() {
+                return currentDelegateTraverser.isPreviousItemAccessible();
+            }
+
+            @Override
+            public Item getPreviousItem()
+            throws NoPreviousItemException {
+                return currentDelegateTraverser.getPreviousItem();
+            }
+
+            @Override
+            public boolean isNextItemAccessible() {
+                return currentDelegateTraverser.isNextItemAccessible();
+            }
+
+            @Override
+            public Item getNextItem()
+            throws NoNextItemException {
+                return currentDelegateTraverser.getNextItem();
+            }
+
+        };
     }
 
     @Override

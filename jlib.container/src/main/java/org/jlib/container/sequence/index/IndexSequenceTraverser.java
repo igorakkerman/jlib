@@ -14,8 +14,8 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.NoNextSequenceItemException;
-import org.jlib.container.sequence.NoPreviousSequenceItemException;
+import org.jlib.container.sequence.NoNextItemException;
+import org.jlib.container.sequence.NoPreviousItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
 
@@ -35,11 +35,11 @@ extends SequenceTraverser<Item> {
      * 
      * @return the previous Item of this Traverser
      * 
-     * @throws NoPreviousSequenceItemException
+     * @throws NoPreviousItemException
      *         sif there is no previous Item
      */
     public int getPreviousItemIndex()
-    throws NoPreviousSequenceItemException;
+    throws NoPreviousItemException;
 
     /**
      * Returns the next Item of this Traverser.
@@ -47,9 +47,9 @@ extends SequenceTraverser<Item> {
      * @return the next Item of this Traverser; returns
      *         {@code getLastIndex() + 1} if there is no next Item
      * 
-     * @throws NoNextSequenceItemException
+     * @throws NoNextItemException
      *         sif there is no next Item
      */
     public int getNextItemIndex()
-    throws NoNextSequenceItemException;
+    throws NoNextItemException;
 }

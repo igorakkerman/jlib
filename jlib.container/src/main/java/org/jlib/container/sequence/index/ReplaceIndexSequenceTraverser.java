@@ -5,10 +5,10 @@ import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IndexSequenceTraverser} over a {@link ReplaceSequence}.
+ * {@link IndexSequenceTraverser} referencing a {@link ReplaceSequence} .
  * 
  * @param <Item>
- *        type of the Items held in the {@link Sequence}
+ *        type of the items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */

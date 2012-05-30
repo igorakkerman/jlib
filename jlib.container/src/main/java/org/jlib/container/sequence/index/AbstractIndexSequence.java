@@ -109,7 +109,7 @@ implements IndexSequence<Item> {
     @Override
     public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new IndexSequenceStateTraverser<>(this, startIndex);
+        return new DefaultIndexSequenceTraverser<>(this, startIndex);
     }
 
     @Override
