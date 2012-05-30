@@ -1,15 +1,10 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.HeadOfSequenceTraverserState;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.reference.InitializedValueHolder;
-import org.jlib.core.reference.NoValueSetException;
-import org.jlib.core.reference.UninitializedValueHolder;
-import org.jlib.core.reference.ValueHolder;
 
 /**
- * {@link HeadOfSequenceTraverserState} for an {@link IndexSequenceTraverser}.
+ * {@link IndexSequenceTraverserState} at the head of an {@link IndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -20,11 +15,7 @@ import org.jlib.core.reference.ValueHolder;
  * @author Igor Akkerman
  */
 public abstract class HeadOfIndexSequenceTraverserState<Item, Sequenze extends IndexSequence<Item>>
-extends HeadOfSequenceTraverserState<Item, Sequenze>
-implements IndexSequenceTraverserState<Item> {
-
-    /** {@link ValueHolder} for the index of the last accessed Item */
-    private ValueHolder<Integer> lastAccessedItemIndexHolder;
+extends AbstractIndexSequenceTraverserState<Item, Sequenze> {
 
     /**
      * Creates a new {@link HeadOfIndexSequenceTraverserState}.
@@ -34,18 +25,21 @@ implements IndexSequenceTraverserState<Item> {
      */
     public HeadOfIndexSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
+    }
 
-        lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
-
-            @Override
-            public void set(final Integer index) {
-                lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
-            }
-        };
+    @Override
+    public boolean isPreviousItemAccessible() {
+        return false;
     }
 
     @Override
     public int getPreviousItemIndex()
+    throws NoPreviousSequenceItemException {
+        throw new NoPreviousSequenceItemException(getSequence());
+    }
+
+    @Override
+    public Item doGetPreviousItem()
     throws NoPreviousSequenceItemException {
         throw new NoPreviousSequenceItemException(getSequence());
     }
@@ -56,29 +50,17 @@ implements IndexSequenceTraverserState<Item> {
     }
 
     @Override
+    public boolean isNextItemAccessible() {
+        return true;
+    }
+
+    @Override
     public int getNextItemIndex() {
         return getSequence().getFirstIndex();
     }
 
     @Override
-    public Item getNextItem() {
+    public Item doGetNextItem() {
         return getSequence().getFirstItem();
-    }
-
-    @Override
-    public int getLastAccessedItemIndex()
-    throws NoValueSetException {
-        return lastAccessedItemIndexHolder.get();
-    }
-
-    /**
-     * Registers the index of the last Item accessed by this
-     * {@link AbstractIndexSequenceTraverserState}.
-     * 
-     * @param lastAccessedItemIndex
-     *        integer specifying the index
-     */
-    protected void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
-        lastAccessedItemIndexHolder.set(lastAccessedItemIndex);
     }
 }

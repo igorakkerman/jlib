@@ -26,5 +26,5 @@ public interface Traverser<Item> {
      * 
      * @return {@code true} if there is a next Item; {@code false} otherwise
      */
-    public boolean hasNextItem();
+    public boolean isNextItemAccessible();
 }

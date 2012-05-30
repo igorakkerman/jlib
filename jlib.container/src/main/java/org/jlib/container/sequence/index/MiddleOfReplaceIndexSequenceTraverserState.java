@@ -1,7 +1,9 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.NoItemToReplaceException;
+import org.jlib.container.sequence.NoNextSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SequenceTraverserState;
 
 /**
  * {@link MiddleOfIndexSequenceTraverserState} targeting a
@@ -16,8 +18,10 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public abstract class MiddleOfReplaceIndexSequenceTraverserState<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends MiddleOfIndexSequenceTraverserState<Item, Sequenze>
-implements ReplaceIndexSequenceTraverserState<Item> {
+extends AbstractReplaceIndexSequenceTraverserState<Item, Sequenze> {
+
+    /** index of the next Item */
+    private int nextItemIndex;
 
     /**
      * Creates a new {@link MiddleOfReplaceIndexSequenceTraverserState}.
@@ -30,13 +34,86 @@ implements ReplaceIndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public void replace(final Item newItem)
-    throws NoItemToReplaceException {
-        IndexSequenceUtility.replaceLastAccessedItem(getSequence(), this, newItem);
+    public boolean isPreviousItemAccessible() {
+        return true;
     }
 
     @Override
-    public ReplaceIndexSequenceTraverserState<Item> getReplacedState() {
-        return this;
+    public boolean isNextItemAccessible() {
+        return true;
+    }
+
+    @Override
+    public Item doGetNextItem()
+    throws NoSuchSequenceItemException {
+        try {
+            return getSequenceItem(nextItemIndex ++);
+        }
+        catch (final SequenceIndexOutOfBoundsException exception) {
+            throw new NoNextSequenceItemException(getSequence(), exception);
+        }
+    }
+
+    @Override
+    public Item doGetPreviousItem() {
+        try {
+            return getSequenceItem(-- nextItemIndex);
+        }
+        catch (final SequenceIndexOutOfBoundsException exception) {
+            throw new NoPreviousSequenceItemException(getSequence(), exception);
+        }
+    }
+
+    /**
+     * Returns the Item stored at the specified index in the {@link Sequence}
+     * 
+     * @param itemIndex
+     *        integer specifying the index of the Item
+     * 
+     * @return Item stored at {@code itemIndex}
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code itemIndex} is out of the index bounds
+     */
+    private Item getSequenceItem(final int itemIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return getSequence().get(itemIndex);
+    }
+
+    @Override
+    public ReplaceIndexSequenceTraverserState<Item> getPreviousState() {
+        return getReturnedItemState();
+    }
+
+    @Override
+    public ReplaceIndexSequenceTraverserState<Item> getNextState() {
+        return getReturnedItemState();
+    }
+
+    /**
+     * Returns the new {@link SequenceTraverserState} after returning an Item.
+     * 
+     * @return new {@link SequenceTraverserState}
+     */
+    protected abstract ReplaceIndexSequenceTraverserState<Item> getReturnedItemState();
+
+    @Override
+    public int getPreviousItemIndex() {
+        return nextItemIndex - 1;
+    }
+
+    @Override
+    public int getNextItemIndex() {
+        return nextItemIndex;
+    }
+
+    /**
+     * Registers the index of the next Item of the {@link IndexSequence}.
+     * 
+     * @param nextItemIndex
+     *        integer specifying the index of the next Item
+     */
+    public void setNextItemIndex(final int nextItemIndex) {
+        this.nextItemIndex = nextItemIndex;
     }
 }

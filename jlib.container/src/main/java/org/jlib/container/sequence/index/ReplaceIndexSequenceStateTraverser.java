@@ -14,7 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AbstractSequenceStateTraverser;
 import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverserState;
@@ -29,20 +28,17 @@ import org.jlib.container.sequence.SequenceTraverserState;
  * @author Igor Akkerman
  */
 public class ReplaceIndexSequenceStateTraverser<Item>
-extends AbstractSequenceStateTraverser<Item, ReplaceIndexSequence<Item>>
+extends IndexSequenceStateTraverser<Item, ReplaceIndexSequence<Item>>
 implements ReplaceIndexSequenceTraverser<Item> {
 
-    /** traversed {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequence<Item> sequence;
-
     /** beginning of the {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequenceTraverserState<Item> beginningOfSequenceState;
+    private final ReplaceIndexSequenceTraverserState<Item> headOfSequenceState;
 
     /** middle of the {@link ReplaceIndexSequence} */
     private final MiddleOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>> middleOfSequenceState;
 
     /** end of the {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequenceTraverserState<Item> endOfSequenceState;
+    private final ReplaceIndexSequenceTraverserState<Item> tailOfSequenceState;
 
     /** current {@link ReplaceIndexSequenceTraverserState} */
     private ReplaceIndexSequenceTraverserState<Item> currentState;
@@ -78,16 +74,15 @@ implements ReplaceIndexSequenceTraverser<Item> {
     throws SequenceIndexOutOfBoundsException {
         super(sequence);
 
-        beginningOfSequenceState =
-            new HeadOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
+        headOfSequenceState = new HeadOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
 
-                @Override
-                public ReplaceIndexSequenceTraverserState<Item> getNextState() {
-                    return middleOfSequenceState;
-                }
-            };
+            @Override
+            public ReplaceIndexSequenceTraverserState<Item> getNextState() {
+                return middleOfSequenceState;
+            }
+        };
 
-        endOfSequenceState = new EndOfReplaceIndexSequenceTraverserState<Item>(sequence) {
+        tailOfSequenceState = new TailOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
 
             @Override
             public ReplaceIndexSequenceTraverserState<Item> getPreviousState() {
@@ -97,13 +92,14 @@ implements ReplaceIndexSequenceTraverser<Item> {
             }
         };
 
-        middleOfSequenceState = new MiddleOfReplaceIndexSequenceTraverserState<Item>(sequence) {
+        middleOfSequenceState =
+            new MiddleOfReplaceIndexSequenceTraverserState<Item, ReplaceIndexSequence<Item>>(sequence) {
 
-            @Override
-            protected ReplaceIndexSequenceTraverserState<Item> getReturnedItemState() {
-                return getCurrentState(getNextItemIndex());
-            }
-        };
+                @Override
+                protected ReplaceIndexSequenceTraverserState<Item> getReturnedItemState() {
+                    return getCurrentState(getNextItemIndex());
+                }
+            };
 
         currentState = getCurrentState(initialNextIndex);
     }
@@ -120,11 +116,11 @@ implements ReplaceIndexSequenceTraverser<Item> {
      * @return new {@link ReplaceIndexSequenceTraverserState}
      */
     private ReplaceIndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
-        if (nextItemIndex == sequence.getFirstIndex())
-            return beginningOfSequenceState;
+        if (nextItemIndex == getSequence().getFirstIndex())
+            return headOfSequenceState;
 
-        if (nextItemIndex == sequence.getLastIndex() + 1)
-            return endOfSequenceState;
+        if (nextItemIndex == getSequence().getLastIndex() + 1)
+            return tailOfSequenceState;
 
         middleOfSequenceState.setNextItemIndex(nextItemIndex);
 
@@ -160,10 +156,4 @@ implements ReplaceIndexSequenceTraverser<Item> {
     @Override
     public void replace(final Item newItem)
     throws NoItemToReplaceException {}
-
-    @Override
-    protected ReplaceIndexSequence<Item> getSequence() {
-        return sequence;
-    }
-
 }

@@ -35,7 +35,7 @@ implements ReplaceMatrixTraverser<Entry> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean isNextItemAccessible() {
         return false;
     }
 

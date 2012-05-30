@@ -14,5 +14,10 @@ import org.jlib.container.sequence.Sequence;
  */
 public interface ReplaceIndexSequenceTraverserState<Item>
 extends IndexSequenceTraverserState<Item>, ReplaceSequenceTraverserState<Item> {
-    // unifying interface
+
+    @Override
+    public ReplaceIndexSequenceTraverserState<Item> getNextState();
+
+    @Override
+    public ReplaceIndexSequenceTraverserState<Item> getPreviousState();
 }

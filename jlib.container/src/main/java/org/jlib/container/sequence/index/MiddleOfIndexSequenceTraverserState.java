@@ -33,12 +33,12 @@ extends AbstractIndexSequenceTraverserState<Item, Sequenze> {
     }
 
     @Override
-    public boolean hasPrevious() {
+    public boolean isPreviousItemAccessible() {
         return true;
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean isNextItemAccessible() {
         return true;
     }
 

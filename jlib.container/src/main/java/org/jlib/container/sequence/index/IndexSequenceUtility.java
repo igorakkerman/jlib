@@ -3,9 +3,7 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.reference.NoValueSetException;
 
 /**
  * {@link IndexSequence} utility.
@@ -409,32 +407,5 @@ public final class IndexSequenceUtility {
         if (index > lastIndex)
             throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " > " + lastIndex +
                                                                          " == lastIndex");
-    }
-
-    /**
-     * Replaces the last Item of the specified {@link ReplaceIndexSequence}
-     * accessed by the specified {@link AbstractIndexSequenceTraverserState} by
-     * the specified new Item.
-     * 
-     * @param sequence
-     *        traversed {@link ReplaceIndexSequence}
-     * 
-     * @param traverserState
-     *        {@link AbstractIndexSequenceTraverserState} replacing the Item
-     * 
-     * @param newItem
-     *        Item replacing the former registered Item
-     */
-    // @formatter:off
-    static <Item, Sequenze extends ReplaceIndexSequence<Item>> 
-    void replaceLastAccessedItem(final Sequenze sequence, final IndexSequenceTraverserState<Item> traverserState,
-                                 final Item newItem) {
-    // @formatter:on
-        try {
-            sequence.replace(traverserState.getLastAccessedItemIndex(), newItem);
-        }
-        catch (final NoValueSetException exception) {
-            throw new NoItemToReplaceException(sequence);
-        }
     }
 }

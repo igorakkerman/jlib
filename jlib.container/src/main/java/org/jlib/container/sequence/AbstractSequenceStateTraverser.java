@@ -27,8 +27,8 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     }
 
     @Override
-    public final boolean hasPrevious() {
-        return getCurrentState().hasPrevious();
+    public final boolean isPreviousItemAccessible() {
+        return getCurrentState().isPreviousItemAccessible();
     }
 
     @Override
@@ -42,8 +42,8 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     }
 
     @Override
-    public final boolean hasNextItem() {
-        return getCurrentState().hasNextItem();
+    public final boolean isNextItemAccessible() {
+        return getCurrentState().isNextItemAccessible();
     }
 
     @Override

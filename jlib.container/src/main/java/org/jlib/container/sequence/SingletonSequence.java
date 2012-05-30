@@ -1,5 +1,6 @@
 package org.jlib.container.sequence;
 
+
 /**
  * Sequence containing exactly one Item.
  * 

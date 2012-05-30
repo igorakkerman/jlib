@@ -71,7 +71,7 @@ extends AbstractIterator<Item> {
 
     @Override
     public boolean hasNext() {
-        return delegateTraverser.hasNextItem();
+        return delegateTraverser.isNextItemAccessible();
     }
 
     @Override

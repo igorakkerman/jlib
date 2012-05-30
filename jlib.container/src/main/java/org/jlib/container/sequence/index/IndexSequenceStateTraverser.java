@@ -35,13 +35,13 @@ extends AbstractSequenceStateTraverser<Item, Sequenze>
 implements IndexSequenceTraverser<Item> {
 
     /** beginning of the {@link IndexSequence} */
-    private final IndexSequenceTraverserState<Item> beginningOfSequenceState;
+    private final IndexSequenceTraverserState<Item> headOfSequenceState;
 
     /** middle of the {@link IndexSequence} */
     private final MiddleOfIndexSequenceTraverserState<Item, Sequenze> middleOfSequenceState;
 
     /** end of the {@link IndexSequence} */
-    private final IndexSequenceTraverserState<Item> endOfSequenceState;
+    private final IndexSequenceTraverserState<Item> tailOfSequenceState;
 
     /** current {@link IndexSequenceTraverserState} */
     private IndexSequenceTraverserState<Item> currentState;
@@ -75,7 +75,7 @@ implements IndexSequenceTraverser<Item> {
     throws SequenceIndexOutOfBoundsException {
         super(sequence);
 
-        beginningOfSequenceState = new HeadOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
+        headOfSequenceState = new HeadOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceTraverserState<Item> getNextState() {
@@ -83,7 +83,7 @@ implements IndexSequenceTraverser<Item> {
             }
         };
 
-        endOfSequenceState = new TailOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
+        tailOfSequenceState = new TailOfIndexSequenceTraverserState<Item, Sequenze>(sequence) {
 
             @Override
             public IndexSequenceTraverserState<Item> getPreviousState() {
@@ -115,16 +115,36 @@ implements IndexSequenceTraverser<Item> {
      * 
      * @return new {@link IndexSequenceTraverserState}
      */
-    private IndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
+    protected IndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
         if (nextItemIndex == getSequence().getFirstIndex())
-            return beginningOfSequenceState;
+            return getHeadOfSequenceState();
 
         if (nextItemIndex == getSequence().getLastIndex() + 1)
-            return endOfSequenceState;
+            return getTailOfSequenceState();
 
         middleOfSequenceState.setNextItemIndex(nextItemIndex);
 
         return middleOfSequenceState;
+    }
+
+    /**
+     * Returns the {@link IndexSequenceTraverserState} at the head of the
+     * {@link IndexSequence}.
+     * 
+     * @return head {@link IndexSequenceTraverserState}
+     */
+    protected IndexSequenceTraverserState<Item> getHeadOfSequenceState() {
+        return headOfSequenceState;
+    }
+
+    /**
+     * Returns the {@link IndexSequenceTraverserState} at the tail of the
+     * {@link IndexSequence}.
+     * 
+     * @return tail {@link IndexSequenceTraverserState}
+     */
+    private IndexSequenceTraverserState<Item> getTailOfSequenceState() {
+        return tailOfSequenceState;
     }
 
     @Override

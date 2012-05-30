@@ -18,8 +18,12 @@ extends IllegalSequenceTraverserStateException {
      * 
      * @param sequence
      *        traversed {@link ReplaceSequence}
+     * 
+     * @param cause
+     *        {@link Throwable} that caused this
+     *        {@link NoItemToReplaceException}
      */
-    public NoItemToReplaceException(final ReplaceSequence<?> sequence) {
-        super(sequence);
+    public NoItemToReplaceException(final ReplaceSequence<?> sequence, final Throwable cause) {
+        super(sequence, cause);
     }
 }

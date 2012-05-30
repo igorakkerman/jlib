@@ -37,12 +37,12 @@ extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
     }
 
     @Override
-    public boolean hasPrevious() {
+    public boolean isPreviousItemAccessible() {
         return false;
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean isNextItemAccessible() {
         return false;
     }
 

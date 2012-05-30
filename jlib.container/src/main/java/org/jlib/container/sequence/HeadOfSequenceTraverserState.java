@@ -1,8 +1,10 @@
 package org.jlib.container.sequence;
 
+import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.IndexSequenceTraverserState;
+
 /**
- * {@link SequenceTraverserState} when a {@link SequenceTraverser} is at the
- * head of the non-empty {@link Sequence}.
+ * {@link IndexSequenceTraverserState} at the head of an {@link IndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -19,14 +21,14 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
      * Creates a new {@link HeadOfSequenceTraverserState}.
      * 
      * @param sequence
-     *        traversed {@link Sequence}
+     *        traversed {@link IndexSequence}
      */
     public HeadOfSequenceTraverserState(final Sequenze sequence) {
         super(sequence);
     }
 
     @Override
-    public boolean hasPrevious() {
+    public boolean isPreviousItemAccessible() {
         return false;
     }
 
@@ -42,7 +44,7 @@ extends AbstractSequenceTraverserState<Item, Sequenze> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean isNextItemAccessible() {
         return true;
     }
 }

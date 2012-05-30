@@ -42,7 +42,7 @@ implements Traverser<Item> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean isNextItemAccessible() {
         return delegateIterator.hasNext();
     }
 

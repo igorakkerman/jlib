@@ -1,6 +1,7 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ReplaceSequenceTraverserState;
+import org.jlib.container.sequence.NoNextSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -16,8 +17,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public abstract class TailOfReplaceIndexSequenceTraverserState<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends TailOfIndexSequenceTraverserState<Item, Sequenze>
-implements ReplaceIndexSequenceTraverserState<Item> {
+extends AbstractReplaceIndexSequenceTraverserState<Item, Sequenze> {
 
     /**
      * Creates a new {@link TailOfReplaceIndexSequenceTraverserState}.
@@ -30,7 +30,40 @@ implements ReplaceIndexSequenceTraverserState<Item> {
     }
 
     @Override
-    public ReplaceSequenceTraverserState<Item> getReplacedState() {
+    public boolean isPreviousItemAccessible() {
+        return true;
+    }
+
+    @Override
+    public int getPreviousItemIndex() {
+        return getSequence().getLastIndex();
+    }
+
+    @Override
+    public Item doGetPreviousItem()
+    throws NoPreviousSequenceItemException {
+        return getSequence().getLastItem();
+    }
+
+    @Override
+    public boolean isNextItemAccessible() {
+        return false;
+    }
+
+    @Override
+    public int getNextItemIndex()
+    throws NoNextSequenceItemException {
+        throw new NoNextSequenceItemException(getSequence());
+    }
+
+    @Override
+    public Item doGetNextItem()
+    throws NoNextSequenceItemException {
+        throw new NoNextSequenceItemException(getSequence());
+    }
+
+    @Override
+    public ReplaceIndexSequenceTraverserState<Item> getNextState() {
         return this;
     }
 }

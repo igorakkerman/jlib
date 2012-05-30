@@ -33,7 +33,7 @@ extends Traverser<Item> {
      * @return {@code true} if this {@link SequenceTraverser} has a previous
      *         Item; {@code false} otherwise
      */
-    public boolean hasPrevious();
+    public boolean isPreviousItemAccessible();
 
     /**
      * Returns the previous Item of this {@link SequenceTraverser}.
@@ -53,7 +53,7 @@ extends Traverser<Item> {
      *         {@code false} otherwise
      */
     @Override
-    public boolean hasNextItem();
+    public boolean isNextItemAccessible();
 
     /**
      * Returns the next Item of this {@link SequenceTraverser}.

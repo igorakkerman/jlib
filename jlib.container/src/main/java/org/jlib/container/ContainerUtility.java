@@ -74,7 +74,7 @@ public final class ContainerUtility {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = container.createTraverser();
-        while (containerTraverser.hasNextItem())
+        while (containerTraverser.isNextItemAccessible())
             if (!retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove();
     }
@@ -91,7 +91,7 @@ public final class ContainerUtility {
      */
     public static <Item> void retainAll(final RemoveContainer<Item> container, final Collection<? extends Item> items) {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
-        while (itemsTraverser.hasNextItem())
+        while (itemsTraverser.isNextItemAccessible())
             if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
     }

@@ -63,7 +63,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
         super();
         this.binaryRelation = binaryRelation;
         leftValuesTraverser = new IterableTraverser<>(binaryRelation.leftValues());
-        if (leftValuesTraverser.hasNextItem())
+        if (leftValuesTraverser.isNextItemAccessible())
             getNextLeftValue();
         else
             rightValuesTraverser = new IterableTraverser<>(new HashSet<RightValue>());
@@ -78,11 +78,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
     }
 
     @Override
-    public boolean hasNextItem() {
-        if (rightValuesTraverser.hasNextItem())
+    public boolean isNextItemAccessible() {
+        if (rightValuesTraverser.isNextItemAccessible())
             return true;
 
-        if (!leftValuesTraverser.hasNextItem())
+        if (!leftValuesTraverser.isNextItemAccessible())
             return false;
 
         getNextLeftValue();
@@ -93,7 +93,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
     @Override
     public Association<LeftValue, RightValue> getNextItem()
     throws NoSuchItemException {
-        if (!hasNextItem())
+        if (!isNextItemAccessible())
             throw new NoNextItemException();
 
         return new Association<LeftValue, RightValue>(leftValue, rightValuesTraverser.getNextItem());
