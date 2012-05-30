@@ -16,7 +16,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.NoItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceTraverserState;
 
 /**
  * {@link ReplaceIndexSequenceTraverser} traversing the items in the proper
@@ -104,24 +103,44 @@ implements ReplaceIndexSequenceTraverser<Item> {
         currentState = getCurrentState(initialNextIndex);
     }
 
+    @Override
+    protected ReplaceIndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
+        return super.getCurrentState(nextItemIndex);
+    }
+
     /**
-     * Returns the new {@link SequenceTraverserState} after an Item has been
-     * returned and the specified index of the next Item has been set.
+     * Returns the {@link IndexSequenceTraverserState} at the head of the
+     * {@link IndexSequence}.
+     * 
+     * @return head {@link IndexSequenceTraverserState}
+     */
+    @Override
+    protected IndexSequenceTraverserState<Item> getHeadOfSequenceState() {
+        return headOfSequenceState;
+    }
+
+    /**
+     * Returns the {@link IndexSequenceTraverserState} at the tail of the
+     * {@link IndexSequence}.
+     * 
+     * @return tail {@link IndexSequenceTraverserState}
+     */
+    @Override
+    protected IndexSequenceTraverserState<Item> getTailOfSequenceState() {
+        return tailOfSequenceState;
+    }
+
+    /**
+     * Returns the {@link IndexSequenceTraverserState} in the middle of the
+     * {@link IndexSequence} with the next Item at the specified index.
      * 
      * @param nextItemIndex
-     *        integer specifying the index of the next Item;
-     *        {@code sequence.getLastIndex + 1} represents the end of the
-     *        {@link ReplaceIndexSequence}
+     *        integer specifying the index of the next Item
      * 
-     * @return new {@link ReplaceIndexSequenceTraverserState}
+     * @return middle {@link IndexSequenceTraverserState}
      */
-    private ReplaceIndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
-        if (nextItemIndex == getSequence().getFirstIndex())
-            return headOfSequenceState;
-
-        if (nextItemIndex == getSequence().getLastIndex() + 1)
-            return tailOfSequenceState;
-
+    @Override
+    protected IndexSequenceTraverserState<Item> getMiddleOfSequenceState(final int nextItemIndex) {
         middleOfSequenceState.setNextItemIndex(nextItemIndex);
 
         return middleOfSequenceState;

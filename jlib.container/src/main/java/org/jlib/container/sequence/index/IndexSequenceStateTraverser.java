@@ -115,16 +115,14 @@ implements IndexSequenceTraverser<Item> {
      * 
      * @return new {@link IndexSequenceTraverserState}
      */
-    protected IndexSequenceTraverserState<Item> getCurrentState(final int nextItemIndex) {
+    protected <State extends IndexSequenceTraverserState<Item>> State getCurrentState(final int nextItemIndex) {
         if (nextItemIndex == getSequence().getFirstIndex())
             return getHeadOfSequenceState();
 
         if (nextItemIndex == getSequence().getLastIndex() + 1)
             return getTailOfSequenceState();
 
-        middleOfSequenceState.setNextItemIndex(nextItemIndex);
-
-        return middleOfSequenceState;
+        return getMiddleOfSequenceState(nextItemIndex);
     }
 
     /**
@@ -143,8 +141,23 @@ implements IndexSequenceTraverser<Item> {
      * 
      * @return tail {@link IndexSequenceTraverserState}
      */
-    private IndexSequenceTraverserState<Item> getTailOfSequenceState() {
+    protected IndexSequenceTraverserState<Item> getTailOfSequenceState() {
         return tailOfSequenceState;
+    }
+
+    /**
+     * Returns the {@link IndexSequenceTraverserState} in the middle of the
+     * {@link IndexSequence} with the next Item at the specified index.
+     * 
+     * @param nextItemIndex
+     *        integer specifying the index of the next Item
+     * 
+     * @return middle {@link IndexSequenceTraverserState}
+     */
+    protected IndexSequenceTraverserState<Item> getMiddleOfSequenceState(final int nextItemIndex) {
+        middleOfSequenceState.setNextItemIndex(nextItemIndex);
+
+        return middleOfSequenceState;
     }
 
     @Override
