@@ -1,10 +1,9 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.RemoveTraverser;
-
 /**
  * {@link IllegalSequenceTraverserStateException} thrown when
- * {@link RemoveTraverser#remove()} has been called without.
+ * {@link RemoveSequenceTraverser#remove()} has been called without a previously
+ * returned Item.
  * 
  * @author Igor Akkerman
  */
@@ -12,15 +11,18 @@ public class NoItemToRemoveException
 extends IllegalSequenceTraverserStateException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 1028428356522236671L;
+    private static final long serialVersionUID = 6396461191818230981L;
 
     /**
      * Creates a new {@link NoItemToRemoveException}.
      * 
      * @param sequence
-     *        traversed {@link ReplaceSequence}
+     *        traversed {@link RemoveSequence}
+     * 
+     * @param cause
+     *        {@link Throwable} that caused this {@link NoItemToRemoveException}
      */
-    public NoItemToRemoveException(final ReplaceSequence<?> sequence) {
-        super(sequence);
+    public NoItemToRemoveException(final RemoveSequence<?> sequence, final Throwable cause) {
+        super(sequence, cause);
     }
 }
