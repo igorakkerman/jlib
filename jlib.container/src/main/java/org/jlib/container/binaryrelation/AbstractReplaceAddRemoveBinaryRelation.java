@@ -16,10 +16,9 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-
-import org.jlib.container.AbstractReplaceAddContainer;
-import org.jlib.container.Container;
 import org.jlib.container.AddContainer;
+import org.jlib.container.Container;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Skeletal implementation of a AddBinaryRelation.
@@ -30,9 +29,9 @@ import org.jlib.container.AddContainer;
  *        type of the objects on the right hand side of the BinaryRelation
  * @author Igor Akkerman
  */
-public abstract class AbstractAddBinaryRelation<LeftValue, RightValue>
-extends AbstractBinaryRelation<LeftValue, RightValue>
-implements AddBinaryRelation<LeftValue, RightValue> {
+public abstract class AbstractReplaceAddRemoveBinaryRelation<LeftValue, RightValue>
+extends AbstractAddBinaryRelation<LeftValue, RightValue>
+implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
      * AddContainer used as delegate for some methods allowing the
@@ -48,7 +47,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * @author Igor Akkerman
      */
     private class DelegateContainer<DelegateLeftValue, DelegateRightValue>
-    extends AbstractReplaceAddContainer<Association<DelegateLeftValue, DelegateRightValue>> {
+    extends AbstractReplaceContainer<Association<DelegateLeftValue, DelegateRightValue>> {
 
         /** BinaryRelation for which this Container is used as delegate */
         private final AddBinaryRelation<DelegateLeftValue, DelegateRightValue> baseBinaryRelation;
@@ -72,14 +71,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
         // @see java.lang.Iterable#iterator()
         @Override
-        public Traverser<Association<DelegateLeftValue, DelegateRightValue>> iterator() {
+        public Traverser<Association<DelegateLeftValue, DelegateRightValue>> createTraverser() {
             return baseBinaryRelation.iterator();
-        }
-
-        // @see Collection#add(java.lang.Object)
-        @Override
-        public void add(final Association<DelegateLeftValue, DelegateRightValue> association) {
-            baseBinaryRelation.insert(association);
         }
 
         // @see Collection#remove(java.lang.Object)
@@ -96,12 +89,12 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new AbstractAddBinaryRelation.
      */
-    protected AbstractAddBinaryRelation() {
+    protected AbstractReplaceAddRemoveBinaryRelation() {
         super();
     }
 
     @Override
-    public Traverser<Association<LeftValue, RightValue>> iterator() {
+    public Traverser<Association<LeftValue, RightValue>> createTraverser() {
         return new AddBinaryRelationTraverser<LeftValue, RightValue>(this);
     }
 
@@ -110,6 +103,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         add(association.left(), association.right());
     }
 
+//    @Override
     @Override
     public void remove(final Association<LeftValue, RightValue> association) {
         remove(association.left(), association.right());
@@ -161,8 +155,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void clear() {
-        delegateContainer.clear();
+    public void removeAll() {
+        delegateContainer.removeAll();
     }
 
     @Override

@@ -23,7 +23,7 @@ import org.jlib.container.sequence.Sequence;
  *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface RemoveInsertAddReplaceIndexSequence<Item>
+public interface ReplaceAddInsertRemoveIndexSequence<Item>
 extends InsertAddReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
 
     /**
@@ -35,14 +35,14 @@ extends InsertAddReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
      * Item stored at {@link #getFirstIndex()}.
      * 
      * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link RemoveInsertAddReplaceIndexSequence}
+     *         {@link ReplaceAddInsertRemoveIndexSequence}
      */
     @Override
     public RemoveInsertReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link RemoveInsertReplaceIndexSequenceTraverser} traversing
-     * the Items of this {@link RemoveInsertAddReplaceIndexSequence} in proper
+     * the Items of this {@link ReplaceAddInsertRemoveIndexSequence} in proper
      * sequence. That is, the Item returned by the first call to
      * {@link RemoveInsertReplaceIndexSequenceTraverser#getNextItem()} is the
      * Item stored at the specified start index.
@@ -51,7 +51,7 @@ extends InsertAddReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
      *        integer specifying the index of the first Item to traverse
      * 
      * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link RemoveInsertAddReplaceIndexSequence}
+     *         {@link ReplaceAddInsertRemoveIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if

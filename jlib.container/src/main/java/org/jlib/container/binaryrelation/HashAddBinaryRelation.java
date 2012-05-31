@@ -236,7 +236,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void clear() {
-        delegateBinaryRelation.clear();
+        delegateBinaryRelation.removeAll();
     }
 
     @Override

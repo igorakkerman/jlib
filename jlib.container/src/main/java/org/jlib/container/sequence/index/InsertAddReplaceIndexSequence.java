@@ -26,33 +26,33 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface InsertAddReplaceIndexSequence<Item>
-extends InsertIndexSequence<Item>, AddReplaceIndexSequence<Item> {
+extends InsertIndexSequence<Item>, ReplaceAddIndexSequence<Item> {
 
     /**
-     * Returns an {@link InsertReplaceIndexSequenceTraverser} traversing the
+     * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing the
      * Items of this IndexSequence in proper sequence. Initially, the Traverser
      * points to the head of this IndexSequence, that is, the Item returned by
      * the first call to
-     * {@link InsertReplaceIndexSequenceTraverser#getNextItem()} is the Item
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the Item
      * stored at {@link #getFirstIndex()}.
      * 
-     * @return {@link InsertReplaceIndexSequenceTraverser} over this
+     * @return {@link ReplaceInsertIndexSequenceTraverser} over this
      *         {@link InsertAddReplaceIndexSequence}
      */
     @Override
-    public InsertReplaceIndexSequenceTraverser<Item> createTraverser();
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns an {@link InsertReplaceIndexSequenceTraverser} traversing the
+     * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing the
      * Items of this {@link InsertAddReplaceIndexSequence} in proper sequence.
      * That is, the Item returned by the first call to
-     * {@link InsertReplaceIndexSequenceTraverser#getNextItem()} is the Item
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the Item
      * stored at the specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link InsertReplaceIndexSequenceTraverser} over this
+     * @return {@link ReplaceInsertIndexSequenceTraverser} over this
      *         {@link InsertAddReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -60,6 +60,6 @@ extends InsertIndexSequence<Item>, AddReplaceIndexSequence<Item> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
-    public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

@@ -21,42 +21,30 @@ import org.jlib.container.AddContainer;
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
- *        
+ * 
  * @param <RightValue>
  *        type of the objects on the right hand side of the BinaryRelation
- *        
+ * 
  * @author Igor Akkerman
  */
 public interface AddBinaryRelation<LeftValue, RightValue>
 extends BinaryRelation<LeftValue, RightValue>, AddContainer<Association<LeftValue, RightValue>> {
 
     /**
-     * Associates the specified LeftValue with the specified RightValue in
-     * this BinaryRelation.
+     * Associates the specified LeftValue with the specified RightValue in this
+     * BinaryRelation.
      * 
      * @param leftValue
      *        LeftValue of the association
-     *        
+     * 
      * @param rightValue
      *        RightValue of the association
-     *        
+     * 
      * @throws ObjectAlreadyAssociatedException
-     *         if {@code leftValue} or {@code rightValue} is already
-     *         associated to another Object and the implementation doesn't allow
-     *         an Object to have more than one association
+     *         if {@code leftValue} or {@code rightValue} is already associated
+     *         to another Object and the implementation doesn't allow an Object
+     *         to have more than one association
      */
     public void add(LeftValue leftValue, RightValue rightValue)
     throws ObjectAlreadyAssociatedException;
-
-    /**
-     * Removes the association specified by its LeftValue and RightValue from
-     * this BinaryRelation.
-     * 
-     * @param leftValue
-     *        LeftValue of the association
-     *        
-     * @param rightValue
-     *        RightValue of the association
-     */
-    public void remove(LeftValue leftValue, RightValue rightValue);
 }

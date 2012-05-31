@@ -22,38 +22,38 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * 
  * @author Igor Akkerman
  */
-public class AddReplaceArraySequence<Item>
+public class ReplaceAddArraySequence<Item>
 extends ReplaceArraySequence<Item>
 implements AddSequence<Item> {
 
     /**
-     * {@link IndexSequenceCreator} of {@link AddReplaceArraySequence}
+     * {@link IndexSequenceCreator} of {@link ReplaceAddArraySequence}
      * insstances
      */
-    private static final IndexSequenceCreator<?, ? extends AddReplaceArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, AddReplaceArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAddArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAddArraySequence<Object>>() {
 
             @Override
-            public AddReplaceArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            public ReplaceAddArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new AddReplaceArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAddArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link AddReplaceArraySequence} instances.
+     * {@link ReplaceAddArraySequence} instances.
      * 
-     * @return {@link IndexSequenceCreator} of {@link AddReplaceArraySequence}
+     * @return {@link IndexSequenceCreator} of {@link ReplaceAddArraySequence}
      *         instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends AddReplaceArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, AddReplaceArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAddArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAddArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link AddReplaceArraySequence} with the specified first
+     * Creates a new {@link ReplaceAddArraySequence} with the specified first
      * and last indices.
      * 
      * @param firstIndex
@@ -65,7 +65,7 @@ implements AddSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected AddReplaceArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAddArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
@@ -101,6 +101,6 @@ implements AddSequence<Item> {
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, AddReplaceArraySequence<Item>>(this);
+        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAddArraySequence<Item>>(this);
     }
 }

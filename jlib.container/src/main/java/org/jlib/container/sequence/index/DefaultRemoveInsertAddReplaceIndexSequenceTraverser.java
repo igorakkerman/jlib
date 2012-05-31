@@ -30,17 +30,17 @@ import org.jlib.core.reference.NoValueSetException;
  * 
  * @author Igor Akkerman
  */
-public class DefaultRemoveInsertAddReplaceIndexSequenceTraverser<Item, Sequenze extends RemoveInsertAddReplaceIndexSequence<Item>>
-extends DefaultInsertAddReplaceIndexSequenceTraverser<Item, Sequenze>
+public class DefaultRemoveInsertAddReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceAddInsertRemoveIndexSequence<Item>>
+extends DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze>
 implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
      * over the Items of the specified
-     * {@link RemoveInsertAddReplaceIndexSequence} beginning at its first index.
+     * {@link ReplaceAddInsertRemoveIndexSequence} beginning at its first index.
      * 
      * @param sequence
-     *        {@link RemoveInsertAddReplaceIndexSequence} to traverse
+     *        {@link ReplaceAddInsertRemoveIndexSequence} to traverse
      */
     public DefaultRemoveInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
@@ -49,11 +49,11 @@ implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
     /**
      * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
      * over the Items of the specified
-     * {@link RemoveInsertAddReplaceIndexSequence} beginning the traversal at
+     * {@link ReplaceAddInsertRemoveIndexSequence} beginning the traversal at
      * the specified index.
      * 
      * @param sequence
-     *        {@link RemoveInsertAddReplaceIndexSequence} to traverse
+     *        {@link ReplaceAddInsertRemoveIndexSequence} to traverse
      * 
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item

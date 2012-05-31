@@ -27,24 +27,24 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public class DefaultInsertAddReplaceIndexSequenceTraverser<Item, Sequenze extends InsertAddReplaceIndexSequence<Item>>
+public class DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze extends InsertAddReplaceIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements InsertReplaceIndexSequenceTraverser<Item> {
+implements ReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
-     * Creates a new {@link DefaultInsertAddReplaceIndexSequenceTraverser} over
+     * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
      * the Items of the specified {@link InsertAddReplaceIndexSequence}
      * beginning at its first index.
      * 
      * @param sequence
      *        {@link InsertAddReplaceIndexSequence} to traverse
      */
-    public DefaultInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceAddInsertIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultInsertAddReplaceIndexSequenceTraverser} over
+     * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
      * the Items of the specified {@link InsertAddReplaceIndexSequence}
      * beginning the traversal at the specified index.
      * 
@@ -58,7 +58,7 @@ implements InsertReplaceIndexSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceAddInsertIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
     throws SequenceIndexOutOfBoundsException {
         super(sequence, initialNextItemIndex);
     }

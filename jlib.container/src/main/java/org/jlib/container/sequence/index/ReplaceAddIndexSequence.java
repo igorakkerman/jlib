@@ -11,7 +11,7 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public interface AddReplaceIndexSequence<Item>
+public interface ReplaceAddIndexSequence<Item>
 extends ReplaceIndexSequence<Item>, AddSequence<Item> {
 
 }

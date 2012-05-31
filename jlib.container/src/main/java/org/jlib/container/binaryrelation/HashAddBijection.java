@@ -243,7 +243,7 @@ implements AddBijection<LeftValue, RightValue> {
 
     @Override
     public void clear() {
-        delegateBijection.clear();
+        delegateBijection.removeAll();
     }
 
     @Override

@@ -11,7 +11,7 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public interface InsertReplaceIndexSequenceTraverser<Item>
+public interface ReplaceInsertIndexSequenceTraverser<Item>
 extends ReplaceIndexSequenceTraverser<Item>, InsertIndexSequenceTraverser<Item> {
     // unifying interface
 }

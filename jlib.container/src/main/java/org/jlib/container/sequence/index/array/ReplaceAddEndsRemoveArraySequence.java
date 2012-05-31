@@ -1,12 +1,12 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.EndsRemoveAddReplaceIndexSequence;
+import org.jlib.container.sequence.index.ReplaceAddEndsRemoveIndexSequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 /**
- * {@link AddReplaceArraySequence} from which Items can be removed at its ends,
+ * {@link ReplaceAddArraySequence} from which Items can be removed at its ends,
  * that is, its head and tail.
  * 
  * @param <Item>
@@ -14,38 +14,38 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * 
  * @author Igor Akkerman
  */
-public class EndsRemoveAddReplaceArraySequence<Item>
-extends AddReplaceArraySequence<Item>
-implements EndsRemoveAddReplaceIndexSequence<Item> {
+public class ReplaceAddEndsRemoveArraySequence<Item>
+extends ReplaceAddArraySequence<Item>
+implements ReplaceAddEndsRemoveIndexSequence<Item> {
 
     /**
-     * {@link IndexSequenceCreator} of {@link EndsRemoveAddReplaceArraySequence}
+     * {@link IndexSequenceCreator} of {@link ReplaceAddEndsRemoveArraySequence}
      * insstances
      */
-    private static final IndexSequenceCreator<?, ? extends EndsRemoveAddReplaceArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, EndsRemoveAddReplaceArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAddEndsRemoveArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAddEndsRemoveArraySequence<Object>>() {
 
             @Override
-            public EndsRemoveAddReplaceArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            public ReplaceAddEndsRemoveArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new EndsRemoveAddReplaceArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAddEndsRemoveArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link EndsRemoveAddReplaceArraySequence} instances.
+     * {@link ReplaceAddEndsRemoveArraySequence} instances.
      * 
      * @return {@link IndexSequenceCreator} of
-     *         {@link EndsRemoveAddReplaceArraySequence} instances
+     *         {@link ReplaceAddEndsRemoveArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, EndsRemoveAddReplaceArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, EndsRemoveAddReplaceArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ReplaceAddEndsRemoveArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAddEndsRemoveArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link EndsRemoveAddReplaceArraySequence} with the
+     * Creates a new {@link ReplaceAddEndsRemoveArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex
@@ -57,7 +57,7 @@ implements EndsRemoveAddReplaceIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected EndsRemoveAddReplaceArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAddEndsRemoveArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 

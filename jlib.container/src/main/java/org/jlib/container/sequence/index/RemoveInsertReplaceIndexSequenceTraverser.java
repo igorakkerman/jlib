@@ -4,7 +4,7 @@ import org.jlib.container.sequence.RemoveSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link InsertReplaceIndexSequenceTraverser} referencing a
+ * {@link ReplaceInsertIndexSequenceTraverser} referencing a
  * {@link RemoveSequence} .
  * 
  * @param <Item>
@@ -13,6 +13,6 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface RemoveInsertReplaceIndexSequenceTraverser<Item>
-extends InsertReplaceIndexSequenceTraverser<Item>, RemoveIndexSequenceTraverser<Item> {
+extends ReplaceInsertIndexSequenceTraverser<Item>, RemoveIndexSequenceTraverser<Item> {
     // unifying interface
 }
