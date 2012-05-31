@@ -135,10 +135,13 @@ implements IndexSequenceTraverser<Item> {
     @Override
     public int getPreviousItemIndex()
     throws NoPreviousItemException {
-        if (!isPreviousItemAccessible())
+
+        final int previousItemIndex = nextItemIndex - 1;
+
+        if (previousItemIndex < getSequence().getFirstIndex())
             throw new NoPreviousItemException(getSequence());
 
-        return nextItemIndex - 1;
+        return previousItemIndex;
     }
 
     @Override
