@@ -67,8 +67,6 @@ implements InsertAddReplaceIndexSequence<Item> {
     @Override
     public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultInsertAddReplaceIndexSequenceTraverser<Item, InsertEndsRemoveAddReplaceArraySequence<Item>>(
-                                                                                                                      this,
-                                                                                                                      startIndex);
+        return new DefaultInsertAddReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 }

@@ -40,7 +40,7 @@ implements EndsRemoveAddReplaceIndexSequence<Item> {
      *         {@link EndsRemoveAddReplaceArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends EndsRemoveAddReplaceArraySequence<Item>> getCreator() {
+    public static <Item> IndexSequenceCreator<Item, EndsRemoveAddReplaceArraySequence<Item>> getCreator() {
         return (IndexSequenceCreator<Item, EndsRemoveAddReplaceArraySequence<Item>>) CREATOR;
     }
 
