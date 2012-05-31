@@ -153,6 +153,16 @@ implements IndexSequenceTraverser<Item> {
     }
 
     /**
+     * Returns the index of the potential next Item, even if the index is higher
+     * than {@link IndexSequence#getLastIndex()}.
+     * 
+     * @return integer specifying the index of the potential next Item
+     */
+    protected int getPotentialNextItemIndex() {
+        return nextItemIndex;
+    }
+
+    /**
      * Returns the index of the last Item accessed by this
      * {@link DefaultIndexSequenceTraverser}.
      * 
