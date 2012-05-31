@@ -25,7 +25,7 @@ extends AbstractSequenceTraverser<Item, Sequenze>
 implements IndexSequenceTraverser<Item> {
 
     /** index of the next traversed Item */
-    private int nextItemIndex;
+    private int potentialNextItemIndex;
 
     /** {@link ValueHolder} for the index of the last accessed Item */
     private ValueHolder<Integer> lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
@@ -46,7 +46,7 @@ implements IndexSequenceTraverser<Item> {
     public DefaultIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
 
-        nextItemIndex = sequence.getFirstIndex();
+        potentialNextItemIndex = sequence.getFirstIndex();
     }
 
     /**
@@ -69,26 +69,26 @@ implements IndexSequenceTraverser<Item> {
 
         IndexSequenceUtility.assertIndexValid(sequence, initialNextItemIndex);
 
-        nextItemIndex = initialNextItemIndex;
+        potentialNextItemIndex = initialNextItemIndex;
     }
 
     @Override
     public boolean isPreviousItemAccessible() {
-        return nextItemIndex - 1 >= getSequence().getFirstIndex();
+        return potentialNextItemIndex - 1 >= getSequence().getFirstIndex();
     }
 
     @Override
     public boolean isNextItemAccessible() {
-        return nextItemIndex <= getSequence().getLastIndex();
+        return potentialNextItemIndex <= getSequence().getLastIndex();
     }
 
     @Override
     public final Item getPreviousItem()
     throws NoPreviousItemException {
         try {
-            final Item sequenceItem = getSequenceItem(nextItemIndex - 1);
+            final Item sequenceItem = getSequenceItem(potentialNextItemIndex - 1);
 
-            nextItemIndex --;  // allow decrementation only if no exception is thrown
+            potentialNextItemIndex --;  // allow decrementation only if no exception is thrown
 
             return sequenceItem;
         }
@@ -101,9 +101,9 @@ implements IndexSequenceTraverser<Item> {
     public Item getNextItem()
     throws NoNextItemException {
         try {
-            final Item sequenceItem = getSequenceItem(nextItemIndex);
+            final Item sequenceItem = getSequenceItem(potentialNextItemIndex);
 
-            nextItemIndex ++; // allow incrementation only if no exception is thrown
+            potentialNextItemIndex ++; // allow incrementation only if no exception is thrown
 
             return sequenceItem;
         }
@@ -136,7 +136,7 @@ implements IndexSequenceTraverser<Item> {
     public int getPreviousItemIndex()
     throws NoPreviousItemException {
 
-        final int previousItemIndex = nextItemIndex - 1;
+        final int previousItemIndex = potentialNextItemIndex - 1;
 
         if (previousItemIndex < getSequence().getFirstIndex())
             throw new NoPreviousItemException(getSequence());
@@ -149,7 +149,7 @@ implements IndexSequenceTraverser<Item> {
         if (!isNextItemAccessible())
             throw new NoPreviousItemException(getSequence());
 
-        return nextItemIndex;
+        return potentialNextItemIndex;
     }
 
     /**
@@ -159,7 +159,7 @@ implements IndexSequenceTraverser<Item> {
      * @return integer specifying the index of the potential next Item
      */
     protected int getPotentialNextItemIndex() {
-        return nextItemIndex;
+        return potentialNextItemIndex;
     }
 
     /**
