@@ -18,8 +18,6 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.RemoveTraverser;
 
-// TODO: add operations passing ModificationListeners to the methods
-
 /**
  * <p>
  * Container that supports addition and removal of Items.
@@ -31,6 +29,7 @@ import org.jlib.core.traverser.RemoveTraverser;
  * 
  * @param <Item>
  *        type of items held in the {@link Container}
+ * 
  * @author Igor Akkerman
  */
 public interface RemoveContainer<Item>
@@ -41,6 +40,7 @@ extends Container<Item> {
      * 
      * @param item
      *        Item to remove
+     * 
      * @throws IllegalArgumentException
      *         if this {@link RemoveContainer} does not contain {@code Item}
      */
