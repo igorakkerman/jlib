@@ -30,13 +30,13 @@ import org.jlib.core.traverser.Traverser;
  *        type of the objects on the right hand side of the BinaryRelation
  * @author Igor Akkerman
  */
-public abstract class AbstractAddBinaryRelation<LeftValue, RightValue>
+public abstract class AbstractReplaceAddBinaryRelation<LeftValue, RightValue>
 extends AbstractBinaryRelation<LeftValue, RightValue>
 implements AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * AddContainer used as delegate for some methods allowing the
-     * {@code AbstractAddBinaryRelation} class to implement the
+     * {@code AbstractReplaceAddBinaryRelation} class to implement the
      * {@link AddContainer} interface.
      * 
      * @param <DelegateLeftValue>
@@ -84,12 +84,6 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         public void add(final Association<DelegateLeftValue, DelegateRightValue> association) {
             baseBinaryRelation.insert(association);
         }
-
-        // @see Collection#remove(java.lang.Object)
-        @Override
-        public void remove(final Association<DelegateLeftValue, DelegateRightValue> association) {
-            baseBinaryRelation.remove(association);
-        }
     }
 
     /** DelegateContainer for this BinaryRelation */
@@ -97,9 +91,9 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         new DelegateContainer<LeftValue, RightValue>(this);
 
     /**
-     * Creates a new AbstractAddBinaryRelation.
+     * Creates a new AbstractReplaceAddBinaryRelation.
      */
-    protected AbstractAddBinaryRelation() {
+    protected AbstractReplaceAddBinaryRelation() {
         super();
     }
 

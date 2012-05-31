@@ -48,7 +48,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * @author Igor Akkerman
      */
     private class DelegateBinaryRelation<DelegateLeftValue, DelegateRightValue>
-    extends AbstractAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
+    extends AbstractReplaceAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
 
         /**
          * AddBinaryRelation for which this BinaryRelation is used as

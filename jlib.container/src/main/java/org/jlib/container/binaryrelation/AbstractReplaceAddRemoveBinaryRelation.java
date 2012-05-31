@@ -25,25 +25,29 @@ import org.jlib.core.traverser.Traverser;
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
+ * 
  * @param <RightValue>
  *        type of the objects on the right hand side of the BinaryRelation
+ * 
  * @author Igor Akkerman
  */
 public abstract class AbstractReplaceAddRemoveBinaryRelation<LeftValue, RightValue>
-extends AbstractAddBinaryRelation<LeftValue, RightValue>
+extends AbstractReplaceAddBinaryRelation<LeftValue, RightValue>
 implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
      * AddContainer used as delegate for some methods allowing the
-     * {@code AbstractAddBinaryRelation} class to implement the
+     * {@code AbstractReplaceAddBinaryRelation} class to implement the
      * {@link AddContainer} interface.
      * 
      * @param <DelegateLeftValue>
      *        type of the objects on the left hand side of the Associations held
      *        in this Container
+     * 
      * @param <DelegateRightValue>
      *        type of the objects on the right hand side of the Associations
      *        held in this Container
+     * 
      * @author Igor Akkerman
      */
     private class DelegateContainer<DelegateLeftValue, DelegateRightValue>
@@ -63,19 +67,16 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
             this.baseBinaryRelation = baseBinaryRelation;
         }
 
-        // @see Container#size()
         @Override
         public int getSize() {
             return baseBinaryRelation.getSize();
         }
 
-        // @see java.lang.Iterable#iterator()
         @Override
         public Traverser<Association<DelegateLeftValue, DelegateRightValue>> createTraverser() {
             return baseBinaryRelation.iterator();
         }
 
-        // @see Collection#remove(java.lang.Object)
         @Override
         public void remove(final Association<DelegateLeftValue, DelegateRightValue> association) {
             baseBinaryRelation.remove(association);
@@ -87,7 +88,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
         new DelegateContainer<LeftValue, RightValue>(this);
 
     /**
-     * Creates a new AbstractAddBinaryRelation.
+     * Creates a new AbstractReplaceAddBinaryRelation.
      */
     protected AbstractReplaceAddRemoveBinaryRelation() {
         super();

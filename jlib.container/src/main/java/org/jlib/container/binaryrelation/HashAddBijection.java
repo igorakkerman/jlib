@@ -50,7 +50,7 @@ implements AddBijection<LeftValue, RightValue> {
      * @author Igor Akkerman
      */
     private class DelegateBijection<DelegateLeftValue, DelegateRightValue>
-    extends AbstractAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
+    extends AbstractReplaceAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
 
         /** Bijection for which this Bijection is used as delegate */
         private final AddBijection<DelegateLeftValue, DelegateRightValue> baseBijection;
