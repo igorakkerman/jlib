@@ -3,7 +3,7 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultInsertReplaceIndexSequenceTraverser;
-import org.jlib.container.sequence.index.InsertIndexSequence;
+import org.jlib.container.sequence.index.InsertAddReplaceIndexSequence;
 import org.jlib.container.sequence.index.InsertReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
@@ -19,7 +19,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  */
 public class InsertAddReplaceArraySequence<Item>
 extends AddReplaceArraySequence<Item>
-implements InsertIndexSequence<Item> {
+implements InsertAddReplaceIndexSequence<Item> {
 
     /**
      * Creates a new {@link InsertAddReplaceArraySequence} with the specified
@@ -39,13 +39,13 @@ implements InsertIndexSequence<Item> {
     }
 
     @Override
-    public void insert(final int index, final Item item) {
-        insert(index, singleton(item));
+    public void insert(final int index, final Item newItem) {
+        insert(index, singleton(newItem));
     }
 
     @Override
-    public void insert(final int index, final Container<? extends Item> items) {
-        final int insertedItemsCount = items.getSize();
+    public void insert(final int index, final Container<? extends Item> newItems) {
+        final int insertedItemsCount = newItems.getSize();
 
         final int newSize = getSize() + insertedItemsCount;
         final int delegateArrayInsertIndex = getDelegateArrayIndex(index);
@@ -53,7 +53,7 @@ implements InsertIndexSequence<Item> {
         assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);
 
         int delegateArrayIndex = delegateArrayInsertIndex;
-        for (final Item item : items)
+        for (final Item item : newItems)
             replaceDelegateArrayItem(delegateArrayIndex ++, item);
 
         setLastIndex(getLastIndex() + insertedItemsCount);
@@ -67,6 +67,7 @@ implements InsertIndexSequence<Item> {
     @Override
     public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultInsertReplaceIndexSequenceTraverser<Item>(this, startIndex);
+        return new DefaultInsertReplaceIndexSequenceTraverser<Item, InsertAddReplaceArraySequence<Item>>(this,
+                                                                                                         startIndex);
     }
 }
