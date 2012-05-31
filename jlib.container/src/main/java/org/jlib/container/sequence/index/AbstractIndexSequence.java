@@ -3,7 +3,6 @@ package org.jlib.container.sequence.index;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.container.NoSuchItemException;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.index.array.ArraySequence;
 
@@ -83,22 +82,22 @@ implements IndexSequence<Item> {
 
     @Override
     public int getFirstIndexOf(final Item item)
-    throws NoSuchItemException {
+    throws NoSuchSequenceItemException {
         for (int index = firstIndex; index <= lastIndex; index ++)
             if (getStoredItem(index).equals(item))
                 return index;
 
-        throw new NoSuchItemException(item.toString());
+        throw new NoSuchSequenceItemException(this, item);
     }
 
     @Override
     public int getLastIndexOf(final Item item)
-    throws NoSuchItemException {
+    throws NoSuchSequenceItemException {
         for (int index = lastIndex; index >= firstIndex; index --)
             if (getStoredItem(index).equals(item))
                 return index;
 
-        throw new NoSuchItemException(item.toString());
+        throw new NoSuchSequenceItemException(this, item);
     }
 
     @Override

@@ -1,8 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.util.NoSuchElementException;
-
-import org.jlib.container.NoSuchItemException;
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 
 /**
@@ -48,13 +45,13 @@ extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
 
     @Override
     public Item getPreviousItem()
-    throws NoSuchElementException {
-        throw new NoSuchElementException();
+    throws NoPreviousItemException {
+        throw new NoPreviousItemException(getSequence());
     }
 
     @Override
     public Item getNextItem()
-    throws NoSuchItemException {
+    throws NoNextItemException {
         throw new NoNextItemException(getSequence());
     }
 }
