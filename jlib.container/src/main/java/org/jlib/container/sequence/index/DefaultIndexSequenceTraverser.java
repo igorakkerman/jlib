@@ -24,7 +24,7 @@ public class DefaultIndexSequenceTraverser<Item, Sequenze extends IndexSequence<
 extends AbstractSequenceTraverser<Item, Sequenze>
 implements IndexSequenceTraverser<Item> {
 
-    /** index of the next traversed Item */
+    /** index of the potential next traversed Item */
     private int potentialNextItemIndex;
 
     /** {@link ValueHolder} for the index of the last accessed Item */
