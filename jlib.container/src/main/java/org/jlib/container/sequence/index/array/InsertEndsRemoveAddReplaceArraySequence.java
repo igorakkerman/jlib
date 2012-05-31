@@ -17,13 +17,13 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  * 
  * @author Igor Akkerman
  */
-public class InsertAddReplaceArraySequence<Item>
-extends AddReplaceArraySequence<Item>
+public class InsertEndsRemoveAddReplaceArraySequence<Item>
+extends EndsRemoveAddReplaceArraySequence<Item>
 implements InsertAddReplaceIndexSequence<Item> {
 
     /**
-     * Creates a new {@link InsertAddReplaceArraySequence} with the specified
-     * first and last indices.
+     * Creates a new {@link InsertEndsRemoveAddReplaceArraySequence} with the
+     * specified first and last indices.
      * 
      * @param firstIndex
      *        integer specifying the first index
@@ -34,7 +34,7 @@ implements InsertAddReplaceIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected InsertAddReplaceArraySequence(final int firstIndex, final int lastIndex) {
+    protected InsertEndsRemoveAddReplaceArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
@@ -67,7 +67,8 @@ implements InsertAddReplaceIndexSequence<Item> {
     @Override
     public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultInsertAddReplaceIndexSequenceTraverser<Item, InsertAddReplaceArraySequence<Item>>(this,
-                                                                                                         startIndex);
+        return new DefaultInsertAddReplaceIndexSequenceTraverser<Item, InsertEndsRemoveAddReplaceArraySequence<Item>>(
+                                                                                                                      this,
+                                                                                                                      startIndex);
     }
 }

@@ -94,7 +94,8 @@ implements AddSequence<Item> {
     }
 
     @Override
-    public void addAll(@SuppressWarnings("unchecked") final Item... items) {
+    @SafeVarargs
+    public final void addAll(final Item... items) {
         ContainerUtility.addAll(this, iterable(items));
     }
 
