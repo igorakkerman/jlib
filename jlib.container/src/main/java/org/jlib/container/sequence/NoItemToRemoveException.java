@@ -3,8 +3,8 @@ package org.jlib.container.sequence;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * {@link IllegalStateException} thrown when {@link RemoveTraverser#remove()}
- * has been called without.
+ * {@link IllegalSequenceTraverserStateException} thrown when
+ * {@link RemoveTraverser#remove()} has been called without.
  * 
  * @author Igor Akkerman
  */

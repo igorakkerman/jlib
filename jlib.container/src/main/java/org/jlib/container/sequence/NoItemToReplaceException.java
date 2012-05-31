@@ -1,7 +1,7 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link IllegalStateException} thrown when
+ * {@link IllegalSequenceTraverserStateException} thrown when
  * {@link ReplaceSequenceTraverser#replace(Object)} has been called without a
  * previously returned Item.
  * 
