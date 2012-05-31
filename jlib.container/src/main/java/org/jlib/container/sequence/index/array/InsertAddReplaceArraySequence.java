@@ -2,7 +2,7 @@ package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultInsertReplaceIndexSequenceTraverser;
+import org.jlib.container.sequence.index.DefaultInsertAddReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InsertAddReplaceIndexSequence;
 import org.jlib.container.sequence.index.InsertReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
@@ -67,7 +67,7 @@ implements InsertAddReplaceIndexSequence<Item> {
     @Override
     public InsertReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultInsertReplaceIndexSequenceTraverser<Item, InsertAddReplaceArraySequence<Item>>(this,
+        return new DefaultInsertAddReplaceIndexSequenceTraverser<Item, InsertAddReplaceArraySequence<Item>>(this,
                                                                                                          startIndex);
     }
 }

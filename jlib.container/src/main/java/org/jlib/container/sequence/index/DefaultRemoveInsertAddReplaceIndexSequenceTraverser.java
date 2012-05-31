@@ -30,29 +30,30 @@ import org.jlib.core.reference.NoValueSetException;
  * 
  * @author Igor Akkerman
  */
-public class DefaultRemoveInsertReplaceIndexSequenceTraverser<Item, Sequenze extends RemoveInsertReplaceIndexSequence<Item>>
-extends DefaultInsertReplaceIndexSequenceTraverser<Item, Sequenze>
+public class DefaultRemoveInsertAddReplaceIndexSequenceTraverser<Item, Sequenze extends RemoveInsertAddReplaceIndexSequence<Item>>
+extends DefaultInsertAddReplaceIndexSequenceTraverser<Item, Sequenze>
 implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
 
     /**
-     * Creates a new {@link DefaultRemoveInsertReplaceIndexSequenceTraverser}
-     * over the Items of the specified {@link InsertReplaceIndexSequence}
-     * beginning at its first index.
+     * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
+     * over the Items of the specified
+     * {@link RemoveInsertAddReplaceIndexSequence} beginning at its first index.
      * 
      * @param sequence
-     *        {@link InsertReplaceIndexSequence} to traverse
+     *        {@link RemoveInsertAddReplaceIndexSequence} to traverse
      */
-    public DefaultRemoveInsertReplaceIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultRemoveInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultRemoveInsertReplaceIndexSequenceTraverser}
-     * over the Items of the specified {@link InsertReplaceIndexSequence}
-     * beginning the traversal at the specified index.
+     * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
+     * over the Items of the specified
+     * {@link RemoveInsertAddReplaceIndexSequence} beginning the traversal at
+     * the specified index.
      * 
      * @param sequence
-     *        {@link InsertReplaceIndexSequence} to traverse
+     *        {@link RemoveInsertAddReplaceIndexSequence} to traverse
      * 
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
@@ -61,7 +62,7 @@ implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultRemoveInsertReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultRemoveInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
     throws SequenceIndexOutOfBoundsException {
         super(sequence, initialNextItemIndex);
     }

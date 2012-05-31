@@ -130,7 +130,7 @@ implements IndexSequence<Item> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final InitializeableIndexSequence<Item> sequence =
+        final AbstractInitializeableIndexSequence<Item> sequence =
             ArraySequence.<Item> getCreator().createSequence(fromIndex, toIndex);
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replaceStoredItem(index, getStoredItem(index));

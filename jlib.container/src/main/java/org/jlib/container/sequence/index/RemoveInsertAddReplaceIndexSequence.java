@@ -17,15 +17,14 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link RemoveInsertReplaceIndexSequence} that allows its Items to be
- * modified.
+ * {@link InsertAddReplaceIndexSequence} and {@link RemoveIndexSequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
-public interface RemoveInsertReplaceIndexSequence<Item>
-extends InsertReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
+public interface RemoveInsertAddReplaceIndexSequence<Item>
+extends InsertAddReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
 
     /**
      * Returns an {@link RemoveInsertReplaceIndexSequenceTraverser} traversing
@@ -36,14 +35,14 @@ extends InsertReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
      * Item stored at {@link #getFirstIndex()}.
      * 
      * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link RemoveInsertReplaceIndexSequence}
+     *         {@link RemoveInsertAddReplaceIndexSequence}
      */
     @Override
     public RemoveInsertReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link RemoveInsertReplaceIndexSequenceTraverser} traversing
-     * the Items of this {@link RemoveInsertReplaceIndexSequence} in proper
+     * the Items of this {@link RemoveInsertAddReplaceIndexSequence} in proper
      * sequence. That is, the Item returned by the first call to
      * {@link RemoveInsertReplaceIndexSequenceTraverser#getNextItem()} is the
      * Item stored at the specified start index.
@@ -52,7 +51,7 @@ extends InsertReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
      *        integer specifying the index of the first Item to traverse
      * 
      * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link RemoveInsertReplaceIndexSequence}
+     *         {@link RemoveInsertAddReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if

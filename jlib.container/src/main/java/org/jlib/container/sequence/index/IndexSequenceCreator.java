@@ -13,7 +13,7 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public interface IndexSequenceCreator<Item, Sequenze extends InitializeableIndexSequence<Item>> {
+public interface IndexSequenceCreator<Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> {
 
     /**
      * Creates a new {@link IndexSequence} with the specified first and last

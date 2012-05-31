@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
-import org.jlib.container.sequence.index.InitializeableIndexSequence;
+import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 // @formatter:off   
@@ -116,7 +116,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 // @formatter:on
 
 public class ArraySequence<Item>
-extends InitializeableIndexSequence<Item>
+extends AbstractInitializeableIndexSequence<Item>
 implements Cloneable {
 
     /** {@link IndexSequenceCreator} of {@link ArraySequence} insstances */

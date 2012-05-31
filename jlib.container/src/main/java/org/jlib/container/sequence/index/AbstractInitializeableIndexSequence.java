@@ -10,31 +10,31 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public abstract class InitializeableIndexSequence<Item>
+public abstract class AbstractInitializeableIndexSequence<Item>
 extends AbstractIndexSequence<Item> {
 
     /**
-     * Creates a new {@link InitializeableIndexSequence}.
+     * Creates a new {@link AbstractInitializeableIndexSequence}.
      * 
      * @param firstIndex
      *        integer specifying the initial minimum index of this
-     *        {@link InitializeableIndexSequence}
+     *        {@link AbstractInitializeableIndexSequence}
      * 
      * @param lastIndex
      *        integer specifying the maximum index of this
-     *        {@link InitializeableIndexSequence}
+     *        {@link AbstractInitializeableIndexSequence}
      * 
      * @throws InvalidSequenceIndexRangeException
      *         if {@code  lastIndex < firstIndex}
      */
-    public InitializeableIndexSequence(final int firstIndex, final int lastIndex)
+    public AbstractInitializeableIndexSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
     }
 
     /**
      * Replaces the Item stored at the specified index in this
-     * {@link InitializeableIndexSequence} by the specified Item.
+     * {@link AbstractInitializeableIndexSequence} by the specified Item.
      * 
      * @param index
      *        integer specifying the index
@@ -54,7 +54,7 @@ extends AbstractIndexSequence<Item> {
 
     /**
      * Replaces the Item stored at the specified index in this
-     * {@link InitializeableIndexSequence} by the specified Item expecting
+     * {@link AbstractInitializeableIndexSequence} by the specified Item expecting
      * the index to be valid.
      * 
      * @param index

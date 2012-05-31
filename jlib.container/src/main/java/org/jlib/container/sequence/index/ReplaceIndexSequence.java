@@ -18,14 +18,14 @@ import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IndexSequence} that allows its Items to be modified.
+ * {@link IndexSequence} and {@link ReplaceSequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * @author Igor Akkerman
  */
 public interface ReplaceIndexSequence<Item>
-extends ReplaceSequence<Item>, IndexSequence<Item> {
+extends IndexSequence<Item>, ReplaceSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
