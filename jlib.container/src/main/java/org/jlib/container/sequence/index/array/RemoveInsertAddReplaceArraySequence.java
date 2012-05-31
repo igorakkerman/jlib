@@ -15,7 +15,7 @@ import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
  * @author Igor Akkerman
  */
 public class RemoveInsertAddReplaceArraySequence<Item>
-extends InsertAddReplaceArraySequence<Item>
+extends InsertEndsRemoveAddReplaceArraySequence<Item>
 implements RemoveInsertAddReplaceIndexSequence<Item> {
 
     /**
