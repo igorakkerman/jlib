@@ -6,8 +6,10 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AddIndexSequence;
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;
@@ -98,6 +100,6 @@ implements AddIndexSequence<Item> {
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item>(this);
+        return new DefaultReplaceIndexSequenceTraverser<Item, AddReplaceArraySequence<Item>>(this);
     }
 }
