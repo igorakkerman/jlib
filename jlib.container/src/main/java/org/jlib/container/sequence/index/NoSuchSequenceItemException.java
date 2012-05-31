@@ -3,15 +3,15 @@ package org.jlib.container.sequence.index;
 import java.text.MessageFormat;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceException;
+import org.jlib.container.sequence.SequenceRuntimeException;
 
 /**
- * {@link SequenceException} thrown when a requested Item is not found.
+ * {@link SequenceRuntimeException} thrown when a requested Item is not found.
  * 
  * @author Igor Akkerman
  */
 public class NoSuchSequenceItemException
-extends SequenceException {
+extends SequenceRuntimeException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -8162511917404174346L;

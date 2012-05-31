@@ -7,7 +7,7 @@ import java.text.MessageFormat;
  * 
  * @author Igor Akkerman
  */
-public abstract class SequenceException
+public abstract class SequenceRuntimeException
 extends RuntimeException {
 
     /** serialVersionUID */
@@ -17,17 +17,17 @@ extends RuntimeException {
     private final Sequence<?> sequence;
 
     /**
-     * Creates a new {@link SequenceException}.
+     * Creates a new {@link SequenceRuntimeException}.
      * 
      * @param sequence
      *        referenced {@link Sequence}
      */
-    public SequenceException(final Sequence<?> sequence) {
+    public SequenceRuntimeException(final Sequence<?> sequence) {
         this(sequence, (Throwable) null);
     }
 
     /**
-     * Creates a new {@link SequenceException} with the specified error message.
+     * Creates a new {@link SequenceRuntimeException} with the specified error message.
      * 
      * @param sequence
      *        referenced {@link Sequence}
@@ -35,25 +35,25 @@ extends RuntimeException {
      * @param errorMessage
      *        {@link String} specifying the error message
      */
-    public SequenceException(final Sequence<?> sequence, final String errorMessage) {
+    public SequenceRuntimeException(final Sequence<?> sequence, final String errorMessage) {
         this(sequence, errorMessage, null);
     }
 
     /**
-     * Creates a new {@link SequenceException} with the specified cause.
+     * Creates a new {@link SequenceRuntimeException} with the specified cause.
      * 
      * @param sequence
      *        referenced {@link Sequence}
      * 
      * @param cause
-     *        {@link Throwable} that caused this {@link SequenceException}
+     *        {@link Throwable} that caused this {@link SequenceRuntimeException}
      */
-    public SequenceException(final Sequence<?> sequence, final Throwable cause) {
+    public SequenceRuntimeException(final Sequence<?> sequence, final Throwable cause) {
         this(sequence, "{1}", cause);
     }
 
     /**
-     * Creates a new {@link SequenceException} with the specified error message
+     * Creates a new {@link SequenceRuntimeException} with the specified error message
      * and cause.
      * 
      * @param sequence
@@ -63,16 +63,16 @@ extends RuntimeException {
      *        {@link String} specifying the error message
      * 
      * @param cause
-     *        {@link Throwable} that caused this {@link SequenceException}
+     *        {@link Throwable} that caused this {@link SequenceRuntimeException}
      */
-    public SequenceException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
+    public SequenceRuntimeException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
         super(MessageFormat.format(errorMessage, sequence), cause);
 
         this.sequence = sequence;
     }
 
     /**
-     * Returns the {@link Sequence} of this {@link SequenceException}.
+     * Returns the {@link Sequence} of this {@link SequenceRuntimeException}.
      * 
      * @return referenced {@link Sequence}
      */
