@@ -72,6 +72,8 @@ implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
     throws NoSequenceItemToRemoveException {
         try {
             getSequence().remove(getLastAccessedItemIndex());
+
+            unsetLastAccessedItem();
         }
         catch (final NoValueSetException exception) {
             throw new NoSequenceItemToRemoveException(getSequence(), exception);

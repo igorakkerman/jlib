@@ -28,15 +28,7 @@ implements IndexSequenceTraverser<Item> {
     private int potentialNextItemIndex;
 
     /** {@link ValueHolder} for the index of the last accessed Item */
-    private ValueHolder<Integer> lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
-
-        // FIXME: needs to be reset after removal!!!
-
-        @Override
-        public void set(final Integer index) {
-            lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
-        }
-    };
+    private ValueHolder<Integer> lastAccessedItemIndexHolder;
 
     /**
      * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
@@ -72,6 +64,21 @@ implements IndexSequenceTraverser<Item> {
         IndexSequenceUtility.assertIndexValid(sequence, initialNextItemIndex);
 
         potentialNextItemIndex = initialNextItemIndex;
+
+        unsetLastAccessedItem();
+    }
+
+    /**
+     * Unregisters the last accessed Item.
+     */
+    protected void unsetLastAccessedItem() {
+        lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
+
+            @Override
+            public void set(final Integer index) {
+                lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
+            }
+        };
     }
 
     @Override
