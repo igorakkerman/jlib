@@ -14,88 +14,84 @@
 
 package org.jlib.container.binaryrelation;
 
-import java.util.HashSet;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-import org.jlib.container.NoSuchItemException;
-import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Traverser over the Associations of a BinaryRelation.
+ * {@link Traverser} over the {@link Association Associations} of a
+ * {@link BinaryRelation}.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the binaryRelation
+ *        type of the values on the left hand side of the binaryRelation
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the binaryRelation
+ *        type of the values on the right hand side of the binaryRelation
  * 
  * @author Igor Akkerman
  */
-class BinaryRelationTraverser<LeftValue, RightValue>
+public abstract class BinaryRelationTraverser<LeftValue, RightValue>
 implements Traverser<Association<LeftValue, RightValue>> {
 
-    /** BinaryRelation traversed by this Traverser */
+    /** traversed {@link BinaryRelation} */
     private final BinaryRelation<LeftValue, RightValue> binaryRelation;
 
-    /**
-     * Traverser over the LeftValues of the BinaryRelation traversed by this
-     * Traverser
-     */
-    private final Traverser<LeftValue> leftValuesTraverser;
+    /** {@link Iterator} over the LeftValues of the {@link BinaryRelation} */
+    private final Iterator<LeftValue> leftValuesIterator;
 
-    /**
-     * Traverser over the RightValues of the BinaryRelation traversed by this
-     * Traverser
-     */
-    private Traverser<RightValue> rightValuesTraverser;
+    /** {@link Iterator} over the RightValues of the {@link BinaryRelation} */
+    private Iterator<RightValue> rightValuesIterator;
 
     /** current LeftValue */
     private LeftValue leftValue;
 
     /**
-     * Creates a new BinaryRelationTraverser.
+     * Creates a new {@link BinaryRelationTraverser} for the specified
+     * {@link BinaryRelation}.
      * 
      * @param binaryRelation
-     *        BinaryRelation traversed by this Traverser
+     *        traversed {@link BinaryRelation}
      */
     protected BinaryRelationTraverser(final BinaryRelation<LeftValue, RightValue> binaryRelation) {
         super();
+
         this.binaryRelation = binaryRelation;
-        leftValuesTraverser = new IterableTraverser<>(binaryRelation.leftValues());
-        if (leftValuesTraverser.isNextItemAccessible())
-            getNextLeftValue();
+
+        leftValuesIterator = binaryRelation.leftValues().iterator();
+
+        if (leftValuesIterator.hasNext())
+            readNextLeftValue();
         else
-            rightValuesTraverser = new IterableTraverser<>(new HashSet<RightValue>());
+            rightValuesIterator = Collections.<RightValue> emptySet().iterator();
     }
 
     /**
      * Retrieves the next LeftValue.
      */
-    private void getNextLeftValue() {
-        leftValue = leftValuesTraverser.getNextItem();
-        rightValuesTraverser = new IterableTraverser<>(binaryRelation.rightSet(leftValue));
+    private void readNextLeftValue() {
+        leftValue = leftValuesIterator.next();
+        rightValuesIterator = binaryRelation.rightSet(leftValue).iterator();
     }
 
     @Override
     public boolean isNextItemAccessible() {
-        if (rightValuesTraverser.isNextItemAccessible())
-            return true;
-
-        if (!leftValuesTraverser.isNextItemAccessible())
-            return false;
-
-        getNextLeftValue();
-
-        return true;
+        return rightValuesIterator.hasNext() || leftValuesIterator.hasNext();
     }
 
     @Override
     public Association<LeftValue, RightValue> getNextItem()
-    throws NoSuchItemException {
-        if (!isNextItemAccessible())
-            throw new NoNextItemException();
+    throws NoNextItemException {
+        try {
+            if (!rightValuesIterator.hasNext())
+                readNextLeftValue();
 
-        return new Association<LeftValue, RightValue>(leftValue, rightValuesTraverser.getNextItem());
+            return new Association<LeftValue, RightValue>(leftValue, rightValuesIterator.next());
+        }
+        catch (final NoSuchElementException exception) {
+            throw new NoNextItemException(binaryRelation, exception);
+        }
     }
 }
