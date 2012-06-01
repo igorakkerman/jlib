@@ -18,6 +18,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.jlib.core.reference.InitializedValueHolder;
+import org.jlib.core.reference.NoValueSetException;
+import org.jlib.core.reference.UninitializedValueHolder;
+import org.jlib.core.reference.ValueHolder;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 
@@ -51,6 +55,9 @@ implements Traverser<Association<LeftValue, RightValue>> {
     /** current LeftValue */
     private LeftValue leftValue;
 
+    /** {@link ValueHolder} for the index of the last accessed Item */
+    private ValueHolder<Association<LeftValue, RightValue>> lastAccessedItemHolder;
+
     /**
      * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
      * {@link BinaryRelation}.
@@ -58,7 +65,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
      * @param binaryRelation
      *        traversed {@link BinaryRelation}
      */
-    protected DefaultBinaryRelationTraverser(final Relation binaryRelation) {
+    public DefaultBinaryRelationTraverser(final Relation binaryRelation) {
         super();
 
         this.binaryRelation = binaryRelation;
@@ -69,6 +76,22 @@ implements Traverser<Association<LeftValue, RightValue>> {
             readNextLeftValue();
         else
             rightValuesIterator = Collections.<RightValue> emptySet().iterator();
+
+        unsetLastAccessedItem();
+    }
+
+    /**
+     * Unregisters the last accessed Item.
+     */
+    protected void unsetLastAccessedItem() {
+        lastAccessedItemHolder = new UninitializedValueHolder<Association<LeftValue, RightValue>>() {
+
+            @Override
+            public void set(final Association<LeftValue, RightValue> association) {
+                lastAccessedItemHolder = new InitializedValueHolder<>(association);
+            }
+        };
+
     }
 
     /**
@@ -91,7 +114,12 @@ implements Traverser<Association<LeftValue, RightValue>> {
             if (!rightValuesIterator.hasNext())
                 readNextLeftValue();
 
-            return new Association<LeftValue, RightValue>(leftValue, rightValuesIterator.next());
+            final Association<LeftValue, RightValue> association =
+                new Association<>(leftValue, rightValuesIterator.next());
+
+            lastAccessedItemHolder.set(association);
+
+            return association;
         }
         catch (final NoSuchElementException exception) {
             throw new NoNextItemException(binaryRelation, exception);
@@ -105,5 +133,19 @@ implements Traverser<Association<LeftValue, RightValue>> {
      */
     public Relation getBinaryRelation() {
         return binaryRelation;
+    }
+
+    /**
+     * Returns the last {@link Association} returned by this
+     * {@link DefaultBinaryRelationTraverser}.
+     * 
+     * @return last returned {@link Association}
+     * 
+     * @throws NoValueSetException
+     *         if no {@link Association} has been accessed
+     */
+    protected Association<LeftValue, RightValue> getLastAccessedItem()
+    throws NoValueSetException {
+        return lastAccessedItemHolder.get();
     }
 }

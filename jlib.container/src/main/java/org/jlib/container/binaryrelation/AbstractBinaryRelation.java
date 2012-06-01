@@ -43,7 +43,7 @@ implements BinaryRelation<LeftValue, RightValue> {
 
     @Override
     public Traverser<Association<LeftValue, RightValue>> createTraverser() {
-        return new BinaryRelationTraverser<LeftValue, RightValue>(this);
+        return new DefaultBinaryRelationTraverser<LeftValue, RightValue, BinaryRelation<LeftValue, RightValue>>(this);
     }
 
     @Override

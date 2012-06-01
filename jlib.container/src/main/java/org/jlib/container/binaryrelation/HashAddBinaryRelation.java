@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.bijection.ObjectAlreadyAssociatedException;
 
 /**
  * AddBinaryRelation implemented using hashing for left and right hand
@@ -48,7 +49,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * @author Igor Akkerman
      */
     private class DelegateBinaryRelation<DelegateLeftValue, DelegateRightValue>
-    extends AbstractReplaceAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
+    extends AbstractAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
 
         /**
          * AddBinaryRelation for which this BinaryRelation is used as

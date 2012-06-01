@@ -26,8 +26,7 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.BinaryRelationTraverser;
-import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.DefaultBinaryRelationTraverser;
 
 /**
  * Bijection implemented using hashing for left and right hand side items.
@@ -201,7 +200,7 @@ implements Bijection<LeftValue, RightValue> {
 
     @Override
     public Traverser<Association<LeftValue, RightValue>> iterator() {
-        return new BinaryRelationTraverser<LeftValue, RightValue>(this);
+        return new DefaultBinaryRelationTraverser<LeftValue, RightValue>(this);
     }
 
     @Override

@@ -19,10 +19,9 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.AbstractReplaceAddBinaryRelation;
+import org.jlib.container.binaryrelation.AbstractAddBinaryRelation;
 import org.jlib.container.binaryrelation.AddBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
 
 /**
  * {@link AddBijection} implemented using hashing for left and right hand side
@@ -54,7 +53,7 @@ implements AddBijection<LeftValue, RightValue> {
      * @author Igor Akkerman
      */
     private class DelegateBijection<DelegateLeftValue, DelegateRightValue>
-    extends AbstractReplaceAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
+    extends AbstractAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
 
         /** Bijection for which this Bijection is used as delegate */
         private final AddBijection<DelegateLeftValue, DelegateRightValue> baseBijection;
