@@ -30,6 +30,8 @@ implements IndexSequenceTraverser<Item> {
     /** {@link ValueHolder} for the index of the last accessed Item */
     private ValueHolder<Integer> lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
 
+        // FIXME: needs to be reset after removal!!!
+
         @Override
         public void set(final Integer index) {
             lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
