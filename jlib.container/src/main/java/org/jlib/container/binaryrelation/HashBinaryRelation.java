@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.bijection.Bijection;
 
 /**
- * BinaryRelation implemented using hashing for left and right hand side
- * items.
+ * BinaryRelation implemented using hashing for left and right hand side items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
@@ -57,9 +57,9 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      */
-    public HashBinaryRelation(Container<Association<LeftValue, RightValue>> associations) {
+    public HashBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             add(association.left(), association.right());
     }
 
@@ -70,9 +70,9 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Collection of the Associations to add
      */
-    public HashBinaryRelation(Collection<Association<LeftValue, RightValue>> associations) {
+    public HashBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             add(association.left(), association.right());
     }
 
@@ -83,27 +83,24 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Comma separated sequence of the Associations to add
      */
-    public HashBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) Association<LeftValue, RightValue>... associations) {
+    public HashBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             add(association.left(), association.right());
     }
 
     /**
-     * Associates the specified LeftValue with the specified RightValue in
-     * this Bijection.
+     * Associates the specified LeftValue with the specified RightValue in this
+     * {@link Bijection}.
      * 
      * @param leftValue
      *        LeftValue of the Association
-     *        
+     * 
      * @param rightValue
      *        RightValue of the Association
      */
-    protected void add(LeftValue leftValue, RightValue rightValue) {
-        if (leftValue == null || rightValue == null)
-            throw new NullPointerException();
-
-        Set<RightValue> rightValueSet;
+    protected void add(final LeftValue leftValue, final RightValue rightValue) {
+        final Set<RightValue> rightValueSet;
         if (hasLeft(leftValue))
             rightValueSet = leftToRightMap.get(leftValue);
         else {
@@ -112,7 +109,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
         }
         rightValueSet.add(rightValue);
 
-        Set<LeftValue> leftValueSet;
+        final Set<LeftValue> leftValueSet;
         if (hasRight(rightValue))
             leftValueSet = rightToLeftMap.get(rightValue);
         else {
@@ -124,12 +121,12 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public boolean hasLeft(LeftValue leftValue) {
+    public boolean hasLeft(final LeftValue leftValue) {
         return leftToRightMap.containsKey(leftValue);
     }
 
     @Override
-    public boolean hasRight(RightValue rightValue) {
+    public boolean hasRight(final RightValue rightValue) {
         return rightToLeftMap.containsKey(rightValue);
     }
 
@@ -139,7 +136,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Set<LeftValue> leftSet(RightValue rightValue) {
+    public Set<LeftValue> leftSet(final RightValue rightValue) {
         return rightToLeftMap.get(rightValue);
     }
 
@@ -149,7 +146,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Set<RightValue> rightSet(LeftValue leftValue) {
+    public Set<RightValue> rightSet(final LeftValue leftValue) {
         return leftToRightMap.get(leftValue);
     }
 
