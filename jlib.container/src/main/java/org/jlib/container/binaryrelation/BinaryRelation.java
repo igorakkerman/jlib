@@ -39,7 +39,9 @@ extends Container<Association<LeftValue, RightValue>> {
      * @param leftValue
      *        LeftValue associated with the Set of RightValues to return
      * 
-     * @return Set of RightValues associated with {@code leftValue}
+     * @return {@link Set} of RightValues associated with {@code leftValue};
+     *         empty {@link Set} if no RightValue is associated with
+     *         {@code leftValue}
      */
     public Set<RightValue> rightSet(final LeftValue leftValue);
 
@@ -49,7 +51,9 @@ extends Container<Association<LeftValue, RightValue>> {
      * @param rightValue
      *        RightValue associated with the Set of LeftValues to return
      * 
-     * @return Set of RightValues associated with {@code leftValue}
+     * @return {@link Set} of RightValues associated with {@code leftValue}
+     *         empty {@link Set} if no RightValue is associated with
+     *         {@code leftValue}
      */
     public Set<LeftValue> leftSet(final RightValue rightValue);
 
@@ -93,24 +97,26 @@ extends Container<Association<LeftValue, RightValue>> {
     public boolean hasRight(final RightValue rightValue);
 
     /**
-     * Returns a Set containing the LeftValues of this BinaryRelation. The Set
-     * is updated when this BinaryRelation is modified. Note that, in that case,
-     * the values returned by the Set's Traverser may be inconsistent. The Set
-     * is immutable, that is, calling one of its modifying operations results in
-     * an {@link UnsupportedOperationException}.
+     * Returns a {@link Set} containing the LeftValues of this
+     * {@link BinaryRelation}. The {@link Set} is updated when this
+     * {@link BinaryRelation} is modified. Note that, in that case, the values
+     * returned by the {@link Set}'s {@link BinaryRelationTraverser} may be
+     * inconsistent. The {@link Set} is immutable, that is, calling one of its
+     * modifying operations results in an {@link UnsupportedOperationException}.
      * 
-     * @return Set containing the LeftValues of this BinaryRelation
+     * @return {@link Set} containing the LeftValues
      */
     public Set<LeftValue> leftValues();
 
     /**
-     * Returns a Set containing the RightValues of this BinaryRelation. The Set
-     * is updated when this BinaryRelation is modified. Note that, in that case,
-     * the values returned by the Set's Traverser may be inconsistent. The Set
-     * is immutable, that is, calling one of its modifying operations results in
-     * an {@link UnsupportedOperationException}.
+     * Returns a {@link Set} containing the RightValues of this
+     * {@link BinaryRelation}. The {@link Set} is updated when this
+     * {@link BinaryRelation} is modified. Note that, in that case, the values
+     * returned by the {@link Set}'s {@link BinaryRelationTraverser} may be
+     * inconsistent. The {@link Set} is immutable, that is, calling one of its
+     * modifying operations results in an {@link UnsupportedOperationException}.
      * 
-     * @return Set containing the RightValues of this BinaryRelation
+     * @return {@link Set} containing the RightValues
      */
     public Set<RightValue> rightValues();
 }
