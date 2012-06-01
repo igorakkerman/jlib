@@ -22,8 +22,8 @@ import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * {@link Traverser} over the {@link Association Associations} of a
- * {@link BinaryRelation}.
+ * Default implementation of a {@link Traverser} over the {@link Association}
+ * items of a {@link BinaryRelation}.
  * 
  * @param <LeftValue>
  *        type of the values on the left hand side of the binaryRelation
