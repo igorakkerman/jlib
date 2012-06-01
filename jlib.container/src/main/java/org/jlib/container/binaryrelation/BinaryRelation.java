@@ -38,6 +38,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @param leftValue
      *        LeftValue associated with the Set of RightValues to return
+     * 
      * @return Set of RightValues associated with {@code leftValue}
      */
     public Set<RightValue> rightSet(final LeftValue leftValue);
@@ -47,6 +48,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @param rightValue
      *        RightValue associated with the Set of LeftValues to return
+     * 
      * @return Set of RightValues associated with {@code leftValue}
      */
     public Set<LeftValue> leftSet(final RightValue rightValue);
@@ -57,8 +59,10 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @param leftValue
      *        LeftValue of the potential association
+     * 
      * @param rightValue
      *        RightValue of the potential association
+     * 
      * @return {@code true} if {@code leftValue} is associated with
      *         {@code rightValue}
      */
@@ -70,6 +74,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @param leftValue
      *        the LeftValue
+     * 
      * @return {@code true} if {@code leftValue} is associated with some
      *         RightValue; {@code false} otherwise
      */
@@ -81,6 +86,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @param rightValue
      *        the RightValue
+     * 
      * @return {@code true} if {@code rightValue} is associated with some
      *         LeftValue; {@code false} otherwise
      */
@@ -89,9 +95,9 @@ extends Container<Association<LeftValue, RightValue>> {
     /**
      * Returns a Set containing the LeftValues of this BinaryRelation. The Set
      * is updated when this BinaryRelation is modified. Note that, in that case,
-     * the values returned by the Set's Traverser may be inconsistent. The Set is
-     * immutable, that is, calling one of its modifying operations results in an
-     * {@link UnsupportedOperationException}.
+     * the values returned by the Set's Traverser may be inconsistent. The Set
+     * is immutable, that is, calling one of its modifying operations results in
+     * an {@link UnsupportedOperationException}.
      * 
      * @return Set containing the LeftValues of this BinaryRelation
      */
@@ -100,9 +106,9 @@ extends Container<Association<LeftValue, RightValue>> {
     /**
      * Returns a Set containing the RightValues of this BinaryRelation. The Set
      * is updated when this BinaryRelation is modified. Note that, in that case,
-     * the values returned by the Set's Traverser may be inconsistent. The Set is
-     * immutable, that is, calling one of its modifying operations results in an
-     * {@link UnsupportedOperationException}.
+     * the values returned by the Set's Traverser may be inconsistent. The Set
+     * is immutable, that is, calling one of its modifying operations results in
+     * an {@link UnsupportedOperationException}.
      * 
      * @return Set containing the RightValues of this BinaryRelation
      */
