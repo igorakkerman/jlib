@@ -35,16 +35,15 @@ extends BinaryRelation<LeftValue, RightValue>, AddContainer<Association<LeftValu
      * BinaryRelation.
      * 
      * @param leftValue
-     *        LeftValue of the association
+     *        LeftValue of the {@link Association}
      * 
      * @param rightValue
-     *        RightValue of the association
+     *        RightValue of the {@link Association}
      * 
-     * @throws ObjectAlreadyAssociatedException
-     *         if {@code leftValue} or {@code rightValue} is already associated
-     *         to another Object and the implementation doesn't allow an Object
-     *         to have more than one association
+     * @throws IllegalAssociationException
+     *         if some property of the specified {@link Association} prevents it
+     *         from being added
      */
     public void add(LeftValue leftValue, RightValue rightValue)
-    throws ObjectAlreadyAssociatedException;
+    throws IllegalAssociationException;
 }
