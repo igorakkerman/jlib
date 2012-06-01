@@ -33,11 +33,11 @@ extends ReplaceTraverser<Item>, SequenceTraverser<Item> {
      * @param newItem
      *        Item by which the former Item is replaced
      * 
-     * @throws NoItemToReplaceException
+     * @throws NoSequenceItemToReplaceException
      *         if no Item has been returned by this
      *         {@link ReplaceSequenceTraverser}
      */
     @Override
     public void replace(final Item newItem)
-    throws NoItemToReplaceException;
+    throws NoSequenceItemToReplaceException;
 }

@@ -1,7 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.text.MessageFormat;
-
 import org.jlib.core.traverser.IllegalTraverserStateException;
 
 /**
@@ -29,8 +27,8 @@ extends IllegalTraverserStateException {
     }
 
     /**
-     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
-     * error message.
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the
+     * specified error message.
      * 
      * @param sequence
      *        referenced {@link Sequence}
@@ -43,8 +41,8 @@ extends IllegalTraverserStateException {
     }
 
     /**
-     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
-     * cause.
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the
+     * specified cause.
      * 
      * @param sequence
      *        referenced {@link Sequence}
@@ -58,8 +56,8 @@ extends IllegalTraverserStateException {
     }
 
     /**
-     * Creates a new {@link IllegalSequenceTraverserStateException} with the specified
-     * error message and cause.
+     * Creates a new {@link IllegalSequenceTraverserStateException} with the
+     * specified error message and cause.
      * 
      * @param sequence
      *        referenced {@link Sequence}
@@ -71,8 +69,9 @@ extends IllegalTraverserStateException {
      *        {@link Throwable} that caused this
      *        {@link IllegalSequenceTraverserStateException}
      */
-    public IllegalSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
-        super(MessageFormat.format(errorMessage, sequence), cause);
+    public IllegalSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage,
+                                                  final Throwable cause) {
+        super(sequence, errorMessage, cause);
 
         this.sequence = sequence;
     }
@@ -82,7 +81,8 @@ extends IllegalTraverserStateException {
      * 
      * @return referenced {@link Sequence}
      */
-    public Sequence<?> getSequence() {
+    @Override
+    public Sequence<?> getTraversible() {
         return sequence;
     }
 }

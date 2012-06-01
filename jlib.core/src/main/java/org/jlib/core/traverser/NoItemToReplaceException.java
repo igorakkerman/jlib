@@ -6,29 +6,30 @@ package org.jlib.core.traverser;
  * 
  * @author Igor Akkerman
  */
-public class NoItemToRemoveException
+public class NoItemToReplaceException
 extends IllegalTraverserStateException {
 
     /**
-     * Creates a new {@link NoItemToRemoveException}.
+     * Creates a new {@link NoItemToReplaceException}.
      * 
      * @param traversible
      *        traversed {@link Traversible}
      */
-    public NoItemToRemoveException(final Traversible<?> traversible) {
+    public NoItemToReplaceException(final Traversible<?> traversible) {
         super(traversible);
     }
 
     /**
-     * Creates a new {@link NoItemToRemoveException} with the specified cause.
+     * Creates a new {@link NoItemToReplaceException} with the specified cause.
      * 
      * @param traversible
      *        traversed {@link Traversible}
      * 
      * @param cause
-     *        {@link Throwable} that caused this {@link NoItemToRemoveException}
+     *        {@link Throwable} that caused this
+     *        {@link NoItemToReplaceException}
      */
-    public NoItemToRemoveException(final Traversible<?> traversible, final Throwable cause) {
+    public NoItemToReplaceException(final Traversible<?> traversible, final Throwable cause) {
         super(traversible, cause);
     }
 }

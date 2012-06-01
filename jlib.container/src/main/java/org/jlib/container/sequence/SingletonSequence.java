@@ -27,8 +27,8 @@ extends AbstractNonEmptySequence<Item> {
 
         @Override
         public Item getPreviousItem()
-        throws NoPreviousItemException {
-            throw new NoPreviousItemException(SingletonSequence.this);
+        throws NoPreviousSequenceItemException {
+            throw new NoPreviousSequenceItemException(SingletonSequence.this);
         }
 
         @Override
@@ -57,7 +57,7 @@ extends AbstractNonEmptySequence<Item> {
 
         @Override
         public Item getPreviousItem()
-        throws NoPreviousItemException {
+        throws NoPreviousSequenceItemException {
             currentDelegateTraverser = headTraverser;
 
             return item;
@@ -70,7 +70,7 @@ extends AbstractNonEmptySequence<Item> {
 
         @Override
         public Item getNextItem() {
-            throw new NoPreviousItemException(SingletonSequence.this);
+            throw new NoPreviousSequenceItemException(SingletonSequence.this);
         }
     };
 
@@ -95,7 +95,7 @@ extends AbstractNonEmptySequence<Item> {
 
             @Override
             public Item getPreviousItem()
-            throws NoPreviousItemException {
+            throws NoPreviousSequenceItemException {
                 return currentDelegateTraverser.getPreviousItem();
             }
 
@@ -106,7 +106,7 @@ extends AbstractNonEmptySequence<Item> {
 
             @Override
             public Item getNextItem()
-            throws NoNextItemException {
+            throws NoNextSequenceItemException {
                 return currentDelegateTraverser.getNextItem();
             }
 

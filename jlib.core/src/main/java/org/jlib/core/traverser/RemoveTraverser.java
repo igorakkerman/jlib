@@ -18,9 +18,9 @@ extends Traverser<Item> {
      *         if not called immediately after a call to {@link #getNextItem()}
      *         or an appropriate method
      * 
-     * @throws IllegalTraverserDelegateStateException
+     * @throws IllegalTraversibleStateException
      *         if an error was caused by a delegate used to remove the item
      */
     public void remove()
-    throws NoItemToRemoveException, IllegalTraverserDelegateStateException;
+    throws NoItemToRemoveException, IllegalTraversibleStateException;
 }

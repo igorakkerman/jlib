@@ -45,13 +45,13 @@ extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
 
     @Override
     public Item getPreviousItem()
-    throws NoPreviousItemException {
-        throw new NoPreviousItemException(getSequence());
+    throws NoPreviousSequenceItemException {
+        throw new NoPreviousSequenceItemException(getSequence());
     }
 
     @Override
     public Item getNextItem()
-    throws NoNextItemException {
-        throw new NoNextItemException(getSequence());
+    throws NoNextSequenceItemException {
+        throw new NoNextSequenceItemException(getSequence());
     }
 }

@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.NoItemToReplaceException;
+import org.jlib.container.sequence.NoSequenceItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.reference.NoValueSetException;
 
@@ -67,12 +67,12 @@ implements ReplaceIndexSequenceTraverser<Item> {
 
     @Override
     public void replace(final Item newItem)
-    throws NoItemToReplaceException {
+    throws NoSequenceItemToReplaceException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
         catch (final NoValueSetException exception) {
-            throw new NoItemToReplaceException(getSequence(), exception);
+            throw new NoSequenceItemToReplaceException(getSequence(), exception);
         }
     }
 }

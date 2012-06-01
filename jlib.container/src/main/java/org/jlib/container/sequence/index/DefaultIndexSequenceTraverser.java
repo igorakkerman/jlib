@@ -1,8 +1,8 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceTraverser;
-import org.jlib.container.sequence.NoNextItemException;
-import org.jlib.container.sequence.NoPreviousItemException;
+import org.jlib.container.sequence.NoNextSequenceItemException;
+import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.reference.InitializedValueHolder;
 import org.jlib.core.reference.NoValueSetException;
@@ -84,7 +84,7 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public final Item getPreviousItem()
-    throws NoPreviousItemException {
+    throws NoPreviousSequenceItemException {
         try {
             final Item sequenceItem = getSequenceItem(potentialNextItemIndex - 1);
 
@@ -93,13 +93,13 @@ implements IndexSequenceTraverser<Item> {
             return sequenceItem;
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoPreviousItemException(getSequence(), exception);
+            throw new NoPreviousSequenceItemException(getSequence(), exception);
         }
     }
 
     @Override
     public Item getNextItem()
-    throws NoNextItemException {
+    throws NoNextSequenceItemException {
         try {
             final Item sequenceItem = getSequenceItem(potentialNextItemIndex);
 
@@ -108,7 +108,7 @@ implements IndexSequenceTraverser<Item> {
             return sequenceItem;
         }
         catch (final SequenceIndexOutOfBoundsException exception) {
-            throw new NoNextItemException(getSequence(), exception);
+            throw new NoNextSequenceItemException(getSequence(), exception);
         }
     }
 
@@ -134,12 +134,12 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public int getPreviousItemIndex()
-    throws NoPreviousItemException {
+    throws NoPreviousSequenceItemException {
 
         final int previousItemIndex = potentialNextItemIndex - 1;
 
         if (previousItemIndex < getSequence().getFirstIndex())
-            throw new NoPreviousItemException(getSequence());
+            throw new NoPreviousSequenceItemException(getSequence());
 
         return previousItemIndex;
     }
@@ -147,7 +147,7 @@ implements IndexSequenceTraverser<Item> {
     @Override
     public int getNextItemIndex() {
         if (!isNextItemAccessible())
-            throw new NoPreviousItemException(getSequence());
+            throw new NoPreviousSequenceItemException(getSequence());
 
         return potentialNextItemIndex;
     }

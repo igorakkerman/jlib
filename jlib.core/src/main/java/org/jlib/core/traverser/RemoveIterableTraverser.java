@@ -14,6 +14,9 @@ public class RemoveIterableTraverser<Item>
 extends IterableTraverser<Item>
 implements RemoveTraverser<Item> {
 
+    /** referenced {@link Traversible} in case of an error */
+    private final Traversible<Item> traversible = new ConstantTraverserTraversible<>(this);
+
     /**
      * Creates a new {@link RemoveIterableTraverser} for the specified delegate
      * {@link Iterator}.
@@ -32,10 +35,10 @@ implements RemoveTraverser<Item> {
             getDelegateIterator().remove();
         }
         catch (final IllegalStateException exception) {
-            throw new NoItemToRemoveException(exception);
+            throw new NoItemToRemoveException(traversible, exception);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalTraverserDelegateStateException(exception);
+            throw new IllegalTraversibleStateException(traversible, exception);
         }
     }
 

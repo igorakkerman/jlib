@@ -15,11 +15,11 @@ public interface Traverser<Item> {
      * 
      * @return next Item
      * 
-     * @throws IllegalTraverserStateException
+     * @throws NoNextItemException
      *         if this {@link Traverser} has no next Item
      */
     public Item getNextItem()
-    throws IllegalTraverserStateException;
+    throws NoNextItemException;
 
     /**
      * Returns whether this {@link Traverser} has a next Item.

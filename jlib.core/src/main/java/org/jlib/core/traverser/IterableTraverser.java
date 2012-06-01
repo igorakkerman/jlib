@@ -17,6 +17,9 @@ implements Traverser<Item> {
     /** delegate {@link Iterator} */
     private final Iterator<Item> delegateIterator;
 
+    /** referenced {@link Traversible} in case of an error */
+    private final Traversible<Item> traversible = new ConstantTraverserTraversible<>(this);
+
     /**
      * Creates a new {@link IterableTraverser} for the specified delegate
      * {@link Iterator}.
@@ -32,12 +35,12 @@ implements Traverser<Item> {
 
     @Override
     public Item getNextItem()
-    throws IllegalTraverserStateException {
+    throws NoNextItemException {
         try {
             return delegateIterator.next();
         }
         catch (final NoSuchElementException exception) {
-            throw new NoNextItemException(exception);
+            throw new NoNextItemException(traversible, exception);
         }
     }
 

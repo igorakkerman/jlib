@@ -41,7 +41,7 @@ implements ReplaceMatrixTraverser<Entry> {
 
     @Override
     public Entry getNextItem() {
-        throw new NoNextItemException();
+        throw new NoNextItemException(EmptyMatrix.getInstance());
     }
 
     @Override
