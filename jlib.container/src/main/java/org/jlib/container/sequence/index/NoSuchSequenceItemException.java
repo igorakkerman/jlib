@@ -1,17 +1,16 @@
 package org.jlib.container.sequence.index;
 
-import java.text.MessageFormat;
-
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceRuntimeException;
 
 /**
- * {@link SequenceRuntimeException} thrown when a requested Item is not found.
+ * {@link IllegalSequenceArgumentException} thrown when a requested Item is not
+ * found.
  * 
  * @author Igor Akkerman
  */
 public class NoSuchSequenceItemException
-extends SequenceRuntimeException {
+extends IllegalSequenceArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -8162511917404174346L;
@@ -32,7 +31,7 @@ extends SequenceRuntimeException {
      *        Item that could not be found
      */
     public <Item> NoSuchSequenceItemException(final Sequence<Item> sequence, final Item item) {
-        super(sequence, MessageFormat.format("{1}: {2}", item, sequence));
+        super(sequence, "{1}: {2}", item);
 
         this.item = item;
     }
