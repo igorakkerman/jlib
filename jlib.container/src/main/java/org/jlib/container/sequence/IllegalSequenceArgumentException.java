@@ -35,9 +35,13 @@ extends IllegalContainerArgumentException {
      * 
      * @param messagePattern
      *        {@link String} specifying the error message pattern
+     * 
+     * @param messageParameters
+     *        sequence of {@link Object} error message parameters
      */
-    public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern) {
-        this(sequence, messagePattern, null);
+    public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern,
+                                            final Object... messageParameters) {
+        this(sequence, messagePattern, null, messageParameters);
     }
 
     /**
@@ -68,10 +72,13 @@ extends IllegalContainerArgumentException {
      * @param cause
      *        {@link Throwable} that caused this
      *        {@link IllegalSequenceArgumentException}
+     * 
+     * @param messageParameters
+     *        sequence of {@link Object} error message parameters
      */
     public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern,
-                                            final Throwable cause) {
-        super(sequence, messagePattern, cause);
+                                            final Throwable cause, final Object... messageParameters) {
+        super(sequence, messagePattern, cause, messageParameters);
 
         this.sequence = sequence;
     }
