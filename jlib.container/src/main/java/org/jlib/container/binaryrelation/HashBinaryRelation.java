@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.bijection.Bijection;
 
 /**
  * BinaryRelation implemented using hashing for left and right hand side items.
@@ -91,7 +90,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * {@link Bijection}.
+     * {@link HashBinaryRelation}.
      * 
      * @param leftValue
      *        LeftValue of the Association
