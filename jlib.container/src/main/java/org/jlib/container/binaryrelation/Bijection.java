@@ -14,22 +14,17 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.NoSuchItemException;
-
 /**
- * One-To-One association of Objects with other Objects. The further Objects are
- * called left hand side objects, the latter right hand side objects. A
- * Bijection does not allow {@code null} as a value for left or right hand side
- * objects. The object comparisons for lookup, retrieval and addition on both
- * sides are accomplished using the {@code equals} and {@code hashCode} methods
- * of the Objects. Note that for equal Objects their {@code hashCode} methods
- * must return the same value.
+ * One-To-One association of values with other values. The further values are
+ * called left hand side values, the latter right hand side values. The value
+ * comparisons for lookup, retrieval and addition on both sides are accomplished
+ * using the {@code equals} and {@code hashCode} methods of the Objects.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the Bijection
+ *        type of the values on the left hand side of the Bijection
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the Bijection
+ *        type of the values on the right hand side of the Bijection
  * 
  * @author Igor Akkerman
  */
@@ -45,11 +40,11 @@ extends BinaryRelation<LeftValue, RightValue> {
      * 
      * @return RightValue associated with {@code leftValue}
      * 
-     * @throws NoSuchItemException
+     * @throws NoSuchLeftValueException
      *         if no RightValue is associated with {@code leftValue}
      */
     public RightValue right(LeftValue leftValue)
-    throws NoSuchItemException;
+    throws NoSuchLeftValueException;
 
     /**
      * Returns the LeftValue associated with the specified RightValue by this
@@ -60,9 +55,9 @@ extends BinaryRelation<LeftValue, RightValue> {
      * 
      * @return LeftValue associated with {@code rightValue}
      * 
-     * @throws NoSuchItemException
+     * @throws NoSuchRightValueException
      *         if no LeftValue is associated with {@code rightValue}
      */
     public LeftValue left(RightValue rightValue)
-    throws NoSuchItemException;
+    throws NoSuchRightValueException;
 }
