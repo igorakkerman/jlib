@@ -17,6 +17,7 @@ package org.jlib.container.binaryrelation;
 import java.util.Set;
 
 import org.jlib.container.Container;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Binary association between various Objects. Each Object on either of the two
@@ -100,9 +101,9 @@ extends Container<Association<LeftValue, RightValue>> {
      * Returns a {@link Set} containing the LeftValues of this
      * {@link BinaryRelation}. The {@link Set} is updated when this
      * {@link BinaryRelation} is modified. Note that, in that case, the values
-     * returned by the {@link Set}'s {@link BinaryRelationTraverser} may be
-     * inconsistent. The {@link Set} is immutable, that is, calling one of its
-     * modifying operations results in an {@link UnsupportedOperationException}.
+     * returned by the {@link Set}'s {@link Traverser} may be inconsistent. The
+     * {@link Set} is immutable, that is, calling one of its modifying
+     * operations results in an {@link UnsupportedOperationException}.
      * 
      * @return {@link Set} containing the LeftValues
      */
@@ -112,9 +113,9 @@ extends Container<Association<LeftValue, RightValue>> {
      * Returns a {@link Set} containing the RightValues of this
      * {@link BinaryRelation}. The {@link Set} is updated when this
      * {@link BinaryRelation} is modified. Note that, in that case, the values
-     * returned by the {@link Set}'s {@link BinaryRelationTraverser} may be
-     * inconsistent. The {@link Set} is immutable, that is, calling one of its
-     * modifying operations results in an {@link UnsupportedOperationException}.
+     * returned by the {@link Set}'s {@link Traverser} may be inconsistent. The
+     * {@link Set} is immutable, that is, calling one of its modifying
+     * operations results in an {@link UnsupportedOperationException}.
      * 
      * @return {@link Set} containing the RightValues
      */
