@@ -12,11 +12,16 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.AbstractReplaceAddRemoveBinaryRelation;
+import org.jlib.container.binaryrelation.AddBinaryRelation;
+import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.RemoveBinaryRelation;
 import org.jlib.core.traverser.RemoveTraverser;
 sing hashing for left and right hand side
  * associations.

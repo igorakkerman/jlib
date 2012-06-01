@@ -18,12 +18,16 @@ import org.jlib.container.AbstractContainer;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Skeletal implementation of a BinaryRelation.
+ * Skeletal implementation of a {@link BinaryRelation}.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the BinaryRelation
+ *        type of the objects on the left hand side of the
+ *        {@link BinaryRelation}
+ * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the BinaryRelation
+ *        type of the objects on the right hand side of the
+ *        {@link BinaryRelation}
+ * 
  * @author Igor Akkerman
  */
 public abstract class AbstractBinaryRelation<LeftValue, RightValue>
@@ -31,7 +35,7 @@ extends AbstractContainer<Association<LeftValue, RightValue>>
 implements BinaryRelation<LeftValue, RightValue> {
 
     /**
-     * Creates a new AbstractBinaryRelation.
+     * Creates a new {@link AbstractBinaryRelation}.
      */
     protected AbstractBinaryRelation() {
         super();

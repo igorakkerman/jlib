@@ -12,7 +12,11 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.binaryrelation.bijection;
+
+import org.jlib.container.binaryrelation.BinaryRelation;
+import org.jlib.container.binaryrelation.NoSuchLeftValueException;
+import org.jlib.container.binaryrelation.NoSuchRightValueException;
 
 /**
  * One-To-One association of values with other values. The further values are

@@ -12,7 +12,7 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -24,6 +24,10 @@ import java.util.NoSuchItemException;
 import java.util.Set;
 
 import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.AbstractBinaryRelation;
+import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.BinaryRelationTraverser;
+import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
 
 /**
  * Bijection implemented using hashing for left and right hand side items.

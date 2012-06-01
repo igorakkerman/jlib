@@ -12,7 +12,9 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.binaryrelation.bijection;
+
+import org.jlib.container.binaryrelation.AddBinaryRelation;
 
 /**
  * Bijection allowing to add new associations.
