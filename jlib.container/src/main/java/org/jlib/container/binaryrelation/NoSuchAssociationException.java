@@ -8,14 +8,14 @@ import org.jlib.container.IllegalContainerArgumentException;
  * 
  * @author Igor Akkerman
  */
-public class NoSuchAssociationException
+public abstract class NoSuchAssociationException
 extends IllegalBinaryRelationArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -6717984941514100227L;
 
-    /** requested {@link Association} */
-    private final Association<?, ?> association;
+    /** left or right value of the missing {@link Association} */
+    private Object associationValue;
 
     /**
      * Creates a new {@link NoSuchAssociationException}.
@@ -23,22 +23,19 @@ extends IllegalBinaryRelationArgumentException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
-     * @param association
-     *        requested {@link Association}
+     * @param associationValue
+     *        left or right value of the missing {@link Association}
      */
-    public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Association<?, ?> association) {
-        super(binaryRelation, "{1}: {2}", association);
-
-        this.association = association;
+    public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object associationValue) {
+        super(binaryRelation, "{1}: {2}", associationValue);
     }
 
     /**
-     * Returns the requested {@link Association} causing this
-     * {@link NoSuchAssociationException}.
+     * Returns the left or right value of the missing {@link Association}.
      * 
-     * @return requested {@link Association}
+     * @return {@link Object} specifying the value
      */
-    public Association<?, ?> getAssociation() {
-        return association;
+    public Object getAssociationValue() {
+        return associationValue;
     }
 }
