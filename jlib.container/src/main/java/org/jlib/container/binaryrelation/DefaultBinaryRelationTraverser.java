@@ -33,7 +33,7 @@ import org.jlib.core.traverser.Traverser;
  * 
  * @author Igor Akkerman
  */
-public abstract class DefaultBinaryRelationTraverser<LeftValue, RightValue>
+public class DefaultBinaryRelationTraverser<LeftValue, RightValue>
 implements Traverser<Association<LeftValue, RightValue>> {
 
     /** traversed {@link BinaryRelation} */
