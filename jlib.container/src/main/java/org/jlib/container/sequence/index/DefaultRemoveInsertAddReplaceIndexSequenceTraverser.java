@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.NoItemToRemoveException;
+import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.reference.NoValueSetException;
 
@@ -69,12 +69,12 @@ implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
 
     @Override
     public void remove()
-    throws NoItemToRemoveException {
+    throws NoSequenceItemToRemoveException {
         try {
             getSequence().remove(getLastAccessedItemIndex());
         }
         catch (final NoValueSetException exception) {
-            throw new NoItemToRemoveException(getSequence(), exception);
+            throw new NoSequenceItemToRemoveException(getSequence(), exception);
         }
 
     }

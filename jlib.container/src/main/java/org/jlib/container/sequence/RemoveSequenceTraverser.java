@@ -29,5 +29,5 @@ extends SequenceTraverser<Item>, RemoveTraverser<Item> {
 
     @Override
     public void remove()
-    throws NoItemToRemoveException;
+    throws NoSequenceItemToRemoveException;
 }
