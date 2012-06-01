@@ -31,13 +31,16 @@ import org.jlib.core.traverser.Traverser;
  * @param <RightValue>
  *        type of the values on the right hand side of the binaryRelation
  * 
+ * @param <Relation>
+ *        type of the traversed {@link BinaryRelation}
+ * 
  * @author Igor Akkerman
  */
-public class DefaultBinaryRelationTraverser<LeftValue, RightValue>
+public class DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation extends BinaryRelation<LeftValue, RightValue>>
 implements Traverser<Association<LeftValue, RightValue>> {
 
     /** traversed {@link BinaryRelation} */
-    private final BinaryRelation<LeftValue, RightValue> binaryRelation;
+    private final Relation binaryRelation;
 
     /** {@link Iterator} over the LeftValues of the {@link BinaryRelation} */
     private final Iterator<LeftValue> leftValuesIterator;
@@ -55,7 +58,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
      * @param binaryRelation
      *        traversed {@link BinaryRelation}
      */
-    protected DefaultBinaryRelationTraverser(final BinaryRelation<LeftValue, RightValue> binaryRelation) {
+    protected DefaultBinaryRelationTraverser(final Relation binaryRelation) {
         super();
 
         this.binaryRelation = binaryRelation;
@@ -93,5 +96,14 @@ implements Traverser<Association<LeftValue, RightValue>> {
         catch (final NoSuchElementException exception) {
             throw new NoNextItemException(binaryRelation, exception);
         }
+    }
+
+    /**
+     * Returns the traversed {@link BinaryRelation}. .
+     * 
+     * @return traversed {@link BinaryRelation}
+     */
+    public Relation getBinaryRelation() {
+        return binaryRelation;
     }
 }
