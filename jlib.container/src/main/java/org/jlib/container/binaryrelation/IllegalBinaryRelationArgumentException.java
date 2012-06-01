@@ -8,7 +8,7 @@ import org.jlib.container.IllegalContainerArgumentException;
  * 
  * @author Igor Akkerman
  */
-public class IllegalBinaryRelationArgumentException
+public abstract class IllegalBinaryRelationArgumentException
 extends IllegalContainerArgumentException {
 
     /** serialVersionUID */
