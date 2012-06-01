@@ -67,7 +67,7 @@ extends IllegalBinaryRelationArgumentException {
     public IllegalAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue, final String messagePattern, final Throwable cause,
                                        final Object... messageParameters) {
-        super(binaryRelation, messagePattern, cause, messageParameters);
+        super(binaryRelation, messagePattern, cause, messageParameters, leftValue, rightValue);
 
         this.leftValue = leftValue;
         this.rightValue = rightValue;
