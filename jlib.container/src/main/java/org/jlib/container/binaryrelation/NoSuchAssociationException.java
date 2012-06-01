@@ -1,6 +1,5 @@
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 
 /**
@@ -10,7 +9,7 @@ import org.jlib.container.IllegalContainerArgumentException;
  * @author Igor Akkerman
  */
 public class NoSuchAssociationException
-extends IllegalContainerArgumentException {
+extends IllegalBinaryRelationArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -6717984941514100227L;
@@ -21,14 +20,14 @@ extends IllegalContainerArgumentException {
     /**
      * Creates a new {@link NoSuchAssociationException}.
      * 
-     * @param container
-     *        referenced {@link Container}
+     * @param binaryRelation
+     *        referenced {@link BinaryRelation}
      * 
      * @param association
-     *        requested Association
+     *        requested {@link Association}
      */
-    public NoSuchAssociationException(final Container<?> container, final Association<?, ?> association) {
-        super(container);
+    public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Association<?, ?> association) {
+        super(binaryRelation, "{1}: {2}", association);
 
         this.association = association;
     }
