@@ -19,8 +19,10 @@ package org.jlib.container.binaryrelation;
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
+ * 
  * @param <RightValue>
  *        type of the objects on the right hand side of the BinaryRelation
+ * 
  * @author Igor Akkerman
  */
 public class Association<LeftValue, RightValue> {
@@ -36,11 +38,13 @@ public class Association<LeftValue, RightValue> {
      * 
      * @param leftValue
      *        LeftValue of this Association
+     * 
      * @param rightValue
      *        RightValue of this Association
      */
-    public Association(LeftValue leftValue, RightValue rightValue) {
+    public Association(final LeftValue leftValue, final RightValue rightValue) {
         super();
+
         this.leftValue = leftValue;
         this.rightValue = rightValue;
     }
@@ -64,24 +68,17 @@ public class Association<LeftValue, RightValue> {
     }
 
     @Override
-    public boolean equals(Object otherObject) {
+    public boolean equals(final Object otherObject) {
         if (!(otherObject instanceof Association<?, ?>))
             return false;
-        Association<?, ?> otherAssociation = (Association<?, ?>) otherObject;
-        Object otherLeftValue = otherAssociation.left();
-        Object otherRightValue = otherAssociation.right();
-        if (leftValue != null && rightValue != null)
-            return leftValue.equals(otherLeftValue) && rightValue.equals(otherRightValue);
-        if (leftValue != null /* && rightValue == null */)
-            return leftValue.equals(otherLeftValue) && otherRightValue == null;
-        if (rightValue != null /* && leftValue == null */)
-            return rightValue.equals(otherRightValue) && otherLeftValue == null;
-        // if (leftValue == rightValue == null)
-        return otherLeftValue == null && otherRightValue == null;
+
+        final Association<?, ?> otherAssociation = (Association<?, ?>) otherObject;
+
+        return leftValue.equals(otherAssociation.left()) && rightValue.equals(otherAssociation.right());
     }
 
     @Override
     public int hashCode() {
-        return (leftValue != null ? leftValue.hashCode() : 0) + (rightValue != null ? rightValue.hashCode() : 0);
+        return leftValue.hashCode() * 2 + rightValue.hashCode();
     }
 }
