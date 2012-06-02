@@ -54,7 +54,7 @@ public class Association<LeftValue, RightValue> {
      * 
      * @return LeftValue of this Association
      */
-    public LeftValue left() {
+    public LeftValue getLeftValue() {
         return leftValue;
     }
 
@@ -63,7 +63,7 @@ public class Association<LeftValue, RightValue> {
      * 
      * @return RightValue of this Association
      */
-    public RightValue right() {
+    public RightValue getRightValue() {
         return rightValue;
     }
 
@@ -74,7 +74,7 @@ public class Association<LeftValue, RightValue> {
 
         final Association<?, ?> otherAssociation = (Association<?, ?>) otherObject;
 
-        return leftValue.equals(otherAssociation.left()) && rightValue.equals(otherAssociation.right());
+        return leftValue.equals(otherAssociation.getLeftValue()) && rightValue.equals(otherAssociation.getRightValue());
     }
 
     @Override

@@ -10,8 +10,6 @@ import org.jlib.container.RemoveContainer;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
-import static org.jlib.core.array.ArrayUtility.iterable;
-
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link AddContainer}. A
  * {@link CollectionAddRemoveContainer} is backed by a {@link Collection}
@@ -84,7 +82,7 @@ implements AddContainer<Item>, RemoveContainer<Item> {
 
     @Override
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
-        ContainerUtility.removeAll(this, iterable(items));
+        ContainerUtility.removeAll(this, items);
     }
 
     @Override

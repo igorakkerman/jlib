@@ -12,7 +12,6 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
@@ -96,7 +95,7 @@ implements AddSequence<Item> {
     @Override
     @SafeVarargs
     public final void addAll(final Item... items) {
-        ContainerUtility.addAll(this, iterable(items));
+        ContainerUtility.addAll(this, items);
     }
 
     @Override

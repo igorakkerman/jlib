@@ -23,27 +23,34 @@ import java.util.Set;
 import org.jlib.container.Container;
 
 /**
- * BinaryRelation implemented using hashing for left and right hand side items.
+ * {@link BinaryRelation} implemented using hashing for left and right hand side
+ * items.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the BinaryRelation
+ *        type of the items on the left hand side of the {@link BinaryRelation}
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the BinaryRelation
+ *        type of the items on the right hand side of the {@link BinaryRelation}
  * 
  * @author Igor Akkerman
  */
 public class HashBinaryRelation<LeftValue, RightValue>
 extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
-    /** Map assigning each LeftValue the Set of RightValues associated with it */
+    /**
+     * {@link Map} assigning each LeftValue the {@link Set} of RightValue items
+     * associated with it
+     */
     protected Map<LeftValue, Set<RightValue>> leftToRightMap = new HashMap<LeftValue, Set<RightValue>>();
 
-    /** Map assigning each RightValue the Set of LeftValues associated with it */
+    /**
+     * {@link Map} assigning each RightValue the Set of LeftValue items
+     * associated with it
+     */
     protected Map<RightValue, Set<LeftValue>> rightToLeftMap = new HashMap<RightValue, Set<LeftValue>>();
 
     /**
-     * Creates a new initially empty HashBinaryRelation.
+     * Creates a new initially empty {@link HashBinaryRelation}.
      */
     public HashBinaryRelation() {
         super();
@@ -60,7 +67,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**
@@ -74,7 +81,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**
@@ -88,7 +95,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**

@@ -76,7 +76,7 @@ implements Bijection<LeftValue, RightValue> {
     throws NullPointerException, ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**
@@ -95,7 +95,7 @@ implements Bijection<LeftValue, RightValue> {
     throws ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**
@@ -114,7 +114,7 @@ implements Bijection<LeftValue, RightValue> {
     throws ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            associate(association.left(), association.right());
+            associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**

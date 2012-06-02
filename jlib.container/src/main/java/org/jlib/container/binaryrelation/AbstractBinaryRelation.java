@@ -53,6 +53,6 @@ implements BinaryRelation<LeftValue, RightValue> {
 
     @Override
     public boolean contains(final Association<LeftValue, RightValue> association) {
-        return contains(association.left(), association.right());
+        return contains(association.getLeftValue(), association.getRightValue());
     }
 }

@@ -16,8 +16,6 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import static org.jlib.core.array.ArrayUtility.iterable;
-
 /**
  * Skeletal implementation of a AddContainer.
  * 
@@ -51,6 +49,7 @@ implements RemoveContainer<Item> {
         removeAll((Iterable<? extends Item>) items);
     }
 
+    @Override
     public void removeAll(final Iterable<? extends Item> items) {
         for (final Item item : items)
             remove(item);
@@ -58,7 +57,7 @@ implements RemoveContainer<Item> {
 
     @Override
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
-        ContainerUtility.removeAll(this, iterable(items));
+        ContainerUtility.removeAll(this, items);
     }
 
     @Override
