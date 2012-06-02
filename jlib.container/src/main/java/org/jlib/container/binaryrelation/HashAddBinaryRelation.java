@@ -70,7 +70,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new AddHashBinaryRelation containing the {@link Association}
+     * Creates a new HashRemoveBinaryRelation containing the {@link Association}
      * items specified in a comma separated sequence.
      * 
      * @param associations
