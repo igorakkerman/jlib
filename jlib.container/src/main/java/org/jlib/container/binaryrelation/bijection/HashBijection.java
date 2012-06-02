@@ -76,7 +76,7 @@ implements Bijection<LeftValue, RightValue> {
     throws NullPointerException, ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -95,7 +95,7 @@ implements Bijection<LeftValue, RightValue> {
     throws ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -114,7 +114,7 @@ implements Bijection<LeftValue, RightValue> {
     throws ObjectAlreadyAssociatedException {
         super();
         for (Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -131,7 +131,7 @@ implements Bijection<LeftValue, RightValue> {
      *         if {@code leftValue} or {@code rightValue} is already
      *         associated to another Object; an existing Association is ignored
      */
-    protected void add(LeftValue leftValue, RightValue rightValue)
+    protected void associate(LeftValue leftValue, RightValue rightValue)
     throws ObjectAlreadyAssociatedException {
         if (leftValue == null || rightValue == null)
             throw new NullPointerException();

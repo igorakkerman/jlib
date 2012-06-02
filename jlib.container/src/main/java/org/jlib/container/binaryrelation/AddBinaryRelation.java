@@ -44,6 +44,6 @@ extends BinaryRelation<LeftValue, RightValue>, AddContainer<Association<LeftValu
      *         if some property of the specified {@link Association} prevents it
      *         from being added
      */
-    public void add(LeftValue leftValue, RightValue rightValue)
+    public void associate(LeftValue leftValue, RightValue rightValue)
     throws IllegalAssociationException;
 }

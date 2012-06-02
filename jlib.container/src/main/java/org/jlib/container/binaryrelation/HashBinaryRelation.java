@@ -59,7 +59,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     public HashBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
         super();
         for (final Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -72,7 +72,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     public HashBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
         super();
         for (final Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -85,7 +85,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     public HashBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         super();
         for (final Association<LeftValue, RightValue> association : associations)
-            add(association.left(), association.right());
+            associate(association.left(), association.right());
     }
 
     /**
@@ -98,25 +98,46 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the Association
      */
-    protected void add(final LeftValue leftValue, final RightValue rightValue) {
-        final Set<RightValue> rightValueSet;
-        if (hasLeft(leftValue))
-            rightValueSet = leftToRightMap.get(leftValue);
-        else {
-            rightValueSet = new HashSet<RightValue>();
-            leftToRightMap.put(leftValue, rightValueSet);
-        }
-        rightValueSet.add(rightValue);
+    protected void associate(final LeftValue leftValue, final RightValue rightValue) {
 
-        final Set<LeftValue> leftValueSet;
-        if (hasRight(rightValue))
-            leftValueSet = rightToLeftMap.get(rightValue);
-        else {
-            leftValueSet = new HashSet<LeftValue>();
-            rightToLeftMap.put(rightValue, leftValueSet);
-        }
+        associate(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
+        associate(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
+    }
 
-        leftValueSet.add(leftValue);
+    /**
+     * Creates a unidirectional association between the specified values.
+     * 
+     * @param <Value1>
+     *        type of first value
+     * 
+     * @param <Value2>
+     *        type of second value
+     * 
+     * @param value1
+     *        first value
+     * 
+     * @param value2
+     *        second Value
+     * 
+     * @param value1ToValue2SetMap
+     *        {@link Map} associating Value1 items with a {@link Set} of Value2
+     *        items
+     * 
+     * @param value1Exists
+     *        boolean specifying whether {@code value1} is associated to at
+     *        least one Value2 item
+     */
+    private <Value1, Value2> void associate(final Value1 value1, final Value2 value2,
+                                            final Map<Value1, Set<Value2>> value1ToValue2SetMap,
+                                            final boolean value1Exists) {
+        final Set<Value2> value2Set = value1Exists
+            ? value1ToValue2SetMap.get(value1)
+            : new HashSet<Value2>();
+
+        value2Set.add(value2);
+
+        if (!value1Exists)
+            value1ToValue2SetMap.put(value1, value2Set);
     }
 
     @Override

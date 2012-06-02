@@ -188,9 +188,9 @@ implements AddBijection<LeftValue, RightValue> {
 
     // overridden to be made public
     @Override
-    public void add(LeftValue leftValue, RightValue rightValue)
+    public void associate(LeftValue leftValue, RightValue rightValue)
     throws NullPointerException, ObjectAlreadyAssociatedException {
-        super.add(leftValue, rightValue);
+        super.associate(leftValue, rightValue);
     }
 
     @Override

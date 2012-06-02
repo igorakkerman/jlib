@@ -72,7 +72,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         // @see org.jlib.container.binaryrelation.AddBinaryRelation#add(java.lang.Object, java.lang.Object)
         @Override
         public void add(final DelegateLeftValue leftValue, DelegateRightValue rightValue) {
-            baseBinaryRelation.add(leftValue, rightValue);
+            baseBinaryRelation.associate(leftValue, rightValue);
         }
 
         // @see org.jlib.container.binaryrelation.AddBinaryRelation#remove(java.lang.Object, java.lang.Object)
@@ -179,9 +179,9 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     // overridden to be made public
     @Override
-    public void add(final LeftValue leftValue, RightValue rightValue)
+    public void associate(final LeftValue leftValue, RightValue rightValue)
     throws ObjectAlreadyAssociatedException {
-        super.add(leftValue, rightValue);
+        super.associate(leftValue, rightValue);
     }
 
     @Override
