@@ -54,8 +54,8 @@ extends AbstractIndexSequence<Item> {
 
     /**
      * Replaces the Item stored at the specified index in this
-     * {@link AbstractInitializeableIndexSequence} by the specified Item expecting
-     * the index to be valid.
+     * {@link AbstractInitializeableIndexSequence} by the specified Item
+     * expecting the index to be valid.
      * 
      * @param index
      *        integer specifying the valid index
@@ -64,5 +64,4 @@ extends AbstractIndexSequence<Item> {
      *        Item to store
      */
     protected abstract void replaceStoredItem(final int index, final Item item);
-
 }
