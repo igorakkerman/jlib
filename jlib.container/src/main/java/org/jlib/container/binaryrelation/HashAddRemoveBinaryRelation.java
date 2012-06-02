@@ -33,19 +33,19 @@ import org.jlib.core.traverser.RemoveTraverser;
  * 
  * @author Igor Akkerman
  */
-public class HashRemoveBinaryRelation<LeftValue, RightValue>
+public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
 extends HashAddBinaryRelation<LeftValue, RightValue>
 implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
-     * Creates a new initially empty {@link HashRemoveBinaryRelation}.
+     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
      */
-    public HashRemoveBinaryRelation() {
+    public HashAddRemoveBinaryRelation() {
         super();
     }
 
     /**
-     * Creates a new {@link HashRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Container}.
      * 
      * @param associations
@@ -55,23 +55,23 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *         if for one of the specified Associations
      *         {@code left() == null || right() == null}
      */
-    public HashRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
+    public HashAddRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
         super(associations);
     }
 
     /**
-     * Creates a new {@link HashRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Collection}.
      * 
      * @param associations
      *        {@link Collection} of {@link Association} items to add
      */
-    public HashRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
+    public HashAddRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
         super(associations);
     }
 
     /**
-     * Creates a new HashRemoveBinaryRelation containing the {@link Association}
+     * Creates a new HashAddRemoveBinaryRelation containing the {@link Association}
      * items specified in a comma separated sequence.
      * 
      * @param associations
@@ -81,7 +81,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *         if for one of the specified Associations
      *         {@code left() == null || right() == null}
      */
-    public HashRemoveBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    public HashAddRemoveBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         super(associations);
     }
 
