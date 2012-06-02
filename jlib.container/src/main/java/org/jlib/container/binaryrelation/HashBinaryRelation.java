@@ -58,6 +58,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      */
     public HashBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.left(), association.right());
     }
@@ -71,6 +72,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      */
     public HashBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.left(), association.right());
     }
@@ -84,6 +86,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      */
     public HashBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.left(), association.right());
     }
