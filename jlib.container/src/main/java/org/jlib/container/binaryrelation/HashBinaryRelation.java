@@ -34,7 +34,7 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 public class HashBinaryRelation<LeftValue, RightValue>
-extends AbstractBinaryRelation<LeftValue, RightValue> {
+extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     /** Map assigning each LeftValue the Set of RightValues associated with it */
     protected Map<LeftValue, Set<RightValue>> leftToRightMap = new HashMap<LeftValue, Set<RightValue>>();
@@ -101,6 +101,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the Association
      */
+    @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue) {
 
         associateUnidirectional(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));

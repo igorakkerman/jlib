@@ -16,14 +16,13 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-import java.util.Set;
-
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.bijection.ObjectAlreadyAssociatedException;
+import org.jlib.core.traverser.Traverser;
 
 /**
- * AddBinaryRelation implemented using hashing for left and right hand
- * side items.
+ * AddBinaryRelation implemented using hashing for left and right hand side
+ * items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
@@ -34,95 +33,6 @@ import org.jlib.container.binaryrelation.bijection.ObjectAlreadyAssociatedExcept
 public class AddHashBinaryRelation<LeftValue, RightValue>
 extends HashBinaryRelation<LeftValue, RightValue>
 implements AddBinaryRelation<LeftValue, RightValue> {
-
-    /**
-     * AddBinaryRelation used as delegate for some methods allowing the
-     * {@code AddHashBinaryRelation} class to implement the
-     * {@link AddBinaryRelation} interface.
-     * 
-     * @param <DelegateLeftValue>
-     *        type of the objects on the left hand side of the BinaryRelation
-     * 
-     * @param <DelegateRightValue>
-     *        type of the objects on the right hand side of the BinaryRelation
-     * 
-     * @author Igor Akkerman
-     */
-    private class DelegateBinaryRelation<DelegateLeftValue, DelegateRightValue>
-    extends AbstractAddBinaryRelation<DelegateLeftValue, DelegateRightValue> {
-
-        /**
-         * AddBinaryRelation for which this BinaryRelation is used as
-         * delegate
-         */
-        private AddBinaryRelation<DelegateLeftValue, DelegateRightValue> baseBinaryRelation;
-
-        /**
-         * Creates a new DelegateBinaryRelation.
-         * 
-         * @param baseBinaryRelation
-         *        AddBinaryRelation for which this BinaryRelation is used
-         *        as delegate
-         */
-        DelegateBinaryRelation(final AddBinaryRelation<DelegateLeftValue, DelegateRightValue> baseBinaryRelation) {
-            super();
-            this.baseBinaryRelation = baseBinaryRelation;
-        }
-
-        // @see org.jlib.container.binaryrelation.AddBinaryRelation#add(java.lang.Object, java.lang.Object)
-        @Override
-        public void add(final DelegateLeftValue leftValue, DelegateRightValue rightValue) {
-            baseBinaryRelation.associate(leftValue, rightValue);
-        }
-
-        // @see org.jlib.container.binaryrelation.AddBinaryRelation#remove(java.lang.Object, java.lang.Object)
-        @Override
-        public void remove(final DelegateLeftValue leftValue, DelegateRightValue rightValue) {
-            baseBinaryRelation.remove(leftValue, rightValue);
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#hasLeft(java.lang.Object)
-        @Override
-        public boolean hasLeft(final DelegateLeftValue leftValue) {
-            return baseBinaryRelation.hasLeft(leftValue);
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#hasRight(java.lang.Object)
-        @Override
-        public boolean hasRight(final DelegateRightValue rightValue) {
-            return baseBinaryRelation.hasRight(rightValue);
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#leftValues()
-        @Override
-        public Set<DelegateLeftValue> leftValues() {
-            return baseBinaryRelation.leftValues();
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#leftSet(java.lang.Object)
-        @Override
-        public Set<DelegateLeftValue> leftSet(final DelegateRightValue rightValue) {
-            return baseBinaryRelation.leftSet(rightValue);
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#rightValues()
-        @Override
-        public Set<DelegateRightValue> rightValues() {
-            return baseBinaryRelation.rightValues();
-        }
-
-        // @see org.jlib.container.binaryrelation.BinaryRelation#rightSet(java.lang.Object)
-        @Override
-        public Set<DelegateRightValue> rightSet(final DelegateLeftValue leftValue) {
-            return baseBinaryRelation.rightSet(leftValue);
-        }
-
-        // @see Container#size()
-        @Override
-        public int getSize() {
-            return baseBinaryRelation.getSize();
-        }
-    }
 
     /** DelegateBinaryRelation for this AddHashBinaryRelation */
     DelegateBinaryRelation<LeftValue, RightValue> delegateBinaryRelation =
@@ -136,8 +46,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new AddHashBinaryRelation containing the Associations
-     * contained by the specified jlib Container.
+     * Creates a new AddHashBinaryRelation containing the Associations contained
+     * by the specified jlib Container.
      * 
      * @param associations
      *        Container of the Associations to add
@@ -150,8 +60,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new AddHashBinaryRelation containing the Associations
-     * contained by the specified Collection.
+     * Creates a new AddHashBinaryRelation containing the Associations contained
+     * by the specified Collection.
      * 
      * @param associations
      *        Collection of the Associations to add
@@ -164,8 +74,8 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new AddHashBinaryRelation containing the Associations
-     * specified in a comma separated sequence.
+     * Creates a new AddHashBinaryRelation containing the Associations specified
+     * in a comma separated sequence.
      * 
      * @param associations
      *        Comma separated sequence of the Associations to add
@@ -179,13 +89,13 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     // overridden to be made public
     @Override
-    public void associate(final LeftValue leftValue, RightValue rightValue)
+    public void associate(final LeftValue leftValue, final RightValue rightValue)
     throws ObjectAlreadyAssociatedException {
         super.associate(leftValue, rightValue);
     }
 
     @Override
-    public void remove(final LeftValue leftValue, RightValue rightValue) {
+    public void remove(final LeftValue leftValue, final RightValue rightValue) {
         leftToRightMap.get(leftValue).remove(rightValue);
         rightToLeftMap.get(rightValue).remove(leftValue);
     }
