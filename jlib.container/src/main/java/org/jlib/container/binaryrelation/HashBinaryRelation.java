@@ -100,8 +100,8 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      */
     protected void associate(final LeftValue leftValue, final RightValue rightValue) {
 
-        associate(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
-        associate(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
+        associateUnidirectional(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
+        associateUnidirectional(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
     }
 
     /**
@@ -127,9 +127,9 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      *        boolean specifying whether {@code value1} is associated to at
      *        least one Value2 item
      */
-    private <Value1, Value2> void associate(final Value1 value1, final Value2 value2,
-                                            final Map<Value1, Set<Value2>> value1ToValue2SetMap,
-                                            final boolean value1Exists) {
+    private <Value1, Value2> void associateUnidirectional(final Value1 value1, final Value2 value2,
+                                                          final Map<Value1, Set<Value2>> value1ToValue2SetMap,
+                                                          final boolean value1Exists) {
         final Set<Value2> value2Set = value1Exists
             ? value1ToValue2SetMap.get(value1)
             : new HashSet<Value2>();
