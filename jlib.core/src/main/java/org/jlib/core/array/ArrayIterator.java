@@ -52,7 +52,7 @@ extends AbstractIterator<Item> {
     // @see java.util.Iterator#hasNext()
     @Override
     public boolean hasNext() {
-        return currentIndex <= arrayLength - 1;
+        return currentIndex < arrayLength;
     }
 
     // @see java.util.Iterator#next()
