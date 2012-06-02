@@ -37,25 +37,57 @@ public final class ContainerUtility {
      * @param container
      *        {@link AddContainer} to which the Items are added
      * 
-     * @param items
+     * @param newItems
      *        {@link Iterable} providing the Items to add
      */
-    public static <Item> void addAll(final AddContainer<Item> container, final Iterable<? extends Item> items) {
-        for (final Item item : items)
-            container.add(item);
+    public static <Item> void addAll(final AddContainer<Item> container, final Iterable<? extends Item> newItems) {
+        for (final Item newItem : newItems)
+            container.add(newItem);
+    }
+
+    /**
+     * Adds all Items in the specified comma separated sequence to the specified
+     * {@link AddContainer}.
+     * 
+     * @param container
+     *        {@link AddContainer} to which the Items are added
+     * 
+     * @param newItems
+     *        {@link Iterable} providing the Items to add
+     */
+    @SafeVarargs
+    public static <Item> void addAll(final AddContainer<Item> container, final Item... newItems) {
+        for (final Item newItem : newItems)
+            container.add(newItem);
     }
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from the
-     * specified {@link AddContainer}.
+     * specified {@link RemoveContainer}.
      * 
      * @param container
-     *        {@link AddContainer} containing the Items
+     *        {@link RemoveContainer} containing the Items
      * 
      * @param items
      *        {@link Iterable} providing the Items to remove
      */
     public static <Item> void removeAll(final RemoveContainer<Item> container, final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            container.remove(item);
+    }
+
+    /**
+     * Removes all Items in the specified comma separated sequence from the
+     * specified {@link RemoveContainer}.
+     * 
+     * @param container
+     *        {@link RemoveContainer} containing the Items
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     */
+    @SafeVarargs
+    public static <Item> void removeAll(final RemoveContainer<Item> container, final Item... items) {
         for (final Item item : items)
             container.remove(item);
     }
@@ -106,8 +138,9 @@ public final class ContainerUtility {
      * @param items
      *        {@link Collection} containing the Items to retain
      */
+    @SafeVarargs
     public static <Item, RetainedItem extends Item> void retainAll(final RemoveContainer<Item> container,
-                                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final RetainedItem... items) {
+                                                                   final RetainedItem... items) {
         // necessary as we need the contains() method fot the items sequence
         retainAll(container, CollectionUtility.toSet(items));
     }
