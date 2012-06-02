@@ -15,7 +15,8 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * Skeletal implementation of a {@link BinaryRelation}.
+ * Skeletal implementation of a {@link BinaryRelation} allowing to be filled
+ * with data.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the
