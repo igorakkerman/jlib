@@ -48,7 +48,7 @@ extends ContainerCollection<Item> {
 
     @Override
     public boolean addAll(Collection<? extends Item> items) {
-        delegateAddContainer.addAll(items);
+        delegateAddContainer.add(items);
 
         // TODO: implement modification listener model
         return true;

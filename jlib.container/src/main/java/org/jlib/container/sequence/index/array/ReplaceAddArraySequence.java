@@ -70,11 +70,11 @@ implements AddSequence<Item> {
 
     @Override
     public void add(final Item item) {
-        addAll(singleton(item));
+        add(singleton(item));
     }
 
     @Override
-    public void addAll(final Container<? extends Item> items) {
+    public void add(final Container<? extends Item> items) {
         final int addedItemsCount = items.getSize();
 
         assertCapacity(getSize() + addedItemsCount);
@@ -88,13 +88,13 @@ implements AddSequence<Item> {
     }
 
     @Override
-    public void addAll(final Collection<? extends Item> items) {
+    public void add(final Collection<? extends Item> items) {
         ContainerUtility.addAll(this, items);
     }
 
     @Override
     @SafeVarargs
-    public final void addAll(final Item... items) {
+    public final void add(final Item... items) {
         ContainerUtility.addAll(this, items);
     }
 

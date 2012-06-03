@@ -78,7 +78,7 @@ implements StringTransformer {
      *        additionally composing this CompositeStringTransformer
      */
     public void addStringTransformers(final StringTransformer... additionalStringTransformers) {
-        stringTransformers.addAll(additionalStringTransformers);
+        stringTransformers.add(additionalStringTransformers);
     }
 
     /**
@@ -91,7 +91,7 @@ implements StringTransformer {
      *        additionally composing this CompositeStringTransformer
      */
     public void addStringTransformers(final Sequence<? extends StringTransformer> additionalStringTransformers) {
-        stringTransformers.addAll(additionalStringTransformers);
+        stringTransformers.add(additionalStringTransformers);
     }
 
     @Override

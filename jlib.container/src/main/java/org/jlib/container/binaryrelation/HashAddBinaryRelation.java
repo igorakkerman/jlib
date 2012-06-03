@@ -98,12 +98,12 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void addAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
+    public void add(final Container<? extends Association<LeftValue, RightValue>> associations) {
         ContainerUtility.addAll(this, associations);
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         ContainerUtility.addAll(this, associations);
     }
 
@@ -113,7 +113,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void addAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+    public void add(final Collection<? extends Association<LeftValue, RightValue>> associations) {
         ContainerUtility.addAll(this, associations);
     }
 }

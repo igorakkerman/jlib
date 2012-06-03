@@ -42,17 +42,17 @@ implements AddContainer<Item>, RemoveContainer<Item> {
     }
 
     @Override
-    public void addAll(final Collection<? extends Item> items) {
+    public void add(final Collection<? extends Item> items) {
         getDelegateCollection().addAll(items);
     }
 
     @Override
-    public void addAll(final Container<? extends Item> items) {
+    public void add(final Container<? extends Item> items) {
         getDelegateCollection().addAll(getDelegateCollection());
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
         Collections.addAll(getDelegateCollection(), items);
     }
 

@@ -35,17 +35,17 @@ implements AddContainer<Item> {
     }
 
     @Override
-    public void addAll(Collection<? extends Item> items) {
+    public void add(Collection<? extends Item> items) {
         addAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public void addAll(Container<? extends Item> items) {
+    public void add(Container<? extends Item> items) {
         addAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
         for (Item item : items)
             add(item);
     }
