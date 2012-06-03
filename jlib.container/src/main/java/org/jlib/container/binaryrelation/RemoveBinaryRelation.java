@@ -17,7 +17,7 @@ package org.jlib.container.binaryrelation;
 import org.jlib.container.RemoveContainer;
 
 /**
- * BinaryRelation allowing the removal of {@link Association} instances.
+ * {@link BinaryRelation} allowing the removal of {@link Association} items.
  * 
  * @param <LeftValue>
  *        type of the objects on the left hand side of the BinaryRelation
@@ -31,14 +31,19 @@ public interface RemoveBinaryRelation<LeftValue, RightValue>
 extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Association<LeftValue, RightValue>> {
 
     /**
-     * Removes the association specified by its LeftValue and RightValue from
-     * this BinaryRelation.
+     * Removes the {@link Association} specified by its LeftValue and RightValue
+     * from this {@link RemoveBinaryRelation}.
      * 
      * @param leftValue
-     *        LeftValue of the association
+     *        LeftValue of the {@link Association}
      * 
      * @param rightValue
-     *        RightValue of the association
+     *        RightValue of the {@link Association}
+     * 
+     * @throws NoSuchAssociationException
+     *         if this {@link RemoveBinaryRelation} does not contain the
+     *         specified {@link Association}
      */
-    public void remove(LeftValue leftValue, RightValue rightValue);
+    public void remove(LeftValue leftValue, RightValue rightValue)
+    throws NoSuchAssociationException;
 }

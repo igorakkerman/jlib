@@ -17,67 +17,29 @@ package org.jlib.container.binaryrelation.bijection;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.AbstractReplaceAddRemoveBinaryRelation;
-import org.jlib.container.binaryrelation.AddBinaryRelation;
+import org.jlib.container.ContainerUtility;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
-import org.jlib.container.binaryrelation.RemoveBinaryRelation;
+import org.jlib.container.binaryrelation.DefaultRemoveBinaryRelationTraverser;
+import org.jlib.container.binaryrelation.IllegalAssociationException;
+import org.jlib.container.binaryrelation.LeftItemAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.NoSuchAssociationException;
+import org.jlib.container.binaryrelation.RightItemAlreadyAssociatedException;
 import org.jlib.core.traverser.RemoveTraverser;
-sing hashing for left and right hand side
- * associations.
+
+/**
+ * {@link HashAddBijection} allowing the removal of {@link Association} items.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the bijection
+ *        type of the objects on the left hand side of the {@link Bijection}
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the bijection
+ *        type of the objects on the right hand side of the {@link Bijection}
  * 
  * @author Igor Akkerman
  */
 public class HashAddRemoveBijection<LeftValue, RightValue>
 extends HashAddBijection<LeftValue, RightValue>
-implements RemoveBinaryRelation<LeftValue, RightValue> {
-
-    /**
-     * AddBinaryRelation used as delegate for some methods allowing the
-     * {@code HashAddBijection} class to implement the {@link AddBinaryRelation}
-     * interface.
-     * 
-     * @param <DelegateLeftValue>
-     *        type of the objects on the left hand side of the BinaryRelation
-     * 
-     * @param <DelegateRightValue>
-     *        type of the objects on the right hand side of the BinaryRelation
-     * 
-     * @author Igor Akkerman
-     */
-    private class DelegateBijection<DelegateLeftValue, DelegateRightValue>
-    extends AbstractReplaceAddRemoveBinaryRelation<DelegateLeftValue, DelegateRightValue> {
-
-        /** Bijection for which this Bijection is used as delegate */
-        private final AddBijection<DelegateLeftValue, DelegateRightValue> baseBijection;
-
-        /**
-         * Creates a new DelegateBijection.
-         * 
-         * @param baseBijection
-         *        AddBijection for which this Bijection is used as delegate
-         */
-        DelegateBijection(final AddBijection<DelegateLeftValue, DelegateRightValue> baseBijection) {
-            super();
-
-            this.baseBijection = baseBijection;
-        }
-
-        @Override
-        public void remove(final DelegateLeftValue leftValue, final DelegateRightValue rightValue) {
-            baseBijection.remove(leftValue, rightValue);
-        }
-    }
-
-    /** DelegateBijection for this Bijection */
-    private final DelegateBijection<LeftValue, RightValue> delegateBijection =
-        new DelegateBijection<LeftValue, RightValue>(this);
+implements RemoveBijection<LeftValue, RightValue> {
 
     /** Creates a new initially empty HashAddBijection. */
     public HashAddRemoveBijection() {
@@ -91,13 +53,24 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      * 
-     * @throws ObjectAlreadyAssociatedException
-     *         if one of the Objects is already associated to another Object; if
-     *         an Association is equal to another Associations in the Container,
-     *         it is ignored
+     * @throws LeftItemAlreadyAssociatedException
+     *         if the LeftItem of one Item in {@code associations} is already
+     *         associated to another RightItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightItemAlreadyAssociatedException
+     *         if the RightItem of one Item in {@code associations} is already
+     *         associated to another LeftItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashAddRemoveBijection(final Container<Association<LeftValue, RightValue>> associations)
-    throws ObjectAlreadyAssociatedException {
+    throws LeftItemAlreadyAssociatedException, RightItemAlreadyAssociatedException, IllegalAssociationException {
         super(associations);
     }
 
@@ -108,13 +81,24 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Collection of the Associations to add
      * 
-     * @throws ObjectAlreadyAssociatedException
-     *         if one of the Objects is already associated to another Object; if
-     *         an Association is equal to another Associations in the Container,
-     *         it is ignored
+     * @throws LeftItemAlreadyAssociatedException
+     *         if the LeftItem of one Item in {@code associations} is already
+     *         associated to another RightItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightItemAlreadyAssociatedException
+     *         if the RightItem of one Item in {@code associations} is already
+     *         associated to another LeftItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashAddRemoveBijection(final Collection<Association<LeftValue, RightValue>> associations)
-    throws ObjectAlreadyAssociatedException {
+    throws LeftItemAlreadyAssociatedException, RightItemAlreadyAssociatedException, IllegalAssociationException {
         super(associations);
     }
 
@@ -125,85 +109,81 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Comma separated sequence of the Associations to add
      * 
-     * @throws ObjectAlreadyAssociatedException
-     *         if one of the Objects is already associated to another Object; if
-     *         an Association is equal to another Associations in the Container,
-     *         it is ignored
+     * @throws LeftItemAlreadyAssociatedException
+     *         if the LeftItem of one Item in {@code associations} is already
+     *         associated to another RightItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightItemAlreadyAssociatedException
+     *         if the RightItem of one Item in {@code associations} is already
+     *         associated to another LeftItem; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashAddRemoveBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
-    throws ObjectAlreadyAssociatedException {
+    throws LeftItemAlreadyAssociatedException, RightItemAlreadyAssociatedException, IllegalAssociationException {
         super(associations);
     }
 
     @Override
-    public void remove(final LeftValue leftValue, final RightValue rightValue) {
+    public void remove(final LeftValue leftValue, final RightValue rightValue)
+    throws NoSuchAssociationException {
         leftToRightMap.remove(leftValue);
         rightToLeftMap.remove(rightValue);
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> iterator() {
-        return delegateBijection.iterator();
+    public void remove(final Association<LeftValue, RightValue> association) {
+        remove(association.getLeftValue(), association.getRightValue());
     }
 
     @Override
-    public void addAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        delegateBijection.addAll(associations);
+    public void removeAll() {
+        ContainerUtility.removeAll(this, this);
     }
 
     @Override
-    public void addAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        delegateBijection.addAll(associations);
+    public void removeAll(final Iterable<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.removeAll(this, associations);
     }
 
     @Override
     public void removeAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        delegateBijection.removeAll(associations);
+        ContainerUtility.removeAll(this, associations);
+    }
+
+    @Override
+    public void removeAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.removeAll(this, associations);
     }
 
     @Override
     public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        delegateBijection.removeAll(associations);
+        ContainerUtility.removeAll(this, associations);
     }
 
     @Override
     public void retainAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        delegateBijection.retainAll(associations);
+        ContainerUtility.retainAll(this, associations);
+    }
+
+    @Override
+    public void retainAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.retainAll(this, associations);
     }
 
     @Override
     public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        delegateBijection.retainAll(associations);
+        ContainerUtility.retainAll(this, associations);
     }
 
     @Override
-    public void add(final Association<LeftValue, RightValue> association) {
-        delegateBijection.add(association);
+    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+        return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
-
-    @Override
-    public void addAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        delegateBijection.addAll(associations);
-    }
-
-    @Override
-    public void clear() {
-        delegateBijection.removeAll();
-    }
-
-    @Override
-    public void remove(final Association<LeftValue, RightValue> object) {
-        delegateBijection.remove(object);
-    }
-
-    @Override
-    public void removeAll(final Collection<? extends Association<LeftValue, RightValue>> collection) {
-        delegateBijection.removeAll(collection);
-    }
-
-    @Override
-    public void retainAll(final Collection<? extends Association<LeftValue, RightValue>> collection) {
-        delegateBijection.retainAll(collection);
-    }
-
 }

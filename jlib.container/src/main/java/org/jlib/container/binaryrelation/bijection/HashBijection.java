@@ -25,8 +25,10 @@ import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
 import org.jlib.container.binaryrelation.ItemAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.LeftItemAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
 import org.jlib.container.binaryrelation.NoSuchRightValueException;
+import org.jlib.container.binaryrelation.RightItemAlreadyAssociatedException;
 
 /**
  * Bijection implemented using hashing for left and right hand side items.
@@ -135,13 +137,13 @@ implements Bijection<LeftValue, RightValue> {
     throws ItemAlreadyAssociatedException {
         if (hasLeft(leftValue)) {
             if (!rightValue.equals(getRightValue(leftValue)))
-                throw new ItemAlreadyAssociatedException(this, leftValue);
+                throw new LeftItemAlreadyAssociatedException(this, leftValue, rightValue);
 
             return;
         }
 
         if (hasRight(rightValue)) // and automatically !leftValue.equals(left(rightValue))
-            throw new ItemAlreadyAssociatedException(this, rightValue);
+            throw new RightItemAlreadyAssociatedException(this, leftValue, rightValue);
 
         leftToRightMap.put(leftValue, rightValue);
         rightToLeftMap.put(rightValue, leftValue);

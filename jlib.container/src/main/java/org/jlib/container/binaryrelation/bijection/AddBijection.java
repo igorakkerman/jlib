@@ -15,17 +15,39 @@
 package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AddBinaryRelation;
+import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.IllegalAssociationException;
+import org.jlib.container.binaryrelation.LeftItemAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.RightItemAlreadyAssociatedException;
 
 /**
- * Bijection allowing to add new associations.
+ * Bijection allowing to add new {@link Association} items.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the bijection
+ *        type of the objects on the left hand side of the {@link Bijection}
+ * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the bijection
+ *        type of the objects on the right hand side of the {@link Bijection}
+ * 
  * @author Igor Akkerman
  */
 public interface AddBijection<LeftValue, RightValue>
 extends Bijection<LeftValue, RightValue>, AddBinaryRelation<LeftValue, RightValue> {
-    // intentionally left blank
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws LeftItemAlreadyAssociatedException
+     *         if {@code leftValue} is already associated
+     * 
+     * @throws RightItemAlreadyAssociatedException
+     *         if {@code rightValue} is already associated
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of the specified {@link Association} prevents it
+     *         from being added
+     */
+    @Override
+    public void associate(LeftValue leftValue, RightValue rightValue)
+    throws LeftItemAlreadyAssociatedException, RightItemAlreadyAssociatedException, IllegalAssociationException;
 }

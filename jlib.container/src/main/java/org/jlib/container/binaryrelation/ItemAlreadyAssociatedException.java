@@ -22,51 +22,25 @@ package org.jlib.container.binaryrelation;
  * @author Igor Akkerman
  */
 public abstract class ItemAlreadyAssociatedException
-extends IllegalBinaryRelationArgumentException {
+extends IllegalAssociationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -7959565629107248727L;
 
-    /** Item already associated with another Item by the BinaryRelation */
-    private final Object item;
-
-    /** BinaryRelation that already associates the Item with another Item */
-    private final BinaryRelation<?, ?> binaryRelation;
-
     /**
-     * Creates a new {@link ItemAlreadyAssociatedException} for the specified
-     * {@link BinaryRelation} and the specified Item.
+     * Creates a new {@link ItemAlreadyAssociatedException}.
      * 
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
-     * @param item
-     *        already associated Item
-     */
-    public ItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object item) {
-        super(binaryRelation, "{1}: {2}", item);
-
-        this.binaryRelation = binaryRelation;
-        this.item = item;
-    }
-
-    /**
-     * Returns the {@link BinaryRelation} that already associates the Item with
-     * another Item.
+     * @param leftValue
+     *        LeftValue of the illegal {@link Association}
      * 
-     * @return referenced {@link BinaryRelation}
+     * @param rightValue
+     *        RightValue of the illegal {@link Association}
      */
-    public BinaryRelation<?, ?> getBinaryRelation() {
-        return binaryRelation;
-    }
-
-    /**
-     * Returns the Item already associated with another Item by the
-     * {@link BinaryRelation}.
-     * 
-     * @return already associated Item
-     */
-    public Object getItem() {
-        return item;
+    public ItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                          final Object rightValue) {
+        super(binaryRelation, leftValue, rightValue);
     }
 }

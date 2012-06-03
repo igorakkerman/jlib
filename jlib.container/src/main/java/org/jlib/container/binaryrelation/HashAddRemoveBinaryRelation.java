@@ -105,11 +105,6 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
-        return new DefaultRemoveBinaryRelationTraverser<>(this);
-    }
-
-    @Override
     public void remove(final Association<LeftValue, RightValue> association) {
         remove(association.getLeftValue(), association.getRightValue());
     }
@@ -152,5 +147,10 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     @Override
     public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
         ContainerUtility.retainAll(this, associations);
+    }
+
+    @Override
+    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+        return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

@@ -29,6 +29,23 @@ extends IllegalBinaryRelationArgumentException {
      * 
      * @param rightValue
      *        RightValue of the illegal {@link Association}
+     */
+    public IllegalAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                       final Object rightValue) {
+        this(binaryRelation, leftValue, rightValue, "{1}: <{2}, {3}>");
+    }
+
+    /**
+     * Creates a new {@link IllegalAssociationException}.
+     * 
+     * @param binaryRelation
+     *        referenced {@link BinaryRelation}
+     * 
+     * @param leftValue
+     *        LeftValue of the illegal {@link Association}
+     * 
+     * @param rightValue
+     *        RightValue of the illegal {@link Association}
      * 
      * @param messagePattern
      *        {@link String} specifying the pattern of the error message

@@ -23,19 +23,23 @@ public class LeftItemAlreadyAssociatedException
 extends ItemAlreadyAssociatedException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -4866378388335127707L;
+    private static final long serialVersionUID = 7999182498569902948L;
 
     /**
      * Creates a new {@link LeftItemAlreadyAssociatedException} for the
-     * specified {@link BinaryRelation} and the specified Item.
+     * specified {@link BinaryRelation} and the specified {@link Association}.
      * 
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
-     * @param item
-     *        already associated Item
+     * @param leftValue
+     *        already associated LeftValue
+     * 
+     * @param rightValue
+     *        RightValue to which {@code leftValue} cannot be associated
      */
-    public LeftItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object item) {
-        super(binaryRelation, item);
+    public LeftItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                              final Object rightValue) {
+        super(binaryRelation, leftValue, rightValue);
     }
 }
