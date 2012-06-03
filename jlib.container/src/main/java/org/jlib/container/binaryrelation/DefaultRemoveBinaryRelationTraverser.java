@@ -44,7 +44,7 @@ implements RemoveTraverser<Association<LeftValue, RightValue>> {
      * @param binaryRelation
      *        RemoveBinaryRelation traversed by this Traverser
      */
-    protected DefaultRemoveBinaryRelationTraverser(final Relation binaryRelation) {
+    public DefaultRemoveBinaryRelationTraverser(final Relation binaryRelation) {
         super(binaryRelation);
     }
 
