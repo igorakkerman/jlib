@@ -162,22 +162,22 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Set<LeftValue> leftValues() {
+    public Set<LeftValue> getLeftValues() {
         return leftToRightMap.keySet();
     }
 
     @Override
-    public Set<LeftValue> leftSet(final RightValue rightValue) {
+    public Set<LeftValue> getLeftSet(final RightValue rightValue) {
         return rightToLeftMap.get(rightValue);
     }
 
     @Override
-    public Set<RightValue> rightValues() {
+    public Set<RightValue> getRightValues() {
         return rightToLeftMap.keySet();
     }
 
     @Override
-    public Set<RightValue> rightSet(final LeftValue leftValue) {
+    public Set<RightValue> getRightSet(final LeftValue leftValue) {
         return leftToRightMap.get(leftValue);
     }
 

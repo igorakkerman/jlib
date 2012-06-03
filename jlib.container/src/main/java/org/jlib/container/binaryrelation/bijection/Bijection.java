@@ -47,7 +47,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @throws NoSuchLeftValueException
      *         if no RightValue is associated with {@code leftValue}
      */
-    public RightValue right(LeftValue leftValue)
+    public RightValue getRightValue(LeftValue leftValue)
     throws NoSuchLeftValueException;
 
     /**
@@ -62,6 +62,6 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @throws NoSuchRightValueException
      *         if no LeftValue is associated with {@code rightValue}
      */
-    public LeftValue left(RightValue rightValue)
+    public LeftValue getLeftValue(RightValue rightValue)
     throws NoSuchRightValueException;
 }

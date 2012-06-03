@@ -70,7 +70,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
 
         this.binaryRelation = binaryRelation;
 
-        leftValuesIterator = binaryRelation.leftValues().iterator();
+        leftValuesIterator = binaryRelation.getLeftValues().iterator();
 
         if (leftValuesIterator.hasNext())
             readNextLeftValue();
@@ -99,7 +99,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
      */
     private void readNextLeftValue() {
         leftValue = leftValuesIterator.next();
-        rightValuesIterator = binaryRelation.rightSet(leftValue).iterator();
+        rightValuesIterator = binaryRelation.getRightSet(leftValue).iterator();
     }
 
     @Override

@@ -48,7 +48,7 @@ implements BinaryRelation<LeftValue, RightValue> {
 
     @Override
     public boolean contains(final LeftValue leftValue, final RightValue rightValue) {
-        return hasLeft(leftValue) && rightSet(leftValue).contains(rightValue);
+        return hasLeft(leftValue) && getRightSet(leftValue).contains(rightValue);
     }
 
     @Override

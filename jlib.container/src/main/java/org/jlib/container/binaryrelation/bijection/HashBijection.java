@@ -24,9 +24,9 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.DefaultBinaryRelationTraverser;
 import org.jlib.container.binaryrelation.ItemAlreadyAssociatedException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.binaryrelation.NoSuchLeftValueException;
+import org.jlib.container.binaryrelation.NoSuchRightValueException;
 
 /**
  * Bijection implemented using hashing for left and right hand side items.
@@ -71,6 +71,7 @@ implements Bijection<LeftValue, RightValue> {
     public HashBijection(final Container<Association<LeftValue, RightValue>> associations)
     throws ItemAlreadyAssociatedException {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
@@ -90,6 +91,7 @@ implements Bijection<LeftValue, RightValue> {
     public HashBijection(final Collection<Association<LeftValue, RightValue>> associations)
     throws ItemAlreadyAssociatedException {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
@@ -109,6 +111,7 @@ implements Bijection<LeftValue, RightValue> {
     public HashBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
     throws ItemAlreadyAssociatedException {
         super();
+
         for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
@@ -131,7 +134,7 @@ implements Bijection<LeftValue, RightValue> {
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
     throws ItemAlreadyAssociatedException {
         if (hasLeft(leftValue)) {
-            if (!rightValue.equals(right(leftValue)))
+            if (!rightValue.equals(getRightValue(leftValue)))
                 throw new ItemAlreadyAssociatedException(this, leftValue);
 
             return;
@@ -155,21 +158,23 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    public RightValue right(final LeftValue leftValue) {
+    public RightValue getRightValue(final LeftValue leftValue) {
         final RightValue rightValue = leftToRightMap.get(leftValue);
-        if (rightValue != null)
-            return rightValue;
-        else
-            throw new NoSuchItemException(leftValue.toString());
+
+        if (rightValue == null)
+            throw new NoSuchLeftValueException(this, leftValue);
+
+        return rightValue;
     }
 
     @Override
-    public LeftValue left(final RightValue rightValue) {
+    public LeftValue getLeftValue(final RightValue rightValue) {
         final LeftValue leftValue = rightToLeftMap.get(rightValue);
-        if (leftValue != null)
-            return leftValue;
-        else
-            throw new NoSuchItemException(rightValue.toString());
+
+        if (leftValue == null)
+            throw new NoSuchRightValueException(this, rightValue);
+
+        return leftValue;
     }
 
     @Override
@@ -183,31 +188,26 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    public Set<LeftValue> leftValues() {
+    public Set<LeftValue> getLeftValues() {
         return Collections.unmodifiableSet(leftToRightMap.keySet());
     }
 
     @Override
-    public Set<RightValue> rightValues() {
+    public Set<RightValue> getRightValues() {
         return Collections.unmodifiableSet(rightToLeftMap.keySet());
     }
 
     @Override
-    public Traverser<Association<LeftValue, RightValue>> iterator() {
-        return new DefaultBinaryRelationTraverser<LeftValue, RightValue>(this);
-    }
-
-    @Override
-    public Set<RightValue> rightSet(final LeftValue leftValue) {
+    public final Set<RightValue> getRightSet(final LeftValue leftValue) {
         return hasLeft(leftValue)
-            ? Collections.singleton(right(leftValue))
+            ? Collections.singleton(getRightValue(leftValue))
             : new HashSet<RightValue>();
     }
 
     @Override
-    public Set<LeftValue> leftSet(final RightValue rightValue) {
+    public final Set<LeftValue> getLeftSet(final RightValue rightValue) {
         return hasRight(rightValue)
-            ? Collections.singleton(left(rightValue))
+            ? Collections.singleton(getLeftValue(rightValue))
             : new HashSet<LeftValue>();
     }
 

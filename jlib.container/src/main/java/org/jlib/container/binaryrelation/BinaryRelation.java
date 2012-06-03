@@ -44,7 +44,7 @@ extends Container<Association<LeftValue, RightValue>> {
      *         empty {@link Set} if no RightValue is associated with
      *         {@code leftValue}
      */
-    public Set<RightValue> rightSet(final LeftValue leftValue);
+    public Set<RightValue> getRightSet(final LeftValue leftValue);
 
     /**
      * Returns the Set of LeftValues associated with the specified RightValue.
@@ -56,7 +56,7 @@ extends Container<Association<LeftValue, RightValue>> {
      *         empty {@link Set} if no RightValue is associated with
      *         {@code leftValue}
      */
-    public Set<LeftValue> leftSet(final RightValue rightValue);
+    public Set<LeftValue> getLeftSet(final RightValue rightValue);
 
     /**
      * Verifies whether the specified LeftValue is associated with the specified
@@ -107,7 +107,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @return {@link Set} containing the LeftValues
      */
-    public Set<LeftValue> leftValues();
+    public Set<LeftValue> getLeftValues();
 
     /**
      * Returns a {@link Set} containing the RightValues of this
@@ -119,5 +119,5 @@ extends Container<Association<LeftValue, RightValue>> {
      * 
      * @return {@link Set} containing the RightValues
      */
-    public Set<RightValue> rightValues();
+    public Set<RightValue> getRightValues();
 }
