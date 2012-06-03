@@ -21,7 +21,7 @@ package org.jlib.container.binaryrelation;
  * 
  * @author Igor Akkerman
  */
-public class ItemAlreadyAssociatedException
+public abstract class ItemAlreadyAssociatedException
 extends IllegalBinaryRelationArgumentException {
 
     /** serialVersionUID */
