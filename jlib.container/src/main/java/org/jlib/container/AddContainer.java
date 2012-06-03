@@ -40,7 +40,8 @@ extends Container<Item> {
      *        Item to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of {@code item} prevents it to be added
+     *         if some property of {@code item} prevents it from being added,
+     *         for instance, if it is already contained
      */
     public void add(final Item item)
     throws IllegalContainerArgumentException;
@@ -56,8 +57,8 @@ extends Container<Item> {
      *         if {@code items}
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it to be
-     *         added
+     *         if some property of an Item in {@code items} prevents it from
+     *         being added, for instance, if it is already contained
      */
     public void add(final Container<? extends Item> items)
     throws IllegalContainerArgumentException;
@@ -70,8 +71,8 @@ extends Container<Item> {
      *        {@link Collection} containing the Items to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it to be
-     *         added
+     *         if some property of an Item in {@code items} prevents it from
+     *         being added, for instance, if it is already contained
      */
     public void add(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException;
@@ -80,11 +81,11 @@ extends Container<Item> {
      * Adds all specified Items to this {@link AddContainer}.
      * 
      * @param items
-     *        vararg list of Items to add
+     *        comma separated sequence of Items to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it to be
-     *         added
+     *         if some property of an Item in {@code items} prevents it from
+     *         being added, for instance, if it is already contained
      */
     public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalContainerArgumentException;
@@ -97,21 +98,22 @@ extends Container<Item> {
      *        Item to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of {@code item} prevents it to be added
+     *         if some property of {@code item} prevents it from being added
      */
     public void assertContained(final Item item)
     throws IllegalContainerArgumentException;
 
     /**
      * Asserts that this {@link AddContainer} contains all Items contained by
-     * the specified {@link Container} to this {@link AddContainer}.
+     * the specified {@link Container} to this {@link AddContainer}. If the
+     * {@link AddContainer} does not contain the Item, it is added.
      * 
      * @param items
      *        {@link Container} containing the Items to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it to be
-     *         added
+     *         if some property of an Item in {@code items} prevents it from
+     *         being added
      */
     public void assertContained(final Container<? extends Item> items)
     throws IllegalContainerArgumentException;
@@ -124,7 +126,7 @@ extends Container<Item> {
      *        {@link Collection} containing the Items to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of {@code item} prevents it to be added
+     *         if some property of {@code item} prevents it from being added
      */
     public void assertContained(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException;
@@ -134,10 +136,10 @@ extends Container<Item> {
      * this {@link AddContainer}.
      * 
      * @param items
-     *        vararg list of Items to add
+     *        comma separated sequence of Items to add
      * 
      * @throws IllegalContainerArgumentException
-     *         if some property of {@code item} prevents it to be added
+     *         if some property of {@code item} prevents it from being added
      */
     public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalContainerArgumentException;

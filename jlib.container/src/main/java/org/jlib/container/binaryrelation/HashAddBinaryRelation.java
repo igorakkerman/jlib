@@ -18,6 +18,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
+import org.jlib.container.IllegalContainerArgumentException;
 
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right hand
@@ -90,30 +91,63 @@ implements AddBinaryRelation<LeftValue, RightValue> {
         super(associations);
     }
 
-    // overridden to be made public
     @Override
+    // raising visibility from protected to public
     public void associate(final LeftValue leftValue, final RightValue rightValue)
     throws IllegalAssociationException {
         super.associate(leftValue, rightValue);
     }
 
     @Override
-    public void add(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.addAll(this, associations);
+    // raising visibility from protected to public
+    public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    throws IllegalAssociationException {
+        super.assertAssociated(leftValue, rightValue);
     }
 
     @Override
-    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        ContainerUtility.addAll(this, associations);
-    }
-
-    @Override
-    public void add(final Association<LeftValue, RightValue> association) {
+    public void add(final Association<LeftValue, RightValue> association)
+    throws IllegalAssociationException {
         associate(association.getLeftValue(), association.getRightValue());
     }
 
     @Override
-    public void add(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.addAll(this, associations);
+    public void add(final Container<? extends Association<LeftValue, RightValue>> associations)
+    throws IllegalContainerArgumentException {
+        ContainerUtility.add(this, associations);
+    }
+
+    @Override
+    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    throws IllegalAssociationException {
+        ContainerUtility.add(this, associations);
+    }
+
+    @Override
+    public void add(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    throws IllegalAssociationException {
+        ContainerUtility.add(this, associations);
+    }
+
+    @Override
+    public void assertContained(final Association<LeftValue, RightValue> association)
+    throws IllegalAssociationException {
+        assertAssociated(association.getLeftValue(), association.getRightValue());
+    }
+
+    @Override
+    public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
+    throws IllegalAssociationException {
+        ContainerUtility.assertContained(this, associations);
+    }
+
+    @Override
+    public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    throws IllegalAssociationException {}
+
+    @Override
+    public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    throws IllegalAssociationException {
+        ContainerUtility.assertContained(this, associations);
     }
 }

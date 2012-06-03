@@ -24,6 +24,7 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.AssociationAlreadyExistsException;
 import org.jlib.container.binaryrelation.IllegalAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
@@ -152,43 +153,52 @@ implements Bijection<LeftValue, RightValue> {
             associate(association.getLeftValue(), association.getRightValue());
     }
 
+    @Override
+    protected void associate(final LeftValue leftValue, final RightValue rightValue)
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+        if (contains(leftValue, rightValue))
+            throw new AssociationAlreadyExistsException(this, leftValue, rightValue);
+
+        doAssociate(leftValue, rightValue);
+    }
+
+    @Override
+    protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+        if (contains(leftValue, rightValue))
+            return;
+
+        associate(leftValue, rightValue);
+    }
+
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * {@link Bijection}.
+     * {@link Bijection} without verifying if the specified {@link Association}
+     * already exists.
      * 
      * @param leftValue
-     *        LeftValue of the Association
+     *        LeftValue of the {@link Association}
      * 
      * @param rightValue
-     *        RightValue of the Association
+     *        RightValue of the {@link Association}
      * 
      * @throws LeftValueAlreadyAssociatedException
-     *         if {@code leftValue} is already associated to another RightValue;
-     *         if the {@link Association} is equal to another
-     *         {@link Association} in the {@link HashAddBijection}, it is
-     *         ignored
+     *         if {@code leftValue} is already associated to another RightValue
      * 
      * @throws RightValueAlreadyAssociatedException
-     *         if {@code rightValue} is already associated to another LeftValue;
-     *         if the {@link Association} is equal to another
-     *         {@link Association} in the {@link HashAddBijection}, it is
-     *         ignored
+     *         if {@code rightValue} is already associated to another LeftValue
      * 
      * @throws IllegalAssociationException
      *         if some property of the {@code associations} prevents it from
      *         being added
      */
-    @Override
-    protected void associate(final LeftValue leftValue, final RightValue rightValue)
+    // IllegalAssociationException may be thrown by subclasses
+    protected void doAssociate(final LeftValue leftValue, final RightValue rightValue)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
-        if (hasLeft(leftValue)) {
-            if (!rightValue.equals(getRightValue(leftValue)))
-                throw new LeftValueAlreadyAssociatedException(this, leftValue, rightValue);
+        if (hasLeft(leftValue))
+            throw new LeftValueAlreadyAssociatedException(this, leftValue, rightValue);
 
-            return;
-        }
-
-        if (hasRight(rightValue)) // and automatically !leftValue.equals(left(rightValue))
+        if (hasRight(rightValue))
             throw new RightValueAlreadyAssociatedException(this, leftValue, rightValue);
 
         leftToRightMap.put(leftValue, rightValue);

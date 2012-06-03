@@ -89,13 +89,13 @@ implements AddSequence<Item> {
 
     @Override
     public void add(final Collection<? extends Item> items) {
-        ContainerUtility.addAll(this, items);
+        ContainerUtility.add(this, items);
     }
 
     @Override
     @SafeVarargs
     public final void add(final Item... items) {
-        ContainerUtility.addAll(this, items);
+        ContainerUtility.add(this, items);
     }
 
     @Override

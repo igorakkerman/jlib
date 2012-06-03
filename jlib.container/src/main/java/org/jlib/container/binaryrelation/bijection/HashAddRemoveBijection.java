@@ -144,42 +144,42 @@ implements RemoveBijection<LeftValue, RightValue> {
 
     @Override
     public void removeAll() {
-        ContainerUtility.removeAll(this, this);
+        ContainerUtility.remove(this, this);
     }
 
     @Override
-    public void removeAll(final Iterable<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.removeAll(this, associations);
+    public void remove(final Iterable<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.remove(this, associations);
     }
 
     @Override
-    public void removeAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.removeAll(this, associations);
+    public void remove(final Container<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.remove(this, associations);
     }
 
     @Override
-    public void removeAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.removeAll(this, associations);
+    public void remove(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.remove(this, associations);
     }
 
     @Override
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        ContainerUtility.removeAll(this, associations);
+    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+        ContainerUtility.remove(this, associations);
     }
 
     @Override
-    public void retainAll(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.retainAll(this, associations);
+    public void retain(final Container<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.retain(this, associations);
     }
 
     @Override
-    public void retainAll(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.retainAll(this, associations);
+    public void retain(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+        ContainerUtility.retain(this, associations);
     }
 
     @Override
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        ContainerUtility.retainAll(this, associations);
+    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+        ContainerUtility.retain(this, associations);
     }
 
     @Override

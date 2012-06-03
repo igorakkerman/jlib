@@ -36,12 +36,12 @@ implements AddContainer<Item> {
 
     @Override
     public void add(Collection<? extends Item> items) {
-        addAll((Iterable<? extends Item>) items);
+        add((Iterable<? extends Item>) items);
     }
 
     @Override
     public void add(Container<? extends Item> items) {
-        addAll((Iterable<? extends Item>) items);
+        add((Iterable<? extends Item>) items);
     }
 
     @Override
@@ -57,7 +57,7 @@ implements AddContainer<Item> {
      * @param items
      *        {@link Iterable} providing the Items to add
      */
-    private void addAll(final Iterable<? extends Item> items) {
+    private void add(final Iterable<? extends Item> items) {
         for (Item item : items)
             add(item);
     }

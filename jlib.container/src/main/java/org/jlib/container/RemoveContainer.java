@@ -59,7 +59,7 @@ extends Container<Item> {
      * @param items
      *        {@link Container} containing the Items to remove
      */
-    public void removeAll(final Container<? extends Item> items);
+    public void remove(final Container<? extends Item> items);
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -68,7 +68,7 @@ extends Container<Item> {
      * @param items
      *        {@link Collection} containing the Items to remove
      */
-    public void removeAll(final Collection<? extends Item> items);
+    public void remove(final Collection<? extends Item> items);
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -77,7 +77,7 @@ extends Container<Item> {
      * @param items
      *        {@link Iterable} providing the Items to remove
      */
-    public void removeAll(final Iterable<? extends Item> items);
+    public void remove(final Iterable<? extends Item> items);
 
     /**
      * Removes all specified Items from this {@link RemoveContainer}.
@@ -85,7 +85,7 @@ extends Container<Item> {
      * @param items
      *        vararg list of Items to remove
      */
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
+    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
      * Removes all Items from this {@link RemoveContainer} <i>except</i> the
@@ -94,7 +94,7 @@ extends Container<Item> {
      * @param items
      *        {@link Container} containing the Items to retain
      */
-    public void retainAll(final Container<? extends Item> items);
+    public void retain(final Container<? extends Item> items);
 
     /**
      * Removes all Items from this {@link RemoveContainer} <i>except</i> the
@@ -103,7 +103,7 @@ extends Container<Item> {
      * @param items
      *        {@link Collection} containing the Items to retain
      */
-    public void retainAll(final Collection<? extends Item> items);
+    public void retain(final Collection<? extends Item> items);
 
     /**
      * Removes all Items from this {@link RemoveContainer} <i>except</i> the
@@ -112,7 +112,7 @@ extends Container<Item> {
      * @param items
      *        vararg list of Items to retain
      */
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
+    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
 
     /**
      * Creates a new {@link RemoveTraverser} over this {@link RemoveContainer}.

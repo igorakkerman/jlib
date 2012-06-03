@@ -15,6 +15,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.container.AddContainer;
+import org.jlib.container.binaryrelation.bijection.Bijection;
 
 /**
  * BinaryRelation allowing the addition and removal of associations.
@@ -45,5 +46,22 @@ extends BinaryRelation<LeftValue, RightValue>, AddContainer<Association<LeftValu
      *         from being added
      */
     public void associate(LeftValue leftValue, RightValue rightValue)
+    throws IllegalAssociationException;
+
+    /**
+     * Associates the specified LeftValue with the specified RightValue in this
+     * {@link Bijection}.
+     * 
+     * @param leftValue
+     *        LeftValue of the {@link Association}
+     * 
+     * @param rightValue
+     *        RightValue of the {@link Association}
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of the {@code associations} prevents it from
+     *         being added
+     */
+    public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
     throws IllegalAssociationException;
 }

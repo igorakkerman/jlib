@@ -71,38 +71,38 @@ implements AddContainer<Item>, RemoveContainer<Item> {
     }
 
     @Override
-    public void removeAll(final Collection<? extends Item> items) {
+    public void remove(final Collection<? extends Item> items) {
         getDelegateCollection().removeAll(items);
     }
 
     @Override
-    public void removeAll(final Container<? extends Item> items) {
+    public void remove(final Container<? extends Item> items) {
         CollectionUtility.removeAll(getDelegateCollection(), items);
     }
 
     @Override
-    public void removeAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
-        ContainerUtility.removeAll(this, items);
+    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.remove(this, items);
     }
 
     @Override
-    public void removeAll(final Iterable<? extends Item> items) {
-        ContainerUtility.removeAll(this, items);
+    public void remove(final Iterable<? extends Item> items) {
+        ContainerUtility.remove(this, items);
     }
 
     @Override
-    public void retainAll(final Collection<? extends Item> items) {
+    public void retain(final Collection<? extends Item> items) {
         getDelegateCollection().retainAll(items);
     }
 
     @Override
-    public void retainAll(final Container<? extends Item> items) {
-        ContainerUtility.retainAll(this, items);
+    public void retain(final Container<? extends Item> items) {
+        ContainerUtility.retain(this, items);
     }
 
     @Override
-    public void retainAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
-        ContainerUtility.retainAll(this, items);
+    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        ContainerUtility.retain(this, items);
     }
 
     @Override

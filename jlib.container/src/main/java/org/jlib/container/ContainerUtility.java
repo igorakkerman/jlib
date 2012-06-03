@@ -37,11 +37,11 @@ public final class ContainerUtility {
      * @param container
      *        {@link AddContainer} to which the Items are added
      * 
-     * @param newItems
+     * @param items
      *        {@link Iterable} providing the Items to add
      */
-    public static <Item> void addAll(final AddContainer<Item> container, final Iterable<? extends Item> newItems) {
-        for (final Item newItem : newItems)
+    public static <Item> void add(final AddContainer<Item> container, final Iterable<? extends Item> items) {
+        for (final Item newItem : items)
             container.add(newItem);
     }
 
@@ -52,13 +52,47 @@ public final class ContainerUtility {
      * @param container
      *        {@link AddContainer} to which the Items are added
      * 
-     * @param newItems
+     * @param items
      *        {@link Iterable} providing the Items to add
      */
     @SafeVarargs
-    public static <Item> void addAll(final AddContainer<Item> container, final Item... newItems) {
-        for (final Item newItem : newItems)
+    public static <Item> void add(final AddContainer<Item> container, final Item... items) {
+        for (final Item newItem : items)
             container.add(newItem);
+    }
+
+    /**
+     * Asserts that the specified {@link AddContainer} contains the specified
+     * Items. If the {@link AddContainer} does not contain the Item, it is
+     * added.
+     * 
+     * @param container
+     *        {@link AddContainer} to which the Items are added
+     * 
+     * @param newItems
+     *        {@link Iterable} providing the Items to add
+     */
+    public static <Item> void assertContained(final AddContainer<Item> container,
+                                              final Iterable<? extends Item> newItems) {
+        for (final Item newItem : newItems)
+            container.assertContained(newItem);
+    }
+
+    /**
+     * Asserts that the specified {@link AddContainer} contains the specified
+     * Items. If the {@link AddContainer} does not contain the Item, it is
+     * added.
+     * 
+     * @param container
+     *        {@link AddContainer} to which the Items are added
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to add
+     */
+    @SafeVarargs
+    public static <Item> void assertContained(final AddContainer<Item> container, final Item... items) {
+        for (final Item newItem : items)
+            container.assertContained(newItem);
     }
 
     /**
@@ -71,7 +105,7 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to remove
      */
-    public static <Item> void removeAll(final RemoveContainer<Item> container, final Iterable<? extends Item> items) {
+    public static <Item> void remove(final RemoveContainer<Item> container, final Iterable<? extends Item> items) {
         for (final Item item : items)
             container.remove(item);
     }
@@ -87,7 +121,7 @@ public final class ContainerUtility {
      *        {@link Iterable} providing the Items to remove
      */
     @SafeVarargs
-    public static <Item> void removeAll(final RemoveContainer<Item> container, final Item... items) {
+    public static <Item> void remove(final RemoveContainer<Item> container, final Item... items) {
         for (final Item item : items)
             container.remove(item);
     }
@@ -102,7 +136,7 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to retain
      */
-    public static <Item> void retainAll(final RemoveContainer<Item> container, final Iterable<? extends Item> items) {
+    public static <Item> void retain(final RemoveContainer<Item> container, final Iterable<? extends Item> items) {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = container.createTraverser();
@@ -121,7 +155,7 @@ public final class ContainerUtility {
      * @param items
      *        {@link Collection} containing the Items to retain
      */
-    public static <Item> void retainAll(final RemoveContainer<Item> container, final Collection<? extends Item> items) {
+    public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items) {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
         while (itemsTraverser.isNextItemAccessible())
             if (!items.contains(itemsTraverser.getNextItem()))
@@ -139,9 +173,9 @@ public final class ContainerUtility {
      *        {@link Collection} containing the Items to retain
      */
     @SafeVarargs
-    public static <Item, RetainedItem extends Item> void retainAll(final RemoveContainer<Item> container,
-                                                                   final RetainedItem... items) {
+    public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
+                                                                final RetainedItem... items) {
         // necessary as we need the contains() method fot the items sequence
-        retainAll(container, CollectionUtility.toSet(items));
+        retain(container, CollectionUtility.toSet(items));
     }
 }

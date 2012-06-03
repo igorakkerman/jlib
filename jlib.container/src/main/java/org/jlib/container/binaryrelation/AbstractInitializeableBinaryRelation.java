@@ -19,8 +19,7 @@ package org.jlib.container.binaryrelation;
  * with data.
  * 
  * @param <LeftValue>
- *        type of the values on the left hand side of the
- *        {@link BinaryRelation}
+ *        type of the values on the left hand side of the {@link BinaryRelation}
  * 
  * @param <RightValue>
  *        type of the values on the right hand side of the
@@ -48,10 +47,31 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Association}
      * 
+     * @throws AssociationAlreadyExistsException
+     *         if the specified {@link Association} already exists
+     * 
      * @throws IllegalAssociationException
      *         if some property of the specified {@link Association} prevents it
      *         from being added
      */
     protected abstract void associate(LeftValue leftValue, RightValue rightValue)
+    throws AssociationAlreadyExistsException, IllegalAssociationException;
+
+    /**
+     * Asserts that the specified LeftValue is associated with the specified
+     * RightValue.
+     * 
+     * @param leftValue
+     *        LeftValue of the {@link Association}
+     * 
+     * @param rightValue
+     *        RightValue of the {@link Association}
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of the specified {@link Association} prevents it
+     *         from being added
+     */
+    protected abstract void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
     throws IllegalAssociationException;
+
 }

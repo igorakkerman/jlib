@@ -24,13 +24,14 @@ import org.jlib.container.Container;
 
 /**
  * {@link BinaryRelation} implemented using hashing for left and right hand side
- * items.
+ * values.
  * 
  * @param <LeftValue>
- *        type of the items on the left hand side of the {@link BinaryRelation}
+ *        type of the values on the left hand side of the {@link BinaryRelation}
  * 
  * @param <RightValue>
- *        type of the items on the right hand side of the {@link BinaryRelation}
+ *        type of the values on the right hand side of the
+ *        {@link BinaryRelation}
  * 
  * @author Igor Akkerman
  */
@@ -38,7 +39,7 @@ public class HashBinaryRelation<LeftValue, RightValue>
 extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     /**
-     * {@link Map} assigning each LeftValue the {@link Set} of RightValue items
+     * {@link Map} assigning each LeftValue the {@link Set} of RightValues
      * associated with it
      */
     protected Map<LeftValue, Set<RightValue>> leftToRightMap = new HashMap<LeftValue, Set<RightValue>>();
@@ -98,21 +99,20 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
             associate(association.getLeftValue(), association.getRightValue());
     }
 
-    /**
-     * Associates the specified LeftValue with the specified RightValue in this
-     * {@link HashBinaryRelation}.
-     * 
-     * @param leftValue
-     *        LeftValue of the Association
-     * 
-     * @param rightValue
-     *        RightValue of the Association
-     */
     @Override
-    protected void associate(final LeftValue leftValue, final RightValue rightValue) {
+    protected void associate(final LeftValue leftValue, final RightValue rightValue)
+    throws AssociationAlreadyExistsException, IllegalAssociationException {
+        if (contains(leftValue, rightValue))
+            throw new AssociationAlreadyExistsException(this, leftValue, rightValue);
 
-        associateUnidirectional(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
-        associateUnidirectional(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
+        assertAssociated(leftValue, rightValue);
+    }
+
+    @Override
+    protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    throws IllegalAssociationException {
+        assertAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
+        assertAssociatedOneWay(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
     }
 
     /**
@@ -138,9 +138,9 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
      *        boolean specifying whether {@code value1} is associated to at
      *        least one Value2 item
      */
-    private <Value1, Value2> void associateUnidirectional(final Value1 value1, final Value2 value2,
-                                                          final Map<Value1, Set<Value2>> value1ToValue2SetMap,
-                                                          final boolean value1Exists) {
+    private <Value1, Value2> void assertAssociatedOneWay(final Value1 value1, final Value2 value2,
+                                                         final Map<Value1, Set<Value2>> value1ToValue2SetMap,
+                                                         final boolean value1Exists) {
         final Set<Value2> value2Set = value1Exists
             ? value1ToValue2SetMap.get(value1)
             : new HashSet<Value2>();
