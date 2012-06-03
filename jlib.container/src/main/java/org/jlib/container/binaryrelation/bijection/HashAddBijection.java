@@ -22,6 +22,7 @@ import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractAddBinaryRelation;
 import org.jlib.container.binaryrelation.AddBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
 
 /**
  * {@link AddBijection} implemented using hashing for left and right hand side

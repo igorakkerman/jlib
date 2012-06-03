@@ -18,15 +18,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-
 import java.util.Map;
-import java.util.NoSuchItemException;
 import java.util.Set;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.AbstractBinaryRelation;
+import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
 import org.jlib.container.binaryrelation.DefaultBinaryRelationTraverser;
+import org.jlib.container.binaryrelation.ItemAlreadyAssociatedException;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Bijection implemented using hashing for left and right hand side items.
@@ -40,7 +40,7 @@ import org.jlib.container.binaryrelation.DefaultBinaryRelationTraverser;
  * @author Igor Akkerman
  */
 public class HashBijection<LeftValue, RightValue>
-extends AbstractBinaryRelation<LeftValue, RightValue>
+extends AbstractInitializeableBinaryRelation<LeftValue, RightValue>
 implements Bijection<LeftValue, RightValue> {
 
     /** Map assigning each LeftValue the RightValue associated with it */
@@ -63,19 +63,15 @@ implements Bijection<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      * 
-     * @throws NullPointerException
-     *         if for one of the specified Associations
-     *         {@code left() == null || right() == null}
-     * 
-     * @throws ObjectAlreadyAssociatedException
+     * @throws ItemAlreadyAssociatedException
      *         if one of the Objects in {@code associations} is already
      *         associated to another Object; if an Association is equal to a
      *         previously added Association, it is ignored
      */
-    public HashBijection(Container<Association<LeftValue, RightValue>> associations)
-    throws NullPointerException, ObjectAlreadyAssociatedException {
+    public HashBijection(final Container<Association<LeftValue, RightValue>> associations)
+    throws ItemAlreadyAssociatedException {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
 
@@ -85,16 +81,16 @@ implements Bijection<LeftValue, RightValue> {
      * 
      * @param associations
      *        Collection of the Associations to add
-     *        
-     * @throws ObjectAlreadyAssociatedException
+     * 
+     * @throws ItemAlreadyAssociatedException
      *         if one of the Objects in {@code associations} is already
      *         associated to another Object; if an Association is equal to a
      *         previously added Association, it is ignored
      */
-    public HashBijection(Collection<Association<LeftValue, RightValue>> associations)
-    throws ObjectAlreadyAssociatedException {
+    public HashBijection(final Collection<Association<LeftValue, RightValue>> associations)
+    throws ItemAlreadyAssociatedException {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
 
@@ -104,65 +100,63 @@ implements Bijection<LeftValue, RightValue> {
      * 
      * @param associations
      *        Comma separated sequence of the Associations to add
-     *        
-     * @throws ObjectAlreadyAssociatedException
+     * 
+     * @throws ItemAlreadyAssociatedException
      *         if one of the Objects in {@code associations} is already
      *         associated to another Object; if an Association is equal to a
      *         previously added Association, it is ignored
      */
-    public HashBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) Association<LeftValue, RightValue>... associations)
-    throws ObjectAlreadyAssociatedException {
+    public HashBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    throws ItemAlreadyAssociatedException {
         super();
-        for (Association<LeftValue, RightValue> association : associations)
+        for (final Association<LeftValue, RightValue> association : associations)
             associate(association.getLeftValue(), association.getRightValue());
     }
 
     /**
-     * Associates the specified LeftValue with the specified RightValue in
-     * this Bijection.
+     * Associates the specified LeftValue with the specified RightValue in this
+     * {@link Bijection}.
      * 
      * @param leftValue
      *        LeftValue of the Association
-     *        
+     * 
      * @param rightValue
      *        RightValue of the Association
-     *        
-     * @throws ObjectAlreadyAssociatedException
-     *         if {@code leftValue} or {@code rightValue} is already
-     *         associated to another Object; an existing Association is ignored
+     * 
+     * @throws ItemAlreadyAssociatedException
+     *         if {@code leftValue} or {@code rightValue} is already associated
+     *         to another Object; an existing Association is ignored
      */
-    protected void associate(LeftValue leftValue, RightValue rightValue)
-    throws ObjectAlreadyAssociatedException {
-        if (leftValue == null || rightValue == null)
-            throw new NullPointerException();
-
+    @Override
+    protected void associate(final LeftValue leftValue, final RightValue rightValue)
+    throws ItemAlreadyAssociatedException {
         if (hasLeft(leftValue)) {
-            if (! rightValue.equals(right(leftValue)))
-                throw new ObjectAlreadyAssociatedException(this, leftValue);
+            if (!rightValue.equals(right(leftValue)))
+                throw new ItemAlreadyAssociatedException(this, leftValue);
 
             return;
         }
 
         if (hasRight(rightValue)) // and automatically !leftValue.equals(left(rightValue))
-            throw new ObjectAlreadyAssociatedException(this, rightValue);
+            throw new ItemAlreadyAssociatedException(this, rightValue);
 
         leftToRightMap.put(leftValue, rightValue);
         rightToLeftMap.put(rightValue, leftValue);
     }
 
     @Override
-    public boolean hasLeft(LeftValue leftValue) {
+    public boolean hasLeft(final LeftValue leftValue) {
         return leftToRightMap.containsKey(leftValue);
     }
 
     @Override
-    public boolean hasRight(RightValue rightValue) {
+    public boolean hasRight(final RightValue rightValue) {
         return rightToLeftMap.containsKey(rightValue);
     }
 
     @Override
-    public RightValue right(LeftValue leftValue) {
-        RightValue rightValue = leftToRightMap.get(leftValue);
+    public RightValue right(final LeftValue leftValue) {
+        final RightValue rightValue = leftToRightMap.get(leftValue);
         if (rightValue != null)
             return rightValue;
         else
@@ -170,8 +164,8 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    public LeftValue left(RightValue rightValue) {
-        LeftValue leftValue = rightToLeftMap.get(rightValue);
+    public LeftValue left(final RightValue rightValue) {
+        final LeftValue leftValue = rightToLeftMap.get(rightValue);
         if (leftValue != null)
             return leftValue;
         else
@@ -204,17 +198,21 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    public Set<RightValue> rightSet(LeftValue leftValue) {
-        return hasLeft(leftValue) ? Collections.singleton(right(leftValue)) : new HashSet<RightValue>();
+    public Set<RightValue> rightSet(final LeftValue leftValue) {
+        return hasLeft(leftValue)
+            ? Collections.singleton(right(leftValue))
+            : new HashSet<RightValue>();
     }
 
     @Override
-    public Set<LeftValue> leftSet(RightValue rightValue) {
-        return hasRight(rightValue) ? Collections.singleton(left(rightValue)) : new HashSet<LeftValue>();
+    public Set<LeftValue> leftSet(final RightValue rightValue) {
+        return hasRight(rightValue)
+            ? Collections.singleton(left(rightValue))
+            : new HashSet<LeftValue>();
     }
 
     @Override
-    public boolean contains(LeftValue leftValue, RightValue rightValue) {
+    public boolean contains(final LeftValue leftValue, final RightValue rightValue) {
         return leftToRightMap.get(leftValue).equals(rightValue);
     }
 }

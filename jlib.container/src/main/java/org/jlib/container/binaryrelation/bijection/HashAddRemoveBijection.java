@@ -20,6 +20,7 @@ import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractReplaceAddRemoveBinaryRelation;
 import org.jlib.container.binaryrelation.AddBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.ObjectAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RemoveBinaryRelation;
 import org.jlib.core.traverser.RemoveTraverser;
 sing hashing for left and right hand side
