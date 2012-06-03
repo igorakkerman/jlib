@@ -24,20 +24,21 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.ItemAlreadyAssociatedException;
-import org.jlib.container.binaryrelation.LeftItemAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.IllegalAssociationException;
+import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
 import org.jlib.container.binaryrelation.NoSuchRightValueException;
-import org.jlib.container.binaryrelation.RightItemAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
 /**
- * Bijection implemented using hashing for left and right hand side items.
+ * {@link Bijection} implemented using hashing for left and right hand side
+ * items.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the bijection
+ *        type of the values on the left hand side of the {@link Bijection}
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the bijection
+ *        type of the values on the right hand side of the {@link Bijection}
  * 
  * @author Igor Akkerman
  */
@@ -65,13 +66,24 @@ implements Bijection<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      * 
-     * @throws ItemAlreadyAssociatedException
-     *         if one of the Objects in {@code associations} is already
-     *         associated to another Object; if an Association is equal to a
-     *         previously added Association, it is ignored
+     * @throws LeftValueAlreadyAssociatedException
+     *         if the LeftValue of one Item in {@code associations} is already
+     *         associated to another RightValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightValueAlreadyAssociatedException
+     *         if the RightValue of one Item in {@code associations} is already
+     *         associated to another LeftValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashBijection(final Container<Association<LeftValue, RightValue>> associations)
-    throws ItemAlreadyAssociatedException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
@@ -85,13 +97,24 @@ implements Bijection<LeftValue, RightValue> {
      * @param associations
      *        Collection of the Associations to add
      * 
-     * @throws ItemAlreadyAssociatedException
-     *         if one of the Objects in {@code associations} is already
-     *         associated to another Object; if an Association is equal to a
-     *         previously added Association, it is ignored
+     * @throws LeftValueAlreadyAssociatedException
+     *         if the LeftValue of one Item in {@code associations} is already
+     *         associated to another RightValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightValueAlreadyAssociatedException
+     *         if the RightValue of one Item in {@code associations} is already
+     *         associated to another LeftValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashBijection(final Collection<Association<LeftValue, RightValue>> associations)
-    throws ItemAlreadyAssociatedException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
@@ -105,13 +128,24 @@ implements Bijection<LeftValue, RightValue> {
      * @param associations
      *        Comma separated sequence of the Associations to add
      * 
-     * @throws ItemAlreadyAssociatedException
-     *         if one of the Objects in {@code associations} is already
-     *         associated to another Object; if an Association is equal to a
-     *         previously added Association, it is ignored
+     * @throws LeftValueAlreadyAssociatedException
+     *         if the LeftValue of one Item in {@code associations} is already
+     *         associated to another RightValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws RightValueAlreadyAssociatedException
+     *         if the RightValue of one Item in {@code associations} is already
+     *         associated to another LeftValue; if an {@link Association} is
+     *         equal to another {@link Association} in the
+     *         {@link HashAddBijection}, it is ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of one Item in {@code associations} prevents it
+     *         from being added
      */
     public HashBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
-    throws ItemAlreadyAssociatedException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)
@@ -128,22 +162,34 @@ implements Bijection<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the Association
      * 
-     * @throws ItemAlreadyAssociatedException
-     *         if {@code leftValue} or {@code rightValue} is already associated
-     *         to another Object; an existing Association is ignored
+     * @throws LeftValueAlreadyAssociatedException
+     *         if {@code leftValue} is already associated to another RightValue;
+     *         if the {@link Association} is equal to another
+     *         {@link Association} in the {@link HashAddBijection}, it is
+     *         ignored
+     * 
+     * @throws RightValueAlreadyAssociatedException
+     *         if {@code rightValue} is already associated to another LeftValue;
+     *         if the {@link Association} is equal to another
+     *         {@link Association} in the {@link HashAddBijection}, it is
+     *         ignored
+     * 
+     * @throws IllegalAssociationException
+     *         if some property of the {@code associations} prevents it from
+     *         being added
      */
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws ItemAlreadyAssociatedException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         if (hasLeft(leftValue)) {
             if (!rightValue.equals(getRightValue(leftValue)))
-                throw new LeftItemAlreadyAssociatedException(this, leftValue, rightValue);
+                throw new LeftValueAlreadyAssociatedException(this, leftValue, rightValue);
 
             return;
         }
 
         if (hasRight(rightValue)) // and automatically !leftValue.equals(left(rightValue))
-            throw new RightItemAlreadyAssociatedException(this, leftValue, rightValue);
+            throw new RightValueAlreadyAssociatedException(this, leftValue, rightValue);
 
         leftToRightMap.put(leftValue, rightValue);
         rightToLeftMap.put(rightValue, leftValue);

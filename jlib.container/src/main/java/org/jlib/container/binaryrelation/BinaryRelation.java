@@ -24,10 +24,10 @@ import org.jlib.core.traverser.Traverser;
  * sides may be associated with a Set of Objects on the other side.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the BinaryRelation
+ *        type of the values on the left hand side of the BinaryRelation
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the BinaryRelation
+ *        type of the values on the right hand side of the BinaryRelation
  * 
  * @author Igor Akkerman
  */

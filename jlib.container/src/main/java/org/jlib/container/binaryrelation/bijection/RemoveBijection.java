@@ -21,10 +21,10 @@ import org.jlib.container.binaryrelation.RemoveBinaryRelation;
  * Bijection allowing to add new associations.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the bijection
+ *        type of the values on the left hand side of the bijection
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the bijection
+ *        type of the values on the right hand side of the bijection
  * 
  * @author Igor Akkerman
  */

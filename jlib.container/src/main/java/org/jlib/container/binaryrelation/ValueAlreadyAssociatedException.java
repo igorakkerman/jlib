@@ -15,20 +15,20 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * Exception thrown when trying to associate an Item with another Item by a
- * {@link BinaryRelation} which allows an Item to be associated with only one
- * other Item, and the first Item is already associated with some third Item.
+ * Exception thrown when trying to associate a value with another value by a
+ * {@link BinaryRelation} which allows a value to be associated with only one
+ * other value, and the first value is already associated with some third value.
  * 
  * @author Igor Akkerman
  */
-public abstract class ItemAlreadyAssociatedException
+public abstract class ValueAlreadyAssociatedException
 extends IllegalAssociationException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -7959565629107248727L;
+    private static final long serialVersionUID = -6309445418086228661L;
 
     /**
-     * Creates a new {@link ItemAlreadyAssociatedException}.
+     * Creates a new {@link ValueAlreadyAssociatedException}.
      * 
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
@@ -39,8 +39,8 @@ extends IllegalAssociationException {
      * @param rightValue
      *        RightValue of the illegal {@link Association}
      */
-    public ItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                          final Object rightValue) {
+    public ValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                           final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);
     }
 }

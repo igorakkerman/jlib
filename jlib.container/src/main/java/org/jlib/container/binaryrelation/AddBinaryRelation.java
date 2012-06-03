@@ -20,10 +20,10 @@ import org.jlib.container.AddContainer;
  * BinaryRelation allowing the addition and removal of associations.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the BinaryRelation
+ *        type of the values on the left hand side of the BinaryRelation
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the BinaryRelation
+ *        type of the values on the right hand side of the BinaryRelation
  * 
  * @author Igor Akkerman
  */

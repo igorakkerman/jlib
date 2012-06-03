@@ -24,10 +24,10 @@ import org.jlib.core.traverser.Traverser;
  * {@link RemoveBinaryRelation}.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the binaryRelation
+ *        type of the values on the left hand side of the binaryRelation
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the binaryRelation
+ *        type of the values on the right hand side of the binaryRelation
  * 
  * @param <Relation>
  *        type of the traversed {@link RemoveBinaryRelation}

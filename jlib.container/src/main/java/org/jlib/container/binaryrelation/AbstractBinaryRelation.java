@@ -21,11 +21,11 @@ import org.jlib.core.traverser.Traverser;
  * Skeletal implementation of a {@link BinaryRelation}.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the
+ *        type of the values on the left hand side of the
  *        {@link BinaryRelation}
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the
+ *        type of the values on the right hand side of the
  *        {@link BinaryRelation}
  * 
  * @author Igor Akkerman

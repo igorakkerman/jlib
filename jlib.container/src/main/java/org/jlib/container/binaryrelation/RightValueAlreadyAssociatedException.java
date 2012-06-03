@@ -15,31 +15,31 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * {@link ItemAlreadyAssociatedException} for a LeftItem.
+ * {@link ValueAlreadyAssociatedException} for a LeftValue.
  * 
  * @author Igor Akkerman
  */
-public class LeftItemAlreadyAssociatedException
-extends ItemAlreadyAssociatedException {
+public class RightValueAlreadyAssociatedException
+extends ValueAlreadyAssociatedException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 7999182498569902948L;
+    private static final long serialVersionUID = -2805417022226046022L;
 
     /**
-     * Creates a new {@link LeftItemAlreadyAssociatedException} for the
+     * Creates a new {@link RightValueAlreadyAssociatedException} for the
      * specified {@link BinaryRelation} and the specified {@link Association}.
      * 
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
      * @param leftValue
-     *        already associated LeftValue
+     *        LeftValue to which {@code rightValue} cannot be associated
      * 
      * @param rightValue
-     *        RightValue to which {@code leftValue} cannot be associated
+     *        already associated RightValue
      */
-    public LeftItemAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                              final Object rightValue) {
+    public RightValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                               final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);
     }
 }

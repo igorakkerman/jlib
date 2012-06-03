@@ -19,11 +19,11 @@ package org.jlib.container.binaryrelation;
  * with data.
  * 
  * @param <LeftValue>
- *        type of the objects on the left hand side of the
+ *        type of the values on the left hand side of the
  *        {@link BinaryRelation}
  * 
  * @param <RightValue>
- *        type of the objects on the right hand side of the
+ *        type of the values on the right hand side of the
  *        {@link BinaryRelation}
  * 
  * @author Igor Akkerman
@@ -40,7 +40,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * BinaryRelation.
+     * {@link AbstractInitializeableBinaryRelation}.
      * 
      * @param leftValue
      *        LeftValue of the {@link Association}
