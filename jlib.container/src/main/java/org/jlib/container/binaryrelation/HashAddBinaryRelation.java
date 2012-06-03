@@ -18,7 +18,6 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.binaryrelation.bijection.ObjectAlreadyAssociatedException;
 
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right hand
@@ -50,11 +49,12 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      * 
-     * @throws NullPointerException
-     *         if for one of the specified Associations
-     *         {@code left() == null || right() == null}
+     * @throws IllegalAssociationException
+     *         if {@code associations} violates the rules of this
+     *         {@link HashAddBinaryRelation}
      */
-    public HashAddBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
+    public HashAddBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
+    throws IllegalAssociationException {
         super(associations);
     }
 
@@ -64,8 +64,13 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * 
      * @param associations
      *        {@link Collection} of {@link Association} items to add
+     * 
+     * @throws IllegalAssociationException
+     *         if {@code associations} violates the rules of this
+     *         {@link HashAddBinaryRelation}
      */
-    public HashAddBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
+    public HashAddBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
+    throws IllegalAssociationException {
         super(associations);
     }
 
@@ -76,18 +81,19 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        comma separated sequence of the {@link Association} items to add
      * 
-     * @throws NullPointerException
-     *         if for one of the specified Associations
-     *         {@code left() == null || right() == null}
+     * @throws IllegalAssociationException
+     *         if {@code associations} violates the rules of this
+     *         {@link HashAddBinaryRelation}
      */
-    public HashAddBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    public HashAddBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    throws IllegalAssociationException {
         super(associations);
     }
 
     // overridden to be made public
     @Override
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws ObjectAlreadyAssociatedException {
+    throws IllegalAssociationException {
         super.associate(leftValue, rightValue);
     }
 

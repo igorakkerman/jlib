@@ -40,12 +40,11 @@ extends Container<Item> {
      * @param item
      *        Item to add
      * 
-     * @throws IllegalArgumentException
-     *         if {@code item} cannot be added, for instance, if this
-     *         {@link AddContainer} does not allow the multiple addition of an
-     *         Item and already contains {@code item}
+     * @throws IllegalContainerArgumentException
+     *         if some property of {@code item} prevents it to be added
      */
-    public void add(final Item item);
+    public void add(final Item item)
+    throws IllegalContainerArgumentException;
 
     /**
      * Adds all Items contained by the specified {@link Container} to this
@@ -53,6 +52,9 @@ extends Container<Item> {
      * 
      * @param items
      *        {@link Container} containing the Items to add
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if {@code items}
      */
     public void addAll(final Container<? extends Item> items);
 
