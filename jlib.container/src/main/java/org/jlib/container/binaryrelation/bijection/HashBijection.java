@@ -24,7 +24,6 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.AssociationAlreadyExistsException;
 import org.jlib.container.binaryrelation.IllegalAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
@@ -155,9 +154,10 @@ implements Bijection<LeftValue, RightValue> {
 
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
+    RightValueAlreadyAssociatedException, IllegalAssociationException {
         if (contains(leftValue, rightValue))
-            throw new AssociationAlreadyExistsException(this, leftValue, rightValue);
+            throw new AssociationAlreadyContainedException(this, leftValue, rightValue);
 
         doAssociate(leftValue, rightValue);
     }

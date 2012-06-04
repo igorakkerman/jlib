@@ -6,6 +6,7 @@ import java.util.Collections;
 import org.jlib.container.AddContainer;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
+import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.RemoveContainer;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
@@ -37,8 +38,32 @@ implements AddContainer<Item>, RemoveContainer<Item> {
     }
 
     @Override
-    public void add(final Item item) {
+    public void assertContained(final Item item)
+    throws IllegalContainerArgumentException {
         getDelegateCollection().add(item);
+    }
+
+    @Override
+    public void assertContained(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException {
+        ContainerUtility.assertContained(this, items);
+    }
+
+    @Override
+    public void assertContained(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException {
+        ContainerUtility.assertContained(this, items);
+    }
+
+    @Override
+    public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    throws IllegalContainerArgumentException {
+        ContainerUtility.assertContained(this, items);
+    }
+
+    @Override
+    public void add(final Item item) {
+        ContainerUtility.add(this, item);
     }
 
     @Override
@@ -109,5 +134,4 @@ implements AddContainer<Item>, RemoveContainer<Item> {
     public RemoveTraverser<Item> createTraverser() {
         return new RemoveIterableTraverser<>(getDelegateCollection());
     }
-
 }

@@ -14,6 +14,8 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
+
 /**
  * Skeletal implementation of a {@link BinaryRelation} allowing to be filled
  * with data.
@@ -47,7 +49,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Association}
      * 
-     * @throws AssociationAlreadyExistsException
+     * @throws AssociationAlreadyContainedException
      *         if the specified {@link Association} already exists
      * 
      * @throws IllegalAssociationException
@@ -55,7 +57,7 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      *         from being added
      */
     protected abstract void associate(LeftValue leftValue, RightValue rightValue)
-    throws AssociationAlreadyExistsException, IllegalAssociationException;
+    throws AssociationAlreadyContainedException, IllegalAssociationException;
 
     /**
      * Asserts that the specified LeftValue is associated with the specified

@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.container.collection.CollectionUtility;
+import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
@@ -31,6 +32,31 @@ public final class ContainerUtility {
     private ContainerUtility() {}
 
     /**
+     * Adds the specified Item to the specified {@link AddContainer} that does
+     * not yet contain the Item.
+     * 
+     * @param container
+     *        {@link AddContainer} to which the Item is added
+     * 
+     * @param item
+     *        added Item
+     * 
+     * @throws ItemAlreadyContainedException
+     *         if {@code container} already contains {@code item}
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if some property of {@code item} prevents it from being added to
+     *         {@code container}
+     */
+    public static <Item> void add(final AddContainer<Item> container, final Item item)
+    throws ItemAlreadyContainedException, IllegalContainerArgumentException {
+        if (container.contains(item))
+            throw new ItemAlreadyContainedException(container, item);
+
+        container.assertContained(item);
+    }
+
+    /**
      * Adds all Items provided by the specified {@link Iterable} to the
      * specified {@link AddContainer}.
      * 
@@ -39,10 +65,18 @@ public final class ContainerUtility {
      * 
      * @param items
      *        {@link Iterable} providing the Items to add
+     * 
+     * @throws ItemAlreadyContainedException
+     *         if {@code container} already contains one Item in {@code items}
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being added to {@code container}
      */
-    public static <Item> void add(final AddContainer<Item> container, final Iterable<? extends Item> items) {
-        for (final Item newItem : items)
-            container.add(newItem);
+    public static <Item, Items extends Iterable<? extends Item>> void add(final AddContainer<Item> container,
+                                                                          final Items items) {
+        for (final Item item : items)
+            container.add(item);
     }
 
     /**
@@ -54,11 +88,17 @@ public final class ContainerUtility {
      * 
      * @param items
      *        {@link Iterable} providing the Items to add
+     * 
+     * @throws ItemAlreadyContainedException
+     *         if {@code container} already contains one Item in {@code items}
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being added to {@code container}
      */
     @SafeVarargs
     public static <Item> void add(final AddContainer<Item> container, final Item... items) {
-        for (final Item newItem : items)
-            container.add(newItem);
+        add(container, ArrayUtility.iterable(items));
     }
 
     /**
@@ -69,12 +109,11 @@ public final class ContainerUtility {
      * @param container
      *        {@link AddContainer} to which the Items are added
      * 
-     * @param newItems
+     * @param items
      *        {@link Iterable} providing the Items to add
      */
-    public static <Item> void assertContained(final AddContainer<Item> container,
-                                              final Iterable<? extends Item> newItems) {
-        for (final Item newItem : newItems)
+    public static <Item> void assertContained(final AddContainer<Item> container, final Iterable<? extends Item> items) {
+        for (final Item newItem : items)
             container.assertContained(newItem);
     }
 
@@ -91,8 +130,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     public static <Item> void assertContained(final AddContainer<Item> container, final Item... items) {
-        for (final Item newItem : items)
-            container.assertContained(newItem);
+        assertContained(container, ArrayUtility.iterable(items));
     }
 
     /**
@@ -122,8 +160,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     public static <Item> void remove(final RemoveContainer<Item> container, final Item... items) {
-        for (final Item item : items)
-            container.remove(item);
+        remove(container, ArrayUtility.iterable(items));
     }
 
     /**

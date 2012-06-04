@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.AssociationAlreadyExistsException;
 import org.jlib.container.binaryrelation.IllegalAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
@@ -131,7 +130,7 @@ implements AddBijection<LeftValue, RightValue> {
     @Override
     // raising visibility from protected to public
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         super.associate(leftValue, rightValue);
     }
@@ -145,28 +144,28 @@ implements AddBijection<LeftValue, RightValue> {
 
     @Override
     public void add(final Association<LeftValue, RightValue> association)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         associate(association.getLeftValue(), association.getRightValue());
     }
 
     @Override
     public void add(final Container<? extends Association<LeftValue, RightValue>> associations)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         ContainerUtility.add(this, associations);
     }
 
     @Override
     public void add(final Collection<? extends Association<LeftValue, RightValue>> associations)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         ContainerUtility.add(this, associations);
     }
 
     @Override
     public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         ContainerUtility.add(this, associations);
     }

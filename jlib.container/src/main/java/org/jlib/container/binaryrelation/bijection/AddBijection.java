@@ -16,7 +16,6 @@ package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AddBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.AssociationAlreadyExistsException;
 import org.jlib.container.binaryrelation.IllegalAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
@@ -45,7 +44,7 @@ extends Bijection<LeftValue, RightValue>, AddBinaryRelation<LeftValue, RightValu
      * @param rightValue
      *        RightValue of the {@link Association}
      * 
-     * @throws AssociationAlreadyExistsException
+     * @throws AssociationAlreadyContainedException
      *         if the specified {@link Association} already exists
      * 
      * @throws LeftValueAlreadyAssociatedException
@@ -60,7 +59,7 @@ extends Bijection<LeftValue, RightValue>, AddBinaryRelation<LeftValue, RightValu
      */
     @Override
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws AssociationAlreadyExistsException, LeftValueAlreadyAssociatedException,
+    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException;
 
     /**
