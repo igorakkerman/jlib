@@ -85,6 +85,12 @@ public final class IndexSequenceUtility {
      * {@link AbstractInitializeableIndexSequence} is the size of the specified
      * sequence.
      * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
+     * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
      * 
@@ -106,9 +112,15 @@ public final class IndexSequenceUtility {
      * Creates a new {@link AbstractInitializeableIndexSequence} containing the
      * specified Items having a specified first index. That is, the index of the
      * first Item of the specified sequence in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed size of
-     * the {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * sequence.
+     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
+     * size of the {@link AbstractInitializeableIndexSequence} is the size of
+     * the specified sequence.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -141,8 +153,14 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} with a first index of
-     * {@code 0} and the specified size.
+     * Creates a new {@link AbstractInitializeableIndexSequence} with a first
+     * index of {@code 0} and the specified size.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -169,11 +187,17 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the Items of
-     * the specified Container. The index of the first Item of the specified
-     * Container in the {@link AbstractInitializeableIndexSequence} is 0. The fixed size
-     * of the {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * Container.
+     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
+     * Items of the specified Container. The index of the first Item of the
+     * specified Container in the {@link AbstractInitializeableIndexSequence} is
+     * 0. The fixed size of the {@link AbstractInitializeableIndexSequence} is
+     * the size of the specified Container.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -196,11 +220,17 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the Items of
-     * the specified Java Container. The index of the first Item of the
-     * specified Container in the {@link AbstractInitializeableIndexSequence} is 0. The
-     * fixed size of the {@link AbstractInitializeableIndexSequence} is the size of the
-     * specified Container.
+     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
+     * Items of the specified Java Container. The index of the first Item of the
+     * specified Container in the {@link AbstractInitializeableIndexSequence} is
+     * 0. The fixed size of the {@link AbstractInitializeableIndexSequence} is
+     * the size of the specified Container.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -220,12 +250,18 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the Items of
-     * the specified Container having a specified first index. That is, the
-     * index of the first Item of the specified collection in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed size of
-     * the {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * Container.
+     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
+     * Items of the specified Container having a specified first index. That is,
+     * the index of the first Item of the specified collection in the
+     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
+     * size of the {@link AbstractInitializeableIndexSequence} is the size of
+     * the specified Container.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -262,12 +298,18 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the Items of
-     * the specified Container having a specified first index. That is, the
-     * index of the first Item of the specified collection in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed size of
-     * the {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * Container.
+     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
+     * Items of the specified Container having a specified first index. That is,
+     * the index of the first Item of the specified collection in the
+     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
+     * size of the {@link AbstractInitializeableIndexSequence} is the size of
+     * the specified Container.
+     * 
+     * @param <Item>
+     *        type of items held in the {@link Sequence}
+     * 
+     * @param <Sequenze>
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -337,7 +379,7 @@ public final class IndexSequenceUtility {
      * }
      * 
      * @param <Sequenze>
-     *        type of the {@link AbstractInitializeableIndexSequence} created
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
@@ -363,7 +405,7 @@ public final class IndexSequenceUtility {
      * is the size of the specified sequence.
      * 
      * @param <Sequenze>
-     *        type of the {@link AbstractInitializeableIndexSequence} created
+     *        concrete type of the created {@link IndexSequence}
      * 
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use

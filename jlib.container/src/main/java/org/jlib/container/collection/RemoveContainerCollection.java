@@ -2,6 +2,7 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
+import org.jlib.container.Container;
 import org.jlib.container.RemoveContainer;
 
 /**
@@ -23,6 +24,9 @@ extends ContainerCollection<Item> {
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
      * {@link RemoveContainer}.
+     * 
+     * @param <DelegateContainer>
+     *        type of the delegate {@link Container}
      * 
      * @param delegateContainer
      *        {@link RemoveContainer} backing this
