@@ -16,12 +16,13 @@ public final class ArrayUtility {
      * @param <Item>
      *        type of the items held in the array
      * 
-     * @param array
-     *        array of Items to traverse
+     * @param items
+     *        comma separated sequence of Items to traverse
      * 
      * @return {@link Iterable} adapter for {@code array}
      */
-    public static <Item> Iterable<Item> iterable(final Item[] array) {
-        return new ArrayIterable<>(array);
+    @SafeVarargs
+    public static <Item> Iterable<Item> iterable(final Item... items) {
+        return new ArrayIterable<>(items);
     }
 }
