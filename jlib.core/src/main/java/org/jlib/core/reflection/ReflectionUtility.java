@@ -144,14 +144,14 @@ public final class ReflectionUtility {
      *         if the specified system property is not set
      * @throws ClassInstantiationException
      *         <ul>
-     *         <li>if the specified system property is not set (cause is a
-     *         {@link PropertyNotSetException}) or</li>
-     *         <li>if the instantiation of the specified class fails (cause is
+     *         <lem>if the specified system property is not set (cause is a
+     *         {@link PropertyNotSetException}) or</lem>
+     *         <lem>if the instantiation of the specified class fails (cause is
      *         one of the exceptions thrown by {@link Class#forName(String)}) or
-     *         </li>
-     *         <li>the instantiated object is not an instance of the class
+     *         </lem>
+     *         <lem>the instantiated object is not an instance of the class
      *         represented by {@code Obj} or a subclass (cause is a
-     *         {@link ClassCastException}).</li>
+     *         {@link ClassCastException}).</lem>
      *         </ul>
      */
     @SuppressWarnings("unchecked")

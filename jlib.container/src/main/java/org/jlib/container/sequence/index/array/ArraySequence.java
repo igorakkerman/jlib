@@ -45,7 +45,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * Special features:
  * </p>
  * <ul>
- * <li>Minimum and maximum index: <br/>
+ * <lem>Minimum and maximum index: <br/>
  * On instantiation, you can specify the first and the maximum index of the
  * ArraySequence. Thus, no offset is necessary for Arrays starting at other indices than
  * 0. The following example illustrates how an ArraySequence is filled with numbers from
@@ -58,13 +58,13 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  *     integerArray[i - 1] = i;                       integerArray.set(i, i);
  * </pre>
  * 
- * </li>
+ * </lem>
  * 
- * <li>Conformance to the Collections framework <br/>
+ * <lem>Conformance to the Collections framework <br/>
  * The class implements the {@code Collection} interface and thus
- * behaves like all Collections.</li>
+ * behaves like all Collections.</lem>
  * <br />
- * <li>Full support for generics:<br/>
+ * <lem>Full support for generics:<br/>
  * The Java arrays do not support generic classes. For example, you cannot
  * create an array of String sequences:
  * 
@@ -77,8 +77,8 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * ArraySequence<Sequence<String>> stringSequenceArray = new ArraySequence<Sequence<String>>(10);}
  * </pre>
  * 
- * </li>
- * <li>
+ * </lem>
+ * <lem>
  * Easy to create:<br />
  * 
  * <pre>
@@ -105,7 +105,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * {@literal The constructor ArraySequence<Integer>(Integer[]) is ambiguous}
  * </pre>
  * 
- * </li>
+ * </lem>
  * </ul>
  * 
  * @param <Item>

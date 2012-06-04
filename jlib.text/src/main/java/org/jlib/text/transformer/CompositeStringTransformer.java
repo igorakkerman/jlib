@@ -1,6 +1,6 @@
 package org.jlib.text.transformer;
 
-import org.jlib.container.sequence.AddSequence;
+import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -16,7 +16,7 @@ implements StringTransformer {
      * {@link Sequence} of {@link StringTransformer StringTransformers}
      * composing this CompositeStringTransformer
      */
-    private final AddSequence<StringTransformer> stringTransformers;
+    private final AppendSequence<StringTransformer> stringTransformers;
 
     /**
      * Creates a new CompositeStringTransformer initially composed by the

@@ -17,12 +17,11 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.ContainerUtility;
 import org.jlib.container.IllegalContainerArgumentException;
 
 /**
- * {@link AddBinaryRelation} implemented using hashing for left and right hand
- * side items.
+ * {@link AssociateBinaryRelation} implemented using hashing for left and right
+ * hand side items.
  * 
  * @param <LeftValue>
  *        type of the items on the left hand side of the {@link BinaryRelation}
@@ -32,19 +31,19 @@ import org.jlib.container.IllegalContainerArgumentException;
  * 
  * @author Igor Akkerman
  */
-public class HashAddBinaryRelation<LeftValue, RightValue>
+public class HashAssociateBinaryRelation<LeftValue, RightValue>
 extends HashBinaryRelation<LeftValue, RightValue>
-implements AddBinaryRelation<LeftValue, RightValue> {
+implements AssociateBinaryRelation<LeftValue, RightValue> {
 
     /**
-     * Creates a new initially empty {@link HashAddBinaryRelation}.
+     * Creates a new initially empty {@link HashAssociateBinaryRelation}.
      */
-    public HashAddBinaryRelation() {
+    public HashAssociateBinaryRelation() {
         super();
     }
 
     /**
-     * Creates a new {@link HashAddBinaryRelation} containing the
+     * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Container}.
      * 
      * @param associations
@@ -52,15 +51,15 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
-     *         {@link HashAddBinaryRelation}
+     *         {@link HashAssociateBinaryRelation}
      */
-    public HashAddBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
         super(associations);
     }
 
     /**
-     * Creates a new {@link HashAddBinaryRelation} containing the
+     * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Collection}.
      * 
      * @param associations
@@ -68,15 +67,15 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
-     *         {@link HashAddBinaryRelation}
+     *         {@link HashAssociateBinaryRelation}
      */
-    public HashAddBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
         super(associations);
     }
 
     /**
-     * Creates a new {@link HashAddBinaryRelation} containing the
+     * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items specified in a comma separated sequence.
      * 
      * @param associations
@@ -84,9 +83,9 @@ implements AddBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
-     *         {@link HashAddBinaryRelation}
+     *         {@link HashAssociateBinaryRelation}
      */
-    public HashAddBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    public HashAssociateBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         super(associations);
     }
@@ -106,27 +105,27 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void add(final Association<LeftValue, RightValue> association)
+    public void associate(final Association<LeftValue, RightValue> association)
     throws IllegalAssociationException {
         associate(association.getLeftValue(), association.getRightValue());
     }
 
     @Override
-    public void add(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
     throws IllegalContainerArgumentException {
-        ContainerUtility.add(this, associations);
+        BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
-    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    public void associate(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
-        ContainerUtility.add(this, associations);
+        BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
-    public void add(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(final Collection<? extends Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
-        ContainerUtility.add(this, associations);
+        BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
@@ -138,7 +137,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     @Override
     public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
-        ContainerUtility.assertContained(this, associations);
+        BinaryRelationUtility.assertContained(this, associations);
     }
 
     @Override
@@ -148,6 +147,6 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     @Override
     public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
-        ContainerUtility.assertContained(this, associations);
+        BinaryRelationUtility.assertContained(this, associations);
     }
 }

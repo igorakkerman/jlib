@@ -3,14 +3,14 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceAddInsertIndexSequenceTraverser;
-import org.jlib.container.sequence.index.InsertAddReplaceIndexSequence;
+import org.jlib.container.sequence.index.InsertAppendReplaceIndexSequence;
 import org.jlib.container.sequence.index.ReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
 /**
- * {@link ReplaceAddArraySequence} into which Items can be inserted.
+ * {@link ReplaceAppendArraySequence} into which Items can be inserted.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -19,7 +19,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  */
 public class ReplaceAddEndsRemoveInsertArraySequence<Item>
 extends ReplaceAddEndsRemoveArraySequence<Item>
-implements InsertAddReplaceIndexSequence<Item> {
+implements InsertAppendReplaceIndexSequence<Item> {
 
     /**
      * Creates a new {@link ReplaceAddEndsRemoveInsertArraySequence} with the

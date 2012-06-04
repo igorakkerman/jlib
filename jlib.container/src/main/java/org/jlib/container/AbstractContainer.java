@@ -109,13 +109,13 @@ implements Container<Item> {
      * implementation in this class defines the Objects equal if all of the
      * following conditions are satisfied:
      * <ul>
-     * <li>the specified {@link Object} is not {@code null}</li>
-     * <li>this Object and the specified Object are instances of the same class</li>
-     * <li>if the Traverser returned by the {@link #iterator()} method of this
+     * <lem>the specified {@link Object} is not {@code null}</lem>
+     * <lem>this Object and the specified Object are instances of the same class</lem>
+     * <lem>if the Traverser returned by the {@link #iterator()} method of this
      * Container and the specified Container (it is a Container by the previous
      * condition) return equal Items in the same order; two Items are said to be
      * equal if they are both {@code null} or the comparison using the
-     * {@link Object#equals(Object) equals} method returns {@code true}</li>
+     * {@link Object#equals(Object) equals} method returns {@code true}</lem>
      * </ul>
      * 
      * @param otherObject

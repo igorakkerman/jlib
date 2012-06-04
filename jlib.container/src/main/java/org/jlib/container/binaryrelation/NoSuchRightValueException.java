@@ -18,10 +18,14 @@ extends NoSuchAssociationException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
+     * @param leftValue
+     *        LeftValue of the {@link Association}
+     * 
      * @param rightValue
-     *        {@link Object} specifying the right value
+     *        RightValue of the {@link Association}
      */
-    public NoSuchRightValueException(final BinaryRelation<?, ?> binaryRelation, final Object rightValue) {
-        super(binaryRelation, rightValue);
+    public NoSuchRightValueException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                     final Object rightValue) {
+        super(binaryRelation, leftValue, rightValue);
     }
 }

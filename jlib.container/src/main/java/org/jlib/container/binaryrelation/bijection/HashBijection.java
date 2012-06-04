@@ -70,13 +70,13 @@ implements Bijection<LeftValue, RightValue> {
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it
@@ -101,13 +101,13 @@ implements Bijection<LeftValue, RightValue> {
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it
@@ -132,13 +132,13 @@ implements Bijection<LeftValue, RightValue> {
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
-     *         {@link HashAddBijection}, it is ignored
+     *         {@link HashAssociateBijection}, it is ignored
      * 
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it

@@ -27,17 +27,17 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze extends InsertAddReplaceIndexSequence<Item>>
+public class DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze extends InsertAppendReplaceIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
 implements ReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
-     * the Items of the specified {@link InsertAddReplaceIndexSequence}
+     * the Items of the specified {@link InsertAppendReplaceIndexSequence}
      * beginning at its first index.
      * 
      * @param sequence
-     *        {@link InsertAddReplaceIndexSequence} to traverse
+     *        {@link InsertAppendReplaceIndexSequence} to traverse
      */
     public DefaultReplaceAddInsertIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
@@ -45,11 +45,11 @@ implements ReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
-     * the Items of the specified {@link InsertAddReplaceIndexSequence}
+     * the Items of the specified {@link InsertAppendReplaceIndexSequence}
      * beginning the traversal at the specified index.
      * 
      * @param sequence
-     *        {@link InsertAddReplaceIndexSequence} to traverse
+     *        {@link InsertAppendReplaceIndexSequence} to traverse
      * 
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item

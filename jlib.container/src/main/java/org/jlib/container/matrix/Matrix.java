@@ -32,7 +32,7 @@ import org.jlib.core.traverser.Traverser;
  * Special features:
  * </p>
  * <ul>
- * <li>Minimum and maximum width and height:<br/>
+ * <lem>Minimum and maximum width and height:<br/>
  * On instantiation, you can specify the minimum and the maximum width and
  * height of the ArrayMatrix. Thus, no offset is necessary for matrices
  * starting at other indices than 0. The following example illustrates how a
@@ -56,12 +56,12 @@ import org.jlib.core.traverser.Traverser;
  * }
  * </pre>
  * 
- * </li>
- * <li>Conformance to the Collections Framework <br/>
+ * </lem>
+ * <lem>Conformance to the Collections Framework <br/>
  * The class implements the {@code Collection} interface and thus behaves like
- * all Collections.</li>
+ * all Collections.</lem>
  * <br />
- * <li>Full support for generics:<br/>
+ * <lem>Full support for generics:<br/>
  * The Java arrays do not support generic classes. For example, you cannot
  * create an array of String SequenceUtility:
  * 
@@ -78,7 +78,7 @@ import org.jlib.core.traverser.Traverser;
  * }
  * </pre>
  * 
- * </li>
+ * </lem>
  * </ul>
  * <p>
  * <!-- TODO: update documentation --> A default algorithm of how this

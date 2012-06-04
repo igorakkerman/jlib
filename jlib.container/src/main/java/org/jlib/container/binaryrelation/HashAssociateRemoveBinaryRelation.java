@@ -17,12 +17,12 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.ContainerUtility;
+import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * {@link AddBinaryRelation} implemented using hashing for left and right hand
- * side items.
+ * {@link AssociateBinaryRelation} implemented using hashing for left and right
+ * hand side items.
  * 
  * @param <LeftValue>
  *        type of the items on the left hand side of the {@link BinaryRelation}
@@ -32,19 +32,19 @@ import org.jlib.core.traverser.RemoveTraverser;
  * 
  * @author Igor Akkerman
  */
-public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
-extends HashAddBinaryRelation<LeftValue, RightValue>
+public class HashAssociateRemoveBinaryRelation<LeftValue, RightValue>
+extends HashAssociateBinaryRelation<LeftValue, RightValue>
 implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
-     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
+     * Creates a new initially empty {@link HashAssociateRemoveBinaryRelation}.
      */
-    public HashAddRemoveBinaryRelation() {
+    public HashAssociateRemoveBinaryRelation() {
         super();
     }
 
     /**
-     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Container}.
      * 
      * @param associations
@@ -52,15 +52,15 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
+     *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAddRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
+    public HashAssociateRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
         super(associations);
     }
 
     /**
-     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Collection}.
      * 
      * @param associations
@@ -68,9 +68,9 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
+     *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAddRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
+    public HashAssociateRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
     throws IllegalAssociationException {
         super(associations);
     }
@@ -84,9 +84,9 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * 
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
+     *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAddRemoveBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    public HashAssociateRemoveBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         super(associations);
     }
@@ -99,54 +99,64 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final LeftValue leftValue, final RightValue rightValue) {
+    public void remove(final LeftValue leftValue, final RightValue rightValue)
+    throws NoSuchAssociationException {
+        if (!contains(leftValue, rightValue))
+            throw new NoSuchAssociationException(this, leftValue, rightValue);
+
         leftToRightMap.get(leftValue).remove(rightValue);
         rightToLeftMap.get(rightValue).remove(leftValue);
     }
 
     @Override
-    public void remove(final Association<LeftValue, RightValue> association) {
-        remove(association.getLeftValue(), association.getRightValue());
+    public void remove(final Association<LeftValue, RightValue> association)
+    throws NoSuchItemToRemoveException {
+        try {
+            remove(association.getLeftValue(), association.getRightValue());
+        }
+        catch (final NoSuchAssociationException exception) {
+            throw new NoSuchItemToRemoveException(this, association, exception);
+        }
     }
 
     @Override
     public void removeAll() {
-        ContainerUtility.remove(this, this);
+        BinaryRelationUtility.remove(this, this);
     }
 
     @Override
     public void remove(final Iterable<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+        BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
     public void remove(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+        BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
     public void remove(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+        BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
     public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        ContainerUtility.remove(this, associations);
+        BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
     public void retain(final Container<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.retain(this, associations);
+        BinaryRelationUtility.retain(this, associations);
     }
 
     @Override
     public void retain(final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        ContainerUtility.retain(this, associations);
+        BinaryRelationUtility.retain(this, associations);
     }
 
     @Override
     public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
-        ContainerUtility.retain(this, associations);
+        BinaryRelationUtility.retain(this, associations);
     }
 
     @Override

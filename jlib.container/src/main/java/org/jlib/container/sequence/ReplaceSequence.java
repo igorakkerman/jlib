@@ -24,7 +24,7 @@ import org.jlib.container.ReplaceContainer;
  * <p>
  * It does not necessarily allow modification of the sequence, that is, this
  * interface does not provide methods for adding and removing Items. See
- * {@link AddSequence} for this functionality.
+ * {@link AppendSequence} for this functionality.
  * </p>
  * 
  * @param <Item>

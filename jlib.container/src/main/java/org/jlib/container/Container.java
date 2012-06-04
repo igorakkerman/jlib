@@ -26,82 +26,134 @@ import org.jlib.core.traverser.Traversible;
  * 
  * @author Igor Akkerman
  */
-//TODO: add operations passing ModificationListeners to the methods
 public interface Container<Item>
 extends Traversible<Item>, Iterable<Item> {
 
     /**
-     * Returns the number of Items in this Container.
+     * Returns the number of Items in this {@link Container}.
      * 
-     * @return integer specifying the number of Items in this Container
+     * @return integer specifying the number of Items in this {@link Container}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public int getSize();
+    public int getSize()
+    throws IllegalContainerStateException;
 
     /**
-     * Verifies whether this Container contains no Items.
+     * Verifies whether this {@link Container} contains no Items.
      * 
-     * @return {@code true} if this Container contains no Items; {@code false}
-     *         otherwise
+     * @return {@code true} if this {@link Container} contains no Items;
+     *         {@code false} otherwise
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public boolean isEmpty();
+    public boolean isEmpty()
+    throws IllegalContainerStateException;
 
     /**
-     * Verifies whether this Container contains the specified Object.
+     * Verifies whether this {@link Container} contains the specified Object.
      * 
      * @param item
      *        Item to verify
-     * @return {@code true} if this Container contains {@code object};
+     * 
+     * @return {@code true} if this {@link Container} contains {@code object};
      *         {@code false} otherwise
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public boolean contains(final Item item);
+    public boolean contains(final Item item)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Verifies whether this Container contains all of the Items in the
+     * Verifies whether this {@link Container} contains all of the Items in the
      * specified Container.
      * 
      * @param items
      *        Container containing the Items to verify
-     * @return {@code true} if this Container contains all of the Items
+     * 
+     * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public boolean containsAll(final Container<? extends Item> items);
+    public boolean containsAll(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Verifies whether this Container contains all of the Items in the
+     * Verifies whether this {@link Container} contains all of the Items in the
      * specified Collection.
      * 
      * @param items
-     *        Collection containing the Items to verify
-     * @return {@code true} if this Container contains all of the Items
+     *        {@link Collection} containing the Items to verify
+     * 
+     * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public boolean containsAll(final Collection<? extends Item> items);
+    public boolean containsAll(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Verifies whether this Container contains all of the specified Items.
+     * Verifies whether this {@link Container} contains all of the specified
+     * Items.
      * 
      * @param items
      *        comma separated sequence of Items to verify
-     * @return {@code true} if this Container contains all of the
+     * 
+     * @return {@code true} if this {@link Container} contains all of the
      *         {@code objects}; {@code false} otherwise
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Returns a Collection containing all of the Items of this Container in the
-     * proper order as returned by this Container's Traverser.
+     * Returns a Collection containing all of the Items of this
+     * {@link Container} in the proper order as returned by this
+     * {@link Container}'s Traverser.
      * 
-     * @return {@link Collection} containing all of the Items of this Container
+     * @return {@link Collection} containing all of the Items of this
+     *         {@link Container}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public Collection<Item> toCollection();
+    public Collection<Item> toCollection()
+    throws IllegalContainerStateException;
 
     /**
-     * Returns an array containing all of the Items of this Container in the
-     * proper order as returned by this Container's Traverser.
+     * Returns an array containing all of the Items of this {@link Container} in
+     * the proper order as returned by this {@link Container}'s Traverser.
      * 
-     * TODO: where can toArray() be overridden for optimization
+     * @return array containing all of the Items of this {@link Container}
      * 
-     * @return array containing all of the Items of this Container
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public Item[] toArray();
+    public Item[] toArray()
+    throws IllegalContainerStateException;
 }

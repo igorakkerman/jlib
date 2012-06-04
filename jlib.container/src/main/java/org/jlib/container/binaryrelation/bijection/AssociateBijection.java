@@ -14,7 +14,7 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.AddBinaryRelation;
+import org.jlib.container.binaryrelation.AssociateBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
 import org.jlib.container.binaryrelation.IllegalAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
@@ -31,8 +31,8 @@ import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
  * 
  * @author Igor Akkerman
  */
-public interface AddBijection<LeftValue, RightValue>
-extends Bijection<LeftValue, RightValue>, AddBinaryRelation<LeftValue, RightValue> {
+public interface AssociateBijection<LeftValue, RightValue>
+extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -75,12 +75,12 @@ extends Bijection<LeftValue, RightValue>, AddBinaryRelation<LeftValue, RightValu
      * @throws LeftValueAlreadyAssociatedException
      *         if {@code leftValue} is already associated to another RightValue;
      *         if the {@link Association} is equal to another
-     *         {@link Association} in this {@link AddBijection}, it is ignored
+     *         {@link Association} in this {@link AssociateBijection}, it is ignored
      * 
      * @throws RightValueAlreadyAssociatedException
      *         if {@code rightValue} is already associated to another LeftValue;
      *         if the {@link Association} is equal to another
-     *         {@link Association} in this {@link AddBijection}, it is ignored
+     *         {@link Association} in this {@link AssociateBijection}, it is ignored
      * 
      * @throws IllegalAssociationException
      *         if some property of the {@link Association} prevents it from

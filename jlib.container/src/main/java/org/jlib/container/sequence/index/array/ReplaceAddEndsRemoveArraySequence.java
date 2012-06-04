@@ -6,7 +6,7 @@ import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 /**
- * {@link ReplaceAddArraySequence} from which Items can be removed at its ends,
+ * {@link ReplaceAppendArraySequence} from which Items can be removed at its ends,
  * that is, its head and tail.
  * 
  * @param <Item>
@@ -15,7 +15,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  * @author Igor Akkerman
  */
 public class ReplaceAddEndsRemoveArraySequence<Item>
-extends ReplaceAddArraySequence<Item>
+extends ReplaceAppendArraySequence<Item>
 implements ReplaceAddEndsRemoveIndexSequence<Item> {
 
     /**

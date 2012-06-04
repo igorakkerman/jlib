@@ -3,9 +3,9 @@ package org.jlib.container.sequence.index.array;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.ContainerUtility;
-import org.jlib.container.sequence.AddSequence;
+import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
@@ -21,38 +21,38 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAddArraySequence<Item>
+public class ReplaceAppendArraySequence<Item>
 extends ReplaceArraySequence<Item>
-implements AddSequence<Item> {
+implements AppendSequence<Item> {
 
     /**
-     * {@link IndexSequenceCreator} of {@link ReplaceAddArraySequence}
+     * {@link IndexSequenceCreator} of {@link ReplaceAppendArraySequence}
      * insstances
      */
-    private static final IndexSequenceCreator<?, ? extends ReplaceAddArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, ReplaceAddArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAppendArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAppendArraySequence<Object>>() {
 
             @Override
-            public ReplaceAddArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            public ReplaceAppendArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new ReplaceAddArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAppendArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link ReplaceAddArraySequence} instances.
+     * {@link ReplaceAppendArraySequence} instances.
      * 
-     * @return {@link IndexSequenceCreator} of {@link ReplaceAddArraySequence}
-     *         instances
+     * @return {@link IndexSequenceCreator} of
+     *         {@link ReplaceAppendArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAddArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, ReplaceAddArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAppendArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link ReplaceAddArraySequence} with the specified first
+     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
      * and last indices.
      * 
      * @param firstIndex
@@ -64,17 +64,17 @@ implements AddSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAddArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
     @Override
-    public void add(final Item item) {
-        add(singleton(item));
+    public void append(final Item item) {
+        append(singleton(item));
     }
 
     @Override
-    public void add(final Container<? extends Item> items) {
+    public void append(final Container<? extends Item> items) {
         final int addedItemsCount = items.getSize();
 
         assertCapacity(getSize() + addedItemsCount);
@@ -88,18 +88,18 @@ implements AddSequence<Item> {
     }
 
     @Override
-    public void add(final Collection<? extends Item> items) {
-        ContainerUtility.add(this, items);
+    public void append(final Collection<? extends Item> items) {
+        SequenceUtility.append(this, items);
     }
 
     @Override
     @SafeVarargs
-    public final void add(final Item... items) {
-        ContainerUtility.add(this, items);
+    public final void append(final Item... items) {
+        SequenceUtility.append(this, items);
     }
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAddArraySequence<Item>>(this);
+        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendArraySequence<Item>>(this);
     }
 }

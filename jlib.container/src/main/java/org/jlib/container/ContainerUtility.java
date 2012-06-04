@@ -32,110 +32,11 @@ public final class ContainerUtility {
     private ContainerUtility() {}
 
     /**
-     * Adds the specified Item to the specified {@link AddContainer} that does
-     * not yet contain the Item.
-     * 
-     * @param container
-     *        {@link AddContainer} to which the Item is added
-     * 
-     * @param item
-     *        added Item
-     * 
-     * @throws ItemAlreadyContainedException
-     *         if {@code container} already contains {@code item}
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if some property of {@code item} prevents it from being added to
-     *         {@code container}
-     */
-    public static <Item> void add(final AddContainer<Item> container, final Item item)
-    throws ItemAlreadyContainedException, IllegalContainerArgumentException {
-        if (container.contains(item))
-            throw new ItemAlreadyContainedException(container, item);
-
-        container.assertContained(item);
-    }
-
-    /**
-     * Adds all Items provided by the specified {@link Iterable} to the
-     * specified {@link AddContainer}.
-     * 
-     * @param container
-     *        {@link AddContainer} to which the Items are added
-     * 
-     * @param items
-     *        {@link Iterable} providing the Items to add
-     * 
-     * @throws ItemAlreadyContainedException
-     *         if {@code container} already contains one Item in {@code items}
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if some property of one Item in {@code items} prevents it from
-     *         being added to {@code container}
-     */
-    public static <Item, Items extends Iterable<? extends Item>> void add(final AddContainer<Item> container,
-                                                                          final Items items) {
-        for (final Item item : items)
-            container.add(item);
-    }
-
-    /**
-     * Adds all Items in the specified comma separated sequence to the specified
-     * {@link AddContainer}.
-     * 
-     * @param container
-     *        {@link AddContainer} to which the Items are added
-     * 
-     * @param items
-     *        {@link Iterable} providing the Items to add
-     * 
-     * @throws ItemAlreadyContainedException
-     *         if {@code container} already contains one Item in {@code items}
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if some property of one Item in {@code items} prevents it from
-     *         being added to {@code container}
-     */
-    @SafeVarargs
-    public static <Item> void add(final AddContainer<Item> container, final Item... items) {
-        add(container, ArrayUtility.iterable(items));
-    }
-
-    /**
-     * Asserts that the specified {@link AddContainer} contains the specified
-     * Items. If the {@link AddContainer} does not contain the Item, it is
-     * added.
-     * 
-     * @param container
-     *        {@link AddContainer} to which the Items are added
-     * 
-     * @param items
-     *        {@link Iterable} providing the Items to add
-     */
-    public static <Item> void assertContained(final AddContainer<Item> container, final Iterable<? extends Item> items) {
-        for (final Item newItem : items)
-            container.assertContained(newItem);
-    }
-
-    /**
-     * Asserts that the specified {@link AddContainer} contains the specified
-     * Items. If the {@link AddContainer} does not contain the Item, it is
-     * added.
-     * 
-     * @param container
-     *        {@link AddContainer} to which the Items are added
-     * 
-     * @param items
-     *        {@link Iterable} providing the Items to add
-     */
-    @SafeVarargs
-    public static <Item> void assertContained(final AddContainer<Item> container, final Item... items) {
-        assertContained(container, ArrayUtility.iterable(items));
-    }
-
-    /**
      * Removes all Items provided by the specified {@link Iterable} from the
      * specified {@link RemoveContainer}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
      * 
      * @param container
      *        {@link RemoveContainer} containing the Items
@@ -152,6 +53,9 @@ public final class ContainerUtility {
      * Removes all Items in the specified comma separated sequence from the
      * specified {@link RemoveContainer}.
      * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     * 
      * @param container
      *        {@link RemoveContainer} containing the Items
      * 
@@ -164,8 +68,11 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link AddContainer} <i>except</i>
-     * the Items provided by the specified {@link Iterable}.
+     * Removes all Items from the specified {@link RemoveContainer}
+     * <em>except</em> the Items provided by the specified {@link Iterable}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
      * 
      * @param container
      *        {@link RemoveContainer} containing the Items to remove
@@ -183,8 +90,12 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link AddContainer} <i>except</i>
-     * for the Items contained by the specified {@link Collection}.
+     * Removes all Items from the specified {@link RemoveContainer}
+     * <em>except</em> for the Items contained by the specified
+     * {@link Collection} .
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
      * 
      * @param container
      *        {@link RemoveContainer} containing the Items to remove
@@ -200,8 +111,15 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link AddContainer} <i>except</i>
-     * for the Items contained by the specified {@link Collection}.
+     * Removes all Items from the specified {@link RemoveContainer}
+     * <em>except</em> for the Items contained by the specified
+     * {@link Collection} .
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     * 
+     * @param <RetainedItem>
+     *        type of the items retained in the {@link Container}
      * 
      * @param container
      *        {@link RemoveContainer} containing the Items to remove

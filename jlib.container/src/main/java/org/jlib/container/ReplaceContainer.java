@@ -1,6 +1,6 @@
 package org.jlib.container;
 
-import org.jlib.container.sequence.AddSequence;
+import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -12,7 +12,7 @@ import org.jlib.core.traverser.ReplaceTraverser;
  * <p>
  * It does not necessarily allow modification of the {@link Container}, that is,
  * this interface does not provide methods for adding and removing Items. See
- * {@link AddSequence} for this functionality.
+ * {@link AppendSequence} for this functionality.
  * </p>
  * 
  * @param <Item>

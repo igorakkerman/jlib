@@ -41,16 +41,27 @@ extends Container<Item> {
      * @param item
      *        Item to remove
      * 
-     * @throws IllegalArgumentException
+     * @throws NoSuchItemToRemoveException
      *         if this {@link RemoveContainer} does not contain {@code Item}
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
     public void remove(final Item item)
-    throws IllegalArgumentException;
+    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
      * Removes all Items of this {@link RemoveContainer}.
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void removeAll();
+    public void removeAll()
+    throws IllegalContainerStateException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
@@ -58,8 +69,16 @@ extends Container<Item> {
      * 
      * @param items
      *        {@link Container} containing the Items to remove
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void remove(final Container<? extends Item> items);
+    public void remove(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -67,52 +86,100 @@ extends Container<Item> {
      * 
      * @param items
      *        {@link Collection} containing the Items to remove
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void remove(final Collection<? extends Item> items);
+    public void remove(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link AddContainer}.
+     * {@link RemoveContainer}.
      * 
      * @param items
      *        {@link Iterable} providing the Items to remove
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void remove(final Iterable<? extends Item> items);
+    public void remove(final Iterable<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
      * Removes all specified Items from this {@link RemoveContainer}.
      * 
      * @param items
-     *        vararg list of Items to remove
+     *        comma separated sequence of Items to remove
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
+    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
      * Items contained by the specified {@link Container}.
      * 
      * @param items
      *        {@link Container} containing the Items to retain
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void retain(final Container<? extends Item> items);
+    public void retain(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
      * Items contained by the specified {@link Collection}.
      * 
      * @param items
      *        {@link Collection} containing the Items to retain
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void retain(final Collection<? extends Item> items);
+    public void retain(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer} <i>except</i> the
+     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
      * specified Items.
      * 
      * @param items
-     *        vararg list of Items to retain
+     *        comma separated sequence of Items to retain
+     * 
+     * @throws IllegalContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
      */
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items);
+    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
      * Creates a new {@link RemoveTraverser} over this {@link RemoveContainer}.

@@ -5,7 +5,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.TailRemoveSequence;
 
 /**
- * {@link ReplaceAddIndexSequence}, {@link HeadRemoveSequence} and
+ * {@link ReplaceAppendIndexSequence}, {@link HeadRemoveSequence} and
  * {@link TailRemoveSequence}.
  * 
  * @param <Item>
@@ -14,6 +14,6 @@ import org.jlib.container.sequence.TailRemoveSequence;
  * @author Igor Akkerman
  */
 public interface ReplaceAddEndsRemoveIndexSequence<Item>
-extends ReplaceAddIndexSequence<Item>, HeadRemoveSequence<Item>, TailRemoveSequence<Item> {
+extends ReplaceAppendIndexSequence<Item>, HeadRemoveSequence<Item>, TailRemoveSequence<Item> {
     // unifying interface
 }

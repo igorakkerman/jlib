@@ -1,21 +1,16 @@
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.IllegalContainerArgumentException;
-
 /**
- * {@link IllegalContainerArgumentException} thrown when a
- * {@link BinaryRelation} does not contain a requested {@link Association}.
+ * {@link IllegalAssociationException} thrown when referencing an
+ * {@link Association} not contained by the specified {@link BinaryRelation}.
  * 
  * @author Igor Akkerman
  */
-public abstract class NoSuchAssociationException
-extends IllegalBinaryRelationArgumentException {
+public class NoSuchAssociationException
+extends IllegalAssociationException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -6717984941514100227L;
-
-    /** left or right value of the missing {@link Association} */
-    private Object associationValue;
+    private static final long serialVersionUID = -5774667231932174427L;
 
     /**
      * Creates a new {@link NoSuchAssociationException}.
@@ -23,19 +18,14 @@ extends IllegalBinaryRelationArgumentException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
-     * @param associationValue
-     *        left or right value of the missing {@link Association}
-     */
-    public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object associationValue) {
-        super(binaryRelation, "{1}: {2}", associationValue);
-    }
-
-    /**
-     * Returns the left or right value of the missing {@link Association}.
+     * @param leftValue
+     *        LeftValue of the {@link Association}
      * 
-     * @return {@link Object} specifying the value
+     * @param rightValue
+     *        RightValue of the {@link Association}
      */
-    public Object getAssociationValue() {
-        return associationValue;
+    public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                      final Object rightValue) {
+        super(binaryRelation, leftValue, rightValue);
     }
 }
