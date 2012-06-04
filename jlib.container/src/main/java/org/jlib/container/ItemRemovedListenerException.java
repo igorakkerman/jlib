@@ -1,5 +1,7 @@
 package org.jlib.container;
 
+import org.jlib.core.IllegalJlibStateException;
+
 /**
  * {@link IllegalJlibStateException} thrown during the handling of a removed
  * Item.

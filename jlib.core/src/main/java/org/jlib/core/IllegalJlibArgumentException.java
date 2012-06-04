@@ -1,4 +1,4 @@
-package org.jlib.container;
+package org.jlib.core;
 
 import java.text.MessageFormat;
 

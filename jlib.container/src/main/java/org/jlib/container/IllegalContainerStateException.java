@@ -1,5 +1,7 @@
 package org.jlib.container;
 
+import org.jlib.core.IllegalJlibStateException;
+
 
 /**
  * {@link IllegalJlibStateException} caused by a {@link Container}.
