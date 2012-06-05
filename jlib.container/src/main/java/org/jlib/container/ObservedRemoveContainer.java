@@ -16,12 +16,15 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ItemObserverException;
+import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
  * <p>
  * {@link RemoveContainer} allowing its remove operations to be attended by
- * {@link RemoveObserver} instances.
+ * {@link ItemObserver} instances.
  * </p>
  * <p>
  * Note: In jlib, {@code null} is not a value. Hence, {@link Container
@@ -34,58 +37,35 @@ import org.jlib.core.traverser.RemoveTraverser;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveContainer<Item>
-extends Container<Item> {
+extends RemoveContainer<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Container}.
+     * Removes the specified Item of this {@link RemoveContainer}.
      * 
-     * @param items
-     *        {@link Container} containing the Items to retain
+     * @param item
+     *        Item to remove
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
+     *        attending the removal
+     * 
+     * @throws NoSuchItemToRemoveException
+     *         if this {@link RemoveContainer} does not contain {@code Item}
      * 
      * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    public void retain(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items from this {@link ObservedRemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Collection}.
-     * 
-     * @param items
-     *        {@link Collection} containing the Items to retain
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items from this {@link ObservedRemoveContainer}
-     * <em>except</em> the specified Items.
-     * 
-     * @param items
-     *        comma separated sequence of Items to retain
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    public void remove(final Item item,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
+    ItemObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
@@ -94,8 +74,8 @@ extends Container<Item> {
      * @param items
      *        {@link Container} containing the Items to remove
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link RemoveObserver} instances
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
      *        attending the removal
      * 
      * @throws IllegalContainerArgumentException
@@ -104,13 +84,13 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    // @formatter:off
-    public void removeMe(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) 
-                       final RemoveObserver<Item, ObservedRemoveContainer<Item>>... removeObservers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-    // @formatter:on
+    public void remove(final Container<? extends Item> items,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -119,8 +99,8 @@ extends Container<Item> {
      * @param items
      *        {@link Collection} containing the Items to remove
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link RemoveObserver} instances
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
      *        attending the removal
      * 
      * @throws IllegalContainerArgumentException
@@ -129,10 +109,13 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
     public void remove(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -141,8 +124,8 @@ extends Container<Item> {
      * @param items
      *        {@link Iterable} providing the Items to remove
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link RemoveObserver} instances
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
      *        attending the removal
      * 
      * @throws IllegalContainerArgumentException
@@ -151,12 +134,13 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    // @formatter:off
     public void remove(final Iterable<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) RemoveObserver<Item, Conteener>... removeObservers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-    // @formatter:on
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all specified Items from this {@link ObservedRemoveContainer}.
@@ -164,8 +148,8 @@ extends Container<Item> {
      * @param items
      *        comma separated sequence of Items to remove
      * 
-     * @param removeObservers
-     *        array of {@link RemoveObserver} instances attending the removal
+     * @param observers
+     *        array of {@link ItemObserver} instances attending the removal
      * 
      * @throws IllegalContainerArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -173,10 +157,13 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    public void remove(RemoveObserver<Item, ? extends Container<Item>>[] removeObservers,
+    public void remove(ItemObserver<Item>[] observers,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRemoveContainer}
@@ -185,8 +172,8 @@ extends Container<Item> {
      * @param items
      *        {@link Container} containing the Items to retain
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link RemoveObserver} instances
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
      *        attending the removal
      * 
      * @throws IllegalContainerArgumentException
@@ -195,10 +182,13 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
     public void retain(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRemoveContainer}
@@ -207,8 +197,8 @@ extends Container<Item> {
      * @param items
      *        {@link Collection} containing the Items to retain
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link RemoveObserver} instances
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
      *        attending the removal
      * 
      * @throws IllegalContainerArgumentException
@@ -217,17 +207,20 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
     public void retain(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRemoveContainer}
      * <em>except</em> the specified Items.
      * 
-     * @param removeObservers
-     *        array of {@link RemoveObserver} instances attending the removal
+     * @param observers
+     *        array of {@link ItemObserver} instances attending the removal
      * 
      * @param items
      *        comma separated sequence of Items to retain
@@ -238,17 +231,27 @@ extends Container<Item> {
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    public void retain(RemoveObserver<Item, ? extends Container<Item>>[] removeObservers,
+    public void retain(ItemObserver<Item>[] observers,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ItemObserverException;
 
     /**
-     * Creates a new {@link RemoveTraverser} over this
-     * {@link ObservedRemoveContainer}.
+     * Creates a new {@link ObservedRemoveTraverser} over this
+     * {@link ObservedRemoveContainer} with the specified {@link ItemObserver}
+     * instances.
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
+     *        attending Item removals
      * 
      * @return newly created {@link RemoveTraverser}
+     * 
+     * @throws ItemObserverException
+     *         if an error occurs during the {@link ItemObserver} operation
      */
-    @Override
-    public RemoveTraverser<Item> createTraverser();
+    public ObservedRemoveTraverser<Item> createObservedTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
 }

@@ -1,7 +1,7 @@
 package org.jlib.core.observer;
 
 /**
- * {@link ObserverException} thrown during an Item operation.
+ * {@link ObserverException} thrown during an {@link ItemObserver} operation.
  * 
  * @author Igor Akkerman
  */
