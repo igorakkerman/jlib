@@ -1,24 +1,21 @@
 package org.jlib.container;
 
 /**
- * Listener for Item removal.
+ * Observer for Item removal.
  * 
  * @param <Item>
  *        type of removed item
  * 
- * @param <Conteener>
- *        type of the {@link Container} from which the Item is removed
- * 
  * @author Igor Akkerman
  */
-public interface RemoveObserver<Item, Conteener extends Container<Item>> {
+public interface RemoveObserver<Item> {
 
     /**
      * Handles the removal of the specified Item to the specified
      * {@link Container}.
      * 
      * @param container
-     *        {@link Container} from which {@code item} is removed
+     *        {@link RemoveContainer} from which {@code item} is removed
      * 
      * @param item
      *        Item removed from {@code container}
@@ -26,7 +23,7 @@ public interface RemoveObserver<Item, Conteener extends Container<Item>> {
      * @throws RemoveObserverException
      *         if an error occurs registering the Item removal
      */
-    void handleBeforeRemove(final Conteener container, final Item item)
+    void handleBeforeRemove(final RemoveContainer<Item> container, final Item item)
     throws RemoveObserverException;
 
     /**
@@ -34,7 +31,7 @@ public interface RemoveObserver<Item, Conteener extends Container<Item>> {
      * {@link Container}.
      * 
      * @param container
-     *        {@link Container} from which {@code item} is removed
+     *        {@link RemoveContainer} from which {@code item} is removed
      * 
      * @param item
      *        Item removed from {@code container}
@@ -42,7 +39,7 @@ public interface RemoveObserver<Item, Conteener extends Container<Item>> {
      * @throws RemoveObserverException
      *         if an error occurs registering the Item removal
      */
-    void handleRemoved(final Conteener container, final Item item)
+    void handleRemoved(final RemoveContainer<Item> container, final Item item)
     throws RemoveObserverException;
 
     /**
@@ -50,7 +47,7 @@ public interface RemoveObserver<Item, Conteener extends Container<Item>> {
      * {@link Container}.
      * 
      * @param container
-     *        {@link Container} from which {@code item} is removed
+     *        {@link RemoveContainer} from which {@code item} is removed
      * 
      * @param item
      *        Item removed from {@code container}
@@ -58,6 +55,6 @@ public interface RemoveObserver<Item, Conteener extends Container<Item>> {
      * @throws RemoveObserverException
      *         if an error occurs registering the Item removal
      */
-    void handleNotRemoved(final Conteener container, final Item item)
+    void handleNotRemoved(final RemoveContainer<Item> container, final Item item)
     throws RemoveObserverException;
 }
