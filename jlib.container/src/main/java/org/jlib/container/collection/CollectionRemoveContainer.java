@@ -5,8 +5,12 @@ import java.util.Collections;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
+import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.RemoveContainer;
+import org.jlib.container.RemoveObserver;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -21,7 +25,7 @@ import org.jlib.core.traverser.RemoveTraverser;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveContainer<Item> {
+implements ObservedRemoveContainer<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -224,5 +228,56 @@ implements RemoveContainer<Item> {
     public RemoveTraverser<Item> createTraverser()
     throws IllegalContainerDelegateStateException {
         return new RemoveIterableTraverser<>(getDelegateCollection());
+    }
+
+    // @formatter:off
+    @Override
+    public void removeMe(final Container<? extends Item> items,
+                         @SuppressWarnings({ "unchecked", /* "varargs" */}) 
+                         final RemoveObserver<Item, ObservedRemoveContainer<Item>>... removeObservers)
+throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.removeIt(this, items, removeObservers);
+    }
+
+    @Override
+    public void remove(final Collection<? extends Item> items,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
+    }
+
+    // @formatter:off
+    @Override
+    public <Conteener extends RemoveContainer<Item>> 
+            void remove(final Iterable<? extends Item> items,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final RemoveObserver<Item, Conteener>... removeObservers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
+    }
+
+    @Override
+    public void remove(final RemoveObserver<Item, ? extends Container<Item>>[] removeObservers, final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
+    }
+
+    @Override
+    public void retain(final Container<? extends Item> items,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
+    }
+
+    @Override
+    public void retain(final Collection<? extends Item> items,
+                       final RemoveObserver<Item, ? extends Container<Item>>... removeObservers)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
+    }
+
+    @Override
+    public void retain(final RemoveObserver<Item, ? extends Container<Item>>[] removeObservers, final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.remove(this, items);
     }
 }
