@@ -15,6 +15,9 @@ public final class SequenceUtility {
     /**
      * Creates a new {@link Sequence} containing solely the specified Item.
      * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
      * @param item
      *        sole Item of the new {@link Sequence}
      * 
@@ -27,6 +30,9 @@ public final class SequenceUtility {
     /**
      * Adds the specified Item to the specified {@link AppendSequence} that does
      * not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
      * 
      * @param sequence
      *        {@link AppendSequence} to which the Item is appended
@@ -47,6 +53,9 @@ public final class SequenceUtility {
      * Adds all Items provided by the specified {@link Iterable} to the
      * specified {@link AppendSequence}.
      * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
      * @param sequence
      *        {@link AppendSequence} to which the Items are appended
      * 
@@ -57,8 +66,7 @@ public final class SequenceUtility {
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
-    public static <Item, Items extends Iterable<? extends Item>> void append(final AppendSequence<Item> sequence,
-                                                                             final Items items) {
+    public static <Item> void append(final AppendSequence<Item> sequence, final Iterable<? extends Item> items) {
         for (final Item item : items)
             sequence.append(item);
     }
@@ -66,6 +74,9 @@ public final class SequenceUtility {
     /**
      * Adds all Items in the specified comma separated sequence to the specified
      * {@link AppendSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
      * 
      * @param sequence
      *        {@link AppendSequence} to which the Items are appended
