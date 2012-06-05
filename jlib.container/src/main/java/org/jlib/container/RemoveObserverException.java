@@ -1,21 +1,18 @@
 package org.jlib.container;
 
-import org.jlib.core.IllegalJlibStateException;
-
 /**
- * {@link IllegalJlibStateException} thrown during the handling of a removed
- * Item.
+ * {@link ContainerListenerException} thrown during an Item removal.
  * 
  * @author Igor Akkerman
  */
-public class ItemRemovedListenerException
+public class RemoveObserverException
 extends ContainerListenerException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -2504496105146397663L;
 
     /**
-     * Creates a new {@link ItemRemovedListenerException}.
+     * Creates a new {@link RemoveObserverException}.
      * 
      * @param container
      *        {@link Container} from which {@code addedItem} is removed
@@ -28,14 +25,14 @@ extends ContainerListenerException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link ItemRemovedListenerException}
+     *        {@link RemoveObserverException}
      * 
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ItemRemovedListenerException(final Container<?> container, final Object removedItem,
-                                        final String messagePattern, final Throwable cause,
-                                        final Object... messageArguments) {
+    public RemoveObserverException(final Container<?> container, final Object removedItem,
+                                      final String messagePattern, final Throwable cause,
+                                      final Object... messageArguments) {
         super(container, removedItem, messagePattern, cause, messageArguments);
     }
 }

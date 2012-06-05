@@ -9,15 +9,12 @@ import org.jlib.core.IllegalJlibStateException;
  * @author Igor Akkerman
  */
 public abstract class ContainerListenerException
-extends IllegalJlibStateException {
+extends IllegalContainerStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 2302026114454404812L;
 
-    /** referenced {@link Container} */
-    private final Container<?> container;
-
-    /** referenced Item */
+    /** handled Item */
     private final Object item;
 
     /**
@@ -27,7 +24,7 @@ extends IllegalJlibStateException {
      *        {@link Container} to which {@code addedItem} is added
      * 
      * @param item
-     *        Item added to {@code container}
+     *        handled Item
      * 
      * @param messagePattern
      *        {@link String} specifying the message pattern
@@ -41,27 +38,17 @@ extends IllegalJlibStateException {
      */
     public ContainerListenerException(final Container<?> container, final Object item, final String messagePattern,
                                       final Throwable cause, final Object... messageArguments) {
-        super(messagePattern, cause, messageArguments);
+        super(container, messagePattern, cause, messageArguments);
 
-        this.container = container;
         this.item = item;
     }
 
     /**
-     * Returns the {@link Container} to which {@code addedItem} is added.
+     * Returns the handled Item.
      * 
-     * @return {@link Container} to which {@code addedItem} is added
+     * @return handled Item
      */
-    public Container<?> getContainer() {
-        return container;
-    }
-
-    /**
-     * Returns the added Item.
-     * 
-     * @return added Item
-     */
-    public Object getAddedItem() {
+    public Object getItem() {
         return item;
     }
 }
