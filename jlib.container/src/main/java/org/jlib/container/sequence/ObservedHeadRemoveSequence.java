@@ -25,9 +25,6 @@ extends HeadRemoveSequence<Item> {
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
-    // @formatter:off
-    public void removeFirstItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) 
-                                final ItemObserver<Item>... observers)
+    public void removeFirstItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws ItemObserverException;
-    // @formatter:on
 }
