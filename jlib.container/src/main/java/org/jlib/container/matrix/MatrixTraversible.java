@@ -4,18 +4,20 @@ package org.jlib.container.matrix;
  * {@link Iterable} providing a {@link MatrixTraverser} traversing the Items of
  * a {@link Matrix}.
  * 
- * @param <Item>
- *        type of the items held in the {@link Matrix}.
+ * @param <Entry>
+ *        type of the entries returned by the {@link MatrixTraversible}.
  * 
  * @author Igor Akkerman
  */
-public interface MatrixTraversible<Item> {
+public interface MatrixTraversible<Entry> {
 
     /**
-     * Returns a new {@link MatrixTraverser} traversing the Entries of this
-     * {@link MatrixTraversible}.
+     * Creates a {@link MatrixTraverser} traversing the Entries of this
+     * {@link MatrixTraversible} in the default order. The default order may be
+     * defined by the concrete implementation or even made customizable.
      * 
-     * @return {@link MatrixTraverser} over this {@link MatrixTraversible}
+     * @return a new {@link MatrixTraverser} over the Entries of this
+     *         {@link Matrix}
      */
-    public MatrixTraverser<Item> createTraverser();
+    public MatrixTraverser<Entry> createMatrixTraverser();
 }

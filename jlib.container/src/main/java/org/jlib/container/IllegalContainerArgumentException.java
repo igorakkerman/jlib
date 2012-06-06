@@ -1,6 +1,6 @@
 package org.jlib.container;
 
-import java.text.MessageFormat;
+import org.jlib.core.IllegalJlibArgumentException;
 
 /**
  * {@link IllegalArgumentException} referencing a {@link Container}.
@@ -8,10 +8,10 @@ import java.text.MessageFormat;
  * @author Igor Akkerman
  */
 public abstract class IllegalContainerArgumentException
-extends IllegalArgumentException {
+extends IllegalJlibArgumentException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 2421922462571124521L;
+    private static final long serialVersionUID = 4325711014434407944L;
 
     /** referenced {@link Container} */
     private final Container<?> container;
@@ -63,7 +63,7 @@ extends IllegalArgumentException {
     public IllegalContainerArgumentException(final Container<?> container, final String messagePattern,
                                              final Throwable cause, final Object... messageParameters) {
 
-        super(MessageFormat.format(messagePattern, container, messageParameters), cause);
+        super(messagePattern, cause, container, messageParameters);
 
         this.container = container;
     }

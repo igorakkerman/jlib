@@ -118,15 +118,4 @@ extends Container<Entry>, MatrixTraversible<Entry> {
      */
     @Override
     public int getSize();
-
-    /**
-     * Creates a {@link MatrixTraverser} traversing the Entries of this
-     * {@link ArrayMatrix} in the default order. The default order may be
-     * defined by the concrete implementation or even made customizable.
-     * 
-     * @return a new {@link MatrixTraverser} over the Entries of this
-     *         {@link Matrix}
-     */
-    @Override
-    public MatrixTraverser<Entry> createTraverser();
 }
