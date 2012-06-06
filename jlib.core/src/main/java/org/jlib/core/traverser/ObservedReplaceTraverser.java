@@ -18,6 +18,9 @@ extends ReplaceTraverser<Item> {
     /**
      * Removes the last Item returned by this {@link RemoveTraverser} .
      * 
+     * @param newItem
+     *        Item by which the former Item is replaced
+     * 
      * @param removeObservers
      *        comma separated sequence of {@link ItemObserver} items
      * 
@@ -31,6 +34,7 @@ extends ReplaceTraverser<Item> {
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
-    public void replace(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... removeObservers)
+    public void replace(Item newItem,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... removeObservers)
     throws NoItemToRemoveException, IllegalTraversibleStateException, ItemObserverException;
 }
