@@ -17,18 +17,12 @@ package org.jlib.container.sequence;
 import org.jlib.container.ReplaceContainer;
 
 /**
- * <p>
- * Sequence that allows its Items to be modified using an
- * ReplaceSequenceTraverser.
- * </p>
- * <p>
- * It does not necessarily allow modification of the sequence, that is, this
- * interface does not provide methods for adding and removing Items. See
- * {@link AppendSequence} for this functionality.
- * </p>
+ * {@link Sequence} allowing its Items to be modified using an
+ * {@link ReplaceSequenceTraverser}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ReplaceSequence<Item>
@@ -36,16 +30,16 @@ extends ReplaceContainer<Item>, Sequence<Item> {
 
     /**
      * <p>
-     * Returns an ReplaceSequenceTraverser traversing the Items of this
-     * Sequence in proper order.
+     * Returns an ReplaceSequenceTraverser traversing the Items of this Sequence
+     * in proper order.
      * </p>
      * <p>
-     * The {@link ReplaceSequenceTraverser#replace(Object) set} method of the
+     * The {@link ReplaceSequenceTraverser#replace(Object)} method of the
      * {@link SequenceTraverser} can be used to modify Items in this Sequence.
      * </p>
      * 
-     * @return ReplaceSequenceTraverser traversing the Items of this Sequence
-     *         in proper order
+     * @return ReplaceSequenceTraverser traversing the Items of this Sequence in
+     *         proper order
      */
     @Override
     public ReplaceSequenceTraverser<Item> createTraverser();

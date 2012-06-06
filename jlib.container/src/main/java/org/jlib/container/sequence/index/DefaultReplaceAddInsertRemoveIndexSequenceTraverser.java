@@ -30,24 +30,24 @@ import org.jlib.core.reference.NoValueSetException;
  * 
  * @author Igor Akkerman
  */
-public class DefaultRemoveInsertAddReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceAddInsertRemoveIndexSequence<Item>>
+public class DefaultReplaceAddInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceAddInsertRemoveIndexSequence<Item>>
 extends DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze>
 implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
 
     /**
-     * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
+     * Creates a new {@link DefaultReplaceAddInsertRemoveIndexSequenceTraverser}
      * over the Items of the specified
      * {@link ReplaceAddInsertRemoveIndexSequence} beginning at its first index.
      * 
      * @param sequence
      *        {@link ReplaceAddInsertRemoveIndexSequence} to traverse
      */
-    public DefaultRemoveInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceAddInsertRemoveIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultRemoveInsertAddReplaceIndexSequenceTraverser}
+     * Creates a new {@link DefaultReplaceAddInsertRemoveIndexSequenceTraverser}
      * over the Items of the specified
      * {@link ReplaceAddInsertRemoveIndexSequence} beginning the traversal at
      * the specified index.
@@ -62,7 +62,7 @@ implements RemoveInsertReplaceIndexSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultRemoveInsertAddReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceAddInsertRemoveIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
     throws SequenceIndexOutOfBoundsException {
         super(sequence, initialNextItemIndex);
     }

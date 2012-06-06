@@ -176,10 +176,12 @@ public final class IndexSequenceUtility {
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
-                  Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
-                                          final int size)
-    throws IllegalArgumentException {
-    // @formatter:on
+    Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
+                            final int size)
+                            throws IllegalArgumentException {
+        // @formatter:on
+
+        // TODO: replace exception type
         if (size < 1)
             throw new IllegalArgumentException("size == " + size + " < 1");
 

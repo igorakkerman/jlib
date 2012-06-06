@@ -14,8 +14,15 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
+import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.array.ReplaceAppendArraySequence;
+import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ItemObserverException;
 import org.jlib.core.reference.NoValueSetException;
 
 /**
@@ -31,7 +38,10 @@ import org.jlib.core.reference.NoValueSetException;
  */
 public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
-implements ReplaceIndexSequenceTraverser<Item> {
+implements ReplaceIndexSequenceTraverser<Item>, ObservedReplaceSequenceTraverser<Item> {
+
+    private final AppendSequence<ItemObserver<Item>> replaceObservers =
+        IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.getCreator());
 
     /**
      * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
@@ -59,20 +69,47 @@ implements ReplaceIndexSequenceTraverser<Item> {
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code newItem} prevents the operation from
+     *         being performed
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs performing the operation
      */
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
         super(sequence, initialNextItemIndex);
     }
 
     @Override
     public void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException {
+    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
         catch (final NoValueSetException exception) {
             throw new NoSequenceItemToReplaceException(getSequence(), exception);
+        }
+    }
+
+    @Override
+    public void replace(final Item newItem,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    throws NoSequenceItemToReplaceException, ItemObserverException, IllegalSequenceArgumentException,
+    IllegalSequenceStateException {
+        try {
+            for (final ItemObserver<Item> observer : observers)
+                observer.handleBefore(newItem, getSequence());
+
+            replace(newItem);
+
+            for (final ItemObserver<Item> observer : observers)
+                observer.handleAfterSuccess(newItem, getSequence());
+        }
+        catch (NoSequenceItemToReplaceException | IllegalSequenceArgumentException | IllegalSequenceStateException exception) {
+            for (final ItemObserver<Item> observer : observers)
+                observer.handleAfterFailure(newItem, getSequence());
         }
     }
 }

@@ -1,33 +1,33 @@
 package org.jlib.container.sequence;
 
-import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.IllegalContainerStateException;
 
 /**
- * {@link IllegalContainerArgumentException} referencing a {@link Sequence}.
+ * {@link IllegalContainerStateException} referencing a {@link Sequence}.
  * 
  * @author Igor Akkerman
  */
-public abstract class IllegalSequenceArgumentException
-extends IllegalContainerArgumentException {
+public abstract class IllegalSequenceStateException
+extends IllegalContainerStateException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -4935044142559108435L;
+    private static final long serialVersionUID = 1471989606171377366L;
 
     /** referenced {@link Sequence} */
     private final Sequence<?> sequence;
 
     /**
-     * Creates a new {@link IllegalSequenceArgumentException}.
+     * Creates a new {@link IllegalSequenceStateException}.
      * 
      * @param sequence
      *        referenced {@link Sequence}
      */
-    public IllegalSequenceArgumentException(final Sequence<?> sequence) {
+    public IllegalSequenceStateException(final Sequence<?> sequence) {
         this(sequence, (Throwable) null);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceArgumentException} with the specified
+     * Creates a new {@link IllegalSequenceStateException} with the specified
      * error message.
      * 
      * @param sequence
@@ -39,13 +39,13 @@ extends IllegalContainerArgumentException {
      * @param messageParameters
      *        sequence of {@link Object} error message parameters
      */
-    public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern,
-                                            final Object... messageParameters) {
+    public IllegalSequenceStateException(final Sequence<?> sequence, final String messagePattern,
+                                         final Object... messageParameters) {
         this(sequence, messagePattern, null, messageParameters);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceArgumentException} with the specified
+     * Creates a new {@link IllegalSequenceStateException} with the specified
      * cause.
      * 
      * @param sequence
@@ -53,14 +53,14 @@ extends IllegalContainerArgumentException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalSequenceArgumentException}
+     *        {@link IllegalSequenceStateException}
      */
-    public IllegalSequenceArgumentException(final Sequence<?> sequence, final Throwable cause) {
+    public IllegalSequenceStateException(final Sequence<?> sequence, final Throwable cause) {
         this(sequence, "{1}", cause);
     }
 
     /**
-     * Creates a new {@link IllegalSequenceArgumentException} with the specified
+     * Creates a new {@link IllegalSequenceStateException} with the specified
      * error message and cause.
      * 
      * @param sequence
@@ -71,13 +71,13 @@ extends IllegalContainerArgumentException {
      * 
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalSequenceArgumentException}
+     *        {@link IllegalSequenceStateException}
      * 
      * @param messageParameters
      *        sequence of {@link Object} error message parameters
      */
-    public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern,
-                                            final Throwable cause, final Object... messageParameters) {
+    public IllegalSequenceStateException(final Sequence<?> sequence, final String messagePattern,
+                                         final Throwable cause, final Object... messageParameters) {
         super(sequence, messagePattern, cause, messageParameters);
 
         this.sequence = sequence;
@@ -85,7 +85,7 @@ extends IllegalContainerArgumentException {
 
     /**
      * Returns the {@link Sequence} of this
-     * {@link IllegalSequenceArgumentException}.
+     * {@link IllegalSequenceStateException}.
      * 
      * @return referenced {@link Sequence}
      */

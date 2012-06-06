@@ -14,8 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
@@ -24,15 +22,14 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
  * @author Igor Akkerman
  */
-public interface ReplaceIndexSequence<Item>
+public interface ObservedReplaceIndexSequence<Item>
 extends IndexSequence<Item>, ReplaceSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
-     * {@link ReplaceIndexSequence} by the specified Items.
+     * {@link ObservedReplaceIndexSequence} by the specified Items.
      * 
      * @param index
      *        integer specifying the index
@@ -42,16 +39,9 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
-     * 
-     * @throws IllegalSequenceArgumentException
-     *         if some property of {@code newItem} prevents the operation from
-     *         being performed
-     * 
-     * @throws IllegalSequenceStateException
-     *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
+    throws SequenceIndexOutOfBoundsException;
 
     /**
      * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
@@ -61,14 +51,14 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * stored at {@link #getFirstIndex()}.
      * 
      * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
+     *         {@link ObservedReplaceIndexSequence}
      */
     @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper sequence. That is, the Item
+     * this {@link ObservedReplaceIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
      * {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item stored at
      * the specified start index.
@@ -77,7 +67,7 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      *        integer specifying the index of the first Item to traverse
      * 
      * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
+     *         {@link ObservedReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
