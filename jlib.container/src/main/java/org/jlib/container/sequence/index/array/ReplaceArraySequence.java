@@ -1,5 +1,7 @@
 package org.jlib.container.sequence.index.array;
 
+import org.jlib.container.sequence.ObservedReplaceSequence;
+import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
@@ -7,6 +9,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.core.observer.ItemObserver;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -18,7 +21,7 @@ import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
  */
 public class ReplaceArraySequence<Item>
 extends ArraySequence<Item>
-implements ReplaceIndexSequence<Item> {
+implements ReplaceIndexSequence<Item>, ObservedReplaceSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link ReplaceArraySequence} insstances
@@ -38,6 +41,7 @@ implements ReplaceIndexSequence<Item> {
      * instances.
      * 
      * @return {@link IndexSequenceCreator} of {@link ReplaceArraySequence}
+     * 
      *         instances
      */
     @SuppressWarnings("unchecked")
@@ -74,5 +78,10 @@ implements ReplaceIndexSequence<Item> {
     public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+    }
+
+    @Override
+    public ObservedReplaceSequenceTraverser<Item> createTraverser(final ItemObserver<Item>... observers) {
+        return new Defaultrep
     }
 }
