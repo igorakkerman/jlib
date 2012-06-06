@@ -24,6 +24,10 @@ extends AbstractSequence<Item> {
     /**
      * Returns the sole instance of this class.
      * 
+     * @param <Item>
+     *        type of potential items potentially held in this
+     *        {@link EmptySequence}
+     * 
      * @return sole {@link ReplaceIndexSequence}
      */
     @SuppressWarnings("unchecked")
