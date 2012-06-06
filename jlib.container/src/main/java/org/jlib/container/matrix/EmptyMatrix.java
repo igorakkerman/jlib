@@ -22,7 +22,7 @@ import org.jlib.core.traverser.Traverser;
  *        type of entries of the {@link Matrix}
  */
 public class EmptyMatrix<Entry>
-implements Matrix<Entry>, ReplaceContainer<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
+implements ReplaceContainer<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
 
     /** empty array */
     private static final Object[] EMPTY_ARRAY = new Object[0];

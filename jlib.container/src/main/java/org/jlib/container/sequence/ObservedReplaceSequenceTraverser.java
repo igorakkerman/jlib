@@ -30,8 +30,8 @@ public interface ObservedReplaceSequenceTraverser<Item>
 extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
 
     /**
-     * Replaces the last Item returned by {@code previous()} or {@code next()}
-     * with the specified value.
+     * Replaces the last Item returned by {@link #getNextItem()} or
+     * {@link #getPreviousItem()} with the specified value.
      * 
      * @param newItem
      *        Item by which the former Item is replaced
@@ -47,6 +47,7 @@ extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
+    @Override
     public void replace(final Item newItem,
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws NoSequenceItemToReplaceException, ItemObserverException;

@@ -20,13 +20,13 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
 import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.array.ReplaceAppendArraySequence;
 import org.jlib.core.observer.ItemObserver;
 import org.jlib.core.observer.ItemObserverException;
 import org.jlib.core.reference.NoValueSetException;
 
 /**
- * Default implementation of a {@link ReplaceIndexSequenceTraverser}.
+ * Default implementation of a {@link IndexSequenceTraverser} and
+ * {@link ObservedReplaceSequenceTraverser}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -36,17 +36,18 @@ import org.jlib.core.reference.NoValueSetException;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
+public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
-implements ReplaceIndexSequenceTraverser<Item>, ObservedReplaceSequenceTraverser<Item> {
+implements ObservedReplaceSequenceTraverser<Item> {
 
-    private final AppendSequence<ItemObserver<Item>> replaceObservers =
-        IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.getCreator());
+    /** replace {@link ItemObserver} items */
+    // TODO: initialize with initially empty fillable Sequence
+    private final AppendSequence<ItemObserver<Item>> traverserObservers = null;
 
     /**
      * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
-     * of the specified {@link ReplaceIndexSequence} beginning at its first
-     * index.
+     * of the specified {@link ObservedReplaceIndexSequence} beginning at its
+     * first index.
      * 
      * @param sequence
      *        {@link ReplaceIndexSequence} to traverse
@@ -95,20 +96,29 @@ implements ReplaceIndexSequenceTraverser<Item>, ObservedReplaceSequenceTraverser
 
     @Override
     public void replace(final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... operationObservers)
     throws NoSequenceItemToReplaceException, ItemObserverException, IllegalSequenceArgumentException,
     IllegalSequenceStateException {
         try {
-            for (final ItemObserver<Item> observer : observers)
+            for (final ItemObserver<Item> observer : traverserObservers)
+                observer.handleBefore(newItem, getSequence());
+
+            for (final ItemObserver<Item> observer : operationObservers)
                 observer.handleBefore(newItem, getSequence());
 
             replace(newItem);
 
-            for (final ItemObserver<Item> observer : observers)
+            for (final ItemObserver<Item> observer : traverserObservers)
+                observer.handleAfterSuccess(newItem, getSequence());
+
+            for (final ItemObserver<Item> observer : operationObservers)
                 observer.handleAfterSuccess(newItem, getSequence());
         }
         catch (NoSequenceItemToReplaceException | IllegalSequenceArgumentException | IllegalSequenceStateException exception) {
-            for (final ItemObserver<Item> observer : observers)
+            for (final ItemObserver<Item> observer : traverserObservers)
+                observer.handleAfterFailure(newItem, getSequence());
+
+            for (final ItemObserver<Item> observer : operationObservers)
                 observer.handleAfterFailure(newItem, getSequence());
         }
     }

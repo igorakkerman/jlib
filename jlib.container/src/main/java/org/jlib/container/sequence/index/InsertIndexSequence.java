@@ -16,6 +16,7 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InsertSequence;
+import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.Traverser;
 
@@ -31,39 +32,34 @@ public interface InsertIndexSequence<Item>
 extends InsertSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Returns an {@link InsertIndexSequenceTraverser} traversing the Items of
-     * this Sequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this Sequence, that is, the Item returned by the first call
-     * to {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored
-     * at {@link #getFirstIndex()}.
-     * 
-     * @return InsertIndexSequenceTraverser over this IndexSequence initially
-     *         pointing to the beginning of this Sequence
-     */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser();
-
-    /**
-     * Returns a {@link InsertIndexSequenceTraverser} traversing the Items of
-     * this {@link InsertIndexSequence} in proper sequence. That is, the Item
+     * Returns an {@link IndexSequenceTraverser} and
+     * {@link InsertSequenceTraverser} traversing the Items of this
+     * {@link InsertIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
-     * {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored at
-     * the specified start index.
+     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
+     * specified start index.
+     * 
+     * @param <Traverzer>
+     *        type of the returned {@link IndexSequenceTraverser} and
+     *        {@link InsertSequenceTraverser}
      * 
      * @param startIndex
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return {@link InsertIndexSequenceTraverser} over this
+     * @return {@link IndexSequenceTraverser} and
+     *         {@link InsertSequenceTraverser} over this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
+    // @formatter:off
+    public <Traverzer extends IndexSequenceTraverser<Item> & InsertSequenceTraverser<Item>> 
+           Traverzer createInsertIndexSequenceTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
+    // @formatter:on
 
     /**
      * Inserts the specified Item at the specified index in this
