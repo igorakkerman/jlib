@@ -14,6 +14,8 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
@@ -22,6 +24,7 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ReplaceIndexSequence<Item>
@@ -39,9 +42,16 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code newItem} prevents the operation from
+     *         being performed
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException;
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
      * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
