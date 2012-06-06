@@ -1,5 +1,6 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
 
 /*
  * jlib - The Free Java Library
@@ -16,19 +17,16 @@ package org.jlib.container.sequence.index;
  */
 
 /**
- * Exception thrown when a {@link IndexSequence} is accessed with an invalid
- * index.
+ * {@link IllegalSequenceArgumentException} thrown when a {@link IndexSequence}
+ * is accessed with an invalid index.
  * 
  * @author Igor Akkerman
  */
 public class SequenceIndexOutOfBoundsException
-extends IndexOutOfBoundsException {
+extends IllegalSequenceArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1501618255867836784L;
-
-    /** {@link IndexSequence} accessed with the invalid index */
-    private final IndexSequence<?> sequence;
 
     /** invalid index */
     private final int invalidIndex;
@@ -44,32 +42,22 @@ extends IndexOutOfBoundsException {
      *        integer specifying the invalid invalidIndex
      * 
      * @param message
-     *        String specifying the message explaining the invalid access
+     *        {@link String} specifying the message explaining the invalid
+     *        access
      */
     public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex,
                                              final String message) {
-        super(message + "[" + invalidIndex + "]");
+        super(sequence, "{1}: {3}[{2}]", invalidIndex, message);
 
-        this.sequence = sequence;
         this.invalidIndex = invalidIndex;
     }
 
     /**
-     * Returns the invalid invalidIndex of this
-     * SequenceIndexOutOfBoundsException.
+     * Returns the invalid index of this SequenceIndexOutOfBoundsException.
      * 
-     * @return integer specifying the invalid invalidIndex
+     * @return integer specifying the invalid index
      */
     public int getInvalidIndex() {
         return invalidIndex;
-    }
-
-    /**
-     * Returns the {@link IndexSequence} accessed with the invalid index
-     * 
-     * @return {@link IndexSequence} accessed with the invalid index
-     */
-    public IndexSequence<?> getSequence() {
-        return sequence;
     }
 }
