@@ -25,10 +25,11 @@ import org.jlib.core.traverser.RemoveTraverser;
  * hand side items.
  * 
  * @param <LeftValue>
- *        type of the items on the left hand side of the {@link BinaryRelation}
+ *        type of the values on the left hand side of the {@link BinaryRelation}
  * 
  * @param <RightValue>
- *        type of the items on the right hand side of the {@link BinaryRelation}
+ *        type of the values on the right hand side of the
+ *        {@link BinaryRelation}
  * 
  * @author Igor Akkerman
  */
@@ -160,7 +161,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+    public RemoveTraverser<Association<LeftValue, RightValue>> createRemoveTraverser() {
         return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

@@ -27,7 +27,8 @@ import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * {@link HashAssociateBijection} allowing the removal of {@link Association} items.
+ * {@link HashAssociateBijection} allowing the removal of {@link Association}
+ * items.
  * 
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link Bijection}
@@ -183,7 +184,7 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+    public RemoveTraverser<Association<LeftValue, RightValue>> createRemoveTraverser() {
         return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

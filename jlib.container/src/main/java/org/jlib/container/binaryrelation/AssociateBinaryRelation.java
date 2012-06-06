@@ -17,16 +17,18 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.bijection.Bijection;
 
 /**
- * BinaryRelation allowing the associateition and removal of associations.
+ * {@link BinaryRelation} allowing to associate and remove {@link Association}
+ * Items.
  * 
  * @param <LeftValue>
- *        type of the values on the left hand side of the BinaryRelation
+ *        type of the values on the left hand side of the
+ *        {@link AssociateBinaryRelation}
  * 
  * @param <RightValue>
- *        type of the values on the right hand side of the BinaryRelation
+ *        type of the values on the right hand side of the
+ *        {@link AssociateBinaryRelation}
  * 
  * @author Igor Akkerman
  */
@@ -35,7 +37,7 @@ extends BinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * BinaryRelation.
+     * {@link AssociateBinaryRelation}.
      * 
      * @param leftValue
      *        LeftValue of the {@link Association}
@@ -52,7 +54,7 @@ extends BinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * {@link Bijection}.
+     * {@link AssociateBinaryRelation}.
      * 
      * @param leftValue
      *        LeftValue of the {@link Association}
@@ -61,7 +63,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *        RightValue of the {@link Association}
      * 
      * @throws IllegalAssociationException
-     *         if some property of the {@code associations} prevents it from
+     *         if some property of the {@link Association} prevents it from
      *         being associated
      */
     public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
