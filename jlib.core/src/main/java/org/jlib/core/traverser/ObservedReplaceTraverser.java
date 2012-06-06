@@ -12,13 +12,13 @@ import org.jlib.core.observer.ItemObserverException;
  * 
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTraverser<Item>
-extends RemoveTraverser<Item> {
+public interface ObservedReplaceTraverser<Item>
+extends ReplaceTraverser<Item> {
 
     /**
-     * Removes the last Item returned by this {@link ObservedRemoveTraverser}.
+     * Removes the last Item returned by this {@link RemoveTraverser} .
      * 
-     * @param observers
+     * @param removeObservers
      *        comma separated sequence of {@link ItemObserver} items
      * 
      * @throws NoItemToRemoveException
@@ -26,11 +26,11 @@ extends RemoveTraverser<Item> {
      *         or an appropriate method
      * 
      * @throws IllegalTraversibleStateException
-     *         if an error is caused by a delegate used to remove the Item
+     *         if an error was caused by a delegate used to remove the item
      * 
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers)
-    throws IllegalTraversibleStateException, ItemObserverException;
+    public void replace(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... removeObservers)
+    throws NoItemToRemoveException, IllegalTraversibleStateException, ItemObserverException;
 }
