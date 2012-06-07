@@ -6,18 +6,21 @@ import org.jlib.container.sequence.index.IndexSequenceTraverser;
  * {@link IndexSequenceTraverser} of an {@link EmptySequence}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link EmptySequence}
  * 
  * @author Igor Akkerman
  */
 public class EmptySequenceTraverser<Item>
 extends AbstractSequenceTraverser<Item, EmptySequence<Item>> {
 
-    /** sole instance of this class */
+    /** sole {@link EmptySequenceTraverser} instance */
     private static final EmptySequenceTraverser<?> INSTANCE = new EmptySequenceTraverser<>();
 
     /**
      * Returns the sole instance of this class.
+     * 
+     * @param <Item>
+     *        type of the potential {@link EmptySequence} items
      * 
      * @return sole {@link EmptySequenceTraverser}
      */
