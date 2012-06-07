@@ -2,6 +2,7 @@ package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
@@ -73,16 +74,15 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     // @formatter:off
-    public DefaultReplaceIndexSequenceTraverser<Item, ReplaceArraySequence<Item>> createReplaceIndexSequenceTraverser(final int startIndex)
+//    public DefaultReplaceIndexSequenceTraverser<Item, ReplaceArraySequence<Item>> 
+//           createReplaceIndexSequenceTraverser(final int startIndex)
+//    throws SequenceIndexOutOfBoundsException {
+    public <Traverzer extends IndexSequenceTraverser<Item> & ObservedReplaceSequenceTraverser<Item>>
+    Traverzer createReplaceIndexSequenceTraverser(final int startIndex, 
+                                                  @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    // @formatter:on
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
-    }
-    // @formatter:on
-
-    @Override
-    public <Traverzer extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>> Traverzer createReplaceIndexSequenceTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
-        return null;
     }
 
     @Override

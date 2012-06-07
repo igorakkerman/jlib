@@ -16,11 +16,11 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ItemObserver;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -88,8 +88,8 @@ extends ReplaceIndexSequence<Item> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     // @formatter:off
-    public <Traverzer extends IndexSequenceTraverser<Item> & ObservedReplaceTraverser<Item>>
-           Traverzer createReplaceIndexTraverser(final int startIndex, 
+    public <Traverzer extends IndexSequenceTraverser<Item> & ObservedReplaceSequenceTraverser<Item>>
+           Traverzer createReplaceIndexSequenceTraverser(final int startIndex, 
                                                  @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
     // @formatter:on
