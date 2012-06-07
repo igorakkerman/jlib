@@ -38,7 +38,7 @@ import org.jlib.core.reference.NoValueSetException;
  */
 public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
-implements ObservedReplaceSequenceTraverser<Item> {
+implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     /** replace {@link ItemObserver} items */
     // TODO: initialize with initially empty fillable Sequence

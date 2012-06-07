@@ -20,7 +20,6 @@ import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ItemObserver;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -68,10 +67,6 @@ extends ReplaceIndexSequence<Item> {
      * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
      * specified start index.
      * 
-     * @param <Traverzer>
-     *        type of the {@link IndexSequenceTraverser} and
-     *        {@link ReplaceTraverser}
-     * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
@@ -88,9 +83,9 @@ extends ReplaceIndexSequence<Item> {
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     // @formatter:off
-    public <Traverzer extends IndexSequenceTraverser<Item> & ObservedReplaceTraverser<Item>>
-           Traverzer createReplaceIndexTraverser(final int startIndex, 
-                                                 @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    public ObservedReplaceIndexSequenceTraverser<Item> 
+               createReplaceIndexSequenceTraverser(final int startIndex, 
+                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
     // @formatter:on
 }

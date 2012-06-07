@@ -8,9 +8,9 @@ import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
+import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.core.observer.ItemObserver;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -71,18 +71,14 @@ implements ObservedReplaceIndexSequence<Item> {
         super.replace(index, item);
     }
 
-    @Override
     // @formatter:off
-    public DefaultReplaceIndexSequenceTraverser<Item, ReplaceArraySequence<Item>> createReplaceIndexSequenceTraverser(final int startIndex)
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item>
+               createReplaceIndexSequenceTraverser(final int startIndex, 
+                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    // @formatter:on
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
-    }
-    // @formatter:on
-
-    @Override
-    public <Traverzer extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>> Traverzer createReplaceIndexSequenceTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
-        return null;
     }
 
     @Override
@@ -100,8 +96,8 @@ implements ObservedReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
 
     @Override
-    public <Traverzer extends IndexSequenceTraverser<Item> & ObservedReplaceTraverser<Item>> Traverzer createReplaceIndexTraverser(final int startIndex,
-                                                                                                                                   final ItemObserver<Item>... observers)
+    public ObservedReplaceIndexSequenceTraverser<Item> createReplaceIndexTraverser(final int startIndex,
+                                                                                   final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException {
         return null;
     }
