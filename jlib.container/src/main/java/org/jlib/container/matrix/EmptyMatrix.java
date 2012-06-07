@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
-import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.core.traverser.ReplaceTraverser;
@@ -22,7 +22,7 @@ import org.jlib.core.traverser.Traverser;
  *        type of entries of the {@link Matrix}
  */
 public class EmptyMatrix<Entry>
-implements Matrix<Entry>, ReplaceContainer<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
+implements Matrix<Entry>, ReplaceSequence<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
 
     /** empty array */
     private static final Object[] EMPTY_ARRAY = new Object[0];

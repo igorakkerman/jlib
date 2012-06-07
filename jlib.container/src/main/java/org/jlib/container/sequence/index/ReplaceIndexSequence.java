@@ -17,6 +17,7 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
+import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -55,22 +56,32 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
-     * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item stored at
-     * the specified start index.
+     * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
+     * traversing the Items of this {@link ReplaceIndexSequence} in proper
+     * sequence. That is, the Item returned by the first call to
+     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
+     * specified start index.
+     * 
+     * @param <Traverzer>
+     *        type of the returned {@link IndexSequenceTraverser} and
+     *        {@link ReplaceTraverser} >>>>>>> branch 'master' of
+     *        ssh://root@git.
+     *        dynamite-services.de/root/Projekte/jlib/Git/jlib-api
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
+     * @return {@link IndexSequenceTraverser} and
+     *         {@link ReplaceSequenceTraverser} over this
      *         {@link ReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public <Trav extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>> Trav createReplaceIndexTraverser(final int startIndex)
+    // @formatter:off
+    public <Traverzer extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>>
+           Traverzer createReplaceIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
+    // @formatter:on
 }

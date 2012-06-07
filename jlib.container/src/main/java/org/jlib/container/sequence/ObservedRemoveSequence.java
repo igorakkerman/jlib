@@ -26,7 +26,7 @@ import org.jlib.core.observer.ItemObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveSequence<Item>
-extends ReplaceSequence<Item>, Sequence<Item> {
+extends ReplaceSequence<Item> {
 
     /**
      * Returns an {@link ObservedReplaceSequenceTraverser} traversing the Items

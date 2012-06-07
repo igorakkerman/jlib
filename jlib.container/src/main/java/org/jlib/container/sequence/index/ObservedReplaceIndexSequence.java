@@ -14,8 +14,13 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
+import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
@@ -25,7 +30,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceIndexSequence<Item>
-extends IndexSequence<Item>, ReplaceSequence<Item> {
+extends ReplaceIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
@@ -37,43 +42,50 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * @param newItem
      *        new Item to store
      * 
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
+     *        attending the replacement
+     * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
-     */
-    public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this IndexSequence in proper sequence. Initially, the Traverser points to
-     * the head of this IndexSequence, that is, the Item returned by the first
-     * call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
-     * stored at {@link #getFirstIndex()}.
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ObservedReplaceIndexSequence}
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code newItem} prevents the operation from
+     *         being performed
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs performing the operation
      */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser();
+    public void replace(final int index, final Item newItem,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
-     * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ObservedReplaceIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item stored at
-     * the specified start index.
+     * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
+     * traversing the Items of this {@link ReplaceIndexSequence} in proper
+     * sequence. That is, the Item returned by the first call to
+     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
+     * specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ObservedReplaceIndexSequence}
+     * @param observers
+     *        comma separated sequence of {@link ItemObserver} instances
+     *        attending the replacement
+     * 
+     * @return {@link IndexSequenceTraverser} and
+     *         {@link ReplaceSequenceTraverser} over this
+     *         {@link ReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    // @formatter:off
+    public ObservedReplaceIndexSequenceTraverser<Item> 
+               createReplaceIndexSequenceTraverser(final int startIndex, 
+                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
+    // @formatter:on
 }

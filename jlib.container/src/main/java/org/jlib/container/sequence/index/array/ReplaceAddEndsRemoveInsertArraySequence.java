@@ -61,11 +61,11 @@ implements InsertAppendReplaceIndexSequence<Item> {
 
     @Override
     public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
-        return createTraverser(getFirstIndex());
+        return createIndexSequenceTraverser(getFirstIndex());
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceAddInsertIndexSequenceTraverser<>(this, startIndex);
     }

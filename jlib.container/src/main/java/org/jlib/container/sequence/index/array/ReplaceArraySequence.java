@@ -1,15 +1,18 @@
 package org.jlib.container.sequence.index.array;
 
-import org.jlib.container.sequence.ObservedReplaceSequence;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
+import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
+import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
+import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -21,7 +24,7 @@ import org.jlib.core.observer.ItemObserver;
  */
 public class ReplaceArraySequence<Item>
 extends ArraySequence<Item>
-implements ReplaceIndexSequence<Item>, ObservedReplaceSequence<Item> {
+implements ObservedReplaceIndexSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link ReplaceArraySequence} insstances
@@ -69,19 +72,34 @@ implements ReplaceIndexSequence<Item>, ObservedReplaceSequence<Item> {
         super.replace(index, item);
     }
 
+    // @formatter:off
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<>(this);
-    }
-
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceIndexSequenceTraverser<Item>
+               createReplaceIndexSequenceTraverser(final int startIndex, 
+                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+    // @formatter:on
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 
     @Override
-    public ObservedReplaceSequenceTraverser<Item> createTraverser(final ItemObserver<Item>... observers) {
-        return new Defaultrep
+    public IndexSequenceTraverser<Item> createIndexSequenceTraverser() {
+        return null;
+    }
+
+    @Override
+    public ReplaceTraverser<Item> createReplaceTraverser() {
+        return null;
+    }
+
+    @Override
+    public void replace(final int index, final Item newItem, final ItemObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createReplaceIndexTraverser(final int startIndex,
+                                                                                   final ItemObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException {
+        return null;
     }
 }

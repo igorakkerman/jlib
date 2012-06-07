@@ -102,11 +102,11 @@ implements IndexSequence<Item> {
 
     @Override
     public IndexSequenceTraverser<Item> createTraverser() {
-        return createTraverser(firstIndex);
+        return createIndexSequenceTraverser(firstIndex);
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultIndexSequenceTraverser<>(this, startIndex);
     }

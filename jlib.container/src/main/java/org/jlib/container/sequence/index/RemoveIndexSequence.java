@@ -15,7 +15,9 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.RemoveSequence;
+import org.jlib.container.sequence.RemoveSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.RemoveTraverser;
 
 /**
  * {@link IndexSequence} that allows Items to be removed.
@@ -29,8 +31,7 @@ public interface RemoveIndexSequence<Item>
 extends RemoveSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Removes from this IndexSequence the Item stored at the specified
-     * index.
+     * Removes from this IndexSequence the Item stored at the specified index.
      * 
      * @param index
      *        integer specifying the index
@@ -38,36 +39,52 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
     public void remove(final int index);
 
     /**
-     * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
-     * this Sequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this Sequence, that is, the Item returned by the first
-     * call to {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored
+     * Returns an {@link IndexSequenceTraverser} and
+     * {@link RemoveSequenceTraverser} traversing the Items of this Sequence in
+     * proper sequence. Initially, the {@link IndexSequenceTraverser} points to
+     * the beginning of this Sequence, that is, the Item returned by the first
+     * call to {@link IndexSequenceTraverser#getNextItem()} is the Item stored
      * at {@link #getFirstIndex()}.
      * 
-     * @return InsertIndexSequenceTraverser over this IndexSequence initially
+     * @param <Traverzer>
+     *        type of the returned {@link IndexSequenceTraverser} and
+     *        {@link RemoveTraverser}
+     * 
+     * @return {@link IndexSequenceTraverser} and
+     *         {@link RemoveSequenceTraverser} over this IndexSequence initially
      *         pointing to the beginning of this Sequence
      */
-    @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser();
+    // @formatter:off
+    public <Traverzer extends IndexSequenceTraverser<Item> & RemoveSequenceTraverser<Item>> 
+           Traverzer createRemoveIndexSequenceTraverser();
+    // @formatter:on
 
     /**
-     * Returns a RemoveIndexSequenceTraverser traversing the Items of this
-     * Sequence in proper sequence. That is, the Item returned by the first
-     * call to {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored
-     * at the specified start index.
+     * Returns an {@link IndexSequenceTraverser} and
+     * {@link RemoveSequenceTraverser} traversing the Items of this Sequence in
+     * proper sequence. Initially, the {@link IndexSequenceTraverser} points to
+     * the beginning of this Sequence, that is, the Item returned by the first
+     * call to {@link IndexSequenceTraverser#getNextItem()} is the Item stored
+     * at the specified index.
+     * 
+     * @param <Traverzer>
+     *        type of the returned {@link IndexSequenceTraverser} and
+     *        {@link RemoveTraverser}
      * 
      * @param startIndex
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return InsertIndexSequenceTraverser over this Sequence initially pointing
-     *         to the beginning of this Sequence
+     * @return InsertIndexSequenceTraverser over this Sequence initially
+     *         pointing to the beginning of this Sequence
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    // @formatter:off
+    public <Traverzer extends IndexSequenceTraverser<Item> & RemoveSequenceTraverser<Item>> 
+           Traverzer createRemoveIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
+    // @formatter:on
 }
