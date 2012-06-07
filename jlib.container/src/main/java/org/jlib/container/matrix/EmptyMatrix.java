@@ -84,7 +84,7 @@ implements Matrix<Entry>, ReplaceSequence<Entry>, RandomTraversalMatrix<Entry>, 
     }
 
     @Override
-    public ReplaceTraverser<Entry> createReplaceTraverser() {
+    public ReplaceTraverser<Entry> createTraverser() {
         return EmptyMatrixTraverser.getInstance();
     }
 

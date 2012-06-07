@@ -253,5 +253,5 @@ extends RemoveContainer<Item> {
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
-    public ObservedRemoveTraverser<Item> createObservedTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
+    public ObservedRemoveTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
 }

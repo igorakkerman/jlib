@@ -227,7 +227,7 @@ implements ObservedRemoveContainer<Item> {
     }
 
     @Override
-    public RemoveTraverser<Item> createRemoveTraverser()
+    public RemoveTraverser<Item> createTraverser()
     throws IllegalContainerDelegateStateException {
         return new RemoveIterableTraverser<>(getDelegateCollection());
     }
@@ -277,7 +277,7 @@ implements ObservedRemoveContainer<Item> {
 
     @Override
     // @formatter:off
-    public ObservedRemoveTraverser<Item> createObservedTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) 
+    public ObservedRemoveTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) 
                                                                                    final ItemObserver<Item>... observers) {
     // @formatter:on
         return null;
