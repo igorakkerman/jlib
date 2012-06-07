@@ -17,7 +17,6 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -62,26 +61,16 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
      * specified start index.
      * 
-     * @param <Traverzer>
-     *        type of the returned {@link IndexSequenceTraverser} and
-     *        {@link ReplaceTraverser} >>>>>>> branch 'master' of
-     *        ssh://root@git.
-     *        dynamite-services.de/root/Projekte/jlib/Git/jlib-api
-     * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link IndexSequenceTraverser} and
-     *         {@link ReplaceSequenceTraverser} over this
+     * @return {@link ReplaceIndexSequenceTraverser} over this
      *         {@link ReplaceIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    // @formatter:off
-    public <Traverzer extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>>
-           Traverzer createReplaceIndexSequenceTraverser(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
-    // @formatter:on
 }
