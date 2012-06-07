@@ -17,6 +17,9 @@ extends IndexMatrixCreator<ArrayMatrix<Entry>, Entry> {
     /**
      * Returns the sole {@link ArrayMatrixCreator} instance.
      * 
+     * @param <Entry>
+     *        type of entries held in the {@link Matrix}
+     * 
      * @return sole {@link ArrayMatrixCreator} instance
      */
     @SuppressWarnings("unchecked")

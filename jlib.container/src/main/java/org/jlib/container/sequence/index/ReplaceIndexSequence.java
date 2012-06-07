@@ -18,6 +18,7 @@ import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
@@ -55,19 +56,6 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
 
     /**
      * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this IndexSequence in proper sequence. Initially, the Traverser points to
-     * the head of this IndexSequence, that is, the Item returned by the first
-     * call to {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item
-     * stored at {@link #getFirstIndex()}.
-     * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
-     */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser();
-
-    /**
-     * Returns an {@link ReplaceIndexSequenceTraverser} traversing the Items of
      * this {@link ReplaceIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
      * {@link ReplaceIndexSequenceTraverser#getNextItem()} is the Item stored at
@@ -83,7 +71,6 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public <Trav extends IndexSequenceTraverser<Item> & ReplaceTraverser<Item>> Trav createReplaceIndexTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

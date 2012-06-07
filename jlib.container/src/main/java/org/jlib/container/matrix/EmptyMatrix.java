@@ -6,9 +6,12 @@ import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.Container;
+import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.
@@ -19,7 +22,7 @@ import org.jlib.container.sequence.index.IndexSequence;
  *        type of entries of the {@link Matrix}
  */
 public class EmptyMatrix<Entry>
-implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
+implements Matrix<Entry>, ReplaceContainer<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
 
     /** empty array */
     private static final Object[] EMPTY_ARRAY = new Object[0];
@@ -81,7 +84,17 @@ implements ReplaceMatrix<Entry>, RandomTraversalMatrix<Entry>, RandomAccess {
     }
 
     @Override
-    public ReplaceMatrixTraverser<Entry> createReplaceTraverser() {
+    public ReplaceTraverser<Entry> createReplaceTraverser() {
+        return EmptyMatrixTraverser.getInstance();
+    }
+
+    @Override
+    public MatrixTraverser<Entry> createMatrixTraverser() {
+        return EmptyMatrixTraverser.getInstance();
+    }
+
+    @Override
+    public Traverser<Entry> createTraverser() {
         return EmptyMatrixTraverser.getInstance();
     }
 

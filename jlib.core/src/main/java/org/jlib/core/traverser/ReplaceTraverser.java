@@ -18,9 +18,9 @@ extends Traverser<Item> {
      * @param newItem
      *        Item by which the former Item is replaced
      * 
-     * @throws IllegalStateException
+     * @throws IllegalTraverserStateException
      *         if no Item has been returned by this {@link ReplaceTraverser}
      */
     public void replace(final Item newItem)
-    throws IllegalStateException;
+    throws IllegalTraverserStateException;
 }

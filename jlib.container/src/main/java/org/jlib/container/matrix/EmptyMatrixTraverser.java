@@ -1,6 +1,7 @@
 package org.jlib.container.matrix;
 
 import org.jlib.core.traverser.NoNextItemException;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link MatrixTraverser} of an {@link EmptyMatrix}. Implemented as a
@@ -12,13 +13,16 @@ import org.jlib.core.traverser.NoNextItemException;
  * @author Igor Akkerman
  */
 public class EmptyMatrixTraverser<Entry>
-implements ReplaceMatrixTraverser<Entry> {
+implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
 
     /** sole {@link EmptyMatrixTraverser} instance */
     private static final EmptyMatrixTraverser<?> INSTANCE = new EmptyMatrixTraverser<>();
 
     /**
      * Returns the sole {@link EmptyMatrixTraverser} instance.
+     * 
+     * @param <Entry>
+     *        type of the entries potentially held in the {@link EmptyMatrix}
      * 
      * @return sole {@link EmptyMatrixTraverser} instance
      */

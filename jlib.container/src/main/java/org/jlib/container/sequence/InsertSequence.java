@@ -14,7 +14,6 @@
 
 package org.jlib.container.sequence;
 
-
 /**
  * {@link Sequence} that allows Items to be inserted.
  * 
@@ -33,6 +32,5 @@ extends Sequence<Item> {
      * @return {@link InsertSequenceTraverser} traversing the Items of this
      *         Sequence in proper order
      */
-    @Override
-    public InsertSequenceTraverser<Item> createTraverser();
+    public InsertSequenceTraverser<Item> createInsertTraverser();
 }
