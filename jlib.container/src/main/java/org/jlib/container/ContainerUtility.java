@@ -419,4 +419,22 @@ public final class ContainerUtility {
             if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
     }
+
+    /**
+     * Returns the sum of number of Items in all of the specified
+     * {@link Container} instances.
+     * 
+     * @param containers
+     *        array of {@link Iterable} instances providing the Items
+     * 
+     * @return integer specifying the total number of Items
+     */
+    public static int getItemsCount(final Container<?>[] containers) {
+        int itemsCount = 0;
+
+        for (final Container<?> container : containers)
+            itemsCount += container.getSize();
+
+        return itemsCount;
+    }
 }
