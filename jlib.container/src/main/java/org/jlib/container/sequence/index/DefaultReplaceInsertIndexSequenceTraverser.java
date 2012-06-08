@@ -29,7 +29,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements ReplaceInsertIndexSequenceTraverser<Item> {
+implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
