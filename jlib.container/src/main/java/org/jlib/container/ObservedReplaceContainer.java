@@ -30,5 +30,5 @@ extends ReplaceContainer<Item> {
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
      */
-    public ObservedReplaceTraverser<Item> createObservedTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
+    public ObservedReplaceTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
 }

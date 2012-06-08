@@ -14,19 +14,19 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.RemoveSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.observer.ItemObserver;
 
 /**
- * {@link IndexSequence} that allows Items to be removed.
+ * {@link RemoveIndexSequence} .
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface RemoveIndexSequence<Item>
-extends RemoveSequence<Item>, IndexSequence<Item> {
+public interface ObservedRemoveIndexSequence<Item>
+extends RemoveIndexSequence<Item> {
 
     /**
      * Removes from this IndexSequence the Item stored at the specified index.
@@ -34,7 +34,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * @param index
      *        integer specifying the index
      */
-    public void remove(final int index);
+    public void remove(final int index, final ItemObserver<Item>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
@@ -48,7 +48,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
     @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser();
+    public ObservedRemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} and traversing the Items
@@ -63,7 +63,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      *        {@link RemoveIndexSequenceTraverser}
      * 
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
-     *         beginning of this {@link RemoveIndexSequence}
+     *         beginning of this {@link ObservedRemoveIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if

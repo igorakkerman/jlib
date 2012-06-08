@@ -7,7 +7,7 @@ package org.jlib.container.binaryrelation;
  * @author Igor Akkerman
  */
 public class NoSuchRightValueException
-extends NoSuchAssociationException {
+extends NoSuchAssociationValueException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -723559454379105926L;
@@ -18,14 +18,10 @@ extends NoSuchAssociationException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      * 
-     * @param leftValue
-     *        LeftValue of the {@link Association}
-     * 
      * @param rightValue
      *        RightValue of the {@link Association}
      */
-    public NoSuchRightValueException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                     final Object rightValue) {
-        super(binaryRelation, leftValue, rightValue);
+    public NoSuchRightValueException(final BinaryRelation<?, ?> binaryRelation, final Object rightValue) {
+        super(binaryRelation, "rightValue", rightValue);
     }
 }

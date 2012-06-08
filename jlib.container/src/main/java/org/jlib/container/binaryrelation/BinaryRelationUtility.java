@@ -235,7 +235,7 @@ public class BinaryRelationUtility {
         final Set<Association<LeftValue, RightValue>> retainedAssociationsSet = CollectionUtility.toSet(associations);
 
         final RemoveTraverser<Association<LeftValue, RightValue>> binaryRelationTraverser =
-            binaryRelation.createRemoveTraverser();
+            binaryRelation.createTraverser();
 
         while (binaryRelationTraverser.isNextItemAccessible())
             if (!retainedAssociationsSet.contains(binaryRelationTraverser.getNextItem()))
@@ -262,7 +262,7 @@ public class BinaryRelationUtility {
     public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
                                                       final Collection<? extends Association<LeftValue, RightValue>> associations) {
         final RemoveTraverser<Association<LeftValue, RightValue>> associationsTraverser =
-            binaryRelation.createRemoveTraverser();
+            binaryRelation.createTraverser();
 
         while (associationsTraverser.isNextItemAccessible())
             if (!associations.contains(associationsTraverser.getNextItem()))

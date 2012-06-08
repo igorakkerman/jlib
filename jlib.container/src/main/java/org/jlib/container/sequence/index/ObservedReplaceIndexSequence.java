@@ -59,6 +59,14 @@ extends ReplaceIndexSequence<Item> {
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
+    throws SequenceIndexOutOfBoundsException;
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException;
+
     /**
      * Returns an {@link IndexSequenceTraverser} and
      * {@link ObservedReplaceIndexSequenceTraverser} traversing the Items of

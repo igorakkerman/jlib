@@ -14,14 +14,15 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Iterator;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.Traverser;
 
 /**
- * {@link ReplaceIndexSequence} that allows Items to be added and removed.
+ * {@link InsertSequence} and {@link IndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -32,34 +33,44 @@ public interface InsertIndexSequence<Item>
 extends InsertSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and
-     * {@link InsertSequenceTraverser} traversing the Items of this
+     * Returns an {@link InsertSequenceTraverser} traversing the Items of this
      * {@link InsertIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
-     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
-     * specified start index.
+     * {@link InsertSequenceTraverser#getNextItem()} is the Item stored at the
+     * first index.
      * 
-     * @param <Traverzer>
-     *        type of the returned {@link IndexSequenceTraverser} and
-     *        {@link InsertSequenceTraverser}
-     * 
-     * @param startIndex
-     *        integer specifying the index of the first Item returned by the
-     *        Traverser
-     * 
-     * @return {@link IndexSequenceTraverser} and
-     *         {@link InsertSequenceTraverser} over this
+     * @return {@link InsertSequenceTraverser} over this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    // @formatter:off
-    public <Traverzer extends IndexSequenceTraverser<Item> & InsertSequenceTraverser<Item>> 
-           Traverzer createInsertIndexSequenceTraverser(int startIndex)
+    @Override
+    public InsertIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
-    // @formatter:on
+
+    /**
+     * Returns an {@link InsertSequenceTraverser} traversing the Items of this
+     * {@link InsertIndexSequence} in proper sequence. That is, the Item
+     * returned by the first call to
+     * {@link InsertSequenceTraverser#getNextItem()} is the Item stored at the
+     * specified start index.
+     * 
+     * @param startIndex
+     *        integer specifying the index of the first Item returned by the
+     *        Traverser
+     * 
+     * @return {@link InsertSequenceTraverser} over this
+     *         {@link InsertIndexSequence}
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if
+     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
+     */
+    @Override
+    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
+    throws SequenceIndexOutOfBoundsException;
 
     /**
      * Inserts the specified Item at the specified index in this
@@ -74,15 +85,15 @@ extends InsertSequence<Item>, IndexSequence<Item> {
     public void insert(int index, Item newItem);
 
     /**
-     * Inserts all Items of the specified {@link Container} at the specified
-     * index of this {@link InsertIndexSequence}. The Items are inserted in the
-     * order they are returned by the {@link Container}'s {@link Traverser}.
+     * Inserts all Items provided by the specified {@link Iterable} in the order
+     * as provided by its {@link Iterator} at the specified index of this
+     * {@link InsertIndexSequence}.
      * 
      * @param index
      *        integer specifying the index
      * 
      * @param newItems
-     *        {@link Container} holding the Items to insert
+     *        {@link Iterable} holding the Items to insert
      */
     public void insert(int index, Container<? extends Item> newItems);
 }
