@@ -54,6 +54,10 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
     public void replace(final int index, final Item newItem)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
+    @Override
+    public ReplaceIndexSequenceTraverser<Item> createTraverser()
+    throws SequenceIndexOutOfBoundsException;
+
     /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
      * traversing the Items of this {@link ReplaceIndexSequence} in proper
@@ -71,6 +75,7 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
+    @Override
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

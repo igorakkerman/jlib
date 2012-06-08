@@ -40,10 +40,10 @@ extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Association<LeftV
      * @param rightValue
      *        RightValue of the {@link Association}
      * 
-     * @throws NoSuchAssociationException
+     * @throws NoSuchAssociationValueException
      *         if this {@link RemoveBinaryRelation} does not contain the
      *         specified {@link Association}
      */
     public void remove(LeftValue leftValue, RightValue rightValue)
-    throws NoSuchAssociationException;
+    throws NoSuchAssociationValueException;
 }

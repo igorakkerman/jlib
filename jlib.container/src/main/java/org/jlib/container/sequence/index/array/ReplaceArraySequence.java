@@ -70,7 +70,7 @@ implements ObservedReplaceIndexSequence<Item> {
     // @formatter:off
     @Override
     public ObservedReplaceIndexSequenceTraverser<Item>
-               createReplaceIndexSequenceTraverser(final int startIndex, 
+               createTraverser(final int startIndex, 
                                                    @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     // @formatter:on
     throws SequenceIndexOutOfBoundsException {

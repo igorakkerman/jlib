@@ -11,6 +11,6 @@ import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceIndexSequenceTraverser<Item>
-extends IndexSequenceTraverser<Item>, ObservedReplaceSequenceTraverser<Item> {
+extends ObservedReplaceSequenceTraverser<Item>, IndexSequenceTraverser<Item> {
     // unifying interface
 }

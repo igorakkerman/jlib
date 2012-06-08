@@ -14,7 +14,7 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.NoSuchAssociationException;
+import org.jlib.container.binaryrelation.NoSuchAssociationValueException;
 import org.jlib.container.binaryrelation.RemoveBinaryRelation;
 
 /**
@@ -33,5 +33,5 @@ extends Bijection<LeftValue, RightValue>, RemoveBinaryRelation<LeftValue, RightV
 
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchAssociationException;
+    throws NoSuchAssociationValueException;
 }

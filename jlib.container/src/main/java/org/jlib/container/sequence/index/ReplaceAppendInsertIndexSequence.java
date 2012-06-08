@@ -14,50 +14,54 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link InsertAppendReplaceIndexSequence} and {@link RemoveIndexSequence}.
+ * {@link AppendSequence}, {@link InsertIndexSequence} and {@link IndexSequence}
+ * .
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
-public interface ReplaceAddInsertRemoveIndexSequence<Item>
-extends InsertAppendReplaceIndexSequence<Item>, RemoveIndexSequence<Item> {
+public interface ReplaceAppendInsertIndexSequence<Item>
+extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
 
     /**
-     * Returns an {@link RemoveInsertReplaceIndexSequenceTraverser} traversing
+     * Returns a {@link ReplaceInsertIndexSequenceTraverser} traversing
      * the Items of this IndexSequence in proper sequence. Initially, the
      * Traverser points to the head of this IndexSequence, that is, the Item
      * returned by the first call to
-     * {@link RemoveInsertReplaceIndexSequenceTraverser#getNextItem()} is the
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the
      * Item stored at {@link #getFirstIndex()}.
      * 
-     * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceAddInsertRemoveIndexSequence}
+     * @return {@link ReplaceInsertIndexSequenceTraverser} over this
+     *         {@link ReplaceAppendInsertIndexSequence}
      */
     @Override
-    public RemoveInsertReplaceIndexSequenceTraverser<Item> createTraverser();
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns an {@link RemoveInsertReplaceIndexSequenceTraverser} traversing
-     * the Items of this {@link ReplaceAddInsertRemoveIndexSequence} in proper
+     * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing
+     * the Items of this {@link ReplaceAppendInsertIndexSequence} in proper
      * sequence. That is, the Item returned by the first call to
-     * {@link RemoveInsertReplaceIndexSequenceTraverser#getNextItem()} is the
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the
      * Item stored at the specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link RemoveInsertReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceAddInsertRemoveIndexSequence}
+     * @return {@link ReplaceInsertIndexSequenceTraverser} over this
+     *         {@link ReplaceAppendInsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     @Override
-    public RemoveInsertReplaceIndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

@@ -27,29 +27,31 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceAddInsertIndexSequenceTraverser<Item, Sequenze extends InsertAppendReplaceIndexSequence<Item>>
+public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
 implements ReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
-     * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
-     * the Items of the specified {@link InsertAppendReplaceIndexSequence}
-     * beginning at its first index.
+     * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
+     * Items of the specified {@link ObservedReplaceIndexSequence} and
+     * {@link InsertIndexSequence} beginning at its first index.
      * 
      * @param sequence
-     *        {@link InsertAppendReplaceIndexSequence} to traverse
+     *        {@link ObservedReplaceIndexSequence} and
+     *        {@link InsertIndexSequence} to traverse
      */
-    public DefaultReplaceAddInsertIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceInsertIndexSequenceTraverser(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultReplaceAddInsertIndexSequenceTraverser} over
-     * the Items of the specified {@link InsertAppendReplaceIndexSequence}
-     * beginning the traversal at the specified index.
+     * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
+     * Items of the specified {@link ObservedReplaceIndexSequence} and
+     * {@link InsertIndexSequence} beginning at the specified index.
      * 
      * @param sequence
-     *        {@link InsertAppendReplaceIndexSequence} to traverse
+     *        {@link ObservedReplaceIndexSequence} and
+     *        {@link InsertIndexSequence} to traverse
      * 
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
@@ -58,7 +60,7 @@ implements ReplaceInsertIndexSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultReplaceAddInsertIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceInsertIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
     throws SequenceIndexOutOfBoundsException {
         super(sequence, initialNextItemIndex);
     }

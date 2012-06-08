@@ -101,7 +101,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchAssociationException {
+    throws NoSuchAssociationValueException {
         if (!contains(leftValue, rightValue))
             throw new NoSuchAssociationException(this, leftValue, rightValue);
 
@@ -115,7 +115,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
         try {
             remove(association.getLeftValue(), association.getRightValue());
         }
-        catch (final NoSuchAssociationException exception) {
+        catch (final NoSuchAssociationValueException exception) {
             throw new NoSuchItemToRemoveException(this, association, exception);
         }
     }

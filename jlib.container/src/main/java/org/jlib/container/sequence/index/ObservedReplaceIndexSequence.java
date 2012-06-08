@@ -60,6 +60,14 @@ extends ReplaceIndexSequence<Item> {
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
+    throws SequenceIndexOutOfBoundsException;
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException;
+
     /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
      * traversing the Items of this {@link ReplaceIndexSequence} in proper
@@ -84,8 +92,8 @@ extends ReplaceIndexSequence<Item> {
      */
     // @formatter:off
     public ObservedReplaceIndexSequenceTraverser<Item> 
-               createReplaceIndexSequenceTraverser(final int startIndex, 
-                                                   @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+               createTraverser(final int startIndex, 
+                               @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
     // @formatter:on
 }

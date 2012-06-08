@@ -14,17 +14,17 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
 
 /**
  * Traverser over an IndexSequence.
  * 
  * @param <Item>
- *        type of items held in the {@link ReplaceIndexSequence}
+ *        type of items held in the
+ *        {@link ReplaceAppendInsertRemoveIndexSequence}
  * 
  * @author Igor Akkerman
  */
-public interface ReplaceIndexSequenceTraverser<Item>
-extends IndexSequenceTraverser<Item>, ReplaceSequenceTraverser<Item> {
+public interface ReplaceAppendInsertRemoveIndexSequenceTraverser<Item>
+extends ReplaceInsertIndexSequenceTraverser<Item>, RemoveIndexSequenceTraverser<Item> {
     // unifying interface
 }
