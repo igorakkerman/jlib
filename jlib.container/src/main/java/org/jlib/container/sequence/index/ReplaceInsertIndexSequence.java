@@ -42,14 +42,14 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser()
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
-     * traversing the Items of this {@link ReplaceInsertIndexSequence} in proper
-     * sequence. That is, the Item returned by the first call to
+     * Returns an {@link ReplaceIndexSequenceTraverser} and
+     * {@link ReplaceTraverser} traversing the Items of this
+     * {@link ReplaceInsertIndexSequence} in proper sequence. That is, the Item
+     * returned by the first call to
      * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
      * specified start index.
      * 
@@ -63,7 +63,6 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

@@ -64,8 +64,7 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * @return {@link ReplaceIndexSequenceTraverser} over this
      *         {@link ReplaceIndexSequence}
      */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser();
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser();
 
     /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
@@ -84,7 +83,6 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

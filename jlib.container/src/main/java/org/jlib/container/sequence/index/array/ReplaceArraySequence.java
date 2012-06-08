@@ -1,10 +1,16 @@
 package org.jlib.container.sequence.index.array;
 
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
+import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
+import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.core.observer.ItemObserver;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -62,5 +68,41 @@ implements ObservedReplaceIndexSequence<Item> {
     public void replace(final int index, final Item item)
     throws SequenceIndexOutOfBoundsException {
         super.replace(index, item);
+    }
+
+    @Override
+    public void replace(final int index, final Item newItem, final ItemObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
+
+    @Override
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
+        return null;
+    }
+
+    @Override
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return null;
+    }
+
+    @Override
+    public ReplaceSequenceTraverser<Item> createReplaceTraverser() {}
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return null;
+    }
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createObservedReplaceIndexSequenceTraverser()
+    throws SequenceIndexOutOfBoundsException {
+        return null;
+    }
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createObservedReplaceIndexSequenceTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return null;
     }
 }

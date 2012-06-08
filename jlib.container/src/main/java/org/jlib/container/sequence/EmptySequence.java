@@ -43,8 +43,13 @@ extends AbstractSequence<Item> {
     }
 
     @Override
-    public SequenceTraverser<Item> createTraverser() {
+    public SequenceTraverser<Item> createSequenceTraverser() {
         return EmptySequenceTraverser.getInstance();
+    }
+
+    @Override
+    public SequenceTraverser<Item> createTraverser() {
+        return createSequenceTraverser();
     }
 
     @Override

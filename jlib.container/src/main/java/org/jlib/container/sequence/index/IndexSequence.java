@@ -32,7 +32,8 @@ public interface IndexSequence<Item>
 extends Sequence<Item>, RandomAccess {
 
     /**
-     * Returns the Item stored at the specified index in this IndexSequence.
+     * Returns the Item stored at the specified index in this
+     * {@link IndexSequence}.
      * 
      * @param index
      *        integer specifying the index of the stored Item
@@ -82,7 +83,7 @@ extends Sequence<Item>, RandomAccess {
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
      * @throws NoSuchSequenceItemException
-     *         if this IndexSequence does not contain {@code item}
+     *         if this {@link IndexSequence} does not contain {@code item}
      */
     public int getFirstIndexOf(final Item item)
     throws NoSuchSequenceItemException;
@@ -96,14 +97,14 @@ extends Sequence<Item>, RandomAccess {
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
      * @throws NoSuchSequenceItemException
-     *         if this IndexSequence does not contain {@code item}
+     *         if this {@link IndexSequence} does not contain {@code item}
      */
     public int getLastIndexOf(final Item item)
     throws NoSuchSequenceItemException;
 
     /**
-     * Returns a {@link List} containing the Items stored in this IndexSequence
-     * in the specified index range in proper sequence.
+     * Returns a {@link List} containing the Items stored in this
+     * {@link IndexSequence} in the specified index range in proper sequence.
      * 
      * @param fromIndex
      *        integer specifying the index of the first Item
@@ -122,7 +123,8 @@ extends Sequence<Item>, RandomAccess {
     /**
      * Returns an IndexSequence containing the Items stored in this
      * IndexSequence in the specified index range. The Items in the result
-     * IndexSequence will have the same index as they had in this IndexSequence.
+     * IndexSequence will have the same index as they had in this
+     * {@link IndexSequence}.
      * 
      * @param fromIndex
      *        integer specifying the index of the first Item
@@ -141,14 +143,14 @@ extends Sequence<Item>, RandomAccess {
     /**
      * Returns an IndexSequenceTraverser traversing the Items of this
      * IndexSequence in proper sequence. Initially, the Traverser points to the
-     * beginning of this IndexSequence, that is, the Item returned by the first
-     * call to {@code nextIndex()} is the Item stored at {@code getFirstIndex()}
-     * .
+     * beginning of this {@link IndexSequence}, that is, the Item returned by
+     * the first call to {@code nextIndex()} is the Item stored at
+     * {@code getFirstIndex()} .
      * 
-     * @return {@link IndexSequenceTraverser} over this IndexSequence initially
-     *         pointing to the beginning of this IndexSequence
+     * @return {@link IndexSequenceTraverser} over this {@link IndexSequence}
+     *         initially pointing to the beginning of this {@link IndexSequence}
      */
-    public IndexSequenceTraverser<Item> createTraverser();
+    public IndexSequenceTraverser<Item> createIndexSequenceTraverser();
 
     /**
      * Returns an {@link IndexSequenceTraverser} traversing the Items of this
@@ -160,14 +162,14 @@ extends Sequence<Item>, RandomAccess {
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return IndexSequenceTraverser over this IndexSequence initially pointing
-     *         to the beginning of this IndexSequence
+     * @return IndexSequenceTraverser over this {@link IndexSequence} initially
+     *         pointing to the beginning of this {@link IndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**
@@ -177,7 +179,7 @@ extends Sequence<Item>, RandomAccess {
      * are {@code null} or both are equal by the {@code equals()} method.
      * 
      * @param otherIndexSequence
-     *        Object to compare to this IndexSequence
+     *        Object to compare to this {@link IndexSequence}
      * @return {@code true} if {@code indexSequence} is equal to this
      *         IndexSequence; {@code false} otherwise
      */

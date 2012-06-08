@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
+import org.jlib.container.sequence.SequenceTraverser;
 import org.jlib.container.sequence.index.array.ArraySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
@@ -71,17 +72,17 @@ implements IndexSequence<Item> {
     protected abstract Item getStoredItem(final int index);
 
     @Override
-    public Item getFirstItem() {
+    public final Item getFirstItem() {
         return getStoredItem(firstIndex);
     }
 
     @Override
-    public Item getLastItem() {
+    public final Item getLastItem() {
         return getStoredItem(lastIndex);
     }
 
     @Override
-    public int getFirstIndexOf(final Item item)
+    public final int getFirstIndexOf(final Item item)
     throws NoSuchSequenceItemException {
         for (int index = firstIndex; index <= lastIndex; index ++)
             if (getStoredItem(index).equals(item))
@@ -91,7 +92,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public int getLastIndexOf(final Item item)
+    public final int getLastIndexOf(final Item item)
     throws NoSuchSequenceItemException {
         for (int index = lastIndex; index >= firstIndex; index --)
             if (getStoredItem(index).equals(item))
@@ -101,23 +102,28 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createTraverser() {
+    public final IndexSequenceTraverser<Item> createTraverser() {
         return createIndexSequenceTraverser();
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createIndexSequenceTraverser() {
+    public final SequenceTraverser<Item> createSequenceTraverser() {
+        return createIndexSequenceTraverser();
+    }
+
+    @Override
+    public final IndexSequenceTraverser<Item> createIndexSequenceTraverser() {
         return createIndexSequenceTraverser(firstIndex);
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
+    public final IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultIndexSequenceTraverser<>(this, startIndex);
     }
 
     @Override
-    public List<Item> createSubList(final int fromIndex, final int toIndex)
+    public final List<Item> createSubList(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
@@ -130,12 +136,13 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
+    public final IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
         final AbstractInitializeableIndexSequence<Item> sequence =
             ArraySequence.<Item> getCreator().createSequence(fromIndex, toIndex);
+
         for (int index = fromIndex; index <= toIndex; index ++)
             sequence.replaceStoredItem(index, getStoredItem(index));
 
@@ -143,17 +150,17 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public int getFirstIndex() {
+    public final int getFirstIndex() {
         return firstIndex;
     }
 
     @Override
-    public int getLastIndex() {
+    public final int getLastIndex() {
         return lastIndex;
     }
 
     @Override
-    public int getSize() {
+    public final int getSize() {
         return lastIndex - firstIndex + 1;
     }
 

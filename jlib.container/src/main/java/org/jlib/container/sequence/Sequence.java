@@ -30,14 +30,14 @@ public interface Sequence<Item>
 extends Container<Item> {
 
     /**
-     * Returns a {@link SequenceTraverser} traversing the Items of this
-     * Sequence in proper sequence. The Item returned by the first call to
-     * {@link SequenceTraverser#getNextItem()} is the first Item in the Sequence.
+     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
+     * in proper sequence. The Item returned by the first call to
+     * {@link SequenceTraverser#getNextItem()} is the first Item in the
+     * Sequence.
      * 
      * @return SequenceTraverser over this Sequence
      */
-    @Override
-    public SequenceTraverser<Item> createTraverser();
+    public SequenceTraverser<Item> createSequenceTraverser();
 
     /**
      * <p>
@@ -45,9 +45,8 @@ extends Container<Item> {
      * Items as this Sequence.
      * </p>
      * <p>
-     * Two Items {@code item1} and {@code item2} are equal if and only
-     * if both are {@code null} or both are equal by the {@link #equals(Object)}
-     * method.
+     * Two Items {@code item1} and {@code item2} are equal if and only if both
+     * are {@code null} or both are equal by the {@link #equals(Object)} method.
      * </p>
      * 
      * @param otherObject

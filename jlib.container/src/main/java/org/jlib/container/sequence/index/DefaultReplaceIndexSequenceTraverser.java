@@ -130,6 +130,8 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
             for (final ItemObserver<Item> observer : operationObservers)
                 observer.handleAfterFailure(newItem, getSequence());
+
+            throw exception;
         }
     }
 }

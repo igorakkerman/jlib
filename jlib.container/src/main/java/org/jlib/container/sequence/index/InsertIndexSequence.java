@@ -33,21 +33,20 @@ public interface InsertIndexSequence<Item>
 extends InsertSequence<Item>, IndexSequence<Item> {
 
     /**
-     * Returns an {@link InsertSequenceTraverser} traversing the Items of this
-     * {@link InsertIndexSequence} in proper sequence. That is, the Item
+     * Returns an {@link InsertIndexSequenceTraverser} traversing the Items of
+     * this {@link InsertIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
-     * {@link InsertSequenceTraverser#getNextItem()} is the Item stored at the
-     * first index.
+     * {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored at
+     * the first index.
      * 
-     * @return {@link InsertSequenceTraverser} over this
+     * @return {@link InsertIndexSequenceTraverser} over this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser()
+    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     /**
@@ -61,15 +60,14 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return {@link InsertSequenceTraverser} over this
+     * @return {@link InsertIndexSequenceTraverser} over this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
+    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**

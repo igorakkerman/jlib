@@ -85,7 +85,7 @@ extends AbstractNonEmptySequence<Item> {
     }
 
     @Override
-    public SequenceTraverser<Item> createTraverser() {
+    public SequenceTraverser<Item> createSequenceTraverser() {
         return new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
 
             @Override
@@ -116,5 +116,10 @@ extends AbstractNonEmptySequence<Item> {
     @Override
     public int getSize() {
         return 1;
+    }
+
+    @Override
+    public SequenceTraverser<Item> createTraverser() {
+        return createSequenceTraverser();
     }
 }

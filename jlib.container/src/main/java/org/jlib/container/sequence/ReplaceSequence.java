@@ -41,6 +41,5 @@ extends ReplaceContainer<Item>, Sequence<Item> {
      * @return ReplaceSequenceTraverser traversing the Items of this Sequence in
      *         proper order
      */
-    @Override
     public ReplaceSequenceTraverser<Item> createReplaceTraverser();
 }
