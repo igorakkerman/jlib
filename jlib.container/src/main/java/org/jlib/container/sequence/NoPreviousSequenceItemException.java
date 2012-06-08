@@ -1,13 +1,15 @@
 package org.jlib.container.sequence;
 
+import org.jlib.core.traverser.NoPreviousItemException;
+
 /**
- * {@link IllegalSequenceTraverserStateException} thrown when there is no previous Item
- * to return by a {@link SequenceTraverser}.
+ * {@link NoPreviousItemException} thrown when there is no previous Item to
+ * return by a {@link SequenceTraverser}.
  * 
  * @author Igor Akkerman
  */
 public class NoPreviousSequenceItemException
-extends IllegalSequenceTraverserStateException {
+extends NoPreviousItemException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 3286617731417853890L;

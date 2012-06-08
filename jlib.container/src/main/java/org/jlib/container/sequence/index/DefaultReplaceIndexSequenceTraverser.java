@@ -105,6 +105,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
     }
 
     @Override
+    @SuppressWarnings("finally")
     public void replace(final Item newItem,
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... operationObservers)
     throws NoSequenceItemToReplaceException, ItemObserverException, IllegalSequenceArgumentException,
@@ -125,13 +126,16 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
                 observer.handleAfterSuccess(newItem, getSequence());
         }
         catch (NoSequenceItemToReplaceException | IllegalSequenceArgumentException | IllegalSequenceStateException exception) {
-            for (final ItemObserver<Item> observer : traverserObservers)
-                observer.handleAfterFailure(newItem, getSequence());
+            try {
+                for (final ItemObserver<Item> observer : traverserObservers)
+                    observer.handleAfterFailure(newItem, getSequence());
 
-            for (final ItemObserver<Item> observer : operationObservers)
-                observer.handleAfterFailure(newItem, getSequence());
-
-            throw exception;
+                for (final ItemObserver<Item> observer : operationObservers)
+                    observer.handleAfterFailure(newItem, getSequence());
+            }
+            finally {
+                throw exception;
+            }
         }
     }
 }

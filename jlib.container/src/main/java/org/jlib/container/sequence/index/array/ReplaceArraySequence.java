@@ -72,7 +72,11 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     public void replace(final int index, final Item newItem, final ItemObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+        for (final ItemObserver<Item> observer : observers)
+            observer.handleBefore(newItem, this);
+
+    }
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {

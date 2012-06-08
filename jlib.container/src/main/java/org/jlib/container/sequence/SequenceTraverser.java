@@ -14,10 +14,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.BidirectionalTraverser;
 
 /**
- * {@link Traverser} over the Items of a {@link Sequence}.
+ * {@link BidirectionalTraverser} over the Items of a {@link Sequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -25,15 +25,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public interface SequenceTraverser<Item>
-extends Traverser<Item> {
-
-    /**
-     * Verifies whether this {@link SequenceTraverser} has a previous Item.
-     * 
-     * @return {@code true} if this {@link SequenceTraverser} has a previous
-     *         Item; {@code false} otherwise
-     */
-    public boolean isPreviousItemAccessible();
+extends BidirectionalTraverser<Item> {
 
     /**
      * Returns the previous Item of this {@link SequenceTraverser}.
@@ -43,17 +35,9 @@ extends Traverser<Item> {
      * @throws NoPreviousSequenceItemException
      *         if there is no previous Item
      */
+    @Override
     public Item getPreviousItem()
     throws NoPreviousSequenceItemException;
-
-    /**
-     * Verifies whether this {@link SequenceTraverser} has a next Item.
-     * 
-     * @return {@code true} if this {@link SequenceTraverser} has a next Item;
-     *         {@code false} otherwise
-     */
-    @Override
-    public boolean isNextItemAccessible();
 
     /**
      * Returns the next Item of this {@link SequenceTraverser}.

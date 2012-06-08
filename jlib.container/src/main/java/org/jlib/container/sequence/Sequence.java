@@ -30,12 +30,12 @@ public interface Sequence<Item>
 extends Container<Item> {
 
     /**
-     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
+     * Returns a {@link BidirectionalTraverser} traversing the Items of this Sequence
      * in proper sequence. The Item returned by the first call to
-     * {@link SequenceTraverser#getNextItem()} is the first Item in the
+     * {@link BidirectionalTraverser#getNextItem()} is the first Item in the
      * Sequence.
      * 
-     * @return SequenceTraverser over this Sequence
+     * @return BidirectionalTraverser over this Sequence
      */
     public SequenceTraverser<Item> createSequenceTraverser();
 
@@ -56,20 +56,6 @@ extends Container<Item> {
      */
     @Override
     public boolean equals(final Object otherObject);
-
-    /**
-     * <p>
-     * Returns a {@link List} containing all Items stored in this Sequence in
-     * proper sequence.
-     * </p>
-     * <p>
-     * The method duplicates the functionality of the {@link #toList()} method.
-     * </p>
-     * 
-     * @return {@link List} containing the Items stored in this Sequence
-     */
-    @Override
-    public List<Item> toCollection();
 
     /**
      * <p>

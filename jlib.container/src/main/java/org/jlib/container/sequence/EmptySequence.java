@@ -2,6 +2,7 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.container.Container;
@@ -16,7 +17,7 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
  * @author Igor Akkerman
  */
 public class EmptySequence<Item>
-extends AbstractSequence<Item> {
+implements Sequence<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();
@@ -92,6 +93,17 @@ extends AbstractSequence<Item> {
     @SuppressWarnings("unchecked")
     public Item[] toArray() {
         return (Item[]) new Object[0];
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return Collections.emptyIterator();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Item> toCollection() {
+        return Collections.EMPTY_LIST;
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity

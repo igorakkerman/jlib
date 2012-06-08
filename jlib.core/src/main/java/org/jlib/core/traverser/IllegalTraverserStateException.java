@@ -1,15 +1,15 @@
 package org.jlib.core.traverser;
 
-import java.text.MessageFormat;
+import org.jlib.core.IllegalJlibStateException;
 
 /**
- * Exception thrown when an illegal state has been reached in a
- * {@link Traverser}.
+ * {@link IllegalJlibStateException} thrown when an illegal state has been
+ * reached in a {@link Traverser}.
  * 
  * @author Igor Akkerman
  */
 public abstract class IllegalTraverserStateException
-extends IllegalStateException {
+extends IllegalJlibStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -5070211173782251202L;
@@ -50,17 +50,35 @@ extends IllegalStateException {
      * @param messagePattern
      *        {@link String} specifying the error message pattern
      * 
+     * @param messageParameters
+     *        comma separated sequence of {@link Object} instances specifying
+     *        the message parameters
+     */
+    public IllegalTraverserStateException(final Traversible<?> traversible, final String messagePattern,
+                                          final Object... messageParameters) {
+        this(traversible, messagePattern, (Throwable) null, messageParameters);
+    }
+
+    /**
+     * Creates a new {@link IllegalTraverserStateException}.
+     * 
+     * @param traversible
+     *        traversed {@link Traversible}
+     * 
+     * @param messagePattern
+     *        {@link String} specifying the error message pattern
+     * 
      * @param cause
      *        {@link Throwable} that caused this
      *        {@link IllegalThreadStateException}
      * 
      * @param messageParameters
-     *        sequence of {@link Object} instances specifying the message
-     *        parameters
+     *        comma separated sequence of {@link Object} instances specifying
+     *        the message parameters
      */
     public IllegalTraverserStateException(final Traversible<?> traversible, final String messagePattern,
                                           final Throwable cause, final Object... messageParameters) {
-        super(MessageFormat.format(messagePattern, traversible, messageParameters), cause);
+        super(messagePattern, cause, traversible, messageParameters);
 
         this.traversible = traversible;
     }

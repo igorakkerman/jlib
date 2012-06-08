@@ -14,10 +14,10 @@ extends AbstractNonEmptySequence<Item> {
     /** sole item of this {@link SingletonSequence} */
     private final Item item;
 
-    /** current delegate {@link SequenceTraverser} */
+    /** current delegate {@link BidirectionalTraverser} */
     private SequenceTraverser<Item> currentDelegateTraverser;
 
-    /** delegate {@link SequenceTraverser} at the {@link SingletonSequence} head */
+    /** delegate {@link BidirectionalTraverser} at the {@link SingletonSequence} head */
     private final SequenceTraverser<Item> headTraverser = new AbstractSequenceTraverser<Item, Sequence<Item>>(this) {
 
         @Override
@@ -45,7 +45,7 @@ extends AbstractNonEmptySequence<Item> {
     };
 
     /**
-     * delegate {@link SequenceTraverser} at the {@link SingletonSequence}
+     * delegate {@link BidirectionalTraverser} at the {@link SingletonSequence}
      * tailTraverser
      */
     private final SequenceTraverser<Item> tailTraverser = new AbstractSequenceTraverser<Item, Sequence<Item>>(this) {

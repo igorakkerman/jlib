@@ -25,11 +25,6 @@ implements Sequence<Item> {
     }
 
     @Override
-    public List<Item> toCollection() {
-        return toList();
-    }
-
-    @Override
     public List<Item> toList() {
         final List<Item> sequence = new ArrayList<Item>(getSize());
         for (final Item item : this)

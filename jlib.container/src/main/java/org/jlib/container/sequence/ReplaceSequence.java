@@ -35,7 +35,7 @@ extends ReplaceContainer<Item>, Sequence<Item> {
      * </p>
      * <p>
      * The {@link ReplaceSequenceTraverser#replace(Object)} method of the
-     * {@link SequenceTraverser} can be used to modify Items in this Sequence.
+     * {@link BidirectionalTraverser} can be used to modify Items in this Sequence.
      * </p>
      * 
      * @return ReplaceSequenceTraverser traversing the Items of this Sequence in
