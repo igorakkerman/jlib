@@ -17,8 +17,8 @@ package org.jlib.container.sequence.index.array;
 import java.util.Arrays;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
+import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 // @formatter:off   
@@ -134,6 +134,9 @@ implements Cloneable {
      * Returns the {@link IndexSequenceCreator} of {@link ArraySequence}
      * instances.
      * 
+     * @param <Item>
+     *        type of the items held in the {@link ArraySequence}
+     * 
      * @return {@link IndexSequenceCreator} of {@link ArraySequence} instances
      */
     @SuppressWarnings("unchecked")
@@ -164,8 +167,8 @@ implements Cloneable {
     }
 
     /**
-     * Returns the Item stored at the specified index expecting the index to
-     * be valid.
+     * Returns the Item stored at the specified index expecting the index to be
+     * valid.
      * 
      * @param index
      *        integer specifying the valid index
@@ -178,8 +181,8 @@ implements Cloneable {
     }
 
     /**
-     * Replaces the Item stored at the specified index in this IndexSequence
-     * by the specified Item expecting the index to be valid.
+     * Replaces the Item stored at the specified index in this IndexSequence by
+     * the specified Item expecting the index to be valid.
      * 
      * @param index
      *        integer specifying the valid index
@@ -304,8 +307,8 @@ implements Cloneable {
         assertExpectedCapacityValid(expectedCapacity);
 
         if (getSize() + holeSize > expectedCapacity)
-            throw new IllegalArgumentException("getSize() + items.length == " + getSize() + " + " + holeSize +
-                                               " > " + expectedCapacity + " == expectedCapacity");
+            throw new IllegalArgumentException("getSize() + items.length == " + getSize() + " + " + holeSize + " > " +
+                                               expectedCapacity + " == expectedCapacity");
         @SuppressWarnings("unchecked")
         final Item[] newDelegateArray = delegateArray.length < expectedCapacity
             ? (Item[]) new Object[expectedCapacity]

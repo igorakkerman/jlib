@@ -18,7 +18,6 @@ import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
-import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ItemObserver;
 import org.jlib.core.observer.ItemObserverException;
@@ -26,7 +25,7 @@ import org.jlib.core.reference.NoValueSetException;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser} and
- * {@link ObservedReplaceSequenceTraverser}.
+ * {@link ObservedReplaceIndexSequenceTraverser}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -41,7 +40,7 @@ extends DefaultIndexSequenceTraverser<Item, Sequenze>
 implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     /** replace {@link ItemObserver} items */
-    // TODO: initialize with initially empty fillable Sequence
+    // FIXME: initialize with initially empty fillable Sequence
     private final AppendSequence<ItemObserver<Item>> traverserObservers = null;
 
     /**
@@ -81,6 +80,17 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
         super(sequence, initialNextItemIndex);
+    }
+
+    /**
+     * Registers the specified {@link ItemObserver} for the replace operations
+     * of this {@link DefaultReplaceIndexSequenceTraverser}.
+     * 
+     * @param replaceObserver
+     *        additional replace {@link ItemObserver}
+     */
+    public void addReplaceObserver(final ItemObserver<Item> replaceObserver) {
+        // FIXME: implement
     }
 
     @Override

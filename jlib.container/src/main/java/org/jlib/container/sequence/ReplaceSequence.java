@@ -42,5 +42,5 @@ extends ReplaceContainer<Item>, Sequence<Item> {
      *         proper order
      */
     @Override
-    public ReplaceSequenceTraverser<Item> createTraverser();
+    public ReplaceSequenceTraverser<Item> createReplaceTraverser();
 }

@@ -29,14 +29,14 @@ public interface ObservedReplaceSequence<Item>
 extends ReplaceSequence<Item> {
 
     /**
-     * Returns an {@link ObservedReplaceSequenceTraverser} traversing the Items
+     * Returns an {@link ObservedReplaceIndexSequenceTraverser} traversing the Items
      * of this {@link ObservedReplaceSequence} in proper order.
      * 
      * @param observers
      *        comma separated sequence of {@link ItemObserver} instances
      *        attending the replacement
      * 
-     * @return {@link ObservedReplaceSequenceTraverser} traversing the Items of
+     * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the Items of
      *         this {@link ObservedReplaceSequence} in proper order
      */
     public ObservedReplaceSequenceTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);

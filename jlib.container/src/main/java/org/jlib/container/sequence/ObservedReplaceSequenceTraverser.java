@@ -42,7 +42,7 @@ extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
      * 
      * @throws NoSequenceItemToReplaceException
      *         if no Item has been returned by thise
-     *         {@link ObservedReplaceSequenceTraverser}
+     *         {@link ObservedReplaceIndexSequenceTraverser}
      * 
      * @throws ItemObserverException
      *         if an error occurs during the {@link ItemObserver} operation
