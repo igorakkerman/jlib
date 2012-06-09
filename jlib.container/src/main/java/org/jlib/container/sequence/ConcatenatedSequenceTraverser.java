@@ -2,6 +2,7 @@ package org.jlib.container.sequence;
 
 import org.jlib.core.array.ArrayTraverser;
 import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.BidirectionalTraversible;
 
 /**
  * {@link BidirectionalTraverser} over the Items of a
@@ -19,13 +20,16 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 extends AbstractSequenceTraverser<Item, Sequenze> {
 
     /**
-     * {@link BidirectionalTraverser} of the concatenated {@link Sequence}
-     * instances
+     * {@link BidirectionalTraverser} of the concatenated
+     * {@link BidirectionalTraversible} instances
      */
-    private final BidirectionalTraverser<Sequence<Item>> sequencesTraverser;
+    private final BidirectionalTraverser<BidirectionalTraversible<Item>> traversiblesTraverser;
 
-    /** {@link SequenceTraverser} of current {@link Sequence} */
-    private SequenceTraverser<Item> currentSequenceTraverser;
+    /**
+     * {@link BidirectionalTraverser} over the current
+     * {@link BidirectionalTraversible}
+     */
+    private BidirectionalTraverser<Item> currentTraversibleTraverser;
 
     /**
      * Creates a new {@link ConcatenatedSequenceTraverser}.
@@ -37,24 +41,24 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
         super(concatenatedSequence);
 
-        sequencesTraverser = new ArrayTraverser<>(concatenatedSequence.getSequences());
+        traversiblesTraverser = new ArrayTraverser<>(concatenatedSequence.getTraversibles());
 
-        currentSequenceTraverser = sequencesTraverser.isNextItemAccessible()
-            ? sequencesTraverser.getNextItem().createSequenceTraverser()
+        currentTraversibleTraverser = traversiblesTraverser.isNextItemAccessible()
+            ? traversiblesTraverser.getNextItem().createTraverser()
             : EmptySequenceTraverser.<Item> getInstance();
     }
 
     @Override
     public boolean isPreviousItemAccessible() {
-        while (!currentSequenceTraverser.isPreviousItemAccessible()) {
-            if (!sequencesTraverser.isPreviousItemAccessible())
+        while (!currentTraversibleTraverser.isPreviousItemAccessible()) {
+            if (!traversiblesTraverser.isPreviousItemAccessible())
                 return false;
 
-            currentSequenceTraverser = sequencesTraverser.getPreviousItem().createSequenceTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createTraverser();
 
             // navigate to the tail of the previous Sequence
-            while (currentSequenceTraverser.isNextItemAccessible())
-                currentSequenceTraverser.getNextItem();
+            while (currentTraversibleTraverser.isNextItemAccessible())
+                currentTraversibleTraverser.getNextItem();
         }
 
         return true;
@@ -66,16 +70,16 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
         if (!isPreviousItemAccessible())
             throw new NoPreviousSequenceItemException(getSequence());
 
-        return currentSequenceTraverser.getPreviousItem();
+        return currentTraversibleTraverser.getPreviousItem();
     }
 
     @Override
     public boolean isNextItemAccessible() {
-        while (!currentSequenceTraverser.isNextItemAccessible()) {
-            if (!sequencesTraverser.isNextItemAccessible())
+        while (!currentTraversibleTraverser.isNextItemAccessible()) {
+            if (!traversiblesTraverser.isNextItemAccessible())
                 return false;
 
-            currentSequenceTraverser = sequencesTraverser.getNextItem().createSequenceTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createTraverser();
         }
 
         return true;
@@ -87,7 +91,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
         if (!isNextItemAccessible())
             throw new NoPreviousSequenceItemException(getSequence());
 
-        return currentSequenceTraverser.getPreviousItem();
+        return currentTraversibleTraverser.getPreviousItem();
     }
 
 }

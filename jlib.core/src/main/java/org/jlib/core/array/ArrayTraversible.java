@@ -1,10 +1,11 @@
 package org.jlib.core.array;
 
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.Traversible;
+import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.BidirectionalTraversible;
 
 /**
- * Wrapper for an array allowing it to be used as {@link Traversible}.
+ * Wrapper for an array allowing it to be used as
+ * {@link BidirectionalTraversible}.
  * 
  * @param <Item>
  *        type of the items held in the array
@@ -12,7 +13,7 @@ import org.jlib.core.traverser.Traversible;
  * @author Igor Akkerman
  */
 public class ArrayTraversible<Item>
-implements Traversible<Item> {
+implements BidirectionalTraversible<Item> {
 
     /** array to traverse */
     private final Item[] array;
@@ -28,7 +29,7 @@ implements Traversible<Item> {
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
+    public BidirectionalTraverser<Item> createTraverser() {
         return new ArrayTraverser<Item>(array);
     }
 }

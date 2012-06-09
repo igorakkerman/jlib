@@ -17,9 +17,11 @@ package org.jlib.container.sequence;
 import java.util.List;
 
 import org.jlib.container.Container;
+import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.BidirectionalTraversible;
 
 /**
- * Ordered sequence of items.
+ * Ordered sequence of Items.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -27,11 +29,11 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 public interface Sequence<Item>
-extends Container<Item> {
+extends Container<Item>, BidirectionalTraversible<Item> {
 
     /**
-     * Returns a {@link BidirectionalTraverser} traversing the Items of this Sequence
-     * in proper sequence. The Item returned by the first call to
+     * Returns a {@link BidirectionalTraverser} traversing the Items of this
+     * Sequence in proper sequence. The Item returned by the first call to
      * {@link BidirectionalTraverser#getNextItem()} is the first Item in the
      * Sequence.
      * 

@@ -1,8 +1,9 @@
 package org.jlib.container.sequence;
 
-import org.jlib.container.ContainerUtility;
 import org.jlib.container.IllegalContainerStateException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.TraverserUtility;
+import org.jlib.core.traverser.Traversible;
 
 /**
  * {@link Sequence} representing the concatenation of other {@link Sequence}
@@ -16,8 +17,8 @@ import org.jlib.core.traverser.Traverser;
 public class ConcatenatedSequence<Item>
 extends AbstractSequence<Item> {
 
-    /** array of concatenated {@link Sequence} items */
-    private final Sequence<Item>[] sequences;
+    /** array of concatenated {@link BidirectionalTraversible} items */
+    private final BidirectionalTraversible<Item>[] traversibles;
 
     /** total number of {@link Sequence} Items */
     private final int itemsCount;
@@ -25,16 +26,17 @@ extends AbstractSequence<Item> {
     /**
      * Creates a new {@link ConcatenatedSequence}.
      * 
-     * @param sequences
-     *        comma separated sequence of concatenated {@link Sequence} items
+     * @param traversibles
+     *        comma separated sequence of concatenated
+     *        {@link BidirectionalTraversible} items
      */
     @SafeVarargs
-    public ConcatenatedSequence(final Sequence<Item>... sequences) {
+    public ConcatenatedSequence(final BidirectionalTraversible<Item>... traversibles) {
         super();
 
-        this.sequences = sequences;
+        this.traversibles = traversibles;
 
-        itemsCount = ContainerUtility.getItemsCount(sequences);
+        itemsCount = TraverserUtility.getItemsCount(traversibles);
     }
 
     @Override
@@ -44,7 +46,7 @@ extends AbstractSequence<Item> {
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
+    public SequenceTraverser<Item> createTraverser() {
         return createSequenceTraverser();
     }
 
@@ -54,11 +56,11 @@ extends AbstractSequence<Item> {
     }
 
     /**
-     * Returns the concatenated {@link Sequence} instances.
+     * Returns the {@link Traversible} items.
      * 
-     * @return array of the concatenated {@link Sequence} items
+     * @return array of {@link BidirectionalTraversible} instances
      */
-    public Sequence<Item>[] getSequences() {
-        return sequences;
+    public BidirectionalTraversible<Item>[] getTraversibles() {
+        return traversibles;
     }
 }

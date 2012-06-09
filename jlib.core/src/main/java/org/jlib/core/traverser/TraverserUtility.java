@@ -52,5 +52,4 @@ public final class TraverserUtility {
 
         return itemsCount;
     }
-
 }
