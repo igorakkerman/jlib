@@ -1,6 +1,6 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link Sequence} allowing its tail Item to be removed.
@@ -17,11 +17,11 @@ extends Sequence<Item> {
      * Removes the last Item of this {@link HeadRemoveSequence}.
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      */
     // @formatter:off
     public void removeLastItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) 
-                               final ItemObserver<Item>... observers);
+                               final ValueObserver<Item>... observers);
     // @formatter:on
 }

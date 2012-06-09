@@ -43,7 +43,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean contains(final Item item) {
+    public boolean contains(final Item item) {
         for (final Object containedItem : this)
             if (containedItem.equals(item))
                 return true;
@@ -51,12 +51,12 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean containsAll(final Container<? extends Item> items) {
+    public boolean containsAll(final Container<? extends Item> items) {
         return containsAll((Iterable<? extends Item>) items);
     }
 
     @Override
-    public final boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
         for (final Item item : items)
             if (!contains(item))
                 return false;
@@ -64,7 +64,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean containsAll(final Collection<? extends Item> items) {
+    public boolean containsAll(final Collection<? extends Item> items) {
         return containsAll((Iterable<? extends Item>) items);
     }
 
@@ -77,7 +77,7 @@ implements Container<Item> {
      * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
-    private final boolean containsAll(final Iterable<? extends Item> items) {
+    private boolean containsAll(final Iterable<? extends Item> items) {
         for (final Item item : items)
             if (!contains(item))
                 return false;
@@ -85,7 +85,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final Item[] toArray() {
+    public Item[] toArray() {
         final int size = getSize();
         @SuppressWarnings("unchecked")
         final Item[] targetArray = (Item[]) new Object[size];
@@ -97,7 +97,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final Collection<Item> toCollection() {
+    public Collection<Item> toCollection() {
         final Collection<Item> collection = new LinkedList<Item>();
         for (final Item item : this)
             collection.add(item);
@@ -125,7 +125,7 @@ implements Container<Item> {
      */
     @Override
     // TODO: use Apache Commons Lang
-    public final boolean equals(final Object otherObject) {
+    public boolean equals(final Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
         final Container<?> otherContainer = (Container<?>) otherObject;
@@ -146,7 +146,7 @@ implements Container<Item> {
 
     @Override
     // TODO: use Apache Commons Lang
-    public final int hashCode() {
+    public int hashCode() {
         int hashCode = 0;
         for (final Item item : this)
             hashCode += item != null
@@ -156,12 +156,12 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean isEmpty() {
+    public boolean isEmpty() {
         return getSize() == 0;
     }
 
     @Override
-    public final Iterator<Item> iterator() {
+    public Iterator<Item> iterator() {
         return new TraversibleIterator<>(this);
     }
 }

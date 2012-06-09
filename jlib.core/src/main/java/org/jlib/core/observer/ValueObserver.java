@@ -1,61 +1,61 @@
 package org.jlib.core.observer;
 
 /**
- * Observer of an operation on an Item.
+ * Observer of an operation on a Value.
  * 
- * @param <Item>
- *        type of removed item
+ * @param <Value>
+ *        type of removed value
  * 
  * @author Igor Akkerman
  */
-public interface ItemObserver<Item> {
+public interface ValueObserver<Value> {
 
     /**
      * Performs actions before the targeted operation.
      * 
-     * @param item
-     *        Item removed from {@code container}
+     * @param value
+     *        Value removed from {@code container}
      * 
      * @param arguments
      *        optional comma separated sequence of arbitrary {@link Object}
      *        arguments
      * 
-     * @throws ItemObserverException
+     * @throws BeforeHandlerValueObserverException
      *         if an error occurs performing the actions
      */
-    public void handleBefore(final Item item, final Object... arguments)
-    throws ItemObserverException;
+    public void handleBefore(final Value value, final Object... arguments)
+    throws BeforeHandlerValueObserverException;
 
     /**
      * Performs actions after the targeted operation has been successfully
      * executed.
      * 
-     * @param item
-     *        Item removed from {@code container}
+     * @param value
+     *        Value removed from {@code container}
      * 
      * @param arguments
      *        optional comma separated sequence of arbitrary {@link Object}
      *        arguments
      * 
-     * @throws ItemObserverException
+     * @throws AfterSuccessHandlerValueObserverException
      *         if an error occurs performing the actions
      */
-    public void handleAfterSuccess(final Item item, final Object... arguments)
-    throws ItemObserverException;
+    public void handleAfterSuccess(final Value value, final Object... arguments)
+    throws AfterSuccessHandlerValueObserverException;
 
     /**
      * Performs actions before the targeted operation.
      * 
-     * @param item
-     *        Item removed from {@code container}
+     * @param value
+     *        Value removed from {@code container}
      * 
      * @param arguments
      *        optional comma separated sequence of arbitrary {@link Object}
      *        arguments
      * 
-     * @throws ItemObserverException
+     * @throws AfterFailureHandlerValueObserverException
      *         if an error occurs performing the actions
      */
-    public void handleAfterFailure(final Item item, final Object... arguments)
-    throws ItemObserverException;
+    public void handleAfterFailure(final Value value, final Object... arguments)
+    throws AfterFailureHandlerValueObserverException;
 }

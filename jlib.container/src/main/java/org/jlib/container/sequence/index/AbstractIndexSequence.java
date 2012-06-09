@@ -160,7 +160,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public final int getSize() {
+    public int getSize() {
         return lastIndex - firstIndex + 1;
     }
 

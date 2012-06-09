@@ -1,7 +1,7 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.observer.ItemObserver;
-import org.jlib.core.observer.ItemObserverException;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link Sequence} allowing its Items to be traversed using a
@@ -19,12 +19,12 @@ extends HeadRemoveSequence<Item> {
      * Removes the first Item of this {@link HeadRemoveSequence}.
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      * 
-     * @throws ItemObserverException
-     *         if an error occurs during the {@link ItemObserver} operation
+     * @throws ValueObserverException
+     *         if an error occurs during the {@link ValueObserver} operation
      */
-    public void removeFirstItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
-    throws ItemObserverException;
+    public void removeFirstItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    throws ValueObserverException;
 }

@@ -18,9 +18,8 @@ extends AbstractSequence<Item> {
         super();
     }
 
-    // TODO: verify if 'final' on isEmpty declaration is necessary
-//    @Override
-//    public final boolean isEmpty() {
-//        return false;
-//    }
+    @Override
+    public final boolean isEmpty() {
+        return false;
+    }
 }

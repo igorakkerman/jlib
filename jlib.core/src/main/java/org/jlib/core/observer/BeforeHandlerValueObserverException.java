@@ -1,15 +1,16 @@
 package org.jlib.core.observer;
 
 /**
- * {@link ObserverException} thrown during an {@link ItemObserver} operation.
+ * {@link ValueObserverException} thrown during a
+ * {@link ValueObserver#handleAfterSuccess(Object, Object...)} operation.
  * 
  * @author Igor Akkerman
  */
-public class ItemObserverException
+public abstract class BeforeHandlerValueObserverException
 extends ObserverException {
 
     /**
-     * Creates a new {@link ItemObserverException}.
+     * Creates a new {@link BeforeHandlerValueObserverException}.
      * 
      * @param item
      *        Item removed from {@code container}
@@ -19,13 +20,14 @@ extends ObserverException {
      *        {@code item}
      * 
      * @param cause
-     *        {@link Throwable} that caused this {@link ItemObserverException}
+     *        {@link Throwable} that caused this
+     *        {@link BeforeHandlerValueObserverException}
      * 
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ItemObserverException(final Object item, final String messagePattern, final Throwable cause,
-                                 final Object... messageArguments) {
+    public BeforeHandlerValueObserverException(final Object item, final String messagePattern, final Throwable cause,
+                                               final Object... messageArguments) {
         super(messagePattern, cause, item, messageArguments);
     }
 }

@@ -1,11 +1,11 @@
 package org.jlib.core.traverser;
 
-import org.jlib.core.observer.ItemObserver;
-import org.jlib.core.observer.ItemObserverException;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link RemoveTraverser} allowing its remove operation to be attended by
- * {@link ItemObserver} instances.
+ * {@link ValueObserver} instances.
  * 
  * @param <Item>
  *        type of the traversed items
@@ -22,7 +22,7 @@ extends ReplaceTraverser<Item> {
      *        Item by which the former Item is replaced
      * 
      * @param removeObservers
-     *        comma separated sequence of {@link ItemObserver} items
+     *        comma separated sequence of {@link ValueObserver} items
      * 
      * @throws NoItemToRemoveException
      *         if not called immediately after a call to {@link #getNextItem()}
@@ -31,10 +31,10 @@ extends ReplaceTraverser<Item> {
      * @throws IllegalTraversibleStateException
      *         if an error was caused by a delegate used to remove the item
      * 
-     * @throws ItemObserverException
-     *         if an error occurs during the {@link ItemObserver} operation
+     * @throws ValueObserverException
+     *         if an error occurs during the {@link ValueObserver} operation
      */
     public void replace(Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... removeObservers)
-    throws NoItemToRemoveException, IllegalTraversibleStateException, ItemObserverException;
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... removeObservers)
+    throws NoItemToRemoveException, IllegalTraversibleStateException, ValueObserverException;
 }

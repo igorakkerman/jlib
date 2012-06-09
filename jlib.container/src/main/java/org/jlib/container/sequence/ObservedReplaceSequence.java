@@ -15,11 +15,11 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
-import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link ReplaceSequence} allowing its replace operations to be attended by
- * {@link ItemObserver} instances.
+ * {@link ValueObserver} instances.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -34,11 +34,11 @@ extends ReplaceSequence<Item> {
      * Items of this {@link ObservedReplaceSequence} in proper order.
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the replacement
      * 
      * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the
      *         Items of this {@link ObservedReplaceSequence} in proper order
      */
-    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
+    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers);
 }

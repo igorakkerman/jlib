@@ -19,7 +19,7 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -43,7 +43,7 @@ extends ReplaceIndexSequence<Item> {
      *        new Item to store
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the replacement
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -57,7 +57,7 @@ extends ReplaceIndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     @Override
@@ -79,7 +79,7 @@ extends ReplaceIndexSequence<Item> {
      *        integer specifying the index of the first Item to traverse
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the replacement
      * 
      * @return {@link IndexSequenceTraverser} and
@@ -93,7 +93,7 @@ extends ReplaceIndexSequence<Item> {
     // @formatter:off
     public ObservedReplaceIndexSequenceTraverser<Item> 
                createTraverser(final int startIndex, 
-                               @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers)
+                               @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
     // @formatter:on
 }

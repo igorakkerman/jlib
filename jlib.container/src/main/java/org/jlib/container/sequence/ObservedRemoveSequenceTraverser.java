@@ -14,41 +14,40 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 /**
- * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
+ * {@link ObservedRemoveTraverser} and {@link RemoveSequenceTraverser}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface ObservedReplaceSequenceTraverser<Item>
-extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
+public interface ObservedRemoveSequenceTraverser<Item>
+extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
 
     /**
      * Replaces the last Item returned by {@link #getNextItem()} or
      * {@link #getPreviousItem()} with the specified value.
      * 
-     * @param newItem
-     *        Item by which the former Item is replaced
-     * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the replacement
+     *        attending the operation
      * 
      * @throws NoSequenceItemToReplaceException
      *         if no Item has been returned by this
-     *         {@link ObservedReplaceSequenceTraverser}
+     *         {@link ObservedRemoveSequenceTraverser}
      * 
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @Override
-    public void replace(final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
-    throws NoSequenceItemToReplaceException, ValueObserverException;
+    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    throws NoSequenceItemToReplaceException, ValueObserverException, IllegalJlibArgumentException,
+    IllegalJlibStateException;
 }

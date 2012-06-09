@@ -15,7 +15,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link RemoveIndexSequence} .
@@ -34,7 +34,7 @@ extends RemoveIndexSequence<Item> {
      * @param index
      *        integer specifying the index
      */
-    public void remove(final int index, final ItemObserver<Item>... observers);
+    public void remove(final int index, final ValueObserver<Item>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of

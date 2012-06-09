@@ -14,11 +14,11 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.observer.ItemObserver;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link ReplaceSequence} allowing its replace operations to be attended by
- * {@link ItemObserver} instances.
+ * {@link ValueObserver} instances.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -26,18 +26,18 @@ import org.jlib.core.observer.ItemObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveSequence<Item>
-extends ReplaceSequence<Item> {
+extends RemoveSequence<Item> {
 
     /**
-     * Returns an {@link ObservedReplaceIndexSequenceTraverser} traversing the Items
+     * Returns an {@link ObservedRemoveSequenceTraverser} traversing the Items
      * of this {@link ObservedRemoveSequence} in proper order.
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
-     *        attending the replacement
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending every removal
      * 
-     * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the Items of
+     * @return {@link ObservedRemoveSequenceTraverser} traversing the Items of
      *         this {@link ObservedRemoveSequence} in proper order
      */
-    public ObservedReplaceSequenceTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ItemObserver<Item>... observers);
+    public ObservedRemoveSequenceTraverser<Item> createRemoveTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers);
 }

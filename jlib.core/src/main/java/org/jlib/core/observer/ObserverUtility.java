@@ -4,7 +4,7 @@ import org.jlib.core.IllegalJlibArgumentException;
 import org.jlib.core.IllegalJlibStateException;
 
 /**
- * 
+ * Utility for the observer pattern.
  * 
  * @author Igor Akkerman
  */
@@ -14,20 +14,26 @@ public final class ObserverUtility {
     private ObserverUtility() {}
 
     /**
-     * Replaces an Item by the specified Item.
+     * Operates on the specified ArgumentValue using the specified
+     * {@link ArgumentReturnValueOperator}.
      * 
-     * @param <Item>
-     *        type of the replaced item
+     * @param <ArgumentValue>
+     *        type of the argument value
      * 
-     * @param replaceable
-     *        {@link Replaceable} containing the Item to replace
+     * @param <ReturnValue>
+     *        type of the return value
      * 
-     * @param newItem
-     *        new Item replacing the former Item
+     * @param operator
+     *        {@link ArgumentReturnValueOperator}
+     * 
+     * @param argumentValue
+     *        ArgumentValue operated on
      * 
      * @param observers
-     *        comma separated sequence of {@link ItemObserver} instances
+     *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
+     * 
+     * @return ReturnValue of the operation
      * 
      * @throws IllegalJlibArgumentException
      *         if {@code newItem} causes an error
@@ -36,20 +42,112 @@ public final class ObserverUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
-    public static <Item> void replace(final Replaceable<Item> replaceable, final Item newItem,
-                                      final ItemObserver<Item>... observers) {
+    @SuppressWarnings("finally")
+    public static <ArgumentValue, ReturnValue> ReturnValue operate(final ArgumentReturnValueOperator<ArgumentValue, ReturnValue> operator,
+                                                                   final ArgumentValue argumentValue,
+                                                                   final ValueObserver<ArgumentValue>... observers)
+    throws IllegalJlibArgumentException, IllegalJlibStateException {
         try {
-            for (final ItemObserver<Item> observer : observers)
-                observer.handleBefore(newItem, replaceable);
+            for (final ValueObserver<ArgumentValue> observer : observers)
+                observer.handleBefore(argumentValue, operator);
 
-            replaceable.replace(newItem);
+            final ReturnValue returnValue = operator.operate(argumentValue);
 
-            for (final ItemObserver<Item> observer : observers)
-                observer.handleAfterSuccess(newItem, replaceable);
+            for (final ValueObserver<ArgumentValue> observer : observers)
+                observer.handleAfterSuccess(argumentValue, operator);
+
+            return returnValue;
         }
-        catch (IllegalJlibArgumentException | IllegalJlibStateException exception) {
-            for (final ItemObserver<Item> observer : observers)
-                observer.handleAfterFailure(newItem, replaceable);
+        catch (final IllegalJlibArgumentException | IllegalJlibStateException exception) {
+            // if "legal" excption is thrown
+            try {
+                for (final ValueObserver<ArgumentValue> observer : observers)
+                    observer.handleAfterFailure(argumentValue, operator);
+            }
+            finally {
+                throw exception;
+            }
+        }
+        catch (final RuntimeException exception) {
+            // if "illegal" excption is thrown
+            try {
+                for (final ValueObserver<ArgumentValue> observer : observers)
+                    observer.handleAfterFailure(argumentValue, operator);
+
+                throw new IllegalJlibStateException("{1}({2})", exception, operator, argumentValue);
+            }
+            catch (final RuntimeException handleAfterFailureException) {
+                throw new IllegalJlibStateException("{1}({2}): {3}. handleAfterFailure: {4}", exception, operator,
+                                                    argumentValue, exception.getLocalizedMessage(),
+                                                    handleAfterFailureException.getLocalizedMessage());
+            }
+        }
+    }
+
+    /**
+     * Operates on the specified ArgumentValue using the specified
+     * {@link ArgumentReturnValueOperator}.
+     * 
+     * If a {@link ValueObserver#handleBefore(Object, Object...)} causes an
+     * error, this method returns and the actual operation is not executed. If a
+     * {@link ValueObserver#handleAfterSuccess(Object, Object...)} causes an
+     * error, this method returns If a
+     * {@link ValueObserver#handleAfterFailure(Object, Object...)} causes an
+     * error, this method returns
+     * 
+     * @param <ArgumentValue>
+     *        type of the argument value
+     * 
+     * @param operator
+     *        {@link ValueOperator}
+     * 
+     * @param argumentValue
+     *        ArgumentValue operated on
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws ValueOperatorException
+     *         if the actual operation could not be completed
+     * 
+     * @throws ValueObserverException
+     *         if a {@link ValueObserver} of {@code observers} causes an error
+     */
+    @SafeVarargs
+    @SuppressWarnings("finally")
+    public static <ArgumentValue> void operate(final ValueOperator<ArgumentValue> operator,
+                                               final ArgumentValue argumentValue,
+                                               final ValueObserver<ArgumentValue>... observers)
+    throws ValueOperatorException, ValueObserverException {
+        try {
+            for (final ValueObserver<ArgumentValue> observer : observers)
+                observer.handleBefore(argumentValue, operator);
+
+            operator.operate(argumentValue);
+        }
+        catch (final ValueOperatorException exception) {
+            try {
+                for (final ValueObserver<ArgumentValue> observer : observers)
+                    observer.handleAfterFailure(argumentValue, operator);
+            }
+            finally {
+                throw exception;
+            }
         }
     }
 }
+
+//            try {
+//                for (final ValueObserver<ArgumentValue> observer : observers)
+//                    observer.handleAfterFailure(argumentValue, operator);
+//
+//                throw new IllegalJlibStateException("{1}({2})", exception, operator, argumentValue);
+//            }
+//            catch (final RuntimeException handleAfterFailureException) {
+//                throw new IllegalJlibStateException("{1}({2}): {3}. handleAfterFailure: {4}", exception, operator,
+//                                                    argumentValue, exception.getLocalizedMessage(),
+//                                                    handleAfterFailureException.getLocalizedMessage());
+//            }
+//        }
+//
