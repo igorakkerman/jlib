@@ -1,5 +1,6 @@
 package org.jlib.container.sequence;
 
+import org.jlib.container.ContainerUtility;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.core.traverser.Traverser;
 
@@ -14,24 +15,6 @@ import org.jlib.core.traverser.Traverser;
  */
 public class ConcatenatedSequence<Item>
 extends AbstractSequence<Item> {
-
-    /**
-     * Returns the sum of number of Items in all of the specified
-     * {@link Sequence} instances.
-     * 
-     * @param sequences
-     *        array {@link Sequence} instances containing the Items
-     * 
-     * @return integer specifying the total number of Items
-     */
-    private static int getItemsCount(final Sequence<?>[] sequences) {
-        int itemsCount = 0;
-
-        for (final Sequence<?> sequence : sequences)
-            itemsCount += sequence.getSize();
-
-        return itemsCount;
-    }
 
     /** array of concatenated {@link Sequence} items */
     private final Sequence<Item>[] sequences;
@@ -50,7 +33,8 @@ extends AbstractSequence<Item> {
         super();
 
         this.sequences = sequences;
-        itemsCount = getItemsCount(sequences);
+
+        itemsCount = ContainerUtility.getItemsCount(sequences);
     }
 
     @Override

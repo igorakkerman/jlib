@@ -32,4 +32,25 @@ public final class IteratorUtility {
 
         // @formatter:on
     }
+
+    /**
+     * Returns the sum of number of Items provided by the specified
+     * {@link Iterable} instances.
+     * 
+     * @param iterables
+     *        comma separated sequence of {@link Iterator} instances
+     * 
+     * @return integer specifying the number of Items
+     */
+    public static int getItemsCount(final Iterable<?>... iterables) {
+        int itemsCount = 0;
+
+        // @formatter:off
+        for (final Iterable<?> iterable : iterables)
+            itemsCount += getItemsCount(iterable);
+        
+        return itemsCount;
+        
+        // @formatter:on
+    }
 }
