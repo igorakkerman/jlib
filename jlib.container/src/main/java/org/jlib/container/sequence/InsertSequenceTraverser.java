@@ -17,7 +17,7 @@ package org.jlib.container.sequence;
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 
 /**
- * {@link BidirectionalTraverser} over a {@link InsertSequence}.
+ * {@link SequenceTraverser} over a {@link InsertSequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}

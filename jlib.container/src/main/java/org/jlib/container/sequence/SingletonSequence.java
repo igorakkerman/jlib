@@ -1,5 +1,7 @@
 package org.jlib.container.sequence;
 
+import org.jlib.core.traverser.BidirectionalTraverser;
+
 /**
  * Sequence containing exactly one Item.
  * 
@@ -14,10 +16,10 @@ extends AbstractNonEmptySequence<Item> {
     /** sole item of this {@link SingletonSequence} */
     private final Item item;
 
-    /** current delegate {@link BidirectionalTraverser} */
+    /** current delegate {@link SequenceTraverser} */
     private SequenceTraverser<Item> currentDelegateTraverser;
 
-    /** delegate {@link BidirectionalTraverser} at the {@link SingletonSequence} head */
+    /** delegate {@link SequenceTraverser} at the {@link SingletonSequence} head */
     private final SequenceTraverser<Item> headTraverser = new AbstractSequenceTraverser<Item, Sequence<Item>>(this) {
 
         @Override

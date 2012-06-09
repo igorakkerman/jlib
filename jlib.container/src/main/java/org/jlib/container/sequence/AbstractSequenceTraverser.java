@@ -1,7 +1,7 @@
 package org.jlib.container.sequence;
 
 /**
- * Skeletal implementation of a {@link BidirectionalTraverser}.
+ * Skeletal implementation of a {@link SequenceTraverser}.
  * 
  * @param <Item>
  *        type of the items held in the {@link Sequence}
