@@ -35,8 +35,9 @@ public final class ObserverUtility {
      * @throws IllegalJlibStateException
      *         if an error occurs during the operation
      */
-    public <Item> void replace(final Replaceable<Item> replaceable, final Item newItem,
-                               @SuppressWarnings({ "unchecked", /* "varargs" */}) final ItemObserver<Item>... observers) {
+    @SafeVarargs
+    public static <Item> void replace(final Replaceable<Item> replaceable, final Item newItem,
+                                      final ItemObserver<Item>... observers) {
         try {
             for (final ItemObserver<Item> observer : observers)
                 observer.handleBefore(newItem, replaceable);
