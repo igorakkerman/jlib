@@ -109,17 +109,3 @@ public final class ObserverUtility {
         }, value, observers);
     }
 }
-
-//            try {
-//                for (final ValueObserver<ArgumentValue> observer : observers)
-//                    observer.handleAfterFailure(argumentValue, operator);
-//
-//                throw new IllegalJlibStateException("{1}({2})", exception, operator, argumentValue);
-//            }
-//            catch (final RuntimeException handleAfterFailureException) {
-//                throw new IllegalJlibStateException("{1}({2}): {3}. handleAfterFailure: {4}", exception, operator,
-//                                                    argumentValue, exception.getLocalizedMessage(),
-//                                                    handleAfterFailureException.getLocalizedMessage());
-//            }
-//        }
-//
