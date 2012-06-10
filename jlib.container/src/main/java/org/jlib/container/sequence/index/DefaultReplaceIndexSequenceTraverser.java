@@ -21,9 +21,9 @@ import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.ValueOperatorException;
+import org.jlib.core.observer.OperatorException;
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.IllegalTraverserStateException;
 import org.jlib.core.valueholder.ValueNotAccessibleException;
 
@@ -116,16 +116,16 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
     throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException,
     RuntimeException {
-        ObserverUtility.operate(new Operator<Item>() {
+        ObserverUtility.operate(new Operator() {
 
             @Override
-            public void operate(final Item item)
-            throws ValueOperatorException, RuntimeException {
+            public void operate()
+            throws OperatorException, RuntimeException {
                 try {
-                    replace(item);
+                    replace(newItem);
                 }
                 catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
-                    throw new ValueOperatorException(newItem, exception);
+                    throw new OperatorException("replace: {0}", exception, newItem);
                 }
             }
 
