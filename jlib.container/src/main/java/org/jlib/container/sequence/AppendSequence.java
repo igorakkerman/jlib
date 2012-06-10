@@ -36,12 +36,12 @@ extends Sequence<Item> {
      * @param item
      *        Item to add
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of {@code item} prevents it from being added,
      *         for instance, if it is already contained
      */
     public void append(final Item item)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
@@ -53,12 +53,12 @@ extends Sequence<Item> {
      * @throws IllegalContainerArgumentException
      *         if {@code items}
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
     public void append(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
@@ -67,12 +67,12 @@ extends Sequence<Item> {
      * @param items
      *        {@link Collection} containing the Items to add
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
     public void append(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all specified Items to this {@link AppendSequence}.
@@ -80,10 +80,10 @@ extends Sequence<Item> {
      * @param items
      *        comma separated sequence of Items to add
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
     public void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 }
