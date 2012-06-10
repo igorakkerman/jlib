@@ -1,6 +1,5 @@
 package org.jlib.core.observer;
 
-
 /**
  * Operator on one Value that can be observed using a {@link ValueObserver}.
  * 
@@ -18,7 +17,7 @@ public interface ValueOperator<Value> {
      *        Value for the operation
      * 
      * @throws ValueOperatorException
-     *         if an error occurs during the operation
+     *         if the operation cannot be completed normally
      */
     public void operate(final Value value)
     throws ValueOperatorException;
