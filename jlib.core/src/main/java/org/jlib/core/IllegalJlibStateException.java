@@ -30,7 +30,7 @@ extends IllegalStateException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public IllegalJlibStateException(final String messagePattern, final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, messageArguments));
+        this(messagePattern, null, messageArguments);
     }
 
     /**

@@ -2,6 +2,8 @@ package org.jlib.core;
 
 import java.text.MessageFormat;
 
+import org.jlib.core.array.ArrayUtility;
+
 /**
  * {@link Exception} using a formatted message.
  * 
@@ -27,7 +29,7 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     public JlibException(final String messagePattern, final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, messageArguments));
+        this(messagePattern, null, messageArguments);
     }
 
     /**
@@ -53,6 +55,6 @@ extends Exception {
      *        comma separated sequence of {@link Object} message States
      */
     public JlibException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, messageArguments), cause);
+        super(MessageFormat.format(messagePattern, ArrayUtility.flatten(messageArguments)), cause);
     }
 }
