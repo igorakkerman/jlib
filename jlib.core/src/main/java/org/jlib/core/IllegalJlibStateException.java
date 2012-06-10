@@ -7,7 +7,7 @@ import java.text.MessageFormat;
  * 
  * @author Igor Akkerman
  */
-public class IllegalJlibStateException
+public abstract class IllegalJlibStateException
 extends IllegalStateException {
 
     /** serialVersionUID */
