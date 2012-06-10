@@ -36,8 +36,12 @@ extends ReplaceTraverser<Item>, SequenceTraverser<Item> {
      * @throws NoSequenceItemToReplaceException
      *         if no Item has been returned by this
      *         {@link ReplaceSequenceTraverser}
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code newItem} prevents it from replacing
+     *         the former Item
      */
     @Override
     public void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException;
+    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException;
 }
