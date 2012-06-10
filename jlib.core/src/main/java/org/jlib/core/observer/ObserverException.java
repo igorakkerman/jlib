@@ -1,5 +1,6 @@
 package org.jlib.core.observer;
 
+import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.JlibException;
 
 /**
@@ -8,7 +9,7 @@ import org.jlib.core.JlibException;
  * @author Igor Akkerman
  */
 public abstract class ObserverException
-extends JlibException {
+extends IllegalJlibStateException {
 
     /**
      * Creates a new {@link ObserverException}.
