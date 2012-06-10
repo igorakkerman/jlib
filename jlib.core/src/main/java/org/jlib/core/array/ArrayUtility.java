@@ -1,5 +1,8 @@
 package org.jlib.core.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Utility for arrays.
  * 
@@ -35,14 +38,54 @@ public final class ArrayUtility {
      * 
      * @return integer specifying the total number of items
      */
-    public static int getItemsCount(final Object... items) {
+    public static int getFlattenedItemsCount(final Object... items) {
         int itemsCount = 0;
 
         for (final Object item : items)
             itemsCount += item.getClass().isArray()
-                ? getItemsCount((Object[]) item)
+                ? getFlattenedItemsCount((Object[]) item)
                 : 1;
 
         return itemsCount;
+    }
+
+    /**
+     * Recursively appends all Items specified as a comma separated list to the
+     * specified {@link List}.
+     * 
+     * @param <Item>
+     *        type of the specified items
+     * 
+     * @param allItems
+     *        {@link List} to which the items are added
+     * 
+     * @param items
+     *        comma separated liet of items
+     */
+    public static <Item> void flatten(final List<Object> allItems, final Object... items) {
+        for (final Object item : items)
+            if (item.getClass().isArray())
+                flatten(allItems, (Object[]) item);
+            else
+                allItems.add(item);
+    }
+
+    /**
+     * Returns an array of all Items specified as a comma separated list to the
+     * specified {@link List}, recursively collected from contained arrays.
+     * 
+     * @param <Item>
+     *        type of the specified items
+     * 
+     * @param items
+     *        comma separated liet of items
+     * 
+     * @return array of all collected Items
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] flatten(final Item... items) {
+        final List<Object> allItems = new ArrayList<>(getFlattenedItemsCount(items));
+        flatten(allItems, items);
+        return (Item[]) allItems.toArray();
     }
 }

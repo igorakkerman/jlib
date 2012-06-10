@@ -18,37 +18,47 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.core.observer.ValueObserver;
 
 /**
- * {@link Sequence} to which Items can be appended.
+ * {@link AppendSequence} to which Items can be appended.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface AppendSequence<Item>
-extends Sequence<Item> {
+public interface ObservedAppendSequence<Item>
+extends AppendSequence<Item> {
 
     /**
-     * Appends the specified Item to this {@link AppendSequence}.
+     * Appends the specified Item to this {@link ObservedAppendSequence}.
      * 
      * @param item
      *        Item to add
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
      * 
      * @throws IllegalContainerArgumentException
      *         if some property of {@code item} prevents it from being added,
      *         for instance, if it is already contained
      */
-    public void append(final Item item)
+    public void append(final Item item,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
-     * {@link AppendSequence}.
+     * {@link ObservedAppendSequence}.
      * 
      * @param items
      *        {@link Container} containing the Items to add
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
      * 
      * @throws IllegalContainerArgumentException
      *         if {@code items}
@@ -57,25 +67,34 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
-    public void append(final Container<? extends Item> items)
+    public void append(final Container<? extends Item> items,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
-     * {@link AppendSequence}.
+     * {@link ObservedAppendSequence}.
      * 
      * @param items
      *        {@link Collection} containing the Items to add
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
      * 
      * @throws IllegalContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
-    public void append(final Collection<? extends Item> items)
+    public void append(final Collection<? extends Item> items,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException;
 
     /**
-     * Appends all specified Items to this {@link AppendSequence}.
+     * Appends all specified Items to this {@link ObservedAppendSequence}.
+     * 
+     * @param observers
+     *        array of {@link ValueObserver} instances attending the operation
      * 
      * @param items
      *        comma separated sequence of Items to add
@@ -84,6 +103,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      */
-    public void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    public void append(ValueObserver<Item>[] observers,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalContainerArgumentException;
 }
