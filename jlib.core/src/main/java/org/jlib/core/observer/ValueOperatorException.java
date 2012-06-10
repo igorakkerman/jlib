@@ -18,20 +18,12 @@ extends OperatorException {
      * @param value
      *        Value removed from {@code container}
      * 
-     * @param messagePattern
-     *        {@link String} specifying the message pattern; {1} references
-     *        {@code Value}
-     * 
      * @param cause
      *        {@link RuntimeException} that caused this
      *        {@link ValueOperatorException}
-     * 
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
-    public ValueOperatorException(final Object value, final String messagePattern, final RuntimeException cause,
-                                  final Object... messageArguments) {
-        super(messagePattern, cause, value, messageArguments);
+    public ValueOperatorException(final Object value, final RuntimeException cause) {
+        super("{1}", cause, value);
 
         this.value = value;
     }
