@@ -3,6 +3,8 @@ package org.jlib.core.array;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jlib.core.traverser.BidirectionalTraversible;
+
 /**
  * Utility for arrays.
  * 
@@ -27,6 +29,23 @@ public final class ArrayUtility {
     @SafeVarargs
     public static <Item> Iterable<Item> iterable(final Item... items) {
         return new ArrayIterable<>(items);
+    }
+
+    /**
+     * Returns a new {@link BidirectionalTraversible} adapter for the specified
+     * array.
+     * 
+     * @param <Item>
+     *        type of the items held in the array
+     * 
+     * @param items
+     *        comma separated sequence of Items to traverse
+     * 
+     * @return {@link BidirectionalTraversible} adapter for {@code array}
+     */
+    @SafeVarargs
+    public static <Item> BidirectionalTraversible<Item> traversible(final Item... items) {
+        return new ArrayTraversible<>(items);
     }
 
     /**
