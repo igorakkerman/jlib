@@ -1,4 +1,4 @@
-package org.jlib.core.reference;
+package org.jlib.core.valueholder;
 
 /**
  * Holder of a Value.
@@ -15,17 +15,9 @@ public interface ValueHolder<Value> {
      * 
      * @return integer specifying the registered index
      * 
-     * @throws NoValueSetException
+     * @throws ValueNotAccessibleException
      *         if no Value has been registered
      */
-    Value get()
-    throws NoValueSetException;
-
-    /**
-     * Registers the new Value.
-     * 
-     * @param newValue
-     *        new Value
-     */
-    void set(final Value newValue);
+    public Value get()
+    throws ValueNotAccessibleException;
 }
