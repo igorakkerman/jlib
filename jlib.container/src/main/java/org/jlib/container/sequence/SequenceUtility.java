@@ -1,6 +1,10 @@
 package org.jlib.container.sequence;
 
+import java.util.Iterator;
+
 import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.
@@ -92,5 +96,26 @@ public final class SequenceUtility {
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
     throws IllegalSequenceArgumentException {
         append(sequence, ArrayUtility.iterable(items));
+    }
+
+    /**
+     * Returns a concatenated view of the specified
+     * {@link BidirectionalTraversible} instances. The behaviour of the returned
+     * {@link Sequence} and its {@link Traverser} or {@link Iterator} is
+     * unspecified if one of the {@link BidirectionalTraversible} instances is
+     * modified.
+     * 
+     * @param <Item>
+     *        type of the items provided by {@code traversibles}
+     * 
+     * @param traversibles
+     *        comma separated sequence of {@link BidirectionalTraversible}
+     *        instances
+     * 
+     * @return concatenated {@link Sequence} view
+     */
+    @SafeVarargs
+    public static <Item> Sequence<Item> concatenated(final BidirectionalTraversible<Item>... traversibles) {
+        return new ConcatenatedSequence<>(traversibles);
     }
 }
