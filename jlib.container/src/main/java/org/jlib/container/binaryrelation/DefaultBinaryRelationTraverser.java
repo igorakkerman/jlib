@@ -18,12 +18,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.jlib.core.reference.InitializedValueHolder;
-import org.jlib.core.reference.NoValueSetException;
-import org.jlib.core.reference.UninitializedValueHolder;
-import org.jlib.core.reference.ValueHolder;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
+import org.jlib.core.valueholder.InitializedModifiableValueHolder;
+import org.jlib.core.valueholder.ModifiableValueHolder;
+import org.jlib.core.valueholder.UninitializedValueHolder;
+import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the {@link Association}
@@ -55,8 +55,8 @@ implements Traverser<Association<LeftValue, RightValue>> {
     /** current LeftValue */
     private LeftValue leftValue;
 
-    /** {@link ValueHolder} for the index of the last accessed Item */
-    private ValueHolder<Association<LeftValue, RightValue>> lastAccessedItemHolder;
+    /** {@link ModifiableValueHolder} for the index of the last accessed Item */
+    private ModifiableValueHolder<Association<LeftValue, RightValue>> lastAccessedItemHolder;
 
     /**
      * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
@@ -88,7 +88,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
 
             @Override
             public void set(final Association<LeftValue, RightValue> association) {
-                lastAccessedItemHolder = new InitializedValueHolder<>(association);
+                lastAccessedItemHolder = new InitializedModifiableValueHolder<>(association);
             }
         };
 
@@ -141,11 +141,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
      * 
      * @return last returned {@link Association}
      * 
-     * @throws NoValueSetException
+     * @throws ValueNotAccessibleException
      *         if no {@link Association} has been accessed
      */
     protected Association<LeftValue, RightValue> getLastAccessedItem()
-    throws NoValueSetException {
+    throws ValueNotAccessibleException {
         return lastAccessedItemHolder.get();
     }
 }

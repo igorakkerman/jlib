@@ -19,6 +19,9 @@ import java.util.Set;
 
 import org.jlib.container.collection.CollectionUtility;
 import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
@@ -68,21 +71,22 @@ public final class ContainerUtility {
                                      @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     ValueObserverException {
-        try {
-            for (final ValueObserver<Item> observer : observers)
-                observer.handleBefore(item, container);
 
-            container.remove(item);
+        ObserverUtility.operate(new Operator() {
 
-            for (final ValueObserver<Item> observer : observers)
-                observer.handleAfterSuccess(item, container);
-        }
-        catch (IllegalContainerArgumentException | IllegalContainerStateException exception) {
-            for (final ValueObserver<Item> observer : observers)
-                observer.handleAfterFailure(item, container, exception);
+            @Override
+            public void operate()
+            throws OperatorException, RuntimeException {
+                try {
+                    container.remove(item);
+                }
+                catch (IllegalContainerArgumentException | IllegalContainerStateException exception) {
+                    throw new OperatorException(item, exception);
+                }
+            }
+        },
 
-            throw exception;
-        }
+        item, observers);
     }
 
     /**

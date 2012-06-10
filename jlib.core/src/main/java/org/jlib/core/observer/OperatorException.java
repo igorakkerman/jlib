@@ -7,7 +7,7 @@ import org.jlib.core.JlibException;
  * 
  * @author Igor Akkerman
  */
-public abstract class OperatorException
+public class OperatorException
 extends JlibException {
 
     /** {@link RuntimeException} that caused this {@link OperatorException} */

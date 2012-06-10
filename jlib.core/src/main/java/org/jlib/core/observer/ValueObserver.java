@@ -42,7 +42,7 @@ public interface ValueObserver<Value> {
      *        Value operated on
      * 
      * @param operatorException
-     *        {@link OperatorException}
+     *        {@link OperatorException} that caused the operation to fail
      * 
      * @throws RuntimeException
      *         if the operation cannot be completed normally
