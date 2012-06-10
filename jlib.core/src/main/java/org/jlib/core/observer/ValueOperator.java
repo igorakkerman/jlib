@@ -17,8 +17,13 @@ public interface ValueOperator<Value> {
      *        Value for the operation
      * 
      * @throws ValueOperatorException
-     *         if the operation cannot be completed normally
+     *         if the operation cannot be completed normally and this should be
+     *         handled consequently
+     * 
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally and this should
+     *         <em>not</em> be handled consequently
      */
     public void operate(final Value value)
-    throws ValueOperatorException;
+    throws ValueOperatorException, RuntimeException;
 }

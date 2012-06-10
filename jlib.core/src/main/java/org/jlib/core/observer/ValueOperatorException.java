@@ -23,14 +23,16 @@ extends OperatorException {
      *        {@code Value}
      * 
      * @param cause
-     *        {@link Throwable} that caused this {@link ValueOperatorException}
+     *        {@link RuntimeException} that caused this
+     *        {@link ValueOperatorException}
      * 
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ValueOperatorException(final Object value, final String messagePattern, final Throwable cause,
+    public ValueOperatorException(final Object value, final String messagePattern, final RuntimeException cause,
                                   final Object... messageArguments) {
         super(messagePattern, cause, value, messageArguments);
+
         this.value = value;
     }
 

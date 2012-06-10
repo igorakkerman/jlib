@@ -1,8 +1,5 @@
 package org.jlib.core.observer;
 
-import org.jlib.core.IllegalJlibArgumentException;
-import org.jlib.core.IllegalJlibStateException;
-
 /**
  * Utility for the observer pattern.
  * 
@@ -24,7 +21,7 @@ public final class ObserverUtility {
      *        type of the return value
      * 
      * @param operator
-     *        {@link ArgumentReturnValueOperator}
+     *        {@link ArgumentReturnValueOperator} performing the operation
      * 
      * @param argumentValue
      *        ArgumentValue operated on
@@ -35,106 +32,81 @@ public final class ObserverUtility {
      * 
      * @return ReturnValue of the operation
      * 
-     * @throws IllegalJlibArgumentException
-     *         if {@code newItem} causes an error
-     * 
-     * @throws IllegalJlibStateException
-     *         if an error occurs during the operation
+     * @throws RuntimeException
+     *         <ul>
+     *         <li>if {@code operator} throws an {@link OperatorException} with
+     *         this {@link RuntimeException} as its cause</li>
+     *         <li>if {@code operator} throws this {@link RuntimeException}</li>
+     *         <li>if a {@link ValueObserver} in {@code observers} throws this
+     *         {@link RuntimeException}</li>
+     *         </ul>
      */
     @SafeVarargs
-    @SuppressWarnings("finally")
     public static <ArgumentValue, ReturnValue> ReturnValue operate(final ArgumentReturnValueOperator<ArgumentValue, ReturnValue> operator,
                                                                    final ArgumentValue argumentValue,
                                                                    final ValueObserver<ArgumentValue>... observers)
-    throws IllegalJlibArgumentException, IllegalJlibStateException {
+    throws RuntimeException {
         try {
             for (final ValueObserver<ArgumentValue> observer : observers)
-                observer.handleBefore(argumentValue, operator);
+                observer.handleBefore(argumentValue);
 
             final ReturnValue returnValue = operator.operate(argumentValue);
 
             for (final ValueObserver<ArgumentValue> observer : observers)
-                observer.handleAfterSuccess(argumentValue, operator);
+                observer.handleAfterSuccess(argumentValue);
 
             return returnValue;
         }
-        catch (final IllegalJlibArgumentException | IllegalJlibStateException exception) {
+        catch (final OperatorException exception) {
             // if "legal" excption is thrown
-            try {
-                for (final ValueObserver<ArgumentValue> observer : observers)
-                    observer.handleAfterFailure(argumentValue, operator);
-            }
-            finally {
-                throw exception;
-            }
-        }
-        catch (final RuntimeException exception) {
-            // if "illegal" excption is thrown
-            try {
-                for (final ValueObserver<ArgumentValue> observer : observers)
-                    observer.handleAfterFailure(argumentValue, operator);
+            for (final ValueObserver<ArgumentValue> observer : observers)
+                observer.handleAfterFailure(argumentValue, exception);
 
-                throw new IllegalJlibStateException("{1}({2})", exception, operator, argumentValue);
-            }
-            catch (final RuntimeException handleAfterFailureException) {
-                throw new IllegalJlibStateException("{1}({2}): {3}. handleAfterFailure: {4}", exception, operator,
-                                                    argumentValue, exception.getLocalizedMessage(),
-                                                    handleAfterFailureException.getLocalizedMessage());
-            }
+            throw exception.getCause();
         }
     }
 
     /**
-     * Operates on the specified ArgumentValue using the specified
-     * {@link ArgumentReturnValueOperator}.
+     * Operates on the specified Value using the specified {@link ValueOperator}
+     * .
      * 
-     * If a {@link ValueObserver#handleBefore(Object, Object...)} causes an
-     * error, this method returns and the actual operation is not executed. If a
-     * {@link ValueObserver#handleAfterSuccess(Object, Object...)} causes an
-     * error, this method returns If a
-     * {@link ValueObserver#handleAfterFailure(Object, Object...)} causes an
-     * error, this method returns
-     * 
-     * @param <ArgumentValue>
-     *        type of the argument value
+     * @param <Value>
+     *        type of the value
      * 
      * @param operator
-     *        {@link ValueOperator}
+     *        {@link ValueOperator} performing the operation
      * 
-     * @param argumentValue
-     *        ArgumentValue operated on
+     * @param value
+     *        Value operated on
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws ValueOperatorException
-     *         if the actual operation could not be completed
-     * 
-     * @throws ValueObserverException
-     *         if a {@link ValueObserver} of {@code observers} causes an error
+     * @throws RuntimeException
+     *         <ul>
+     *         <li>if {@code operator} throws an {@link OperatorException} with
+     *         this {@link RuntimeException} as its cause</li>
+     *         <li>if {@code operator} throws this {@link RuntimeException}</li>
+     *         <li>if a {@link ValueObserver} in {@code observers} throws this
+     *         {@link RuntimeException}</li>
+     *         </ul>
      */
     @SafeVarargs
-    @SuppressWarnings("finally")
-    public static <ArgumentValue> void operate(final ValueOperator<ArgumentValue> operator,
-                                               final ArgumentValue argumentValue,
-                                               final ValueObserver<ArgumentValue>... observers)
-    throws ValueOperatorException, ValueObserverException {
-        try {
-            for (final ValueObserver<ArgumentValue> observer : observers)
-                observer.handleBefore(argumentValue, operator);
+    public static <Value> void operate(final ValueOperator<Value> operator, final Value value,
+                                       final ValueObserver<Value>... observers)
+    throws RuntimeException {
+        operate(new ArgumentReturnValueOperator<Value, Void>() {
 
-            operator.operate(argumentValue);
-        }
-        catch (final ValueOperatorException exception) {
-            try {
-                for (final ValueObserver<ArgumentValue> observer : observers)
-                    observer.handleAfterFailure(argumentValue, operator);
+            @Override
+            public Void operate(final Value argumentValue)
+            throws OperatorException, RuntimeException {
+                operator.operate(argumentValue);
+
+                return null;
             }
-            finally {
-                throw exception;
-            }
-        }
+
+        }, value, observers);
     }
 }
 

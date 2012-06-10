@@ -2,7 +2,7 @@ package org.jlib.core.observer;
 
 /**
  * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#handleAfterSuccess(Object, Object...)} operation.
+ * {@link ValueObserver#handleAfterSuccess(Object)} operation.
  * 
  * @author Igor Akkerman
  */

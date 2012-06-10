@@ -1,14 +1,14 @@
 package org.jlib.core.observer;
 
-import org.jlib.core.IllegalJlibStateException;
+import org.jlib.core.JlibException;
 
 /**
- * {@link IllegalJlibStateException} thrown during the operation of an observer.
+ * {@link JlibException} thrown during the operation of an observer.
  * 
  * @author Igor Akkerman
  */
 public abstract class ObserverException
-extends IllegalJlibStateException {
+extends JlibException {
 
     /**
      * Creates a new {@link ObserverException}.

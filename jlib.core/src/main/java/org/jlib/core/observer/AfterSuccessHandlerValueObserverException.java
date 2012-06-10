@@ -2,7 +2,7 @@ package org.jlib.core.observer;
 
 /**
  * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#handleBefore(Object, Object...)} operation.
+ * {@link ValueObserver#handleBefore(Object)} operation.
  * 
  * @author Igor Akkerman
  */
@@ -26,8 +26,8 @@ extends ObserverException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public AfterSuccessHandlerValueObserverException(final Object item, final String messagePattern, final Throwable cause,
-                                               final Object... messageArguments) {
+    public AfterSuccessHandlerValueObserverException(final Object item, final String messagePattern,
+                                                     final Throwable cause, final Object... messageArguments) {
         super(messagePattern, cause, item, messageArguments);
     }
 }

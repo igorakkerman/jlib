@@ -14,48 +14,39 @@ public interface ValueObserver<Value> {
      * Performs actions before the targeted operation.
      * 
      * @param value
-     *        Value removed from {@code container}
+     *        Value operated on
      * 
-     * @param arguments
-     *        optional comma separated sequence of arbitrary {@link Object}
-     *        arguments
-     * 
-     * @throws BeforeHandlerValueObserverException
-     *         if an error occurs performing the actions
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally
      */
-    public void handleBefore(final Value value, final Object... arguments)
-    throws BeforeHandlerValueObserverException;
+    public void handleBefore(final Value value)
+    throws RuntimeException;
 
     /**
      * Performs actions after the targeted operation has been successfully
      * executed.
      * 
      * @param value
-     *        Value removed from {@code container}
+     *        Value operated on
      * 
-     * @param arguments
-     *        optional comma separated sequence of arbitrary {@link Object}
-     *        arguments
-     * 
-     * @throws AfterSuccessHandlerValueObserverException
-     *         if an error occurs performing the actions
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally
      */
-    public void handleAfterSuccess(final Value value, final Object... arguments)
-    throws AfterSuccessHandlerValueObserverException;
+    public void handleAfterSuccess(final Value value)
+    throws RuntimeException;
 
     /**
      * Performs actions before the targeted operation.
      * 
      * @param value
-     *        Value removed from {@code container}
+     *        Value operated on
      * 
-     * @param arguments
-     *        optional comma separated sequence of arbitrary {@link Object}
-     *        arguments
+     * @param operatorException
+     *        {@link OperatorException}
      * 
-     * @throws AfterFailureHandlerValueObserverException
-     *         if an error occurs performing the actions
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally
      */
-    public void handleAfterFailure(final Value value, final Object... arguments)
-    throws AfterFailureHandlerValueObserverException;
+    public void handleAfterFailure(final Value value, OperatorException operatorException)
+    throws RuntimeException;
 }

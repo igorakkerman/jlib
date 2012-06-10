@@ -1,8 +1,5 @@
 package org.jlib.core.observer;
 
-import org.jlib.core.IllegalJlibArgumentException;
-import org.jlib.core.IllegalJlibStateException;
-
 /**
  * Operator on one ArgumentValue.
  * 
@@ -24,12 +21,14 @@ public interface ArgumentReturnValueOperator<ArgumentValue, ReturnValue> {
      * 
      * @return ReturnValue of the operation
      * 
-     * @throws IllegalJlibArgumentException
-     *         if {@code argumentValue} causes an error
+     * @throws OperatorException
+     *         if the operation cannot be completed normally and this should be
+     *         handled consequently
      * 
-     * @throws IllegalJlibStateException
-     *         if an error occurs during the operation
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally and this should
+     *         <em>not</em> be handled consequently
      */
     public ReturnValue operate(final ArgumentValue argumentValue)
-    throws IllegalJlibArgumentException, IllegalJlibStateException;
+    throws OperatorException, RuntimeException;
 }
