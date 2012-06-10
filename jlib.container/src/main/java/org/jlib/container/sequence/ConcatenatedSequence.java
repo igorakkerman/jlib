@@ -4,6 +4,8 @@ import org.jlib.container.IllegalContainerStateException;
 import org.jlib.core.traverser.BidirectionalTraversible;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.Traversible;
+import org.jlib.core.valueholder.AccessibleValueHolder;
+import org.jlib.core.valueholder.InitializedValueHolder;
 
 /**
  * {@link Sequence} representing the concatenation of other {@link Sequence}
@@ -21,7 +23,18 @@ extends AbstractSequence<Item> {
     private final BidirectionalTraversible<Item>[] traversibles;
 
     /** total number of {@link Sequence} Items */
-    private final int itemsCount;
+    private AccessibleValueHolder<Integer> itemsCountHolder = new AccessibleValueHolder<Integer>() {
+
+        @Override
+        public Integer get() {
+            final int itemsCount = TraverserUtility.getItemsCount(traversibles);
+
+            itemsCountHolder = new InitializedValueHolder<Integer>(itemsCount);
+
+            return itemsCount;
+        }
+
+    };
 
     /**
      * Creates a new {@link ConcatenatedSequence}.
@@ -35,14 +48,12 @@ extends AbstractSequence<Item> {
         super();
 
         this.traversibles = traversibles;
-
-        itemsCount = TraverserUtility.getItemsCount(traversibles);
     }
 
     @Override
     public final int getSize()
     throws IllegalContainerStateException {
-        return itemsCount;
+        return itemsCountHolder.get();
     }
 
     @Override
