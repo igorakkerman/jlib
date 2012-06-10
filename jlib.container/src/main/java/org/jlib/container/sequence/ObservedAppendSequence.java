@@ -44,6 +44,10 @@ extends AppendSequence<Item> {
      * @throws IllegalContainerArgumentException
      *         if some property of {@code item} prevents it from being added,
      *         for instance, if it is already contained
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public void append(final Item item,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
@@ -66,6 +70,10 @@ extends AppendSequence<Item> {
      * @throws IllegalContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public void append(final Container<? extends Item> items,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
@@ -85,6 +93,10 @@ extends AppendSequence<Item> {
      * @throws IllegalContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public void append(final Collection<? extends Item> items,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
@@ -102,6 +114,10 @@ extends AppendSequence<Item> {
      * @throws IllegalContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public void append(ValueObserver<Item>[] observers,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
