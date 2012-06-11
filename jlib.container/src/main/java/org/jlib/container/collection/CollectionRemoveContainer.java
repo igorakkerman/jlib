@@ -5,19 +5,17 @@ import java.util.Collections;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.IllegalContainerArgumentException;
-import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.RemoveContainer;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link RemoveContainer}
- * ^ {@link Collection} specified at initialization.
+ * Adapter allowing the {@link Collection} specified at initialization to be
+ * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
+ * may be used for modification and cannot be observed.
  * 
  * @param <Item>
  *        type of the items held in the {@link Container}
@@ -26,7 +24,7 @@ import org.jlib.core.traverser.RemoveTraverser;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements ObservedRemoveContainer<Item> {
+implements RemoveContainer<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -229,13 +227,5 @@ implements ObservedRemoveContainer<Item> {
     public RemoveTraverser<Item> createRemoveTraverser()
     throws IllegalContainerDelegateStateException {
         return new RemoveIterableTraverser<>(getDelegateCollection());
-    }
-
-    @Override
-    public void remove(final Item item,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
-    ValueObserverException {
-        ContainerUtility.remove(this, item, observers);
     }
 }
