@@ -16,7 +16,7 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.reference.NoValueSetException;
+import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link ReplaceIndexSequenceTraverser},
@@ -76,7 +76,7 @@ implements RemoveIndexSequenceTraverser<Item> {
 
             unsetLastAccessedItem();
         }
-        catch (final NoValueSetException exception) {
+        catch (final ValueNotAccessibleException exception) {
             throw new NoSequenceItemToRemoveException(getSequence(), exception);
         }
 

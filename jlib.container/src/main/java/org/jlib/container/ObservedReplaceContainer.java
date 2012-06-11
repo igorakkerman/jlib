@@ -2,7 +2,6 @@ package org.jlib.container;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
@@ -27,8 +26,9 @@ extends ReplaceContainer<Item> {
      * 
      * @return newly created {@link ObservedReplaceTraverser}
      * 
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public ObservedReplaceTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers);
 }

@@ -250,8 +250,9 @@ extends RemoveContainer<Item> {
      * 
      * @return newly created {@link RemoveTraverser}
      * 
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     public ObservedRemoveTraverser<Item> createTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers);
 }

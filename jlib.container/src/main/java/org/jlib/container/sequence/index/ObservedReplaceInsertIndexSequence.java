@@ -61,11 +61,11 @@ extends ReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
+    public ObservedReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**

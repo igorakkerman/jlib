@@ -1,7 +1,5 @@
 package org.jlib.container.sequence.index.array;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
@@ -11,11 +9,10 @@ import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
-import org.jlib.core.IllegalJlibArgumentException;
-import org.jlib.core.IllegalJlibStateException;
-import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueOperator;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.OperatorException;
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -79,17 +76,22 @@ implements ObservedReplaceIndexSequence<Item> {
     @Override
     @SafeVarargs
     public final void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
-        ObserverUtility.operate(new ValueOperator<Item>() {
+    throws SequenceIndexOutOfBoundsException {
+        ObserverUtility.operate(new Operator() {
 
             @Override
-            public void operate(final Item newItem)
-            throws IllegalJlibArgumentException, IllegalJlibStateException {
-                ReplaceArraySequence.this.replace(index, newItem);
+            public void operate()
+            throws OperatorException {
+                try {
+                    ReplaceArraySequence.this.replace(index, newItem);
+                }
+                catch (final SequenceIndexOutOfBoundsException exception) {
+                    throw new OperatorException("replace {0}: {1}", exception, index, newItem);
+                }
             }
         },
 
-        newItem, observers);
+        newItem, observers); // throws SequenceIndexOutOfBoundsException
     }
 
     @Override

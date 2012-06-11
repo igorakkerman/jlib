@@ -9,24 +9,24 @@ package org.jlib.core.observer;
  * 
  * @author Igor Akkerman
  */
-public class DefaultItemObserver<Item>
+public class DefaultValueObserver<Item>
 implements ValueObserver<Item> {
 
     @Override
-    public void handleBefore(final Item item, final Object... arguments)
-    throws ValueObserverException /* by subclasses */{
+    public void handleBefore(final Item value)
+    throws RuntimeException /* by subclasses */{
         // intentionally without functionality
     }
 
     @Override
-    public void handleAfterSuccess(final Item item, final Object... arguments)
-    throws ValueObserverException /* by subclasses */{
+    public void handleAfterSuccess(final Item value)
+    throws RuntimeException /* by subclasses */{
         // intentionally without functionality
     }
 
     @Override
-    public void handleAfterFailure(final Item item, final Object... arguments)
-    throws ValueObserverException /* by subclasses */{
+    public void handleAfterFailure(final Item value, final OperatorException operatorException)
+    throws RuntimeException /* by subclasses */{
         // intentionally without functionality
     }
 }

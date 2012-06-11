@@ -20,7 +20,6 @@ import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.BidirectionalTraverser;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
@@ -59,14 +58,6 @@ extends ReplaceIndexSequence<Item> {
     public void replace(final int index, final Item newItem,
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
-
-    @Override
-    public BidirectionalTraverser<Item> createTraverser()
-    throws SequenceIndexOutOfBoundsException;
-
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
 
     /**
      * Returns an {@link IndexSequenceTraverser} and

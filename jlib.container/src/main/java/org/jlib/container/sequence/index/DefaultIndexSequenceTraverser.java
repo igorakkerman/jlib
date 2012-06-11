@@ -4,10 +4,10 @@ import org.jlib.container.sequence.AbstractSequenceTraverser;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.reference.InitializedValueHolder;
-import org.jlib.core.reference.NoValueSetException;
-import org.jlib.core.reference.UninitializedValueHolder;
-import org.jlib.core.reference.ValueHolder;
+import org.jlib.core.valueholder.InitializedModifiableValueHolder;
+import org.jlib.core.valueholder.ModifiableValueHolder;
+import org.jlib.core.valueholder.UninitializedValueHolder;
+import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of an {@link IndexSequenceTraverser}.
@@ -27,8 +27,8 @@ implements IndexSequenceTraverser<Item> {
     /** index of the potential next traversed Item */
     private int potentialNextItemIndex;
 
-    /** {@link ValueHolder} for the index of the last accessed Item */
-    private ValueHolder<Integer> lastAccessedItemIndexHolder;
+    /** {@link ModifiableValueHolder} for the index of the last accessed Item */
+    private ModifiableValueHolder<Integer> lastAccessedItemIndexHolder;
 
     /**
      * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
@@ -76,7 +76,7 @@ implements IndexSequenceTraverser<Item> {
 
             @Override
             public void set(final Integer index) {
-                lastAccessedItemIndexHolder = new InitializedValueHolder<Integer>(index);
+                lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<Integer>(index);
             }
         };
     }
@@ -177,11 +177,11 @@ implements IndexSequenceTraverser<Item> {
      * 
      * @return integer specifying the index of the last accessed Item
      * 
-     * @throws NoValueSetException
+     * @throws ValueNotAccessibleException
      *         if no Item has been accessed
      */
     protected int getLastAccessedItemIndex()
-    throws NoValueSetException {
+    throws ValueNotAccessibleException {
         return lastAccessedItemIndexHolder.get();
     }
 

@@ -15,15 +15,20 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.ConcatenatedSequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.array.ArrayTraversible;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.reference.NoValueSetException;
+import org.jlib.core.traverser.IllegalTraverserStateException;
+import org.jlib.core.valueholder.ValueNotAccessibleException;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
+import static org.jlib.core.array.ArrayUtility.traversible;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser} and
@@ -92,47 +97,40 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
      *        additional replace {@link ValueObserver}
      */
     public final void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
-        // FIXME: implement
+        traverserObservers.append(replaceObserver);
     }
 
     @Override
     public final void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalTraverserStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
-        catch (final NoValueSetException exception) {
+        catch (final ValueNotAccessibleException exception) {
             throw new NoSequenceItemToReplaceException(getSequence(), exception);
         }
     }
 
     @Override
     @SafeVarargs
-    @SuppressWarnings("finally")
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoSequenceItemToReplaceException, ValueObserverException, IllegalSequenceArgumentException,
-    IllegalSequenceStateException {
+    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException,
+    RuntimeException {
+        ObserverUtility.operate(new Operator() {
 
-        final ConcatenatedSequence<ValueObserver<Item>> observers =
-            new ConcatenatedSequence<ValueObserver<Item>>(traverserObservers, new ArrayTraversible<>(operationObservers));
-
-        try {
-            for (final ValueObserver<Item> observer : observers)
-                observer.handleBefore(newItem, getSequence());
-
-            replace(newItem);
-
-            for (final ValueObserver<Item> observer : observers)
-                observer.handleAfterSuccess(newItem, getSequence());
-        }
-        catch (NoSequenceItemToReplaceException | IllegalSequenceArgumentException | IllegalSequenceStateException exception) {
-            try {
-                for (final ValueObserver<Item> observer : observers)
-                    observer.handleAfterFailure(newItem, getSequence());
+            @Override
+            public void operate()
+            throws OperatorException, RuntimeException {
+                try {
+                    replace(newItem);
+                }
+                catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
+                    throw new OperatorException("replace: {0}", exception, newItem);
+                }
             }
-            finally {
-                throw exception;
-            }
-        }
+
+        },
+
+        newItem, concatenated(traverserObservers, traversible(operationObservers)).toArray());
     }
 }

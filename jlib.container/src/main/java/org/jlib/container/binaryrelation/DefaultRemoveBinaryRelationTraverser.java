@@ -14,10 +14,10 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.reference.NoValueSetException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.Traverser;
+import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the Associations of a
@@ -56,7 +56,7 @@ implements RemoveTraverser<Association<LeftValue, RightValue>> {
 
             unsetLastAccessedItem();
         }
-        catch (final NoValueSetException exception) {
+        catch (final ValueNotAccessibleException exception) {
             throw new NoItemToRemoveException(getBinaryRelation(), exception);
         }
     }

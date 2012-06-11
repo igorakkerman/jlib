@@ -3,15 +3,19 @@ package org.jlib.container.sequence.index.array;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
+import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
@@ -23,7 +27,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  */
 public class ReplaceAppendArraySequence<Item>
 extends ReplaceArraySequence<Item>
-implements AppendSequence<Item> {
+implements ObservedAppendSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link ReplaceAppendArraySequence}
@@ -70,32 +74,118 @@ implements AppendSequence<Item> {
 
     @Override
     public void append(final Item item) {
+        // intentionally not using SequenceUtility for efficiency
         append(singleton(item));
     }
 
     @Override
     public void append(final Container<? extends Item> items) {
-        final int addedItemsCount = items.getSize();
-
-        assertCapacity(getSize() + addedItemsCount);
-
-        int itemArrayIndex = getSize();
-
-        for (final Item item : items)
-            replaceDelegateArrayItem(itemArrayIndex ++, item);
-
-        setLastIndex(getLastIndex() + addedItemsCount);
+        // intentionally not using SequenceUtility for efficiency
+        append(items, items.getSize());
     }
 
     @Override
     public void append(final Collection<? extends Item> items) {
-        SequenceUtility.append(this, items);
+        // intentionally not using SequenceUtility for efficiency
+        append(items, items.size());
     }
 
     @Override
+    public final void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+        // intentionally not using SequenceUtility for efficiency
+        append(iterable(items), items.length);
+    }
+
+    @Override
+    public final void append(final Item item,
+                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    throws IllegalContainerArgumentException {
+        append(singleton(item), observers);
+    }
+
+    @Override
+    public final void append(final Container<? extends Item> items,
+                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    throws IllegalContainerArgumentException {
+        append(items, items.getSize(), observers);
+    }
+
+    @Override
+    public final void append(final Collection<? extends Item> items,
+                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    throws IllegalContainerArgumentException {
+        append(items, items.size(), observers);
+    }
+
+    @Override
+    public final void append(final ValueObserver<Item>[] observers,
+                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    throws IllegalContainerArgumentException {
+        append(iterable(items), items.length, observers);
+    }
+
+    /**
+     * Appends all Items contained by the specified {@link Container} to this
+     * {@link ObservedAppendSequence}.
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to add
+     * 
+     * @param addedItemsCount
+     *        integer specifying the number of added Items; {@code items} must
+     *        provide at least these {@code addedItemsCount} Items
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
+     */
     @SafeVarargs
-    public final void append(final Item... items) {
-        SequenceUtility.append(this, items);
+    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
+                              final ValueObserver<Item>... observers) {
+        assertCapacity(getSize() + addedItemsCount);
+
+        int itemArrayIndex = getSize();
+
+        replaceDelegateArrayItems(items, itemArrayIndex ++, observers);
+
+        setLastIndex(getLastIndex() + addedItemsCount);
+    }
+
+    /**
+     * Replaces the Item stored in the delegate array at the specified index.
+     * 
+     * @param itemArrayIndex
+     *        integer specifying the index of the Item in the array
+     * 
+     * @param items
+     *        replacing Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
+     */
+    @SafeVarargs
+    private final void replaceDelegateArrayItems(final Iterable<? extends Item> items, final int itemArrayIndex,
+                                                 final ValueObserver<Item>... observers)
+    throws RuntimeException {
+        for (final Item item : items)
+            ObserverUtility.operate(new Operator() {
+
+                @Override
+                public void operate() {
+                    replaceDelegateArrayItem(itemArrayIndex, item);
+                }
+            },
+
+            item, observers);
     }
 
     @Override
