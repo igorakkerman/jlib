@@ -204,7 +204,7 @@ public final class IndexSequenceUtility {
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
      * 
-     * @param container
+     * @param items
      *        Container of which the Items are copied to the
      *        {@link AbstractInitializeableIndexSequence}
      * 
@@ -216,9 +216,9 @@ public final class IndexSequenceUtility {
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
-                            final Container<Item> container) {
+                            final Container<Item> items) {
     // @formatter:on
-        return createSequence(indexSequenceCreator, 0, container);
+        return createSequence(indexSequenceCreator, 0, items);
     }
 
     /**
@@ -237,7 +237,7 @@ public final class IndexSequenceUtility {
      * @param indexSequenceCreator
      *        {@link IndexSequenceCreator} to use
      * 
-     * @param collection
+     * @param items
      *        Collection of which the Items are copied to the
      *        {@link AbstractInitializeableIndexSequence}
      * 
@@ -246,9 +246,9 @@ public final class IndexSequenceUtility {
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
-                            final Collection<Item> collection) {
+                            final Collection<Item> items) {
     // @formatter:on
-        return createSequence(indexSequenceCreator, 0, collection);
+        return createSequence(indexSequenceCreator, 0, items);
     }
 
     /**
@@ -397,7 +397,7 @@ public final class IndexSequenceUtility {
     public static <Sequenze extends AbstractInitializeableIndexSequence<Integer>> 
                   Sequenze createIntegerIndexSequenceFrom(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                      final int firstIndex, final Integer... items) {
-        // @formatter:on
+    // @formatter:on
         return createSequence(indexSequenceCreator, firstIndex, items);
     }
 
@@ -421,7 +421,7 @@ public final class IndexSequenceUtility {
     public static <Sequenze extends AbstractInitializeableIndexSequence<Integer>> 
                   Sequenze createIntegerIndexSequence(final IndexSequenceCreator<Integer, Sequenze> indexSequenceCreator,
                                                       final Integer... items) {
-        // @formatter:on
+    // @formatter:on
         return createIntegerIndexSequenceFrom(indexSequenceCreator, 0, items);
     }
 

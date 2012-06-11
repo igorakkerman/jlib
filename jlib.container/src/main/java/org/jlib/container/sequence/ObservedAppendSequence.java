@@ -41,7 +41,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of {@code item} prevents it from being added,
      *         for instance, if it is already contained
      * 
@@ -51,7 +51,7 @@ extends AppendSequence<Item> {
      */
     public void append(final Item item,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
@@ -64,7 +64,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if {@code items}
      * 
      * @throws IllegalContainerArgumentException
@@ -77,7 +77,7 @@ extends AppendSequence<Item> {
      */
     public void append(final Container<? extends Item> items,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
@@ -90,7 +90,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      * 
@@ -100,7 +100,7 @@ extends AppendSequence<Item> {
      */
     public void append(final Collection<? extends Item> items,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 
     /**
      * Appends all specified Items to this {@link ObservedAppendSequence}.
@@ -111,7 +111,7 @@ extends AppendSequence<Item> {
      * @param items
      *        comma separated sequence of Items to add
      * 
-     * @throws IllegalContainerArgumentException
+     * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being added, for instance, if it is already contained
      * 
@@ -121,5 +121,5 @@ extends AppendSequence<Item> {
      */
     public void append(ValueObserver<Item>[] observers,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
-    throws IllegalContainerArgumentException;
+    throws IllegalSequenceArgumentException;
 }

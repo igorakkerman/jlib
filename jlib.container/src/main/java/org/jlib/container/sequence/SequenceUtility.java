@@ -3,6 +3,7 @@ package org.jlib.container.sequence;
 import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.BidirectionalTraversible;
 import org.jlib.core.traverser.Traverser;
 
@@ -96,6 +97,89 @@ public final class SequenceUtility {
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
     throws IllegalSequenceArgumentException {
         append(sequence, ArrayUtility.iterable(items));
+    }
+
+    /**
+     * Adds the specified Item to the specified {@link AppendSequence} that does
+     * not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedAppendSequence} to which the Item is appended
+     * 
+     * @param item
+     *        appended Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being appended
+     *         to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item,
+                                     final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {
+        sequence.append(item, observers);
+    }
+
+    /**
+     * Adds all Items provided by the specified {@link Iterable} to the
+     * specified {@link AppendSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedAppendSequence} to which the Items are appended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to append
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being appended to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Iterable<? extends Item> items,
+                                     final ValueObserver<Item>... observers) {
+        for (final Item item : items)
+            sequence.append(item, observers);
+    }
+
+    /**
+     * Adds all Items in the specified comma separated sequence to the specified
+     * {@link AppendSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedAppendSequence} to which the Items are appended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to append
+     * 
+     * @param observers
+     *        array of {@link ValueObserver} instances attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being appended to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence,
+                                     final ValueObserver<Item>[] observers, final Item... items)
+    throws IllegalSequenceArgumentException {
+        append(sequence, ArrayUtility.iterable(items), observers);
     }
 
     /**
