@@ -33,5 +33,6 @@ extends Sequence<Item>, RemoveContainer<Item> {
      * @return InsertSequenceTraverser traversing the Items of this Sequence in
      *         proper order
      */
-    public RemoveSequenceTraverser<Item> createRemoveSequenceTraverser();
+    @Override
+    public RemoveSequenceTraverser<Item> createTraverser();
 }
