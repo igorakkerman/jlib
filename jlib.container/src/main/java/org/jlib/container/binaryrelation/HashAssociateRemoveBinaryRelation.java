@@ -161,7 +161,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createRemoveTraverser() {
+    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
         return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

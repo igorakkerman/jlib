@@ -10,13 +10,17 @@ import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InsertSequence;
-import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.RemoveSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
-import org.jlib.container.sequence.SequenceTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
 
+/**
+ * 
+ * 
+ * @param <Item>
+ * 
+ * @author Igor Akkerman
+ */
 public class DelegatingSequence<Item>
 implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, RemoveSequence<Item> {
 
@@ -55,7 +59,7 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     }
 
     @Override
-    public SequenceTraverser<Item> createTraverser() {
+    public ReplaceSequenceTraverser<Item> createTraverser() {
         return replaceDelegateSequence.createTraverser();
     }
 
@@ -186,26 +190,6 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     public void retain(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         removeDelegateSequence.retain(items);
-    }
-
-    @Override
-    public ReplaceTraverser<Item> createReplaceTraverser() {
-        return null;
-    }
-
-    @Override
-    public SequenceTraverser<Item> createSequenceTraverser() {
-        return null;
-    }
-
-    @Override
-    public InsertSequenceTraverser<Item> createInsertSequenceTraverser() {
-        return null;
-    }
-
-    @Override
-    public ReplaceSequenceTraverser<Item> createReplaceSequenceTraverser() {
-        return null;
     }
 
 }
