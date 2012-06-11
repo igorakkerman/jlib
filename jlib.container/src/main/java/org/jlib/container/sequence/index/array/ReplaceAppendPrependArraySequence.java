@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
+import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
@@ -27,7 +28,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  */
 public class ReplaceAppendPrependArraySequence<Item>
 extends ReplaceArraySequence<Item>
-implements ObservedAppendSequence<Item> {
+implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of {@link ReplaceAppendPrependArraySequence}
@@ -56,8 +57,8 @@ implements ObservedAppendSequence<Item> {
     }
 
     /**
-     * Creates a new {@link ReplaceAppendPrependArraySequence} with the specified first
-     * and last indices.
+     * Creates a new {@link ReplaceAppendPrependArraySequence} with the
+     * specified first and last indices.
      * 
      * @param firstIndex
      *        integer specifying the first index
