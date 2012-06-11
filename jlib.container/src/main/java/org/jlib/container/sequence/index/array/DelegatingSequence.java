@@ -60,7 +60,7 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
 
     @Override
     public ReplaceSequenceTraverser<Item> createTraverser() {
-        return replaceDelegateSequence.createTraverser();
+        return replaceDelegateSequence.createReplaceSequenceTraverser();
     }
 
     @Override
@@ -81,7 +81,7 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     }
 
     @Override
-    public List<Item> toCollection() {
+    public Collection<Item> toCollection() {
         return replaceDelegateSequence.toCollection();
     }
 
@@ -191,5 +191,4 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         removeDelegateSequence.retain(items);
     }
-
 }

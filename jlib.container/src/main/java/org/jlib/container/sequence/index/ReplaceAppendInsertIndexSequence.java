@@ -41,8 +41,7 @@ extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
      * @return {@link ReplaceInsertIndexSequenceTraverser} over this
      *         {@link ReplaceAppendInsertIndexSequence}
      */
-    @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser();
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser();
 
     /**
      * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing the

@@ -21,6 +21,7 @@ import org.jlib.container.RemoveContainer;
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
+ * 
  * @author Igor Akkerman
  */
 public interface RemoveSequence<Item>
@@ -33,6 +34,5 @@ extends Sequence<Item>, RemoveContainer<Item> {
      * @return InsertSequenceTraverser traversing the Items of this Sequence in
      *         proper order
      */
-    @Override
-    public RemoveSequenceTraverser<Item> createTraverser();
+    public RemoveSequenceTraverser<Item> createRemoveTraverser();
 }

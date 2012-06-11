@@ -56,7 +56,7 @@ extends AbstractMatrixTraverser<Entry> {
                                  final Sequence<? extends Sequence<Entry>> entities) {
         super(matrix);
 
-        entitiesTraverser = entities.createTraverser();
+        entitiesTraverser = entities.createSequenceTraverser();
         gotoNextEntity();
     }
 
@@ -68,7 +68,7 @@ extends AbstractMatrixTraverser<Entry> {
     @Override
     public void gotoNextEntity()
     throws IllegalStateException {
-        entityTraverser = entitiesTraverser.getNextItem().createTraverser();
+        entityTraverser = entitiesTraverser.getNextItem().createSequenceTraverser();
     }
 
     @Override

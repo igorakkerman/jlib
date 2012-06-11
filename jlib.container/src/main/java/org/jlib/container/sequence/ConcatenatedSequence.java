@@ -2,6 +2,7 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.Traversible;
 import org.jlib.core.valueholder.AccessibleValueHolder;
@@ -33,7 +34,6 @@ extends AbstractSequence<Item> {
 
             return itemsCount;
         }
-
     };
 
     /**
@@ -57,7 +57,7 @@ extends AbstractSequence<Item> {
     }
 
     @Override
-    public SequenceTraverser<Item> createTraverser() {
+    public Traverser<Item> createTraverser() {
         return createSequenceTraverser();
     }
 

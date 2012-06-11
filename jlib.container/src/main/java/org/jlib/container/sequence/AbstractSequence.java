@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jlib.container.AbstractContainer;
+import org.jlib.core.traverser.BidirectionalTraverser;
 
 /**
  * Skeletal implementation of a {@link Sequence}.
@@ -30,5 +31,10 @@ implements Sequence<Item> {
         for (final Item item : this)
             sequence.add(item);
         return sequence;
+    }
+
+    @Override
+    public BidirectionalTraverser<Item> createBidirectionalTraverser() {
+        return createSequenceTraverser();
     }
 }

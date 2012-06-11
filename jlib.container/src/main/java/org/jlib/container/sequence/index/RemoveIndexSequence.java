@@ -47,8 +47,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
-    @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser();
+    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser();
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} and traversing the Items

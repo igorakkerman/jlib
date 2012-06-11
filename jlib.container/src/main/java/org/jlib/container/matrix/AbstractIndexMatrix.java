@@ -216,25 +216,25 @@ implements IndexMatrix<Entry> {
      * Creates a {@link MatrixTraverser} traversing the Items of this
      * {@link AbstractIndexMatrix}. The order in which the Items are traversed
      * is specified using
-     * {@link #setDefaultIterationOrder(MatrixTraversalOrder)}.
+     * {@link #setDefaultTraversalOrder(MatrixTraversalOrder)}.
      * 
      * @return new {@link MatrixTraverser} for this AbstractIndexMatrix
      * 
-     * @see #setDefaultIterationOrder(MatrixTraversalOrder)
+     * @see #setDefaultTraversalOrder(MatrixTraversalOrder)
      * @see MatrixTraversalOrder
      */
     @Override
-    public MatrixTraverser<Entry> createTraverser() {
-        return defaultIterationOrder.createTraverser(this);
+    public MatrixTraverser<Entry> createMatrixTraverser() {
+        return defaultIterationOrder.createMatrixTraverser(this);
     }
 
     @Override
-    public MatrixTraversible<Entry> iteratedInOrder(final MatrixTraversalOrder iterationOrder) {
+    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
         return new MatrixTraversible<Entry>() {
 
             @Override
-            public MatrixTraverser<Entry> createTraverser() {
-                return iterationOrder.createTraverser(AbstractIndexMatrix.this);
+            public MatrixTraverser<Entry> createMatrixTraverser() {
+                return iterationOrder.createMatrixTraverser(AbstractIndexMatrix.this);
             }
         };
     }
@@ -248,7 +248,7 @@ implements IndexMatrix<Entry> {
      *        Traversers}
      */
     @Override
-    public void setDefaultIterationOrder(final MatrixTraversalOrder defaultIterationOrder) {
+    public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {
         this.defaultIterationOrder = defaultIterationOrder;
     }
 

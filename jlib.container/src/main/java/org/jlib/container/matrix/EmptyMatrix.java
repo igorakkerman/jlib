@@ -10,6 +10,8 @@ import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.
@@ -40,7 +42,7 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     /**
      * Creates a new {@link EmptyMatrix}.
      */
-    private EmptyMatrix() {
+    protected EmptyMatrix() {
         super();
     }
 
@@ -82,8 +84,18 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public EmptyMatrixTraverser<Entry> createTraverser() {
+    public EmptyMatrixTraverser<Entry> createMatrixTraverser() {
         return EmptyMatrixTraverser.getInstance();
+    }
+
+    @Override
+    public Traverser<Entry> createTraverser() {
+        return createMatrixTraverser();
+    }
+
+    @Override
+    public ReplaceTraverser<Entry> createReplaceTraverser() {
+        return createMatrixTraverser();
     }
 
     @Override
@@ -117,13 +129,13 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public MatrixTraversible<Entry> iteratedInOrder(final MatrixTraversalOrder iterationOrder) {
+    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
     }
 
     @Override
-    public void setDefaultIterationOrder(final MatrixTraversalOrder defaultIterationOrder) {
+    public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {
         // the iteration order is void in an EmptyMatrix
     }
 }

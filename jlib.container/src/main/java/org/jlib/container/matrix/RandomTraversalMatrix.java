@@ -1,5 +1,6 @@
 package org.jlib.container.matrix;
 
+import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.container.sequence.Sequence;
@@ -9,8 +10,9 @@ import org.jlib.core.traverser.Traverser;
  * {@link Matrix} traversable in various orders. A {@link Sequence} of all
  * columns or rows can be retrieved and the {@link Matrix} can be traversed by a
  * custom {@link MatrixTraverser}. The default {@link MatrixTraverser} returned
- * by {@link #createTraverser()} and {@link #iterator()} can be customized using
- * {@link #setDefaultIterationOrder(MatrixTraversalOrder)}. A
+ * by {@link #createTraverser()} and the default {@link Iterator} returned by
+ * {@link #iterator()} can be customized using
+ * {@link #setDefaultTraversalOrder(MatrixTraversalOrder)}. A
  * {@link RandomTraversalMatrix} is not necessarily a {@link RandomAccess}
  * {@link Matrix}.
  * 
@@ -62,15 +64,15 @@ extends Matrix<Entry> {
      *         traversing the Items of this {@link Matrix} using the specified
      *         {@link MatrixTraversalOrder}.
      */
-    public MatrixTraversible<Entry> iteratedInOrder(final MatrixTraversalOrder iterationOrder);
+    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder);
 
     /**
      * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
-     * returned by {@link #iterator()}.
+     * returned by {@link #createTraverser()}.
      * 
      * @param defaultIterationOrder
      *        {@link MatrixTraversalOrder} used by default {@link Traverser
      *        Traversers}
      */
-    public void setDefaultIterationOrder(final MatrixTraversalOrder defaultIterationOrder);
+    public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder);
 }

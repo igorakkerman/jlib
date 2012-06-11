@@ -1,6 +1,6 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.array.ArrayTraverser;
+import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.BidirectionalTraverser;
 import org.jlib.core.traverser.BidirectionalTraversible;
 
@@ -41,10 +41,10 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
         super(concatenatedSequence);
 
-        traversiblesTraverser = new ArrayTraverser<>(concatenatedSequence.getTraversibles());
+        traversiblesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversibles());
 
         currentTraversibleTraverser = traversiblesTraverser.isNextItemAccessible()
-            ? traversiblesTraverser.getNextItem().createTraverser()
+            ? traversiblesTraverser.getNextItem().createBidirectionalTraverser()
             : EmptySequenceTraverser.<Item> getInstance();
     }
 
@@ -54,7 +54,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
             if (!traversiblesTraverser.isPreviousItemAccessible())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createBidirectionalTraverser();
 
             // navigate to the tail of the previous Sequence
             while (currentTraversibleTraverser.isNextItemAccessible())
@@ -79,7 +79,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
             if (!traversiblesTraverser.isNextItemAccessible())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createBidirectionalTraverser();
         }
 
         return true;

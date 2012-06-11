@@ -19,5 +19,5 @@ public interface MatrixTraversible<Entry> {
      * @return a new {@link MatrixTraverser} over the Entries of this
      *         {@link Matrix}
      */
-    public MatrixTraverser<Entry> createTraverser();
+    public MatrixTraverser<Entry> createMatrixTraverser();
 }

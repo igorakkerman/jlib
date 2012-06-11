@@ -184,7 +184,7 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+    public RemoveTraverser<Association<LeftValue, RightValue>> createRemoveTraverser() {
         return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

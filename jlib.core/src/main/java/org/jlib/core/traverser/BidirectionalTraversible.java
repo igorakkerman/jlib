@@ -17,6 +17,5 @@ extends Traversible<Item> {
      * 
      * @return newly created {@link Traverser}
      */
-    @Override
-    public BidirectionalTraverser<Item> createTraverser();
+    public BidirectionalTraverser<Item> createBidirectionalTraverser();
 }

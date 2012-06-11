@@ -49,6 +49,11 @@ implements Sequence<Item> {
     }
 
     @Override
+    public SequenceTraverser<Item> createBidirectionalTraverser() {
+        return createSequenceTraverser();
+    }
+
+    @Override
     public SequenceTraverser<Item> createTraverser() {
         return createSequenceTraverser();
     }
