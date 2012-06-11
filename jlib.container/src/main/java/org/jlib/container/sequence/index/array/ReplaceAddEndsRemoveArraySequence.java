@@ -1,13 +1,12 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.ReplaceAddEndsRemoveIndexSequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 /**
- * {@link ReplaceAppendArraySequence} from which Items can be removed at its ends,
- * that is, its head and tail.
+ * {@link ReplaceAppendArraySequence} from which Items can be removed at its
+ * ends, that is, its head and tail.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}

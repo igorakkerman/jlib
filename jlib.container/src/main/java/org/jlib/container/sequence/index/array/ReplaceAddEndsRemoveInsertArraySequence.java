@@ -3,7 +3,6 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
-import org.jlib.container.sequence.index.InsertAppendReplaceIndexSequence;
 import org.jlib.container.sequence.index.ReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
@@ -60,7 +59,7 @@ implements InsertAppendReplaceIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceRemoveTraverser() {
         return createTraverser(getFirstIndex());
     }
 

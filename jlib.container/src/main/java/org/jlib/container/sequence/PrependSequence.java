@@ -20,70 +20,70 @@ import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 
 /**
- * {@link Sequence} to which Items can be appended.
+ * {@link Sequence} to which Items can be prepended.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface AppendSequence<Item>
+public interface PrependSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * Appends the specified Item to this {@link AppendSequence}.
+     * prepends the specified Item to this {@link PrependSequence}.
      * 
      * @param item
-     *        Item to append
+     *        Item to prepend
      * 
      * @throws IllegalSequenceArgumentException
-     *         if some property of {@code item} prevents it from being appended,
-     *         for instance, if it is already contained
+     *         if some property of {@code item} prevents it from being
+     *         prepended, for instance, if it is already contained
      */
-    public void append(final Item item)
+    public void prepend(final Item item)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Container} to this
-     * {@link AppendSequence}.
+     * prepends all Items contained by the specified {@link Container} to this
+     * {@link PrependSequence}.
      * 
      * @param items
-     *        {@link Container} containing the Items to append
+     *        {@link Container} containing the Items to prepend
      * 
      * @throws IllegalContainerArgumentException
      *         if {@code items}
      * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      */
-    public void append(final Container<? extends Item> items)
+    public void prepend(final Container<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Collection} to this
-     * {@link AppendSequence}.
+     * prepends all Items contained by the specified {@link Collection} to this
+     * {@link PrependSequence}.
      * 
      * @param items
-     *        {@link Collection} containing the Items to append
+     *        {@link Collection} containing the Items to prepend
      * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      */
-    public void append(final Collection<? extends Item> items)
+    public void prepend(final Collection<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all specified Items to this {@link AppendSequence}.
+     * prepends all specified Items to this {@link PrependSequence}.
      * 
      * @param items
-     *        comma separated sequence of Items to append
+     *        comma separated sequence of Items to prepend
      * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      */
-    public void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    public void prepend(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalSequenceArgumentException;
 }
