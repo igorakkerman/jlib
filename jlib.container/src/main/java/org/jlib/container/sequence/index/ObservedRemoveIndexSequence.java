@@ -34,7 +34,8 @@ extends RemoveIndexSequence<Item> {
      * @param index
      *        integer specifying the index
      */
-    public void remove(final int index, final ValueObserver<Item>... observers);
+    public void remove(final int index,
+                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
@@ -68,7 +69,6 @@ extends RemoveIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedRemoveIndexSequenceTraverser<Item> createObservedRemoveIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

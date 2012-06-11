@@ -20,7 +20,6 @@ import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link ReplaceIndexSequenceTraverser},
- * {@link ReplaceInsertReplaceIndexSequenceTraverser} .
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}

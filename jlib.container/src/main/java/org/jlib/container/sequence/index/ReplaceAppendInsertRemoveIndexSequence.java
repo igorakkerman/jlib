@@ -61,7 +61,6 @@ extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createReplaceInsertRemoveIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

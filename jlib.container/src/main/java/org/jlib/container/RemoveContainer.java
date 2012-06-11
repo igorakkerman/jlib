@@ -186,6 +186,5 @@ extends Container<Item> {
      * 
      * @return newly created {@link RemoveTraverser}
      */
-    @Override
-    public RemoveTraverser<Item> createTraverser();
+    public RemoveTraverser<Item> createRemoveTraverser();
 }

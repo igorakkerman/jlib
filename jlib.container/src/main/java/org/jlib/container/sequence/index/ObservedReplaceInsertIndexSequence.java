@@ -30,7 +30,7 @@ import org.jlib.core.traverser.ReplaceTraverser;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequence<Item>
-extends ReplaceIndexSequence<Item> {
+extends ObservedReplaceIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
@@ -56,6 +56,7 @@ extends ReplaceIndexSequence<Item> {
      * @throws IllegalSequenceStateException
      *         if an error occurs performing the operation
      */
+    @Override
     public void replace(final int index, final Item newItem,
                         @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;

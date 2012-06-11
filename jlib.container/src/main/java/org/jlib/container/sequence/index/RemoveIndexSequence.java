@@ -69,7 +69,6 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public RemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

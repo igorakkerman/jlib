@@ -31,12 +31,12 @@ public interface ReplaceAppendInsertIndexSequence<Item>
 extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
 
     /**
-     * Returns a {@link ReplaceInsertIndexSequenceTraverser} traversing
-     * the Items of this IndexSequence in proper sequence. Initially, the
-     * Traverser points to the head of this IndexSequence, that is, the Item
-     * returned by the first call to
-     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the
-     * Item stored at {@link #getFirstIndex()}.
+     * Returns a {@link ReplaceInsertIndexSequenceTraverser} traversing the
+     * Items of this IndexSequence in proper sequence. Initially, the Traverser
+     * points to the head of this IndexSequence, that is, the Item returned by
+     * the first call to
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the Item
+     * stored at {@link #getFirstIndex()}.
      * 
      * @return {@link ReplaceInsertIndexSequenceTraverser} over this
      *         {@link ReplaceAppendInsertIndexSequence}
@@ -45,11 +45,11 @@ extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
     public ReplaceInsertIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing
-     * the Items of this {@link ReplaceAppendInsertIndexSequence} in proper
+     * Returns an {@link ReplaceInsertIndexSequenceTraverser} traversing the
+     * Items of this {@link ReplaceAppendInsertIndexSequence} in proper
      * sequence. That is, the Item returned by the first call to
-     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the
-     * Item stored at the specified start index.
+     * {@link ReplaceInsertIndexSequenceTraverser#getNextItem()} is the Item
+     * stored at the specified start index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
@@ -61,7 +61,6 @@ extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createRemoveInsertIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }
