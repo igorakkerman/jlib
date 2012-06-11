@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ObservedRemoveSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -26,13 +27,18 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveIndexSequence<Item>
-extends RemoveIndexSequence<Item> {
+extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
 
     /**
      * Removes from this IndexSequence the Item stored at the specified index.
      * 
      * @param index
      *        integer specifying the index
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
      */
     public void remove(final int index,
                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers);
