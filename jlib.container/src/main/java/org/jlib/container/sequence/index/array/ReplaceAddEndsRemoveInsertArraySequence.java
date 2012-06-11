@@ -9,7 +9,7 @@ import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
 /**
- * {@link ReplaceAppendPrependArraySequence} into which Items can be inserted.
+ * {@link ReplaceAppendArraySequence} into which Items can be inserted.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}

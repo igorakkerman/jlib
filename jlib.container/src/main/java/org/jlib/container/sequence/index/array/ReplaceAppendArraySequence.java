@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
@@ -26,39 +25,39 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendPrependArraySequence<Item>
+public class ReplaceAppendArraySequence<Item>
 extends ReplaceArraySequence<Item>
-implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
+implements ObservedAppendSequence<Item> {
 
     /**
-     * {@link IndexSequenceCreator} of {@link ReplaceAppendPrependArraySequence}
+     * {@link IndexSequenceCreator} of {@link ReplaceAppendArraySequence}
      * insstances
      */
-    private static final IndexSequenceCreator<?, ? extends ReplaceAppendPrependArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, ReplaceAppendPrependArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAppendArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAppendArraySequence<Object>>() {
 
             @Override
-            public ReplaceAppendPrependArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            public ReplaceAppendArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new ReplaceAppendPrependArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAppendArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link ReplaceAppendPrependArraySequence} instances.
+     * {@link ReplaceAppendArraySequence} instances.
      * 
      * @return {@link IndexSequenceCreator} of
-     *         {@link ReplaceAppendPrependArraySequence} instances
+     *         {@link ReplaceAppendArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendPrependArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAppendArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link ReplaceAppendPrependArraySequence} with the
-     * specified first and last indices.
+     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+     * and last indices.
      * 
      * @param firstIndex
      *        integer specifying the first index
@@ -69,7 +68,7 @@ implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAppendPrependArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
@@ -101,7 +100,7 @@ implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
     public final void append(final Item item,
                              @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
-        append(singleton(item), observers);
+        append(singleton(item), 1, observers);
     }
 
     @Override
@@ -151,7 +150,8 @@ implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
 
         int itemArrayIndex = getSize();
 
-        replaceDelegateArrayItems(items, itemArrayIndex ++, observers);
+        for (final Item item : items)
+            replaceDelegateArrayItem(item, itemArrayIndex ++, observers);
 
         setLastIndex(getLastIndex() + addedItemsCount);
     }
@@ -162,7 +162,7 @@ implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
      * @param itemArrayIndex
      *        integer specifying the index of the Item in the array
      * 
-     * @param items
+     * @param newItem
      *        replacing Item
      * 
      * @param observers
@@ -174,23 +174,22 @@ implements ObservedAppendSequence<Item>, ObservedPrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    private final void replaceDelegateArrayItems(final Iterable<? extends Item> items, final int itemArrayIndex,
-                                                 final ValueObserver<Item>... observers)
+    private final void replaceDelegateArrayItem(final Item newItem, final int itemArrayIndex,
+                                                final ValueObserver<Item>... observers)
     throws RuntimeException {
-        for (final Item item : items)
-            ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new Operator() {
 
-                @Override
-                public void operate() {
-                    replaceDelegateArrayItem(itemArrayIndex, item);
-                }
-            },
+            @Override
+            public void operate() {
+                replaceDelegateArrayItem(itemArrayIndex, newItem);
+            }
+        },
 
-            item, observers);
+        newItem, observers);
     }
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendPrependArraySequence<Item>>(this);
+        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendArraySequence<Item>>(this);
     }
 }
