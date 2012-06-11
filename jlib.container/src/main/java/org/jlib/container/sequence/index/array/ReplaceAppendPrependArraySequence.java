@@ -25,38 +25,38 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendArraySequence<Item>
+public class ReplaceAppendPrependArraySequence<Item>
 extends ReplaceArraySequence<Item>
 implements ObservedAppendSequence<Item> {
 
     /**
-     * {@link IndexSequenceCreator} of {@link ReplaceAppendArraySequence}
+     * {@link IndexSequenceCreator} of {@link ReplaceAppendPrependArraySequence}
      * insstances
      */
-    private static final IndexSequenceCreator<?, ? extends ReplaceAppendArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, ReplaceAppendArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAppendPrependArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAppendPrependArraySequence<Object>>() {
 
             @Override
-            public ReplaceAppendArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
+            public ReplaceAppendPrependArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new ReplaceAppendArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAppendPrependArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link ReplaceAppendArraySequence} instances.
+     * {@link ReplaceAppendPrependArraySequence} instances.
      * 
      * @return {@link IndexSequenceCreator} of
-     *         {@link ReplaceAppendArraySequence} instances
+     *         {@link ReplaceAppendPrependArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, ReplaceAppendArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendPrependArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+     * Creates a new {@link ReplaceAppendPrependArraySequence} with the specified first
      * and last indices.
      * 
      * @param firstIndex
@@ -68,7 +68,7 @@ implements ObservedAppendSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendPrependArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
@@ -190,6 +190,6 @@ implements ObservedAppendSequence<Item> {
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendArraySequence<Item>>(this);
+        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendPrependArraySequence<Item>>(this);
     }
 }

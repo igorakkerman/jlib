@@ -21,44 +21,44 @@ import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.core.observer.ValueObserver;
 
 /**
- * {@link AppendSequence} to which Items can be appended.
+ * {@link PrependSequence} to which Items can be prepended.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @author Igor Akkerman
  */
-public interface ObservedAppendSequence<Item>
-extends AppendSequence<Item> {
+public interface ObservedPrependSequence<Item>
+extends PrependSequence<Item> {
 
     /**
-     * Appends the specified Item to this {@link ObservedAppendSequence}.
+     * Prepends the specified Item to this {@link ObservedPrependSequence}.
      * 
      * @param item
-     *        Item to append
+     *        Item to prepend
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
      * @throws IllegalSequenceArgumentException
-     *         if some property of {@code item} prevents it from being appended,
-     *         for instance, if it is already contained
+     *         if some property of {@code item} prevents it from being
+     *         prepended, for instance, if it is already contained
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Item item,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    public void prepend(final Item item,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Container} to this
-     * {@link ObservedAppendSequence}.
+     * Prepends all Items contained by the specified {@link Container} to this
+     * {@link ObservedPrependSequence}.
      * 
      * @param items
-     *        {@link Container} containing the Items to append
+     *        {@link Container} containing the Items to prepend
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -69,22 +69,22 @@ extends AppendSequence<Item> {
      * 
      * @throws IllegalContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    public void prepend(final Container<? extends Item> items,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Collection} to this
-     * {@link ObservedAppendSequence}.
+     * Prepends all Items contained by the specified {@link Collection} to this
+     * {@link ObservedPrependSequence}.
      * 
      * @param items
-     *        {@link Collection} containing the Items to append
+     *        {@link Collection} containing the Items to prepend
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -92,34 +92,34 @@ extends AppendSequence<Item> {
      * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    public void prepend(final Collection<? extends Item> items,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all specified Items to this {@link ObservedAppendSequence}.
+     * Prepends all specified Items to this {@link ObservedPrependSequence}.
      * 
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      * 
      * @param items
-     *        comma separated sequence of Items to append
+     *        comma separated sequence of Items to prepend
      * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
+     *         being prepended, for instance, if it is already contained
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(ValueObserver<Item>[] observers,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    public void prepend(ValueObserver<Item>[] observers,
+                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalSequenceArgumentException;
 }

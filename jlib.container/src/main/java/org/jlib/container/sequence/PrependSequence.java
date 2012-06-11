@@ -31,7 +31,7 @@ public interface PrependSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * prepends the specified Item to this {@link PrependSequence}.
+     * Prepends the specified Item to this {@link PrependSequence}.
      * 
      * @param item
      *        Item to prepend
@@ -44,7 +44,7 @@ extends Sequence<Item> {
     throws IllegalSequenceArgumentException;
 
     /**
-     * prepends all Items contained by the specified {@link Container} to this
+     * Prepends all Items contained by the specified {@link Container} to this
      * {@link PrependSequence}.
      * 
      * @param items
@@ -61,7 +61,7 @@ extends Sequence<Item> {
     throws IllegalSequenceArgumentException;
 
     /**
-     * prepends all Items contained by the specified {@link Collection} to this
+     * Prepends all Items contained by the specified {@link Collection} to this
      * {@link PrependSequence}.
      * 
      * @param items
@@ -75,7 +75,7 @@ extends Sequence<Item> {
     throws IllegalSequenceArgumentException;
 
     /**
-     * prepends all specified Items to this {@link PrependSequence}.
+     * Prepends all specified Items to this {@link PrependSequence}.
      * 
      * @param items
      *        comma separated sequence of Items to prepend
