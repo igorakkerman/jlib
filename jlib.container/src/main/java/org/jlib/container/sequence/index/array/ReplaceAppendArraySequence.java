@@ -99,7 +99,7 @@ implements AppendSequence<Item> {
     }
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
         return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendArraySequence<Item>>(this);
     }
 }
