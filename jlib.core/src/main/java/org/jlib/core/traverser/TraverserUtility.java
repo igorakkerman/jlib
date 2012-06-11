@@ -21,7 +21,7 @@ public final class TraverserUtility {
      * @return integer specifying the number of Items
      */
     public static int getItemsCount(final BidirectionalTraversible<?> traversible) {
-        final BidirectionalTraverser<?> itemsTraverser = traversible.createTraverser();
+        final BidirectionalTraverser<?> itemsTraverser = traversible.createBidirectionalTraverser();
 
         int itemsCount = 0;
 

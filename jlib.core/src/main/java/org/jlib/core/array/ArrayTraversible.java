@@ -2,6 +2,7 @@ package org.jlib.core.array;
 
 import org.jlib.core.traverser.BidirectionalTraverser;
 import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Wrapper for an array allowing it to be used as
@@ -29,7 +30,12 @@ implements BidirectionalTraversible<Item> {
     }
 
     @Override
-    public BidirectionalTraverser<Item> createTraverser() {
+    public Traverser<Item> createTraverser() {
+        return createBidirectionalTraverser();
+    }
+
+    @Override
+    public BidirectionalTraverser<Item> createBidirectionalTraverser() {
         return new ArrayTraverser<Item>(array);
     }
 }
