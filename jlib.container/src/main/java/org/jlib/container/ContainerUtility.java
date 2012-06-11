@@ -234,7 +234,7 @@ public final class ContainerUtility {
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
-        final RemoveTraverser<Item> containerTraverser = container.createTraverser();
+        final RemoveTraverser<Item> containerTraverser = container.createRemoveTraverser();
         while (containerTraverser.isNextItemAccessible())
             if (!retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove();
@@ -295,7 +295,7 @@ public final class ContainerUtility {
      */
     public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
-        final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
+        final RemoveTraverser<Item> itemsTraverser = container.createRemoveTraverser();
         while (itemsTraverser.isNextItemAccessible())
             if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
@@ -414,7 +414,7 @@ public final class ContainerUtility {
     public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items,
                                      final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
-        final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
+        final RemoveTraverser<Item> itemsTraverser = container.createRemoveTraverser();
         while (itemsTraverser.isNextItemAccessible())
             if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
