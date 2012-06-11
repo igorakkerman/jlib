@@ -117,5 +117,5 @@ extends Container<Entry>, MatrixTraversible<Entry> {
      * @return integer specifying the number of Entries
      */
     @Override
-    public int getSize();
+    public int getItemsCount();
 }

@@ -116,7 +116,7 @@ extends AbstractNonEmptySequence<Item> {
     }
 
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return 1;
     }
 

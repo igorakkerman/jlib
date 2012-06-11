@@ -81,7 +81,7 @@ implements ObservedAppendSequence<Item> {
     @Override
     public void append(final Container<? extends Item> items) {
         // intentionally not using SequenceUtility for efficiency
-        append(items, items.getSize());
+        append(items, items.getItemsCount());
     }
 
     @Override
@@ -107,7 +107,7 @@ implements ObservedAppendSequence<Item> {
     public final void append(final Container<? extends Item> items,
                              @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
-        append(items, items.getSize(), observers);
+        append(items, items.getItemsCount(), observers);
     }
 
     @Override
@@ -146,9 +146,9 @@ implements ObservedAppendSequence<Item> {
     @SafeVarargs
     private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
                               final ValueObserver<Item>... observers) {
-        assertCapacity(getSize() + addedItemsCount);
+        assertCapacity(getItemsCount() + addedItemsCount);
 
-        int itemArrayIndex = getSize();
+        int itemArrayIndex = getItemsCount();
 
         for (final Item item : items)
             replaceDelegateArrayItem(item, itemArrayIndex ++, observers);

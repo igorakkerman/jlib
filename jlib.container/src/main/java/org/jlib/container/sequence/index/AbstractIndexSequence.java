@@ -127,7 +127,7 @@ implements IndexSequence<Item> {
     throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
-        final List<Item> subList = new ArrayList<>(getSize());
+        final List<Item> subList = new ArrayList<>(getItemsCount());
 
         for (int index = fromIndex; index <= toIndex; index ++)
             subList.add(getStoredItem(index));
@@ -160,13 +160,13 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return lastIndex - firstIndex + 1;
     }
 
     @Override
     public String toString() {
-        final StringBuilder stringBuilder = new StringBuilder(8 * getSize());
+        final StringBuilder stringBuilder = new StringBuilder(8 * getItemsCount());
 
         final IndexSequenceTraverser<Item> itemsTraverser = createTraverser();
 

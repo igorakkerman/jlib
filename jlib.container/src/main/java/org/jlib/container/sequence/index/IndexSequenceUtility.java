@@ -289,7 +289,7 @@ public final class IndexSequenceUtility {
                             final int firstIndex, final Container<Item> items)
     throws IllegalArgumentException {
     // @formatter:on
-        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + items.getSize() - 1);
+        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + items.getItemsCount() - 1);
 
         int index = firstIndex;
 

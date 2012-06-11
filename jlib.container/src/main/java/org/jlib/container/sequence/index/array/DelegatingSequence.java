@@ -53,9 +53,9 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     }
 
     @Override
-    public int getSize()
+    public int getItemsCount()
     throws IllegalContainerStateException {
-        return replaceDelegateSequence.getSize();
+        return replaceDelegateSequence.getItemsCount();
     }
 
     @Override

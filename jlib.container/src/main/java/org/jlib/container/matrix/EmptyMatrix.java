@@ -124,7 +124,7 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return 0;
     }
 

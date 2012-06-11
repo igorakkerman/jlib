@@ -59,7 +59,7 @@ implements Sequence<Item> {
     }
 
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return 0;
     }
 

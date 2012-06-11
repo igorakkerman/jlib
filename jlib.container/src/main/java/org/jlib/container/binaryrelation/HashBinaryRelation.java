@@ -183,7 +183,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return leftToRightMap.size();
     }
 }

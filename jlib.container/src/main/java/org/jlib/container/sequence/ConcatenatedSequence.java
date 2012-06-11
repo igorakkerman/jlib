@@ -51,7 +51,7 @@ extends AbstractSequence<Item> {
     }
 
     @Override
-    public final int getSize()
+    public final int getItemsCount()
     throws IllegalContainerStateException {
         return itemsCountHolder.get();
     }

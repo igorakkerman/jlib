@@ -442,7 +442,7 @@ public final class ContainerUtility {
         int itemsCount = 0;
 
         for (final Container<?> container : containers)
-            itemsCount += container.getSize();
+            itemsCount += container.getItemsCount();
 
         return itemsCount;
     }

@@ -86,7 +86,7 @@ implements Container<Item> {
 
     @Override
     public Item[] toArray() {
-        final int size = getSize();
+        final int size = getItemsCount();
         @SuppressWarnings("unchecked")
         final Item[] targetArray = (Item[]) new Object[size];
         int index = 0;
@@ -157,7 +157,7 @@ implements Container<Item> {
 
     @Override
     public boolean isEmpty() {
-        return getSize() == 0;
+        return getItemsCount() == 0;
     }
 
     @Override

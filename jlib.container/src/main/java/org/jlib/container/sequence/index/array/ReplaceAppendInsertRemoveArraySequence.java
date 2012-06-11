@@ -16,12 +16,12 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAddEndsRemoveInsertArraySequence<Item>
+public class ReplaceAppendInsertRemoveArraySequence<Item>
 extends ReplaceAppendPrependRemoveArraySequence<Item>
 implements InsertAppendReplaceIndexSequence<Item> {
 
     /**
-     * Creates a new {@link ReplaceAddEndsRemoveInsertArraySequence} with the
+     * Creates a new {@link ReplaceAppendInsertRemoveArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex
@@ -33,7 +33,7 @@ implements InsertAppendReplaceIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAddEndsRemoveInsertArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendInsertRemoveArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
@@ -44,9 +44,9 @@ implements InsertAppendReplaceIndexSequence<Item> {
 
     @Override
     public void insert(final int index, final Container<? extends Item> newItems) {
-        final int insertedItemsCount = newItems.getSize();
+        final int insertedItemsCount = newItems.getItemsCount();
 
-        final int newSize = getSize() + insertedItemsCount;
+        final int newSize = getItemsCount() + insertedItemsCount;
         final int delegateArrayInsertIndex = getDelegateArrayIndex(index);
 
         assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);

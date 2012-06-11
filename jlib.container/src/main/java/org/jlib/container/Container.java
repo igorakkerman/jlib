@@ -37,7 +37,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public int getSize()
+    public int getItemsCount()
     throws IllegalContainerStateException;
 
     /**

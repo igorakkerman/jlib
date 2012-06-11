@@ -36,7 +36,7 @@ extends AbstractContainer<Item> {
 
     // implemented for efficiency
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return delegateCollection.size();
     }
 

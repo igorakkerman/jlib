@@ -22,7 +22,7 @@ implements Matrix<Entry> {
      * @return integer specifying the number of cells
      */
     @Override
-    public int getSize() {
+    public int getItemsCount() {
         return getWidth() * getHeight();
     }
 

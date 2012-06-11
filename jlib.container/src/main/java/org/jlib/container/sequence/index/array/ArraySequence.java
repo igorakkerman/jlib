@@ -161,7 +161,7 @@ implements Cloneable {
     protected ArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
 
-        final int size = getSize();
+        final int size = getItemsCount();
 
         delegateArray = (Item[]) new Object[size];
     }
@@ -306,8 +306,8 @@ implements Cloneable {
     protected void assertCapacityWithHole(final int expectedCapacity, final int insertIndex, final int holeSize) {
         assertExpectedCapacityValid(expectedCapacity);
 
-        if (getSize() + holeSize > expectedCapacity)
-            throw new IllegalArgumentException("getSize() + items.length == " + getSize() + " + " + holeSize + " > " +
+        if (getItemsCount() + holeSize > expectedCapacity)
+            throw new IllegalArgumentException("getSize() + items.length == " + getItemsCount() + " + " + holeSize + " > " +
                                                expectedCapacity + " == expectedCapacity");
         @SuppressWarnings("unchecked")
         final Item[] newDelegateArray = delegateArray.length < expectedCapacity
@@ -315,8 +315,8 @@ implements Cloneable {
             : delegateArray;
 
         System.arraycopy(delegateArray, 0, newDelegateArray, 0, insertIndex);
-        System.arraycopy(delegateArray, insertIndex, newDelegateArray, insertIndex + holeSize, getSize() - insertIndex);
-        Arrays.fill(newDelegateArray, getSize() + expectedCapacity, newDelegateArray.length, null);
+        System.arraycopy(delegateArray, insertIndex, newDelegateArray, insertIndex + holeSize, getItemsCount() - insertIndex);
+        Arrays.fill(newDelegateArray, getItemsCount() + expectedCapacity, newDelegateArray.length, null);
 
         delegateArray = newDelegateArray;
     }
