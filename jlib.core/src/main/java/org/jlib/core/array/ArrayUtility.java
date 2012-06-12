@@ -140,4 +140,20 @@ public final class ArrayUtility {
     public static <Item> Item[] getEmptyArray() {
         return (Item[]) EMPTY_ARRAY;
     }
+
+    /**
+     * Crates an array of Items in a typesafe manner.
+     * 
+     * @param <Item>
+     *        type of the items held in the array
+     * 
+     * @param length
+     *        integer specifying the array length
+     * 
+     * @return newly created array
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] createArray(final int length) {
+        return (Item[]) new Object[length];
+    }
 }
