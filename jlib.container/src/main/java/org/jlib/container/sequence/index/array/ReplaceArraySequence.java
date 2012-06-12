@@ -94,6 +94,38 @@ implements ObservedReplaceIndexSequence<Item> {
         newItem, observers); // throws SequenceIndexOutOfBoundsException
     }
 
+    /**
+     * Replaces the Item stored in the delegate array at the specified index.
+     * 
+     * @param itemArrayIndex
+     *        integer specifying the index of the Item in the array
+     * 
+     * @param newItem
+     *        replacing Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
+     */
+    @SafeVarargs
+    protected final void replaceDelegateArrayItem(final Item newItem, final int itemArrayIndex,
+                                                  final ValueObserver<Item>... observers)
+    throws RuntimeException {
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate() {
+                replaceDelegateArrayItem(itemArrayIndex, newItem);
+            }
+        },
+
+        newItem, observers);
+    }
+
     @Override
     public ReplaceTraverser<Item> createReplaceTraverser() {
         return createObservedReplaceIndexSequenceTraverser();

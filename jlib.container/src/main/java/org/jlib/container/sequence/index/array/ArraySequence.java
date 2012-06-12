@@ -307,7 +307,7 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @param insertArrayIndex
+     * @param holeArrayIndex
      *        integer specifying the insert index
      * 
      * @param holeSize
@@ -317,26 +317,25 @@ implements Cloneable {
      *         if
      *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
      */
-    protected void assertCapacityWithHole(final int expectedCapacity, final int insertArrayIndex, final int holeSize)
+    protected void assertCapacityWithHole(final int expectedCapacity, final int holeArrayIndex, final int holeSize)
     throws InvalidDelegateArrayCapacityException {
         assertExpectedCapacityValid(expectedCapacity);
 
         if (getItemsCount() + holeSize > expectedCapacity)
-            throw new InvalidDelegateArrayCapacityException(
-                                                            this,
-                                                            expectedCapacity,
-                                                            "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
-                                                            getItemsCount(), holeSize);
+            // @formatter:off 
+            throw new InvalidDelegateArrayCapacityException
+                (this, expectedCapacity, "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity", getItemsCount(), holeSize);
+            // @formatter:on
 
         final Item[] originalDelegateArray = delegateArray;
 
         if (delegateArray.length < expectedCapacity) {
             delegateArray = createItemsArray(expectedCapacity);
-            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, insertArrayIndex);
+            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, holeArrayIndex);
         }
 
-        System.arraycopy(originalDelegateArray, insertArrayIndex, delegateArray, insertArrayIndex + holeSize, getItemsCount() -
-                                                                                                    insertArrayIndex);
+        System.arraycopy(originalDelegateArray, holeArrayIndex, delegateArray, holeArrayIndex + holeSize,
+                         getItemsCount() - holeArrayIndex);
 
         Arrays.fill(delegateArray, getItemsCount() + expectedCapacity, delegateArray.length, null);
     }

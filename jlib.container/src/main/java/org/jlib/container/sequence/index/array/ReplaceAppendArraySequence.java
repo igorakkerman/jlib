@@ -10,8 +10,6 @@ import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
@@ -155,38 +153,6 @@ implements ObservedAppendSequence<Item> {
             replaceDelegateArrayItem(item, itemArrayIndex ++, observers);
 
         setLastIndex(getLastIndex() + addedItemsCount);
-    }
-
-    /**
-     * Replaces the Item stored in the delegate array at the specified index.
-     * 
-     * @param itemArrayIndex
-     *        integer specifying the index of the Item in the array
-     * 
-     * @param newItem
-     *        replacing Item
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
-     * 
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
-     */
-    @SafeVarargs
-    private final void replaceDelegateArrayItem(final Item newItem, final int itemArrayIndex,
-                                                final ValueObserver<Item>... observers)
-    throws RuntimeException {
-        ObserverUtility.operate(new Operator() {
-
-            @Override
-            public void operate() {
-                replaceDelegateArrayItem(itemArrayIndex, newItem);
-            }
-        },
-
-        newItem, observers);
     }
 
     @Override
