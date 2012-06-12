@@ -183,6 +183,156 @@ public final class SequenceUtility {
     }
 
     /**
+     * Adds the specified Item to the specified {@link PrependSequence} that
+     * does not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link PrependSequence} to which the Item is prepended
+     * 
+     * @param item
+     *        prepended Item
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being prepended
+     *         to {@code sequence}
+     */
+    public static <Item> void prepend(final PrependSequence<Item> sequence, final Item item)
+    throws IllegalSequenceArgumentException {
+        sequence.prepend(item);
+    }
+
+    /**
+     * Adds all Items provided by the specified {@link Iterable} to the
+     * specified {@link PrependSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link PrependSequence} to which the Items are prepended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to prepend
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being prepended to {@code sequence}
+     */
+    public static <Item> void prepend(final PrependSequence<Item> sequence, final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            sequence.prepend(item);
+    }
+
+    /**
+     * Adds all Items in the specified comma separated sequence to the specified
+     * {@link PrependSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link PrependSequence} to which the Items are prepended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to prepend
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being prepended to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void prepend(final PrependSequence<Item> sequence, final Item... items)
+    throws IllegalSequenceArgumentException {
+        prepend(sequence, ArrayUtility.iterable(items));
+    }
+
+    /**
+     * Adds the specified Item to the specified {@link PrependSequence} that
+     * does not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedPrependSequence} to which the Item is prepended
+     * 
+     * @param item
+     *        prepended Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being prepended
+     *         to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item,
+                                      final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {
+        sequence.prepend(item, observers);
+    }
+
+    /**
+     * Adds all Items provided by the specified {@link Iterable} to the
+     * specified {@link PrependSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedPrependSequence} to which the Items are prepended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to prepend
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being prepended to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence,
+                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
+        for (final Item item : items)
+            sequence.prepend(item, observers);
+    }
+
+    /**
+     * Adds all Items in the specified comma separated sequence to the specified
+     * {@link PrependSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedPrependSequence} to which the Items are prepended
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to prepend
+     * 
+     * @param observers
+     *        array of {@link ValueObserver} instances attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being prepended to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence,
+                                      final ValueObserver<Item>[] observers, final Item... items)
+    throws IllegalSequenceArgumentException {
+        prepend(sequence, ArrayUtility.iterable(items), observers);
+    }
+
+    /**
      * Returns a concatenated view of the specified
      * {@link BidirectionalTraversible} instances. The behaviour of the returned
      * {@link Sequence} and its {@link Traverser} or {@link Iterator} is

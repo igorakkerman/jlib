@@ -16,12 +16,12 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendInsertRemoveArraySequence<Item>
-extends ReplaceAppendPrependRemoveArraySequence<Item>
+public class ReplaceAppendInsertPrependRemoveArraySequence<Item>
+extends ReplaceAppendPrependInsertArraySequence<Item>
 implements InsertAppendReplaceIndexSequence<Item> {
 
     /**
-     * Creates a new {@link ReplaceAppendInsertRemoveArraySequence} with the
+     * Creates a new {@link ReplaceAppendInsertPrependRemoveArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex
@@ -33,7 +33,7 @@ implements InsertAppendReplaceIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAppendInsertRemoveArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendInsertPrependRemoveArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
