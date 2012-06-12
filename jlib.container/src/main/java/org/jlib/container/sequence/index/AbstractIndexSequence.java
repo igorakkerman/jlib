@@ -45,11 +45,11 @@ implements IndexSequence<Item> {
     public AbstractIndexSequence(final int firstIndex, final int lastIndex) {
         super();
 
-        this.firstIndex = firstIndex;
-        this.lastIndex = lastIndex;
-
         if (firstIndex < lastIndex)
             throw new InvalidSequenceIndexRangeException(this, firstIndex, lastIndex);
+
+        this.firstIndex = firstIndex;
+        this.lastIndex = lastIndex;
     }
 
     @Override

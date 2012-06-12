@@ -156,14 +156,28 @@ implements Cloneable {
      * 
      * @param lastIndex
      *        integer specifying the maximum index of this {@link ArraySequence}
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code  lastIndex < firstIndex}
      */
-    @SuppressWarnings("unchecked")
-    protected ArraySequence(final int firstIndex, final int lastIndex) {
+    protected ArraySequence(final int firstIndex, final int lastIndex)
+    throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
 
-        final int size = getItemsCount();
+        createItemsArray(getItemsCount());
+    }
 
-        delegateArray = (Item[]) new Object[size];
+    /**
+     * Creates the delegate array in a typesafe way.
+     * 
+     * @param arrayLength
+     *        integer specifying the array length
+     * 
+     * @return newly created array of Items
+     */
+    @SuppressWarnings("unchecked")
+    protected Item[] createItemsArray(final int arrayLength) {
+        return (Item[]) new Object[arrayLength];
     }
 
     /**
@@ -299,26 +313,32 @@ implements Cloneable {
      * @param holeSize
      *        integer specifying the size of the hole
      * 
-     * @throws IllegalArgumentException
+     * @throws InvalidDelegateArrayCapacityException
      *         if
      *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
      */
-    protected void assertCapacityWithHole(final int expectedCapacity, final int insertIndex, final int holeSize) {
+    protected void assertCapacityWithHole(final int expectedCapacity, final int insertIndex, final int holeSize)
+    throws InvalidDelegateArrayCapacityException {
         assertExpectedCapacityValid(expectedCapacity);
 
         if (getItemsCount() + holeSize > expectedCapacity)
-            throw new IllegalArgumentException("getSize() + items.length == " + getItemsCount() + " + " + holeSize + " > " +
-                                               expectedCapacity + " == expectedCapacity");
-        @SuppressWarnings("unchecked")
-        final Item[] newDelegateArray = delegateArray.length < expectedCapacity
-            ? (Item[]) new Object[expectedCapacity]
-            : delegateArray;
+            throw new InvalidDelegateArrayCapacityException(
+                                                            this,
+                                                            expectedCapacity,
+                                                            "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
+                                                            getItemsCount(), holeSize);
 
-        System.arraycopy(delegateArray, 0, newDelegateArray, 0, insertIndex);
-        System.arraycopy(delegateArray, insertIndex, newDelegateArray, insertIndex + holeSize, getItemsCount() - insertIndex);
-        Arrays.fill(newDelegateArray, getItemsCount() + expectedCapacity, newDelegateArray.length, null);
+        final Item[] originalDelegateArray = delegateArray;
 
-        delegateArray = newDelegateArray;
+        if (delegateArray.length < expectedCapacity) {
+            delegateArray = createItemsArray(expectedCapacity);
+            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, insertIndex);
+        }
+
+        System.arraycopy(originalDelegateArray, insertIndex, delegateArray, insertIndex + holeSize, getItemsCount() -
+                                                                                                    insertIndex);
+
+        Arrays.fill(delegateArray, getItemsCount() + expectedCapacity, delegateArray.length, null);
     }
 
     /**
@@ -327,12 +347,12 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @throws IllegalArgumentException
+     * @throws InvalidDelegateArrayCapacityException
      *         if {@code expectedCapacity < 1}
      */
     protected void assertExpectedCapacityValid(final int expectedCapacity)
-    throws IllegalArgumentException {
+    throws InvalidDelegateArrayCapacityException {
         if (expectedCapacity < 1)
-            throw new IllegalArgumentException("expectedCapacity == " + expectedCapacity + " < 1");
+            throw new InvalidDelegateArrayCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
     }
 }
