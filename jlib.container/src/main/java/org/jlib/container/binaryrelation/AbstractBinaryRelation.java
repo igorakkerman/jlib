@@ -52,7 +52,7 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public boolean isContained(final Association<LeftValue, RightValue> association) {
+    public boolean isContaining(final Association<LeftValue, RightValue> association) {
         return contains(association.getLeftValue(), association.getRightValue());
     }
 }

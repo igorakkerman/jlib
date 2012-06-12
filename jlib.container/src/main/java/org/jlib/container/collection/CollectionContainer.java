@@ -53,13 +53,13 @@ extends AbstractContainer<Item> {
 
     // implemented for efficiency
     @Override
-    public boolean isContained(final Item item) {
+    public boolean isContaining(final Item item) {
         return delegateCollection.contains(item);
     }
 
     // implemented for efficiency
     @Override
-    public boolean isContained(final Collection<? extends Item> collection) {
+    public boolean isContaining(final Collection<? extends Item> collection) {
         return delegateCollection.containsAll(collection);
     }
 
