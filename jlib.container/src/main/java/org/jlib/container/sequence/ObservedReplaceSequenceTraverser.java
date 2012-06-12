@@ -49,6 +49,7 @@ extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
      */
     @Override
     public void replace(final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                        final ValueObserver<Item>... observers)
     throws NoSequenceItemToReplaceException, ValueObserverException;
 }

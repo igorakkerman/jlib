@@ -93,7 +93,8 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Comma separated sequence of the Associations to add
      */
-    public HashBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    @SuppressWarnings("unchecked")
+    public HashBinaryRelation(final Association<LeftValue, RightValue>... associations) {
         super();
 
         for (final Association<LeftValue, RightValue> association : associations)

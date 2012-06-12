@@ -125,7 +125,8 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
-    public void associate(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void associate(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException;
 
     /**
@@ -185,6 +186,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of {@code item} prevents it from being
      *         associated
      */
-    public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void assertContained(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException;
 }

@@ -144,7 +144,8 @@ implements Bijection<LeftValue, RightValue> {
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
-    public HashBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public HashBijection(final Association<LeftValue, RightValue>... associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super();
 

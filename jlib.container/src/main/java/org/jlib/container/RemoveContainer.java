@@ -127,7 +127,8 @@ extends Container<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void remove(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -178,7 +179,8 @@ extends Container<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void retain(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**

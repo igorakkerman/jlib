@@ -58,7 +58,8 @@ extends ObservedReplaceIndexSequence<Item> {
      */
     @Override
     public void replace(final int index, final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                        final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     @Override
@@ -94,7 +95,8 @@ extends ObservedReplaceIndexSequence<Item> {
     // @formatter:off
     public ObservedReplaceIndexSequenceTraverser<Item> 
                createTraverser(final int startIndex, 
-                               @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                               final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException;
     // @formatter:on
 }

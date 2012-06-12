@@ -130,7 +130,8 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean isContaining(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public boolean isContaining(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**

@@ -25,6 +25,7 @@ extends HeadRemoveSequence<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
-    public void removeFirstItem(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void removeFirstItem(final ValueObserver<Item>... observers)
     throws ValueObserverException;
 }

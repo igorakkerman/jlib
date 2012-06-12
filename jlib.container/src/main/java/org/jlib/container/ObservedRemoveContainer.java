@@ -63,7 +63,8 @@ extends RemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     public void remove(final Item item,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                       final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     ValueObserverException;
 
@@ -89,7 +90,8 @@ extends RemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     public void remove(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                       final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
@@ -162,7 +164,8 @@ extends RemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     public void remove(ValueObserver<Item>[] observers,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+                       final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
@@ -236,7 +239,8 @@ extends RemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     public void retain(ValueObserver<Item>[] observers,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+                       final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**

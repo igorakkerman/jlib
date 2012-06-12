@@ -87,7 +87,8 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAssociateRemoveBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public HashAssociateRemoveBinaryRelation(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         super(associations);
     }
@@ -141,7 +142,8 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    @SuppressWarnings("unchecked")
+    public void remove(final Association<LeftValue, RightValue>... associations) {
         BinaryRelationUtility.remove(this, associations);
     }
 
@@ -156,7 +158,8 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    @SuppressWarnings("unchecked")
+    public void retain(final Association<LeftValue, RightValue>... associations) {
         BinaryRelationUtility.retain(this, associations);
     }
 

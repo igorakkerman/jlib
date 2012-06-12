@@ -122,7 +122,8 @@ implements AssociateBijection<LeftValue, RightValue> {
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
-    public HashAssociateBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public HashAssociateBijection(final Association<LeftValue, RightValue>... associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super(associations);
     }
@@ -164,7 +165,8 @@ implements AssociateBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void associate(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void associate(final Association<LeftValue, RightValue>... associations)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
     RightValueAlreadyAssociatedException, IllegalAssociationException {
         BinaryRelationUtility.associate(this, associations);
@@ -189,7 +191,8 @@ implements AssociateBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void assertContained(final Association<LeftValue, RightValue>... associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         BinaryRelationUtility.assertContained(this, associations);
     }

@@ -58,7 +58,8 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean isContaining(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    @SuppressWarnings("unchecked")
+    public boolean isContaining(final Item... items) {
         for (final Item item : items)
             if (!isContaining(item))
                 return false;

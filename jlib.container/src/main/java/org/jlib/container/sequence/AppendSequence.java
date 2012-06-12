@@ -84,6 +84,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      */
-    public void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void append(final Item... items)
     throws IllegalSequenceArgumentException;
 }

@@ -84,6 +84,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      */
-    public void prepend(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void prepend(final Item... items)
     throws IllegalSequenceArgumentException;
 }

@@ -120,6 +120,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     public void prepend(ValueObserver<Item>[] observers,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+                        final Item... items)
     throws IllegalSequenceArgumentException;
 }

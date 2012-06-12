@@ -133,7 +133,8 @@ implements RemoveContainer<Item> {
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
-    public void add(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void add(final Item... items)
     throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
         try {
             Collections.addAll(getDelegateCollection(), items);
@@ -194,7 +195,8 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void remove(final Item... items)
     throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
         ContainerUtility.remove(this, items);
     }
@@ -218,7 +220,8 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+    public void retain(final Item... items)
     throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
         ContainerUtility.retain(this, items);
     }

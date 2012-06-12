@@ -47,7 +47,8 @@ extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @Override
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void remove(final ValueObserver<Item>... observers)
     throws NoSequenceItemToReplaceException, ValueObserverException, IllegalJlibArgumentException,
     IllegalJlibStateException;
 }

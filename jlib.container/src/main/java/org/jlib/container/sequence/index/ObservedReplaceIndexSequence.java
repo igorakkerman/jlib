@@ -56,7 +56,8 @@ extends ReplaceIndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                        final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**

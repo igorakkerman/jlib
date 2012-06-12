@@ -85,7 +85,8 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
-    public HashAssociateBinaryRelation(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public HashAssociateBinaryRelation(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         super(associations);
     }
@@ -117,7 +118,8 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void associate(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void associate(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         BinaryRelationUtility.associate(this, associations);
     }
@@ -145,7 +147,8 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     throws IllegalAssociationException {}
 
     @Override
-    public void assertContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public void assertContained(final Association<LeftValue, RightValue>... associations)
     throws IllegalAssociationException {
         BinaryRelationUtility.assertContained(this, associations);
     }

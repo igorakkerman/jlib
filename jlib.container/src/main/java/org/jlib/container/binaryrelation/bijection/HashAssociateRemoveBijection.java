@@ -126,7 +126,8 @@ implements RemoveBijection<LeftValue, RightValue> {
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
-    public HashAssociateRemoveBijection(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations)
+    @SuppressWarnings("unchecked")
+    public HashAssociateRemoveBijection(final Association<LeftValue, RightValue>... associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
         super(associations);
     }
@@ -164,7 +165,8 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    @SuppressWarnings("unchecked")
+    public void remove(final Association<LeftValue, RightValue>... associations) {
         ContainerUtility.remove(this, associations);
     }
 
@@ -179,7 +181,8 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Association<LeftValue, RightValue>... associations) {
+    @SuppressWarnings("unchecked")
+    public void retain(final Association<LeftValue, RightValue>... associations) {
         ContainerUtility.retain(this, associations);
     }
 

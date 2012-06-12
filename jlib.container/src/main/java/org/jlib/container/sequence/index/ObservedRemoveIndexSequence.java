@@ -41,7 +41,8 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      * 
      */
     public void remove(final int index,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers);
+    @SuppressWarnings("unchecked")
+                       final ValueObserver<Item>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of

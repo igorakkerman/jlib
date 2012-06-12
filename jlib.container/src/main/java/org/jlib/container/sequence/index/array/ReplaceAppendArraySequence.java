@@ -91,35 +91,40 @@ implements ObservedAppendSequence<Item> {
     }
 
     @Override
-    public final void append(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    @SuppressWarnings("unchecked")
+    public final void append(final Item... items) {
         // intentionally not using SequenceUtility for efficiency
         append(iterable(items), items.length);
     }
 
     @Override
     public final void append(final Item item,
-                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                             final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(singleton(item), 1, observers);
     }
 
     @Override
     public final void append(final Container<? extends Item> items,
-                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                             final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(items, items.getItemsCount(), observers);
     }
 
     @Override
     public final void append(final Collection<? extends Item> items,
-                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                             final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(items, items.size(), observers);
     }
 
     @Override
     public final void append(final ValueObserver<Item>[] observers,
-                             @SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    @SuppressWarnings("unchecked")
+                             final Item... items)
     throws IllegalContainerArgumentException {
         append(iterable(items), items.length, observers);
     }

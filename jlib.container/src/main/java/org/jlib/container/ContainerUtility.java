@@ -69,7 +69,8 @@ public final class ContainerUtility {
      */
     public static <Item> void remove(final ObservedRemoveContainer<Item> container,
                                      final Item item,
-                                     @SuppressWarnings({ "unchecked", /* "varargs" */}) final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+                                     final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     RuntimeException {
 
