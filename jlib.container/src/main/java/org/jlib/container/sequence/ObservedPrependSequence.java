@@ -49,8 +49,9 @@ extends PrependSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
+    @SuppressWarnings("unchecked")
     public void prepend(final Item item,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                        final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -75,8 +76,9 @@ extends PrependSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
+    @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                        final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -98,8 +100,9 @@ extends PrependSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
+    @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                        final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**

@@ -34,7 +34,8 @@ extends ReplaceTraverser<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
+    @SuppressWarnings("unchecked")
     public void replace(Item newItem,
-                        @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... removeObservers)
+                        final ValueObserver<Item>... removeObservers)
     throws NoItemToRemoveException, IllegalTraversibleStateException, ValueObserverException;
 }

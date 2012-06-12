@@ -1,5 +1,9 @@
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
+import org.jlib.container.Container;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.PrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
@@ -60,4 +64,23 @@ implements PrependSequence<Item> {
     protected ReplaceAppendPrependArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
+
+    @Override
+    public void prepend(final Item item)
+    throws IllegalSequenceArgumentException {
+
+    }
+
+    @Override
+    public void prepend(final Container<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    @Override
+    public void prepend(final Collection<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void prepend(final Item... items)
+    throws IllegalSequenceArgumentException {}
 }

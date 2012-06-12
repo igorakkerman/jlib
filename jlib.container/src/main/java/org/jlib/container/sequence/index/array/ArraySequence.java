@@ -307,7 +307,7 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @param insertIndex
+     * @param insertArrayIndex
      *        integer specifying the insert index
      * 
      * @param holeSize
@@ -317,7 +317,7 @@ implements Cloneable {
      *         if
      *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
      */
-    protected void assertCapacityWithHole(final int expectedCapacity, final int insertIndex, final int holeSize)
+    protected void assertCapacityWithHole(final int expectedCapacity, final int insertArrayIndex, final int holeSize)
     throws InvalidDelegateArrayCapacityException {
         assertExpectedCapacityValid(expectedCapacity);
 
@@ -332,11 +332,11 @@ implements Cloneable {
 
         if (delegateArray.length < expectedCapacity) {
             delegateArray = createItemsArray(expectedCapacity);
-            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, insertIndex);
+            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, insertArrayIndex);
         }
 
-        System.arraycopy(originalDelegateArray, insertIndex, delegateArray, insertIndex + holeSize, getItemsCount() -
-                                                                                                    insertIndex);
+        System.arraycopy(originalDelegateArray, insertArrayIndex, delegateArray, insertArrayIndex + holeSize, getItemsCount() -
+                                                                                                    insertArrayIndex);
 
         Arrays.fill(delegateArray, getItemsCount() + expectedCapacity, delegateArray.length, null);
     }

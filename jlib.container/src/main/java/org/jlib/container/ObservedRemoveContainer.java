@@ -115,8 +115,9 @@ extends RemoveContainer<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
+    @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                       final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
@@ -140,8 +141,9 @@ extends RemoveContainer<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
+    @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                       final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
@@ -189,8 +191,9 @@ extends RemoveContainer<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
+    @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                       final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
@@ -214,8 +217,9 @@ extends RemoveContainer<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
+    @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+                       final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**

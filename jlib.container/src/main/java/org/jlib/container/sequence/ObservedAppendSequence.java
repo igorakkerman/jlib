@@ -49,8 +49,8 @@ extends AppendSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Item item,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void append(final Item item, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -75,8 +75,8 @@ extends AppendSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Container<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -98,8 +98,8 @@ extends AppendSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(final Collection<? extends Item> items,
-                       @SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -119,8 +119,7 @@ extends AppendSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void append(ValueObserver<Item>[] observers,
     @SuppressWarnings("unchecked")
-                       final Item... items)
+    public void append(ValueObserver<Item>[] observers, final Item... items)
     throws IllegalSequenceArgumentException;
 }

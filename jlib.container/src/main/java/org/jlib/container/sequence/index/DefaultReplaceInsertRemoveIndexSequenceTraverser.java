@@ -19,17 +19,18 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
- * Default implementation of a {@link ReplaceIndexSequenceTraverser},
+ * Default implementation of a {@link RemoveIndexSequenceTraverser},
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
  * 
  * @param <Sequenze>
- *        type of the traversed {@link ReplaceIndexSequence}
+ *        type of the traversed {@link ReplaceInsertIndexSequence} and
+ *        {@link RemoveIndexSequence}
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item> & InsertIndexSequence<Item> & RemoveIndexSequence<Item>>
+public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item> & RemoveIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
 implements RemoveIndexSequenceTraverser<Item> {
 
@@ -78,6 +79,5 @@ implements RemoveIndexSequenceTraverser<Item> {
         catch (final ValueNotAccessibleException exception) {
             throw new NoSequenceItemToRemoveException(getSequence(), exception);
         }
-
     }
 }
