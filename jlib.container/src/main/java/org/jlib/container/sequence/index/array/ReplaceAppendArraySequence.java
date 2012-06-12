@@ -98,33 +98,29 @@ implements ObservedAppendSequence<Item> {
     }
 
     @Override
-    public final void append(final Item item,
     @SuppressWarnings("unchecked")
-                             final ValueObserver<Item>... observers)
+    public final void append(final Item item, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(singleton(item), 1, observers);
     }
 
     @Override
-    public final void append(final Container<? extends Item> items,
     @SuppressWarnings("unchecked")
-                             final ValueObserver<Item>... observers)
+    public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(items, items.getItemsCount(), observers);
     }
 
     @Override
-    public final void append(final Collection<? extends Item> items,
     @SuppressWarnings("unchecked")
-                             final ValueObserver<Item>... observers)
+    public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException {
         append(items, items.size(), observers);
     }
 
     @Override
-    public final void append(final ValueObserver<Item>[] observers,
     @SuppressWarnings("unchecked")
-                             final Item... items)
+    public final void append(final ValueObserver<Item>[] observers, final Item... items)
     throws IllegalContainerArgumentException {
         append(iterable(items), items.length, observers);
     }
