@@ -75,14 +75,14 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     }
 
     @Override
-    public boolean contains(final Item item)
+    public boolean isContained(final Item item)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
-        return replaceDelegateSequence.contains(item);
+        return replaceDelegateSequence.isContained(item);
     }
 
     @Override
     public Collection<Item> toCollection() {
-        return replaceDelegateSequence.toCollection();
+        return replaceDelegateSequence.toList();
     }
 
     @Override
@@ -91,21 +91,21 @@ implements ReplaceSequence<Item>, AppendSequence<Item>, InsertSequence<Item>, Re
     }
 
     @Override
-    public boolean containsAll(final Container<? extends Item> items)
+    public boolean isContained(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
-        return replaceDelegateSequence.containsAll(items);
+        return replaceDelegateSequence.isContained(items);
     }
 
     @Override
-    public boolean containsAll(final Collection<? extends Item> items)
+    public boolean isContained(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
-        return replaceDelegateSequence.containsAll(items);
+        return replaceDelegateSequence.isContained(items);
     }
 
     @Override
-    public boolean containsAll(final Item... items)
+    public boolean isContained(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
-        return replaceDelegateSequence.containsAll(items);
+        return replaceDelegateSequence.isContained(items);
     }
 
     @Override

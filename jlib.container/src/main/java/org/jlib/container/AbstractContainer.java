@@ -14,9 +14,11 @@
 
 package org.jlib.container;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.jlib.core.ObjectUtility;
 import org.jlib.core.traverser.Traverser;
@@ -43,7 +45,7 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean contains(final Item item) {
+    public boolean isContained(final Item item) {
         for (final Object containedItem : this)
             if (containedItem.equals(item))
                 return true;
@@ -51,21 +53,21 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean containsAll(final Container<? extends Item> items) {
-        return containsAll((Iterable<? extends Item>) items);
+    public boolean isContained(final Container<? extends Item> items) {
+        return containsAll(items);
     }
 
     @Override
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
+    public boolean isContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items) {
         for (final Item item : items)
-            if (!contains(item))
+            if (!isContained(item))
                 return false;
         return true;
     }
 
     @Override
-    public boolean containsAll(final Collection<? extends Item> items) {
-        return containsAll((Iterable<? extends Item>) items);
+    public boolean isContained(final Collection<? extends Item> items) {
+        return containsAll(items);
     }
 
     /**
@@ -79,7 +81,7 @@ implements Container<Item> {
      */
     private boolean containsAll(final Iterable<? extends Item> items) {
         for (final Item item : items)
-            if (!contains(item))
+            if (!isContained(item))
                 return false;
         return true;
     }
@@ -97,11 +99,32 @@ implements Container<Item> {
     }
 
     @Override
-    public Collection<Item> toCollection() {
-        final Collection<Item> collection = new LinkedList<Item>();
+    public List<Item> toList() {
+        return appendContainedItemsToList(new ArrayList<Item>(getItemsCount()));
+    }
+
+    @Override
+    public List<Item> toSequentialList() {
+        return appendContainedItemsToList(new LinkedList<Item>());
+    }
+
+    /**
+     * Appends the Items of this {@link Container} to the specified {@link List}
+     * .
+     * 
+     * @param <Lizt>
+     *        type of the used {@link List}
+     * 
+     * @param list
+     *        {@link List} to which the Items are added
+     * 
+     * @return filled {@link List} {@code list}
+     */
+    private <Lizt extends List<Item>> Lizt appendContainedItemsToList(final Lizt list) {
         for (final Item item : this)
-            collection.add(item);
-        return collection;
+            list.add(item);
+
+        return list;
     }
 
     /**

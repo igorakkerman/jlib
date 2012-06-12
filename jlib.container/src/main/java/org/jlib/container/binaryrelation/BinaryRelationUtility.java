@@ -46,7 +46,7 @@ public class BinaryRelationUtility {
     public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation,
                                                          final Association<LeftValue, RightValue> association)
     throws AssociationAlreadyContainedException, IllegalBinaryRelationArgumentException {
-        if (binaryRelation.contains(association))
+        if (binaryRelation.isContained(association))
             throw new AssociationAlreadyContainedException(binaryRelation, association.getLeftValue(),
                                                            association.getRightValue());
         binaryRelation.assertContained(association);

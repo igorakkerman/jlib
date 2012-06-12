@@ -15,6 +15,8 @@
 package org.jlib.container;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.RandomAccess;
 
 import org.jlib.core.traverser.Traversible;
 
@@ -68,7 +70,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(final Item item)
+    public boolean isContained(final Item item)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -88,7 +90,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean containsAll(final Container<? extends Item> items)
+    public boolean isContained(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -108,7 +110,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean containsAll(final Collection<? extends Item> items)
+    public boolean isContained(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -128,21 +130,35 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean containsAll(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
+    public boolean isContained(@SuppressWarnings({ "unchecked", /* "varargs" */}) final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Returns a Collection containing all of the Items of this
-     * {@link Container} in the proper order as returned by this
+     * Returns a {@link RandomAccess} {@link List} containing all of the Items
+     * of this {@link Container} in the proper order as returned by this
      * {@link Container}'s Traverser.
      * 
-     * @return {@link Collection} containing all of the Items of this
-     *         {@link Container}
+     * @return {@link RandomAccess} {@link List} containing all of the Items of
+     *         this {@link Container}
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public Collection<Item> toCollection()
+    public List<Item> toList()
+    throws IllegalContainerStateException;
+
+    /**
+     * Returns a random access {@link List} containing all of the Items of this
+     * {@link Container} in the proper order as returned by this
+     * {@link Container}'s Traverser.
+     * 
+     * @return {@link RandomAccess} {@link List} containing all of the Items of
+     *         this {@link Container}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
+     */
+    public List<Item> toSequentialList()
     throws IllegalContainerStateException;
 
     /**

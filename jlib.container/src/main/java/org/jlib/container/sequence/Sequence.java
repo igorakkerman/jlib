@@ -65,7 +65,7 @@ extends Container<Item>, BidirectionalTraversible<Item> {
      * proper sequence.
      * </p>
      * <p>
-     * The method provides the same functionality as the {@link #toCollection()}
+     * The method provides the same functionality as the {@link #toList()}
      * method and has been introduced .
      * </p>
      * 

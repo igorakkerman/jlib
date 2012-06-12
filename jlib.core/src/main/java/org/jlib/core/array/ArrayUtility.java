@@ -13,6 +13,9 @@ import org.jlib.core.traverser.BidirectionalTraversible;
  */
 public final class ArrayUtility {
 
+    /** empty array of Objects */
+    public static final Object[] EMPTY_ARRAY = new Object[0];
+
     /** no visible constructor */
     private ArrayUtility() {}
 
@@ -123,5 +126,18 @@ public final class ArrayUtility {
         final List<Object> allItems = new ArrayList<>(getFlattenedItemsCount(items));
         flatten(allItems, items);
         return (Item[]) allItems.toArray();
+    }
+
+    /**
+     * Returns an empty array of Items.
+     * 
+     * @param <Item>
+     *        type of potential items in the array
+     * 
+     * @return empty array of Items
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] getEmptyArray() {
+        return (Item[]) EMPTY_ARRAY;
     }
 }

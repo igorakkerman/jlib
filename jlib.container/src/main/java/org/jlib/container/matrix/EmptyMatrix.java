@@ -1,17 +1,13 @@
 package org.jlib.container.matrix;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.RandomAccess;
 
-import org.jlib.container.Container;
+import org.jlib.container.EmptyContainer;
 import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.core.traverser.ReplaceTraverser;
-import org.jlib.core.traverser.Traverser;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.
@@ -22,10 +18,8 @@ import org.jlib.core.traverser.Traverser;
  *        type of entries of the {@link Matrix}
  */
 public class EmptyMatrix<Entry>
+extends EmptyContainer<Entry>
 implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
-
-    /** empty array */
-    private static final Object[] EMPTY_ARRAY = new Object[0];
 
     /** sole {@link EmptyMatrix} instance */
     private static final EmptyMatrix<?> INSTANCE = new EmptyMatrix<>();
@@ -35,8 +29,9 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
      * 
      * @return sole {@link EmptyMatrix} instance
      */
-    public static EmptyMatrix<?> getInstance() {
-        return INSTANCE;
+    @SuppressWarnings("unchecked")
+    public static <Entry> EmptyMatrix<Entry> getInstance() {
+        return (EmptyMatrix<Entry>) INSTANCE;
     }
 
     /**
@@ -47,95 +42,43 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public boolean isEmpty() {
-        return true;
-    }
-
-    @Override
-    public boolean contains(final Entry item) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(final Container<? extends Entry> items) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(final Collection<? extends Entry> items) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(@SuppressWarnings("unchecked") final Entry... items) {
-        return false;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Collection<Entry> toCollection() {
-        return Collections.EMPTY_SET;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Entry[] toArray() {
-        return (Entry[]) EMPTY_ARRAY;
-    }
-
-    @Override
-    public EmptyMatrixTraverser<Entry> createMatrixTraverser() {
+    public final EmptyMatrixTraverser<Entry> createMatrixTraverser() {
         return EmptyMatrixTraverser.getInstance();
     }
 
     @Override
-    public Traverser<Entry> createTraverser() {
+    public final ReplaceTraverser<Entry> createReplaceTraverser() {
         return createMatrixTraverser();
     }
 
     @Override
-    public ReplaceTraverser<Entry> createReplaceTraverser() {
-        return createMatrixTraverser();
-    }
-
-    @Override
-    public Iterator<Entry> iterator() {
-        return Collections.emptyIterator();
-    }
-
-    @Override
-    public Sequence<IndexSequence<Entry>> getRows() {
+    public final Sequence<IndexSequence<Entry>> getRows() {
         return EmptySequence.getInstance();
     }
 
     @Override
-    public Sequence<IndexSequence<Entry>> getColumns() {
+    public final Sequence<IndexSequence<Entry>> getColumns() {
         return EmptySequence.getInstance();
     }
 
     @Override
-    public int getWidth() {
+    public final int getWidth() {
         return 0;
     }
 
     @Override
-    public int getHeight() {
+    public final int getHeight() {
         return 0;
     }
 
     @Override
-    public int getItemsCount() {
-        return 0;
-    }
-
-    @Override
-    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
+    public final MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
     }
 
     @Override
-    public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {
+    public final void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {
         // the iteration order is void in an EmptyMatrix
     }
 }
