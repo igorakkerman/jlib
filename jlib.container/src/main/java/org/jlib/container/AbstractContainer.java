@@ -45,7 +45,7 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean isContaining(final Item item) {
+    public boolean contains(final Item item) {
         for (final Object containedItem : this)
             if (containedItem.equals(item))
                 return true;
@@ -53,21 +53,21 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean isContaining(final Container<? extends Item> items) {
+    public boolean contains(final Container<? extends Item> items) {
         return containsAll(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean isContaining(final Item... items) {
+    public boolean contains(final Item... items) {
         for (final Item item : items)
-            if (!isContaining(item))
+            if (!contains(item))
                 return false;
         return true;
     }
 
     @Override
-    public boolean isContaining(final Collection<? extends Item> items) {
+    public boolean contains(final Collection<? extends Item> items) {
         return containsAll(items);
     }
 
@@ -82,7 +82,7 @@ implements Container<Item> {
      */
     private boolean containsAll(final Iterable<? extends Item> items) {
         for (final Item item : items)
-            if (!isContaining(item))
+            if (!contains(item))
                 return false;
         return true;
     }

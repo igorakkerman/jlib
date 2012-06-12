@@ -61,23 +61,23 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean isContaining(final Item item) {
+    public final boolean contains(final Item item) {
         return false;
     }
 
     @Override
-    public final boolean isContaining(final Container<? extends Item> items) {
+    public final boolean contains(final Container<? extends Item> items) {
         return false;
     }
 
     @Override
-    public final boolean isContaining(final Collection<? extends Item> items) {
+    public final boolean contains(final Collection<? extends Item> items) {
         return false;
     }
 
     @Override
     @SafeVarargs
-    public final boolean isContaining(final Item... items) {
+    public final boolean contains(final Item... items) {
         return false;
     }
 

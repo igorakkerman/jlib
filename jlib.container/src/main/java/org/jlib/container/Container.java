@@ -70,7 +70,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean isContaining(final Item item)
+    public boolean contains(final Item item)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -90,7 +90,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean isContaining(final Container<? extends Item> items)
+    public boolean contains(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -110,7 +110,7 @@ extends Traversible<Item>, Iterable<Item> {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean isContaining(final Collection<? extends Item> items)
+    public boolean contains(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
@@ -131,7 +131,7 @@ extends Traversible<Item>, Iterable<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public boolean isContaining(final Item... items)
+    public boolean contains(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
