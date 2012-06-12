@@ -1,6 +1,5 @@
 package org.jlib.container.sequence;
 
-import org.jlib.container.sequence.index.array.ReplaceAppendRemoveTailArraySequence;
 
 /**
  * {@link IllegalSequenceStateException} thrown when trying to remove the sole
@@ -20,7 +19,7 @@ extends IllegalSequenceStateException {
      * @param sequence
      *        targeted {@link Sequence}
      */
-    public SoleItemNotRemoveableException(final ReplaceAppendRemoveTailArraySequence<?> sequence) {
+    public SoleItemNotRemoveableException(final Sequence<?> sequence) {
         super(sequence);
     }
 }

@@ -42,7 +42,7 @@ import static org.jlib.core.array.ArrayUtility.traversible;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
+public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
 implements ObservedReplaceIndexSequenceTraverser<Item> {
 

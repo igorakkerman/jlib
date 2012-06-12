@@ -27,9 +27,9 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertIndexSequence<Item>>
+public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
+implements ReplaceInsertIndexSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the

@@ -21,7 +21,7 @@ extends ReplaceAppendArraySequence<Item>
 implements ObservedRemoveTailSequence<Item> {
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveTailArraySequence} with the
+     * Creates a new {@link ReplaceAppendRemoveHeadTailArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex

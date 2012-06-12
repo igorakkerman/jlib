@@ -14,10 +14,10 @@ extends Sequence<Item> {
     /**
      * Removes the last Item of this {@link RemoveTailSequence}.
      * 
-     * @throws SoleItemNotRemoveableException
-     *         if this {@link ObservedRemoveTailSequence} contains only one Item
-     *         and may not be empty
+     * @throws IllegalSequenceStateException
+     *         if some property of this {@link RemoveTailSequence} forbids its
+     *         last Item to be removed
      */
     public void removeLastItem()
-    throws SoleItemNotRemoveableException;
+    throws IllegalSequenceStateException;
 }

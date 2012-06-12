@@ -1,9 +1,18 @@
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
-import org.jlib.container.sequence.RemoveTailSequence;
+import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.IllegalContainerStateException;
+import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.sequence.InsertSequenceTraverser;
+import org.jlib.container.sequence.RemoveSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
+import org.jlib.container.sequence.index.InsertIndexSequenceTraverser;
+import org.jlib.container.sequence.index.RemoveIndexSequenceTraverser;
+import org.jlib.container.sequence.index.ReplaceInsertIndexSequence;
 import org.jlib.container.sequence.index.ReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
@@ -19,7 +28,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  */
 public class ReplaceAppendRemoveTailInsertArraySequence<Item>
 extends ReplaceAppendRemoveHeadTailArraySequence<Item>
-implements RemoveTailSequence<Item> {
+implements ReplaceInsertIndexSequence<Item> {
 
     /**
      * Creates a new {@link ReplaceAppendRemoveTailInsertArraySequence} with the
@@ -60,13 +69,85 @@ implements RemoveTailSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceRemoveTraverser() {
-        return createTraverser(getFirstIndex());
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser() {
+        return createReplaceInsertIndexSequenceTraverser(getFirstIndex());
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }
+
+    @Override
+    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser()
+    throws SequenceIndexOutOfBoundsException {
+        return createReplaceInsertIndexSequenceTraverser();
+    }
+
+    @Override
+    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return createReplaceInsertIndexSequenceTraverser();
+    }
+
+    @Override
+    public InsertSequenceTraverser<Item> createInsertSequenceTraverser() {
+        return createReplaceInsertIndexSequenceTraverser();
+    }
+
+    @Override
+    public void remove(final int index) {}
+
+    @Override
+    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser() {
+        return createReplaceInsertIndexSequenceTraverser();
+    }
+
+    @Override
+    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return null;
+    }
+
+    @Override
+    public RemoveSequenceTraverser<Item> createRemoveTraverser() {
+        return null;
+    }
+
+    @Override
+    public void remove(final Item item)
+    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void removeAll()
+    throws IllegalContainerStateException {}
+
+    @Override
+    public void remove(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void remove(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void remove(final Iterable<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void remove(final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void retain(final Container<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void retain(final Collection<? extends Item> items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+
+    @Override
+    public void retain(final Item... items)
+    throws IllegalContainerArgumentException, IllegalContainerStateException {}
 }

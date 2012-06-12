@@ -1,9 +1,10 @@
 package org.jlib.container.sequence.index.array;
 
+import org.jlib.container.sequence.RemoveHeadSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.RemoveIndexSequence;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be removed at its
@@ -15,8 +16,8 @@ import org.jlib.container.sequence.index.RemoveIndexSequence;
  * @author Igor Akkerman
  */
 public class ReplaceAppendRemoveHeadTailArraySequence<Item>
-extends ReplaceAppendArraySequence<Item>
-implements RemoveIndexSequence<Item> {
+extends ReplaceAppendRemoveTailArraySequence<Item>
+implements RemoveHeadSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of
@@ -27,7 +28,7 @@ implements RemoveIndexSequence<Item> {
 
             @Override
             public ReplaceAppendRemoveHeadTailArraySequence<Object> createSequence(final int firstIndex,
-                                                                                  final int lastIndex)
+                                                                                   final int lastIndex)
             throws InvalidSequenceIndexRangeException {
                 return new ReplaceAppendRemoveHeadTailArraySequence<Object>(firstIndex, lastIndex);
             }
@@ -64,11 +65,11 @@ implements RemoveIndexSequence<Item> {
 
     @Override
     public void removeFirstItem() {
-        setFirstIndex(getFirstIndex() + 1);
-    }
+        final int firstIndex = getFirstIndex();
 
-    @Override
-    public void removeLastItem() {
-        setLastIndex(getLastIndex() - 1);
+        if (firstIndex == getLastIndex())
+            throw new SoleItemNotRemoveableException(this);
+
+        setFirstIndex(firstIndex + 1);
     }
 }
