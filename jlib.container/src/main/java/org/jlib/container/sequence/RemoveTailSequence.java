@@ -1,7 +1,5 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.observer.ValueObserver;
-
 /**
  * {@link Sequence} allowing its tail Item to be removed.
  * 
@@ -10,21 +8,16 @@ import org.jlib.core.observer.ValueObserver;
  * 
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTailSequence<Item>
-extends RemoveTailSequence<Item> {
+public interface RemoveTailSequence<Item>
+extends Sequence<Item> {
 
     /**
-     * Removes the last Item of this {@link RemoveHeadSequence}.
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     * Removes the last Item of this {@link RemoveTailSequence}.
      * 
      * @throws SoleItemNotRemoveableException
      *         if this {@link ObservedRemoveTailSequence} contains only one Item
      *         and may not be empty
      */
-    @SuppressWarnings("unchecked")
-    public void removeLastItem(final ValueObserver<Item>... observers)
+    public void removeLastItem()
     throws SoleItemNotRemoveableException;
 }

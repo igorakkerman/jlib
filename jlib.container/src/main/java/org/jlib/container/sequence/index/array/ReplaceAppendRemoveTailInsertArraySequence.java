@@ -1,6 +1,7 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.RemoveTailSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.ReplaceInsertIndexSequenceTraverser;
@@ -16,12 +17,12 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendInsertPrependRemoveArraySequence<Item>
-extends ReplaceAppendPrependInsertArraySequence<Item>
-implements InsertAppendReplaceIndexSequence<Item> {
+public class ReplaceAppendRemoveTailInsertArraySequence<Item>
+extends ReplaceAppendRemoveHeadTailArraySequence<Item>
+implements RemoveTailSequence<Item> {
 
     /**
-     * Creates a new {@link ReplaceAppendInsertPrependRemoveArraySequence} with the
+     * Creates a new {@link ReplaceAppendRemoveTailInsertArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex
@@ -33,7 +34,7 @@ implements InsertAppendReplaceIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAppendInsertPrependRemoveArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendRemoveTailInsertArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 

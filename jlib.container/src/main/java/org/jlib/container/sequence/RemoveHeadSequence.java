@@ -8,11 +8,11 @@ package org.jlib.container.sequence;
  * 
  * @author Igor Akkerman
  */
-public interface HeadRemoveSequence<Item>
+public interface RemoveHeadSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * Removes the first Item of this {@link HeadRemoveSequence}.
+     * Removes the first Item of this {@link RemoveHeadSequence}.
      */
     public void removeFirstItem();
 }

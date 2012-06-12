@@ -11,7 +11,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public class CompleteArraySequence<Item>
-extends ReplaceAppendInsertPrependRemoveArraySequence<Item> {
+extends ReplaceAppendRemoveTailArraySequence<Item> {
 
     /**
      * Creates a new {@link CompleteArraySequence}.

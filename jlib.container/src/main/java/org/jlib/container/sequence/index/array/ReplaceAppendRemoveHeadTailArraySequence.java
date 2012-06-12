@@ -14,39 +14,39 @@ import org.jlib.container.sequence.index.RemoveIndexSequence;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendPrependInsertArraySequence<Item>
+public class ReplaceAppendRemoveHeadTailArraySequence<Item>
 extends ReplaceAppendArraySequence<Item>
 implements RemoveIndexSequence<Item> {
 
     /**
      * {@link IndexSequenceCreator} of
-     * {@link ReplaceAppendPrependInsertArraySequence} insstances
+     * {@link ReplaceAppendRemoveHeadTailArraySequence} insstances
      */
-    private static final IndexSequenceCreator<?, ? extends ReplaceAppendPrependInsertArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, ReplaceAppendPrependInsertArraySequence<Object>>() {
+    private static final IndexSequenceCreator<?, ? extends ReplaceAppendRemoveHeadTailArraySequence<?>> CREATOR =
+        new IndexSequenceCreator<Object, ReplaceAppendRemoveHeadTailArraySequence<Object>>() {
 
             @Override
-            public ReplaceAppendPrependInsertArraySequence<Object> createSequence(final int firstIndex,
+            public ReplaceAppendRemoveHeadTailArraySequence<Object> createSequence(final int firstIndex,
                                                                                   final int lastIndex)
             throws InvalidSequenceIndexRangeException {
-                return new ReplaceAppendPrependInsertArraySequence<Object>(firstIndex, lastIndex);
+                return new ReplaceAppendRemoveHeadTailArraySequence<Object>(firstIndex, lastIndex);
             }
         };
 
     /**
      * Returns the {@link IndexSequenceCreator} of
-     * {@link ReplaceAppendPrependInsertArraySequence} instances.
+     * {@link ReplaceAppendRemoveHeadTailArraySequence} instances.
      * 
      * @return {@link IndexSequenceCreator} of
-     *         {@link ReplaceAppendPrependInsertArraySequence} instances
+     *         {@link ReplaceAppendRemoveHeadTailArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ReplaceAppendPrependInsertArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, ReplaceAppendPrependInsertArraySequence<Item>>) CREATOR;
+    public static <Item> IndexSequenceCreator<Item, ReplaceAppendRemoveHeadTailArraySequence<Item>> getCreator() {
+        return (IndexSequenceCreator<Item, ReplaceAppendRemoveHeadTailArraySequence<Item>>) CREATOR;
     }
 
     /**
-     * Creates a new {@link ReplaceAppendPrependInsertArraySequence} with the
+     * Creates a new {@link ReplaceAppendRemoveHeadTailArraySequence} with the
      * specified first and last indices.
      * 
      * @param firstIndex
@@ -58,7 +58,7 @@ implements RemoveIndexSequence<Item> {
      * @throws IllegalArgumentException
      *         if {@code lastIndex > firstIndex}
      */
-    protected ReplaceAppendPrependInsertArraySequence(final int firstIndex, final int lastIndex) {
+    protected ReplaceAppendRemoveHeadTailArraySequence(final int firstIndex, final int lastIndex) {
         super(firstIndex, lastIndex);
     }
 
