@@ -3,6 +3,7 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.IllegalSequenceSizeException;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -171,19 +172,18 @@ public final class IndexSequenceUtility {
      * 
      * @return the new {@link AbstractInitializeableIndexSequence}
      * 
-     * @throws IllegalArgumentException
+     * @throws IllegalSequenceSizeException
      *         if {@code size < 1}
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
                             final int size)
-                            throws IllegalArgumentException {
+                            throws IllegalSequenceSizeException {
         // @formatter:on
 
-        // TODO: replace exception type
         if (size < 1)
-            throw new IllegalArgumentException("size == " + size + " < 1");
+            throw new IllegalSequenceSizeException(size, "size == {0} < 1");
 
         return createSequence(indexSequenceCreator, 0, size - 1);
     }
@@ -209,9 +209,6 @@ public final class IndexSequenceUtility {
      *        {@link AbstractInitializeableIndexSequence}
      * 
      * @return the newly created {@link AbstractInitializeableIndexSequence}
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code collection} is {@code null}
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
@@ -279,17 +276,14 @@ public final class IndexSequenceUtility {
      *        {@link AbstractInitializeableIndexSequence}
      * 
      * @return the newly created {@link AbstractInitializeableIndexSequence}
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0}
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
-                            final int firstIndex, final Container<Item> items)
-    throws IllegalArgumentException {
+                            final int firstIndex, final Container<Item> items) {
     // @formatter:on
-        final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + items.getItemsCount() - 1);
+        final Sequenze sequence =
+            createSequence(indexSequenceCreator, firstIndex, firstIndex + items.getItemsCount() - 1);
 
         int index = firstIndex;
 
@@ -327,15 +321,11 @@ public final class IndexSequenceUtility {
      *        {@link AbstractInitializeableIndexSequence}
      * 
      * @return newly created {@link AbstractInitializeableIndexSequence}
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code firstIndex < 0}
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
-                            final int firstIndex, final Collection<Item> items)
-    throws IllegalArgumentException {
+                            final int firstIndex, final Collection<Item> items) {
     // @formatter:on
         final Sequenze sequence = createSequence(indexSequenceCreator, firstIndex, firstIndex + items.size() - 1);
 
