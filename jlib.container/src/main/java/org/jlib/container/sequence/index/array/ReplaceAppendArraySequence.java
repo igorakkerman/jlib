@@ -49,7 +49,7 @@ implements ObservedAppendSequence<Item> {
      *         {@link ReplaceAppendArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ReplaceAppendArraySequence<Item>> getCreator() {
+    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendArraySequence<Item>> getCreator() {
         return (IndexSequenceCreator<Item, ReplaceAppendArraySequence<Item>>) CREATOR;
     }
 
