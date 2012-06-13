@@ -3,25 +3,42 @@ package org.jlib.container.sequence.index.array;
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.ObservedReplaceSequence;
+import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.core.observer.ValueObserver;
 
 /**
+ * Default implementation of a {@link ReplaceSequence} and
+ * {@link AppendSequence}. It is created empty and can be filled up with Items.
  * 
+ * @param <Item>
+ *        type of items held int he {@link FillupArraySequence}
  * 
  * @author Igor Akkerman
  */
 public class FillupArraySequence<Item>
 extends DelegatingReplaceAppendSequence<Item> {
 
-    private ObservedReplaceSequence<Item> delegateReplaceSequence;
+    /**
+     * Creates a new {@link FillupArraySequence}.
+     */
+    public FillupArraySequence() {
+        super();
 
-    private ObservedAppendSequence<Item> delegateAppendSequence;
+        setDelegateSequence(new EmptyDelegateSequence());
+    }
 
+    /**
+     * {@link EmptySequence} registering a new {@link ReplaceSequence} and
+     * {@link AppendSequence} as new delegate of the surrounding
+     * {@link FillupArraySequence}.
+     * 
+     * @author Igor Akkerman
+     */
     private class EmptyDelegateSequence
     extends EmptySequence<Item>
     implements ObservedAppendSequence<Item> {
@@ -35,75 +52,62 @@ extends DelegatingReplaceAppendSequence<Item> {
 
         @Override
         public void append(final Item item) {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), item);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    item));
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public void append(final Container<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
-                                                    (Container<Item>) items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    items));
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public void append(final Collection<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
-                                                    (Collection<Item>) items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    observers, item));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
         throws IllegalSequenceArgumentException {
-            delegateReplaceSequence =
-                IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(), items);
+            setDelegateSequence(IndexSequenceUtility.createSequence(ReplaceAppendArraySequence.<Item> getCreator(),
+                                                                    observers, items));
         }
-    }
-
-    /**
-     * Creates a new {@link FillupArraySequence}.
-     */
-    public FillupArraySequence() {
-        super();
-
-        setDelegateSequence(new EmptyDelegateSequence());
     }
 }

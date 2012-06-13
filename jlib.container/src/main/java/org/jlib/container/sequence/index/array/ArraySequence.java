@@ -20,6 +20,9 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequenceCreator;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.ValueObserver;
 
 // @formatter:off   
 /**
@@ -194,19 +197,23 @@ implements Cloneable {
         return getDelegateArrayItem(getDelegateArrayIndex(index));
     }
 
-    /**
-     * Replaces the Item stored at the specified index in this IndexSequence by
-     * the specified Item expecting the index to be valid.
-     * 
-     * @param index
-     *        integer specifying the valid index
-     * 
-     * @param item
-     *        Item to store
-     */
     @Override
     protected void replaceStoredItem(final int index, final Item item) {
         replaceDelegateArrayItem(getDelegateArrayIndex(index), item);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers) {
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate() {
+                replaceStoredItem(getDelegateArrayIndex(index), newItem);
+            }
+        },
+
+        newItem, observers); // throws SequenceIndexOutOfBoundsException
     }
 
     /**

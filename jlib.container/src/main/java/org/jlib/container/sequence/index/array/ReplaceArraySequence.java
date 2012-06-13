@@ -12,7 +12,6 @@ import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -69,30 +68,17 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     // raising visibility from protected to public
-    public void replace(final int index, final Item item)
+    public void replace(final int index, final Item newItem)
     throws SequenceIndexOutOfBoundsException {
-        super.replace(index, item);
+        super.replace(index, newItem);
     }
 
     @Override
     @SafeVarargs
+    // raising visibility from protected to public
     public final void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException {
-        ObserverUtility.operate(new Operator() {
-
-            @Override
-            public void operate()
-            throws OperatorException {
-                try {
-                    ReplaceArraySequence.this.replace(index, newItem);
-                }
-                catch (final SequenceIndexOutOfBoundsException exception) {
-                    throw new OperatorException("replace {0}: {1}", exception, index, newItem);
-                }
-            }
-        },
-
-        newItem, observers); // throws SequenceIndexOutOfBoundsException
+        super.replace(index, newItem, observers);
     }
 
     /**
