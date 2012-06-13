@@ -20,6 +20,17 @@ extends NoItemToReplaceException {
      * 
      * @param sequence
      *        traversed {@link ReplaceSequence}
+     *        {@link NoSequenceItemToReplaceException}
+     */
+    public NoSequenceItemToReplaceException(final ReplaceSequence<?> sequence) {
+        super(sequence);
+    }
+
+    /**
+     * Creates a new {@link NoSequenceItemToReplaceException}.
+     * 
+     * @param sequence
+     *        traversed {@link ReplaceSequence}
      * 
      * @param cause
      *        {@link Throwable} that caused this

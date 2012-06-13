@@ -1,5 +1,6 @@
 package org.jlib.container.sequence.index.array;
 
+import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
@@ -157,5 +158,11 @@ implements ObservedReplaceIndexSequence<Item> {
     public ObservedReplaceIndexSequenceTraverser<Item> createObservedReplaceIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(final ValueObserver<Item>... observers) {
+        return createObservedReplaceIndexSequenceTraverser();
     }
 }

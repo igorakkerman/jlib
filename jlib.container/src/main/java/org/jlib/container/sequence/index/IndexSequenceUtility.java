@@ -102,7 +102,7 @@ public final class IndexSequenceUtility {
     @SafeVarargs
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
-                  Sequenze createASequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
+                  Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
                                            final Item... items) {
     // @formatter:on
         return createSequence(indexSequenceCreator, 0, items);
