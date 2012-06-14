@@ -8,7 +8,6 @@ import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.ObservedRemoveSequence;
 import org.jlib.container.sequence.RemoveSequenceTraverser;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ValueObserver;
@@ -45,7 +44,7 @@ extends DelegatingSequence<Item> {
      */
     private class EmptyDelegateSequence
     extends EmptySequence<Item>
-    implements ObservedAppendSequence<Item>, ObservedRemoveSequence<Item> {
+    implements ObservedAppendSequence<Item> {
 
         /**
          * Creates a new {@link EmptyDelegateSequence}.

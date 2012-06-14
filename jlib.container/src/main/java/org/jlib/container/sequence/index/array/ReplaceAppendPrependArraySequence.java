@@ -14,8 +14,8 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
- * {@link ReplaceAppendArraySequence} from which Items can be removed at its
- * ends, that is, its head and tail.
+ * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,
+ * that is, its head and tail.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -48,7 +48,7 @@ implements ObservedPrependSequence<Item> {
      *         {@link ReplaceAppendPrependArraySequence} instances
      */
     @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ? extends ReplaceAppendPrependArraySequence<Item>> getCreator() {
+    public static <Item> IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>> getCreator() {
         return (IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>>) CREATOR;
     }
 
