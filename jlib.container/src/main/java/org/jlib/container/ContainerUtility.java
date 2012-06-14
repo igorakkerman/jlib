@@ -109,7 +109,7 @@ public final class ContainerUtility {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked") 
+    @SuppressWarnings("unchecked")
     public static <Item> void remove(final ObservedRemoveContainer<Item> container, final Item item,
                                      final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
@@ -314,12 +314,13 @@ public final class ContainerUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
-    @SuppressWarnings("unchecked")
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final RetainedItem... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         // necessary as we need the contains() method fot the items sequence
-        retain(container, (Collection<Item>) CollectionUtility.toSet(items));
+        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
+        // do not inline, otherwise Eclipse removes the cast from Set<RetainedItem> to Set<Item> and Javac complains
+        retain(container, retainedItemsSet);
     }
 
     /**
@@ -424,13 +425,14 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    @SuppressWarnings("unchecked")
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final ValueObserver<Item>[] observers,
                                                                 final RetainedItem... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
-        // necessary as we need the contains() method for the tems sequence
-        retain(container, (Collection<Item>) CollectionUtility.toSet(items));
+        // conversion to Set necessary as we need the contains() method for the tems sequence
+        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
+        // do not inline, otherwise Eclipse removes the cast from Set<RetainedItem> to Set<Item> and Javac complains
+        retain(container, retainedItemsSet);
     }
 
     /**
