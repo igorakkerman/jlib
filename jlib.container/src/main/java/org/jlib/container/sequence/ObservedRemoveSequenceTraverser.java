@@ -14,8 +14,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.IllegalJlibArgumentException;
-import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
@@ -39,7 +37,7 @@ extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws NoSequenceItemToReplaceException
+     * @throws NoSequenceItemToRemoveException
      *         if no Item has been returned by this
      *         {@link ObservedRemoveSequenceTraverser}
      * 
@@ -49,6 +47,5 @@ extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... observers)
-    throws NoSequenceItemToReplaceException, ValueObserverException, IllegalJlibArgumentException,
-    IllegalJlibStateException;
+    throws NoSequenceItemToRemoveException, ValueObserverException, RuntimeException;
 }

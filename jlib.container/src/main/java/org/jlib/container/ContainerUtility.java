@@ -38,6 +38,48 @@ public final class ContainerUtility {
     private ContainerUtility() {}
 
     /**
+     * Removes all Items of the specified {@link RemoveContainer}.
+     * 
+     * @param container
+     *        {@link RemoveContainer} containing the Items
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
+     */
+    public static <Item> void removeAll(final RemoveContainer<Item> container)
+    throws IllegalContainerStateException {
+        for (final Item item : container)
+            container.remove(item);
+    }
+
+    /**
+     * Removes all Items of the specified {@link RemoveContainer}.
+     * 
+     * @param container
+     *        {@link ObservedRemoveContainer} containing the Items
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
+     * 
+     * @throws IllegalContainerStateException
+     *         if an error occurs during the operation
+     */
+    @SafeVarargs
+    public static <Item> void removeAll(final ObservedRemoveContainer<Item> container,
+                                        final ValueObserver<Item>... observers)
+    throws IllegalContainerStateException {
+        for (final Item item : container)
+            container.remove(item, observers);
+    }
+
+    /**
      * Removes the specified Item of this {@link RemoveContainer}.
      * 
      * @param <Item>
@@ -67,10 +109,8 @@ public final class ContainerUtility {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public static <Item> void remove(final ObservedRemoveContainer<Item> container,
-                                     final Item item,
-    @SuppressWarnings("unchecked")
-                                     final ValueObserver<Item>... observers)
+    public static <Item> void remove(final ObservedRemoveContainer<Item> container, final Item item,
+                                     @SuppressWarnings("unchecked") final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     RuntimeException {
 

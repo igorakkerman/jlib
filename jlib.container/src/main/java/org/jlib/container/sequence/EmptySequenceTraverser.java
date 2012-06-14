@@ -2,8 +2,6 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.IllegalTraversibleStateException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 
 /**
@@ -16,7 +14,7 @@ import org.jlib.core.traverser.NoItemToRemoveException;
  */
 public class EmptySequenceTraverser<Item>
 extends AbstractSequenceTraverser<Item, EmptySequence<Item>>
-implements ObservedReplaceSequenceTraverser<Item> {
+implements ObservedReplaceSequenceTraverser<Item>, ObservedRemoveSequenceTraverser<Item> {
 
     /** sole {@link EmptySequenceTraverser} instance */
     private static final EmptySequenceTraverser<?> INSTANCE = new EmptySequenceTraverser<>();
@@ -72,7 +70,20 @@ implements ObservedReplaceSequenceTraverser<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void replace(final Item newItem, final ValueObserver<Item>... removeObservers)
-    throws NoItemToRemoveException, IllegalTraversibleStateException, ValueObserverException {
+    throws NoSequenceItemToReplaceException {
         throw new NoSequenceItemToReplaceException(getSequence());
+    }
+
+    @Override
+    public void remove()
+    throws NoItemToRemoveException {
+        throw new NoSequenceItemToRemoveException(getSequence());
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void remove(final ValueObserver<Item>... observers)
+    throws NoSequenceItemToRemoveException {
+        throw new NoSequenceItemToRemoveException(getSequence());
     }
 }

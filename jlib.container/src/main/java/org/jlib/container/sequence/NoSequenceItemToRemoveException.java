@@ -13,10 +13,22 @@ public class NoSequenceItemToRemoveException
 extends NoItemToRemoveException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 6396461191818230981L;
+    private static final long serialVersionUID = -2785280233767786496L;
 
     /** traversed {@link RemoveSequence} */
     private final RemoveSequence<?> sequence;
+
+    /**
+     * Creates a new {@link NoSequenceItemToRemoveException}.
+     * 
+     * @param sequence
+     *        traversed {@link RemoveSequence}
+     */
+    public NoSequenceItemToRemoveException(final RemoveSequence<?> sequence) {
+        super(sequence);
+
+        this.sequence = sequence;
+    }
 
     /**
      * Creates a new {@link NoSequenceItemToRemoveException}.

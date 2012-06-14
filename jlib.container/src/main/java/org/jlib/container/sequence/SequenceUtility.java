@@ -333,6 +333,28 @@ public final class SequenceUtility {
     }
 
     /**
+     * Adds the specified Item from the specified {@link RemoveSequence} that
+     * does not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link RemoveSequence} from which the Item is removed
+     * 
+     * @param item
+     *        removed Item
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being removed
+     *         from {@code sequence}
+     */
+    public static <Item> void remove(final RemoveSequence<Item> sequence, final Item item)
+    throws IllegalSequenceArgumentException {
+        sequence.remove(item);
+    }
+
+    /**
      * Returns a concatenated view of the specified
      * {@link BidirectionalTraversible} instances. The behaviour of the returned
      * {@link Sequence} and its {@link Traverser} or {@link Iterator} is
