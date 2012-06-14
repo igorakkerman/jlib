@@ -50,8 +50,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Item item,
-                        final ValueObserver<Item>... observers)
+    public void prepend(final Item item, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -77,8 +76,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Container<? extends Item> items,
-                        final ValueObserver<Item>... observers)
+    public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -101,8 +99,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Collection<? extends Item> items,
-                        final ValueObserver<Item>... observers)
+    public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException;
 
     /**
@@ -122,8 +119,7 @@ extends PrependSequence<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    public void prepend(ValueObserver<Item>[] observers,
     @SuppressWarnings("unchecked")
-                        final Item... items)
+    public void prepend(ValueObserver<Item>[] observers, final Item... items)
     throws IllegalSequenceArgumentException;
 }

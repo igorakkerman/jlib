@@ -40,5 +40,6 @@ extends ReplaceSequence<Item> {
      * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the
      *         Items of this {@link ObservedReplaceSequence} in proper order
      */
-    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers);
+    @SuppressWarnings("unchecked")
+    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(final ValueObserver<Item>... observers);
 }

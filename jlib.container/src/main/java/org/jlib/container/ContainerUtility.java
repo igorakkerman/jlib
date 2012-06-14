@@ -109,8 +109,9 @@ public final class ContainerUtility {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
+    @SuppressWarnings("unchecked") 
     public static <Item> void remove(final ObservedRemoveContainer<Item> container, final Item item,
-                                     @SuppressWarnings("unchecked") final ValueObserver<Item>... observers)
+                                     final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     RuntimeException {
 
@@ -313,11 +314,12 @@ public final class ContainerUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
+    @SuppressWarnings("unchecked")
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final RetainedItem... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         // necessary as we need the contains() method fot the items sequence
-        retain(container, CollectionUtility.toSet(items));
+        retain(container, (Collection<Item>) CollectionUtility.toSet(items));
     }
 
     /**
@@ -422,12 +424,13 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
+    @SuppressWarnings("unchecked")
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final ValueObserver<Item>[] observers,
                                                                 final RetainedItem... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
         // necessary as we need the contains() method for the tems sequence
-        retain(container, CollectionUtility.toSet(items));
+        retain(container, (Collection<Item>) CollectionUtility.toSet(items));
     }
 
     /**

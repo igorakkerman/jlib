@@ -48,6 +48,7 @@ extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @Override
-    public void replace(final Item newItem, @SuppressWarnings("unchecked") final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void replace(final Item newItem, final ValueObserver<Item>... observers)
     throws NoSequenceItemToReplaceException, ValueObserverException;
 }
