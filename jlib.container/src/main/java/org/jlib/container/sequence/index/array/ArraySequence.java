@@ -169,7 +169,7 @@ implements Cloneable {
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
 
-        createArray(getItemsCount());
+        delegateArray = createArray(getItemsCount());
     }
 
     /**
@@ -327,6 +327,7 @@ implements Cloneable {
 
         if (delegateArray.length < expectedCapacity) {
             delegateArray = createArray(expectedCapacity);
+
             System.arraycopy(originalDelegateArray, 0, delegateArray, 0, holeArrayIndex);
         }
 

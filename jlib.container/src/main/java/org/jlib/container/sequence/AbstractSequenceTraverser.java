@@ -15,7 +15,7 @@ public abstract class AbstractSequenceTraverser<Item, Sequenze extends Sequence<
 implements SequenceTraverser<Item> {
 
     /** traversed {@link Sequence} */
-    private Sequenze sequence;
+    private final Sequenze sequence;
 
     /**
      * Creates a new {@link AbstractSequenceTraverser}.
@@ -25,6 +25,8 @@ implements SequenceTraverser<Item> {
      */
     public AbstractSequenceTraverser(final Sequenze sequence) {
         super();
+
+        this.sequence = sequence;
     }
 
     /**
