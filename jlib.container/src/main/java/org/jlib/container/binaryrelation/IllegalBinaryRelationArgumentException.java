@@ -36,12 +36,12 @@ extends IllegalContainerArgumentException {
      * @param messagePattern
      *        {@link String} specifying the pattern of the error message
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public IllegalBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final String messagePattern, final Object... messageParameters) {
-        this(binaryRelation, messagePattern, (Throwable) null, messageParameters);
+                                                  final String messagePattern, final Object... messageArguments) {
+        this(binaryRelation, messagePattern, (Throwable) null, messageArguments);
     }
 
     /**
@@ -57,13 +57,13 @@ extends IllegalContainerArgumentException {
      *        {@link Throwable} that caused this
      *        {@link IllegalBinaryRelationArgumentException}
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public IllegalBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
                                                   final String messagePattern, final Throwable cause,
-                                                  final Object... messageParameters) {
-        super(binaryRelation, messagePattern, cause, messageParameters);
+                                                  final Object... messageArguments) {
+        super(binaryRelation, messagePattern, cause, messageArguments);
 
         this.binaryRelation = binaryRelation;
     }

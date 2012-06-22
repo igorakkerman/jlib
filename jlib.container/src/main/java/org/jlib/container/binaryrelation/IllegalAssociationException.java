@@ -50,13 +50,13 @@ extends IllegalBinaryRelationArgumentException {
      * @param messagePattern
      *        {@link String} specifying the pattern of the error message
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public IllegalAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue, final String messagePattern,
-                                       final Object... messageParameters) {
-        this(binaryRelation, leftValue, rightValue, messagePattern, (Throwable) null, messageParameters);
+                                       final Object... messageArguments) {
+        this(binaryRelation, leftValue, rightValue, messagePattern, (Throwable) null, messageArguments);
     }
 
     /**
@@ -78,13 +78,13 @@ extends IllegalBinaryRelationArgumentException {
      *        {@link Throwable} that caused this
      *        {@link IllegalBinaryRelationArgumentException}
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public IllegalAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue, final String messagePattern, final Throwable cause,
-                                       final Object... messageParameters) {
-        super(binaryRelation, messagePattern, cause, messageParameters, leftValue, rightValue);
+                                       final Object... messageArguments) {
+        super(binaryRelation, messagePattern, cause, messageArguments, leftValue, rightValue);
 
         this.leftValue = leftValue;
         this.rightValue = rightValue;

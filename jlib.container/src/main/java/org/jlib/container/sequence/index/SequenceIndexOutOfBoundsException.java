@@ -47,7 +47,7 @@ extends IllegalSequenceArgumentException {
      */
     public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex,
                                              final String message) {
-        super(sequence, "{1}: {3}[{2}]", invalidIndex, message);
+        super(sequence, "{0}: {2}[{1}]", invalidIndex, message);
 
         this.invalidIndex = invalidIndex;
     }
