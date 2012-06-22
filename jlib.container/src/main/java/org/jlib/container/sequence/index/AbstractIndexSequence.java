@@ -45,7 +45,7 @@ implements IndexSequence<Item> {
     public AbstractIndexSequence(final int firstIndex, final int lastIndex) {
         super();
 
-        if (firstIndex < lastIndex)
+        if (firstIndex > lastIndex)
             throw new InvalidSequenceIndexRangeException(this, firstIndex, lastIndex);
 
         this.firstIndex = firstIndex;
