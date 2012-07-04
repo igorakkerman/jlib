@@ -128,11 +128,15 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @param fromIndex
      *        integer specifying the index of the first Item
+     * 
      * @param toIndex
      *        integer specifying the index of the last Item
+     * 
      * @return IndexSequence containing the specified Items
+     * 
      * @throws IllegalArgumentException
      *         if {@code fromIndex > toIndex}
+     * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
