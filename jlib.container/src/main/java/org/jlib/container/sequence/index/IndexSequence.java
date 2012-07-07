@@ -80,8 +80,10 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @param item
      *        Item to find
+     * 
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
+     * 
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
@@ -94,8 +96,10 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @param item
      *        Item to find
+     * 
      * @return integer specifying the index of the first occurrence of
      *         {@code item}
+     * 
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
@@ -108,17 +112,21 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @param fromIndex
      *        integer specifying the index of the first Item
+     * 
      * @param toIndex
      *        integer specifying the index of the last Item
+     * 
      * @return Sequence containing the specified Items
-     * @throws IllegalArgumentException
-     *         if {@code fromIndex > toIndex}
-     * @throws InvalidSequenceIndexRangeException
+     * 
+     * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code fromIndex > toIndex}
      */
     public List<Item> createSubList(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, InvalidSequenceIndexRangeException;
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     /**
      * Returns an IndexSequence containing the Items stored in this
@@ -134,15 +142,15 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @return IndexSequence containing the specified Items
      * 
-     * @throws IllegalArgumentException
-     *         if {@code fromIndex > toIndex}
-     * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code fromIndex > toIndex}
      */
     public IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException;
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     /**
      * Returns an IndexSequenceTraverser traversing the Items of this
@@ -184,6 +192,7 @@ extends Sequence<Item>, RandomAccess {
      * 
      * @param otherIndexSequence
      *        Object to compare to this {@link IndexSequence}
+     * 
      * @return {@code true} if {@code indexSequence} is equal to this
      *         IndexSequence; {@code false} otherwise
      */

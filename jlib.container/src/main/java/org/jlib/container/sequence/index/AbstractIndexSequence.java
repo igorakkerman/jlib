@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.SequenceTraverser;
-import org.jlib.container.sequence.index.array.ArraySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
@@ -124,7 +123,7 @@ implements IndexSequence<Item> {
 
     @Override
     public final List<Item> createSubList(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         assertIndexRangeValid(this, fromIndex, toIndex);
 
         final List<Item> subList = new ArrayList<>(getItemsCount());
@@ -135,18 +134,64 @@ implements IndexSequence<Item> {
         return subList;
     }
 
+    //TODO: getSubSequence creating a new IndexSequence view of this IndexSequence
+
     @Override
-    public final IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
-    throws IllegalArgumentException, SequenceIndexOutOfBoundsException {
-        assertIndexRangeValid(this, fromIndex, toIndex);
+    public IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
 
-        final AbstractInitializeableIndexSequence<Item> sequence =
-            ArraySequence.<Item> getCreator().createSequence(fromIndex, toIndex);
-
-        for (int index = fromIndex; index <= toIndex; index ++)
-            sequence.replaceStoredItem(index, getStoredItem(index));
+        final AbstractInitializeableIndexSequence<Item> sequence = createUninitializedSequence(fromIndex, toIndex);
 
         return sequence;
+    }
+
+    /**
+     * Creates an uninitialized {@link AbstractInitializeableIndexSequence}
+     * compatible to this {@link IndexSequence}.
+     * 
+     * @param fromIndex
+     *        integer specifying the minimum index of the created subsequence
+     * 
+     * @param toIndex
+     *        integer specifying the maximum index of the created subsequence
+     * 
+     * @return newly created {@link AbstractInitializeableIndexSequence}
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code fromIndex > toIndex}
+     */
+    protected abstract AbstractInitializeableIndexSequence<Item> createUninitializedSequence(final int fromIndex,
+                                                                                             final int toIndex)
+    throws InvalidSequenceIndexRangeException;
+
+    /**
+     * Copies the Items of this {@link AbstractIndexSequence} stored at indices
+     * in the specified range to the specified target
+     * {@link AbstractInitializeableIndexSequence}.
+     * 
+     * @param fromIndex
+     *        integer spefiying the minimum index of the range
+     * 
+     * @param toIndex
+     *        integer spefiying the maximum index of the range
+     * 
+     * @param targetSequence
+     *        target {@link AbstractInitializeableIndexSequence}
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if
+     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code fromIndex > toIndex}
+     */
+    protected final void copySequenceItems(final int fromIndex, final int toIndex,
+                                           final AbstractInitializeableIndexSequence<Item> targetSequence)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+        assertIndexRangeValid(this, fromIndex, toIndex);
+
+        for (int index = fromIndex; index <= toIndex; index ++)
+            targetSequence.replaceStoredItem(index, getStoredItem(index));
     }
 
     @Override

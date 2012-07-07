@@ -1,19 +1,18 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+
 /**
- * {@link IllegalArgumentException} thrown if an invalid index range has been
- * used with an {@link IndexSequence}.
+ * {@link IllegalSequenceArgumentException} thrown if an invalid index range has
+ * been used with an {@link IndexSequence}.
  * 
  * @author Igor Akkerman
  */
 public class InvalidSequenceIndexRangeException
-extends IllegalArgumentException {
+extends IllegalSequenceArgumentException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 6780143195522448143L;
-
-    /** the {@link IndexSequence} */
-    private final IndexSequence<?> sequence;
+    private static final long serialVersionUID = -5716666495830602559L;
 
     /** from index */
     private final int fromIndex;
@@ -36,21 +35,10 @@ extends IllegalArgumentException {
      * 
      */
     public InvalidSequenceIndexRangeException(final IndexSequence<?> sequence, final int fromIndex, final int toIndex) {
-        super("fromIndex == " + fromIndex + " > " + toIndex + " == toIndex: ");
+        super(sequence, "fromIndex == " + fromIndex + " > " + toIndex + " == toIndex: ");
 
-        this.sequence = sequence;
         this.fromIndex = fromIndex;
         this.toIndex = toIndex;
-    }
-
-    /**
-     * Returns the {@link IndexSequence} of this
-     * InvalidSequenceIndexRangeException
-     * 
-     * @return the IndexSequence
-     */
-    public IndexSequence<?> getSequence() {
-        return sequence;
     }
 
     /**

@@ -374,4 +374,23 @@ public final class SequenceUtility {
     public static <Item> Sequence<Item> concatenated(final BidirectionalTraversible<Item>... traversibles) {
         return new ConcatenatedSequence<>(traversibles);
     }
+
+    /**
+     * Returns the specified sequence size if it is positive.
+     * 
+     * @param size
+     *        positive integer specifying the sequence size
+     * 
+     * @return {@code size} if {@code size >= 1}
+     * 
+     * @throws IllegalSequenceSizeException
+     *         if {@code size < 1}
+     */
+    public static int getValidatedSequenceSize(final int size)
+    throws IllegalSequenceSizeException {
+        if (size < 1)
+            throw new IllegalSequenceSizeException(size, "size == {0} < 1");
+    
+        return size;
+    }
 }

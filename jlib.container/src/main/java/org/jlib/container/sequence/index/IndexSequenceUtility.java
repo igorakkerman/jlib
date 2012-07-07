@@ -61,9 +61,14 @@ public final class IndexSequenceUtility {
      *        integer specifying the to index
      * 
      * @throws SequenceIndexOutOfBoundsException
+     *         if
+     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
+     * 
+     * @throws InvalidSequenceIndexRangeException
      *         if {@code fromIndex > toIndex}
      */
-    public static void assertIndexRangeValid(final IndexSequence<?> sequence, final int fromIndex, final int toIndex) {
+    public static void assertIndexRangeValid(final IndexSequence<?> sequence, final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         final int firstIndex = sequence.getFirstIndex();
 
         if (fromIndex < firstIndex)
