@@ -12,7 +12,7 @@ public interface AccessibleValueHolder<Value>
 extends ValueHolder<Value> {
 
     /**
-     * Returns the registered index.
+     * Returns the registered Value.
      * 
      * @return integer specifying the registered index
      */
