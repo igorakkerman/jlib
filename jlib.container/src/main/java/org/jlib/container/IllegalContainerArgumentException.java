@@ -35,13 +35,13 @@ extends IllegalJlibArgumentException {
      * @param messagePattern
      *        String specifying the pattern of the error message
      * 
-     * @param messageParameters
-     *        sequence of {@link Object} message parameters
+     * @param messageArguments
+     *        sequence of {@link Object} message arguments
      */
     public IllegalContainerArgumentException(final Container<?> container, final String messagePattern,
-                                             final Object... messageParameters) {
+                                             final Object... messageArguments) {
 
-        this(container, messagePattern, null, messageParameters);
+        this(container, messagePattern, null, messageArguments);
     }
 
     /**
@@ -57,13 +57,13 @@ extends IllegalJlibArgumentException {
      *        Throwable that caused this
      *        {@link IllegalContainerArgumentException}
      * 
-     * @param messageParameters
-     *        sequence of {@link Object} message parameters
+     * @param messageArguments
+     *        sequence of {@link Object} message arguments
      */
     public IllegalContainerArgumentException(final Container<?> container, final String messagePattern,
-                                             final Throwable cause, final Object... messageParameters) {
+                                             final Throwable cause, final Object... messageArguments) {
 
-        super(messagePattern, cause, container, messageParameters);
+        super(messagePattern, cause, container, messageArguments);
 
         this.container = container;
     }

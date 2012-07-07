@@ -50,13 +50,13 @@ extends IllegalJlibStateException {
      * @param messagePattern
      *        {@link String} specifying the error message pattern
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
-     *        the message parameters
+     *        the message arguments
      */
     public IllegalTraverserStateException(final Traversible<?> traversible, final String messagePattern,
-                                          final Object... messageParameters) {
-        this(traversible, messagePattern, (Throwable) null, messageParameters);
+                                          final Object... messageArguments) {
+        this(traversible, messagePattern, (Throwable) null, messageArguments);
     }
 
     /**
@@ -72,13 +72,13 @@ extends IllegalJlibStateException {
      *        {@link Throwable} that caused this
      *        {@link IllegalThreadStateException}
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
-     *        the message parameters
+     *        the message arguments
      */
     public IllegalTraverserStateException(final Traversible<?> traversible, final String messagePattern,
-                                          final Throwable cause, final Object... messageParameters) {
-        super(messagePattern, cause, traversible, messageParameters);
+                                          final Throwable cause, final Object... messageArguments) {
+        super(messagePattern, cause, traversible, messageArguments);
 
         this.traversible = traversible;
     }

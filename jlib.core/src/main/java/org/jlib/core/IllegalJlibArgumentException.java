@@ -2,6 +2,8 @@ package org.jlib.core;
 
 import java.text.MessageFormat;
 
+import org.jlib.core.array.ArrayUtility;
+
 /**
  * {@link IllegalArgumentException} using a formatted message.
  * 
@@ -57,6 +59,6 @@ extends IllegalArgumentException {
      */
     public IllegalJlibArgumentException(final String messagePattern, final Throwable cause,
                                         final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, messageArguments), cause);
+        super(MessageFormat.format(messagePattern, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

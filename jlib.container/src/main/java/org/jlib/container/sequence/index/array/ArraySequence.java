@@ -24,6 +24,8 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
 
+import static org.jlib.core.array.ArrayUtility.createArray;
+
 // @formatter:off   
 /**
  * <p>
@@ -167,20 +169,7 @@ implements Cloneable {
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
 
-        createItemsArray(getItemsCount());
-    }
-
-    /**
-     * Creates the delegate array in a typesafe way.
-     * 
-     * @param arrayLength
-     *        integer specifying the array length
-     * 
-     * @return newly created array of Items
-     */
-    @SuppressWarnings("unchecked")
-    protected Item[] createItemsArray(final int arrayLength) {
-        return (Item[]) new Object[arrayLength];
+        delegateArray = createArray(getItemsCount());
     }
 
     /**
@@ -337,7 +326,8 @@ implements Cloneable {
         final Item[] originalDelegateArray = delegateArray;
 
         if (delegateArray.length < expectedCapacity) {
-            delegateArray = createItemsArray(expectedCapacity);
+            delegateArray = createArray(expectedCapacity);
+
             System.arraycopy(originalDelegateArray, 0, delegateArray, 0, holeArrayIndex);
         }
 

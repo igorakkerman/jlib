@@ -41,13 +41,13 @@ extends IllegalTraverserStateException {
      * @param messagePattern
      *        {@link String} specifying the error message pattern
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
-     *        the message parameters
+     *        the message arguments
      */
     public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern,
-                               final Object... messageParameters) {
-        super(traversible, messagePattern, messageParameters);
+                               final Object... messageArguments) {
+        super(traversible, messagePattern, messageArguments);
     }
 
     /**
@@ -62,12 +62,12 @@ extends IllegalTraverserStateException {
      * @param cause
      *        {@link Throwable} that caused this {@link NoPreviousItemException}
      * 
-     * @param messageParameters
+     * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
-     *        the message parameters
+     *        the message arguments
      */
     public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern, final Throwable cause,
-                               final Object... messageParameters) {
-        super(traversible, messagePattern, cause, messageParameters);
+                               final Object... messageArguments) {
+        super(traversible, messagePattern, cause, messageArguments);
     }
 }
