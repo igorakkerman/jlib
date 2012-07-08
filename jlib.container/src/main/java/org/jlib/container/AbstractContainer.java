@@ -150,9 +150,8 @@ implements Container<Item> {
      *         {@code false} otherwise
      */
     @Override
-    // TODO: use Apache Commons Lang
     public boolean equals(final Object otherObject) {
-        if (otherObject == null || !getClass().equals(otherObject.getClass()))
+        if (!getClass().equals(otherObject.getClass()))
             return false;
 
         final Container<?> otherContainer = (Container<?>) otherObject;
