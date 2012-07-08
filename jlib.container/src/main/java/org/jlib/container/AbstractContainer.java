@@ -150,8 +150,8 @@ implements Container<Item> {
      *         {@code false} otherwise
      */
     @Override
-    public boolean equals(final Object otherObject) {
-        if (!getClass().equals(otherObject.getClass()))
+    public boolean equals(/* @Nullable */final Object otherObject) {
+        if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
 
         final Container<?> otherContainer = (Container<?>) otherObject;
