@@ -8,7 +8,6 @@ import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.RemoveSequenceTraverser;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -103,11 +102,6 @@ extends DelegatingSequence<Item> {
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
         throws IllegalSequenceArgumentException {
             setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), observers, items));
-        }
-
-        @Override
-        public RemoveSequenceTraverser<Item> createRemoveTraverser() {
-            return null;
         }
     }
 }
