@@ -32,6 +32,7 @@ import org.jlib.core.traverser.TraversibleIterator;
  * 
  * @param <Item>
  *        type of items held in the {@link Container}
+ * 
  * @author Igor Akkerman
  */
 public abstract class AbstractContainer<Item>
