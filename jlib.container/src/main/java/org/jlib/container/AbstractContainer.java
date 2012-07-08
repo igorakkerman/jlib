@@ -89,9 +89,9 @@ implements Container<Item> {
 
     @Override
     public Item[] toArray() {
-        final int size = getItemsCount();
+        final int itemsCount = getItemsCount();
         @SuppressWarnings("unchecked")
-        final Item[] targetArray = (Item[]) new Object[size];
+        final Item[] targetArray = (Item[]) new Object[itemsCount];
         int index = 0;
         for (final Item item : this)
             targetArray[index ++] = item;
@@ -163,12 +163,13 @@ implements Container<Item> {
         final Traverser<?> otherTraverser = otherContainer.createTraverser();
 
         do {
-            final boolean thisHasNext = thisTraverser.isNextItemAccessible();
+            final boolean nextItemAccessible = thisTraverser.isNextItemAccessible();
 
-            if (thisHasNext != otherTraverser.isNextItemAccessible())
+            // do not rely on equal items count
+            if (nextItemAccessible != otherTraverser.isNextItemAccessible())
                 return false;
 
-            if (!thisHasNext)
+            if (!nextItemAccessible)
                 return true;
 
             if (!ObjectUtility.equal(thisTraverser.getNextItem(), otherTraverser.getNextItem()))
