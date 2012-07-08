@@ -30,6 +30,14 @@ public interface ReplaceAppendInsertRemoveIndexSequence<Item>
 extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
 
     /**
+     * @return {@link ReplaceAppendInsertRemoveIndexSequence} view of the
+     *         specified subsequence
+     */
+    @Override
+    public ReplaceAppendInsertRemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
      * Returns a {@link ReplaceAppendInsertRemoveIndexSequenceTraverser}
      * traversing the Items of this IndexSequence in proper sequence. Initially,
      * the Traverser points to the head of this IndexSequence, that is, the Item

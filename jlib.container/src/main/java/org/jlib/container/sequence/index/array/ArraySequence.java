@@ -23,6 +23,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
@@ -548,5 +549,15 @@ implements Cloneable {
     throws InvalidDelegateArrayCapacityException {
         if (expectedCapacity < 1)
             throw new InvalidDelegateArrayCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
+    }
+
+    @Override
+    public ArraySequence<Item> createSubSequence(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+        final ArraySequence<Item> subSequence = new ArraySequence<>(fromIndex, toIndex);
+
+        copySequenceItems(fromIndex, toIndex, subSequence);
+
+        return subSequence;
     }
 }

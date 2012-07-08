@@ -33,6 +33,38 @@ public interface InsertIndexSequence<Item>
 extends InsertSequence<Item>, IndexSequence<Item> {
 
     /**
+     * Inserts the specified Item at the specified index in this
+     * {@link IndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param newItem
+     *        Item to insert
+     */
+    public void insert(int index, Item newItem);
+
+    /**
+     * Inserts all Items provided by the specified {@link Iterable} in the order
+     * as provided by its {@link Iterator} at the specified index of this
+     * {@link InsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param newItems
+     *        {@link Iterable} holding the Items to insert
+     */
+    public void insert(int index, Container<? extends Item> newItems);
+
+    /**
+     * @return {@link InsertIndexSequence} view of the specified subsequence
+     */
+    @Override
+    public InsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
      * Returns an {@link InsertIndexSequenceTraverser} traversing the Items of
      * this {@link InsertIndexSequence} in proper sequence. That is, the Item
      * returned by the first call to
@@ -69,29 +101,4 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      */
     public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * Inserts the specified Item at the specified index in this
-     * {@link IndexSequence}.
-     * 
-     * @param index
-     *        integer specifying the index
-     * 
-     * @param newItem
-     *        Item to insert
-     */
-    public void insert(int index, Item newItem);
-
-    /**
-     * Inserts all Items provided by the specified {@link Iterable} in the order
-     * as provided by its {@link Iterator} at the specified index of this
-     * {@link InsertIndexSequence}.
-     * 
-     * @param index
-     *        integer specifying the index
-     * 
-     * @param newItems
-     *        {@link Iterable} holding the Items to insert
-     */
-    public void insert(int index, Container<? extends Item> newItems);
 }

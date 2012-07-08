@@ -48,7 +48,7 @@ extends Container<Item>, BidirectionalTraversible<Item> {
      * </p>
      * <p>
      * Two Items {@code item1} and {@code item2} are equal if and only if both
-     * are {@code null} or both are equal by the {@link #equals(Object)} method.
+     * are equal by the {@link #equals(Object)} method.
      * </p>
      * 
      * @param otherObject
@@ -71,5 +71,6 @@ extends Container<Item>, BidirectionalTraversible<Item> {
      * 
      * @return {@link List} containing the Items stored in this Sequence
      */
+    @Override
     public List<Item> toList();
 }

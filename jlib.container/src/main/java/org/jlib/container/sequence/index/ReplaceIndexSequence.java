@@ -55,6 +55,13 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
+     * @return {@link ReplaceIndexSequence} view of the specified subsequence
+     */
+    @Override
+    public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
      * traversing the Items of this {@link ReplaceIndexSequence} in proper
      * order. That is, the Item returned by the first call to

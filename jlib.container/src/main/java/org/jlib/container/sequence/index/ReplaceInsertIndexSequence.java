@@ -29,6 +29,13 @@ public interface ReplaceInsertIndexSequence<Item>
 extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
 
     /**
+     * @return {@link ReplaceInsertIndexSequence} view of the specified Items
+     */
+    @Override
+    public ReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
      * traversing the Items of this {@link ReplaceInsertIndexSequence} in proper
      * sequence. That is, the Item returned by the first call to

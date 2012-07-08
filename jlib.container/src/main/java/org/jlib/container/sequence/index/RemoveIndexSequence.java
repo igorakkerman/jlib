@@ -37,6 +37,13 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
     public void remove(final int index);
 
     /**
+     * @return {@link RemoveIndexSequence} view of the specified subsequence
+     */
+    @Override
+    public RemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
      * this Sequence in proper sequence. Initially, the
      * {@link RemoveIndexSequenceTraverser} points to the beginning of this

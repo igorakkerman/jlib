@@ -14,7 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import java.util.List;
 import java.util.RandomAccess;
 
 import org.jlib.container.sequence.Sequence;
@@ -107,31 +106,9 @@ extends Sequence<Item>, RandomAccess {
     throws NoSuchSequenceItemException;
 
     /**
-     * Returns a {@link List} containing the Items stored in this
-     * {@link IndexSequence} in the specified index range in proper sequence.
-     * 
-     * @param fromIndex
-     *        integer specifying the index of the first Item
-     * 
-     * @param toIndex
-     *        integer specifying the index of the last Item
-     * 
-     * @return Sequence containing the specified Items
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
-     * 
-     * @throws InvalidSequenceIndexRangeException
-     *         if {@code fromIndex > toIndex}
-     */
-    public List<Item> createSubList(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
-
-    /**
-     * Returns an IndexSequence containing the Items stored in this
-     * IndexSequence in the specified index range. The Items in the result
-     * IndexSequence will have the same index as they had in this
+     * Returns an {@link IndexSequence} view of the Items stored in this
+     * {@link IndexSequence} in the specified index range. The Items in the
+     * result {@link IndexSequence} will have the same index as they had in this
      * {@link IndexSequence}.
      * 
      * @param fromIndex
@@ -140,7 +117,7 @@ extends Sequence<Item>, RandomAccess {
      * @param toIndex
      *        integer specifying the index of the last Item
      * 
-     * @return IndexSequence containing the specified Items
+     * @return {@link IndexSequence} view of the specified subsequence
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
@@ -149,7 +126,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code fromIndex > toIndex}
      */
-    public IndexSequence<Item> createSubSequence(final int fromIndex, final int toIndex)
+    public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     /**
