@@ -19,13 +19,7 @@ import java.util.Collection;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * <p>
  * Container that supports addition and removal of Items.
- * </p>
- * <p>
- * Note: In jlib, {@code null} is not a value. Hence, {@link Container
- * Containers} may <em>not</em> contain null items
- * </p>
  * 
  * @param <Item>
  *        type of items held in the {@link Container}
