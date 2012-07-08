@@ -54,7 +54,7 @@ implements Container<Item> {
 
     @Override
     public boolean contains(final Container<? extends Item> items) {
-        return containsAll(items);
+        return contains((Iterable<? extends Item>) items);
     }
 
     @Override
@@ -68,7 +68,7 @@ implements Container<Item> {
 
     @Override
     public boolean contains(final Collection<? extends Item> items) {
-        return containsAll(items);
+        return contains((Iterable<? extends Item>) items);
     }
 
     /**
@@ -80,7 +80,7 @@ implements Container<Item> {
      * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
-    private boolean containsAll(final Iterable<? extends Item> items) {
+    private boolean contains(final Iterable<? extends Item> items) {
         for (final Item item : items)
             if (!contains(item))
                 return false;
@@ -144,6 +144,7 @@ implements Container<Item> {
      * 
      * @param otherObject
      *        Object to compare to this Container
+     * 
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
@@ -152,16 +153,24 @@ implements Container<Item> {
     public boolean equals(final Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
+
         final Container<?> otherContainer = (Container<?>) otherObject;
+
+        if (getItemsCount() != otherContainer.getItemsCount())
+            return false;
+
         final Traverser<?> thisTraverser = createTraverser();
         final Traverser<?> otherTraverser = otherContainer.createTraverser();
+
         do {
-            // TODO: use size() to verify that both Containers have the same number of items and rely on that fact
             final boolean thisHasNext = thisTraverser.isNextItemAccessible();
+
             if (thisHasNext != otherTraverser.isNextItemAccessible())
                 return false;
+
             if (!thisHasNext)
                 return true;
+
             if (!ObjectUtility.equal(thisTraverser.getNextItem(), otherTraverser.getNextItem()))
                 return false;
         }
