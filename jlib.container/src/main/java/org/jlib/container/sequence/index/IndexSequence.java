@@ -162,17 +162,22 @@ extends Sequence<Item>, RandomAccess {
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Verifies whether the specified Object is an IndexSequence with the same
-     * minimum and maximum indices and contains equal Items at the same indices.
-     * Two Items {@code item1} and {@code item2} are equal if and only if both
-     * are {@code null} or both are equal by the {@code equals()} method.
+     * {@inheritDoc}
      * 
-     * @param otherIndexSequence
+     * Additionally, for an {@link IndexSequence}, the following conditions must
+     * be satisfied:
+     * 
+     * <ul>
+     * <li>this {@link IndexSequence} and the specified {@link IndexSequence}
+     * have the same minimum and maximum indices</li>
+     * </ul>
+     * 
+     * @param otherObject
      *        Object to compare to this {@link IndexSequence}
      * 
-     * @return {@code true} if {@code indexSequence} is equal to this
-     *         IndexSequence; {@code false} otherwise
+     * @return {@code true} if {@code otherObject} is equal to this
+     *         {@link IndexSequence}; {@code false} otherwise
      */
     @Override
-    public boolean equals(final Object otherIndexSequence);
+    public boolean equals(final Object otherObject);
 }

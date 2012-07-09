@@ -1,5 +1,6 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 import org.jlib.container.sequence.SequenceTraverser;
 
@@ -160,12 +161,11 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public boolean equals(/* @Nullable */final Object otherObject) {
-        if (!super.equals(otherObject))
+    protected boolean hasMatchingProperties(/* @Nullable */final Container<Item> otherContainer) {
+        if (!super.hasMatchingProperties(otherContainer))
             return false;
 
-        @SuppressWarnings("unchecked")
-        final IndexSequence<Item> otherSequence = (IndexSequence<Item>) otherObject;
+        final IndexSequence<Item> otherSequence = (IndexSequence<Item>) otherContainer;
 
         return otherSequence.getFirstIndex() == firstIndex && otherSequence.getLastIndex() == lastIndex;
     }

@@ -129,33 +129,34 @@ implements Container<Item> {
         return list;
     }
 
-    /**
-     * Verifies whether this Container is equal to the specified Object. The
-     * implementation in this class defines the Objects equal if all of the
-     * following conditions are satisfied:
-     * <ul>
-     * <lem>the specified {@link Object} is not {@code null}</lem> <lem>this
-     * Object and the specified Object are instances of the same class</lem>
-     * <lem>if the Traverser returned by the {@link #iterator()} method of this
-     * Container and the specified Container (it is a Container by the previous
-     * condition) return equal Items in the same order; two Items are said to be
-     * equal if they are both {@code null} or the comparison using the
-     * {@link Object#equals(Object) equals} method returns {@code true}</lem>
-     * </ul>
-     * 
-     * @param otherObject
-     *        Object to compare to this Container
-     * 
-     * @return {@code true} if all of the conditions stated above are satisfied;
-     *         {@code false} otherwise
-     */
     @Override
-    public boolean equals(/* @Nullable */final Object otherObject) {
+    public final boolean equals(/* @Nullable */final Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
 
-        final Container<?> otherContainer = (Container<?>) otherObject;
+        @SuppressWarnings("unchecked")
+        final Container<Item> otherContainer = (Container<Item>) otherObject;
 
+        return hasMatchingProperties(otherContainer) && containsEqualItems(otherContainer);
+    }
+
+    /**
+     * Verifies whether additional properties of this {@link Container} match
+     * those of the specified {@link Container} providing a prerequisite for
+     * equality.
+     * 
+     * @param otherContainer
+     *        {@link Container} compared to this {@link Container}
+     * 
+     * @return {@code true} if the additional properties are prerequisites for
+     *         equality; {@code false} otherwise
+     */
+    protected boolean hasMatchingProperties(final Container<Item> otherContainer) {
+        return true;
+    }
+
+    @Override
+    public boolean containsEqualItems(final Container<Item> otherContainer) {
         if (getItemsCount() != otherContainer.getItemsCount())
             return false;
 

@@ -43,24 +43,6 @@ extends Container<Item>, BidirectionalTraversible<Item> {
 
     /**
      * <p>
-     * Verifies whether the specified Object is a Sequence containing equal
-     * Items as this Sequence.
-     * </p>
-     * <p>
-     * Two Items {@code item1} and {@code item2} are equal if and only if both
-     * are equal by the {@link #equals(Object)} method.
-     * </p>
-     * 
-     * @param otherObject
-     *        Object to compare to this Sequence
-     * @return {@code true} if {@code otherObject} is equal to this Sequence;
-     *         {@code false} otherwise
-     */
-    @Override
-    public boolean equals(final Object otherObject);
-
-    /**
-     * <p>
      * Returns a {@link List} containing all Items stored in this Sequence in
      * proper sequence.
      * </p>

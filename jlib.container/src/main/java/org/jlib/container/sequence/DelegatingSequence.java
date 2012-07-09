@@ -158,6 +158,11 @@ implements ObservedReplaceSequence<Item>, ObservedAppendSequence<Item>, Observed
     }
 
     @Override
+    public boolean containsEqualItems(final Container<Item> otherContainer) {
+        return delegateRemoveSequence.containsEqualItems(otherContainer);
+    }
+
+    @Override
     public boolean contains(final Item item)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         return delegateReplaceSequence.contains(item);

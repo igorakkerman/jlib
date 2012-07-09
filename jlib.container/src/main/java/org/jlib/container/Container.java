@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.RandomAccess;
 
+import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.Traversible;
 
 /**
@@ -173,4 +174,40 @@ extends Traversible<Item>, Iterable<Item> {
      */
     public Item[] toArray()
     throws IllegalContainerStateException;
+
+    /**
+     * Verifies whether this {@link Container} is equal to the specified
+     * {@link Object}. This is true if all of the following conditions are
+     * satisfied:
+     * 
+     * <ul>
+     * <li>this {@link Container} and the specified {@link Object} are instances
+     * of the same class</li>
+     * <li>this {@link Container} and the specified {@link Object} contain equal
+     * Items, as verified by {@link #containsEqualItems(Container)}</li>
+     * </ul>
+     * 
+     * @param otherObject
+     *        Object to compare to this Container
+     * 
+     * @return {@code true} if all of the conditions stated above are satisfied;
+     *         {@code false} otherwise
+     */
+    @Override
+    public boolean equals(/* @Nullable */Object otherObject);
+
+    /**
+     * Verifies whether the {@link Traverser} returned by the
+     * {@link #createTraverser()} method of this {@link Container} and the
+     * specified {@link Container} return equal Items in the same order; two
+     * Items are said to be equal if the comparison using the
+     * {@link Object#equals(Object)} method returns {@code true}
+     * 
+     * @param otherContainer
+     *        compared {@link Container}
+     * 
+     * @return {@code true} if this {@link Container} and {@code otherContainer}
+     *         contain equal Items; {@code false} otherwise
+     */
+    public boolean containsEqualItems(final Container<Item> otherContainer);
 }
