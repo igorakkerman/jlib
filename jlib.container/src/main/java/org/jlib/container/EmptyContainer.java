@@ -102,4 +102,9 @@ implements Container<Item> {
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity
+
+    @Override
+    public boolean containsEqualItems(final Container<Item> otherContainer) {
+        return otherContainer.isEmpty();
+    }
 }
