@@ -30,7 +30,7 @@ import org.jlib.core.valueholder.ValueNotAccessibleException;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item> & RemoveIndexSequence<Item>>
+public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertRemoveIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
 implements RemoveIndexSequenceTraverser<Item> {
 
