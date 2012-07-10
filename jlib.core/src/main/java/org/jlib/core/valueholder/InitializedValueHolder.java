@@ -1,7 +1,7 @@
 package org.jlib.core.valueholder;
 
 /**
- * {@link ModifiableValueHolder} actually holding a Value.
+ * {@link AccessibleValueHolder} initialized by the constructor.
  * 
  * @param <Value>
  *        type of the value
@@ -9,7 +9,7 @@ package org.jlib.core.valueholder;
  * @author Igor Akkerman
  */
 public class InitializedValueHolder<Value>
-implements ModifiableValueHolder<Value>, AccessibleValueHolder<Value> {
+implements AccessibleValueHolder<Value> {
 
     /** registered Value */
     private Value value;
@@ -31,8 +31,13 @@ implements ModifiableValueHolder<Value>, AccessibleValueHolder<Value> {
         return value;
     }
 
-    @Override
-    public void set(final Value value) {
+    /**
+     * Registers the new Value.
+     * 
+     * @param value
+     *        new Value
+     */
+    protected void set(final Value value) {
         this.value = value;
     }
 

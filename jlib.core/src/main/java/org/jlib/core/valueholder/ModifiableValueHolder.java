@@ -14,8 +14,8 @@ extends ValueHolder<Value> {
     /**
      * Registers the new Value.
      * 
-     * @param newValue
+     * @param value
      *        new Value
      */
-    public void set(final Value newValue);
+    public void set(final Value value);
 }
