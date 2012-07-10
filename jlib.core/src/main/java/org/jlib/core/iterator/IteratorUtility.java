@@ -14,10 +14,10 @@ public final class IteratorUtility {
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
-     * {@link Iterable#iterator()} method of the two specified {@link Iterable}
-     * instances traverse the same number of Items and all traversed Items are
-     * equal. Two Items {@code item1} and {@code item2} are called equal if
-     * {@code item1.equals(item2)}.
+     * {@link Iterable#iterator()} methods of the two specified {@link Iterable}
+     * instances traverse the same number of Items in the same order and all
+     * traversed Items are equal. Two Items {@code item1} and {@code item2} are
+     * called equal if {@code item1.equals(item2)}.
      * 
      * @param <Item>
      *        type of the items traversed by {@code iterable1} and

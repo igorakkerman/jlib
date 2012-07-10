@@ -15,10 +15,10 @@ public final class TraverserUtility {
 
     /**
      * Verifies whether the {@link Traverser} instances created by the
-     * {@link Traversible#createTraverser()} method of the two specified
-     * {@link Traversible} instances traverse the same number of Items and all
-     * traversed Items are equal. Two Items {@code item1} and {@code item2} are
-     * called equal if {@code item1.equals(item2)}.
+     * {@link Traversible#createTraverser()} methods of the two specified
+     * {@link Traversible} instances traverse the same number of Items in the
+     * same order and all traversed Items are equal. Two Items {@code item1} and
+     * {@code item2} are called equal if {@code item1.equals(item2)}.
      * 
      * @param <Item>
      *        type of the items traversed by {@code traversible1} and
