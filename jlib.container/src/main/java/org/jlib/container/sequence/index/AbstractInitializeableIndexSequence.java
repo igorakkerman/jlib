@@ -6,6 +6,8 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.IllegalSequenceSizeException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
+import org.jlib.container.sequence.index.array.InvalidStoredItemsCountException;
+import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -20,7 +22,8 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 extends AbstractIndexSequence<Item> {
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence}.
+     * Creates a new uninitialized {@link AbstractInitializeableIndexSequence}
+     * with the specified first and last indices.
      * 
      * @param firstIndex
      *        integer specifying the initial minimum index of this
@@ -31,7 +34,7 @@ extends AbstractIndexSequence<Item> {
      *        {@link AbstractInitializeableIndexSequence}
      * 
      * @throws InvalidSequenceIndexRangeException
-     *         if {@code  lastIndex < firstIndex}
+     *         if {@code lastIndex < firstIndex}
      */
     protected AbstractInitializeableIndexSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
@@ -72,10 +75,7 @@ extends AbstractIndexSequence<Item> {
     protected AbstractInitializeableIndexSequence(final int firstIndex, final Item... items) {
         this(firstIndex, firstIndex + items.length - 1);
 
-        final int lastIndex = getLastIndex();
-
-        for (int index = firstIndex, arrayItemIndex = 0; index <= lastIndex; index ++, arrayItemIndex ++)
-            replace(index, items[arrayItemIndex]);
+        storeItems(items);
     }
 
     /**
@@ -105,9 +105,6 @@ extends AbstractIndexSequence<Item> {
      *        Container of which the Items are copied to the
      *        {@link AbstractInitializeableIndexSequence}
      */
-    protected AbstractInitializeableIndexSequence(final Container<? extends Item> items) {
-        this(0, items);
-    }
 
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} containing the
@@ -120,10 +117,6 @@ extends AbstractIndexSequence<Item> {
      *        Collection of which the Items are copied to the
      *        {@link AbstractInitializeableIndexSequence}
      */
-
-    protected AbstractInitializeableIndexSequence(final Collection<? extends Item> items) {
-        this(0, items);
-    }
 
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} containing the
@@ -143,15 +136,6 @@ extends AbstractIndexSequence<Item> {
      *        Container of which the Items are copied to the
      *        {@link AbstractInitializeableIndexSequence}
      */
-
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final Container<? extends Item> items) {
-        this(firstIndex, firstIndex + items.getItemsCount() - 1);
-
-        int index = firstIndex;
-
-        for (final Item item : items)
-            replaceStoredItem(index ++, item);
-    }
 
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} containing the
@@ -172,214 +156,73 @@ extends AbstractIndexSequence<Item> {
      *        {@link AbstractInitializeableIndexSequence}
      */
 
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final Collection<? extends Item> items) {
-        this(firstIndex, firstIndex + items.size() - 1);
+    /**
+     * Stores the specified Items in this
+     * {@link AbstractInitializeableIndexSequence}.
+     * 
+     * @param items
+     *        {@link Container} of Items to store
+     * 
+     * @throws InvalidStoredItemsCountException
+     *         if {@code items.getItemsCount() != getItemsCount()}
+     */
+    protected void storeItems(final Container<Item> items) {
+        if (items.getItemsCount() != getItemsCount())
+            throw new InvalidStoredItemsCountException(this, items.getItemsCount(),
+                                                       "{0}: items.getItemsCount() == {1} != {2} == getItemsCount()",
+                                                       getItemsCount());
+        storeItems(items);
+    }
 
-        int index = firstIndex;
+    /**
+     * Stores the specified Items in this
+     * {@link AbstractInitializeableIndexSequence}.
+     * 
+     * @param items
+     *        {@link Collection} of Items to store
+     * 
+     * @throws InvalidStoredItemsCountException
+     *         if {@code items.size() != getItemsCount()}
+     */
+    protected void storeItems(final Collection<Item> items) {
+        if (items.size() != getItemsCount())
+            throw new InvalidStoredItemsCountException(this, items.size(),
+                                                       "{0}: items.size() == {1} != {2} == getItemsCount()",
+                                                       getItemsCount());
+        storeItems(items);
+    }
+
+    /**
+     * Stores the specified Items in this
+     * {@link AbstractInitializeableIndexSequence}.
+     * 
+     * @param items
+     *        comma separated sequence of Items to store
+     * 
+     * @throws InvalidStoredItemsCountException
+     *         if {@code items.length != getItemsCount()}
+     */
+    @SuppressWarnings("unchecked")
+    protected void storeItems(final Item... items) {
+        if (items.length != getItemsCount())
+            throw new InvalidStoredItemsCountException(this, items.length,
+                                                       "{0}: items.length == {1} != {2} == getItemsCount()",
+                                                       getItemsCount());
+        storeItems(ArrayUtility.iterable(items));
+    }
+
+    /**
+     * Stores the specified Items in this
+     * {@link AbstractInitializeableIndexSequence}.
+     * 
+     * @param items
+     *        {@link Iterable} providing Items to store
+     */
+    protected void storeItems(final Iterable<Item> items) {
+        int index = getFirstIndex();
 
         for (final Item item : items)
             replaceStoredItem(index ++, item);
-    }
-
-    /**
-     * <p>
-     * Creates a new {@link IndexSequence} containing the specified Integer
-     * Items having a specified first index. That is, the index of the first
-     * Item of the specified sequence in the newly created {@link IndexSequence}
-     * can be specified. The fixed size of the newly created
-     * {@link IndexSequence} is the size of the specified sequence.
-     * </p>
-     * // easier to use (needs the static import of the factory method(s))
-     * IndexSequence&lt;Integer&gt; integerSequence = createIntegerSequence(1,
-     * 2, 3, 4, 5);
-     * 
-     * IndexSequence&lt;Integer&gt; integerSequence =
-     * createIntegerSequenceFrom(1, 1, 2, 3, 4, 5); }
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index
-     * 
-     * @param items
-     *        comma separated sequence of {@link Integer} Items to store
-     * 
-     * @return new {@link IndexSequence} of {@link Integer} Items
-     */
-    public static AbstractInitializeableIndexSequence<Integer> createIntegerAbstractInitializeableIndexSequenceFrom(final int firstIndex,
-                                                                                                                    final Integer... items) {
-        return createIntegerAbstractInitializeableIndexSequenceFrom(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link Sequence} containing the specified Integer Items
-     * having a first index of {@code 0}. The fixed size of the {@link Sequence}
-     * is the size of the specified sequence.
-     * 
-     * @param items
-     *        comma separated sequence of {@link Integer} items to store
-     * 
-     * @return the newly created {@link Sequence}
-     */
-    public static AbstractInitializeableIndexSequence<Integer> createIntegerAbstractInitializeableIndexSequence(final Integer... items) {
-        return createIntegerAbstractInitializeableIndexSequenceFrom(0, items);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * specified Items. That is, the index of the first Item of the specified
-     * sequence in this Sequence is 0. The fixed size of the
-     * {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * sequence.
-     * 
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the insertion
-     *        of Items
-     * 
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final ValueObserver<Item>[] observers, final Item... items) {
-        this(0, observers, items);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * specified Items having a specified first index. That is, the index of the
-     * first Item of the specified sequence in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
-     * size of the {@link AbstractInitializeableIndexSequence} is the size of
-     * the specified sequence.
-     * 
-     * @param firstIndex
-     *        integer specifying the first index of the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the insertion
-     *        of Items
-     * 
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final ValueObserver<Item>[] observers,
-                                                  final Item... items) {
-        this(firstIndex, firstIndex + items.length - 1);
-
-        final int lastIndex = getLastIndex();
-
-        for (int index = firstIndex, arrayItemIndex = 0; index <= lastIndex; index ++, arrayItemIndex ++)
-            replace(index, items[arrayItemIndex], observers);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * Items of the specified Container. The index of the first Item of the
-     * specified Container in the {@link AbstractInitializeableIndexSequence} is
-     * 0. The fixed size of the {@link AbstractInitializeableIndexSequence} is
-     * the size of the specified Container.
-     * 
-     * @param items
-     *        Container of which the Items are copied to the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertion of Items
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final Container<? extends Item> items,
-                                                  final ValueObserver<Item>... observers) {
-        this(0, items, observers);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * Items of the specified Java Container. The index of the first Item of the
-     * specified Container in the {@link AbstractInitializeableIndexSequence} is
-     * 0. The fixed size of the {@link AbstractInitializeableIndexSequence} is
-     * the size of the specified Container.
-     * 
-     * @param items
-     *        Collection of which the Items are copied to the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertion of Items
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final Collection<? extends Item> items,
-                                                  final ValueObserver<Item>... observers) {
-        this(0, items, observers);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * Items of the specified Container having a specified first index. That is,
-     * the index of the first Item of the specified collection in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
-     * size of the {@link AbstractInitializeableIndexSequence} is the size of
-     * the specified Container.
-     * 
-     * @param firstIndex
-     *        integer specifying the first index of the
-     *        {@link AbstractInitializeableIndexSequence}. The first Item of
-     *        {@code collection} is stored at this index of the newly created
-     *        {@link AbstractInitializeableIndexSequence}.
-     * 
-     * @param items
-     *        Container of which the Items are copied to the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertion of Items
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final Container<? extends Item> items,
-                                                  final ValueObserver<Item>... observers) {
-
-        this(firstIndex, firstIndex + items.getItemsCount() - 1);
-
-        int index = firstIndex;
-
-        for (final Item item : items)
-            replaceStoredItem(index ++, item, observers);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * Items of the specified Container having a specified first index. That is,
-     * the index of the first Item of the specified collection in the
-     * {@link AbstractInitializeableIndexSequence} can be specified. The fixed
-     * size of the {@link AbstractInitializeableIndexSequence} is the size of
-     * the specified Container.
-     * 
-     * @param firstIndex
-     *        integer specifying the first index of the
-     *        {@link AbstractInitializeableIndexSequence}. The first Item of
-     *        {@code collection} is stored at this index of the newly created
-     *        {@link AbstractInitializeableIndexSequence}.
-     * 
-     * @param items
-     *        {@link Collection} containing the Items for the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertion of Items
-     */
-    @SafeVarargs
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final Collection<? extends Item> items,
-                                                  final ValueObserver<Item>... observers) {
-
-        this(firstIndex, firstIndex + items.size() - 1);
-
-        int index = firstIndex;
-
-        for (final Item item : items)
-            replaceStoredItem(index ++, item, observers);
     }
 
     /**

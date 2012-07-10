@@ -37,7 +37,7 @@ extends IllegalContainerArgumentException {
      *        {@link String} specifying the error message pattern
      * 
      * @param messageArguments
-     *        sequence of {@link Object} error message arguments
+     *        comma separated sequence of {@link Object} error message arguments
      */
     public IllegalSequenceArgumentException(final Sequence<?> sequence, final String messagePattern,
                                             final Object... messageArguments) {

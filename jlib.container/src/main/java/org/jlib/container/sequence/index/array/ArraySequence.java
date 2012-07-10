@@ -31,102 +31,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
 
 // @formatter:off
 /**
- * <p>
- * Fixed sized array. Replacement for the standard Java arrays with special
- * features.
- * </p>
- * <p>
- * The only syntactical difference to Java arrays lies in the notation for
- * retrieving and providing values and retrieving the array size:
- * </p>
- * 
- * <pre>
- * {
- *     &#064;literal
- *     // good(?) old Java array                      // cool(!) new jlib ArraySequence class
- *     String[] stringArray = new String[10];
- *     ArraySequence&lt;String&gt; stringArray = new ArraySequence&lt;String&gt;(10);
- *     stringArray[4] = &quot;good(?) old Java array&quot;;
- *     stringArray.set(4, &quot;cool(!) new jlib ArraySequence class&quot;);
- *     String s = stringArray[4];
- *     String s = stringArray.get(4);
- *     int size = stringArray.length;
- *     int size = stringArray.size();
- * }
- * </pre>
- * 
- * <p>
- * Special features:
- * </p>
- * <ul>
- * <lem>Minimum and maximum index: <br/>
- * On instantiation, you can specify the first and the maximum index of the
- * ArraySequence. Thus, no offset is necessary for Arrays starting at other
- * indices than 0. The following example illustrates how an ArraySequence is
- * filled with numbers from 1 to 10:
- * 
- * <pre>
- * // good(?) old Java array                      // cool(!) new jlib ArraySequence class
- * Integer[] integerArray = new Integer[10];
- * ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(1, 10);
- * for (int i = 1; i &lt;= 10; i ++)
- *     for (int i = 1; i &lt;= 10; i ++)
- *         integerArray[i - 1] = i;
- * integerArray.set(i, i);
- * </pre>
- * 
- * </lem>
- * 
- * <lem>Conformance to the Collections framework <br/>
- * The class implements the {@code Collection} interface and thus behaves like
- * all Collections.</lem> <br />
- * <lem>Full support for generics:<br/>
- * The Java arrays do not support generic classes. For example, you cannot
- * create an array of String sequences:
- * 
- * <pre>
- * {
- *     &#064;literal
- *     // FORBIDDEN!
- *     Sequence&lt;String&gt;[] stringSequenceArray = new Sequence&lt;String&gt;[10];
- * 
- *     // PERMITTED!
- *     ArraySequence&lt;Sequence&lt;String&gt;&gt; stringSequenceArray = new ArraySequence&lt;Sequence&lt;String&gt;&gt;(10);
- * }
- * </pre>
- * 
- * </lem> <lem> Easy to create:<br />
- * 
- * <pre>
- * {
- *     &#064;literal
- *     // creating an ArraySequence with three Strings
- *     ArraySequence&lt;String&gt; stringArray = new ArraySequence&lt;String&gt;(&quot;cool&quot;, &quot;ArraySequence&quot;, &quot;class!&quot;);
- * 
- *     // creating an ArraySequence with three Strings starting at index 1
- *     ArraySequence&lt;String&gt; stringArray = new ArraySequence&lt;String&gt;(1, &quot;jlib&quot;, &quot;is&quot;, &quot;cool!&quot;);
- * }
- * </pre>
- * 
- * To create Arrays of Integers. The Java autoboxing feature forbids the
- * following ArraySequence creation:
- * 
- * <pre>
- * {
- *     &#064;literal
- *     // FORBIDDEN!
- *     ArraySequence&lt;Integer&gt; integerArray = new ArraySequence&lt;Integer&gt;(1, 2, 3, 4, 5, 6);
- * }
- * </pre>
- * 
- * The compiler claims:
- * 
- * <pre>
- * {@literal The constructor ArraySequence<Integer>(Integer[]) is ambiguous}
- * </pre>
- * 
- * </lem>
- * </ul>
+ * {@link IndexSequence} baked by an array.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -142,8 +47,8 @@ implements Cloneable {
     private Item[] delegateArray;
 
     /**
-     * Creates a new {@link ArraySequence} with the specified minimum and
-     * maximum indices initialized with {@code null} values.
+     * Creates a new uninitialized {@link ArraySequence} with the specified
+     * first and last indices.
      * 
      * @param firstIndex
      *        integer specifying the minimum index of this {@link ArraySequence}
@@ -152,7 +57,7 @@ implements Cloneable {
      *        integer specifying the maximum index of this {@link ArraySequence}
      * 
      * @throws InvalidSequenceIndexRangeException
-     *         if {@code  lastIndex < firstIndex}
+     *         if {@code lastIndex < firstIndex}
      */
     protected ArraySequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
@@ -162,111 +67,12 @@ implements Cloneable {
     }
 
     /**
-     * <p>
-     * Creates a new {@link IndexSequence} containing the specified Integer
-     * Items having a specified first index. That is, the index of the first
-     * Item of the specified sequence in the newly created {@link IndexSequence}
-     * can be specified. The fixed size of the newly created
-     * {@link IndexSequence} is the size of the specified sequence.
-     * </p>
-     * <p>
-     * It doesn't know whether the first parameter is meant to be the minimum
-     * index of the {@link IndexSequence} or the first Item of the sequence. You
-     * could pass an array of {@link Integer} values instead which is the
-     * equivalent to the sequence form for the argument {@code Integer... items}
-     * but the newly created class provides an easier way: the factory methods
-     * {@link #createIntegerArraySequence(Integer...)} or
-     * {@link #createIntegerArraySequenceFrom(int, Integer[])} . The latter form
-     * takes the minimum index as first argument.
-     * </p>
-     * 
-     * {@literal
-     *     // possible but not handy
-     *     IndexSequence&lt;Integer&gt; integerSequence = createIntegerIndexSequence&lt;Integer&gt;new Integer[] 1, 2, 3, 4, 5, 6 }
-     * );
-     * 
-     * IndexSequence&lt;Integer&gt; integerSequence =
-     * createIntegerIndexSequence&lt;Integer&gt;(1, new Integer[] { 1, 2, 3, 4,
-     * 5, 6 });
-     * 
-     * // easier to use (needs the static import of the factory method(s))
-     * IndexSequence&lt;Integer&gt; integerSequence = createIntegerSequence(1,
-     * 2, 3, 4, 5);
-     * 
-     * IndexSequence&lt;Integer&gt; integerSequence =
-     * createIntegerSequenceFrom(1, 1, 2, 3, 4, 5); }
-     * 
-     * @param firstIndex
-     *        integer specifying the minimum index
-     * 
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the insertion
-     *        of Items
-     * 
-     * @param items
-     *        comma separated sequence of {@link Integer} Items to store
-     * 
-     * @return new {@link IndexSequence} of {@link Integer} Items
-     */
-    public static ArraySequence<Integer> createIntegerIndexSequenceFrom(final int firstIndex,
-                                                                        final ValueObserver<Integer>[] observers,
-                                                                        final Integer... items) {
-        return new ArraySequence<Integer>(firstIndex, observers, items);
-    }
-
-    /**
-     * Creates a new {@link Sequence} containing the specified Integer Items
-     * having a first index of {@code 0}. The fixed size of the {@link Sequence}
-     * is the size of the specified sequence.
-     * 
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the insertion
-     *        of Items
-     * 
-     * @param items
-     *        comma separated sequence of {@link Integer} items to store
-     * 
-     * @return the newly created {@link Sequence}
-     */
-
-    public static ArraySequence<Integer> createIntegerIndexSequence(final ValueObserver<Integer>[] observers,
-                                                                    final Integer... items) {
-        return new ArraySequence<Integer>(0, observers, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with a minimum index of 0 containing
-     * the Items of the specified {@link Collection}.
-     * 
-     * @param items
-     *        Collection of which the Items are copied to the
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertion of Items
-     */
-    public ArraySequence(final Collection<? extends Item> items, final ValueObserver<Item>... observers) {
-        super(items, observers);
-    }
-
-    /**
      * Creates a new {@link ArraySequence}.
      * 
      * @param items
      */
     public ArraySequence(final Collection<? extends Item> items) {
         super(items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param items
-     * @param observers
-     */
-    public ArraySequence(final Container<? extends Item> items, final ValueObserver<Item>... observers) {
-        super(items, observers);
     }
 
     /**
@@ -283,33 +89,9 @@ implements Cloneable {
      * 
      * @param firstIndex
      * @param items
-     * @param observers
-     */
-    public ArraySequence(final int firstIndex, final Collection<? extends Item> items,
-                         final ValueObserver<Item>... observers) {
-        super(firstIndex, items, observers);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param firstIndex
-     * @param items
      */
     public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
         super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param firstIndex
-     * @param items
-     * @param observers
-     */
-    public ArraySequence(final int firstIndex, final Container<? extends Item> items,
-                         final ValueObserver<Item>... observers) {
-        super(firstIndex, items, observers);
     }
 
     /**
@@ -330,13 +112,6 @@ implements Cloneable {
      */
     public ArraySequence(final int firstIndex, final Item... items) {
         super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     */
-    public ArraySequence(final int firstIndex, final ValueObserver<Item>[] observers, final Item... items) {
-        super(firstIndex, observers, items);
     }
 
     /**
