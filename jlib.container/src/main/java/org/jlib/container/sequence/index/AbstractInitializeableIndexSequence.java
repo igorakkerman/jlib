@@ -3,7 +3,7 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.IllegalSequenceSizeException;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.array.InvalidStoredItemsCountException;
@@ -26,12 +26,10 @@ extends AbstractIndexSequence<Item> {
      * with the specified first and last indices.
      * 
      * @param firstIndex
-     *        integer specifying the initial minimum index of this
-     *        {@link AbstractInitializeableIndexSequence}
+     *        integer specifying the initial first index
      * 
      * @param lastIndex
-     *        integer specifying the maximum index of this
-     *        {@link AbstractInitializeableIndexSequence}
+     *        integer specifying the initial last index
      * 
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
@@ -39,6 +37,21 @@ extends AbstractIndexSequence<Item> {
     protected AbstractInitializeableIndexSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
+    }
+
+    /**
+     * Creates a new {@link AbstractInitializeableIndexSequence} with a first
+     * index of {@code 0} and the specified number of Items.
+     * 
+     * @param itemsCount
+     *        integer specifying the initial number of items
+     * 
+     * @throws InvalidSequenceItemsCountException
+     *         if {@code size < 1}
+     */
+    protected AbstractInitializeableIndexSequence(final int itemsCount)
+    throws InvalidSequenceItemsCountException {
+        this(0, SequenceUtility.getValidatedSequenceSize(size) - 1);
     }
 
     /**
@@ -76,22 +89,6 @@ extends AbstractIndexSequence<Item> {
         this(firstIndex, firstIndex + items.length - 1);
 
         storeItems(items);
-    }
-
-    /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} with a first
-     * index of {@code 0} and the specified size.
-     * 
-     * @param size
-     *        integer specifying the size of the new
-     *        {@link AbstractInitializeableIndexSequence}
-     * 
-     * @throws IllegalSequenceSizeException
-     *         if {@code size < 1}
-     */
-    protected AbstractInitializeableIndexSequence(final int size)
-    throws IllegalSequenceSizeException {
-        this(0, SequenceUtility.getValidatedSequenceSize(size) - 1);
     }
 
     /**

@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.IllegalSequenceSizeException;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
@@ -66,82 +66,44 @@ implements Cloneable {
         delegateArray = createArray(getItemsCount());
     }
 
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param items
-     */
-    public ArraySequence(final Collection<? extends Item> items) {
-        super(items);
+    public ArraySequence(final int itemsCount)
+    throws InvalidSequenceItemsCountException {
+        super(itemsCount);
     }
 
     /**
-     * Creates a new {@link ArraySequence}.
+     * Creates a new {@link ArraySequence} with a first index of {@code 0}
+     * containing the specified Items. That is, the index of the first Item of
+     * the specified sequence in this Sequence is 0. The fixed size of the
+     * {@link AbstractInitializeableIndexSequence} is the size of the specified
+     * sequence.
      * 
      * @param items
+     *        comma separated sequence of Items to store
      */
-    public ArraySequence(final Container<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param firstIndex
-     * @param items
-     */
-    public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param firstIndex
-     * @param items
-     */
-    public ArraySequence(final int firstIndex, final Container<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param firstIndex
-     * @param items
-     */
-    public ArraySequence(final int firstIndex, final Item... items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param size
-     * @throws IllegalSequenceSizeException
-     */
-    public ArraySequence(final int size)
-    throws IllegalSequenceSizeException {
-        super(size);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param items
-     */
+    @SafeVarargs
     public ArraySequence(final Item... items) {
         super(items);
     }
 
-    /**
-     * Creates a new {@link ArraySequence}.
-     * 
-     * @param observers
-     * @param items
-     */
-    public ArraySequence(final ValueObserver<Item>[] observers, final Item... items) {
-        super(observers, items);
+    public ArraySequence(final int firstIndex, final Item... items) {
+        super(firstIndex, items);
+    }
+
+    public ArraySequence(final Collection<? extends Item> items) {
+        super(items);
+    }
+
+    public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
+        super(firstIndex, items);
+    }
+
+    public ArraySequence(final Container<? extends Item> items) {
+        super(items);
+    }
+
+    public ArraySequence(final int firstIndex, final Container<? extends Item> items) {
+        super(firstIndex, items);
     }
 
     /**

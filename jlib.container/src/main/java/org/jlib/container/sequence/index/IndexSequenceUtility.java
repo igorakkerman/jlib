@@ -3,7 +3,7 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.IllegalSequenceSizeException;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -206,18 +206,18 @@ public final class IndexSequenceUtility {
      * 
      * @return the new {@link AbstractInitializeableIndexSequence}
      * 
-     * @throws IllegalSequenceSizeException
+     * @throws InvalidSequenceItemsCountException
      *         if {@code size < 1}
      */
     // @formatter:off
     public static <Item, Sequenze extends AbstractInitializeableIndexSequence<Item>> 
     Sequenze createSequence(final IndexSequenceCreator<Item, Sequenze> indexSequenceCreator,
                             final int size)
-                            throws IllegalSequenceSizeException {
+                            throws InvalidSequenceItemsCountException {
         // @formatter:on
 
         if (size < 1)
-            throw new IllegalSequenceSizeException(size, "size == {0} < 1");
+            throw new InvalidSequenceItemsCountException(size, "size == {0} < 1");
 
         return createSequence(indexSequenceCreator, 0, size - 1);
     }

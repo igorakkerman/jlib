@@ -383,13 +383,13 @@ public final class SequenceUtility {
      * 
      * @return {@code size} if {@code size >= 1}
      * 
-     * @throws IllegalSequenceSizeException
+     * @throws InvalidSequenceItemsCountException
      *         if {@code size < 1}
      */
     public static int getValidatedSequenceSize(final int size)
-    throws IllegalSequenceSizeException {
+    throws InvalidSequenceItemsCountException {
         if (size < 1)
-            throw new IllegalSequenceSizeException(size, "size == {0} < 1");
+            throw new InvalidSequenceItemsCountException(size, "size == {0} < 1");
     
         return size;
     }
