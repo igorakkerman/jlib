@@ -386,7 +386,7 @@ public final class SequenceUtility {
      * @throws InvalidSequenceItemsCountException
      *         if {@code size < 1}
      */
-    public static int getValidatedSequenceSize(final int size)
+    public static int getValidatedSequenceItemsCount(final int size)
     throws InvalidSequenceItemsCountException {
         if (size < 1)
             throw new InvalidSequenceItemsCountException(size, "size == {0} < 1");

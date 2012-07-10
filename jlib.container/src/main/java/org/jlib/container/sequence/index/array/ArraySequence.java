@@ -51,10 +51,10 @@ implements Cloneable {
      * first and last indices.
      * 
      * @param firstIndex
-     *        integer specifying the minimum index of this {@link ArraySequence}
+     *        integer specifying the initial first index
      * 
      * @param lastIndex
-     *        integer specifying the maximum index of this {@link ArraySequence}
+     *        integer specifying the initial last index
      * 
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
@@ -62,10 +62,18 @@ implements Cloneable {
     protected ArraySequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
-
-        delegateArray = createArray(getItemsCount());
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with a first index of {@code 0} and
+     * the specified number of Items.
+     * 
+     * @param itemsCount
+     *        integer specifying the initial number of Items
+     * 
+     * @throws InvalidSequenceItemsCountException
+     *         if {@code itemsCount < 1}
+     */
     public ArraySequence(final int itemsCount)
     throws InvalidSequenceItemsCountException {
         super(itemsCount);
@@ -73,10 +81,7 @@ implements Cloneable {
 
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified Items. That is, the index of the first Item of
-     * the specified sequence in this Sequence is 0. The fixed size of the
-     * {@link AbstractInitializeableIndexSequence} is the size of the specified
-     * sequence.
+     * containing the specified Items.
      * 
      * @param items
      *        comma separated sequence of Items to store
@@ -86,24 +91,74 @@ implements Cloneable {
         super(items);
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with the specified first index
+     * containing the specified Items.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param items
+     *        comma separated sequence of Items to store
+     */
+    @SafeVarargs
     public ArraySequence(final int firstIndex, final Item... items) {
         super(firstIndex, items);
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with a first index of {@code 0}
+     * containing the specified Items.
+     * 
+     * @param items
+     *        {@link Collection} of Items to store
+     */
     public ArraySequence(final Collection<? extends Item> items) {
         super(items);
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with the specified first index
+     * containing the specified Items.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param items
+     *        {@link Collection} of Items to store
+     */
     public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
         super(firstIndex, items);
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with a first index of {@code 0}
+     * containing the specified Items.
+     * 
+     * @param items
+     *        {@link Container} of Items to store
+     */
     public ArraySequence(final Container<? extends Item> items) {
         super(items);
     }
 
+    /**
+     * Creates a new {@link ArraySequence} with the specified first index
+     * containing the specified Items.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param items
+     *        {@link Container} of Items to store
+     */
     public ArraySequence(final int firstIndex, final Container<? extends Item> items) {
         super(firstIndex, items);
+    }
+
+    @Override
+    protected void initialize() {
+        delegateArray = createArray(getItemsCount());
     }
 
     /**
@@ -127,7 +182,8 @@ implements Cloneable {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers) {
+    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    throws RuntimeException {
         ObserverUtility.operate(new Operator() {
 
             @Override
