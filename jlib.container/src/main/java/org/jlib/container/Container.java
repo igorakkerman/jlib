@@ -15,6 +15,7 @@
 package org.jlib.container;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 
@@ -150,12 +151,12 @@ extends Traversible<Item>, Iterable<Item> {
     throws IllegalContainerStateException;
 
     /**
-     * Returns a random access {@link List} containing all of the Items of this
-     * {@link Container} in the proper order as returned by this
+     * Returns a sequentially traversible {@link List} containing all of the
+     * Items of this {@link Container} in the proper order as returned by this
      * {@link Container}'s Traverser.
      * 
-     * @return {@link RandomAccess} {@link List} containing all of the Items of
-     *         this {@link Container}
+     * @return sequentially traversible {@link List} containing all of the Items
+     *         of this {@link Container}
      * 
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
@@ -197,11 +198,11 @@ extends Traversible<Item>, Iterable<Item> {
     public boolean equals(/* @Nullable */Object otherObject);
 
     /**
-     * Verifies whether the {@link Traverser} returned by the
-     * {@link #createTraverser()} method of this {@link Container} and the
-     * specified {@link Container} return equal Items in the same order; two
-     * Items are said to be equal if the comparison using the
-     * {@link Object#equals(Object)} method returns {@code true}
+     * Verifies whether the {@link Traverser} instances created by the
+     * {@link #createTraverser()} methods of this {@link Container} and the
+     * specified {@link Container} traverse the same number of Items in the same
+     * order and all traversed Items are equal. Two Items {@code item1} and
+     * {@code item2} are called equal if {@code item1.equals(item2)}.
      * 
      * @param otherContainer
      *        compared {@link Container}
@@ -210,4 +211,19 @@ extends Traversible<Item>, Iterable<Item> {
      *         contain equal Items; {@code false} otherwise
      */
     public boolean containsEqualItems(final Container<Item> otherContainer);
+
+    /**
+     * Verifies whether the {@link Iterator} instances created by the
+     * {@link Iterable#iterator()} methods of this {@link Container} and the
+     * specified {@link Collection} traverse the same number of Items in the
+     * same order and all traversed Items are equal. Two Items {@code item1} and
+     * {@code item2} are called equal if {@code item1.equals(item2)}.
+     * 
+     * @param collection
+     *        compared {@link Collection}
+     * 
+     * @return {@code true} if this {@link Container} and {@code otherContainer}
+     *         contain equal Items; {@code false} otherwise
+     */
+    public boolean containsEqualItems(final Collection<Item> collection);
 }

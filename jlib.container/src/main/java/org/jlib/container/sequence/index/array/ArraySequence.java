@@ -23,7 +23,6 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
@@ -236,11 +235,8 @@ implements Cloneable {
     }
 
     /**
-     * Creates a new {@link AbstractInitializeableIndexSequence} containing the
-     * Items of the specified Java Container. The index of the first Item of the
-     * specified Container in the {@link AbstractInitializeableIndexSequence} is
-     * 0. The fixed size of the {@link AbstractInitializeableIndexSequence} is
-     * the size of the specified Container.
+     * Creates a new {@link ArraySequence} with a minimum index of 0 containing
+     * the Items of the specified {@link Collection}.
      * 
      * @param items
      *        Collection of which the Items are copied to the
@@ -462,19 +458,8 @@ implements Cloneable {
     }
 
     @Override
-    public boolean equals(final Object otherObject) {
-        if (!(otherObject instanceof ArraySequence<?>))
-            return false;
-
-        final ArraySequence<?> otherSequence = (ArraySequence<?>) otherObject;
-
-        return getFirstIndex() == otherSequence.getFirstIndex() && getLastIndex() == otherSequence.getLastIndex() &&
-               Arrays.equals(delegateArray, otherSequence.delegateArray);
-    }
-
-    @Override
     public int hashCode() {
-        return 3 * getFirstIndex() + 5 * getLastIndex() + Arrays.hashCode(delegateArray);
+        return super.hashCode() << 1;
     }
 
     /**
@@ -515,12 +500,12 @@ implements Cloneable {
     throws InvalidDelegateArrayCapacityException {
         assertExpectedCapacityValid(expectedCapacity);
 
+        // @formatter:off
         if (getItemsCount() + holeSize > expectedCapacity)
-            throw new InvalidDelegateArrayCapacityException(
-                                                            this,
-                                                            expectedCapacity,
-                                                            "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
-                                                            getItemsCount(), holeSize);
+            throw new InvalidDelegateArrayCapacityException
+                (this, expectedCapacity, "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
+                 getItemsCount(), holeSize);
+        // @formatter:on
 
         final Item[] originalDelegateArray = delegateArray;
 
@@ -549,15 +534,5 @@ implements Cloneable {
     throws InvalidDelegateArrayCapacityException {
         if (expectedCapacity < 1)
             throw new InvalidDelegateArrayCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
-    }
-
-    @Override
-    public ArraySequence<Item> createSubSequence(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
-        final ArraySequence<Item> subSequence = new ArraySequence<>(fromIndex, toIndex);
-
-        copySequenceItems(fromIndex, toIndex, subSequence);
-
-        return subSequence;
     }
 }

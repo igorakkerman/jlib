@@ -20,8 +20,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jlib.core.ObjectUtility;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.IteratorUtility;
+import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.TraversibleIterator;
 
 /**
@@ -78,6 +78,7 @@ implements Container<Item> {
      * 
      * @param items
      *        Iterable creating the Traverser returning the Items to verify
+     * 
      * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
@@ -160,23 +161,15 @@ implements Container<Item> {
         if (getItemsCount() != otherContainer.getItemsCount())
             return false;
 
-        final Traverser<?> thisTraverser = createTraverser();
-        final Traverser<?> otherTraverser = otherContainer.createTraverser();
+        return TraverserUtility.provideEqualItems(this, otherContainer);
+    }
 
-        do {
-            final boolean nextItemAccessible = thisTraverser.isNextItemAccessible();
+    @Override
+    public boolean containsEqualItems(final Collection<Item> collection) {
+        if (getItemsCount() != collection.size())
+            return false;
 
-            // do not rely on equal items count
-            if (nextItemAccessible != otherTraverser.isNextItemAccessible())
-                return false;
-
-            if (!nextItemAccessible)
-                return true;
-
-            if (!ObjectUtility.equal(thisTraverser.getNextItem(), otherTraverser.getNextItem()))
-                return false;
-        }
-        while (true);
+        return IteratorUtility.provideEqualItems(this, collection);
     }
 
     @Override

@@ -107,4 +107,9 @@ implements Container<Item> {
     public boolean containsEqualItems(final Container<Item> otherContainer) {
         return otherContainer.isEmpty();
     }
+
+    @Override
+    public boolean containsEqualItems(final Collection<Item> collection) {
+        return collection.isEmpty();
+    }
 }
