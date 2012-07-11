@@ -8,6 +8,8 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.array.InvalidStoredItemsCountException;
 import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -276,7 +278,7 @@ extends AbstractIndexSequence<Item> {
     /**
      * Replaces the Item stored at the specified index in this
      * {@link AbstractInitializeableIndexSequence} by the specified Item
-     * expecting the index to be valid.
+     * assuming the index to be valid.
      * 
      * @param index
      *        integer specifying the valid index
@@ -306,6 +308,16 @@ extends AbstractIndexSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    protected abstract void replaceStoredItem(final int index, final Item newItem, ValueObserver<Item>... observers)
-    throws RuntimeException;
+    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    throws RuntimeException {
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate() {
+                replaceStoredItem(index, newItem);
+            }
+        },
+
+        newItem, observers);
+    }
 }

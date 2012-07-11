@@ -161,38 +161,14 @@ implements Cloneable {
         delegateArray = createArray(getItemsCount());
     }
 
-    /**
-     * Returns the Item stored at the specified index expecting the index to be
-     * valid.
-     * 
-     * @param index
-     *        integer specifying the valid index
-     * 
-     * @return Item stored at {@code index}
-     */
     @Override
     protected Item getStoredItem(final int index) {
         return getDelegateArrayItem(getDelegateArrayIndex(index));
     }
 
     @Override
-    protected void replaceStoredItem(final int index, final Item item) {
-        replaceDelegateArrayItem(getDelegateArrayIndex(index), item);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws RuntimeException {
-        ObserverUtility.operate(new Operator() {
-
-            @Override
-            public void operate() {
-                replaceStoredItem(getDelegateArrayIndex(index), newItem);
-            }
-        },
-
-        newItem, observers); // throws SequenceIndexOutOfBoundsException
+    protected void replaceStoredItem(final int index, final Item newItem) {
+        replaceDelegateArrayItem(getDelegateArrayIndex(index), newItem);
     }
 
     /**
@@ -262,7 +238,7 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @throws IllegalArgumentException
+     * @throws InvalidDelegateArrayCapacityException
      *         if {@code expectedCapacity < 1}
      */
     protected void assertCapacity(final int expectedCapacity) {
@@ -328,4 +304,37 @@ implements Cloneable {
         if (expectedCapacity < 1)
             throw new InvalidDelegateArrayCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
     }
+
+    /**
+     * Replaces the Item stored in the delegate array at the specified index.
+     * 
+     * @param itemArrayIndex
+     *        integer specifying the index of the Item in the array
+     * 
+     * @param newItem
+     *        replacing Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
+     */
+    @SafeVarargs
+    protected final void replaceDelegateArrayItem(final int itemArrayIndex, final Item newItem,
+                                                  final ValueObserver<Item>... observers)
+    throws RuntimeException {
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate() {
+                replaceDelegateArrayItem(itemArrayIndex, newItem);
+            }
+        },
+
+        newItem, observers);
+    }
+
 }

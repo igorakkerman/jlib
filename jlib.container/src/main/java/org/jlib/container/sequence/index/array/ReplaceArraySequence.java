@@ -13,8 +13,6 @@ import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceIndexSequence;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -152,38 +150,6 @@ implements ObservedReplaceIndexSequence<Item> {
     public final void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException {
         super.replace(index, newItem, observers);
-    }
-
-    /**
-     * Replaces the Item stored in the delegate array at the specified index.
-     * 
-     * @param itemArrayIndex
-     *        integer specifying the index of the Item in the array
-     * 
-     * @param newItem
-     *        replacing Item
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
-     * 
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
-     */
-    @SafeVarargs
-    protected final void replaceDelegateArrayItem(final Item newItem, final int itemArrayIndex,
-                                                  final ValueObserver<Item>... observers)
-    throws RuntimeException {
-        ObserverUtility.operate(new Operator() {
-
-            @Override
-            public void operate() {
-                replaceDelegateArrayItem(itemArrayIndex, newItem);
-            }
-        },
-
-        newItem, observers);
     }
 
     @Override

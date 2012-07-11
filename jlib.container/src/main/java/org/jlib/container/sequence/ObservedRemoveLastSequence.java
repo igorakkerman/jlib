@@ -10,7 +10,7 @@ import org.jlib.core.observer.ValueObserver;
  * 
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTailSequence<Item>
+public interface ObservedRemoveLastSequence<Item>
 extends RemoveTailSequence<Item> {
 
     /**
@@ -21,7 +21,7 @@ extends RemoveTailSequence<Item> {
      *        attending the removal
      * 
      * @throws SoleItemNotRemoveableException
-     *         if this {@link ObservedRemoveTailSequence} contains only one Item
+     *         if this {@link ObservedRemoveLastSequence} contains only one Item
      *         and may not be empty
      */
     @SuppressWarnings("unchecked")

@@ -12,7 +12,7 @@ public abstract class AbstractNonEmptySequence<Item>
 extends AbstractSequence<Item> {
 
     /**
-     * Creates a new AbstractNonEmptySequence.
+     * Creates a new {@link AbstractNonEmptySequence}.
      */
     public AbstractNonEmptySequence() {
         super();

@@ -12,7 +12,7 @@ import org.jlib.core.observer.ValueObserverException;
  * 
  * @author Igor Akkerman
  */
-public interface ObservedRemoveHeadSequence<Item>
+public interface ObservedRemoveFirstSequence<Item>
 extends RemoveHeadSequence<Item> {
 
     /**

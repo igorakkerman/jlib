@@ -1,6 +1,6 @@
 package org.jlib.container.sequence.index.array;
 
-import org.jlib.container.sequence.ObservedRemoveTailSequence;
+import org.jlib.container.sequence.ObservedRemoveLastSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ObserverUtility;
@@ -18,7 +18,7 @@ import org.jlib.core.observer.ValueObserver;
  */
 public class ReplaceAppendRemoveTailArraySequence<Item>
 extends ReplaceAppendArraySequence<Item>
-implements ObservedRemoveTailSequence<Item> {
+implements ObservedRemoveLastSequence<Item> {
 
     /**
      * Creates a new {@link ReplaceAppendRemoveHeadTailArraySequence} with the

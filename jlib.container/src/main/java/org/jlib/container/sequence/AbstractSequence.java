@@ -1,8 +1,5 @@
 package org.jlib.container.sequence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jlib.container.AbstractContainer;
 
 /**
@@ -22,13 +19,5 @@ implements Sequence<Item> {
      */
     public AbstractSequence() {
         super();
-    }
-
-    @Override
-    public List<Item> toList() {
-        final List<Item> sequence = new ArrayList<Item>(getItemsCount());
-        for (final Item item : this)
-            sequence.add(item);
-        return sequence;
     }
 }
