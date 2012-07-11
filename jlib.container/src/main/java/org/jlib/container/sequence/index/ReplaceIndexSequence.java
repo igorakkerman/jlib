@@ -71,7 +71,7 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * @return {@link ReplaceIndexSequenceTraverser} over this
      *         {@link ReplaceIndexSequence}
      */
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser();
+    public ReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
@@ -90,6 +90,6 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

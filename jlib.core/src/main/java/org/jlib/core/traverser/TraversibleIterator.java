@@ -30,12 +30,12 @@ extends AbstractIterator<Item> {
     public TraversibleIterator(final Travble traversible) {
         super();
 
-        createDelegateTraverser(traversible);
+        createTraverser(traversible);
     }
 
     /**
      * <p>
-     * Registers a newly created {@link Traverser} for the specified
+     * Registers a newly createTraverser} for the specified
      * {@link Traversible} as delegate for this {@link TraversibleIterator}.
      * </p>
      * <p>
@@ -47,7 +47,7 @@ extends AbstractIterator<Item> {
      * @param traversible
      *        traversed {@link Traversible}
      */
-    protected void createDelegateTraverser(final Travble traversible) {
+    protected void createTraverser(final Travble traversible) {
         setTraverser(traversible.createTraverser());
     }
 

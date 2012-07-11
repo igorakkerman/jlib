@@ -11,6 +11,13 @@ package org.jlib.core.traverser;
 public interface Traverser<Item> {
 
     /**
+     * Returns whether this {@link Traverser} has a next Item.
+     * 
+     * @return {@code true} if there is a next Item; {@code false} otherwise
+     */
+    public boolean isNextItemAccessible();
+
+    /**
      * Returns the next Item traversed by this {@link Traverser}.
      * 
      * @return next Item
@@ -20,11 +27,4 @@ public interface Traverser<Item> {
      */
     public Item getNextItem()
     throws NoNextItemException;
-
-    /**
-     * Returns whether this {@link Traverser} has a next Item.
-     * 
-     * @return {@code true} if there is a next Item; {@code false} otherwise
-     */
-    public boolean isNextItemAccessible();
 }

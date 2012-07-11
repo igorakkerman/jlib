@@ -2,7 +2,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
-import org.jlib.container.sequence.SequenceTraverser;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
 
@@ -99,27 +98,6 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public final IndexSequenceTraverser<Item> createTraverser() {
-        return createIndexSequenceTraverser();
-    }
-
-    @Override
-    public final SequenceTraverser<Item> createSequenceTraverser() {
-        return createIndexSequenceTraverser();
-    }
-
-    @Override
-    public final IndexSequenceTraverser<Item> createIndexSequenceTraverser() {
-        return createIndexSequenceTraverser(firstIndex);
-    }
-
-    @Override
-    public final IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
-        return new DefaultIndexSequenceTraverser<>(this, startIndex);
-    }
-
-    @Override
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         return new SubIndexSequence<>(this, fromIndex, toIndex);
@@ -205,5 +183,16 @@ implements IndexSequence<Item> {
      */
     protected void setLastIndex(final int lastIndex) {
         this.lastIndex = lastIndex;
+    }
+
+    @Override
+    public IndexSequenceTraverser<Item> createTraverser() {
+        return createTraverser(firstIndex);
+    }
+
+    @Override
+    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    throws SequenceIndexOutOfBoundsException {
+        return new DefaultIndexSequenceTraverser<>(this, startIndex);
     }
 }

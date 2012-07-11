@@ -32,5 +32,5 @@ extends Sequence<Item> {
      * @return {@link InsertSequenceTraverser} traversing the Items of this
      *         Sequence in proper order
      */
-    public InsertSequenceTraverser<Item> createInsertSequenceTraverser();
+    public InsertSequenceTraverser<Item> createTraverser();
 }

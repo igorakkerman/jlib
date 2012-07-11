@@ -13,7 +13,7 @@ public interface Traversible<Item> {
     /**
      * Returns a new {@link Traverser} over this {@link Traversible}.
      * 
-     * @return newly created {@link Traverser}
+     * @return newly createTraverser}
      */
     public Traverser<Item> createTraverser();
 }

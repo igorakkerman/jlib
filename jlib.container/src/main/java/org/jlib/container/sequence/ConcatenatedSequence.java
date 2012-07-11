@@ -1,10 +1,9 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.IllegalContainerStateException;
-import org.jlib.core.traverser.BidirectionalTraversible;
-import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.Traversible;
+import org.jlib.core.traverser.TwoWayTraversible;
 import org.jlib.core.valueholder.AccessibleValueHolder;
 import org.jlib.core.valueholder.InitializedValueHolder;
 
@@ -20,8 +19,8 @@ import org.jlib.core.valueholder.InitializedValueHolder;
 public class ConcatenatedSequence<Item>
 extends AbstractSequence<Item> {
 
-    /** array of concatenated {@link BidirectionalTraversible} items */
-    private final BidirectionalTraversible<Item>[] traversibles;
+    /** array of concatenated {@link TwoWayTraversible} items */
+    private final TwoWayTraversible<Item>[] traversibles;
 
     /** total number of {@link Sequence} Items */
     private AccessibleValueHolder<Integer> itemsCountHolder = new AccessibleValueHolder<Integer>() {
@@ -40,11 +39,11 @@ extends AbstractSequence<Item> {
      * Creates a new {@link ConcatenatedSequence}.
      * 
      * @param traversibles
-     *        comma separated sequence of concatenated
-     *        {@link BidirectionalTraversible} items
+     *        comma separated sequence of concatenated {@link TwoWayTraversible}
+     *        items
      */
     @SafeVarargs
-    public ConcatenatedSequence(final BidirectionalTraversible<Item>... traversibles) {
+    public ConcatenatedSequence(final TwoWayTraversible<Item>... traversibles) {
         super();
 
         this.traversibles = traversibles;
@@ -57,21 +56,16 @@ extends AbstractSequence<Item> {
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
-        return createSequenceTraverser();
-    }
-
-    @Override
-    public SequenceTraverser<Item> createSequenceTraverser() {
+    public SequenceTraverser<Item> createTraverser() {
         return new ConcatenatedSequenceTraverser<>(this);
     }
 
     /**
      * Returns the {@link Traversible} items.
      * 
-     * @return array of {@link BidirectionalTraversible} instances
+     * @return array of {@link TwoWayTraversible} instances
      */
-    public BidirectionalTraversible<Item>[] getTraversibles() {
+    public TwoWayTraversible<Item>[] getTraversibles() {
         return traversibles;
     }
 }

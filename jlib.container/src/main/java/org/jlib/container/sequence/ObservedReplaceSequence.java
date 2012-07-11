@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 
@@ -27,7 +28,7 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceSequence<Item>
-extends ReplaceSequence<Item> {
+extends ReplaceSequence<Item>, ObservedReplaceContainer<Item> {
 
     /**
      * Returns an {@link ObservedReplaceIndexSequenceTraverser} traversing the
@@ -40,6 +41,7 @@ extends ReplaceSequence<Item> {
      * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the
      *         Items of this {@link ObservedReplaceSequence} in proper order
      */
+    @Override
     @SuppressWarnings("unchecked")
-    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(final ValueObserver<Item>... observers);
+    public ObservedReplaceSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers);
 }

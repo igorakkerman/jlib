@@ -15,6 +15,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
+import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.valueholder.ValueNotAccessibleException;
 
@@ -32,7 +33,7 @@ import org.jlib.core.valueholder.ValueNotAccessibleException;
  */
 public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertRemoveIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
-implements RemoveIndexSequenceTraverser<Item> {
+implements RemoveIndexSequenceTraverser<Item>, ObservedReplaceRemoveSequenceTraverser<Item> {
 
     /**
      * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceTraverser}

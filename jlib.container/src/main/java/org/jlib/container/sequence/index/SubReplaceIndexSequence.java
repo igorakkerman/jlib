@@ -62,13 +62,13 @@ implements ReplaceIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceTraverser<Item> createReplaceTraverser() {
-        return createReplaceIndexSequenceTraverser();
+    public ReplaceTraverser<Item> createTraverser() {
+        return createTraverser();
     }
 
     @Override
-    public ReplaceSequenceTraverser<Item> createReplaceSequenceTraverser() {
-        return createReplaceIndexSequenceTraverser();
+    public ReplaceSequenceTraverser<Item> createTraverser() {
+        return createTraverser();
     }
 
     @Override
@@ -76,13 +76,13 @@ implements ReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, SubReplaceIndexSequence<Item>>(this);
+    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultReplaceIndexSequenceTraverser<Item, SubReplaceIndexSequence<Item>>(this, startIndex);
+        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 }

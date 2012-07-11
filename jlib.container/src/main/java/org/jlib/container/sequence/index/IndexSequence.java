@@ -139,7 +139,7 @@ extends Sequence<Item>, RandomAccess {
      * @return {@link IndexSequenceTraverser} over this {@link IndexSequence}
      *         initially pointing to the beginning of this {@link IndexSequence}
      */
-    public IndexSequenceTraverser<Item> createIndexSequenceTraverser();
+    public IndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link IndexSequenceTraverser} traversing the Items of this
@@ -158,7 +158,7 @@ extends Sequence<Item>, RandomAccess {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public IndexSequenceTraverser<Item> createIndexSequenceTraverser(final int startIndex)
+    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 
     /**

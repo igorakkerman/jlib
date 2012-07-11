@@ -62,30 +62,30 @@ implements ReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser() {
-        return createReplaceInsertIndexSequenceTraverser(getFirstIndex());
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
+        return createTraverser(getFirstIndex());
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }
 
     @Override
-    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser()
+    public InsertIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException {
-        return createReplaceInsertIndexSequenceTraverser();
+        return createTraverser();
     }
 
     @Override
-    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser(final int startIndex)
+    public InsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return createReplaceInsertIndexSequenceTraverser();
+        return createTraverser();
     }
 
     @Override
-    public InsertSequenceTraverser<Item> createInsertSequenceTraverser() {
-        return createReplaceInsertIndexSequenceTraverser();
+    public InsertSequenceTraverser<Item> createTraverser() {
+        return createTraverser();
     }
 }

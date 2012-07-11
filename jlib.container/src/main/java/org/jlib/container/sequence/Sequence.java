@@ -14,11 +14,8 @@
 
 package org.jlib.container.sequence;
 
-import java.util.List;
-
 import org.jlib.container.Container;
-import org.jlib.core.traverser.BidirectionalTraverser;
-import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Ordered sequence of Items.
@@ -29,30 +26,14 @@ import org.jlib.core.traverser.BidirectionalTraversible;
  * @author Igor Akkerman
  */
 public interface Sequence<Item>
-extends Container<Item>, BidirectionalTraversible<Item> {
+extends Container<Item>, TwoWayTraversible<Item> {
 
     /**
-     * Returns a {@link BidirectionalTraverser} traversing the Items of this
-     * Sequence in proper sequence. The Item returned by the first call to
-     * {@link BidirectionalTraverser#getNextItem()} is the first Item in the
-     * Sequence.
+     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
+     * in the correct order.
      * 
-     * @return BidirectionalTraverser over this Sequence
-     */
-    public SequenceTraverser<Item> createSequenceTraverser();
-
-    /**
-     * <p>
-     * Returns a {@link List} containing all Items stored in this Sequence in
-     * proper sequence.
-     * </p>
-     * <p>
-     * The method provides the same functionality as the {@link #toList()}
-     * method and has been introduced .
-     * </p>
-     * 
-     * @return {@link List} containing the Items stored in this Sequence
+     * @return {@link SequenceTraverser} over this Sequence
      */
     @Override
-    public List<Item> toList();
+    public SequenceTraverser<Item> createTraverser();
 }

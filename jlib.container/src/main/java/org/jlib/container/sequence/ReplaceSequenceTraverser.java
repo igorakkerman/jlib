@@ -17,10 +17,11 @@ package org.jlib.container.sequence;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
- * Traverser of an ReplaceSequence.
+ * {@link ReplaceTraverser} and {@link SequenceTraverser}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ReplaceSequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ReplaceSequenceTraverser<Item>

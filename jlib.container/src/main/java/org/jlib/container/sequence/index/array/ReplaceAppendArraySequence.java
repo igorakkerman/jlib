@@ -7,9 +7,7 @@ import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
@@ -220,10 +218,5 @@ implements ObservedAppendSequence<Item> {
             replaceDelegateArrayItem(item, itemArrayIndex ++, observers);
 
         setLastIndex(getLastIndex() + addedItemsCount);
-    }
-
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, ReplaceAppendArraySequence<Item>>(this);
     }
 }

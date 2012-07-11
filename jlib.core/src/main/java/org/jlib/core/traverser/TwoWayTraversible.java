@@ -1,22 +1,21 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link Traversible} allowing Items to be removed.
+ * {@link Object} traversible by a {@link TwoWayTraverser}.
  * 
  * @param <Item>
  *        type of items returned by the {@link Traverser}
  * 
  * @author Igor Akkerman
  */
-public interface RemoveTraversible<Item>
+public interface TwoWayTraversible<Item>
 extends Traversible<Item> {
 
     /**
-     * Returns a new {@link RemoveTraverser} over this {@link RemoveTraversible}
-     * .
+     * Returns a new {@link TwoWayTraverser} over this
+     * {@link TwoWayTraversible}.
      * 
      * @return newly createTraverser}
      */
-    @Override
-    public RemoveTraverser<Item> createTraverser();
+    public TwoWayTraverser<Item> createTraverser();
 }

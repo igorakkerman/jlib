@@ -26,7 +26,7 @@ extends Container<Item> {
      * Creates a new {@link ReplaceTraverser} over this {@link ReplaceContainer}
      * .
      * 
-     * @return newly created {@link ReplaceTraverser}
+     * @return newly createTraverser}
      */
-    public ReplaceTraverser<Item> createReplaceTraverser();
+    public ReplaceTraverser<Item> createTraverser();
 }

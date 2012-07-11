@@ -11,9 +11,6 @@ import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.BidirectionalTraverser;
-import org.jlib.core.traverser.ObservedRemoveTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Empty {@link Sequence}.
@@ -49,37 +46,6 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item> {
      */
     protected EmptySequence() {
         super();
-    }
-
-    @Override
-    public EmptySequenceTraverser<Item> createSequenceTraverser() {
-        return EmptySequenceTraverser.getInstance();
-    }
-
-    @Override
-    public BidirectionalTraverser<Item> createBidirectionalTraverser() {
-        return createSequenceTraverser();
-    }
-
-    @Override
-    public ReplaceTraverser<Item> createReplaceTraverser() {
-        return createSequenceTraverser();
-    }
-
-    @Override
-    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser() {
-        return createSequenceTraverser();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedReplaceSequenceTraverser<Item> createReplaceSequenceTraverser(final ValueObserver<Item>... observers) {
-        return createSequenceTraverser();
-    }
-
-    @Override
-    public RemoveSequenceTraverser<Item> createRemoveTraverser() {
-        return createSequenceTraverser();
     }
 
     @Override
@@ -136,12 +102,6 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item> {
     public void retain(final Item... items)
     throws NoSuchItemToRemoveException, IllegalContainerStateException {
         ContainerUtility.retain(this, items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedRemoveSequenceTraverser<Item> createRemoveTraverser(final ValueObserver<Item>... observers) {
-        return new EmptySequenceTraverser<>();
     }
 
     @Override
@@ -208,9 +168,14 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item> {
     }
 
     @Override
+    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
+        return EmptySequenceTraverser.getInstance();
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public ObservedRemoveTraverser<Item> createObservedRemoveTraverser(final ValueObserver<Item>... observers) {
-        return createSequenceTraverser();
+    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers) {
+        return createTraverser();
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity

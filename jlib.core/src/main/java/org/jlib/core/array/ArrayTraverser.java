@@ -2,7 +2,7 @@ package org.jlib.core.array;
 
 import java.util.Arrays;
 
-import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
@@ -16,7 +16,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public class ArrayTraverser<Item>
-implements BidirectionalTraverser<Item> {
+implements TwoWayTraverser<Item> {
 
     /** array to traverse */
     private final Item[] array;

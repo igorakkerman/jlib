@@ -3,8 +3,8 @@ package org.jlib.core.array;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.core.traverser.BidirectionalTraverser;
-import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Utility for arrays.
@@ -36,7 +36,7 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns a new {@link BidirectionalTraversible} adapter for the specified
+     * Returns a new {@link TwoWayTraversible} adapter for the specified
      * Items.
      * 
      * @param <Item>
@@ -45,15 +45,15 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      * 
-     * @return {@link BidirectionalTraversible} adapter for {@code items}
+     * @return {@link TwoWayTraversible} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> BidirectionalTraversible<Item> traversible(final Item... items) {
+    public static <Item> TwoWayTraversible<Item> traversible(final Item... items) {
         return new ArrayTraversible<>(items);
     }
 
     /**
-     * Returns a new {@link BidirectionalTraverser} over the specified Items.
+     * Returns a new {@link TwoWayTraverser} over the specified Items.
      * 
      * @param <Item>
      *        type of the items held in the array
@@ -61,10 +61,10 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      * 
-     * @return {@link BidirectionalTraversible} adapter for {@code items}
+     * @return {@link TwoWayTraversible} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> BidirectionalTraverser<Item> createTraverser(final Item... items) {
+    public static <Item> TwoWayTraverser<Item> createTraverser(final Item... items) {
         return new ArrayTraverser<>(items);
     }
 

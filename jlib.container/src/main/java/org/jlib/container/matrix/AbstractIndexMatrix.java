@@ -224,8 +224,8 @@ implements IndexMatrix<Entry> {
      * @see MatrixTraversalOrder
      */
     @Override
-    public MatrixTraverser<Entry> createMatrixTraverser() {
-        return defaultIterationOrder.createMatrixTraverser(this);
+    public MatrixTraverser<Entry> createTraverser() {
+        return defaultIterationOrder.createTraverser(this);
     }
 
     @Override
@@ -233,8 +233,8 @@ implements IndexMatrix<Entry> {
         return new MatrixTraversible<Entry>() {
 
             @Override
-            public MatrixTraverser<Entry> createMatrixTraverser() {
-                return iterationOrder.createMatrixTraverser(AbstractIndexMatrix.this);
+            public MatrixTraverser<Entry> createTraverser() {
+                return iterationOrder.createTraverser(AbstractIndexMatrix.this);
             }
         };
     }

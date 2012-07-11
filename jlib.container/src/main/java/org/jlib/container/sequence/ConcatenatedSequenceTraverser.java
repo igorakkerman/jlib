@@ -1,11 +1,11 @@
 package org.jlib.container.sequence;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.BidirectionalTraverser;
-import org.jlib.core.traverser.BidirectionalTraversible;
+import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
- * {@link BidirectionalTraverser} over the Items of a
+ * {@link TwoWayTraverser} over the Items of a
  * {@link ConcatenatedSequence}.
  * 
  * @param <Item>
@@ -20,16 +20,16 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 extends AbstractSequenceTraverser<Item, Sequenze> {
 
     /**
-     * {@link BidirectionalTraverser} of the concatenated
-     * {@link BidirectionalTraversible} instances
+     * {@link TwoWayTraverser} of the concatenated
+     * {@link TwoWayTraversible} instances
      */
-    private final BidirectionalTraverser<BidirectionalTraversible<Item>> traversiblesTraverser;
+    private final TwoWayTraverser<TwoWayTraversible<Item>> traversiblesTraverser;
 
     /**
-     * {@link BidirectionalTraverser} over the current
-     * {@link BidirectionalTraversible}
+     * {@link TwoWayTraverser} over the current
+     * {@link TwoWayTraversible}
      */
-    private BidirectionalTraverser<Item> currentTraversibleTraverser;
+    private TwoWayTraverser<Item> currentTraversibleTraverser;
 
     /**
      * Creates a new {@link ConcatenatedSequenceTraverser}.
@@ -44,7 +44,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
         traversiblesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversibles());
 
         currentTraversibleTraverser = traversiblesTraverser.isNextItemAccessible()
-            ? traversiblesTraverser.getNextItem().createBidirectionalTraverser()
+            ? traversiblesTraverser.getNextItem().createTraverser()
             : EmptySequenceTraverser.<Item> getInstance();
     }
 
@@ -54,7 +54,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
             if (!traversiblesTraverser.isPreviousItemAccessible())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createBidirectionalTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createTraverser();
 
             // navigate to the tail of the previous Sequence
             while (currentTraversibleTraverser.isNextItemAccessible())
@@ -79,7 +79,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
             if (!traversiblesTraverser.isNextItemAccessible())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createBidirectionalTraverser();
+            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createTraverser();
         }
 
         return true;

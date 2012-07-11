@@ -55,7 +55,7 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
-    public ObservedRemoveIndexSequenceTraverser<Item> createObservedRemoveIndexSequenceTraverser();
+    public ObservedRemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} and traversing the Items
@@ -76,6 +76,6 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ObservedRemoveIndexSequenceTraverser<Item> createObservedRemoveIndexSequenceTraverser(final int startIndex)
+    public ObservedRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

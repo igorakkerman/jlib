@@ -42,13 +42,13 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public final EmptyMatrixTraverser<Entry> createMatrixTraverser() {
+    public final EmptyMatrixTraverser<Entry> createTraverser() {
         return EmptyMatrixTraverser.getInstance();
     }
 
     @Override
-    public final ReplaceTraverser<Entry> createReplaceTraverser() {
-        return createMatrixTraverser();
+    public final ReplaceTraverser<Entry> createTraverser() {
+        return createTraverser();
     }
 
     @Override

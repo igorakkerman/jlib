@@ -76,7 +76,7 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ObservedReplaceIndexSequenceTraverser<Item> createObservedReplaceIndexSequenceTraverser()
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     /**
@@ -98,6 +98,6 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ObservedReplaceIndexSequenceTraverser<Item> createObservedReplaceIndexSequenceTraverser(final int startIndex)
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }
