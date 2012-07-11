@@ -13,8 +13,7 @@
  */
 
 /**
- * jlib Container framework introduces a clean and strong typed object {@link org.jlib.container.Container}
- * hierarchy.
+ * jlib Container framework introduces a clean and strong typed hierarchy.
  * 
  * @author Igor Akkerman
  */
