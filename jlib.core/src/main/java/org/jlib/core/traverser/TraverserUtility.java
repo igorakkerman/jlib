@@ -55,15 +55,15 @@ public final class TraverserUtility {
 
     /**
      * Returns the number of Items provided by the specified
-     * {@link BidirectionalTraversible}.
+     * {@link TwoWayTraversible}.
      * 
      * @param traversible
-     *        {@link BidirectionalTraversible} providing the items
+     *        {@link TwoWayTraversible} providing the items
      * 
      * @return integer specifying the number of Items
      */
-    public static int getItemsCount(final BidirectionalTraversible<?> traversible) {
-        final BidirectionalTraverser<?> itemsTraverser = traversible.createBidirectionalTraverser();
+    public static int getItemsCount(final TwoWayTraversible<?> traversible) {
+        final TwoWayTraverser<?> itemsTraverser = traversible.createTraverser();
 
         int itemsCount = 0;
 
@@ -78,18 +78,18 @@ public final class TraverserUtility {
 
     /**
      * Returns the sum of number of Items provided by the specified
-     * {@link BidirectionalTraverser} instances.
+     * {@link TwoWayTraverser} instances.
      * 
      * @param traversibles
-     *        comma separated sequence of {@link BidirectionalTraversible}
+     *        comma separated sequence of {@link TwoWayTraversible}
      *        instances
      * 
      * @return integer specifying the number of Items
      */
-    public static int getItemsCount(final BidirectionalTraversible<?>... traversibles) {
+    public static int getItemsCount(final TwoWayTraversible<?>... traversibles) {
         int itemsCount = 0;
 
-        for (final BidirectionalTraversible<?> traversible : traversibles)
+        for (final TwoWayTraversible<?> traversible : traversibles)
             itemsCount += getItemsCount(traversible);
 
         return itemsCount;

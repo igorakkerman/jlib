@@ -50,7 +50,7 @@ extends TraversibleIterator<Item, Travble> {
     }
 
     @Override
-    protected void createDelegateTraverser(final Travble traversible) {
+    protected void createTraverser(final Travble traversible) {
         setTraverser(traversible.createTraverser());
     }
 
