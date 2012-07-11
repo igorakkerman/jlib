@@ -257,12 +257,12 @@ extends RemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending Item removals
      * 
-     * @return newly created {@link RemoveTraverser}
+     * @return newly createTraverser}
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public ObservedRemoveTraverser<Item> createObservedRemoveTraverser(ValueObserver<Item>... observers);
+    public ObservedRemoveTraverser<Item> createTraverser(ValueObserver<Item>... observers);
 }

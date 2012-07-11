@@ -1,6 +1,5 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequenceTraverser;
@@ -9,26 +8,26 @@ import org.jlib.core.traverser.ReplaceTraverser;
 /**
  * {@link ReplaceAppendIndexSequence} view of the Items stored in another
  * {@link ReplaceAppendIndexSequence} in the specified index range. The Items in
- * this {@link SubReplaceAppendIndexSequence} will have the same index as they
+ * this {@link SubReplaceInsertIndexSequence} will have the same index as they
  * had in the base {@link ReplaceIndexSequence}.
  * 
  * @param <Item>
- *        type of the items held in the {@link SubReplaceAppendIndexSequence}
+ *        type of the items held in the {@link SubReplaceInsertIndexSequence}
  * 
  * @author Igor Akkerman
  */
-public class SubReplaceAppendIndexSequence<Item>
+public class SubReplaceInsertIndexSequence<Item>
 extends SubReplaceIndexSequence<Item>
-implements ReplaceAppendIndexSequence<Item> {
+implements ReplaceInsertIndexSequence<Item> {
 
-    /** base {@link ReplaceIndexSequence} */
-    private final ReplaceAppendIndexSequence<Item> baseSequence;
+    /** base {@link ReplaceInsertIndexSequence} */
+    private final ReplaceInsertIndexSequence<Item> baseSequence;
 
     /**
-     * Creates a new {@link SubReplaceAppendIndexSequence}.
+     * Creates a new {@link SubReplaceInsertIndexSequence}.
      * 
      * @param baseSequence
-     *        base {@link ReplaceIndexSequence} and {@link AppendSequence}
+     *        base {@link ReplaceInsertIndexSequence}
      * 
      * @param firstIndex
      *        integer specifying the index of the first Item
@@ -43,7 +42,7 @@ implements ReplaceAppendIndexSequence<Item> {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
-    public SubReplaceAppendIndexSequence(final ReplaceAppendIndexSequence<Item> baseSequence, final int firstIndex,
+    public SubReplaceInsertIndexSequence(final ReplaceInsertIndexSequence<Item> baseSequence, final int firstIndex,
                                          final int lastIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
@@ -57,19 +56,19 @@ implements ReplaceAppendIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceAppendIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public ReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
-        return new SubReplaceAppendIndexSequence<>(this, fromIndex, toIndex);
+        return new SubReplaceInsertIndexSequence<>(this, fromIndex, toIndex);
     }
 
     @Override
-    public ReplaceTraverser<Item> createReplaceTraverser() {
-        return createReplaceIndexSequenceTraverser();
+    public ReplaceTraverser<Item> createTraverser() {
+        return createTraverser();
     }
 
     @Override
-    public ReplaceSequenceTraverser<Item> createReplaceSequenceTraverser() {
-        return createReplaceIndexSequenceTraverser();
+    public ReplaceSequenceTraverser<Item> createTraverser() {
+        return createTraverser();
     }
 
     @Override
@@ -77,13 +76,13 @@ implements ReplaceAppendIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<Item, SubReplaceAppendIndexSequence<Item>>(this);
+    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createReplaceIndexSequenceTraverser(final int startIndex)
+    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultReplaceIndexSequenceTraverser<Item, SubReplaceAppendIndexSequence<Item>>(this, startIndex);
+        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 }

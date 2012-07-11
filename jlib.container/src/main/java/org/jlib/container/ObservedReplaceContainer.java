@@ -24,7 +24,7 @@ extends ReplaceContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending Item removals
      * 
-     * @return newly created {@link ObservedReplaceTraverser}
+     * @return newly createTraverser}
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this

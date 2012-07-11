@@ -41,5 +41,5 @@ extends RemoveSequence<Item>, ObservedRemoveContainer<Item> {
      *         this {@link ObservedRemoveSequence} in proper order
      */
     @SuppressWarnings("unchecked")
-    public ObservedRemoveSequenceTraverser<Item> createRemoveTraverser(ValueObserver<Item>... observers);
+    public ObservedRemoveSequenceTraverser<Item> createTraverser(ValueObserver<Item>... observers);
 }

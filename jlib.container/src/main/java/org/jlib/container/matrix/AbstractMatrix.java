@@ -28,6 +28,6 @@ implements Matrix<Entry> {
 
     @Override
     public Traverser<Entry> createTraverser() {
-        return createMatrixTraverser();
+        return createTraverser();
     }
 }

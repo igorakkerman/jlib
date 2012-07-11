@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.BidirectionalTraversible;
 import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.
@@ -33,8 +33,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds the specified Item to the specified {@link AppendSequence} that does
-     * not yet contain the Item.
+     * Appends the specified Item to the specified {@link AppendSequence} that
+     * does not yet contain the Item.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -55,7 +55,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items provided by the specified {@link Iterable} to the
+     * Appends all Items provided by the specified {@link Iterable} to the
      * specified {@link AppendSequence}.
      * 
      * @param <Item>
@@ -77,8 +77,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items in the specified comma separated sequence to the specified
-     * {@link AppendSequence}.
+     * Appends all Items in the specified comma separated sequence to the
+     * specified {@link AppendSequence}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -100,8 +100,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds the specified Item to the specified {@link AppendSequence} that does
-     * not yet contain the Item.
+     * Appends the specified Item to the specified {@link AppendSequence} that
+     * does not yet contain the Item.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -128,7 +128,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items provided by the specified {@link Iterable} to the
+     * Appends all Items provided by the specified {@link Iterable} to the
      * specified {@link AppendSequence}.
      * 
      * @param <Item>
@@ -156,8 +156,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items in the specified comma separated sequence to the specified
-     * {@link AppendSequence}.
+     * Appends all Items in the specified comma separated sequence to the
+     * specified {@link AppendSequence}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -183,7 +183,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds the specified Item to the specified {@link PrependSequence} that
+     * Prepends the specified Item to the specified {@link PrependSequence} that
      * does not yet contain the Item.
      * 
      * @param <Item>
@@ -205,7 +205,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items provided by the specified {@link Iterable} to the
+     * Prepends all Items provided by the specified {@link Iterable} to the
      * specified {@link PrependSequence}.
      * 
      * @param <Item>
@@ -227,8 +227,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items in the specified comma separated sequence to the specified
-     * {@link PrependSequence}.
+     * Prepends all Items in the specified comma separated sequence to the
+     * specified {@link PrependSequence}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -250,7 +250,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds the specified Item to the specified {@link PrependSequence} that
+     * Prepends the specified Item to the specified {@link PrependSequence} that
      * does not yet contain the Item.
      * 
      * @param <Item>
@@ -278,7 +278,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items provided by the specified {@link Iterable} to the
+     * Prepends all Items provided by the specified {@link Iterable} to the
      * specified {@link PrependSequence}.
      * 
      * @param <Item>
@@ -306,8 +306,8 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds all Items in the specified comma separated sequence to the specified
-     * {@link PrependSequence}.
+     * Prepends all Items in the specified comma separated sequence to the
+     * specified {@link PrependSequence}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -333,8 +333,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Adds the specified Item from the specified {@link RemoveSequence} that
-     * does not yet contain the Item.
+     * Removes the specified Item from the specified {@link RemoveSequence}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Sequence}
@@ -355,23 +354,149 @@ public final class SequenceUtility {
     }
 
     /**
-     * Returns a concatenated view of the specified
-     * {@link BidirectionalTraversible} instances. The behaviour of the returned
-     * {@link Sequence} and its {@link Traverser} or {@link Iterator} is
-     * unspecified if one of the {@link BidirectionalTraversible} instances is
-     * modified.
+     * Removes all Items provided by the specified {@link Iterable} from the
+     * specified {@link RemoveSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link RemoveSequence} from which the Items are removed
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being removed from {@code sequence}
+     */
+    public static <Item> void remove(final RemoveSequence<Item> sequence, final Iterable<? extends Item> items) {
+        for (final Item item : items)
+            sequence.remove(item);
+    }
+
+    /**
+     * Removes all Items in the specified comma separated sequence from the
+     * specified {@link RemoveSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link RemoveSequence} from which the Items are removed
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being removed from {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void remove(final RemoveSequence<Item> sequence, final Item... items)
+    throws IllegalSequenceArgumentException {
+        remove(sequence, ArrayUtility.iterable(items));
+    }
+
+    /**
+     * Removes the specified Item from the specified {@link RemoveSequence} that
+     * does not yet contain the Item.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedRemoveSequence} from which the Item is removed
+     * 
+     * @param item
+     *        removed Item
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being removed
+     *         to {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void remove(final ObservedRemoveSequence<Item> sequence, final Item item,
+                                     final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {
+        sequence.remove(item, observers);
+    }
+
+    /**
+     * Removes all Items provided by the specified {@link Iterable} from the
+     * specified {@link RemoveSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedRemoveSequence} from which the Items are removed
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being removed from {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void remove(final ObservedRemoveSequence<Item> sequence, final Iterable<? extends Item> items,
+                                     final ValueObserver<Item>... observers) {
+        for (final Item item : items)
+            sequence.remove(item, observers);
+    }
+
+    /**
+     * Removes all Items in the specified comma separated sequence from the
+     * specified {@link RemoveSequence}.
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Sequence}
+     * 
+     * @param sequence
+     *        {@link ObservedRemoveSequence} from which the Items are removed
+     * 
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     * 
+     * @param observers
+     *        array of {@link ValueObserver} instances attending the operation
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if some property of one Item in {@code items} prevents it from
+     *         being removed from {@code sequence}
+     */
+    @SafeVarargs
+    public static <Item> void remove(final ObservedRemoveSequence<Item> sequence,
+                                     final ValueObserver<Item>[] observers, final Item... items)
+    throws IllegalSequenceArgumentException {
+        remove(sequence, ArrayUtility.iterable(items), observers);
+    }
+
+    /**
+     * Returns a concatenated view of the specified {@link TwoWayTraversible}
+     * instances. The behaviour of the returned {@link Sequence} and its
+     * {@link Traverser} or {@link Iterator} is unspecified if one of the
+     * {@link TwoWayTraversible} instances is modified.
      * 
      * @param <Item>
      *        type of the items provided by {@code traversibles}
      * 
      * @param traversibles
-     *        comma separated sequence of {@link BidirectionalTraversible}
-     *        instances
+     *        comma separated sequence of {@link TwoWayTraversible} instances
      * 
      * @return concatenated {@link Sequence} view
      */
     @SafeVarargs
-    public static <Item> Sequence<Item> concatenated(final BidirectionalTraversible<Item>... traversibles) {
+    public static <Item> Sequence<Item> concatenated(final TwoWayTraversible<Item>... traversibles) {
         return new ConcatenatedSequence<>(traversibles);
     }
 
@@ -390,7 +515,7 @@ public final class SequenceUtility {
     throws InvalidSequenceItemsCountException {
         if (size < 1)
             throw new InvalidSequenceItemsCountException(size, "size == {0} < 1");
-    
+
         return size;
     }
 }

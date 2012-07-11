@@ -54,7 +54,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
-    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser();
+    public RemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} and traversing the Items
@@ -75,6 +75,6 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public RemoveIndexSequenceTraverser<Item> createRemoveIndexSequenceTraverser(final int startIndex)
+    public RemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

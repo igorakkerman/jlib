@@ -15,7 +15,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.ReplaceContainer;
-import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
  * {@link Sequence} allowing its Items to be modified using an
@@ -36,12 +36,12 @@ extends ReplaceContainer<Item>, Sequence<Item> {
      * </p>
      * <p>
      * The {@link ReplaceSequenceTraverser#replace(Object)} method of the
-     * {@link BidirectionalTraverser} can be used to modify Items in this
-     * Sequence.
+     * {@link TwoWayTraverser} can be used to modify Items in this Sequence.
      * </p>
      * 
      * @return ReplaceSequenceTraverser traversing the Items of this Sequence in
      *         proper order
      */
-    public ReplaceSequenceTraverser<Item> createReplaceSequenceTraverser();
+    @Override
+    public ReplaceSequenceTraverser<Item> createTraverser();
 }

@@ -1,7 +1,7 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.EmptySequence;
-import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
@@ -16,7 +16,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public class EmptyContainerTraverser<Item>
-implements BidirectionalTraverser<Item> {
+implements TwoWayTraverser<Item> {
 
     /** sole {@link EmptyContainerTraverser} instance */
     private static final EmptyContainerTraverser<?> INSTANCE = new EmptyContainerTraverser<>();

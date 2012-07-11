@@ -29,6 +29,8 @@ public interface ReplaceInsertIndexSequence<Item>
 extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
 
     /**
+     * {@inheritDoc}
+     * 
      * @return {@link ReplaceInsertIndexSequence} view of the specified Items
      */
     @Override
@@ -44,13 +46,9 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      * 
      * @return {@link ReplaceIndexSequenceTraverser} over this
      *         {@link ReplaceInsertIndexSequence}
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser()
-    throws SequenceIndexOutOfBoundsException;
+    @Override
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link ReplaceIndexSequenceTraverser} and
@@ -70,6 +68,7 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ReplaceInsertIndexSequenceTraverser<Item> createReplaceInsertIndexSequenceTraverser(final int startIndex)
+    @Override
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

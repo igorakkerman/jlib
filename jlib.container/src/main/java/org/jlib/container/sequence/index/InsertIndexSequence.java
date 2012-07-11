@@ -78,7 +78,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser()
+    public InsertIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     /**
@@ -99,6 +99,6 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public InsertIndexSequenceTraverser<Item> createInsertIndexSequenceTraverser(int startIndex)
+    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

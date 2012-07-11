@@ -180,7 +180,7 @@ extends Container<Item> {
     /**
      * Creates a new {@link RemoveTraverser} over this {@link RemoveContainer}.
      * 
-     * @return newly created {@link RemoveTraverser}
+     * @return newly createTraverser}
      */
-    public RemoveTraverser<Item> createRemoveTraverser();
+    public RemoveTraverser<Item> createTraverser();
 }

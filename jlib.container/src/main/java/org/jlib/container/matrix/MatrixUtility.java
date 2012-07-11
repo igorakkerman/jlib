@@ -37,8 +37,8 @@ public final class MatrixUtility {
     public static final MatrixTraversalOrder HORIZONTAL = new MatrixTraversalOrder() {
 
         @Override
-        public <Item> MatrixTraverser<Item> createMatrixTraverser(final RandomTraversalMatrix<Item> matrix) {
-            return new EntityMatrixTraverser<Item>(matrix, matrix.getRows());
+        public <Item> MatrixTraverser<Item> createTraverser(final RandomTraversalMatrix<Item> matrix) {
+            return new EntityMatrixTraverser<>(matrix, matrix.getRows());
         }
     };
 
@@ -55,8 +55,8 @@ public final class MatrixUtility {
     public static final MatrixTraversalOrder VERTICAL = new MatrixTraversalOrder() {
 
         @Override
-        public <Item> MatrixTraverser<Item> createMatrixTraverser(final RandomTraversalMatrix<Item> matrix) {
-            return new EntityMatrixTraverser<Item>(matrix, matrix.getColumns());
+        public <Item> MatrixTraverser<Item> createTraverser(final RandomTraversalMatrix<Item> matrix) {
+            return new EntityMatrixTraverser<>(matrix, matrix.getColumns());
         }
     };
 }

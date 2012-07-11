@@ -6,8 +6,6 @@ import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequenceCreator;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
@@ -25,32 +23,6 @@ import static org.jlib.core.array.ArrayUtility.iterable;
 public class ReplaceAppendPrependArraySequence<Item>
 extends ReplaceAppendArraySequence<Item>
 implements ObservedPrependSequence<Item> {
-
-    /**
-     * {@link IndexSequenceCreator} of {@link ReplaceAppendPrependArraySequence}
-     * insstances
-     */
-    private static final IndexSequenceCreator<?, ? extends ReplaceAppendPrependArraySequence<?>> CREATOR =
-        new IndexSequenceCreator<Object, ReplaceAppendPrependArraySequence<Object>>() {
-
-            @Override
-            public ReplaceAppendPrependArraySequence<Object> createSequence(final int firstIndex, final int lastIndex)
-            throws InvalidSequenceIndexRangeException {
-                return new ReplaceAppendPrependArraySequence<Object>(firstIndex, lastIndex);
-            }
-        };
-
-    /**
-     * Returns the {@link IndexSequenceCreator} of
-     * {@link ReplaceAppendPrependArraySequence} instances.
-     * 
-     * @return {@link IndexSequenceCreator} of
-     *         {@link ReplaceAppendPrependArraySequence} instances
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>> getCreator() {
-        return (IndexSequenceCreator<Item, ReplaceAppendPrependArraySequence<Item>>) CREATOR;
-    }
 
     /**
      * Creates a new {@link ReplaceAppendPrependArraySequence} with the

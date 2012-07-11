@@ -46,7 +46,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final Traverser<Item> createTraverser() {
+    public Traverser<Item> createTraverser() {
         return EmptyContainerTraverser.getInstance();
     }
 
@@ -82,12 +82,12 @@ implements Container<Item> {
     }
 
     @Override
-    public final List<Item> toList() {
+    public List<Item> toList() {
         return Collections.emptyList();
     }
 
     @Override
-    public final List<Item> toSequentialList() {
+    public List<Item> toSequentialList() {
         return Collections.emptyList();
     }
 
@@ -97,7 +97,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final Iterator<Item> iterator() {
+    public Iterator<Item> iterator() {
         return Collections.emptyIterator();
     }
 

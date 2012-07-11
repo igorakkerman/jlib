@@ -48,7 +48,7 @@ extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
      * @return {@link ReplaceAppendInsertRemoveIndexSequenceTraverser} over this
      *         {@link ReplaceAppendInsertRemoveIndexSequence}
      */
-    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createReplaceAppendInsertRemoveIndexSequenceTraverser();
+    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
      * Returns an {@link ReplaceAppendInsertRemoveIndexSequenceTraverser}
@@ -68,6 +68,6 @@ extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createReplaceInsertRemoveIndexSequenceTraverser(final int startIndex)
+    public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

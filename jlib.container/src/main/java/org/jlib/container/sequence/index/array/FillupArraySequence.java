@@ -7,11 +7,9 @@ import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.ObservedAppendSequence;
+import org.jlib.container.sequence.ObservedReplaceAppendRemoveSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ValueObserver;
-
-import static org.jlib.container.sequence.index.IndexSequenceUtility.createSequence;
 
 /**
  * Default implementation of a {@link ReplaceSequence} and
@@ -43,7 +41,7 @@ extends DelegatingSequence<Item> {
      */
     private class EmptyDelegateSequence
     extends EmptySequence<Item>
-    implements ObservedAppendSequence<Item> {
+    implements ObservedReplaceAppendRemoveSequence<Item> {
 
         /**
          * Creates a new {@link EmptyDelegateSequence}.
@@ -54,54 +52,54 @@ extends DelegatingSequence<Item> {
 
         @Override
         public void append(final Item item) {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), item));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(item));
         }
 
         @Override
         public void append(final Container<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), items));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
         }
 
         @Override
         public void append(final Collection<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), items));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), items));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), observers, item));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(observers, item));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), items, observers));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), items, observers));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(createSequence(ReplaceAppendRemoveArraySequence.<Item> getCreator(), observers, items));
+            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(observers, items));
         }
     }
 }

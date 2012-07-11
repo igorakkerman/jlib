@@ -227,7 +227,7 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public RemoveTraverser<Item> createRemoveTraverser()
+    public RemoveTraverser<Item> createTraverser()
     throws IllegalContainerDelegateStateException {
         return new RemoveIterableTraverser<>(getDelegateCollection());
     }

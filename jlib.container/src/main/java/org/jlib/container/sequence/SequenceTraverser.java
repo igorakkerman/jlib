@@ -14,10 +14,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.BidirectionalTraverser;
+import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
- * {@link BidirectionalTraverser} over the Items of a {@link Sequence}.
+ * {@link TwoWayTraverser} over the Items of a {@link Sequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -25,7 +25,7 @@ import org.jlib.core.traverser.BidirectionalTraverser;
  * @author Igor Akkerman
  */
 public interface SequenceTraverser<Item>
-extends BidirectionalTraverser<Item> {
+extends TwoWayTraverser<Item> {
 
     /**
      * Returns the previous Item of this {@link SequenceTraverser}.
