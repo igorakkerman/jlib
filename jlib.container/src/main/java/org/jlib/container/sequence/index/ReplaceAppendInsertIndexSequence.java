@@ -14,13 +14,10 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link AppendSequence}, {@link InsertIndexSequence} and {@link IndexSequence}
- * .
+ * {@link ReplaceAppendIndexSequence} and {@link InsertIndexSequence} .
  * 
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -28,7 +25,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ReplaceAppendInsertIndexSequence<Item>
-extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
+extends ReplaceAppendIndexSequence<Item>, InsertIndexSequence<Item> {
 
     /**
      * Returns a {@link ReplaceInsertIndexSequenceTraverser} traversing the
@@ -62,4 +59,14 @@ extends ReplaceSequence<Item>, AppendSequence<Item>, InsertIndexSequence<Item> {
      */
     public ReplaceInsertIndexSequenceTraverser<Item> createRemoveInsertIndexSequenceTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @return {@link ReplaceAppendInsertIndexSequence} view of the specified
+     *         subsequence
+     */
+    @Override
+    public ReplaceAppendInsertIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 }

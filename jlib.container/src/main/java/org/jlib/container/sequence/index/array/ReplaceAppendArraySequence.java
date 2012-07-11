@@ -4,9 +4,11 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
+import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ReplaceIndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 
@@ -26,20 +28,113 @@ extends ReplaceArraySequence<Item>
 implements ObservedAppendSequence<Item> {
 
     /**
+     * Creates a new uninitialized {@link ReplaceAppendArraySequence} with the
+     * specified first and last indices.
+     * 
+     * @param firstIndex
+     *        integer specifying the initial first index
+     * 
+     * @param lastIndex
+     *        integer specifying the initial last index
+     * 
+     * @throws InvalidSequenceIndexRangeException
+     *         if {@code lastIndex < firstIndex}
+     */
+    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex)
+    throws InvalidSequenceIndexRangeException {
+        super(firstIndex, lastIndex);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+     * {@code 0} and the specified number of Items.
+     * 
+     * @param itemsCount
+     *        integer specifying the initial number of Items
+     * 
+     * @throws InvalidSequenceItemsCountException
+     *         if {@code itemsCount < 1}
+     */
+    protected ReplaceAppendArraySequence(final int itemsCount)
+    throws InvalidSequenceItemsCountException {
+        super(itemsCount);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+     * {@code 0} containing the specified Items.
+     * 
+     * @param items
+     *        comma separated sequence of Items to store
+     */
+    @SafeVarargs
+    public ReplaceAppendArraySequence(final Item... items) {
+        super(items);
+    }
+
+    /**
      * Creates a new {@link ReplaceAppendArraySequence} with the specified first
-     * and last indices.
+     * index containing the specified Items.
      * 
      * @param firstIndex
      *        integer specifying the first index
      * 
-     * @param lastIndex
-     *        integer specifying the last index
-     * 
-     * @throws IllegalArgumentException
-     *         if {@code lastIndex > firstIndex}
+     * @param items
+     *        comma separated sequence of Items to store
      */
-    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex) {
-        super(firstIndex, lastIndex);
+    @SafeVarargs
+    public ReplaceAppendArraySequence(final int firstIndex, final Item... items) {
+        super(firstIndex, items);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+     * {@code 0} containing the specified Items.
+     * 
+     * @param items
+     *        {@link Collection} of Items to store
+     */
+    public ReplaceAppendArraySequence(final Collection<? extends Item> items) {
+        super(items);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+     * index containing the specified Items.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param items
+     *        {@link Collection} of Items to store
+     */
+    public ReplaceAppendArraySequence(final int firstIndex, final Collection<? extends Item> items) {
+        super(firstIndex, items);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+     * {@code 0} containing the specified Items.
+     * 
+     * @param items
+     *        {@link Container} of Items to store
+     */
+    public ReplaceAppendArraySequence(final Container<? extends Item> items) {
+        super(items);
+    }
+
+    /**
+     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+     * index containing the specified Items.
+     * 
+     * @param firstIndex
+     *        integer specifying the first index
+     * 
+     * @param items
+     *        {@link Container} of Items to store
+     */
+    public ReplaceAppendArraySequence(final int firstIndex, final Container<? extends Item> items) {
+        super(firstIndex, items);
     }
 
     @Override
