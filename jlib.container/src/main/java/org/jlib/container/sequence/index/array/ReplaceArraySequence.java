@@ -60,7 +60,7 @@ implements ObservedReplaceIndexSequence<Item> {
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
-    public ReplaceArraySequence(final int itemsCount)
+    protected ReplaceArraySequence(final int itemsCount)
     throws InvalidSequenceItemsCountException {
         super(itemsCount);
     }
