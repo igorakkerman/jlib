@@ -6,7 +6,6 @@ import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;
 
@@ -17,7 +16,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
  * {@link ReplaceArraySequence} to which Items can be added.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ReplaceAppendArraySequence}
  * 
  * @author Igor Akkerman
  */
@@ -215,7 +214,7 @@ implements ObservedAppendSequence<Item> {
         int itemArrayIndex = getItemsCount();
 
         for (final Item item : items)
-            replaceDelegateArrayItem(item, itemArrayIndex ++, observers);
+            replaceDelegateArrayItem(itemArrayIndex ++, item, observers);
 
         setLastIndex(getLastIndex() + addedItemsCount);
     }

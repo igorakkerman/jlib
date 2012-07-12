@@ -18,7 +18,6 @@ import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ObservedReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequence;
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -61,43 +60,30 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and
-     * {@link ObservedReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
-     * first index.
+     * {@inheritDoc}
      * 
-     * @return {@link IndexSequenceTraverser} and
-     *         {@link ReplaceSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
+     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
      */
+    @Override
     public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and
-     * {@link ObservedReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
-     * specified start index.
+     * {@inheritDoc}
      * 
-     * @param startIndex
-     *        integer specifying the index of the first Item to traverse
-     * 
-     * @return {@link IndexSequenceTraverser} and
-     *         {@link ReplaceSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
-     * 
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
+     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
      */
+    @Override
     public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers)
+    throws RuntimeException;
 }

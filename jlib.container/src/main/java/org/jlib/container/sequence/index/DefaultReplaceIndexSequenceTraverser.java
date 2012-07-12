@@ -14,12 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
-import org.jlib.container.sequence.NoSequenceItemToReplaceException;
-import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.OperatorException;
@@ -27,8 +21,17 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.IllegalTraverserStateException;
 import org.jlib.core.valueholder.ValueNotAccessibleException;
 
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import static org.jlib.core.array.ArrayUtility.traversible;
+
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
+import org.jlib.container.sequence.NoSequenceItemToReplaceException;
+import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.array.FillupArraySequence;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser} and
@@ -48,7 +51,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     /** replace {@link ValueObserver} items */
     // FIXME: initialize with initially empty fillable Sequence
-    private final AppendSequence<ValueObserver<Item>> traverserObservers = null;
+    private final AppendSequence<ValueObserver<Item>> traverserObservers = new FillupArraySequence<>();
 
     /**
      * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
@@ -89,13 +92,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
         super(sequence, initialNextItemIndex);
     }
 
-    /**
-     * Registers the specified {@link ValueObserver} for the replace operations
-     * of this {@link DefaultReplaceIndexSequenceTraverser}.
-     * 
-     * @param replaceObserver
-     *        additional replace {@link ValueObserver}
-     */
+    @Override
     public final void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
         traverserObservers.append(replaceObserver);
     }

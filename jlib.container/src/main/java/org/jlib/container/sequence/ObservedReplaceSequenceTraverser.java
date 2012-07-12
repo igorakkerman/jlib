@@ -18,6 +18,8 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 
+import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
+
 /**
  * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
  * 
@@ -51,4 +53,13 @@ extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
     @SuppressWarnings("unchecked")
     public void replace(final Item newItem, final ValueObserver<Item>... observers)
     throws NoSequenceItemToReplaceException, ValueObserverException;
+
+    /**
+     * Registers the specified {@link ValueObserver} for the replace operations
+     * of this {@link DefaultReplaceIndexSequenceTraverser}.
+     * 
+     * @param replaceObserver
+     *        additional replace {@link ValueObserver}
+     */
+    public void addReplaceObserver(final ValueObserver<Item> replaceObserver);
 }

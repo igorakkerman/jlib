@@ -15,7 +15,6 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.ObservedReplaceContainer;
-import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -31,15 +30,15 @@ public interface ObservedReplaceSequence<Item>
 extends ReplaceSequence<Item>, ObservedReplaceContainer<Item> {
 
     /**
-     * Returns an {@link ObservedReplaceIndexSequenceTraverser} traversing the
-     * Items of this {@link ObservedReplaceSequence} in proper order.
+     * Returns an {@link ObservedReplaceSequenceTraverser} traversing the Items
+     * of this {@link ObservedReplaceSequence} in proper order.
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the replacement
      * 
-     * @return {@link ObservedReplaceIndexSequenceTraverser} traversing the
-     *         Items of this {@link ObservedReplaceSequence} in proper order
+     * @return {@link ObservedReplaceSequenceTraverser} traversing the Items of
+     *         this {@link ObservedReplaceSequence}
      */
     @Override
     @SuppressWarnings("unchecked")

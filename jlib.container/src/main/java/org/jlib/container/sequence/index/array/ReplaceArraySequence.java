@@ -2,9 +2,10 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
-import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
@@ -13,7 +14,6 @@ import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceIndexSequence;
-import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -172,7 +172,8 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservedReplaceSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers) {
-        return createTraverser();
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers) {
+        ObservedReplaceIndexSequenceTraverser<Item> traverser = createTraverser();
+        traverser.
     }
 }

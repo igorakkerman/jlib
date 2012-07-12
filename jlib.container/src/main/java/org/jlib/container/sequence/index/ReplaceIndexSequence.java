@@ -18,7 +18,6 @@ import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
@@ -62,34 +61,29 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
-     * traversing the Items of this {@link ReplaceIndexSequence} in proper
-     * order. That is, the Item returned by the first call to
-     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
-     * first index.
+     * Returns a {@link ReplaceIndexSequenceTraverser} traversing the Items of
+     * this {@link ReplaceIndexSequence} in proper order.
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
+     * @return {@link ReplaceIndexSequenceTraverser} traversing the Items
      */
+    @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * Returns an {@link IndexSequenceTraverser} and {@link ReplaceTraverser}
-     * traversing the Items of this {@link ReplaceIndexSequence} in proper
-     * order. That is, the Item returned by the first call to
-     * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
-     * specified start index.
+     * Returns a {@link ReplaceIndexSequenceTraverser} traversing the Items of
+     * this {@link ReplaceIndexSequence} in proper order, starting at the
+     * specified index.
      * 
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
-     *         {@link ReplaceIndexSequence}
+     * @return {@link ReplaceIndexSequenceTraverser} traversing the Items
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
+    @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }
