@@ -1,8 +1,9 @@
 package org.jlib.container.sequence;
 
-import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.NoItemToRemoveException;
+
+import org.jlib.container.sequence.index.IndexSequenceTraverser;
 
 /**
  * {@link IndexSequenceTraverser} of an {@link EmptySequence}.
@@ -85,5 +86,10 @@ implements ObservedReplaceRemoveSequenceTraverser<Item> {
     public void remove(final ValueObserver<Item>... observers)
     throws NoSequenceItemToRemoveException {
         throw new NoSequenceItemToRemoveException(getSequence());
+    }
+
+    @Override
+    public void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
+        // no Item to replace, hence no replacement to observe
     }
 }
