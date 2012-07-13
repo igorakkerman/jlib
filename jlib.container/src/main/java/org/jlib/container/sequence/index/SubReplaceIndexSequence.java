@@ -2,8 +2,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link ReplaceIndexSequence} view of the Items stored in another
@@ -59,16 +57,6 @@ implements ReplaceIndexSequence<Item> {
     public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
-    }
-
-    @Override
-    public ReplaceTraverser<Item> createTraverser() {
-        return createTraverser();
-    }
-
-    @Override
-    public ReplaceSequenceTraverser<Item> createTraverser() {
-        return createTraverser();
     }
 
     @Override
