@@ -1,7 +1,5 @@
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.TwoWayTraverser;
-
 /**
  * Sequence containing exactly one Item.
  * 
@@ -16,65 +14,64 @@ extends AbstractNonEmptySequence<Item> {
     /** sole item of this {@link SingletonSequence} */
     private final Item item;
 
-    /** current delegate {@link SequenceTraverser} */
-    private SequenceTraverser<Item> currentDelegateTraverser;
+    /** current {@link SequenceTraverser} state */
+    private SequenceTraverser<Item> currentTraverserState;
 
-    /** delegate {@link SequenceTraverser} at the {@link SingletonSequence} head */
-    private final SequenceTraverser<Item> headTraverser = new AbstractSequenceTraverser<>(this) {
+    /** {@link SequenceTraverser} state at the {@link SingletonSequence} head */
+    private final SequenceTraverser<Item> headTraverserState =
+        new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
 
-        @Override
-        public boolean isPreviousItemAccessible() {
-            return false;
-        }
+            @Override
+            public boolean isPreviousItemAccessible() {
+                return false;
+            }
 
-        @Override
-        public Item getPreviousItem()
-        throws NoPreviousSequenceItemException {
-            throw new NoPreviousSequenceItemException(SingletonSequence.this);
-        }
+            @Override
+            public Item getPreviousItem()
+            throws NoPreviousSequenceItemException {
+                throw new NoPreviousSequenceItemException(getSequence());
+            }
 
-        @Override
-        public boolean isNextItemAccessible() {
-            return true;
-        }
+            @Override
+            public boolean isNextItemAccessible() {
+                return true;
+            }
 
-        @Override
-        public Item getNextItem() {
-            currentDelegateTraverser = tailTraverser;
+            @Override
+            public Item getNextItem() {
+                currentTraverserState = tailTraverserState;
 
-            return item;
-        }
-    };
+                return item;
+            }
+        };
 
-    /**
-     * delegate {@link TwoWayTraverser} at the {@link SingletonSequence}
-     * tailTraverser
-     */
-    private final SequenceTraverser<Item> tailTraverser = new AbstractSequenceTraverser<>(this) {
+    /** {@link SequenceTraverser} state at the {@link SingletonSequence} tail */
+    private final SequenceTraverser<Item> tailTraverserState =
+        new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
 
-        @Override
-        public boolean isPreviousItemAccessible() {
-            return true;
-        }
+            @Override
+            public boolean isPreviousItemAccessible() {
+                return true;
+            }
 
-        @Override
-        public Item getPreviousItem()
-        throws NoPreviousSequenceItemException {
-            currentDelegateTraverser = headTraverser;
+            @Override
+            public Item getPreviousItem()
+            throws NoPreviousSequenceItemException {
+                currentTraverserState = headTraverserState;
 
-            return item;
-        }
+                return item;
+            }
 
-        @Override
-        public boolean isNextItemAccessible() {
-            return false;
-        }
+            @Override
+            public boolean isNextItemAccessible() {
+                return false;
+            }
 
-        @Override
-        public Item getNextItem() {
-            throw new NoPreviousSequenceItemException(SingletonSequence.this);
-        }
-    };
+            @Override
+            public Item getNextItem() {
+                throw new NoPreviousSequenceItemException(getSequence());
+            }
+        };
 
     /**
      * Creates a new {@link SingletonSequence} with the specified Item.
@@ -88,28 +85,28 @@ extends AbstractNonEmptySequence<Item> {
 
     @Override
     public SequenceTraverser<Item> createTraverser() {
-        return new AbstractSequenceTraverser<>(this) {
+        return new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
 
             @Override
             public boolean isPreviousItemAccessible() {
-                return currentDelegateTraverser.isPreviousItemAccessible();
+                return currentTraverserState.isPreviousItemAccessible();
             }
 
             @Override
             public Item getPreviousItem()
             throws NoPreviousSequenceItemException {
-                return currentDelegateTraverser.getPreviousItem();
+                return currentTraverserState.getPreviousItem();
             }
 
             @Override
             public boolean isNextItemAccessible() {
-                return currentDelegateTraverser.isNextItemAccessible();
+                return currentTraverserState.isNextItemAccessible();
             }
 
             @Override
             public Item getNextItem()
             throws NoNextSequenceItemException {
-                return currentDelegateTraverser.getNextItem();
+                return currentTraverserState.getNextItem();
             }
 
         };
@@ -118,10 +115,5 @@ extends AbstractNonEmptySequence<Item> {
     @Override
     public int getItemsCount() {
         return 1;
-    }
-
-    @Override
-    public SequenceTraverser<Item> createTraverser() {
-        return createTraverser();
     }
 }
