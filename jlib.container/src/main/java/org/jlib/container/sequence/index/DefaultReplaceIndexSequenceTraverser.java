@@ -50,8 +50,7 @@ extends DefaultIndexSequenceTraverser<Item, Sequenze>
 implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     /** replace {@link ValueObserver} items */
-    // FIXME: initialize with initially empty fillable Sequence
-    private final AppendSequence<ValueObserver<Item>> traverserObservers = new FillupArraySequence<>();
+    private final AppendSequence<ValueObserver<Item>> traverserReplaceObservers = new FillupArraySequence<>();
 
     /**
      * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
@@ -94,7 +93,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     @Override
     public final void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
-        traverserObservers.append(replaceObserver);
+        traverserReplaceObservers.append(replaceObserver);
     }
 
     @Override
@@ -128,6 +127,6 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
         },
 
-        newItem, concatenated(traverserObservers, traversible(operationObservers)).toArray());
+        newItem, concatenated(traverserReplaceObservers, traversible(operationObservers)).toArray());
     }
 }

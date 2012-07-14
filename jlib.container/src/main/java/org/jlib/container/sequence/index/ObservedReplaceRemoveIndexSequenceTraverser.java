@@ -28,6 +28,6 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceRemoveIndexSequenceTraverser<Item>
-extends ObservedReplaceRemoveSequenceTraverser<Item>, ObservedIndexSequenceTraverser<Item> {
+extends ObservedReplaceRemoveSequenceTraverser<Item>, ObservedInsertSequenceTraverser<Item> {
     // unifying interface
 }

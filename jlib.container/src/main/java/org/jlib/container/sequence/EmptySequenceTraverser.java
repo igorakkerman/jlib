@@ -90,6 +90,11 @@ implements ObservedReplaceRemoveSequenceTraverser<Item> {
 
     @Override
     public void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
-        // intentionally empty: no Item to replace, hence no replacement to observe
+        // intentionally empty: no Item to replace, hence no replace operation to observe
+    }
+
+    @Override
+    public void addRemoveObserver(final ValueObserver<Item> removeObserver) {
+        // intentionally empty: no Item to remove, hence no remove operation to observe
     }
 }

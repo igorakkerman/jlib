@@ -14,7 +14,21 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.OperatorException;
+import org.jlib.core.observer.ValueObserver;
+
+import static org.jlib.core.array.ArrayUtility.traversible;
+
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.array.FillupArraySequence;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
 
 /**
  * Default implementation of a {@link ReplaceIndexSequenceTraverser}.
@@ -29,7 +43,10 @@ import org.jlib.container.sequence.Sequence;
  */
 public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements ReplaceInsertIndexSequenceTraverser<Item> {
+implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
+
+    /** insert {@link ValueObserver} items */
+    private final AppendSequence<ValueObserver<Item>> traverserInsertObservers = new FillupArraySequence<>();
 
     /**
      * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
@@ -68,5 +85,32 @@ implements ReplaceInsertIndexSequenceTraverser<Item> {
     @Override
     public void insert(final Item newItem) {
         getSequence().insert(getPotentialNextItemIndex(), newItem);
+    }
+
+    @Override
+    @SafeVarargs
+    public final void insert(final Item newItem, final ValueObserver<Item>... operationObservers)
+    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate()
+            throws OperatorException, RuntimeException {
+                try {
+                    replace(newItem);
+                }
+                catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
+                    throw new OperatorException("replace: {0}", exception, newItem);
+                }
+            }
+
+        },
+
+        newItem, concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
+    }
+
+    @Override
+    public final void addInsertObserver(final ValueObserver<Item> insertObserver) {
+        traverserInsertObservers.append(insertObserver);
     }
 }

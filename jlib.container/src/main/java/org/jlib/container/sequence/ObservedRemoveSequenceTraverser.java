@@ -43,9 +43,22 @@ extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
      * 
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... observers)
     throws NoSequenceItemToRemoveException, ValueObserverException, RuntimeException;
+
+    /**
+     * Registers the specified {@link ValueObserver} for the remove operations
+     * of this {@link ObservedRemoveSequenceTraverser}.
+     * 
+     * @param removeObserver
+     *        additional remove {@link ValueObserver}
+     */
+    public void addRemoveObserver(final ValueObserver<Item> removeObserver);
 }

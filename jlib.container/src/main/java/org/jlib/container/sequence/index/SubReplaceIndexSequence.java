@@ -12,20 +12,20 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
  * @param <Item>
  *        type of the items held in the {@link SubReplaceIndexSequence}
  * 
+ * @param <BaseSequence>
+ *        type of the base {@link ReplaceIndexSequence}
+ * 
  * @author Igor Akkerman
  */
-public class SubReplaceIndexSequence<Item>
-extends SubIndexSequence<Item>
+public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
+extends SubIndexSequence<Item, BaseSequence>
 implements ReplaceIndexSequence<Item> {
-
-    /** base {@link ReplaceIndexSequence} */
-    private final ReplaceIndexSequence<Item> baseSequence;
 
     /**
      * Creates a new {@link SubReplaceIndexSequence}.
      * 
      * @param baseSequence
-     *        base {@link ReplaceIndexSequence}
+     *        BaseSequence of this {@link SubReplaceIndexSequence}
      * 
      * @param firstIndex
      *        integer specifying the index of the first Item
@@ -40,17 +40,9 @@ implements ReplaceIndexSequence<Item> {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
-    public SubReplaceIndexSequence(final ReplaceIndexSequence<Item> baseSequence, final int firstIndex,
-                                   final int lastIndex)
+    public SubReplaceIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
-
-        this.baseSequence = baseSequence;
-    }
-
-    @Override
-    protected Item getStoredItem(final int index) {
-        return baseSequence.get(index);
     }
 
     @Override
@@ -61,7 +53,11 @@ implements ReplaceIndexSequence<Item> {
 
     @Override
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+        IndexSequenceUtility.assertIndexValid(this, index);
+
+        getBaseSequence().replace(index, newItem);
+    }
 
     @Override
     public ReplaceIndexSequenceTraverser<Item> createTraverser() {

@@ -43,14 +43,15 @@ extends SequenceTraverser<Item> {
      * subsequent call to {@link #getPreviousItem()} would return the new item.
      * </p>
      * 
-     * @param newItem
-     *        new Item to insert
+     * @param item
+     *        Item to insert
      * 
-     * @throws IllegalStateException
-     *         if {@link #getNextItem()} or {@link #getPreviousItem()} have not
-     *         been called initially or after the last call to
-     *         {@link #insert(Object)}
+     * @throws IllegalSequenceArgumentException
+     *         if some property of {@code item} prevents it from being inserted
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
-    public void insert(final Item newItem)
-    throws IllegalStateException;
+    public void insert(final Item item)
+    throws IllegalSequenceArgumentException, IllegalSequenceStateException;
 }

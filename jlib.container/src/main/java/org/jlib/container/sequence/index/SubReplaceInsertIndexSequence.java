@@ -1,27 +1,24 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.container.Container;
 
 /**
- * {@link ReplaceAppendIndexSequence} view of the Items stored in another
- * {@link ReplaceAppendIndexSequence} in the specified index range. The Items in
- * this {@link SubReplaceInsertIndexSequence} will have the same index as they
- * had in the base {@link ReplaceIndexSequence}.
+ * {@link SubReplaceIndexSequence} view of the Items stored in another
+ * {@link ReplaceIndexSequence} in the specified index range. The Items in this
+ * {@link SubReplaceInsertIndexSequence} will have the same index as they had in
+ * the base {@link ReplaceIndexSequence}.
  * 
  * @param <Item>
  *        type of the items held in the {@link SubReplaceInsertIndexSequence}
  * 
+ * @param <BaseSequence>
+ *        type of the base {@link ReplaceInsertIndexSequence}
+ * 
  * @author Igor Akkerman
  */
-public class SubReplaceInsertIndexSequence<Item>
-extends SubReplaceIndexSequence<Item>
+public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ReplaceInsertIndexSequence<Item>>
+extends SubReplaceIndexSequence<Item, BaseSequence>
 implements ReplaceInsertIndexSequence<Item> {
-
-    /** base {@link ReplaceInsertIndexSequence} */
-    private final ReplaceInsertIndexSequence<Item> baseSequence;
 
     /**
      * Creates a new {@link SubReplaceInsertIndexSequence}.
@@ -42,17 +39,9 @@ implements ReplaceInsertIndexSequence<Item> {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
-    public SubReplaceInsertIndexSequence(final ReplaceInsertIndexSequence<Item> baseSequence, final int firstIndex,
-                                         final int lastIndex)
+    public SubReplaceInsertIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
-
-        this.baseSequence = baseSequence;
-    }
-
-    @Override
-    protected Item getStoredItem(final int index) {
-        return baseSequence.get(index);
     }
 
     @Override
@@ -62,27 +51,23 @@ implements ReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceTraverser<Item> createTraverser() {
-        return createTraverser();
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceInsertIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ReplaceSequenceTraverser<Item> createTraverser() {
-        return createTraverser();
-    }
-
-    @Override
-    public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
-
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceIndexSequenceTraverser<>(this);
-    }
-
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
-        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+        return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
+    }
+
+    @Override
+    public void insert(final int index, final Item newItem) {
+        getBaseSequence().insert(index, newItem);
+    }
+
+    @Override
+    public void insert(final int index, final Container<? extends Item> newItems) {
+        getBaseSequence().insert(index, newItems);
     }
 }
