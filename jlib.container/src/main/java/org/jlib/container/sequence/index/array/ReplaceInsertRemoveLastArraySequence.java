@@ -12,6 +12,9 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence;
+import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveLastIndexSequence;
+import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -23,7 +26,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  */
 public class ReplaceInsertRemoveLastArraySequence<Item>
 extends ReplaceInsertArraySequence<Item>
-implements ObservedReplaceInsertRemoveLastSequence<Item> {
+implements ObservedReplaceInsertRemoveLastIndexSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveLastArraySequence}
@@ -135,6 +138,12 @@ implements ObservedReplaceInsertRemoveLastSequence<Item> {
         super(firstIndex, items);
     }
 
+    @Override
+    public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+        return super.getSubsequenceView(fromIndex, toIndex);
+    }
+    
     @Override
     public void removeLastItem()
     throws SoleItemNotRemoveableException {

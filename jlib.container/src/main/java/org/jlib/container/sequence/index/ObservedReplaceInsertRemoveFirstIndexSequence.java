@@ -14,22 +14,22 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ObservedRemoveLastSequence;
+import org.jlib.container.sequence.ObservedRemoveFirstSequence;
 
 /**
  * {@link ObservedReplaceInsertIndexSequence} and
- * {@link ObservedRemoveLastSequence}.
+ * {@link ObservedRemoveFirstSequence}.
  * 
  * @param <Item>
  *        type of items held in the
- *        {@link ObservedReplaceInsertRemoveLastIndexSequence}
+ *        {@link ObservedReplaceInsertRemoveFirstIndexSequence}
  * 
  * @author Igor Akkerman
  */
-public interface ObservedReplaceInsertRemoveLastIndexSequence<Item>
-extends ObservedReplaceInsertIndexSequence<Item>, ObservedRemoveLastSequence<Item> {
+public interface ObservedReplaceInsertRemoveFirstIndexSequence<Item>
+extends ObservedReplaceInsertIndexSequence<Item>, ObservedRemoveFirstSequence<Item> {
 
     @Override
-    public ObservedReplaceInsertRemoveLastIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
+    public ObservedReplaceInsertRemoveFirstIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 }
