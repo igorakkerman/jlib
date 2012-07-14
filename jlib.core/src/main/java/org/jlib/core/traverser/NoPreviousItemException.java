@@ -9,6 +9,9 @@ package org.jlib.core.traverser;
 public class NoPreviousItemException
 extends IllegalTraverserStateException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = 1747026481047589428L;
+
     /**
      * Creates a new {@link NoPreviousItemException}.
      * 
@@ -46,7 +49,7 @@ extends IllegalTraverserStateException {
      *        the message arguments
      */
     public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern,
-                               final Object... messageArguments) {
+                                   final Object... messageArguments) {
         super(traversible, messagePattern, messageArguments);
     }
 
@@ -66,8 +69,8 @@ extends IllegalTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern, final Throwable cause,
-                               final Object... messageArguments) {
+    public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern,
+                                   final Throwable cause, final Object... messageArguments) {
         super(traversible, messagePattern, cause, messageArguments);
     }
 }

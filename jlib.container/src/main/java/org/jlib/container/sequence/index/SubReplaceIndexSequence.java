@@ -15,7 +15,7 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
  *        type of the items held in the {@link SubReplaceIndexSequence}
  * 
  * @param <BaseSequence>
- *        type of the base {@link ReplaceIndexSequence}
+ *        type of the base {@link ObservedReplaceIndexSequence}
  * 
  * @author Igor Akkerman
  */
@@ -79,12 +79,5 @@ implements ObservedReplaceIndexSequence<Item> {
     public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers)
-    throws RuntimeException {
-        return null;
     }
 }

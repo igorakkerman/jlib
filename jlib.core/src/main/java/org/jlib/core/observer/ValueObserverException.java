@@ -8,6 +8,9 @@ package org.jlib.core.observer;
 public abstract class ValueObserverException
 extends ObserverException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -2860634081042322384L;
+
     /**
      * Creates a new {@link ValueObserverException}.
      * 

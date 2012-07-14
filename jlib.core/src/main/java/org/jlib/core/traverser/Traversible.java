@@ -11,7 +11,7 @@ package org.jlib.core.traverser;
 public interface Traversible<Item> {
 
     /**
-     * Returns a new {@link Traverser} over this {@link Traversible}.
+     * Returns a new {@link Traverser} over the Items of this {@link Traversible}.
      * 
      * @return newly createTraverser}
      */

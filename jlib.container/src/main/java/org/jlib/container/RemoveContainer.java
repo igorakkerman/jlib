@@ -178,7 +178,7 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Creates a new {@link RemoveTraverser} over this {@link RemoveContainer}.
+     * Creates a new {@link RemoveTraverser} over the Items of this {@link RemoveContainer}.
      * 
      * @return newly createTraverser}
      */

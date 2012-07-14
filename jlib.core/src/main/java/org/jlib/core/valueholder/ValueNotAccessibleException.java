@@ -10,6 +10,9 @@ import org.jlib.core.JlibException;
 public class ValueNotAccessibleException
 extends JlibException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -6302796944895940396L;
+
     /**
      * Creates a new {@link ValueNotAccessibleException}.
      */

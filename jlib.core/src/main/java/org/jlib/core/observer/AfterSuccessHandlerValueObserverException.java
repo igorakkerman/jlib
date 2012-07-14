@@ -9,6 +9,9 @@ package org.jlib.core.observer;
 public abstract class AfterSuccessHandlerValueObserverException
 extends ObserverException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = 3230285545341500553L;
+
     /**
      * Creates a new {@link AfterSuccessHandlerValueObserverException}.
      * 

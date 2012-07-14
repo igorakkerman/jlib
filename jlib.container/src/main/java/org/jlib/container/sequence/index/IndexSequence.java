@@ -136,7 +136,7 @@ extends Sequence<Item>, RandomAccess {
      * the first call to {@code nextIndex()} is the Item stored at
      * {@code getFirstIndex()} .
      * 
-     * @return {@link IndexSequenceTraverser} over this {@link IndexSequence}
+     * @return {@link IndexSequenceTraverser} over the Items of this {@link IndexSequence}
      *         initially pointing to the beginning of this {@link IndexSequence}
      */
     public IndexSequenceTraverser<Item> createTraverser();
@@ -151,7 +151,7 @@ extends Sequence<Item>, RandomAccess {
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return IndexSequenceTraverser over this {@link IndexSequence} initially
+     * @return IndexSequenceTraverser over the Items of this {@link IndexSequence} initially
      *         pointing to the beginning of this {@link IndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException

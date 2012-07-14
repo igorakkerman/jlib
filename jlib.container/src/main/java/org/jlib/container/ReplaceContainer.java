@@ -23,7 +23,7 @@ public interface ReplaceContainer<Item>
 extends Container<Item> {
 
     /**
-     * Creates a new {@link ReplaceTraverser} over this {@link ReplaceContainer}
+     * Creates a new {@link ReplaceTraverser} over the Items of this {@link ReplaceContainer}
      * .
      * 
      * @return newly createTraverser}

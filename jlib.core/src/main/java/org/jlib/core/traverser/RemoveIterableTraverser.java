@@ -30,7 +30,7 @@ implements RemoveTraverser<Item> {
 
     @Override
     public void remove()
-    throws NoItemToRemoveException {
+    throws NoItemToRemoveException, IllegalTraversibleStateException {
         try {
             getDelegateIterator().remove();
         }

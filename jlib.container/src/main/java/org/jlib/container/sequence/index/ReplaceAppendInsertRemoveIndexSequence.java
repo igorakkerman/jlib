@@ -45,7 +45,7 @@ extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
      * {@link ReplaceAppendInsertRemoveIndexSequenceTraverser#getNextItem()} is
      * the Item stored at {@link #getFirstIndex()}.
      * 
-     * @return {@link ReplaceAppendInsertRemoveIndexSequenceTraverser} over this
+     * @return {@link ReplaceAppendInsertRemoveIndexSequenceTraverser} over the Items of this
      *         {@link ReplaceAppendInsertRemoveIndexSequence}
      */
     public ReplaceAppendInsertRemoveIndexSequenceTraverser<Item> createTraverser();
@@ -61,7 +61,7 @@ extends ReplaceAppendInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link ReplaceAppendInsertRemoveIndexSequenceTraverser} over this
+     * @return {@link ReplaceAppendInsertRemoveIndexSequenceTraverser} over the Items of this
      *         {@link ReplaceAppendInsertRemoveIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException

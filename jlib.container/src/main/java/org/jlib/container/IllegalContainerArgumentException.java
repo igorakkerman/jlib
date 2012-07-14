@@ -1,6 +1,6 @@
 package org.jlib.container;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.traverser.IllegalTraversibleArgumentException;
 
 /**
  * {@link IllegalArgumentException} referencing a {@link Container}.
@@ -8,7 +8,7 @@ import org.jlib.core.IllegalJlibArgumentException;
  * @author Igor Akkerman
  */
 public abstract class IllegalContainerArgumentException
-extends IllegalJlibArgumentException {
+extends IllegalTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 4325711014434407944L;
@@ -63,7 +63,7 @@ extends IllegalJlibArgumentException {
     public IllegalContainerArgumentException(final Container<?> container, final String messagePattern,
                                              final Throwable cause, final Object... messageArguments) {
 
-        super(messagePattern, cause, container, messageArguments);
+        super(container, messagePattern, cause, messageArguments);
 
         this.container = container;
     }

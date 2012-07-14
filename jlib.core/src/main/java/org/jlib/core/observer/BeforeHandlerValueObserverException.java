@@ -9,6 +9,9 @@ package org.jlib.core.observer;
 public abstract class BeforeHandlerValueObserverException
 extends ObserverException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = 3157732253924917254L;
+
     /**
      * Creates a new {@link BeforeHandlerValueObserverException}.
      * 

@@ -9,6 +9,9 @@ package org.jlib.core.traverser;
 public class NoItemToRemoveException
 extends IllegalTraverserStateException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -5330769541839992129L;
+
     /**
      * Creates a new {@link NoItemToRemoveException}.
      * 

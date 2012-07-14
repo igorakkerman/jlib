@@ -1,7 +1,6 @@
 package org.jlib.container.matrix;
 
 import org.jlib.container.AbstractContainer;
-import org.jlib.core.traverser.Traverser;
 
 /**
  * Skeletal implementation of a {@link Matrix}.
@@ -24,10 +23,5 @@ implements Matrix<Entry> {
     @Override
     public int getItemsCount() {
         return getWidth() * getHeight();
-    }
-
-    @Override
-    public Traverser<Entry> createTraverser() {
-        return createTraverser();
     }
 }

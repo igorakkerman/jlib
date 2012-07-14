@@ -14,4 +14,22 @@ extends ReplaceInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
     @Override
     public ReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @return {@link ReplaceInsertRemoveIndexSequenceTraverser} over the Items
+     *         of this {@link ReplaceInsertRemoveIndexSequence}
+     */
+    @Override
+    public ReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser();
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @return {@link ReplaceInsertRemoveIndexSequenceTraverser} over the Items
+     *         of this {@link ReplaceInsertRemoveIndexSequence}
+     */
+    @Override
+    public ReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser(int startIndex);
 }

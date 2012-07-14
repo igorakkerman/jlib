@@ -32,7 +32,7 @@ extends Container<Item>, TwoWayTraversible<Item> {
      * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
      * in the correct order.
      * 
-     * @return {@link SequenceTraverser} over this Sequence
+     * @return {@link SequenceTraverser} over the Items of this Sequence
      */
     @Override
     public SequenceTraverser<Item> createTraverser();

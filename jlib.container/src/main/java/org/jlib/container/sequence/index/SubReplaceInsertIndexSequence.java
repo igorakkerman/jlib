@@ -12,13 +12,13 @@ import org.jlib.container.Container;
  *        type of the items held in the {@link SubReplaceInsertIndexSequence}
  * 
  * @param <BaseSequence>
- *        type of the base {@link ReplaceInsertIndexSequence}
+ *        type of the base {@link ObservedReplaceInsertIndexSequence}
  * 
  * @author Igor Akkerman
  */
-public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ReplaceInsertIndexSequence<Item>>
+public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedReplaceInsertIndexSequence<Item>>
 extends SubReplaceIndexSequence<Item, BaseSequence>
-implements ReplaceInsertIndexSequence<Item> {
+implements ObservedReplaceInsertIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceInsertIndexSequence}.
@@ -45,18 +45,18 @@ implements ReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         return new SubReplaceInsertIndexSequence<>(this, fromIndex, toIndex);
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceInsertIndexSequenceTraverser<>(this);
+    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
+        return new DefaultReplaceInsertIndexSequenceTraverser<Item, ObservedReplaceInsertIndexSequence<Item>>(this);
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }

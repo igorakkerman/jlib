@@ -12,7 +12,7 @@ public interface TwoWayTraversible<Item>
 extends Traversible<Item> {
 
     /**
-     * Returns a new {@link TwoWayTraverser} over this
+     * Returns a new {@link TwoWayTraverser} over the Items of this
      * {@link TwoWayTraversible}.
      * 
      * @return newly createTraverser}

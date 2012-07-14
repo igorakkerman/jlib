@@ -16,26 +16,31 @@ public interface ObservedReplaceTraverser<Item>
 extends ReplaceTraverser<Item> {
 
     /**
-     * Removes the last Item returned by this {@link RemoveTraverser} .
+     * Replaces the last traversed Item with the specified value.
      * 
      * @param newItem
      *        Item by which the former Item is replaced
      * 
-     * @param removeObservers
-     *        comma separated sequence of {@link ValueObserver} items
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the replacement
      * 
-     * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link #getNextItem()}
-     *         or an appropriate method
-     * 
-     * @throws IllegalTraversibleStateException
-     *         if an error was caused by a delegate used to remove the item
+     * @throws NoItemToReplaceException
+     *         if not called immediately after traversing an Item
      * 
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void replace(Item newItem,
-                        final ValueObserver<Item>... removeObservers)
-    throws NoItemToRemoveException, IllegalTraversibleStateException, ValueObserverException;
+    public void replace(final Item newItem, final ValueObserver<Item>... observers)
+    throws NoItemToReplaceException, ValueObserverException;
+
+    /**
+     * Registers the specified {@link ValueObserver} for the replace operations
+     * of this {@link ObservedReplaceTraverser}.
+     * 
+     * @param replaceObserver
+     *        additional replace {@link ValueObserver}
+     */
+    public void addReplaceObserver(final ValueObserver<Item> replaceObserver);
 }

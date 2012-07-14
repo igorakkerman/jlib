@@ -9,6 +9,9 @@ package org.jlib.core.traverser;
 public class IllegalTraversibleStateException
 extends IllegalTraverserStateException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = 1706750148627927636L;
+
     /**
      * Creates a new {@link IllegalTraversibleStateException}.
      * 

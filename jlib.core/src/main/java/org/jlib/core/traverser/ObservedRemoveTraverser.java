@@ -16,22 +16,35 @@ public interface ObservedRemoveTraverser<Item>
 extends RemoveTraverser<Item> {
 
     /**
-     * Removes the last Item returned by this {@link ObservedRemoveTraverser}.
+     * Removes the last traversed Item.
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
      * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link #getNextItem()}
-     *         or an appropriate method
+     *         if not called immediately after traversing an Item
      * 
      * @throws IllegalTraversibleStateException
      *         if an error is caused by a delegate used to remove the Item
      * 
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
-    public void remove(@SuppressWarnings({ "unchecked", /* "varargs" */}) ValueObserver<Item>... observers)
-    throws IllegalTraversibleStateException, ValueObserverException;
+    @SuppressWarnings("unchecked")
+    public void remove(final ValueObserver<Item>... observers)
+    throws NoItemToRemoveException, IllegalTraversibleStateException, ValueObserverException, RuntimeException;
+
+    /**
+     * Registers the specified {@link ValueObserver} for the remove operations
+     * of this {@link ObservedRemoveTraverser}.
+     * 
+     * @param removeObserver
+     *        additional remove {@link ValueObserver}
+     */
+    public void addRemoveObserver(final ValueObserver<Item> removeObserver);
 }

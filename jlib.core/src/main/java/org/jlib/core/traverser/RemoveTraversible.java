@@ -12,7 +12,7 @@ public interface RemoveTraversible<Item>
 extends Traversible<Item> {
 
     /**
-     * Returns a new {@link RemoveTraverser} over this {@link RemoveTraversible}
+     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}
      * .
      * 
      * @return newly createTraverser}

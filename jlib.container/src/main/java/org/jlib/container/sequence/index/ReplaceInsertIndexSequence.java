@@ -14,8 +14,9 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ReplaceTraverser;
+
+import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link InsertIndexSequence} and {@link ReplaceIndexSequence}.
@@ -44,7 +45,7 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      * {@link IndexSequenceTraverser#getNextItem()} is the Item stored at the
      * first index.
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
+     * @return {@link ReplaceIndexSequenceTraverser} over the Items of this
      *         {@link ReplaceInsertIndexSequence}
      */
     @Override
@@ -61,7 +62,7 @@ extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
      * @param startIndex
      *        integer specifying the index of the first Item to traverse
      * 
-     * @return {@link ReplaceIndexSequenceTraverser} over this
+     * @return {@link ReplaceIndexSequenceTraverser} over the Items of this
      *         {@link ReplaceInsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException

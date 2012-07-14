@@ -12,6 +12,9 @@ import org.jlib.core.array.ArrayUtility;
 public abstract class JlibException
 extends Exception {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -7508635402610527176L;
+
     /**
      * Creates a new {@link JlibException}.
      */

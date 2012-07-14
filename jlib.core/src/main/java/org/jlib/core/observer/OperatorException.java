@@ -10,6 +10,9 @@ import org.jlib.core.JlibException;
 public class OperatorException
 extends JlibException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -9075612246404744163L;
+
     /** {@link RuntimeException} that caused this {@link OperatorException} */
     private final RuntimeException cause;
 

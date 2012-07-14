@@ -18,7 +18,6 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.IllegalTraverserStateException;
 import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
@@ -98,7 +97,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     @Override
     public final void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalTraverserStateException {
+    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }

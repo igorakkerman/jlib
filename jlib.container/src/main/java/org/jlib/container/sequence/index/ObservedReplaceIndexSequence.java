@@ -14,12 +14,13 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ObservedReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
@@ -76,14 +77,4 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
     @Override
     public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers)
-    throws RuntimeException;
 }

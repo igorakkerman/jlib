@@ -11,6 +11,9 @@ import org.jlib.core.JlibException;
 public abstract class ObserverException
 extends IllegalJlibStateException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = -7621231395096897078L;
+
     /**
      * Creates a new {@link ObserverException}.
      * 

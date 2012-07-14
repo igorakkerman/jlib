@@ -71,7 +71,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      * {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored at
      * the first index.
      * 
-     * @return {@link InsertIndexSequenceTraverser} over this
+     * @return {@link InsertIndexSequenceTraverser} over the Items of this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
@@ -92,7 +92,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return {@link InsertIndexSequenceTraverser} over this
+     * @return {@link InsertIndexSequenceTraverser} over the Items of this
      *         {@link InsertIndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException

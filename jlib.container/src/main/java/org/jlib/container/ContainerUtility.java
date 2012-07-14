@@ -354,14 +354,14 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link RemoveContainer}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> the Items provided by the specified {@link Iterable}.
      * 
      * @param <Item>
      *        type of the items held in the {@link Container}
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      * 
      * @param items
      *        {@link Iterable} providing the Items to retain
@@ -387,15 +387,17 @@ public final class ContainerUtility {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
         final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser();
-        containerTraverser
-        
+
+        for (final ValueObserver<Item> observer : observers)
+            containerTraverser.addRemoveObserver(observer);
+
         while (containerTraverser.isNextItemAccessible())
             if (!retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove(observers);
     }
 
     /**
-     * Removes all Items from the specified {@link RemoveContainer}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      * 
@@ -406,7 +408,7 @@ public final class ContainerUtility {
      *        type of the items retained in the {@link Container}
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -428,18 +430,18 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
+    public static <Item, RetainedItem extends Item> void retain(final ObservedRemoveContainer<Item> container,
                                                                 final ValueObserver<Item>[] observers,
                                                                 final RetainedItem... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
         // conversion to Set necessary as we need the contains() method for the tems sequence
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
         // do not inline, otherwise Eclipse removes the cast from Set<RetainedItem> to Set<Item> and Javac complains
-        retain(container, retainedItemsSet);
+        retain(container, retainedItemsSet, observers);
     }
 
     /**
-     * Removes all Items from the specified {@link RemoveContainer}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      * 
@@ -447,7 +449,7 @@ public final class ContainerUtility {
      *        type of the items held in the {@link Container}
      * 
      * @param container
-     *        {@link RemoveContainer} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      * 
      * @param items
      *        {@link Collection} containing the Items to retain
@@ -469,10 +471,14 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items,
-                                     final ValueObserver<Item>... observers)
+    public static <Item> void retain(final ObservedRemoveContainer<Item> container,
+                                     final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
-        final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
+        final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
+
+        for (final ValueObserver<Item> observer : observers)
+            itemsTraverser.addRemoveObserver(observer);
+
         while (itemsTraverser.isNextItemAccessible())
             if (!items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();

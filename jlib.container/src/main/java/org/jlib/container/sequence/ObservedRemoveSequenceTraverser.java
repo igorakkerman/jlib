@@ -14,8 +14,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 /**
@@ -28,37 +26,5 @@ import org.jlib.core.traverser.ObservedRemoveTraverser;
  */
 public interface ObservedRemoveSequenceTraverser<Item>
 extends ObservedRemoveTraverser<Item>, RemoveSequenceTraverser<Item> {
-
-    /**
-     * Replaces the last Item returned by {@link #getNextItem()} or
-     * {@link #getPreviousItem()} with the specified value.
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
-     * 
-     * @throws NoSequenceItemToRemoveException
-     *         if no Item has been returned by this
-     *         {@link ObservedRemoveSequenceTraverser}
-     * 
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     * 
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
-     */
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final ValueObserver<Item>... observers)
-    throws NoSequenceItemToRemoveException, ValueObserverException, RuntimeException;
-
-    /**
-     * Registers the specified {@link ValueObserver} for the remove operations
-     * of this {@link ObservedRemoveSequenceTraverser}.
-     * 
-     * @param removeObserver
-     *        additional remove {@link ValueObserver}
-     */
-    public void addRemoveObserver(final ValueObserver<Item> removeObserver);
+    // unifying interface
 }

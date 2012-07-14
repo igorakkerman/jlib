@@ -1,6 +1,5 @@
 package org.jlib.core.traverser;
 
-
 /**
  * {@link Traverser} over replaceable Items.
  * 
@@ -13,15 +12,15 @@ public interface ReplaceTraverser<Item>
 extends Traverser<Item> {
 
     /**
-     * Replaces the last Item returned by {@code next()} with the specified
-     * value.
+     * Replaces the last traversed Item with the specified Item.
      * 
      * @param newItem
      *        Item by which the former Item is replaced
      * 
      * @throws IllegalTraverserStateException
-     *         if no Item has been returned by this {@link ReplaceTraverser}
+     *         if no Item has been traversed by this {@link ReplaceTraverser}
      */
     public void replace(final Item newItem)
     throws IllegalTraverserStateException;
+
 }

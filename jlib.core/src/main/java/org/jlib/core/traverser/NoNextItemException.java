@@ -9,6 +9,9 @@ package org.jlib.core.traverser;
 public class NoNextItemException
 extends IllegalTraverserStateException {
 
+    /** serialVersionUID */
+    private static final long serialVersionUID = 328216916169684024L;
+
     /**
      * Creates a new {@link NoNextItemException}.
      * 
