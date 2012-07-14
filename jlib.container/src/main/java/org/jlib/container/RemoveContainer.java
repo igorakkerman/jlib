@@ -19,7 +19,7 @@ import java.util.Collection;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * Container that supports addition and removal of Items.
+ * {@link Container} allowing Items to be removed.
  * 
  * @param <Item>
  *        type of items held in the {@link Container}
@@ -47,15 +47,6 @@ extends Container<Item> {
      */
     public void remove(final Item item)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items of this {@link RemoveContainer}.
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void removeAll()
-    throws IllegalContainerStateException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
@@ -178,9 +169,11 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Creates a new {@link RemoveTraverser} over the Items of this {@link RemoveContainer}.
+     * Creates a new {@link RemoveTraverser} over the Items of this
+     * {@link RemoveContainer}.
      * 
      * @return newly createTraverser}
      */
+    @Override
     public RemoveTraverser<Item> createTraverser();
 }

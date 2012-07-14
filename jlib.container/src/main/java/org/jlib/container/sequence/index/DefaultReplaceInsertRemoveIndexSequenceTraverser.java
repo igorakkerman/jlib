@@ -27,7 +27,6 @@ import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
-import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
 
@@ -45,9 +44,9 @@ import static org.jlib.container.sequence.SequenceUtility.concatenated;
  * 
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertRemoveIndexSequence<Item>>
+public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertRemoveIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
-implements RemoveIndexSequenceTraverser<Item>, ObservedReplaceRemoveSequenceTraverser<Item> {
+implements ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> {
 
     /** remove {@link ValueObserver} items */
     private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();

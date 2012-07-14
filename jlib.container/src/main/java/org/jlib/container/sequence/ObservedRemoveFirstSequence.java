@@ -13,10 +13,10 @@ import org.jlib.core.observer.ValueObserverException;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveFirstSequence<Item>
-extends RemoveHeadSequence<Item> {
+extends RemoveFirstSequence<Item> {
 
     /**
-     * Removes the first Item of this {@link RemoveHeadSequence}.
+     * Removes the first Item of this {@link RemoveFirstSequence}.
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

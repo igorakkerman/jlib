@@ -11,10 +11,10 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveLastSequence<Item>
-extends RemoveTailSequence<Item> {
+extends RemoveLastSequence<Item> {
 
     /**
-     * Removes the last Item of this {@link RemoveHeadSequence}.
+     * Removes the last Item of this {@link RemoveFirstSequence}.
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

@@ -11,6 +11,7 @@ import org.jlib.container.EmptyContainer;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ObservedRemoveAllContainer;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
 /**
@@ -23,7 +24,7 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
  */
 public class EmptySequence<Item>
 extends EmptyContainer<Item>
-implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item> {
+implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, ObservedRemoveAllContainer<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();

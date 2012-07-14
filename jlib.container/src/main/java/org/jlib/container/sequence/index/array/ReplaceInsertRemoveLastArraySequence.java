@@ -2,16 +2,16 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.sequence.InvalidSequenceItemsCountException;
-import org.jlib.container.sequence.ObservedRemoveLastSequence;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SoleItemNotRemoveableException;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
+
+import org.jlib.container.Container;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
+import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SoleItemNotRemoveableException;
+import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -21,12 +21,12 @@ import org.jlib.core.observer.ValueObserver;
  * 
  * @author Igor Akkerman
  */
-public class ReplaceAppendRemoveLastArraySequence<Item>
-extends ReplaceAppendArraySequence<Item>
-implements ObservedRemoveLastSequence<Item> {
+public class ReplaceInsertRemoveLastArraySequence<Item>
+extends ReplaceInsertArraySequence<Item>
+implements ObservedReplaceInsertRemoveLastSequence<Item> {
 
     /**
-     * Creates a new uninitialized {@link ReplaceAppendRemoveLastArraySequence}
+     * Creates a new uninitialized {@link ReplaceInsertRemoveLastArraySequence}
      * with the specified first and last indices.
      * 
      * @param firstIndex
@@ -38,13 +38,13 @@ implements ObservedRemoveLastSequence<Item> {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
      */
-    protected ReplaceAppendRemoveLastArraySequence(final int firstIndex, final int lastIndex)
+    protected ReplaceInsertRemoveLastArraySequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with a first
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with a first
      * index of {@code 0} and the specified number of Items.
      * 
      * @param itemsCount
@@ -53,25 +53,25 @@ implements ObservedRemoveLastSequence<Item> {
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
-    protected ReplaceAppendRemoveLastArraySequence(final int itemsCount)
+    protected ReplaceInsertRemoveLastArraySequence(final int itemsCount)
     throws InvalidSequenceItemsCountException {
         super(itemsCount);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with a first
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with a first
      * index of {@code 0} containing the specified Items.
      * 
      * @param items
      *        comma separated sequence of Items to store
      */
     @SafeVarargs
-    public ReplaceAppendRemoveLastArraySequence(final Item... items) {
+    public ReplaceInsertRemoveLastArraySequence(final Item... items) {
         super(items);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with the
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with the
      * specified first index containing the specified Items.
      * 
      * @param firstIndex
@@ -81,23 +81,23 @@ implements ObservedRemoveLastSequence<Item> {
      *        comma separated sequence of Items to store
      */
     @SafeVarargs
-    public ReplaceAppendRemoveLastArraySequence(final int firstIndex, final Item... items) {
+    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final Item... items) {
         super(firstIndex, items);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with a first
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with a first
      * index of {@code 0} containing the specified Items.
      * 
      * @param items
      *        {@link Collection} of Items to store
      */
-    public ReplaceAppendRemoveLastArraySequence(final Collection<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final Collection<? extends Item> items) {
         super(items);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with the
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with the
      * specified first index containing the specified Items.
      * 
      * @param firstIndex
@@ -106,23 +106,23 @@ implements ObservedRemoveLastSequence<Item> {
      * @param items
      *        {@link Collection} of Items to store
      */
-    public ReplaceAppendRemoveLastArraySequence(final int firstIndex, final Collection<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final Collection<? extends Item> items) {
         super(firstIndex, items);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with a first
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with a first
      * index of {@code 0} containing the specified Items.
      * 
      * @param items
      *        {@link Container} of Items to store
      */
-    public ReplaceAppendRemoveLastArraySequence(final Container<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final Container<? extends Item> items) {
         super(items);
     }
 
     /**
-     * Creates a new {@link ReplaceAppendRemoveLastArraySequence} with the
+     * Creates a new {@link ReplaceInsertRemoveLastArraySequence} with the
      * specified first index containing the specified Items.
      * 
      * @param firstIndex
@@ -131,7 +131,7 @@ implements ObservedRemoveLastSequence<Item> {
      * @param items
      *        {@link Container} of Items to store
      */
-    public ReplaceAppendRemoveLastArraySequence(final int firstIndex, final Container<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final Container<? extends Item> items) {
         super(firstIndex, items);
     }
 

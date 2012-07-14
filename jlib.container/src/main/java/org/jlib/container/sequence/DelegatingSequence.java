@@ -11,6 +11,7 @@ import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ObservedRemoveAllContainer;
 
 /**
  * {@link ObservedReplaceSequence} and {@link ObservedAppendSequence} delegating
@@ -23,10 +24,10 @@ import org.jlib.container.NoSuchItemToRemoveException;
  * @author Igor Akkerman
  */
 public class DelegatingSequence<Item>
-implements ObservedReplaceAppendRemoveSequence<Item> {
+implements ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer<Item> {
 
-    /** delegate {@link ObservedReplaceAppendRemoveSequence} */
-    private ObservedReplaceAppendRemoveSequence<Item> delegateSequence;
+    /** delegate {@link ObservedReplaceAppendRemoveAllSequence} */
+    private ObservedReplaceAppendRemoveAllSequence<Item> delegateSequence;
 
     /**
      * Creates a new {@link DelegatingSequence}.
@@ -39,9 +40,9 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
      * Creates a new {@link DelegatingSequence}.
      * 
      * @param initialDelegateSequence
-     *        initial delegate {@link ObservedReplaceAppendRemoveSequence}
+     *        initial delegate {@link ObservedReplaceAppendRemoveAllSequence}
      */
-    public DelegatingSequence(final ObservedReplaceAppendRemoveSequence<Item> initialDelegateSequence) {
+    public DelegatingSequence(final ObservedReplaceAppendRemoveAllSequence<Item> initialDelegateSequence) {
         this();
 
         setDelegateSequence(initialDelegateSequence);
@@ -57,13 +58,13 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     }
 
     /**
-     * Registers the delegate {@link ObservedReplaceAppendRemoveSequence} of the
-     * delegate {@link ObservedReplaceAppendRemoveSequence}
+     * Registers the delegate {@link ObservedReplaceAppendRemoveAllSequence} of
+     * this {@link DelegatingSequence}.
      * 
      * @param delegateSequence
      *        delegate {@link ObservedReplaceAppendRemoveSequence}
      */
-    protected void setDelegateSequence(final ObservedReplaceAppendRemoveSequence<Item> delegateSequence) {
+    protected void setDelegateSequence(final ObservedReplaceAppendRemoveAllSequence<Item> delegateSequence) {
         this.delegateSequence = delegateSequence;
     }
 

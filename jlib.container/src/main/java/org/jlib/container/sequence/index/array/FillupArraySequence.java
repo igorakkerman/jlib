@@ -52,54 +52,54 @@ extends DelegatingSequence<Item> {
 
         @Override
         public void append(final Item item) {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(item));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(item));
         }
 
         @Override
         public void append(final Container<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         public void append(final Collection<? extends Item> items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(observers, item));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(observers, item));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items, observers));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(items, observers));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items, observers));
         }
 
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
         throws IllegalSequenceArgumentException {
-            setDelegateSequence(new ReplaceAppendRemoveArraySequence<Item>(observers, items));
+            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(observers, items));
         }
     }
 }

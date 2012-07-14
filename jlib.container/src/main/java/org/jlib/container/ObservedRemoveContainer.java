@@ -33,20 +33,6 @@ public interface ObservedRemoveContainer<Item>
 extends RemoveContainer<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveContainer}.
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    @SuppressWarnings("unchecked")
-    public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalContainerStateException;
-
-    /**
      * Removes the specified Item from this {@link ObservedRemoveContainer}.
      * 
      * @param item
