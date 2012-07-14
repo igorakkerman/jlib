@@ -1,5 +1,7 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 
@@ -17,9 +19,9 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
  * 
  * @author Igor Akkerman
  */
-public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
+public class SubReplaceIndexSequence<Item, BaseSequence extends ObservedReplaceIndexSequence<Item>>
 extends SubIndexSequence<Item, BaseSequence>
-implements ReplaceIndexSequence<Item> {
+implements ObservedReplaceIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceIndexSequence}.
@@ -60,13 +62,29 @@ implements ReplaceIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser() {
+    @SuppressWarnings("unchecked")
+    public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+        IndexSequenceUtility.assertIndexValid(this, index);
+
+        getBaseSequence().replace(index, newItem, observers);
+    }
+
+    @Override
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser() {
         return new DefaultReplaceIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers)
+    throws RuntimeException {
+        return null;
     }
 }

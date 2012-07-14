@@ -7,8 +7,8 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.ReplaceInsertIndexSequence;
-import org.jlib.container.sequence.index.ReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
@@ -157,12 +157,18 @@ implements ReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
+    public ReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+        return super.getSubsequenceView(fromIndex, toIndex);
+    }
+
+    @Override
+    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
         return createTraverser(getFirstIndex());
     }
 
     @Override
-    public ReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }

@@ -4,12 +4,13 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
+
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link ObservedReplaceSequence} and {@link ObservedAppendSequence} delegating
@@ -316,11 +317,5 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     @Override
     public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
         return delegateSequence.createTraverser();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers) {
-        return delegateSequence.createTraverser(observers);
     }
 }

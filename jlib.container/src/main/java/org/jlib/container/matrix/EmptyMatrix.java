@@ -7,7 +7,6 @@ import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.
@@ -44,11 +43,6 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     @Override
     public final EmptyMatrixTraverser<Entry> createTraverser() {
         return EmptyMatrixTraverser.getInstance();
-    }
-
-    @Override
-    public final ReplaceTraverser<Entry> createTraverser() {
-        return createTraverser();
     }
 
     @Override

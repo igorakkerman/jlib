@@ -19,7 +19,6 @@ import java.util.Collection;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
-import org.jlib.core.traverser.RemoveTraverser;
 
 /**
  * {@link RemoveContainer} allowing its remove operations to be attended by
@@ -249,20 +248,11 @@ extends RemoveContainer<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
-     * Creates a new {@link ObservedRemoveTraverser} over this
-     * {@link ObservedRemoveContainer} with the specified {@link ValueObserver}
-     * instances.
+     * {@inheritDoc}
      * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending Item removals
-     * 
-     * @return newly createTraverser}
-     * 
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
+     * @eturn {@link ObservedRemoveTraverser} traversing the Items of this
+     *        {@link ObservedRemoveContainer}
      */
-    @SuppressWarnings("unchecked")
-    public ObservedRemoveTraverser<Item> createTraverser(ValueObserver<Item>... observers);
+    @Override
+    public ObservedRemoveTraverser<Item> createTraverser();
 }

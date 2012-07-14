@@ -17,7 +17,6 @@ package org.jlib.container;
 import java.util.Collection;
 import java.util.Set;
 
-import org.jlib.container.collection.CollectionUtility;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
@@ -26,6 +25,8 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
+
+import org.jlib.container.collection.CollectionUtility;
 
 /**
  * Utility class providing methods operating on {@link Container} instances.
@@ -385,7 +386,9 @@ public final class ContainerUtility {
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
         final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
 
-        final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser(observers);
+        final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser();
+        containerTraverser
+        
         while (containerTraverser.isNextItemAccessible())
             if (!retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove(observers);

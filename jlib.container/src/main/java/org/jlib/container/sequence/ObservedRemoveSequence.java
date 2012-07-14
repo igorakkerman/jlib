@@ -14,8 +14,9 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.core.observer.ValueObserver;
+
+import org.jlib.container.ObservedRemoveContainer;
 
 /**
  * {@link ReplaceSequence} allowing its replace operations to be attended by
@@ -30,16 +31,11 @@ public interface ObservedRemoveSequence<Item>
 extends RemoveSequence<Item>, ObservedRemoveContainer<Item> {
 
     /**
-     * Returns an {@link ObservedRemoveSequenceTraverser} traversing the Items
-     * of this {@link ObservedRemoveSequence} in proper order.
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending every removal
+     * {@inheritDoc}
      * 
      * @return {@link ObservedRemoveSequenceTraverser} traversing the Items of
      *         this {@link ObservedRemoveSequence} in proper order
      */
-    @SuppressWarnings("unchecked")
-    public ObservedRemoveSequenceTraverser<Item> createTraverser(ValueObserver<Item>... observers);
+    @Override
+    public ObservedRemoveSequenceTraverser<Item> createTraverser();
 }

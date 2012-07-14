@@ -153,7 +153,7 @@ implements ObservedReplaceIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public ObservedReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
     }
