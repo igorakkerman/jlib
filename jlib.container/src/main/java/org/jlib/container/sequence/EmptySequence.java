@@ -2,6 +2,9 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
+
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.EmptyContainer;
@@ -9,8 +12,6 @@ import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 
 /**
  * Empty {@link Sequence}.
@@ -170,12 +171,6 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item> {
     @Override
     public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
         return EmptySequenceTraverser.getInstance();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser(final ValueObserver<Item>... observers) {
-        return createTraverser();
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity
