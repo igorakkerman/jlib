@@ -7,9 +7,10 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequenceTraverser;
-import org.jlib.container.sequence.index.ReplaceInsertIndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
@@ -23,7 +24,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
  */
 public class ReplaceInsertArraySequence<Item>
 extends ReplacePrependAppendArraySequence<Item>
-implements ReplaceInsertIndexSequence<Item> {
+implements ObservedReplaceInsertIndexSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertArraySequence} with the
@@ -157,9 +158,9 @@ implements ReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public ReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
-        return super.getSubsequenceView(fromIndex, toIndex);
+        return new SubReplaceInsertIndexSequence<Item, ReplaceInsertArraySequence<Item>>(this, fromIndex, toIndex);
     }
 
     @Override
