@@ -17,17 +17,18 @@ package org.jlib.container.sequence.index.array;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.ValueObserver;
+
+import static org.jlib.core.array.ArrayUtility.createArray;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.ValueObserver;
-
-import static org.jlib.core.array.ArrayUtility.createArray;
 
 // @formatter:off
 /**
@@ -336,5 +337,4 @@ implements Cloneable {
 
         newItem, observers);
     }
-
 }

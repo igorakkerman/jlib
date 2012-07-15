@@ -18,6 +18,8 @@ import org.jlib.core.observer.ValueObserver;
 
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.ObservedAppendSequence;
+import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 
@@ -29,7 +31,8 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequence<Item>
-extends ObservedReplacePrependAppendIndexSequence<Item>, ReplaceInsertIndexSequence<Item> {
+extends ObservedReplaceIndexSequence<Item>, ObservedAppendSequence<Item>, ObservedPrependSequence<Item>,
+ReplaceInsertIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
@@ -56,8 +59,8 @@ extends ObservedReplacePrependAppendIndexSequence<Item>, ReplaceInsertIndexSeque
      *         if an error occurs performing the operation
      */
     @Override
-    public void replace(final int index, final Item newItem,
-                        @SuppressWarnings("unchecked") final ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     @Override

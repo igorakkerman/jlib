@@ -111,7 +111,48 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     public void append(final Collection<? extends Item> items)
     throws IllegalSequenceArgumentException {}
 
+    // FIXME: implement
     @Override
     public void append(final Item... items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Item item, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final ValueObserver<Item>[] observers, final Item... items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Item item)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Container<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Collection<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void prepend(final Item... items)
     throws IllegalSequenceArgumentException {}
 }

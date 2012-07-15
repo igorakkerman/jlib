@@ -129,26 +129,30 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
         ContainerUtility.retain(this, observers, items);
     }
 
-    // FIXME: implement
-    @Override
-    public void removeFirstItem(final ValueObserver<Item>... observers)
-    throws ValueObserverException {
-        remove(getFirstIndex(), observers);
-    }
-
     @Override
     public void removeFirstItem()
     throws IllegalSequenceStateException {
         remove(getFirstIndex());
     }
 
-    // FIXME: implement
     @Override
-    public void removeLastItem(final ValueObserver<Item>... observers)
-    throws SoleItemNotRemoveableException {}
+    @SuppressWarnings("unchecked")
+    public void removeFirstItem(final ValueObserver<Item>... observers)
+    throws ValueObserverException {
+        remove(getFirstIndex(), observers);
+    }
 
-    // FIXME: implement
     @Override
     public void removeLastItem()
-    throws IllegalSequenceStateException {}
+    throws IllegalSequenceStateException {
+        remove(getLastIndex());
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void removeLastItem(final ValueObserver<Item>... observers)
+    throws SoleItemNotRemoveableException {
+        remove(getLastIndex());
+    }
+
 }
