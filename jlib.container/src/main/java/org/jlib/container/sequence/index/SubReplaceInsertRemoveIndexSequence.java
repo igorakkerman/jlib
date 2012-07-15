@@ -13,10 +13,11 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 
 /**
- * {@link SubReplaceIndexSequence} view of the Items stored in another
- * {@link ReplaceIndexSequence} in the specified index range. The Items in this
- * {@link SubReplaceInsertRemoveIndexSequence} will have the same index as they
- * had in the base {@link ReplaceIndexSequence}.
+ * {@link SubReplaceInsertIndexSequence} view of the Items stored in a base
+ * {@link ObservedReplaceInsertRemoveIndexSequence} in the specified index
+ * range. The Items in this {@link SubReplaceInsertIndexSequence} will have the
+ * same index as they had in the base
+ * {@link ObservedReplaceInsertRemoveIndexSequence} .
  * 
  * @param <Item>
  *        type of the items held in the
@@ -81,86 +82,107 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
         getBaseSequence().remove(index, observers);
     }
 
+    // FIXME: implement
     @Override
     public void remove(final int index) {}
 
+    // FIXME: implement
     @Override
     public void remove(final Item item)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Iterable<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void retain(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void retain(final Collection<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void retain(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Item item, final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void removeFirstItem(final ValueObserver<Item>... observers)
     throws ValueObserverException {}
 
+    // FIXME: implement
     @Override
     public void removeFirstItem()
     throws IllegalSequenceStateException {}
 
+    // FIXME: implement
     @Override
     public void removeLastItem(final ValueObserver<Item>... observers)
     throws SoleItemNotRemoveableException {}
 
+    // FIXME: implement
     @Override
     public void removeLastItem()
     throws IllegalSequenceStateException {}
