@@ -177,9 +177,8 @@ implements Container<Item> {
     public int hashCode() {
         int hashCode = 0;
         for (final Item item : this)
-            hashCode += item != null
-                ? item.hashCode()
-                : 0;
+            hashCode += item.hashCode();
+        hashCode *= getItemsCount();
         return hashCode;
     }
 
