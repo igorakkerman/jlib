@@ -28,8 +28,5 @@ import org.jlib.container.sequence.ObservedRemoveLastSequence;
  */
 public interface ObservedReplaceInsertRemoveLastIndexSequence<Item>
 extends ObservedReplaceInsertIndexSequence<Item>, ObservedRemoveLastSequence<Item> {
-
-    @Override
-    public ObservedReplaceInsertRemoveLastIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+    // unifying interface
 }

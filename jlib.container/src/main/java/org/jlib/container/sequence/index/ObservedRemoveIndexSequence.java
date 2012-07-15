@@ -14,9 +14,10 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.sequence.ObservedRemoveSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link RemoveIndexSequence} .
@@ -40,9 +41,8 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      *        attending the operation
      * 
      */
-    public void remove(final int index,
     @SuppressWarnings("unchecked")
-                       final ValueObserver<Item>... observers);
+    public void remove(final int index, final ValueObserver<Integer>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of
@@ -55,6 +55,7 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
+    @Override
     public ObservedRemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
@@ -76,6 +77,7 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
+    @Override
     public ObservedRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

@@ -52,7 +52,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
-        return new DefaultReplaceInsertIndexSequenceTraverser<Item, ObservedReplaceInsertIndexSequence<Item>>(this);
+        return new DefaultReplaceInsertIndexSequenceTraverser<>(this);
     }
 
     @Override

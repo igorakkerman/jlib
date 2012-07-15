@@ -1,5 +1,16 @@
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.OperatorException;
+import org.jlib.core.observer.ValueObserver;
+
+import org.jlib.container.Container;
+import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.IllegalContainerStateException;
+import org.jlib.container.ObservedRemoveContainer;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 
 /**
  * {@link IndexSequence} utility.
@@ -77,5 +88,55 @@ public final class IndexSequenceUtility {
 
         if (toIndex < fromIndex)
             throw new InvalidSequenceIndexRangeException(sequence, fromIndex, toIndex);
+    }
+
+    /**
+     * Removes the specified Item from the specified {@link RemoveIndexSequence}
+     * .
+     * 
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     * 
+     * @param sequence
+     *        {@link ObservedRemoveContainer} containing the Item
+     * 
+     * @param itemIndex
+     *        index of the Item to remove
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
+     * 
+     * @throws IllegalSequenceArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code itemIndex}
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
+                                     final ValueObserver<Integer>... observers)
+    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
+
+        ObserverUtility.operate(new Operator() {
+
+            @Override
+            public void operate()
+            throws OperatorException, RuntimeException {
+                try {
+                    sequence.remove(itemIndex);
+                }
+                catch (IllegalContainerArgumentException | IllegalContainerStateException exception) {
+                    throw new OperatorException("remove: {0}", exception, itemIndex);
+                }
+            }
+        },
+
+        itemIndex, observers);
     }
 }
