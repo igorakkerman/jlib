@@ -7,6 +7,7 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRemoveContainer;
+import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
@@ -24,7 +25,7 @@ import org.jlib.core.traverser.RemoveTraverser;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveContainer<Item> {
+implements RemoveAllContainer<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
