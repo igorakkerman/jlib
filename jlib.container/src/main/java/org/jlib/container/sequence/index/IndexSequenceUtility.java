@@ -120,7 +120,7 @@ public final class IndexSequenceUtility {
      */
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
-                                     final ValueObserver<Integer>... observers)
+                                     final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
 
         ObserverUtility.operate(new Operator() {
@@ -137,6 +137,6 @@ public final class IndexSequenceUtility {
             }
         },
 
-        itemIndex, observers);
+        sequence.get(itemIndex), observers);
     }
 }

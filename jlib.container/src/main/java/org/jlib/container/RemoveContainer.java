@@ -30,95 +30,8 @@ public interface RemoveContainer<Item>
 extends Container<Item> {
 
     /**
-     * Removes the specified Item of this {@link RemoveContainer}.
-     * 
-     * @param item
-     *        Item to remove
-     * 
-     * @throws NoSuchItemToRemoveException
-     *         if this {@link RemoveContainer} does not contain {@code Item}
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items contained by the specified {@link Container} from this
-     * {@link RemoveContainer}.
-     * 
-     * @param items
-     *        {@link Container} containing the Items to remove
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void remove(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items contained by the specified {@link Collection} from this
-     * {@link RemoveContainer}.
-     * 
-     * @param items
-     *        {@link Collection} containing the Items to remove
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void remove(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link RemoveContainer}.
-     * 
-     * @param items
-     *        {@link Iterable} providing the Items to remove
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void remove(final Iterable<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all specified Items from this {@link RemoveContainer}.
-     * 
-     * @param items
-     *        comma separated sequence of Items to remove
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     * 
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
-     */
-    @SuppressWarnings("unchecked")
-    public void remove(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
-
-    /**
-     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
-     * Items contained by the specified {@link Container}.
+     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * <em>except</em> the Items contained by the specified {@link Container}.
      * 
      * @param items
      *        {@link Container} containing the Items to retain
@@ -134,8 +47,8 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
-     * Items contained by the specified {@link Collection}.
+     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * <em>except</em> the Items contained by the specified {@link Collection}.
      * 
      * @param items
      *        {@link Collection} containing the Items to retain
@@ -151,8 +64,8 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer} <em>except</em> the
-     * specified Items.
+     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * <em>except</em> the specified Items.
      * 
      * @param items
      *        comma separated sequence of Items to retain

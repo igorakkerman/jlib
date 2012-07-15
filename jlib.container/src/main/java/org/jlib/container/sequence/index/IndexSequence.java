@@ -86,11 +86,11 @@ extends Sequence<Item>, RandomAccess {
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
-    public int getFirstIndexOf(final Item item)
+    public int getItemIndex(final Item item)
     throws NoSuchSequenceItemException;
 
     /**
-     * Returns the index of the first occurrence of the specified Item in this
+     * Returns the index of the last occurrence of the specified Item in this
      * IndexSequence.
      * 
      * @param item
@@ -102,7 +102,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
-    public int getLastIndexOf(final Item item)
+    public int getLastItemIndex(final Item item)
     throws NoSuchSequenceItemException;
 
     /**
@@ -136,9 +136,11 @@ extends Sequence<Item>, RandomAccess {
      * the first call to {@code nextIndex()} is the Item stored at
      * {@code getFirstIndex()} .
      * 
-     * @return {@link IndexSequenceTraverser} over the Items of this {@link IndexSequence}
-     *         initially pointing to the beginning of this {@link IndexSequence}
+     * @return {@link IndexSequenceTraverser} over the Items of this
+     *         {@link IndexSequence} initially pointing to the beginning of this
+     *         {@link IndexSequence}
      */
+    @Override
     public IndexSequenceTraverser<Item> createTraverser();
 
     /**
@@ -151,8 +153,9 @@ extends Sequence<Item>, RandomAccess {
      *        integer specifying the index of the first Item returned by the
      *        Traverser
      * 
-     * @return IndexSequenceTraverser over the Items of this {@link IndexSequence} initially
-     *         pointing to the beginning of this {@link IndexSequence}
+     * @return IndexSequenceTraverser over the Items of this
+     *         {@link IndexSequence} initially pointing to the beginning of this
+     *         {@link IndexSequence}
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if

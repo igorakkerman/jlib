@@ -42,7 +42,7 @@ extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
      * 
      */
     @SuppressWarnings("unchecked")
-    public void remove(final int index, final ValueObserver<Integer>... observers);
+    public void remove(final int index, final ValueObserver<Item>... observers);
 
     /**
      * Returns a {@link RemoveIndexSequenceTraverser} traversing the Items of

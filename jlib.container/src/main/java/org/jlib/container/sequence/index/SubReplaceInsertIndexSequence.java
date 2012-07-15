@@ -1,6 +1,11 @@
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.Container;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
 
 /**
  * {@link SubReplaceIndexSequence} view of the Items stored in another
@@ -70,4 +75,43 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     public void insert(final int index, final Container<? extends Item> newItems) {
         getBaseSequence().insert(index, newItems);
     }
+
+    // FIXME: implement
+    @Override
+    public void append(final Item item, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final ValueObserver<Item>[] observers, final Item... items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final Item item)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final Container<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    // FIXME: implement
+    @Override
+    public void append(final Collection<? extends Item> items)
+    throws IllegalSequenceArgumentException {}
+
+    @Override
+    public void append(final Item... items)
+    throws IllegalSequenceArgumentException {}
 }

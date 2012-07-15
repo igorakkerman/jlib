@@ -29,7 +29,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequence<Item>
-extends ObservedReplaceIndexSequence<Item>, ReplaceInsertIndexSequence<Item> {
+extends ObservedReplacePrependAppendIndexSequence<Item>, ReplaceInsertIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this

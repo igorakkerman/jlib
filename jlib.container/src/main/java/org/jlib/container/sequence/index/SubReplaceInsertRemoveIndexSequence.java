@@ -6,9 +6,9 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 import org.jlib.container.Container;
+import org.jlib.container.ContainerUtility;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
-import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 
@@ -75,107 +75,72 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
     }
 
     @Override
+    public void remove(final int index) {
+        IndexSequenceUtility.assertIndexValid(this, index);
+
+        getBaseSequence().remove(index);
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public void remove(final int index, final ValueObserver<Integer>... observers) {
+    public void remove(final int index, final ValueObserver<Item>... observers) {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         getBaseSequence().remove(index, observers);
     }
 
-    // FIXME: implement
-    @Override
-    public void remove(final int index) {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Iterable<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
-
-    // FIXME: implement
     @Override
     public void retain(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.retain(this, items);
+    }
 
-    // FIXME: implement
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.retain(this, items);
+    }
 
-    // FIXME: implement
     @Override
+    @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException {
+        ContainerUtility.retain(this, items);
+    }
 
-    // FIXME: implement
     @Override
-    public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
-    ValueObserverException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
-
-    // FIXME: implement
-    @Override
-    public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
-
-    // FIXME: implement
-    @Override
+    @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+        ContainerUtility.retain(this, items, observers);
+    }
 
-    // FIXME: implement
     @Override
+    @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+        ContainerUtility.retain(this, items, observers);
+    }
 
-    // FIXME: implement
     @Override
+    @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {}
+    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+        ContainerUtility.retain(this, observers, items);
+    }
 
     // FIXME: implement
     @Override
     public void removeFirstItem(final ValueObserver<Item>... observers)
-    throws ValueObserverException {}
+    throws ValueObserverException {
+        remove(getFirstIndex(), observers);
+    }
 
-    // FIXME: implement
     @Override
     public void removeFirstItem()
-    throws IllegalSequenceStateException {}
+    throws IllegalSequenceStateException {
+        remove(getFirstIndex());
+    }
 
     // FIXME: implement
     @Override
@@ -186,5 +151,4 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
     @Override
     public void removeLastItem()
     throws IllegalSequenceStateException {}
-
 }

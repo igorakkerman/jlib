@@ -10,8 +10,6 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
-import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRemoveAllContainer;
 
 /**
  * {@link ObservedReplaceSequence} and {@link ObservedAppendSequence} delegating
@@ -24,10 +22,10 @@ import org.jlib.container.ObservedRemoveAllContainer;
  * @author Igor Akkerman
  */
 public class DelegatingSequence<Item>
-implements ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer<Item> {
+implements ObservedReplaceAppendRemoveSequence<Item> {
 
-    /** delegate {@link ObservedReplaceAppendRemoveAllSequence} */
-    private ObservedReplaceAppendRemoveAllSequence<Item> delegateSequence;
+    /** delegate {@link ObservedReplaceAppendRemoveSequence} */
+    private ObservedReplaceAppendRemoveSequence<Item> delegateSequence;
 
     /**
      * Creates a new {@link DelegatingSequence}.
@@ -58,13 +56,13 @@ implements ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer
     }
 
     /**
-     * Registers the delegate {@link ObservedReplaceAppendRemoveAllSequence} of
+     * Registers the delegate {@link ObservedReplaceAppendRemoveSequence} of
      * this {@link DelegatingSequence}.
      * 
      * @param delegateSequence
      *        delegate {@link ObservedReplaceAppendRemoveSequence}
      */
-    protected void setDelegateSequence(final ObservedReplaceAppendRemoveAllSequence<Item> delegateSequence) {
+    protected void setDelegateSequence(final ObservedReplaceAppendRemoveSequence<Item> delegateSequence) {
         this.delegateSequence = delegateSequence;
     }
 
@@ -196,43 +194,6 @@ implements ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer
     }
 
     @Override
-    public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException {
-        delegateSequence.remove(item);
-    }
-
-    @Override
-    public void removeAll()
-    throws IllegalContainerStateException {
-        delegateSequence.removeAll();
-    }
-
-    @Override
-    public void remove(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
-        delegateSequence.remove(items);
-    }
-
-    @Override
-    public void remove(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
-        delegateSequence.remove(items);
-    }
-
-    @Override
-    public void remove(final Iterable<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
-        delegateSequence.remove(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
-        delegateSequence.remove(items);
-    }
-
-    @Override
     public void retain(final Container<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         delegateSequence.retain(items);
@@ -249,49 +210,6 @@ implements ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer
     public void retain(final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         delegateSequence.retain(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalContainerStateException {
-        delegateSequence.removeAll(observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
-    ValueObserverException {
-        delegateSequence.remove(item, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
-        delegateSequence.remove(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
-        delegateSequence.remove(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
-        delegateSequence.remove(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
-        delegateSequence.remove(observers, items);
     }
 
     @Override

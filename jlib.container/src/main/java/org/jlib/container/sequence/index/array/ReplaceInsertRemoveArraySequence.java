@@ -7,18 +7,17 @@ import org.jlib.core.observer.ValueObserverException;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.SubReplaceInsertRemoveIndexSequence;
 
 /**
  * {@link ReplaceInsertArraySequence} to which Items can be added.
@@ -122,9 +121,9 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
      * of {@code 0} containing the specified Items.
      * 
      * @param items
-     *        {@link Sequence} of Items to store
+     *        {@link Container} of Items to store
      */
-    public ReplaceInsertRemoveArraySequence(final Sequence<? extends Item> items) {
+    public ReplaceInsertRemoveArraySequence(final Container<? extends Item> items) {
         super(items);
     }
 
@@ -147,74 +146,8 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final int index, final ValueObserver<Integer>... observers) {
+    public void remove(final int index, final ValueObserver<Item>... observers) {
         IndexSequenceUtility.remove(this, index, observers);
-    }
-
-    // FIXME: implement
-    @Override
-    public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalSequenceArgumentException, IllegalSequenceStateException {}
-
-    @Override
-    public void remove(final Container<? extends Item> items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
-        SequenceUtility.remove(this, items);
-    }
-
-    @Override
-    public void remove(final Collection<? extends Item> items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
-        SequenceUtility.remove(this, items);
-    }
-
-    @Override
-    public void remove(final Iterable<? extends Item> items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
-        SequenceUtility.remove(this, items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
-        SequenceUtility.remove(this, items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, IllegalSequenceArgumentException, IllegalSequenceStateException,
-    ValueObserverException {
-        SequenceUtility.remove(this, item, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
-        SequenceUtility.remove(this, items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
-        SequenceUtility.remove(this, items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
-        SequenceUtility.remove(this, items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
-        SequenceUtility.remove(this, observers, items);
     }
 
     @Override
@@ -264,13 +197,11 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser() {
         return new DefaultReplaceInsertRemoveIndexSequenceTraverser<>(this);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex) {
         return new DefaultReplaceInsertRemoveIndexSequenceTraverser<>(this, startIndex);
     }

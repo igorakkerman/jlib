@@ -78,7 +78,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public final int getFirstIndexOf(final Item item)
+    public final int getItemIndex(final Item item)
     throws NoSuchSequenceItemException {
         for (int index = firstIndex; index <= lastIndex; index ++)
             if (getStoredItem(index).equals(item))
@@ -88,7 +88,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public final int getLastIndexOf(final Item item)
+    public final int getLastItemIndex(final Item item)
     throws NoSuchSequenceItemException {
         for (int index = lastIndex; index >= firstIndex; index --)
             if (getStoredItem(index).equals(item))
