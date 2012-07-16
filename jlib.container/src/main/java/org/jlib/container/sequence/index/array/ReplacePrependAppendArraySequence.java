@@ -2,16 +2,18 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
+import org.jlib.core.observer.ValueObserver;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,
@@ -187,6 +189,11 @@ implements ObservedPrependSequence<Item> {
     public final void prepend(final ValueObserver<Item>[] observers, final Item... items)
     throws IllegalContainerArgumentException {
         prepend(iterable(items), items.length, observers);
+    }
+
+    // FIXME: implement
+    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
+
     }
 
     /**
