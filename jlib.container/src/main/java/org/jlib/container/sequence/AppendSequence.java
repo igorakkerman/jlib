@@ -16,8 +16,8 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
+import org.jlib.container.AppendAware;
 import org.jlib.container.Container;
-import org.jlib.container.IllegalContainerArgumentException;
 
 /**
  * {@link Sequence} to which Items can be appended.
@@ -28,62 +28,50 @@ import org.jlib.container.IllegalContainerArgumentException;
  * @author Igor Akkerman
  */
 public interface AppendSequence<Item>
-extends Sequence<Item> {
+extends Sequence<Item>, AppendAware<Item> {
 
     /**
-     * Appends the specified Item to this {@link AppendSequence}.
-     * 
-     * @param item
-     *        Item to append
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
+    @Override
     public void append(final Item item)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Container} to this
-     * {@link AppendSequence}.
-     * 
-     * @param items
-     *        {@link Container} containing the Items to append
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if {@code items}
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     public void append(final Container<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link Collection} to this
-     * {@link AppendSequence}.
-     * 
-     * @param items
-     *        {@link Collection} containing the Items to append
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     public void append(final Collection<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Appends all specified Items to this {@link AppendSequence}.
-     * 
-     * @param items
-     *        comma separated sequence of Items to append
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     @SuppressWarnings("unchecked")
     public void append(final Item... items)
     throws IllegalSequenceArgumentException;

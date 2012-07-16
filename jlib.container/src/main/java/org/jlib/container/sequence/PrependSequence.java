@@ -17,7 +17,7 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.PrependAware;
 
 /**
  * {@link Sequence} to which Items can be prepended.
@@ -28,62 +28,53 @@ import org.jlib.container.IllegalContainerArgumentException;
  * @author Igor Akkerman
  */
 public interface PrependSequence<Item>
-extends Sequence<Item> {
+extends Sequence<Item>, PrependAware<Item> {
 
     /**
-     * Prepends the specified Item to this {@link PrependSequence}.
-     * 
-     * @param item
-     *        Item to prepend
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     public void prepend(final Item item)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Prepends all Items contained by the specified {@link Container} to this
-     * {@link PrependSequence}.
-     * 
-     * @param items
-     *        {@link Container} containing the Items to prepend
-     * 
-     * @throws IllegalContainerArgumentException
-     *         if {@code items}
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     public void prepend(final Container<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Prepends all Items contained by the specified {@link Collection} to this
-     * {@link PrependSequence}.
-     * 
-     * @param items
-     *        {@link Collection} containing the Items to prepend
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     public void prepend(final Collection<? extends Item> items)
     throws IllegalSequenceArgumentException;
 
     /**
-     * Prepends all specified Items to this {@link PrependSequence}.
-     * 
-     * @param items
-     *        comma separated sequence of Items to prepend
-     * 
      * @throws IllegalSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
+     * 
+     * @throws IllegalSequenceStateException
+     *         if an error occurs during the operation
      */
+    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item... items)
     throws IllegalSequenceArgumentException;

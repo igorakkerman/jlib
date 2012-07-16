@@ -31,8 +31,6 @@ public interface ObservedReplaceSequence<Item>
 extends ReplaceSequence<Item>, ObservedReplaceContainer<Item> {
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedReplaceSequenceTraverser} traversing the Items of
      *         this {@link ObservedReplaceSequence}
      */

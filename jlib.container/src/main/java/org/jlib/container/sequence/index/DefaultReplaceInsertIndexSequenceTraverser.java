@@ -83,13 +83,13 @@ implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
     }
 
     @Override
-    public void insert(final Item newItem) {
-        getSequence().insert(getPotentialNextItemIndex(), newItem);
+    public void insert(final Item item) {
+        getSequence().insert(getPotentialNextItemIndex(), item);
     }
 
     @Override
     @SafeVarargs
-    public final void insert(final Item newItem, final ValueObserver<Item>... operationObservers)
+    public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
         ObserverUtility.operate(new Operator() {
 

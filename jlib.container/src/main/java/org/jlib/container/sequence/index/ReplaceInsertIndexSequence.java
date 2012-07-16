@@ -30,8 +30,6 @@ public interface ReplaceInsertIndexSequence<Item>
 extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ReplaceInsertIndexSequence} view of the specified Items
      */
     @Override

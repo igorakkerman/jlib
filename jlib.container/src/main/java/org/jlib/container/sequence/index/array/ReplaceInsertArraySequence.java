@@ -2,10 +2,13 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
+import org.jlib.container.sequence.index.InsertIndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequenceTraverser;
@@ -137,21 +140,47 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public void insert(final int index, final Item newItem) {
-        insert(index, singleton(newItem));
+    public void insert(final int index, final Item item) {
+        insert(index, singleton(item));
     }
 
     @Override
-    public void insert(final int index, final Container<? extends Item> newItems) {
-        final int insertedItemsCount = newItems.getItemsCount();
+    public void insert(final int index, final Container<? extends Item> items) {
+        insert(index, items, items.getItemsCount());
+    }
 
+    @Override
+    public void insert(final int index, final Collection<? extends Item> items) {
+        insert(index, items, items.size());
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(final int index, final Item... items) {
+        insert(index, iterable(items), items.length);
+    }
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link InsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        {@link Collection} holding the Items to insert
+     * 
+     * @param insertedItemsCount
+     *        integer specifying the number of inserted Items
+     */
+    private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
         final int newSize = getItemsCount() + insertedItemsCount;
         final int delegateArrayInsertIndex = getDelegateArrayIndex(index);
 
         assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);
 
         int delegateArrayIndex = delegateArrayInsertIndex;
-        for (final Item item : newItems)
+        for (final Item item : items)
             replaceDelegateArrayItem(delegateArrayIndex ++, item);
 
         setLastIndex(getLastIndex() + insertedItemsCount);

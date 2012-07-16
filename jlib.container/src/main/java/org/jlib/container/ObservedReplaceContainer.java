@@ -16,8 +16,6 @@ public interface ObservedReplaceContainer<Item>
 extends ReplaceContainer<Item> {
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedReplaceTraverser} traversing the Items of this
      *         {@link ObservedReplaceContainer}
      */

@@ -107,8 +107,6 @@ extends RemoveContainer<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
-     * {@inheritDoc}
-     * 
      * @eturn {@link ObservedRemoveTraverser} traversing the Items of this
      *        {@link ObservedRemoveContainer}
      */

@@ -31,8 +31,6 @@ public interface ObservedRemoveSequence<Item>
 extends RemoveSequence<Item>, ObservedRemoveContainer<Item> {
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedRemoveSequenceTraverser} traversing the Items of
      *         this {@link ObservedRemoveSequence} in proper order
      */

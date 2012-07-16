@@ -14,7 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
-import java.util.Iterator;
+import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InsertSequence;
@@ -39,23 +39,47 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      * @param index
      *        integer specifying the index
      * 
-     * @param newItem
+     * @param item
      *        Item to insert
      */
-    public void insert(int index, Item newItem);
+    public void insert(int index, Item item);
 
     /**
-     * Inserts all Items provided by the specified {@link Iterable} in the order
-     * as provided by its {@link Iterator} at the specified index of this
+     * Inserts the specified Items at the specified index of this
      * {@link InsertIndexSequence}.
      * 
      * @param index
      *        integer specifying the index
      * 
-     * @param newItems
-     *        {@link Iterable} holding the Items to insert
+     * @param items
+     *        {@link Container} holding the Items to insert
      */
-    public void insert(int index, Container<? extends Item> newItems);
+    public void insert(int index, Container<? extends Item> items);
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link InsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        {@link Collection} holding the Items to insert
+     */
+    public void insert(int index, Collection<? extends Item> items);
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link InsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        comma separated sequence holding the Items to insert
+     */
+    @SuppressWarnings("unchecked")
+    public void insert(int index, Item... items);
 
     /**
      * @return {@link InsertIndexSequence} view of the specified subsequence
@@ -78,6 +102,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
+    @Override
     public InsertIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
 
@@ -99,6 +124,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
+    @Override
     public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

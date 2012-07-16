@@ -26,8 +26,6 @@ public interface ObservedReplaceAppendRemoveSequence<Item>
 extends ObservedReplaceSequence<Item>, ObservedAppendSequence<Item>, ObservedRemoveSequence<Item> {
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedReplaceRemoveSequenceTraverser} traversing the
      *         Items of this {@link ObservedReplaceAppendRemoveSequence}
      */

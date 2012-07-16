@@ -165,6 +165,6 @@ implements ObservedRemoveFirstSequence<Item> {
             }
         },
 
-        getStoredItem(getLastIndex()), observers);
+        getStoredItem(getFirstIndex()), observers);
     }
 }

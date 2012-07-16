@@ -61,8 +61,6 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
      */
     @Override
@@ -70,8 +68,6 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException;
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
      */
     @Override

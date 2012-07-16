@@ -12,42 +12,52 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.Container;
-import org.jlib.container.ObservedPrependAware;
-
 /**
- * {@link PrependSequence} to which Items can be prepended.
+ * {@link PrependAware} to which Items can be prepended.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of the prepended Items
  * 
  * @author Igor Akkerman
  */
-public interface ObservedPrependSequence<Item>
-extends PrependSequence<Item>, ObservedPrependAware<Item> {
+public interface ObservedPrependAware<Item>
+extends PrependAware<Item> {
 
     /**
-     * @throws IllegalSequenceArgumentException
-     *         if some property of {@code item} prevents it from being
-     *         prepended, for instance, if it is already contained
+     * Prepends the specified Item to this {@link ObservedPrependAware}.
      * 
-     * @throws IllegalSequenceStateException
+     * @param item
+     *        Item to prepend
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws IllegalJlibArgumentException
+     *         if some property of {@code item} prevents it from being prepended
+     * 
+     * @throws IllegalJlibStateException
      *         if an error occurs during the operation
+     * 
+     * @throws RuntimeException
+     *         if a {@link ValueObserver} operation throws this
+     *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
-     * {@link ObservedPrependSequence}.
+     * {@link ObservedPrependAware}.
      * 
      * @param items
      *        {@link Container} containing the Items to prepend
@@ -56,25 +66,27 @@ extends PrependSequence<Item>, ObservedPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws IllegalSequenceArgumentException
+     * @throws IllegalJlibArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      * 
-     * @throws IllegalSequenceStateException
+     * @throws IllegalJlibStateException
+     *         if an error occurs during the operation
+     * 
+     * @throws IllegalJlibStateException
      *         if an error occurs during the operation
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
-     * {@link ObservedPrependSequence}.
+     * {@link ObservedPrependAware}.
      * 
      * @param items
      *        {@link Collection} containing the Items to prepend
@@ -83,24 +95,23 @@ extends PrependSequence<Item>, ObservedPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      * 
-     * @throws IllegalSequenceArgumentException
+     * @throws IllegalJlibArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      * 
-     * @throws IllegalSequenceStateException
+     * @throws IllegalJlibStateException
      *         if an error occurs during the operation
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 
     /**
-     * Prepends all specified Items to this {@link ObservedPrependSequence}.
+     * Prepends all specified Items to this {@link ObservedPrependAware}.
      * 
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
@@ -108,19 +119,18 @@ extends PrependSequence<Item>, ObservedPrependAware<Item> {
      * @param items
      *        comma separated sequence of Items to prepend
      * 
-     * @throws IllegalSequenceArgumentException
+     * @throws IllegalJlibArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      * 
-     * @throws IllegalSequenceStateException
+     * @throws IllegalJlibStateException
      *         if an error occurs during the operation
      * 
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 }

@@ -16,8 +16,6 @@ extends ReplaceInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ReplaceInsertRemoveIndexSequenceTraverser} over the Items
      *         of this {@link ReplaceInsertRemoveIndexSequence}
      */
@@ -25,8 +23,6 @@ extends ReplaceInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
     public ReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser();
 
     /**
-     * {@inheritDoc}
-     * 
      * @return {@link ReplaceInsertRemoveIndexSequenceTraverser} over the Items
      *         of this {@link ReplaceInsertRemoveIndexSequence}
      */
