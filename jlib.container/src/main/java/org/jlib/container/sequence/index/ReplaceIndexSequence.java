@@ -35,7 +35,7 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
      * {@link ReplaceIndexSequence} by the specified Items.
      * 
      * @param index
-     *        integer specifying the index
+     *        integer specifying the index of the Item
      * 
      * @param newItem
      *        new Item to store

@@ -29,6 +29,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 
 // @formatter:off
 /**
@@ -44,8 +45,9 @@ public class ArraySequence<Item>
 extends AbstractInitializeableIndexSequence<Item>
 implements Cloneable {
 
-    /** array holding the Items of this {@link ArraySequence} */
-    private Item[] delegateArray;
+    /** {@link LinearIndexStorage} used to store the Items */
+    // FIXNE: initialize
+    private LinearIndexStorage<Item> linearIndexStorage;
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified
@@ -183,7 +185,17 @@ implements Cloneable {
      * @return integer specifying the corresponding index in the delegate array
      */
     protected int getDelegateArrayIndex(final int index) {
-        return index - getFirstIndex();
+        return index - getFirstIndex() + getDelegateArrayFirstIndex();
+    }
+
+    /**
+     * Returns the delegate array index of the first Item.
+     * 
+     * @return integer specifying the index of the fist Item in the delegate
+     *         array
+     */
+    private int getDelegateArrayFirstIndex() {
+        return delegateArrayFirstIndex;
     }
 
     /**

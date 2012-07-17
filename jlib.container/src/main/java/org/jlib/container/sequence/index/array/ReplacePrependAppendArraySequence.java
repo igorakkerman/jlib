@@ -193,7 +193,14 @@ implements ObservedPrependSequence<Item> {
 
     // FIXME: implement
     private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
+        assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
+        int itemArrayIndex = 0;
+
+        for (final Item item : items)
+            replaceDelegateArrayItem(itemArrayIndex ++, item, observers);
+
+        setFirstIndex(getFirstIndex() - prependedItemsCount);
     }
 
     /**
