@@ -1,7 +1,7 @@
 package org.jlib.container.sequence.index.array.storage;
 
 /**
- * Array storage using a specific strategy.
+ * Indexed storage.
  * 
  * @param <Item>
  *        type of the Items stored in the array
@@ -17,8 +17,13 @@ public interface LinearIndexStorage<Item> {
      *        integer specifying the index of the Item
      * 
      * @return Item stored at {@code index}
+     * 
+     * @throws IndexOutOfBoundsException
+     *         if the index is out of the valid range of this
+     *         {@link LinearIndexStorage}
      */
-    public Item getStoredItem(int index);
+    public Item getStoredItem(int index)
+    throws IndexOutOfBoundsException;
 
     /**
      * Replaces the Item stored at the specified index by the specified Item.
@@ -28,6 +33,11 @@ public interface LinearIndexStorage<Item> {
      * 
      * @param newItem
      *        new Item replacing the former
+     * 
+     * @throws IndexOutOfBoundsException
+     *         if the index is out of the valid range of this
+     *         {@link LinearIndexStorage}
      */
-    public void replaceStoredItem(int index, Item newItem);
+    public void replaceStoredItem(int index, Item newItem)
+    throws IndexOutOfBoundsException;
 }
