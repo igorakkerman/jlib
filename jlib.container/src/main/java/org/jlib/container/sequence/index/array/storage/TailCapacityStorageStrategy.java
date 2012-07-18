@@ -16,7 +16,7 @@ import org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy;
  * @author Igor Akkerman
  */
 public class TailCapacityStorageStrategy<Item>
-implements LinearIndexStorageCapacityProvider {
+implements LinearIndexStorageCapacityStrategy {
 
     /** {@link LinearIndexStorage} holding the Items */
     private final LinearIndexStorage<Item> storage;
@@ -31,7 +31,7 @@ implements LinearIndexStorageCapacityProvider {
      * Creates a new {@link TailCapacityStorageStrategy}.
      * 
      * @param storage
-     *        referenced {@link LinearIndexStorage}
+     *        referenced {@link LinearIndexStoragWe}
      */
     public TailCapacityStorageStrategy(final LinearIndexStorage<Item> storage) {
         super();
@@ -41,23 +41,30 @@ implements LinearIndexStorageCapacityProvider {
 
     // FIXME: implement
     @Override
-    public void assertCapacity(final int itemsCount) {
-        if (getItemsCount() >= itemsCount)
+    public void assertCapacity(final int itemsCount)
+    throws InvalidLinearIndexStorageCapacityException {
+        assertCapacityValid(itemsCount);
+
+        if (storage.getItemsCount() >= itemsCount)
             return;
 
-        storage.initialize(itemsCount, new Copy(0, getItemsCount(), 0));
+        storage.initialize(itemsCount, new Copy(0, getEffectiveItemsCount(), 0));
     }
 
     @Override
-    public void assertCapacityWithHole(final int expectedCapacity, final int holeIndex, final int holeSize)
-    throws InvalidLinearIndexStorageCapacityException {
-        assertExpectedCapacityValid(expectedCapacity);
+    public void assertCapacityWithHole(final int itemsCount, final int holeIndex, final int holeSize)
+    throws InvalidLinearIndexStorageCapacityException, InvalidHoleSizeException {
+        assertCapacityValid(itemsCount);
+        assertIndexValid(holeIndex);
+        
+        if (holeSize < 0)
+            throw new Illegal
 
         // @formatter:off
-        if (getItemsCount() + holeSize > expectedCapacity)
+        if (getEffectiveItemsCount() + holeSize > expectedCapacity)
             throw new InvalidLinearIndexStorageCapacityException
                 (this, expectedCapacity, "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
-                 getItemsCount(), holeSize);
+                 getEffectiveItemsCount(), holeSize);
         // @formatter:on
 
         final Item[] originalDelegateArray = delegateArray;
@@ -69,12 +76,19 @@ implements LinearIndexStorageCapacityProvider {
         }
 
         System.arraycopy(originalDelegateArray, holeArrayIndex, delegateArray, holeArrayIndex + holeSize,
-                         getItemsCount() - holeArrayIndex);
+                         getEffectiveItemsCount() - holeArrayIndex);
 
-        Arrays.fill(delegateArray, getItemsCount() + expectedCapacity, delegateArray.length, null);
+        Arrays.fill(delegateArray, getEffectiveItemsCount() + expectedCapacity, delegateArray.length, null);
     }
 
-    private int getItemsCount() {
+    /**
+     * Asserts that the specified capacity
+     * 
+     * @param expectedCapacity
+     */
+    private void assertCapacityValid(final int expectedCapacity) {}
+
+    private int getEffectiveItemsCount() {
         return lastItemEffectiveIndex - firstItemEffectiveIndex + 1;
     }
 

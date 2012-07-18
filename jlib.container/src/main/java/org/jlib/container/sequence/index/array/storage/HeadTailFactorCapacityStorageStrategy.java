@@ -15,7 +15,7 @@ package org.jlib.container.sequence.index.array.storage;
  */
 @Deprecated
 public class HeadTailFactorCapacityStorageStrategy<Item>
-implements LinearIndexStorageCapacityProvider {
+implements LinearIndexStorageCapacityStrategy {
 
     /** factor for the head capacity */
     private final int headCapacityFactor;
@@ -35,8 +35,8 @@ implements LinearIndexStorageCapacityProvider {
     /** effective index of the last Item */
     private int lastItemEffectiveIndex;
 
+    /**
      * Creates a new {@link HeadTailFactorCapacityStorageStrategy}.
-     /**
      * 
      * @param headCapacityFactor
      *        integer specifying the factor for the head capacity
@@ -87,6 +87,7 @@ implements LinearIndexStorageCapacityProvider {
         if (effectiveIndex < firstItemEffectiveIndex || effectiveIndex > lastItemEffectiveIndex)
             throw new InvalidEffectiveIndexException(effectiveIndex, firstItemEffectiveIndex, lastItemEffectiveIndex);
     }
+
     /**
      * Returns the corresponding array Item index for the specified effective
      * Item index.

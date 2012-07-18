@@ -5,7 +5,7 @@ package org.jlib.container.sequence.index.array.storage;
  * 
  * @author Igor Akkerman
  */
-public interface LinearIndexStorageCapacityProvider {
+public interface LinearIndexStorageCapacityStrategy {
 
     /**
      * Asserts that the {@link LinearIndexStorage} fits the specified number of
