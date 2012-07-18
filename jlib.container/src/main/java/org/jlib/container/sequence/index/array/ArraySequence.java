@@ -29,6 +29,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.array.storage.InvalidLinearIndexStorageCapacityException;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 
 // @formatter:off
@@ -251,7 +252,7 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @throws InvalidDelegateArrayCapacityException
+     * @throws InvalidLinearIndexStorageCapacityException
      *         if {@code expectedCapacity < 1}
      */
     protected void assertCapacity(final int expectedCapacity) {
@@ -274,17 +275,17 @@ implements Cloneable {
      * @param holeSize
      *        integer specifying the size of the hole
      * 
-     * @throws InvalidDelegateArrayCapacityException
+     * @throws InvalidLinearIndexStorageCapacityException
      *         if
      *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
      */
     protected void assertCapacityWithHole(final int expectedCapacity, final int holeArrayIndex, final int holeSize)
-    throws InvalidDelegateArrayCapacityException {
+    throws InvalidLinearIndexStorageCapacityException {
         assertExpectedCapacityValid(expectedCapacity);
 
         // @formatter:off
         if (getItemsCount() + holeSize > expectedCapacity)
-            throw new InvalidDelegateArrayCapacityException
+            throw new InvalidLinearIndexStorageCapacityException
                 (this, expectedCapacity, "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
                  getItemsCount(), holeSize);
         // @formatter:on
@@ -309,13 +310,13 @@ implements Cloneable {
      * @param expectedCapacity
      *        integer specifying the expected capacity
      * 
-     * @throws InvalidDelegateArrayCapacityException
+     * @throws InvalidLinearIndexStorageCapacityException
      *         if {@code expectedCapacity < 1}
      */
     protected void assertExpectedCapacityValid(final int expectedCapacity)
-    throws InvalidDelegateArrayCapacityException {
+    throws InvalidLinearIndexStorageCapacityException {
         if (expectedCapacity < 1)
-            throw new InvalidDelegateArrayCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
+            throw new InvalidLinearIndexStorageCapacityException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
     }
 
     /**

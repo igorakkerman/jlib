@@ -23,8 +23,20 @@ implements LinearIndexStorageCapacityProvider {
     /** factor for the tail capacity */
     private final int tailCapacityFactor;
 
-    /**
+    /** array index of the first Item */
+    private int firstItemArrayIndex;
+
+    /** array index of the last Item */
+    private int lastItemArrayIndex;
+
+    /** effective index of the first Item */
+    private int firstItemEffectiveIndex;
+
+    /** effective index of the last Item */
+    private int lastItemEffectiveIndex;
+
      * Creates a new {@link HeadTailFactorCapacityStorageStrategy}.
+     /**
      * 
      * @param headCapacityFactor
      *        integer specifying the factor for the head capacity
@@ -52,4 +64,45 @@ implements LinearIndexStorageCapacityProvider {
         throw new UnsupportedOperationException("not implemnted [" + tailCapacityFactor + ", " + headCapacityFactor +
                                                 "]");
     }
+
+    @Override
+    public Item getStoredItem(final int index) {
+        assertEffectiveIndexInBounds(index);
+
+        return getArrayItem(getArrayIndex(index));
+    }
+
+    /**
+     * Asserts that the specified effective Item index is within the effective
+     * index bounds.
+     * 
+     * @param effectiveIndex
+     *        integer specifying the effective Item index
+     * 
+     * @throws IndexOutOfBoundsException
+     *         if {@code effectiveIndex} is not within the previously specified
+     *         bounds
+     */
+    private void assertEffectiveIndexInBounds(final int effectiveIndex) {
+        if (effectiveIndex < firstItemEffectiveIndex || effectiveIndex > lastItemEffectiveIndex)
+            throw new InvalidEffectiveIndexException(effectiveIndex, firstItemEffectiveIndex, lastItemEffectiveIndex);
+    }
+    /**
+     * Returns the corresponding array Item index for the specified effective
+     * Item index.
+     * 
+     * @param effectiveIndex
+     *        integer specifying the effective Item index
+     * 
+     * @return integer specifying the array Item index
+     */
+    private int getArrayIndex(final int effectiveIndex) {
+        final int relativeIndex = effectiveIndex - firstItemEffectiveIndex;
+
+        return firstItemArrayIndex + relativeIndex;
+    }
+
+    // FIXME: implement
+    @Override
+    public void assertCapacity(final int itemsCount) {}
 }
