@@ -9,66 +9,65 @@ public interface LinearIndexStorageCapacityStrategy {
 
     /**
      * Asserts that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items, leaving a hole of the specified size in front of the
-     * existing Items. The first index of the {@link LinearIndexStorage} is
-     * decremented by the hole size. The indices of all existing Items are left
-     * unchanged.
+     * number of Items, adding the specified capacity at the head of the
+     * {@link LinearIndexStorage}. The indices of all stored Items are
+     * incremented, if necessary.
      * 
-     * @param capacity
+     * @param fullCapacity
      *        integer specifying the capacity
      * 
-     * @param holeSize
+     * @param headCapacity
      *        integer specifying the size of the hole
      * 
      * @throws LinearIndexStorageException
-     *         if {@code capacity < 1 || 
-     *                   holeSize < 0 ||
-     *                   holeSize + linearIndexStorage.getItemsCount() > capacity}
+     *         if {@code fullCapacity < 1 || 
+     *                   headCapacity < 0 ||
+     *                   headCapacity + linearIndexStorage.getItemsCount() > fullCapacity}
      */
-    public void assertCapacityWithHeadHole(final int capacity, final int holeSize)
+    public void assertCapacityWithHeadHole(final int fullCapacity, final int headCapacity)
     throws LinearIndexStorageException;
 
     /**
      * Asserts that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items, leaving a hole of the specified size between the
-     * existing Items. If necessary, the Items located behind the hole index are
-     * moved behind the hole.
+     * number of Items, adding the specified capacity in the middle of the
+     * {@link LinearIndexStorage}. The indices of the stored Items stored after
+     * the specified middle index are incremented.
      * 
-     * @param capacity
+     * @param fullCapacity
      *        integer specifying the capacity
      * 
-     * @param holeIndex
+     * @param middleIndex
      *        integer specifying the hole index
      * 
-     * @param holeSize
+     * @param middleCapacity
      *        integer specifying the size of the hole
      * 
      * @throws LinearIndexStorageException
-     *         if {@code capacity < 1 ||
-     *                   holeIndex < linearIndexStorage.getFirstIndex() || holeIndex > linearIndexStorage.getLastIndex() || 
-     *                   holeSize < 0 ||
-     *                   linearIndexStorage.getLastItemIndex() + 1 + holeSize > capacity}
+     *         if {@code fullCapacity < 1 ||
+     *                   middleIndex < linearIndexStorage.getFirstIndex() || middleIndex > linearIndexStorage.getLastIndex() || 
+     *                   middleCapacity < 0 ||
+     *                   linearIndexStorage.getLastItemIndex() + 1 + middleCapacity > fullCapacity}
      */
-    public void assertCapacityWithMiddleHole(final int capacity, final int holeIndex, final int holeSize)
+    public void assertCapacityWithMiddleHole(final int fullCapacity, final int middleIndex, final int middleCapacity)
     throws LinearIndexStorageException;
 
     /**
      * Asserts that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items, leaving a hole of the specified size behind the existing
-     * Items. The last index of the {@link LinearIndexStorage} is incremented by
-     * the hole size. The indices of all existing Items are left unchanged.
+     * number of Items, adding the specified capacity at the tail of the
+     * {@link LinearIndexStorage}. The indices of all stored Items are left
+     * unchanged.
      * 
-     * @param capacity
+     * @param fullCapacity
      *        integer specifying the capacity
      * 
-     * @param holeSize
+     * @param tailCapacity
      *        integer specifying the size of the hole
      * 
      * @throws LinearIndexStorageException
-     *         if {@code capacity < 1 || 
-     *                   holeSize < 0 ||
-     *                   linearIndexStorage.getLastItemIndex() + 1 + holeSize > capacity}
+     *         if {@code fullCapacity < 1 || 
+     *                   tailCapacity < 0 ||
+     *                   linearIndexStorage.getLastItemIndex() + 1 + tailCapacity > fullCapacity}
      */
-    public void assertCapacityWithTailHole(final int capacity, final int holeSize)
+    public void assertCapacityWithTailHole(final int fullCapacity, final int tailCapacity)
     throws LinearIndexStorageException;
 }
