@@ -2,6 +2,8 @@ package org.jlib.container.sequence.index.array.storage;
 
 import java.util.Arrays;
 
+import static java.lang.Math.min;
+
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy;
 
 /**
@@ -42,7 +44,7 @@ implements LinearIndexStorageCapacityStrategy {
     // FIXME: implement
     @Override
     public void assertCapacity(final int itemsCount)
-    throws InvalidLinearIndexStorageCapacityException {
+    throws LinearIndexStorageException {
         assertCapacityValid(itemsCount);
 
         if (storage.getItemsCount() >= itemsCount)
@@ -53,7 +55,15 @@ implements LinearIndexStorageCapacityStrategy {
 
     @Override
     public void assertCapacityWithHole(final int itemsCount, final int holeIndex, final int holeSize)
-    throws InvalidLinearIndexStorageCapacityException, InvalidHoleSizeException {
+    throws LinearIndexStorageException {
+        
+        if (itemsCount < 1)
+            throw new LinearIndexStorageException(storage, "itemsCount = {1} < 1; storage='{0}'", itemsCount);
+        
+        if (holeIndex < firstItem)
+            
+        firstItemEffectiveIndex = min(holeIndex, holeSize)
+        
         assertCapacityValid(itemsCount);
         assertIndexValid(holeIndex);
         
@@ -80,13 +90,6 @@ implements LinearIndexStorageCapacityStrategy {
 
         Arrays.fill(delegateArray, getEffectiveItemsCount() + expectedCapacity, delegateArray.length, null);
     }
-
-    /**
-     * Asserts that the specified capacity
-     * 
-     * @param expectedCapacity
-     */
-    private void assertCapacityValid(final int expectedCapacity) {}
 
     private int getEffectiveItemsCount() {
         return lastItemEffectiveIndex - firstItemEffectiveIndex + 1;

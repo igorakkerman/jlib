@@ -10,26 +10,20 @@ import org.jlib.container.sequence.IllegalSequenceStateException;
  * 
  * @author Igor Akkerman
  */
-public class InvalidLinearIndexStorageCapacityException
+public class LinearIndexStorageException
 extends IllegalJlibArgumentException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -384887305140022756L;
-
-    /** invalid capacity */
-    private final int invalidCapacity;
+    private static final long serialVersionUID = -1514836335986845986L;
 
     /** referenced {@link LinearIndexStorage} */
     private final LinearIndexStorage<?> linearIndexStorage;
 
     /**
-     * Creates a new {@link InvalidLinearIndexStorageCapacityException}.
+     * Creates a new {@link LinearIndexStorageException}.
      * 
      * @param linearIndexStorage
      *        referenced {@link LinearIndexStorage}
-     * 
-     * @param invalidCapacity
-     *        integer specifying the invalid capacity
      * 
      * @param messagePattern
      *        {@link String} specifying the error message pattern
@@ -37,22 +31,11 @@ extends IllegalJlibArgumentException {
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public InvalidLinearIndexStorageCapacityException(final LinearIndexStorage<?> linearIndexStorage,
-                                                      final int invalidCapacity, final String messagePattern,
-                                                      final Object... messageArguments) {
-        super(messagePattern, linearIndexStorage, invalidCapacity, messageArguments);
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messagePattern,
+                                       final Object... messageArguments) {
+        super(messagePattern, linearIndexStorage, messageArguments);
 
         this.linearIndexStorage = linearIndexStorage;
-        this.invalidCapacity = invalidCapacity;
-    }
-
-    /**
-     * Returns the invalid capacity.
-     * 
-     * @return integer specifying the invalid capacity
-     */
-    public int getInvalidCapacity() {
-        return invalidCapacity;
     }
 
     /**
