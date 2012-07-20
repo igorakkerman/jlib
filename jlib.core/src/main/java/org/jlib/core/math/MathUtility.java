@@ -22,7 +22,7 @@ public final class MathUtility {
      * 
      * @return {@code maximum - minimum + 1}
      */
-    public int count(final int minimum, final int maximum) {
+    public static int count(final int minimum, final int maximum) {
         return maximum - minimum + 1;
     }
 }
