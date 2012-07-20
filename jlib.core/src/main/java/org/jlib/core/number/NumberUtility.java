@@ -23,8 +23,8 @@ package org.jlib.core.number;
 public final class NumberUtility {
 
     /** hexadecimal digit characters */
-    public static final char[] HEX_DIGIT_CHARACTERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',
-                                                       'D', 'E', 'F'};
+    public static final char[] HEX_DIGIT_CHARACTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B',
+                                                       'C', 'D', 'E', 'F' };
 
     /** no visible constructor */
     private NumberUtility() {}
@@ -34,19 +34,24 @@ public final class NumberUtility {
      * 
      * @param hexDigitCharacter
      *        character holding a hexadecimal digit
+     * 
      * @return byte holding the value of hexDigitCharacter
+     * 
      * @throws NumberFormatException
      *         if {@code hexDigitCharacter} does not hold a hexadecimal digit
      */
-    public static byte parseHexDigit(char hexDigitCharacter) {
+    public static byte parseHexDigit(final char hexDigitCharacter)
+    throws NumberFormatException {
         if (hexDigitCharacter >= '0' && hexDigitCharacter <= '9')
             return (byte) (hexDigitCharacter - '0');
-        else if (hexDigitCharacter >= 'A' && hexDigitCharacter <= 'F')
+
+        if (hexDigitCharacter >= 'A' && hexDigitCharacter <= 'F')
             return (byte) (hexDigitCharacter - 'A' + 10);
-        else if (hexDigitCharacter >= 'a' && hexDigitCharacter <= 'f')
+
+        if (hexDigitCharacter >= 'a' && hexDigitCharacter <= 'f')
             return (byte) (hexDigitCharacter - 'a' + 10);
-        else
-            throw new NumberFormatException(Character.toString(hexDigitCharacter));
+
+        throw new NumberFormatException(Character.toString(hexDigitCharacter));
     }
 
     /**
@@ -57,13 +62,14 @@ public final class NumberUtility {
      * 
      * @param bite
      *        byte to represent as a binary String
+     * 
      * @return binary String representation of {@code bite}
      */
-    public static String toBinaryString(byte bite) {
-        StringBuilder bitStringBuilder = new StringBuilder(8);
+    public static String toBinaryString(final byte bite) {
+        final StringBuilder bitStringBuilder = new StringBuilder(8);
 
         for (int digitIndex = 7; digitIndex >= 0; digitIndex --)
-            bitStringBuilder.append((bite >> digitIndex) & 1);
+            bitStringBuilder.append(bite >> digitIndex & 1);
 
         return bitStringBuilder.toString();
     }
@@ -73,15 +79,16 @@ public final class NumberUtility {
      * padded with zeroes. The bit order is big-endian, that is, the most
      * significant bit first.
      * 
-     * @param integer
+     * @param value
      *        integer to represent as a binary String
+     * 
      * @return binary String representation of {@code integer}
      */
-    public static String toBinaryString(int integer) {
-        StringBuilder bitStringBuilder = new StringBuilder(32);
+    public static String toBinaryString(final int value) {
+        final StringBuilder bitStringBuilder = new StringBuilder(32);
 
         for (int digitIndex = 31; digitIndex >= 0; digitIndex --)
-            bitStringBuilder.append((integer >> digitIndex) & 1);
+            bitStringBuilder.append(value >> digitIndex & 1);
 
         return bitStringBuilder.toString();
     }
@@ -92,10 +99,10 @@ public final class NumberUtility {
      * @param number
      *        integer to verify
      * 
-     * @return {@code true} if {@code number} is even; {@code false} if {@code
-     *         number} is odd
+     * @return {@code true} if {@code number} is even; {@code false} if
+     *         {@code number} is odd
      */
-    public static boolean isEven(int number) {
+    public static boolean isEven(final int number) {
         return (number & 1) == 0;
     }
 
@@ -105,10 +112,10 @@ public final class NumberUtility {
      * @param number
      *        integer to verify
      * 
-     * @return {@code true} if {@code number} is odd; {@code false} if {@code
-     *         number} is even
+     * @return {@code true} if {@code number} is odd; {@code false} if
+     *         {@code number} is even
      */
-    public static boolean isOdd(int number) {
+    public static boolean isOdd(final int number) {
         return (number & 1) == 1;
     }
 }
