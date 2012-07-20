@@ -74,24 +74,23 @@ public interface LinearIndexStorage<Item> {
         public int getTargetIndex() {
             return targetIndex;
         }
-
     }
 
     /**
      * Initializes or re-initializes this {@link LinearIndexStorage} performing
-     * the specified copy operations on its Items.
+     * the copy operations on its Items as specified by a number of {@link Copy}
+     * descritors. Their source indices reference the Item indices
+     * <em>before</em>, their target indices the Item indices <em>after</em> the
+     * operation. The Items stored at the former indices are not overwritten and
+     * can be reused in each specified {@link Copy} operation.
      * 
-     * @param copiedItemsCount
-     *        integer specifying the number of Items to store
+     * @param capacity
+     *        integer specifying the capacity
      * 
      * @param copyDescriptors
-     *        comma separated sequence of {@link Copy} descriptors; their source
-     *        indices reference the Item indices <em>before</em>, their target
-     *        indices the Item indices <em>after</em> the operation; the Items
-     *        stored at the former indices are not overwritten and can be reused
-     *        in each specified {@link Copy} operation
+     *        comma separated sequence of {@link Copy} descriptors
      */
-    public void initialize(final int copiedItemsCount, Copy... copyDescriptors);
+    public void initialize(final int capacity, Copy... copyDescriptors);
 
     /**
      * Returns the Item stored at the specified index.
@@ -126,7 +125,10 @@ public interface LinearIndexStorage<Item> {
 
     /**
      * Performs the copy operations defined by the specified {@link Copy}
-     * descriptors within this {@link LinearIndexStorage}.
+     * descriptors within this {@link LinearIndexStorage}. Their source indices
+     * reference the Item indices <em>before</em>, their target indices the Item
+     * indices <em>after</em> the operation. the Items stored at the former
+     * indices are overwritten in each specified {@link Copy} operation
      * 
      * @param copyDescriptors
      *        comma separated sequence of {@link Copy} descriptors
@@ -139,9 +141,46 @@ public interface LinearIndexStorage<Item> {
     throws IndexOutOfBoundsException;
 
     /**
+     * Returns the capacity, that is, number of storable Items.
+     * 
+     * @return integer specifying the capacity
+     */
+    public int getCapacity();
+
+    /**
+     * Returns the index of the first Item.
+     * 
+     * @return integer specifying the index of the first Item
+     */
+    public int getFirstItemIndex();
+
+    /**
+     * Registers the index of the first Item.
+     * 
+     * @param firstItemIndex
+     *        integer specifying the index of the first Item
+     */
+    public void setFirstItemIndex(int firstItemIndex);
+
+    /**
+     * Returns the index of the last Item.
+     * 
+     * @return integer specifying the index of the last Item
+     */
+    public int getLastItemIndex();
+
+    /**
+     * Registers the index of the last Item.
+     * 
+     * @param lastItemIndex
+     *        integer specifying the index of the last Item
+     */
+    public void setLastItemIndex(int lastItemIndex);
+
+    /**
      * Returns the number of stored Items.
      * 
-     * @return integer specifying the number of stored Items
+     * @return integer spacifying the number of stored Items
      */
     public int getItemsCount();
 }

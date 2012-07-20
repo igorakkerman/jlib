@@ -1,5 +1,7 @@
 package org.jlib.container.sequence.index.array.storage;
 
+import static java.lang.System.arraycopy;
+
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 /**
@@ -11,7 +13,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
  * @author Igor Akkerman
  */
 public class ArrayStorage<Item>
-implements LinearIndexStorage<Item> {
+extends AbstractLinearIndexStorage<Item> {
 
     /** array holding the Items */
     private Item[] array;
@@ -24,8 +26,8 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
-    public void initialize(final int itemsCount, final Copy... copyDescriptors) {
-        final Item[] newArray = createArray(itemsCount);
+    public void initialize(final int capacity, final Copy... copyDescriptors) {
+        final Item[] newArray = createArray(capacity);
 
         copy(array, newArray, copyDescriptors);
 
@@ -72,16 +74,14 @@ implements LinearIndexStorage<Item> {
      *        comma separated sequence of
      *        {@link org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy}
      *        operation descriptors
-     * 
      */
     private void copy(final Item[] sourceArray, final Item[] targetArray, final Copy... copyDescriptors) {
         for (final Copy copy : copyDescriptors)
-            System.arraycopy(sourceArray, copy.getSourceBeginIndex(), targetArray, copy.getTargetIndex(),
-                             copy.getItemsCount());
+            arraycopy(sourceArray, copy.getSourceBeginIndex(), targetArray, copy.getTargetIndex(), copy.getItemsCount());
     }
 
     @Override
-    public int getItemsCount() {
+    public int getCapacity() {
         return array.length;
     }
 }
