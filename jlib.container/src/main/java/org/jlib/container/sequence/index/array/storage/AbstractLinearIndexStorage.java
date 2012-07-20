@@ -48,4 +48,9 @@ implements LinearIndexStorage<Item> {
     public int getItemsCount() {
         return lastItemIndex - firstItemIndex + 1;
     }
+
+    @Override
+    public int getTailCapacity() {
+        return getCapacity() - lastItemIndex - 1;
+    }
 }

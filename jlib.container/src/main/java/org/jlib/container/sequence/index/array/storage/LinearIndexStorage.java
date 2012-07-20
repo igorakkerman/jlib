@@ -22,8 +22,8 @@ public interface LinearIndexStorage<Item> {
         /** begin index of the copied range */
         private final int sourceBeginIndex;
 
-        /** copied number of Items */
-        private final int itemsCount;
+        /** end index of the copied range */
+        private final int sourceEndIndex;
 
         /** index to which the range is copied */
         private final int targetIndex;
@@ -34,17 +34,17 @@ public interface LinearIndexStorage<Item> {
          * @param sourceBeginIndex
          *        integer specifying the begin index of the copied range
          * 
-         * @param itemsCount
-         *        integer specifying the copied number of Items
+         * @param sourceEndIndex
+         *        integer specifying the end index of the copied range
          * 
          * @param targetIndex
          *        integer specifying the index to which the range is copied
          */
-        public Copy(final int sourceBeginIndex, final int itemsCount, final int targetIndex) {
+        public Copy(final int sourceBeginIndex, final int sourceEndIndex, final int targetIndex) {
             super();
 
             this.sourceBeginIndex = sourceBeginIndex;
-            this.itemsCount = itemsCount;
+            this.sourceEndIndex = sourceEndIndex;
             this.targetIndex = targetIndex;
         }
 
@@ -58,12 +58,12 @@ public interface LinearIndexStorage<Item> {
         }
 
         /**
-         * Returns the copied number of Items.
+         * Returns the end index of the copied range.
          * 
-         * @return integer specifying the copied number of Items
+         * @return integer specifying the end index of the copied range
          */
-        public int getItemsCount() {
-            return itemsCount;
+        public int getSourceEndIndex() {
+            return sourceEndIndex;
         }
 
         /**
@@ -124,11 +124,12 @@ public interface LinearIndexStorage<Item> {
     throws IndexOutOfBoundsException;
 
     /**
-     * Performs the copy operations defined by the specified {@link Copy}
-     * descriptors within this {@link LinearIndexStorage}. Their source indices
+     * Shifts the Items within this {@link LinearIndexStorage} as defined
+     * defined by the specified {@link Copy} descriptors. Their source indices
      * reference the Item indices <em>before</em>, their target indices the Item
-     * indices <em>after</em> the operation. the Items stored at the former
-     * indices are overwritten in each specified {@link Copy} operation
+     * indices <em>after</em> the operation. The Items stored at the former
+     * indices are overwritten by each specified {@link Copy} operation. Shifted
+     * Items are overwritten by {@code null}.
      * 
      * @param copyDescriptors
      *        comma separated sequence of {@link Copy} descriptors
@@ -137,15 +138,8 @@ public interface LinearIndexStorage<Item> {
      *         if a {@link Copy} descriptor specifies a copy operation on an
      *         index outside the valid bounds
      */
-    public void copy(Copy... copyDescriptors)
+    public void shiftItems(Copy... copyDescriptors)
     throws IndexOutOfBoundsException;
-
-    /**
-     * Returns the capacity, that is, number of storable Items.
-     * 
-     * @return integer specifying the capacity
-     */
-    public int getCapacity();
 
     /**
      * Returns the index of the first Item.
@@ -183,4 +177,19 @@ public interface LinearIndexStorage<Item> {
      * @return integer spacifying the number of stored Items
      */
     public int getItemsCount();
+
+    /**
+     * Returns the capacity, that is, number of storable Items.
+     * 
+     * @return integer specifying the capacity
+     */
+    public int getCapacity();
+
+    /**
+     * Returns the tail capacity, that is, the number of storable Items behind
+     * the last Item.
+     * 
+     * @return integer specifying the tail capacity
+     */
+    public int getTailCapacity();
 }

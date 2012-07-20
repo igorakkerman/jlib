@@ -1,5 +1,8 @@
 package org.jlib.container.sequence.index.array.storage;
 
+import java.util.Arrays;
+
+import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 
 import static org.jlib.core.array.ArrayUtility.createArray;
@@ -29,7 +32,8 @@ extends AbstractLinearIndexStorage<Item> {
     public void initialize(final int capacity, final Copy... copyDescriptors) {
         final Item[] newArray = createArray(capacity);
 
-        copy(array, newArray, copyDescriptors);
+        for (final Copy copyDescriptor : copyDescriptors)
+            copyItems(array, newArray, copyDescriptor);
 
         array = newArray;
     }
@@ -53,15 +57,21 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    public void copy(final Copy... copyDescriptors)
+    public void shiftItems(final Copy... copyDescriptors)
     throws IndexOutOfBoundsException {
-        copy(array, array, copyDescriptors);
+        for (final Copy copyDescriptor : copyDescriptors) {
+            copyItems(array, array, copyDescriptor);
+            // @formatter:off
+            Arrays.fill(array, copyDescriptor.getSourceBeginIndex(),
+                        min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */ null);
+            // @formatter:on
+        }
     }
 
     /**
      * Performs the specified
      * {@link org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy}
-     * operations from the specified source to the speified target array of
+     * operation from the specified source to the speified target array of
      * Items.
      * 
      * @param sourceArray
@@ -70,14 +80,13 @@ extends AbstractLinearIndexStorage<Item> {
      * @param targetArray
      *        target array of Items
      * 
-     * @param copyDescriptors
-     *        comma separated sequence of
+     * @param copyDescriptor
      *        {@link org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy}
-     *        operation descriptors
+     *        operation descriptor
      */
-    private void copy(final Item[] sourceArray, final Item[] targetArray, final Copy... copyDescriptors) {
-        for (final Copy copy : copyDescriptors)
-            arraycopy(sourceArray, copy.getSourceBeginIndex(), targetArray, copy.getTargetIndex(), copy.getItemsCount());
+    protected void copyItems(final Item[] sourceArray, final Item[] targetArray, final Copy copyDescriptor) {
+        arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
+                  copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
     }
 
     @Override

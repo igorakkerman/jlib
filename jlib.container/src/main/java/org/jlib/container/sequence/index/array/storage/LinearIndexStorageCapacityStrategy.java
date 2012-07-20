@@ -8,7 +8,7 @@ package org.jlib.container.sequence.index.array.storage;
 public interface LinearIndexStorageCapacityStrategy {
 
     /**
-     * Asserts that the referenced {@link LinearIndexStorage} fits the specified
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
      * number of Items at the head of the {@link LinearIndexStorage}. The
      * indices of the stored Items are incremented, if necessary.
      * 
@@ -18,30 +18,30 @@ public interface LinearIndexStorageCapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code headCapacity < 0}
      */
-    public void assertHeadCapacity(final int headCapacity)
+    public void ensureHeadCapacity(final int headCapacity)
     throws LinearIndexStorageException;
 
     /**
-     * Asserts that the referenced {@link LinearIndexStorage} fits the specified
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
      * number of Items betweeen the existing stored Items. The indices of the
-     * Items stored after the specified middle index are incremented.
+     * Items stored after the specified split index are incremented.
      * 
      * @param middleCapacity
      *        integer specifying the middle capacity
      * 
-     * @param middleIndex
-     *        integer specifying the middle index
+     * @param splitIndex
+     *        integer specifying the split index
      * 
      * @throws LinearIndexStorageException
      *         if {@code middleCapacity < 0 || 
      *                   middleIndex < linearIndexStorage.getFirstIndex() || 
      *                   middleIndex > linearIndexStorage.getLastIndex()}
      */
-    public void assertMiddleCapacity(final int middleCapacity, final int middleIndex)
+    public void ensureMiddleCapacity(final int middleCapacity, final int splitIndex)
     throws LinearIndexStorageException;
 
     /**
-     * Asserts that the referenced {@link LinearIndexStorage} fits the specified
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
      * number of Items behind the existing stored Items. The indices of all
      * stored Items are left unchanged.
      * 
@@ -51,6 +51,6 @@ public interface LinearIndexStorageCapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code tailCapacity < 0}
      */
-    public void assertTailCapacity(final int tailCapacity)
+    public void ensureTailCapacity(final int tailCapacity)
     throws LinearIndexStorageException;
 }
