@@ -36,8 +36,7 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns a new {@link TwoWayTraversible} adapter for the specified
-     * Items.
+     * Returns a new {@link TwoWayTraversible} adapter for the specified Items.
      * 
      * @param <Item>
      *        type of the items held in the array
@@ -151,9 +150,13 @@ public final class ArrayUtility {
      *        integer specifying the array length
      * 
      * @return newly created array
+     * 
+     * @throws NegativeArraySizeException
+     *         if {@code length < 0}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> Item[] createArray(final int length) {
+    public static <Item> Item[] createArray(final int length)
+    throws NegativeArraySizeException {
         return (Item[]) new Object[length];
     }
 }
