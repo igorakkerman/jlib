@@ -97,16 +97,16 @@ implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
             public void operate()
             throws OperatorException, RuntimeException {
                 try {
-                    replace(newItem);
+                    insert(item);
                 }
                 catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
-                    throw new OperatorException("replace: {0}", exception, newItem);
+                    throw new OperatorException("insert: {0}", exception, item);
                 }
             }
 
         },
 
-        newItem, concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
+        item, concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
     }
 
     @Override
