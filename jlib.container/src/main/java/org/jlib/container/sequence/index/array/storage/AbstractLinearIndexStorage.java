@@ -1,5 +1,9 @@
 package org.jlib.container.sequence.index.array.storage;
 
+import org.jlib.core.UnexpectedStateException;
+
+import static org.jlib.core.math.MathUtility.count;
+
 /**
  * Skeletal implementation of a {@link LinearIndexStorage}.
  * 
@@ -12,17 +16,83 @@ public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
 
     /** array index of the first Item */
-    private Integer firstItemIndex;
+    private int firstItemIndex;
 
     /** array index of the last Item */
-    private Integer lastItemIndex;
+    private int lastItemIndex;
 
     /**
      * Creates a new {@link AbstractLinearIndexStorage}.
+     * 
+     * @param capacity
+     *        integer specifying the capacity
+     * 
+     * @param firstItemIndex
+     *        integer specifying the index of the first Item
+     * 
+     * @param lastItemIndex
+     *        integer specifying the index of the last Item
+     * 
+     * @throws LinearIndexStorageException
+     *         if {@code firstItemIndex < 0 ||
+     *                   lastItemIndex < firstItemIndex || 
+     *                   lastItemIndex > capacity - 1 ||
+     *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
-    public AbstractLinearIndexStorage() {
+    protected AbstractLinearIndexStorage(final int capacity, final int firstItemIndex, final int lastItemIndex)
+    throws LinearIndexStorageException {
         super();
+
+        initialize(capacity, firstItemIndex, lastItemIndex);
     }
+
+    @Override
+    public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                 final ItemsCopy... copyDescriptors)
+    throws LinearIndexStorageException {
+        if (firstItemIndex < 0)
+            throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
+
+        if (firstItemIndex > lastItemIndex)
+            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
+                                                  lastItemIndex);
+
+        if (lastItemIndex > capacity - 1)
+            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
+                                                  lastItemIndex);
+
+        if (count(firstItemIndex, lastItemIndex) > capacity)
+            throw new LinearIndexStorageException(
+                                                  this,
+                                                  "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
+                                                  capacity, firstItemIndex, lastItemIndex, count(firstItemIndex,
+                                                                                                 lastItemIndex));
+
+        this.firstItemIndex = firstItemIndex;
+        this.lastItemIndex = lastItemIndex;
+
+        initializeDelegate(capacity, firstItemIndex, lastItemIndex, copyDescriptors);
+    }
+
+    /**
+     * Initializes the delegate data structures.
+     * 
+     * @param capacity
+     *        integer specifying the valid capacity
+     * 
+     * @param firstItemIndex
+     *        integer specifying the valid index of the first Item
+     * 
+     * @param lastItemIndex
+     *        integer specifying the valid index of the last Item
+     * 
+     * @param copyDescriptors
+     *        comma separated sequence of
+     *        {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
+     *        descriptors
+     */
+    protected abstract void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                               final ItemsCopy... copyDescriptors);
 
     @Override
     public int getFirstItemIndex() {
@@ -46,11 +116,24 @@ implements LinearIndexStorage<Item> {
 
     @Override
     public int getItemsCount() {
-        return lastItemIndex - firstItemIndex + 1;
+        return count(firstItemIndex, lastItemIndex);
     }
 
     @Override
     public int getTailCapacity() {
         return getCapacity() - lastItemIndex - 1;
+    }
+
+    @Override
+    public AbstractLinearIndexStorage<Item> clone() {
+        try {
+            @SuppressWarnings("unchecked")
+            final AbstractLinearIndexStorage<Item> clonedStorage = (AbstractLinearIndexStorage<Item>) super.clone();
+
+            return clonedStorage;
+        }
+        catch (final CloneNotSupportedException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 }

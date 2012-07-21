@@ -33,7 +33,7 @@ extends IllegalJlibArgumentException {
      */
     public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messagePattern,
                                        final Object... messageArguments) {
-        super(messagePattern, linearIndexStorage, messageArguments);
+        super(messagePattern + "; LinearIndexStorage: '{0}'", linearIndexStorage, messageArguments);
 
         this.linearIndexStorage = linearIndexStorage;
     }

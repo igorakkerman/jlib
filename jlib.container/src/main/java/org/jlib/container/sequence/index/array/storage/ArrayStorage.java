@@ -19,23 +19,34 @@ public class ArrayStorage<Item>
 extends AbstractLinearIndexStorage<Item> {
 
     /** array holding the Items */
-    private Item[] array;
+    private Item[] delegateArray;
 
     /**
-     * Creates a new {@link ArrayStorage}.
+     * Creates a new {@link ArrayStorage} with the specified capacity.
+     * 
+     * @param capacity
+     *        integer specifying the capacity
+     * 
+     * @param firstItemIndex
+     *        integer specifying the index of the first Item
+     * 
+     * @param lastItemIndex
+     *        integer specifying the index of the last Item
      */
-    public ArrayStorage() {
-        super();
+    public ArrayStorage(final int capacity, final int firstItemIndex, final int lastItemIndex) {
+        super(capacity, firstItemIndex, lastItemIndex);
     }
 
     @Override
-    public void initialize(final int capacity, final Copy... copyDescriptors) {
-        final Item[] newArray = createArray(capacity);
+    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                      final ItemsCopy... copyDescriptors) {
 
-        for (final Copy copyDescriptor : copyDescriptors)
-            copyItems(array, newArray, copyDescriptor);
+        final Item[] newDelegateArray = createArray(capacity);
 
-        array = newArray;
+        for (final ItemsCopy copyDescriptor : copyDescriptors)
+            copyItems(delegateArray, newDelegateArray, copyDescriptor);
+
+        delegateArray = newDelegateArray;
     }
 
     /**
@@ -48,21 +59,23 @@ extends AbstractLinearIndexStorage<Item> {
      */
     @Override
     public Item getItem(final int index) {
-        return array[index];
+        return delegateArray[index];
     }
 
     @Override
     public void replaceItem(final int index, final Item item) {
-        array[index] = item;
+        delegateArray[index] = item;
     }
 
     @Override
-    public void shiftItems(final Copy... copyDescriptors)
+    public void shiftItems(final ItemsCopy... copyDescriptors)
     throws IndexOutOfBoundsException {
-        for (final Copy copyDescriptor : copyDescriptors) {
-            copyItems(array, array, copyDescriptor);
+        for (final ItemsCopy copyDescriptor : copyDescriptors) {
+            copyItems(delegateArray, delegateArray, copyDescriptor);
+
+            // replace the shifted Items with null
             // @formatter:off
-            Arrays.fill(array, copyDescriptor.getSourceBeginIndex(),
+            Arrays.fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
                         min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */ null);
             // @formatter:on
         }
@@ -70,7 +83,7 @@ extends AbstractLinearIndexStorage<Item> {
 
     /**
      * Performs the specified
-     * {@link org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy}
+     * {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
      * operation from the specified source to the speified target array of
      * Items.
      * 
@@ -81,16 +94,25 @@ extends AbstractLinearIndexStorage<Item> {
      *        target array of Items
      * 
      * @param copyDescriptor
-     *        {@link org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy}
+     *        {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
      *        operation descriptor
      */
-    protected void copyItems(final Item[] sourceArray, final Item[] targetArray, final Copy copyDescriptor) {
+    protected void copyItems(final Item[] sourceArray, final Item[] targetArray, final ItemsCopy copyDescriptor) {
         arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
     }
 
     @Override
     public int getCapacity() {
-        return array.length;
+        return delegateArray.length;
+    }
+
+    @Override
+    public ArrayStorage<Item> clone() {
+        final ArrayStorage<Item> clonedArrayStorage = (ArrayStorage<Item>) super.clone();
+
+        clonedArrayStorage.delegateArray = delegateArray.clone();
+
+        return clonedArrayStorage;
     }
 }

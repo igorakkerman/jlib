@@ -1,7 +1,5 @@
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorage.Copy;
-
 /**
  * {@link LinearIndexStorageCapacityStrategy} providing just as much capacity as
  * requested.
@@ -38,7 +36,8 @@ implements LinearIndexStorageCapacityStrategy {
             return;
 
         storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(),
-                           new Copy(storage.getFirstItemIndex(), storage.getLastItemIndex(), headCapacity));
+                           storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                           new ItemsCopy(storage.getFirstItemIndex(), storage.getLastItemIndex(), headCapacity));
     }
 
     @Override
@@ -50,8 +49,10 @@ implements LinearIndexStorageCapacityStrategy {
             return;
 
         storage.initialize(storage.getLastItemIndex() + 1 + tailCapacity,
-                           new Copy(storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                                    storage.getFirstItemIndex()));
+                           storage.getFirstItemIndex(),
+                           storage.getLastItemIndex(),
+                           new ItemsCopy(storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                                         storage.getFirstItemIndex()));
     }
 
     @Override
@@ -73,20 +74,25 @@ implements LinearIndexStorageCapacityStrategy {
         if (middleCapacity == 0)
             return;
 
-        final Copy rightCopyDescriptor = new Copy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity);
+        final ItemsCopy rightCopyDescriptor =
+            new ItemsCopy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity);
+
+        final int newLastItemIndex = storage.getLastItemIndex() + middleCapacity;
 
         if (storage.getTailCapacity() >= middleCapacity) {
-            storage.shiftItems(new Copy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity));
+            storage.shiftItems(new ItemsCopy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity));
+            storage.setLastItemIndex(newLastItemIndex);
             return;
         }
 
         final int fullCapacity = storage.getItemsCount() + middleCapacity;
 
         if (splitIndex > storage.getFirstItemIndex())
-            storage.initialize(fullCapacity, new Copy(storage.getFirstItemIndex(), splitIndex - 1, splitIndex),
+            storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex,
+                               new ItemsCopy(storage.getFirstItemIndex(), splitIndex - 1, splitIndex),
                                rightCopyDescriptor);
         else
-            storage.initialize(fullCapacity, rightCopyDescriptor);
+            storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex, rightCopyDescriptor);
     }
 
     /**
