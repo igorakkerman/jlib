@@ -8,6 +8,18 @@ package org.jlib.container.sequence.index.array.storage;
 public interface LinearIndexStorageCapacityStrategy {
 
     /**
+     * Initializes the referenced {@link LinearIndexStorage} with a sufficient
+     * capacity to fit Items in the specified range.
+     * 
+     * @param firstItemIndex
+     *        integer specifying the first Item index
+     * 
+     * @param lastItemIndex
+     *        integer specifying the last Item index
+     */
+    public void initialize(int firstItemIndex, int lastItemIndex);
+
+    /**
      * Ensures that the referenced {@link LinearIndexStorage} fits the specified
      * number of Items at the head of the {@link LinearIndexStorage}. The
      * indices of the stored Items are incremented, if necessary.

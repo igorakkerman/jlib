@@ -29,8 +29,13 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorageException;
+import org.jlib.container.sequence.index.array.storage.ArrayStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
+import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
+import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategyFactory;
+import org.jlib.container.sequence.index.array.storage.LinearIndexStorageException;
+import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
+import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategyFactory;
 
 // @formatter:off
 /**
@@ -46,9 +51,22 @@ public class ArraySequence<Item>
 extends AbstractInitializeableIndexSequence<Item>
 implements Cloneable {
 
+    /**
+     * {@link LinearIndexStorageCapacityStrategyFactory} used to create
+     * {@link LinearIndexStorageCapacityStrategy} used to adjust the
+     * {@link LinearIndexStorage} capacity
+     */
+    private static final LinearIndexStorageCapacityStrategyFactory capacityStrategyFactory =
+        MinimalLinearIndexStorageCapacityStrategyFactory.getInstance();
+
     /** {@link LinearIndexStorage} used to store the Items */
-    // FIXNE: initialize
-    private LinearIndexStorage<Item> linearIndexStorage;
+    private LinearIndexStorage<Item> storage;
+
+    /**
+     * {@link LinearIndexStorageCapacityStrategy} used to adjust the
+     * {@link LinearIndexStorage} capacity
+     */
+    private LinearIndexStorageCapacityStrategy capacityStrategy;
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified
@@ -162,68 +180,33 @@ implements Cloneable {
 
     @Override
     protected void initialize() {
-        delegateArray = createArray(getItemsCount());
+        storage = new ArrayStorage<>(getLastIndex(), getItemsCount(), getFirstIndex())
+        storage.initialize(getItemsCount());
     }
 
     @Override
     protected Item getStoredItem(final int index) {
-        return getDelegateArrayItem(getDelegateArrayIndex(index));
+        return getStorageItem(getStorageIndex(index));
     }
 
     @Override
     protected void replaceStoredItem(final int index, final Item newItem) {
-        replaceDelegateArrayItem(getDelegateArrayIndex(index), newItem);
+        replaceDelegateArrayItem(getStorageIndex(index), newItem);
     }
 
     /**
-     * Returns the delegate array index in the specified index in this
-     * {@link ArraySequence}.
+     * Returns the delegate {@link LinearIndexStorage} index in the specified
+     * index in this {@link ArraySequence}.
      * 
      * @param index
      *        integer specifying the index of the Item in the
      *        {@link ArraySequence}
      * 
-     * @return integer specifying the corresponding index in the delegate array
+     * @return integer specifying the corresponding index in the delegate
+     *         {@link LinearIndexStorage}
      */
-    protected int getDelegateArrayIndex(final int index) {
-        return index - getFirstIndex() + getDelegateArrayFirstIndex();
-    }
-
-    /**
-     * Returns the delegate array index of the first Item.
-     * 
-     * @return integer specifying the index of the fist Item in the delegate
-     *         array
-     */
-    private int getDelegateArrayFirstIndex() {
-        return delegateArrayFirstIndex;
-    }
-
-    /**
-     * Returns the Item stored in the delegate array at the specified index.
-     * Provides a typesafe access to the (non generic) array.
-     * 
-     * @param arrayIndex
-     *        index of the Item in the array
-     * 
-     * @return Item stored at {@code arrayIndex} in the array
-     */
-    protected Item getDelegateArrayItem(final int arrayIndex) {
-        return delegateArray[arrayIndex];
-    }
-
-    /**
-     * Replaces the Item stored in the delegate array at the specified index.
-     * Provides a typesafe access to the (non generic) array.
-     * 
-     * @param arrayIndex
-     *        integer specifying the index of the Item in the array
-     * 
-     * @param item
-     *        replacing Item
-     */
-    protected void replaceDelegateArrayItem(final int arrayIndex, final Item item) {
-        delegateArray[arrayIndex] = item;
+    protected int getStorageIndex(final int index) {
+        return index - getFirstIndex() + storage.getFirstItemIndex();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package org.jlib.container.sequence.index.array.storage;
 
+import static org.jlib.core.math.MathUtility.count;
+
 /**
  * {@link LinearIndexStorageCapacityStrategy} providing just as much capacity as
  * requested.
@@ -9,22 +11,27 @@ package org.jlib.container.sequence.index.array.storage;
  * 
  * @author Igor Akkerman
  */
-public class MinimalCapacityStorageStrategy<Item>
+public class MinimalLinearIndexStorageCapacityStrategy<Item>
 implements LinearIndexStorageCapacityStrategy {
 
     /** {@link LinearIndexStorage} holding the Items */
     private final LinearIndexStorage<Item> storage;
 
     /**
-     * Creates a new {@link MinimalCapacityStorageStrategy}.
+     * Creates a new {@link MinimalLinearIndexStorageCapacityStrategy}.
      * 
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
-    public MinimalCapacityStorageStrategy(final LinearIndexStorage<Item> storage) {
+    public MinimalLinearIndexStorageCapacityStrategy(final LinearIndexStorage<Item> storage) {
         super();
 
         this.storage = storage;
+    }
+
+    @Override
+    public void initialize(final int firstItemIndex, final int lastItemIndex) {
+        storage.initialize(count(firstItemIndex, lastItemIndex), firstItemIndex, lastItemIndex);
     }
 
     @Override
