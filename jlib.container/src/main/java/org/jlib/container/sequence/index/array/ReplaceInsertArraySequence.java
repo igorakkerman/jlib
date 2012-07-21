@@ -175,7 +175,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      */
     private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
         final int newSize = getItemsCount() + insertedItemsCount;
-        final int delegateArrayInsertIndex = getStorageIndex(index);
+        final int delegateArrayInsertIndex = getStorageItemIndex(index);
 
         assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);
 

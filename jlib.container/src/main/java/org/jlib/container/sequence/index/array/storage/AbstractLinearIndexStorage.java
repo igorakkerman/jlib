@@ -16,34 +16,16 @@ public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
 
     /** array index of the first Item */
-    private int firstItemIndex;
+    private Integer firstItemIndex;
 
     /** array index of the last Item */
-    private int lastItemIndex;
+    private Integer lastItemIndex;
 
     /**
      * Creates a new {@link AbstractLinearIndexStorage}.
-     * 
-     * @param capacity
-     *        integer specifying the capacity
-     * 
-     * @param firstItemIndex
-     *        integer specifying the index of the first Item
-     * 
-     * @param lastItemIndex
-     *        integer specifying the index of the last Item
-     * 
-     * @throws LinearIndexStorageException
-     *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex || 
-     *                   lastItemIndex > capacity - 1 ||
-     *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
-    protected AbstractLinearIndexStorage(final int capacity, final int firstItemIndex, final int lastItemIndex)
-    throws LinearIndexStorageException {
+    protected AbstractLinearIndexStorage() {
         super();
-
-        initialize(capacity, firstItemIndex, lastItemIndex);
     }
 
     @Override
@@ -135,5 +117,26 @@ implements LinearIndexStorage<Item> {
         catch (final CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
+    }
+
+    /**
+     * Verifies whether additional properties of this
+     * {@link AbstractLinearIndexStorage} match those of the specified
+     * {@link AbstractLinearIndexStorage} providing a prerequisite for equality.
+     * 
+     * @param otherStorage
+     *        {@link AbstractLinearIndexStorage} compared to this
+     *        {@link AbstractLinearIndexStorage}
+     * 
+     * @return {@code true} if the additional properties are prerequisites for
+     *         equality; {@code false} otherwise
+     */
+    protected boolean hasMatchingProperties(final AbstractLinearIndexStorage<Item> otherStorage) {
+        return firstItemIndex == otherStorage.firstItemIndex && lastItemIndex == otherStorage.lastItemIndex;
+    }
+
+    @Override
+    public int hashCode() {
+        return firstItemIndex << 1 + lastItemIndex;
     }
 }

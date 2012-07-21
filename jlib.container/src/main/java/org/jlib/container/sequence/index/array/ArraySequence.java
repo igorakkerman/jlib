@@ -14,14 +14,11 @@
 
 package org.jlib.container.sequence.index.array;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
-
-import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
@@ -32,10 +29,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.array.storage.ArrayStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategyFactory;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorageException;
 import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
-import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategyFactory;
 
 // @formatter:off
 /**
@@ -48,25 +42,17 @@ import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorage
  */
 // @formatter:on
 public class ArraySequence<Item>
-extends AbstractInitializeableIndexSequence<Item>
-implements Cloneable {
-
-    /**
-     * {@link LinearIndexStorageCapacityStrategyFactory} used to create
-     * {@link LinearIndexStorageCapacityStrategy} used to adjust the
-     * {@link LinearIndexStorage} capacity
-     */
-    private static final LinearIndexStorageCapacityStrategyFactory capacityStrategyFactory =
-        MinimalLinearIndexStorageCapacityStrategyFactory.getInstance();
+extends AbstractInitializeableIndexSequence<Item> {
 
     /** {@link LinearIndexStorage} used to store the Items */
-    private LinearIndexStorage<Item> storage;
+    private LinearIndexStorage<Item> storage = new ArrayStorage<>();
 
     /**
      * {@link LinearIndexStorageCapacityStrategy} used to adjust the
      * {@link LinearIndexStorage} capacity
      */
-    private LinearIndexStorageCapacityStrategy capacityStrategy;
+    private final LinearIndexStorageCapacityStrategy capacityStrategy =
+        new MinimalLinearIndexStorageCapacityStrategy<>(storage);
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified
@@ -180,23 +166,22 @@ implements Cloneable {
 
     @Override
     protected void initialize() {
-        storage = new ArrayStorage<>(getLastIndex(), getItemsCount(), getFirstIndex())
-        storage.initialize(getItemsCount());
+        storage.initialize(getItemsCount(), getFirstIndex(), getLastIndex());
     }
 
     @Override
     protected Item getStoredItem(final int index) {
-        return getStorageItem(getStorageIndex(index));
+        return getStorageItem(getStorageItemIndex(index));
     }
 
     @Override
     protected void replaceStoredItem(final int index, final Item newItem) {
-        replaceDelegateArrayItem(getStorageIndex(index), newItem);
+        replaceDelegateArrayItem(getStorageItemIndex(index), newItem);
     }
 
     /**
-     * Returns the delegate {@link LinearIndexStorage} index in the specified
-     * index in this {@link ArraySequence}.
+     * Returns the {@link LinearIndexStorage} index in the specified index in
+     * this {@link ArraySequence}.
      * 
      * @param index
      *        integer specifying the index of the Item in the
@@ -205,101 +190,23 @@ implements Cloneable {
      * @return integer specifying the corresponding index in the delegate
      *         {@link LinearIndexStorage}
      */
-    protected int getStorageIndex(final int index) {
+    protected int getStorageItemIndex(final int index) {
         return index - getFirstIndex() + storage.getFirstItemIndex();
     }
 
-    @Override
-    public ArraySequence<Item> clone() {
-        final ArraySequence<Item> cloneSequence = new ArraySequence<Item>(getFirstIndex(), getLastIndex());
-
-        final int delegateArrayLength = delegateArray.length;
-
-        final Object[] cloneSequenceDelegateArray = cloneSequence.delegateArray;
-
-        for (int delegateArrayIndex = 0; delegateArrayIndex < delegateArrayLength; delegateArrayIndex ++)
-            cloneSequenceDelegateArray[delegateArrayIndex] = delegateArray[delegateArrayIndex];
-
-        return cloneSequence;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode() << 1;
-    }
-
     /**
-     * Asserts that the delegate array has the specified expected capacity,
-     * replacing it by a larger {@code null} padded copy, if necessary.
+     * Returns the Item stored in {@link LinearIndexStorage} at its specified
+     * index.
      * 
-     * @param expectedCapacity
-     *        integer specifying the expected capacity
+     * @param storageItemIndex
+     *        integer specifying the Item index in the
+     *        {@link LinearIndexStorage}
      * 
-     * @throws LinearIndexStorageException
-     *         if {@code expectedCapacity < 1}
+     * @return Item stored at {@code storageItemIndex} in the
+     *         {@link LinearIndexStorage}
      */
-    protected void assertCapacity(final int expectedCapacity) {
-        assertExpectedCapacityValid(expectedCapacity);
-
-        if (delegateArray.length < expectedCapacity)
-            delegateArray = Arrays.copyOf(delegateArray, expectedCapacity);
-    }
-
-    /**
-     * Asserts that the delegate array has the specified expected capacity,
-     * replacing it by a larger {@code null} padded copy, if necessary.
-     * 
-     * @param expectedCapacity
-     *        integer specifying the expected capacity
-     * 
-     * @param holeArrayIndex
-     *        integer specifying the insert index
-     * 
-     * @param holeSize
-     *        integer specifying the size of the hole
-     * 
-     * @throws LinearIndexStorageException
-     *         if
-     *         {@code expectedCapacity < 1 || getSize() + holeSize > expectedCapacity}
-     */
-    protected void assertCapacityWithHole(final int expectedCapacity, final int holeArrayIndex, final int holeSize)
-    throws LinearIndexStorageException {
-        assertExpectedCapacityValid(expectedCapacity);
-
-        // @formatter:off
-        if (getItemsCount() + holeSize > expectedCapacity)
-            throw new LinearIndexStorageException
-                (this, expectedCapacity, "{0}: getSize() + items.length == {2} + {3} > {1} == expectedCapacity",
-                 getItemsCount(), holeSize);
-        // @formatter:on
-
-        final Item[] originalDelegateArray = delegateArray;
-
-        if (delegateArray.length < expectedCapacity) {
-            delegateArray = createArray(expectedCapacity);
-
-            System.arraycopy(originalDelegateArray, 0, delegateArray, 0, holeArrayIndex);
-        }
-
-        System.arraycopy(originalDelegateArray, holeArrayIndex, delegateArray, holeArrayIndex + holeSize,
-                         getItemsCount() - holeArrayIndex);
-
-        Arrays.fill(delegateArray, getItemsCount() + expectedCapacity, delegateArray.length, null);
-    }
-
-    /**
-     * Asserts that the specified expected capacity is valid.
-     * 
-     * @param expectedCapacity
-     *        integer specifying the expected capacity
-     * 
-     * @throws LinearIndexStorageException
-     *         if {@code expectedCapacity < 1}
-     */
-    protected void assertExpectedCapacityValid(final int expectedCapacity)
-    throws LinearIndexStorageException {
-        if (expectedCapacity < 1)
-            throw new LinearIndexStorageException(this, expectedCapacity, "{0}: expectedCapacity == {1} < 1");
+    private Item getStorageItem(final int storageItemIndex) {
+        return storage.getItem(storageItemIndex);
     }
 
     /**
@@ -332,5 +239,20 @@ implements Cloneable {
         },
 
         newItem, observers);
+    }
+
+    @Override
+    public ArraySequence<Item> clone() {
+        @SuppressWarnings("unchecked")
+        final ArraySequence<Item> clonedSequence = (ArraySequence<Item>) super.clone();
+
+        clonedSequence.storage = storage.clone();
+
+        return clonedSequence;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() << 1 + storage.hashCode();
     }
 }

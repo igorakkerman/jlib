@@ -2,15 +2,16 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
+import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.ValueObserver;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.array.InvalidStoredItemsCountException;
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link AbstractIndexSequence} that can be initialized.

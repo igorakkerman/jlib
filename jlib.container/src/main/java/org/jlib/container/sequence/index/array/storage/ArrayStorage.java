@@ -23,18 +23,9 @@ extends AbstractLinearIndexStorage<Item> {
 
     /**
      * Creates a new {@link ArrayStorage} with the specified capacity.
-     * 
-     * @param capacity
-     *        integer specifying the capacity
-     * 
-     * @param firstItemIndex
-     *        integer specifying the index of the first Item
-     * 
-     * @param lastItemIndex
-     *        integer specifying the index of the last Item
      */
-    public ArrayStorage(final int capacity, final int firstItemIndex, final int lastItemIndex) {
-        super(capacity, firstItemIndex, lastItemIndex);
+    public ArrayStorage() {
+        super();
     }
 
     @Override
@@ -114,5 +105,21 @@ extends AbstractLinearIndexStorage<Item> {
         clonedArrayStorage.delegateArray = delegateArray.clone();
 
         return clonedArrayStorage;
+    }
+
+    @Override
+    public boolean equals(final Object otherObject) {
+        if (!(otherObject instanceof ArrayStorage))
+            return false;
+
+        @SuppressWarnings("unchecked")
+        final ArrayStorage<Item> otherStorage = (ArrayStorage<Item>) otherObject;
+
+        return hasMatchingProperties(otherStorage) && Arrays.equals(delegateArray, otherStorage.delegateArray);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() << 1 + Arrays.hashCode(delegateArray);
     }
 }

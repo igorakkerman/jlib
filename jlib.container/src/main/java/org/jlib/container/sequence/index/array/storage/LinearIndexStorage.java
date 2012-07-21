@@ -141,4 +141,11 @@ extends Cloneable {
      * @return integer specifying the tail capacity
      */
     public int getTailCapacity();
+
+    /**
+     * Creates a copy of this {@link LinearIndexStorage}.
+     * 
+     * @return cloned {@link LinearIndexStorage}
+     */
+    public LinearIndexStorage<Item> clone();
 }
