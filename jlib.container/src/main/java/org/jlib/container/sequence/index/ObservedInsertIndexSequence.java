@@ -20,13 +20,13 @@ import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.ObservedInsertSequence;
-import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link IndexSequence} and {@link InsertSequence}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ObservedInsertIndexSequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ObservedInsertIndexSequence<Item>
@@ -39,8 +39,8 @@ extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
      * @param index
      *        integer specifying the index
      * 
-     * @param newItem
-     *        new Item to store
+     * @param item
+     *        item to store
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -50,14 +50,14 @@ extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      * 
      * @throws IllegalSequenceArgumentException
-     *         if some property of {@code newItem} prevents the operation from
+     *         if some property of {@code item} prevents the operation from
      *         being performed
      * 
      * @throws IllegalSequenceStateException
      *         if an error occurs performing the operation
      */
     @SuppressWarnings("unchecked")
-    public void insert(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
 
     /**
