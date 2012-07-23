@@ -31,7 +31,7 @@ import org.jlib.core.traverser.Traversible;
  * @author Igor Akkerman
  */
 public interface Container<Item>
-extends Traversible<Item>, Iterable<Item> {
+extends Traversible<Item>, Iterable<Item>, Cloneable {
 
     /**
      * Returns the number of Items in this {@link Container}.
@@ -226,4 +226,11 @@ extends Traversible<Item>, Iterable<Item> {
      *         contain equal Items; {@code false} otherwise
      */
     public boolean containsEqualItems(final Collection<Item> collection);
+
+    /**
+     * Creates a copy of this {@link Container}.
+     * 
+     * @return cloned {@link Container}
+     */
+    public Container<Item> clone();
 }

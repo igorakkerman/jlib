@@ -87,6 +87,11 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
+    public void incrementFirstItemIndex(final int increment) {
+        firstItemIndex += increment;
+    }
+
+    @Override
     public int getLastItemIndex() {
         return lastItemIndex;
     }
@@ -94,6 +99,11 @@ implements LinearIndexStorage<Item> {
     @Override
     public void setLastItemIndex(final int lastItemIndex) {
         this.lastItemIndex = lastItemIndex;
+    }
+
+    @Override
+    public void incrementLastItemIndex(final int increment) {
+        lastItemIndex += increment;
     }
 
     @Override

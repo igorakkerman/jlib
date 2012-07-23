@@ -309,7 +309,7 @@ extends AbstractIndexSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    protected void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    protected final void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws RuntimeException {
         ObserverUtility.operate(new Operator() {
 

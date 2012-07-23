@@ -106,6 +106,22 @@ extends Cloneable {
     public void setFirstItemIndex(int firstItemIndex);
 
     /**
+     * Increments the index of the first Item by the specified value.
+     * 
+     * @param increment
+     *        positive or negative integer specifying the increment
+     */
+    public void incrementFirstItemIndex(int increment);
+
+    /**
+     * Increments the index of the last Item by the specified value.
+     * 
+     * @param increment
+     *        positive or negative integer specifying the increment
+     */
+    public void incrementLastItemIndex(int increment);
+
+    /**
      * Returns the index of the last Item.
      * 
      * @return integer specifying the index of the last Item

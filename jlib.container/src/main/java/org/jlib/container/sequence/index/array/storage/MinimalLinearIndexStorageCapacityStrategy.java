@@ -63,7 +63,7 @@ implements LinearIndexStorageCapacityStrategy {
     }
 
     @Override
-    public void ensureMiddleCapacity(final int middleCapacity, final int splitIndex)
+    public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
     throws LinearIndexStorageException {
         assertPartCapacityValid("middleCapacity", middleCapacity);
 

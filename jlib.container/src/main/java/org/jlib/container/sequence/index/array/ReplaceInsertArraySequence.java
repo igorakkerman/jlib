@@ -174,16 +174,15 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *        integer specifying the number of inserted Items
      */
     private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
-        final int newSize = getItemsCount() + insertedItemsCount;
-        final int delegateArrayInsertIndex = getStorageItemIndex(index);
+        int storageItemIndex = getStorageItemIndex(index);
 
-        assertCapacityWithHole(newSize, delegateArrayInsertIndex, insertedItemsCount);
+        getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
 
-        int delegateArrayIndex = delegateArrayInsertIndex;
         for (final Item item : items)
-            replaceDelegateArrayItem(delegateArrayIndex ++, item);
+            replace(storageItemIndex ++, item);
 
         setLastIndex(getLastIndex() + insertedItemsCount);
+        getStorage().incrementLastItemIndex(insertedItemsCount);
     }
 
     @Override

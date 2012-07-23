@@ -12,15 +12,11 @@
  *    http://www.opensource.org/licenses/cpl1.0.php
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.sequence;
 
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.InsertSequenceTraverser;
-import org.jlib.container.sequence.ObservedRemoveSequenceTraverser;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.IndexSequenceTraverser;
 
 /**
  * {@link IndexSequenceTraverser} allowing observed insertion of Items.

@@ -2,15 +2,19 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.Operator;
+import org.jlib.core.observer.ValueObserver;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.core.observer.ValueObserver;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
@@ -209,13 +213,24 @@ implements ObservedAppendSequence<Item> {
     @SafeVarargs
     private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
                               final ValueObserver<Item>... observers) {
-        assertCapacity(getItemsCount() + addedItemsCount);
+        getCapacityStrategy().ensureTailCapacity(addedItemsCount);
 
-        int itemArrayIndex = getItemsCount();
+        int storageItemIndex = getStorageItemIndex(getLastIndex());
 
-        for (final Item item : items)
-            replaceDelegateArrayItem(itemArrayIndex ++, item, observers);
+        for (final Item item : items) {
+            final int currentStorageItemIndex = ++ storageItemIndex;
+            ObserverUtility.operate(new Operator() {
+
+                @Override
+                public void operate() {
+                    getStorage().replaceItem(currentStorageItemIndex, item);
+                }
+            },
+
+            item, observers);
+        }
 
         setLastIndex(getLastIndex() + addedItemsCount);
+        getStorage().incrementLastItemIndex(addedItemsCount);
     }
 }

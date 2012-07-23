@@ -14,6 +14,7 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
 import org.jlib.container.sequence.ObservedRemoveSequenceTraverser;
 import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
 import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;

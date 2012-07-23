@@ -38,18 +38,18 @@ public interface LinearIndexStorageCapacityStrategy {
      * number of Items betweeen the existing stored Items. The indices of the
      * Items stored after the specified split index are incremented.
      * 
-     * @param middleCapacity
-     *        integer specifying the middle capacity
-     * 
      * @param splitIndex
      *        integer specifying the split index
+     * 
+     * @param middleCapacity
+     *        integer specifying the middle capacity
      * 
      * @throws LinearIndexStorageException
      *         if {@code middleCapacity < 0 || 
      *                   middleIndex < linearIndexStorage.getFirstIndex() || 
      *                   middleIndex > linearIndexStorage.getLastIndex()}
      */
-    public void ensureMiddleCapacity(final int middleCapacity, final int splitIndex)
+    public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
     throws LinearIndexStorageException;
 
     /**

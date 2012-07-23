@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.jlib.core.UnexpectedStateException;
 import org.jlib.core.iterator.IteratorUtility;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.TraversibleIterator;
@@ -157,6 +158,11 @@ implements Container<Item> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return getItemsCount() == 0;
+    }
+
+    @Override
     public boolean containsEqualItems(final Container<Item> otherContainer) {
         if (getItemsCount() != otherContainer.getItemsCount())
             return false;
@@ -183,8 +189,14 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean isEmpty() {
-        return getItemsCount() == 0;
+    @SuppressWarnings("unchecked")
+    public AbstractContainer<Item> clone() {
+        try {
+            return (AbstractContainer<Item>) super.clone();
+        }
+        catch (final CloneNotSupportedException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 
     @Override

@@ -16,10 +16,6 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.ValueObserver;
-
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
@@ -51,7 +47,7 @@ extends AbstractInitializeableIndexSequence<Item> {
      * {@link LinearIndexStorageCapacityStrategy} used to adjust the
      * {@link LinearIndexStorage} capacity
      */
-    private final LinearIndexStorageCapacityStrategy capacityStrategy =
+    private LinearIndexStorageCapacityStrategy capacityStrategy =
         new MinimalLinearIndexStorageCapacityStrategy<>(storage);
 
     /**
@@ -171,12 +167,12 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     @Override
     protected Item getStoredItem(final int index) {
-        return getStorageItem(getStorageItemIndex(index));
+        return storage.getItem(getStorageItemIndex(index));
     }
 
     @Override
     protected void replaceStoredItem(final int index, final Item newItem) {
-        replaceDelegateArrayItem(getStorageItemIndex(index), newItem);
+        storage.replaceItem(getStorageItemIndex(index), newItem);
     }
 
     /**
@@ -195,55 +191,38 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     /**
-     * Returns the Item stored in {@link LinearIndexStorage} at its specified
-     * index.
+     * Returns the {@link LinearIndexStorageCapacityStrategy} used by this
+     * {@link ArraySequence}.
      * 
-     * @param storageItemIndex
-     *        integer specifying the Item index in the
-     *        {@link LinearIndexStorage}
-     * 
-     * @return Item stored at {@code storageItemIndex} in the
-     *         {@link LinearIndexStorage}
+     * @return used {@link LinearIndexStorageCapacityStrategy}
      */
-    private Item getStorageItem(final int storageItemIndex) {
-        return storage.getItem(storageItemIndex);
+    protected LinearIndexStorageCapacityStrategy getCapacityStrategy() {
+        return capacityStrategy;
     }
 
     /**
-     * Replaces the Item stored in the delegate array at the specified index.
+     * Registers the {@link LinearIndexStorageCapacityStrategy} used by this
+     * {@link ArraySequence}.
      * 
-     * @param itemArrayIndex
-     *        integer specifying the index of the Item in the array
-     * 
-     * @param newItem
-     *        replacing Item
-     * 
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
-     * 
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
+     * @param capacityStrategy
+     *        used {@link LinearIndexStorageCapacityStrategy}
      */
-    @SafeVarargs
-    protected final void replaceDelegateArrayItem(final int itemArrayIndex, final Item newItem,
-                                                  final ValueObserver<Item>... observers)
-    throws RuntimeException {
-        ObserverUtility.operate(new Operator() {
+    protected void setCapacityStrategy(final LinearIndexStorageCapacityStrategy capacityStrategy) {
+        this.capacityStrategy = capacityStrategy;
+    }
 
-            @Override
-            public void operate() {
-                replaceDelegateArrayItem(itemArrayIndex, newItem);
-            }
-        },
-
-        newItem, observers);
+    /**
+     * Returns the {@link LinearIndexStorage} used by this {@link ArraySequence}
+     * .
+     * 
+     * @return used {@link LinearIndexStorage}
+     */
+    protected LinearIndexStorage<Item> getStorage() {
+        return storage;
     }
 
     @Override
     public ArraySequence<Item> clone() {
-        @SuppressWarnings("unchecked")
         final ArraySequence<Item> clonedSequence = (ArraySequence<Item>) super.clone();
 
         clonedSequence.storage = storage.clone();
