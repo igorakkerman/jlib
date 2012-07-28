@@ -14,20 +14,19 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.core.observer.ValueObserver;
-
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.ReplaceSequence;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ObservedReplaceInsertIndexSequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequence<Item>
