@@ -25,19 +25,18 @@ import org.jlib.container.sequence.Sequence;
  * 
  * @author Igor Akkerman
  */
-public interface ObservedReplaceInsertRemoveIndexSequence<Item>
-extends ReplaceInsertRemoveIndexSequence<Item>, ObservedReplaceInsertIndexSequence<Item>,
-ObservedInsertRemoveIndexSequence<Item>, ObservedReplaceRemoveIndexSequence<Item> {
+public interface ObservedReplaceRemoveIndexSequence<Item>
+extends ReplaceRemoveIndexSequence<Item>, ObservedReplaceIndexSequence<Item>, ObservedRemoveIndexSequence<Item> {
 
     @Override
-    public ObservedReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
+    public ObservedReplaceRemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
 
     @Override
-    public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser()
+    public ObservedReplaceRemoveIndexSequenceTraverser<Item> createTraverser()
     throws SequenceIndexOutOfBoundsException;
 
     @Override
-    public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public ObservedReplaceRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws SequenceIndexOutOfBoundsException;
 }

@@ -14,21 +14,21 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
-import org.jlib.container.sequence.ObservedRemoveSequenceTraverser;
 import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
-import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
-import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link ObservedReplaceSequenceTraverser} and
- * {@link ObservedRemoveSequenceTraverser}.
+ * {@link ReplaceRemoveIndexSequenceTraverser},
+ * {@link ObservedReplaceRemoveSequenceTraverser},
+ * {@link ObservedReplaceRemoveSequenceTraverser} and
+ * {@link ObservedRemoveIndexSequenceTraverser}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ObservedReplaceRemoveIndexSequence}
+ * 
  * @author Igor Akkerman
  */
 public interface ObservedReplaceRemoveIndexSequenceTraverser<Item>
-extends ObservedReplaceRemoveSequenceTraverser<Item>, ObservedInsertSequenceTraverser<Item> {
+extends ReplaceRemoveIndexSequenceTraverser<Item>, ObservedReplaceRemoveSequenceTraverser<Item>,
+ObservedReplaceIndexSequenceTraverser<Item>, ObservedRemoveIndexSequenceTraverser<Item> {
     // unifying interface
 }

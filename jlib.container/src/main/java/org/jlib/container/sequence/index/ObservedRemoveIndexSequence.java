@@ -14,10 +14,11 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.core.observer.ValueObserver;
-
+import org.jlib.container.sequence.ObservedRemoveFirstSequence;
+import org.jlib.container.sequence.ObservedRemoveLastSequence;
 import org.jlib.container.sequence.ObservedRemoveSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link RemoveIndexSequence} .
@@ -28,7 +29,8 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveIndexSequence<Item>
-extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item> {
+extends RemoveIndexSequence<Item>, ObservedRemoveSequence<Item>, ObservedRemoveFirstSequence<Item>,
+ObservedRemoveLastSequence<Item> {
 
     /**
      * Removes from this IndexSequence the Item stored at the specified index.

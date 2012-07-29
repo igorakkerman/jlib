@@ -14,8 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
-
 /**
  * {@link ObservedReplaceInsertIndexSequenceTraverser} and
  * {@link ObservedRemoveIndexSequenceTraverser}.
@@ -27,7 +25,7 @@ import org.jlib.container.sequence.ObservedReplaceRemoveSequenceTraverser;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertRemoveIndexSequenceTraverser<Item>
-extends ObservedReplaceInsertIndexSequenceTraverser<Item>, ObservedRemoveIndexSequenceTraverser<Item>,
-ObservedReplaceRemoveSequenceTraverser<Item> {
+extends ReplaceInsertRemoveIndexSequenceTraverser<Item>, ObservedReplaceInsertIndexSequenceTraverser<Item>,
+ObservedInsertRemoveIndexSequenceTraverser<Item>, ObservedReplaceRemoveIndexSequenceTraverser<Item> {
     // unifying interface
 }
