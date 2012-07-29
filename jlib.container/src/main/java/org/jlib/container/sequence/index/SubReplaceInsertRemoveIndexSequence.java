@@ -2,15 +2,14 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link SubReplaceInsertIndexSequence} view of the Items stored in a base
@@ -154,5 +153,4 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
     throws SoleItemNotRemoveableException {
         remove(getLastIndex());
     }
-
 }

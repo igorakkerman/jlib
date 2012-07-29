@@ -16,8 +16,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -30,8 +28,7 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequence<Item>
-extends ObservedReplaceIndexSequence<Item>, ObservedAppendSequence<Item>, ObservedPrependSequence<Item>,
-ReplaceInsertIndexSequence<Item> {
+extends ReplaceInsertIndexSequence<Item>, ObservedReplaceIndexSequence<Item>, ObservedInsertIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
