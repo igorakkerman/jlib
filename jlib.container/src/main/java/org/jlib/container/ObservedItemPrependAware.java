@@ -21,18 +21,18 @@ import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 
 /**
- * {@link PrependAware} to which Items can be prepended.
+ * {@link ItemPrependAware} to which Items can be prepended.
  * 
  * @param <Item>
  *        type of the prepended Items
  * 
  * @author Igor Akkerman
  */
-public interface ObservedPrependAware<Item>
-extends PrependAware<Item> {
+public interface ObservedItemPrependAware<Item>
+extends ItemPrependAware<Item> {
 
     /**
-     * Prepends the specified Item to this {@link ObservedPrependAware}.
+     * Prepends the specified Item to this {@link ObservedItemPrependAware}.
      * 
      * @param item
      *        Item to prepend
@@ -57,7 +57,7 @@ extends PrependAware<Item> {
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
-     * {@link ObservedPrependAware}.
+     * {@link ObservedItemPrependAware}.
      * 
      * @param items
      *        {@link Container} containing the Items to prepend
@@ -86,7 +86,7 @@ extends PrependAware<Item> {
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
-     * {@link ObservedPrependAware}.
+     * {@link ObservedItemPrependAware}.
      * 
      * @param items
      *        {@link Collection} containing the Items to prepend
@@ -111,7 +111,7 @@ extends PrependAware<Item> {
     throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 
     /**
-     * Prepends all specified Items to this {@link ObservedPrependAware}.
+     * Prepends all specified Items to this {@link ObservedItemPrependAware}.
      * 
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation

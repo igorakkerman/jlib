@@ -26,10 +26,10 @@ import org.jlib.core.IllegalJlibStateException;
  * 
  * @author Igor Akkerman
  */
-public interface PrependAware<Item> {
+public interface ItemPrependAware<Item> {
 
     /**
-     * Prepends the specified Item to this {@link PrependAware}.
+     * Prepends the specified Item to this {@link ItemPrependAware}.
      * 
      * @param item
      *        Item to prepend
@@ -45,7 +45,7 @@ public interface PrependAware<Item> {
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
-     * {@link PrependAware}.
+     * {@link ItemPrependAware}.
      * 
      * @param items
      *        {@link Container} containing the Items to prepend
@@ -62,7 +62,7 @@ public interface PrependAware<Item> {
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
-     * {@link PrependAware}.
+     * {@link ItemPrependAware}.
      * 
      * @param items
      *        {@link Collection} containing the Items to prepend
@@ -78,7 +78,7 @@ public interface PrependAware<Item> {
     throws IllegalJlibArgumentException, IllegalJlibStateException;
 
     /**
-     * Prepends all specified Items to this {@link PrependAware}.
+     * Prepends all specified Items to this {@link ItemPrependAware}.
      * 
      * @param items
      *        comma separated sequence of Items to prepend

@@ -7,10 +7,10 @@ import org.jlib.core.IllegalJlibArgumentException;
 import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.AppendAware;
+import org.jlib.container.ItemAppendAware;
 import org.jlib.container.Container;
-import org.jlib.container.ObservedPrependAware;
-import org.jlib.container.PrependAware;
+import org.jlib.container.ObservedItemPrependAware;
+import org.jlib.container.ItemPrependAware;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 
 /**
@@ -31,9 +31,9 @@ public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedRe
 extends SubReplaceIndexSequence<Item, BaseSequence>
 implements ObservedReplaceInsertIndexSequence<Item> {
 
-    private final AppendAware<Item> appendState;
+    private final ItemAppendAware<Item> appendState;
 
-    private final PrependAware<Item> prependState;
+    private final ItemPrependAware<Item> prependState;
 
     /**
      * Creates a new {@link SubReplaceInsertIndexSequence}.
@@ -59,7 +59,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
         super(baseSequence, firstIndex, lastIndex);
 
         prependState = baseSequence.getFirstIndex() == firstIndex
-            ? new ObservedPrependAware<Item>() {
+            ? new ObservedItemPrependAware<Item>() {
 
                 @Override
                 public final void prepend(final Item item)
@@ -115,7 +115,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
                 }
 
             }
-            : new ObservedPrependAware<Item>() {
+            : new ObservedItemPrependAware<Item>() {
 
                 @Override
                 public final void prepend(final Item item)

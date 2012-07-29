@@ -26,10 +26,10 @@ import org.jlib.core.IllegalJlibStateException;
  * 
  * @author Igor Akkerman
  */
-public interface AppendAware<Item> {
+public interface ItemAppendAware<Item> {
 
     /**
-     * Appends the specified Item to this {@link AppendAware}.
+     * Appends the specified Item to this {@link ItemAppendAware}.
      * 
      * @param item
      *        Item to append
@@ -45,7 +45,7 @@ public interface AppendAware<Item> {
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
-     * {@link AppendAware}.
+     * {@link ItemAppendAware}.
      * 
      * @param items
      *        {@link Container} containing the Items to append
@@ -62,7 +62,7 @@ public interface AppendAware<Item> {
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
-     * {@link AppendAware}.
+     * {@link ItemAppendAware}.
      * 
      * @param items
      *        {@link Collection} containing the Items to append
@@ -78,7 +78,7 @@ public interface AppendAware<Item> {
     throws IllegalJlibArgumentException, IllegalJlibStateException;
 
     /**
-     * Appends all specified Items to this {@link AppendAware}.
+     * Appends all specified Items to this {@link ItemAppendAware}.
      * 
      * @param items
      *        comma separated sequence of Items to append

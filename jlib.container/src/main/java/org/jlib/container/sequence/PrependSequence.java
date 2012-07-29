@@ -17,7 +17,7 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.PrependAware;
+import org.jlib.container.ItemPrependAware;
 
 /**
  * {@link Sequence} to which Items can be prepended.
@@ -28,7 +28,7 @@ import org.jlib.container.PrependAware;
  * @author Igor Akkerman
  */
 public interface PrependSequence<Item>
-extends Sequence<Item>, PrependAware<Item> {
+extends Sequence<Item>, ItemPrependAware<Item> {
 
     /**
      * @throws IllegalSequenceArgumentException
