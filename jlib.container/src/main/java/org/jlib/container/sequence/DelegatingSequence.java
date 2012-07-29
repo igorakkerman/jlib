@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
+import org.jlib.core.AbstractCloneable;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link ObservedReplaceSequence} and {@link ObservedAppendSequence} delegating
@@ -22,6 +22,7 @@ import org.jlib.container.IllegalContainerStateException;
  * @author Igor Akkerman
  */
 public class DelegatingSequence<Item>
+extends AbstractCloneable
 implements ObservedReplaceAppendRemoveSequence<Item> {
 
     /** delegate {@link ObservedReplaceAppendRemoveSequence} */
@@ -236,5 +237,11 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     @Override
     public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
         return delegateSequence.createTraverser();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public DelegatingSequence<Item> clone() {
+        return (DelegatingSequence<Item>) super.clone();
     }
 }
