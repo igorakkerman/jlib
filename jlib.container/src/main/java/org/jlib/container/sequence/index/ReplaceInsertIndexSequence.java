@@ -14,20 +14,19 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.container.sequence.ReplaceInsertSequence;
 import org.jlib.core.traverser.ReplaceTraverser;
 
-import org.jlib.container.sequence.Sequence;
-
 /**
- * {@link InsertIndexSequence} and {@link ReplaceIndexSequence}.
+ * {@link ReplaceIndexSequence} and {@link InsertIndexSequence}.
  * 
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link ReplaceInsertIndexSequence}
  * 
  * @author Igor Akkerman
  */
 public interface ReplaceInsertIndexSequence<Item>
-extends InsertIndexSequence<Item>, ReplaceIndexSequence<Item> {
+extends ReplaceInsertSequence<Item>, ReplaceIndexSequence<Item>, InsertIndexSequence<Item> {
 
     /**
      * @return {@link ReplaceInsertIndexSequence} view of the specified Items

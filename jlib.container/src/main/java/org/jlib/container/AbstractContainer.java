@@ -20,14 +20,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jlib.core.UnexpectedStateException;
+import org.jlib.core.AbstractCloneable;
 import org.jlib.core.iterator.IteratorUtility;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.TraversibleIterator;
 
 /**
- * Skeletal implementation of a Container. A concrete Container implementation
- * needs only to extend this class and implement the
+ * Skeletal implementation of a {@link Container}. A concrete Container
+ * implementation needs only to extend this class and implement the
  * {@link Container#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  * 
@@ -37,6 +37,7 @@ import org.jlib.core.traverser.TraversibleIterator;
  * @author Igor Akkerman
  */
 public abstract class AbstractContainer<Item>
+extends AbstractCloneable
 implements Container<Item> {
 
     /**
@@ -191,12 +192,7 @@ implements Container<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public AbstractContainer<Item> clone() {
-        try {
-            return (AbstractContainer<Item>) super.clone();
-        }
-        catch (final CloneNotSupportedException exception) {
-            throw new UnexpectedStateException(exception);
-        }
+        return (AbstractContainer<Item>) super.clone();
     }
 
     @Override

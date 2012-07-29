@@ -15,16 +15,14 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link ObservedReplaceSequenceTraverser} and
- * {@link ObservedRemoveSequenceTraverser}.
+ * {@link InsertSequenceTraverser} and {@link RemoveSequenceTraverser}.
  * 
  * @param <Item>
- *        type of items held in the {@link ObservedReplaceRemoveSequence}
+ *        type of items held in the {@link InsertRemoveSequence}
  * 
  * @author Igor Akkerman
  */
-public interface ObservedReplaceRemoveSequenceTraverser<Item>
-extends ReplaceRemoveSequenceTraverser<Item>, ObservedReplaceSequenceTraverser<Item>,
-ObservedRemoveSequenceTraverser<Item> {
+public interface InsertRemoveSequenceTraverser<Item>
+extends InsertSequenceTraverser<Item>, RemoveSequenceTraverser<Item> {
     // unifying interface
 }
