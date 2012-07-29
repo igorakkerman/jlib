@@ -1,7 +1,8 @@
 package org.jlib.container.sequence.index;
 
 /**
- * {@link ReplaceInsertIndexSequence} and {@link RemoveIndexSequence}.
+ * {@link ReplaceInsertIndexSequence}, {@link InsertRemoveIndexSequence}, and
+ * {@link ReplaceRemoveIndexSequence}.
  * 
  * @param <Item>
  *        type of items held in the {@link ReplaceInsertRemoveIndexSequence}
@@ -9,7 +10,7 @@ package org.jlib.container.sequence.index;
  * @author Igor Akkerman
  */
 public interface ReplaceInsertRemoveIndexSequence<Item>
-extends ReplaceInsertIndexSequence<Item>, RemoveIndexSequence<Item> {
+extends ReplaceInsertIndexSequence<Item>, InsertRemoveIndexSequence<Item>, ReplaceRemoveIndexSequence<Item> {
 
     @Override
     public ReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
