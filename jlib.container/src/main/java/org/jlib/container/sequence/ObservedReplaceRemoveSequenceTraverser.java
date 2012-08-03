@@ -15,6 +15,7 @@
 package org.jlib.container.sequence;
 
 /**
+ * {@link ReplaceRemoveSequenceTraverser},
  * {@link ObservedReplaceSequenceTraverser} and
  * {@link ObservedRemoveSequenceTraverser}.
  * 

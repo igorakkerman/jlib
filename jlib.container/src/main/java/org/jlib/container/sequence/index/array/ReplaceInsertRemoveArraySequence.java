@@ -28,7 +28,7 @@ import org.jlib.core.observer.ValueObserverException;
  */
 public class ReplaceInsertRemoveArraySequence<Item>
 extends ReplaceInsertRemoveFirstLastArraySequence<Item>
-implements ObservedReplaceAppendInsertRemoveIndexSequence<Item> {
+implements ObservedReplaceAppendPrependInsertRemoveIndexSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveArraySequence} with
