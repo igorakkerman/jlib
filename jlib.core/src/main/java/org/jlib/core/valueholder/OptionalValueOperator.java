@@ -41,7 +41,8 @@ public abstract class OptionalValueOperator<Value> {
     implements OperatedValueHolder<Value> {
 
         /**
-         * Creates a new {@link UninitializedOperatedValueHolder}.
+         * Creates a new
+         * {@link OptionalValueOperator.UninitializedOperatedValueHolder} .
          */
         public UninitializedOperatedValueHolder() {
             super();
