@@ -146,6 +146,6 @@ implements Traverser<Association<LeftValue, RightValue>> {
      */
     protected Association<LeftValue, RightValue> getLastAccessedItem()
     throws ValueNotAccessibleException {
-        return lastAccessedItemHolder.get();
+        return lastAccessedItemHolder.getValue();
     }
 }

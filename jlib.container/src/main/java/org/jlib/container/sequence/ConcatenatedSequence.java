@@ -26,7 +26,7 @@ extends AbstractSequence<Item> {
     private AccessibleValueHolder<Integer> itemsCountHolder = new AccessibleValueHolder<Integer>() {
 
         @Override
-        public Integer get() {
+        public Integer getValue() {
             final int itemsCount = TraverserUtility.getItemsCount(traversibles);
 
             itemsCountHolder = new InitializedValueHolder<Integer>(itemsCount);
@@ -52,7 +52,7 @@ extends AbstractSequence<Item> {
     @Override
     public final int getItemsCount()
     throws IllegalContainerStateException {
-        return itemsCountHolder.get();
+        return itemsCountHolder.getValue();
     }
 
     @Override

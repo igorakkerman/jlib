@@ -12,7 +12,7 @@ public abstract class UninitializedValueHolder<Value>
 implements ModifiableValueHolder<Value> {
 
     @Override
-    public Value get()
+    public Value getValue()
     throws ValueNotAccessibleException {
         throw new ValueNotAccessibleException();
     }

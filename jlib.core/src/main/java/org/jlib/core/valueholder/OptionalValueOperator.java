@@ -79,7 +79,7 @@ public abstract class OptionalValueOperator<Value> {
 
         @Override
         public void operate(final OptionalValueOperator<Value> operator) {
-            operator.operate(get());
+            operator.operate(getValue());
         }
     }
 

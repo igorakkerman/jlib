@@ -17,5 +17,5 @@ extends ValueHolder<Value> {
      * @return integer specifying the registered index
      */
     @Override
-    public Value get();
+    public Value getValue();
 }

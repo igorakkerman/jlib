@@ -182,7 +182,7 @@ implements IndexSequenceTraverser<Item> {
      */
     protected int getLastAccessedItemIndex()
     throws ValueNotAccessibleException {
-        return lastAccessedItemIndexHolder.get();
+        return lastAccessedItemIndexHolder.getValue();
     }
 
     /**

@@ -11,13 +11,13 @@ package org.jlib.core.valueholder;
 public interface ValueHolder<Value> {
 
     /**
-     * Returns the registered index.
+     * Returns the registered Value.
      * 
-     * @return integer specifying the registered index
+     * @return registered Value
      * 
      * @throws ValueNotAccessibleException
      *         if no Value has been registered
      */
-    public Value get()
+    public Value getValue()
     throws ValueNotAccessibleException;
 }

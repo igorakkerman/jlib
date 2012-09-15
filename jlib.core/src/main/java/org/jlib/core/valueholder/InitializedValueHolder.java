@@ -27,7 +27,7 @@ implements AccessibleValueHolder<Value> {
     }
 
     @Override
-    public Value get() {
+    public Value getValue() {
         return value;
     }
 
