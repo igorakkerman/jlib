@@ -1,5 +1,7 @@
 package org.jlib.core.valueholder;
 
+import org.jlib.core.ValueNotAccessibleException;
+
 /**
  * Holder of a Value.
  * 

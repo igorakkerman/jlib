@@ -14,12 +14,12 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
 

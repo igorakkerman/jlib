@@ -18,12 +18,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the {@link Association}

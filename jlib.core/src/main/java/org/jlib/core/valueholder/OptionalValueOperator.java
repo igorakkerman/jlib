@@ -28,7 +28,7 @@ public abstract class OptionalValueOperator<Value> {
 
     /**
      * {@link UninitializedValueHolder} calling the
-     * {@link OptionalValueOperator#operateOnUnsetValue()} method from
+     * {@link OptionalValueOperator#operateIfValueUnaccessible()} method from
      * {@link #operate(OptionalValueOperator)}.
      * 
      * @param <Value>
@@ -50,7 +50,7 @@ public abstract class OptionalValueOperator<Value> {
 
         @Override
         public void operate(final OptionalValueOperator<Value> operator) {
-            operator.operateOnUnsetValue();
+            operator.operateIfValueUnaccessible();
         }
     }
 
@@ -85,7 +85,7 @@ public abstract class OptionalValueOperator<Value> {
 
     public abstract void operate(Value value);
 
-    public abstract void operateOnUnsetValue();
+    public abstract void operateIfValueUnaccessible();
 
     public static void main(final String[] args) {
         final OptionalValueOperator<Integer> print = new OptionalValueOperator<Integer>() {
@@ -96,7 +96,7 @@ public abstract class OptionalValueOperator<Value> {
             }
 
             @Override
-            public void operateOnUnsetValue() {
+            public void operateIfValueUnaccessible() {
                 System.out.println("no value set");
             }
         };
