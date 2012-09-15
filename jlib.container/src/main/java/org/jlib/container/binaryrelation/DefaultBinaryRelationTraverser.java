@@ -87,7 +87,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
         lastAccessedItemHolder = new UninitializedValueHolder<Association<LeftValue, RightValue>>() {
 
             @Override
-            public void set(final Association<LeftValue, RightValue> association) {
+            public void setValue(final Association<LeftValue, RightValue> association) {
                 lastAccessedItemHolder = new InitializedModifiableValueHolder<>(association);
             }
         };
@@ -117,7 +117,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
             final Association<LeftValue, RightValue> association =
                 new Association<>(leftValue, rightValuesIterator.next());
 
-            lastAccessedItemHolder.set(association);
+            lastAccessedItemHolder.setValue(association);
 
             return association;
         }

@@ -24,7 +24,7 @@ implements ModifiableValueHolder<Value> {
 
     @Override
     // raising visibility from protected to public
-    public void set(final Value value) {
-        super.set(value);
+    public void setValue(final Value value) {
+        super.setValue(value);
     }
 }

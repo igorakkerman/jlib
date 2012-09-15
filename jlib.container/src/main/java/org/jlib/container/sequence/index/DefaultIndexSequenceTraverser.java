@@ -75,7 +75,7 @@ implements IndexSequenceTraverser<Item> {
         lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
 
             @Override
-            public void set(final Integer index) {
+            public void setValue(final Integer index) {
                 lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<Integer>(index);
             }
         };
@@ -193,6 +193,6 @@ implements IndexSequenceTraverser<Item> {
      *        integer specifying the index
      */
     protected void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
-        lastAccessedItemIndexHolder.set(lastAccessedItemIndex);
+        lastAccessedItemIndexHolder.setValue(lastAccessedItemIndex);
     }
 }
