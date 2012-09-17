@@ -1,5 +1,7 @@
 package org.jlib.core.observer;
 
+import org.jlib.core.operator.OperatorException;
+
 /**
  * Observer of an operation on a Value.
  * 
@@ -19,7 +21,7 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
-    public void handleBefore(final Value value)
+    public void handleBefore(Value value)
     throws RuntimeException;
 
     /**
@@ -32,7 +34,7 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
-    public void handleAfterSuccess(final Value value)
+    public void handleAfterSuccess(Value value)
     throws RuntimeException;
 
     /**
@@ -47,6 +49,6 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
-    public void handleAfterFailure(final Value value, OperatorException operatorException)
+    public void handleAfterFailure(Value value, OperatorException operatorException)
     throws RuntimeException;
 }
