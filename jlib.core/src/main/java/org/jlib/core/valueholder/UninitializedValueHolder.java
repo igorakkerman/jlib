@@ -13,6 +13,13 @@ import org.jlib.core.ValueNotAccessibleException;
 public abstract class UninitializedValueHolder<Value>
 implements ModifiableValueHolder<Value> {
 
+    /**
+     * Creates a new {@link UninitializedValueHolder}.
+     */
+    public UninitializedValueHolder() {
+        super();
+    }
+
     @Override
     public Value getValue()
     throws ValueNotAccessibleException {
