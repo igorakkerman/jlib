@@ -12,8 +12,8 @@ import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.ObservedReplaceAppendRemoveSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.traverser.Traverser;
 
 import static org.jlib.core.array.ArrayUtility.iterable;
@@ -85,7 +85,7 @@ extends DelegatingSequence<Item> {
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
         throws IllegalSequenceArgumentException {
-            ObserverUtility.operate(new Operator() {
+            ObserverUtility.operate(new HandledOperator() {
 
                 @Override
                 public void operate() {

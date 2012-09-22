@@ -1,5 +1,7 @@
 package org.jlib.core.observer;
 
+import org.jlib.core.operator.OperatorException;
+
 /**
  * {@link ValueObserverException} thrown during a
  * {@link ValueObserver#handleAfterFailure(Object, OperatorException)}

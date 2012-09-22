@@ -1,11 +1,12 @@
-package org.jlib.core.observer;
+package org.jlib.core.operator;
+
 
 /**
- * Operator that can be observed.
+ * Performs an operation specified by the concrete implementation.
  * 
  * @author Igor Akkerman
  */
-public interface Operator {
+public interface HandledOperator {
 
     /**
      * Performes the operation.

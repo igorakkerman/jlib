@@ -7,9 +7,9 @@ import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 
 /**
  * {@link IndexSequence} utility.
@@ -123,7 +123,7 @@ public final class IndexSequenceUtility {
                                      final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
 
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

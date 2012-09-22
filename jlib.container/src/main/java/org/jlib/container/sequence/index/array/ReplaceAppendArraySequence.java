@@ -3,8 +3,8 @@ package org.jlib.container.sequence.index.array;
 import java.util.Collection;
 
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
 
 import static org.jlib.core.array.ArrayUtility.iterable;
 
@@ -219,7 +219,7 @@ implements ObservedAppendSequence<Item> {
 
         for (final Item item : items) {
             final int currentStorageItemIndex = ++ storageItemIndex;
-            ObserverUtility.operate(new Operator() {
+            ObserverUtility.operate(new HandledOperator() {
 
                 @Override
                 public void operate() {

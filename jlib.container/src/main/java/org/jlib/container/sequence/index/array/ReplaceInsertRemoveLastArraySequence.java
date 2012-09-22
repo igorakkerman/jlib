@@ -3,9 +3,9 @@ package org.jlib.container.sequence.index.array;
 import java.util.Collection;
 
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
@@ -150,7 +150,7 @@ implements ObservedReplaceInsertRemoveLastIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void removeLastItem(final ValueObserver<Item>... observers) {
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

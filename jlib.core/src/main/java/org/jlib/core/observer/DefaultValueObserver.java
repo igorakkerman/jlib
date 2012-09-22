@@ -1,5 +1,7 @@
 package org.jlib.core.observer;
 
+import org.jlib.core.operator.OperatorException;
+
 /**
  * {@link ValueObserver} implemented with no functionality allowing simple
  * extension.

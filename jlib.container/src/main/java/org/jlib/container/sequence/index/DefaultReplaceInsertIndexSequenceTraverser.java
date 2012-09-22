@@ -15,9 +15,9 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
 
@@ -91,7 +91,7 @@ implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
     @SafeVarargs
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

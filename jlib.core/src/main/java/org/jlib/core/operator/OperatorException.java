@@ -1,4 +1,4 @@
-package org.jlib.core.observer;
+package org.jlib.core.operator;
 
 import org.jlib.core.JlibException;
 

@@ -16,8 +16,8 @@ import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequenceTrave
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;
@@ -251,7 +251,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
         for (final Item item : items) {
             final int currentStorageItemIndex = storageItemIndex ++;
-            ObserverUtility.operate(new Operator() {
+            ObserverUtility.operate(new HandledOperator() {
 
                 @Override
                 public void operate() {

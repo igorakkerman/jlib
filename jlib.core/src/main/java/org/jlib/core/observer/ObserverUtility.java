@@ -1,5 +1,8 @@
 package org.jlib.core.observer;
 
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
+
 /**
  * Utility for the observer pattern.
  * 
@@ -11,13 +14,13 @@ public final class ObserverUtility {
     private ObserverUtility() {}
 
     /**
-     * Operates on the specified Value using the specified {@link Operator} .
+     * Operates on the specified Value using the specified {@link HandledOperator} .
      * 
      * @param <Value>
      *        type of the value
      * 
-     * @param operator
-     *        {@link Operator} performing the operation
+     * @param handledOperator
+     *        {@link HandledOperator} performing the operation
      * 
      * @param value
      *        Value operated on
@@ -36,20 +39,20 @@ public final class ObserverUtility {
      *         </ul>
      */
     @SafeVarargs
-    public static <Value> void operate(final Operator operator, final Value value,
+    public static <Value> void operate(final HandledOperator handledOperator, final Value value,
                                        final ValueObserver<Value>... observers)
     throws RuntimeException {
         try {
             for (final ValueObserver<Value> observer : observers)
                 observer.handleBefore(value);
 
-            operator.operate();
+            handledOperator.operate();
 
             for (final ValueObserver<Value> observer : observers)
                 observer.handleAfterSuccess(value);
         }
         catch (final OperatorException exception) {
-            // if "legal" excption is thrown
+            // if "legal" exception is thrown
             for (final ValueObserver<Value> observer : observers)
                 observer.handleAfterFailure(value, exception);
 
