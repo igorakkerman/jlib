@@ -1,21 +1,31 @@
-/*
- * jlib - The Free Java Library
+/*******************************************************************************
  * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
+ *    jlib - Open Source Java Library
  * 
- * jlib is distributed under the
- *
- *    COMMON PUBLIC LICENSE VERSION 1.0
- *
- *    http://www.opensource.org/licenses/cpl1.0.php
- */
+ *    www.jlib.org
+ * 
+ * 
+ *    Copyright 2012 Igor Akkerman
+ * 
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ * 
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ * 
+ ******************************************************************************/
 
 package org.jlib.core.system;
 
 /**
- * Exception thrown when trying to retrieve the value of a property that is not set.
+ * Exception thrown when trying to retrieve the value of a property that is not
+ * set.
  * 
  * @author Igor Akkerman
  */
@@ -24,9 +34,9 @@ extends Exception {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 902825184458130007L;
-    
+
     /** name of the property that is not set */
-    private String propertyName;
+    private final String propertyName;
 
     /**
      * Creates a new PropertyNotSetException.
@@ -34,7 +44,7 @@ extends Exception {
      * @param propertyName
      *        String specifying the name of the property that is not set
      */
-    public PropertyNotSetException(String propertyName) {
+    public PropertyNotSetException(final String propertyName) {
         super();
         this.propertyName = propertyName;
     }
