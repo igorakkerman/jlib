@@ -27,31 +27,31 @@ import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
- * Wrapper for an array allowing it to be used as {@link TwoWayTraversible}.
+ * Wrapper for an items allowing it to be used as {@link TwoWayTraversible}.
  * 
  * @param <Item>
- *        type of the items held in the array
+ *        type of the items held in the arrays
  * 
  * @author Igor Akkerman
  */
 public class ArrayTraversible<Item>
 implements TwoWayTraversible<Item> {
 
-    /** array to traverse */
-    private final Item[] array;
+    /** Items to traverse */
+    private final Item[] items;
 
     /**
-     * Creates a new {@link ArrayTraversible} for the specified array.
+     * Creates a new {@link ArrayTraversible} for the specified Items.
      * 
-     * @param array
+     * @param items
      *        array of Items to traverse
      */
-    public ArrayTraversible(final Item[] array) {
-        this.array = array;
+    public ArrayTraversible(final Item[] items) {
+        this.items = items;
     }
 
     @Override
     public TwoWayTraverser<Item> createTraverser() {
-        return new ArrayTraverser<>(array);
+        return new ArrayTraverser<>(items);
     }
 }
