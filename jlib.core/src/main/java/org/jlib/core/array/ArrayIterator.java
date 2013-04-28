@@ -63,6 +63,7 @@ extends AbstractIterator<Item> {
      * 
      * @param array
      *        array to traverse
+     * 
      * @param initialIndex
      *        integer specifying the initial index
      */
