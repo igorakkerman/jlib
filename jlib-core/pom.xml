@@ -5,7 +5,7 @@
      www.jlib.org
   
   
-     Copyright 2012 Igor Akkerman
+     Copyright 2013 Igor Akkerman
   
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
      limitations under the License.
   
 -->
-
 <project 
     xmlns="http://maven.apache.org/POM/4.0.0" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -30,11 +29,11 @@
 
     <parent>
         <groupId>org.jlib</groupId>
-        <artifactId>jlib.base</artifactId>
+        <artifactId>jlib-base</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jlib.core</artifactId>
+    <artifactId>jlib-core</artifactId>
 
     <packaging>jar</packaging>
 
