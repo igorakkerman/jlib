@@ -27,9 +27,14 @@
 >
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jlib</groupId>
+    <parent>
+        <groupId>org.jlib</groupId>
+        <artifactId>jlib-base</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>jlib-codequality</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <name>jlib code quality configuration</name>
 
     <packaging>pom</packaging>
 

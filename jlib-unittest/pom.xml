@@ -28,26 +28,23 @@
     "
 >
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jlib</groupId>
+
+    <parent>
+        <groupId>org.jlib</groupId>
+        <artifactId>jlib-base</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>jlib-unittest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>jlib Unit Test Framework</name>
-    <description>jlib Framework for Unit Tests</description>
+    <name>jlib unit test components</name>
+
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <artifactId>junit-dep</artifactId>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.8.2</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
+
