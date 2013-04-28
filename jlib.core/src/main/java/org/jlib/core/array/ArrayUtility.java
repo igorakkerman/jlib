@@ -151,10 +151,10 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns an empty array of Items.
+     * Returns a typesafe empty array of Items.
      * 
      * @param <Item>
-     *        type of potential items in the array
+     *        type of potential Items in the array
      * 
      * @return empty array of Items
      */
