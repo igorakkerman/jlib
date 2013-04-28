@@ -36,6 +36,7 @@
     <modules>
         <module>jlib-codequality</module>
         <module>jlib-core</module>
+        <module>jlib-unittest</module>
     </modules>
     
     <dependencies>
