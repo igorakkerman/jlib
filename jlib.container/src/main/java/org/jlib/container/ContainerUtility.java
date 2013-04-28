@@ -19,10 +19,10 @@ import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -120,7 +120,7 @@ public final class ContainerUtility {
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
     RuntimeException {
 
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

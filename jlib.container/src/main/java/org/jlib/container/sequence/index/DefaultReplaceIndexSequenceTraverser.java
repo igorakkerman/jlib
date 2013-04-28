@@ -14,11 +14,11 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
 
@@ -111,7 +111,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
     throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException,
     RuntimeException {
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

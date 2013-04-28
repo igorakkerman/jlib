@@ -19,7 +19,7 @@ import java.util.Collection;
 import org.jlib.core.observer.ValueObserver;
 
 import org.jlib.container.Container;
-import org.jlib.container.ObservedPrependAware;
+import org.jlib.container.ObservedItemPrependAware;
 
 /**
  * {@link PrependSequence} to which Items can be prepended.
@@ -30,7 +30,7 @@ import org.jlib.container.ObservedPrependAware;
  * @author Igor Akkerman
  */
 public interface ObservedPrependSequence<Item>
-extends PrependSequence<Item>, ObservedPrependAware<Item> {
+extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
 
     /**
      * @throws IllegalSequenceArgumentException

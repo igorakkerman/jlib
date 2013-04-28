@@ -1,16 +1,15 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
-import org.jlib.core.observer.OperatorException;
-import org.jlib.core.observer.ValueObserver;
-
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
 import org.jlib.container.IllegalContainerStateException;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.operator.OperatorException;
 
 /**
  * {@link IndexSequence} utility.
@@ -33,7 +32,8 @@ public final class IndexSequenceUtility {
      *        integer specifying the index to verify
      * 
      * @throws SequenceIndexOutOfBoundsException
-     *         if {@code index} is out of the {@link IndexSequence} bounds
+     *         if
+     *         {@code index < sequence.getFirstIndex() || index > sequence.getLastIndex()}
      */
     public static void assertIndexValid(final IndexSequence<?> sequence, final int index)
     throws SequenceIndexOutOfBoundsException {
@@ -123,7 +123,7 @@ public final class IndexSequenceUtility {
                                      final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
 
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate()

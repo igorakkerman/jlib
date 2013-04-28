@@ -4,10 +4,10 @@ import org.jlib.container.sequence.AbstractSequenceTraverser;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of an {@link IndexSequenceTraverser}.
@@ -75,7 +75,7 @@ implements IndexSequenceTraverser<Item> {
         lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
 
             @Override
-            public void set(final Integer index) {
+            public void setValue(final Integer index) {
                 lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<Integer>(index);
             }
         };
@@ -182,7 +182,7 @@ implements IndexSequenceTraverser<Item> {
      */
     protected int getLastAccessedItemIndex()
     throws ValueNotAccessibleException {
-        return lastAccessedItemIndexHolder.get();
+        return lastAccessedItemIndexHolder.getValue();
     }
 
     /**
@@ -193,6 +193,6 @@ implements IndexSequenceTraverser<Item> {
      *        integer specifying the index
      */
     protected void setLastAccessedItemIndex(final int lastAccessedItemIndex) {
-        lastAccessedItemIndexHolder.set(lastAccessedItemIndex);
+        lastAccessedItemIndexHolder.setValue(lastAccessedItemIndex);
     }
 }

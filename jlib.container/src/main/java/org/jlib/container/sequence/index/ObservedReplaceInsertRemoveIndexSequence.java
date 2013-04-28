@@ -14,7 +14,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ObservedReplaceAppendRemoveSequence;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -27,9 +26,8 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertRemoveIndexSequence<Item>
-extends ObservedReplaceInsertIndexSequence<Item>, ObservedRemoveIndexSequence<Item>,
-ObservedReplaceInsertRemoveFirstIndexSequence<Item>, ObservedReplaceInsertRemoveLastIndexSequence<Item>,
-ObservedReplaceAppendRemoveSequence<Item> {
+extends ReplaceInsertRemoveIndexSequence<Item>, ObservedReplaceInsertIndexSequence<Item>,
+ObservedInsertRemoveIndexSequence<Item>, ObservedReplaceRemoveIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)

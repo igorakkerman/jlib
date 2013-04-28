@@ -18,12 +18,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the {@link Association}
@@ -87,7 +87,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
         lastAccessedItemHolder = new UninitializedValueHolder<Association<LeftValue, RightValue>>() {
 
             @Override
-            public void set(final Association<LeftValue, RightValue> association) {
+            public void setValue(final Association<LeftValue, RightValue> association) {
                 lastAccessedItemHolder = new InitializedModifiableValueHolder<>(association);
             }
         };
@@ -117,7 +117,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
             final Association<LeftValue, RightValue> association =
                 new Association<>(leftValue, rightValuesIterator.next());
 
-            lastAccessedItemHolder.set(association);
+            lastAccessedItemHolder.setValue(association);
 
             return association;
         }
@@ -146,6 +146,6 @@ implements Traverser<Association<LeftValue, RightValue>> {
      */
     protected Association<LeftValue, RightValue> getLastAccessedItem()
     throws ValueNotAccessibleException {
-        return lastAccessedItemHolder.get();
+        return lastAccessedItemHolder.getValue();
     }
 }

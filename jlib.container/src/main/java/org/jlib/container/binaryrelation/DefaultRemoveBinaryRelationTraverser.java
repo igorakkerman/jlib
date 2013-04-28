@@ -14,10 +14,10 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.Traverser;
-import org.jlib.core.valueholder.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the Associations of a

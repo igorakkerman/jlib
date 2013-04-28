@@ -14,12 +14,14 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.core.observer.ValueObserver;
+import java.util.Collection;
 
+import org.jlib.container.Container;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.container.sequence.ObservedInsertSequence;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link IndexSequence} and {@link InsertSequence}.
@@ -44,7 +46,7 @@ extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
      * 
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the insertment
+     *        attending the operation
      * 
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
@@ -59,6 +61,56 @@ extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException;
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link ObservedInsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        {@link Container} holding the Items to insert
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     */
+    @SuppressWarnings("unchecked")
+    public void insert(int index, Container<? extends Item> items, final ValueObserver<Item>... observers);
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link ObservedInsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        {@link Collection} holding the Items to insert
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     */
+    @SuppressWarnings("unchecked")
+    public void insert(int index, Collection<? extends Item> items, final ValueObserver<Item>... observers);
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link ObservedInsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param observers
+     *        array of {@link ValueObserver} instances attending the operation
+     * 
+     * @param items
+     *        comma separated sequence holding the Items to insert
+     */
+    @SuppressWarnings("unchecked")
+    public void insert(int index, final ValueObserver<Item>[] observers, Item... items);
 
     /**
      * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items

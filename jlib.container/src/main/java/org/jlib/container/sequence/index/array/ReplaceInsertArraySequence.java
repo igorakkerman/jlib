@@ -2,20 +2,25 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import static org.jlib.core.array.ArrayUtility.iterable;
-
 import org.jlib.container.Container;
+import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
+import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.container.sequence.index.InsertIndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
+import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -160,6 +165,31 @@ implements ObservedReplaceInsertIndexSequence<Item> {
         insert(index, iterable(items), items.length);
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
+    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+        insert(index, singleton(item), 1, observers);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(final int index, final Container<? extends Item> items, final ValueObserver<Item>... observers) {
+        insert(index, items, items.getItemsCount(), observers);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(final int index, final Collection<? extends Item> items, final ValueObserver<Item>... observers) {
+        insert(index, items, items.size(), observers);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(final int index, final ValueObserver<Item>[] observers, final Item... items) {
+        insert(index, iterable(items), items.length, observers);
+    }
+
     /**
      * Inserts the specified Items at the specified index of this
      * {@link InsertIndexSequence}.
@@ -172,14 +202,65 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      * 
      * @param insertedItemsCount
      *        integer specifying the number of inserted Items
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
+        IndexSequenceUtility.assertIndexValid(this, index);
+
         int storageItemIndex = getStorageItemIndex(index);
 
         getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
 
         for (final Item item : items)
             replace(storageItemIndex ++, item);
+
+        setLastIndex(getLastIndex() + insertedItemsCount);
+        getStorage().incrementLastItemIndex(insertedItemsCount);
+    }
+
+    /**
+     * Inserts the specified Items at the specified index of this
+     * {@link InsertIndexSequence}.
+     * 
+     * @param index
+     *        integer specifying the index
+     * 
+     * @param items
+     *        {@link Collection} holding the Items to insert
+     * 
+     * @param insertedItemsCount
+     *        integer specifying the number of inserted Items
+     * 
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the operation
+     * 
+     * @throws SequenceIndexOutOfBoundsException
+     *         if {@code index < getFirstIndex() || index > getLastIndex()}
+     */
+    @SafeVarargs
+    private final void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount,
+                              final ValueObserver<Item>... observers) {
+        IndexSequenceUtility.assertIndexValid(this, index);
+
+        int storageItemIndex = getStorageItemIndex(index);
+
+        getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
+
+        for (final Item item : items) {
+            final int currentStorageItemIndex = storageItemIndex ++;
+            ObserverUtility.operate(new HandledOperator() {
+
+                @Override
+                public void operate() {
+                    getStorage().replaceItem(currentStorageItemIndex, item);
+                }
+            },
+
+            item, observers);
+        }
 
         setLastIndex(getLastIndex() + insertedItemsCount);
         getStorage().incrementLastItemIndex(insertedItemsCount);

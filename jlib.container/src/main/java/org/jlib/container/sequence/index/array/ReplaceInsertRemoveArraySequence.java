@@ -2,9 +2,6 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
@@ -18,6 +15,8 @@ import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequenc
 import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceInsertRemoveIndexSequence;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link ReplaceInsertArraySequence} to which Items can be added.
@@ -29,7 +28,7 @@ import org.jlib.container.sequence.index.SubReplaceInsertRemoveIndexSequence;
  */
 public class ReplaceInsertRemoveArraySequence<Item>
 extends ReplaceInsertRemoveFirstLastArraySequence<Item>
-implements ObservedReplaceInsertRemoveIndexSequence<Item> {
+implements ObservedReplaceAppendPrependInsertRemoveIndexSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveArraySequence} with

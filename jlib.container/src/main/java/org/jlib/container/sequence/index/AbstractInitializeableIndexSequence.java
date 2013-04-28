@@ -4,8 +4,8 @@ import java.util.Collection;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.Operator;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
@@ -311,7 +311,7 @@ extends AbstractIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     protected final void replaceStoredItem(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws RuntimeException {
-        ObserverUtility.operate(new Operator() {
+        ObserverUtility.operate(new HandledOperator() {
 
             @Override
             public void operate() {

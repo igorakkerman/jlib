@@ -21,18 +21,18 @@ import org.jlib.core.IllegalJlibStateException;
 import org.jlib.core.observer.ValueObserver;
 
 /**
- * {@link AppendAware} to which Items can be prepended.
+ * {@link ItemAppendAware} to which Items can be prepended.
  * 
  * @param <Item>
  *        type of the prepended Items
  * 
  * @author Igor Akkerman
  */
-public interface ObservedAppendAware<Item>
-extends AppendAware<Item> {
+public interface ObservedItemAppendAware<Item>
+extends ItemAppendAware<Item> {
 
     /**
-     * Appends the specified Item to this {@link ObservedAppendAware}.
+     * Appends the specified Item to this {@link ObservedItemAppendAware}.
      * 
      * @param item
      *        Item to prepend
@@ -57,7 +57,7 @@ extends AppendAware<Item> {
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
-     * {@link ObservedAppendAware}.
+     * {@link ObservedItemAppendAware}.
      * 
      * @param items
      *        {@link Container} containing the Items to prepend
@@ -86,7 +86,7 @@ extends AppendAware<Item> {
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
-     * {@link ObservedAppendAware}.
+     * {@link ObservedItemAppendAware}.
      * 
      * @param items
      *        {@link Collection} containing the Items to prepend
@@ -111,7 +111,7 @@ extends AppendAware<Item> {
     throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
 
     /**
-     * Appends all specified Items to this {@link ObservedAppendAware}.
+     * Appends all specified Items to this {@link ObservedItemAppendAware}.
      * 
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation

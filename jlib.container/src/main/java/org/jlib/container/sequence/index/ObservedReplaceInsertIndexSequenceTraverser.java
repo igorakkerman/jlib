@@ -1,10 +1,10 @@
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
-import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
 
 /**
- * {@link IndexSequenceTraverser} and {@link ObservedReplaceSequenceTraverser}.
+ * {@link ReplaceInsertIndexSequenceTraverser},
+ * {@link ObservedReplaceIndexSequenceTraverser} and
+ * {@link ObservedInsertIndexSequenceTraverser}.
  * 
  * @param <Item>
  *        type of the traversed items
@@ -12,7 +12,7 @@ import org.jlib.container.sequence.ObservedReplaceSequenceTraverser;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertIndexSequenceTraverser<Item>
-extends ObservedReplaceIndexSequenceTraverser<Item>, ReplaceInsertIndexSequenceTraverser<Item>,
-ObservedInsertSequenceTraverser<Item> {
+extends ReplaceInsertIndexSequenceTraverser<Item>, ObservedReplaceIndexSequenceTraverser<Item>,
+ObservedInsertIndexSequenceTraverser<Item> {
     // unifying interface
 }

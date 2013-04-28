@@ -15,8 +15,9 @@
 package org.jlib.container.sequence.index;
 
 /**
- * {@link ReplaceInsertIndexSequenceTraverser} and
- * {@link RemoveIndexSequenceTraverser}.
+ * {@link ReplaceInsertIndexSequenceTraverser},
+ * {@link InsertRemoveIndexSequenceTraverser} and
+ * {@link ReplaceRemoveIndexSequenceTraverser}.
  * 
  * @param <Item>
  *        type of items held in the
@@ -25,6 +26,7 @@ package org.jlib.container.sequence.index;
  * @author Igor Akkerman
  */
 public interface ReplaceInsertRemoveIndexSequenceTraverser<Item>
-extends ReplaceInsertIndexSequenceTraverser<Item>, RemoveIndexSequenceTraverser<Item> {
+extends ReplaceInsertIndexSequenceTraverser<Item>, InsertRemoveIndexSequenceTraverser<Item>,
+ReplaceRemoveIndexSequenceTraverser<Item> {
     // unifying interface
 }

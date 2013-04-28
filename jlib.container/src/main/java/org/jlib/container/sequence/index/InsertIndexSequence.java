@@ -41,6 +41,7 @@ extends InsertSequence<Item>, IndexSequence<Item> {
      * 
      * @param item
      *        Item to insert
+     * 
      */
     public void insert(int index, Item item);
 

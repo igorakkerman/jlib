@@ -1,16 +1,25 @@
-/*
- * jlib - The Free Java Library
+/*******************************************************************************
  * 
- * http://www.jlib.org
+ *    jlib - Open Source Java Library
  * 
- * Copyright (c) 2006-2008 Igor Akkerman
+ *    www.jlib.org
  * 
- * jlib is distributed under the
  * 
- * COMMON PUBLIC LICENSE VERSION 1.0
+ *    Copyright 2012 Igor Akkerman
  * 
- * http://www.opensource.org/licenses/cpl1.0.php
- */
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ * 
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ * 
+ ******************************************************************************/
 
 package org.jlib.core.system;
 
@@ -27,13 +36,13 @@ public final class SystemUtility {
     /**
      * Returns the value of the system property indicated by the specified key.
      * The difference to the {@link System#getProperty(String)} method is that
-     * this method throws an {@link Exception} if the specified key is not set, whereas
-     * the other method would return {@code null}.
+     * this method throws an {@link Exception} if the specified key is not set,
+     * whereas the other method would return {@code null}.
      * 
      * @param propertyName
      *        String specifying the name of the system property
-     * @return String specifying the value of the system property with {@code
-     *         propertyName}
+     * @return String specifying the value of the system property with
+     *         {@code propertyName}
      * @throws SecurityException
      *         if a security manager exists and its
      *         {@link SecurityManager#checkPropertyAccess} method doesn't allow
@@ -43,9 +52,9 @@ public final class SystemUtility {
      * @throws PropertyNotSetException
      *         if the specified system property is not set
      */
-    public static String getProperty(String propertyName)
+    public static String getProperty(final String propertyName)
     throws PropertyNotSetException {
-        String propertyValue = System.getProperty(propertyName);
+        final String propertyValue = System.getProperty(propertyName);
         if (propertyValue == null)
             throw new PropertyNotSetException(propertyName);
         return propertyValue;
@@ -54,13 +63,14 @@ public final class SystemUtility {
     /**
      * Returns the value of the application system property indicated by the
      * specified key. The difference to the {@link System#getProperty(String)}
-     * method is that this method throws a {@link RuntimeException} if the specified key
-     * is not set, whereas the JDK method would return {@code null}.
+     * method is that this method throws a {@link RuntimeException} if the
+     * specified key is not set, whereas the JDK method would return
+     * {@code null}.
      * 
      * @param propertyName
      *        String specifying the name of the system property
-     * @return String specifying the value of the system property with {@code
-     *         propertyName}
+     * @return String specifying the value of the system property with
+     *         {@code propertyName}
      * @throws SecurityException
      *         if a security manager exists and its
      *         {@link SecurityManager#checkPropertyAccess} method doesn't allow
@@ -70,9 +80,9 @@ public final class SystemUtility {
      * @throws ApplicationPropertyNotSetException
      *         if the specified system property is not set
      */
-    public static String getApplicationProperty(String propertyName)
+    public static String getApplicationProperty(final String propertyName)
     throws ApplicationPropertyNotSetException {
-        String propertyValue = System.getProperty(propertyName);
+        final String propertyValue = System.getProperty(propertyName);
         if (propertyValue == null)
             throw new ApplicationPropertyNotSetException(propertyName);
         return propertyValue;

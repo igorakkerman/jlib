@@ -112,4 +112,9 @@ implements Container<Item> {
     public boolean containsEqualItems(final Collection<Item> collection) {
         return collection.isEmpty();
     }
+
+    @Override
+    public EmptyContainer<Item> clone() {
+        return this;
+    }
 }

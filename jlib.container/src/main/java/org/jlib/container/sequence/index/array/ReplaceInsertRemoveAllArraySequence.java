@@ -2,14 +2,13 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.ObservedRemoveAllContainer;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
+import org.jlib.container.sequence.ObservedRemoveAllSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link ReplaceInsertArraySequence} to which Items can be added.
@@ -21,7 +20,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
  */
 public class ReplaceInsertRemoveAllArraySequence<Item>
 extends ReplaceInsertRemoveArraySequence<Item>
-implements ObservedRemoveAllContainer<Item> {
+implements ObservedRemoveAllSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveAllArraySequence}
