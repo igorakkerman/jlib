@@ -29,7 +29,7 @@
 >
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jlib</groupId>
-    <artifactId>jlib-test</artifactId>
+    <artifactId>jlib-unittest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jlib Unit Test Framework</name>
     <description>jlib Framework for Unit Tests</description>
