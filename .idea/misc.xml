@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EclipseCodeFormatter">
+    <option name="formatter" value="ECLIPSE" />
+    <option name="id" value="1367282611354" />
+    <option name="importOrderFromFile" value="true" />
+    <option name="name" value="DynaMITe (Eclipse)" />
+    <option name="optimizeImports" value="false" />
+    <option name="pathToConfigFileJava" value="C:/Daten/Software/Entwicklung/Eclipse/meine Settings/Java/Code Formatter/2012-06-01 01 Code Formatter.xml" />
+    <option name="selectedJavaProfile" value="Igor" />
+  </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -13,22 +22,6 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="JDK 7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>JDK 7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
 
