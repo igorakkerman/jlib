@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EclipseCodeFormatter">
+    <option name="formatter" value="ECLIPSE" />
+    <option name="id" value="1367504593340" />
+    <option name="name" value="DynaMITe (Eclipse)" />
+    <option name="pathToConfigFileJava" value="$PROJECT_DIR$/jlib-codequality/configuration/Eclipse Code Formatter.xml" />
+    <option name="selectedJavaProfile" value="Igor" />
+  </component>
   <component name="IdProvider" IDEtalkID="A549B30BE470E6B0A664C0CAC2D0BBA4" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
