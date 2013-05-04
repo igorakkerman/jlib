@@ -7,6 +7,9 @@
     <option name="pathToConfigFileJava" value="$PROJECT_DIR$/jlib-codequality/configuration/Eclipse Code Formatter.xml" />
     <option name="selectedJavaProfile" value="Igor" />
   </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="A549B30BE470E6B0A664C0CAC2D0BBA4" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
