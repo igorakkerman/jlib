@@ -1,24 +1,24 @@
 /*******************************************************************************
- * 
+ *
  *    jlib - Open Source Java Library
- * 
+ *
  *    www.jlib.org
- * 
- * 
+ *
+ *
  *    Copyright 2012 Igor Akkerman
- * 
+ *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
- * 
+ *
  *        http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * 
+ *
  ******************************************************************************/
 
 package org.jlib.core.number;
@@ -26,7 +26,7 @@ package org.jlib.core.number;
 /**
  * Utility class providing static methods for number operations and
  * manipulations.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class NumberUtility {
@@ -40,12 +40,12 @@ public final class NumberUtility {
 
     /**
      * Parses a hexadecimal digit of the specified character.
-     * 
+     *
      * @param hexDigitCharacter
      *        character holding a hexadecimal digit
-     * 
+     *
      * @return byte holding the value of hexDigitCharacter
-     * 
+     *
      * @throws NumberFormatException
      *         if {@code hexDigitCharacter} does not hold a hexadecimal digit
      */
@@ -68,10 +68,10 @@ public final class NumberUtility {
      * with zeroes. The bit order is big-endian, that is, the most significant
      * bit first, as usual in both big-endian and little-endian byte order
      * systems.
-     * 
+     *
      * @param bite
      *        byte to represent as a binary String
-     * 
+     *
      * @return binary String representation of {@code bite}
      */
     public static String toBinaryString(final byte bite) {
@@ -87,10 +87,10 @@ public final class NumberUtility {
      * Creates a binary 32-bit String representation of the specified integer
      * padded with zeroes. The bit order is big-endian, that is, the most
      * significant bit first.
-     * 
+     *
      * @param value
      *        integer to represent as a binary String
-     * 
+     *
      * @return binary String representation of {@code integer}
      */
     public static String toBinaryString(final int value) {
@@ -104,10 +104,10 @@ public final class NumberUtility {
 
     /**
      * Verifies whether the specified integer is even.
-     * 
+     *
      * @param number
      *        integer to verify
-     * 
+     *
      * @return {@code true} if {@code number} is even; {@code false} if
      *         {@code number} is odd
      */
@@ -117,10 +117,10 @@ public final class NumberUtility {
 
     /**
      * Verifies whether the specified integer is odd.
-     * 
+     *
      * @param number
      *        integer to verify
-     * 
+     *
      * @return {@code true} if {@code number} is odd; {@code false} if
      *         {@code number} is even
      */
