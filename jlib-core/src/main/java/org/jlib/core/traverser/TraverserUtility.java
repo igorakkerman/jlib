@@ -42,11 +42,13 @@ public final class TraverserUtility {
      * item1.equals(item2)}.
      *
      * @param <Item>
-     * type of the items traversed by {@code traversible1} and {@code traversible2}
+     *        type of the items traversed by {@code traversible1} and {@code traversible2}
+     *
      * @param traversible1
-     * first traversed {@link Traversible}
+     *        first traversed {@link Traversible}
+     *
      * @param traversible2
-     * second traversed {@link Traversible}
+     *        second traversed {@link Traversible}
      *
      * @return {@code true} if {@code traverser1} and {@code traverser2} provide equal Items; {@code false} otherwise
      */
