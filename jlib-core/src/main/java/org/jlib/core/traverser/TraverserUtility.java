@@ -63,7 +63,7 @@ public final class TraverserUtility {
             if (! nextItemAccessible)
                 return true;
 
-            if (! ObjectUtility.equal(traverser1.getNextItem(), traverser2.getNextItem()))
+            if (! ObjectUtility.equalOrNull(traverser1.getNextItem(), traverser2.getNextItem()))
                 return false;
         }
         while (true);

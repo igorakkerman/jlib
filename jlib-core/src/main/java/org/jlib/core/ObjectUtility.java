@@ -50,7 +50,7 @@ public final class ObjectUtility {
      * @throws ValueNotAccessibleException
      *         if {@code value == null}
      */
-    public static <Value> Value optional(final String valueName, /* @Nullable */final Value value)
+    public static <Value> Value optional(final String valueName, /* @Nullable */ final Value value)
     throws ValueNotAccessibleException {
 
         if (value == null)
@@ -70,22 +70,22 @@ public final class ObjectUtility {
      * @return {@code true} if all specified Objects are equal or if the
      *         specified sequence of Objects is empty; {@code false} otherwise
      */
-    public static boolean equal(final Object... objects) {
+    public static boolean equalOrNull(final Object... objects) {
         if (objects.length == 0)
             return true;
 
         final Object firstObject = objects[0];
 
         if (firstObject == null) {
-            for (int index = 1; index < objects.length; index ++)
+            for (int index = 1; index < objects.length; index++)
                 if (objects[index] != null)
                     return false;
 
             return true;
         }
 
-        for (int index = 1; index < objects.length; index ++)
-            if (!firstObject.equals(objects[index]))
+        for (int index = 1; index < objects.length; index++)
+            if (! firstObject.equals(objects[index]))
                 return false;
 
         return true;
@@ -93,7 +93,7 @@ public final class ObjectUtility {
 
     /**
      * Returns the hash code of the specified {@link Object} as returned by its
-     * {@link Object#hashCode() hashCode} method or {@code 0} if the specified
+     * {@link Object#hashCode()} method or {@code 0} if the specified
      * {@link Object} is {@code null}.
      *
      * @param object
@@ -102,9 +102,9 @@ public final class ObjectUtility {
      * @return integer specifying the hash code of {@code object}; {@code 0} if
      *         {@code object} is {@code null}
      */
-    public static int hashCode(final Object object) {
+    public static int getHashCodeOrZero(/* @Nullable */ final Object object) {
         return object != null
-            ? object.hashCode()
-            : 0;
+               ? object.hashCode()
+               : 0;
     }
 }

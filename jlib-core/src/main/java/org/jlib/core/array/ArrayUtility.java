@@ -1,37 +1,37 @@
 /*******************************************************************************
- * 
+ *
  *    jlib - Open Source Java Library
- * 
+ *
  *    www.jlib.org
- * 
- * 
+ *
+ *
  *    Copyright 2012 Igor Akkerman
- * 
+ *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
- * 
+ *
  *        http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * 
+ *
  ******************************************************************************/
 
 package org.jlib.core.array;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.TwoWayTraversible;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Utility for arrays.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class ArrayUtility {
@@ -44,13 +44,13 @@ public final class ArrayUtility {
 
     /**
      * Returns a new {@link Iterable} adapter for the specified Items.
-     * 
+     *
      * @param <Item>
      *        type of the items held in the array
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to traverse
-     * 
+     *
      * @return {@link Iterable} adapter for {@code items}
      */
     @SafeVarargs
@@ -60,13 +60,13 @@ public final class ArrayUtility {
 
     /**
      * Returns a new {@link TwoWayTraversible} adapter for the specified Items.
-     * 
+     *
      * @param <Item>
      *        type of the items held in the array
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to traverse
-     * 
+     *
      * @return {@link TwoWayTraversible} adapter for {@code items}
      */
     @SafeVarargs
@@ -76,13 +76,13 @@ public final class ArrayUtility {
 
     /**
      * Returns a new {@link TwoWayTraverser} over the specified Items.
-     * 
+     *
      * @param <Item>
      *        type of the items held in the array
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to traverse
-     * 
+     *
      * @return {@link TwoWayTraversible} adapter for {@code items}
      */
     @SafeVarargs
@@ -93,10 +93,10 @@ public final class ArrayUtility {
     /**
      * Returns the total number of non array items held in the specified array,
      * recursively descending in every array item.
-     * 
+     *
      * @param items
      *        comma separated sequence of {@link Object} items
-     * 
+     *
      * @return integer specifying the total number of items
      */
     public static int getFlattenedItemsCount(final Object... items) {
@@ -113,13 +113,13 @@ public final class ArrayUtility {
     /**
      * Recursively appends all Items specified as a comma separated list to the
      * specified {@link List}.
-     * 
+     *
      * @param <Item>
      *        type of the specified items
-     * 
+     *
      * @param allItems
      *        {@link List} to which the items are added
-     * 
+     *
      * @param items
      *        comma separated liet of items
      */
@@ -134,13 +134,13 @@ public final class ArrayUtility {
     /**
      * Returns an array of all Items specified as a comma separated list to the
      * specified {@link List}, recursively collected from contained arrays.
-     * 
+     *
      * @param <Item>
      *        type of the specified items
-     * 
+     *
      * @param items
      *        comma separated liet of items
-     * 
+     *
      * @return array of all collected Items
      */
     @SuppressWarnings("unchecked")
@@ -152,10 +152,10 @@ public final class ArrayUtility {
 
     /**
      * Returns a typesafe empty array of Items.
-     * 
+     *
      * @param <Item>
      *        type of potential Items in the array
-     * 
+     *
      * @return empty array of Items
      */
     @SuppressWarnings("unchecked")
@@ -165,15 +165,15 @@ public final class ArrayUtility {
 
     /**
      * Crates an array of Items in a typesafe manner.
-     * 
+     *
      * @param <Item>
      *        type of the items held in the array
-     * 
+     *
      * @param length
      *        integer specifying the array length
-     * 
+     *
      * @return newly created array
-     * 
+     *
      * @throws NegativeArraySizeException
      *         if {@code length < 0}
      */
