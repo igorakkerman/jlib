@@ -22,6 +22,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="jlib" />
+        <module name="jlib-core" />
+        <module name="jlib-unittest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

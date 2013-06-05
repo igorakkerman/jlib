@@ -29,34 +29,30 @@
     <groupId>org.jlib</groupId>
     <artifactId>jlib-base</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <name>jlib base module</name>
 
     <packaging>pom</packaging>
 
     <modules>
-<!--
-        <module>jlib-codequality</module>
--->
+        <!-- module>jlib-codequality</module -->
         <module>jlib-core</module>
         <module>jlib-unittest</module>
     </modules>
-
-    <dependencies>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit-dep</artifactId>
-                <version>4.10</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-all</artifactId>
-                <version>1.3</version>
+                <version>${hamcrest.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -64,12 +60,16 @@
             <dependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-core</artifactId>
-                <version>1.3</version>
-                <scope>compile</scope>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <junit.version>4.11</junit.version>
+        <hamcrest.version>1.3</hamcrest.version>
+    </properties>
 
     <build>
         <pluginManagement>
@@ -91,112 +91,132 @@
         </pluginManagement>
     </build>
 
+    <repositories>
+        <repository>
+            <id>javanet</id>
+            <name>Repository for Maven2</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+
+        <repository>
+            <id>google</id>
+            <name>Google repository for Maven2</name>
+            <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
+        </repository>
+
+        <repository>
+            <id>jboss</id>
+            <name>JBoss repository for Maven2</name>
+            <url>http://repository.jboss.org/maven2/</url>
+        </repository>
+    </repositories>
+
 </project>
 
-        <!-- Java SE Source is added to the sourcepath to allow to inherit Java SE documentation ->
-        <project>
-            <property name="org.jlib.label" value="jlib - The Free Java Library" />
-            <property name="org.jlib.licenseurl" value="http://www.opensource.org/licenses/cpl1.0.php" />
-            <property name="org.jlib.licensename" value="Common Public License V1.0" />
+<!-- Java SE Source is added to the sourcepath to allow to inherit Java SE documentation ->
+<project>
+    <property name="org.jlib.label" value="jlib - The Free Java Library" />
+    <property name="org.jlib.licenseurl" value="http://www.opensource.org/licenses/cpl1.0.php" />
+    <property name="org.jlib.licensename" value="Common Public License V1.0" />
 
-            <property name="api.name" value="jlib.core" />
-            <property name="api.namelong" value="jlib Core" />
-            <property name="api.version" value="0.4" />
-            <property name="api.years" value="2006-2008" />
-            <property name="api.author" value="Igor Akkerman" />
-            <property name="api.rootpackage" value="org.jlib.core" />
-            <property name="api.sourcedir" value="src/main/java" />
-            <property name="api.libpath" value="" />
-            <property name="api.bindir" value="bin" />
-            <property name="api.examplesdir" value="examples" />
-            <property name="api.jarfile" value="${api.name}-${api.version}.jar" />
-            <property name="api.apidocpath" value="doc" />
-            <property name="api.apidocurl" value="http://jlib-api.sourceforge.net/jlib.core/javadoc/" />
+    <property name="api.name" value="jlib.core" />
+    <property name="api.namelong" value="jlib Core" />
+    <property name="api.version" value="0.4" />
+    <property name="api.years" value="2006-2008" />
+    <property name="api.author" value="Igor Akkerman" />
+    <property name="api.rootpackage" value="org.jlib.core" />
+    <property name="api.sourcedir" value="src/main/java" />
+    <property name="api.libpath" value="" />
+    <property name="api.bindir" value="bin" />
+    <property name="api.examplesdir" value="examples" />
+    <property name="api.jarfile" value="${api.name}-${api.version}.jar" />
+    <property name="api.apidocpath" value="doc" />
+    <property name="api.apidocurl" value="http://jlib-api.sourceforge.net/jlib.core/javadoc/" />
 
-            <!- property name="javase.sourcepath" value="C:\JDK1.6\src" / ->
-            <property name="javase.sourcepath" value="${java.home}\..\src" />
-            <property name="javase.apidocurl" value="http://java.sun.com/javase/6/docs/api/" />
+    <!- property name="javase.sourcepath" value="C:\JDK1.6\src" / ->
+    <property name="javase.sourcepath" value="${java.home}\..\src" />
+    <property name="javase.apidocurl" value="http://java.sun.com/javase/6/docs/api/" />
 
-            <target name="clean">
-                <delete includeemptydirs="true">
-                    <fileset dir="${api.bindir}" includes="**/*" />
-                </delete>
-                <delete file="${api.jarfile}" />
-                <delete dir="${api.apidocpath}" />
-            </target>
+    <target name="clean">
+        <delete includeemptydirs="true">
+            <fileset dir="${api.bindir}" includes="**/*" />
+        </delete>
+        <delete file="${api.jarfile}" />
+        <delete dir="${api.apidocpath}" />
+    </target>
 
-            <target name="compile">
-                <javac srcdir="${api.sourcedir}"
-                       destdir="${api.bindir}"
-                       classpath="${api.libpath}"
-                       debug="false"
-                />
-            </target>
+    <target name="compile">
+        <javac srcdir="${api.sourcedir}"
+               destdir="${api.bindir}"
+               classpath="${api.libpath}"
+               debug="false"
+        />
+    </target>
 
-            <target name="jar" depends="compile">
-                <jar destfile="${api.jarfile}" basedir="${api.bindir}" />
-            </target>
+    <target name="jar" depends="compile">
+        <jar destfile="${api.jarfile}" basedir="${api.bindir}" />
+    </target>
 
-            <target name="javadoc">
-                <echo>
-                    Running Javadoc.
-                    Please ignore the errors and warnings issued while scanning the Java SE source files.
-                </echo>
+    <target name="javadoc">
+        <echo>
+            Running Javadoc.
+            Please ignore the errors and warnings issued while scanning the Java SE source files.
+        </echo>
 
-                <javadoc destdir="${api.apidocpath}"
-                         access="protected"
-                         splitindex="false"
-                         version="true"
-                         use="true"
-                         author="true"
-                         nodeprecated="false"
-                         nodeprecatedlist="false"
-                         noindex="false"
-                         nonavbar="false"
-                         notree="false"
-                         includenosourcepackages="true"
-                         verbose="false"
-                         windowtitle="${api.namelong}"
-                >
-                    <package name="${api.rootpackage}.*" />
-                    <sourcepath location="${api.sourcedir}" />
-                    <sourcepath location="${javase.sourcepath}" />
-                    <classpath path="${api.libpath}" />
+        <javadoc destdir="${api.apidocpath}"
+                 access="protected"
+                 splitindex="false"
+                 version="true"
+                 use="true"
+                 author="true"
+                 nodeprecated="false"
+                 nodeprecatedlist="false"
+                 noindex="false"
+                 nonavbar="false"
+                 notree="false"
+                 includenosourcepackages="true"
+                 verbose="false"
+                 windowtitle="${api.namelong}"
+        >
+            <package name="${api.rootpackage}.*" />
+            <sourcepath location="${api.sourcedir}" />
+            <sourcepath location="${javase.sourcepath}" />
+            <classpath path="${api.libpath}" />
 
-                    <link href="${javase.apidocurl}" />
-                    <link href="${api.apidocurl}" />
+            <link href="${javase.apidocurl}" />
+            <link href="${api.apidocurl}" />
 
-                    <doctitle>
-                        <![CDATA[
-                            ${api.namelong} ${api.version} API<br />
-                            <small>${org.jlib.label}</small>
-                        ]]>
-                    </doctitle>
-                    <header>
-                        <![CDATA[
-                            <b>${api.name} ${api.version} API</b><br />
-                            <small><b>${org.jlib.label}</b></small>
-                        ]]>
-                    </header>
-                    <footer>
-                        <![CDATA[
-                            <b>&copy; ${api.years} ${api.author}</b>
-                        ]]>
-                    </footer>
-                    <bottom>
-                        <![CDATA[
-                            This API is distributed under the <a href="${org.jlib.licenseurl}" target="_blank">${org.jlib.licensename}</a>.
-                        ]]>
-                    </bottom>
-                </javadoc>
-            </target>
+            <doctitle>
+                <![CDATA[
+                    ${api.namelong} ${api.version} API<br />
+                    <small>${org.jlib.label}</small>
+                ]]>
+            </doctitle>
+            <header>
+                <![CDATA[
+                    <b>${api.name} ${api.version} API</b><br />
+                    <small><b>${org.jlib.label}</b></small>
+                ]]>
+            </header>
+            <footer>
+                <![CDATA[
+                    <b>&copy; ${api.years} ${api.author}</b>
+                ]]>
+            </footer>
+            <bottom>
+                <![CDATA[
+                    This API is distributed under the <a href="${org.jlib.licenseurl}" target="_blank">${org.jlib.licensename}</a>.
+                ]]>
+            </bottom>
+        </javadoc>
+    </target>
 
-            <target name="compile-examples" depends="compile">
-                <javac srcdir="${api.examplesdir}"
-                       destdir="${api.examplesdir}"
-                       classpath="${api.bindir};${api.libpath}"
-                       debug="false"
-                />
-            </target>
-        </project>
-        -->
+    <target name="compile-examples" depends="compile">
+        <javac srcdir="${api.examplesdir}"
+               destdir="${api.examplesdir}"
+               classpath="${api.bindir};${api.libpath}"
+               debug="false"
+        />
+    </target>
+</project>
+-->
