@@ -1,24 +1,24 @@
 /*******************************************************************************
- * 
+ *
  *    jlib - Open Source Java Library
- * 
+ *
  *    www.jlib.org
- * 
- * 
+ *
+ *
  *    Copyright 2012 Igor Akkerman
- * 
+ *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
- * 
+ *
  *        http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * 
+ *
  ******************************************************************************/
 
 package org.jlib.core.collection;
@@ -32,15 +32,16 @@ import java.util.Set;
  * {@link Map} Proxy delegating all method calls to another {@link Map} caching
  * the last looked up Value. Unlike in the {@link HashMap} class, as in all jlib
  * classes, neither {@code null} Keys nor {@code null} Values are permitted.
- * 
+ *
  * @param <Key>
  *        type of the keys
- * 
+ *
  * @param <Value>
  *        type of the values
- * 
+ *
  * @author Igor Akkerman
  */
+@SuppressWarnings({"ObjectEquality", "NullableProblems", "SuspiciousMethodCalls"})
 public class ProxyMap<Key, Value>
 implements Map<Key, Value> {
 
@@ -55,7 +56,7 @@ implements Map<Key, Value> {
 
     /**
      * Creates a new {@link ProxyMap}.
-     * 
+     *
      * @param delegateMap
      *        delegate {@link Map} to which all calls are delegated
      */
@@ -84,9 +85,10 @@ implements Map<Key, Value> {
 
     @Override
     public Value get(final Object key) {
+        //noinspection ObjectEquality
         return key == lastLookedUpContainedKey
-            ? lastLookedUpContainedValue
-            : delegateMap.get(key);
+               ? lastLookedUpContainedValue
+               : delegateMap.get(key);
     }
 
     @Override
