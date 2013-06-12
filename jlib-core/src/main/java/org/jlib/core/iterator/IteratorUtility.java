@@ -85,14 +85,10 @@ public final class IteratorUtility {
     public static int getItemsCount(final Iterable<?> items) {
         int itemsCount = 0;
 
-        // @formatter:off
-        for (@SuppressWarnings("unused")
-        final Object item : items)
+        for (@SuppressWarnings("unused") final Object item : items)
             itemsCount++;
 
         return itemsCount;
-
-        // @formatter:on
     }
 
     /**
@@ -107,12 +103,9 @@ public final class IteratorUtility {
     public static int getItemsCount(final Iterable<?>... iterables) {
         int itemsCount = 0;
 
-        // @formatter:off
         for (final Iterable<?> iterable : iterables)
             itemsCount += getItemsCount(iterable);
 
         return itemsCount;
-
-        // @formatter:on
     }
 }
