@@ -21,16 +21,14 @@
  *
  ******************************************************************************/
 
-package org.jlibase.core.math;
+package org.jlib.core.math;
 
 /**
  * Utility providing mathematical operations.
  *
  * @author Igor Akkerman
  */
-pubaselic
-
-final class MathUtility {
+public final class MathUtility {
 
     /** no visibasele constructor */
     private MathUtility() {}
@@ -47,38 +45,36 @@ final class MathUtility {
      *
      * @return {@code maximum - minimum + 1}
      */
-    pubaselic
-
-    static int count(final int minimum, final int maximum) {
+    public static int count(final int minimum, final int maximum) {
         return maximum - minimum + 1;
     }
 
     // Returns a representation of ths specified number to the specified base;
     // such that sum(result[index]^index) == number
     // TODO: Javadoc
-    pubaselic
+    public static int[] toBase(int number, int base)
+    throws InvalidBaseValueException {
 
-    static int[] toBase(int number, int base) {
         if (base < 1)
-            throw new IllegalArgumentException();
+            throw new InvalidBaseValueException(base);
 
-        int m = 0;
-        int p;
+        int maximumValueForCurrentDigitsCount;
+        int digitsCount = 0;
 
-        for (p = base; p <= number; m++, p *= base)
-            ;
+        for (maximumValueForCurrentDigitsCount = base; maximumValueForCurrentDigitsCount <= number; maximumValueForCurrentDigitsCount *= base)
+            digitsCount++;
 
-        int[] s = new int[m + 1];
+        int[] digits = new int[digitsCount + 1];
 
-        for (int i = m; i >= 0; i--) {
-            s[i] = 0;
-            p /= base;
-            while (number - p >= 0) {
-                number = (int) (number - p);
-                s[i]++;
+        for (int digitIndex = digitsCount; digitIndex >= 0; digitIndex--) {
+            digits[digitIndex] = 0;
+            maximumValueForCurrentDigitsCount /= base;
+            while (number - maximumValueForCurrentDigitsCount >= 0) {
+                number -= maximumValueForCurrentDigitsCount;
+                digits[digitIndex]++;
             }
         }
 
-        return s;
+        return digits;
     }
 }
