@@ -41,7 +41,7 @@ extends Exception {
     /**
      * Creates a new {@link JlibException}.
      */
-    public JlibException() {
+    protected JlibException() {
         super();
     }
 
@@ -54,7 +54,7 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public JlibException(final String messagePattern, final Object... messageArguments) {
+    protected JlibException(final String messagePattern, final Object... messageArguments) {
         this(messagePattern, null, messageArguments);
     }
 
@@ -64,7 +64,7 @@ extends Exception {
      * @param cause
      *        Throwable that caused this {@link JlibException}
      */
-    public JlibException(final Throwable cause) {
+    protected JlibException(final Throwable cause) {
         super(cause);
     }
 
@@ -80,7 +80,7 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message States
      */
-    public JlibException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
+    protected JlibException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
         super(createMessage(messagePattern, messageArguments), cause);
     }
 
