@@ -23,7 +23,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.ObjectUtility;
+import org.jlib.core.nullable.NullableUtility;
 
 /**
  * Utility providing operations on {@link Traverser} and {@link Traversible} instances.
@@ -38,8 +38,8 @@ public final class TraverserUtility {
     /**
      * Verifies whether the {@link Traverser} instances created by the {@link Traversible#createTraverser()} methods of
      * the two specified {@link Traversible} instances traverse the same number of Items in the same order and all
-     * traversed Items are equal. Two Items {@code item1} and {@code item2} are called equal if {@code
-     * item1.equals(item2)}.
+     * traversed Items are equal or all traversed {@code Item}s are {@code null}. Two Items {@code item1} and
+     * {@code item2} are called equal if {@code item1.equals(item2)}.
      *
      * @param <Item>
      *        type of the items traversed by {@code traversible1} and {@code traversible2}
@@ -52,7 +52,7 @@ public final class TraverserUtility {
      *
      * @return {@code true} if {@code traverser1} and {@code traverser2} provide equal Items; {@code false} otherwise
      */
-    public static <Item> boolean provideEqualItems(final Traversible<Item> traversible1, final Traversible<Item> traversible2) {
+    public static <Item> boolean provideEqualOrNullItems(final Traversible<Item> traversible1, final Traversible<Item> traversible2) {
         final Traverser<?> traverser1 = traversible1.createTraverser();
         final Traverser<?> traverser2 = traversible2.createTraverser();
 
@@ -65,7 +65,7 @@ public final class TraverserUtility {
             if (! nextItemAccessible)
                 return true;
 
-            if (! ObjectUtility.equalOrNull(traverser1.getNextItem(), traverser2.getNextItem()))
+            if (! NullableUtility.equalOrNull(traverser1.getNextItem(), traverser2.getNextItem()))
                 return false;
         }
         while (true);
