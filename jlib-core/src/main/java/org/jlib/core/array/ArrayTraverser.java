@@ -23,12 +23,12 @@
 
 package org.jlib.core.array;
 
+import java.util.Arrays;
+
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
-
-import java.util.Arrays;
 
 /**
  * {@link Traverser} over the items of an array.
@@ -89,10 +89,10 @@ implements TwoWayTraverser<Item> {
 
     @Override
     public Item getNextItem() {
-        if (!isNextItemAccessible())
+        if (! isNextItemAccessible())
             throw new NoNextItemException(traversible, "{1}: {2}", Arrays.toString(array));
 
-        return array[currentIndex ++];
+        return array[currentIndex++];
     }
 
     @Override
@@ -103,7 +103,7 @@ implements TwoWayTraverser<Item> {
     @Override
     public Item getPreviousItem()
     throws NoPreviousItemException {
-        if (!isPreviousItemAccessible())
+        if (! isPreviousItemAccessible())
             throw new NoPreviousItemException(traversible, "{1}: {2}", Arrays.toString(array));
 
         return array[-- currentIndex];

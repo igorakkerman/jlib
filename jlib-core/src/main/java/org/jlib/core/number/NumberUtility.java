@@ -32,8 +32,7 @@ package org.jlib.core.number;
 public final class NumberUtility {
 
     /** hexadecimal digit characters */
-    public static final char[] HEX_DIGIT_CHARACTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B',
-                                                       'C', 'D', 'E', 'F' };
+    public static final char[] HEX_DIGIT_CHARACTERS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /** no visible constructor */
     private NumberUtility() {}
@@ -77,7 +76,7 @@ public final class NumberUtility {
     public static String toBinaryString(final byte bite) {
         final StringBuilder bitStringBuilder = new StringBuilder(8);
 
-        for (int digitIndex = 7; digitIndex >= 0; digitIndex --)
+        for (int digitIndex = 7; digitIndex >= 0; digitIndex--)
             bitStringBuilder.append(bite >> digitIndex & 1);
 
         return bitStringBuilder.toString();
@@ -96,7 +95,7 @@ public final class NumberUtility {
     public static String toBinaryString(final int value) {
         final StringBuilder bitStringBuilder = new StringBuilder(32);
 
-        for (int digitIndex = 31; digitIndex >= 0; digitIndex --)
+        for (int digitIndex = 31; digitIndex >= 0; digitIndex--)
             bitStringBuilder.append(value >> digitIndex & 1);
 
         return bitStringBuilder.toString();

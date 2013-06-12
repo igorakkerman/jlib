@@ -23,11 +23,11 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.traverser.TwoWayTraverser;
-import org.jlib.core.traverser.TwoWayTraversible;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Utility for arrays.
@@ -104,8 +104,8 @@ public final class ArrayUtility {
 
         for (final Object item : items)
             itemsCount += item.getClass().isArray()
-                ? getFlattenedItemsCount((Object[]) item)
-                : 1;
+                          ? getFlattenedItemsCount((Object[]) item)
+                          : 1;
 
         return itemsCount;
     }

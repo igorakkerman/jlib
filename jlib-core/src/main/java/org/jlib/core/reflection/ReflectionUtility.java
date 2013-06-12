@@ -1,24 +1,24 @@
 /*******************************************************************************
- * 
+ *
  *    jlib - Open Source Java Library
- * 
+ *
  *    www.jlib.org
- * 
- * 
+ *
+ *
  *    Copyright 2012 Igor Akkerman
- * 
+ *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
- * 
+ *
  *        http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * 
+ *
  ******************************************************************************/
 
 /*
@@ -52,7 +52,7 @@ import org.jlib.core.system.SystemUtility;
  * information about the original Throwable that caused it so if the actual
  * reason is of interest, it still can be retrieved.
  * </p>
- * 
+ *
  * @author Igor Akkerman
  */
 public final class ReflectionUtility {
@@ -69,15 +69,15 @@ public final class ReflectionUtility {
      * it is wrapped into a {@code ClassInstantiationException} and thrown by
      * this method.
      * </p>
-     * 
+     *
      * @param <Obj>
      *        type of the object to create
-     * 
+     *
      * @param clazz
      *        Class to instantiate
-     * 
+     *
      * @return a new instance of {@code clazz}
-     * 
+     *
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails
      */
@@ -100,7 +100,7 @@ public final class ReflectionUtility {
      * Throwable of any kind, it is wrapped into a
      * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
-     * 
+     *
      * @param <Obj>
      *        type of the object to create
      * @param object
@@ -124,7 +124,7 @@ public final class ReflectionUtility {
      * Throwable of any kind, it is wrapped into a
      * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
-     * 
+     *
      * @param <Obj>
      *        type of the object to create
      * @param className
@@ -151,7 +151,7 @@ public final class ReflectionUtility {
     /**
      * Creates a new instance of the class defined in the specified system
      * property.
-     * 
+     *
      * @param <Obj>
      *        type of the object to create
      * @param propertyName

@@ -23,9 +23,9 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.iterator.AbstractIterator;
-
 import java.util.Iterator;
+
+import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * {@link Iterator} over the items of an array.
@@ -82,6 +82,6 @@ extends AbstractIterator<Item> {
     // @see java.util.Iterator#next()
     @Override
     public Item next() {
-        return array[currentIndex ++];
+        return array[currentIndex++];
     }
 }

@@ -23,9 +23,9 @@
 
 package org.jlib.core;
 
-import org.jlib.core.array.ArrayUtility;
-
 import java.text.MessageFormat;
+
+import org.jlib.core.array.ArrayUtility;
 
 /**
  * {@link IllegalArgumentException} using a formatted message.
@@ -80,8 +80,7 @@ extends IllegalArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public IllegalJlibArgumentException(final String messagePattern, final Throwable cause,
-                                        final Object... messageArguments) {
+    public IllegalJlibArgumentException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messagePattern, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

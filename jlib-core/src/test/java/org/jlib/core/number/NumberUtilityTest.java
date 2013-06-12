@@ -26,12 +26,11 @@ package org.jlib.core.number;
 import static org.jlib.core.number.NumberUtility.isEven;
 import static org.jlib.core.number.NumberUtility.isOdd;
 import static org.jlib.core.number.NumberUtility.parseHexDigit;
-
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 public class NumberUtilityTest {
 
@@ -49,7 +48,6 @@ public class NumberUtilityTest {
     public void testParseHexDigit2() {
         assertEquals(2, parseHexDigit('2'));
     }
-
 
     @Test
     public void testParseHexDigit3() {
@@ -183,12 +181,12 @@ public class NumberUtilityTest {
 
     @Test
     public final void testIsEvenMinus1() {
-        assertFalse(isEven(-1));
+        assertFalse(isEven(- 1));
     }
 
     @Test
     public final void testIsEvenMinus2() {
-        assertTrue(isEven(-2));
+        assertTrue(isEven(- 2));
     }
 
     @Test
@@ -208,11 +206,11 @@ public class NumberUtilityTest {
 
     @Test
     public final void testIsOddMinus1() {
-        assertTrue(isOdd(-1));
+        assertTrue(isOdd(- 1));
     }
 
     @Test
     public final void testIsOddMinus2() {
-        assertFalse(isOdd(-2));
+        assertFalse(isOdd(- 2));
     }
 }
