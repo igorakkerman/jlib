@@ -20,7 +20,7 @@
  *    limitations under the License.
  *
  ******************************************************************************/
-package org.jlib.core.tools;
+package org.jlib.core.geometry;
 
 /**
  * Operation depending on the orientation of an item, whether horizontal or vertical.

@@ -21,7 +21,7 @@
  *
  ******************************************************************************/
 
-package org.jlib.core.tools;
+package org.jlib.core.geometry;
 
 /**
  * Horizontal or vertical orientation.
