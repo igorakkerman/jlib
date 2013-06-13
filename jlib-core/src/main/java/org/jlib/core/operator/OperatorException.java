@@ -23,7 +23,7 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.JlibException;
+import org.jlib.core.exception.JlibException;
 
 /**
  * {@link JlibException} thrown during the operation of an operator.

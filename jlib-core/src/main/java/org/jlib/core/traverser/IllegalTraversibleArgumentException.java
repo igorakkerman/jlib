@@ -23,7 +23,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.IllegalJlibArgumentException;
 
 /**
  * {@link IllegalArgumentException} referencing a {@link Traversible}.

@@ -25,7 +25,7 @@ package org.jlib.core.nullable;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.ValueNotAccessibleException;
+import org.jlib.core.exception.ValueNotAccessibleException;
 
 /**
  * Utility class providing static methods for {@link Nullable} {@link Object} operations.

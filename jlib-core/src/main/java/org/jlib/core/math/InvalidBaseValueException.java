@@ -1,6 +1,6 @@
 package org.jlib.core.math;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.IllegalJlibArgumentException;
 
 /**
  * {@link IllegalJlibArgumentException} thrown when an invalid value has been specified

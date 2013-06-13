@@ -23,7 +23,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.IllegalJlibStateException;
+import org.jlib.core.exception.IllegalJlibStateException;
 
 /**
  * {@link IllegalJlibStateException} thrown when an illegal state has been

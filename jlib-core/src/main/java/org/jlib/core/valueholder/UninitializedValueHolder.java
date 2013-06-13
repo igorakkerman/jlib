@@ -23,7 +23,7 @@
 
 package org.jlib.core.valueholder;
 
-import org.jlib.core.ValueNotAccessibleException;
+import org.jlib.core.exception.ValueNotAccessibleException;
 
 /**
  * Skeletal implementation of a not initialized {@link ModifiableValueHolder}.

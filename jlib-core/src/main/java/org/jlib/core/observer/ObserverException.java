@@ -23,8 +23,8 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.IllegalJlibStateException;
-import org.jlib.core.JlibException;
+import org.jlib.core.exception.IllegalJlibStateException;
+import org.jlib.core.exception.JlibException;
 
 /**
  * {@link JlibException} thrown during the operation of an observer.
