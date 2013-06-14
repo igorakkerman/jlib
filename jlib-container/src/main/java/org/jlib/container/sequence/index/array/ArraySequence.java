@@ -1,20 +1,25 @@
 /*
- * jlib - The Free Java Library
- * 
- * http://www.jlib.org
- * 
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
- * 
- * COMMON PUBLIC LICENSE VERSION 1.0
- * 
- * http://www.opensource.org/licenses/cpl1.0.php
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.sequence.index.array;
-
-import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
@@ -27,13 +32,16 @@ import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
 import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
 
+import java.util.Collection;
+
 // @formatter:off
+
 /**
  * {@link IndexSequence} baked by an array.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 // @formatter:on
@@ -47,19 +55,19 @@ extends AbstractInitializeableIndexSequence<Item> {
      * {@link LinearIndexStorageCapacityStrategy} used to adjust the
      * {@link LinearIndexStorage} capacity
      */
-    private LinearIndexStorageCapacityStrategy capacityStrategy =
-        new MinimalLinearIndexStorageCapacityStrategy<>(storage);
+    private LinearIndexStorageCapacityStrategy capacityStrategy = new MinimalLinearIndexStorageCapacityStrategy<>(
+                                                                                                                 storage);
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified
      * first and last indices.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the initial first index
-     * 
+     *
      * @param lastIndex
      *        integer specifying the initial last index
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
      */
@@ -71,10 +79,10 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0} and
      * the specified number of Items.
-     * 
+     *
      * @param itemsCount
      *        integer specifying the initial number of Items
-     * 
+     *
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
@@ -86,7 +94,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
      * containing the specified Items.
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -98,10 +106,10 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with the specified first index
      * containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -113,7 +121,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
      * containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -124,10 +132,10 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with the specified first index
      * containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -138,7 +146,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
      * containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -149,10 +157,10 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Creates a new {@link ArraySequence} with the specified first index
      * containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -178,11 +186,11 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Returns the {@link LinearIndexStorage} index in the specified index in
      * this {@link ArraySequence}.
-     * 
+     *
      * @param index
      *        integer specifying the index of the Item in the
      *        {@link ArraySequence}
-     * 
+     *
      * @return integer specifying the corresponding index in the delegate
      *         {@link LinearIndexStorage}
      */
@@ -193,7 +201,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Returns the {@link LinearIndexStorageCapacityStrategy} used by this
      * {@link ArraySequence}.
-     * 
+     *
      * @return used {@link LinearIndexStorageCapacityStrategy}
      */
     protected LinearIndexStorageCapacityStrategy getCapacityStrategy() {
@@ -203,7 +211,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Registers the {@link LinearIndexStorageCapacityStrategy} used by this
      * {@link ArraySequence}.
-     * 
+     *
      * @param capacityStrategy
      *        used {@link LinearIndexStorageCapacityStrategy}
      */
@@ -214,7 +222,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     /**
      * Returns the {@link LinearIndexStorage} used by this {@link ArraySequence}
      * .
-     * 
+     *
      * @return used {@link LinearIndexStorage}
      */
     protected LinearIndexStorage<Item> getStorage() {

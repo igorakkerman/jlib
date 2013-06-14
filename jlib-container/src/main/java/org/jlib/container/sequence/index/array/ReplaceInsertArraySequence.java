@@ -1,6 +1,25 @@
-package org.jlib.container.sequence.index.array;
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
 
-import java.util.Collection;
+package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
@@ -19,15 +38,17 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 
+import java.util.Collection;
+
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class ReplaceInsertArraySequence<Item>
@@ -37,13 +58,13 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new uninitialized {@link ReplaceInsertArraySequence} with the
      * specified first and last indices.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the initial first index
-     * 
+     *
      * @param lastIndex
      *        integer specifying the initial last index
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
      */
@@ -55,10 +76,10 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with a first index of
      * {@code 0} and the specified number of Items.
-     * 
+     *
      * @param itemsCount
      *        integer specifying the initial number of Items
-     * 
+     *
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
@@ -70,7 +91,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with a first index of
      * {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -82,10 +103,10 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with the specified first
      * index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -97,7 +118,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with a first index of
      * {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -108,10 +129,10 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with the specified first
      * index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -122,7 +143,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with a first index of
      * {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -133,10 +154,10 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Creates a new {@link ReplaceInsertArraySequence} with the specified first
      * index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -193,16 +214,16 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Inserts the specified Items at the specified index of this
      * {@link InsertIndexSequence}.
-     * 
+     *
      * @param index
      *        integer specifying the index
-     * 
+     *
      * @param items
      *        {@link Collection} holding the Items to insert
-     * 
+     *
      * @param insertedItemsCount
      *        integer specifying the number of inserted Items
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
@@ -214,7 +235,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
         getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
 
         for (final Item item : items)
-            replace(storageItemIndex ++, item);
+            replace(storageItemIndex++, item);
 
         setLastIndex(getLastIndex() + insertedItemsCount);
         getStorage().incrementLastItemIndex(insertedItemsCount);
@@ -223,26 +244,25 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     /**
      * Inserts the specified Items at the specified index of this
      * {@link InsertIndexSequence}.
-     * 
+     *
      * @param index
      *        integer specifying the index
-     * 
+     *
      * @param items
      *        {@link Collection} holding the Items to insert
-     * 
+     *
      * @param insertedItemsCount
      *        integer specifying the number of inserted Items
-     * 
+     *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     @SafeVarargs
-    private final void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount,
-                              final ValueObserver<Item>... observers) {
+    private final void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount, final ValueObserver<Item>... observers) {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         int storageItemIndex = getStorageItemIndex(index);
@@ -250,7 +270,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
         getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
 
         for (final Item item : items) {
-            final int currentStorageItemIndex = storageItemIndex ++;
+            final int currentStorageItemIndex = storageItemIndex++;
             ObserverUtility.operate(new HandledOperator() {
 
                 @Override
@@ -259,7 +279,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
                 }
             },
 
-            item, observers);
+                                    item, observers);
         }
 
         setLastIndex(getLastIndex() + insertedItemsCount);

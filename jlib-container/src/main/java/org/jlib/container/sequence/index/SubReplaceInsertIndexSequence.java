@@ -1,24 +1,45 @@
-package org.jlib.container.sequence.index;
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
 
-import java.util.Collection;
+package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.IllegalSequenceArgumentException;
 import org.jlib.container.sequence.IllegalSequenceStateException;
 import org.jlib.core.observer.ValueObserver;
 
+import java.util.Collection;
+
 /**
  * {@link SubReplaceIndexSequence} view of the Items stored in another
  * {@link ReplaceIndexSequence} in the specified index range. The Items in this
  * {@link SubReplaceInsertIndexSequence} will have the same index as they had in
  * the base {@link ReplaceIndexSequence}.
- * 
+ *
  * @param <Item>
  *        type of the items held in the {@link SubReplaceInsertIndexSequence}
- * 
+ *
  * @param <BaseSequence>
  *        type of the base {@link ObservedReplaceInsertIndexSequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedReplaceInsertIndexSequence<Item>>
@@ -27,20 +48,20 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceInsertIndexSequence}.
-     * 
+     *
      * @param baseSequence
      *        base {@link ReplaceInsertIndexSequence}
-     * 
+     *
      * @param firstIndex
      *        integer specifying the index of the first Item
-     * 
+     *
      * @param lastIndex
      *        integer specifying the index of the last Item
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */

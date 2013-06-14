@@ -1,11 +1,32 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index.array.storage;
 
 /**
  * Storage of <em>n</em> items indexed from <em>0</em> to <em>n-1</em>.
- * 
+ *
  * @param <Item>
  *        type of the Items stored in the {@link LinearIndexStorage}
- * 
+ *
  * @author Igor Akkerman
  */
 public interface LinearIndexStorage<Item>
@@ -19,36 +40,35 @@ extends Cloneable {
      * <em>after</em> the operation. The Items stored at the former indices are
      * not overwritten and can be reused in each specified {@link ItemsCopy}
      * operation.
-     * 
+     *
      * @param capacity
      *        integer specifying the capacity
-     * 
+     *
      * @param firstItemIndex
      *        integer specifying the index of the first Item
-     * 
+     *
      * @param lastItemIndex
      *        integer specifying the index of the last Item
-     * 
+     *
      * @param copyDescriptors
      *        comma separated sequence of {@link ItemsCopy} descriptors
-     * 
+     *
      * @throws LinearIndexStorageException
      *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex || 
+     *                   lastItemIndex < firstItemIndex ||
      *                   lastItemIndex > capacity - 1 ||
      *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
-    public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                           ItemsCopy... copyDescriptors);
+    public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex, ItemsCopy... copyDescriptors);
 
     /**
      * Returns the Item stored at the specified index.
-     * 
+     *
      * @param index
      *        integer specifying the index of the Item
-     * 
+     *
      * @return Item stored at {@code index}
-     * 
+     *
      * @throws IndexOutOfBoundsException
      *         if the index is out of the valid bounds of this
      *         {@link LinearIndexStorage}
@@ -58,13 +78,13 @@ extends Cloneable {
 
     /**
      * Replaces the Item stored at the specified index by the specified Item.
-     * 
+     *
      * @param index
      *        integer specifying the index of the Item
-     * 
+     *
      * @param newItem
      *        new Item replacing the former
-     * 
+     *
      * @throws IndexOutOfBoundsException
      *         if the index is out of the valid bounds of this
      *         {@link LinearIndexStorage}
@@ -79,10 +99,10 @@ extends Cloneable {
      * the Item indices <em>after</em> the operation. The Items stored at the
      * former indices are overwritten by each specified {@link ItemsCopy}
      * operation. Shifted Items are overwritten by {@code null}.
-     * 
+     *
      * @param copyDescriptors
      *        comma separated sequence of {@link ItemsCopy} descriptors
-     * 
+     *
      * @throws IndexOutOfBoundsException
      *         if a {@link ItemsCopy} descriptor specifies a copy operation on
      *         an index outside the valid bounds
@@ -92,14 +112,14 @@ extends Cloneable {
 
     /**
      * Returns the index of the first Item.
-     * 
+     *
      * @return integer specifying the index of the first Item
      */
     public int getFirstItemIndex();
 
     /**
      * Registers the index of the first Item.
-     * 
+     *
      * @param firstItemIndex
      *        integer specifying the index of the first Item
      */
@@ -107,7 +127,7 @@ extends Cloneable {
 
     /**
      * Increments the index of the first Item by the specified value.
-     * 
+     *
      * @param increment
      *        positive or negative integer specifying the increment
      */
@@ -115,7 +135,7 @@ extends Cloneable {
 
     /**
      * Increments the index of the last Item by the specified value.
-     * 
+     *
      * @param increment
      *        positive or negative integer specifying the increment
      */
@@ -123,14 +143,14 @@ extends Cloneable {
 
     /**
      * Returns the index of the last Item.
-     * 
+     *
      * @return integer specifying the index of the last Item
      */
     public int getLastItemIndex();
 
     /**
      * Registers the index of the last Item.
-     * 
+     *
      * @param lastItemIndex
      *        integer specifying the index of the last Item
      */
@@ -138,14 +158,14 @@ extends Cloneable {
 
     /**
      * Returns the number of stored Items.
-     * 
+     *
      * @return integer spacifying the number of stored Items
      */
     public int getItemsCount();
 
     /**
      * Returns the capacity, that is, number of storable Items.
-     * 
+     *
      * @return integer specifying the capacity
      */
     public int getCapacity();
@@ -153,14 +173,14 @@ extends Cloneable {
     /**
      * Returns the tail capacity, that is, the number of storable Items behind
      * the last Item.
-     * 
+     *
      * @return integer specifying the tail capacity
      */
     public int getTailCapacity();
 
     /**
      * Creates a copy of this {@link LinearIndexStorage}.
-     * 
+     *
      * @return cloned {@link LinearIndexStorage}
      */
     public LinearIndexStorage<Item> clone();

@@ -1,15 +1,22 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation.bijection;
@@ -23,13 +30,13 @@ import org.jlib.container.binaryrelation.NoSuchRightValueException;
  * called left hand side values, the latter right hand side values. The value
  * comparisons for lookup, retrieval and addition on both sides are accomplished
  * using the {@code equals} and {@code hashCode} methods of the Objects.
- * 
+ *
  * @param <LeftValue>
  *        type of the values on the left hand side of the Bijection
- * 
+ *
  * @param <RightValue>
  *        type of the values on the right hand side of the Bijection
- * 
+ *
  * @author Igor Akkerman
  */
 public interface Bijection<LeftValue, RightValue>
@@ -38,12 +45,12 @@ extends BinaryRelation<LeftValue, RightValue> {
     /**
      * Returns the RightValue associated with the specified LeftValue by this
      * Bijection.
-     * 
+     *
      * @param leftValue
      *        LeftValue associated with the RightValue to return
-     * 
+     *
      * @return RightValue associated with {@code leftValue}
-     * 
+     *
      * @throws NoSuchLeftValueException
      *         if no RightValue is associated with {@code leftValue}
      */
@@ -53,12 +60,12 @@ extends BinaryRelation<LeftValue, RightValue> {
     /**
      * Returns the LeftValue associated with the specified RightValue by this
      * Bijection.
-     * 
+     *
      * @param rightValue
      *        RightValue associated with the LeftValue to return
-     * 
+     *
      * @return LeftValue associated with {@code rightValue}
-     * 
+     *
      * @throws NoSuchRightValueException
      *         if no LeftValue is associated with {@code rightValue}
      */

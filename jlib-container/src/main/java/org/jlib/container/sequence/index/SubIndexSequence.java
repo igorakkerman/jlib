@@ -1,3 +1,24 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
@@ -7,13 +28,13 @@ import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndex
  * {@link IndexSequence} in the specified index range. The Items in this
  * {@link SubIndexSequence} will have the same index as they had in the base
  * {@link IndexSequence}.
- * 
+ *
  * @param <Item>
  *        type of the items held in the {@link SubIndexSequence}
- * 
+ *
  * @param <BaseSequence>
  *        type of the base {@link IndexSequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class SubIndexSequence<Item, BaseSequence extends IndexSequence<Item>>
@@ -24,20 +45,20 @@ extends AbstractIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubIndexSequence}.
-     * 
+     *
      * @param baseSequence
      *        base {@link IndexSequence}
-     * 
+     *
      * @param firstIndex
      *        integer specifying the index of the first Item
-     * 
+     *
      * @param lastIndex
      *        integer specifying the index of the last Item
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
@@ -57,7 +78,7 @@ extends AbstractIndexSequence<Item> {
 
     /**
      * Returns the base BaseSequence of this {@link SubIndexSequence}.
-     * 
+     *
      * @return BaseSequence of this {@link SubIndexSequence}
      */
     protected BaseSequence getBaseSequence() {

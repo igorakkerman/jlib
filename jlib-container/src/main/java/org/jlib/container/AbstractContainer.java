@@ -1,18 +1,30 @@
 /*
- * jlib - The Free Java Library
- * 
- * http://www.jlib.org
- * 
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
- * 
- * COMMON PUBLIC LICENSE VERSION 1.0
- * 
- * http://www.opensource.org/licenses/cpl1.0.php
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container;
+
+import org.jlib.core.AbstractCloneable;
+import org.jlib.core.iterator.IteratorUtility;
+import org.jlib.core.traverser.TraverserUtility;
+import org.jlib.core.traverser.TraversibleIterator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,20 +32,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jlib.core.AbstractCloneable;
-import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.traverser.TraverserUtility;
-import org.jlib.core.traverser.TraversibleIterator;
-
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container
  * implementation needs only to extend this class and implement the
  * {@link Container#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Container}
- * 
+ *
  * @author Igor Akkerman
  */
 public abstract class AbstractContainer<Item>
@@ -64,7 +71,7 @@ implements Container<Item> {
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items) {
         for (final Item item : items)
-            if (!contains(item))
+            if (! contains(item))
                 return false;
         return true;
     }
@@ -77,16 +84,16 @@ implements Container<Item> {
     /**
      * Verifies whether this Container contains all of the Items returned by the
      * Traverser of the specified Iterable.
-     * 
+     *
      * @param items
      *        Iterable creating the Traverser returning the Items to verify
-     * 
+     *
      * @return {@code true} if this Container contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
     private boolean contains(final Iterable<? extends Item> items) {
         for (final Item item : items)
-            if (!contains(item))
+            if (! contains(item))
                 return false;
         return true;
     }
@@ -98,7 +105,7 @@ implements Container<Item> {
         final Item[] targetArray = (Item[]) new Object[itemsCount];
         int index = 0;
         for (final Item item : this)
-            targetArray[index ++] = item;
+            targetArray[index++] = item;
 
         return targetArray;
     }
@@ -116,13 +123,13 @@ implements Container<Item> {
     /**
      * Appends the Items of this {@link Container} to the specified {@link List}
      * .
-     * 
+     *
      * @param <Lizt>
      *        type of the used {@link List}
-     * 
+     *
      * @param list
      *        {@link List} to which the Items are added
-     * 
+     *
      * @return filled {@link List} {@code list}
      */
     private <Lizt extends List<Item>> Lizt appendContainedItemsToList(final Lizt list) {
@@ -134,7 +141,7 @@ implements Container<Item> {
 
     @Override
     public final boolean equals(/* @Nullable */final Object otherObject) {
-        if (otherObject == null || !getClass().equals(otherObject.getClass()))
+        if (otherObject == null || ! getClass().equals(otherObject.getClass()))
             return false;
 
         @SuppressWarnings("unchecked")
@@ -147,10 +154,10 @@ implements Container<Item> {
      * Verifies whether additional properties of this {@link Container} match
      * those of the specified {@link Container} providing a prerequisite for
      * equality.
-     * 
+     *
      * @param otherContainer
      *        {@link Container} compared to this {@link Container}
-     * 
+     *
      * @return {@code true} if the additional properties are prerequisites for
      *         equality; {@code false} otherwise
      */

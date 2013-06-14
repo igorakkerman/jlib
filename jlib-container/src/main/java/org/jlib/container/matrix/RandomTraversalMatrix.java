@@ -1,10 +1,31 @@
-package org.jlib.container.matrix;
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
 
-import java.util.Iterator;
-import java.util.RandomAccess;
+package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.Traverser;
+
+import java.util.Iterator;
+import java.util.RandomAccess;
 
 /**
  * {@link Matrix} traversable in various orders. A {@link Sequence} of all
@@ -15,12 +36,12 @@ import org.jlib.core.traverser.Traverser;
  * {@link #setDefaultTraversalOrder(MatrixTraversalOrder)}. A
  * {@link RandomTraversalMatrix} is not necessarily a {@link RandomAccess}
  * {@link Matrix}.
- * 
+ *
  * @param <Entry>
  *        type of the entries of the Matrix
- * 
+ *
  * @see MatrixTraversalOrder
- * 
+ *
  * @author Igor Akkerman
  */
 public interface RandomTraversalMatrix<Entry>
@@ -29,7 +50,7 @@ extends Matrix<Entry> {
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
      * provided as a {@link Sequence}.
-     * 
+     *
      * @return IndexSequence of the MatrixRows of this ArrayMatrix
      */
     public Sequence<? extends Sequence<Entry>> getColumns();
@@ -37,7 +58,7 @@ extends Matrix<Entry> {
     /**
      * Returns the {@link Sequence} of the rows of this {@link Matrix}, each
      * provided as a {@link Sequence}.
-     * 
+     *
      * @return IndexSequence of the MatrixRows of this ArrayMatrix
      */
     public Sequence<? extends Sequence<Entry>> getRows();
@@ -51,15 +72,15 @@ extends Matrix<Entry> {
      * <p>
      * Example:
      * </p>
-     * 
+     *
      * <pre>
      * for (Integer matrixEntry : matrix.iteratedInOrder(VERTICAL)
      *     System.out.print(matrixEntry + " ");
      * </pre>
-     * 
+     *
      * @param iterationOrder
      *        {@link MatrixTraversalOrder} used by the returned {@link Iterable}
-     * 
+     *
      * @return {@link MatrixTraversible} providing a {@link MatrixTraverser}
      *         traversing the Items of this {@link Matrix} using the specified
      *         {@link MatrixTraversalOrder}.
@@ -69,7 +90,7 @@ extends Matrix<Entry> {
     /**
      * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
      * returned by {@link #createTraverser()}.
-     * 
+     *
      * @param defaultIterationOrder
      *        {@link MatrixTraversalOrder} used by default {@link Traverser
      *        Traversers}

@@ -21,9 +21,9 @@
 
 package org.jlib.core.traverser;
 
-import java.util.Iterator;
-
 import org.jlib.core.iterator.AbstractIterator;
+
+import java.util.Iterator;
 
 /**
  * {@link Iterator} over the Items of a {@link Traversible}.

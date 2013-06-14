@@ -1,38 +1,57 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.IllegalJlibArgumentException;
-
 import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.core.IllegalJlibArgumentException;
 
 /**
  * {@link IllegalSequenceStateException} thrown when an illegal
  * {@link LinearIndexStorage} capacity is specified.
- * 
+ *
  * @author Igor Akkerman
  */
 public class LinearIndexStorageException
 extends IllegalJlibArgumentException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = -1514836335986845986L;
+    private static final long serialVersionUID = - 1514836335986845986L;
 
     /** referenced {@link LinearIndexStorage} */
     private final LinearIndexStorage<?> linearIndexStorage;
 
     /**
      * Creates a new {@link LinearIndexStorageException}.
-     * 
+     *
      * @param linearIndexStorage
      *        referenced {@link LinearIndexStorage}
-     * 
+     *
      * @param messagePattern
      *        {@link String} specifying the error message pattern
-     * 
+     *
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messagePattern,
-                                       final Object... messageArguments) {
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messagePattern, final Object... messageArguments) {
         super(messagePattern + "; LinearIndexStorage: '{0}'", linearIndexStorage, messageArguments);
 
         this.linearIndexStorage = linearIndexStorage;
@@ -40,7 +59,7 @@ extends IllegalJlibArgumentException {
 
     /**
      * Returns the referenced {@link LinearIndexStorage}.
-     * 
+     *
      * @return referenced {@link LinearIndexStorage}
      */
     public LinearIndexStorage<?> getLinearIndexStorage() {

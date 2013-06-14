@@ -21,9 +21,9 @@
 
 package org.jlib.core.array;
 
-import java.util.Iterator;
-
 import org.jlib.core.iterator.AbstractIterator;
+
+import java.util.Iterator;
 
 /**
  * {@link Iterator} over the items of an array.

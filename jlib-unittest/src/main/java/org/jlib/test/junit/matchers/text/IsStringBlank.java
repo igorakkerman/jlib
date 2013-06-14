@@ -22,7 +22,6 @@
 package org.jlib.test.junit.matchers.text;
 
 import org.apache.commons.lang3.StringUtils;
-
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
 import org.hamcrest.TypeSafeMatcher;

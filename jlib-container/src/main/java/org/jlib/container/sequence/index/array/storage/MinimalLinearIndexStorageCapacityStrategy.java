@@ -1,3 +1,24 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index.array.storage;
 
 import static org.jlib.core.math.MathUtility.count;
@@ -5,10 +26,10 @@ import static org.jlib.core.math.MathUtility.count;
 /**
  * {@link LinearIndexStorageCapacityStrategy} providing just as much capacity as
  * requested.
- * 
+ *
  * @param <Item>
  *        type of the {@link LinearIndexStorage} Items
- * 
+ *
  * @author Igor Akkerman
  */
 public class MinimalLinearIndexStorageCapacityStrategy<Item>
@@ -19,7 +40,7 @@ implements LinearIndexStorageCapacityStrategy {
 
     /**
      * Creates a new {@link MinimalLinearIndexStorageCapacityStrategy}.
-     * 
+     *
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
@@ -55,8 +76,7 @@ implements LinearIndexStorageCapacityStrategy {
         if (tailCapacity <= storage.getTailCapacity())
             return;
 
-        storage.initialize(storage.getLastItemIndex() + 1 + tailCapacity,
-                           storage.getFirstItemIndex(),
+        storage.initialize(storage.getLastItemIndex() + 1 + tailCapacity, storage.getFirstItemIndex(),
                            storage.getLastItemIndex(),
                            new ItemsCopy(storage.getFirstItemIndex(), storage.getLastItemIndex(),
                                          storage.getFirstItemIndex()));
@@ -81,8 +101,8 @@ implements LinearIndexStorageCapacityStrategy {
         if (middleCapacity == 0)
             return;
 
-        final ItemsCopy rightCopyDescriptor =
-            new ItemsCopy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity);
+        final ItemsCopy rightCopyDescriptor = new ItemsCopy(splitIndex, storage.getLastItemIndex(),
+                                                            splitIndex + middleCapacity);
 
         final int newLastItemIndex = storage.getLastItemIndex() + middleCapacity;
 
@@ -104,13 +124,13 @@ implements LinearIndexStorageCapacityStrategy {
 
     /**
      * Asserts that the specified partial capacity is valid.
-     * 
+     *
      * @param partialCapacityName
      *        String specifying the name of the partial capacity
-     * 
+     *
      * @param partialCapacity
      *        integer specifying the partial capacity
-     * 
+     *
      * @throws LinearIndexStorageException
      *         if {@code partialCapacity < 0}
      */
@@ -119,5 +139,4 @@ implements LinearIndexStorageCapacityStrategy {
             throw new LinearIndexStorageException(storage, "{1} = {2} < 0; storage = '{0}'", partialCapacityName,
                                                   partialCapacity);
     }
-
 }

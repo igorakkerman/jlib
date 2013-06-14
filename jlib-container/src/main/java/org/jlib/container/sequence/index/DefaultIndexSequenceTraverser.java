@@ -1,3 +1,24 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AbstractSequenceTraverser;
@@ -11,13 +32,13 @@ import org.jlib.core.valueholder.UninitializedValueHolder;
 
 /**
  * Default implementation of an {@link IndexSequenceTraverser}.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @param <Sequenze>
  *        type of the traversed {@link IndexSequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class DefaultIndexSequenceTraverser<Item, Sequenze extends IndexSequence<Item>>
@@ -33,7 +54,7 @@ implements IndexSequenceTraverser<Item> {
     /**
      * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
      * specified {@link IndexSequence} beginning at its first index.
-     * 
+     *
      * @param sequence
      *        {@link IndexSequence} to traverse
      */
@@ -47,13 +68,13 @@ implements IndexSequenceTraverser<Item> {
      * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
      * specified {@link IndexSequence} beginning the traversal at the specified
      * index.
-     * 
+     *
      * @param sequence
      *        {@link IndexSequence} to traverse
-     * 
+     *
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code initialNextItemIndex < sequence.getFirstIndex() || initialNextItemIndex > sequence.getLastIndex()}
@@ -97,7 +118,7 @@ implements IndexSequenceTraverser<Item> {
         try {
             final Item sequenceItem = getSequenceItem(potentialNextItemIndex - 1);
 
-            potentialNextItemIndex --;  // allow decrementation only if no exception is thrown
+            potentialNextItemIndex--;  // allow decrementation only if no exception is thrown
 
             return sequenceItem;
         }
@@ -112,7 +133,7 @@ implements IndexSequenceTraverser<Item> {
         try {
             final Item sequenceItem = getSequenceItem(potentialNextItemIndex);
 
-            potentialNextItemIndex ++; // allow incrementation only if no exception is thrown
+            potentialNextItemIndex++; // allow incrementation only if no exception is thrown
 
             return sequenceItem;
         }
@@ -123,12 +144,12 @@ implements IndexSequenceTraverser<Item> {
 
     /**
      * Returns the Item stored at the specified index in the {@link Sequence}
-     * 
+     *
      * @param itemIndex
      *        integer specifying the index of the Item
-     * 
+     *
      * @return Item stored at {@code itemIndex}
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code itemIndex} is out of the index bounds
      */
@@ -155,7 +176,7 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public int getNextItemIndex() {
-        if (!isNextItemAccessible())
+        if (! isNextItemAccessible())
             throw new NoPreviousSequenceItemException(getSequence());
 
         return potentialNextItemIndex;
@@ -164,7 +185,7 @@ implements IndexSequenceTraverser<Item> {
     /**
      * Returns the index of the potential next Item, even if the index is higher
      * than {@link IndexSequence#getLastIndex()}.
-     * 
+     *
      * @return integer specifying the index of the potential next Item
      */
     protected int getPotentialNextItemIndex() {
@@ -174,9 +195,9 @@ implements IndexSequenceTraverser<Item> {
     /**
      * Returns the index of the last Item accessed by this
      * {@link DefaultIndexSequenceTraverser}.
-     * 
+     *
      * @return integer specifying the index of the last accessed Item
-     * 
+     *
      * @throws ValueNotAccessibleException
      *         if no Item has been accessed
      */
@@ -188,7 +209,7 @@ implements IndexSequenceTraverser<Item> {
     /**
      * Registers the index of the last Item accessed by this
      * {@link DefaultIndexSequenceTraverser}.
-     * 
+     *
      * @param lastAccessedItemIndex
      *        integer specifying the index
      */

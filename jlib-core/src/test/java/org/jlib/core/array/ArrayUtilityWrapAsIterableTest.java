@@ -21,10 +21,10 @@
 
 package org.jlib.core.array;
 
+import org.junit.Test;
+
 import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 import static org.jlib.core.array.ArrayUtility.iterable;
-
-import org.junit.Test;
 
 public class ArrayUtilityWrapAsIterableTest
 extends ArrayUtilityTest {

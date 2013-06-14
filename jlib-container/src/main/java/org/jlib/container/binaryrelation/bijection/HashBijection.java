@@ -1,25 +1,25 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation.bijection;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
@@ -30,16 +30,23 @@ import org.jlib.container.binaryrelation.NoSuchLeftValueException;
 import org.jlib.container.binaryrelation.NoSuchRightValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * {@link Bijection} implemented using hashing for left and right hand side
  * items.
- * 
+ *
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link Bijection}
- * 
+ *
  * @param <RightValue>
  *        type of the values on the right hand side of the {@link Bijection}
- * 
+ *
  * @author Igor Akkerman
  */
 public class HashBijection<LeftValue, RightValue>
@@ -62,22 +69,22 @@ implements Bijection<LeftValue, RightValue> {
     /**
      * Creates a new HashBijection containing the Associations contained by the
      * specified jlib Container.
-     * 
+     *
      * @param associations
      *        Container of the Associations to add
-     * 
+     *
      * @throws LeftValueAlreadyAssociatedException
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
@@ -93,22 +100,22 @@ implements Bijection<LeftValue, RightValue> {
     /**
      * Creates a new HashBijection containing the Associations contained by the
      * specified Collection.
-     * 
+     *
      * @param associations
      *        Collection of the Associations to add
-     * 
+     *
      * @throws LeftValueAlreadyAssociatedException
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
@@ -124,22 +131,22 @@ implements Bijection<LeftValue, RightValue> {
     /**
      * Creates a new HashBijection containing the Associations specified in a
      * comma separated sequence.
-     * 
+     *
      * @param associations
      *        Comma separated sequence of the Associations to add
-     * 
+     *
      * @throws LeftValueAlreadyAssociatedException
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Association} is
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
-     * 
+     *
      * @throws IllegalAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
@@ -156,7 +163,7 @@ implements Bijection<LeftValue, RightValue> {
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
-    RightValueAlreadyAssociatedException, IllegalAssociationException {
+           RightValueAlreadyAssociatedException, IllegalAssociationException {
         if (contains(leftValue, rightValue))
             throw new AssociationAlreadyContainedException(this, leftValue, rightValue);
 
@@ -176,19 +183,19 @@ implements Bijection<LeftValue, RightValue> {
      * Associates the specified LeftValue with the specified RightValue in this
      * {@link Bijection} without verifying if the specified {@link Association}
      * already exists.
-     * 
+     *
      * @param leftValue
      *        LeftValue of the {@link Association}
-     * 
+     *
      * @param rightValue
      *        RightValue of the {@link Association}
-     * 
+     *
      * @throws LeftValueAlreadyAssociatedException
      *         if {@code leftValue} is already associated to another RightValue
-     * 
+     *
      * @throws RightValueAlreadyAssociatedException
      *         if {@code rightValue} is already associated to another LeftValue
-     * 
+     *
      * @throws IllegalAssociationException
      *         if some property of the {@code associations} prevents it from
      *         being added
@@ -259,15 +266,15 @@ implements Bijection<LeftValue, RightValue> {
     @Override
     public final Set<RightValue> getRightSet(final LeftValue leftValue) {
         return hasLeft(leftValue)
-            ? Collections.singleton(getRightValue(leftValue))
-            : new HashSet<RightValue>();
+               ? Collections.singleton(getRightValue(leftValue))
+               : new HashSet<RightValue>();
     }
 
     @Override
     public final Set<LeftValue> getLeftSet(final RightValue rightValue) {
         return hasRight(rightValue)
-            ? Collections.singleton(getLeftValue(rightValue))
-            : new HashSet<LeftValue>();
+               ? Collections.singleton(getLeftValue(rightValue))
+               : new HashSet<LeftValue>();
     }
 
     @Override

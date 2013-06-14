@@ -1,34 +1,41 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation;
 
-import java.util.Collection;
-
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
+
+import java.util.Collection;
 
 /**
  * {@link AssociateBinaryRelation} implemented using hashing for left and right
  * hand side items.
- * 
+ *
  * @param <LeftValue>
  *        type of the items on the left hand side of the {@link BinaryRelation}
- * 
+ *
  * @param <RightValue>
  *        type of the items on the right hand side of the {@link BinaryRelation}
- * 
+ *
  * @author Igor Akkerman
  */
 public class HashAssociateBinaryRelation<LeftValue, RightValue>
@@ -45,10 +52,10 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Container}.
-     * 
+     *
      * @param associations
      *        Container of the Associations to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
@@ -61,10 +68,10 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Collection}.
-     * 
+     *
      * @param associations
      *        {@link Collection} of {@link Association} items to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
@@ -77,10 +84,10 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
      * {@link Association} items specified in a comma separated sequence.
-     * 
+     *
      * @param associations
      *        comma separated sequence of the {@link Association} items to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
@@ -144,7 +151,8 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException {}
+    throws IllegalAssociationException {
+    }
 
     @Override
     @SuppressWarnings("unchecked")

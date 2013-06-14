@@ -1,18 +1,28 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation;
+
+import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,20 +30,17 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
-
 /**
  * {@link BinaryRelation} implemented using hashing for left and right hand side
  * values.
- * 
+ *
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link BinaryRelation}
- * 
+ *
  * @param <RightValue>
  *        type of the values on the right hand side of the
  *        {@link BinaryRelation}
- * 
+ *
  * @author Igor Akkerman
  */
 public class HashBinaryRelation<LeftValue, RightValue>
@@ -61,7 +68,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new HashBinaryRelation containing the Associations contained by
      * the specified jlib Container.
-     * 
+     *
      * @param associations
      *        Container of the Associations to add
      */
@@ -75,7 +82,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new HashBinaryRelation containing the Associations contained by
      * the specified Collection.
-     * 
+     *
      * @param associations
      *        Collection of the Associations to add
      */
@@ -89,7 +96,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new HashBinaryRelation containing the Associations specified in
      * a comma separated sequence.
-     * 
+     *
      * @param associations
      *        Comma separated sequence of the Associations to add
      */
@@ -119,37 +126,35 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a unidirectional association between the specified values.
-     * 
+     *
      * @param <Value1>
      *        type of first value
-     * 
+     *
      * @param <Value2>
      *        type of second value
-     * 
+     *
      * @param value1
      *        first value
-     * 
+     *
      * @param value2
      *        second Value
-     * 
+     *
      * @param value1ToValue2SetMap
      *        {@link Map} associating Value1 items with a {@link Set} of Value2
      *        items
-     * 
+     *
      * @param value1Exists
      *        boolean specifying whether {@code value1} is associated to at
      *        least one Value2 item
      */
-    private <Value1, Value2> void assertAssociatedOneWay(final Value1 value1, final Value2 value2,
-                                                         final Map<Value1, Set<Value2>> value1ToValue2SetMap,
-                                                         final boolean value1Exists) {
+    private <Value1, Value2> void assertAssociatedOneWay(final Value1 value1, final Value2 value2, final Map<Value1, Set<Value2>> value1ToValue2SetMap, final boolean value1Exists) {
         final Set<Value2> value2Set = value1Exists
-            ? value1ToValue2SetMap.get(value1)
-            : new HashSet<Value2>();
+                                      ? value1ToValue2SetMap.get(value1)
+                                      : new HashSet<Value2>();
 
         value2Set.add(value2);
 
-        if (!value1Exists)
+        if (! value1Exists)
             value1ToValue2SetMap.put(value1, value2Set);
     }
 

@@ -1,33 +1,40 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.collection;
+
+import org.jlib.container.Container;
 
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.Container;
-
 /**
  * Adapter allowing a {@link Container} to be used as a {@link Collection}. A
  * {@link ContainerCollection} is backed by a {@link Container} specified at
  * initialization.
- * 
+ *
  * @param <Item>
  *        type of the items held in the {@link Container}
- * 
+ *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
@@ -39,7 +46,7 @@ extends AbstractCollection<Item> {
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
      * {@link Container}.
-     * 
+     *
      * @param delegateContainer
      *        {@link Container} backing this {@link ContainerCollection}
      */
@@ -91,7 +98,7 @@ extends AbstractCollection<Item> {
      * specified {@link ContainerCollection}, respectively, are equal by their
      * {@code equals} methods.
      * </p>
-     * 
+     *
      * @param otherObject
      *        Object to which the backed Container is compared
      * @return {@code true} if the backed Container is equal to
@@ -99,8 +106,8 @@ extends AbstractCollection<Item> {
      */
     @Override
     public boolean equals(final Object otherObject) {
-        return otherObject instanceof ContainerCollection<?> &&
-               delegateContainer.equals(((ContainerCollection<?>) otherObject).delegateContainer);
+        return otherObject instanceof ContainerCollection<?> && delegateContainer.equals(
+                                                                                        ((ContainerCollection<?>) otherObject).delegateContainer);
     }
 
     @Override

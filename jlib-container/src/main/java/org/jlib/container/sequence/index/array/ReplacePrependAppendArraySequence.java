@@ -1,10 +1,25 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index.array;
-
-import java.util.Collection;
-
-import org.jlib.core.observer.ValueObserver;
-
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 import org.jlib.container.Container;
 import org.jlib.container.IllegalContainerArgumentException;
@@ -12,16 +27,20 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.core.observer.ValueObserver;
+
+import java.util.Collection;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
+import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,
  * that is, its head and tail.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class ReplacePrependAppendArraySequence<Item>
@@ -31,13 +50,13 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new uninitialized {@link ReplacePrependAppendArraySequence}
      * with the specified first and last indices.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the initial first index
-     * 
+     *
      * @param lastIndex
      *        integer specifying the initial last index
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
      */
@@ -49,10 +68,10 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with a first
      * index of {@code 0} and the specified number of Items.
-     * 
+     *
      * @param itemsCount
      *        integer specifying the initial number of Items
-     * 
+     *
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
@@ -64,7 +83,7 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -76,10 +95,10 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -91,7 +110,7 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -102,10 +121,10 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -116,7 +135,7 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -127,10 +146,10 @@ implements ObservedPrependSequence<Item> {
     /**
      * Creates a new {@link ReplacePrependAppendArraySequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -198,7 +217,7 @@ implements ObservedPrependSequence<Item> {
         int itemArrayIndex = 0;
 
         for (final Item item : items)
-            replaceDelegateArrayItem(itemArrayIndex ++, item, observers);
+            replaceDelegateArrayItem(itemArrayIndex++, item, observers);
 
         setFirstIndex(getFirstIndex() - prependedItemsCount);
     }
@@ -206,31 +225,30 @@ implements ObservedPrependSequence<Item> {
     /**
      * Prepends all Items contained by the specified {@link Container} to this
      * {@link ObservedPrependSequence}.
-     * 
+     *
      * @param items
      *        {@link Iterable} providing the Items to add
-     * 
+     *
      * @param prependedItemsCount
      *        integer specifying the number of added Items; {@code items} must
      *        provide at least these {@code addedItemsCount} Items
-     * 
+     *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
-     * 
+     *
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount,
-                               final ValueObserver<Item>... observers) {
+    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount, final ValueObserver<Item>... observers) {
         assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
         int itemArrayIndex = 0;
 
         for (final Item item : items)
-            replaceDelegateArrayItem(itemArrayIndex ++, item, observers);
+            replaceDelegateArrayItem(itemArrayIndex++, item, observers);
 
         setFirstIndex(getFirstIndex() - prependedItemsCount);
     }

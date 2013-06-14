@@ -1,7 +1,25 @@
-package org.jlib.container.collection;
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
 
-import java.util.Collection;
-import java.util.Collections;
+package org.jlib.container.collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
@@ -12,15 +30,18 @@ import org.jlib.container.RemoveContainer;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
+import java.util.Collection;
+import java.util.Collections;
+
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
  * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
  * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
  * may be used for modification and cannot be observed.
- * 
+ *
  * @param <Item>
  *        type of the items held in the {@link Container}
- * 
+ *
  * @author Igor Akkerman
  */
 public class CollectionRemoveContainer<Item>
@@ -30,7 +51,7 @@ implements RemoveAllContainer<Item> {
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
      * {@link Collection}.
-     * 
+     *
      * @param delegateCollection
      *        {@link Collection} backing this {@link CollectionRemoveContainer}
      */
@@ -42,14 +63,14 @@ implements RemoveAllContainer<Item> {
      * Adds the specified Item to this {@link CollectionRemoveContainer} using
      * the {@link Collection#add(Object)} operation of the delegate
      * {@link Collection}.
-     * 
+     *
      * @param item
      *        added Item
-     * 
+     *
      * @throws IllegalContainerDelegateArgumentException
      *         if {@code item} caused an error during the operation of the
      *         delegate {@link Collection}
-     * 
+     *
      * @throws IllegalContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
@@ -73,14 +94,14 @@ implements RemoveAllContainer<Item> {
      * Adds the specified Items to this {@link CollectionRemoveContainer} using
      * the {@link Collection#addAll(Collection)} operation of the delegate
      * {@link Collection}.
-     * 
+     *
      * @param items
      *        {@link Collection} of added Items
-     * 
+     *
      * @throws IllegalContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
-     * 
+     *
      * @throws IllegalContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
@@ -100,14 +121,14 @@ implements RemoveAllContainer<Item> {
      * Adds the specified Items to this {@link CollectionRemoveContainer} using
      * the {@link Collection#addAll(Collection)} operation of the delegate
      * {@link Collection}.
-     * 
+     *
      * @param items
      *        {@link Container} of added Items
-     * 
+     *
      * @throws IllegalContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
-     * 
+     *
      * @throws IllegalContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
@@ -122,14 +143,14 @@ implements RemoveAllContainer<Item> {
      * Adds the specified Items to this {@link CollectionRemoveContainer} using
      * the {@link Collection#addAll(Collection)} operation of the delegate
      * {@link Collection}.
-     * 
+     *
      * @param items
      *        comma separated sequence of added Items
-     * 
+     *
      * @throws IllegalContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
-     * 
+     *
      * @throws IllegalContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
@@ -156,7 +177,7 @@ implements RemoveAllContainer<Item> {
         try {
             final boolean removed = getDelegateCollection().remove(item);
 
-            if (!removed)
+            if (! removed)
                 throw new NoSuchItemToRemoveException(this, item);
         }
         catch (final UnsupportedOperationException exception) {
@@ -184,8 +205,8 @@ implements RemoveAllContainer<Item> {
             getDelegateCollection().removeAll(items);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(),
-                                                             "{1}: {2} - removeAll({3})", exception, items);
+            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - removeAll({3})",
+                                                             exception, items);
         }
     }
 

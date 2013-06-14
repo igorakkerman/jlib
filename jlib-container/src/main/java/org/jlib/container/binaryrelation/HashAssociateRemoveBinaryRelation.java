@@ -1,36 +1,43 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation;
-
-import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.core.traverser.RemoveTraverser;
 
+import java.util.Collection;
+
 /**
  * {@link AssociateBinaryRelation} implemented using hashing for left and right
  * hand side items.
- * 
+ *
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link BinaryRelation}
- * 
+ *
  * @param <RightValue>
  *        type of the values on the right hand side of the
  *        {@link BinaryRelation}
- * 
+ *
  * @author Igor Akkerman
  */
 public class HashAssociateRemoveBinaryRelation<LeftValue, RightValue>
@@ -47,10 +54,10 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Container}.
-     * 
+     *
      * @param associations
      *        Container of the Associations to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
@@ -63,10 +70,10 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
      * {@link Association} items contained by the specified {@link Collection}.
-     * 
+     *
      * @param associations
      *        {@link Collection} of {@link Association} items to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
@@ -79,10 +86,10 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     /**
      * Creates a new HashAddRemoveBinaryRelation containing the
      * {@link Association} items specified in a comma separated sequence.
-     * 
+     *
      * @param associations
      *        comma separated sequence of the {@link Association} items to add
-     * 
+     *
      * @throws IllegalAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
@@ -103,7 +110,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
     throws NoSuchAssociationValueException {
-        if (!contains(leftValue, rightValue))
+        if (! contains(leftValue, rightValue))
             throw new NoSuchAssociationException(this, leftValue, rightValue);
 
         leftToRightMap.get(leftValue).remove(rightValue);

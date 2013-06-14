@@ -1,15 +1,22 @@
 /*
- * jlib - The Free Java Library
+ * jlib - Open Source Java Library
  *
- *    http://www.jlib.org
+ *     www.jlib.org
  *
- * Copyright (c) 2006-2008 Igor Akkerman
  *
- * jlib is distributed under the
+ *     Copyright 2005-2013 Igor Akkerman
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.sequence;
@@ -19,10 +26,10 @@ import org.jlib.core.observer.ValueObserver;
 /**
  * {@link ReplaceSequence} allowing its replace operations to be attended by
  * {@link ValueObserver} instances.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public interface ObservedReplaceRemoveSequence<Item>

@@ -1,6 +1,25 @@
-package org.jlib.container.sequence.index;
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
 
-import java.util.Collection;
+package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
@@ -11,20 +30,22 @@ import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
+import java.util.Collection;
+
 /**
  * {@link SubReplaceInsertIndexSequence} view of the Items stored in a base
  * {@link ObservedReplaceInsertRemoveIndexSequence} in the specified index
  * range. The Items in this {@link SubReplaceInsertIndexSequence} will have the
  * same index as they had in the base
  * {@link ObservedReplaceInsertRemoveIndexSequence} .
- * 
+ *
  * @param <Item>
  *        type of the items held in the
  *        {@link SubReplaceInsertRemoveIndexSequence}
- * 
+ *
  * @param <BaseSequence>
  *        type of the base {@link ObservedReplaceInsertIndexSequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public class SubReplaceInsertRemoveIndexSequence<Item, BaseSequence extends ObservedReplaceInsertRemoveIndexSequence<Item>>
@@ -33,25 +54,24 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceInsertRemoveIndexSequence}.
-     * 
+     *
      * @param baseSequence
      *        base {@link ReplaceInsertIndexSequence}
-     * 
+     *
      * @param firstIndex
      *        integer specifying the index of the first Item
-     * 
+     *
      * @param lastIndex
      *        integer specifying the index of the last Item
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
-    public SubReplaceInsertRemoveIndexSequence(final BaseSequence baseSequence, final int firstIndex,
-                                               final int lastIndex)
+    public SubReplaceInsertRemoveIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
     }

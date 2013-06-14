@@ -1,22 +1,25 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.binaryrelation;
-
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import org.jlib.core.ValueNotAccessibleException;
 import org.jlib.core.traverser.NoNextItemException;
@@ -25,19 +28,23 @@ import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;
 
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Default implementation of a {@link Traverser} over the {@link Association}
  * items of a {@link BinaryRelation}.
- * 
+ *
  * @param <LeftValue>
  *        type of the values on the left hand side of the binaryRelation
- * 
+ *
  * @param <RightValue>
  *        type of the values on the right hand side of the binaryRelation
- * 
+ *
  * @param <Relation>
  *        type of the traversed {@link BinaryRelation}
- * 
+ *
  * @author Igor Akkerman
  */
 public class DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation extends BinaryRelation<LeftValue, RightValue>>
@@ -61,7 +68,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
     /**
      * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
      * {@link BinaryRelation}.
-     * 
+     *
      * @param binaryRelation
      *        traversed {@link BinaryRelation}
      */
@@ -75,7 +82,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
         if (leftValuesIterator.hasNext())
             readNextLeftValue();
         else
-            rightValuesIterator = Collections.<RightValue> emptySet().iterator();
+            rightValuesIterator = Collections.<RightValue>emptySet().iterator();
 
         unsetLastAccessedItem();
     }
@@ -91,7 +98,6 @@ implements Traverser<Association<LeftValue, RightValue>> {
                 lastAccessedItemHolder = new InitializedModifiableValueHolder<>(association);
             }
         };
-
     }
 
     /**
@@ -111,11 +117,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
     public Association<LeftValue, RightValue> getNextItem()
     throws NoNextItemException {
         try {
-            if (!rightValuesIterator.hasNext())
+            if (! rightValuesIterator.hasNext())
                 readNextLeftValue();
 
-            final Association<LeftValue, RightValue> association =
-                new Association<>(leftValue, rightValuesIterator.next());
+            final Association<LeftValue, RightValue> association = new Association<>(leftValue,
+                                                                                     rightValuesIterator.next());
 
             lastAccessedItemHolder.setValue(association);
 
@@ -128,7 +134,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
 
     /**
      * Returns the traversed {@link BinaryRelation}. .
-     * 
+     *
      * @return traversed {@link BinaryRelation}
      */
     public Relation getBinaryRelation() {
@@ -138,9 +144,9 @@ implements Traverser<Association<LeftValue, RightValue>> {
     /**
      * Returns the last {@link Association} returned by this
      * {@link DefaultBinaryRelationTraverser}.
-     * 
+     *
      * @return last returned {@link Association}
-     * 
+     *
      * @throws ValueNotAccessibleException
      *         if no {@link Association} has been accessed
      */

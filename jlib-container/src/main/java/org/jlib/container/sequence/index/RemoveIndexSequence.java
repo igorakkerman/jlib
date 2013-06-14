@@ -1,15 +1,22 @@
 /*
- * jlib - The Free Java Library
- * 
- * http://www.jlib.org
- * 
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
- * 
- * COMMON PUBLIC LICENSE VERSION 1.0
- * 
- * http://www.opensource.org/licenses/cpl1.0.php
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.container.sequence.index;
@@ -19,10 +26,10 @@ import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link IndexSequence} that allows Items to be removed.
- * 
+ *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public interface RemoveIndexSequence<Item>
@@ -30,7 +37,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
 
     /**
      * Removes from this IndexSequence the Item stored at the specified index.
-     * 
+     *
      * @param index
      *        integer specifying the index
      */
@@ -50,7 +57,7 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * Sequence, that is, the Item returned by the first call to
      * {@link RemoveIndexSequenceTraverser#getNextItem()} is the Item stored at
      * {@link #getFirstIndex()}.
-     * 
+     *
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequenceTraverser} Sequence
      */
@@ -63,14 +70,14 @@ extends RemoveSequence<Item>, IndexSequence<Item> {
      * Sequence, that is, the Item returned by the first call to
      * {@link RemoveIndexSequenceTraverser#getNextItem()} is the Item stored at
      * the specified index.
-     * 
+     *
      * @param startIndex
      *        integer specifying the index of the first Item returned by the
      *        {@link RemoveIndexSequenceTraverser}
-     * 
+     *
      * @return {@link RemoveIndexSequenceTraverser} initially pointing to the
      *         beginning of this {@link RemoveIndexSequence}
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}

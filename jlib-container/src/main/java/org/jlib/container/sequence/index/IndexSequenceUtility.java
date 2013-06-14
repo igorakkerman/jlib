@@ -1,3 +1,24 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
@@ -13,24 +34,25 @@ import org.jlib.core.operator.OperatorException;
 
 /**
  * {@link IndexSequence} utility.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class IndexSequenceUtility {
 
     /** no visible constructor */
-    private IndexSequenceUtility() {}
+    private IndexSequenceUtility() {
+    }
 
     /**
      * Asserts that the specified index is inside the valid bounds of the
      * specified {@link IndexSequence}.
-     * 
+     *
      * @param sequence
      *        verified {@link IndexSequence}
-     * 
+     *
      * @param index
      *        integer specifying the index to verify
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code index < sequence.getFirstIndex() || index > sequence.getLastIndex()}
@@ -55,20 +77,20 @@ public final class IndexSequenceUtility {
      * valid, that is,
      * {@code sequence.getFirstIndex() <= fromIndex <= toIndex <= sequence.getLastIndex()}
      * .
-     * 
+     *
      * @param sequence
      *        verified {@link IndexSequence}
-     * 
+     *
      * @param fromIndex
      *        integer specifying the from index
-     * 
+     *
      * @param toIndex
      *        integer specifying the to index
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code fromIndex > toIndex}
      */
@@ -93,34 +115,33 @@ public final class IndexSequenceUtility {
     /**
      * Removes the specified Item from the specified {@link RemoveIndexSequence}
      * .
-     * 
+     *
      * @param <Item>
      *        type of the items held in the {@link Container}
-     * 
+     *
      * @param sequence
      *        {@link ObservedRemoveContainer} containing the Item
-     * 
+     *
      * @param itemIndex
      *        index of the Item to remove
-     * 
+     *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
-     * 
+     *
      * @throws IllegalSequenceArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
-     * 
+     *
      * @throws IllegalSequenceStateException
      *         if an error occurs during the operation
-     * 
+     *
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
-                                     final ValueObserver<Item>... observers)
+    public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex, final ValueObserver<Item>... observers)
     throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
@@ -137,6 +158,6 @@ public final class IndexSequenceUtility {
             }
         },
 
-        sequence.get(itemIndex), observers);
+                                sequence.get(itemIndex), observers);
     }
 }

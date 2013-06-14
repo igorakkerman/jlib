@@ -21,12 +21,12 @@
 
 package org.jlib.core.array;
 
-import java.util.Arrays;
-
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
+
+import java.util.Arrays;
 
 /**
  * {@link Traverser} over the items of an array.

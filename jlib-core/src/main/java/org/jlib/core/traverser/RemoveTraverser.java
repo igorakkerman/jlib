@@ -33,7 +33,7 @@ public interface RemoveTraverser<Item>
 extends Traverser<Item> {
 
     /**
-     * Removes the last Item returned by this {@link RemoveTraverser} .
+     * Removes the last Item returned by this {@link RemoveTraverser}.
      *
      * @throws NoItemToRemoveException
      *         if not called immediately after a call to {@link #getNextItem()}

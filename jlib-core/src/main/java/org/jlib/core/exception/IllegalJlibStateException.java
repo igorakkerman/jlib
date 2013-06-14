@@ -21,9 +21,9 @@
 
 package org.jlib.core.exception;
 
-import java.text.MessageFormat;
-
 import org.jlib.core.array.ArrayUtility;
+
+import java.text.MessageFormat;
 
 /**
  * {@link IllegalStateException} using a formatted message.

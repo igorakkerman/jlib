@@ -1,18 +1,38 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index.array.storage;
 
 import java.util.Arrays;
 
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
-
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 /**
  * {@link LinearIndexStorage} based on an array.
- * 
+ *
  * @param <Item>
  *        type of the Items stored in the array
- * 
+ *
  * @author Igor Akkerman
  */
 public class ArrayStorage<Item>
@@ -29,8 +49,7 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                      final ItemsCopy... copyDescriptors) {
+    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex, final ItemsCopy... copyDescriptors) {
 
         final Item[] newDelegateArray = createArray(capacity);
 
@@ -42,10 +61,10 @@ extends AbstractLinearIndexStorage<Item> {
 
     /**
      * Returns the array Item stored at the specified array index.
-     * 
+     *
      * @param index
      *        integer specifying the array index
-     * 
+     *
      * @return Item stored at {@code index}
      */
     @Override
@@ -67,7 +86,8 @@ extends AbstractLinearIndexStorage<Item> {
             // replace the shifted Items with null
             // @formatter:off
             Arrays.fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
-                        min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */ null);
+                        min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */
+                        null);
             // @formatter:on
         }
     }
@@ -77,13 +97,13 @@ extends AbstractLinearIndexStorage<Item> {
      * {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
      * operation from the specified source to the speified target array of
      * Items.
-     * 
+     *
      * @param sourceArray
      *        source array of Items
-     * 
+     *
      * @param targetArray
      *        target array of Items
-     * 
+     *
      * @param copyDescriptor
      *        {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
      *        operation descriptor
@@ -109,7 +129,7 @@ extends AbstractLinearIndexStorage<Item> {
 
     @Override
     public boolean equals(final Object otherObject) {
-        if (!(otherObject instanceof ArrayStorage))
+        if (! (otherObject instanceof ArrayStorage))
             return false;
 
         @SuppressWarnings("unchecked")

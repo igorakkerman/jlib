@@ -1,24 +1,44 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2013 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.container.sequence.index;
-
-import java.util.Collection;
-
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.operator.HandledOperator;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
 import org.jlib.container.sequence.index.array.InvalidStoredItemsCountException;
+import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+
+import java.util.Collection;
 
 /**
  * {@link AbstractIndexSequence} that can be initialized.
- * 
+ *
  * @param <Item>
  *        type of the items held in the {@link Sequence}
- * 
+ *
  * @author Igor Akkerman
  */
 public abstract class AbstractInitializeableIndexSequence<Item>
@@ -27,13 +47,13 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new uninitialized {@link AbstractInitializeableIndexSequence}
      * with the specified first and last indices.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the initial first index
-     * 
+     *
      * @param lastIndex
      *        integer specifying the initial last index
-     * 
+     *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code lastIndex < firstIndex}
      */
@@ -47,10 +67,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with a first
      * index of {@code 0} and the specified number of Items.
-     * 
+     *
      * @param itemsCount
      *        integer specifying the initial number of Items
-     * 
+     *
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
      */
@@ -62,7 +82,7 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -74,10 +94,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
      */
@@ -91,7 +111,7 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -102,10 +122,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
      */
@@ -118,7 +138,7 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with a first
      * index of {@code 0} containing the specified Items.
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -129,10 +149,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Creates a new {@link AbstractInitializeableIndexSequence} with the
      * specified first index containing the specified Items.
-     * 
+     *
      * @param firstIndex
      *        integer specifying the first index
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
      */
@@ -161,10 +181,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Stores the specified Items in this
      * {@link AbstractInitializeableIndexSequence}.
-     * 
+     *
      * @param items
      *        {@link Container} of Items to store
-     * 
+     *
      * @throws InvalidStoredItemsCountException
      *         if {@code items.getItemsCount() != getItemsCount()}
      */
@@ -179,10 +199,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Stores the specified Items in this
      * {@link AbstractInitializeableIndexSequence}.
-     * 
+     *
      * @param items
      *        {@link Collection} of Items to store
-     * 
+     *
      * @throws InvalidStoredItemsCountException
      *         if {@code items.size() != getItemsCount()}
      */
@@ -197,10 +217,10 @@ extends AbstractIndexSequence<Item> {
     /**
      * Stores the specified Items in this
      * {@link AbstractInitializeableIndexSequence}.
-     * 
+     *
      * @param items
      *        comma separated sequence of Items to store
-     * 
+     *
      * @throws InvalidStoredItemsCountException
      *         if {@code items.length != getItemsCount()}
      */
@@ -216,7 +236,7 @@ extends AbstractIndexSequence<Item> {
     /**
      * Stores the specified Items in this
      * {@link AbstractInitializeableIndexSequence}.
-     * 
+     *
      * @param items
      *        {@link Iterable} providing Items to store
      */
@@ -224,19 +244,19 @@ extends AbstractIndexSequence<Item> {
         int index = getFirstIndex();
 
         for (final Item item : items)
-            replaceStoredItem(index ++, item);
+            replaceStoredItem(index++, item);
     }
 
     /**
      * Replaces the Item stored at the specified index in this
      * {@link AbstractInitializeableIndexSequence} by the specified Item.
-     * 
+     *
      * @param index
      *        integer specifying the index
-     * 
+     *
      * @param newItem
      *        Item to store
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
@@ -250,20 +270,20 @@ extends AbstractIndexSequence<Item> {
     /**
      * Replaces the Item stored at the specified index in this
      * {@link AbstractInitializeableIndexSequence} by the specified Item.
-     * 
+     *
      * @param index
      *        integer specifying the index
-     * 
+     *
      * @param newItem
      *        Item to store
-     * 
+     *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
-     * 
+     *
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
-     * 
+     *
      * @throws RuntimeException
      *         if a {@link ValueObserver} in {@code observers} throws this
      *         {@link RuntimeException}
@@ -280,10 +300,10 @@ extends AbstractIndexSequence<Item> {
      * Replaces the Item stored at the specified index in this
      * {@link AbstractInitializeableIndexSequence} by the specified Item
      * assuming the index to be valid.
-     * 
+     *
      * @param index
      *        integer specifying the valid index
-     * 
+     *
      * @param newItem
      *        Item to store
      */
@@ -293,17 +313,17 @@ extends AbstractIndexSequence<Item> {
      * Replaces the Item stored at the specified index in this
      * {@link AbstractInitializeableIndexSequence} by the specified Item
      * expecting the index to be valid.
-     * 
+     *
      * @param index
      *        integer specifying the valid index
-     * 
+     *
      * @param newItem
      *        Item to store
-     * 
+     *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
-     * 
+     *
      * @throws RuntimeException
      *         if a {@link ValueObserver} in {@code observers} throws this
      *         {@link RuntimeException}
@@ -319,6 +339,6 @@ extends AbstractIndexSequence<Item> {
             }
         },
 
-        newItem, observers);
+                                newItem, observers);
     }
 }

@@ -142,14 +142,16 @@ extends TypeSafeMatcher<String> {
 
     @Override
     public boolean matchesSafely(String containingString) {
-        String expectedColumnValueString = expectedValue != null ? expectedValue.toString() : "";
+        String expectedColumnValueString = expectedValue != null
+                                           ? expectedValue.toString()
+                                           : "";
 
-        actualValue =
-            containingString.substring(columnBeginIndex, columnBeginIndex + expectedColumnValueString.length());
+        actualValue = containingString.substring(columnBeginIndex,
+                                                 columnBeginIndex + expectedColumnValueString.length());
 
         columnStartsWithValue = actualValue.equals(expectedColumnValueString);
-        actualStringAfterValue =
-            containingString.substring(columnBeginIndex + expectedColumnValueString.length(), columnEndIndex + 1);
+        actualStringAfterValue = containingString.substring(columnBeginIndex + expectedColumnValueString.length(),
+                                                            columnEndIndex + 1);
         columnBlankAfterValue = isBlank(actualStringAfterValue);
 
         return columnStartsWithValue && columnBlankAfterValue;
@@ -164,13 +166,13 @@ extends TypeSafeMatcher<String> {
         // TODO: using hamcrest 1.2, move the following lines to the new method describeMismatchSafely
 
         // if column doesn't begin with the expected value
-        if (!columnStartsWithValue) {
+        if (! columnStartsWithValue) {
             description.appendText(", column does not begin with the expected value but with ");
             description.appendValue(actualValue);
         }
 
         // if column DOES begin with the expected value but is not followed by blanks
-        else if (!columnBlankAfterValue) {
+        else if (! columnBlankAfterValue) {
             description.appendText(", value is correct but is not followed by blanks");
             description.appendValue(actualStringAfterValue);
         }

@@ -21,11 +21,11 @@
 
 package org.jlib.core.array;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.TwoWayTraversible;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Utility for arrays.
