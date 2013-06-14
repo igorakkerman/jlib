@@ -21,13 +21,19 @@
 
 package org.jlib.core.array;
 
+import static org.jlib.core.array.ArrayUtility.getEmptyArray;
+import static org.jlib.core.array.ArrayUtility.iterable;
+
 import org.junit.Test;
 
-public class ArrayUtilityIterableTest
+public class ArrayUtilityWrapAsIterableTest
 extends ArrayUtilityTest {
 
     @Test
-    public void testIterable()
+    public void testEmpty()
     throws Exception {
+        String[] strings = getEmptyArray();
+
+        iterable();
     }
 }
