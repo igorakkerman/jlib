@@ -112,16 +112,13 @@ public final class ArrayUtility {
      * Recursively appends all Items specified as a comma separated list to the
      * specified {@link List}.
      *
-     * @param <Item>
-     *        type of the specified items
-     *
      * @param allItems
      *        {@link List} to which the items are added
      *
      * @param items
      *        comma separated liet of items
      */
-    public static <Item> void flatten(final List<Object> allItems, final Object... items) {
+    public static void flatten(final List<Object> allItems, final Object... items) {
         for (final Object item : items)
             if (item.getClass().isArray())
                 flatten(allItems, (Object[]) item);
