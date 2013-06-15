@@ -22,12 +22,12 @@
 package org.jlib.core.exception;
 
 /**
- * {@link JlibException} thrown when a requested Value is not accessible.
+ * {@link AbstractException} thrown when a requested Value is not accessible.
  *
  * @author Igor Akkerman
  */
 public class ValueNotAccessibleException
-extends JlibException {
+extends AbstractException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;

@@ -53,11 +53,11 @@ extends RandomAccessRemoveContainer<Item> {
      *         if this {@link ObservedRandomAccessRemoveContainer} does not
      *         contain {@code Item}
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -65,7 +65,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
+    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException;
 
     /**
@@ -79,11 +79,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -91,7 +91,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -104,11 +104,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -116,7 +116,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -129,11 +129,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -141,7 +141,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * Removes all specified Items from this
@@ -153,11 +153,11 @@ extends RandomAccessRemoveContainer<Item> {
      * @param observers
      *        array of {@link ValueObserver} instances attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -165,5 +165,5 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }

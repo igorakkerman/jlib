@@ -67,12 +67,12 @@ public final class SequenceUtility {
      * @param item
      *        appended Item
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     public static <Item> void append(final AppendSequence<Item> sequence, final Item item)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         sequence.append(item);
     }
 
@@ -89,7 +89,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -111,13 +111,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         append(sequence, ArrayUtility.iterable(items));
     }
 
@@ -138,13 +138,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         sequence.append(item, observers);
     }
 
@@ -165,7 +165,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -191,13 +191,13 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         append(sequence, ArrayUtility.iterable(items), observers);
     }
 
@@ -214,12 +214,12 @@ public final class SequenceUtility {
      * @param item
      *        prepended Item
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item item)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         sequence.prepend(item);
     }
 
@@ -236,7 +236,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -258,13 +258,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         prepend(sequence, ArrayUtility.iterable(items));
     }
 
@@ -285,13 +285,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         sequence.prepend(item, observers);
     }
 
@@ -312,7 +312,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -338,13 +338,13 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         prepend(sequence, ArrayUtility.iterable(items), observers);
     }
 

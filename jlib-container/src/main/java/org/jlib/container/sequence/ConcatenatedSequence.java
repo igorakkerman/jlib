@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.IllegalContainerStateException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.Traversible;
 import org.jlib.core.traverser.TwoWayTraversible;
@@ -72,7 +72,7 @@ extends AbstractSequence<Item> {
 
     @Override
     public final int getItemsCount()
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         return itemsCountHolder.getValue();
     }
 

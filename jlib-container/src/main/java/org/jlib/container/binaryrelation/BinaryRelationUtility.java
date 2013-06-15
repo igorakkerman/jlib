@@ -61,12 +61,12 @@ public class BinaryRelationUtility {
      * @throws AssociationAlreadyContainedException
      *         if {@code binaryRelation} already contains {@code association}
      *
-     * @throws IllegalBinaryRelationArgumentException
+     * @throws InvalidBinaryRelationArgumentException
      *         if some property of {@code association} prevents it from being
      *         associated to {@code binaryRelation}
      */
     public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Association<LeftValue, RightValue> association)
-    throws AssociationAlreadyContainedException, IllegalBinaryRelationArgumentException {
+    throws AssociationAlreadyContainedException, InvalidBinaryRelationArgumentException {
         if (binaryRelation.contains(association))
             throw new AssociationAlreadyContainedException(binaryRelation, association.getLeftValue(),
                                                            association.getRightValue());
@@ -98,7 +98,7 @@ public class BinaryRelationUtility {
      *         if {@code binaryRelation} already contains one Association in
      *         {@code associations}
      *
-     * @throws IllegalBinaryRelationArgumentException
+     * @throws InvalidBinaryRelationArgumentException
      *         if some property of one Association in {@code associations}
      *         prevents it from being associated to {@code binaryRelation}
      */
@@ -131,7 +131,7 @@ public class BinaryRelationUtility {
      *         if {@code binaryRelation} already contains one Association in
      *         {@code associations}
      *
-     * @throws IllegalBinaryRelationArgumentException
+     * @throws InvalidBinaryRelationArgumentException
      *         if some property of one Association in {@code associations}
      *         prevents it from being associated to {@code binaryRelation}
      */

@@ -25,7 +25,7 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.EmptySequence;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.ObservedReplaceAppendRemoveSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ObserverUtility;
@@ -85,27 +85,27 @@ extends DelegatingSequence<Item> {
 
         @Override
         public void append(final Container<? extends Item> items)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         public void append(final Collection<? extends Item> items)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             ObserverUtility.operate(new HandledOperator() {
 
                 @Override
@@ -120,7 +120,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -136,7 +136,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -146,7 +146,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
-        throws IllegalSequenceArgumentException {
+        throws InvalidSequenceArgumentException {
             if (items.length == 0)
                 return;
 

@@ -22,13 +22,13 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * {@link IllegalAssociationException} thrown when referencing an
+ * {@link InvalidAssociationException} thrown when referencing an
  * {@link Association} not contained by the specified {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
 public abstract class NoSuchAssociationValueException
-extends IllegalBinaryRelationArgumentException {
+extends InvalidBinaryRelationArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 5642778973583219541L;

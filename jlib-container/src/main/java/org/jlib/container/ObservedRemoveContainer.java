@@ -50,11 +50,11 @@ extends RemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -62,7 +62,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -75,11 +75,11 @@ extends RemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -87,7 +87,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -99,11 +99,11 @@ extends RemoveContainer<Item> {
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -111,7 +111,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
      * @eturn {@link ObservedRemoveTraverser} traversing the Items of this

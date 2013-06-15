@@ -38,51 +38,51 @@ public interface PrependSequence<Item>
 extends Sequence<Item>, ItemPrependAware<Item> {
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     public void prepend(final Item item)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     public void prepend(final Container<? extends Item> items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     public void prepend(final Collection<? extends Item> items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item... items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 }

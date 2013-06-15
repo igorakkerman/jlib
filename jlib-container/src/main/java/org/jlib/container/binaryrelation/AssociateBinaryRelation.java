@@ -52,12 +52,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Association}
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the specified {@link Association} prevents it
      *         from being associated
      */
     public void associate(LeftValue leftValue, RightValue rightValue)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -69,12 +69,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Association}
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the {@link Association} prevents it from
      *         being associated
      */
     public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Associates the specified Item to the specified
@@ -83,12 +83,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param association
      *        {@link Association} to create
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated, for instance, if it is already contained
      */
     public void associate(final Association<LeftValue, RightValue> association)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Associates all Items contained by the specified {@link Container} to this
@@ -97,15 +97,15 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        {@link Container} containing the Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if {@code associations}
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
     public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Associates all Items contained by the specified {@link Collection} to the
@@ -114,12 +114,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        {@link Collection} containing the Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
     public void associate(final Collection<? extends Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Associates all specified Items to the specified
@@ -128,13 +128,13 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        comma separated sequence of Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
     @SuppressWarnings("unchecked")
     public void associate(final Association<LeftValue, RightValue>... associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains the
@@ -144,12 +144,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param association
      *        {@link Association} to create
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated
      */
     public void assertContained(final Association<LeftValue, RightValue> association)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains all
@@ -160,12 +160,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        {@link Container} containing the Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated
      */
     public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains all
@@ -175,12 +175,12 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        {@link Collection} containing the Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated
      */
     public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains all
@@ -189,11 +189,11 @@ extends BinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        comma separated sequence of Items to associate
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated
      */
     @SuppressWarnings("unchecked")
     public void assertContained(final Association<LeftValue, RightValue>... associations)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 }

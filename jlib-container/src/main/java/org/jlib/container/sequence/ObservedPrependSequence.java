@@ -39,17 +39,17 @@ public interface ObservedPrependSequence<Item>
 extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
@@ -62,11 +62,11 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -76,7 +76,7 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
@@ -89,11 +89,11 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -103,7 +103,7 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
 
     /**
      * Prepends all specified Items to this {@link ObservedPrependSequence}.
@@ -114,11 +114,11 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
      * @param items
      *        comma separated sequence of Items to prepend
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -128,5 +128,5 @@ extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
 }

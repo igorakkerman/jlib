@@ -42,10 +42,10 @@ extends RemoveAllContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 }

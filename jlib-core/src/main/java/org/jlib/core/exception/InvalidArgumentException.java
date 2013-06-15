@@ -30,47 +30,47 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-public abstract class IllegalJlibArgumentException
+public abstract class InvalidArgumentException
 extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
 
     /**
-     * Creates a new {@link IllegalJlibArgumentException}.
+     * Creates a new {@link InvalidArgumentException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of { @link Object} message arguments
      */
-    public IllegalJlibArgumentException(final String messagePattern, final Object... messageArguments) {
-        this(messagePattern, null, messageArguments);
+    public InvalidArgumentException(final String messageTemplate, final Object... messageArguments) {
+        this(messageTemplate, null, messageArguments);
     }
 
     /**
-     * Creates a new {@link IllegalJlibArgumentException}.
+     * Creates a new {@link InvalidArgumentException}.
      *
      * @param cause
-     *        Throwable that caused this {@link IllegalJlibArgumentException}
+     *        Throwable that caused this {@link InvalidArgumentException}
      */
-    public IllegalJlibArgumentException(final Throwable cause) {
+    public InvalidArgumentException(final Throwable cause) {
         super(cause);
     }
 
     /**
-     * Creates a new {@link IllegalJlibArgumentException}.
+     * Creates a new {@link InvalidArgumentException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link IllegalJlibArgumentException}
+     *        Throwable that caused this {@link InvalidArgumentException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public IllegalJlibArgumentException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, ArrayUtility.flatten(messageArguments)), cause);
+    public InvalidArgumentException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

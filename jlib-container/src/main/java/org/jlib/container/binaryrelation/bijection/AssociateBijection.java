@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AssociateBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
-import org.jlib.container.binaryrelation.IllegalAssociationException;
+import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
@@ -60,14 +60,14 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * @throws RightValueAlreadyAssociatedException
      *         if {@code rightValue} is already associated to another LeftValue
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the {@link Association} prevents it from
      *         being added
      */
     @Override
     public void associate(final LeftValue leftValue, final RightValue rightValue)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
-           RightValueAlreadyAssociatedException, IllegalAssociationException;
+           RightValueAlreadyAssociatedException, InvalidAssociationException;
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -89,11 +89,11 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         if the {@link Association} is equal to another
      *         {@link Association} in this {@link AssociateBijection}, it is ignored
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the {@link Association} prevents it from
      *         being added
      */
     @Override
     public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException;
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException;
 }

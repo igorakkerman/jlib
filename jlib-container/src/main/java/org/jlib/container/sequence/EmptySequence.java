@@ -23,8 +23,8 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
 import org.jlib.container.EmptyContainer;
-import org.jlib.container.IllegalContainerArgumentException;
-import org.jlib.container.IllegalContainerStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.ObservedRemoveAllContainer;
@@ -91,102 +91,102 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, Observed
 
     @Override
     public void remove(final Collection<? extends Item> items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     public void remove(final Iterable<? extends Item> items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws NoSuchItemToRemoveException, IllegalContainerStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 

@@ -110,7 +110,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws AssociationAlreadyContainedException, IllegalAssociationException {
+    throws AssociationAlreadyContainedException, InvalidAssociationException {
         if (contains(leftValue, rightValue))
             throw new AssociationAlreadyContainedException(this, leftValue, rightValue);
 
@@ -119,7 +119,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     @Override
     protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws IllegalAssociationException {
+    throws InvalidAssociationException {
         assertAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
         assertAssociatedOneWay(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
     }

@@ -45,11 +45,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *
      * @return integer specifying the number of Items in this {@link Container}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public int getItemsCount()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} contains no Items.
@@ -57,11 +57,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains no Items;
      *         {@code false} otherwise
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public boolean isEmpty()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} contains the specified Object.
@@ -72,15 +72,15 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains {@code object};
      *         {@code false} otherwise
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public boolean contains(final Item item)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -92,15 +92,15 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public boolean contains(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -112,15 +112,15 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public boolean contains(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the specified
@@ -132,16 +132,16 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains all of the
      *         {@code objects}; {@code false} otherwise
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
@@ -151,11 +151,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@link RandomAccess} {@link List} containing all of the Items of
      *         this {@link Container}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public List<Item> toList()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 
     /**
      * Returns a sequentially traversible {@link List} containing all of the
@@ -165,11 +165,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return sequentially traversible {@link List} containing all of the Items
      *         of this {@link Container}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public List<Item> toSequentialList()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 
     /**
      * Returns an array containing all of the Items of this {@link Container} in
@@ -177,11 +177,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *
      * @return array containing all of the Items of this {@link Container}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public Item[] toArray()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 
     /**
      * Verifies whether this {@link Container} is equal to the specified

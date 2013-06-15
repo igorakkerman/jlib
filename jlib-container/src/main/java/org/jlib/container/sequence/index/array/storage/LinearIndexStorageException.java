@@ -21,11 +21,11 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.IllegalJlibArgumentException;
 
 /**
- * {@link IllegalSequenceStateException} thrown when an illegal
+ * {@link InvalidSequenceStateException} thrown when an illegal
  * {@link LinearIndexStorage} capacity is specified.
  *
  * @author Igor Akkerman
@@ -45,14 +45,14 @@ extends IllegalJlibArgumentException {
      * @param linearIndexStorage
      *        referenced {@link LinearIndexStorage}
      *
-     * @param messagePattern
-     *        {@link String} specifying the error message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messagePattern, final Object... messageArguments) {
-        super(messagePattern + "; LinearIndexStorage: '{0}'", linearIndexStorage, messageArguments);
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messageTemplate, final Object... messageArguments) {
+        super(messageTemplate + "; LinearIndexStorage: '{0}'", linearIndexStorage, messageArguments);
 
         this.linearIndexStorage = linearIndexStorage;
     }

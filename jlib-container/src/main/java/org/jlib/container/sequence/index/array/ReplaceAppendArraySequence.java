@@ -22,7 +22,7 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
-import org.jlib.container.IllegalContainerArgumentException;
+import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
@@ -185,28 +185,28 @@ implements ObservedAppendSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException {
+    throws InvalidContainerArgumentException {
         append(singleton(item), 1, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException {
+    throws InvalidContainerArgumentException {
         append(items, items.getItemsCount(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException {
+    throws InvalidContainerArgumentException {
         append(items, items.size(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException {
+    throws InvalidContainerArgumentException {
         append(iterable(items), items.length, observers);
     }
 

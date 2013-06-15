@@ -22,9 +22,9 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
@@ -83,15 +83,15 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code newItem} prevents the operation from
      *         being performed
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs performing the operation
      */
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidSequenceStateException {
         super(sequence, initialNextItemIndex);
     }
 
@@ -102,7 +102,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
 
     @Override
     public final void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws NoSequenceItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
@@ -114,7 +114,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
     @Override
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoSequenceItemToReplaceException, IllegalSequenceArgumentException, IllegalSequenceStateException,
+    throws NoSequenceItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException,
            RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
@@ -124,7 +124,7 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
                 try {
                     replace(newItem);
                 }
-                catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
+                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException("replace: {0}", exception, newItem);
                 }
             }

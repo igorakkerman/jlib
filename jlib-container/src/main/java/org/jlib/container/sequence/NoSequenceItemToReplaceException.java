@@ -24,7 +24,7 @@ package org.jlib.container.sequence;
 import org.jlib.core.traverser.NoItemToReplaceException;
 
 /**
- * {@link IllegalSequenceTraverserStateException} thrown when
+ * {@link InvalidSequenceTraverserStateException} thrown when
  * {@link ReplaceSequenceTraverser#replace(Object)} has been called without a
  * previously returned Item.
  *

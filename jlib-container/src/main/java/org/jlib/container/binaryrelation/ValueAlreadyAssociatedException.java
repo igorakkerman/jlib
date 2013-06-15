@@ -29,7 +29,7 @@ package org.jlib.container.binaryrelation;
  * @author Igor Akkerman
  */
 public abstract class ValueAlreadyAssociatedException
-extends IllegalAssociationException {
+extends InvalidAssociationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 6309445418086228661L;

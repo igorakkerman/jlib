@@ -22,13 +22,13 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link IllegalTraverserStateException} thrown when there is Item to remove by
+ * {@link InvalidTraverserStateException} thrown when there is Item to remove by
  * a {@link Traverser}.
  *
  * @author Igor Akkerman
  */
 public class NoItemToRemoveException
-extends IllegalTraverserStateException {
+extends InvalidTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5330769541839992129L;

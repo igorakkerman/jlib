@@ -44,14 +44,14 @@ extends IllegalJlibArgumentException {
      * @param itemsCount
      *        integer specifying the invalid number of Items
      *
-     * @param messagePattern
-     *        String specifying the error message pattern
+     * @param messageTemplate
+     *        String specifying the error message template
      *
      * @param messageArguments
      *        array of {@link Object} error message arguments
      */
-    public InvalidSequenceItemsCountException(final int itemsCount, final String messagePattern, final Object... messageArguments) {
-        super(messagePattern, messageArguments);
+    public InvalidSequenceItemsCountException(final int itemsCount, final String messageTemplate, final Object... messageArguments) {
+        super(messageTemplate, messageArguments);
 
         this.itemsCount = itemsCount;
     }

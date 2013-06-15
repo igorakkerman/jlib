@@ -22,13 +22,13 @@
 package org.jlib.container;
 
 /**
- * {@link IllegalContainerArgumentException} thrown when a {@link Container}
+ * {@link InvalidContainerArgumentException} thrown when a {@link Container}
  * does not contain the specified Item to remove.
  *
  * @author Igor Akkerman
  */
 public class NoSuchItemToRemoveException
-extends IllegalContainerArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;

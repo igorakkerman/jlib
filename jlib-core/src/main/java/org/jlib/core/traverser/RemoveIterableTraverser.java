@@ -51,7 +51,7 @@ implements RemoveTraverser<Item> {
 
     @Override
     public void remove()
-    throws NoItemToRemoveException, IllegalTraversibleStateException {
+    throws NoItemToRemoveException, InvalidTraversibleStateException {
         try {
             getDelegateIterator().remove();
         }
@@ -59,7 +59,7 @@ implements RemoveTraverser<Item> {
             throw new NoItemToRemoveException(traversible, exception);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalTraversibleStateException(traversible, exception);
+            throw new InvalidTraversibleStateException(traversible, exception);
         }
     }
 }

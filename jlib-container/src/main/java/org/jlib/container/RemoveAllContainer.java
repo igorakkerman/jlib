@@ -35,9 +35,9 @@ extends RemoveContainer<Item> {
     /**
      * Removes all Items of this {@link RemoveAllContainer}.
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void removeAll()
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 }

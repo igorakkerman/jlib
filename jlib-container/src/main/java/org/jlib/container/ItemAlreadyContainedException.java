@@ -22,13 +22,13 @@
 package org.jlib.container;
 
 /**
- * {@link IllegalContainerArgumentException} thrown when trying to illegally add
+ * {@link InvalidContainerArgumentException} thrown when trying to illegally add
  * an Item to a {@link Container} that already exists.
  *
  * @author Igor Akkerman
  */
 public class ItemAlreadyContainedException
-extends IllegalContainerArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1090527595338576596L;
