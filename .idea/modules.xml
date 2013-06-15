@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jlib-container/jlib-container.iml" filepath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-container/jlib-container.iml" filepath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" filepath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" />
     </modules>
   </component>
