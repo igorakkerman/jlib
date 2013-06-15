@@ -19,40 +19,43 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.placeholderreplacer;
+package org.jlib.core.text.textformatter;
 
 import java.text.MessageFormat;
 
 /**
- * {@link PlaceholderReplacer} using the {@link MessageFormat} template format
+ * {@link TextFormatter} using the {@link MessageFormat} template format
  * and processing routine. Implemented as a singleton.
+ *
+ * @see MessageFormat#format(String, Object...)
  *
  * @author Igor Akkerman
  */
 // TODO: unit test
-public final class MessageFormatPlaceholderReplacer implements PlaceholderReplacer {
+public final class MessageFormatTextFormatter
+implements TextFormatter {
 
-    /** sole {@link MessageFormatPlaceholderReplacer} instance */
-    public static final MessageFormatPlaceholderReplacer INSTANCE = new MessageFormatPlaceholderReplacer();
+    /** sole {@link MessageFormatTextFormatter} instance */
+    public static final MessageFormatTextFormatter INSTANCE = new MessageFormatTextFormatter();
 
     /**
-     * Returns the sole {@link MessageFormatPlaceholderReplacer} instance.
+     * Returns the sole {@link MessageFormatTextFormatter} instance.
      *
-     * @return sole {@link MessageFormatPlaceholderReplacer} instance
+     * @return sole {@link MessageFormatTextFormatter} instance
      */
-    public static MessageFormatPlaceholderReplacer getInstance() {
+    public static MessageFormatTextFormatter getInstance() {
         return INSTANCE;
     }
 
      /**
-     * Creates a new {@link MessageFormatPlaceholderReplacer}.
+     * Creates a new {@link MessageFormatTextFormatter}.
      */
-    private MessageFormatPlaceholderReplacer() {
+    private MessageFormatTextFormatter() {
         super();
     }
 
     @Override
-    public String replacePlaceholders(final CharSequence template, final Object... arguments) {
+    public String applyTemplateArguments(final CharSequence template, final Object... arguments) {
         return MessageFormat.format(template.toString(), arguments);
     }
 }

@@ -21,8 +21,8 @@
 
 package org.jlib.core.exception;
 
-import org.jlib.core.text.placeholderreplacer.MessageFormatPlaceholderReplacer;
-import org.jlib.core.text.placeholderreplacer.PlaceholderReplacer;
+import org.jlib.core.text.textformatter.MessageFormatTextFormatter;
+import org.jlib.core.text.textformatter.TextFormatter;
 
 import static org.jlib.core.array.ArrayUtility.flatten;
 
@@ -37,9 +37,9 @@ extends Exception {
     /** serialVersionUID */
     private static final long serialVersionUID = - 7508635402610527176L;
 
-    /** default {@link PlaceholderReplacer} used */
-    public static final PlaceholderReplacer DEFAULT_PLACEHOLDER_REPLACER =
-        MessageFormatPlaceholderReplacer.getInstance();
+    /** default {@link TextFormatter} used */
+    public static final TextFormatter DEFAULT_MESSAGE_FORMATTER =
+        MessageFormatTextFormatter.getInstance();
 
     /** {@link String} specifying the message */
      private final String message;
@@ -108,11 +108,16 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     private String createMessage(final String messageTemplate, final Object... messageArguments) {
-        return getTemplateProcessor().replacePlaceholders(messageTemplate, flatten(messageArguments));
+        return getMessageFormatter().applyTemplateArguments(messageTemplate, flatten(messageArguments));
     }
 
-    protected PlaceholderReplacer getTemplateProcessor() {
-        return DEFAULT_PLACEHOLDER_REPLACER;
+    /**
+     * Returns the {@link TextFormatter} used to format the message.
+     *
+     * @return used {@link TextFormatter}
+     */
+    protected TextFormatter getMessageFormatter() {
+        return DEFAULT_MESSAGE_FORMATTER;
     }
 
     @Override

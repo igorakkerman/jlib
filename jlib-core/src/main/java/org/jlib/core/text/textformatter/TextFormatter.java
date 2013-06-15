@@ -19,19 +19,20 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.placeholderreplacer;
+package org.jlib.core.text.textformatter;
 
 /**
- * Routine replacing placeholders in a {@link CharSequence} template by specified arguments.
- * Each {@link PlaceholderReplacer} implementation defines the individual format of
- * the template and its placeholders.
+ * Routine applying arguments to a textual template hereby allowing the text to be
+ * formatted. Each {@link TextFormatter} implementation defines the individual format of
+ * the template and the algorithm applying the arguments to the template's potential
+ * placeholders.
  *
  * @author Igor Akkerman
  */
-public interface PlaceholderReplacer {
+public interface TextFormatter {
 
     /**
-     * Replaces placeholders in a {@link CharSequence} tenplate by the specified arguments.
+     * Applies the specified arguments to the specified template.
      *
      * @param template
      *        {@link CharSequence} specifying the template containing the placeholders
@@ -41,7 +42,7 @@ public interface PlaceholderReplacer {
      *        the arguments are passed to the replacing routine in the correct
      *        order without any transformation
      *
-     * @return final {@link String}
+     * @return {@link String} specifying the formatted text
      */
-    public String replacePlaceholders(CharSequence template, Object... arguments);
+    public String applyTemplateArguments(CharSequence template, Object... arguments);
 }
