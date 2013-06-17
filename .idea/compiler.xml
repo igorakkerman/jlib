@@ -26,8 +26,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jlib-core" target="1.7" />
       <module name="jlib-container" target="1.7" />
+      <module name="jlib-core" target="1.7" />
       <module name="jlib-unittest" target="1.7" />
     </bytecodeTargetLevel>
   </component>
