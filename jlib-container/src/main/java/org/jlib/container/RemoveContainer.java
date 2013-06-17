@@ -37,7 +37,7 @@ public interface RemoveContainer<Item>
 extends Container<Item> {
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Container}.
      *
      * @param items
@@ -54,7 +54,7 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -71,7 +71,7 @@ extends Container<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the specified Items.
      *
      * @param items

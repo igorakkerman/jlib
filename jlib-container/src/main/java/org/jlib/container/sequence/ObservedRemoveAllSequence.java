@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ObservedRemoveAllContainer;
+import org.jlib.container.ObservedRemoveAll;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -34,7 +34,7 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveAllSequence<Item>
-extends ObservedRemoveAllContainer<Item>, ObservedRemoveSequence<Item> {
+extends ObservedRemoveAll<Item>, ObservedRemoveSequence<Item> {
 
     /**
      * @return {@link ObservedRemoveSequenceTraverser} traversing the Items of

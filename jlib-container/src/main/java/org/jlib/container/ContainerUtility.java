@@ -121,7 +121,7 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container, final Item item, final ValueObserver<Item>... observers)
+    public static <Item> void remove(final ObservedRandomAccessRemove<Item> container, final Item item, final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException,
            RuntimeException {
 
@@ -162,7 +162,7 @@ public final class ContainerUtility {
      * @throws IllegalContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Iterable<? extends Item> items)
+    public static <Item> void remove(final RandomAccessRemove<Item> container, final Iterable<? extends Item> items)
     throws IllegalContainerArgumentException, IllegalContainerStateException {
         for (final Item item : items)
             container.remove(item);
@@ -193,7 +193,7 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item... items)
+    public static <Item> void remove(final RandomAccessRemove<Item> container, final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
         remove(container, ArrayUtility.iterable(items));
     }
@@ -227,7 +227,7 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container, final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
+    public static <Item> void remove(final ObservedRandomAccessRemove<Item> container, final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws IllegalContainerArgumentException, IllegalContainerStateException, RuntimeException {
         for (final Item item : items)
             container.remove(item, observers);
@@ -261,7 +261,7 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container, final ValueObserver<Item>[] observers, final Item... items)
+    public static <Item> void remove(final ObservedRandomAccessRemove<Item> container, final ValueObserver<Item>[] observers, final Item... items)
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
         remove(container, ArrayUtility.iterable(items), observers);
     }

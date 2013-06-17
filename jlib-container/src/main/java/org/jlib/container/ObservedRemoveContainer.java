@@ -40,7 +40,7 @@ public interface ObservedRemoveContainer<Item>
 extends RemoveContainer<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
+     * Removes all Items from this {@link ObservedRandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Container}.
      *
      * @param items
@@ -65,7 +65,7 @@ extends RemoveContainer<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
+     * Removes all Items from this {@link ObservedRandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -90,7 +90,7 @@ extends RemoveContainer<Item> {
     throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
+     * Removes all Items from this {@link ObservedRandomAccessRemove}
      * <em>except</em> the specified Items.
      *
      * @param observers

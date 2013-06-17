@@ -21,11 +21,11 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ObservedRemoveAllContainer;
+import org.jlib.container.ObservedRemoveAll;
 
 /**
  * {@link ObservedReplaceAppendRemoveSequence} and
- * {@link ObservedRemoveAllContainer}.
+ * {@link ObservedRemoveAll}.
  *
  * @param <Item>
  *        type of items held in the
@@ -34,6 +34,6 @@ import org.jlib.container.ObservedRemoveAllContainer;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceAppendRemoveAllSequence<Item>
-extends ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAllContainer<Item> {
+extends ObservedReplaceAppendRemoveSequence<Item>, ObservedRemoveAll<Item> {
     // unifying interface
 }
