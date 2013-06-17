@@ -38,9 +38,9 @@ extends Traverser<Item> {
      * @param newItem
      *        Item by which the former Item is replaced
      *
-     * @throws IllegalTraverserStateException
+     * @throws InvalidTraverserStateException
      *         if no Item has been traversed by this {@link ReplaceTraverser}
      */
     public void replace(final Item newItem)
-    throws IllegalTraverserStateException;
+    throws InvalidTraverserStateException;
 }

@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.Remove;
 
 /**
  * {@link ReplaceSequence} that allows Items to be added and removed.
@@ -32,7 +32,7 @@ import org.jlib.container.RemoveContainer;
  * @author Igor Akkerman
  */
 public interface RemoveSequence<Item>
-extends Sequence<Item>, RemoveContainer<Item> {
+extends Sequence<Item>, Remove<Item> {
 
     /**
      * Returns a {@link RemoveSequenceTraverser} traversing the Items of this

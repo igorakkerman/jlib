@@ -23,7 +23,7 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.NoItemToRemoveException;
+import org.jlib.core.exception.traverser.NoItemToRemoveException;
 
 /**
  * {@link IndexSequenceTraverser} of an {@link EmptySequence}.

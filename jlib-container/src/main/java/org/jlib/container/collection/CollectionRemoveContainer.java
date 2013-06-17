@@ -24,9 +24,10 @@ package org.jlib.container.collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.RemoveAllContainer;
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.ObservedRemove;
+import org.jlib.container.Remove;
+import org.jlib.container.RemoveAll;
+import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -35,9 +36,9 @@ import java.util.Collections;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
- * may be used for modification and cannot be observed.
+ * used as a {@link Remove}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRemove} as internal {@link Collection} operations
+ * may be used for modification and these cannot be observed.
  *
  * @param <Item>
  *        type of the items held in the {@link Container}
@@ -46,7 +47,7 @@ import java.util.Collections;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveAllContainer<Item> {
+implements RemoveAll<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -67,25 +68,25 @@ implements RemoveAllContainer<Item> {
      * @param item
      *        added Item
      *
-     * @throws IllegalContainerDelegateArgumentException
+     * @throws InvalidContainerDelegateArgumentException
      *         if {@code item} caused an error during the operation of the
      *         delegate {@link Collection}
      *
-     * @throws IllegalContainerDelegateStateException
+     * @throws InvalidContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
     public void add(final Item item)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         try {
             getDelegateCollection().add(item);
         }
-        catch (final IllegalArgumentException exception) {
-            throw new IllegalContainerDelegateArgumentException(this, getDelegateCollection(), item,
+        catch (final InvalidArgumentException exception) {
+            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), item,
                                                                 "{1}: {2} - add({3})", exception);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - add({3})",
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - add({3})",
                                                              exception, item);
         }
     }
@@ -98,21 +99,21 @@ implements RemoveAllContainer<Item> {
      * @param items
      *        {@link Collection} of added Items
      *
-     * @throws IllegalContainerDelegateArgumentException
+     * @throws InvalidContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
      *
-     * @throws IllegalContainerDelegateStateException
+     * @throws InvalidContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
     public void add(final Collection<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         try {
             getDelegateCollection().addAll(items);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(),
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
                                                              "{1}: Collections.addAll({2}, {3})", exception, items);
         }
     }
@@ -125,16 +126,16 @@ implements RemoveAllContainer<Item> {
      * @param items
      *        {@link Container} of added Items
      *
-     * @throws IllegalContainerDelegateArgumentException
+     * @throws InvalidContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
      *
-     * @throws IllegalContainerDelegateStateException
+     * @throws InvalidContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
     public void add(final Container<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         for (final Item item : items)
             getDelegateCollection().add(item);
     }
@@ -147,33 +148,33 @@ implements RemoveAllContainer<Item> {
      * @param items
      *        comma separated sequence of added Items
      *
-     * @throws IllegalContainerDelegateArgumentException
+     * @throws InvalidContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
      *         of the delegate {@link Collection}
      *
-     * @throws IllegalContainerDelegateStateException
+     * @throws InvalidContainerDelegateStateException
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
     @SuppressWarnings("unchecked")
     public void add(final Item... items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         try {
             Collections.addAll(getDelegateCollection(), items);
         }
-        catch (final IllegalArgumentException | IllegalStateException exception) {
-            throw new IllegalContainerDelegateArgumentException(this, getDelegateCollection(), items,
+        catch (final InvalidArgumentException | InvalidStateException exception) {
+            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), items,
                                                                 "{1}: Collections.addAll({2}, {3})", exception);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(),
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
                                                              "{1}: Collections.addAll({2}, {3})", exception, items);
         }
     }
 
     @Override
     public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalContainerDelegateStateException {
+    throws NoSuchItemToRemoveException, InvalidContainerDelegateStateException {
         try {
             final boolean removed = getDelegateCollection().remove(item);
 
@@ -181,76 +182,76 @@ implements RemoveAllContainer<Item> {
                 throw new NoSuchItemToRemoveException(this, item);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - remove({3})",
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - remove({3})",
                                                              exception, item);
         }
     }
 
     @Override
     public void removeAll()
-    throws IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateStateException {
         try {
             getDelegateCollection().clear();
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - clear()",
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - clear()",
                                                              exception);
         }
     }
 
     @Override
     public void remove(final Collection<? extends Item> items)
-    throws IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateStateException {
         try {
             getDelegateCollection().removeAll(items);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new IllegalContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - removeAll({3})",
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - removeAll({3})",
                                                              exception, items);
         }
     }
 
     @Override
     public void remove(final Container<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         CollectionUtility.removeAll(getDelegateCollection(), items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.remove(this, items);
     }
 
     @Override
     public void remove(final Iterable<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.remove(this, items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         getDelegateCollection().retainAll(items);
     }
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalContainerDelegateArgumentException, IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     public RemoveTraverser<Item> createTraverser()
-    throws IllegalContainerDelegateStateException {
+    throws InvalidContainerDelegateStateException {
         return new RemoveIterableTraverser<>(getDelegateCollection());
     }
 }

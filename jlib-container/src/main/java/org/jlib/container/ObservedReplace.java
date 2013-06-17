@@ -21,23 +21,24 @@
 
 package org.jlib.container;
 
+import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
+
 /**
- * {@link RemoveContainer} allowing all Items to be removed.
+ * {@link Replace} traversed by an {@link ObservedReplace}.
  *
  * @param <Item>
- *        type of items held in the {@link RemoveAllContainer}
+ *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface RemoveAllContainer<Item>
-extends RemoveContainer<Item> {
+public interface ObservedReplace<Item>
+extends Replace<Item> {
 
     /**
-     * Removes all Items of this {@link RemoveAllContainer}.
-     *
-     * @throws IllegalContainerStateException
-     *         if an error occurs during the operation
+     * @return {@link ObservedReplaceTraverser} traversing the Items of this
+     *         {@link ObservedReplace}
      */
-    public void removeAll()
-    throws IllegalContainerStateException;
+    @Override
+    public ObservedReplaceTraverser<Item> createTraverser();
 }

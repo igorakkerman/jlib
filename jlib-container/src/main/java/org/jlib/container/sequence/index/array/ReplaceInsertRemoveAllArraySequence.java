@@ -22,7 +22,7 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedRemoveAllSequence;
 import org.jlib.container.sequence.Sequence;
@@ -155,14 +155,14 @@ implements ObservedRemoveAllSequence<Item> {
 
     @Override
     public void removeAll()
-    throws IllegalSequenceStateException {
+    throws InvalidSequenceStateException {
         ContainerUtility.removeAll(this);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalSequenceStateException {
+    throws InvalidSequenceStateException {
         ContainerUtility.removeAll(this, observers);
     }
 }

@@ -25,7 +25,7 @@ import org.jlib.container.sequence.AbstractSequenceTraverser;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.ValueNotAccessibleException;
+import org.jlib.core.exception.ValueNotAccessibleException;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;

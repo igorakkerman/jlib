@@ -24,28 +24,27 @@ package org.jlib.container;
 import org.jlib.core.observer.ValueObserver;
 
 /**
- * {@link RemoveAllContainer} allowing its remove operations to be attended by
- * {@link ValueObserver} instances.
+ * Ability to remove <em>all</em> Items;
+ * the remove operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
  *        type of items held in the {@link Container}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item>
-extends RemoveAllContainer<Item> {
+public interface ObservedRemoveAll<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveContainer}.
+     * Removes all Items from this {@link Container}.
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws IllegalContainerStateException;
+    throws InvalidContainerStateException;
 }

@@ -21,14 +21,16 @@
 
 package org.jlib.core.system;
 
+import org.jlib.core.exception.InvalidStateException;
+
 /**
- * {@link IllegalStateException} thrown when trying to retrieve the value of a
+ * {@link InvalidStateException} thrown when trying to retrieve the value of a
  * property that is not set.
  *
  * @author Igor Akkerman
  */
 public class ApplicationPropertyNotSetException
-extends IllegalStateException {
+extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8781400138384560958L;

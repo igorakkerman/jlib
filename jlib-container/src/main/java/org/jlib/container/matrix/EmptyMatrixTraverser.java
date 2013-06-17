@@ -21,7 +21,7 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.core.traverser.NoNextItemException;
+import org.jlib.core.exception.traverser.NoNextItemException;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
@@ -76,13 +76,13 @@ implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
 
     @Override
     public void gotoNextEntity()
-    throws IllegalStateException {
-        throw new IllegalStateException();
+    throws InvalidStateException {
+        throw new InvalidStateException();
     }
 
     @Override
     public void replace(final Entry item)
-    throws IllegalStateException {
-        throw new IllegalStateException();
+    throws InvalidStateException {
+        throw new InvalidStateException();
     }
 }

@@ -21,16 +21,16 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
 
 /**
- * {@link IllegalSequenceArgumentException} thrown when a {@link IndexSequence}
+ * {@link InvalidSequenceArgumentException} thrown when a {@link IndexSequence}
  * is accessed with an invalid index.
  *
  * @author Igor Akkerman
  */
 public class SequenceIndexOutOfBoundsException
-extends IllegalSequenceArgumentException {
+extends InvalidSequenceArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1501618255867836784L;

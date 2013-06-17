@@ -33,8 +33,7 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface RemoveContainer<Item>
-extends Container<Item> {
+public interface Remove<Item> {
 
     /**
      * Removes all Items from this {@link RandomAccessRemove}
@@ -43,15 +42,15 @@ extends Container<Item> {
      * @param items
      *        {@link Container} containing the Items to retain
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void retain(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all Items from this {@link RandomAccessRemove}
@@ -60,15 +59,15 @@ extends Container<Item> {
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all Items from this {@link RandomAccessRemove}
@@ -77,23 +76,21 @@ extends Container<Item> {
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Creates a new {@link RemoveTraverser} over the Items of this
-     * {@link RemoveContainer}.
+     * Creates a new {@link RemoveTraverser} over the Items of this {@link Container}.
      *
      * @return newly createTraverser}
      */
-    @Override
     public RemoveTraverser<Item> createTraverser();
 }

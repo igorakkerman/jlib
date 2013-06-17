@@ -22,13 +22,13 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link IllegalTraverserStateException} thrown when there is no next Item to
+ * {@link InvalidTraverserStateException} thrown when there is no next Item to
  * return by a {@link Traverser}.
  *
  * @author Igor Akkerman
  */
 public class NoPreviousItemException
-extends IllegalTraverserStateException {
+extends InvalidTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1747026481047589428L;
@@ -62,15 +62,15 @@ extends IllegalTraverserStateException {
      * @param traversible
      *        traversed {@link Traversible}
      *
-     * @param messagePattern
-     *        {@link String} specifying the error message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern, final Object... messageArguments) {
-        super(traversible, messagePattern, messageArguments);
+    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Object... messageArguments) {
+        super(traversible, messageTemplate, messageArguments);
     }
 
     /**
@@ -79,8 +79,8 @@ extends IllegalTraverserStateException {
      * @param traversible
      *        traversed {@link Traversible}
      *
-     * @param messagePattern
-     *        {@link String} specifying the error message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param cause
      *        {@link Throwable} that caused this {@link NoPreviousItemException}
@@ -89,7 +89,7 @@ extends IllegalTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(traversible, messagePattern, cause, messageArguments);
+    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+        super(traversible, messageTemplate, cause, messageArguments);
     }
 }

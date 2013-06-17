@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.UnexpectedStateException;
+import org.jlib.core.exception.UnexpectedStateException;
 
 import static org.jlib.core.math.MathUtility.count;
 

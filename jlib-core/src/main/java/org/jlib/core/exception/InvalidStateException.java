@@ -30,55 +30,55 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-public abstract class IllegalJlibStateException
+public abstract class InvalidStateException
 extends IllegalStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
     /**
-     * Creates a new {@link IllegalJlibStateException}.
+     * Creates a new {@link InvalidStateException}.
      */
-    public IllegalJlibStateException() {
+    public InvalidStateException() {
         super();
     }
 
     /**
-     * Creates a new {@link IllegalJlibStateException}.
+     * Creates a new {@link InvalidStateException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public IllegalJlibStateException(final String messagePattern, final Object... messageArguments) {
-        this(messagePattern, null, messageArguments);
+    public InvalidStateException(final String messageTemplate, final Object... messageArguments) {
+        this(messageTemplate, null, messageArguments);
     }
 
     /**
-     * Creates a new {@link IllegalJlibStateException}.
+     * Creates a new {@link InvalidStateException}.
      *
      * @param cause
-     *        Throwable that caused this {@link IllegalJlibStateException}
+     *        Throwable that caused this {@link InvalidStateException}
      */
-    public IllegalJlibStateException(final Throwable cause) {
+    public InvalidStateException(final Throwable cause) {
         super(cause);
     }
 
     /**
-     * Creates a new {@link IllegalJlibStateException}.
+     * Creates a new {@link InvalidStateException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link IllegalJlibStateException}
+     *        Throwable that caused this {@link InvalidStateException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message States
      */
-    public IllegalJlibStateException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(MessageFormat.format(messagePattern, ArrayUtility.flatten(messageArguments)), cause);
+    public InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

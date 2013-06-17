@@ -21,17 +21,17 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IllegalSequenceArgumentException} thrown when a requested Item is not
+ * {@link InvalidSequenceArgumentException} thrown when a requested Item is not
  * found.
  *
  * @author Igor Akkerman
  */
 public class NoSuchSequenceItemException
-extends IllegalSequenceArgumentException {
+extends InvalidSequenceArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 8162511917404174346L;

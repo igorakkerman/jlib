@@ -22,12 +22,12 @@
 package org.jlib.core.exception;
 
 /**
- * {@link IllegalJlibStateException} thrown in an uexpected state.
+ * {@link InvalidStateException} thrown in an uexpected state.
  *
  * @author Igor Akkerman
  */
 public class UnexpectedStateException
-extends IllegalJlibStateException {
+extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 4203256054042738427L;
@@ -35,14 +35,14 @@ extends IllegalJlibStateException {
     /**
      * Creates a new {@link UnexpectedStateException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the error message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final String messagePattern, final Object... messageArguments) {
-        super(messagePattern, messageArguments);
+    public UnexpectedStateException(final String messageTemplate, final Object... messageArguments) {
+        super(messageTemplate, messageArguments);
     }
 
     /**
@@ -58,8 +58,8 @@ extends IllegalJlibStateException {
     /**
      * Creates a new {@link UnexpectedStateException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the error message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param cause
      *        Throwable that caused this {@link UnexpectedStateException}
@@ -67,7 +67,7 @@ extends IllegalJlibStateException {
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(messagePattern, cause, messageArguments);
+    public UnexpectedStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+        super(messageTemplate, cause, messageArguments);
     }
 }

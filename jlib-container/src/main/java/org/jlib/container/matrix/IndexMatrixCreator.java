@@ -52,7 +52,7 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *
      * @return the new {@link InitializeableIndexMatrix}
      *
-     * @throws IllegalArgumentException
+     * @throws InvalidArgumentException
      *         if {@code lastColumnIndex < firstColumnIndex || lastRowIndex <
      *         firstRowIndex}
      */
@@ -70,11 +70,11 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *
      * @return the new {@link InitializeableIndexMatrix}
      *
-     * @throws IllegalArgumentException
+     * @throws InvalidArgumentException
      *         if {@code width < 1 || height < 1}
      */
     public final Metrix createMatrix(final int width, final int height)
-    throws IllegalArgumentException {
+    throws InvalidArgumentException {
         assertDimensionValid("width", width);
         assertDimensionValid("height", height);
 
@@ -97,7 +97,7 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *
      * @return the new {@link InitializeableIndexMatrix}
      *
-     * @throws IllegalArgumentException
+     * @throws InvalidArgumentException
      *         if not all sub arrays have the same length
      */
     public final Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final Entry[][] entries) {
@@ -112,7 +112,7 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
         for (int arrayColumnIndex = 0, columnIndex = firstColumnIndex; arrayColumnIndex < width; arrayColumnIndex++, columnIndex++) {
             final Entry[] columnEntries = entries[arrayColumnIndex];
             if (columnEntries.length != height)
-                throw new IllegalArgumentException("entries[" + arrayColumnIndex + "].length != entries[0].length");
+                throw new InvalidArgumentException("entries[" + arrayColumnIndex + "].length != entries[0].length");
 
             for (int arrayRowIndex = 0, rowIndex = firstRowIndex; arrayRowIndex < height; arrayRowIndex++)
                 matrix.replaceStoredEntry(columnIndex, rowIndex, entries[arrayColumnIndex][arrayRowIndex]);
@@ -131,7 +131,7 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *
      * @return the new {@link InitializeableIndexMatrix}
      *
-     * @throws IllegalArgumentException
+     * @throws InvalidArgumentException
      *         if not all sub arrays have the same length
      */
     public final Metrix createMatrix(final Entry[][] entries) {
@@ -148,12 +148,12 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      * @param dimensionValue
      *        integer specifying the dimension value
      *
-     * @throws IllegalArgumentException
+     * @throws InvalidArgumentException
      *         if {@code dimensionValue < 1}
      */
     private void assertDimensionValid(final String dimensionName, final int dimensionValue)
-    throws IllegalArgumentException {
+    throws InvalidArgumentException {
         if (dimensionValue < 1)
-            throw new IllegalArgumentException(dimensionName + " == " + dimensionValue + " < 1");
+            throw new InvalidArgumentException(dimensionName + " == " + dimensionValue + " < 1");
     }
 }

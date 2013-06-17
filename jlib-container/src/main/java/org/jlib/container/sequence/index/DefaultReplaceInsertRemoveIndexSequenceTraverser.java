@@ -22,17 +22,17 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.ValueNotAccessibleException;
+import org.jlib.core.exception.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
+import org.jlib.core.exception.operator.OperatorException;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import static org.jlib.core.array.ArrayUtility.traversible;
@@ -115,7 +115,7 @@ implements ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> {
                 try {
                     remove();
                 }
-                catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
+                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException("remove: {0}", exception);
                 }
             }

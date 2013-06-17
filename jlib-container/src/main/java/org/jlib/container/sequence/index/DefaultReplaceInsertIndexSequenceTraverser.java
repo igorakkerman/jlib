@@ -22,15 +22,15 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
-import org.jlib.container.sequence.IllegalSequenceTraverserStateException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
+import org.jlib.core.exception.operator.OperatorException;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import static org.jlib.core.array.ArrayUtility.traversible;
@@ -95,7 +95,7 @@ implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
     @Override
     @SafeVarargs
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
@@ -104,7 +104,7 @@ implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
                 try {
                     insert(item);
                 }
-                catch (IllegalSequenceArgumentException | IllegalSequenceTraverserStateException exception) {
+                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException("insert: {0}", exception, item);
                 }
             }

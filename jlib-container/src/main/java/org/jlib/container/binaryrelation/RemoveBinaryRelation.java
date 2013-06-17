@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.Remove;
 
 /**
  * {@link BinaryRelation} allowing the removal of {@link Association} items.
@@ -35,7 +35,7 @@ import org.jlib.container.RemoveContainer;
  * @author Igor Akkerman
  */
 public interface RemoveBinaryRelation<LeftValue, RightValue>
-extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Association<LeftValue, RightValue>> {
+extends BinaryRelation<LeftValue, RightValue>, Remove<Association<LeftValue, RightValue>> {
 
     /**
      * Removes the {@link Association} specified by its LeftValue and RightValue

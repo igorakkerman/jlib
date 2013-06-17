@@ -22,7 +22,7 @@
 package org.jlib.core.exception;
 
 /**
- * {@link JlibException} thrown when a requested Value is not set.
+ * {@link AbstractException} thrown when a requested Value is not set.
  *
  * @author Igor Akkerman
  */

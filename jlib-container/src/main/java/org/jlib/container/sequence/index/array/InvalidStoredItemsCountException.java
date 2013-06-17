@@ -21,17 +21,17 @@
 
 package org.jlib.container.sequence.index.array;
 
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link IllegalSequenceStateException} thrown when attempting to store an
+ * {@link InvalidSequenceStateException} thrown when attempting to store an
  * invalid number of Items in a {@link Sequence}.
  *
  * @author Igor Akkerman
  */
 public class InvalidStoredItemsCountException
-extends IllegalSequenceStateException {
+extends InvalidSequenceStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5400803962181030353L;
@@ -48,14 +48,14 @@ extends IllegalSequenceStateException {
      * @param invalidItemsCount
      *        integer specifying the invalid number of Items
      *
-     * @param errorMessagePattern
-     *        {@link String} specifying the error message pattern
+     * @param errorMessageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param errorMessageArguments
      *        comma separated sequence of Object error message arguments
      */
-    public InvalidStoredItemsCountException(final Sequence<?> sequence, final int invalidItemsCount, final String errorMessagePattern, final Object... errorMessageArguments) {
-        super(sequence, errorMessagePattern, invalidItemsCount, errorMessageArguments);
+    public InvalidStoredItemsCountException(final Sequence<?> sequence, final int invalidItemsCount, final String errorMessageTemplate, final Object... errorMessageArguments) {
+        super(sequence, errorMessageTemplate, invalidItemsCount, errorMessageArguments);
 
         this.invalidItemsCount = invalidItemsCount;
     }

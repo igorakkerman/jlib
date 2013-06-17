@@ -21,15 +21,15 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.exception.JlibException;
+import org.jlib.core.exception.AbstractException;
 
 /**
- * {@link JlibException} thrown during the operation of an operator.
+ * {@link AbstractException} thrown during the operation of an operator.
  *
  * @author Igor Akkerman
  */
 public class OperatorException
-extends JlibException {
+extends AbstractException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 9075612246404744163L;
@@ -40,8 +40,8 @@ extends JlibException {
     /**
      * Creates a new {@link OperatorException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern; {1} references
+     * @param messageTemplate
+     *        {@link String} specifying the message template; {1} references
      *        {@code value}
      *
      * @param cause
@@ -51,8 +51,8 @@ extends JlibException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public OperatorException(final String messagePattern, final RuntimeException cause, final Object... messageArguments) {
-        super(messagePattern, cause, messageArguments);
+    public OperatorException(final String messageTemplate, final RuntimeException cause, final Object... messageArguments) {
+        super(messageTemplate, cause, messageArguments);
 
         this.cause = cause;
     }

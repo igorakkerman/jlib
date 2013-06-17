@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
  * Exception thrown when an invalid effective index is specified.
@@ -29,7 +29,7 @@ import org.jlib.core.IllegalJlibArgumentException;
  * @author Igor Akkerman
  */
 class InvalidEffectiveIndexException
-extends IllegalJlibArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 7606042021315378835L;

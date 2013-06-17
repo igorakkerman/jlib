@@ -58,12 +58,12 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     public HashAssociateRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException {
+    throws InvalidAssociationException {
         super(associations);
     }
 
@@ -74,12 +74,12 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        {@link Collection} of {@link Association} items to add
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     public HashAssociateRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
-    throws IllegalAssociationException {
+    throws InvalidAssociationException {
         super(associations);
     }
 
@@ -90,20 +90,20 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        comma separated sequence of the {@link Association} items to add
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     @SuppressWarnings("unchecked")
     public HashAssociateRemoveBinaryRelation(final Association<LeftValue, RightValue>... associations)
-    throws IllegalAssociationException {
+    throws InvalidAssociationException {
         super(associations);
     }
 
     // overridden to be made public
     @Override
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws IllegalAssociationException {
+    throws InvalidAssociationException {
         super.associate(leftValue, rightValue);
     }
 

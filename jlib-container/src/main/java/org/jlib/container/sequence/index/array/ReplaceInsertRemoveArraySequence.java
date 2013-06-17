@@ -23,8 +23,8 @@ package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
@@ -35,7 +35,7 @@ import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequenc
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceInsertRemoveIndexSequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 
@@ -173,41 +173,41 @@ implements ObservedReplaceAppendPrependInsertRemoveIndexSequence<Item> {
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
         ContainerUtility.retain(this, observers, items);
     }
 

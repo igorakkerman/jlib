@@ -22,13 +22,13 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link IllegalSequenceStateException} thrown when trying to remove the sole
+ * {@link InvalidSequenceStateException} thrown when trying to remove the sole
  * Item of a {@link Sequence} that may not be empty.
  *
  * @author Igor Akkerman
  */
 public class SoleItemNotRemoveableException
-extends IllegalSequenceStateException {
+extends InvalidSequenceStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 7467942886021869121L;

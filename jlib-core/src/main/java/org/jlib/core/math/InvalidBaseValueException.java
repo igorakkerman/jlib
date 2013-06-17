@@ -21,14 +21,14 @@
 
 package org.jlib.core.math;
 
-import org.jlib.core.exception.IllegalJlibArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * {@link IllegalJlibArgumentException} thrown when an invalid value has been specified
+ * {@link InvalidArgumentException} thrown when an invalid value has been specified
  * as a base.
  */
 public class InvalidBaseValueException
-extends IllegalJlibArgumentException {
+extends InvalidArgumentException {
 
     private final int baseValue;
 

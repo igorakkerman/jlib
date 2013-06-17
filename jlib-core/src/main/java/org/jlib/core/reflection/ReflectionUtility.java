@@ -53,6 +53,7 @@ import org.jlib.core.system.SystemUtility;
  *
  * @author Igor Akkerman
  */
+//TODO: review thrown exceptions
 public final class ReflectionUtility {
 
     /** no visible constructor */

@@ -53,12 +53,12 @@ extends SequenceTraverser<Item> {
      * @param item
      *        Item to insert
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     public void insert(final Item item)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException;
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException;
 }

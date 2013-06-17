@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.NoNextItemException;
+import org.jlib.core.exception.traverser.NoNextItemException;
 
 /**
  * {@link NoNextItemException} thrown when there is no next Item to return by a

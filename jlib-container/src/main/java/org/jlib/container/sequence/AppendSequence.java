@@ -21,8 +21,8 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.container.Append;
 import org.jlib.container.Container;
-import org.jlib.container.ItemAppendAware;
 
 import java.util.Collection;
 
@@ -35,51 +35,51 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface AppendSequence<Item>
-extends Sequence<Item>, ItemAppendAware<Item> {
+extends Sequence<Item>, Append<Item> {
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
     @Override
     public void append(final Item item)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     public void append(final Container<? extends Item> items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     public void append(final Collection<? extends Item> items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 
     /**
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
     @Override
     @SuppressWarnings("unchecked")
     public void append(final Item... items)
-    throws IllegalSequenceArgumentException;
+    throws InvalidSequenceArgumentException;
 }

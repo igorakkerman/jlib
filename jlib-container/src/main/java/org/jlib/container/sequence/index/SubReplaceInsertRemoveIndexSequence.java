@@ -23,12 +23,12 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.IllegalContainerArgumentException;
-import org.jlib.container.IllegalContainerStateException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 
@@ -110,47 +110,47 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         ContainerUtility.retain(this, observers, items);
     }
 
     @Override
     public void removeFirstItem()
-    throws IllegalSequenceStateException {
+    throws InvalidSequenceStateException {
         remove(getFirstIndex());
     }
 
@@ -163,7 +163,7 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
 
     @Override
     public void removeLastItem()
-    throws IllegalSequenceStateException {
+    throws InvalidSequenceStateException {
         remove(getLastIndex());
     }
 

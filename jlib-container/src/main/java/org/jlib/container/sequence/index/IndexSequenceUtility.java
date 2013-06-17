@@ -22,15 +22,15 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
-import org.jlib.container.IllegalContainerArgumentException;
-import org.jlib.container.IllegalContainerStateException;
-import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.sequence.IllegalSequenceArgumentException;
-import org.jlib.container.sequence.IllegalSequenceStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.ObservedRemove;
+import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
+import org.jlib.core.exception.operator.OperatorException;
 
 /**
  * {@link IndexSequence} utility.
@@ -120,7 +120,7 @@ public final class IndexSequenceUtility {
      *        type of the items held in the {@link Container}
      *
      * @param sequence
-     *        {@link ObservedRemoveContainer} containing the Item
+     *        {@link ObservedRemove} containing the Item
      *
      * @param itemIndex
      *        index of the Item to remove
@@ -129,11 +129,11 @@ public final class IndexSequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws IllegalSequenceArgumentException
+     * @throws InvalidSequenceArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
      *
-     * @throws IllegalSequenceStateException
+     * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -142,7 +142,7 @@ public final class IndexSequenceUtility {
      */
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException, IllegalSequenceStateException, RuntimeException {
+    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 
@@ -152,7 +152,7 @@ public final class IndexSequenceUtility {
                 try {
                     sequence.remove(itemIndex);
                 }
-                catch (IllegalContainerArgumentException | IllegalContainerStateException exception) {
+                catch (InvalidContainerArgumentException | InvalidContainerStateException exception) {
                     throw new OperatorException("remove: {0}", exception, itemIndex);
                 }
             }

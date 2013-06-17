@@ -59,12 +59,12 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @throws AssociationAlreadyContainedException
      *         if the specified {@link Association} already exists
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the specified {@link Association} prevents it
      *         from being added
      */
     protected abstract void associate(LeftValue leftValue, RightValue rightValue)
-    throws AssociationAlreadyContainedException, IllegalAssociationException;
+    throws AssociationAlreadyContainedException, InvalidAssociationException;
 
     /**
      * Asserts that the specified LeftValue is associated with the specified
@@ -76,10 +76,10 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Association}
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of the specified {@link Association} prevents it
      *         from being added
      */
     protected abstract void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws IllegalAssociationException;
+    throws InvalidAssociationException;
 }

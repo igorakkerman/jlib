@@ -22,11 +22,11 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
-import org.jlib.container.IllegalContainerArgumentException;
-import org.jlib.container.IllegalContainerStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.core.AbstractCloneable;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -95,13 +95,13 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
 
     @Override
     public int getItemsCount()
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         return delegateSequence.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         return delegateSequence.isEmpty();
     }
 
@@ -122,70 +122,70 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
 
     @Override
     public boolean contains(final Item item)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateSequence.contains(item);
     }
 
     @Override
     public boolean contains(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public List<Item> toSequentialList()
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         return delegateSequence.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
-    throws IllegalContainerStateException {
+    throws InvalidContainerStateException {
         return delegateSequence.toArray();
     }
 
     @Override
     public void append(final Item item)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(item);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void append(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(item, observers);
     }
 
     @Override
     public void append(final Container<? extends Item> items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(items, observers);
     }
 
     @Override
     public void append(final Collection<? extends Item> items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(items);
     }
 
@@ -197,61 +197,61 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void append(final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void append(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalSequenceArgumentException {
+    throws InvalidSequenceArgumentException {
         delegateSequence.append(observers, items);
     }
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateSequence.retain(items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateSequence.retain(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateSequence.retain(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         delegateSequence.retain(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         delegateSequence.retain(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         delegateSequence.retain(observers, items);
     }
 

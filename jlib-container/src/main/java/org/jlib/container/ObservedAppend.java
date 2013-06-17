@@ -21,25 +21,25 @@
 
 package org.jlib.container;
 
-import org.jlib.core.IllegalJlibArgumentException;
-import org.jlib.core.IllegalJlibStateException;
+import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.exception.InvalidStateException;
 import org.jlib.core.observer.ValueObserver;
 
 import java.util.Collection;
 
 /**
- * {@link ItemPrependAware} to which Items can be prepended.
+ * {@link Append} to which Items can be prepended.
  *
  * @param <Item>
  *        type of the prepended Items
  *
  * @author Igor Akkerman
  */
-public interface ObservedItemPrependAware<Item>
-extends ItemPrependAware<Item> {
+public interface ObservedAppend<Item>
+extends Append<Item> {
 
     /**
-     * Prepends the specified Item to this {@link ObservedItemPrependAware}.
+     * Appends the specified Item to this {@link ObservedAppend}.
      *
      * @param item
      *        Item to prepend
@@ -48,10 +48,10 @@ extends ItemPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalJlibArgumentException
+     * @throws InvalidArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *
-     * @throws IllegalJlibStateException
+     * @throws InvalidStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -60,11 +60,11 @@ extends ItemPrependAware<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
+    throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
     /**
-     * Prepends all Items contained by the specified {@link Container} to this
-     * {@link ObservedItemPrependAware}.
+     * Appends all Items contained by the specified {@link Container} to this
+     * {@link ObservedAppend}.
      *
      * @param items
      *        {@link Container} containing the Items to prepend
@@ -73,14 +73,14 @@ extends ItemPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalJlibArgumentException
+     * @throws InvalidArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalJlibStateException
+     * @throws InvalidStateException
      *         if an error occurs during the operation
      *
-     * @throws IllegalJlibStateException
+     * @throws InvalidStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -89,11 +89,11 @@ extends ItemPrependAware<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
+    throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
     /**
-     * Prepends all Items contained by the specified {@link Collection} to this
-     * {@link ObservedItemPrependAware}.
+     * Appends all Items contained by the specified {@link Collection} to this
+     * {@link ObservedAppend}.
      *
      * @param items
      *        {@link Collection} containing the Items to prepend
@@ -102,11 +102,11 @@ extends ItemPrependAware<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws IllegalJlibArgumentException
+     * @throws InvalidArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalJlibStateException
+     * @throws InvalidStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -115,10 +115,10 @@ extends ItemPrependAware<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
+    throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
     /**
-     * Prepends all specified Items to this {@link ObservedItemPrependAware}.
+     * Appends all specified Items to this {@link ObservedAppend}.
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
@@ -126,11 +126,11 @@ extends ItemPrependAware<Item> {
      * @param items
      *        comma separated sequence of Items to prepend
      *
-     * @throws IllegalJlibArgumentException
+     * @throws InvalidArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws IllegalJlibStateException
+     * @throws InvalidStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -139,5 +139,5 @@ extends ItemPrependAware<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
-    throws IllegalJlibArgumentException, IllegalJlibStateException, RuntimeException;
+    throws InvalidArgumentException, InvalidStateException, RuntimeException;
 }

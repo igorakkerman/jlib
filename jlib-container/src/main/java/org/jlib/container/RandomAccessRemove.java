@@ -24,7 +24,7 @@ package org.jlib.container;
 import java.util.Collection;
 
 /**
- * {@link RemoveContainer} allowing its Items to be removed by random access to
+ * {@link Remove} allowing its Items to be removed by random access to
  * each specified Item.
  *
  * @param <Item>
@@ -33,7 +33,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface RandomAccessRemove<Item>
-extends RemoveContainer<Item> {
+extends Remove<Item> {
 
     /**
      * Removes the specified Item from this {@link RandomAccessRemove}.
@@ -45,15 +45,15 @@ extends RemoveContainer<Item> {
      *         if this {@link RandomAccessRemove} does not contain
      *         {@code Item}
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void remove(final Item item)
-    throws NoSuchItemToRemoveException, IllegalContainerArgumentException, IllegalContainerStateException;
+    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
@@ -62,15 +62,15 @@ extends RemoveContainer<Item> {
      * @param items
      *        {@link Container} containing the Items to remove
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void remove(final Container<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -79,15 +79,15 @@ extends RemoveContainer<Item> {
      * @param items
      *        {@link Collection} containing the Items to remove
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void remove(final Collection<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -96,15 +96,15 @@ extends RemoveContainer<Item> {
      * @param items
      *        {@link Iterable} providing the Items to remove
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public void remove(final Iterable<? extends Item> items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Removes all specified Items from this {@link RandomAccessRemove}
@@ -113,14 +113,14 @@ extends RemoveContainer<Item> {
      * @param items
      *        comma separated sequence of Items to remove
      *
-     * @throws IllegalContainerArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws IllegalContainerStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws IllegalContainerArgumentException, IllegalContainerStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

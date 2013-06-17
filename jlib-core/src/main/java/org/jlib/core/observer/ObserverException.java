@@ -21,16 +21,16 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.exception.IllegalJlibStateException;
-import org.jlib.core.exception.JlibException;
+import org.jlib.core.exception.AbstractException;
+import org.jlib.core.exception.InvalidStateException;
 
 /**
- * {@link JlibException} thrown during the operation of an observer.
+ * {@link AbstractException} thrown during the operation of an observer.
  *
  * @author Igor Akkerman
  */
 public abstract class ObserverException
-extends IllegalJlibStateException {
+extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 7621231395096897078L;
@@ -38,8 +38,8 @@ extends IllegalJlibStateException {
     /**
      * Creates a new {@link ObserverException}.
      *
-     * @param messagePattern
-     *        {@link String} specifying the message pattern
+     * @param messageTemplate
+     *        {@link String} specifying the messagetemplaten
      *
      * @param cause
      *        {@link Throwable} that caused this {@link ObserverException}
@@ -47,7 +47,7 @@ extends IllegalJlibStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ObserverException(final String messagePattern, final Throwable cause, final Object... messageArguments) {
-        super(messagePattern, cause, messageArguments);
+    public ObserverException(final String messatemplatern, final Throwable cause, final Object... messageArguments) {
+        super(messtemplateern, cause, messageArguments);
     }
 }

@@ -25,7 +25,7 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.binaryrelation.Association;
 import org.jlib.container.binaryrelation.DefaultRemoveBinaryRelationTraverser;
-import org.jlib.container.binaryrelation.IllegalAssociationException;
+import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchAssociationValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
@@ -73,12 +73,12 @@ implements RemoveBijection<LeftValue, RightValue> {
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
     public HashAssociateRemoveBijection(final Container<Association<LeftValue, RightValue>> associations)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         super(associations);
     }
 
@@ -101,12 +101,12 @@ implements RemoveBijection<LeftValue, RightValue> {
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
     public HashAssociateRemoveBijection(final Collection<Association<LeftValue, RightValue>> associations)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         super(associations);
     }
 
@@ -129,13 +129,13 @@ implements RemoveBijection<LeftValue, RightValue> {
      *         equal to another {@link Association} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws IllegalAssociationException
+     * @throws InvalidAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
     @SuppressWarnings("unchecked")
     public HashAssociateRemoveBijection(final Association<LeftValue, RightValue>... associations)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, IllegalAssociationException {
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         super(associations);
     }
 

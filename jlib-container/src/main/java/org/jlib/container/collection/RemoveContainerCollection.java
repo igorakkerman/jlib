@@ -22,13 +22,13 @@
 package org.jlib.container.collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.Remove;
 
 import java.util.Collection;
 
 /**
- * Adapter allowing a {@link RemoveContainer} to be used as a {@link Collection}
- * . A {@link RemoveContainerCollection} is backed by a {@link RemoveContainer}
+ * Adapter allowing a {@link Remove} to be used as a {@link Collection}.
+ * A {@link RemoveContainerCollection} is backed by a {@link Remove}
  * specified at initialization.
  *
  * @param <Item>
@@ -39,30 +39,30 @@ import java.util.Collection;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link RemoveContainer} */
-    private final RemoveContainer<Item> delegateRemoveContainer;
+    /** adapted and backed {@link Remove} */
+    private final Remove<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
-     * {@link RemoveContainer}.
+     * {@link Remove}.
      *
      * @param <DelegateContainer>
      *        type of the delegate {@link Container}
      *
      * @param delegateContainer
-     *        {@link RemoveContainer} backing this
+     *        {@link Remove} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends RemoveContainer<Item>> RemoveContainerCollection(final DelegateContainer delegateContainer) {
+    public <DelegateContainer extends Container<Item> & Remove<Item>> RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 
-        delegateRemoveContainer = delegateContainer;
+        this.delegateContainer = delegateContainer;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean remove(final Object item) {
-        delegateRemoveContainer.remove((Item) item);
+        delegateContainer.remove((Item) item);
 
         // TODO: implement modification listener model
         return true;

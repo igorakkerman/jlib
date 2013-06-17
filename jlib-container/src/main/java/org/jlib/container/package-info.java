@@ -31,5 +31,8 @@
 
 // TODO: have a look at Guava
 // TODO: add/correct package-info.java for all packages
+
+// TODO: update javadoc for all classes to reflect refactorings
+
 package org.jlib.container;
 

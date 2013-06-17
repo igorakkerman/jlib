@@ -29,7 +29,7 @@ package org.jlib.container.binaryrelation;
  * @author Igor Akkerman
  */
 public abstract class ValueAlreadyAssociatedException
-extends IllegalAssociationException {
+extends InvalidAssociationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 6309445418086228661L;
@@ -41,10 +41,10 @@ extends IllegalAssociationException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the illegal {@link Association}
+     *        LeftValue of the invalid {@link Association}
      *
      * @param rightValue
-     *        RightValue of the illegal {@link Association}
+     *        RightValue of the invalid {@link Association}
      */
     public ValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);
