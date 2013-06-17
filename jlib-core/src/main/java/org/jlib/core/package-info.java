@@ -32,7 +32,6 @@
  generally unspecified if null arguments are used!
  - create annotation for method parameters @Nullable
  declaring null arguments as being allowed (only for special cases)
- TODO: change license to Apache License 2.0
  TODO: aspect: replace super.toString() calls from jlib classes by something intelligent
  (e.g. Apache Commons toStringBuilder) - execution(String Object.toString) && cflow(call(* jlib.*(..))) )
  */
