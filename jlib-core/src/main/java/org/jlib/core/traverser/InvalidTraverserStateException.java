@@ -24,7 +24,7 @@ package org.jlib.core.traverser;
 import org.jlib.core.exception.InvalidStateException;
 
 /**
- * {@link InvalidStateException} thrown when an illegal state has been
+ * {@link InvalidStateException} thrown when an invalid state has been
  * reached in a {@link Traverser}.
  *
  * @author Igor Akkerman
@@ -56,7 +56,7 @@ extends InvalidStateException {
      *
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalThreadStateException}
+     *        {@link InvalidStateException}
      */
     public InvalidTraverserStateException(final Traversible<?> traversible, final Throwable cause) {
         this(traversible, "{1}", cause);
@@ -90,7 +90,7 @@ extends InvalidStateException {
      *
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link IllegalThreadStateException}
+     *        {@link InvalidStateException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying

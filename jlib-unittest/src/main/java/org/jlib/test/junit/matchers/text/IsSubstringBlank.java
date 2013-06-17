@@ -68,7 +68,8 @@ extends TypeSafeMatcher<String> {
 
     public IsSubstringBlank(int beginIndex, int endIndex) {
         if ((beginIndex < 0) || (beginIndex > endIndex)) {
-            throw new IllegalArgumentException();
+            // TODO: add correct error message
+            throw new InvalidArgumentException("beginIndex: {0}", beginIndex);
         }
 
         this.beginIndex = beginIndex;

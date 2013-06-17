@@ -24,7 +24,7 @@ package org.jlib.core.traverser;
 import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * {@link IllegalArgumentException} referencing a {@link Traversible}.
+ * {@link InvalidArgumentException} referencing a {@link Traversible}.
  *
  * @author Igor Akkerman
  */
