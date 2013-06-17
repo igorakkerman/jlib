@@ -23,14 +23,11 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="jlib" />
-        <module name="jlib-container" />
-        <module name="jlib-core" />
-        <module name="jlib-unittest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jlib-container" target="1.7" />
       <module name="jlib-core" target="1.7" />
+      <module name="jlib-container" target="1.7" />
       <module name="jlib-unittest" target="1.7" />
     </bytecodeTargetLevel>
   </component>
