@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 /**
- * {@link InvalidContainerArgumentException} thrown when trying to illegally add
+ * {@link InvalidContainerArgumentException} thrown when trying to invalidly add
  * an Item to a {@link Container} that already exists.
  *
  * @author Igor Akkerman

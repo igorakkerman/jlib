@@ -33,10 +33,10 @@ extends InvalidBinaryRelationArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6498242933289941100L;
 
-    /** LeftValue of the illegal {@link Association} */
+    /** LeftValue of the invalid {@link Association} */
     private final Object leftValue;
 
-    /** RightValue of the illegal {@link Association} */
+    /** RightValue of the invalid {@link Association} */
     private final Object rightValue;
 
     /**
@@ -46,10 +46,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the illegal {@link Association}
+     *        LeftValue of the invalid {@link Association}
      *
      * @param rightValue
-     *        RightValue of the illegal {@link Association}
+     *        RightValue of the invalid {@link Association}
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
         this(binaryRelation, leftValue, rightValue, "{1}: <{2}, {3}>");
@@ -62,10 +62,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the illegal {@link Association}
+     *        LeftValue of the invalid {@link Association}
      *
      * @param rightValue
-     *        RightValue of the illegal {@link Association}
+     *        RightValue of the invalid {@link Association}
      *
      * @param messageTemplate
      *        {@link String} specifying the template of the error message
@@ -84,10 +84,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the illegal {@link Association}
+     *        LeftValue of the invalid {@link Association}
      *
      * @param rightValue
-     *        RightValue of the illegal {@link Association}
+     *        RightValue of the invalid {@link Association}
      *
      * @param messageTemplate
      *        {@link String} specifying the template of the error message
@@ -107,7 +107,7 @@ extends InvalidBinaryRelationArgumentException {
     }
 
     /**
-     * Returns the LeftValue of the illegal {@link Association}.
+     * Returns the LeftValue of the invalid {@link Association}.
      *
      * @return LeftValue of the {@link Association}
      */

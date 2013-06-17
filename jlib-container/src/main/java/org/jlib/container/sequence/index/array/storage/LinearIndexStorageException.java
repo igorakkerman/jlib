@@ -22,16 +22,16 @@
 package org.jlib.container.sequence.index.array.storage;
 
 import org.jlib.container.sequence.InvalidSequenceStateException;
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * {@link InvalidSequenceStateException} thrown when an illegal
+ * {@link InvalidSequenceStateException} thrown when an invalid
  * {@link LinearIndexStorage} capacity is specified.
  *
  * @author Igor Akkerman
  */
 public class LinearIndexStorageException
-extends IllegalJlibArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 1514836335986845986L;

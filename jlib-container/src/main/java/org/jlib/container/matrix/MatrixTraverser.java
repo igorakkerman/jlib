@@ -46,10 +46,10 @@ extends Traverser<Item> {
      * Moves the cursor in front of the first Item of the next entity (like a
      * row or column), skipping the remaining items of the current entity.
      *
-     * @throws IllegalStateException
+     * @throws InvalidStateException
      *         if the cursor is located behind the last iterated Item of the
      *         {@link Matrix}
      */
     public void gotoNextEntity()
-    throws IllegalStateException;
+    throws InvalidStateException;
 }

@@ -26,7 +26,7 @@ import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
 import org.jlib.core.AbstractCloneable;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 import java.util.Iterator;

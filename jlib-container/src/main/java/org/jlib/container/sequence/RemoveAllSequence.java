@@ -21,10 +21,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.RemoveAllContainer;
+import org.jlib.container.RemoveAll;
 
 /**
- * {@link RemoveSequence} and {@link RemoveAllContainer}.
+ * {@link RemoveSequence} and {@link RemoveAll}.
  *
  * @param <Item>
  *        type of items held in the {@link RemoveAllSequence}
@@ -32,6 +32,6 @@ import org.jlib.container.RemoveAllContainer;
  * @author Igor Akkerman
  */
 public interface RemoveAllSequence<Item>
-extends RemoveSequence<Item>, RemoveAllContainer<Item> {
+extends RemoveSequence<Item>, RemoveAll<Item> {
     // unifying interface
 }

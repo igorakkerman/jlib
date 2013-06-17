@@ -73,7 +73,7 @@ extends AbstractMatrixTraverser<Entry> {
 
     @Override
     public void gotoNextEntity()
-    throws IllegalStateException {
+    throws InvalidStateException {
         entityTraverser = entitiesTraverser.getNextItem().createTraverser();
     }
 

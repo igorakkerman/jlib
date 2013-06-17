@@ -19,27 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.Remove;
+package org.jlib.container;
 
 /**
- * {@link ReplaceSequence} that allows Items to be added and removed.
+ * {@link Remove} allowing all Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items held in the {@link RemoveAll}
  *
  * @author Igor Akkerman
  */
-public interface RemoveSequence<Item>
-extends Sequence<Item>, Remove<Item> {
+public interface RemoveAll<Item>
+extends Remove<Item> {
 
     /**
-     * Returns a {@link RemoveSequenceTraverser} traversing the Items of this
-     * Sequence in proper order.
+     * Removes all Items of this {@link RemoveAll}.
      *
-     * @return InsertSequenceTraverser traversing the Items of this Sequence in
-     *         proper order
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
      */
-    public RemoveSequenceTraverser<Item> createTraverser();
+    public void removeAll()
+    throws InvalidContainerStateException;
 }

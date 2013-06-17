@@ -22,12 +22,12 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 
 /**
- * {@link RemoveContainer} allowing its remove operations to be attended by
+ * {@link Remove} allowing its remove operations to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
@@ -35,12 +35,12 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRandomAccessRemoveContainer<Item>
-extends RandomAccessRemoveContainer<Item> {
+public interface ObservedRandomAccessRemove<Item>
+extends RandomAccessRemove<Item> {
 
     /**
      * Removes the specified Item from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedRandomAccessRemove}.
      *
      * @param item
      *        Item to remove
@@ -50,7 +50,7 @@ extends RandomAccessRemoveContainer<Item> {
      *        attending the removal
      *
      * @throws NoSuchItemToRemoveException
-     *         if this {@link ObservedRandomAccessRemoveContainer} does not
+     *         if this {@link ObservedRandomAccessRemove} does not
      *         contain {@code Item}
      *
      * @throws InvalidContainerArgumentException
@@ -70,7 +70,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedRandomAccessRemove}.
      *
      * @param items
      *        {@link Container} containing the Items to remove
@@ -95,7 +95,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedRandomAccessRemove}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -120,7 +120,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedRandomAccessRemove}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -145,7 +145,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all specified Items from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedRandomAccessRemove}.
      *
      * @param items
      *        comma separated sequence of Items to remove

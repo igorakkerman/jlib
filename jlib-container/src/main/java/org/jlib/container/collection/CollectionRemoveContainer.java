@@ -24,9 +24,10 @@ package org.jlib.container.collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.RemoveAllContainer;
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.ObservedRemove;
+import org.jlib.container.Remove;
+import org.jlib.container.RemoveAll;
+import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -35,9 +36,9 @@ import java.util.Collections;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
- * may be used for modification and cannot be observed.
+ * used as a {@link Remove}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRemove} as internal {@link Collection} operations
+ * may be used for modification and these cannot be observed.
  *
  * @param <Item>
  *        type of the items held in the {@link Container}
@@ -46,7 +47,7 @@ import java.util.Collections;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveAllContainer<Item> {
+implements RemoveAll<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -80,7 +81,7 @@ implements RemoveAllContainer<Item> {
         try {
             getDelegateCollection().add(item);
         }
-        catch (final IllegalArgumentException exception) {
+        catch (final InvalidArgumentException exception) {
             throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), item,
                                                                 "{1}: {2} - add({3})", exception);
         }
@@ -161,7 +162,7 @@ implements RemoveAllContainer<Item> {
         try {
             Collections.addAll(getDelegateCollection(), items);
         }
-        catch (final IllegalArgumentException | IllegalStateException exception) {
+        catch (final InvalidArgumentException | InvalidStateException exception) {
             throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), items,
                                                                 "{1}: Collections.addAll({2}, {3})", exception);
         }

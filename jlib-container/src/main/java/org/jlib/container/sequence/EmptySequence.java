@@ -26,11 +26,11 @@ import org.jlib.container.EmptyContainer;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRandomAccessRemoveContainer;
-import org.jlib.container.ObservedRemoveAllContainer;
+import org.jlib.container.ObservedRandomAccessRemove;
+import org.jlib.container.ObservedRemoveAll;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 
@@ -44,8 +44,8 @@ import java.util.Collection;
  */
 public class EmptySequence<Item>
 extends EmptyContainer<Item>
-implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, ObservedRandomAccessRemoveContainer<Item>,
-           ObservedRemoveAllContainer<Item> {
+implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, ObservedRandomAccessRemove<Item>,
+           ObservedRemoveAll<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();

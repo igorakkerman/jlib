@@ -22,8 +22,8 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.EmptySequence;
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.NoPreviousItemException;
+import org.jlib.core.exception.traverser.NoNextItemException;
+import org.jlib.core.exception.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
 

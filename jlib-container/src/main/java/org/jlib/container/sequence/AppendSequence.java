@@ -21,8 +21,8 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.container.Append;
 import org.jlib.container.Container;
-import org.jlib.container.ItemAppendAware;
 
 import java.util.Collection;
 
@@ -35,7 +35,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface AppendSequence<Item>
-extends Sequence<Item>, ItemAppendAware<Item> {
+extends Sequence<Item>, Append<Item> {
 
     /**
      * @throws InvalidSequenceArgumentException

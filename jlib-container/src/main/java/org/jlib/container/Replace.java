@@ -19,27 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container;
 
-import org.jlib.container.Remove;
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
- * {@link ReplaceSequence} that allows Items to be added and removed.
+ * <p>
+ * Container that allows its Items to be modified using an
+ * {@link ReplaceTraverser}.
+ * </p>
+ * <p>
+ * It does not necessarily allow modification of the {@link Container}, that is,
+ * this interface does not provide methods for adding and removing Items. See
+ * {@link AppendSequence} for this functionality.
+ * </p>
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
- *
  * @author Igor Akkerman
  */
-public interface RemoveSequence<Item>
-extends Sequence<Item>, Remove<Item> {
+public interface Replace<Item>
+extends Container<Item> {
 
     /**
-     * Returns a {@link RemoveSequenceTraverser} traversing the Items of this
-     * Sequence in proper order.
+     * Creates a new {@link ReplaceTraverser} over the Items of this {@link Replace}
+     * .
      *
-     * @return InsertSequenceTraverser traversing the Items of this Sequence in
-     *         proper order
+     * @return newly createTraverser}
      */
-    public RemoveSequenceTraverser<Item> createTraverser();
+    public ReplaceTraverser<Item> createTraverser();
 }

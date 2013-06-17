@@ -21,16 +21,16 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * {@link IllegalJlibArgumentException} thrown when trying to create a
+ * {@link InvalidArgumentException} thrown when trying to create a
  * {@link Sequence} with an invalid number of Items.
  *
  * @author Igor Akkerman
  */
 public class InvalidSequenceItemsCountException
-extends IllegalJlibArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 23142560184875814L;

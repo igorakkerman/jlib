@@ -28,7 +28,7 @@ import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 import java.util.Collection;
 

@@ -22,7 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 
 /**
  * {@link Sequence} allowing its Items to be traversed using a

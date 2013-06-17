@@ -106,8 +106,8 @@ extends AbstractCollection<Item> {
      */
     @Override
     public boolean equals(final Object otherObject) {
-        return otherObject instanceof ContainerCollection<?> && delegateContainer.equals(
-                                                                                        ((ContainerCollection<?>) otherObject).delegateContainer);
+        return otherObject instanceof ContainerCollection<?> && //
+               delegateContainer.equals(((ContainerCollection<?>) otherObject).delegateContainer);
     }
 
     @Override

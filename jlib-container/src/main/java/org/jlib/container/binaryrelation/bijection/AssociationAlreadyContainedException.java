@@ -26,7 +26,7 @@ import org.jlib.container.binaryrelation.BinaryRelation;
 import org.jlib.container.binaryrelation.InvalidAssociationException;
 
 /**
- * {@link InvalidAssociationException} thrown when trying to illegaly add an
+ * {@link InvalidAssociationException} thrown when trying to invalidy add an
  * {@link Association} to a {@link BinaryRelation}.
  *
  * @author Igor Akkerman

@@ -33,11 +33,10 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface RemoveContainer<Item>
-extends Container<Item> {
+public interface Remove<Item> {
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Container}.
      *
      * @param items
@@ -54,7 +53,7 @@ extends Container<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -71,7 +70,7 @@ extends Container<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemoveContainer}
+     * Removes all Items from this {@link RandomAccessRemove}
      * <em>except</em> the specified Items.
      *
      * @param items
@@ -89,11 +88,9 @@ extends Container<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Creates a new {@link RemoveTraverser} over the Items of this
-     * {@link RemoveContainer}.
+     * Creates a new {@link RemoveTraverser} over the Items of this {@link Container}.
      *
      * @return newly createTraverser}
      */
-    @Override
     public RemoveTraverser<Item> createTraverser();
 }

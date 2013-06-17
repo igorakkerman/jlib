@@ -27,12 +27,12 @@ import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.ValueNotAccessibleException;
+import org.jlib.core.exception.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.exception.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
+import org.jlib.core.exception.operator.OperatorException;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import static org.jlib.core.array.ArrayUtility.traversible;

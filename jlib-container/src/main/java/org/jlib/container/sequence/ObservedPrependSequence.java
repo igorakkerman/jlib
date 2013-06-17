@@ -22,7 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
-import org.jlib.container.ObservedItemPrependAware;
+import org.jlib.container.ObservedPrepend;
 import org.jlib.core.observer.ValueObserver;
 
 import java.util.Collection;
@@ -36,7 +36,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface ObservedPrependSequence<Item>
-extends PrependSequence<Item>, ObservedItemPrependAware<Item> {
+extends PrependSequence<Item>, ObservedPrepend<Item> {
 
     /**
      * @throws InvalidSequenceArgumentException

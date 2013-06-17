@@ -41,10 +41,10 @@ extends InvalidAssociationException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the illegal {@link Association}
+     *        LeftValue of the invalid {@link Association}
      *
      * @param rightValue
-     *        RightValue of the illegal {@link Association}
+     *        RightValue of the invalid {@link Association}
      */
     public ValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);

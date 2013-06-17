@@ -55,7 +55,7 @@ extends InvalidBinaryRelationArgumentException {
     }
 
     /**
-     * Returns the LeftValue of the illegal {@link Association}.
+     * Returns the LeftValue of the invalid {@link Association}.
      *
      * @return LeftValue of the {@link Association}
      */

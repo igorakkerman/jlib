@@ -21,10 +21,10 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.exception.traverser.InvalidTraversibleArgumentException;
 
 /**
- * {@link IllegalArgumentException} referencing a {@link Container}.
+ * {@link InvalidArgumentException} referencing a {@link Container}.
  *
  * @author Igor Akkerman
  */

@@ -21,16 +21,16 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.IllegalJlibArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * {@link IllegalJlibArgumentException} thrown when an invalid capacity
+ * {@link InvalidArgumentException} thrown when an invalid capacity
  * factor is specified.
  *
  * @author Igor Akkerman
  */
 class InvalidCapacityFactorException
-extends IllegalJlibArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 655924593848562967L;
