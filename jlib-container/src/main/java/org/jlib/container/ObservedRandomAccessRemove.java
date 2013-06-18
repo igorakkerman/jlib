@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
 
 import java.util.Collection;
 
@@ -35,8 +35,7 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRandomAccessRemove<Item>
-extends RandomAccessRemove<Item> {
+public interface ObservedRandomAccessRemove<Item> {
 
     /**
      * Removes the specified Item from this
