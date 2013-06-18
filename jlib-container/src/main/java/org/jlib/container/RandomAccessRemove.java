@@ -32,8 +32,7 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface RandomAccessRemove<Item>
-extends Remove<Item> {
+public interface RandomAccessRemove<Item> {
 
     /**
      * Removes the specified Item from this {@link RandomAccessRemove}.
