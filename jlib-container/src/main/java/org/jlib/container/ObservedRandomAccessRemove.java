@@ -62,7 +62,7 @@ public interface ObservedRandomAccessRemove<Item> {
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "DuplicateThrows"})
     public void remove(final Item item, final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException;
