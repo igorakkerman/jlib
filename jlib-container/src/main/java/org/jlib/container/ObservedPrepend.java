@@ -58,7 +58,7 @@ extends Prepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "DuplicateThrows"})
     public void prepend(final Item item, final ValueObserver<Item>... observers)
     throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
@@ -80,14 +80,11 @@ extends Prepend<Item> {
      * @throws InvalidStateException
      *         if an error occurs during the operation
      *
-     * @throws InvalidStateException
-     *         if an error occurs during the operation
-     *
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "DuplicateThrows"})
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
@@ -113,7 +110,7 @@ extends Prepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "DuplicateThrows"})
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidArgumentException, InvalidStateException, RuntimeException;
 
@@ -137,7 +134,7 @@ extends Prepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "DuplicateThrows"})
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
     throws InvalidArgumentException, InvalidStateException, RuntimeException;
 }
