@@ -21,6 +21,8 @@
 
 package org.jlib.core.valueholder;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Skeletal implementation of an {@link AccessibleValueHolder}.
  *
@@ -49,7 +51,6 @@ implements AccessibleValueHolder<Value> {
 
     @Override
     public int hashCode() {
-        // TODO: use Apache Commons HashCodeBuilder
-        return getValue().hashCode() * 2;
+        return new HashCodeBuilder().append(getValue()).toHashCode();
     }
 }
