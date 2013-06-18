@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.util.Collections.addAll;
+
 /**
  * Utility class providing methods operating on {@link Collection Collections}.
  *
@@ -53,8 +55,9 @@ public final class CollectionUtility {
      */
     public static <SetItem, ArrayItem extends SetItem> Set<SetItem> toSet(final ArrayItem[] array) {
         final Set<SetItem> set = new HashSet<SetItem>(array.length);
-        for (ArrayItem item : array)
-            set.add(item);
+
+        addAll(set, array);
+
         return set;
     }
 
