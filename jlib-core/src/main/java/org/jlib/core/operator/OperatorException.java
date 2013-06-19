@@ -21,15 +21,15 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.exception.AbstractException;
+import org.jlib.core.exception.FormattedMessageException;
 
 /**
- * {@link AbstractException} thrown during the operation of an operator.
+ * {@link FormattedMessageException} thrown during the operation of an operator.
  *
  * @author Igor Akkerman
  */
 public class OperatorException
-extends AbstractException {
+extends FormattedMessageException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 9075612246404744163L;

@@ -31,7 +31,7 @@ import static org.jlib.core.array.ArrayUtility.flatten;
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractException
+public abstract class FormattedMessageException
 extends Exception {
 
     /** serialVersionUID */
@@ -45,16 +45,16 @@ extends Exception {
      private final String message;
 
      /**
-     * Creates a new {@link AbstractException}.
+     * Creates a new {@link FormattedMessageException}.
      */
-    protected AbstractException() {
+    protected FormattedMessageException() {
         super();
 
         message = super.getMessage();
     }
 
     /**
-     * Creates a new {@link AbstractException}.
+     * Creates a new {@link FormattedMessageException}.
      *
      * @param messageTemplate
      *        {@link String} specifying the message template
@@ -62,37 +62,37 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected AbstractException(final String messageTemplate, final Object... messageArguments) {
+    protected FormattedMessageException(final String messageTemplate, final Object... messageArguments) {
         super();
 
         message = createMessage(messageTemplate, messageArguments);
     }
 
     /**
-     * Creates a new {@link AbstractException}.
+     * Creates a new {@link FormattedMessageException}.
      *
      * @param cause
-     *        Throwable that caused this {@link AbstractException}
+     *        Throwable that caused this {@link FormattedMessageException}
      */
-    protected AbstractException(final Throwable cause) {
+    protected FormattedMessageException(final Throwable cause) {
         super(cause);
 
         message = super.getMessage();
     }
 
     /**
-     * Creates a new {@link AbstractException}.
+     * Creates a new {@link FormattedMessageException}.
      *
      * @param messageTemplate
      *        {@link String} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link AbstractException}
+     *        Throwable that caused this {@link FormattedMessageException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected AbstractException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    protected FormattedMessageException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(cause);
 
         message = createMessage(messageTemplate, messageArguments);
