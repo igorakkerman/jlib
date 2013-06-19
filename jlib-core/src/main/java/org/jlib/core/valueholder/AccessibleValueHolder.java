@@ -21,8 +21,10 @@
 
 package org.jlib.core.valueholder;
 
+import org.jlib.core.exception.ValueNotAccessibleException;
+
 /**
- * Holder of a Value that is ensured to be accessible.
+ * Holder of a Value that is guaranteed to be accessible.
  *
  * @param <Value>
  *        type of the value
@@ -33,7 +35,8 @@ public interface AccessibleValueHolder<Value>
 extends ValueHolder<Value> {
 
     /**
-     * Returns the registered Value.
+     * Returns the Value. Since the Value is guaranteed to be accessible, <em>no</em>
+     * {@link ValueNotAccessibleException} will be thrown.
      *
      * @return registered Value
      */
