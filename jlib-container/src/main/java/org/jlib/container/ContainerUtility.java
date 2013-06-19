@@ -21,18 +21,20 @@
 
 package org.jlib.container;
 
-import org.jlib.container.collection.CollectionUtility;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.exception.operator.OperatorException;
+import org.jlib.core.operator.OperatorException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
 import java.util.Collection;
 import java.util.Set;
+
+import static java.util.Arrays.asList;
+import static org.jlib.container.collection.CollectionUtility.toSet;
 
 /**
  * Utility class providing methods operating on {@link Container} instances.
@@ -120,7 +122,8 @@ public final class ContainerUtility {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SafeVarargs
+    @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final ObservedRandomAccessRemove<Item> container, final Item item, final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
            RuntimeException {
@@ -193,6 +196,7 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SafeVarargs
+    @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final RandomAccessRemove<Item> container, final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         remove(container, ArrayUtility.iterable(items));
@@ -227,6 +231,7 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SafeVarargs
+    @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final ObservedRandomAccessRemove<Item> container, final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         for (final Item item : items)
@@ -289,7 +294,7 @@ public final class ContainerUtility {
 
     public static <Item> void retain(final Remove<Item> container, final Iterable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
+        final Set<Item> retainedItemsSet = toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = container.createTraverser();
         while (containerTraverser.isNextItemAccessible())
@@ -324,10 +329,7 @@ public final class ContainerUtility {
     @SafeVarargs
     public static <Item, RetainedItem extends Item> void retain(final Remove<Item> container, final RetainedItem... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        // necessary as we need the contains() method fot the items sequence
-        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
-        // do not inline, otherwise Eclipse removes the cast from Set<RetainedItem> to Set<Item> and Javac complains
-        retain(container, retainedItemsSet);
+        retain(container, toSet(items));
     }
 
     /**
@@ -389,7 +391,7 @@ public final class ContainerUtility {
     @SafeVarargs
     public static <Item> void retain(final ObservedRemove<Item> container, final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
+        final Set<Item> retainedItemsSet = toSet(items);
 
         final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser();
 
@@ -435,12 +437,10 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
+    @SuppressWarnings("DuplicateThrows")
     public static <Item, RetainedItem extends Item> void retain(final ObservedRemove<Item> container, final ValueObserver<Item>[] observers, final RetainedItem... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
-        // conversion to Set necessary as we need the contains() method for the tems sequence
-        final Set<Item> retainedItemsSet = CollectionUtility.toSet(items);
-        // do not inline, otherwise Eclipse removes the cast from Set<RetainedItem> to Set<Item> and Javac complains
-        retain(container, retainedItemsSet, observers);
+        retain(container, asList(items), observers);
     }
 
     /**
@@ -474,6 +474,7 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
+    @SuppressWarnings("DuplicateThrows")
     public static <Item> void retain(final ObservedRemove<Item> container, final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
