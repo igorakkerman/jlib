@@ -39,7 +39,7 @@ extends InvalidStateException {
      * Creates a new {@link ObserverException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the messagetemplaten
+     *        {@link String} specifying the message template
      *
      * @param cause
      *        {@link Throwable} that caused this {@link ObserverException}
@@ -47,7 +47,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ObserverException(final String messatemplatern, final Throwable cause, final Object... messageArguments) {
-        super(messtemplateern, cause, messageArguments);
+    public ObserverException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+        super(messageTemplate, cause, messageArguments);
     }
 }
