@@ -22,7 +22,7 @@
 package org.jlib.core.valueholder;
 
 /**
- * Holder of a Value that is accessible.
+ * Holder of a Value that is ensured to be accessible.
  *
  * @param <Value>
  *        type of the value
