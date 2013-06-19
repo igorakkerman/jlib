@@ -24,8 +24,7 @@ package org.jlib.core.operator;
 import org.jlib.core.valueholder.UninitializedValueHolder;
 
 /**
- * {@link UninitializedValueHolder} calling the
- * {@link OptionalValueOperator#operateUnset()} method from
+ * {@link UninitializedValueHolder} calling the {@link OptionalValueOperator#operateUnset()} method from
  * {@link #operate(OptionalValueOperator)}.
  *
  * @param <Value>
@@ -38,8 +37,7 @@ extends UninitializedValueHolder<Value>
 implements OperatedValueHolder<Value> {
 
     /**
-     * Creates a new
-     * {@link UninitializedOperatedValueHolder} .
+     * Creates a new {@link UninitializedOperatedValueHolder}.
      */
     public UninitializedOperatedValueHolder() {
         super();
