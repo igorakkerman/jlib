@@ -29,7 +29,7 @@ public class ContainsStringAtIndex
 extends SubstringMatcher {
 
     private static class SubstringIndex
-    extends IndexContainer {
+    extends Index {
 
         public SubstringIndex(int index) {
             super(index);

@@ -24,9 +24,7 @@ package org.jlib.test.junit.matchers.text;
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
 import org.hamcrest.TypeSafeMatcher;
-import org.jlib.core.Wrapper;
-
-import static org.jlib.core.text.CharSequenceTraverser.iterable;
+import org.jlib.core.valueholder.ValueHolder;
 
 public class HasFixedWidthColumnValue
 extends TypeSafeMatcher<String> {
@@ -37,7 +35,7 @@ extends TypeSafeMatcher<String> {
 
         private final int endIndex;
 
-        Column(int beginIndex, int endIndex) {
+        protected Column(int beginIndex, int endIndex) {
             this.beginIndex = beginIndex;
             this.endIndex = endIndex;
         }
@@ -48,22 +46,6 @@ extends TypeSafeMatcher<String> {
 
         int getEndIndex() {
             return endIndex;
-        }
-    }
-
-    private static class Index
-    extends Wrapper<Integer> {
-
-        private Index(int value) {
-            super(value);
-        }
-    }
-
-    private static class ColumnWidth
-    extends Wrapper<Integer> {
-
-        private ColumnWidth(int value) {
-            super(value);
         }
     }
 
@@ -78,12 +60,12 @@ extends TypeSafeMatcher<String> {
     }
 
     @Factory
-    public static Column inColumn(Index columnBeginIndex, Index columnEndIndex) {
-        return new Column(columnBeginIndex.get(), columnEndIndex.get());
+    public static Column inColumn(int columnBeginIndex, int columnEndIndex) {
+        return new Column(columnBeginIndex, columnEndIndex);
     }
 
     @Factory
-    public static Column inColumn(Index columnBeginIndex, ColumnWidth columnWidth) {
+    public static Column inColumn(int columnBeginIndex, ColumnWidth columnWidth) {
         return new Column(columnBeginIndex.get(), columnBeginIndex.get() + columnWidth.get() - 1);
     }
 

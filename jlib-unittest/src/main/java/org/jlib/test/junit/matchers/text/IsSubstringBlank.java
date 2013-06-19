@@ -29,34 +29,34 @@ import org.hamcrest.TypeSafeMatcher;
 public class IsSubstringBlank
 extends TypeSafeMatcher<String> {
 
-    private static class BeginIndexContainer
-    extends IndexContainer {
+    private static class BeginIndex
+    extends Index {
 
-        public BeginIndexContainer(int index) {
+        public BeginIndex(int index) {
             super(index);
         }
     }
 
-    private static class EndIndexContainer
-    extends IndexContainer {
+    private static class EndIndex
+    extends Index {
 
-        public EndIndexContainer(int index) {
+        public EndIndex(int index) {
             super(index);
         }
     }
 
     @Factory
-    public static BeginIndexContainer from(int beginIndex) {
-        return new BeginIndexContainer(beginIndex);
+    public static BeginIndex from(int beginIndex) {
+        return new BeginIndex(beginIndex);
     }
 
     @Factory
-    public static EndIndexContainer to(int endIndex) {
-        return new EndIndexContainer(endIndex);
+    public static EndIndex to(int endIndex) {
+        return new EndIndex(endIndex);
     }
 
     @Factory
-    public static IsSubstringBlank blank(BeginIndexContainer beginIndexContainer, EndIndexContainer endIndexContainer) {
+    public static IsSubstringBlank blank(BeginIndex beginIndexContainer, EndIndex endIndexContainer) {
         return new IsSubstringBlank(beginIndexContainer.getIndex(), endIndexContainer.getIndex());
     }
 
