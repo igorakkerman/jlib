@@ -32,13 +32,12 @@ import org.jlib.core.traverser.ObservedReplaceTraverser;
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplace<Item>
-extends Replace<Item> {
+public interface ObservedReplace<Item> {
 
     /**
-     * @return {@link ObservedReplaceTraverser} traversing the Items of this
-     *         {@link ObservedReplace}
+     * Returns an {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplace}.
+     *
+     * @return {@link ObservedReplaceTraverser} traversing the Items of this {@link ObservedReplace}
      */
-    @Override
     public ObservedReplaceTraverser<Item> createTraverser();
 }

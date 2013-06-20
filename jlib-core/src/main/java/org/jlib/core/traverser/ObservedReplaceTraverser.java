@@ -33,8 +33,7 @@ import org.jlib.core.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceTraverser<Item>
-extends ReplaceTraverser<Item> {
+public interface ObservedReplaceTraverser<Item> {
 
     /**
      * Replaces the last traversed Item with the specified value.
