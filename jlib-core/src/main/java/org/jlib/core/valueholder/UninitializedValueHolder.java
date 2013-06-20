@@ -41,6 +41,14 @@ implements ModifiableValueHolder<Value> {
         super();
     }
 
+    /**
+     * Always throws a {@link ValueNotAccessibleException}.
+     *
+     * @return never
+     *
+     * @throws ValueNotAccessibleException
+     *         always
+     */
     @Override
     public Value getValue()
     throws ValueNotAccessibleException {
