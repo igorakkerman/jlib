@@ -24,6 +24,7 @@ package org.jlib.container;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.Traversible;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -202,7 +203,7 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *         {@code false} otherwise
      */
     @Override
-    public boolean equals(/* @Nullable */Object otherObject);
+    public boolean equals(@Nullable Object otherObject);
 
     /**
      * Verifies whether the {@link Traverser} instances created by the

@@ -100,4 +100,24 @@ public final class SystemUtility {
 
         return propertyValue;
     }
+
+    /**
+     * Compares the specified {@link Object}s for mutual equality. Two {@link Object}s {@code object1}, {@code object2}
+     * are considered equal if {@code object1.equals(object2)}.
+     *
+     * @param objects
+     *        comma separated sequence of {@link Object}s to compare
+     *
+     * @return {@code true} if all specified {@link Object}s are equal or if the specified sequence of {@link Object}s
+     *         is empty; {@code false} otherwise
+     */
+    public static boolean equal(final Object... objects) {
+        final Object firstObject = objects[0];
+
+        for (int index = 1; index < objects.length; index++)
+            if (! firstObject.equals(objects[index]))
+                return false;
+
+        return true;
+    }
 }

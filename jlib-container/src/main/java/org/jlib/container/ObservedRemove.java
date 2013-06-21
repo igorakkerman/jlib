@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 import java.util.Collection;
@@ -113,9 +113,9 @@ public interface ObservedRemove<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
-     * R
-     * @eturn {@link ObservedRemoveTraverser} traversing the Items of this
-     *        {@link ObservedRemove}
+     * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
+     *
+     * @return {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
      */
     public ObservedRemoveTraverser<Item> createTraverser();
 }
