@@ -26,6 +26,7 @@ import org.jlib.core.iterator.IteratorUtility;
 import org.jlib.core.traverser.TraverserUtility;
 import org.jlib.core.traverser.TraversibleIterator;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -140,7 +141,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean equals(/* @Nullable */final Object otherObject) {
+    public final boolean equals(final @Nullable Object otherObject) {
         if (otherObject == null || ! getClass().equals(otherObject.getClass()))
             return false;
 
