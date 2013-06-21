@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 import java.util.Collection;
