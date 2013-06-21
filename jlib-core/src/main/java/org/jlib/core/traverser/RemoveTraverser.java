@@ -29,15 +29,14 @@ package org.jlib.core.traverser;
  *
  * @author Igor Akkerman
  */
-public interface RemoveTraverser<Item>
-extends Traverser<Item> {
+public interface RemoveTraverser<Item> {
 
     /**
      * Removes the last Item returned by this {@link RemoveTraverser}.
      *
      * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link #getNextItem()}
-     *         or an appropriate method
+     *         if not called immediately after a call to {@link Traverser#getNextItem()}
+     *         or a similar method
      *
      * @throws InvalidTraversibleStateException
      *         if an error was caused by a delegate used to remove the item
