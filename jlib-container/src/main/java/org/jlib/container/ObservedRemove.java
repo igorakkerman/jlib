@@ -113,9 +113,9 @@ public interface ObservedRemove<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
-     * R
-     * @eturn {@link ObservedRemoveTraverser} traversing the Items of this
-     *        {@link ObservedRemove}
+     * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
+     *
+     * @return {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
      */
     public ObservedRemoveTraverser<Item> createTraverser();
 }
