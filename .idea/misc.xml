@@ -8,10 +8,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -19,6 +15,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </set>
     </option>
+  </component>
+  <component name="ProjectKey">
+    <option name="state" value="ssh://root@git.dynamite-services.de/root/Projekte/jlib/Git" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" assert-keyword="true" jdk-15="true" project-jdk-name="JDK 7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
