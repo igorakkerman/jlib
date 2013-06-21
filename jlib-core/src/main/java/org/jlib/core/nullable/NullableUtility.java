@@ -22,6 +22,7 @@
 package org.jlib.core.nullable;
 
 import org.jlib.core.exception.ValueNotAccessibleException;
+import org.jlib.core.system.SystemUtility;
 
 import javax.annotation.Nullable;
 
@@ -52,6 +53,7 @@ public final class NullableUtility {
      * @throws ValueNotAccessibleException
      *         if {@code value == null}
      */
+    // TODO: review if still necessary when using Guava
     public static <Value> Value optional(final String valueName, final @Nullable Value value)
     throws ValueNotAccessibleException {
 
@@ -62,32 +64,33 @@ public final class NullableUtility {
     }
 
     /**
-     * Compares the specified Objects for mutual equality. Two Objects
-     * {@code object1}, {@code object2} are considered equal if
-     * {@code object1 == object2 == null} or {@code object1.equals(object2)}.
+     * Compares the specified Objects for mutual equality. Two Objects {@code object1}, {@code object2} are considered
+     * equal if {@code object1 == object2 == null} or {@code object1.equals(object2)}.
      *
      * @param objects
      *        comma separated sequence of Objects to compare
      *
-     * @return {@code true} if all specified Objects are equal or if the
-     *         specified sequence of Objects is empty; {@code false} otherwise
+     * @return {@code true} if all specified Objects are equal or if the specified sequence of Objects is empty;
+     *         {@code false} otherwise
      */
     public static boolean equalOrNull(final Object... objects) {
-        if (objects.length == 0)
-            return true;
+        return objects.length == 0 || (objects[0] != null
+                                       ? SystemUtility.equal(objects)
+                                       : allNull(objects));
+    }
 
-        final Object firstObject = objects[0];
-
-        if (firstObject == null) {
-            for (int index = 1; index < objects.length; index++)
-                if (objects[index] != null)
-                    return false;
-
-            return true;
-        }
-
-        for (int index = 1; index < objects.length; index++)
-            if (! firstObject.equals(objects[index]))
+    /**
+     * Returns whether all of the specified {@link Object} references are {@code null}.
+     *
+     * @param objects
+     *        comma separated sequence of {@link Object}s
+     *
+     * @return {@code true} if all of the specified {@link Object} references are {@code null};
+     *         {@code false} otherwise
+     */
+    private static boolean allNull(final Object... objects) {
+        for (Object object : objects)
+            if (object != null)
                 return false;
 
         return true;
