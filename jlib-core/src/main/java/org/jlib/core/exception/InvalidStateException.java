@@ -38,13 +38,6 @@ extends IllegalStateException {
 
     /**
      * Creates a new {@link InvalidStateException}.
-     */
-    protected InvalidStateException() {
-        super();
-    }
-
-    /**
-     * Creates a new {@link InvalidStateException}.
      *
      * @param messageTemplate
      *        {@link String} specifying the message template
