@@ -80,8 +80,8 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
      *        integer specifying the index of the initial next Item
      *
      * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
+     *         if {@code startIndex < sequence.getFirstIndex() ||
+     *                   startIndex > sequence.getLastIndex()}
      *
      * @throws InvalidSequenceArgumentException
      *         if some property of {@code newItem} prevents the operation from
