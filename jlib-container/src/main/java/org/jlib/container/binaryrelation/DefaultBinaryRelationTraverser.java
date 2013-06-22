@@ -22,7 +22,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.core.exception.ValueNotAccessibleException;
-import org.jlib.core.exception.traverser.NoNextItemException;
+import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;

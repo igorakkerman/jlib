@@ -22,7 +22,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.core.exception.ValueNotAccessibleException;
-import org.jlib.core.exception.traverser.NoItemToRemoveException;
+import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.Traverser;
 
