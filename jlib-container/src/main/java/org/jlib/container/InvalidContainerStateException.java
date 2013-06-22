@@ -50,7 +50,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerStateException(final Container<?> container, final String messageTemplate, final Object... messageArguments) {
-        this(container, messageTemplate, (Throwable) null, messageArguments);
+        super(messageTemplate, container, messageArguments);
+
         this.container = container;
     }
 
@@ -72,6 +73,8 @@ extends InvalidStateException {
      */
     public InvalidContainerStateException(final Container<?> container, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(messageTemplate, cause, container, messageArguments);
+
+        this.container = container;
     }
 
     /**
