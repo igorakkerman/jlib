@@ -37,7 +37,7 @@ implements ModifiableValueHolder<Value> {
     /**
      * Creates a new {@link UninitializedValueHolder}.
      */
-    public UninitializedValueHolder() {
+    protected UninitializedValueHolder() {
         super();
     }
 
