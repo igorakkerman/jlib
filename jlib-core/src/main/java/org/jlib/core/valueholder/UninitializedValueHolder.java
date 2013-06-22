@@ -54,4 +54,16 @@ implements ModifiableValueHolder<Value> {
     throws ValueNotAccessibleException {
         throw new ValueNotAccessibleException();
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * This implementation always returns {@code false}.
+     *
+     * @return {@code false}
+     */
+    @Override
+    public boolean isValueAccessible() {
+        return false;
+    }
 }

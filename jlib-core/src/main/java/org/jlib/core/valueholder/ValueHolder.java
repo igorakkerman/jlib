@@ -34,13 +34,21 @@ import org.jlib.core.exception.ValueNotAccessibleException;
 public interface ValueHolder<Value> {
 
     /**
-     * Returns the registered Value.
+     * Returns the provided Value.
      *
-     * @return registered Value
+     * @return provided Value
      *
      * @throws ValueNotAccessibleException
-     *         if no Value has been registered
+     *         if no Value can be provided
      */
     public Value getValue()
     throws ValueNotAccessibleException;
+
+    /**
+     * Returns whether a Value can be provided.
+     *
+     * @return {@code true} if a Value can be provided;
+     *         {@code false} otherwise
+     */
+    public boolean isValueAccessible();
 }
