@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.RemoveTraverser;
-
 import java.util.Collection;
 
 /**
@@ -86,11 +84,4 @@ public interface Remove<Item> {
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
-
-    /**
-     * Creates a new {@link RemoveTraverser} over the Items of this {@link Container}.
-     *
-     * @return newly createTraverser}
-     */
-    public RemoveTraverser<Item> createTraverser();
 }

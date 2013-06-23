@@ -24,7 +24,7 @@ package org.jlib.core.traverser;
 import java.util.Iterator;
 
 /**
- * {@link Iterator} over the Items of a {@link RemoveTraversible}.
+ * {@link Iterator} over the Items of a {@link Traversible} and a {@link RemoveTraversible}.
  *
  * @param <Item>
  *        type of Items of the {@link RemoveTraversible}
@@ -34,11 +34,11 @@ import java.util.Iterator;
  *
  * @author Igor Akkerman
  */
-public class RemoveTraversibleIterator<Item, Travble extends RemoveTraversible<Item>>
+public class RemoveTraversibleIterator<Item, Travble extends Traversible<Item> & RemoveTraversible>
 extends TraversibleIterator<Item, Travble> {
 
     /** delegate {@link RemoveTraverser} */
-    private RemoveTraverser<Item> delegateTraverser;
+    private RemoveTraverser delegateTraverser;
 
     /**
      * Creates a new {@link RemoveTraversibleIterator}.
@@ -64,15 +64,22 @@ extends TraversibleIterator<Item, Travble> {
      * @param delegateTraverser
      *        delegate {@link Traverser}
      */
-    protected void setTraverser(final RemoveTraverser<Item> delegateTraverser) {
-        super.setTraverser(delegateTraverser);
-
+    protected void setRemoveTraverser(final RemoveTraverser delegateTraverser) {
         this.delegateTraverser = delegateTraverser;
     }
 
     @Override
     protected void createTraverser(final Travble traversible) {
-        setTraverser(traversible.createTraverser());
+
+        getTraverser(traversible);
+
+        super.setTraverser(delegateTraverser);
+
+        setRemoveTraverser(traverser);
+    }
+
+    private Traverser<Item> getTraverser(final Travble traversible) {
+        return traversible.createTraverser();
     }
 
     @Override
