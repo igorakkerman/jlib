@@ -37,7 +37,7 @@ implements ModifiableValueHolder<Value> {
     /**
      * Creates a new {@link UninitializedValueHolder}.
      */
-    public UninitializedValueHolder() {
+    protected UninitializedValueHolder() {
         super();
     }
 
@@ -53,5 +53,17 @@ implements ModifiableValueHolder<Value> {
     public Value getValue()
     throws ValueNotAccessibleException {
         throw new ValueNotAccessibleException();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * This implementation always returns {@code false}.
+     *
+     * @return {@code false}
+     */
+    @Override
+    public boolean isValueAccessible() {
+        return false;
     }
 }

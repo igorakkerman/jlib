@@ -30,7 +30,7 @@ import org.jlib.container.ObservedRandomAccessRemove;
 import org.jlib.container.ObservedRemoveAll;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
 
 import java.util.Collection;
 

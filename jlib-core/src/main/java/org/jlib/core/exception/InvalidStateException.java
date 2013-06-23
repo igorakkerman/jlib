@@ -38,13 +38,6 @@ extends IllegalStateException {
 
     /**
      * Creates a new {@link InvalidStateException}.
-     */
-    public InvalidStateException() {
-        super();
-    }
-
-    /**
-     * Creates a new {@link InvalidStateException}.
      *
      * @param messageTemplate
      *        {@link String} specifying the message template
@@ -52,7 +45,7 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidStateException(final String messageTemplate, final Object... messageArguments) {
+    protected InvalidStateException(final String messageTemplate, final Object... messageArguments) {
         this(messageTemplate, null, messageArguments);
     }
 
@@ -62,7 +55,7 @@ extends IllegalStateException {
      * @param cause
      *        Throwable that caused this {@link InvalidStateException}
      */
-    public InvalidStateException(final Throwable cause) {
+    protected InvalidStateException(final Throwable cause) {
         super(cause);
     }
 
@@ -78,7 +71,7 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message States
      */
-    public InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    protected InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

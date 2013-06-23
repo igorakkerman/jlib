@@ -97,7 +97,7 @@ implements IndexSequenceTraverser<Item> {
 
             @Override
             public void setValue(final Integer index) {
-                lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<Integer>(index);
+                lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<>(index);
             }
         };
     }

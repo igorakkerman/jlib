@@ -24,9 +24,9 @@ package org.jlib.container.sequence;
 import org.jlib.container.Container;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
-import org.jlib.core.AbstractCloneable;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.exception.observer.ValueObserverException;
+import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.system.AbstractCloneable;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -107,7 +107,8 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
 
     @Override
     public boolean equals(final Object otherObject) {
-        return delegateSequence.equals(otherObject);
+        return otherObject instanceof DelegatingSequence && //
+               delegateSequence.equals(((DelegatingSequence) otherObject).getDelegateSequence());
     }
 
     @Override

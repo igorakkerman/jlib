@@ -32,7 +32,7 @@ import org.jlib.core.exception.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.exception.operator.OperatorException;
+import org.jlib.core.operator.OperatorException;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import static org.jlib.core.array.ArrayUtility.traversible;
@@ -80,8 +80,8 @@ implements ObservedReplaceIndexSequenceTraverser<Item> {
      *        integer specifying the index of the initial next Item
      *
      * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
+     *         if {@code startIndex < sequence.getFirstIndex() ||
+     *                   startIndex > sequence.getLastIndex()}
      *
      * @throws InvalidSequenceArgumentException
      *         if some property of {@code newItem} prevents the operation from
