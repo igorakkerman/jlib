@@ -45,7 +45,8 @@ extends InvalidStateException {
      *        String specifying the name of the property that is not set
      */
     public ApplicationPropertyNotSetException(final String propertyName) {
-        super();
+        super("propertyName='{0}'", propertyName);
+
         this.propertyName = propertyName;
     }
 
@@ -56,10 +57,5 @@ extends InvalidStateException {
      */
     public String getPropertyName() {
         return propertyName;
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "[" + propertyName + "]";
     }
 }
