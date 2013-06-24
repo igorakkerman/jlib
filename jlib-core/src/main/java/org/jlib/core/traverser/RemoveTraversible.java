@@ -24,15 +24,19 @@ package org.jlib.core.traverser;
 /**
  * Object providing  allowing Items to be removed.
  *
+ * @param <Item>
+ *        type of the traversed items
+ *
  * @author Igor Akkerman
  */
-public interface RemoveTraversible {
+public interface RemoveTraversible<Item>
+extends Traversible<Item> {
 
     /**
-     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}
-     * .
+     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}.
      *
      * @return newly createTraverser}
      */
-    public RemoveTraverser createTraverser();
+    @Override
+    public RemoveTraverser<Item> createTraverser();
 }

@@ -24,9 +24,13 @@ package org.jlib.core.traverser;
 /**
  * {@link Traverser} allowing returned Items to be removed.
  *
+ * @param <Item>
+ *        type of the traversed items
+ *
  * @author Igor Akkerman
  */
-public interface RemoveTraverser {
+public interface RemoveTraverser<Item>
+extends Traverser<Item> {
 
     /**
      * Removes the last Item returned by this {@link RemoveTraverser}.

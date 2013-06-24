@@ -30,7 +30,7 @@ import java.util.Iterator;
  */
 public class RemoveIterableTraverser<Item>
 extends IterableTraverser<Item>
-implements RemoveTraverser {
+implements RemoveTraverser<Item> {
 
     /** referenced {@link Traversible} in case of an error */
     private final Traversible<Item> traversible = new ConstantTraverserTraversible<>(this);

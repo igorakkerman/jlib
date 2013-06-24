@@ -34,7 +34,7 @@ import java.util.Iterator;
  *
  * @author Igor Akkerman
  */
-public class RemoveTraversibleIterator<Item, Travble extends Traversible<Item> & RemoveTraversible>
+public class RemoveTraversibleIterator<Item, Travble extends RemoveTraversible<Item>>
 extends TraversibleIterator<Item, Travble> {
 
     /** delegate {@link RemoveTraverser} */

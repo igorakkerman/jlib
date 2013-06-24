@@ -29,7 +29,8 @@ package org.jlib.core.traverser;
  *
  * @author Igor Akkerman
  */
-public interface ReplaceTraverser<Item> {
+public interface ReplaceTraverser<Item>
+extends Traverser<Item> {
 
     /**
      * Replaces the last traversed Item with the specified Item.
