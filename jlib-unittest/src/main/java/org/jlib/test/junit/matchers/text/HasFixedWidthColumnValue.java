@@ -21,14 +21,10 @@
 
 package org.jlib.test.junit.matchers.text;
 
-import org.hamcrest.Description;
-import org.hamcrest.Factory;
-import org.hamcrest.TypeSafeMatcher;
-import org.jlib.core.valueholder.ValueHolder;
-
 public class HasFixedWidthColumnValue
-extends TypeSafeMatcher<String> {
+/* extends TypeSafeMatcher<String> */ {
 
+/*
     private static class Column {
 
         private final int beginIndex;
@@ -52,11 +48,6 @@ extends TypeSafeMatcher<String> {
     @Factory
     public static HasFixedWidthColumnValue hasValue(Object expectedColumnValue, Column column) {
         return new HasFixedWidthColumnValue(expectedColumnValue, column.getBeginIndex(), column.getEndIndex());
-    }
-
-    @Factory
-    public static Column inColumn(int columnBeginIndex, int columnEndIndex) {
-        return new Column(columnBeginIndex, columnEndIndex);
     }
 
     @Factory
@@ -159,4 +150,5 @@ extends TypeSafeMatcher<String> {
             description.appendValue(actualStringAfterValue);
         }
     }
+*/
 }

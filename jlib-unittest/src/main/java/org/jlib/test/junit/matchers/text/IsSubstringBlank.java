@@ -21,14 +21,9 @@
 
 package org.jlib.test.junit.matchers.text;
 
-import org.apache.commons.lang3.StringUtils;
-import org.hamcrest.Description;
-import org.hamcrest.Factory;
-import org.hamcrest.TypeSafeMatcher;
-
 public class IsSubstringBlank
-extends TypeSafeMatcher<String> {
-
+/* extends TypeSafeMatcher<String> */ {
+/*
     private static class BeginIndex
     extends Index {
 
@@ -91,4 +86,5 @@ extends TypeSafeMatcher<String> {
         description.appendText(", found ");
         description.appendText(substring);
     }
+*/
 }
