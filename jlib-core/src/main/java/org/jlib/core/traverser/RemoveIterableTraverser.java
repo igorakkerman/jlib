@@ -26,14 +26,11 @@ import java.util.Iterator;
 /**
  * {@link RemoveTraverser} over an {@link Iterable}.
  *
- * @param <Item>
- *        type of the items of the {@link Iterable}
- *
  * @author Igor Akkerman
  */
 public class RemoveIterableTraverser<Item>
 extends IterableTraverser<Item>
-implements RemoveTraverser<Item> {
+implements RemoveTraverser {
 
     /** referenced {@link Traversible} in case of an error */
     private final Traversible<Item> traversible = new ConstantTraverserTraversible<>(this);
