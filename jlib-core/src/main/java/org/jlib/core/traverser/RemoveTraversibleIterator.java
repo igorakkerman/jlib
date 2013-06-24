@@ -57,7 +57,6 @@ extends TraversibleIterator<Item, Travble> {
      *        delegate {@link Traverser}
      */
     protected final void setRemoveTraverser(final RemoveTraverser delegateTraverser) {
-
         this.delegateTraverser = delegateTraverser;
     }
 
