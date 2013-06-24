@@ -33,8 +33,7 @@ import org.jlib.core.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTraverser<Item>
-extends RemoveTraverser<Item> {
+public interface ObservedRemoveTraverser<Item> {
 
     /**
      * Removes the last traversed Item.
