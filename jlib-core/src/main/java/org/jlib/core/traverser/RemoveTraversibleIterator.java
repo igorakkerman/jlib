@@ -51,35 +51,24 @@ extends TraversibleIterator<Item, Travble> {
     }
 
     /**
-     * <p>
-     * Registers the specified {@link RemoveTraverser} as delegate for this
-     * {@link RemoveTraversibleIterator}.
-     * </p>
-     * <p>
-     * Subclasses must re-implement (not override!) this method registering the
-     * concrete {@link RemoveTraverser} in a property of the concrete type AND
-     * calling THIS method using {@code super.setTraverser(delegateTraverser)}.
-     * </p>
+     * Registers the specified {@link RemoveTraverser} as delegate for this {@link RemoveTraversibleIterator}.
      *
      * @param delegateTraverser
      *        delegate {@link Traverser}
      */
-    protected void setRemoveTraverser(final RemoveTraverser delegateTraverser) {
+    protected final void setRemoveTraverser(final RemoveTraverser delegateTraverser) {
+
         this.delegateTraverser = delegateTraverser;
     }
 
     @Override
     protected void createTraverser(final Travble traversible) {
+        final Traverser<Item> traverser = traversible.createTraverser();
 
-        getTraverser(traversible);
+        setTraverser(traverser);
 
-        super.setTraverser(delegateTraverser);
-
-        setRemoveTraverser(traverser);
-    }
-
-    private Traverser<Item> getTraverser(final Travble traversible) {
-        return traversible.createTraverser();
+        // safe cast since traversible.createTraverser returns a Traverser<Item> AND a RemoveTraverser
+        setRemoveTraverser((RemoveTraverser) traverser);
     }
 
     @Override
