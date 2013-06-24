@@ -176,7 +176,7 @@ implements Container<Item> {
         if (getItemsCount() != otherContainer.getItemsCount())
             return false;
 
-        return TraverserUtility.provideEqualItems(this, otherContainer);
+        return TraverserUtility.haveEqualItems(this, otherContainer);
     }
 
     @Override

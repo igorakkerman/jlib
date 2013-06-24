@@ -49,7 +49,7 @@ public final class TraverserUtility {
      * @return {@code true} if {@code traverser1} and {@code traverser2} provide equal Items;
      *         {@code false} otherwise
      */
-    public static <Item> boolean provideEqualItems(final Traversible<Item> traversible1, final Traversible<Item> traversible2) {
+    public static <Item> boolean haveEqualItems(final Traversible<Item> traversible1, final Traversible<Item> traversible2) {
         final Traverser<?> traverser1 = traversible1.createTraverser();
         final Traverser<?> traverser2 = traversible2.createTraverser();
 
