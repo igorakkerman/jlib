@@ -21,9 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.AbstractCloneable;
 import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.traverser.TraverserUtility;
+import org.jlib.core.system.AbstractCloneable;
 import org.jlib.core.traverser.TraversibleIterator;
 
 import javax.annotation.Nullable;
@@ -32,6 +31,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import static org.jlib.core.traverser.TraverserUtility.haveEqualItems;
 
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container
@@ -173,18 +174,14 @@ implements Container<Item> {
 
     @Override
     public boolean containsEqualItems(final Container<Item> otherContainer) {
-        if (getItemsCount() != otherContainer.getItemsCount())
-            return false;
-
-        return TraverserUtility.haveEqualItems(this, otherContainer);
+        return getItemsCount() == otherContainer.getItemsCount() && //
+               haveEqualItems(this, otherContainer);
     }
 
     @Override
     public boolean containsEqualItems(final Collection<Item> collection) {
-        if (getItemsCount() != collection.size())
-            return false;
-
-        return IteratorUtility.provideEqualItems(this, collection);
+        return getItemsCount() == collection.size() && //
+               IteratorUtility.provideEqualItems(this, collection);
     }
 
     @Override
