@@ -143,6 +143,23 @@ public interface Remove<Item> {
 
     /**
      * Removes all Items from this {@link Remove}
+     * <em>except</em> the Items contained by the specified {@link Container}.
+     *
+     * @param items
+     *        {@link Container} containing the Items to retain
+     *
+     * @throws InvalidTraversibleArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidTraversibleStateException
+     *         if an error occurs during the operation
+     */
+    public void retain(final Container<? extends Item> items)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+
+    /**
+     * Removes all Items from this {@link Remove}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
