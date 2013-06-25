@@ -71,6 +71,7 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message States
      */
+    // TODO: use FormattedMessageException style
     protected InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }

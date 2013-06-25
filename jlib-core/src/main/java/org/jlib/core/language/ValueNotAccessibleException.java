@@ -26,7 +26,7 @@ package org.jlib.core.language;
  *
  * @author Igor Akkerman
  */
-public class ValueNotAccessibleException
+public abstract class ValueNotAccessibleException
 extends FormattedMessageException {
 
     /** serialVersionUID */

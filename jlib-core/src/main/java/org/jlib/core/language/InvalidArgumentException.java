@@ -30,7 +30,6 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-// TODO: move system exceptions to system package
 public abstract class InvalidArgumentException
 extends IllegalArgumentException {
 
@@ -71,6 +70,7 @@ extends IllegalArgumentException {
      * @param messageArguments
      *        comma separated sequence of additional {@link Object} message arguments
      */
+    // TODO: use FormattedMessageException style
     public InvalidArgumentException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }
