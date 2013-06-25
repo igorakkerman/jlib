@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.jlib.core.traverser.TraverserUtility.haveEqualItems;
+import static org.jlib.core.traverser.TraversibleUtility.haveEqualItems;
 
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container

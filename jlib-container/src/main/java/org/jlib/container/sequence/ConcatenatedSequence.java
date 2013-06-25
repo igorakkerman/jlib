@@ -22,7 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.InvalidContainerStateException;
-import org.jlib.core.traverser.TraverserUtility;
+import org.jlib.core.traverser.TraversibleUtility;
 import org.jlib.core.traverser.Traversible;
 import org.jlib.core.traverser.TwoWayTraversible;
 import org.jlib.core.valueholder.AccessibleValueHolder;
@@ -48,7 +48,7 @@ extends AbstractSequence<Item> {
 
         @Override
         public Integer getValue() {
-            final int itemsCount = TraverserUtility.getItemsCount(traversibles);
+            final int itemsCount = TraversibleUtility.getItemsCount(traversibles);
 
             itemsCountHolder = new InitializedValueHolder<Integer>(itemsCount);
 
