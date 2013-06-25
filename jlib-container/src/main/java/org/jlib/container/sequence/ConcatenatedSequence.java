@@ -41,7 +41,7 @@ public class ConcatenatedSequence<Item>
 extends AbstractSequence<Item> {
 
     /** array of concatenated {@link TwoWayTraversible} items */
-    private final TwoWayTraversible<Item>[] traversibles;
+    private TwoWayTraversible<Item>[] traversibles;
 
     /** total number of {@link Sequence} Items */
     private AccessibleValueHolder<Integer> itemsCountHolder = new AccessibleValueHolder<Integer>() {
@@ -93,6 +93,10 @@ extends AbstractSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public ConcatenatedSequence clone() {
-        return (ConcatenatedSequence) super.clone();
+        final ConcatenatedSequence clone = (ConcatenatedSequence) super.clone();
+
+        clone.traversibles = traversibles.clone();
+
+        return clone;
     }
 }
