@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.container.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link InvalidTraversibleArgumentException} referencing a {@link Container}.

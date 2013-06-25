@@ -19,31 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link InvalidTraverserStateException} thrown when the traversed
- * {@link Traversible} claims a state error.
+ * {@link Traverser} allowing returned Items to be removed.
+ *
+ * @param <Item>
+ *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public class InvalidTraversibleStateException
-extends InvalidTraverserStateException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = 1706750148627927636L;
+public interface RemoveTraverser<Item>
+extends Traverser<Item> {
 
     /**
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Removes the last Item returned by this {@link RemoveTraverser}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @throws NoItemToRemoveException
+     *         if not called immediately after a call to {@link Traverser#getNextItem()}
+     *         or a similar method
      *
-     * @param cause
-     *        {@link Throwable} that caused this
-     *        {@link InvalidTraversibleStateException}
+     * @throws InvalidTraversibleStateException
+     *         if an error was caused by a delegate used to remove the item
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final Throwable cause) {
-        super(traversible, cause);
-    }
+    public void remove()
+    throws NoItemToRemoveException, InvalidTraversibleStateException;
 }

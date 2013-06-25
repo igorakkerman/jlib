@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
  * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.

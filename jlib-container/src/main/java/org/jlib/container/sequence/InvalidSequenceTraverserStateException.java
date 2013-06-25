@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.traverser.InvalidTraverserStateException;
+import org.jlib.core.traverser.InvalidTraverserStateException;
 
 /**
  * {@link InvalidTraverserStateException} referencing a {@link Sequence}.

@@ -19,18 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link ObservedReplaceRemoveTraversible} over its Items.
+ * {@link Object} traversible by a {@link TwoWayTraverser}.
  *
  * @param <Item>
- *        type of the traversed Items
+ *        type of items returned by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceRemoveTraversible<Item>
-extends ReplaceRemoveTraverser<Item>, ObservedReplaceTraverser<Item>, ObservedRemoveTraverser<Item> {
+public interface TwoWayTraversible<Item>
+extends Traversible<Item> {
 
-    public ObservedReplaceRemoveTraverser<Item> createTraverser();
+    /**
+     * Returns a new {@link TwoWayTraverser} over the Items of this
+     * {@link TwoWayTraversible}.
+     *
+     * @return newly createTraverser}
+     */
+    public TwoWayTraverser<Item> createTraverser();
 }

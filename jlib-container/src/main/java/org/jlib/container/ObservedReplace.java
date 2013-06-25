@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
  * {@link Replace} traversed by an {@link ObservedReplace}.

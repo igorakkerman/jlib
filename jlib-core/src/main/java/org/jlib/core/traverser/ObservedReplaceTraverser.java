@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 /**
- * {@link RemoveTraverser} allowing its remove operation to be attended by
+ * {@link ReplaceTraverser} allowing its remove operation to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
@@ -33,39 +33,35 @@ import org.jlib.core.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTraverser<Item>
-extends RemoveTraverser<Item> {
+public interface ObservedReplaceTraverser<Item>
+extends ReplaceTraverser<Item> {
 
     /**
-     * Removes the last traversed Item.
+     * Replaces the last traversed Item with the specified value.
+     *
+     * @param newItem
+     *        Item by which the former Item is replaced
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
+     *        attending the replacement
      *
-     * @throws NoItemToRemoveException
+     * @throws NoItemToReplaceException
      *         if not called immediately after traversing an Item
-     *
-     * @throws InvalidTraversibleStateException
-     *         if an error is caused by a delegate used to remove the Item
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
-     *
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void remove(final ValueObserver<Item>... observers)
-    throws NoItemToRemoveException, InvalidTraversibleStateException, ValueObserverException, RuntimeException;
+    public void replace(final Item newItem, final ValueObserver<Item>... observers)
+    throws NoItemToReplaceException, ValueObserverException;
 
     /**
-     * Registers the specified {@link ValueObserver} for the remove operations
-     * of this {@link ObservedRemoveTraverser}.
+     * Registers the specified {@link ValueObserver} for the replace operations
+     * of this {@link ObservedReplaceTraverser}.
      *
-     * @param removeObserver
-     *        additional remove {@link ValueObserver}
+     * @param replaceObserver
+     *        additional replace {@link ValueObserver}
      */
-    public void addRemoveObserver(final ValueObserver<Item> removeObserver);
+    public void addReplaceObserver(final ValueObserver<Item> replaceObserver);
 }

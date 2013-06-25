@@ -19,17 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link ReplaceRemoveTraverser}, {@link ObservedReplaceTraverser} and {@link ObservedRemoveTraverser}.
+ * {@link ObservedReplaceRemoveTraversible} over its Items.
  *
  * @param <Item>
- *        type of the traversed items
+ *        type of the traversed Items
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceRemoveTraverser<Item>
+public interface ObservedReplaceRemoveTraversible<Item>
 extends ReplaceRemoveTraverser<Item>, ObservedReplaceTraverser<Item>, ObservedRemoveTraverser<Item> {
-    // unifying interface
+
+    public ObservedReplaceRemoveTraverser<Item> createTraverser();
 }

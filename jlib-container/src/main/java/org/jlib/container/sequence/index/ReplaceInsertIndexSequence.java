@@ -22,7 +22,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.ReplaceInsertSequence;
-import org.jlib.container.traverser.ReplaceTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link ReplaceIndexSequence} and {@link InsertIndexSequence}.

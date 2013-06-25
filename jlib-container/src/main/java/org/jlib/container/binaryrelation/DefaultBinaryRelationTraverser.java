@@ -22,8 +22,8 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.core.language.ValueNotAccessibleException;
-import org.jlib.container.traverser.NoNextItemException;
-import org.jlib.container.traverser.Traverser;
+import org.jlib.core.traverser.NoNextItemException;
+import org.jlib.core.traverser.Traverser;
 import org.jlib.core.valueholder.InitializedModifiableValueHolder;
 import org.jlib.core.valueholder.ModifiableValueHolder;
 import org.jlib.core.valueholder.UninitializedValueHolder;

@@ -19,41 +19,31 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link InvalidTraverserStateException} thrown when there is Item to remove by
- * a {@link Traverser}.
+ * {@link InvalidTraverserStateException} thrown when the traversed
+ * {@link Traversible} claims a state error.
  *
  * @author Igor Akkerman
  */
-public class NoItemToReplaceException
+public class InvalidTraversibleStateException
 extends InvalidTraverserStateException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 1299720624484946758L;
+    private static final long serialVersionUID = 1706750148627927636L;
 
     /**
-     * Creates a new {@link NoItemToReplaceException}.
-     *
-     * @param traversible
-     *        traversed {@link Traversible}
-     */
-    public NoItemToReplaceException(final Traversible<?> traversible) {
-        super(traversible);
-    }
-
-    /**
-     * Creates a new {@link NoItemToReplaceException} with the specified cause.
+     * Creates a new {@link InvalidTraversibleStateException}.
      *
      * @param traversible
      *        traversed {@link Traversible}
      *
      * @param cause
      *        {@link Throwable} that caused this
-     *        {@link NoItemToReplaceException}
+     *        {@link InvalidTraversibleStateException}
      */
-    public NoItemToReplaceException(final Traversible<?> traversible, final Throwable cause) {
+    public InvalidTraversibleStateException(final Traversible<?> traversible, final Throwable cause) {
         super(traversible, cause);
     }
 }

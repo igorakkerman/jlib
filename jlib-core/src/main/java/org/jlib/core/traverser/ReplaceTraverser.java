@@ -19,24 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * Object providing  allowing Items to be removed.
+ * {@link Traverser} over replaceable Items.
  *
  * @param <Item>
  *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface ReplaceRemoveTraversible<Item>
-extends ReplaceTraversible<Item>, RemoveTraversible<Item> {
+public interface ReplaceTraverser<Item>
+extends Traverser<Item> {
 
     /**
-     * Returns a new {@link ReplaceRemoveTraverser} over the Items of this {@link ReplaceRemoveTraversible}.
+     * Replaces the last traversed Item with the specified Item.
      *
-     * @return newly created {@link ReplaceRemoveTraverser}
+     * @param newItem
+     *        Item by which the former Item is replaced
+     *
+     * @throws InvalidTraverserStateException
+     *         if no Item has been traversed by this {@link ReplaceTraverser}
      */
-    @Override
-    public ReplaceRemoveTraverser<Item> createTraverser();
+    public void replace(final Item newItem)
+    throws InvalidTraverserStateException;
 }

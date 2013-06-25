@@ -22,7 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
-import org.jlib.container.traverser.TwoWayTraversible;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Ordered sequence of Items.

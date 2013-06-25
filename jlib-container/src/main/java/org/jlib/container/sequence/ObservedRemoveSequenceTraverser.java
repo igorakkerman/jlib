@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.traverser.ObservedRemoveTraverser;
+import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 /**
  * {@link ObservedRemoveTraverser} and {@link RemoveSequenceTraverser}.

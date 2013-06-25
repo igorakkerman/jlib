@@ -19,22 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link Object} traversible by a {@link Traverser}.
+ * {@link Traversible} providing  allowing Items to be removed.
  *
  * @param <Item>
- *        type of items returned by the {@link Traverser}
+ *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface Traversible<Item> {
+public interface RemoveTraversible<Item>
+extends Traversible<Item> {
 
     /**
-     * Returns a new {@link Traverser} over the Items of this {@link Traversible}.
+     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}.
      *
      * @return newly createTraverser}
      */
-    public Traverser<Item> createTraverser();
+    @Override
+    public RemoveTraverser<Item> createTraverser();
 }

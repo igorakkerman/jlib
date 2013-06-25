@@ -21,8 +21,8 @@
 
 package org.jlib.core.array;
 
-import org.jlib.container.traverser.TwoWayTraverser;
-import org.jlib.container.traverser.TwoWayTraversible;
+import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * Wrapper for an items allowing it to be used as {@link TwoWayTraversible}.

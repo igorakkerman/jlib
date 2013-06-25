@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import org.jlib.core.iterator.IteratorUtility;
 import org.jlib.core.system.AbstractCloneable;
-import org.jlib.container.traverser.TraversibleIterator;
+import org.jlib.core.traverser.TraversibleIterator;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.jlib.container.traverser.TraversibleUtility.haveEqualItems;
+import static org.jlib.core.traverser.TraversibleUtility.haveEqualItems;
 
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container

@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
-import org.jlib.container.traverser.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * AbstractIndexMatrixTraverser traversing the items of a

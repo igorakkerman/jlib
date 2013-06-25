@@ -19,24 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link Traversible} providing  allowing Items to be removed.
+ * {@link Traverser} allowing to traverse Items forward and backwards.
  *
  * @param <Item>
- *        type of the traversed items
+ *        type of items traversed by the {@link TwoWayTraverser}
  *
  * @author Igor Akkerman
  */
-public interface RemoveTraversible<Item>
-extends Traversible<Item> {
+public interface TwoWayTraverser<Item>
+extends Traverser<Item> {
 
     /**
-     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}.
+     * Verifies whether this {@link TwoWayTraverser} has a previous Item.
      *
-     * @return newly createTraverser}
+     * @return {@code true} if this {@link TwoWayTraverser} has a previous Item;
+     *         {@code false} otherwise
      */
-    @Override
-    public RemoveTraverser<Item> createTraverser();
+    public boolean isPreviousItemAccessible();
+
+    /**
+     * Returns the previous Item of this {@link TwoWayTraverser}.
+     *
+     * @return the previous Item
+     *
+     * @throws NoPreviousItemException
+     *         if there is no previous Item
+     */
+    public Item getPreviousItem()
+    throws NoPreviousItemException;
 }

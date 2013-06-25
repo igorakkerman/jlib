@@ -23,8 +23,8 @@ package org.jlib.container.sequence;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.container.traverser.Traverser;
-import org.jlib.container.traverser.TwoWayTraversible;
+import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.TwoWayTraversible;
 
 import java.util.Iterator;
 

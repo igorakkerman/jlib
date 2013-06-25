@@ -19,33 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * Provider of Items in a specified order.
+ * {@link ReplaceRemoveTraverser}, {@link ObservedReplaceTraverser} and {@link ObservedRemoveTraverser}.
  *
  * @param <Item>
- *        type of items provided by the {@link Traverser}
+ *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface Traverser<Item> {
-
-    /**
-     * Returns whether this {@link Traverser} has a next Item.
-     *
-     * @return {@code true} if there is a next Item; {@code false} otherwise
-     */
-    public boolean isNextItemAccessible();
-
-    /**
-     * Returns the next Item traversed by this {@link Traverser}.
-     *
-     * @return next Item
-     *
-     * @throws NoNextItemException
-     *         if this {@link Traverser} has no next Item
-     */
-    public Item getNextItem()
-    throws NoNextItemException;
+public interface ObservedReplaceRemoveTraverser<Item>
+extends ReplaceRemoveTraverser<Item>, ObservedReplaceTraverser<Item>, ObservedRemoveTraverser<Item> {
+    // unifying interface
 }

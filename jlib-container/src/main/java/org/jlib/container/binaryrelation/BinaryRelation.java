@@ -22,7 +22,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.container.Container;
-import org.jlib.container.traverser.Traverser;
+import org.jlib.core.traverser.Traverser;
 
 import java.util.Set;
 

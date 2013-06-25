@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 import org.jlib.core.iterator.AbstractIterator;
 

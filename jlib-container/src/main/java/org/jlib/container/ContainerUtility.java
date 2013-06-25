@@ -27,9 +27,9 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.container.traverser.ObservedRemoveTraverser;
-import org.jlib.container.traverser.RemoveTraverser;
-import org.jlib.container.traverser.RemoveTraversible;
+import org.jlib.core.traverser.ObservedRemoveTraverser;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.RemoveTraversible;
 
 import java.util.Collection;
 import java.util.Set;

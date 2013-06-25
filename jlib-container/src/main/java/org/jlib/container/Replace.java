@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.traverser.ReplaceTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * <p>

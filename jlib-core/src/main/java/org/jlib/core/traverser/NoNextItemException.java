@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
  * {@link InvalidTraverserStateException} thrown when there is no next Item to
@@ -27,37 +27,37 @@ package org.jlib.container.traverser;
  *
  * @author Igor Akkerman
  */
-public class NoPreviousItemException
+public class NoNextItemException
 extends InvalidTraverserStateException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 1747026481047589428L;
+    private static final long serialVersionUID = 328216916169684024L;
 
     /**
-     * Creates a new {@link NoPreviousItemException}.
+     * Creates a new {@link NoNextItemException}.
      *
      * @param traversible
      *        traversed {@link Traversible}
      */
-    public NoPreviousItemException(final Traversible<?> traversible) {
+    public NoNextItemException(final Traversible<?> traversible) {
         super(traversible);
     }
 
     /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
+     * Creates a new {@link NoNextItemException} with the specified cause.
      *
      * @param traversible
      *        traversed {@link Traversible}
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link NoPreviousItemException}
+     *        {@link Throwable} that caused this {@link NoNextItemException}
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final Throwable cause) {
+    public NoNextItemException(final Traversible<?> traversible, final Throwable cause) {
         super(traversible, cause);
     }
 
     /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
+     * Creates a new {@link NoNextItemException} with the specified cause.
      *
      * @param traversible
      *        traversed {@link Traversible}
@@ -69,12 +69,12 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Object... messageArguments) {
+    public NoNextItemException(final Traversible<?> traversible, final String messageTemplate, final Object... messageArguments) {
         super(traversible, messageTemplate, messageArguments);
     }
 
     /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
+     * Creates a new {@link NoNextItemException} with the specified cause.
      *
      * @param traversible
      *        traversed {@link Traversible}
@@ -83,13 +83,13 @@ extends InvalidTraverserStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link NoPreviousItemException}
+     *        {@link Throwable} that caused this {@link NoNextItemException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public NoNextItemException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(traversible, messageTemplate, cause, messageArguments);
     }
 }

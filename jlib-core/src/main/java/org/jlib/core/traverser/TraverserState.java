@@ -19,24 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * Object providing a {@link ObservedReplaceTraversible} over its Items.
+ * Traverser state.
  *
  * @param <Item>
- *        type of the traversed Items
- *
- * @author Igor Akkerman
+ *        type of the items traversed by the {@link Traverser}.
  */
-public interface ObservedReplaceTraversible<Item>
-extends ReplaceTraversible<Item> {
+public interface TraverserState<Item>
+extends Traverser<Item> {
 
     /**
-     * Returns a new {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceTraversible}.
+     * Returns the next {@link TraverserState}
      *
-     * @return newly created {@link ObservedReplaceTraverser}
+     * @return next {@link TraverserState}
      */
-    @Override
-    public ObservedReplaceTraverser<Item> createTraverser();
+    public TraverserState<Item> getNextState();
 }

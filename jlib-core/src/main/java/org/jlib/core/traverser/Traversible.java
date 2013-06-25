@@ -19,21 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * Traverser state.
+ * {@link Object} traversible by a {@link Traverser}.
  *
  * @param <Item>
- *        type of the items traversed by the {@link Traverser}.
+ *        type of items returned by the {@link Traverser}
+ *
+ * @author Igor Akkerman
  */
-public interface TraverserState<Item>
-extends Traverser<Item> {
+public interface Traversible<Item> {
 
     /**
-     * Returns the next {@link TraverserState}
+     * Returns a new {@link Traverser} over the Items of this {@link Traversible}.
      *
-     * @return next {@link TraverserState}
+     * @return newly createTraverser}
      */
-    public TraverserState<Item> getNextState();
+    public Traverser<Item> createTraverser();
 }

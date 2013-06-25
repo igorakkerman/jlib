@@ -19,28 +19,36 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.traverser;
+package org.jlib.core.traverser;
 
 /**
- * {@link Traverser} over replaceable Items.
+ * {@link Traversible} always providing a constant {@link Traverser}.
  *
  * @param <Item>
- *        type of the traversed items
+ *        type of the Items traversed by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ReplaceTraverser<Item>
-extends Traverser<Item> {
+public class ConstantTraverserTraversible<Item>
+implements Traversible<Item> {
+
+    /** returned {@link Traverser}r */
+    private final Traverser<Item> traverser;
 
     /**
-     * Replaces the last traversed Item with the specified Item.
+     * Creates a new {@link ConstantTraverserTraversible}.
      *
-     * @param newItem
-     *        Item by which the former Item is replaced
-     *
-     * @throws InvalidTraverserStateException
-     *         if no Item has been traversed by this {@link ReplaceTraverser}
+     * @param traverser
+     *        constantly returned {@link Traverser}
      */
-    public void replace(final Item newItem)
-    throws InvalidTraverserStateException;
+    public ConstantTraverserTraversible(final Traverser<Item> traverser) {
+        super();
+
+        this.traverser = traverser;
+    }
+
+    @Override
+    public Traverser<Item> createTraverser() {
+        return traverser;
+    }
 }

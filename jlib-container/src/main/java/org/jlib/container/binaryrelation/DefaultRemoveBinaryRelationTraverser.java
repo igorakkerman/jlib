@@ -22,9 +22,9 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.core.language.ValueNotAccessibleException;
-import org.jlib.container.traverser.NoItemToRemoveException;
-import org.jlib.container.traverser.RemoveTraverser;
-import org.jlib.container.traverser.Traverser;
+import org.jlib.core.traverser.NoItemToRemoveException;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Default implementation of a {@link Traverser} over the Associations of a

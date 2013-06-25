@@ -21,8 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.container.traverser.Traverser;
-import org.jlib.container.traverser.Traversible;
+import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.Traversible;
 
 import javax.annotation.Nullable;
 import java.util.Collection;

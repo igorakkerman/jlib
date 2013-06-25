@@ -28,9 +28,9 @@ import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRandomAccessRemove;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.container.traverser.InvalidTraversibleArgumentException;
-import org.jlib.container.traverser.InvalidTraversibleStateException;
-import org.jlib.container.traverser.Traversible;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.Traversible;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
