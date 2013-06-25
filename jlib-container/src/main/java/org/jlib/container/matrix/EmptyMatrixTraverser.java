@@ -76,13 +76,13 @@ implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
 
     @Override
     public void gotoNextEntity()
-    throws InvalidStateException {
-        throw new InvalidStateException();
+    throws IllegalStateException {
+        throw new IllegalStateException();
     }
 
     @Override
     public void replace(final Entry item)
-    throws InvalidStateException {
-        throw new InvalidStateException();
+    throws IllegalStateException {
+        throw new IllegalStateException();
     }
 }
