@@ -32,7 +32,8 @@ import org.jlib.core.observer.ValueObserver;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item> {
+public interface ObservedRemoveAll<Item>
+extends RemoveAll<Item> {
 
     /**
      * Removes all Items from this {@link Container}.
