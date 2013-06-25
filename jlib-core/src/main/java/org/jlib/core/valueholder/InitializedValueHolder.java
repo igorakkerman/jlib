@@ -30,7 +30,7 @@ package org.jlib.core.valueholder;
  * @author Igor Akkerman
  */
 public class InitializedValueHolder<Value>
-extends AbstractAccessibleValueHolder<Value> {
+extends AccessibleValueHolder<Value> {
 
     /** registered Value */
     private Value value;

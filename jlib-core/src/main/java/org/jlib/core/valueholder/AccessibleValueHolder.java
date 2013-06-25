@@ -21,6 +21,7 @@
 
 package org.jlib.core.valueholder;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jlib.core.language.ValueNotAccessibleException;
 
 /**
@@ -56,5 +57,25 @@ implements ValueHolder<Value> {
     @Override
     public boolean isValueAccessible() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return getValue().toString();
+    }
+
+    @Override
+    public boolean equals(final Object otherObject) {
+        if (! getClass().equals(otherObject.getClass()))
+            return false;
+
+        final InitializedValueHolder<?> otherInitializedValueHolder = (InitializedValueHolder<?>) otherObject;
+
+        return getValue().equals(otherInitializedValueHolder.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(getValue()).toHashCode();
     }
 }
