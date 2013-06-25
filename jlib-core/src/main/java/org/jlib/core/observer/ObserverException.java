@@ -21,8 +21,8 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.exception.FormattedMessageException;
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.FormattedMessageException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link FormattedMessageException} thrown during the operation of an observer.

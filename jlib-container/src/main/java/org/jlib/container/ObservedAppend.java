@@ -21,8 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.exception.InvalidArgumentException;
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.observer.ValueObserver;
 
 import java.util.Collection;

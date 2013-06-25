@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.core.language;
 
 import org.jlib.core.text.textformatter.MessageFormatTextFormatter;
 import org.jlib.core.text.textformatter.TextFormatter;

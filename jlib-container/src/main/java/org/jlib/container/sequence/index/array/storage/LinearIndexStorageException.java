@@ -22,7 +22,7 @@
 package org.jlib.container.sequence.index.array.storage;
 
 import org.jlib.container.sequence.InvalidSequenceStateException;
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidSequenceStateException} thrown when an invalid

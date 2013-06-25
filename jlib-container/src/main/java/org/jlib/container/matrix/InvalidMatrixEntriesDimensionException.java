@@ -1,6 +1,6 @@
 package org.jlib.container.matrix;
 
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when an array of {@link Matrix} Entries is specified with either the

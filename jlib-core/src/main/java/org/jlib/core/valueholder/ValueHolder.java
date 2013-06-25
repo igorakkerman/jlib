@@ -21,7 +21,7 @@
 
 package org.jlib.core.valueholder;
 
-import org.jlib.core.exception.ValueNotAccessibleException;
+import org.jlib.core.language.ValueNotAccessibleException;
 
 /**
  * Holder of a Value.

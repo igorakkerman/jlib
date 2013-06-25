@@ -21,7 +21,7 @@
 
 package org.jlib.core.system;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidStateException} thrown when trying to retrieve the value of a

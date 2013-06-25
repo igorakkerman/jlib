@@ -19,33 +19,33 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.core.language;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not set.
+ * {@link FormattedMessageException} thrown when a requested Value is not accessible.
  *
  * @author Igor Akkerman
  */
-public class ValueNotSetException
-extends ValueNotAccessibleException {
+public class ValueNotAccessibleException
+extends FormattedMessageException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 4844161228178575622L;
+    private static final long serialVersionUID = - 813625306823615853L;
 
     /**
-     * Creates a new {@link ValueNotSetException}.
+     * Creates a new {@link ValueNotAccessibleException}.
      */
-    public ValueNotSetException() {
+    public ValueNotAccessibleException() {
         super();
     }
 
     /**
-     * Creates a new {@link ValueNotSetException}.
+     * Creates a new {@link ValueNotAccessibleException}.
      *
      * @param valueName
      *        {@link String} specifying a descriptive name of the Value
      */
-    public ValueNotSetException(final String valueName) {
+    public ValueNotAccessibleException(final String valueName) {
         super(valueName);
     }
 }

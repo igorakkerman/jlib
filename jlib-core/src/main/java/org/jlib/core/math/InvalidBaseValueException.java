@@ -21,7 +21,7 @@
 
 package org.jlib.core.math;
 
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid value has been specified

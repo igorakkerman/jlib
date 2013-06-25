@@ -21,7 +21,7 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.exception.FormattedMessageException;
+import org.jlib.core.language.FormattedMessageException;
 
 /**
  * {@link FormattedMessageException} thrown during the operation of an operator.

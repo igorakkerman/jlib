@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.core.language;
 
 /**
  * {@link InvalidStateException} thrown in an uexpected state.

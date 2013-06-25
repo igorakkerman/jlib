@@ -19,58 +19,59 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.core.language;
 
 import org.jlib.core.array.ArrayUtility;
 
 import java.text.MessageFormat;
 
 /**
- * {@link IllegalArgumentException} using a formatted message.
+ * {@link IllegalStateException} using a formatted message.
  *
  * @author Igor Akkerman
  */
-public abstract class InvalidArgumentException
-extends IllegalArgumentException {
+public abstract class InvalidStateException
+extends IllegalStateException {
 
-    private static final long serialVersionUID = 5894034302749387338L;
+    /** serialVersionUID */
+    private static final long serialVersionUID = 6535760982905205135L;
 
     /**
-     * Creates a new {@link InvalidArgumentException}.
+     * Creates a new {@link InvalidStateException}.
      *
      * @param messageTemplate
      *        {@link String} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of { @link Object} message arguments
-     */
-    public InvalidArgumentException(final String messageTemplate, final Object... messageArguments) {
-        this(messageTemplate, null, messageArguments);
-    }
-
-    /**
-     * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param cause
-     *        Throwable that caused this {@link InvalidArgumentException}
-     */
-    public InvalidArgumentException(final Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template
-     *
-     * @param cause
-     *        Throwable that caused this {@link InvalidArgumentException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidArgumentException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    protected InvalidStateException(final String messageTemplate, final Object... messageArguments) {
+        this(messageTemplate, null, messageArguments);
+    }
+
+    /**
+     * Creates a new {@link InvalidStateException}.
+     *
+     * @param cause
+     *        Throwable that caused this {@link InvalidStateException}
+     */
+    protected InvalidStateException(final Throwable cause) {
+        super(cause);
+    }
+
+    /**
+     * Creates a new {@link InvalidStateException}.
+     *
+     * @param messageTemplate
+     *        {@link String} specifying the message template
+     *
+     * @param cause
+     *        Throwable that caused this {@link InvalidStateException}
+     *
+     * @param messageArguments
+     *        comma separated sequence of {@link Object} message States
+     */
+    protected InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }
 }

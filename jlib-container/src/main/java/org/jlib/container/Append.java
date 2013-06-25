@@ -21,8 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.exception.InvalidStateException;
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidStateException;
 
 import java.util.Collection;
 

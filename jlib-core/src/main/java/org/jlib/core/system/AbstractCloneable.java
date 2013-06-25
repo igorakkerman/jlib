@@ -21,7 +21,7 @@
 
 package org.jlib.core.system;
 
-import org.jlib.core.exception.UnexpectedStateException;
+import org.jlib.core.language.UnexpectedStateException;
 
 /**
  * Skeletal implementation of a {@link Cloneable} ensuring {@link #clone()} does not throw a

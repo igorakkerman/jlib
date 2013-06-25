@@ -21,7 +21,7 @@
 
 package org.jlib.core.nullable;
 
-import org.jlib.core.exception.ValueNotAccessibleException;
+import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.system.SystemUtility;
 
 import javax.annotation.Nullable;

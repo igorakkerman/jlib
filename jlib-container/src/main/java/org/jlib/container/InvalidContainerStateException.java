@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidStateException} caused by a {@link Container}.

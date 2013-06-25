@@ -21,7 +21,7 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * Creator of instances of a certain subtype of {@link IndexMatrix}.

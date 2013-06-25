@@ -27,7 +27,7 @@ import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.exception.ValueNotAccessibleException;
+import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;

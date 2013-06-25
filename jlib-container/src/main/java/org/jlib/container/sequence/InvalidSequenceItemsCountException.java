@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when trying to create a

@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid capacity

@@ -21,7 +21,7 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.Traverser;
 
 /**

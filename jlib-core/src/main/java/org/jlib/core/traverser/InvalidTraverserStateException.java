@@ -21,7 +21,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidStateException} thrown when an invalid state has been

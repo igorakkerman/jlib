@@ -27,7 +27,7 @@ import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRemove;
 import org.jlib.container.Remove;
 import org.jlib.container.RemoveAll;
-import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
