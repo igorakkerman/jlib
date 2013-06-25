@@ -38,6 +38,93 @@ import java.util.Collection;
 public interface Remove<Item> {
 
     /**
+     * Removes the specified Item of this {@link Remove}.
+     *
+     * @param item
+     *        Item to remove
+     *
+     * @throws NoSuchItemToRemoveException
+     *         if this {@link Remove} does not contain {@code Item}
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    public void remove(final Item item)
+    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException;
+
+    /**
+     * Removes all Items contained by the specified {@link Container} from this
+     * {@link Remove}.
+     *
+     * @param items
+     *        {@link Container} containing the Items to remove
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    public void remove(final Container<? extends Item> items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
+
+    /**
+     * Removes all Items contained by the specified {@link Collection} from this
+     * {@link Remove}.
+     *
+     * @param items
+     *        {@link Collection} containing the Items to remove
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    public void remove(final Collection<? extends Item> items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
+
+    /**
+     * Removes all Items provided by the specified {@link Iterable} from this
+     * {@link Remove}.
+     *
+     * @param items
+     *        {@link Iterable} providing the Items to remove
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    public void remove(final Iterable<? extends Item> items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
+
+    /**
+     * Removes all specified Items from this {@link Remove}.
+     *I
+     * @param items
+     *        comma separated sequence of Items to remove
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    @SuppressWarnings("unchecked")
+    public void remove(final Item... items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
+
+    /**
      * Removes all Items from this {@link Remove}
      * <em>except</em> the Items contained by the specified {@link Traversible}.
      *
