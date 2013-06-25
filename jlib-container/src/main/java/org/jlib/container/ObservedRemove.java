@@ -36,7 +36,8 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemove<Item> {
+public interface ObservedRemove<Item>
+extends Remove<Item> {
 
     /**
      * Removes all Items from this {@link Container} <em>except</em> the Items contained by
