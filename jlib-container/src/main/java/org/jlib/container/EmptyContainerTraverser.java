@@ -22,10 +22,10 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.EmptySequence;
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.NoPreviousItemException;
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.container.traverser.NoNextItemException;
+import org.jlib.container.traverser.NoPreviousItemException;
+import org.jlib.container.traverser.Traverser;
+import org.jlib.container.traverser.TwoWayTraverser;
 
 /**
  * {@link Traverser} of an {@link EmptyContainer}.

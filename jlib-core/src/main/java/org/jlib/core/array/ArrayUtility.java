@@ -21,8 +21,8 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.traverser.TwoWayTraverser;
-import org.jlib.core.traverser.TwoWayTraversible;
+import org.jlib.container.traverser.TwoWayTraverser;
+import org.jlib.container.traverser.TwoWayTraversible;
 
 import java.util.ArrayList;
 import java.util.List;

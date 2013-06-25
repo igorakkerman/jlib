@@ -21,8 +21,8 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.container.traverser.NoNextItemException;
+import org.jlib.container.traverser.ReplaceTraverser;
 
 /**
  * {@link MatrixTraverser} of an {@link EmptyMatrix}. Implemented as a

@@ -29,7 +29,7 @@ import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchAssociationValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
-import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.container.traverser.RemoveTraverser;
 
 import java.util.Collection;
 

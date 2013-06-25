@@ -21,9 +21,9 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
-import org.jlib.core.traverser.Traversible;
+import org.jlib.container.traverser.InvalidTraversibleArgumentException;
+import org.jlib.container.traverser.InvalidTraversibleStateException;
+import org.jlib.container.traverser.Traversible;
 
 import java.util.Collection;
 

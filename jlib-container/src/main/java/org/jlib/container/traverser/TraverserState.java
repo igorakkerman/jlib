@@ -19,19 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
+ * Traverser state.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
- *
- * @author Igor Akkerman
+ *        type of the items traversed by the {@link Traverser}.
  */
-public interface ObservedReplaceSequenceTraverser<Item>
-extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
-    // unifying interface
+public interface TraverserState<Item>
+extends Traverser<Item> {
+
+    /**
+     * Returns the next {@link TraverserState}
+     *
+     * @return next {@link TraverserState}
+     */
+    public TraverserState<Item> getNextState();
 }

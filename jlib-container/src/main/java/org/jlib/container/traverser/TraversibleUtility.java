@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.container.traverser;
 
 import org.jlib.core.observer.ValueObserver;
 

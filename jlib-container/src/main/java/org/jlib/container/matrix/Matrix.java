@@ -22,7 +22,7 @@
 package org.jlib.container.matrix;
 
 import org.jlib.container.Container;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 // @formatter:off
 

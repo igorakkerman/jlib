@@ -31,7 +31,7 @@ import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 import java.util.Collection;
 import java.util.Iterator;

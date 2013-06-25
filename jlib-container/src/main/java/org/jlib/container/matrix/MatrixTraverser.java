@@ -22,7 +22,7 @@
 package org.jlib.container.matrix;
 
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 /**
  * {@link Traverser} over a {@link Matrix}.

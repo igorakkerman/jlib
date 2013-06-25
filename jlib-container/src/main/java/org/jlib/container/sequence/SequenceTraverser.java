@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.container.traverser.TwoWayTraverser;
 
 /**
  * {@link TwoWayTraverser} over the Items of a {@link Sequence}.

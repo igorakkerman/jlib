@@ -19,24 +19,31 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.container.traverser;
 
 /**
- * Object providing a {@link ObservedReplaceTraversible} over its Items.
- *
- * @param <Item>
- *        type of the traversed Items
+ * {@link InvalidTraverserStateException} thrown when the traversed
+ * {@link Traversible} claims a state error.
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceTraversible<Item>
-extends ReplaceTraversible<Item> {
+public class InvalidTraversibleStateException
+extends InvalidTraverserStateException {
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = 1706750148627927636L;
 
     /**
-     * Returns a new {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceTraversible}.
+     * Creates a new {@link InvalidTraversibleStateException}.
      *
-     * @return newly created {@link ObservedReplaceTraverser}
+     * @param traversible
+     *        traversed {@link Traversible}
+     *
+     * @param cause
+     *        {@link Throwable} that caused this
+     *        {@link InvalidTraversibleStateException}
      */
-    @Override
-    public ObservedReplaceTraverser<Item> createTraverser();
+    public InvalidTraversibleStateException(final Traversible<?> traversible, final Throwable cause) {
+        super(traversible, cause);
+    }
 }

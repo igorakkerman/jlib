@@ -19,19 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
+ * {@link Object} traversible by a {@link TwoWayTraverser}.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items returned by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceSequenceTraverser<Item>
-extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
-    // unifying interface
+public interface TwoWayTraversible<Item>
+extends Traversible<Item> {
+
+    /**
+     * Returns a new {@link TwoWayTraverser} over the Items of this
+     * {@link TwoWayTraversible}.
+     *
+     * @return newly createTraverser}
+     */
+    public TwoWayTraverser<Item> createTraverser();
 }

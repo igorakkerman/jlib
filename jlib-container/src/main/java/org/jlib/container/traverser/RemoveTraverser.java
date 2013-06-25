@@ -19,17 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link ReplaceTraverser} and {@link RemoveTraverser}.
+ * {@link Traverser} allowing returned Items to be removed.
  *
  * @param <Item>
  *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface ReplaceRemoveTraverser<Item>
-extends ReplaceTraverser<Item>, RemoveTraverser<Item> {
-    // unifying interface
+public interface RemoveTraverser<Item>
+extends Traverser<Item> {
+
+    /**
+     * Removes the last Item returned by this {@link RemoveTraverser}.
+     *
+     * @throws NoItemToRemoveException
+     *         if not called immediately after a call to {@link Traverser#getNextItem()}
+     *         or a similar method
+     *
+     * @throws InvalidTraversibleStateException
+     *         if an error was caused by a delegate used to remove the item
+     */
+    public void remove()
+    throws NoItemToRemoveException, InvalidTraversibleStateException;
 }

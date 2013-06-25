@@ -19,19 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
+ * {@link Traversible} providing  allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceSequenceTraverser<Item>
-extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
-    // unifying interface
+public interface RemoveTraversible<Item>
+extends Traversible<Item> {
+
+    /**
+     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversible}.
+     *
+     * @return newly createTraverser}
+     */
+    @Override
+    public RemoveTraverser<Item> createTraverser();
 }

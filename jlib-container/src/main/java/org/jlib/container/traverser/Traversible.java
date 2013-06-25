@@ -19,31 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link InvalidTraverserStateException} thrown when the traversed
- * {@link Traversible} claims a state error.
+ * {@link Object} traversible by a {@link Traverser}.
+ *
+ * @param <Item>
+ *        type of items returned by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public class InvalidTraversibleStateException
-extends InvalidTraverserStateException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = 1706750148627927636L;
+public interface Traversible<Item> {
 
     /**
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Returns a new {@link Traverser} over the Items of this {@link Traversible}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
-     *
-     * @param cause
-     *        {@link Throwable} that caused this
-     *        {@link InvalidTraversibleStateException}
+     * @return newly createTraverser}
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final Throwable cause) {
-        super(traversible, cause);
-    }
+    public Traverser<Item> createTraverser();
 }

@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.container.traverser.ReplaceTraverser;
 
 /**
  * {@link ReplaceTraverser} and {@link SequenceTraverser}.

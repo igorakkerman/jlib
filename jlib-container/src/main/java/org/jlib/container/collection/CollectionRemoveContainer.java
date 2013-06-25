@@ -28,8 +28,8 @@ import org.jlib.container.ObservedRemove;
 import org.jlib.container.Remove;
 import org.jlib.container.RemoveAll;
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.traverser.RemoveIterableTraverser;
-import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.container.traverser.RemoveIterableTraverser;
+import org.jlib.container.traverser.RemoveTraverser;
 
 import java.util.Collection;
 import java.util.Collections;

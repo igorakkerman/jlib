@@ -21,10 +21,10 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.NoPreviousItemException;
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.container.traverser.NoNextItemException;
+import org.jlib.container.traverser.NoPreviousItemException;
+import org.jlib.container.traverser.Traverser;
+import org.jlib.container.traverser.TwoWayTraverser;
 
 import java.util.Arrays;
 

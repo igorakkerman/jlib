@@ -22,7 +22,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.container.AbstractContainer;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation}.

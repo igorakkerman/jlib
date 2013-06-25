@@ -24,7 +24,7 @@ package org.jlib.container;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 import java.util.Collection;
 import java.util.Collections;

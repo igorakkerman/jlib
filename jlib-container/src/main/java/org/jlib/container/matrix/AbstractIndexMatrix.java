@@ -24,7 +24,7 @@ package org.jlib.container.matrix;
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.container.traverser.Traverser;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.

@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 import org.jlib.container.Container;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.container.traverser.RemoveTraverser;
 
 import java.util.Collection;
 

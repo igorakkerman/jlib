@@ -19,28 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.Container;
-import org.jlib.container.traverser.TwoWayTraversible;
+package org.jlib.container.traverser;
 
 /**
- * Ordered sequence of Items.
+ * {@link Traverser} allowing to traverse Items forward and backwards.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of items traversed by the {@link TwoWayTraverser}
  *
  * @author Igor Akkerman
  */
-public interface Sequence<Item>
-extends Container<Item>, TwoWayTraversible<Item> {
+public interface TwoWayTraverser<Item>
+extends Traverser<Item> {
 
     /**
-     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
-     * in the correct order.
+     * Verifies whether this {@link TwoWayTraverser} has a previous Item.
      *
-     * @return {@link SequenceTraverser} over the Items of this Sequence
+     * @return {@code true} if this {@link TwoWayTraverser} has a previous Item;
+     *         {@code false} otherwise
      */
-    @Override
-    public SequenceTraverser<Item> createTraverser();
+    public boolean isPreviousItemAccessible();
+
+    /**
+     * Returns the previous Item of this {@link TwoWayTraverser}.
+     *
+     * @return the previous Item
+     *
+     * @throws NoPreviousItemException
+     *         if there is no previous Item
+     */
+    public Item getPreviousItem()
+    throws NoPreviousItemException;
 }

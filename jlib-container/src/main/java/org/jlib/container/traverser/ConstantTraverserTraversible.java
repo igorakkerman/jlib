@@ -19,19 +19,36 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
-
-import org.jlib.container.traverser.ObservedReplaceTraverser;
+package org.jlib.container.traverser;
 
 /**
- * {@link ObservedReplaceTraverser} of an {@link ObservedReplaceSequence}.
+ * {@link Traversible} always providing a constant {@link Traverser}.
  *
  * @param <Item>
- *        type of items held in the {@link Sequence}
+ *        type of the Items traversed by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceSequenceTraverser<Item>
-extends ObservedReplaceTraverser<Item>, ReplaceSequenceTraverser<Item> {
-    // unifying interface
+public class ConstantTraverserTraversible<Item>
+implements Traversible<Item> {
+
+    /** returned {@link Traverser}r */
+    private final Traverser<Item> traverser;
+
+    /**
+     * Creates a new {@link ConstantTraverserTraversible}.
+     *
+     * @param traverser
+     *        constantly returned {@link Traverser}
+     */
+    public ConstantTraverserTraversible(final Traverser<Item> traverser) {
+        super();
+
+        this.traverser = traverser;
+    }
+
+    @Override
+    public Traverser<Item> createTraverser() {
+        return traverser;
+    }
 }
