@@ -45,8 +45,7 @@ import static org.jlib.container.collection.CollectionUtility.toSet;
 public final class ContainerUtility {
 
     /** No visible constructor. */
-    private ContainerUtility() {
-    }
+    private ContainerUtility() {}
 
     /**
      * Removes the specified Item of this {@link Remove}.
@@ -446,6 +445,51 @@ public final class ContainerUtility {
         while (itemsTraverser.isNextItemAccessible())
             if (! items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
+    }
+
+    /**
+     * Removes all Items of the specified {@link Remove}.
+     *
+     * @param container
+     *        {@link Remove} containing the Items
+     *
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    public static <Item> void removeAll(final Remove<Item> container)
+    throws InvalidContainerStateException {
+        for (final RemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
+            traverser.getNextItem();
+            traverser.remove();
+        }
+    }
+
+    /**
+     * Removes all Items of the specified {@link Remove}.
+     *
+     * @param container
+     *        {@link ObservedRemove} containing the Items
+     *
+     * @param <Item>
+     *        type of the items held in the {@link Container}
+     *
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
+     *
+     * @throws InvalidContainerStateException
+     *         if an error occurs during the operation
+     */
+    @SafeVarargs
+    public static <Item> void removeAll(final ObservedRemove<Item> container, final ValueObserver<Item>... observers)
+    throws InvalidContainerStateException {
+        for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
+            traverser.getNextItem();
+            traverser.remove(observers);
+        }
     }
 
     /**
