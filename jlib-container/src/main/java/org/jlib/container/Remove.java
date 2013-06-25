@@ -23,6 +23,7 @@ package org.jlib.container;
 
 import org.jlib.container.traverser.InvalidTraversibleArgumentException;
 import org.jlib.container.traverser.InvalidTraversibleStateException;
+import org.jlib.container.traverser.RemoveTraversible;
 import org.jlib.container.traverser.Traversible;
 
 import java.util.Collection;
@@ -35,7 +36,8 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface Remove<Item> {
+public interface Remove<Item>
+extends RemoveTraversible<Item> {
 
     /**
      * Removes the specified Item of this {@link Remove}.
