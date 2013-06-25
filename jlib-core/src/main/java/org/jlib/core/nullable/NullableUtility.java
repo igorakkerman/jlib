@@ -21,7 +21,6 @@
 
 package org.jlib.core.nullable;
 
-import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.system.SystemUtility;
 
 import javax.annotation.Nullable;
@@ -35,33 +34,6 @@ public final class NullableUtility {
 
     /** no visible constructor */
     private NullableUtility() {}
-
-    /**
-     * Returns the specified optional Value.
-     *
-     * @param <Value>
-     *        type of the value
-     *
-     * @param valueName
-     *        {@link String} specifying a descriptive name of the Value
-     *
-     * @param value
-     *        Value to return or {@code null}
-     *
-     * @return {@code value}, if {@code value != null}
-     *
-     * @throws ValueNotAccessibleException
-     *         if {@code value == null}
-     */
-    // TODO: review if still necessary when using Guava
-    public static <Value> Value optional(final String valueName, final @Nullable Value value)
-    throws ValueNotAccessibleException {
-
-        if (value == null)
-            throw new ValueNotAccessibleException(valueName);
-
-        return value;
-    }
 
     /**
      * Compares the specified Objects for mutual equality. Two Objects {@code object1}, {@code object2} are considered
