@@ -21,6 +21,8 @@
 
 package org.jlib.core.traverser;
 
+import org.jlib.core.observer.ValueObserver;
+
 /**
  * Utility providing operations on {@link Traverser} and {@link Traversible} instances.
  *
@@ -105,5 +107,50 @@ public final class TraversibleUtility {
             itemsCount += getItemsCount(traversible);
 
         return itemsCount;
+    }
+
+    /**
+     * Removes all Items of the specified {@link RemoveTraversible}.
+     *
+     * @param traversible
+     *        {@link RemoveTraversible} providing the Items
+     *
+     * @param <Item>
+     *        type of the items of {@code traversible}
+     *
+     * @throws InvalidTraversibleStateException
+     *         if an error occurs during one of the remove operations
+     */
+    public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
+    throws InvalidTraversibleStateException {
+        for (final RemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
+            traverser.getNextItem();
+            traverser.remove();
+        }
+    }
+
+    /**
+     * Removes all Items of the specified {@link RemoveTraversible}.
+     *
+     * @param traversible
+     *        {@link RemoveTraversible} providing the Items
+     *
+     * @param <Item>
+     *        type of the items of {@code traversible}
+     *
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
+     *
+     * @throws InvalidTraversibleStateException
+     *         if an error occurs during one of the remove operations
+     */
+    @SafeVarargs
+    public static <Item> void removeAll(final ObservedRemoveTraversible<Item> traversible, final ValueObserver<Item>... observers)
+    throws InvalidTraversibleStateException {
+        for (final ObservedRemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
+            traverser.getNextItem();
+            traverser.remove(observers);
+        }
     }
 }

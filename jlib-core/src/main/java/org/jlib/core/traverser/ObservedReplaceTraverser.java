@@ -25,7 +25,7 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 /**
- * {@link RemoveTraverser} allowing its remove operation to be attended by
+ * {@link ReplaceTraverser} allowing its remove operation to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
@@ -33,7 +33,8 @@ import org.jlib.core.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceTraverser<Item> {
+public interface ObservedReplaceTraverser<Item>
+extends ReplaceTraverser<Item> {
 
     /**
      * Replaces the last traversed Item with the specified value.

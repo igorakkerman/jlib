@@ -22,7 +22,7 @@
 package org.jlib.core.traverser;
 
 /**
- * Object providing  allowing Items to be removed.
+ * {@link Traversible} providing  allowing Items to be removed.
  *
  * @param <Item>
  *        type of the traversed items

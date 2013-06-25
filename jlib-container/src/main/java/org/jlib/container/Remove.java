@@ -21,6 +21,10 @@
 
 package org.jlib.container;
 
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.Traversible;
+
 import java.util.Collection;
 
 /**
@@ -34,54 +38,54 @@ import java.util.Collection;
 public interface Remove<Item> {
 
     /**
-     * Removes all Items from this {@link RandomAccessRemove}
-     * <em>except</em> the Items contained by the specified {@link Container}.
+     * Removes all Items from this {@link Remove}
+     * <em>except</em> the Items contained by the specified {@link Traversible}.
      *
      * @param items
-     *        {@link Container} containing the Items to retain
+     *        {@link Traversible} containing the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void retain(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    public void retain(final Traversible<? extends Item> items)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemove}
+     * Removes all Items from this {@link Remove}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void retain(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
-     * Removes all Items from this {@link RandomAccessRemove}
+     * Removes all Items from this {@link Remove}
      * <em>except</em> the specified Items.
      *
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }
