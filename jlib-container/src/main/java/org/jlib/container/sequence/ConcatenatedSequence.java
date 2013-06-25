@@ -50,7 +50,7 @@ extends AbstractSequence<Item> {
         public Integer getValue() {
             final int itemsCount = TraversibleUtility.getItemsCount(traversibles);
 
-            itemsCountHolder = new InitializedValueHolder<Integer>(itemsCount);
+            itemsCountHolder = new InitializedValueHolder<>(itemsCount);
 
             return itemsCount;
         }
@@ -88,5 +88,11 @@ extends AbstractSequence<Item> {
      */
     public TwoWayTraversible<Item>[] getTraversibles() {
         return traversibles;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ConcatenatedSequence clone() {
+        return (ConcatenatedSequence) super.clone();
     }
 }
