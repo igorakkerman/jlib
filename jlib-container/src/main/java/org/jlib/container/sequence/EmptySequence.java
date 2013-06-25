@@ -27,8 +27,10 @@ import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRandomAccessRemove;
-import org.jlib.container.ObservedRemoveAll;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.container.traverser.InvalidTraversibleArgumentException;
+import org.jlib.container.traverser.InvalidTraversibleStateException;
+import org.jlib.container.traverser.Traversible;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
@@ -45,7 +47,7 @@ import java.util.Collection;
 public class EmptySequence<Item>
 extends EmptyContainer<Item>
 implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, ObservedRandomAccessRemove<Item>,
-           ObservedRemoveAll<Item> {
+           ObservedRemoveAllSequence<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();
@@ -111,6 +113,12 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, Observed
     @Override
     public void retain(final Container<? extends Item> items)
     throws NoSuchItemToRemoveException, InvalidContainerStateException {
+        // intentionally blank
+    }
+
+    @Override
+    public void retain(final Traversible<? extends Item> items)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
