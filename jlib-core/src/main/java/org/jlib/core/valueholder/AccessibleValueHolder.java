@@ -31,8 +31,8 @@ import org.jlib.core.language.ValueNotAccessibleException;
  *
  * @author Igor Akkerman
  */
-public interface AccessibleValueHolder<Value>
-extends ValueHolder<Value> {
+public abstract class AccessibleValueHolder<Value>
+implements ValueHolder<Value> {
 
     /**
      * Returns the Value. Since the Value is guaranteed to be accessible, <em>no</em>
@@ -41,5 +41,20 @@ extends ValueHolder<Value> {
      * @return registered Value
      */
     @Override
-    public Value getValue();
+    public abstract Value getValue();
+
+    /**
+     * <p>
+     * {@inheritDoc}
+     * </p>
+     * <p>
+     * In this implementation the Value is guaranteed to be accessible, hence always returned is {@code true}.
+     * </p>
+     *
+     * @return {@code true} always
+     */
+    @Override
+    public boolean isValueAccessible() {
+        return true;
+    }
 }
