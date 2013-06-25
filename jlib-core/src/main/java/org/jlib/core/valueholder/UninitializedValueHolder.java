@@ -22,6 +22,7 @@
 package org.jlib.core.valueholder;
 
 import org.jlib.core.language.ValueNotAccessibleException;
+import org.jlib.core.language.ValueNotSetException;
 
 /**
  * Skeletal implementation of a not initialized {@link ModifiableValueHolder}.
@@ -46,13 +47,13 @@ implements ModifiableValueHolder<Value> {
      *
      * @return never
      *
-     * @throws ValueNotAccessibleException
+     * @throws ValueNotSetException
      *         always
      */
     @Override
     public Value getValue()
-    throws ValueNotAccessibleException {
-        throw new ValueNotAccessibleException();
+    throws ValueNotSetException {
+        throw new ValueNotSetException();
     }
 
     /**
