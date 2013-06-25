@@ -32,7 +32,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @author Igor Akkerman
  */
 public abstract class AbstractAccessibleValueHolder<Value>
-implements AccessibleValueHolder<Value> {
+extends AccessibleValueHolder<Value> {
 
     @Override
     public String toString() {
