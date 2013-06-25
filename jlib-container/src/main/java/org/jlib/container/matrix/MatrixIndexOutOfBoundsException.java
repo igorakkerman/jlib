@@ -67,10 +67,9 @@ extends IndexOutOfBoundsException {
     }
 
     /**
-     * Returns the {@link IndexMatrix} of this
-     * {@link MatrixIndexOutOfBoundsException}.
+     * Returns the referenced {@link IndexMatrix}.
      *
-     * @return the IndexMatrix<?>
+     * @return reference {@link IndexMatrix}
      */
     public IndexMatrix<?> getMatrix() {
         return matrix;

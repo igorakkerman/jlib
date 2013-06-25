@@ -21,6 +21,8 @@
 
 package org.jlib.container.matrix;
 
+import org.jlib.core.exception.InvalidArgumentException;
+
 /**
  * Creator of instances of a certain subtype of {@link IndexMatrix}.
  *
@@ -56,7 +58,8 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *         if {@code lastColumnIndex < firstColumnIndex || lastRowIndex <
      *         firstRowIndex}
      */
-    public abstract Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex, final int lastRowIndex);
+    public abstract Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex,
+                                        final int lastRowIndex);
 
     /**
      * Creates a new {@link InitializeableIndexMatrix} with the a minimum column
@@ -102,19 +105,21 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      */
     public final Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final Entry[][] entries) {
         final int width = entries.length;
-        assertDimensionValid("width", width);
+        assertWidthValid(width);
 
         final int height = entries[0].length;
-        assertDimensionValid("height", height);
+        assertHeightValid(height);
 
         final Metrix matrix = createMatrix(firstColumnIndex, firstRowIndex, width, height);
 
         for (int arrayColumnIndex = 0, columnIndex = firstColumnIndex; arrayColumnIndex < width; arrayColumnIndex++, columnIndex++) {
             final Entry[] columnEntries = entries[arrayColumnIndex];
-            if (columnEntries.length != height)
-                throw new InvalidArgumentException("entries[" + arrayColumnIndex + "].length != entries[0].length");
 
-            for (int arrayRowIndex = 0, rowIndex = firstRowIndex; arrayRowIndex < height; arrayRowIndex++)
+            if (columnEntries.length != height)
+                throw new InvalidMatrixEntriesColumnHeightException(matrix, entries, arrayColumnIndex,
+                                                                    columnEntries.length, height);
+
+            for (int arrayRowIndex = 0, rowIndex = firstRowIndex; arrayRowIndex < height; arrayRowIndex++, rowIndex++)
                 matrix.replaceStoredEntry(columnIndex, rowIndex, entries[arrayColumnIndex][arrayRowIndex]);
         }
 
