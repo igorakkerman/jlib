@@ -21,6 +21,8 @@
 
 package org.jlib.core.text;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import org.jlib.core.system.SystemUtility;
 
 /**
@@ -39,4 +41,8 @@ public final class StringUtility {
 
     /** no visible constructor */
     private StringUtility() {}
+
+    public static String removeOnce(final String containingString, final String removedString) {
+        return replaceOnce(containingString, removedString, EMPTY);
+    }
 }
