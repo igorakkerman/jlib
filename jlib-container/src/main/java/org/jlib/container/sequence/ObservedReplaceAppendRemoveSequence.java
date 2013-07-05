@@ -30,7 +30,7 @@ package org.jlib.container.sequence;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceAppendRemoveSequence<Item>
-extends ReplaceAppendRemoveSequence<Item>, ObservedReplaceAppendSequence<Item>, ObservedRemoveSequence<Item> {
+extends ReplaceAppendRemoveSequence<Item>, ObservedRemoveSequence<Item>, ObservedReplaceSequence<Item>,ObservedAppendSequence<Item>,ReplaceSequence<Item>,AppendSequence<Item> {
 
     /**
      * @return {@link ObservedReplaceRemoveSequenceTraverser} traversing the

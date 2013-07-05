@@ -26,7 +26,6 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveLastIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -44,7 +43,8 @@ import java.util.Collection;
  */
 public class ReplaceInsertRemoveLastArraySequence<Item>
 extends ReplaceInsertArraySequence<Item>
-implements ObservedReplaceInsertRemoveLastIndexSequence<Item> {
+implements org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence<Item>,
+           org.jlib.container.sequence.ObservedRemoveLastSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveLastArraySequence}

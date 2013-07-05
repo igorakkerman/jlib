@@ -48,7 +48,14 @@ import static org.jlib.core.array.ArrayUtility.traversible;
  */
 public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements ObservedReplaceInsertIndexSequenceTraverser<Item> {
+implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>, org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item> {
 
     /** insert {@link ValueObserver} items */
     private final AppendSequence<ValueObserver<Item>> traverserInsertObservers = new FillupArraySequence<>();

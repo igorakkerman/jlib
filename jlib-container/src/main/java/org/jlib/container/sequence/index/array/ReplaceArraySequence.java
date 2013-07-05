@@ -27,7 +27,6 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
-import org.jlib.container.sequence.index.ObservedReplaceIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceIndexSequence;
 import org.jlib.core.observer.ValueObserver;

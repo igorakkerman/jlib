@@ -35,7 +35,8 @@ import org.jlib.core.traverser.NoItemToRemoveException;
  */
 public class EmptySequenceTraverser<Item>
 extends AbstractSequenceTraverser<Item, EmptySequence<Item>>
-implements ObservedReplaceRemoveSequenceTraverser<Item> {
+implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,RemoveSequenceTraverser<Item>,
+org.jlib.core.traverser.ObservedReplaceTraverser<Item>,ReplaceSequenceTraverser<Item>,ReplaceSequenceTraverser<Item>,RemoveSequenceTraverser<Item> {
 
     /** sole {@link EmptySequenceTraverser} instance */
     private static final EmptySequenceTraverser<?> INSTANCE = new EmptySequenceTraverser<>();
