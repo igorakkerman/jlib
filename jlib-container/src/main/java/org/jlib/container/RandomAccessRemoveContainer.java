@@ -38,7 +38,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * Removes the specified Item from this {@link RandomAccessRemoveContainer}.
      *
      * @param item
-     *        Item to remove
+     *        {@link Item} to remove
      *
      * @throws NoSuchItemToRemoveException
      *         if this {@link RandomAccessRemoveContainer} does not contain

@@ -25,12 +25,16 @@ import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.NoSuchItemToRemoveException;
 import org.jlib.container.ObservedRemoveContainer;
+import org.jlib.container.RandomAccessRemoveContainer;
 import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.Traversible;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -48,7 +52,7 @@ import java.util.Collections;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveAllContainer<Item> {
+implements RandomAccessRemoveContainer<Item>, RemoveAllContainer<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -235,6 +239,12 @@ implements RemoveAllContainer<Item> {
     public void retain(final Collection<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         getDelegateCollection().retainAll(items);
+    }
+
+    @Override
+    public void retain(final Traversible<? extends Item> items)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+        ContainerUtility.retain(this, items);
     }
 
     @Override

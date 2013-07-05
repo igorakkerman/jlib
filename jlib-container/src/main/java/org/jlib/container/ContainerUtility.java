@@ -57,7 +57,7 @@ public final class ContainerUtility {
      *        {@link ObservedRemoveContainer} containing the Item
      *
      * @param item
-     *        Item to remove
+     *        {@link Item} to remove
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
