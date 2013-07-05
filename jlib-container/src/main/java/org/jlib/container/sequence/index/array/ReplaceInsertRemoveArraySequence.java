@@ -30,6 +30,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
+import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequence;
 import org.jlib.container.sequence.index.ObservedReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
@@ -49,7 +50,7 @@ import java.util.Collection;
  */
 public class ReplaceInsertRemoveArraySequence<Item>
 extends ReplaceInsertRemoveFirstLastArraySequence<Item>
-implements ObservedReplaceAppendPrependInsertRemoveIndexSequence<Item> {
+implements ObservedReplaceIndexSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveArraySequence} with

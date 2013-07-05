@@ -24,10 +24,11 @@ package org.jlib.container.collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRemove;
-import org.jlib.container.Remove;
-import org.jlib.container.RemoveAll;
+import org.jlib.container.ObservedRemoveContainer;
+import org.jlib.container.RemoveAllContainer;
+import org.jlib.container.RemoveContainer;
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -36,8 +37,8 @@ import java.util.Collections;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link Remove}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRemove} as internal {@link Collection} operations
+ * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
@@ -47,7 +48,7 @@ import java.util.Collections;
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RemoveAll<Item> {
+implements RemoveAllContainer<Item> {
 
     /**
      * Creates a new {@link CollectionRemoveContainer} backed by the specified

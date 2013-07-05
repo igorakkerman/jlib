@@ -36,8 +36,8 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemove<Item>
-extends Remove<Item> {
+public interface ObservedRemoveContainer<Item>
+extends RemoveContainer<Item> {
 
     /**
      * Removes all Items from this {@link Container} <em>except</em> the Items contained by
@@ -114,9 +114,9 @@ extends Remove<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
-     * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
+     * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemoveContainer}
      *
-     * @return {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemove}
+     * @return {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemoveContainer}
      */
     public ObservedRemoveTraverser<Item> createTraverser();
 }

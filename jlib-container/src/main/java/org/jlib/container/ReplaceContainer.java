@@ -21,31 +21,35 @@
 
 package org.jlib.container;
 
-import org.jlib.core.observer.ValueObserver;
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
- * Ability to remove <em>all</em> Items;
- * the remove operations can be attended by {@link ValueObserver} instances.
+ * <p>
+ * {@link Container} that allows its Items to be modified using an
+ * {@link ReplaceTraverser}.
+ * </p>
+ * <p>
+ * It does not necessarily allow modification of the {@link Container}, that is,
+ * this interface does not provide methods for adding and removing Items. See
+ * {@link AppendSequence} for this functionality.
+ * </p>
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item>
-extends RemoveAll<Item> {
+public interface ReplaceContainer<Item>
+extends Container<Item> {
 
     /**
-     * Removes all Items from this {@link Container}.
+     * Creates a new {@link ReplaceTraverser} over the Items of this {@link ReplaceContainer}
+     * .
      *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws InvalidContainerStateException
-     *         if an error occurs during the operation
+     * @return newly createTraverser}
      */
-    @SuppressWarnings("unchecked")
-    public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidContainerStateException;
+    @Override
+    public ReplaceTraverser<Item> createTraverser();
 }

@@ -36,17 +36,17 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface Remove<Item>
+public interface RemoveContainer<Item>
 extends RemoveTraversible<Item> {
 
     /**
-     * Removes the specified Item of this {@link Remove}.
+     * Removes the specified Item of this {@link RemoveContainer}.
      *
      * @param item
      *        Item to remove
      *
      * @throws NoSuchItemToRemoveException
-     *         if this {@link Remove} does not contain {@code Item}
+     *         if this {@link RemoveContainer} does not contain {@code Item}
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -60,7 +60,7 @@ extends RemoveTraversible<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
-     * {@link Remove}.
+     * {@link RemoveContainer}.
      *
      * @param items
      *        {@link Container} containing the Items to remove
@@ -77,7 +77,7 @@ extends RemoveTraversible<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link Remove}.
+     * {@link RemoveContainer}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -94,7 +94,7 @@ extends RemoveTraversible<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link Remove}.
+     * {@link RemoveContainer}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -110,7 +110,7 @@ extends RemoveTraversible<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Removes all specified Items from this {@link Remove}.
+     * Removes all specified Items from this {@link RemoveContainer}.
      *I
      * @param items
      *        comma separated sequence of Items to remove
@@ -127,7 +127,7 @@ extends RemoveTraversible<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Removes all Items from this {@link Remove}
+     * Removes all Items from this {@link RemoveContainer}
      * <em>except</em> the Items contained by the specified {@link Traversible}.
      *
      * @param items
@@ -144,7 +144,7 @@ extends RemoveTraversible<Item> {
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
-     * Removes all Items from this {@link Remove}
+     * Removes all Items from this {@link RemoveContainer}
      * <em>except</em> the Items contained by the specified {@link Container}.
      *
      * @param items
@@ -161,7 +161,7 @@ extends RemoveTraversible<Item> {
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
-     * Removes all Items from this {@link Remove}
+     * Removes all Items from this {@link RemoveContainer}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -178,7 +178,7 @@ extends RemoveTraversible<Item> {
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
-     * Removes all Items from this {@link Remove}
+     * Removes all Items from this {@link RemoveContainer}
      * <em>except</em> the specified Items.
      *
      * @param items

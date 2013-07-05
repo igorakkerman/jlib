@@ -48,13 +48,13 @@ public final class ContainerUtility {
     private ContainerUtility() {}
 
     /**
-     * Removes the specified Item of this {@link Remove}.
+     * Removes the specified Item of this {@link RemoveContainer}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Item
+     *        {@link ObservedRemoveContainer} containing the Item
      *
      * @param item
      *        Item to remove
@@ -64,7 +64,7 @@ public final class ContainerUtility {
      *        attending the removal
      *
      * @throws NoSuchItemToRemoveException
-     *         if this {@link Remove} does not contain {@code Item}
+     *         if this {@link RemoveContainer} does not contain {@code Item}
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -101,13 +101,13 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from the
-     * specified {@link Remove}.
+     * specified {@link RemoveContainer}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items
+     *        {@link ObservedRemoveContainer} containing the Items
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -127,13 +127,13 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items in the specified comma separated sequence from the
-     * specified {@link Remove}.
+     * specified {@link RemoveContainer}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link Remove} containing the Items
+     *        {@link RemoveContainer} containing the Items
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -158,13 +158,13 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from the
-     * specified {@link ObservedRemove}.
+     * specified {@link ObservedRemoveContainer}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items
+     *        {@link ObservedRemoveContainer} containing the Items
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -195,13 +195,13 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items in the specified comma separated sequence from the
-     * specified {@link Remove}.
+     * specified {@link RemoveContainer}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link Remove} containing the Items
+     *        {@link RemoveContainer} containing the Items
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the removal
@@ -235,7 +235,7 @@ public final class ContainerUtility {
      *        type of the items held in the {@link Container}
      *
      * @param traversible
-     *        {@link Remove} containing the Items to remove
+     *        {@link RemoveContainer} containing the Items to remove
      *
      * @param items
      *        {@link Iterable} providing the Items to retain
@@ -258,7 +258,7 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link Remove}
+     * Removes all Items from the specified {@link RemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      *
@@ -269,7 +269,7 @@ public final class ContainerUtility {
      *        type of the items retained in the {@link Container}
      *
      * @param container
-     *        {@link Remove} containing the Items to remove
+     *        {@link RemoveContainer} containing the Items to remove
      *
      * @param items
      *        {@link Collection} containing the Items to retain
@@ -282,14 +282,14 @@ public final class ContainerUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
-    public static <Item, RetainedItem extends Item> void retain(final Remove<Item> container,
+    public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final RetainedItem... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         retain(container, toSet(items));
     }
 
     /**
-     * Removes all Items from the specified {@link Remove}
+     * Removes all Items from the specified {@link RemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      *
@@ -297,7 +297,7 @@ public final class ContainerUtility {
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link Remove} containing the Items to remove
+     *        {@link RemoveContainer} containing the Items to remove
      *
      * @param items
      *        {@link Collection} containing the Items to retain
@@ -309,7 +309,7 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void retain(final Remove<Item> container, final Collection<? extends Item> items)
+    public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
         while (itemsTraverser.isNextItemAccessible())
@@ -318,14 +318,14 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link ObservedRemove}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> the Items provided by the specified {@link Iterable}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      *
      * @param items
      *        {@link Iterable} providing the Items to retain
@@ -345,7 +345,7 @@ public final class ContainerUtility {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SafeVarargs
-    public static <Item> void retain(final ObservedRemove<Item> container, final Iterable<? extends Item> items,
+    public static <Item> void retain(final ObservedRemoveContainer<Item> container, final Iterable<? extends Item> items,
                                      final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         final Set<Item> retainedItemsSet = toSet(items);
@@ -361,7 +361,7 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link ObservedRemove}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      *
@@ -372,7 +372,7 @@ public final class ContainerUtility {
      *        type of the items retained in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -395,7 +395,7 @@ public final class ContainerUtility {
 
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item, RetainedItem extends Item> void retain(final ObservedRemove<Item> container,
+    public static <Item, RetainedItem extends Item> void retain(final ObservedRemoveContainer<Item> container,
                                                                 final ValueObserver<Item>[] observers,
                                                                 final RetainedItem... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
@@ -403,7 +403,7 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items from the specified {@link ObservedRemove}
+     * Removes all Items from the specified {@link ObservedRemoveContainer}
      * <em>except</em> for the Items contained by the specified
      * {@link Collection} .
      *
@@ -411,7 +411,7 @@ public final class ContainerUtility {
      *        type of the items held in the {@link Container}
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items to remove
+     *        {@link ObservedRemoveContainer} containing the Items to remove
      *
      * @param items
      *        {@link Collection} containing the Items to retain
@@ -434,7 +434,7 @@ public final class ContainerUtility {
 
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void retain(final ObservedRemove<Item> container, final Collection<? extends Item> items,
+    public static <Item> void retain(final ObservedRemoveContainer<Item> container, final Collection<? extends Item> items,
                                      final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
@@ -448,10 +448,10 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items of the specified {@link Remove}.
+     * Removes all Items of the specified {@link RemoveContainer}.
      *
      * @param container
-     *        {@link Remove} containing the Items
+     *        {@link RemoveContainer} containing the Items
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
@@ -459,7 +459,7 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void removeAll(final Remove<Item> container)
+    public static <Item> void removeAll(final RemoveContainer<Item> container)
     throws InvalidContainerStateException {
         for (final RemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();
@@ -468,10 +468,10 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items of the specified {@link Remove}.
+     * Removes all Items of the specified {@link RemoveContainer}.
      *
      * @param container
-     *        {@link ObservedRemove} containing the Items
+     *        {@link ObservedRemoveContainer} containing the Items
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
@@ -484,7 +484,7 @@ public final class ContainerUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
-    public static <Item> void removeAll(final ObservedRemove<Item> container, final ValueObserver<Item>... observers)
+    public static <Item> void removeAll(final ObservedRemoveContainer<Item> container, final ValueObserver<Item>... observers)
     throws InvalidContainerStateException {
         for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();

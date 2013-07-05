@@ -27,7 +27,7 @@ import org.jlib.core.observer.ValueObserverException;
 import java.util.Collection;
 
 /**
- * {@link Remove} allowing its remove operations to be attended by
+ * {@link RemoveContainer} allowing its remove operations to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>

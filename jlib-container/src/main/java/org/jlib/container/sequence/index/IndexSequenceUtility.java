@@ -24,7 +24,7 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.Container;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.ObservedRemove;
+import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.observer.ObserverUtility;
@@ -120,7 +120,7 @@ public final class IndexSequenceUtility {
      *        type of the items held in the {@link Container}
      *
      * @param sequence
-     *        {@link ObservedRemove} containing the Item
+     *        {@link ObservedRemoveContainer} containing the Item
      *
      * @param itemIndex
      *        index of the Item to remove

@@ -22,18 +22,18 @@
 package org.jlib.container;
 
 /**
- * {@link Remove} allowing all Items to be removed.
+ * {@link RemoveContainer} allowing all Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link RemoveAll}
+ *        type of items held in the {@link RemoveAllContainer}
  *
  * @author Igor Akkerman
  */
-public interface RemoveAll<Item>
-extends Remove<Item> {
+public interface RemoveAllContainer<Item>
+extends RemoveContainer<Item> {
 
     /**
-     * Removes all Items of this {@link RemoveAll}.
+     * Removes all Items of this {@link RemoveAllContainer}.
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

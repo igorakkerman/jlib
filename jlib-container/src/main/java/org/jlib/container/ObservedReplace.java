@@ -25,7 +25,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
- * {@link Replace} traversed by an {@link ObservedReplace}.
+ * {@link ReplaceContainer} traversed by an {@link ObservedReplace}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}

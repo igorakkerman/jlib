@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Replace;
+import org.jlib.container.ReplaceContainer;
 import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
@@ -34,7 +34,7 @@ import org.jlib.core.traverser.TwoWayTraverser;
  * @author Igor Akkerman
  */
 public interface ReplaceSequence<Item>
-extends Replace<Item>, Sequence<Item> {
+extends ReplaceContainer<Item>, Sequence<Item> {
 
     /**
      * <p>

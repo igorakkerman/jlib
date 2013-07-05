@@ -22,7 +22,6 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
-import org.jlib.container.ObservedPrepend;
 import org.jlib.core.observer.ValueObserver;
 
 import java.util.Collection;
@@ -36,7 +35,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface ObservedPrependSequence<Item>
-extends PrependSequence<Item>, ObservedPrepend<Item> {
+extends PrependSequence<Item> {
 
     /**
      * @throws InvalidSequenceArgumentException
@@ -46,7 +45,6 @@ extends PrependSequence<Item>, ObservedPrepend<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
     throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
@@ -73,7 +71,6 @@ extends PrependSequence<Item>, ObservedPrepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
@@ -100,7 +97,6 @@ extends PrependSequence<Item>, ObservedPrepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
@@ -125,7 +121,6 @@ extends PrependSequence<Item>, ObservedPrepend<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
     throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;

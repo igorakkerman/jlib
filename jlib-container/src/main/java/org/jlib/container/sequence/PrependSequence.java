@@ -22,7 +22,6 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.Container;
-import org.jlib.container.Prepend;
 
 import java.util.Collection;
 
@@ -35,7 +34,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface PrependSequence<Item>
-extends Sequence<Item>, Prepend<Item> {
+extends Sequence<Item>{
 
     /**
      * @throws InvalidSequenceArgumentException
@@ -45,7 +44,6 @@ extends Sequence<Item>, Prepend<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     public void prepend(final Item item)
     throws InvalidSequenceArgumentException;
 
@@ -57,7 +55,6 @@ extends Sequence<Item>, Prepend<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     public void prepend(final Container<? extends Item> items)
     throws InvalidSequenceArgumentException;
 
@@ -69,7 +66,6 @@ extends Sequence<Item>, Prepend<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     public void prepend(final Collection<? extends Item> items)
     throws InvalidSequenceArgumentException;
 
@@ -81,7 +77,6 @@ extends Sequence<Item>, Prepend<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void prepend(final Item... items)
     throws InvalidSequenceArgumentException;

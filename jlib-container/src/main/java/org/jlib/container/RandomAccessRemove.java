@@ -24,7 +24,7 @@ package org.jlib.container;
 import java.util.Collection;
 
 /**
- * {@link Remove} allowing its Items to be removed by random access to
+ * {@link RemoveContainer} allowing its Items to be removed by random access to
  * each specified Item.
  *
  * @param <Item>

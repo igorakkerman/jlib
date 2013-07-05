@@ -23,13 +23,13 @@ package org.jlib.container.collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.ObservedRandomAccessRemove;
-import org.jlib.container.Remove;
+import org.jlib.container.RemoveContainer;
 
 import java.util.Collection;
 
 /**
- * Adapter allowing a {@link Remove} to be used as a {@link Collection}.
- * A {@link RemoveContainerCollection} is backed by a {@link Remove}
+ * Adapter allowing a {@link RemoveContainer} to be used as a {@link Collection}.
+ * A {@link RemoveContainerCollection} is backed by a {@link RemoveContainer}
  * specified at initialization.
  *
  * @param <Item>
@@ -45,13 +45,13 @@ extends ContainerCollection<Item> {
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
-     * {@link Remove}.
+     * {@link RemoveContainer}.
      *
      * @param <DelegateContainer>
      *        type of the delegate {@link Container}
      *
      * @param delegateContainer
-     *        {@link Remove} backing this
+     *        {@link RemoveContainer} backing this
      *        {@link RemoveContainerCollection}
      */
     public <DelegateContainer extends Container<Item> & ObservedRandomAccessRemove<Item>> //
