@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ObservedReplace;
+import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -34,7 +34,7 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceInsertSequence<Item>
-extends ReplaceSequence<Item>, ObservedReplace<Item> {
+extends ReplaceSequence<Item>, ObservedReplaceContainer<Item> {
 
     /**
      * @return {@link ObservedReplaceSequenceTraverser} traversing the Items of

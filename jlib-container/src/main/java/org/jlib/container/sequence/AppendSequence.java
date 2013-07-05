@@ -21,7 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Append;
 import org.jlib.container.Container;
 
 import java.util.Collection;
@@ -35,14 +34,13 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface AppendSequence<Item>
-extends Sequence<Item>, Append<Item> {
+extends Sequence<Item> {
 
     /**
      * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
-    @Override
     public void append(final Item item)
     throws InvalidSequenceArgumentException;
 
@@ -54,7 +52,6 @@ extends Sequence<Item>, Append<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     public void append(final Container<? extends Item> items)
     throws InvalidSequenceArgumentException;
 
@@ -66,7 +63,6 @@ extends Sequence<Item>, Append<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     public void append(final Collection<? extends Item> items)
     throws InvalidSequenceArgumentException;
 
@@ -78,7 +74,6 @@ extends Sequence<Item>, Append<Item> {
      * @throws InvalidSequenceStateException
      *         if an error occurs during the operation
      */
-    @Override
     @SuppressWarnings("unchecked")
     public void append(final Item... items)
     throws InvalidSequenceArgumentException;

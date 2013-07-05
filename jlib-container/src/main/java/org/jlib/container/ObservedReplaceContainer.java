@@ -25,19 +25,19 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
- * {@link ReplaceContainer} traversed by an {@link ObservedReplace}.
+ * {@link ReplaceContainer} traversed by an {@link ObservedReplaceContainer}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplace<Item> {
+public interface ObservedReplaceContainer<Item> {
 
     /**
-     * Returns an {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplace}.
+     * Returns an {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceContainer}.
      *
-     * @return {@link ObservedReplaceTraverser} traversing the Items of this {@link ObservedReplace}
+     * @return {@link ObservedReplaceTraverser} traversing the Items of this {@link ObservedReplaceContainer}
      */
     public ObservedReplaceTraverser<Item> createTraverser();
 }

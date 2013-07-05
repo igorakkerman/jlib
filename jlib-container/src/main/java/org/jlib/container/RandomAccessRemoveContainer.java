@@ -32,16 +32,16 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface RandomAccessRemove<Item> {
+public interface RandomAccessRemoveContainer<Item> {
 
     /**
-     * Removes the specified Item from this {@link RandomAccessRemove}.
+     * Removes the specified Item from this {@link RandomAccessRemoveContainer}.
      *
      * @param item
      *        Item to remove
      *
      * @throws NoSuchItemToRemoveException
-     *         if this {@link RandomAccessRemove} does not contain
+     *         if this {@link RandomAccessRemoveContainer} does not contain
      *         {@code Item}
      *
      * @throws InvalidContainerArgumentException
@@ -56,7 +56,7 @@ public interface RandomAccessRemove<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
-     * {@link RandomAccessRemove}.
+     * {@link RandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Container} containing the Items to remove
@@ -73,7 +73,7 @@ public interface RandomAccessRemove<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link RandomAccessRemove}.
+     * {@link RandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -90,7 +90,7 @@ public interface RandomAccessRemove<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link RandomAccessRemove}.
+     * {@link RandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -106,7 +106,7 @@ public interface RandomAccessRemove<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
-     * Removes all specified Items from this {@link RandomAccessRemove}
+     * Removes all specified Items from this {@link RandomAccessRemoveContainer}
      * .
      *
      * @param items

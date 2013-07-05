@@ -79,7 +79,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final RandomAccessRemove<Item> container, final Item item,
+    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item item,
                                      final ValueObserver<Item>... observers)
     throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
            RuntimeException {
@@ -119,7 +119,7 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void remove(final RandomAccessRemove<Item> container, final Iterable<? extends Item> items)
+    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Iterable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         for (final Item item : items)
             container.remove(item);
@@ -151,7 +151,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final RandomAccessRemove<Item> container, final Item... items)
+    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         remove(container, ArrayUtility.iterable(items));
     }
