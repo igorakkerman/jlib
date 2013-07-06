@@ -58,7 +58,7 @@ implements TwoWayTraverser<Item> {
     /**
      * Creates a new {@link EmptyContainerTraverser}.
      */
-    protected EmptyContainerTraverser() {
+    private EmptyContainerTraverser() {
         super();
     }
 
