@@ -31,7 +31,7 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-// TODO: unit test
+// TODO: unit unittest
 public final class MessageFormatTextFormatter
 implements TextFormatter {
 
@@ -47,7 +47,7 @@ implements TextFormatter {
         return INSTANCE;
     }
 
-     /**
+    /**
      * Creates a new {@link MessageFormatTextFormatter}.
      */
     private MessageFormatTextFormatter() {
