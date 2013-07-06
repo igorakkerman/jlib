@@ -28,7 +28,7 @@ import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
- * {@link Traverser} of an {@link EmptyContainer}.
+ * Singleton {@link Traverser} of an {@link EmptyContainer}.
  *
  * @param <Item>
  *        type of items potentially provided by the
