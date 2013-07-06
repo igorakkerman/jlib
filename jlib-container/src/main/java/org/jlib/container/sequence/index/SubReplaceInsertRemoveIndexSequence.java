@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.InvalidContainerArgumentException;
@@ -29,8 +31,6 @@ import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-
-import java.util.Collection;
 
 /**
  * {@link SubReplaceInsertIndexSequence} view of the Items stored in a base
@@ -48,9 +48,13 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public class SubReplaceInsertRemoveIndexSequence<Item, BaseSequence extends ObservedReplaceInsertRemoveIndexSequence<Item>>
+public class SubReplaceInsertRemoveIndexSequence /*
+              */<Item, /*
+              */  BaseSequence extends ObservedReplaceIndexSequence<Item> & ObservedInsertIndexSequence<Item> & ObservedRemoveIndexSequence<Item>>
 extends SubReplaceInsertIndexSequence<Item, BaseSequence>
-implements ObservedReplaceIndexSequence<Item>, ObservedInsertIndexSequence<Item> InsertRemoveIndexSequence<Item> {
+implements ObservedReplaceIndexSequence<Item>,
+           ObservedInsertIndexSequence<Item>,
+           InsertRemoveIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceInsertRemoveIndexSequence}.

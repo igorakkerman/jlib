@@ -27,7 +27,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
 
 /**
- * Traverser over an IndexSequence.
+ * {@link SequenceTraverser} over an {@link IndexSequence}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}

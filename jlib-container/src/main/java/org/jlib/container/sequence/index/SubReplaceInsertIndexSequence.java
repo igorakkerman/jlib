@@ -21,12 +21,12 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.observer.ValueObserver;
-
-import java.util.Collection;
 
 /**
  * {@link SubReplaceIndexSequence} view of the Items stored in another
@@ -42,7 +42,7 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedReplaceInsertIndexSequence<Item>>
+public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedReplaceIndexSequence<Item> & ObservedInsertIndexSequence<Item>>
 extends SubReplaceIndexSequence<Item, BaseSequence>
 implements ObservedReplaceInsertIndexSequence<Item> {
 

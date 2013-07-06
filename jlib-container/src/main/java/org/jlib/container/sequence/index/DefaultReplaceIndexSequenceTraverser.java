@@ -26,21 +26,20 @@ import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.NoSequenceItemToReplaceException;
+import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
+import static org.jlib.core.array.ArrayUtility.traversible;
 import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-import static org.jlib.core.array.ArrayUtility.traversible;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
 
 /**
- * Default implementation of a {@link IndexSequenceTraverser} and
- * {@link ObservedReplaceIndexSequenceTraverser}.
- *
+ * Default implementation of a {@link IndexSequenceTraverser}
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
@@ -51,9 +50,9 @@ import static org.jlib.core.array.ArrayUtility.traversible;
  */
 public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
-implements org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item> {
+implements ObservedReplaceTraverser<Item>,
+           ReplaceSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item> {
 
     /** replace {@link ValueObserver} items */
     private final AppendSequence<ValueObserver<Item>> traverserReplaceObservers = new FillupArraySequence<>();
@@ -130,9 +129,7 @@ implements org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
                     throw new OperatorException("replace: {0}", exception, newItem);
                 }
             }
-        },
-
-                                newItem,
-                                concatenated(traverserReplaceObservers, traversible(operationObservers)).toArray());
+        }, /*
+     */ newItem, concatenated(traverserReplaceObservers, traversible(operationObservers)).toArray());
     }
 }
