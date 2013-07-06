@@ -47,6 +47,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jlib</groupId>
+            <artifactId>jlib.core</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit-dep</artifactId>
             <!-- change scope from managed 'unittest' to 'compile' -->
