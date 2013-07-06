@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
@@ -31,8 +33,6 @@ import org.jlib.container.sequence.index.array.storage.ArrayStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
 import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
-
-import java.util.Collection;
 
 // @formatter:off
 
@@ -55,8 +55,8 @@ extends AbstractInitializeableIndexSequence<Item> {
      * {@link LinearIndexStorageCapacityStrategy} used to adjust the
      * {@link LinearIndexStorage} capacity
      */
-    private LinearIndexStorageCapacityStrategy capacityStrategy = new MinimalLinearIndexStorageCapacityStrategy<>(
-                                                                                                                 storage);
+    private LinearIndexStorageCapacityStrategy capacityStrategy = /*
+     */ new MinimalLinearIndexStorageCapacityStrategy<>(storage);
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified

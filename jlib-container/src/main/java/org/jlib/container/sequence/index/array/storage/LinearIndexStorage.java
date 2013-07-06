@@ -59,7 +59,8 @@ extends Cloneable {
      *                   lastItemIndex > capacity - 1 ||
      *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
-    public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex, ItemsCopy... copyDescriptors);
+    public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                           ItemsCopy... copyDescriptors);
 
     /**
      * Returns the Item stored at the specified index.
