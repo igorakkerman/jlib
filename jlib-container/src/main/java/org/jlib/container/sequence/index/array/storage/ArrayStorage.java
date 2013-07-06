@@ -25,6 +25,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
+import static java.util.Arrays.fill;
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 /**
@@ -38,7 +39,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
 public class ArrayStorage<Item>
 extends AbstractLinearIndexStorage<Item> {
 
-    /** array holding the Items */
+    /** array holding the {@link Item}s */
     private Item[] delegateArray;
 
     /**
@@ -49,7 +50,8 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex, final ItemsCopy... copyDescriptors) {
+    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                      final ItemsCopy... copyDescriptors) {
 
         final Item[] newDelegateArray = createArray(capacity);
 
@@ -84,11 +86,9 @@ extends AbstractLinearIndexStorage<Item> {
             copyItems(delegateArray, delegateArray, copyDescriptor);
 
             // replace the shifted Items with null
-            // @formatter:off
-            Arrays.fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
-                        min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */
-                        null);
-            // @formatter:on
+            fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
+                 min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */
+                 null);
         }
     }
 
