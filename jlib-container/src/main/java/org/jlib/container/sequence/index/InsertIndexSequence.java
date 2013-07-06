@@ -22,14 +22,12 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
-import org.jlib.container.sequence.InsertSequence;
-import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 
 import java.util.Collection;
 
 /**
- * {@link InsertSequence} and {@link IndexSequence}.
+ * {@link IndexSequence} into which an {@link Item} can be inserted at a specified index.
  *
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -37,7 +35,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface InsertIndexSequence<Item>
-extends InsertSequence<Item>, IndexSequence<Item> {
+extends IndexSequence<Item> {
 
     /**
      * Inserts the specified Item at the specified index in this
@@ -95,44 +93,4 @@ extends InsertSequence<Item>, IndexSequence<Item> {
     @Override
     public InsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
-
-    /**
-     * Returns an {@link InsertIndexSequenceTraverser} traversing the Items of
-     * this {@link InsertIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link InsertIndexSequenceTraverser#getNextItem()} is the Item stored at
-     * the first index.
-     *
-     * @return {@link InsertIndexSequenceTraverser} over the Items of this
-     *         {@link InsertIndexSequence}
-     *
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
-     */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser()
-    throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * Returns an {@link InsertSequenceTraverser} traversing the Items of this
-     * {@link InsertIndexSequence} in proper sequence. That is, the Item
-     * returned by the first call to
-     * {@link InsertSequenceTraverser#getNextItem()} is the Item stored at the
-     * specified start index.
-     *
-     * @param startIndex
-     *        integer specifying the index of the first Item returned by the
-     *        Traverser
-     *
-     * @return {@link InsertIndexSequenceTraverser} over the Items of this
-     *         {@link InsertIndexSequence}
-     *
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
-     */
-    @Override
-    public InsertIndexSequenceTraverser<Item> createTraverser(int startIndex)
-    throws SequenceIndexOutOfBoundsException;
 }

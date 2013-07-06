@@ -23,7 +23,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
-import org.jlib.container.sequence.ObservedReplaceSequence;
 import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
@@ -36,7 +35,7 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceIndexSequence<Item>
-extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
+extends ReplaceIndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
@@ -65,18 +64,4 @@ extends ObservedReplaceSequence<Item>, ReplaceIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidSequenceStateException;
-
-    /**
-     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
-    throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
 }

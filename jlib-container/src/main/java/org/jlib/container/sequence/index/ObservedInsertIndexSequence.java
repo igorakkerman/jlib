@@ -39,7 +39,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public interface ObservedInsertIndexSequence<Item>
-extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
+extends InsertIndexSequence<Item> {
 
     /**
      * Inserts the Item at the specified index in this
@@ -118,18 +118,4 @@ extends ObservedInsertSequence<Item>, InsertIndexSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void insert(int index, final ValueObserver<Item>[] observers, Item... items);
-
-    /**
-     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    public ObservedInsertIndexSequenceTraverser<Item> createTraverser()
-    throws SequenceIndexOutOfBoundsException;
-
-    /**
-     * @return {@link ObservedRemoveIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    public ObservedInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
 }

@@ -50,7 +50,7 @@ import java.util.Collection;
  */
 public class SubReplaceInsertRemoveIndexSequence<Item, BaseSequence extends ObservedReplaceInsertRemoveIndexSequence<Item>>
 extends SubReplaceInsertIndexSequence<Item, BaseSequence>
-implements ObservedReplaceInsertRemoveIndexSequence<Item> {
+implements ObservedReplaceIndexSequence<Item>, ObservedInsertIndexSequence<Item> InsertRemoveIndexSequence<Item> {
 
     /**
      * Creates a new {@link SubReplaceInsertRemoveIndexSequence}.
@@ -77,7 +77,7 @@ implements ObservedReplaceInsertRemoveIndexSequence<Item> {
     }
 
     @Override
-    public ObservedReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public SubReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
         return new SubReplaceInsertRemoveIndexSequence<>(this, fromIndex, toIndex);
     }

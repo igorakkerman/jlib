@@ -24,8 +24,6 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 
-import javax.annotation.Nullable;
-
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
 
 /**
@@ -162,7 +160,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    protected boolean hasMatchingProperties(final @Nullable Container<Item> otherContainer) {
+    protected boolean hasMatchingProperties(final Container<Item> otherContainer) {
         if (! super.hasMatchingProperties(otherContainer))
             return false;
 

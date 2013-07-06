@@ -35,7 +35,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public interface ReplaceIndexSequence<Item>
-extends IndexSequence<Item>, ReplaceSequence<Item> {
+extends IndexSequence<Item> {
 
     /**
      * Replaces the Item at the specified index in this
@@ -66,31 +66,4 @@ extends IndexSequence<Item>, ReplaceSequence<Item> {
     @Override
     public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
-
-    /**
-     * Returns a {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper order.
-     *
-     * @return {@link ReplaceIndexSequenceTraverser} traversing the Items
-     */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser();
-
-    /**
-     * Returns a {@link ReplaceIndexSequenceTraverser} traversing the Items of
-     * this {@link ReplaceIndexSequence} in proper order, starting at the
-     * specified index.
-     *
-     * @param startIndex
-     *        integer specifying the index of the first Item to traverse
-     *
-     * @return {@link ReplaceIndexSequenceTraverser} traversing the Items
-     *
-     * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
-     */
-    @Override
-    public ReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
 }

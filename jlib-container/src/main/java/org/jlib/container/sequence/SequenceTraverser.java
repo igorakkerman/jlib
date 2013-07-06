@@ -35,10 +35,6 @@ public interface SequenceTraverser<Item>
 extends TwoWayTraverser<Item> {
 
     /**
-     * Returns the previous Item of this {@link SequenceTraverser}.
-     *
-     * @return the previous Item
-     *
      * @throws NoPreviousSequenceItemException
      *         if there is no previous Item
      */
@@ -47,10 +43,6 @@ extends TwoWayTraverser<Item> {
     throws NoPreviousSequenceItemException;
 
     /**
-     * Returns the next Item of this {@link SequenceTraverser}.
-     *
-     * @return the next Item
-     *
      * @throws NoNextSequenceItemException
      *         if there is no next Item
      */
