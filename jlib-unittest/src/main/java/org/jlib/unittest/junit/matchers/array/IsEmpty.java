@@ -19,6 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.test.junit.matchers.array;
+package org.jlib.unittest.junit.matchers.array;
 
-public class IsEmpty {}
+public class IsEmpty {
+
+}

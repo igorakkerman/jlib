@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.test.junit.matchers.text;
+package org.jlib.unittest.junit.matchers.text;
 
 import org.jlib.core.valueholder.InitializedValueHolder;
 
 public abstract class Index
 extends InitializedValueHolder<Integer> {
 
-    protected Index(int indexValue) {
-        super(indexValue);
+    protected Index(int value) {
+        super(value);
     }
 }
