@@ -86,6 +86,7 @@ extends AbstractLinearIndexStorage<Item> {
             copyItems(delegateArray, delegateArray, copyDescriptor);
 
             // replace the shifted Items with null
+            // TODO 2013-07-06: is this really necessary?
             fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
                  min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */
                  null);
