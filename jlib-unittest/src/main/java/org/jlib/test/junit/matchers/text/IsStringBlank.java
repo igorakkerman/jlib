@@ -46,7 +46,7 @@ extends TypeSafeMatcher<String> {
      * Creates a new {@link IsStringBlank}.
      */
     private IsStringBlank() {
-        super();
+        super(String.class);
     }
 
     @Override
