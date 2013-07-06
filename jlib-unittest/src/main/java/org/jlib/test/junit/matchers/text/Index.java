@@ -26,7 +26,7 @@ import org.jlib.core.valueholder.InitializedValueHolder;
 public abstract class Index
 extends InitializedValueHolder<Integer> {
 
-    protected Index(int indexValue) {
-        super(indexValue);
+    protected Index(int value) {
+        super(value);
     }
 }
