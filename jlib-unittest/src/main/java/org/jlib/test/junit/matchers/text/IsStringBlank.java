@@ -21,7 +21,7 @@
 
 package org.jlib.test.junit.matchers.text;
 
-import org.apache.commons.lang3.StringUtils;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
 import org.hamcrest.TypeSafeMatcher;
@@ -29,16 +29,29 @@ import org.hamcrest.TypeSafeMatcher;
 public class IsStringBlank
 extends TypeSafeMatcher<String> {
 
+    /** sole {@link IsStringBlank} instance */
+    private static final IsStringBlank INSTANCE = new IsStringBlank();
+
+    /**
+     * Returns the sole {@link IsStringBlank} instance.
+     *
+     * @return sole {@link IsStringBlank} instance
+     */
     @Factory
     public static IsStringBlank blank() {
-        return new IsStringBlank();
+        return INSTANCE;
     }
 
-    public IsStringBlank() {}
+    /**
+     * Creates a new {@link IsStringBlank}.
+     */
+    private IsStringBlank() {
+        super();
+    }
 
     @Override
     public boolean matchesSafely(String string) {
-        return StringUtils.isBlank(string);
+        return isBlank(string);
     }
 
     @Override
