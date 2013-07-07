@@ -24,7 +24,6 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
-import org.jlib.container.sequence.NoSequenceItemToRemoveException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
 import org.jlib.core.language.ValueNotAccessibleException;

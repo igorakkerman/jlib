@@ -24,7 +24,7 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SoleItemNotRemoveableException;
+import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;

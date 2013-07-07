@@ -24,7 +24,6 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
-import org.jlib.container.sequence.ObservedRemoveAllSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;

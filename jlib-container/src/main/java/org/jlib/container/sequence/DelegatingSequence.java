@@ -24,6 +24,7 @@ package org.jlib.container.sequence;
 import org.jlib.container.Container;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.system.AbstractCloneable;
@@ -33,8 +34,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * {@link ObservedReplaceSequence} and {@link ObservedAppendSequence} delegating
- * all operations to the specified delegate {@link ObservedReplaceSequence} and
+ * {@link ObservedReplaceContainer} and {@link ObservedAppendSequence} delegating
+ * all operations to the specified delegate {@link ObservedReplaceContainer} and
  * {@link ObservedAppendSequence}.
  *
  * @param <Item>

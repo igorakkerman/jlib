@@ -25,8 +25,6 @@ import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
-import org.jlib.container.sequence.NoSequenceItemToReplaceException;
-import org.jlib.container.sequence.ReplaceSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import org.jlib.container.sequence.index.array.FillupArraySequence;

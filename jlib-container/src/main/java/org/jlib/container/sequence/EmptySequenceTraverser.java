@@ -24,6 +24,10 @@ package org.jlib.container.sequence;
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.NoItemToRemoveException;
+import org.jlib.core.traverser.NoItemToReplaceException;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * {@link IndexSequenceTraverser} of an {@link EmptySequence}.
@@ -35,8 +39,10 @@ import org.jlib.core.traverser.NoItemToRemoveException;
  */
 public class EmptySequenceTraverser<Item>
 extends AbstractSequenceTraverser<Item, EmptySequence<Item>>
-implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,RemoveSequenceTraverser<Item>,
-org.jlib.core.traverser.ObservedReplaceTraverser<Item>,ReplaceSequenceTraverser<Item>,ReplaceSequenceTraverser<Item>,RemoveSequenceTraverser<Item> {
+implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
+           ObservedReplaceTraverser<Item>,
+           ReplaceTraverser<Item>,
+           RemoveTraverser<Item> {
 
     /** sole {@link EmptySequenceTraverser} instance */
     private static final EmptySequenceTraverser<?> INSTANCE = new EmptySequenceTraverser<>();
@@ -57,7 +63,7 @@ org.jlib.core.traverser.ObservedReplaceTraverser<Item>,ReplaceSequenceTraverser<
     /**
      * Creates a new {@link EmptySequenceTraverser}.
      */
-    protected EmptySequenceTraverser() {
+    private EmptySequenceTraverser() {
         super(EmptySequence.<Item>getInstance());
     }
 
@@ -85,28 +91,28 @@ org.jlib.core.traverser.ObservedReplaceTraverser<Item>,ReplaceSequenceTraverser<
 
     @Override
     public void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException {
-        throw new NoSequenceItemToReplaceException(getSequence());
+    throws NoItemToReplaceException {
+        throw new NoItemToReplaceException(getSequence());
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void replace(final Item newItem, final ValueObserver<Item>... removeObservers)
-    throws NoSequenceItemToReplaceException {
-        throw new NoSequenceItemToReplaceException(getSequence());
+    throws NoItemToReplaceException {
+        throw new NoItemToReplaceException(getSequence());
     }
 
     @Override
     public void remove()
     throws NoItemToRemoveException {
-        throw new NoSequenceItemToRemoveException(getSequence());
+        throw new NoItemToRemoveException(getSequence());
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... observers)
-    throws NoSequenceItemToRemoveException {
-        throw new NoSequenceItemToRemoveException(getSequence());
+    throws NoItemToRemoveException {
+        throw new NoItemToRemoveException(getSequence());
     }
 
     @Override

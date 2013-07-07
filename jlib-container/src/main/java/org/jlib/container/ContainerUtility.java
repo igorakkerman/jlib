@@ -186,7 +186,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final ObservedRandomAccessRemove<Item> container,
+    public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container,
                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         for (final Item item : items)
@@ -221,7 +221,7 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item> void remove(final ObservedRandomAccessRemove<Item> container,
+    public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container,
                                      final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         remove(container, ArrayUtility.iterable(items), observers);

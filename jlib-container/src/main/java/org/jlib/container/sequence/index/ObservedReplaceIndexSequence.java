@@ -23,7 +23,6 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
-import org.jlib.container.sequence.ReplaceSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
 

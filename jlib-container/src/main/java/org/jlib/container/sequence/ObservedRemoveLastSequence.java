@@ -21,6 +21,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
 
 /**

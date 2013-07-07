@@ -19,27 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container;
 
-import org.jlib.container.ObservedRemoveAllContainer;
-import org.jlib.core.observer.ValueObserver;
+import org.jlib.container.sequence.InvalidSequenceStateException;
+import org.jlib.container.sequence.Sequence;
 
 /**
- * {@link ReplaceSequence} allowing its replace operations to be attended by
- * {@link ValueObserver} instances.
- *
- * @param <Item>
- *        type of items held in the {@link ObservedRemoveAllSequence}
+ * {@link InvalidSequenceStateException} thrown when trying to remove the sole
+ * Item of a {@link Container} that may not be empty.
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAllSequence<Item>
-extends ObservedRemoveAllContainer<Item>, ObservedRemoveSequence<Item> {
+public class SoleItemNotRemoveableException
+extends InvalidSequenceStateException {
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = - 7467942886021869121L;
 
     /**
-     * @return {@link ObservedRemoveSequenceTraverser} traversing the Items of
-     *         this {@link ObservedRemoveAllSequence} in proper order
+     * Creates a new {@link SoleItemNotRemoveableException}.
+     *
+     * @param sequence
+     *        targeted {@link Sequence}
      */
-    @Override
-    public ObservedRemoveSequenceTraverser<Item> createTraverser();
+    public SoleItemNotRemoveableException(final Sequence<?> sequence) {
+        super(sequence);
+    }
 }

@@ -21,10 +21,10 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-
-import java.util.Collection;
 
 /**
  * {@link RemoveContainer} allowing its remove operations to be attended by
@@ -35,11 +35,12 @@ import java.util.Collection;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRandomAccessRemove<Item> {
+public interface ObservedRandomAccessRemoveContainer<Item>
+extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes the specified Item from this
-     * {@link ObservedRandomAccessRemove}.
+     * {@link ObservedRandomAccessRemoveContainer}.
      *
      * @param item
      *        Item to remove
@@ -49,7 +50,7 @@ public interface ObservedRandomAccessRemove<Item> {
      *        attending the removal
      *
      * @throws NoSuchItemToRemoveException
-     *         if this {@link ObservedRandomAccessRemove} does not
+     *         if this {@link ObservedRandomAccessRemoveContainer} does not
      *         contain {@code Item}
      *
      * @throws InvalidContainerArgumentException
@@ -69,7 +70,7 @@ public interface ObservedRandomAccessRemove<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
-     * {@link ObservedRandomAccessRemove}.
+     * {@link ObservedRandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Container} containing the Items to remove
@@ -94,7 +95,7 @@ public interface ObservedRandomAccessRemove<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link ObservedRandomAccessRemove}.
+     * {@link ObservedRandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -119,7 +120,7 @@ public interface ObservedRandomAccessRemove<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link ObservedRandomAccessRemove}.
+     * {@link ObservedRandomAccessRemoveContainer}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -144,7 +145,7 @@ public interface ObservedRandomAccessRemove<Item> {
 
     /**
      * Removes all specified Items from this
-     * {@link ObservedRandomAccessRemove}.
+     * {@link ObservedRandomAccessRemoveContainer}.
      *
      * @param items
      *        comma separated sequence of Items to remove

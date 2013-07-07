@@ -21,20 +21,22 @@
 
 package org.jlib.container.sequence;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.EmptyContainer;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.NoSuchItemToRemoveException;
-import org.jlib.container.ObservedRandomAccessRemove;
+import org.jlib.container.ObservedRandomAccessRemoveContainer;
+import org.jlib.container.ObservedRemoveAllContainer;
+import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.Traversible;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-
-import java.util.Collection;
 
 /**
  * Empty {@link Sequence}.
@@ -46,8 +48,10 @@ import java.util.Collection;
  */
 public class EmptySequence<Item>
 extends EmptyContainer<Item>
-implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, ObservedRandomAccessRemove<Item>,
-           ObservedRemoveAllSequence<Item> {
+implements Sequence<Item>,
+           ObservedReplaceContainer<Item>,
+           ObservedRandomAccessRemoveContainer<Item>,
+           ObservedRemoveAllContainer<Item> {
 
     /** sole instance of this class */
     private static final EmptySequence<?> INSTANCE = new EmptySequence<>();
@@ -69,7 +73,7 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, Observed
     /**
      * Creates a new {@link EmptySequence}.
      */
-    protected EmptySequence() {
+    private EmptySequence() {
         super();
     }
 
@@ -199,7 +203,7 @@ implements ObservedReplaceSequence<Item>, ObservedRemoveSequence<Item>, Observed
     }
 
     @Override
-    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
+    public EmptySequenceTraverser<Item> createTraverser() {
         return EmptySequenceTraverser.getInstance();
     }
 

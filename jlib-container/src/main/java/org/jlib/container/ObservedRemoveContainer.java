@@ -21,11 +21,11 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
-
-import java.util.Collection;
 
 /**
  * Ability to remove Items; the remove operations can be attended by {@link ValueObserver}
@@ -65,7 +65,7 @@ extends RemoveContainer<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedRandomAccessRemove}
+     * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -90,7 +90,7 @@ extends RemoveContainer<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedRandomAccessRemove}
+     * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
      * <em>except</em> the specified Items.
      *
      * @param observers

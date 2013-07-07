@@ -22,7 +22,7 @@
 package org.jlib.container.collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.ObservedRandomAccessRemove;
+import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.RemoveContainer;
 
 import java.util.Collection;
@@ -40,8 +40,8 @@ import java.util.Collection;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link ObservedRandomAccessRemove} */
-    private final ObservedRandomAccessRemove<Item> delegateContainer;
+    /** adapted and backed {@link ObservedRandomAccessRemoveContainer} */
+    private final ObservedRandomAccessRemoveContainer<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
@@ -54,7 +54,7 @@ extends ContainerCollection<Item> {
      *        {@link RemoveContainer} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends Container<Item> & ObservedRandomAccessRemove<Item>> //
+    public <DelegateContainer extends Container<Item> & ObservedRandomAccessRemoveContainer<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 
