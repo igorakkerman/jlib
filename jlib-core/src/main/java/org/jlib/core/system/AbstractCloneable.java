@@ -30,6 +30,7 @@ import org.jlib.core.language.UnexpectedStateException;
  * @author Igor Akkerman
  */
 public abstract class AbstractCloneable
+extends AbstractObject
 implements Cloneable {
 
     @Override
