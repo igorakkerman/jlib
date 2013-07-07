@@ -34,7 +34,9 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
+import org.jlib.core.traverser.NoItemToReplaceException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser}
@@ -49,7 +51,7 @@ import org.jlib.core.traverser.ObservedReplaceTraverser;
 public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
 extends DefaultIndexSequenceTraverser<Item, Sequenze>
 implements ObservedReplaceTraverser<Item>,
-           ReplaceSequenceTraverser<Item>,
+           ReplaceTraverser<Item>,
            IndexSequenceTraverser<Item> {
 
     /** replace {@link ValueObserver} items */
@@ -101,19 +103,19 @@ implements ObservedReplaceTraverser<Item>,
 
     @Override
     public final void replace(final Item newItem)
-    throws NoSequenceItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException {
+    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
         catch (final ValueNotAccessibleException exception) {
-            throw new NoSequenceItemToReplaceException(getSequence(), exception);
+            throw new NoItemToReplaceException(getSequence(), exception);
         }
     }
 
     @Override
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoSequenceItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException,
+    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException,
            RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 

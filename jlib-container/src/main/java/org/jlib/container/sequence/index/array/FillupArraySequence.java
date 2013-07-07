@@ -22,11 +22,15 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
+import org.jlib.container.ObservedRemoveContainer;
+import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
+import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.core.observer.ObserverUtility;
+import static org.jlib.core.observer.ObserverUtility.operate;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.traverser.Traverser;
@@ -67,7 +71,8 @@ extends DelegatingSequence<Item> {
      */
     private class EmptyDelegateSequence
     extends EmptySequence<Item>
-    implements ObservedReplaceAppendRemoveSequence<Item> {
+    implements ObservedReplaceContainer<Item>,
+               ObservedAppendSequence<Item> {
 
         /**
          * Creates a new {@link EmptyDelegateSequence}.
@@ -104,15 +109,13 @@ extends DelegatingSequence<Item> {
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
         throws InvalidSequenceArgumentException {
-            ObserverUtility.operate(new HandledOperator() {
-
+            operate(new HandledOperator() {
                 @Override
                 public void operate() {
                     append(item);
                 }
-            },
-
-                                    item, observers);
+            }, /*
+         */ item, observers);
         }
 
         @SafeVarargs
