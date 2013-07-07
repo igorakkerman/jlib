@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.EmptyContainer;
 import org.jlib.container.ReplaceContainer;
-import org.jlib.container.sequence.EmptySequence;
+import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 
@@ -68,12 +68,12 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
 
     @Override
     public final Sequence<IndexSequence<Entry>> getRows() {
-        return EmptySequence.getInstance();
+        return InitiallyEmptySequence.getInstance();
     }
 
     @Override
     public final Sequence<IndexSequence<Entry>> getColumns() {
-        return EmptySequence.getInstance();
+        return InitiallyEmptySequence.getInstance();
     }
 
     @Override

@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.container.sequence.EmptySequence;
+import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
@@ -46,7 +46,7 @@ implements TwoWayTraverser<Item> {
      * Returns the sole instance of this class.
      *
      * @param <Item>
-     *        type of the potential {@link EmptySequence} items
+     *        type of the potential {@link InitiallyEmptySequence} items
      *
      * @return sole {@link EmptyContainerTraverser}
      */

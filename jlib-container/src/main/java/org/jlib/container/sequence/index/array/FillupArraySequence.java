@@ -22,14 +22,12 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.Container;
-import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
-import org.jlib.container.sequence.EmptySequence;
+import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.core.observer.ObserverUtility;
 import static org.jlib.core.observer.ObserverUtility.operate;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -63,14 +61,14 @@ extends DelegatingSequence<Item> {
     }
 
     /**
-     * {@link EmptySequence} registering a new {@link ReplaceSequence} and
+     * {@link InitiallyEmptySequence} registering a new {@link ReplaceSequence} and
      * {@link AppendSequence} as new delegate of the surrounding
      * {@link FillupArraySequence}.
      *
      * @author Igor Akkerman
      */
     private class EmptyDelegateSequence
-    extends EmptySequence<Item>
+    extends InitiallyEmptySequence<Item>
     implements ObservedReplaceContainer<Item>,
                ObservedAppendSequence<Item> {
 

@@ -30,15 +30,15 @@ import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
- * {@link IndexSequenceTraverser} of an {@link EmptySequence}.
+ * {@link IndexSequenceTraverser} of an {@link InitiallyEmptySequence}.
  *
  * @param <Item>
- *        type of items held in the {@link EmptySequence}
+ *        type of items held in the {@link InitiallyEmptySequence}
  *
  * @author Igor Akkerman
  */
 public class EmptySequenceTraverser<Item>
-extends AbstractSequenceTraverser<Item, EmptySequence<Item>>
+extends AbstractSequenceTraverser<Item, InitiallyEmptySequence<Item>>
 implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
            ObservedReplaceTraverser<Item>,
            ReplaceTraverser<Item>,
@@ -51,7 +51,7 @@ implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
      * Returns the sole instance of this class.
      *
      * @param <Item>
-     *        type of the potential {@link EmptySequence} items
+     *        type of the potential {@link InitiallyEmptySequence} items
      *
      * @return sole {@link EmptySequenceTraverser}
      */
@@ -64,7 +64,7 @@ implements org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
      * Creates a new {@link EmptySequenceTraverser}.
      */
     private EmptySequenceTraverser() {
-        super(EmptySequence.<Item>getInstance());
+        super(InitiallyEmptySequence.<Item>getInstance());
     }
 
     @Override

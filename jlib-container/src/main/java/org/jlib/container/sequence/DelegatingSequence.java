@@ -21,71 +21,60 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.ObservedReplaceContainer;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.system.AbstractCloneable;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.jlib.core.system.AbstractCloneable;
+
+import org.jlib.container.Container;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 /**
- * {@link ObservedReplaceContainer} and {@link ObservedAppendSequence} delegating
- * all operations to the specified delegate {@link ObservedReplaceContainer} and
- * {@link ObservedAppendSequence}.
+ * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.
+ * The delegate {@link Sequence} may be altered during the lifetime of the {@link DelegatingSequence}.
  *
  * @param <Item>
  *        type of the items held in the delegate {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public class DelegatingSequence<Item>
+public class DelegatingSequence<Item, DelegateSequence extends Sequence<Item>>
 extends AbstractCloneable
-implements ObservedReplaceAppendRemoveSequence<Item> {
+implements Sequence<Item> {
 
-    /** delegate {@link ObservedReplaceAppendRemoveSequence} */
-    private ObservedReplaceAppendRemoveSequence<Item> delegateSequence;
-
-    /**
-     * Creates a new {@link DelegatingSequence}.
-     */
-    public DelegatingSequence() {
-        super();
-    }
+    /** delegate {@link DelegateSequence} */
+    private DelegateSequence delegateSequence;
 
     /**
      * Creates a new {@link DelegatingSequence}.
      *
      * @param initialDelegateSequence
-     *        initial delegate {@link ObservedReplaceAppendRemoveAllSequence}
+     *        initial delegate {@link DelegateSequence}
      */
-    public DelegatingSequence(final ObservedReplaceAppendRemoveAllSequence<Item> initialDelegateSequence) {
-        this();
+    public DelegatingSequence(final DelegateSequence initialDelegateSequence) {
+        super();
 
-        setDelegateSequence(initialDelegateSequence);
+        delegateSequence = initialDelegateSequence;
     }
 
     /**
-     * Returns the delegate {@link ObservedAppendSequence}.
+     * Returns the {@link DelegateSequence}.
      *
-     * @return delegate {@link ObservedAppendSequence}
+     * @return {@link DelegateSequence}
      */
-    protected ObservedReplaceAppendRemoveSequence<Item> getDelegateSequence() {
+    protected DelegateSequence getDelegateSequence() {
         return delegateSequence;
     }
 
     /**
-     * Registers the delegate {@link ObservedReplaceAppendRemoveSequence} of
-     * this {@link DelegatingSequence}.
+     * Registers the {@link DelegatingSequence}.
      *
      * @param delegateSequence
-     *        delegate {@link ObservedReplaceAppendRemoveSequence}
+     *        {@link DelegateSequence}
      */
-    protected void setDelegateSequence(final ObservedReplaceAppendRemoveSequence<Item> delegateSequence) {
+    protected void setDelegateSequence(final DelegateSequence delegateSequence) {
         this.delegateSequence = delegateSequence;
     }
 
@@ -104,12 +93,6 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     public boolean isEmpty()
     throws InvalidContainerStateException {
         return delegateSequence.isEmpty();
-    }
-
-    @Override
-    public boolean equals(final Object otherObject) {
-        return otherObject instanceof DelegatingSequence && //
-               delegateSequence.equals(((DelegatingSequence) otherObject).getDelegateSequence());
     }
 
     @Override
@@ -160,111 +143,18 @@ implements ObservedReplaceAppendRemoveSequence<Item> {
     }
 
     @Override
-    public void append(final Item item)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(item);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void append(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(item, observers);
-    }
-
-    @Override
-    public void append(final Container<? extends Item> items)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(items, observers);
-    }
-
-    @Override
-    public void append(final Collection<? extends Item> items)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(items);
-    }
-
-    @Override
     public List<Item> toList() {
         return delegateSequence.toList();
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public void append(final Item... items)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void append(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException {
-        delegateSequence.append(observers, items);
-    }
-
-    @Override
-    public void retain(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateSequence.retain(items);
-    }
-
-    @Override
-    public void retain(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateSequence.retain(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void retain(final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateSequence.retain(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-        delegateSequence.retain(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-        delegateSequence.retain(items, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-        delegateSequence.retain(observers, items);
-    }
-
-    @Override
-    public ObservedReplaceRemoveSequenceTraverser<Item> createTraverser() {
+    public SequenceTraverser<Item> createTraverser() {
         return delegateSequence.createTraverser();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public DelegatingSequence<Item> clone() {
-        return (DelegatingSequence<Item>) super.clone();
+    public DelegatingSequence<Item, DelegateSequence> clone() {
+        return (DelegatingSequence<Item, DelegateSequence>) super.clone();
     }
 }
