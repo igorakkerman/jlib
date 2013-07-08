@@ -40,12 +40,12 @@ import org.jlib.container.InvalidContainerStateException;
  *
  * @author Igor Akkerman
  */
-public class DelegatingSequence<Item, DelegateSequence extends Sequence<Item>>
+public class DelegatingSequence<Item>
 extends AbstractCloneable
 implements Sequence<Item> {
 
-    /** delegate {@link DelegateSequence} */
-    private DelegateSequence delegateSequence;
+    /** delegate {@link Sequence} */
+    private Sequence<Item> delegateSequence;
 
     /**
      * Creates a new {@link DelegatingSequence}.
@@ -53,18 +53,20 @@ implements Sequence<Item> {
      * @param initialDelegateSequence
      *        initial delegate {@link DelegateSequence}
      */
-    public DelegatingSequence(final DelegateSequence initialDelegateSequence) {
+    public <DelegateSequence extends Sequence<Item>> /*
+        */ DelegatingSequence(final DelegateSequence initialDelegateSequence) {
+
         super();
 
         delegateSequence = initialDelegateSequence;
     }
 
     /**
-     * Returns the {@link DelegateSequence}.
+     * Returns the {@link Sequence}.
      *
-     * @return {@link DelegateSequence}
+     * @return {@link Sequence}
      */
-    protected DelegateSequence getDelegateSequence() {
+    protected Sequence<Item> getDelegateSequence() {
         return delegateSequence;
     }
 
@@ -72,9 +74,9 @@ implements Sequence<Item> {
      * Registers the {@link DelegatingSequence}.
      *
      * @param delegateSequence
-     *        {@link DelegateSequence}
+     *        {@link Sequence}
      */
-    protected void setDelegateSequence(final DelegateSequence delegateSequence) {
+    protected void setDelegateSequence(final Sequence<Item> delegateSequence) {
         this.delegateSequence = delegateSequence;
     }
 
@@ -149,12 +151,12 @@ implements Sequence<Item> {
 
     @Override
     public DelegatingSequenceTraverser<Item> createTraverser() {
-        return new DelegatingSequenceTraverser<>(delegateSequence);
+        return new DelegatingSequenceTraverser<>(delegateSequence.createTraverser());
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public DelegatingSequence<Item, DelegateSequence> clone() {
-        return (DelegatingSequence<Item, DelegateSequence>) super.clone();
+    public DelegatingSequence<Item> clone() {
+        return (DelegatingSequence<Item>) super.clone();
     }
 }

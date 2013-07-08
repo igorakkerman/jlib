@@ -35,38 +35,49 @@ public class DelegatingSequenceTraverser<Item>
 extends AbstractObject
 implements SequenceTraverser<Item> {
 
-    /** {@link SequenceTraverser} used as delegate */
-     private final SequenceTraverser<Item> delegateSequenceTraverser;
+    /** {@link SequenceTraverser} to which all calls are delegated */
+     private final SequenceTraverser<Item> delegateTraverser;
 
     /**
      * Creates a new {@link DelegatingSequenceTraverser}.
      *
-     * @param sequence
-     *        {@link Sequence} of which the {@link SequenceTraverser} is retrieved as delegate
+     * @param delegateTraverser
+     *        {@link SequenceTraverser} used as delegate
      */
-    public DelegatingSequenceTraverser(final Sequence<Item> sequence) {
-        delegateSequenceTraverser = sequence.createTraverser();
+    public DelegatingSequenceTraverser(final SequenceTraverser<Item> delegateTraverser) {
+        super();
+
+        this.delegateTraverser = delegateTraverser;
+    }
+
+    /**
+     * Returns the {@link SequenceTraverser} of this {@link DelegatingSequenceTraverser}.
+     *
+     * @return the {@link SequenceTraverser}
+     */
+    protected SequenceTraverser getDelegateTraverser() {
+        return delegateTraverser;
     }
 
     @Override
     public Item getPreviousItem()
     throws NoPreviousSequenceItemException {
-        return delegateSequenceTraverser.getPreviousItem();
+        return delegateTraverser.getPreviousItem();
     }
 
     @Override
     public Item getNextItem()
     throws NoNextSequenceItemException {
-        return delegateSequenceTraverser.getNextItem();
+        return delegateTraverser.getNextItem();
     }
 
     @Override
     public boolean isPreviousItemAccessible() {
-        return delegateSequenceTraverser.isPreviousItemAccessible();
+        return delegateTraverser.isPreviousItemAccessible();
     }
 
     @Override
     public boolean isNextItemAccessible() {
-        return delegateSequenceTraverser.isNextItemAccessible();
+        return delegateTraverser.isNextItemAccessible();
     }
 }
