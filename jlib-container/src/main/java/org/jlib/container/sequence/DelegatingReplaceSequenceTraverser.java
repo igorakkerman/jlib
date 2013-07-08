@@ -21,7 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ReplaceContainer;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -38,10 +37,12 @@ extends DelegatingSequenceTraverser<Item>
 implements SequenceTraverser<Item>,
            ReplaceTraverser<Item> {
 
-    public <Sequenze extends Sequence<Item> & ReplaceContainer<Item>> /*
-        */ DelegatingReplaceSequenceTraverser(final Sequenze sequence) {
+    private final ReplaceTraverser<Item> delegateReplaceTraverser;
 
-        super(sequence);
+    public <DelegateTraverser extends SequenceTraverser<Item> & ReplaceTraverser<Item>> /*
+        */ DelegatingReplaceSequenceTraverser(final DelegateTraverser delegateTraverser) {
+
+        super(delegateTraverser);
 
         delegateReplaceTraverser = delegateTraverser;
     }
