@@ -148,8 +148,8 @@ implements Sequence<Item> {
     }
 
     @Override
-    public SequenceTraverser<Item> createTraverser() {
-        return delegateSequence.createTraverser();
+    public DelegatingSequenceTraverser<Item> createTraverser() {
+        return new DelegatingSequenceTraverser<>(delegateSequence);
     }
 
     @Override
