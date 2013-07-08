@@ -44,12 +44,6 @@ import org.jlib.core.traverser.ReplaceTraverser;
 public interface ReplaceContainer<Item>
 extends Container<Item> {
 
-    /**
-     * Creates a new {@link ReplaceTraverser} over the Items of this {@link ReplaceContainer}
-     * .
-     *
-     * @return newly createTraverser}
-     */
-    @Override
-    public ReplaceTraverser<Item> createTraverser();
+    public void replace(ItemContext<Item, ? extends ReplaceContainer> itemContext);
+    // TODO: throws some constraint exception
 }

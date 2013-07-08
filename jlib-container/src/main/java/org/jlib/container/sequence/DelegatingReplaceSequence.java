@@ -38,6 +38,7 @@ implements ReplaceContainer<Item> {
      */
     public <DelegateSequence extends Sequence<Item> & ReplaceContainer<Item>> /*
         */ DelegatingReplaceSequence(final DelegateSequence initialDelegateSequence) {
+
         super(initialDelegateSequence);
 
         delegateSequence = initialDelegateSequence;

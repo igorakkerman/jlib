@@ -21,6 +21,11 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+import java.util.Set;
+
+import static org.jlib.container.collection.CollectionUtility.toSet;
+
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
@@ -31,11 +36,7 @@ import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversible;
 
-import java.util.Collection;
-import java.util.Set;
-
 import static java.util.Arrays.asList;
-import static org.jlib.container.collection.CollectionUtility.toSet;
 
 /**
  * Utility class providing methods operating on {@link Container} instances.
@@ -119,7 +120,8 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Iterable<? extends Item> items)
+    public static <Item> void remove(final RandomAccessRemoveContainer<Item> container,
+                                     final Iterable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         for (final Item item : items)
             container.remove(item);
@@ -345,8 +347,8 @@ public final class ContainerUtility {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SafeVarargs
-    public static <Item> void retain(final ObservedRemoveContainer<Item> container, final Iterable<? extends Item> items,
-                                     final ValueObserver<Item>... observers)
+    public static <Item> void retain(final ObservedRemoveContainer<Item> container,
+                                     final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         final Set<Item> retainedItemsSet = toSet(items);
 
@@ -434,8 +436,8 @@ public final class ContainerUtility {
 
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void retain(final ObservedRemoveContainer<Item> container, final Collection<? extends Item> items,
-                                     final ValueObserver<Item>... observers)
+    public static <Item> void retain(final ObservedRemoveContainer<Item> container,
+                                     final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
 
@@ -484,9 +486,11 @@ public final class ContainerUtility {
      *         if an error occurs during the operation
      */
     @SafeVarargs
-    public static <Item> void removeAll(final ObservedRemoveContainer<Item> container, final ValueObserver<Item>... observers)
+    public static <Item> void removeAll(final ObservedRemoveContainer<Item> container,
+                                        final ValueObserver<Item>... observers)
     throws InvalidContainerStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
+        for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser();
+             traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }

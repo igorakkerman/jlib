@@ -39,6 +39,9 @@ import org.jlib.core.traverser.Traversible;
 public interface RemoveContainer<Item>
 extends RemoveTraversible<Item> {
 
+    public void remove(ItemContext<Item, ? extends RemoveContainer> itemContext);
+    // TODO: throws some constraint exception
+
     /**
      * Removes all Items from this {@link RemoveContainer}
      * <em>except</em> the Items contained by the specified {@link Traversible}.
