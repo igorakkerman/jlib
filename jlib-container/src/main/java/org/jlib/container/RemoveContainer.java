@@ -21,12 +21,12 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveTraversible;
 import org.jlib.core.traverser.Traversible;
-
-import java.util.Collection;
 
 /**
  * {@link Container} allowing Items to be removed.
@@ -53,7 +53,7 @@ extends RemoveTraversible<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void retain(final Traversible<? extends Item> items)
+    public void retain(Traversible<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -70,7 +70,7 @@ extends RemoveTraversible<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void retain(final Container<? extends Item> items)
+    public void retain(Container<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -87,7 +87,7 @@ extends RemoveTraversible<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void retain(final Collection<? extends Item> items)
+    public void retain(Collection<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -105,6 +105,6 @@ extends RemoveTraversible<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(final Item... items)
+    public void retain(Item... items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }
