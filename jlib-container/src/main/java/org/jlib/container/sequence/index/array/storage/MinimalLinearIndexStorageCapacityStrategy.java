@@ -24,8 +24,7 @@ package org.jlib.container.sequence.index.array.storage;
 import static org.jlib.core.math.MathUtility.count;
 
 /**
- * {@link LinearIndexStorageCapacityStrategy} providing just as much capacity as
- * requested.
+ * {@link LinearIndexStorageCapacityStrategy} providing just as much capacity as requested.
  *
  * @param <Item>
  *        type of the {@link LinearIndexStorage} items
@@ -35,7 +34,7 @@ import static org.jlib.core.math.MathUtility.count;
 public class MinimalLinearIndexStorageCapacityStrategy<Item>
 implements LinearIndexStorageCapacityStrategy {
 
-    /** {@link LinearIndexStorage} holding the Items */
+    /** {@link LinearIndexStorage} holding the {@link Item}s */
     private final LinearIndexStorage<Item> storage;
 
     /**
