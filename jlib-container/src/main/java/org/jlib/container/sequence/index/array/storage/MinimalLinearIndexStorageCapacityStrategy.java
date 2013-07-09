@@ -62,10 +62,10 @@ implements LinearIndexStorageCapacityStrategy {
         if (headCapacity <= storage.getFirstItemIndex())
             return;
 
-        storage
-        .initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(), storage.getFirstItemIndex(),
-                    storage.getLastItemIndex(),
-                    new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(), headCapacity));
+        storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(), //
+                           storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                           new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                                                   headCapacity));
     }
 
     @Override
