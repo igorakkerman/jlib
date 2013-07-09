@@ -33,13 +33,11 @@ public interface LinearIndexStorage<Item>
 extends Cloneable {
 
     /**
-     * Initializes or re-initializes this {@link LinearIndexStorage} performing
-     * the copy operations on its {@link Item}s as specified by a number of
-     * {@link ItemsCopyDescriptor} descritors. Their source indices reference the {@link Item}
-     * indices <em>before</em>, their target indices the {@link Item} indices
-     * <em>after</em> the operation. The {@link Item}s stored at the former indices are
-     * not overwritten and can be reused in each specified {@link ItemsCopyDescriptor}
-     * operation.
+     * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
+     * as specified by a number of {@link ItemsCopyDescriptor} descritors. Their source indices reference the
+     * {@link Item} indices <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation.
+     * The {@link Item}s stored at the former indices are not overwritten and can be reused in each specified
+     * {@link ItemsCopyDescriptor} operation.
      *
      * @param capacity
      *        integer specifying the capacity
@@ -59,8 +57,7 @@ extends Cloneable {
      *                   lastItemIndex > capacity - 1 ||
      *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
-    public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                           ItemsCopyDescriptor... copyDescriptors);
+    public void initialize(int capacity, int firstItemIndex, int lastItemIndex, ItemsCopyDescriptor... copyDescriptors);
 
     /**
      * Returns the {@link Item} stored at the specified index.
@@ -71,8 +68,7 @@ extends Cloneable {
      * @return {@link Item} stored at {@code index}
      *
      * @throws IndexOutOfBoundsException
-     *         if the index is out of the valid bounds of this
-     *         {@link LinearIndexStorage}
+     *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public Item getItem(int index)
     throws IndexOutOfBoundsException;
@@ -87,26 +83,23 @@ extends Cloneable {
      *        new {@link Item} replacing the former
      *
      * @throws IndexOutOfBoundsException
-     *         if the index is out of the valid bounds of this
-     *         {@link LinearIndexStorage}
+     *         if the index is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public void replaceItem(int index, Item newItem)
     throws IndexOutOfBoundsException;
 
     /**
-     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined
-     * defined by the specified {@link ItemsCopyDescriptor}s. Their source
-     * indices reference the {@link Item} indices <em>before</em>, their target indices
-     * the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
-     * former indices are overwritten by each specified {@link ItemsCopyDescriptor}
-     * operation. Shifted {@link Item}s are overwritten by {@code null}.
+     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined defined by the specified
+     * {@link ItemsCopyDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>, their
+     * target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the former
+     * indices are overwritten by each specified {@link ItemsCopyDescriptor} operation. Shifted {@link Item}s are
+     * overwritten by {@code null}.
      *
      * @param copyDescriptors
      *        comma separated sequence of {@link ItemsCopyDescriptor}s
      *
      * @throws IndexOutOfBoundsException
-     *         if an {@link ItemsCopyDescriptor} specifies a copy operation on
-     *         an index outside the valid bounds
+     *         if an {@link ItemsCopyDescriptor} specifies a copy operation on an index outside the valid bounds
      */
     public void shiftItems(ItemsCopyDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException;
@@ -172,8 +165,7 @@ extends Cloneable {
     public int getCapacity();
 
     /**
-     * Returns the tail capacity, that is, the number of storable {@link Item}s behind
-     * the last {@link Item}.
+     * Returns the tail capacity, that is, the number of storable {@link Item}s behind the last {@link Item}.
      *
      * @return integer specifying the tail capacity
      */

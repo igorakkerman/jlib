@@ -23,23 +23,24 @@ package org.jlib.container.sequence.index.array.storage;
 
 import static org.jlib.core.math.MathUtility.count;
 
-import org.jlib.core.language.UnexpectedStateException;
+import org.jlib.core.system.AbstractCloneable;
 
 /**
  * Skeletal implementation of a {@link LinearIndexStorage}.
  *
  * @param <Item>
- *        type of the Items stored in the {@link AbstractLinearIndexStorage}
+ *        type of the {@link Item}s stored in the {@link AbstractLinearIndexStorage}
  *
  * @author Igor Akkerman
  */
 public abstract class AbstractLinearIndexStorage<Item>
+extends AbstractCloneable
 implements LinearIndexStorage<Item> {
 
-    /** array index of the first Item */
+    /** array index of the first {@link Item} */
     private Integer firstItemIndex;
 
-    /** array index of the last Item */
+    /** array index of the last {@link Item} */
     private Integer lastItemIndex;
 
     /**
@@ -83,10 +84,10 @@ implements LinearIndexStorage<Item> {
      *        integer specifying the valid capacity
      *
      * @param firstItemIndex
-     *        integer specifying the valid index of the first Item
+     *        integer specifying the valid index of the first {@link Item}
      *
      * @param lastItemIndex
-     *        integer specifying the valid index of the last Item
+     *        integer specifying the valid index of the last {@link Item}
      *
      * @param copyDescriptors
      *        comma separated sequence of
@@ -137,16 +138,9 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public AbstractLinearIndexStorage<Item> clone() {
-        try {
-            @SuppressWarnings("unchecked")
-            final AbstractLinearIndexStorage<Item> clonedStorage = (AbstractLinearIndexStorage<Item>) super.clone();
-
-            return clonedStorage;
-        }
-        catch (final CloneNotSupportedException exception) {
-            throw new UnexpectedStateException(exception);
-        }
+        return (AbstractLinearIndexStorage<Item>) super.clone();
     }
 
     /**
@@ -162,11 +156,6 @@ implements LinearIndexStorage<Item> {
      *         equality; {@code false} otherwise
      */
     protected boolean hasMatchingProperties(final AbstractLinearIndexStorage<Item> otherStorage) {
-        return firstItemIndex == otherStorage.firstItemIndex && lastItemIndex == otherStorage.lastItemIndex;
-    }
-
-    @Override
-    public int hashCode() {
-        return firstItemIndex << 1 + lastItemIndex;
+        return firstItemIndex.equals(otherStorage.firstItemIndex) && lastItemIndex.equals(otherStorage.lastItemIndex);
     }
 }
