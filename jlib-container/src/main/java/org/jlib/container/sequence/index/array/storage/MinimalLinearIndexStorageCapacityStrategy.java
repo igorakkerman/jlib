@@ -28,7 +28,7 @@ import static org.jlib.core.math.MathUtility.count;
  * requested.
  *
  * @param <Item>
- *        type of the {@link LinearIndexStorage} Items
+ *        type of the {@link LinearIndexStorage} items
  *
  * @author Igor Akkerman
  */
