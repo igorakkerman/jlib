@@ -23,10 +23,11 @@ package org.jlib.container.sequence.index.array.storage;
 
 import java.util.Arrays;
 
+import static org.jlib.core.array.ArrayUtility.createArray;
+
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.fill;
-import static org.jlib.core.array.ArrayUtility.createArray;
 
 /**
  * {@link LinearIndexStorage} based on an array.
@@ -51,11 +52,11 @@ extends AbstractLinearIndexStorage<Item> {
 
     @Override
     protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                      final ItemsCopy... copyDescriptors) {
+                                      final ItemsCopyDescriptor... copyDescriptors) {
 
         final Item[] newDelegateArray = createArray(capacity);
 
-        for (final ItemsCopy copyDescriptor : copyDescriptors)
+        for (final ItemsCopyDescriptor copyDescriptor : copyDescriptors)
             copyItems(delegateArray, newDelegateArray, copyDescriptor);
 
         delegateArray = newDelegateArray;
@@ -80,9 +81,9 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    public void shiftItems(final ItemsCopy... copyDescriptors)
+    public void shiftItems(final ItemsCopyDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException {
-        for (final ItemsCopy copyDescriptor : copyDescriptors) {
+        for (final ItemsCopyDescriptor copyDescriptor : copyDescriptors) {
             copyItems(delegateArray, delegateArray, copyDescriptor);
 
             // replace the shifted Items with null
@@ -95,7 +96,7 @@ extends AbstractLinearIndexStorage<Item> {
 
     /**
      * Performs the specified
-     * {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
+     * {@link ItemsCopyDescriptor}
      * operation from the specified source to the speified target array of
      * Items.
      *
@@ -106,10 +107,11 @@ extends AbstractLinearIndexStorage<Item> {
      *        target array of Items
      *
      * @param copyDescriptor
-     *        {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
+     *        {@link ItemsCopyDescriptor}
      *        operation descriptor
      */
-    protected void copyItems(final Item[] sourceArray, final Item[] targetArray, final ItemsCopy copyDescriptor) {
+    protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
+                             final ItemsCopyDescriptor copyDescriptor) {
         arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
     }

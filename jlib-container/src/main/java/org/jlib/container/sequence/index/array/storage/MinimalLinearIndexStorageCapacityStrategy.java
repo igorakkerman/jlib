@@ -63,9 +63,10 @@ implements LinearIndexStorageCapacityStrategy {
         if (headCapacity <= storage.getFirstItemIndex())
             return;
 
-        storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(),
-                           storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                           new ItemsCopy(storage.getFirstItemIndex(), storage.getLastItemIndex(), headCapacity));
+        storage
+        .initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(), storage.getFirstItemIndex(),
+                    storage.getLastItemIndex(),
+                    new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(), headCapacity));
     }
 
     @Override
@@ -78,8 +79,8 @@ implements LinearIndexStorageCapacityStrategy {
 
         storage.initialize(storage.getLastItemIndex() + 1 + tailCapacity, storage.getFirstItemIndex(),
                            storage.getLastItemIndex(),
-                           new ItemsCopy(storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                                         storage.getFirstItemIndex()));
+                           new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                                                   storage.getFirstItemIndex()));
     }
 
     @Override
@@ -101,13 +102,14 @@ implements LinearIndexStorageCapacityStrategy {
         if (middleCapacity == 0)
             return;
 
-        final ItemsCopy rightCopyDescriptor = new ItemsCopy(splitIndex, storage.getLastItemIndex(),
-                                                            splitIndex + middleCapacity);
+        final ItemsCopyDescriptor rightCopyDescriptor = new ItemsCopyDescriptor(splitIndex, storage.getLastItemIndex(),
+                                                                                splitIndex + middleCapacity);
 
         final int newLastItemIndex = storage.getLastItemIndex() + middleCapacity;
 
         if (storage.getTailCapacity() >= middleCapacity) {
-            storage.shiftItems(new ItemsCopy(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity));
+            storage
+            .shiftItems(new ItemsCopyDescriptor(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity));
             storage.setLastItemIndex(newLastItemIndex);
             return;
         }
@@ -116,7 +118,7 @@ implements LinearIndexStorageCapacityStrategy {
 
         if (splitIndex > storage.getFirstItemIndex())
             storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex,
-                               new ItemsCopy(storage.getFirstItemIndex(), splitIndex - 1, splitIndex),
+                               new ItemsCopyDescriptor(storage.getFirstItemIndex(), splitIndex - 1, splitIndex),
                                rightCopyDescriptor);
         else
             storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex, rightCopyDescriptor);

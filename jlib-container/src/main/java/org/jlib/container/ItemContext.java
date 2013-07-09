@@ -21,9 +21,9 @@
 
 package org.jlib.container;
 
-public interface ItemContext<Item, Cont extends Container<Item>> {
+public interface ItemContext<Item, Conteener extends Container<Item>> {
 
-    public Cont getContainer();
+    public Conteener getContainer();
 
     public Item getItem();
 }

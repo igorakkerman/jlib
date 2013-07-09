@@ -34,8 +34,6 @@ import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
 import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
 
-// @formatter:off
-
 /**
  * {@link IndexSequence} baked by an array.
  *
@@ -44,7 +42,6 @@ import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorage
  *
  * @author Igor Akkerman
  */
-// @formatter:on
 public class ArraySequence<Item>
 extends AbstractInitializeableIndexSequence<Item> {
 

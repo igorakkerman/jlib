@@ -21,9 +21,9 @@
 
 package org.jlib.container.sequence.index.array.storage;
 
-import org.jlib.core.language.UnexpectedStateException;
-
 import static org.jlib.core.math.MathUtility.count;
+
+import org.jlib.core.language.UnexpectedStateException;
 
 /**
  * Skeletal implementation of a {@link LinearIndexStorage}.
@@ -50,7 +50,8 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
-    public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex, final ItemsCopy... copyDescriptors)
+    public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                 final ItemsCopyDescriptor... copyDescriptors)
     throws LinearIndexStorageException {
         if (firstItemIndex < 0)
             throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
@@ -89,10 +90,11 @@ implements LinearIndexStorage<Item> {
      *
      * @param copyDescriptors
      *        comma separated sequence of
-     *        {@link org.jlib.container.sequence.index.array.storage.ItemsCopy}
+     *        {@link ItemsCopyDescriptor}
      *        descriptors
      */
-    protected abstract void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex, final ItemsCopy... copyDescriptors);
+    protected abstract void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                               final ItemsCopyDescriptor... copyDescriptors);
 
     @Override
     public int getFirstItemIndex() {

@@ -35,10 +35,10 @@ extends Cloneable {
     /**
      * Initializes or re-initializes this {@link LinearIndexStorage} performing
      * the copy operations on its {@link Item}s as specified by a number of
-     * {@link ItemsCopy} descritors. Their source indices reference the {@link Item}
+     * {@link ItemsCopyDescriptor} descritors. Their source indices reference the {@link Item}
      * indices <em>before</em>, their target indices the {@link Item} indices
      * <em>after</em> the operation. The {@link Item}s stored at the former indices are
-     * not overwritten and can be reused in each specified {@link ItemsCopy}
+     * not overwritten and can be reused in each specified {@link ItemsCopyDescriptor}
      * operation.
      *
      * @param capacity
@@ -51,7 +51,7 @@ extends Cloneable {
      *        integer specifying the index of the last {@link Item}
      *
      * @param copyDescriptors
-     *        comma separated sequence of {@link ItemsCopy} descriptors
+     *        comma separated sequence of {@link ItemsCopyDescriptor}s
      *
      * @throws LinearIndexStorageException
      *         if {@code firstItemIndex < 0 ||
@@ -60,7 +60,7 @@ extends Cloneable {
      *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
     public void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                           ItemsCopy... copyDescriptors);
+                           ItemsCopyDescriptor... copyDescriptors);
 
     /**
      * Returns the {@link Item} stored at the specified index.
@@ -95,20 +95,20 @@ extends Cloneable {
 
     /**
      * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined
-     * defined by the specified {@link ItemsCopy} descriptors. Their source
+     * defined by the specified {@link ItemsCopyDescriptor}s. Their source
      * indices reference the {@link Item} indices <em>before</em>, their target indices
      * the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
-     * former indices are overwritten by each specified {@link ItemsCopy}
+     * former indices are overwritten by each specified {@link ItemsCopyDescriptor}
      * operation. Shifted {@link Item}s are overwritten by {@code null}.
      *
      * @param copyDescriptors
-     *        comma separated sequence of {@link ItemsCopy} descriptors
+     *        comma separated sequence of {@link ItemsCopyDescriptor}s
      *
      * @throws IndexOutOfBoundsException
-     *         if an {@link ItemsCopy} descriptor specifies a copy operation on
+     *         if an {@link ItemsCopyDescriptor} specifies a copy operation on
      *         an index outside the valid bounds
      */
-    public void shiftItems(ItemsCopy... copyDescriptors)
+    public void shiftItems(ItemsCopyDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException;
 
     /**
