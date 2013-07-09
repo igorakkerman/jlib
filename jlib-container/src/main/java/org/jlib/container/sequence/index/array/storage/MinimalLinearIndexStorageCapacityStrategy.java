@@ -31,6 +31,8 @@ import static org.jlib.core.math.MathUtility.count;
  *
  * @author Igor Akkerman
  */
+// TODO: 2013-07-10 name all ItemCopyDescriptors with an explaining name
+// TODO: 2013-07-10 explain the algorithms
 public class MinimalLinearIndexStorageCapacityStrategy<Item>
 implements LinearIndexStorageCapacityStrategy {
 
@@ -57,12 +59,12 @@ implements LinearIndexStorageCapacityStrategy {
     @Override
     public void ensureHeadCapacity(final int headCapacity)
     throws LinearIndexStorageException {
-        assertPartCapacityValid("middleCapacity", headCapacity);
+        ensurePartCapacityValid("middleCapacity", headCapacity);
 
         if (headCapacity <= storage.getFirstItemIndex())
             return;
 
-        storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(), //
+        storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(),
                            storage.getFirstItemIndex(), storage.getLastItemIndex(),
                            new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(),
                                                    headCapacity));
@@ -71,7 +73,7 @@ implements LinearIndexStorageCapacityStrategy {
     @Override
     public void ensureTailCapacity(final int tailCapacity)
     throws LinearIndexStorageException {
-        assertPartCapacityValid("middleCapacity", tailCapacity);
+        ensurePartCapacityValid("middleCapacity", tailCapacity);
 
         if (tailCapacity <= storage.getTailCapacity())
             return;
@@ -85,7 +87,7 @@ implements LinearIndexStorageCapacityStrategy {
     @Override
     public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
     throws LinearIndexStorageException {
-        assertPartCapacityValid("middleCapacity", middleCapacity);
+        ensurePartCapacityValid("middleCapacity", middleCapacity);
 
         if (middleCapacity < 0)
             throw new LinearIndexStorageException(storage, "middleCapacity = {1} < 0; storage = '{0}'", middleCapacity);
@@ -107,24 +109,29 @@ implements LinearIndexStorageCapacityStrategy {
         final int newLastItemIndex = storage.getLastItemIndex() + middleCapacity;
 
         if (storage.getTailCapacity() >= middleCapacity) {
-            storage
-            .shiftItems(new ItemsCopyDescriptor(splitIndex, storage.getLastItemIndex(), splitIndex + middleCapacity));
+
+            storage.shiftItems(rightCopyDescriptor);
             storage.setLastItemIndex(newLastItemIndex);
+
             return;
         }
 
         final int fullCapacity = storage.getItemsCount() + middleCapacity;
 
-        if (splitIndex > storage.getFirstItemIndex())
-            storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex,
-                               new ItemsCopyDescriptor(storage.getFirstItemIndex(), splitIndex - 1, splitIndex),
-                               rightCopyDescriptor);
-        else
-            storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex, rightCopyDescriptor);
+        // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
+        final ItemsCopyDescriptor leftCopyDescriptor = /*
+         */ new ItemsCopyDescriptor(storage.getFirstItemIndex(), splitIndex - 1, splitIndex);
+
+        final ItemsCopyDescriptor[] copyDescriptors = /*
+         */ splitIndex > storage.getFirstItemIndex() ?
+            new ItemsCopyDescriptor[]{ leftCopyDescriptor, rightCopyDescriptor } :
+            new ItemsCopyDescriptor[]{ rightCopyDescriptor };
+
+        storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex, copyDescriptors);
     }
 
     /**
-     * Asserts that the specified partial capacity is valid.
+     * Ensures that the specified partial capacity is valid.
      *
      * @param partialCapacityName
      *        String specifying the name of the partial capacity
@@ -135,7 +142,7 @@ implements LinearIndexStorageCapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code partialCapacity < 0}
      */
-    private void assertPartCapacityValid(final String partialCapacityName, final int partialCapacity) {
+    private void ensurePartCapacityValid(final String partialCapacityName, final int partialCapacity) {
         if (partialCapacity < 0)
             throw new LinearIndexStorageException(storage, "{1} = {2} < 0; storage = '{0}'", partialCapacityName,
                                                   partialCapacity);
