@@ -33,7 +33,7 @@ import static java.util.Arrays.fill;
  * {@link LinearIndexStorage} based on an array.
  *
  * @param <Item>
- *        type of the Items stored in the array
+ *        type of the items stored in the array
  *
  * @author Igor Akkerman
  */
@@ -63,12 +63,12 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     /**
-     * Returns the array Item stored at the specified array index.
+     * Returns the array {@link Item} stored at the specified array index.
      *
      * @param index
      *        integer specifying the array index
      *
-     * @return Item stored at {@code index}
+     * @return {@link Item} stored at {@code index}
      */
     @Override
     public Item getItem(final int index) {
@@ -95,20 +95,17 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     /**
-     * Performs the specified
-     * {@link ItemsCopyDescriptor}
-     * operation from the specified source to the speified target array of
-     * Items.
+     * Performs the operation, specified by the specified {@link ItemsCopyDescriptor}, from the specified source to the
+     * specified target array of {@link Item}s.
      *
      * @param sourceArray
-     *        source array of Items
+     *        source array of {@link Item}s
      *
      * @param targetArray
-     *        target array of Items
+     *        target array of {@link Item}s
      *
      * @param copyDescriptor
-     *        {@link ItemsCopyDescriptor}
-     *        operation descriptor
+     *        {@link ItemsCopyDescriptor} for the operation
      */
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
                              final ItemsCopyDescriptor copyDescriptor) {

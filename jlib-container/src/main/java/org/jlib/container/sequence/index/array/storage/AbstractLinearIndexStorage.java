@@ -54,22 +54,7 @@ implements LinearIndexStorage<Item> {
     public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
                                  final ItemsCopyDescriptor... copyDescriptors)
     throws LinearIndexStorageException {
-        if (firstItemIndex < 0)
-            throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
-
-        if (firstItemIndex > lastItemIndex)
-            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
-                                                  lastItemIndex);
-
-        if (lastItemIndex > capacity - 1)
-            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
-                                                  lastItemIndex);
-
-        if (count(firstItemIndex, lastItemIndex) > capacity)
-            throw new LinearIndexStorageException(this,
-                                                  "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
-                                                  capacity, firstItemIndex, lastItemIndex,
-                                                  count(firstItemIndex, lastItemIndex));
+        ensureInitializationArgumentsValid(capacity, firstItemIndex, lastItemIndex);
 
         this.firstItemIndex = firstItemIndex;
         this.lastItemIndex = lastItemIndex;
@@ -156,6 +141,43 @@ implements LinearIndexStorage<Item> {
      *         equality; {@code false} otherwise
      */
     protected boolean hasMatchingProperties(final AbstractLinearIndexStorage<Item> otherStorage) {
-        return firstItemIndex.equals(otherStorage.firstItemIndex) && lastItemIndex.equals(otherStorage.lastItemIndex);
+        return firstItemIndex.equals(otherStorage.firstItemIndex) && //
+               lastItemIndex.equals(otherStorage.lastItemIndex);
+    }
+
+    /**
+     * Ensures that the specified capacity and first and last {@link Item} indices are valid values.
+     *
+     * @param capacity
+     *        integer specifying the capacity
+     *
+     * @param firstItemIndex
+     *        integer specifying the index of the first {@link Item}
+     *
+     * @param lastItemIndex
+     *        integer specifying the index of the last {@link Item}
+     *
+     * @throws LinearIndexStorageException
+     *         if the specified values are not valid as defined by
+     *         {@link #initialize(int, int, int, ItemsCopyDescriptor...)}
+     */
+    private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
+                                                    final int lastItemIndex) {
+        if (firstItemIndex < 0)
+            throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
+
+        if (firstItemIndex > lastItemIndex)
+            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
+                                                  lastItemIndex);
+
+        if (lastItemIndex > capacity - 1)
+            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
+                                                  lastItemIndex);
+
+        if (count(firstItemIndex, lastItemIndex) > capacity)
+            throw new LinearIndexStorageException(this,
+                                                  "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
+                                                  capacity, firstItemIndex, lastItemIndex,
+                                                  count(firstItemIndex, lastItemIndex));
     }
 }
