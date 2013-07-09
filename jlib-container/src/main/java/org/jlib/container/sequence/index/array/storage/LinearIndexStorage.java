@@ -34,10 +34,10 @@ extends Cloneable {
 
     /**
      * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
-     * as specified by a number of {@link ItemsCopyDescriptor} descritors. Their source indices reference the
-     * {@link Item} indices <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation.
-     * The {@link Item}s stored at the former indices are not overwritten and can be reused in each specified
-     * {@link ItemsCopyDescriptor} operation.
+     * as specified by a number of {@link ItemsCopyDescriptor}. Their source indices reference the {@link Item} indices
+     * <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s
+     * stored at the former indices are not overwritten and can be reused in each specified {@link ItemsCopyDescriptor}
+     * operation.
      *
      * @param capacity
      *        integer specifying the capacity
