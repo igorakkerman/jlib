@@ -25,7 +25,7 @@ package org.jlib.container.sequence.index.array.storage;
  * Storage of <em>n</em> items indexed from <em>0</em> to <em>n-1</em>.
  *
  * @param <Item>
- *        type of the Items stored in the {@link LinearIndexStorage}
+ *        type of the {@link Item}s stored in the {@link LinearIndexStorage}
  *
  * @author Igor Akkerman
  */
@@ -34,10 +34,10 @@ extends Cloneable {
 
     /**
      * Initializes or re-initializes this {@link LinearIndexStorage} performing
-     * the copy operations on its Items as specified by a number of
-     * {@link ItemsCopy} descritors. Their source indices reference the Item
-     * indices <em>before</em>, their target indices the Item indices
-     * <em>after</em> the operation. The Items stored at the former indices are
+     * the copy operations on its {@link Item}s as specified by a number of
+     * {@link ItemsCopy} descritors. Their source indices reference the {@link Item}
+     * indices <em>before</em>, their target indices the {@link Item} indices
+     * <em>after</em> the operation. The {@link Item}s stored at the former indices are
      * not overwritten and can be reused in each specified {@link ItemsCopy}
      * operation.
      *
@@ -45,10 +45,10 @@ extends Cloneable {
      *        integer specifying the capacity
      *
      * @param firstItemIndex
-     *        integer specifying the index of the first Item
+     *        integer specifying the index of the first {@link Item}
      *
      * @param lastItemIndex
-     *        integer specifying the index of the last Item
+     *        integer specifying the index of the last {@link Item}
      *
      * @param copyDescriptors
      *        comma separated sequence of {@link ItemsCopy} descriptors
@@ -63,12 +63,12 @@ extends Cloneable {
                            ItemsCopy... copyDescriptors);
 
     /**
-     * Returns the Item stored at the specified index.
+     * Returns the {@link Item} stored at the specified index.
      *
      * @param index
-     *        integer specifying the index of the Item
+     *        integer specifying the index of the {@link Item}
      *
-     * @return Item stored at {@code index}
+     * @return {@link Item} stored at {@code index}
      *
      * @throws IndexOutOfBoundsException
      *         if the index is out of the valid bounds of this
@@ -78,13 +78,13 @@ extends Cloneable {
     throws IndexOutOfBoundsException;
 
     /**
-     * Replaces the Item stored at the specified index by the specified Item.
+     * Replaces the {@link Item} stored at the specified index by the specified {@link Item}.
      *
      * @param index
-     *        integer specifying the index of the Item
+     *        integer specifying the index of the {@link Item}
      *
      * @param newItem
-     *        new Item replacing the former
+     *        new {@link Item} replacing the former
      *
      * @throws IndexOutOfBoundsException
      *         if the index is out of the valid bounds of this
@@ -94,40 +94,40 @@ extends Cloneable {
     throws IndexOutOfBoundsException;
 
     /**
-     * Shifts the Items within this {@link LinearIndexStorage} as defined
+     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined
      * defined by the specified {@link ItemsCopy} descriptors. Their source
-     * indices reference the Item indices <em>before</em>, their target indices
-     * the Item indices <em>after</em> the operation. The Items stored at the
+     * indices reference the {@link Item} indices <em>before</em>, their target indices
+     * the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
      * former indices are overwritten by each specified {@link ItemsCopy}
-     * operation. Shifted Items are overwritten by {@code null}.
+     * operation. Shifted {@link Item}s are overwritten by {@code null}.
      *
      * @param copyDescriptors
      *        comma separated sequence of {@link ItemsCopy} descriptors
      *
      * @throws IndexOutOfBoundsException
-     *         if a {@link ItemsCopy} descriptor specifies a copy operation on
+     *         if an {@link ItemsCopy} descriptor specifies a copy operation on
      *         an index outside the valid bounds
      */
     public void shiftItems(ItemsCopy... copyDescriptors)
     throws IndexOutOfBoundsException;
 
     /**
-     * Returns the index of the first Item.
+     * Returns the index of the first {@link Item}.
      *
-     * @return integer specifying the index of the first Item
+     * @return integer specifying the index of the first {@link Item}
      */
     public int getFirstItemIndex();
 
     /**
-     * Registers the index of the first Item.
+     * Registers the index of the first {@link Item}.
      *
      * @param firstItemIndex
-     *        integer specifying the index of the first Item
+     *        integer specifying the index of the first {@link Item}
      */
     public void setFirstItemIndex(int firstItemIndex);
 
     /**
-     * Increments the index of the first Item by the specified value.
+     * Increments the index of the first {@link Item} by the specified value.
      *
      * @param increment
      *        positive or negative integer specifying the increment
@@ -135,7 +135,7 @@ extends Cloneable {
     public void incrementFirstItemIndex(int increment);
 
     /**
-     * Increments the index of the last Item by the specified value.
+     * Increments the index of the last {@link Item} by the specified value.
      *
      * @param increment
      *        positive or negative integer specifying the increment
@@ -143,37 +143,37 @@ extends Cloneable {
     public void incrementLastItemIndex(int increment);
 
     /**
-     * Returns the index of the last Item.
+     * Returns the index of the last {@link Item}.
      *
-     * @return integer specifying the index of the last Item
+     * @return integer specifying the index of the last {@link Item}
      */
     public int getLastItemIndex();
 
     /**
-     * Registers the index of the last Item.
+     * Registers the index of the last {@link Item}.
      *
      * @param lastItemIndex
-     *        integer specifying the index of the last Item
+     *        integer specifying the index of the last {@link Item}
      */
     public void setLastItemIndex(int lastItemIndex);
 
     /**
-     * Returns the number of stored Items.
+     * Returns the number of stored {@link Item}s.
      *
-     * @return integer spacifying the number of stored Items
+     * @return integer spacifying the number of stored {@link Item}s
      */
     public int getItemsCount();
 
     /**
-     * Returns the capacity, that is, number of storable Items.
+     * Returns the capacity, that is, number of storable {@link Item}s.
      *
      * @return integer specifying the capacity
      */
     public int getCapacity();
 
     /**
-     * Returns the tail capacity, that is, the number of storable Items behind
-     * the last Item.
+     * Returns the tail capacity, that is, the number of storable {@link Item}s behind
+     * the last {@link Item}.
      *
      * @return integer specifying the tail capacity
      */
