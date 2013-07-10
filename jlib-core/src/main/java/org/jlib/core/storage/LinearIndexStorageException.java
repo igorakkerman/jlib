@@ -21,11 +21,10 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link InvalidSequenceStateException} thrown when an invalid
+ * {@link InvalidArgumentException} thrown when an invalid
  * {@link LinearIndexStorage} capacity is specified.
  *
  * @author Igor Akkerman
@@ -66,4 +65,3 @@ extends InvalidArgumentException {
         return linearIndexStorage;
     }
 }
-q
