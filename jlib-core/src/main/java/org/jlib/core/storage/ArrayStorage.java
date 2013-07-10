@@ -26,6 +26,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
 import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.System.arraycopy;
+import static java.util.Arrays.copyOf;
 
 /**
  * {@link LinearIndexStorage} based on an array.
@@ -108,5 +109,14 @@ implements LinearIndexStorage<Item> {
     @Override
     public int getCapacity() {
         return delegateArray.length;
+    }
+
+    @Override
+    public Object clone() {
+        final ArrayStorage cloneStorage = (ArrayStorage) super.clone();
+
+        cloneStorage.delegateArray = copyOf(delegateArray, delegateArray.length);
+
+        return cloneStorage;
     }
 }
