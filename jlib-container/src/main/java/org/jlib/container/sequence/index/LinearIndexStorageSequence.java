@@ -80,7 +80,7 @@ extends AbstractInitializeableIndexSequence<Item> {
         storage = createStorage();
         initializeCapacityStrategy(storage);
 
-        storage.initialize(getItemsCount(), getFirstIndex(), getLastIndex());
+        storage.ensureCapacityAndShiftItems(getItemsCount(), getFirstIndex(), getLastIndex());
     }
 
     protected void initializeCapacityStrategy(final LinearIndexStorage<Item> storage) {

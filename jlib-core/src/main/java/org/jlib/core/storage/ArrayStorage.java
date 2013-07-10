@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.array;
+package org.jlib.core.storage;
 
 import static org.jlib.core.array.ArrayUtility.createArray;
 
-import org.jlib.core.storage.AbstractLinearIndexStorage;
-import org.jlib.core.storage.ItemsCopyDescriptor;
-import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
@@ -40,7 +38,8 @@ import static java.util.Arrays.fill;
  * @author Igor Akkerman
  */
 public class ArrayStorage<Item>
-extends AbstractLinearIndexStorage<Item> {
+extends AbstractCloneable
+implements LinearIndexStorage<Item> {
 
     /** array holding the {@link Item}s */
     private Item[] delegateArray;
@@ -53,12 +52,12 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    protected void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                      final ItemsCopyDescriptor... copyDescriptors) {
+    public void ensureCapacityAndShiftItems(final int capacity,
+                                            final IndexRangeOperationDescriptor... copyDescriptors) {
 
         final Item[] newDelegateArray = createArray(capacity);
 
-        for (final ItemsCopyDescriptor copyDescriptor : copyDescriptors)
+        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
             copyItems(delegateArray, newDelegateArray, copyDescriptor);
 
         delegateArray = newDelegateArray;
@@ -83,9 +82,9 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    public void shiftItems(final ItemsCopyDescriptor... copyDescriptors)
+    public void shiftItems(final IndexRangeOperationDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException {
-        for (final ItemsCopyDescriptor copyDescriptor : copyDescriptors) {
+        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors) {
             copyItems(delegateArray, delegateArray, copyDescriptor);
 
             // replace the shifted Items with null
@@ -97,8 +96,8 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     /**
-     * Performs the operation, specified by the specified {@link ItemsCopyDescriptor}, from the specified source to the
-     * specified target array of {@link Item}s.
+     * Performs the operation, specified by the specified {@link IndexRangeOperationDescriptor}, from the specified
+     * source to the specified target array of {@link Item}s.
      *
      * @param sourceArray
      *        source array of {@link Item}s
@@ -107,10 +106,10 @@ extends AbstractLinearIndexStorage<Item> {
      *        target array of {@link Item}s
      *
      * @param copyDescriptor
-     *        {@link ItemsCopyDescriptor} for the operation
+     *        {@link IndexRangeOperationDescriptor} for the operation
      */
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
-                             final ItemsCopyDescriptor copyDescriptor) {
+                             final IndexRangeOperationDescriptor copyDescriptor) {
         arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
     }
@@ -118,14 +117,5 @@ extends AbstractLinearIndexStorage<Item> {
     @Override
     public int getCapacity() {
         return delegateArray.length;
-    }
-
-    @Override
-    public ArrayStorage<Item> clone() {
-        final ArrayStorage<Item> clonedArrayStorage = (ArrayStorage<Item>) super.clone();
-
-        clonedArrayStorage.delegateArray = delegateArray.clone();
-
-        return clonedArrayStorage;
     }
 }

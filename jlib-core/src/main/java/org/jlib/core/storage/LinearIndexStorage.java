@@ -33,31 +33,12 @@ public interface LinearIndexStorage<Item>
 extends Cloneable {
 
     /**
-     * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
-     * as specified by a number of {@link ItemsCopyDescriptor}. Their source indices reference the {@link Item} indices
-     * <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s
-     * stored at the former indices are not overwritten and can be reused in each specified {@link ItemsCopyDescriptor}
-     * operation.
+     * Returns the current capacity, that is, the number of currently storable {@link Item}s without need of allocating
+     * new resources.
      *
-     * @param capacity
-     *        integer specifying the capacity
-     *
-     * @param firstItemIndex
-     *        integer specifying the index of the first {@link Item}
-     *
-     * @param lastItemIndex
-     *        integer specifying the index of the last {@link Item}
-     *
-     * @param copyDescriptors
-     *        comma separated sequence of {@link ItemsCopyDescriptor}s
-     *
-     * @throws LinearIndexStorageException
-     *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex ||
-     *                   lastItemIndex > capacity - 1 ||
-     *                   count(firstItemIndex, lastItemIndex) > capacity}
+     * @return integer specifying the capacity
      */
-    public void initialize(int capacity, int firstItemIndex, int lastItemIndex, ItemsCopyDescriptor... copyDescriptors);
+    public int getCapacity();
 
     /**
      * Returns the {@link Item} stored at the specified index.
@@ -89,92 +70,41 @@ extends Cloneable {
     throws IndexOutOfBoundsException;
 
     /**
-     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined defined by the specified
-     * {@link ItemsCopyDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>, their
-     * target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the former
-     * indices are overwritten by each specified {@link ItemsCopyDescriptor} operation. Shifted {@link Item}s are
-     * overwritten by {@code null}.
+     * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
+     * as specified by a number of {@link IndexRangeOperationDescriptor}. Their source indices reference the
+     * {@link Item} indices <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation.
+     * The {@link Item}s stored at the former indices are not overwritten and can be reused in each specified
+     * {@link IndexRangeOperationDescriptor} operation.
+     *
+     * @param capacity
+     *        integer specifying the capacity
      *
      * @param copyDescriptors
-     *        comma separated sequence of {@link ItemsCopyDescriptor}s
+     *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
+     *
+     * @throws LinearIndexStorageException
+     *         if {@code firstItemIndex < 0 ||
+     *                   lastItemIndex < firstItemIndex ||
+     *                   lastItemIndex > capacity - 1 ||
+     *                   count(firstItemIndex, lastItemIndex) > capacity}
+     */
+    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... copyDescriptors);
+
+    /**
+     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined defined by the specified
+     * {@link IndexRangeOperationDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>,
+     * their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
+     * former indices are overwritten by each specified {@link IndexRangeOperationDescriptor} operation.
+     *
+     * TODO: 2013-07-10 muss das sein?
+     * Shifted {@link Item}s are overwritten by {@code null}.
+     *
+     * @param copyDescriptors
+     *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
      * @throws IndexOutOfBoundsException
-     *         if an {@link ItemsCopyDescriptor} specifies a copy operation on an index outside the valid bounds
+     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid bounds
      */
-    public void shiftItems(ItemsCopyDescriptor... copyDescriptors)
+    public void shiftItems(IndexRangeOperationDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException;
-
-    /**
-     * Returns the index of the first {@link Item}.
-     *
-     * @return integer specifying the index of the first {@link Item}
-     */
-    public int getFirstItemIndex();
-
-    /**
-     * Registers the index of the first {@link Item}.
-     *
-     * @param firstItemIndex
-     *        integer specifying the index of the first {@link Item}
-     */
-    public void setFirstItemIndex(int firstItemIndex);
-
-    /**
-     * Increments the index of the first {@link Item} by the specified value.
-     *
-     * @param increment
-     *        positive or negative integer specifying the increment
-     */
-    public void incrementFirstItemIndex(int increment);
-
-    /**
-     * Increments the index of the last {@link Item} by the specified value.
-     *
-     * @param increment
-     *        positive or negative integer specifying the increment
-     */
-    public void incrementLastItemIndex(int increment);
-
-    /**
-     * Returns the index of the last {@link Item}.
-     *
-     * @return integer specifying the index of the last {@link Item}
-     */
-    public int getLastItemIndex();
-
-    /**
-     * Registers the index of the last {@link Item}.
-     *
-     * @param lastItemIndex
-     *        integer specifying the index of the last {@link Item}
-     */
-    public void setLastItemIndex(int lastItemIndex);
-
-    /**
-     * Returns the number of stored {@link Item}s.
-     *
-     * @return integer spacifying the number of stored {@link Item}s
-     */
-    public int getItemsCount();
-
-    /**
-     * Returns the capacity, that is, number of storable {@link Item}s.
-     *
-     * @return integer specifying the capacity
-     */
-    public int getCapacity();
-
-    /**
-     * Returns the tail capacity, that is, the number of storable {@link Item}s behind the last {@link Item}.
-     *
-     * @return integer specifying the tail capacity
-     */
-    public int getTailCapacity();
-
-    /**
-     * Creates a copy of this {@link LinearIndexStorage}.
-     *
-     * @return cloned {@link LinearIndexStorage}
-     */
-    public LinearIndexStorage<Item> clone();
 }

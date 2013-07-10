@@ -29,6 +29,7 @@ import org.jlib.core.language.UnexpectedStateException;
  *
  * @author Igor Akkerman
  */
+// TODO: parametrize with <Self>
 public abstract class AbstractCloneable
 extends AbstractObject
 implements Cloneable {

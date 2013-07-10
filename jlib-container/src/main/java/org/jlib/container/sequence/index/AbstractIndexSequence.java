@@ -21,10 +21,10 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
-
-import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
 
 /**
  * Skeletal implementation of an {@link IndexSequence}.
@@ -46,7 +46,7 @@ implements IndexSequence<Item> {
 
     /**
      * Creates a new AbstractNonEmptyIndexSequence with the specified minimum
-     * and maximum indices. Classes extending this class must initialize the
+     * and maximum indices. Classes extending this class must ensureCapacityAndShiftItems the
      * Item store.
      *
      * @param firstIndex
@@ -180,7 +180,8 @@ implements IndexSequence<Item> {
      * @param itemsTraverser
      *        {@link IndexSequenceTraverser} providing the Item
      */
-    private void getNextItemString(final StringBuilder stringBuilder, final IndexSequenceTraverser<Item> itemsTraverser) {
+    private void getNextItemString(final StringBuilder stringBuilder,
+                                   final IndexSequenceTraverser<Item> itemsTraverser) {
         stringBuilder.append(itemsTraverser.getNextItemIndex());
         stringBuilder.append(": ");
         stringBuilder.append(itemsTraverser.getNextItem());

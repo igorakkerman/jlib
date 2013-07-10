@@ -19,21 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.container.sequence.index;
 
 import static org.jlib.core.math.MathUtility.count;
 
+import org.jlib.core.storage.IndexRangeOperationDescriptor;
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageException;
 import org.jlib.core.system.AbstractCloneable;
 
 /**
  * Skeletal implementation of a {@link LinearIndexStorage}.
  *
  * @param <Item>
- *        type of the {@link Item}s stored in the {@link AbstractLinearIndexStorage}
+ *        type of the {@link Item}s stored in the {@link LinearIndexStorageAccessor}
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractLinearIndexStorage<Item>
+public abstract class LinearIndexStorageAccessor<Item>
 extends AbstractCloneable
 implements LinearIndexStorage<Item> {
 
@@ -44,22 +47,22 @@ implements LinearIndexStorage<Item> {
     private Integer lastItemIndex;
 
     /**
-     * Creates a new {@link AbstractLinearIndexStorage}.
+     * Creates a new {@link LinearIndexStorageAccessor}.
      */
-    protected AbstractLinearIndexStorage() {
+    protected LinearIndexStorageAccessor() {
         super();
     }
 
     @Override
     public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                 final ItemsCopyDescriptor... copyDescriptors)
+                                 final IndexRangeOperationDescriptor... copyDescriptors)
     throws LinearIndexStorageException {
         ensureInitializationArgumentsValid(capacity, firstItemIndex, lastItemIndex);
 
         this.firstItemIndex = firstItemIndex;
         this.lastItemIndex = lastItemIndex;
 
-        initializeDelegate(capacity, firstItemIndex, lastItemIndex, copyDescriptors);
+        initializeStorage(capacity, copyDescriptors);
     }
 
     /**
@@ -68,19 +71,11 @@ implements LinearIndexStorage<Item> {
      * @param capacity
      *        integer specifying the valid capacity
      *
-     * @param firstItemIndex
-     *        integer specifying the valid index of the first {@link Item}
-     *
-     * @param lastItemIndex
-     *        integer specifying the valid index of the last {@link Item}
-     *
      * @param copyDescriptors
-     *        comma separated sequence of
-     *        {@link ItemsCopyDescriptor}
-     *        descriptors
+     *        comma separated sequence of {@link IndexRangeOperationDescriptor} descriptors
      */
-    protected abstract void initializeDelegate(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                               final ItemsCopyDescriptor... copyDescriptors);
+    protected abstract void initializeStorage(final int capacity,
+                                              final IndexRangeOperationDescriptor... copyDescriptors);
 
     @Override
     public int getFirstItemIndex() {
@@ -124,8 +119,8 @@ implements LinearIndexStorage<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public AbstractLinearIndexStorage<Item> clone() {
-        return (AbstractLinearIndexStorage<Item>) super.clone();
+    public LinearIndexStorageAccessor<Item> clone() {
+        return (LinearIndexStorageAccessor<Item>) super.clone();
     }
 
     /**
@@ -142,7 +137,7 @@ implements LinearIndexStorage<Item> {
      *
      * @throws LinearIndexStorageException
      *         if the specified values are not valid as defined by
-     *         {@link #initialize(int, int, int, ItemsCopyDescriptor...)}
+     *         {@link #initialize(int, int, int, IndexRangeOperationDescriptor...)}
      */
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
                                                     final int lastItemIndex) {

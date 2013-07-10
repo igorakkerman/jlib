@@ -21,37 +21,44 @@
 
 package org.jlib.core.storage;
 
+import java.io.Serializable;
+
+import org.jlib.core.system.AbstractCloneable;
+
 /**
- * Descriptor of an Item copy operation specifying a source Item index range
- * <em>from</em> which and destination Item index <em>to</em> which a
- * specified amount of Items is copied.
+ * Descriptor of an operation on indexed objects specifying a source index range and a target index.
  *
  * @author Igor Akkerman
  */
-public class ItemsCopyDescriptor {
+public class IndexRangeOperationDescriptor
+extends AbstractCloneable
+implements Serializable {
 
-    /** begin index of the copied range */
+    /** serialVersionUID */
+    private static final long serialVersionUID = - 2349186633834250865L;
+
+    /** begin index of the source range */
     private final int sourceBeginIndex;
 
-    /** end index of the copied range */
+    /** end index of the source range */
     private final int sourceEndIndex;
 
-    /** index to which the range is copied */
+    /** target index */
     private final int targetIndex;
 
     /**
-     * Creates a new {@link ItemsCopyDescriptor}.
+     * Creates a new {@link IndexRangeOperationDescriptor}.
      *
      * @param sourceBeginIndex
-     *        integer specifying the begin index of the copied range
+     *        integer specifying the begin index of the source range
      *
      * @param sourceEndIndex
-     *        integer specifying the end index of the copied range
+     *        integer specifying the end index of the source range
      *
      * @param targetIndex
-     *        integer specifying the index to which the range is copied
+     *        integer specifying the target index
      */
-    public ItemsCopyDescriptor(final int sourceBeginIndex, final int sourceEndIndex, final int targetIndex) {
+    public IndexRangeOperationDescriptor(final int sourceBeginIndex, final int sourceEndIndex, final int targetIndex) {
         super();
 
         this.sourceBeginIndex = sourceBeginIndex;
@@ -60,27 +67,27 @@ public class ItemsCopyDescriptor {
     }
 
     /**
-     * Returns the begin index of the copied range.
+     * Returns the begin index of the source range.
      *
-     * @return integer specifying the begin index of the copied range
+     * @return integer specifying the begin index of the source range
      */
     public int getSourceBeginIndex() {
         return sourceBeginIndex;
     }
 
     /**
-     * Returns the end index of the copied range.
+     * Returns the end index of the source range.
      *
-     * @return integer specifying the end index of the copied range
+     * @return integer specifying the end index of the source range
      */
     public int getSourceEndIndex() {
         return sourceEndIndex;
     }
 
     /**
-     * Returns the index to which the range is copied.
+     * Returns the target index.
      *
-     * @return integer specifying the index to which the range is copied
+     * @return integer specifying the target index
      */
     public int getTargetIndex() {
         return targetIndex;

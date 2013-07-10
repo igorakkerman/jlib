@@ -53,7 +53,7 @@ implements LinearIndexStorageCapacityStrategy {
 
     @Override
     public void initialize(final int firstItemIndex, final int lastItemIndex) {
-        storage.initialize(count(firstItemIndex, lastItemIndex), firstItemIndex, lastItemIndex);
+        storage.ensureCapacityAndShiftItems(count(firstItemIndex, lastItemIndex), firstItemIndex, lastItemIndex);
     }
 
     @Override
@@ -64,10 +64,11 @@ implements LinearIndexStorageCapacityStrategy {
         if (headCapacity <= storage.getFirstItemIndex())
             return;
 
-        storage.initialize(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(),
-                           storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                           new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                                                   headCapacity));
+        storage.ensureCapacityAndShiftItems(headCapacity + storage.getCapacity() - storage.getFirstItemIndex(),
+                                            storage.getFirstItemIndex(), storage.getLastItemIndex(),
+                                            new IndexRangeOperationDescriptor(storage.getFirstItemIndex(),
+                                                                              storage.getLastItemIndex(),
+                                                                              headCapacity));
     }
 
     @Override
@@ -78,10 +79,11 @@ implements LinearIndexStorageCapacityStrategy {
         if (tailCapacity <= storage.getTailCapacity())
             return;
 
-        storage.initialize(storage.getLastItemIndex() + 1 + tailCapacity, storage.getFirstItemIndex(),
-                           storage.getLastItemIndex(),
-                           new ItemsCopyDescriptor(storage.getFirstItemIndex(), storage.getLastItemIndex(),
-                                                   storage.getFirstItemIndex()));
+        storage.ensureCapacityAndShiftItems(storage.getLastItemIndex() + 1 + tailCapacity, storage.getFirstItemIndex(),
+                                            storage.getLastItemIndex(),
+                                            new IndexRangeOperationDescriptor(storage.getFirstItemIndex(),
+                                                                              storage.getLastItemIndex(),
+                                                                              storage.getFirstItemIndex()));
     }
 
     @Override
@@ -103,8 +105,9 @@ implements LinearIndexStorageCapacityStrategy {
         if (middleCapacity == 0)
             return;
 
-        final ItemsCopyDescriptor rightCopyDescriptor = new ItemsCopyDescriptor(splitIndex, storage.getLastItemIndex(),
-                                                                                splitIndex + middleCapacity);
+        final IndexRangeOperationDescriptor rightCopyDescriptor = new IndexRangeOperationDescriptor(splitIndex,
+                                                                                                    storage.getLastItemIndex(),
+                                                                                                    splitIndex + middleCapacity);
 
         final int newLastItemIndex = storage.getLastItemIndex() + middleCapacity;
 
@@ -119,15 +122,16 @@ implements LinearIndexStorageCapacityStrategy {
         final int fullCapacity = storage.getItemsCount() + middleCapacity;
 
         // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
-        final ItemsCopyDescriptor leftCopyDescriptor = /*
-         */ new ItemsCopyDescriptor(storage.getFirstItemIndex(), splitIndex - 1, splitIndex);
+        final IndexRangeOperationDescriptor leftCopyDescriptor = /*
+         */ new IndexRangeOperationDescriptor(storage.getFirstItemIndex(), splitIndex - 1, splitIndex);
 
-        final ItemsCopyDescriptor[] copyDescriptors = /*
+        final IndexRangeOperationDescriptor[] copyDescriptors = /*
          */ splitIndex > storage.getFirstItemIndex() ?
-            new ItemsCopyDescriptor[]{ leftCopyDescriptor, rightCopyDescriptor } :
-            new ItemsCopyDescriptor[]{ rightCopyDescriptor };
+            new IndexRangeOperationDescriptor[]{ leftCopyDescriptor, rightCopyDescriptor } :
+            new IndexRangeOperationDescriptor[]{ rightCopyDescriptor };
 
-        storage.initialize(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex, copyDescriptors);
+        storage.ensureCapacityAndShiftItems(fullCapacity, storage.getFirstItemIndex(), newLastItemIndex,
+                                            copyDescriptors);
     }
 
     /**
