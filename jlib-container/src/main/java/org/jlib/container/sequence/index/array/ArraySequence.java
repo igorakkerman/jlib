@@ -26,13 +26,10 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.array.storage.ArrayStorage;
 import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
-import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
 
 /**
  * {@link IndexSequence} baked by an array.
@@ -43,17 +40,7 @@ import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorage
  * @author Igor Akkerman
  */
 public class ArraySequence<Item>
-extends AbstractInitializeableIndexSequence<Item> {
-
-    /** {@link LinearIndexStorage} used to store the Items */
-    private LinearIndexStorage<Item> storage = new ArrayStorage<>();
-
-    /**
-     * {@link LinearIndexStorageCapacityStrategy} used to adjust the
-     * {@link LinearIndexStorage} capacity
-     */
-    private LinearIndexStorageCapacityStrategy capacityStrategy = /*
-     */ new MinimalLinearIndexStorageCapacityStrategy<>(storage);
+extends LinearIndexStorageSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ArraySequence} with the specified
@@ -75,10 +62,10 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0} and
-     * the specified number of Items.
+     * the specified number of {@link Item}s.
      *
      * @param itemsCount
-     *        integer specifying the initial number of Items
+     *        integer specifying the initial number of {@link Item}s
      *
      * @throws InvalidSequenceItemsCountException
      *         if {@code itemsCount < 1}
@@ -90,10 +77,10 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param items
-     *        comma separated sequence of Items to store
+     *        comma separated sequence of {@link Item}s to store
      */
     @SafeVarargs
     public ArraySequence(final Item... items) {
@@ -102,13 +89,13 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param firstIndex
      *        integer specifying the first index
      *
      * @param items
-     *        comma separated sequence of Items to store
+     *        comma separated sequence of {@link Item}s to store
      */
     @SafeVarargs
     public ArraySequence(final int firstIndex, final Item... items) {
@@ -117,10 +104,10 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param items
-     *        {@link Collection} of Items to store
+     *        {@link Collection} of {@link Item}s to store
      */
     public ArraySequence(final Collection<? extends Item> items) {
         super(items);
@@ -128,13 +115,13 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param firstIndex
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Collection} of Items to store
+     *        {@link Collection} of {@link Item}s to store
      */
     public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
         super(firstIndex, items);
@@ -142,10 +129,10 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link Container} of {@link Item}s to store
      */
     public ArraySequence(final Container<? extends Item> items) {
         super(items);
@@ -153,90 +140,19 @@ extends AbstractInitializeableIndexSequence<Item> {
 
     /**
      * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified Items.
+     * containing the specified {@link Item}s.
      *
      * @param firstIndex
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link Container} of {@link Item}s to store
      */
     public ArraySequence(final int firstIndex, final Container<? extends Item> items) {
         super(firstIndex, items);
     }
 
-    @Override
-    protected void initialize() {
-        storage.initialize(getItemsCount(), getFirstIndex(), getLastIndex());
-    }
-
-    @Override
-    protected Item getStoredItem(final int index) {
-        return storage.getItem(getStorageItemIndex(index));
-    }
-
-    @Override
-    protected void replaceStoredItem(final int index, final Item newItem) {
-        storage.replaceItem(getStorageItemIndex(index), newItem);
-    }
-
-    /**
-     * Returns the {@link LinearIndexStorage} index in the specified index in
-     * this {@link ArraySequence}.
-     *
-     * @param index
-     *        integer specifying the index of the Item in the
-     *        {@link ArraySequence}
-     *
-     * @return integer specifying the corresponding index in the delegate
-     *         {@link LinearIndexStorage}
-     */
-    protected int getStorageItemIndex(final int index) {
-        return index - getFirstIndex() + storage.getFirstItemIndex();
-    }
-
-    /**
-     * Returns the {@link LinearIndexStorageCapacityStrategy} used by this
-     * {@link ArraySequence}.
-     *
-     * @return used {@link LinearIndexStorageCapacityStrategy}
-     */
-    protected LinearIndexStorageCapacityStrategy getCapacityStrategy() {
-        return capacityStrategy;
-    }
-
-    /**
-     * Registers the {@link LinearIndexStorageCapacityStrategy} used by this
-     * {@link ArraySequence}.
-     *
-     * @param capacityStrategy
-     *        used {@link LinearIndexStorageCapacityStrategy}
-     */
-    protected void setCapacityStrategy(final LinearIndexStorageCapacityStrategy capacityStrategy) {
-        this.capacityStrategy = capacityStrategy;
-    }
-
-    /**
-     * Returns the {@link LinearIndexStorage} used by this {@link ArraySequence}
-     * .
-     *
-     * @return used {@link LinearIndexStorage}
-     */
-    protected LinearIndexStorage<Item> getStorage() {
-        return storage;
-    }
-
-    @Override
-    public ArraySequence<Item> clone() {
-        final ArraySequence<Item> clonedSequence = (ArraySequence<Item>) super.clone();
-
-        clonedSequence.storage = storage.clone();
-
-        return clonedSequence;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode() << 1 + storage.hashCode();
+    protected LinearIndexStorage<Item> createStorage() {
+        return new ArrayStorage<>();
     }
 }
