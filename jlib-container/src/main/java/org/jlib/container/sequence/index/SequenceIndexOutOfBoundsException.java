@@ -53,7 +53,7 @@ extends InvalidSequenceArgumentException {
      *        access
      */
     public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex, final String message) {
-        super(sequence, "{0}, {1}: {2}", invalidIndex, message);
+        super(sequence, "[{1}]: {2} {0}", invalidIndex, message);
 
         this.invalidIndex = invalidIndex;
     }
