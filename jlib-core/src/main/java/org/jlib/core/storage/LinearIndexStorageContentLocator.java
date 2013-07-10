@@ -19,26 +19,19 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.core.storage;
 
 import static org.jlib.core.math.MathUtility.count;
 
-import org.jlib.core.storage.IndexRangeOperationDescriptor;
-import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.LinearIndexStorageException;
-import org.jlib.core.system.AbstractCloneable;
-
 /**
- * Skeletal implementation of a {@link LinearIndexStorage}.
+ * Manager of the content of a {@link LinearIndexStorage}.
  *
  * @param <Item>
- *        type of the {@link Item}s stored in the {@link LinearIndexStorageAccessor}
+ *        type of the items stored in the {@link LinearIndexStorage}
  *
  * @author Igor Akkerman
  */
-public abstract class LinearIndexStorageAccessor<Item>
-extends AbstractCloneable
-implements LinearIndexStorage<Item> {
+public class LinearIndexStorageContentLocator<Item> {
 
     /** array index of the first {@link Item} */
     private Integer firstItemIndex;
@@ -47,15 +40,10 @@ implements LinearIndexStorage<Item> {
     private Integer lastItemIndex;
 
     /**
-     * Creates a new {@link LinearIndexStorageAccessor}.
+     * Creates a new {@link LinearIndexStorageContentLocator}.
      */
-    protected LinearIndexStorageAccessor() {
-        super();
-    }
-
-    @Override
-    public final void initialize(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                 final IndexRangeOperationDescriptor... copyDescriptors)
+    public LinearIndexStorageContentLocator(final int capacity, final int firstItemIndex, final int lastItemIndex,
+                                               final IndexRangeOperationDescriptor... copyDescriptors)
     throws LinearIndexStorageException {
         ensureInitializationArgumentsValid(capacity, firstItemIndex, lastItemIndex);
 
@@ -76,52 +64,6 @@ implements LinearIndexStorage<Item> {
      */
     protected abstract void initializeStorage(final int capacity,
                                               final IndexRangeOperationDescriptor... copyDescriptors);
-
-    @Override
-    public int getFirstItemIndex() {
-        return firstItemIndex;
-    }
-
-    @Override
-    public void setFirstItemIndex(final int firstItemIndex) {
-        this.firstItemIndex = firstItemIndex;
-    }
-
-    @Override
-    public void incrementFirstItemIndex(final int increment) {
-        firstItemIndex += increment;
-    }
-
-    @Override
-    public int getLastItemIndex() {
-        return lastItemIndex;
-    }
-
-    @Override
-    public void setLastItemIndex(final int lastItemIndex) {
-        this.lastItemIndex = lastItemIndex;
-    }
-
-    @Override
-    public void incrementLastItemIndex(final int increment) {
-        lastItemIndex += increment;
-    }
-
-    @Override
-    public int getItemsCount() {
-        return count(firstItemIndex, lastItemIndex);
-    }
-
-    @Override
-    public int getTailCapacity() {
-        return getCapacity() - lastItemIndex - 1;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public LinearIndexStorageAccessor<Item> clone() {
-        return (LinearIndexStorageAccessor<Item>) super.clone();
-    }
 
     /**
      * Ensures that the specified capacity and first and last {@link Item} indices are valid values.
@@ -157,5 +99,81 @@ implements LinearIndexStorage<Item> {
                                                   "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
                                                   capacity, firstItemIndex, lastItemIndex,
                                                   count(firstItemIndex, lastItemIndex));
+    }
+
+    /**
+     * Returns the index of the first {@link Item}.
+     *
+     * @return integer specifying the index of the first {@link Item}
+     */
+    public int getFirstItemIndex() {
+        return firstItemIndex;
+    }
+
+    /**
+     * Registers the index of the first {@link Item}.
+     *
+     * @param firstItemIndex
+     *        integer specifying the index of the first {@link Item}
+     */
+    public void setFirstItemIndex(int firstItemIndex) {
+        this.firstItemIndex = firstItemIndex;
+    }
+
+    /**
+     * Returns the index of the last {@link Item}.
+     *
+     * @return integer specifying the index of the last {@link Item}
+     */
+    public int getLastItemIndex() {
+        return lastItemIndex;
+    }
+
+    /**
+     * Registers the index of the last {@link Item}.
+     *
+     * @param lastItemIndex
+     *        integer specifying the index of the last {@link Item}
+     */
+    public void setLastItemIndex(int lastItemIndex) {
+        this.lastItemIndex = lastItemIndex;
+    }
+
+    /**
+     * Increments the index of the first {@link Item} by the specified value.
+     *
+     * @param increment
+     *        positive or negative integer specifying the increment
+     */
+    public void incrementFirstItemIndex(int increment) {
+        firstItemIndex += increment;
+    }
+
+    /**
+     * Increments the index of the last {@link Item} by the specified value.
+     *
+     * @param increment
+     *        positive or negative integer specifying the increment
+     */
+    public void incrementLastItemIndex(int increment) {
+        lastItemIndex += increment;
+    }
+
+    /**
+     * Returns the number of stored {@link Item}s.
+     *
+     * @return integer spacifying the number of stored {@link Item}s
+     */
+    public int getItemsCount() {
+        return count(firstItemIndex, lastItemIndex);
+    }
+
+    /**
+     * Returns the tail capacity, that is, the number of storable {@link Item}s behind the last {@link Item}.
+     *
+     * @return integer specifying the tail capacity
+     */
+    public int getTailCapacity() {
+        return capacity - getLastItemIndex();
     }
 }
