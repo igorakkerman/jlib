@@ -24,10 +24,9 @@ package org.jlib.container.sequence.index;
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
 
 /**
- * {@link IndexSequence} view of the Items stored in a base
- * {@link IndexSequence} in the specified index range. The Items in this
- * {@link SubIndexSequence} will have the same index as they had in the base
- * {@link IndexSequence}.
+ * {@link IndexSequence} view of the {@link Item}s stored in a base {@link IndexSequence} in the specified index range.
+ * The {@link Item}s in this {@link SubIndexSequence} will have the same index as they had in the base
+ *{@link IndexSequence}.
  *
  * @param <Item>
  *        type of the items held in the {@link SubIndexSequence}
@@ -50,14 +49,13 @@ extends AbstractIndexSequence<Item> {
      *        base {@link IndexSequence}
      *
      * @param firstIndex
-     *        integer specifying the index of the first Item
+     *        integer specifying the index of the first {@link Item}
      *
      * @param lastIndex
-     *        integer specifying the index of the last Item
+     *        integer specifying the index of the last {@link Item}
      *
      * @throws SequenceIndexOutOfBoundsException
-     *         if
-     *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
+     *         if {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
