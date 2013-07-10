@@ -22,7 +22,7 @@
 package org.jlib.core.storage;
 
 /**
- * Storage of <em>n</em> items indexed from <em>0</em> to <em>n-1</em>.
+ * Storage of <em>n</em> {@link Item}s indexed from <em>0</em> to <em>n-1</em>.
  *
  * @param <Item>
  *        type of the {@link Item}s stored in the {@link LinearIndexStorage}
