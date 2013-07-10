@@ -52,7 +52,7 @@ extends Cloneable {
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public Item getItem(int index)
-    throws IndexOutOfBoundsException;
+    throws StorageIndexOutOfBoundsException;
 
     /**
      * Replaces the {@link Item} stored at the specified index by the specified {@link Item}.
@@ -63,11 +63,11 @@ extends Cloneable {
      * @param newItem
      *        new {@link Item} replacing the former
      *
-     * @throws IndexOutOfBoundsException
-     *         if the index is out of the valid bounds of this {@link LinearIndexStorage}
+     * @throws StorageIndexOutOfBoundsException
+     *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public void replaceItem(int index, Item newItem)
-    throws IndexOutOfBoundsException;
+    throws StorageIndexOutOfBoundsException;
 
     /**
      * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
@@ -99,9 +99,10 @@ extends Cloneable {
      * @param copyDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws IndexOutOfBoundsException
-     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid bounds
+     * @throws StorageIndexOutOfBoundsException
+     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid
+     *         bounds
      */
     public void shiftItems(IndexRangeOperationDescriptor... copyDescriptors)
-    throws IndexOutOfBoundsException;
+    throws StorageIndexOutOfBoundsException;
 }

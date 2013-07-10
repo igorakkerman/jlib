@@ -44,10 +44,12 @@ implements LinearIndexStorage<Item> {
     private Item[] delegateArray;
 
     /**
-     * Creates a new {@link ArrayStorage} with the specified capacity.
+     * Creates a new {@link ArrayStorage} with the specified initial capacity.
      */
-    public ArrayStorage() {
+    public ArrayStorage(final int initialCapacity) {
         super();
+
+        ensureCapacityAndShiftItems(initialCapacity);
     }
 
     @Override
