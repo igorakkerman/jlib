@@ -25,9 +25,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.core.system.AbstractCloneable;
 
-import static java.lang.Math.min;
 import static java.lang.System.arraycopy;
-import static java.util.Arrays.fill;
 
 /**
  * {@link LinearIndexStorage} based on an array.
@@ -84,15 +82,8 @@ implements LinearIndexStorage<Item> {
     @Override
     public void shiftItems(final IndexRangeOperationDescriptor... copyDescriptors)
     throws IndexOutOfBoundsException {
-        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors) {
+        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
             copyItems(delegateArray, delegateArray, copyDescriptor);
-
-            // replace the shifted Items with null
-            // TODO 2013-07-06: is this really necessary?
-            fill(delegateArray, copyDescriptor.getSourceBeginIndex(),
-                 min(copyDescriptor.getSourceEndIndex(), copyDescriptor.getTargetIndex()) + 1, /* @ValidNullArgument */
-                 null);
-        }
     }
 
     /**

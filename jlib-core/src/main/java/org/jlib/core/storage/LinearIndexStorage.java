@@ -96,9 +96,6 @@ extends Cloneable {
      * their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
      * former indices are overwritten by each specified {@link IndexRangeOperationDescriptor} operation.
      *
-     * TODO: 2013-07-10 muss das sein?
-     * Shifted {@link Item}s are overwritten by {@code null}.
-     *
      * @param copyDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
