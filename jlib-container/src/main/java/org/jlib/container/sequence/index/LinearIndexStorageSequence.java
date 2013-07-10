@@ -39,16 +39,28 @@ extends AbstractInitializeableIndexSequence<Item> {
     /** {@link LinearIndexStorageCapacityStrategy} used to adjust the {@link LinearIndexStorage} capacity */
     private LinearIndexStorageCapacityStrategy capacityStrategy;
 
-    public LinearIndexStorageSequence(final int firstIndex, final Item... items) {super(firstIndex, items);}
+    @SafeVarargs
+    public LinearIndexStorageSequence(final int firstIndex, final Item... items) {
+        super(firstIndex, items);
+    }
 
-    public LinearIndexStorageSequence(final Item... items) {super(items);}
+    @SafeVarargs
+    public LinearIndexStorageSequence(final Item... items) {
+        super(items);
+    }
 
     public LinearIndexStorageSequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {super(firstIndex, lastIndex);}
+    throws InvalidSequenceIndexRangeException {
+        super(firstIndex, lastIndex);
+    }
 
-    public LinearIndexStorageSequence(final Container<? extends Item> items) {super(items);}
+    public LinearIndexStorageSequence(final Container<? extends Item> items) {
+        super(items);
+    }
 
-    public LinearIndexStorageSequence(final Collection<? extends Item> items) {super(items);}
+    public LinearIndexStorageSequence(final Collection<? extends Item> items) {
+        super(items);
+    }
 
     public LinearIndexStorageSequence(final int firstIndex, final Container<? extends Item> items) {
         super(firstIndex, items);
@@ -59,7 +71,17 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     public LinearIndexStorageSequence(final int itemsCount)
-    throws InvalidSequenceItemsCountException {super(itemsCount);}
+    throws InvalidSequenceItemsCountException {
+        super(itemsCount);
+    }
+
+    @Override
+    protected void initialize() {
+        storage = createStorage();
+        initializeCapacityStrategy(storage);
+
+        storage.initialize(getItemsCount(), getFirstIndex(), getLastIndex());
+    }
 
     protected void initializeCapacityStrategy(final LinearIndexStorage<Item> storage) {
         capacityStrategy = new MinimalLinearIndexStorageCapacityStrategy<>(storage);
@@ -109,14 +131,6 @@ extends AbstractInitializeableIndexSequence<Item> {
      */
     protected void setCapacityStrategy(final LinearIndexStorageCapacityStrategy capacityStrategy) {
         this.capacityStrategy = capacityStrategy;
-    }
-
-    @Override
-    protected void initialize() {
-        storage = createStorage();
-        initializeCapacityStrategy(storage);
-
-        storage.initialize(getItemsCount(), getFirstIndex(), getLastIndex());
     }
 
     protected abstract LinearIndexStorage<Item> createStorage();
