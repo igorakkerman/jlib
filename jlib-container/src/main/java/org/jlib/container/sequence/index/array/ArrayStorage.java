@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence.index.array;
 
-import java.util.Arrays;
-
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.core.storage.AbstractLinearIndexStorage;
@@ -129,21 +127,5 @@ extends AbstractLinearIndexStorage<Item> {
         clonedArrayStorage.delegateArray = delegateArray.clone();
 
         return clonedArrayStorage;
-    }
-
-    @Override
-    public boolean equals(final Object otherObject) {
-        if (! (otherObject instanceof ArrayStorage))
-            return false;
-
-        @SuppressWarnings("unchecked")
-        final ArrayStorage<Item> otherStorage = (ArrayStorage<Item>) otherObject;
-
-        return hasMatchingProperties(otherStorage) && Arrays.equals(delegateArray, otherStorage.delegateArray);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode() << 1 + Arrays.hashCode(delegateArray);
     }
 }

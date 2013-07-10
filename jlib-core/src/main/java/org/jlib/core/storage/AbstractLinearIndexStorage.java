@@ -129,23 +129,6 @@ implements LinearIndexStorage<Item> {
     }
 
     /**
-     * Verifies whether additional properties of this
-     * {@link AbstractLinearIndexStorage} match those of the specified
-     * {@link AbstractLinearIndexStorage} providing a prerequisite for equality.
-     *
-     * @param otherStorage
-     *        {@link AbstractLinearIndexStorage} compared to this
-     *        {@link AbstractLinearIndexStorage}
-     *
-     * @return {@code true} if the additional properties are prerequisites for
-     *         equality; {@code false} otherwise
-     */
-    protected boolean hasMatchingProperties(final AbstractLinearIndexStorage<Item> otherStorage) {
-        return firstItemIndex.equals(otherStorage.firstItemIndex) && //
-               lastItemIndex.equals(otherStorage.lastItemIndex);
-    }
-
-    /**
      * Ensures that the specified capacity and first and last {@link Item} indices are valid values.
      *
      * @param capacity
