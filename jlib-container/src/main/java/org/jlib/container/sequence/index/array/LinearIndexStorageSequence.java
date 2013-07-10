@@ -27,9 +27,9 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.index.AbstractInitializeableIndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorageCapacityStrategy;
-import org.jlib.container.sequence.index.array.storage.MinimalLinearIndexStorageCapacityStrategy;
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageCapacityStrategy;
+import org.jlib.core.storage.MinimalLinearIndexStorageCapacityStrategy;
 
 public abstract class LinearIndexStorageSequence<Item>
 extends AbstractInitializeableIndexSequence<Item> {

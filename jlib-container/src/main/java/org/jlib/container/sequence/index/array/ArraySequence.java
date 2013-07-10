@@ -28,8 +28,7 @@ import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.array.storage.ArrayStorage;
-import org.jlib.container.sequence.index.array.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorage;
 
 /**
  * {@link IndexSequence} baked by an array.

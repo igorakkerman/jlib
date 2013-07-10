@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.array.storage;
+package org.jlib.core.storage;
 
 /**
  * Descriptor of an Item copy operation specifying a source Item index range
