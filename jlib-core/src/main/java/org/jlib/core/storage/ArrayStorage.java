@@ -82,8 +82,8 @@ implements LinearIndexStorage<Item> {
     }
 
     /**
-     * Performs the operation, specified by the specified {@link IndexRangeOperationDescriptor}, from the specified
-     * source to the specified target array of {@link Item}s.
+     * Copies ranges of {@link Item}s defined by the specified {@link IndexRangeOperationDescriptor} from the specified
+     * source to the specified target array.
      *
      * @param sourceArray
      *        source array of {@link Item}s
