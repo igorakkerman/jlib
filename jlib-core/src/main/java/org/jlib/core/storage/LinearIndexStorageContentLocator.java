@@ -21,7 +21,11 @@
 
 package org.jlib.core.storage;
 
+import java.io.Serializable;
+
 import static org.jlib.core.math.MathUtility.count;
+
+import org.jlib.core.system.AbstractCloneable;
 
 /**
  * Manager of the content of a {@link LinearIndexStorage}.
@@ -31,7 +35,15 @@ import static org.jlib.core.math.MathUtility.count;
  *
  * @author Igor Akkerman
  */
-public class LinearIndexStorageContentLocator<Item> {
+public class LinearIndexStorageContentLocator<Item>
+extends AbstractCloneable
+implements Serializable {
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = 7766547798864277487L;
+
+    /** referenced {@link LinearIndexStorage} */
+    private LinearIndexStorage<Item> storage;
 
     /** array index of the first {@link Item} */
     private Integer firstItemIndex;
@@ -41,9 +53,21 @@ public class LinearIndexStorageContentLocator<Item> {
 
     /**
      * Creates a new {@link LinearIndexStorageContentLocator}.
+     *
+     * @param capacity
+     *        integer specifying the capacity
+     *
+     * @param firstItemIndex
+     *        integer specifying the index of the first {@link Item}
+     *
+     * @param lastItemIndex
+     *        integer specifying the index of the last {@link Item}
+     *
+     * @throws LinearIndexStorageException
+     *         if {@code firstItemIndex < 0}
      */
     public LinearIndexStorageContentLocator(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                               final IndexRangeOperationDescriptor... copyDescriptors)
+                                            final IndexRangeOperationDescriptor... copyDescriptors)
     throws LinearIndexStorageException {
         ensureInitializationArgumentsValid(capacity, firstItemIndex, lastItemIndex);
 
@@ -62,27 +86,17 @@ public class LinearIndexStorageContentLocator<Item> {
      * @param copyDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor} descriptors
      */
-    protected abstract void initializeStorage(final int capacity,
-                                              final IndexRangeOperationDescriptor... copyDescriptors);
+    protected void initializeStorage(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
+        storage.ensureCapacityAndShiftItems(capacity, copyDescriptors);
+    }
 
-    /**
-     * Ensures that the specified capacity and first and last {@link Item} indices are valid values.
-     *
-     * @param capacity
-     *        integer specifying the capacity
-     *
-     * @param firstItemIndex
-     *        integer specifying the index of the first {@link Item}
-     *
-     * @param lastItemIndex
-     *        integer specifying the index of the last {@link Item}
-     *
-     * @throws LinearIndexStorageException
-     *         if the specified values are not valid as defined by
-     *         {@link #initialize(int, int, int, IndexRangeOperationDescriptor...)}
-     */
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
-                                                    final int lastItemIndex) {
+                                                    final int lastItemIndex)
+    throws InvalidStorageCapacityException, LinearIndexStorageException {
+
+        if (capacity < 0)
+            throw new InvalidStorageCapacityException(capacity);
+
         if (firstItemIndex < 0)
             throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
 

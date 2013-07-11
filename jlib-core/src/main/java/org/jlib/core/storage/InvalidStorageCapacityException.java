@@ -24,27 +24,32 @@ package org.jlib.core.storage;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link InvalidArgumentException} thrown when an invalid capacity
- * factor is specified.
+ * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
  *
  * @author Igor Akkerman
  */
-class InvalidCapacityFactorException
+class InvalidStorageCapacityException
 extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 655924593848562967L;
 
+    /** invalid capacity value */
+    private final int invaldCapacity;
+
     /**
-     * Creates a new {@link InvalidCapacityFactorException}.
+     * Creates a new {@link InvalidStorageCapacityException}.
      *
-     * @param invalidFactorName
-     *        String specifying the name of the invalid factor
-     *
-     * @param invaldFactorValue
+     * @param invalldCapacity
      *        integer specifying the invalid factor value
      */
-    public InvalidCapacityFactorException(final String invalidFactorName, final int invaldFactorValue) {
-        super("{0}: {1}", invalidFactorName, invaldFactorValue);
+    public InvalidStorageCapacityException(final int invalldCapacity) {
+        super("{0}", invalldCapacity);
+
+        this.invaldCapacity = invalldCapacity;
+    }
+
+    public int getInvaldCapacity() {
+        return invaldCapacity;
     }
 }

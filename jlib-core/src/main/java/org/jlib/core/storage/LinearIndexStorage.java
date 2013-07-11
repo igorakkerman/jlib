@@ -70,11 +70,9 @@ extends Cloneable {
     throws StorageIndexOutOfBoundsException;
 
     /**
-     * Initializes or re-initializes this {@link LinearIndexStorage} performing the copy operations on its {@link Item}s
-     * as specified by a number of {@link IndexRangeOperationDescriptor}. Their source indices reference the
-     * {@link Item} indices <em>before</em>, their target indices the {@link Item} indices <em>after</em> the operation.
-     * The {@link Item}s stored at the former indices are not overwritten and can be reused in each specified
-     * {@link IndexRangeOperationDescriptor} operation.
+     * Ensurs that this {@link LinearIndexStorage} has the specified capacity and shifts its {@link Item}s as defined
+     * by the specified {@link IndexRangeOperationDescriptor}s using
+     * {@link #shiftItems(IndexRangeOperationDescriptor...)}.
      *
      * @param capacity
      *        integer specifying the capacity
@@ -82,13 +80,15 @@ extends Cloneable {
      * @param copyDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws LinearIndexStorageException
-     *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex ||
-     *                   lastItemIndex > capacity - 1 ||
-     *                   count(firstItemIndex, lastItemIndex) > capacity}
+     * @throws InvalidStorageCapacityException
+     *         if {@code capacity < 0}
+     *
+     * @throws StorageIndexOutOfBoundsException
+     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid
+     *         bounds, as specified by {@link #shiftItems(IndexRangeOperationDescriptor...)}
      */
-    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... copyDescriptors);
+    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... copyDescriptors)
+    throws InvalidStorageCapacityException, InvalidStorageCapacityException;
 
     /**
      * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined defined by the specified
@@ -100,8 +100,10 @@ extends Cloneable {
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
      * @throws StorageIndexOutOfBoundsException
-     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid
-     *         bounds
+     *         if {@code firstItemIndex < 0 ||
+     *                   lastItemIndex < firstItemIndex ||
+     *                   lastItemIndex > capacity - 1 ||
+     *                   count(firstItemIndex, lastItemIndex) > capacity}
      */
     public void shiftItems(IndexRangeOperationDescriptor... copyDescriptors)
     throws StorageIndexOutOfBoundsException;

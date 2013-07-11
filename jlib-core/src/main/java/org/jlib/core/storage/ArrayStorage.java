@@ -56,6 +56,8 @@ implements LinearIndexStorage<Item> {
     public void ensureCapacityAndShiftItems(final int capacity,
                                             final IndexRangeOperationDescriptor... copyDescriptors) {
 
+        ensureCapacityValid(capacity);
+
         final Item[] newDelegateArray = createArray(capacity);
 
         for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
@@ -120,5 +122,11 @@ implements LinearIndexStorage<Item> {
         cloneStorage.delegateArray = copyOf(delegateArray, delegateArray.length);
 
         return cloneStorage;
+    }
+
+    private void ensureCapacityValid(final int capacity)
+    throws InvalidStorageCapacityException {
+        if (capacity < 0)
+            throw new InvalidStorageCapacityException(capacity);
     }
 }
