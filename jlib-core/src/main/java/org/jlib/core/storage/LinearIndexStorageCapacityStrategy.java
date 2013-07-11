@@ -29,8 +29,8 @@ package org.jlib.core.storage;
 public interface LinearIndexStorageCapacityStrategy {
 
     /**
-     * Initializes the referenced {@link LinearIndexStorage} with a sufficient
-     * capacity to fit Items in the specified range.
+     * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit Items in the specified
+     * range. Registers the Item indices.
      *
      * @param firstItemIndex
      *        integer specifying the first Item index
@@ -41,9 +41,8 @@ public interface LinearIndexStorageCapacityStrategy {
     public void initialize(int firstItemIndex, int lastItemIndex);
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items at the head of the {@link LinearIndexStorage}. The
-     * indices of the stored Items are incremented, if necessary.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items at the head of the
+     * {@link LinearIndexStorage}. The indices of the stored Items are incremented, if necessary.
      *
      * @param headCapacity
      *        integer specifying the head capacity
@@ -55,9 +54,8 @@ public interface LinearIndexStorageCapacityStrategy {
     throws LinearIndexStorageException;
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items betweeen the existing stored Items. The indices of the
-     * Items stored after the specified split index are incremented.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items betweeen the existing
+     * stored Items. The indices of the Items stored after the specified split index are incremented.
      *
      * @param splitIndex
      *        integer specifying the split index
@@ -74,9 +72,8 @@ public interface LinearIndexStorageCapacityStrategy {
     throws LinearIndexStorageException;
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified
-     * number of Items behind the existing stored Items. The indices of all
-     * stored Items are left unchanged.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items behind the existing
+     * stored Items. The indices of all stored Items are left unchanged.
      *
      * @param tailCapacity
      *        integer specifying the tail capacity
