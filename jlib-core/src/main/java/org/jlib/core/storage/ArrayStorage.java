@@ -45,6 +45,9 @@ implements LinearIndexStorage<Item> {
 
     /**
      * Creates a new {@link ArrayStorage} with the specified initial capacity.
+     *
+     * @param initialCapacity
+     *        integer specifying the initial capacity
      */
     public ArrayStorage(final int initialCapacity) {
         super();
