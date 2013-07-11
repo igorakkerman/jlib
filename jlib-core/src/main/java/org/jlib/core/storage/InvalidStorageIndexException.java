@@ -26,17 +26,9 @@ extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
-    private final int invalidIndex;
+    public InvalidStorageIndexException(final LinearIndexStorage<?> linearIndexStorage, final String errorMessage,
+                                        final Object... errorMessageArguments) {
 
-    public InvalidStorageIndexException(final LinearIndexStorage<?> linearIndexStorage, final int invalidIndex,
-                                        final String errorMessage) {
-
-        super(linearIndexStorage, "[{1}]: {2}", invalidIndex, errorMessage);
-
-        this.invalidIndex = invalidIndex;
-    }
-
-    public int getInvalidIndex() {
-        return invalidIndex;
+        super(linearIndexStorage, errorMessage, errorMessageArguments);
     }
 }

@@ -51,9 +51,7 @@ implements Serializable {
     /** array index of the last {@link Item} */
     private Integer lastItemIndex;
 
-    /**
-     * Creates a new {@link LinearIndexStorageContentLocator}.
-     *
+/*
      * @param capacity
      *        integer specifying the capacity
      *
@@ -63,12 +61,18 @@ implements Serializable {
      * @param lastItemIndex
      *        integer specifying the index of the last {@link Item}
      *
-     * @throws LinearIndexStorageException
-     *         if {@code firstItemIndex < 0}
+
+ */
+
+    /**
+     * Creates a new {@link LinearIndexStorageContentLocator} for the specified {@link LinearIndexStorage}.
+     *
+     * @param linearIndexStorage
+     *        {@link LinearIndexStorage} on which this {@link LinearIndexStorageContentLocator} operates.
      */
     public LinearIndexStorageContentLocator(final LinearIndexStorage linearIndexStorage)
     throws LinearIndexStorageException {
-        initializeStorage(capacity, copyDescriptors);
+        this.linearIndexStorage = linearIndexStorage;
     }
 
     /**
@@ -95,16 +99,16 @@ implements Serializable {
             throw new InvalidStorageIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
 
         if (firstItemIndex > lastItemIndex)
-            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
-                                                  lastItemIndex);
+            throw new InvalidStorageIndexException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
+                                                   lastItemIndex);
 
         if (lastItemIndex > capacity - 1)
-            throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
-                                                  lastItemIndex);
+            throw new InvalidStorageIndexException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
+                                                   lastItemIndex);
 
         if (count(firstItemIndex, lastItemIndex) > capacity)
-            throw new LinearIndexStorageException(this,
-                                                  "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
+            throw new InvalidStorageIndexException(this,
+                                                   "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
                                                   capacity, firstItemIndex, lastItemIndex,
                                                   count(firstItemIndex, lastItemIndex));
     }
@@ -125,6 +129,9 @@ implements Serializable {
      *        integer specifying the index of the first {@link Item}
      */
     public void setFirstItemIndex(int firstItemIndex) {
+        if (firstItemIndex < 0)
+            throw new InvalidStorageIndexException(linearIndexStorage, firstItemIndex, "firstItemIndex = {2} < 0");
+
         this.firstItemIndex = firstItemIndex;
     }
 
@@ -182,6 +189,6 @@ implements Serializable {
      * @return integer specifying the tail capacity
      */
     public int getTailCapacity() {
-        return capacity - getLastItemIndex();
+        return linearIndexStorage.getCapacity() - getLastItemIndex();
     }
 }
