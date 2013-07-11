@@ -26,7 +26,7 @@ package org.jlib.core.storage;
  *
  * @author Igor Akkerman
  */
-public interface LinearIndexStorageCapacityStrategy {
+public interface CapacityStrategy {
 
     /**
      * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit Items in the specified

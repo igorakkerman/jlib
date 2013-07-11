@@ -52,7 +52,7 @@ extends Cloneable {
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public Item getItem(int index)
-    throws InvalidStorageIndexException;
+    throws InvalidIndexException;
 
     /**
      * Replaces the {@link Item} stored at the specified index by the specified {@link Item}.
@@ -63,11 +63,11 @@ extends Cloneable {
      * @param newItem
      *        new {@link Item} replacing the former
      *
-     * @throws InvalidStorageIndexException
+     * @throws InvalidIndexException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public void replaceItem(int index, Item newItem)
-    throws InvalidStorageIndexException;
+    throws InvalidIndexException;
 
     /**
      * <p>
@@ -90,14 +90,14 @@ extends Cloneable {
      * @param shiftDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws InvalidStorageCapacityException
+     * @throws NegativeCapacityException
      *         if {@code capacity < 0}
      *
-     * @throws InvalidStorageIndexException
+     * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
     public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
-    throws InvalidStorageCapacityException, InvalidStorageIndexException;
+    throws NegativeCapacityException, InvalidIndexException;
 
     /**
      * Shifts the {@link Item}s <em>ithin</em> this {@link LinearIndexStorage}, as defined by the specified
@@ -106,9 +106,9 @@ extends Cloneable {
      * @param shiftDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws InvalidStorageIndexException
+     * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
     public void shiftItems(IndexRangeOperationDescriptor... shiftDescriptors)
-    throws InvalidStorageIndexException;
+    throws InvalidIndexException;
 }

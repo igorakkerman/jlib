@@ -28,28 +28,23 @@ import org.jlib.core.language.InvalidArgumentException;
  *
  * @author Igor Akkerman
  */
-class InvalidStorageCapacityException
-extends InvalidArgumentException {
+class NegativePartialCapacityException
+extends LinearIndexStorageException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 655924593848562967L;
-
-    /** invalid capacity value */
-    private final int invaldCapacity;
+    private static final long serialVersionUID = - 701812048814999842L;
 
     /**
-     * Creates a new {@link InvalidStorageCapacityException}.
+     * Creates a new {@link NegativePartialCapacityException}.
      *
-     * @param invalldCapacity
-     *        integer specifying the invalid factor value
+     * @param storage
+     *        referenced {@link LinearIndexStorage}
+     *
+     * @param invalidCapacity
+     *        integer specifying the invalid capacity
      */
-    public InvalidStorageCapacityException(final int invalldCapacity) {
-        super("{0}", invalldCapacity);
-
-        this.invaldCapacity = invalldCapacity;
-    }
-
-    public int getInvaldCapacity() {
-        return invaldCapacity;
+    public NegativePartialCapacityException(final LinearIndexStorage storage, final String invalidCapacityName,
+                                            final int invalidCapacity) {
+        super(storage, "{1} = {2}", invalidCapacityName, invalidCapacity);
     }
 }

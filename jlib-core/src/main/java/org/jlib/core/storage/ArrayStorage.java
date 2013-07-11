@@ -96,18 +96,17 @@ implements LinearIndexStorage<Item> {
      */
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
                              final IndexRangeOperationDescriptor copyDescriptor)
-    throws InvalidStorageIndexException {
+    throws InvalidIndexException {
         final int sourceBeginIndex = copyDescriptor.getSourceBeginIndex();
         final int sourceEndIndex = copyDescriptor.getSourceEndIndex();
         final int targetIndex = copyDescriptor.getTargetIndex();
         final int capacity = getCapacity();
 
         if (sourceBeginIndex < 0)
-            throw new InvalidStorageIndexException(this, "sourceBeginIndex == {1} < 0", sourceBeginIndex);
+            throw new InvalidIndexException(this, "sourceBeginIndex == {1} < 0", sourceBeginIndex);
 
         if (sourceEndIndex < sourceBeginIndex)
-            throw new InvalidStorageIndexException(this, "sourceEndIndex == {1} < {2} == sourceBeginIndex",
-                                                   sourceEndIndex, sourceBeginIndex);
+            throw new InvalidIndexException(this, "sourceEndIndex == {1} < {2} == sourceBeginIndex", sourceEndIndex, sourceBeginIndex);
 
         arraycopy(sourceArray, sourceBeginIndex, targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
@@ -144,12 +143,12 @@ implements LinearIndexStorage<Item> {
      * @param capacity
      *        integer specifying a capacity
      *
-     * @throws InvalidStorageCapacityException
+     * @throws NegativeCapacityException
      *         if {@code capacity < 0}
      */
     private void ensureCapacityValid(final int capacity)
-    throws InvalidStorageCapacityException {
+    throws NegativeCapacityException {
         if (capacity < 0)
-            throw new InvalidStorageCapacityException(capacity);
+            throw new NegativeCapacityException(capacity);
     }
 }

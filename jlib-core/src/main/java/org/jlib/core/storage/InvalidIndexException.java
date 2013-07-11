@@ -21,13 +21,13 @@
 
 package org.jlib.core.storage;
 
-public class InvalidStorageIndexException
+public class InvalidIndexException
 extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
-    public InvalidStorageIndexException(final LinearIndexStorage<?> linearIndexStorage, final String errorMessage,
-                                        final Object... errorMessageArguments) {
+    public InvalidIndexException(final LinearIndexStorage<?> linearIndexStorage, final String errorMessage,
+                                 final Object... errorMessageArguments) {
 
         super(linearIndexStorage, errorMessage, errorMessageArguments);
     }

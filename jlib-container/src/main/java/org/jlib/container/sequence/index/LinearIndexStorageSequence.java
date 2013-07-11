@@ -26,9 +26,9 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.index.array.ArraySequence;
+import org.jlib.core.storage.CapacityStrategy;
+import org.jlib.core.storage.JustAsMuchAsNeededCapacityStrategy;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.LinearIndexStorageCapacityStrategy;
-import org.jlib.core.storage.MinimalLinearIndexStorageCapacityStrategy;
 
 public abstract class LinearIndexStorageSequence<Item>
 extends AbstractInitializeableIndexSequence<Item> {
@@ -36,8 +36,8 @@ extends AbstractInitializeableIndexSequence<Item> {
     /** {@link LinearIndexStorage} used to store the {@link Item}s */
     private LinearIndexStorage<Item> storage;
 
-    /** {@link LinearIndexStorageCapacityStrategy} used to adjust the {@link LinearIndexStorage} capacity */
-    private LinearIndexStorageCapacityStrategy capacityStrategy;
+    /** {@link CapacityStrategy} used to adjust the {@link LinearIndexStorage} capacity */
+    private CapacityStrategy capacityStrategy;
 
     @SafeVarargs
     public LinearIndexStorageSequence(final int firstIndex, final Item... items) {
@@ -84,7 +84,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     protected void initializeCapacityStrategy(final LinearIndexStorage<Item> storage) {
-        capacityStrategy = new MinimalLinearIndexStorageCapacityStrategy<>(storage);
+        capacityStrategy = new JustAsMuchAsNeededCapacityStrategy<>(storage);
     }
 
     @Override
@@ -113,23 +113,23 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     /**
-     * Returns the {@link LinearIndexStorageCapacityStrategy} used by this
+     * Returns the {@link CapacityStrategy} used by this
      * {@link ArraySequence}.
      *
-     * @return used {@link LinearIndexStorageCapacityStrategy}
+     * @return used {@link CapacityStrategy}
      */
-    protected LinearIndexStorageCapacityStrategy getCapacityStrategy() {
+    protected CapacityStrategy getCapacityStrategy() {
         return capacityStrategy;
     }
 
     /**
-     * Registers the {@link LinearIndexStorageCapacityStrategy} used by this
+     * Registers the {@link CapacityStrategy} used by this
      * {@link ArraySequence}.
      *
      * @param capacityStrategy
-     *        used {@link LinearIndexStorageCapacityStrategy}
+     *        used {@link CapacityStrategy}
      */
-    protected void setCapacityStrategy(final LinearIndexStorageCapacityStrategy capacityStrategy) {
+    protected void setCapacityStrategy(final CapacityStrategy capacityStrategy) {
         this.capacityStrategy = capacityStrategy;
     }
 

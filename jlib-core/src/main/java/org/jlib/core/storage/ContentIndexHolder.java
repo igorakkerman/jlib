@@ -35,7 +35,7 @@ import org.jlib.core.system.AbstractCloneable;
  *
  * @author Igor Akkerman
  */
-public class LinearIndexStorageContentLocator<Item>
+public class ContentIndexHolder<Item>
 extends AbstractCloneable
 implements Serializable {
 
@@ -43,7 +43,7 @@ implements Serializable {
     private static final long serialVersionUID = 7766547798864277487L;
 
     /** referenced {@link LinearIndexStorage} */
-    private final LinearIndexStorage<Item> linearIndexStorage;
+    private final LinearIndexStorage<Item> storage;
 
     /** array index of the first {@link Item} */
     private Integer firstItemIndex;
@@ -65,50 +65,37 @@ implements Serializable {
  */
 
     /**
-     * Creates a new {@link LinearIndexStorageContentLocator} for the specified {@link LinearIndexStorage}.
+     * Creates a new {@link ContentIndexHolder} for the specified {@link LinearIndexStorage}.
      *
-     * @param linearIndexStorage
-     *        {@link LinearIndexStorage} on which this {@link LinearIndexStorageContentLocator} operates.
+     * @param storage
+     *        {@link LinearIndexStorage} on which this {@link ContentIndexHolder} operates.
      */
-    public LinearIndexStorageContentLocator(final LinearIndexStorage linearIndexStorage)
+    public ContentIndexHolder(final LinearIndexStorage storage)
     throws LinearIndexStorageException {
-        this.linearIndexStorage = linearIndexStorage;
-    }
-
-    /**
-     * Initializes the delegate data structures.
-     *
-     * @param capacity
-     *        integer specifying the valid capacity
-     *
-     * @param copyDescriptors
-     *        comma separated sequence of {@link IndexRangeOperationDescriptor} descriptors
-     */
-    protected void initializeStorage(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
-        linearIndexStorage.ensureCapacityAndShiftItems(capacity, copyDescriptors);
+        this.storage = storage;
     }
 
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
                                                     final int lastItemIndex)
-    throws InvalidStorageCapacityException, LinearIndexStorageException {
+    throws NegativeCapacityException, LinearIndexStorageException {
 
         if (capacity < 0)
-            throw new InvalidStorageCapacityException(capacity);
+            throw new NegativeCapacityException(capacity);
 
         if (firstItemIndex < 0)
-            throw new InvalidStorageIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
+            throw new InvalidIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
 
         if (firstItemIndex > lastItemIndex)
-            throw new InvalidStorageIndexException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
-                                                   lastItemIndex);
+            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
+                                            lastItemIndex);
 
         if (lastItemIndex > capacity - 1)
-            throw new InvalidStorageIndexException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
-                                                   lastItemIndex);
+            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
+                                            lastItemIndex);
 
         if (count(firstItemIndex, lastItemIndex) > capacity)
-            throw new InvalidStorageIndexException(this,
-                                                   "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
+            throw new InvalidIndexException(this,
+                                            "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
                                                   capacity, firstItemIndex, lastItemIndex,
                                                   count(firstItemIndex, lastItemIndex));
     }
@@ -130,7 +117,7 @@ implements Serializable {
      */
     public void setFirstItemIndex(int firstItemIndex) {
         if (firstItemIndex < 0)
-            throw new InvalidStorageIndexException(linearIndexStorage, firstItemIndex, "firstItemIndex = {2} < 0");
+            throw new InvalidIndexException(storage, firstItemIndex, "firstItemIndex = {2} < 0");
 
         this.firstItemIndex = firstItemIndex;
     }
@@ -189,6 +176,6 @@ implements Serializable {
      * @return integer specifying the tail capacity
      */
     public int getTailCapacity() {
-        return linearIndexStorage.getCapacity() - getLastItemIndex();
+        return storage.getCapacity() - getLastItemIndex();
     }
 }
