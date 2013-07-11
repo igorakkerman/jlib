@@ -55,15 +55,17 @@ implements LinearIndexStorage<Item> {
     @Override
     public void ensureCapacityAndShiftItems(final int capacity,
                                             final IndexRangeOperationDescriptor... copyDescriptors) {
-
         ensureCapacityValid(capacity);
 
         final Item[] newDelegateArray = createArray(capacity);
 
-        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
-            copyItems(delegateArray, newDelegateArray, copyDescriptor);
+        copyItemsTo(newDelegateArray, copyDescriptors);
 
         delegateArray = newDelegateArray;
+    }
+
+    private void copyItems(final Item[] newDelegateArray, final IndexRangeOperationDescriptor[] copyDescriptors) {
+        copyItemsTo(newDelegateArray, copyDescriptors);
     }
 
     /**
@@ -84,13 +86,6 @@ implements LinearIndexStorage<Item> {
         delegateArray[index] = item;
     }
 
-    @Override
-    public void shiftItems(final IndexRangeOperationDescriptor... copyDescriptors)
-    throws IndexOutOfBoundsException {
-        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
-            copyItems(delegateArray, delegateArray, copyDescriptor);
-    }
-
     /**
      * Performs the operation, specified by the specified {@link IndexRangeOperationDescriptor}, from the specified
      * source to the specified target array of {@link Item}s.
@@ -108,6 +103,17 @@ implements LinearIndexStorage<Item> {
                              final IndexRangeOperationDescriptor copyDescriptor) {
         arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
+    }
+
+    private void copyItemsTo(final Item[] targetArray, final IndexRangeOperationDescriptor... copyDescriptors) {
+        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
+            copyItems(delegateArray, targetArray, copyDescriptor);
+    }
+
+    @Override
+    public void shiftItems(final IndexRangeOperationDescriptor... copyDescriptors)
+    throws IndexOutOfBoundsException {
+        copyItemsTo(delegateArray, copyDescriptors);
     }
 
     @Override

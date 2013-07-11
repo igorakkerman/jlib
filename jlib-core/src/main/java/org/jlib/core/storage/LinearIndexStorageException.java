@@ -29,7 +29,7 @@ import org.jlib.core.language.InvalidArgumentException;
  *
  * @author Igor Akkerman
  */
-public class LinearIndexStorageException
+public abstract class LinearIndexStorageException
 extends InvalidArgumentException {
 
     /** serialVersionUID */
@@ -50,8 +50,9 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messageTemplate, final Object... messageArguments) {
-        super(messageTemplate + "; linearIndexStorage: '{0}'", linearIndexStorage, messageArguments);
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messageTemplate,
+                                       final Object... messageArguments) {
+        super(messageTemplate + "; '{0}'", linearIndexStorage, messageArguments);
 
         this.linearIndexStorage = linearIndexStorage;
     }

@@ -21,27 +21,19 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.language.InvalidArgumentException;
-
 public class StorageIndexOutOfBoundsException
-extends InvalidArgumentException {
+extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
-    private final LinearIndexStorage<?> storage;
-
     private final int invalidIndex;
 
-    public StorageIndexOutOfBoundsException(final LinearIndexStorage<?> storage, final int invalidIndex,
-                                            String errorMessage) {
-        super("[{1}]: {2} {0}", storage, invalidIndex, errorMessage);
+    public StorageIndexOutOfBoundsException(final LinearIndexStorage<?> linearIndexStorage, final int invalidIndex,
+                                            final String errorMessage) {
 
-        this.storage = storage;
+        super(linearIndexStorage, "[{1}]: {2}", invalidIndex, errorMessage);
+
         this.invalidIndex = invalidIndex;
-    }
-
-    public LinearIndexStorage<?> getStorage() {
-        return storage;
     }
 
     public int getInvalidIndex() {
