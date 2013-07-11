@@ -43,7 +43,7 @@ implements Serializable {
     private static final long serialVersionUID = 7766547798864277487L;
 
     /** referenced {@link LinearIndexStorage} */
-    private LinearIndexStorage<Item> storage;
+    private final LinearIndexStorage<Item> linearIndexStorage;
 
     /** array index of the first {@link Item} */
     private Integer firstItemIndex;
@@ -66,14 +66,8 @@ implements Serializable {
      * @throws LinearIndexStorageException
      *         if {@code firstItemIndex < 0}
      */
-    public LinearIndexStorageContentLocator(final int capacity, final int firstItemIndex, final int lastItemIndex,
-                                            final IndexRangeOperationDescriptor... copyDescriptors)
+    public LinearIndexStorageContentLocator(final LinearIndexStorage linearIndexStorage)
     throws LinearIndexStorageException {
-        ensureInitializationArgumentsValid(capacity, firstItemIndex, lastItemIndex);
-
-        this.firstItemIndex = firstItemIndex;
-        this.lastItemIndex = lastItemIndex;
-
         initializeStorage(capacity, copyDescriptors);
     }
 
@@ -87,7 +81,7 @@ implements Serializable {
      *        comma separated sequence of {@link IndexRangeOperationDescriptor} descriptors
      */
     protected void initializeStorage(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
-        storage.ensureCapacityAndShiftItems(capacity, copyDescriptors);
+        linearIndexStorage.ensureCapacityAndShiftItems(capacity, copyDescriptors);
     }
 
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
@@ -98,7 +92,7 @@ implements Serializable {
             throw new InvalidStorageCapacityException(capacity);
 
         if (firstItemIndex < 0)
-            throw new LinearIndexStorageException(this, "firstItemIndex = {1} < 0", firstItemIndex);
+            throw new InvalidStorageIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
 
         if (firstItemIndex > lastItemIndex)
             throw new LinearIndexStorageException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,

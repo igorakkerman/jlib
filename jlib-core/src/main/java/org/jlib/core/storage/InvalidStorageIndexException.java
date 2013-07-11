@@ -21,15 +21,15 @@
 
 package org.jlib.core.storage;
 
-public class StorageIndexOutOfBoundsException
+public class InvalidStorageIndexException
 extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
     private final int invalidIndex;
 
-    public StorageIndexOutOfBoundsException(final LinearIndexStorage<?> linearIndexStorage, final int invalidIndex,
-                                            final String errorMessage) {
+    public InvalidStorageIndexException(final LinearIndexStorage<?> linearIndexStorage, final int invalidIndex,
+                                        final String errorMessage) {
 
         super(linearIndexStorage, "[{1}]: {2}", invalidIndex, errorMessage);
 

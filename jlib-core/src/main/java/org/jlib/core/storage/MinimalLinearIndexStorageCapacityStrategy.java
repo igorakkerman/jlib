@@ -53,7 +53,7 @@ implements LinearIndexStorageCapacityStrategy {
 
     @Override
     public void initialize(final int firstItemIndex, final int lastItemIndex) {
-        storage.ensureCapacityAndShiftItems(count(firstItemIndex, lastItemIndex), firstItemIndex, lastItemIndex);
+        storage.ensureCapacityAndShiftItems(count(firstItemIndex, lastItemIndex));
     }
 
     @Override

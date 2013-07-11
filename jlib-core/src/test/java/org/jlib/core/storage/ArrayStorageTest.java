@@ -25,7 +25,7 @@ import org.junit.Test;
 
 public class ArrayStorageTest {
 
-    @Test(expected = StorageIndexOutOfBoundsException.class)
+    @Test(expected = InvalidStorageIndexException.class)
     public void zeroCapacityReadAccessTest()
     throws Exception {
         ArrayStorage<Integer> storage = new ArrayStorage<>(0);

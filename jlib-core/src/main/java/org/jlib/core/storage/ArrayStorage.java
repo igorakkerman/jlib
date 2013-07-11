@@ -111,9 +111,9 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
-    public void shiftItems(final IndexRangeOperationDescriptor... copyDescriptors)
+    public void shiftItems(final IndexRangeOperationDescriptor... shiftDescriptors)
     throws IndexOutOfBoundsException {
-        copyItemsTo(delegateArray, copyDescriptors);
+        copyItemsTo(delegateArray, shiftDescriptors);
     }
 
     @Override

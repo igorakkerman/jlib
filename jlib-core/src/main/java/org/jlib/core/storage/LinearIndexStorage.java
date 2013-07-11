@@ -52,7 +52,7 @@ extends Cloneable {
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public Item getItem(int index)
-    throws StorageIndexOutOfBoundsException;
+    throws InvalidStorageIndexException;
 
     /**
      * Replaces the {@link Item} stored at the specified index by the specified {@link Item}.
@@ -63,46 +63,52 @@ extends Cloneable {
      * @param newItem
      *        new {@link Item} replacing the former
      *
-     * @throws StorageIndexOutOfBoundsException
+     * @throws InvalidStorageIndexException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
     public void replaceItem(int index, Item newItem)
-    throws StorageIndexOutOfBoundsException;
+    throws InvalidStorageIndexException;
 
     /**
-     * Ensurs that this {@link LinearIndexStorage} has the specified capacity and shifts its {@link Item}s as defined
-     * by the specified {@link IndexRangeOperationDescriptor}s using
-     * {@link #shiftItems(IndexRangeOperationDescriptor...)}.
+     * <p>
+     * Newly allocates the resources for this {@link LinearIndexStorage}, ensuring it to provide the specified capacity
+     * and to contain the formerly stored {@link Item}s, potentially at new indices.
+     * </p>
+     * <p>
+     * The {@link Item}s are shifted from former indices to the new indices, according to the specified
+     * {@link IndexRangeOperationDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>,
+     * their target indices the {@link Item} indices <em>after</em> the operation.
+     * </p>
+     * <p>
+     * <em>Only</em> actually specified index ranges are taken in consideration. {@link Item}s located at other indices
+     * are removed from this {@link LinearIndexStorage}.
+     * </p>
      *
      * @param capacity
      *        integer specifying the capacity
      *
-     * @param copyDescriptors
+     * @param shiftDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
      * @throws InvalidStorageCapacityException
      *         if {@code capacity < 0}
      *
-     * @throws StorageIndexOutOfBoundsException
-     *         if an {@link IndexRangeOperationDescriptor} specifies a copy operation on an index outside the valid
-     *         bounds, as specified by {@link #shiftItems(IndexRangeOperationDescriptor...)}
+     * @throws InvalidStorageIndexException
+     *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
-    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... copyDescriptors)
-    throws InvalidStorageCapacityException, InvalidStorageCapacityException;
+    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
+    throws InvalidStorageCapacityException, InvalidStorageIndexException;
 
     /**
-     * Shifts the {@link Item}s <em></em>within</em> this {@link LinearIndexStorage} as defined by the specified
-     * {@link IndexRangeOperationDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>,
-     * their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
-     * former indices are overwritten by each specified {@link IndexRangeOperationDescriptor} operation.
+     * Shifts the {@link Item}s <em>ithin</em> this {@link LinearIndexStorage}, as defined by the specified
+     * {@link IndexRangeOperationDescriptor}s.
      *
-     * @param copyDescriptors
+     * @param shiftDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws StorageIndexOutOfBoundsException
-     *         if one of the indices of one of the {@link IndexRangeOperationDescriptor} in {@code copyDescriptors} is
-     *         invalid
+     * @throws InvalidStorageIndexException
+     *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
-    public void shiftItems(IndexRangeOperationDescriptor... copyDescriptors)
-    throws StorageIndexOutOfBoundsException;
+    public void shiftItems(IndexRangeOperationDescriptor... shiftDescriptors)
+    throws InvalidStorageIndexException;
 }
