@@ -91,7 +91,7 @@ extends Cloneable {
     throws InvalidStorageCapacityException, InvalidStorageCapacityException;
 
     /**
-     * Shifts the {@link Item}s within this {@link LinearIndexStorage} as defined defined by the specified
+     * Shifts the {@link Item}s <em></em>within</em> this {@link LinearIndexStorage} as defined by the specified
      * {@link IndexRangeOperationDescriptor}s. Their source indices reference the {@link Item} indices <em>before</em>,
      * their target indices the {@link Item} indices <em>after</em> the operation. The {@link Item}s stored at the
      * former indices are overwritten by each specified {@link IndexRangeOperationDescriptor} operation.
