@@ -71,14 +71,6 @@ implements LinearIndexStorage<Item> {
         copyItemsTo(newDelegateArray, copyDescriptors);
     }
 
-    /**
-     * Returns the array {@link Item} stored at the specified array index.
-     *
-     * @param index
-     *        integer specifying the array index
-     *
-     * @return {@link Item} stored at {@code index}
-     */
     @Override
     public Item getItem(final int index) {
         return delegateArray[index];
