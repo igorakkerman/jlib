@@ -100,10 +100,8 @@ extends Cloneable {
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
      * @throws StorageIndexOutOfBoundsException
-     *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex ||
-     *                   lastItemIndex > capacity - 1 ||
-     *                   count(firstItemIndex, lastItemIndex) > capacity}
+     *         if one of the indices of one of the {@link IndexRangeOperationDescriptor} in {@code copyDescriptors} is
+     *         invalid
      */
     public void shiftItems(IndexRangeOperationDescriptor... copyDescriptors)
     throws StorageIndexOutOfBoundsException;
