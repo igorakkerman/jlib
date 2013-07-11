@@ -125,6 +125,15 @@ implements LinearIndexStorage<Item> {
         return cloneStorage;
     }
 
+    /**
+     * Ensures the specified capacity is valid.
+     *
+     * @param capacity
+     *        integer specifying a capacity
+     *
+     * @throws InvalidStorageCapacityException
+     *         if {@code capacity < 0}
+     */
     private void ensureCapacityValid(final int capacity)
     throws InvalidStorageCapacityException {
         if (capacity < 0)
