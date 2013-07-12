@@ -51,21 +51,6 @@ implements Serializable {
     /** array index of the last {@link Item} */
     private Integer lastItemIndex;
 
-/*
-     * @param capacity
-     *        integer specifying the capacity
-     *
-     * @param firstItemIndex
-     *        integer specifying the index of the first {@link Item}
-     *
-     * @param lastItemIndex
-     *        integer specifying the index of the last {@link Item}
-     *
-
- */
-
-
-
     /**
      * Creates a new {@link ContentIndexRegistry} for the specified {@link LinearIndexStorage}.
      *
