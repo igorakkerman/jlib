@@ -31,14 +31,19 @@ import static org.jlib.core.math.MathUtility.count;
  * The algorithm defines:
  * </p>
  * <dl>
- *     <dt>the <em>head capacity</em></dt>
- *     <dd>as the capacity in front of the first {@link Item}
- *     <dt>the <em>tail capacity</em></dt>
- *     <dd>as the capacity behind the last {@link Item}</dd>
+ * <dt>the <em>head capacity</em></dt>
+ * <dd>as the capacity in front of the first {@link Item}
+ * <dt>the <em>tail capacity</em></dt>
+ * <dd>as the capacity behind the last {@link Item}</dd>
  * </dl>
- *
- *     and analyzes the current head and tail capacities, that is, the empty space before the first and after the
- * last {@link Item} index
+ * <p>
+ * Head capacity:
+ * This {@link CapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
+ * If the requested head capacity is above the available head capacity,
+ * the {@link LinearIndexStorage} is requested to re-allocate a capacity higher by the difference between requested and
+ * available head capacity. The {@link Item}s are shifted "right" to have exactly the requested head capacity.
+ * The {@link LinearIndexStorage} is always requested to provide an additional capacity even if its tail capacity would
+ * be sufficient.
  * </p>
  *
  * @param <Item>
@@ -188,6 +193,8 @@ implements CapacityStrategy {
             throw new NegativeCapacityException(storage, partialCapacityName, partialCapacity);
     }
 
+/*
+
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
                                                     final int lastItemIndex)
     throws NegativeCapacityException, LinearIndexStorageException {
@@ -212,4 +219,5 @@ implements CapacityStrategy {
                                             capacity, firstItemIndex, lastItemIndex,
                                             count(firstItemIndex, lastItemIndex));
     }
+*/
 }
