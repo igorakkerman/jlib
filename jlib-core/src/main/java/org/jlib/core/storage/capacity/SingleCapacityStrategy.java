@@ -31,16 +31,12 @@ import org.jlib.core.storage.LinearIndexStorage;
 public interface SingleCapacityStrategy {
 
     /**
-     * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the
-     * corresponding position of the {@link LinearIndexStorage}. The indices of the stored Items are modified,
-     * if necessary.
+     * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the corresponding
+     * position of the {@link LinearIndexStorage}. The indices of the stored Items are modified, if necessary.
      *
      * @param capacity
-     *        integer specifying the head capacity
-     *
-     * @throws NegativeCapacityException
-     *         if {@code capacity < 0}
+     *        head {@link Capacity}
      */
-    public void ensureCapacity(int capacity)
+    public void ensureCapacity(Capacity capacity)
     throws NegativeCapacityException;
 }
