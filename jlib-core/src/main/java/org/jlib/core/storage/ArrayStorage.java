@@ -23,6 +23,8 @@ package org.jlib.core.storage;
 
 import static org.jlib.core.array.ArrayUtility.createArray;
 
+import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.core.storage.minimal.NegativeCapacityException;
 import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.System.arraycopy;
@@ -106,7 +108,8 @@ implements LinearIndexStorage<Item> {
             throw new InvalidIndexException(this, "sourceBeginIndex = {1} < 0", sourceBeginIndex);
 
         if (sourceEndIndex < sourceBeginIndex)
-            throw new InvalidIndexException(this, "sourceEndIndex = {1} < {2} = sourceBeginIndex", sourceEndIndex, sourceBeginIndex);
+            throw new InvalidIndexException(this, "sourceEndIndex = {1} < {2} = sourceBeginIndex", sourceEndIndex,
+                                            sourceBeginIndex);
 
         if (targetIndex > capacity - 1)
             throw new InvalidIndexException(this, "targetIndex = {1} < {2} = capacity", targetIndex, capacity);
