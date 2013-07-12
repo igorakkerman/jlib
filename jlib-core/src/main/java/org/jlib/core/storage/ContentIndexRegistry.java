@@ -42,10 +42,10 @@ implements Serializable {
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
 
-    /** array index of the first {@link Item} */
+    /** {@link LinearIndexStorage} index of the first {@link Item} */
     private Integer firstItemIndex;
 
-    /** array index of the last {@link Item} */
+    /** {@link LinearIndexStorage} index of the last {@link Item} */
     private Integer lastItemIndex;
 
     /**
