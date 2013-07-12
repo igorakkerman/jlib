@@ -21,6 +21,8 @@
 
 package org.jlib.core.value;
 
+import org.jlib.core.language.InvalidArgumentException;
+
 /**
  * {@link Accessible} initialized by the constructor.
  *
@@ -40,11 +42,17 @@ extends Accessible<Value> {
      *
      * @param initialValue
      *        initial {@link Value}
+     *
+     * @throws InvalidArgumentException
+     *         if {@code initialValue} is invalid
      */
-    public Initialized(final Value initialValue) {
+    public Initialized(final Value initialValue)
+    throws InvalidArgumentException {
         super();
 
         value = initialValue;
+
+        ensureValueValid();
     }
 
     @Override
@@ -57,8 +65,18 @@ extends Accessible<Value> {
      *
      * @param value
      *        new {@link Value}
+     *
+     * @throws InvalidArgumentException
+     *         if {@code value} is invalid
      */
-    protected void setValue(final Value value) {
+    protected void setValue(final Value value)
+    throws InvalidArgumentException {
+        ensureValueValid();
+
         this.value = value;
+    }
+
+    protected void ensureValueValid() {
+        // perform optinal validation in subclasses
     }
 }

@@ -21,6 +21,8 @@
 
 package org.jlib.core.value;
 
+import org.jlib.core.language.InvalidArgumentException;
+
 /**
  * {@link org.jlib.core.value.Value} of a modifiable {@link Value}.
  *
@@ -37,6 +39,10 @@ extends org.jlib.core.value.Value<Value> {
      *
      * @param value
      *        new {@link Value}
+     *
+     * @throws InvalidArgumentException
+     *         if {@code value} is invalid
      */
-    public void setValue(Value value);
+    public void setValue(Value value)
+    throws InvalidArgumentException;
 }

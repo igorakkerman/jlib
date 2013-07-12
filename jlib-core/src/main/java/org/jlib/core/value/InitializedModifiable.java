@@ -38,8 +38,12 @@ implements Modifiable<Value> {
      *
      * @param initialValue
      *        initial {@link Value}
+     *
+     * @throws IllegalArgumentException
+     *         if {@code initialValue} is invalid
      */
-    public InitializedModifiable(final Value initialValue) {
+    public InitializedModifiable(final Value initialValue)
+    throws IllegalArgumentException {
         super(initialValue);
     }
 
