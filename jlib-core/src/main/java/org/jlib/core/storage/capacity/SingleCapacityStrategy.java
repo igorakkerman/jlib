@@ -37,6 +37,5 @@ public interface SingleCapacityStrategy {
      * @param capacity
      *        head {@link Capacity}
      */
-    public void ensureCapacity(Capacity capacity)
-    throws NegativeCapacityException;
+    public void ensureCapacity(Capacity capacity);
 }
