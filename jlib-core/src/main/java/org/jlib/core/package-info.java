@@ -20,7 +20,6 @@
  */
 
 /*
- TODO: replace toString, equals, hashCode
  TODO: change Javadoc references from @code to @link
  TODO:
  - remove all uses of NullPointerException
