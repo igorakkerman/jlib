@@ -23,7 +23,6 @@ package org.jlib.core.storage.minimal;
 
 import org.jlib.core.storage.ContentIndex;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.capacity.AbstractSingleCapacityStrategy;
 import org.jlib.core.storage.capacity.CapacityStrategy;
 import org.jlib.core.storage.capacity.NegativeCapacityException;
 import org.jlib.core.storage.capacity.SingleCapacityStrategy;

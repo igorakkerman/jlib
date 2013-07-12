@@ -21,6 +21,7 @@
 
 package org.jlib.core.storage;
 
+import org.jlib.core.storage.capacity.CapacityStrategy;
 import org.jlib.core.system.AbstractObject;
 
 public abstract class AbstractCapacityStrategy<Item>
@@ -37,6 +38,14 @@ implements CapacityStrategy {
 
         this.storage = storage;
         this.contentIndexRegistry = contentIndexRegistry;
+    }
+
+    protected LinearIndexStorage<Item> getStorage() {
+        return storage;
+    }
+
+    protected ContentIndexRegistry getContentIndexRegistry() {
+        return contentIndexRegistry;
     }
 
     /**
