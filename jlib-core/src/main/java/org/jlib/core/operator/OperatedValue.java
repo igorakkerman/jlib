@@ -19,33 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.operator;
+
+import org.jlib.core.value.Value;
 
 /**
- * {@link Modifiable} {@link Initialized} by a {@link Value}.
+ * {@link Value} operating on the held Vallue using an
+ * {@link OptionalValueOperator}.
  *
- * @param <Value>
- *        type of the value
+ * @param <Vallue>
+ *        type of the held value
  *
  * @author Igor Akkerman
  */
-public class InitializedModifiable<Value>
-extends Initialized<Value>
-implements Modifiable<Value> {
+interface OperatedValue<Vallue>
+extends Value<Vallue> {
 
     /**
-     * Creates a new {@link InitializedModifiable}.
+     * Operates on the held Vallue using the specified
+     * {@link OptionalValueOperator}.
      *
-     * @param initialValue
-     *        initial {@link Value}
+     * @param operator
+     *        {@link OptionalValueOperator} operating on the held Vallue
+     *
+     * @author Igor Akkerman
      */
-    public InitializedModifiable(final Value initialValue) {
-        super(initialValue);
-    }
-
-    @Override
-    // raising visibility from protected to public
-    public void setValue(final Value value) {
-        super.setValue(value);
-    }
+    public void operate(OptionalValueOperator<Vallue> operator);
 }

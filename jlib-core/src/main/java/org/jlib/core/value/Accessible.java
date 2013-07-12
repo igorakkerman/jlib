@@ -19,59 +19,48 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.value;
 
-import org.jlib.core.language.ValueNotAccessibleException;
-import org.jlib.core.language.ValueNotSetException;
 import org.jlib.core.system.AbstractObject;
 
 /**
- * Skeletal implementation of a not initialized {@link Modifiable}.
+ * {@link Value} of a {@link Val} that is guaranteed to be accessible.
  *
- * @param <Value>
+ * @param <Val>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public abstract class Uninitialized<Value>
+public abstract class Accessible<Val>
 extends AbstractObject
-implements Modifiable<Value> {
+implements Value<Val> {
 
     /**
-     * Creates a new {@link Uninitialized}.
-     */
-    protected Uninitialized() {
-        super();
-    }
-
-    /**
-     * Always throws a {@link ValueNotAccessibleException}.
+     * Returns the {@link Val}. Since the {@link Val} is guaranteed to be accessible, <em>no</em>
+     * {@link ValueNotAccessibleException} will be thrown.
      *
-     * @return never
-     *
-     * @throws ValueNotSetException
-     *         always
+     * @return registered {@link Val}
      */
     @Override
-    public Value getValue()
-    throws ValueNotSetException {
-        throw new ValueNotSetException();
-    }
+    public abstract Val getValue();
 
     /**
+     * <p>
      * {@inheritDoc}
+     * </p>
+     * <p>
+     * In this implementation the {@link Val} is guaranteed to be accessible, hence always returned is {@code true}.
+     * </p>
      *
-     * This implementation always returns {@code false}.
-     *
-     * @return {@code false}
+     * @return {@code true} always
      */
     @Override
     public final boolean isValueAccessible() {
-        return false;
+        return true;
     }
 
     @Override
     public final String toString() {
-        return "<unitialized>";
+        return getValue().toString();
     }
 }

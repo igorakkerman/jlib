@@ -19,30 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.operator;
+package org.jlib.core.value;
 
-import org.jlib.core.accessor.Accessor;
+import org.jlib.core.language.FormattedMessageException;
 
 /**
- * {@link Accessor} operating on the held Value using an
- * {@link OptionalValueOperator}.
- *
- * @param <Value>
- *        type of the held value
+ * {@link FormattedMessageException} thrown when a requested Value is not accessible.
  *
  * @author Igor Akkerman
  */
-interface OperatedAccessor<Value>
-extends Accessor<Value> {
+public abstract class ValueNotAccessibleException
+extends FormattedMessageException {
+
+    /** serialVersionUID */
+    private static final long serialVersionUID = - 813625306823615853L;
 
     /**
-     * Operates on the held Value using the specified
-     * {@link OptionalValueOperator}.
-     *
-     * @param operator
-     *        {@link OptionalValueOperator} operating on the held Value
-     *
-     * @author Igor Akkerman
+     * Creates a new {@link ValueNotAccessibleException}.
      */
-    public void operate(final OptionalValueOperator<Value> operator);
+    public ValueNotAccessibleException() {
+        super();
+    }
+
+    /**
+     * Creates a new {@link ValueNotAccessibleException}.
+     *
+     * @param valueName
+     *        {@link String} specifying a descriptive name of the Value
+     */
+    public ValueNotAccessibleException(final String valueName) {
+        super(valueName);
+    }
 }

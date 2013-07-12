@@ -19,46 +19,46 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.value;
 
 /**
  * {@link Accessible} initialized by the constructor.
  *
- * @param <Value>
+ * @param <Val>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public class Initialized<Value>
-extends Accessible<Value> {
+public class Initialized<Val>
+extends Accessible<Val> {
 
-    /** registered Value */
-    private Value value;
+    /** registered {@link Val} */
+    private Val value;
 
     /**
      * Creates a new {@link Initialized}.
      *
      * @param initialValue
-     *        initial Value
+     *        initial {@link Val}
      */
-    public Initialized(final Value initialValue) {
+    public Initialized(final Val initialValue) {
         super();
 
         value = initialValue;
     }
 
     @Override
-    public Value getValue() {
+    public Val getValue() {
         return value;
     }
 
     /**
-     * Registers the new Value.
+     * Registers the new {@link Val}.
      *
      * @param value
-     *        new Value
+     *        new {@link Val}
      */
-    protected void setValue(final Value value) {
+    protected void setValue(final Val value) {
         this.value = value;
     }
 }

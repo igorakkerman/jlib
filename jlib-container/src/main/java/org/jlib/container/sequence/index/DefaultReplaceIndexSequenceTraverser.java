@@ -21,15 +21,16 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.array.ArrayUtility.traversible;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
+
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import static org.jlib.core.array.ArrayUtility.traversible;
-import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -37,6 +38,7 @@ import org.jlib.core.operator.OperatorException;
 import org.jlib.core.traverser.NoItemToReplaceException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser}
@@ -115,8 +117,7 @@ implements ObservedReplaceTraverser<Item>,
     @Override
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException,
-           RuntimeException {
+    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override

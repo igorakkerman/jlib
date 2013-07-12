@@ -26,9 +26,9 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.index.array.ArraySequence;
-import org.jlib.core.storage.CapacityStrategy;
-import org.jlib.core.storage.MinimalCapacityStrategy;
 import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.capacity.CapacityStrategy;
+import org.jlib.core.storage.minimal.MinimalCapacityStrategy;
 
 public abstract class LinearIndexStorageSequence<Item>
 extends AbstractInitializeableIndexSequence<Item> {

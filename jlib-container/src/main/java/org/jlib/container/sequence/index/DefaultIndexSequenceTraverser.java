@@ -25,10 +25,10 @@ import org.jlib.container.sequence.AbstractSequenceTraverser;
 import org.jlib.container.sequence.NoNextSequenceItemException;
 import org.jlib.container.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.language.ValueNotAccessibleException;
-import org.jlib.core.valueholder.InitializedModifiableValueHolder;
-import org.jlib.core.valueholder.ModifiableValueHolder;
-import org.jlib.core.valueholder.UninitializedValueHolder;
+import org.jlib.core.value.InitializedModifiable;
+import org.jlib.core.value.Modifiable;
+import org.jlib.core.value.Uninitialized;
+import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
  * Default implementation of an {@link IndexSequenceTraverser}.
@@ -48,8 +48,8 @@ implements IndexSequenceTraverser<Item> {
     /** index of the potential next traversed Item */
     private int potentialNextItemIndex;
 
-    /** {@link ModifiableValueHolder} for the index of the last accessed Item */
-    private ModifiableValueHolder<Integer> lastAccessedItemIndexHolder;
+    /** {@link Modifiable} for the index of the last accessed Item */
+    private Modifiable<Integer> lastAccessedItemIndexHolder;
 
     /**
      * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
@@ -93,11 +93,11 @@ implements IndexSequenceTraverser<Item> {
      * Unregisters the last accessed Item.
      */
     protected void unsetLastAccessedItem() {
-        lastAccessedItemIndexHolder = new UninitializedValueHolder<Integer>() {
+        lastAccessedItemIndexHolder = new Uninitialized<Integer>() {
 
             @Override
             public void setValue(final Integer index) {
-                lastAccessedItemIndexHolder = new InitializedModifiableValueHolder<>(index);
+                lastAccessedItemIndexHolder = new InitializedModifiable<>(index);
             }
         };
     }

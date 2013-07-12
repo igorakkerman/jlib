@@ -19,24 +19,34 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.value;
 
 /**
- * {@link Accessor} of a modifiable {@link Value}.
+ * Value of a {@link Val}.
  *
- * @param <Value>
+ * @param <Val>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Modifiable<Value>
-extends Accessor<Value> {
+public interface Value<Val> {
 
     /**
-     * Registers the new {@link Value}.
+     * Returns the accessed {@link Val}.
      *
-     * @param value
-     *        new {@link Value}
+     * @return accessed {@link Val}
+     *
+     * @throws ValueNotAccessibleException
+     *         if no {@link Val} can be accessed
      */
-    public void setValue(Value value);
+    public Val getValue()
+    throws ValueNotAccessibleException;
+
+    /**
+     * Returns whether a {@link Val} can be accessed.
+     *
+     * @return {@code true} if a {@link Val} can be accessed;
+     *         {@code false} otherwise
+     */
+    public boolean isValueAccessible();
 }

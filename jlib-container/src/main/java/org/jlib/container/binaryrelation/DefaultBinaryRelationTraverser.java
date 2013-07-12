@@ -21,16 +21,16 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.language.ValueNotAccessibleException;
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.valueholder.InitializedModifiableValueHolder;
-import org.jlib.core.valueholder.ModifiableValueHolder;
-import org.jlib.core.valueholder.UninitializedValueHolder;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import org.jlib.core.traverser.NoNextItemException;
+import org.jlib.core.traverser.Traverser;
+import org.jlib.core.value.InitializedModifiable;
+import org.jlib.core.value.Modifiable;
+import org.jlib.core.value.Uninitialized;
+import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the {@link Association}
@@ -62,8 +62,8 @@ implements Traverser<Association<LeftValue, RightValue>> {
     /** current LeftValue */
     private LeftValue leftValue;
 
-    /** {@link ModifiableValueHolder} for the index of the last accessed Item */
-    private ModifiableValueHolder<Association<LeftValue, RightValue>> lastAccessedItemHolder;
+    /** {@link Modifiable} for the index of the last accessed Item */
+    private Modifiable<Association<LeftValue, RightValue>> lastAccessedItemHolder;
 
     /**
      * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
@@ -91,11 +91,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
      * Unregisters the last accessed Item.
      */
     protected void unsetLastAccessedItem() {
-        lastAccessedItemHolder = new UninitializedValueHolder<Association<LeftValue, RightValue>>() {
+        lastAccessedItemHolder = new Uninitialized<Association<LeftValue, RightValue>>() {
 
             @Override
             public void setValue(final Association<LeftValue, RightValue> association) {
-                lastAccessedItemHolder = new InitializedModifiableValueHolder<>(association);
+                lastAccessedItemHolder = new InitializedModifiable<>(association);
             }
         };
     }

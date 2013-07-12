@@ -19,33 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.value;
+
+import org.jlib.core.language.FormattedMessageException;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not accessible.
+ * {@link FormattedMessageException} thrown when a requested Value is not set.
  *
  * @author Igor Akkerman
  */
-public abstract class ValueNotAccessibleException
-extends FormattedMessageException {
+public class ValueNotSetException
+extends ValueNotAccessibleException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 813625306823615853L;
+    private static final long serialVersionUID = 4844161228178575622L;
 
     /**
-     * Creates a new {@link ValueNotAccessibleException}.
+     * Creates a new {@link ValueNotSetException}.
      */
-    public ValueNotAccessibleException() {
+    public ValueNotSetException() {
         super();
     }
 
     /**
-     * Creates a new {@link ValueNotAccessibleException}.
+     * Creates a new {@link ValueNotSetException}.
      *
      * @param valueName
      *        {@link String} specifying a descriptive name of the Value
      */
-    public ValueNotAccessibleException(final String valueName) {
+    public ValueNotSetException(final String valueName) {
         super(valueName);
     }
 }

@@ -21,7 +21,7 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.accessor.Uninitialized;
+import org.jlib.core.value.Uninitialized;
 
 /**
  * {@link Uninitialized} calling the {@link OptionalValueOperator#operateUnset()} method from
@@ -34,7 +34,7 @@ import org.jlib.core.accessor.Uninitialized;
  */
 abstract class UninitializedOperated<Value>
 extends Uninitialized<Value>
-implements OperatedAccessor<Value> {
+implements OperatedValue<Value> {
 
     /**
      * Creates a new {@link UninitializedOperated}.

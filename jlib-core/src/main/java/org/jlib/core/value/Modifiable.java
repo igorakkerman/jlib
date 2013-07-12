@@ -19,33 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.value;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not set.
+ * {@link Value} of a modifiable {@link Val}.
+ *
+ * @param <Val>
+ *        type of the value
  *
  * @author Igor Akkerman
  */
-public class ValueNotSetException
-extends ValueNotAccessibleException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = 4844161228178575622L;
+public interface Modifiable<Val>
+extends Value<Val> {
 
     /**
-     * Creates a new {@link ValueNotSetException}.
-     */
-    public ValueNotSetException() {
-        super();
-    }
-
-    /**
-     * Creates a new {@link ValueNotSetException}.
+     * Registers the new {@link Val}.
      *
-     * @param valueName
-     *        {@link String} specifying a descriptive name of the Value
+     * @param value
+     *        new {@link Val}
      */
-    public ValueNotSetException(final String valueName) {
-        super(valueName);
-    }
+    public void setValue(Val value);
 }

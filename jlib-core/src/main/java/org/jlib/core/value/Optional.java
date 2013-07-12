@@ -19,16 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.value;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.system.AbstractObject;
 
-public class Optional<Value>
+public class Optional<Vallue>
 extends AbstractObject
-implements Modifiable<Value> {
+implements Modifiable<Vallue> {
 
     public static <Value> Optional<Value> from(final Value value) {
         return new Optional<Value>(value);
@@ -40,46 +39,46 @@ implements Modifiable<Value> {
                new Optional<Value>();
     }
 
-    private final Accessor<Value> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Value>() {
+    private final Value<Vallue> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Vallue>() {
 
         @Override
-        public void setValue(final Value value) {
-            delegateAccessor = new InitializedModifiable<>(value);
+        public void setValue(final Vallue value) {
+            delegateValue = new InitializedModifiable<>(value);
         }
     };
 
     private Optional() {
-        this.delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
+        this.delegateValue = UNINITIALIZED_VALUE_HOLDER;
     }
 
-    private Optional(final Value value) {
-        this.delegateAccessor = new Initialized<>(value);
+    private Optional(final Vallue value) {
+        this.delegateValue = new Initialized<>(value);
     }
 
-    private Accessor<Value> delegateAccessor;
+    private Value<Vallue> delegateValue;
 
     @Override
-    public void setValue(Value value) {
-        delegateAccessor = new Initialized<>(value);
+    public void setValue(Vallue value) {
+        delegateValue = new Initialized<>(value);
     }
 
     public void unsetValue() {
-        delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
+        delegateValue = UNINITIALIZED_VALUE_HOLDER;
     }
 
     @Override
     public boolean isValueAccessible() {
-        return delegateAccessor.isValueAccessible();
+        return delegateValue.isValueAccessible();
     }
 
     @Override
-    public Value getValue()
+    public Vallue getValue()
     throws ValueNotAccessibleException {
-        return delegateAccessor.getValue();
+        return delegateValue.getValue();
     }
 
     @Override
     public String toString() {
-        return delegateAccessor.toString();
+        return delegateValue.toString();
     }
 }
