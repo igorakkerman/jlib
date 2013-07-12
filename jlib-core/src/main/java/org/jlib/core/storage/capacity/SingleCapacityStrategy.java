@@ -19,36 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.accessor;
+package org.jlib.core.storage.capacity;
 
-import org.jlib.core.language.ValueNotAccessibleException;
+import org.jlib.core.storage.LinearIndexStorage;
 
 /**
- * Accessor of a {@link Value}.
- *
- * @param <Value>
- *        type of the value
+ * Strategy of a single capacity provision in a {@link LinearIndexStorage}.
  *
  * @author Igor Akkerman
  */
-public interface Accessor<Value> {
+public interface SingleCapacityStrategy {
 
     /**
-     * Returns the accessed {@link Value}.
+     * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the
+     * corresponding position of the {@link LinearIndexStorage}. The indices of the stored Items are modified,
+     * if necessary.
      *
-     * @return accessed {@link Value}
+     * @param capacity
+     *        integer specifying the head capacity
      *
-     * @throws ValueNotAccessibleException
-     *         if no {@link Value} can be accessed
+     * @throws NegativeCapacityException
+     *         if {@code capacity < 0}
      */
-    public Value getValue()
-    throws ValueNotAccessibleException;
-
-    /**
-     * Returns whether a {@link Value} can be accessed.
-     *
-     * @return {@code true} if a {@link Value} can be accessed;
-     *         {@code false} otherwise
-     */
-    public boolean isValueAccessible();
+    public void ensureCapacity(int capacity)
+    throws NegativeCapacityException;
 }

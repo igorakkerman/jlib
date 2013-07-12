@@ -21,6 +21,9 @@
 
 package org.jlib.core.storage;
 
+import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.core.storage.minimal.NegativeCapacityException;
+
 /**
  * Storage of <em>n</em> {@link Item}s indexed from <em>0</em> to <em>n-1</em>.
  *

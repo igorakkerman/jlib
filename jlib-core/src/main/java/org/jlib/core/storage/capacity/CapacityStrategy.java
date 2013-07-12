@@ -19,10 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.core.storage.capacity;
+
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageException;
 
 /**
  * Strategy of capacity provision in a {@link LinearIndexStorage}.
+ *
+ * <p>
+ * This class defines:
+ * </p>
+ * <dl>
+ * <dt>the <em>head capacity</em></dt>
+ * <dd>as the capacity in front of the first Item
+ * <dt>the <em>tail capacity</em></dt>
+ * <dd>as the capacity behind the last Item</dd>
+ * </dl>
+ * <p>
  *
  * @author Igor Akkerman
  */
@@ -50,7 +64,7 @@ public interface CapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code headCapacity < 0}
      */
-    public void ensureHeadCapacity(final int headCapacity)
+    public void ensureHeadCapacity(int headCapacity)
     throws LinearIndexStorageException;
 
     /**
@@ -68,7 +82,7 @@ public interface CapacityStrategy {
      *                   middleIndex < linearIndexStorage.getFirstIndex() ||
      *                   middleIndex > linearIndexStorage.getLastIndex()}
      */
-    public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
+    public void ensureMiddleCapacity(int splitIndex, int middleCapacity)
     throws LinearIndexStorageException;
 
     /**
@@ -81,6 +95,6 @@ public interface CapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code tailCapacity < 0}
      */
-    public void ensureTailCapacity(final int tailCapacity)
+    public void ensureTailCapacity(int tailCapacity)
     throws LinearIndexStorageException;
 }
