@@ -32,8 +32,7 @@ import java.io.Serializable;
  * @author Igor Akkerman
  */
 public interface LinearIndexStorage<Item>
-extends Cloneable,
-        Serializable {
+extends Cloneable {
 
     /**
      * Returns the current capacity, that is, the number of currently storable {@link Item}s without need of allocating

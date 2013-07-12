@@ -135,8 +135,9 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Object clone() {
-        final ArrayStorage cloneStorage = (ArrayStorage) super.clone();
+        final ArrayStorage<Item> cloneStorage = (ArrayStorage<Item>) super.clone();
 
         cloneStorage.delegateArray = copyOf(delegateArray, delegateArray.length);
 
