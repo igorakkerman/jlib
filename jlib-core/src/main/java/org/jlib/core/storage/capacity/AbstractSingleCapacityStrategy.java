@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage.capacity;
 
-import org.jlib.core.storage.ContentIndexHolder;
+import org.jlib.core.storage.ContentIndex;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.system.AbstractObject;
 
@@ -31,19 +31,18 @@ implements SingleCapacityStrategy {
 
     private final LinearIndexStorage storage;
 
-    private final ContentIndexHolder contentIndexHolder;
+    private final ContentIndex contentIndex;
 
-    protected AbstractSingleCapacityStrategy(final LinearIndexStorage storage,
-                                             final ContentIndexHolder contentIndexHolder) {
+    protected AbstractSingleCapacityStrategy(final LinearIndexStorage storage, final ContentIndex contentIndex) {
         this.storage = storage;
-        this.contentIndexHolder = contentIndexHolder;
+        this.contentIndex = contentIndex;
     }
 
     protected LinearIndexStorage getStorage() {
         return storage;
     }
 
-    protected ContentIndexHolder getContentIndexHolder() {
-        return contentIndexHolder;
+    protected ContentIndex getContentIndex() {
+        return contentIndex;
     }
 }

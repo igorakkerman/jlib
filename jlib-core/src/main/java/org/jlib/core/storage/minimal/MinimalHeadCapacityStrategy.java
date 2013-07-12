@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage.minimal;
 
-import org.jlib.core.storage.ContentIndexHolder;
+import org.jlib.core.storage.ContentIndex;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.capacity.AbstractSingleCapacityStrategy;
 import org.jlib.core.storage.capacity.CapacityStrategy;
@@ -50,8 +50,8 @@ public class MinimalHeadCapacityStrategy<Item>
 extends AbstractSingleCapacityStrategy<Item>
 implements SingleCapacityStrategy {
 
-    public MinimalHeadCapacityStrategy(final LinearIndexStorage storage, final ContentIndexHolder contentIndexHolder) {
-        super(storage, contentIndexHolder);
+    public MinimalHeadCapacityStrategy(final LinearIndexStorage storage, final ContentIndex contentIndex) {
+        super(storage, contentIndex);
     }
 
     @Override

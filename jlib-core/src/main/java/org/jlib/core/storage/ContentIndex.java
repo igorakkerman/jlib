@@ -21,8 +21,6 @@
 
 package org.jlib.core.storage;
 
-import java.io.Serializable;
-
 import static org.jlib.core.math.MathUtility.count;
 
 import org.jlib.core.system.AbstractCloneable;
@@ -35,12 +33,8 @@ import org.jlib.core.system.AbstractCloneable;
  *
  * @author Igor Akkerman
  */
-public class ContentIndexHolder<Item>
-extends AbstractCloneable
-implements Serializable {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = 7766547798864277487L;
+public class ContentIndex<Item>
+extends AbstractCloneable {
 
     /** referenced {@link LinearIndexStorage} */
     private final LinearIndexStorage<Item> storage;
@@ -65,12 +59,12 @@ implements Serializable {
  */
 
     /**
-     * Creates a new {@link ContentIndexHolder} for the specified {@link LinearIndexStorage}.
+     * Creates a new {@link ContentIndex} for the specified {@link LinearIndexStorage}.
      *
      * @param storage
-     *        {@link LinearIndexStorage} on which this {@link ContentIndexHolder} operates.
+     *        {@link LinearIndexStorage} on which this {@link ContentIndex} operates.
      */
-    public ContentIndexHolder(final LinearIndexStorage storage)
+    public ContentIndex(final LinearIndexStorage<Item> storage)
     throws LinearIndexStorageException {
         this.storage = storage;
     }

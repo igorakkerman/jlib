@@ -23,7 +23,7 @@ package org.jlib.core.storage.minimal;
 
 import static org.jlib.core.math.MathUtility.count;
 
-import org.jlib.core.storage.ContentIndexHolder;
+import org.jlib.core.storage.ContentIndex;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
@@ -67,8 +67,8 @@ implements CapacityStrategy {
     /** {@link LinearIndexStorage} holding the {@link Item}s */
     private final LinearIndexStorage<Item> storage;
 
-    /** {@link ContentIndexHolder} for {@link LinearIndexStorage} */
-    private final ContentIndexHolder contentIndexHolder;
+    /** {@link ContentIndex} for {@link LinearIndexStorage} */
+    private final ContentIndex contentIndex;
 
     /**
      * Creates a new {@link MinimalCapacityStrategy}.
@@ -76,15 +76,14 @@ implements CapacityStrategy {
      * @param storage
      *        targeted {@link LinearIndexStorage}
      *
-     * @param contentIndexHolder
-     *        used {@link ContentIndexHolder}
+     * @param contentIndex
+     *        used {@link ContentIndex}
      */
-    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                   final ContentIndexHolder contentIndexHolder) {
+    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage, final ContentIndex contentIndex) {
         super();
 
         this.storage = storage;
-        this.contentIndexHolder = contentIndexHolder;
+        this.contentIndex = contentIndex;
     }
 
     @Override
@@ -93,12 +92,12 @@ implements CapacityStrategy {
     }
 
     private IndexRangeOperationDescriptor getCopyAllItemsToNewIndexDescriptor(final int targetIndex) {
-        return new IndexRangeOperationDescriptor(contentIndexHolder.getFirstItemIndex(),
-                                                 contentIndexHolder.getLastItemIndex(), targetIndex);
+        return new IndexRangeOperationDescriptor(contentIndex.getFirstItemIndex(), contentIndex.getLastItemIndex(),
+                                                 targetIndex);
     }
 
     private boolean isCurrentHeadCapacitySufficientFor(final int headCapacity) {
-        return headCapacity <= contentIndexHolder.getFirstItemIndex();
+        return headCapacity <= contentIndex.getFirstItemIndex();
     }
 
     @Override
@@ -106,12 +105,11 @@ implements CapacityStrategy {
     throws LinearIndexStorageException {
         ensurePartialCapacityValid("tailCapacity", tailCapacity);
 
-        if (tailCapacity <= contentIndexHolder.getTailCapacity())
+        if (tailCapacity <= contentIndex.getTailCapacity())
             return;
 
-        storage.ensureCapacityAndShiftItems(contentIndexHolder.getLastItemIndex() + 1 + tailCapacity,
-                                            getCopyAllItemsToNewIndexDescriptor(
-                                                                               contentIndexHolder.getFirstItemIndex()));
+        storage.ensureCapacityAndShiftItems(contentIndex.getLastItemIndex() + 1 + tailCapacity,
+                                            getCopyAllItemsToNewIndexDescriptor(contentIndex.getFirstItemIndex()));
     }
 
     @Override
@@ -132,27 +130,26 @@ implements CapacityStrategy {
      */
     private void ensureValidMiddleCapacity(final int splitIndex, final int middleCapacity) {
         final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightByMidleCapacity = /*
-         */ new IndexRangeOperationDescriptor(splitIndex, contentIndexHolder.getLastItemIndex(),
-                                              splitIndex + middleCapacity);
+         */ new IndexRangeOperationDescriptor(splitIndex, contentIndex.getLastItemIndex(), splitIndex + middleCapacity);
 
-        final int newLastItemIndex = contentIndexHolder.getLastItemIndex() + middleCapacity;
+        final int newLastItemIndex = contentIndex.getLastItemIndex() + middleCapacity;
 
-        if (contentIndexHolder.getTailCapacity() >= middleCapacity) {
+        if (contentIndex.getTailCapacity() >= middleCapacity) {
 
             storage.shiftItems(shiftRightPartFromSplitIndexRightByMidleCapacity);
-            contentIndexHolder.setLastItemIndex(newLastItemIndex);
+            contentIndex.setLastItemIndex(newLastItemIndex);
 
             return;
         }
 
-        final int fullCapacity = contentIndexHolder.getItemsCount() + middleCapacity;
+        final int fullCapacity = contentIndex.getItemsCount() + middleCapacity;
 
         // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
         final IndexRangeOperationDescriptor leftCopyDescriptor = /*
-         */ new IndexRangeOperationDescriptor(contentIndexHolder.getFirstItemIndex(), splitIndex - 1, splitIndex);
+         */ new IndexRangeOperationDescriptor(contentIndex.getFirstItemIndex(), splitIndex - 1, splitIndex);
 
         final IndexRangeOperationDescriptor[] copyDescriptors = /*
-         */ splitIndex > contentIndexHolder.getFirstItemIndex() ?
+         */ splitIndex > contentIndex.getFirstItemIndex() ?
             new IndexRangeOperationDescriptor[]{ leftCopyDescriptor,
                                                  shiftRightPartFromSplitIndexRightByMidleCapacity } :
             new IndexRangeOperationDescriptor[]{ shiftRightPartFromSplitIndexRightByMidleCapacity };
@@ -161,13 +158,13 @@ implements CapacityStrategy {
     }
 
     private void ensureIndexValid(final String indexName, final int splitIndex) {
-        if (splitIndex < contentIndexHolder.getFirstItemIndex())
+        if (splitIndex < contentIndex.getFirstItemIndex())
             throw new InvalidIndexException(storage, indexName + " = {1} > {2} = firstItemIndex", splitIndex,
-                                            contentIndexHolder.getFirstItemIndex());
+                                            contentIndex.getFirstItemIndex());
 
-        if (splitIndex > contentIndexHolder.getLastItemIndex())
+        if (splitIndex > contentIndex.getLastItemIndex())
             throw new InvalidIndexException(storage, indexName + " = {1} < {2} = lastItemIndex", splitIndex,
-                                            contentIndexHolder.getLastItemIndex());
+                                            contentIndex.getLastItemIndex());
     }
 
     /**
