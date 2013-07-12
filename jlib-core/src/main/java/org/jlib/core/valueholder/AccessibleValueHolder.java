@@ -21,8 +21,8 @@
 
 package org.jlib.core.valueholder;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jlib.core.language.ValueNotAccessibleException;
+import org.jlib.core.system.AbstractCloneable;
 
 /**
  * Holder of a Value that is guaranteed to be accessible.
@@ -33,6 +33,7 @@ import org.jlib.core.language.ValueNotAccessibleException;
  * @author Igor Akkerman
  */
 public abstract class AccessibleValueHolder<Value>
+extends AbstractCloneable
 implements ValueHolder<Value> {
 
     /**
@@ -55,27 +56,12 @@ implements ValueHolder<Value> {
      * @return {@code true} always
      */
     @Override
-    public boolean isValueAccessible() {
+    public final boolean isValueAccessible() {
         return true;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return getValue().toString();
-    }
-
-    @Override
-    public boolean equals(final Object otherObject) {
-        if (! getClass().equals(otherObject.getClass()))
-            return false;
-
-        final InitializedValueHolder<?> otherInitializedValueHolder = (InitializedValueHolder<?>) otherObject;
-
-        return getValue().equals(otherInitializedValueHolder.getValue());
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(getValue()).toHashCode();
     }
 }

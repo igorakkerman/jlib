@@ -53,18 +53,6 @@ extends AccessibleValueHolder<Value> {
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * This implementation always returns {@code true}.
-     *
-     * @return {@code true}
-     */
-    @Override
-    public boolean isValueAccessible() {
-        return true;
-    }
-
-    /**
      * Registers the new Value.
      *
      * @param value
