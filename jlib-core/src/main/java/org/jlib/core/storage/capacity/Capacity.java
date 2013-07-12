@@ -31,10 +31,15 @@ implements Serializable {
 
     private static final long serialVersionUID = - 4507502672593883458L;
 
-    public Capacity(final int value) {
+    public Capacity(final int value)
+    throws NegativeCapacityException {
         super(value);
+    }
 
-        if (value < 0)
-            throw new NegativeCapacityException(value);
+    @Override
+    protected void ensureValueValid()
+    throws NegativeCapacityException {
+        if (getValue() < 0)
+            throw new NegativeCapacityException(getValue());
     }
 }
