@@ -21,6 +21,8 @@
 
 package org.jlib.core.storage;
 
+import java.io.Serializable;
+
 /**
  * Storage of <em>n</em> {@link Item}s indexed from <em>0</em> to <em>n-1</em>.
  *
@@ -30,7 +32,8 @@ package org.jlib.core.storage;
  * @author Igor Akkerman
  */
 public interface LinearIndexStorage<Item>
-extends Cloneable {
+extends Cloneable,
+        Serializable {
 
     /**
      * Returns the current capacity, that is, the number of currently storable {@link Item}s without need of allocating

@@ -64,13 +64,15 @@ implements Serializable {
 
  */
 
+
+
     /**
      * Creates a new {@link ContentIndexRegistry} for the specified {@link LinearIndexStorage}.
      *
      * @param storage
      *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
-    public ContentIndexRegistry(final LinearIndexStorage storage)
+    public ContentIndexRegistry(final LinearIndexStorage<Item> storage)
     throws LinearIndexStorageException {
         this.storage = storage;
     }
