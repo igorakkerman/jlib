@@ -27,7 +27,7 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.index.array.ArraySequence;
 import org.jlib.core.storage.CapacityStrategy;
-import org.jlib.core.storage.JustAsMuchAsNeededCapacityStrategy;
+import org.jlib.core.storage.MinimalCapacityStrategy;
 import org.jlib.core.storage.LinearIndexStorage;
 
 public abstract class LinearIndexStorageSequence<Item>
@@ -84,7 +84,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     protected void initializeCapacityStrategy(final LinearIndexStorage<Item> storage) {
-        capacityStrategy = new JustAsMuchAsNeededCapacityStrategy<>(storage);
+        capacityStrategy = new MinimalCapacityStrategy<>(storage);
     }
 
     @Override

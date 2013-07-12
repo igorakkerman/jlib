@@ -33,7 +33,7 @@ import static org.jlib.core.math.MathUtility.count;
  */
 // TODO: 2013-07-10 name all ItemCopyDescriptors with an explaining name
 // TODO: 2013-07-10 explain the algorithms
-public class JustAsMuchAsNeededCapacityStrategy<Item>
+public class MinimalCapacityStrategy<Item>
 implements CapacityStrategy {
 
     /** {@link LinearIndexStorage} holding the {@link Item}s */
@@ -42,13 +42,12 @@ implements CapacityStrategy {
     private final ContentIndexHolder contentIndexHolder;
 
     /**
-     * Creates a new {@link JustAsMuchAsNeededCapacityStrategy}.
+     * Creates a new {@link MinimalCapacityStrategy}.
      *
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
-    public JustAsMuchAsNeededCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                              final ContentIndexHolder contentIndexHolder) {
+    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage, final ContentIndexHolder contentIndexHolder) {
         super();
 
         this.storage = storage;
