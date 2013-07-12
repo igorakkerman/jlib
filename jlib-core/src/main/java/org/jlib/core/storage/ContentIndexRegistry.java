@@ -35,7 +35,7 @@ import org.jlib.core.system.AbstractCloneable;
  *
  * @author Igor Akkerman
  */
-public class ContentIndexHolder<Item>
+public class ContentIndexRegistry<Item>
 extends AbstractCloneable
 implements Serializable {
 
@@ -65,12 +65,12 @@ implements Serializable {
  */
 
     /**
-     * Creates a new {@link ContentIndexHolder} for the specified {@link LinearIndexStorage}.
+     * Creates a new {@link ContentIndexRegistry} for the specified {@link LinearIndexStorage}.
      *
      * @param storage
-     *        {@link LinearIndexStorage} on which this {@link ContentIndexHolder} operates.
+     *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
-    public ContentIndexHolder(final LinearIndexStorage storage)
+    public ContentIndexRegistry(final LinearIndexStorage storage)
     throws LinearIndexStorageException {
         this.storage = storage;
     }
