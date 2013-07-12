@@ -75,31 +75,6 @@ implements Serializable {
         this.storage = storage;
     }
 
-    private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
-                                                    final int lastItemIndex)
-    throws NegativeCapacityException, LinearIndexStorageException {
-
-        if (capacity < 0)
-            throw new NegativeCapacityException(capacity);
-
-        if (firstItemIndex < 0)
-            throw new InvalidIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
-
-        if (firstItemIndex > lastItemIndex)
-            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
-                                            lastItemIndex);
-
-        if (lastItemIndex > capacity - 1)
-            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
-                                            lastItemIndex);
-
-        if (count(firstItemIndex, lastItemIndex) > capacity)
-            throw new InvalidIndexException(this,
-                                            "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
-                                                  capacity, firstItemIndex, lastItemIndex,
-                                                  count(firstItemIndex, lastItemIndex));
-    }
-
     /**
      * Returns the index of the first {@link Item}.
      *
@@ -117,7 +92,7 @@ implements Serializable {
      */
     public void setFirstItemIndex(int firstItemIndex) {
         if (firstItemIndex < 0)
-            throw new InvalidIndexException(storage, firstItemIndex, "firstItemIndex = {2} < 0");
+            throw new InvalidIndexException(storage, "firstItemIndex = {2} < 0", firstItemIndex);
 
         this.firstItemIndex = firstItemIndex;
     }

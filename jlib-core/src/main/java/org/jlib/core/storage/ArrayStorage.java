@@ -103,10 +103,13 @@ implements LinearIndexStorage<Item> {
         final int capacity = getCapacity();
 
         if (sourceBeginIndex < 0)
-            throw new InvalidIndexException(this, "sourceBeginIndex == {1} < 0", sourceBeginIndex);
+            throw new InvalidIndexException(this, "sourceBeginIndex = {1} < 0", sourceBeginIndex);
 
         if (sourceEndIndex < sourceBeginIndex)
-            throw new InvalidIndexException(this, "sourceEndIndex == {1} < {2} == sourceBeginIndex", sourceEndIndex, sourceBeginIndex);
+            throw new InvalidIndexException(this, "sourceEndIndex = {1} < {2} = sourceBeginIndex", sourceEndIndex, sourceBeginIndex);
+
+        if (targetIndex > capacity - 1)
+            throw new InvalidIndexException(this, "targetIndex = {1} < {2} = capacity", targetIndex, capacity);
 
         arraycopy(sourceArray, sourceBeginIndex, targetArray, copyDescriptor.getTargetIndex(),
                   copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
@@ -149,6 +152,6 @@ implements LinearIndexStorage<Item> {
     private void ensureCapacityValid(final int capacity)
     throws NegativeCapacityException {
         if (capacity < 0)
-            throw new NegativeCapacityException(capacity);
+            throw new NegativeCapacityException(this, capacity);
     }
 }

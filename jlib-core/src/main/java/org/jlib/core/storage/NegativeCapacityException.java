@@ -32,7 +32,7 @@ class NegativeCapacityException
 extends LinearIndexStorageException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = 655924593848562967L;
+    private static final long serialVersionUID = - 701812048814999842L;
 
     /**
      * Creates a new {@link NegativeCapacityException}.
@@ -43,7 +43,8 @@ extends LinearIndexStorageException {
      * @param invalidCapacity
      *        integer specifying the invalid capacity
      */
-    public NegativeCapacityException(final LinearIndexStorage storage, final int invalidCapacity) {
-        super(storage, "{1}", invalidCapacity);
+    public NegativeCapacityException(final LinearIndexStorage storage, final String invalidCapacityName,
+                                     final int invalidCapacity) {
+        super(storage, "{1} = {2}", invalidCapacityName, invalidCapacity);
     }
 }

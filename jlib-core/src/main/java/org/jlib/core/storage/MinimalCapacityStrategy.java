@@ -24,7 +24,22 @@ package org.jlib.core.storage;
 import static org.jlib.core.math.MathUtility.count;
 
 /**
+ * <p>
  * {@link CapacityStrategy} providing just as much capacity as needed.
+ * </p>
+ * <p>
+ * The algorithm defines:
+ * </p>
+ * <dl>
+ *     <dt>the <em>head capacity</em></dt>
+ *     <dd>as the capacity in front of the first {@link Item}
+ *     <dt>the <em>tail capacity</em></dt>
+ *     <dd>as the capacity behind the last {@link Item}</dd>
+ * </dl>
+ *
+ *     and analyzes the current head and tail capacities, that is, the empty space before the first and after the
+ * last {@link Item} index
+ * </p>
  *
  * @param <Item>
  *        type of the {@link LinearIndexStorage} items
@@ -47,7 +62,8 @@ implements CapacityStrategy {
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
-    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage, final ContentIndexHolder contentIndexHolder) {
+    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                   final ContentIndexHolder contentIndexHolder) {
         super();
 
         this.storage = storage;
@@ -60,32 +76,43 @@ implements CapacityStrategy {
     }
 
     @Override
-    public void ensureHeadCapacity(final int headCapacity)
+    public void ensureHeadCapacity(final int newHeadCapacity)
     throws LinearIndexStorageException {
-        ensurePartialCapacityValid("middleCapacity", headCapacity);
 
-        if (headCapacity <= contentIndexHolder.getFirstItemIndex())
+        ensurePartialCapacityValid("headCapacity", newHeadCapacity);
+
+        if (isCurrentHeadCapacitySufficientFor(newHeadCapacity))
             return;
 
-        storage.ensureCapacityAndShiftItems(
-                                           headCapacity + storage.getCapacity() - contentIndexHolder.getFirstItemIndex(),
-                                           new IndexRangeOperationDescriptor(contentIndexHolder.getFirstItemIndex(),
-                                                                             contentIndexHolder.getLastItemIndex(),
-                                                                             headCapacity));
+        final int missingHeadCapacity = newHeadCapacity - contentIndexHolder.getFirstItemIndex();
+
+        final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
+         */ getCopyAllItemsToNewIndexDescriptor(newHeadCapacity);
+
+        storage.ensureCapacityAndShiftItems(storage.getCapacity() + missingHeadCapacity,
+                                            shiftAllItemsToAllowHeadCapacity);
+    }
+
+    private IndexRangeOperationDescriptor getCopyAllItemsToNewIndexDescriptor(final int targetIndex) {
+        return new IndexRangeOperationDescriptor(contentIndexHolder.getFirstItemIndex(),
+                                                 contentIndexHolder.getLastItemIndex(), targetIndex);
+    }
+
+    private boolean isCurrentHeadCapacitySufficientFor(final int headCapacity) {
+        return headCapacity <= contentIndexHolder.getFirstItemIndex();
     }
 
     @Override
     public void ensureTailCapacity(final int tailCapacity)
     throws LinearIndexStorageException {
-        ensurePartialCapacityValid("middleCapacity", tailCapacity);
+        ensurePartialCapacityValid("tailCapacity", tailCapacity);
 
         if (tailCapacity <= contentIndexHolder.getTailCapacity())
             return;
 
         storage.ensureCapacityAndShiftItems(contentIndexHolder.getLastItemIndex() + 1 + tailCapacity,
-                                            new IndexRangeOperationDescriptor(contentIndexHolder.getFirstItemIndex(),
-                                                                              contentIndexHolder.getLastItemIndex(),
-                                                                              contentIndexHolder.getFirstItemIndex()));
+                                            getCopyAllItemsToNewIndexDescriptor(
+                                                                               contentIndexHolder.getFirstItemIndex()));
     }
 
     @Override
@@ -158,6 +185,31 @@ implements CapacityStrategy {
      */
     private void ensurePartialCapacityValid(final String partialCapacityName, final int partialCapacity) {
         if (partialCapacity < 0)
-            throw new NegativePartialCapacityException(storage, partialCapacityName, partialCapacity);
+            throw new NegativeCapacityException(storage, partialCapacityName, partialCapacity);
+    }
+
+    private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
+                                                    final int lastItemIndex)
+    throws NegativeCapacityException, LinearIndexStorageException {
+
+        if (capacity < 0)
+            throw new NegativeCapacityException(capacity);
+
+        if (firstItemIndex < 0)
+            throw new InvalidIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);
+
+        if (firstItemIndex > lastItemIndex)
+            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} = firstItemIndex", firstItemIndex,
+                                            lastItemIndex);
+
+        if (lastItemIndex > capacity - 1)
+            throw new InvalidIndexException(this, "lastItemIndex = {2} > {1} - 1 = capacity - 1", capacity,
+                                            lastItemIndex);
+
+        if (count(firstItemIndex, lastItemIndex) > capacity)
+            throw new InvalidIndexException(this,
+                                            "count(firstItemIndex: {2}, lastItemIndex: {3}) = {4} > {1} = capacity",
+                                            capacity, firstItemIndex, lastItemIndex,
+                                            count(firstItemIndex, lastItemIndex));
     }
 }
