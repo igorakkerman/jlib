@@ -57,7 +57,7 @@ extends RemoveTraverser<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void remove(final ValueObserver<Item>... observers)
+    public void remove(ValueObserver<Item>... observers)
     throws NoItemToRemoveException, InvalidTraversibleStateException, ValueObserverException, RuntimeException;
 
     /**
@@ -67,5 +67,5 @@ extends RemoveTraverser<Item> {
      * @param removeObserver
      *        additional remove {@link ValueObserver}
      */
-    public void addRemoveObserver(final ValueObserver<Item> removeObserver);
+    public void addRemoveObserver(ValueObserver<Item> removeObserver);
 }

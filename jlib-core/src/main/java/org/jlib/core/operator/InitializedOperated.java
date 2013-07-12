@@ -19,33 +19,34 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.operator;
+
+import org.jlib.core.value.Initialized;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not accessible.
+ * {@link Initialized} and {@link OperatedValue}.
+ *
+ * @param <Value>
+ *        type of the value used by the {@link OptionalValueOperator}
  *
  * @author Igor Akkerman
  */
-public abstract class ValueNotAccessibleException
-extends FormattedMessageException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 813625306823615853L;
+class InitializedOperated<Value>
+extends Initialized<Value>
+implements OperatedValue<Value> {
 
     /**
-     * Creates a new {@link ValueNotAccessibleException}.
+     * Creates a new {@link InitializedOperated}.
+     *
+     * @param initialValue
+     *        initial Value
      */
-    public ValueNotAccessibleException() {
-        super();
+    public InitializedOperated(final Value initialValue) {
+        super(initialValue);
     }
 
-    /**
-     * Creates a new {@link ValueNotAccessibleException}.
-     *
-     * @param valueName
-     *        {@link String} specifying a descriptive name of the Value
-     */
-    public ValueNotAccessibleException(final String valueName) {
-        super(valueName);
+    @Override
+    public final void operate(final OptionalValueOperator<Value> operator) {
+        operator.operate(getValue());
     }
 }

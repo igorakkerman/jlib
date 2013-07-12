@@ -22,11 +22,11 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.InvalidContainerStateException;
-import org.jlib.core.traverser.TraversibleUtility;
 import org.jlib.core.traverser.Traversible;
+import org.jlib.core.traverser.TraversibleUtility;
 import org.jlib.core.traverser.TwoWayTraversible;
-import org.jlib.core.valueholder.AccessibleValueHolder;
-import org.jlib.core.valueholder.InitializedValueHolder;
+import org.jlib.core.value.Accessible;
+import org.jlib.core.value.Initialized;
 
 /**
  * {@link Sequence} representing the concatenation of other {@link Sequence}
@@ -44,13 +44,13 @@ extends AbstractSequence<Item> {
     private TwoWayTraversible<Item>[] traversibles;
 
     /** total number of {@link Sequence} Items */
-    private AccessibleValueHolder<Integer> itemsCountHolder = new AccessibleValueHolder<Integer>() {
+    private Accessible<Integer> itemsCountHolder = new Accessible<Integer>() {
 
         @Override
         public Integer getValue() {
             final int itemsCount = TraversibleUtility.getItemsCount(traversibles);
 
-            itemsCountHolder = new InitializedValueHolder<>(itemsCount);
+            itemsCountHolder = new Initialized<>(itemsCount);
 
             return itemsCount;
         }

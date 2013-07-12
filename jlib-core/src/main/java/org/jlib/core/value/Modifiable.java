@@ -19,32 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.core.value;
 
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
+ * {@link org.jlib.core.value.Value} of a modifiable {@link Value}.
+ *
+ * @param <Value>
+ *        type of the value
  *
  * @author Igor Akkerman
  */
-class NegativeCapacityException
-extends LinearIndexStorageException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 701812048814999842L;
+public interface Modifiable<Value>
+extends org.jlib.core.value.Value<Value> {
 
     /**
-     * Creates a new {@link NegativeCapacityException}.
+     * Registers the new {@link Value}.
      *
-     * @param storage
-     *        referenced {@link LinearIndexStorage}
+     * @param value
+     *        new {@link Value}
      *
-     * @param invalidCapacity
-     *        integer specifying the invalid capacity
+     * @throws InvalidArgumentException
+     *         if {@code value} is invalid
      */
-    public NegativeCapacityException(final LinearIndexStorage storage, final String invalidCapacityName,
-                                     final int invalidCapacity) {
-        super(storage, "{1} = {2}", invalidCapacityName, invalidCapacity);
-    }
+    public void setValue(Value value)
+    throws InvalidArgumentException;
 }

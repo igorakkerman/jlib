@@ -19,10 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.core.storage.capacity;
+
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageException;
 
 /**
  * Strategy of capacity provision in a {@link LinearIndexStorage}.
+ *
+ * <p>
+ * This class defines:
+ * </p>
+ * <dl>
+ * <dt>the <em>head capacity</em></dt>
+ * <dd>as the capacity in front of the first Item
+ * <dt>the <em>tail capacity</em></dt>
+ * <dd>as the capacity behind the last Item</dd>
+ * </dl>
+ * <p>
  *
  * @author Igor Akkerman
  */

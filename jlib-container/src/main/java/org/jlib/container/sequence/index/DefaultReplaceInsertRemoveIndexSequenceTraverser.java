@@ -21,20 +21,21 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.array.ArrayUtility.traversible;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
+
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.language.ValueNotAccessibleException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-import static org.jlib.core.array.ArrayUtility.traversible;
+import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link RemoveIndexSequenceTraverser},
@@ -54,42 +55,67 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
            org.jlib.container.sequence.InsertSequenceTraverser<Item>,
            org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
            org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>, org.jlib.container.sequence.InsertSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
            org.jlib.container.sequence.InsertSequenceTraverser<Item>,
-           org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>, ObservedRemoveSequenceTraverser<Item>, org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>, org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>, org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           ObservedRemoveSequenceTraverser<Item>,
+           org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           org.jlib.core.traverser.ObservedRemoveTraverser<Item>,
            org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
            org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>, org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>, org.jlib.container.sequence.InsertSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
            org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.InsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           org.jlib.container.sequence.RemoveSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
            org.jlib.container.sequence.ReplaceSequenceTraverser<Item> {
 
     /** remove {@link ValueObserver} items */
