@@ -35,6 +35,6 @@ implements Serializable {
         super(value);
 
         if (value < 0)
-            throw new NegativeCapacityException()
+            throw new NegativeCapacityException(value);
     }
 }
