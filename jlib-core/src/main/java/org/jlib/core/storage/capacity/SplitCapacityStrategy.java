@@ -39,8 +39,7 @@ public interface SplitCapacityStrategy {
      *        integer specifying the index at which the capacity should be provided
      *
      * @param capacity
-     *        head {@link Capacity}
+     *        split {@link Capacity}
      */
-    public void ensureCapacity(int splitIndex, Capacity capacity)
-    throws NegativeCapacityException;
+    public void ensureCapacity(int splitIndex, Capacity capacity);
 }

@@ -35,7 +35,7 @@ public interface SingleCapacityStrategy {
      * position of the {@link LinearIndexStorage}. The indices of the stored Items are modified, if necessary.
      *
      * @param capacity
-     *        head {@link Capacity}
+     *        necessary {@link Capacity}
      */
     public void ensureCapacity(Capacity capacity);
 }
