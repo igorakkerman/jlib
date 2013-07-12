@@ -35,15 +35,12 @@ import org.jlib.core.system.AbstractCloneable;
  *
  * @author Igor Akkerman
  */
-public class ContentIndexRegistry<Item>
+public class ContentIndexRegistry
 extends AbstractCloneable
 implements Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
-
-    /** referenced {@link LinearIndexStorage} */
-    private final LinearIndexStorage<Item> storage;
 
     /** array index of the first {@link Item} */
     private Integer firstItemIndex;
@@ -57,9 +54,9 @@ implements Serializable {
      * @param storage
      *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
-    public ContentIndexRegistry(final LinearIndexStorage<Item> storage)
+    public ContentIndexRegistry()
     throws LinearIndexStorageException {
-        this.storage = storage;
+        super();
     }
 
     /**
@@ -78,9 +75,6 @@ implements Serializable {
      *        integer specifying the index of the first {@link Item}
      */
     public void setFirstItemIndex(int firstItemIndex) {
-        if (firstItemIndex < 0)
-            throw new InvalidIndexException(storage, "firstItemIndex = {2} < 0", firstItemIndex);
-
         this.firstItemIndex = firstItemIndex;
     }
 
@@ -130,14 +124,5 @@ implements Serializable {
      */
     public int getItemsCount() {
         return count(firstItemIndex, lastItemIndex);
-    }
-
-    /**
-     * Returns the tail capacity, that is, the number of storable {@link Item}s behind the last {@link Item}.
-     *
-     * @return integer specifying the tail capacity
-     */
-    public int getTailCapacity() {
-        return storage.getCapacity() - getLastItemIndex();
     }
 }

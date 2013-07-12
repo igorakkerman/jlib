@@ -50,7 +50,7 @@ public interface CapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code headCapacity < 0}
      */
-    public void ensureHeadCapacity(final int headCapacity)
+    public void ensureHeadCapacity(int headCapacity)
     throws LinearIndexStorageException;
 
     /**
@@ -68,7 +68,7 @@ public interface CapacityStrategy {
      *                   middleIndex < linearIndexStorage.getFirstIndex() ||
      *                   middleIndex > linearIndexStorage.getLastIndex()}
      */
-    public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
+    public void ensureMiddleCapacity(int splitIndex, int middleCapacity)
     throws LinearIndexStorageException;
 
     /**
@@ -81,6 +81,6 @@ public interface CapacityStrategy {
      * @throws LinearIndexStorageException
      *         if {@code tailCapacity < 0}
      */
-    public void ensureTailCapacity(final int tailCapacity)
+    public void ensureTailCapacity(int tailCapacity)
     throws LinearIndexStorageException;
 }

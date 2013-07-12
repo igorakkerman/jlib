@@ -49,7 +49,7 @@ import static org.jlib.core.math.MathUtility.count;
 // TODO: 2013-07-10 name all ItemCopyDescriptors with an explaining name
 // TODO: 2013-07-10 explain the algorithms
 public class MinimalCapacityStrategy<Item>
-implements CapacityStrategy {
+extends AbstractCapacityStrategy<Item> {
 
     /** {@link LinearIndexStorage} holding the {@link Item}s */
     private final LinearIndexStorage<Item> storage;
@@ -107,7 +107,7 @@ implements CapacityStrategy {
     throws LinearIndexStorageException {
         ensurePartialCapacityValid("tailCapacity", tailCapacity);
 
-        if (tailCapacity <= contentIndexRegistry.getTailCapacity())
+        if (tailCapacity <= getTailCapacity())
             return;
 
         storage.ensureCapacityAndShiftItems(contentIndexRegistry.getLastItemIndex() + 1 + tailCapacity,
