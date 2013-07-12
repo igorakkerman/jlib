@@ -22,30 +22,30 @@
 package org.jlib.core.value;
 
 /**
- * Value of a {@link Val}.
+ * Value of a {@link Value}.
  *
- * @param <Val>
+ * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Value<Val> {
+public interface Value<Value> {
 
     /**
-     * Returns the accessed {@link Val}.
+     * Returns the accessed {@link Value}.
      *
-     * @return accessed {@link Val}
+     * @return accessed {@link Value}
      *
      * @throws ValueNotAccessibleException
-     *         if no {@link Val} can be accessed
+     *         if no {@link Value} can be accessed
      */
-    public Val getValue()
+    public Value getValue()
     throws ValueNotAccessibleException;
 
     /**
-     * Returns whether a {@link Val} can be accessed.
+     * Returns whether a {@link Value} can be accessed.
      *
-     * @return {@code true} if a {@link Val} can be accessed;
+     * @return {@code true} if a {@link Value} can be accessed;
      *         {@code false} otherwise
      */
     public boolean isValueAccessible();

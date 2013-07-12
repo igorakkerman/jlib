@@ -22,21 +22,21 @@
 package org.jlib.core.value;
 
 /**
- * {@link Value} of a modifiable {@link Val}.
+ * {@link org.jlib.core.value.Value} of a modifiable {@link Value}.
  *
- * @param <Val>
+ * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Modifiable<Val>
-extends Value<Val> {
+public interface Modifiable<Value>
+extends org.jlib.core.value.Value<Value> {
 
     /**
-     * Registers the new {@link Val}.
+     * Registers the new {@link Value}.
      *
      * @param value
-     *        new {@link Val}
+     *        new {@link Value}
      */
-    public void setValue(Val value);
+    public void setValue(Value value);
 }

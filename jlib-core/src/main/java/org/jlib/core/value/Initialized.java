@@ -24,41 +24,41 @@ package org.jlib.core.value;
 /**
  * {@link Accessible} initialized by the constructor.
  *
- * @param <Val>
+ * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public class Initialized<Val>
-extends Accessible<Val> {
+public class Initialized<Value>
+extends Accessible<Value> {
 
-    /** registered {@link Val} */
-    private Val value;
+    /** registered {@link Value} */
+    private Value value;
 
     /**
      * Creates a new {@link Initialized}.
      *
      * @param initialValue
-     *        initial {@link Val}
+     *        initial {@link Value}
      */
-    public Initialized(final Val initialValue) {
+    public Initialized(final Value initialValue) {
         super();
 
         value = initialValue;
     }
 
     @Override
-    public Val getValue() {
+    public Value getValue() {
         return value;
     }
 
     /**
-     * Registers the new {@link Val}.
+     * Registers the new {@link Value}.
      *
      * @param value
-     *        new {@link Val}
+     *        new {@link Value}
      */
-    protected void setValue(final Val value) {
+    protected void setValue(final Value value) {
         this.value = value;
     }
 }

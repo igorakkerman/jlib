@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
 
 import org.jlib.core.system.AbstractObject;
 
-public class Optional<Vallue>
+public class Optional<Value>
 extends AbstractObject
-implements Modifiable<Vallue> {
+implements Modifiable<Value> {
 
     public static <Value> Optional<Value> from(final Value value) {
         return new Optional<Value>(value);
@@ -39,10 +39,10 @@ implements Modifiable<Vallue> {
                new Optional<Value>();
     }
 
-    private final Value<Vallue> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Vallue>() {
+    private final org.jlib.core.value.Value<Value> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Value>() {
 
         @Override
-        public void setValue(final Vallue value) {
+        public void setValue(final Value value) {
             delegateValue = new InitializedModifiable<>(value);
         }
     };
@@ -51,14 +51,14 @@ implements Modifiable<Vallue> {
         this.delegateValue = UNINITIALIZED_VALUE_HOLDER;
     }
 
-    private Optional(final Vallue value) {
+    private Optional(final Value value) {
         this.delegateValue = new Initialized<>(value);
     }
 
-    private Value<Vallue> delegateValue;
+    private org.jlib.core.value.Value<Value> delegateValue;
 
     @Override
-    public void setValue(Vallue value) {
+    public void setValue(Value value) {
         delegateValue = new Initialized<>(value);
     }
 
@@ -72,7 +72,7 @@ implements Modifiable<Vallue> {
     }
 
     @Override
-    public Vallue getValue()
+    public Value getValue()
     throws ValueNotAccessibleException {
         return delegateValue.getValue();
     }

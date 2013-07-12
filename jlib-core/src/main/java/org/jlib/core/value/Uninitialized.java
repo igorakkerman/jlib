@@ -26,14 +26,14 @@ import org.jlib.core.system.AbstractObject;
 /**
  * Skeletal implementation of a not initialized {@link Modifiable}.
  *
- * @param <Val>
+ * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public abstract class Uninitialized<Val>
+public abstract class Uninitialized<Value>
 extends AbstractObject
-implements Modifiable<Val> {
+implements Modifiable<Value> {
 
     /**
      * Creates a new {@link Uninitialized}.
@@ -51,7 +51,7 @@ implements Modifiable<Val> {
      *         always
      */
     @Override
-    public Val getValue()
+    public Value getValue()
     throws ValueNotSetException {
         throw new ValueNotSetException();
     }

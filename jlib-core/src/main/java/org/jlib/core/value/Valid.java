@@ -21,31 +21,16 @@
 
 package org.jlib.core.value;
 
-/**
- * {@link Modifiable} {@link Initialized} by a {@link Value}.
- *
- * @param <Value>
- *        type of the value
- *
- * @author Igor Akkerman
- */
-public class InitializedModifiable<Value>
-extends Initialized<Value>
-implements Modifiable<Value> {
+import org.jlib.core.language.InvalidArgumentException;
 
-    /**
-     * Creates a new {@link InitializedModifiable}.
-     *
-     * @param initialValue
-     *        initial {@link Value}
-     */
-    public InitializedModifiable(final Value initialValue) {
+public abstract class Valid<Value>
+extends Initialized<Value> {
+
+    protected Valid(final Value initialValue)
+    throws InvalidArgumentException {
         super(initialValue);
     }
 
-    @Override
-    // raising visibility from protected to public
-    public void setValue(final Value value) {
-        super.setValue(value);
-    }
+    protected abstract void ensureValueValid()
+    throws InvalidArgumentException;
 }
