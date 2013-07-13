@@ -19,18 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage.capacity;
+package org.jlib.core.storage;
 
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.LinearIndexStorageException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
  *
  * @author Igor Akkerman
  */
-class NegativeCapacityException
+public class NegativeCapacityException
 extends LinearIndexStorageException {
 
     /** serialVersionUID */

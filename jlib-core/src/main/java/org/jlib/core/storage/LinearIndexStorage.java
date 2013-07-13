@@ -21,7 +21,6 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.storage.capacity.NegativeCapacityException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 /**

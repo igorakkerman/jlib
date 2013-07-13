@@ -24,7 +24,7 @@ package org.jlib.core.storage;
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
-import org.jlib.core.storage.minimal.NegativeCapacityException;
+import org.jlib.core.storage.capacity.minimal.NegativeCapacityException;
 import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.System.arraycopy;

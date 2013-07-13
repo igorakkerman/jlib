@@ -48,8 +48,8 @@ import static org.jlib.core.math.MathUtility.count;
  */
 // TODO: 2013-07-10 name all ItemCopyDescriptors with an explaining name
 // TODO: 2013-07-10 explain the algorithms
-public class MinimalCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item> {
+public class MinimalSingleCapacityStrategy<Item>
+extends AbstractSingleCapacityStrategy<Item> {
 
     /** {@link LinearIndexStorage} holding the {@link Item}s */
     private final LinearIndexStorage<Item> storage;
@@ -57,13 +57,13 @@ extends AbstractCapacityStrategy<Item> {
     private final ContentIndexRegistry contentIndexRegistry;
 
     /**
-     * Creates a new {@link MinimalCapacityStrategy}.
+     * Creates a new {@link org.jlib.core.storage.MinimalSingleCapacityStrategy}.
      *
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
-    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                   final ContentIndexRegistry contentIndexRegistry) {
+    public MinimalSingleCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                         final ContentIndexRegistry contentIndexRegistry) {
         super();
 
         this.storage = storage;
@@ -79,7 +79,7 @@ extends AbstractCapacityStrategy<Item> {
     public void ensureHeadCapacity(final int newHeadCapacity)
     throws LinearIndexStorageException {
 
-        ensurePartialCapacityValid("headCapacity", newHeadCapacity);
+        ensureCapacityValid("headCapacity", newHeadCapacity);
 
         if (isCurrentHeadCapacitySufficientFor(newHeadCapacity))
             return;
@@ -87,38 +87,28 @@ extends AbstractCapacityStrategy<Item> {
         final int missingHeadCapacity = newHeadCapacity - contentIndexRegistry.getFirstItemIndex();
 
         final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
-         */ getCopyAllItemsToNewIndexDescriptor(newHeadCapacity);
+         */ getDescriptorCopyAllItemsToIndex(newHeadCapacity);
 
         storage.ensureCapacityAndShiftItems(storage.getCapacity() + missingHeadCapacity,
                                             shiftAllItemsToAllowHeadCapacity);
     }
 
-    private IndexRangeOperationDescriptor getCopyAllItemsToNewIndexDescriptor(final int targetIndex) {
-        return new IndexRangeOperationDescriptor(contentIndexRegistry.getFirstItemIndex(),
-                                                 contentIndexRegistry.getLastItemIndex(), targetIndex);
-    }
-
-    private boolean isCurrentHeadCapacitySufficientFor(final int headCapacity) {
-        return headCapacity <= contentIndexRegistry.getFirstItemIndex();
-    }
-
     @Override
     public void ensureTailCapacity(final int tailCapacity)
     throws LinearIndexStorageException {
-        ensurePartialCapacityValid("tailCapacity", tailCapacity);
+        ensureCapacityValid("tailCapacity", tailCapacity);
 
         if (tailCapacity <= getTailCapacity())
             return;
 
         storage.ensureCapacityAndShiftItems(contentIndexRegistry.getLastItemIndex() + 1 + tailCapacity,
-                                            getCopyAllItemsToNewIndexDescriptor(
-                                                                               contentIndexRegistry.getFirstItemIndex()));
+                                            getDescriptorCopyAllItemsToIndex(contentIndexRegistry.getFirstItemIndex()));
     }
 
     @Override
     public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
     throws LinearIndexStorageException {
-        ensurePartialCapacityValid("middleCapacity", middleCapacity);
+        ensureCapacityValid("middleCapacity", middleCapacity);
         ensureIndexValid("splitIndex", splitIndex);
 
         if (middleCapacity == 0)
@@ -169,23 +159,6 @@ extends AbstractCapacityStrategy<Item> {
         if (splitIndex > contentIndexRegistry.getLastItemIndex())
             throw new InvalidIndexException(storage, indexName + " = {1} < {2} = lastItemIndex", splitIndex,
                                             contentIndexRegistry.getLastItemIndex());
-    }
-
-    /**
-     * Ensures that the specified partial capacity is valid.
-     *
-     * @param partialCapacityName
-     *        String specifying the name of the partial capacity
-     *
-     * @param partialCapacity
-     *        integer specifying the partial capacity
-     *
-     * @throws LinearIndexStorageException
-     *         if {@code partialCapacity < 0}
-     */
-    private void ensurePartialCapacityValid(final String partialCapacityName, final int partialCapacity) {
-        if (partialCapacity < 0)
-            throw new NegativeCapacityException(storage, partialCapacityName, partialCapacity);
     }
 
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,

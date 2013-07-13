@@ -21,19 +21,20 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.storage.capacity.CapacityStrategy;
+import org.jlib.core.storage.capacity.SingleCapacityStrategy;
+import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 import org.jlib.core.system.AbstractObject;
 
-public abstract class AbstractCapacityStrategy<Item>
+public abstract class AbstractSingleCapacityStrategy<Item>
 extends AbstractObject
-implements CapacityStrategy {
+implements SingleCapacityStrategy {
 
     private final LinearIndexStorage<Item> storage;
 
     private final ContentIndexRegistry contentIndexRegistry;
 
-    protected AbstractCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final ContentIndexRegistry contentIndexRegistry) {
+    protected AbstractSingleCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                             final ContentIndexRegistry contentIndexRegistry) {
         super();
 
         this.storage = storage;
@@ -55,5 +56,27 @@ implements CapacityStrategy {
      */
     protected int getTailCapacity() {
         return storage.getCapacity() - contentIndexRegistry.getLastItemIndex();
+    }
+
+    protected IndexRangeOperationDescriptor getDescriptorCopyAllItemsToIndex(final int targetIndex) {
+        return new IndexRangeOperationDescriptor(contentIndexRegistry.getFirstItemIndex(),
+                                                 contentIndexRegistry.getLastItemIndex(), targetIndex);
+    }
+
+    /**
+     * Ensures that the specified partial capacity is valid.
+     *
+     * @param capacityName
+     *        String specifying the name of the partial capacity
+     *
+     * @param capacity
+     *        integer specifying the partial capacity
+     *
+     * @throws LinearIndexStorageException
+     *         if {@code capacity < 0}
+     */
+    protected void ensureCapacityValid(final String capacityName, final int capacity) {
+        if (capacity < 0)
+            throw new NegativeCapacityException(storage, capacityName, capacity);
     }
 }

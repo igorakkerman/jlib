@@ -21,8 +21,10 @@
 
 package org.jlib.core.storage.capacity;
 
+import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
+import org.jlib.core.storage.NegativeCapacityException;
 
 /**
  * Strategy of capacity provision in a {@link LinearIndexStorage}.
@@ -51,8 +53,14 @@ public interface CapacityStrategy {
      *
      * @param lastItemIndex
      *        integer specifying the last Item index
+     *
+     * @throws InvalidIndexException
+     *         if {@code firstItemIndex < 0 ||
+     *                   lastItemIndex < firstItemIndex ||
+     *                   lastItemIndex > storage.getCapacity() - 1}
      */
-    public void initialize(int firstItemIndex, int lastItemIndex);
+    public void initialize(int firstItemIndex, int lastItemIndex)
+    throws InvalidIndexException;
 
     /**
      * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items at the head of the
@@ -61,11 +69,11 @@ public interface CapacityStrategy {
      * @param headCapacity
      *        integer specifying the head capacity
      *
-     * @throws LinearIndexStorageException
+     * @throws NegativeCapacityException
      *         if {@code headCapacity < 0}
      */
     public void ensureHeadCapacity(int headCapacity)
-    throws LinearIndexStorageException;
+    throws NegativeCapacityException;
 
     /**
      * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items betweeen the existing
@@ -77,10 +85,12 @@ public interface CapacityStrategy {
      * @param middleCapacity
      *        integer specifying the middle capacity
      *
-     * @throws LinearIndexStorageException
-     *         if {@code middleCapacity < 0 ||
-     *                   middleIndex < linearIndexStorage.getFirstIndex() ||
-     *                   middleIndex > linearIndexStorage.getLastIndex()}
+     * @throws NegativeCapacityException
+     *         if {@code middleCapacity < 0}
+     *
+     * @throws InvalidIndexException
+     *         if {@code middleIndex < linearIndexStorage.getFirstItemIndex() ||
+     *                   middleIndex > linearIndexStorage.getLastItemIndex()}
      */
     public void ensureMiddleCapacity(int splitIndex, int middleCapacity)
     throws LinearIndexStorageException;
@@ -92,9 +102,9 @@ public interface CapacityStrategy {
      * @param tailCapacity
      *        integer specifying the tail capacity
      *
-     * @throws LinearIndexStorageException
+     * @throws NegativeCapacityException
      *         if {@code tailCapacity < 0}
      */
     public void ensureTailCapacity(int tailCapacity)
-    throws LinearIndexStorageException;
+    throws NegativeCapacityException;
 }

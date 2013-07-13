@@ -19,14 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage.minimal;
+package org.jlib.core.storage.capacity.minimal;
 
-import org.jlib.core.storage.AbstractCapacityStrategy;
-import org.jlib.core.storage.ContentIndex;
+import org.jlib.core.storage.AbstractSingleCapacityStrategy;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.NegativeCapacityException;
 import org.jlib.core.storage.capacity.CapacityStrategy;
-import org.jlib.core.storage.capacity.NegativeCapacityException;
 import org.jlib.core.storage.capacity.SingleCapacityStrategy;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
@@ -48,28 +47,28 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
  * @author Igor Akkerman
  */
 public class MinimalHeadCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item>
+extends AbstractSingleCapacityStrategy<Item>
 implements SingleCapacityStrategy {
 
-    public MinimalHeadCapacityStrategy(final LinearIndexStorage storage, final ContentIndexRegistry contentIndexRegistry) {
+    public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                       final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 
     @Override
     public void ensureCapacity(final int capacity)
     throws NegativeCapacityException {
+        ensureCapacityValid("headCapacity", capacity);
 
-        ensurePartialCapacityValid("headCapacity", newHeadCapacity);
+        final int missingHeadCapacity = capacity - getContentIndexRegistry().getFirstItemIndex();
 
-        if (isCurrentHeadCapacitySufficientFor(newHeadCapacity))
+        if (missingHeadCapacity <= 0)
             return;
 
-        final int missingHeadCapacity = newHeadCapacity - contentIndexHolder.getFirstItemIndex();
-
         final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
-         */ getCopyAllItemsToNewIndexDescriptor(newHeadCapacity);
+         */ getDescriptorCopyAllItemsToIndex(/* new first Item index */ capacity);
 
-        storage.ensureCapacityAndShiftItems(storage.getCapacity() + missingHeadCapacity,
-                                            shiftAllItemsToAllowHeadCapacity);
+        getStorage().ensureCapacityAndShiftItems(getStorage().getCapacity() + missingHeadCapacity,
+                                                 shiftAllItemsToAllowHeadCapacity);
     }
 }
