@@ -23,5 +23,5 @@ package org.jlib.container;
 
 public interface ContainerTraverser<Item, Cont extends Container<Item>> {
 
-    public ItemContext<Item, Cont> GET_LAST_ACCESSED_ITEM_CONTEXT
+//    public ItemContext<Item, Cont> GET_LAST_ACCESSED_ITEM_CONTEXT
 }
