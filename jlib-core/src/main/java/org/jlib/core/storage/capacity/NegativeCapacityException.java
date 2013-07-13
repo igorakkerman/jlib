@@ -23,14 +23,15 @@ package org.jlib.core.storage.capacity;
 
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
  *
  * @author Igor Akkerman
  */
-public class NegativeCapacityException
-extends InvalidArgumentException {
+class NegativeCapacityException
+extends LinearIndexStorageException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 701812048814999842L;
@@ -38,10 +39,14 @@ extends InvalidArgumentException {
     /**
      * Creates a new {@link NegativeCapacityException}.
      *
-     * @param capacity
+     * @param storage
+     *        referenced {@link LinearIndexStorage}
+     *
+     * @param invalidCapacity
      *        integer specifying the invalid capacity
      */
-    public NegativeCapacityException(final int capacity) {
-        super("{0}", capacity);
+    public NegativeCapacityException(final LinearIndexStorage<?> storage, final String invalidCapacityName,
+                                     final int invalidCapacity) {
+        super(storage, "{1} = {2}", invalidCapacityName, invalidCapacity);
     }
 }

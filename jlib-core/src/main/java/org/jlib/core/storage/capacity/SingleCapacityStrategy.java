@@ -36,6 +36,10 @@ public interface SingleCapacityStrategy {
      *
      * @param capacity
      *        necessary {@link Capacity}
+     *
+     * @throws NegativeCapacityException
+     *         if {@code capacity < 0}
      */
-    public void ensureCapacity(Capacity capacity);
+    public void ensureCapacity(int capacity)
+    throws NegativeCapacityException;
 }
