@@ -24,7 +24,22 @@ package org.jlib.core.storage;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 /**
- * Storage of <em>n</em> {@link Item}s indexed from <em>0</em> to <em>n-1</em>.
+ * <p>
+ * Storage providing <em>n</em> slots for {@link Item}s indexed from <em>0</em> to <em>n-1</em>.
+ * Each slot may or may not hold an {@link Item}.
+ * </p>
+ * <p>
+ * An application using a {@link LinearIndexStorage} is responsible for managing the sets of indices it addresses.
+ * The behaviour is unspecified when trying to access an {@link Item} at an index whose slot does not hold an
+ * {@link Item}.
+ * The {@link Item}s can be shifted within a {@link LinearIndexStorage}.
+ * </p>
+ * <p>
+ * The capacity of a {@link LinearIndexStorage} can be raised but it cannot be lowered. That is, more slots can be
+ * provided upon request but slots cannot be removed.
+ * When an application requests the capacity to be raised, it has to specify at which index existing {@link Item}s can
+ * be accessed afterwards.
+ * </p>
  *
  * @param <Item>
  *        type of the {@link Item}s stored in the {@link LinearIndexStorage}
