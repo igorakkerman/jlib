@@ -46,5 +46,5 @@ implements HeadOrTailCapacityStrategy {
         ensureHeadOrTailCapacity(headOrTailCapacity);
     }
 
-    abstract void ensureHeadOrTailCapacity(@Valid int headOrTailCapacity);
+    protected abstract void ensureHeadOrTailCapacity(@Valid int headOrTailCapacity);
 }

@@ -43,7 +43,7 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
  * @author Igor Akkerman
  */
 public class MinimalHeadCapacityStrategy<Item>
-extends AbstractHeadTailCapacityStrategy<Item>
+extends AbstractHeadOrTailCapacityStrategy<Item>
 implements HeadOrTailCapacityStrategy {
 
     public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
@@ -52,7 +52,7 @@ implements HeadOrTailCapacityStrategy {
     }
 
     @Override
-    public void ensureValidCapacity(final int headCapacity) {
+    protected void ensureHeadOrTailCapacity(final int headCapacity) {
         final int missingHeadCapacity = headCapacity - getContentIndexRegistry().getFirstItemIndex();
 
         if (missingHeadCapacity <= 0)
