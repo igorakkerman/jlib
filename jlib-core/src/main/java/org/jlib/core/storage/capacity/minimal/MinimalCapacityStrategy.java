@@ -71,18 +71,6 @@ extends AbstractCapacityStrategy<Item> {
     }
 
     @Override
-    public void ensureTailCapacity(final int tailCapacity)
-    throws LinearIndexStorageException {
-        ensureCapacityValid(tailCapacity);
-
-        if (tailCapacity <= getTailCapacity())
-            return;
-
-        storage.ensureCapacityAndShiftItems(contentIndexRegistry.getLastItemIndex() + 1 + tailCapacity,
-                                            getDescriptorCopyAllItemsToIndex(contentIndexRegistry.getFirstItemIndex()));
-    }
-
-    @Override
     public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
     throws LinearIndexStorageException {
         ensureCapacityValid("middleCapacity", middleCapacity);

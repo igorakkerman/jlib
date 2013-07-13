@@ -52,11 +52,16 @@ implements HeadTailCapacityStrategy {
     }
 
     @Override
-    public void addCapacity(final int capacity) {
+    public void ensureValidCapacity(final int headCapacity) {
+
+        final int missingHeadCapacity = headCapacity - getContentIndexRegistry().getFirstItemIndex();
+
+        if (missingHeadCapacity <= 0)
+            return;
 
         final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
-         */ getDescriptorCopyAllItemsToIndex(/* new first Item index */ capacity);
+         */ getDescriptorCopyAllItemsToIndex(/* new first Item index */ headCapacity);
 
-        getStorage().addCapacityAndShiftItems(capacity, shiftAllItemsToAllowHeadCapacity);
+        getStorage().addCapacityAndShiftItems(headCapacity, shiftAllItemsToAllowHeadCapacity);
     }
 }
