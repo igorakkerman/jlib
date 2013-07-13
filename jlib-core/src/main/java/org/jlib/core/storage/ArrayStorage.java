@@ -21,8 +21,6 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.system.AbstractCloneable;
-
 import static org.jlib.core.array.ArrayUtility.createArray;
 import static org.jlib.core.math.MathUtility.count;
 
@@ -43,32 +41,36 @@ import static java.util.Arrays.copyOf;
 // TODO: add note: ensureIndexValid/ensureCapacityValid methods here have a different meaning than in the strategies!!!!
 // TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the exceptions for clarity?
 public class ArrayStorage<Item>
-extends AbstractCloneable
+extends AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
 
     /** array holding the {@link Item}s */
     private Item[] delegateArray;
 
-    /**
-     * Creates a new {@link ArrayStorage} with the specified initial capacity.
-     *
-     * @param initialCapacity
-     *        integer specifying the initial capacity
-     */
-    public ArrayStorage(final int initialCapacity)
-    throws InvalidCapacityException {
-        super();
-
-        ensureCapacityValid("initialCapacity", initialCapacity);
+    public ArrayStorage(final int initialCapacity) {
+        super(initialCapacity);
 
         delegateArray = createArray(initialCapacity);
     }
 
     @Override
-    public void addCapacityAndShiftItems(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
+    public int getCapacity() {
+        return delegateArray.length;
+    }
 
-        ensureCapacityValid("capacity", capacity);
+    @Override
+    protected Item safeGetItem(final int index) {
+        return delegateArray[index];
+    }
 
+    @Override
+    protected void safeReplaceItem(final int index, final Item item) {
+        delegateArray[index] = item;
+    }
+
+    @Override
+    protected void safeAddCapacityAndShiftItems(final int capacity,
+                                                final IndexRangeOperationDescriptor... copyDescriptors) {
         final Item[] newDelegateArray = createArray(delegateArray.length + capacity);
 
         copyItemsTo(newDelegateArray, copyDescriptors);
@@ -76,26 +78,15 @@ implements LinearIndexStorage<Item> {
         delegateArray = newDelegateArray;
     }
 
-    private void copyItems(final Item[] newDelegateArray, final IndexRangeOperationDescriptor[] copyDescriptors) {
-        copyItemsTo(newDelegateArray, copyDescriptors);
+    @Override
+    public void shiftItems(final IndexRangeOperationDescriptor... shiftDescriptors)
+    throws IndexOutOfBoundsException {
+        copyItemsTo(delegateArray, shiftDescriptors);
     }
 
-    @Override
-    public Item getItem(final int index)
-    throws InvalidIndexException {
-
-        ensureIndexValid("index", index);
-
-        return delegateArray[index];
-    }
-
-    @Override
-    public void replaceItem(final int index, final Item item)
-    throws InvalidIndexException {
-
-        ensureIndexValid("index", index);
-
-        delegateArray[index] = item;
+    private void copyItemsTo(final Item[] targetArray, final IndexRangeOperationDescriptor... copyDescriptors) {
+        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
+            copyItems(delegateArray, targetArray, copyDescriptor);
     }
 
     /**
@@ -114,31 +105,11 @@ implements LinearIndexStorage<Item> {
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
                              final IndexRangeOperationDescriptor copyDescriptor)
     throws InvalidIndexException {
-        final int sourceBeginIndex = copyDescriptor.getSourceBeginIndex();
-        final int sourceEndIndex = copyDescriptor.getSourceEndIndex();
-        final int targetIndex = copyDescriptor.getTargetIndex();
 
-        ensureIndexRangeValid("sourceBeginIndex", sourceBeginIndex, "sourceEndIndex", sourceEndIndex);
-        ensureIndexValid("targetIndex", targetIndex);
+        validateOperationDescriptor(copyDescriptor);
 
-        arraycopy(sourceArray, sourceBeginIndex, targetArray, targetIndex, count(sourceBeginIndex, sourceEndIndex));
-    }
-
-    private void copyItemsTo(final Item[] targetArray, final IndexRangeOperationDescriptor... copyDescriptors) {
-        for (final IndexRangeOperationDescriptor copyDescriptor : copyDescriptors)
-            copyItems(delegateArray, targetArray, copyDescriptor);
-    }
-
-    @Override
-    public void shiftItems(final IndexRangeOperationDescriptor... shiftDescriptors)
-    throws IndexOutOfBoundsException {
-        for (IndexRangeOperationDescriptor shiftDescriptor : shiftDescriptors)
-            copyItemsTo(delegateArray, shiftDescriptors);
-    }
-
-    @Override
-    public int getCapacity() {
-        return delegateArray.length;
+        arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
+                  count(copyDescriptor.getSourceBeginIndex(), copyDescriptor.getSourceEndIndex()));
     }
 
     @Override
@@ -149,38 +120,5 @@ implements LinearIndexStorage<Item> {
         cloneStorage.delegateArray = copyOf(delegateArray, delegateArray.length);
 
         return cloneStorage;
-    }
-
-    /**
-     * Ensures the specified capacity is valid.
-     *
-     * @param capacity
-     *        integer specifying a capacity
-     *
-     * @throws InvalidCapacityException
-     *         if {@code capacity < 0}
-     */
-    private void ensureCapacityValid(final String capacityName, final int capacity)
-    throws InvalidCapacityException {
-        if (capacity < 0)
-            throw new InvalidCapacityException(this, capacity);
-    }
-
-    private void ensureIndexValid(final String indexName, final int index) {
-        if (index < 0)
-            throw new InvalidIndexException(this, "{1} = {2} < 0", indexName, index);
-
-        if (index > getCapacity() - 1)
-            throw new InvalidIndexException(this, "{1} = {2} > {3} = capacity - 1", indexName, index, getCapacity());
-    }
-
-    private void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
-                                       final int endIndex) {
-        ensureIndexValid(beginIndexName, beginIndex);
-        ensureIndexValid(endIndexName, endIndex);
-
-        if (endIndex < beginIndex)
-            throw new InvalidIndexException(this, "{1} = {2} < {3} = {4}", endIndexName, endIndex, beginIndex,
-                                            beginIndexName);
     }
 }

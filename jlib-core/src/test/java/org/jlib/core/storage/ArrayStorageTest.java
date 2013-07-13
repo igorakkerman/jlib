@@ -28,7 +28,7 @@ public class ArrayStorageTest {
     @Test(expected = InvalidIndexException.class)
     public void zeroCapacityReadAccessTest()
     throws Exception {
-        ArrayStorage<Integer> storage = new ArrayStorage<>(0);
+        LinearIndexStorage<Integer> storage = new ArrayStorage<>(0);
         storage.getItem(0);
     }
 
