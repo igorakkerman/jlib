@@ -21,10 +21,11 @@
 
 package org.jlib.core.storage;
 
+import org.jlib.core.system.AbstractCloneable;
+
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
-import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
@@ -76,7 +77,8 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
-    public Item getItem(final int index) {
+    public Item getItem(final int index)
+    throws InvalidIndexException {
         return delegateArray[index];
     }
 
