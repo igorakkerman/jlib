@@ -24,6 +24,7 @@ package org.jlib.core.storage;
 import org.jlib.core.system.AbstractCloneable;
 
 import static org.jlib.core.array.ArrayUtility.createArray;
+import static org.jlib.core.math.MathUtility.count;
 
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
@@ -38,6 +39,9 @@ import static java.util.Arrays.copyOf;
  *
  * @author Igor Akkerman
  */
+
+// TODO: add note: ensureIndexValid/ensureCapacityValid methods here have a different meaning than in the strategies!!!!
+// TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the exceptions for clarity?
 public class ArrayStorage<Item>
 extends AbstractCloneable
 implements LinearIndexStorage<Item> {
@@ -79,11 +83,18 @@ implements LinearIndexStorage<Item> {
     @Override
     public Item getItem(final int index)
     throws InvalidIndexException {
+
+        ensureIndexValid("index", index);
+
         return delegateArray[index];
     }
 
     @Override
-    public void replaceItem(final int index, final Item item) {
+    public void replaceItem(final int index, final Item item)
+    throws InvalidIndexException {
+
+        ensureIndexValid("index", index);
+
         delegateArray[index] = item;
     }
 
@@ -106,20 +117,11 @@ implements LinearIndexStorage<Item> {
         final int sourceBeginIndex = copyDescriptor.getSourceBeginIndex();
         final int sourceEndIndex = copyDescriptor.getSourceEndIndex();
         final int targetIndex = copyDescriptor.getTargetIndex();
-        final int capacity = getCapacity();
 
-        if (sourceBeginIndex < 0)
-            throw new InvalidIndexException(this, "sourceBeginIndex = {1} < 0", sourceBeginIndex);
+        ensureIndexRangeValid("sourceBeginIndex", sourceBeginIndex, "sourceEndIndex", sourceEndIndex);
+        ensureIndexValid("targetIndex", targetIndex);
 
-        if (sourceEndIndex < sourceBeginIndex)
-            throw new InvalidIndexException(this, "sourceEndIndex = {1} < {2} = sourceBeginIndex", sourceEndIndex,
-                                            sourceBeginIndex);
-
-        if (targetIndex > capacity - 1)
-            throw new InvalidIndexException(this, "targetIndex = {1} < {2} = capacity", targetIndex, capacity);
-
-        arraycopy(sourceArray, sourceBeginIndex, targetArray, copyDescriptor.getTargetIndex(),
-                  copyDescriptor.getSourceEndIndex() - copyDescriptor.getSourceEndIndex() + 1);
+        arraycopy(sourceArray, sourceBeginIndex, targetArray, targetIndex, count(sourceBeginIndex, sourceEndIndex));
     }
 
     private void copyItemsTo(final Item[] targetArray, final IndexRangeOperationDescriptor... copyDescriptors) {
@@ -130,7 +132,8 @@ implements LinearIndexStorage<Item> {
     @Override
     public void shiftItems(final IndexRangeOperationDescriptor... shiftDescriptors)
     throws IndexOutOfBoundsException {
-        copyItemsTo(delegateArray, shiftDescriptors);
+        for (IndexRangeOperationDescriptor shiftDescriptor : shiftDescriptors)
+            copyItemsTo(delegateArray, shiftDescriptors);
     }
 
     @Override
@@ -161,5 +164,23 @@ implements LinearIndexStorage<Item> {
     throws InvalidCapacityException {
         if (capacity < 0)
             throw new InvalidCapacityException(this, capacity);
+    }
+
+    private void ensureIndexValid(final String indexName, final int index) {
+        if (index < 0)
+            throw new InvalidIndexException(this, "{1} = {2} < 0", indexName, index);
+
+        if (index > getCapacity() - 1)
+            throw new InvalidIndexException(this, "{1} = {2} > {3} = capacity - 1", indexName, index, getCapacity());
+    }
+
+    private void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
+                                       final int endIndex) {
+        ensureIndexValid(beginIndexName, beginIndex);
+        ensureIndexValid(endIndexName, endIndex);
+
+        if (endIndex < beginIndex)
+            throw new InvalidIndexException(this, "{1} = {2} < {3} = {4}", endIndexName, endIndex, beginIndex,
+                                            beginIndexName);
     }
 }
