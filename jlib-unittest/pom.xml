@@ -47,7 +47,7 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib.core</artifactId>
+            <artifactId>jlib-core</artifactId>
         </dependency>
 
         <dependency>
