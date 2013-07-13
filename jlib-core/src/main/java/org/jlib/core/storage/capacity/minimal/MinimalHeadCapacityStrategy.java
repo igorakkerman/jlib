@@ -23,11 +23,11 @@ package org.jlib.core.storage.capacity.minimal;
 
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.capacity.HeadTailCapacityStrategy;
+import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 /**
- * {@link HeadTailCapacityStrategy} providing just as much head capacity as needed.
+ * {@link HeadOrTailCapacityStrategy} providing just as much head capacity as needed.
  * </p>
  * <p>
  * The {@link MinimalHeadCapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
@@ -44,7 +44,7 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
  */
 public class MinimalHeadCapacityStrategy<Item>
 extends AbstractHeadTailCapacityStrategy<Item>
-implements HeadTailCapacityStrategy {
+implements HeadOrTailCapacityStrategy {
 
     public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
                                        final ContentIndexRegistry contentIndexRegistry) {
@@ -53,7 +53,6 @@ implements HeadTailCapacityStrategy {
 
     @Override
     public void ensureValidCapacity(final int headCapacity) {
-
         final int missingHeadCapacity = headCapacity - getContentIndexRegistry().getFirstItemIndex();
 
         if (missingHeadCapacity <= 0)

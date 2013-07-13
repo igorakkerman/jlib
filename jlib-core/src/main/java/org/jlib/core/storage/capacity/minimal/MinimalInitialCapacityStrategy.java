@@ -27,11 +27,11 @@ import org.jlib.core.storage.AbstractCapacityStrategy;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.capacity.CapacityStrategy;
-import org.jlib.core.storage.capacity.HeadTailCapacityStrategy;
+import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.core.storage.capacity.InitialCapacityStrategy;
 
 /**
- * {@link HeadTailCapacityStrategy} providing just as much head capacity as needed.
+ * {@link HeadOrTailCapacityStrategy} providing just as much head capacity as needed.
  * </p>
  * <p>
  * Head capacity:

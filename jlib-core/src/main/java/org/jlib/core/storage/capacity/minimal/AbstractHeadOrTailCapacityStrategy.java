@@ -27,14 +27,14 @@ import org.jlib.core.storage.AbstractCapacityStrategy;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.capacity.HeadTailCapacityStrategy;
+import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 
-public abstract class HeadOrTailCapacityStrategy<Item>
+public abstract class AbstractHeadOrTailCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
-implements HeadTailCapacityStrategy {
+implements HeadOrTailCapacityStrategy {
 
-    public HeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                      final ContentIndexRegistry contentIndexRegistry) {
+    public AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                              final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 
@@ -43,8 +43,8 @@ implements HeadTailCapacityStrategy {
     throws InvalidCapacityException {
         ensureCapacityValid(headOrTailCapacity);
 
-        ensureValidCapacity(headOrTailCapacity);
+        ensureHeadOrTailCapacity(headOrTailCapacity);
     }
 
-    abstract void ensureValidCapacity(@Valid int headOrTailCapacity);
+    abstract void ensureHeadOrTailCapacity(@Valid int headOrTailCapacity);
 }

@@ -29,7 +29,7 @@ import org.jlib.core.storage.LinearIndexStorage;
  *
  * @author Igor Akkerman
  */
-public interface HeadTailCapacityStrategy {
+public interface HeadOrTailCapacityStrategy {
 
     /**
      * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the corresponding
