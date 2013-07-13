@@ -28,10 +28,9 @@ import org.jlib.core.storage.capacity.HeadTailCapacityStrategy;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 /**
- * {@link HeadTailCapacityStrategy} providing just as much head capacity as needed.
+ * {@link HeadTailCapacityStrategy} providing just as much tail capacity as needed.
  * </p>
  * <p>
- * Head capacity:
  * This {@link CapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
  * If the requested head capacity is above the available head capacity,
  * the {@link LinearIndexStorage} is requested to re-allocate a capacity higher by the difference between requested and
@@ -44,12 +43,12 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
  *
  * @author Igor Akkerman
  */
-public class MinimalHeadTailCapacityStrategy<Item>
+public class MinimalTailCapacityStrategy<Item>
 extends AbstractHeadTailCapacityStrategy<Item>
 implements HeadTailCapacityStrategy {
 
-    public MinimalHeadTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                           final ContentIndexRegistry contentIndexRegistry) {
+    public MinimalTailCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                       final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 
