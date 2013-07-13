@@ -21,15 +21,15 @@
 
 package org.jlib.core.storage.capacity;
 
+import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.NegativeCapacityException;
 
 /**
- * Strategy of a single capacity provision in a {@link LinearIndexStorage}.
+ * Strategy of the head or tail capacity provision in a {@link LinearIndexStorage}.
  *
  * @author Igor Akkerman
  */
-public interface SingleCapacityStrategy {
+public interface HeadTailCapacityStrategy {
 
     /**
      * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the corresponding
@@ -38,9 +38,9 @@ public interface SingleCapacityStrategy {
      * @param capacity
      *        necessary {@link Capacity}
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code capacity < 0}
      */
     public void ensureCapacity(int capacity)
-    throws NegativeCapacityException;
+    throws InvalidCapacityException;
 }

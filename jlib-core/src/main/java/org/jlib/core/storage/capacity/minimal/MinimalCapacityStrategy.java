@@ -48,8 +48,8 @@ import static org.jlib.core.math.MathUtility.count;
  */
 // TODO: 2013-07-10 name all ItemCopyDescriptors with an explaining name
 // TODO: 2013-07-10 explain the algorithms
-public class MinimalSingleCapacityStrategy<Item>
-extends AbstractSingleCapacityStrategy<Item> {
+public class MinimalCapacityStrategy<Item>
+extends AbstractCapacityStrategy<Item> {
 
     /** {@link LinearIndexStorage} holding the {@link Item}s */
     private final LinearIndexStorage<Item> storage;
@@ -62,8 +62,8 @@ extends AbstractSingleCapacityStrategy<Item> {
      * @param storage
      *        referenced {@link LinearIndexStorage}
      */
-    public MinimalSingleCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                         final ContentIndexRegistry contentIndexRegistry) {
+    public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                   final ContentIndexRegistry contentIndexRegistry) {
         super();
 
         this.storage = storage;
@@ -71,32 +71,9 @@ extends AbstractSingleCapacityStrategy<Item> {
     }
 
     @Override
-    public void initialize(final int firstItemIndex, final int lastItemIndex) {
-        storage.ensureCapacityAndShiftItems(count(firstItemIndex, lastItemIndex));
-    }
-
-    @Override
-    public void ensureHeadCapacity(final int newHeadCapacity)
-    throws LinearIndexStorageException {
-
-        ensureCapacityValid("headCapacity", newHeadCapacity);
-
-        if (isCurrentHeadCapacitySufficientFor(newHeadCapacity))
-            return;
-
-        final int missingHeadCapacity = newHeadCapacity - contentIndexRegistry.getFirstItemIndex();
-
-        final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
-         */ getDescriptorCopyAllItemsToIndex(newHeadCapacity);
-
-        storage.ensureCapacityAndShiftItems(storage.getCapacity() + missingHeadCapacity,
-                                            shiftAllItemsToAllowHeadCapacity);
-    }
-
-    @Override
     public void ensureTailCapacity(final int tailCapacity)
     throws LinearIndexStorageException {
-        ensureCapacityValid("tailCapacity", tailCapacity);
+        ensureCapacityValid(tailCapacity);
 
         if (tailCapacity <= getTailCapacity())
             return;
@@ -163,10 +140,10 @@ extends AbstractSingleCapacityStrategy<Item> {
 
     private void ensureInitializationArgumentsValid(final int capacity, final int firstItemIndex,
                                                     final int lastItemIndex)
-    throws NegativeCapacityException, LinearIndexStorageException {
+    throws InvalidCapacityException, LinearIndexStorageException {
 
         if (capacity < 0)
-            throw new NegativeCapacityException(capacity);
+            throw new InvalidCapacityException(capacity);
 
         if (firstItemIndex < 0)
             throw new InvalidIndexException(this, "firstItemIndex = {1} < 0", firstItemIndex);

@@ -21,11 +21,12 @@
 
 package org.jlib.core.storage.capacity;
 
+import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 
 /**
- * Strategy of head or tail capacity provision in a {@link LinearIndexStorage}.
+ * Strategy of split capacity provision in a {@link LinearIndexStorage}.
  *
  * @author Igor Akkerman
  */
@@ -40,11 +41,14 @@ public interface SplitCapacityStrategy {
      *        integer specifying the index at which the capacity should be provided
      *
      * @param capacity
-     *        {@link Capacity} for the split
+     *        integer specifying the capacity for the split
      *
      * @throws InvalidIndexException
      *         if {@code splitIndex} is not within the range of stored Items
+     *
+     * @throws InvalidCapacityException
+     *         if {@code capacity < 0}
      */
-    public void ensureCapacity(int splitIndex, Capacity capacity)
+    public void ensureCapacity(int splitIndex, int capacity)
     throws InvalidIndexException;
 }

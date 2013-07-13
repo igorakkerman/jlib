@@ -92,14 +92,14 @@ extends Cloneable {
      * @param shiftDescriptors
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code capacity < 0}
      *
      * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
-    public void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
-    throws NegativeCapacityException, InvalidIndexException;
+    public void addCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
+    throws InvalidCapacityException, InvalidIndexException;
 
     /**
      * Shifts the {@link Item}s <em>ithin</em> this {@link LinearIndexStorage}, as defined by the specified
@@ -109,7 +109,7 @@ extends Cloneable {
      *        comma separated sequence of {@link IndexRangeOperationDescriptor}s
      *
      * @throws InvalidIndexException
-     *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
+     *         if an {@link IndexRangeOperationDescriptor} specifies an index outside the valid bounds
      */
     public void shiftItems(IndexRangeOperationDescriptor... shiftDescriptors)
     throws InvalidIndexException;

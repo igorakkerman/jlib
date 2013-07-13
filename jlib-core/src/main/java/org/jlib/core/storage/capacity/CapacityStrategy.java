@@ -21,10 +21,10 @@
 
 package org.jlib.core.storage.capacity;
 
+import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
-import org.jlib.core.storage.NegativeCapacityException;
 
 /**
  * Strategy of capacity provision in a {@link LinearIndexStorage}.
@@ -69,11 +69,11 @@ public interface CapacityStrategy {
      * @param headCapacity
      *        integer specifying the head capacity
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code headCapacity < 0}
      */
     public void ensureHeadCapacity(int headCapacity)
-    throws NegativeCapacityException;
+    throws InvalidCapacityException;
 
     /**
      * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items betweeen the existing
@@ -85,7 +85,7 @@ public interface CapacityStrategy {
      * @param middleCapacity
      *        integer specifying the middle capacity
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code middleCapacity < 0}
      *
      * @throws InvalidIndexException
@@ -102,9 +102,9 @@ public interface CapacityStrategy {
      * @param tailCapacity
      *        integer specifying the tail capacity
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code tailCapacity < 0}
      */
     public void ensureTailCapacity(int tailCapacity)
-    throws NegativeCapacityException;
+    throws InvalidCapacityException;
 }

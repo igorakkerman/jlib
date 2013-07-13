@@ -24,7 +24,6 @@ package org.jlib.core.storage;
 import static org.jlib.core.array.ArrayUtility.createArray;
 
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
-import org.jlib.core.storage.capacity.minimal.NegativeCapacityException;
 import org.jlib.core.system.AbstractCloneable;
 
 import static java.lang.System.arraycopy;
@@ -51,18 +50,21 @@ implements LinearIndexStorage<Item> {
      * @param initialCapacity
      *        integer specifying the initial capacity
      */
-    public ArrayStorage(final int initialCapacity) {
+    public ArrayStorage(final int initialCapacity)
+    throws InvalidCapacityException {
         super();
 
-        ensureCapacityAndShiftItems(initialCapacity);
+        ensureCapacityValid("initialCapacity", initialCapacity);
+
+        delegateArray = createArray(initialCapacity);
     }
 
     @Override
-    public void ensureCapacityAndShiftItems(final int capacity,
-                                            final IndexRangeOperationDescriptor... copyDescriptors) {
-        ensureCapacityValid(capacity);
+    public void addCapacityAndShiftItems(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
 
-        final Item[] newDelegateArray = createArray(capacity);
+        ensureCapacityValid("capacity", capacity);
+
+        final Item[] newDelegateArray = createArray(delegateArray.length + capacity);
 
         copyItemsTo(newDelegateArray, copyDescriptors);
 
@@ -150,12 +152,12 @@ implements LinearIndexStorage<Item> {
      * @param capacity
      *        integer specifying a capacity
      *
-     * @throws NegativeCapacityException
+     * @throws InvalidCapacityException
      *         if {@code capacity < 0}
      */
-    private void ensureCapacityValid(final int capacity)
-    throws NegativeCapacityException {
+    private void ensureCapacityValid(final String capacityName, final int capacity)
+    throws InvalidCapacityException {
         if (capacity < 0)
-            throw new NegativeCapacityException(this, capacity);
+            throw new InvalidCapacityException(this, capacity);
     }
 }
