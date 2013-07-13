@@ -23,6 +23,7 @@ package org.jlib.core.storage.capacity.minimal;
 
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.capacity.AbstractHeadOrTailCapacityStrategy;
 import org.jlib.core.storage.capacity.CapacityStrategy;
 import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;

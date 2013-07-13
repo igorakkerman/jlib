@@ -23,9 +23,9 @@ package org.jlib.core.storage;
 
 import java.io.Serializable;
 
-import static org.jlib.core.math.MathUtility.count;
-
 import org.jlib.core.system.AbstractCloneable;
+
+import static org.jlib.core.math.MathUtility.count;
 
 /**
  * Manager of the content of a {@link LinearIndexStorage}.
@@ -54,9 +54,12 @@ implements Serializable {
      * @param storage
      *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
-    public ContentIndexRegistry()
+    public ContentIndexRegistry(int firstItemIndex, int lastItemIndex)
     throws LinearIndexStorageException {
         super();
+
+        this.firstItemIndex = firstItemIndex;
+        this.lastItemIndex = lastItemIndex;
     }
 
     /**

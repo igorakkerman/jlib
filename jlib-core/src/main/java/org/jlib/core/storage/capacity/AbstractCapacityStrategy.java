@@ -25,6 +25,7 @@ import org.jlib.core.system.AbstractObject;
 
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.InvalidCapacityException;
+import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
@@ -78,5 +79,15 @@ extends AbstractObject {
     protected void ensureCapacityValid(final int capacity) {
         if (capacity < 0)
             throw new InvalidCapacityException(storage, capacity);
+    }
+
+    protected void ensureIndexValid(final int index) {
+        if (index < contentIndexRegistry.getFirstItemIndex())
+            throw new InvalidIndexException(storage, "index = {1} > {2} = firstItemIndex", index,
+                                            contentIndexRegistry.getFirstItemIndex());
+
+        if (index > contentIndexRegistry.getLastItemIndex())
+            throw new InvalidIndexException(storage, "index = {1} < {2} = lastItemIndex", index,
+                                            contentIndexRegistry.getLastItemIndex());
     }
 }

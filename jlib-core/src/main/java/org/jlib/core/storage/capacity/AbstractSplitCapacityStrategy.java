@@ -19,32 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage.capacity.minimal;
+package org.jlib.core.storage.capacity;
 
-import org.jlib.core.system.Valid;
-
-import org.jlib.core.storage.capacity.AbstractCapacityStrategy;
 import org.jlib.core.storage.ContentIndexRegistry;
-import org.jlib.core.storage.InvalidCapacityException;
+import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 
-public abstract class AbstractHeadOrTailCapacityStrategy<Item>
+public abstract class AbstractSplitCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
-implements HeadOrTailCapacityStrategy {
+implements SplitCapacityStrategy {
 
-    public AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                              final ContentIndexRegistry contentIndexRegistry) {
+    public AbstractSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                         final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 
     @Override
-    public final void ensureCapacity(final int headOrTailCapacity)
-    throws InvalidCapacityException {
-        ensureCapacityValid(headOrTailCapacity);
+    public void ensureCapacity(final int splitIndex, final int splitCapacity)
+    throws InvalidIndexException {
+        ensureIndexValid(splitIndex);
 
-        ensureHeadOrTailCapacity(headOrTailCapacity);
+        ensureCapacityValid(splitCapacity);
+
+        if (splitCapacity == 0)
+            return;
+
+        ensureSplitCapacity(splitIndex, splitCapacity);
+
+        getContentIndexRegistry().incrementLastItemIndex(splitCapacity);
     }
 
-    protected abstract void ensureHeadOrTailCapacity(@Valid int headOrTailCapacity);
+    protected abstract void ensureSplitCapacity(int splitIndex, int splitCapacity);
 }

@@ -48,18 +48,12 @@ public interface CapacityStrategy {
      * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit Items in the specified
      * range. Registers the Item indices.
      *
-     * @param firstItemIndex
-     *        integer specifying the first Item index
-     *
-     * @param lastItemIndex
-     *        integer specifying the last Item index
-     *
      * @throws InvalidIndexException
      *         if {@code firstItemIndex < 0 ||
      *                   lastItemIndex < firstItemIndex ||
      *                   lastItemIndex > storage.getCapacity() - 1}
      */
-    public void initialize(int firstItemIndex, int lastItemIndex)
+    public void initialize()
     throws InvalidIndexException;
 
     /**
@@ -82,17 +76,17 @@ public interface CapacityStrategy {
      * @param splitIndex
      *        integer specifying the split index
      *
-     * @param middleCapacity
-     *        integer specifying the middle capacity
+     * @param splitCapacity
+     *        integer specifying the split capacity
      *
      * @throws InvalidCapacityException
-     *         if {@code middleCapacity < 0}
+     *         if {@code splitCapacity < 0}
      *
      * @throws InvalidIndexException
      *         if {@code middleIndex < linearIndexStorage.getFirstItemIndex() ||
      *                   middleIndex > linearIndexStorage.getLastItemIndex()}
      */
-    public void ensureMiddleCapacity(int splitIndex, int middleCapacity)
+    public void ensureSplitCapacity(int splitIndex, int splitCapacity)
     throws LinearIndexStorageException;
 
     /**

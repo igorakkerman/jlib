@@ -230,7 +230,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
         int storageItemIndex = getStorageItemIndex(index);
 
-        getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
+        getCapacityStrategy().ensureSplitCapacity(insertedItemsCount, storageItemIndex);
 
         for (final Item item : items)
             replace(storageItemIndex++, item);
@@ -265,7 +265,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
         int storageItemIndex = getStorageItemIndex(index);
 
-        getCapacityStrategy().ensureMiddleCapacity(insertedItemsCount, storageItemIndex);
+        getCapacityStrategy().ensureSplitCapacity(insertedItemsCount, storageItemIndex);
 
         for (final Item item : items) {
             final int currentStorageItemIndex = storageItemIndex++;
