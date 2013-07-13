@@ -21,10 +21,10 @@
 
 package org.jlib.unittest.junit.matchers.text;
 
-import org.jlib.core.valueholder.InitializedValueHolder;
+import org.jlib.core.value.Initialized;
 
 public abstract class Index
-extends InitializedValueHolder<Integer> {
+extends Initialized<Integer> {
 
     protected Index(int value) {
         super(value);
