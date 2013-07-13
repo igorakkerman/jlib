@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage.capacity.minimal;
 
-import org.jlib.core.storage.AbstractCapacityStrategy;
+import org.jlib.core.storage.capacity.AbstractCapacityStrategy;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.capacity.CapacityStrategy;

@@ -23,6 +23,8 @@ package org.jlib.core.storage;
 
 import static org.jlib.core.math.MathUtility.count;
 
+import org.jlib.core.storage.capacity.AbstractCapacityStrategy;
+
 /**
  * <p>
  * {@link CapacityStrategy} providing just as much capacity as needed.
@@ -70,51 +72,6 @@ extends AbstractCapacityStrategy<Item> {
         this.contentIndexRegistry = contentIndexRegistry;
     }
 
-    @Override
-    public void ensureMiddleCapacity(final int splitIndex, final int middleCapacity)
-    throws LinearIndexStorageException {
-        ensureCapacityValid("middleCapacity", middleCapacity);
-        ensureIndexValid("splitIndex", splitIndex);
-
-        if (middleCapacity == 0)
-            return;
-
-        ensureValidMiddleCapacity(splitIndex, middleCapacity);
-    }
-
-    /**
-     * @param middleCapacity
-     *        <em>positive</em> integer specifying the middle capacity
-     */
-    private void ensureValidMiddleCapacity(final int splitIndex, final int middleCapacity) {
-        final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightByMidleCapacity = /*
-         */ new IndexRangeOperationDescriptor(splitIndex, contentIndexRegistry.getLastItemIndex(),
-                                              splitIndex + middleCapacity);
-
-        final int newLastItemIndex = contentIndexRegistry.getLastItemIndex() + middleCapacity;
-
-        if (contentIndexRegistry.getTailCapacity() >= middleCapacity) {
-
-            storage.shiftItems(shiftRightPartFromSplitIndexRightByMidleCapacity);
-            contentIndexRegistry.setLastItemIndex(newLastItemIndex);
-
-            return;
-        }
-
-        final int fullCapacity = contentIndexRegistry.getItemsCount() + middleCapacity;
-
-        // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
-        final IndexRangeOperationDescriptor leftCopyDescriptor = /*
-         */ new IndexRangeOperationDescriptor(contentIndexRegistry.getFirstItemIndex(), splitIndex - 1, splitIndex);
-
-        final IndexRangeOperationDescriptor[] copyDescriptors = /*
-         */ splitIndex > contentIndexRegistry.getFirstItemIndex() ?
-            new IndexRangeOperationDescriptor[]{ leftCopyDescriptor,
-                                                 shiftRightPartFromSplitIndexRightByMidleCapacity } :
-            new IndexRangeOperationDescriptor[]{ shiftRightPartFromSplitIndexRightByMidleCapacity };
-
-        storage.ensureCapacityAndShiftItems(fullCapacity, copyDescriptors);
-    }
 
     private void ensureIndexValid(final String indexName, final int splitIndex) {
         if (splitIndex < contentIndexRegistry.getFirstItemIndex())

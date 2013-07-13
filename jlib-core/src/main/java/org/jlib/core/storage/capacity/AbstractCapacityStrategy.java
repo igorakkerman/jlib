@@ -19,10 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.core.storage.capacity;
 
 import org.jlib.core.system.AbstractObject;
 
+import org.jlib.core.storage.ContentIndexRegistry;
+import org.jlib.core.storage.InvalidCapacityException;
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.storage.LinearIndexStorageException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 public abstract class AbstractCapacityStrategy<Item>
