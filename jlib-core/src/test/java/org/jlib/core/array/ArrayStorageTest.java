@@ -21,17 +21,28 @@
 
 package org.jlib.core.array;
 
+import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
-import org.jlib.core.storage.LinearIndexStorage;
 import org.junit.Test;
 
 public class ArrayStorageTest {
 
     @Test(expected = InvalidIndexException.class)
-    public void zeroCapacityReadAccessTest()
+    public void zeroCapacityReadAccess()
     throws Exception {
-        LinearIndexStorage<Integer> storage = new ArrayStorage<>(0);
-        storage.getItem(0);
+        new ArrayStorage<Integer>(0).getItem(0);
+    }
+
+    @Test(expected = InvalidIndexException.class)
+    public void negativeIndexAccess()
+    throws Exception {
+        new ArrayStorage<Integer>(5).getItem(-1);
+    }
+
+    @Test(expected = InvalidCapacityException.class)
+    public void negativeCapacity()
+    throws Exception {
+        new ArrayStorage<Object>(-1);
     }
 
     @Test
