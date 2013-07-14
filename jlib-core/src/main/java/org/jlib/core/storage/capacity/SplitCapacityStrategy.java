@@ -21,7 +21,6 @@
 
 package org.jlib.core.storage.capacity;
 
-import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 
@@ -40,15 +39,15 @@ public interface SplitCapacityStrategy {
      * @param splitIndex
      *        integer specifying the index at which the capacity should be provided
      *
-     * @param capacity
+     * @param splitCapacity
      *        integer specifying the capacity for the split
      *
      * @throws InvalidIndexException
      *         if {@code splitIndex} is not within the range of stored Items
      *
-     * @throws InvalidCapacityException
+     * @throws InvalidPartialCapacityException
      *         if {@code capacity < 0}
      */
-    public void ensureCapacity(int splitIndex, int capacity)
-    throws InvalidIndexException;
+    public void ensureCapacity(int splitIndex, int splitCapacity)
+    throws InvalidIndexException, InvalidPartialCapacityException;
 }

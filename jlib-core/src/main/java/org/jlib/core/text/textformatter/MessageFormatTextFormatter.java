@@ -43,6 +43,7 @@ implements TextFormatter {
      *
      * @return sole {@link MessageFormatTextFormatter} instance
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public static MessageFormatTextFormatter getInstance() {
         return INSTANCE;
     }

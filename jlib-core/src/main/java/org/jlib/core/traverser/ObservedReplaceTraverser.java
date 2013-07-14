@@ -53,7 +53,7 @@ extends ReplaceTraverser<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void replace(final Item newItem, final ValueObserver<Item>... observers)
+    public void replace(Item newItem, ValueObserver<Item>... observers)
     throws NoItemToReplaceException, ValueObserverException;
 
     /**
@@ -63,5 +63,5 @@ extends ReplaceTraverser<Item> {
      * @param replaceObserver
      *        additional replace {@link ValueObserver}
      */
-    public void addReplaceObserver(final ValueObserver<Item> replaceObserver);
+    public void addReplaceObserver(ValueObserver<Item> replaceObserver);
 }

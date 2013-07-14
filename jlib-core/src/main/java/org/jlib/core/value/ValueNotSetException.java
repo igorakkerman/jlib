@@ -45,9 +45,9 @@ extends ValueNotAccessibleException {
      * Creates a new {@link ValueNotSetException}.
      *
      * @param valueName
-     *        {@link String} specifying a descriptive name of the Value
+     *        {@link CharSequence} specifying a descriptive name of the Value
      */
-    public ValueNotSetException(final String valueName) {
+    public ValueNotSetException(final CharSequence valueName) {
         super(valueName);
     }
 }

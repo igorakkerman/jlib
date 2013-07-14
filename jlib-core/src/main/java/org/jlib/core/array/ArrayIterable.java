@@ -50,6 +50,6 @@ implements Iterable<Item> {
     // @see java.lang.Iterable#iterator()
     @Override
     public Iterator<Item> iterator() {
-        return new ArrayIterator<Item>(array);
+        return new ArrayIterator<>(array);
     }
 }

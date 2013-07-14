@@ -30,7 +30,7 @@ extends AbstractObject
 implements Modifiable<Value> {
 
     public static <Value> Optional<Value> from(final Value value) {
-        return new Optional<Value>(value);
+        return new Optional<>(value);
     }
 
     public static <Value> Optional<Value> fromNullable(@Nullable final Value value) {

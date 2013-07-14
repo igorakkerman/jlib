@@ -65,11 +65,18 @@ implements LinearIndexStorage<Item> {
     protected abstract void safeReplaceItem(int index, Item item);
 
     @Override
-    public void addCapacityAndShiftItems(final int capacity, final IndexRangeOperationDescriptor... copyDescriptors) {
+    public void addCapacityAndShiftItems(final int additionalCapacity,
+                                         final IndexRangeOperationDescriptor... copyDescriptors) {
 
-        ensureCapacityValid("capacity", capacity);
+        ensureAdditionalCapacityValid(additionalCapacity);
 
-        safeAddCapacityAndShiftItems(capacity, copyDescriptors);
+        safeAddCapacityAndShiftItems(additionalCapacity, copyDescriptors);
+    }
+
+    private void ensureAdditionalCapacityValid(final int additionalCapacity)
+    throws InvalidAdditionalCapacityException {
+        if (additionalCapacity < 0)
+            throw new InvalidAdditionalCapacityException(this, additionalCapacity);
     }
 
     protected abstract void safeAddCapacityAndShiftItems(int capacity,
@@ -87,7 +94,7 @@ implements LinearIndexStorage<Item> {
     protected void ensureCapacityValid(final String capacityName, final int capacity)
     throws InvalidCapacityException {
         if (capacity < 0)
-            throw new InvalidCapacityException(this, capacity);
+            throw new InvalidCapacityException(this, capacityName, capacity);
     }
 
     protected void ensureIndexValid(final String indexName, final int index) {

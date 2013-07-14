@@ -53,6 +53,7 @@ public final class CollectionUtility {
      *
      * @return Set containing the Items of {@code array}
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public static <SetItem, ArrayItem extends SetItem> Set<SetItem> toSet(final ArrayItem[] array) {
         final Set<SetItem> set = new HashSet<SetItem>(array.length);
 
@@ -101,7 +102,9 @@ public final class CollectionUtility {
      * @param items
      *        {@link Iterable} providing the items to remove
      */
-    public static <CollectionItem, RemovedItem extends CollectionItem> void removeAll(final Collection<CollectionItem> collection, final Iterable<RemovedItem> items) {
+    public static <CollectionItem, RemovedItem extends CollectionItem> void removeAll(
+                                                                                     final Collection<CollectionItem> collection,
+                                                                                     final Iterable<RemovedItem> items) {
         for (RemovedItem item : items)
             collection.remove(item);
     }

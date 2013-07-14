@@ -39,7 +39,7 @@ implements SplitCapacityStrategy {
     throws InvalidIndexException {
         ensureIndexValid(splitIndex);
 
-        ensureCapacityValid(splitCapacity);
+        ensurePartialCapacityValid(splitCapacity);
 
         if (splitCapacity == 0)
             return;

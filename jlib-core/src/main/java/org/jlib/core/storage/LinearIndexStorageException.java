@@ -36,7 +36,7 @@ extends InvalidArgumentException {
     private static final long serialVersionUID = - 1514836335986845986L;
 
     /** referenced {@link LinearIndexStorage} */
-    private final LinearIndexStorage<?> linearIndexStorage;
+    private transient final LinearIndexStorage<?> linearIndexStorage;
 
     /**
      * Creates a new {@link LinearIndexStorageException}.

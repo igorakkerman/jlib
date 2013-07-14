@@ -38,7 +38,7 @@ public class RemoveTraversibleIterator<Item, Travble extends RemoveTraversible<I
 extends TraversibleIterator<Item, Travble> {
 
     /** delegate {@link RemoveTraverser} */
-    private RemoveTraverser delegateTraverser;
+    private RemoveTraverser<Item> delegateTraverser;
 
     /**
      * Creates a new {@link RemoveTraversibleIterator}.
@@ -56,7 +56,7 @@ extends TraversibleIterator<Item, Travble> {
      * @param delegateTraverser
      *        delegate {@link Traverser}
      */
-    protected final void setRemoveTraverser(final RemoveTraverser delegateTraverser) {
+    protected final void setRemoveTraverser(final RemoveTraverser<Item> delegateTraverser) {
         this.delegateTraverser = delegateTraverser;
     }
 
@@ -67,7 +67,7 @@ extends TraversibleIterator<Item, Travble> {
         setTraverser(traverser);
 
         // safe cast since traversible.createTraverser returns a Traverser<Item> AND a RemoveTraverser
-        setRemoveTraverser((RemoveTraverser) traverser);
+        setRemoveTraverser((RemoveTraverser<Item>) traverser);
     }
 
     @Override

@@ -35,7 +35,7 @@ extends InvalidArgumentException {
     private static final long serialVersionUID = - 207300032064585595L;
 
     /** referenced {@link Traversible} */
-    private final Traversible<?> traversible;
+    private transient final Traversible<?> traversible;
 
     /**
      * Creates a new {@link InvalidTraversibleArgumentException}.
@@ -59,7 +59,8 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} message arguments
      */
-    public InvalidTraversibleArgumentException(final Traversible<?> traversible, final String messageTemplate, final Object... messageArguments) {
+    public InvalidTraversibleArgumentException(final Traversible<?> traversible, final String messageTemplate,
+                                               final Object... messageArguments) {
 
         this(traversible, messageTemplate, null, messageArguments);
     }
@@ -80,7 +81,8 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} message arguments
      */
-    public InvalidTraversibleArgumentException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidTraversibleArgumentException(final Traversible<?> traversible, final String messageTemplate,
+                                               final Throwable cause, final Object... messageArguments) {
 
         super(messageTemplate, cause, traversible, messageArguments);
 

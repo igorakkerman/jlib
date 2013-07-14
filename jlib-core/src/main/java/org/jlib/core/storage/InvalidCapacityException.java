@@ -38,11 +38,12 @@ extends LinearIndexStorageException {
      * Creates a new {@link InvalidCapacityException}.
      *
      * @param storage
-     *        referenced {@link LinearIndexStorage}
+     *        targeted {@link LinearIndexStorage}
      *
      * @param invalidCapacity
      */
-    public InvalidCapacityException(final LinearIndexStorage<?> storage, final int invalidCapacity) {
-        super(storage, "{1}", invalidCapacity);
+    InvalidCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
+                             final int invalidCapacity) {
+        super(storage, "{1} = {2}", capacityName, invalidCapacity);
     }
 }

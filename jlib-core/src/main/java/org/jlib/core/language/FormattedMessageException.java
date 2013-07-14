@@ -21,10 +21,10 @@
 
 package org.jlib.core.language;
 
+import static org.jlib.core.array.ArrayUtility.flatten;
+
 import org.jlib.core.text.textformatter.MessageFormatTextFormatter;
 import org.jlib.core.text.textformatter.TextFormatter;
-
-import static org.jlib.core.array.ArrayUtility.flatten;
 
 /**
  * Skeletal implementation of an {@link Exception} using a formatted message.
@@ -38,13 +38,12 @@ extends Exception {
     private static final long serialVersionUID = - 7508635402610527176L;
 
     /** default {@link TextFormatter} used */
-    public static final TextFormatter DEFAULT_MESSAGE_FORMATTER =
-        MessageFormatTextFormatter.getInstance();
+    public static final TextFormatter DEFAULT_MESSAGE_FORMATTER = MessageFormatTextFormatter.getInstance();
 
     /** {@link String} specifying the message */
-     private final String message;
+    private final String message;
 
-     /**
+    /**
      * Creates a new {@link FormattedMessageException}.
      */
     protected FormattedMessageException() {
@@ -57,12 +56,12 @@ extends Exception {
      * Creates a new {@link FormattedMessageException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
+     *        {@link CharSequence} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected FormattedMessageException(final String messageTemplate, final Object... messageArguments) {
+    protected FormattedMessageException(final CharSequence messageTemplate, final Object... messageArguments) {
         super();
 
         message = createMessage(messageTemplate, messageArguments);
@@ -84,7 +83,7 @@ extends Exception {
      * Creates a new {@link FormattedMessageException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
+     *        {@link CharSequence} specifying the message template
      *
      * @param cause
      *        Throwable that caused this {@link FormattedMessageException}
@@ -92,7 +91,8 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected FormattedMessageException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    protected FormattedMessageException(final CharSequence messageTemplate, final Throwable cause,
+                                        final Object... messageArguments) {
         super(cause);
 
         message = createMessage(messageTemplate, messageArguments);
@@ -102,12 +102,12 @@ extends Exception {
      * Creates the message applying the specified message arguments to the specified message template.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
+     *        {@link CharSequence} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    private String createMessage(final String messageTemplate, final Object... messageArguments) {
+    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
         return getMessageFormatter().applyTemplateArguments(messageTemplate, flatten(messageArguments));
     }
 

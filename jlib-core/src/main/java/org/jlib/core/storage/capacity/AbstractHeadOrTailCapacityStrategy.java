@@ -24,7 +24,6 @@ package org.jlib.core.storage.capacity;
 import org.jlib.core.system.Valid;
 
 import org.jlib.core.storage.ContentIndexRegistry;
-import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.LinearIndexStorage;
 
 public abstract class AbstractHeadOrTailCapacityStrategy<Item>
@@ -38,8 +37,8 @@ implements HeadOrTailCapacityStrategy {
 
     @Override
     public final void ensureCapacity(final int headOrTailCapacity)
-    throws InvalidCapacityException {
-        ensureCapacityValid(headOrTailCapacity);
+    throws InvalidPartialCapacityException {
+        ensurePartialCapacityValid(headOrTailCapacity);
 
         ensureHeadOrTailCapacity(headOrTailCapacity);
     }

@@ -41,7 +41,7 @@ import org.jlib.core.system.SystemUtility;
  * instantiating classes using reflection, many Exceptions have to be caught.
  * Usually, the application that uses these methods makes no difference why the
  * instantiation failed. They simply catch {@code Throwable} to perform the
- * exception handling. This is not a clean way to handle this problem.
+ * exception handling. This is not a clean way to handle this probli.
  * </p>
  * <p>
  * In contrast, the methods of this class throw one single checked exception,
@@ -134,13 +134,11 @@ public final class ReflectionUtility {
      *         instantiated object is not an instance of the class represented
      *         by {@code Obj} or a subclass
      */
+    @SuppressWarnings("unchecked")
     public static <Obj> Obj newInstanceOf(final String className)
     throws ClassInstantiationException {
         try {
-            @SuppressWarnings("unchecked")
-            final Class<? extends Obj> clazz = (Class<? extends Obj>) Class.forName(className);
-            final Obj instance = newInstanceOf(clazz);
-            return instance;
+            return newInstanceOf((Class<? extends Obj>) Class.forName(className));
         }
         catch (final ClassNotFoundException exception) {
             throw new ClassInstantiationException(className, exception);
@@ -153,34 +151,39 @@ public final class ReflectionUtility {
      *
      * @param <Obj>
      *        type of the object to create
+     *
      * @param propertyName
      *        String specifying the name of the system property in which the
      *        class name is defined
+     *
      * @return a new instance of the specified class
+     *
      * @throws SecurityException
      *         if a security manager exists and its {@code checkPropertyAccess}
      *         method doesn't allow access to the specified system property
+     *
      * @throws IllegalArgumentException
      *         if (@code propertyName} is {@code null} or the empty String
+     *
      * @throws PropertyNotSetException
      *         if the specified system property is not set
+     *
      * @throws ClassInstantiationException
      *         <ul>
-     *         <lem>if the specified system property is not set (cause is a
-     *         {@link PropertyNotSetException}) or</lem>
-     *         <lem>if the instantiation of the specified class fails (cause is
+     *         <li>if the specified system property is not set (cause is a
+     *         {@link PropertyNotSetException}) or</li>
+     *         <li>if the instantiation of the specified class fails (cause is
      *         one of the exceptions thrown by {@link Class#forName(String)}) or
-     *         </lem>
-     *         <lem>the instantiated object is not an instance of the class
+     *         </li>
+     *         <li>the instantiated object is not an instance of the class
      *         represented by {@code Obj} or a subclass (cause is a
-     *         {@link ClassCastException}).</lem>
+     *         {@link ClassCastException}).</li>
      *         </ul>
      */
-    @SuppressWarnings("unchecked")
     public static <Obj> Obj newInstanceByProperty(final String propertyName)
     throws SecurityException, PropertyNotSetException, ClassInstantiationException {
         final String className = SystemUtility.getProperty(propertyName);
         // the cast is necessary to the Sun compiler, not to the Eclipse compiler
-        return (Obj) newInstanceOf(className);
+        return newInstanceOf(className);
     }
 }

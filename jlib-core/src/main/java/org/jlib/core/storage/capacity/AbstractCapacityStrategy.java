@@ -24,7 +24,6 @@ package org.jlib.core.storage.capacity;
 import org.jlib.core.system.AbstractObject;
 
 import org.jlib.core.storage.ContentIndexRegistry;
-import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
@@ -68,17 +67,17 @@ extends AbstractObject {
     }
 
     /**
-     * Ensures that the specified partial capacity is valid.
+     * Ensures that the specified capacity is valid.
      *
      * @param capacity
-     *        integer specifying the partial capacity
+     *        integer specifying the capacity
      *
      * @throws LinearIndexStorageException
      *         if {@code capacity < 0}
      */
-    protected void ensureCapacityValid(final int capacity) {
+    public void ensurePartialCapacityValid(final int capacity) {
         if (capacity < 0)
-            throw new InvalidCapacityException(storage, capacity);
+            throw new InvalidPartialCapacityException(storage, capacity);
     }
 
     protected void ensureIndexValid(final int index) {

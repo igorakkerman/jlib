@@ -45,9 +45,9 @@ extends FormattedMessageException {
      * Creates a new {@link ValueNotAccessibleException}.
      *
      * @param valueName
-     *        {@link String} specifying a descriptive name of the Value
+     *        {@link CharSequence} specifying a descriptive name of the Value
      */
-    public ValueNotAccessibleException(final String valueName) {
+    public ValueNotAccessibleException(final CharSequence valueName) {
         super(valueName);
     }
 }

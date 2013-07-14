@@ -54,11 +54,11 @@ extends InvalidTraverserStateException {
      * @param sequence
      *        referenced {@link Sequence}
      *
-     * @param errorMessage
+     * @param message
      *        {@link String} specifying the error message
      */
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage) {
-        this(sequence, errorMessage, null);
+    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String message) {
+        this(sequence, message, null);
     }
 
     /**
@@ -83,15 +83,16 @@ extends InvalidTraverserStateException {
      * @param sequence
      *        referenced {@link Sequence}
      *
-     * @param errorMessage
+     * @param message
      *        {@link String} specifying the error message
      *
      * @param cause
      *        {@link Throwable} that caused this
      *        {@link InvalidSequenceTraverserStateException}
      */
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String errorMessage, final Throwable cause) {
-        super(sequence, errorMessage, cause);
+    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String message,
+                                                  final Throwable cause) {
+        super(sequence, message, cause);
 
         this.sequence = sequence;
     }

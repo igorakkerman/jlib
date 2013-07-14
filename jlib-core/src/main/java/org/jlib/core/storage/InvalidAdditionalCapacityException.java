@@ -19,30 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.math;
+package org.jlib.core.storage;
 
-import org.jlib.core.language.InvalidArgumentException;
+public class InvalidAdditionalCapacityException
+extends LinearIndexStorageException {
 
-/**
- * {@link InvalidArgumentException} thrown when an invalid value has been specified
- * as a base.
- */
-public class InvalidBaseValueException
-extends InvalidArgumentException {
+    private static final long serialVersionUID = 8571768940498236393L;
 
-    private static final long serialVersionUID = - 1111631415238248975L;
-
-    private final int baseValue;
-
-    public InvalidBaseValueException(final int baseValue) {
-
-        // TODO: create constant for "{0}"
-        super("{0} < 1", baseValue);
-
-        this.baseValue = baseValue;
-    }
-
-    public int getBaseValue() {
-        return baseValue;
+    /**
+     * Creates a new {@link LinearIndexStorageException}.
+     *
+     * @param storage
+     *        referenced {@link LinearIndexStorage}
+     *
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
+     *
+     * @param messageArguments
+     *        array of {@link Object} message arguments
+     */
+    public InvalidAdditionalCapacityException(final LinearIndexStorage<?> storage, final int additionalCapacity) {
+        super(storage, "{0}", additionalCapacity);
     }
 }

@@ -41,6 +41,6 @@ extends Traverser<Item> {
      * @throws InvalidTraverserStateException
      *         if no Item has been traversed by this {@link ReplaceTraverser}
      */
-    public void replace(final Item newItem)
+    public void replace(Item newItem)
     throws InvalidTraverserStateException;
 }

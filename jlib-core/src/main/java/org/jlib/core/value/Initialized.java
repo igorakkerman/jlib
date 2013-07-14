@@ -76,7 +76,8 @@ extends Accessible<Value> {
         this.value = value;
     }
 
+    @SuppressWarnings("EmptyMethod")
     protected void ensureValueValid() {
-        // perform optinal validation in subclasses
+        // perform optional validation in subclasses
     }
 }

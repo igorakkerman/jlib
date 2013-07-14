@@ -22,7 +22,6 @@
 package org.jlib.core.storage.capacity.minimal;
 
 import org.jlib.core.storage.ContentIndexRegistry;
-import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
@@ -30,6 +29,7 @@ import org.jlib.core.storage.capacity.AbstractCapacityStrategy;
 import org.jlib.core.storage.capacity.CapacityStrategy;
 import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.core.storage.capacity.InitialCapacityStrategy;
+import org.jlib.core.storage.capacity.InvalidPartialCapacityException;
 import org.jlib.core.storage.capacity.SplitCapacityStrategy;
 
 public class MinimalCapacityStrategy<Item>
@@ -68,7 +68,7 @@ implements CapacityStrategy {
 
     @Override
     public void ensureHeadCapacity(final int headCapacity)
-    throws InvalidCapacityException {
+    throws InvalidPartialCapacityException {
         headCapacityStrategy.ensureCapacity(headCapacity);
     }
 
@@ -80,7 +80,7 @@ implements CapacityStrategy {
 
     @Override
     public void ensureTailCapacity(final int tailCapacity)
-    throws InvalidCapacityException {
+    throws InvalidPartialCapacityException {
         tailCapacityStrategy.ensureCapacity(tailCapacity);
     }
 }

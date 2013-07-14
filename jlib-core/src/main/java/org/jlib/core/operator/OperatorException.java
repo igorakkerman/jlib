@@ -41,7 +41,7 @@ extends FormattedMessageException {
      * Creates a new {@link OperatorException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template; {1} references
+     *        {@link CharSequence} specifying the message template; {1} references
      *        {@code value}
      *
      * @param cause
@@ -51,7 +51,8 @@ extends FormattedMessageException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public OperatorException(final String messageTemplate, final RuntimeException cause, final Object... messageArguments) {
+    public OperatorException(final CharSequence messageTemplate, final RuntimeException cause,
+                             final Object... messageArguments) {
         super(messageTemplate, cause, messageArguments);
 
         this.cause = cause;

@@ -36,7 +36,7 @@ extends InvalidStateException {
     private static final long serialVersionUID = - 5070211173782251202L;
 
     /** traversed {@link Traversible} */
-    private final Traversible<?> traversible;
+    private transient final Traversible<?> traversible;
 
     /**
      * Creates a new {@link InvalidTraverserStateException}.
@@ -45,7 +45,7 @@ extends InvalidStateException {
      *        traversed {@link Traversible}
      */
     public InvalidTraverserStateException(final Traversible<?> traversible) {
-        this(traversible, null);
+        this(traversible, "{1}");
     }
 
     /**
@@ -71,12 +71,15 @@ extends InvalidStateException {
      * @param messageTemplate
      *        {@link String} specifying the error message template
      *
-     * @param messageArguments
+     * @param errorMessageArguments
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate, final Object... messageArguments) {
-        this(traversible, messageTemplate, (Throwable) null, messageArguments);
+    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate,
+                                          final Object... errorMessageArguments) {
+        super(messageTemplate, traversible, errorMessageArguments);
+
+        this.traversible = traversible;
     }
 
     /**
@@ -96,7 +99,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate,
+                                          final Throwable cause, final Object... messageArguments) {
         super(messageTemplate, cause, traversible, messageArguments);
 
         this.traversible = traversible;
