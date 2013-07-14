@@ -19,8 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.storage;
+package org.jlib.core.array;
 
+import org.jlib.core.storage.InvalidIndexException;
+import org.jlib.core.storage.LinearIndexStorage;
 import org.junit.Test;
 
 public class ArrayStorageTest {
