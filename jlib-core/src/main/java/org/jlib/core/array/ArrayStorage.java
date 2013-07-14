@@ -25,6 +25,7 @@ import static org.jlib.core.array.ArrayUtility.createArray;
 import static org.jlib.core.math.MathUtility.count;
 
 import org.jlib.core.storage.AbstractLinearIndexStorage;
+import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
@@ -50,7 +51,8 @@ implements LinearIndexStorage<Item> {
     /** array holding the {@link Item}s */
     private Item[] delegateArray;
 
-    public ArrayStorage(final int initialCapacity) {
+    public ArrayStorage(final int initialCapacity)
+    throws InvalidCapacityException {
         super(initialCapacity);
 
         delegateArray = createArray(initialCapacity);
