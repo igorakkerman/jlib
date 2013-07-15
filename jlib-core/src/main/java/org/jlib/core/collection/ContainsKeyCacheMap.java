@@ -38,7 +38,7 @@ import com.google.common.base.Optional;
  * <em>only</em> tested for identity, <em>not</em> for equality. The other methods are delegated to the {@link Map}
  * specified to the constructor. As in all <em>jlib</em> classes, neither {@code null} Keys nor {@code null}
  * {@link Value}s are permitted and cause undefined behaviour, such as {@link RuntimeException}s or invalid results.
- * Hence, a {@link LastLookedUpEntryCachingMap} may not be used on delegate {@link Map}s containing {@code null}
+ * Hence, a {@link ContainsKeyCacheMap} may not be used on delegate {@link Map}s containing {@code null}
  * {@link Key}s or {@link Value}s.
  * </p>
  * <p>
@@ -78,7 +78,7 @@ import com.google.common.base.Optional;
  *
  * @author Igor Akkerman
  */
-public class LastLookedUpEntryCachingMap<Key, Value>
+public class ContainsKeyCacheMap<Key, Value>
 extends AbstractCloneable
 implements Map<Key, Value> {
 
@@ -92,12 +92,12 @@ implements Map<Key, Value> {
     private Optional<Value> lastLookedUpContainedValue;
 
     /**
-     * Creates a new {@link LastLookedUpEntryCachingMap}.
+     * Creates a new {@link ContainsKeyCacheMap}.
      *
      * @param delegateMap
      *        delegate {@link Map} to which all calls are delegated
      */
-    public LastLookedUpEntryCachingMap(final Map<Key, Value> delegateMap) {
+    public ContainsKeyCacheMap(final Map<Key, Value> delegateMap) {
         super();
 
         this.delegateMap = delegateMap;
@@ -201,6 +201,6 @@ implements Map<Key, Value> {
     @Override
     @SuppressWarnings("CloneDoesntCallSuperClone")
     public Object clone() {
-        return new LastLookedUpEntryCachingMap<>(delegateMap);
+        return new ContainsKeyCacheMap<>(delegateMap);
     }
 }
