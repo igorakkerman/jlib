@@ -53,7 +53,7 @@ implements HeadOrTailCapacityStrategy {
     }
 
     @Override
-    protected void ensureHeadOrTailCapacity(final int headCapacity) {
+    protected void safeEnsureCapacity(final int headCapacity) {
         final int missingHeadCapacity = headCapacity - getContentIndexRegistry().getFirstItemIndex();
 
         if (missingHeadCapacity <= 0)

@@ -35,7 +35,7 @@ extends AbstractSplitCapacityStrategy<Item> {
     }
 
     @Override
-    protected void ensureSplitCapacity(final int splitIndex, final int splitCapacity) {
+    protected void safeEnsureCapacity(final int splitIndex, final int splitCapacity) {
         final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightBySplitCapacity = /*
          */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRegistry().getLastItemIndex(),
                                               splitIndex + splitCapacity);
