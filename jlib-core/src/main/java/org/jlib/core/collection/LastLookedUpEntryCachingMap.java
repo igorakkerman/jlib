@@ -87,9 +87,8 @@ implements Map<Key, Value> {
 
     @Override
     @SuppressWarnings("ReturnOfNull")
-    public
     @Nullable
-    Value get(final Object key) {
+    public Value get(final Object key) {
         return isLastLookedUpKey(key) ?
                (lastLookedUpContainedValue.isPresent() ?
                 lastLookedUpContainedValue.get() :
