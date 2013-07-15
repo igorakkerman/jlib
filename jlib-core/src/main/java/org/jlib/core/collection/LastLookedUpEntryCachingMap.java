@@ -27,6 +27,8 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
+import org.jlib.core.system.AbstractCloneable;
+
 import com.google.common.base.Optional;
 
 /**
@@ -77,6 +79,7 @@ import com.google.common.base.Optional;
  * @author Igor Akkerman
  */
 public class LastLookedUpEntryCachingMap<Key, Value>
+extends AbstractCloneable
 implements Map<Key, Value> {
 
     /** {@link Map} to which all method calls are delegated*/
@@ -193,5 +196,11 @@ implements Map<Key, Value> {
     @SuppressWarnings("NullableProblems")
     public Set<Map.Entry<Key, Value>> entrySet() {
         return delegateMap.entrySet();
+    }
+
+    @Override
+    @SuppressWarnings("CloneDoesntCallSuperClone")
+    public Object clone() {
+        return new LastLookedUpEntryCachingMap<>(delegateMap);
     }
 }
