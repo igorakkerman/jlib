@@ -40,8 +40,8 @@ implements HeadOrTailCapacityStrategy {
     throws InvalidPartialCapacityException {
         ensurePartialCapacityValid(headOrTailCapacity);
 
-        ensureHeadOrTailCapacity(headOrTailCapacity);
+        safeEnsureCapacity(headOrTailCapacity);
     }
 
-    protected abstract void ensureHeadOrTailCapacity(@Valid int headOrTailCapacity);
+    protected abstract void safeEnsureCapacity(@Valid int headOrTailCapacity);
 }

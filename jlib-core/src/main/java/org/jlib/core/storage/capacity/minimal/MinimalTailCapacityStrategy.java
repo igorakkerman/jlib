@@ -54,7 +54,7 @@ implements HeadOrTailCapacityStrategy {
     }
 
     @Override
-    protected void ensureHeadOrTailCapacity(final int tailCapacity) {
+    protected void safeEnsureCapacity(final int tailCapacity) {
         final int missingTailCapacity = tailCapacity - getTailCapacity();
 
         if (missingTailCapacity <= 0)

@@ -44,10 +44,10 @@ implements SplitCapacityStrategy {
         if (splitCapacity == 0)
             return;
 
-        ensureSplitCapacity(splitIndex, splitCapacity);
+        safeEnsureCapacity(splitIndex, splitCapacity);
 
         getContentIndexRegistry().incrementLastItemIndex(splitCapacity);
     }
 
-    protected abstract void ensureSplitCapacity(int splitIndex, int splitCapacity);
+    protected abstract void safeEnsureCapacity(int splitIndex, int splitCapacity);
 }
