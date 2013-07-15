@@ -39,7 +39,7 @@ import java.util.Set;
  *
  * @author Igor Akkerman
  */
-@SuppressWarnings({"ObjectEquality", "NullableProblems", "SuspiciousMethodCalls"})
+@SuppressWarnings({ "ObjectEquality", "NullableProblems", "SuspiciousMethodCalls" })
 public class ProxyMap<Key, Value>
 implements Map<Key, Value> {
 
@@ -84,9 +84,9 @@ implements Map<Key, Value> {
     @Override
     public Value get(final Object key) {
         //noinspection ObjectEquality
-        return key == lastLookedUpContainedKey
-               ? lastLookedUpContainedValue
-               : delegateMap.get(key);
+        return key == lastLookedUpContainedKey ?
+               lastLookedUpContainedValue :
+               delegateMap.get(key);
     }
 
     @Override
