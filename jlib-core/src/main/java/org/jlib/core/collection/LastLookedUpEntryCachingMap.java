@@ -30,13 +30,43 @@ import javax.annotation.Nullable;
 import com.google.common.base.Optional;
 
 /**
+ * <p>
  * Proxy {@link Map} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by a
- * subsequent call to {@link #get(Object)} for the same key {@link Object}. Note that the key {@link Object} is only
- * tested for identity, not for equality. The other methods are delegated to the {@link Map} specified to the
- * constructor. As in all <em>jlib</em> classes, neither {@code null} Keys nor {@code null} {@link Value}s are permitted
- * and cause undefined behaviour, such as {@link RuntimeException}s or invalid results. Hence, a
- * {@link LastLookedUpEntryCachingMap} may not be used on delegate {@link Map}s containing {@code null} {@link Key}s or
- * {@link Value}s.
+ * subsequent call to {@link #get(Object)} for the same key {@link Object}. Note that the key {@link Object} is
+ * <em>only</em> tested for identity, <em>not</em> for equality. The other methods are delegated to the {@link Map}
+ * specified to the constructor. As in all <em>jlib</em> classes, neither {@code null} Keys nor {@code null}
+ * {@link Value}s are permitted and cause undefined behaviour, such as {@link RuntimeException}s or invalid results.
+ * Hence, a {@link LastLookedUpEntryCachingMap} may not be used on delegate {@link Map}s containing {@code null}
+ * {@link Key}s or {@link Value}s.
+ * </p>
+ * <p>
+ * The key idea behind this proxy is to be able to use the following idiom without worrying about performance issues due
+ * to multiple lookups:
+ * </p>
+ * <pre>
+ * if (map.containsKey(key)) {
+ *     value = map.get(key);
+ *     // commands with value
+ * }
+ * else {
+ *     // commands with no value
+ * }
+ * </pre>
+ * <p>
+ * Instead, many developers use the following technique which enforces comparing the result with {@code null}. This is a
+ * discouraged code style and less readable:
+ * </p>
+ * <pre>
+ * // dicouraged by clean coders
+ * value = map.get(key);
+ * if (value != null) {
+ *     value = map.get(key);
+ *     // commands with value
+ * }
+ * else {
+ *     // commands with no value
+ * }
+ * </pre>
  *
  * @param <Key>
  *        type of the keys
@@ -90,9 +120,7 @@ implements Map<Key, Value> {
     @Nullable
     public Value get(final Object key) {
         return isLastLookedUpKey(key) ?
-               (lastLookedUpContainedValue.isPresent() ?
-                lastLookedUpContainedValue.get() :
-                null) :
+               lastLookedUpContainedValue.orNull() :
                delegateMap.get(key);
     }
 
