@@ -34,12 +34,19 @@ import com.google.common.base.Optional;
 /**
  * <p>
  * Proxy {@link Map} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by a
- * subsequent call to {@link #get(Object)} for the same key {@link Object}. Note that the key {@link Object} is
- * <em>only</em> tested for identity, <em>not</em> for equality. The other methods are delegated to the {@link Map}
- * specified to the constructor. As in all <em>jlib</em> classes, neither {@code null} Keys nor {@code null}
- * {@link Value}s are permitted and cause undefined behaviour, such as {@link RuntimeException}s or invalid results.
- * Hence, a {@link ContainsKeyCacheMap} may not be used on delegate {@link Map}s containing {@code null}
- * {@link Key}s or {@link Value}s.
+ * subsequent call to {@link #get(Object)} for the same {@link Key}. Note that the {@link Key} is <em>only</em> tested
+ * for <em>identity</em>, <em>not</em> for <em>equality</em>. The other methods are delegated to the {@link Map}
+ * specified to the constructor.
+ * </p>
+ * <p>
+ * Note that if the requested {@link Key} is mapped to another {@link Value} in the delegate {@link Map} between the
+ * calls to {@link #containsKey(Object)} and {@link Map#get(Object)}, the <em>former, now wrong</em>, {@link Value} will
+ * be returned by the latter call.
+ * </p>
+ * <p>
+ * As in all <em>jlib</em> classes, neither {@code null} {@link Key}s nor {@code null} {@link Value}s are permitted and
+ * cause undefined behaviour, such as {@link RuntimeException}s or invalid results. Hence, a {@link ContainsKeyCacheMap}
+ * may not be used on delegate {@link Map}s containing {@code null} {@link Key}s or {@link Value}s.
  * </p>
  * <p>
  * The key idea behind this proxy is to be able to use the following idiom without worrying about performance issues due
@@ -52,8 +59,7 @@ import com.google.common.base.Optional;
  * }
  * else {
  *     // commands with no value
- * }
- * </pre>
+ * }</pre>
  * <p>
  * Instead, many developers use the following technique which enforces comparing the result with {@code null}. This is a
  * discouraged code style and less readable:
@@ -67,8 +73,7 @@ import com.google.common.base.Optional;
  * }
  * else {
  *     // commands with no value
- * }
- * </pre>
+ * }</pre>
  *
  * @param <Key>
  *        type of the keys
@@ -86,10 +91,10 @@ implements Map<Key, Value> {
     private final Map<Key, Value> delegateMap;
 
     /** last successfully looked up key */
-    private Optional<Object> lastLookedUpContainedKey;
+    private Optional<Object> lastLookedUpKey;
 
-    /** last successfully looked up value for {@link #lastLookedUpContainedKey} */
-    private Optional<Value> lastLookedUpContainedValue;
+    /** last successfully looked up value for {@link #lastLookedUpKey} */
+    private Optional<Value> lastLookedUpValue;
 
     /**
      * Creates a new {@link ContainsKeyCacheMap}.
@@ -107,32 +112,38 @@ implements Map<Key, Value> {
     public boolean containsKey(final Object key) {
         lookup(key);
 
-        return lastLookedUpContainedValue.isPresent();
+        return lastLookedUpValue.isPresent();
     }
 
     @SuppressWarnings("SuspiciousMethodCalls")
     private void lookup(final Object key) {
         final Value value = delegateMap.get(key);
 
-        lastLookedUpContainedKey = Optional.of(key);
-        lastLookedUpContainedValue = Optional.fromNullable(value);
+        lastLookedUpKey = Optional.of(key);
+        lastLookedUpValue = Optional.fromNullable(value);
+    }
+
+    private boolean isLastLookedUpKey(final Object key) {
+        return lastLookedUpKey.isPresent() && lastLookedUpKey.get() == key;
     }
 
     @Override
     @SuppressWarnings("ReturnOfNull")
     @Nullable
     public Value get(final Object key) {
-        return isLastLookedUpKey(key) ?
-               lastLookedUpContainedValue.orNull() :
-               delegateMap.get(key);
-    }
+        if (!isLastLookedUpKey(key)) {
+            clearLastLookedUpContainedItems();
+            return delegateMap.get(key);
+        }
 
-    private boolean isLastLookedUpKey(final Object key) {
-        return lastLookedUpContainedKey.isPresent() && lastLookedUpContainedKey.get() == key;
+        return lastLookedUpValue.orNull();
     }
 
     @Override
     public Value put(final Key key, final Value value) {
+        if (isLastLookedUpKey(key))
+            clearLastLookedUpContainedItems();
+
         return delegateMap.put(key, value);
     }
 
@@ -170,13 +181,16 @@ implements Map<Key, Value> {
      * Clears the last looked up contained Key and Value.
      */
     protected void clearLastLookedUpContainedItems() {
-        lastLookedUpContainedKey = Optional.absent();
-        lastLookedUpContainedValue = Optional.absent();
+        lastLookedUpKey = Optional.absent();
+        lastLookedUpValue = Optional.absent();
     }
 
     @Override
-    @SuppressWarnings("NullableProblems")
+    @SuppressWarnings({ "NullableProblems", "SuspiciousMethodCalls" })
     public void putAll(final Map<? extends Key, ? extends Value> map) {
+        if (lastLookedUpKey.isPresent() && map.containsKey(lastLookedUpKey.get()))
+            clearLastLookedUpContainedItems();
+
         delegateMap.putAll(map);
     }
 
