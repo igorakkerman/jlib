@@ -6,13 +6,13 @@ import java.util.Set;
 
 import org.jlib.core.system.AbstractObject;
 
-public class DelegateMap<Key, Value>
+public abstract class DelegatingMap<Key, Value>
 extends AbstractObject
 implements Map<Key, Value> {
 
-    private final Map<Key, Value> delegateMap;
+    private Map<Key, Value> delegateMap;
 
-    public DelegateMap(final Map<Key, Value> delegateMap) {
+    public DelegatingMap(final Map<Key, Value> delegateMap) {
         this.delegateMap = delegateMap;
     }
 

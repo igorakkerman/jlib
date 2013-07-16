@@ -14,13 +14,16 @@ public class ContainsKeyCacheMapTest {
         hashMap.put("gut", "schlecht");
         hashMap.put("München", "Berlin");
 
-        final Map<String, String> delegateMap = new DelegateMap<>(hashMap);
+        final Map<String, String> delegatingMap = new DelegatingMap<String, String>(hashMap) {
+            // intentilonally empty
+        };
+
         final Map<String, String> cacheMap = new ContainsKeyCacheMap<>(hashMap);
 
         for (int i = 0; i < 20; i++) {
-            System.out.println("HashMap:     " + measure(hashMap));
-            System.out.println("DelegateMap: " + measure(delegateMap));
-            System.out.println("CacheMap:    " + measure(cacheMap));
+            System.out.println("HashMap:       " + measure(hashMap));
+            System.out.println("DelegatingMap: " + measure(delegatingMap));
+            System.out.println("CacheMap:      " + measure(cacheMap));
         }
     }
 

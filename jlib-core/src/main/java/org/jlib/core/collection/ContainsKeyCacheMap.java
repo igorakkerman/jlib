@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * @author Igor Akkerman
  */
 public final class ContainsKeyCacheMap<Key, Value>
-extends DelegateMap<Key, Value> {
+extends DelegatingMap<Key, Value> {
 
     /**
      * <p>
