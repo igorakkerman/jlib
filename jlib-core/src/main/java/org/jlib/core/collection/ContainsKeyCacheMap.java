@@ -211,8 +211,8 @@ extends DelegateMap<Key, Value> {
         return super.get(key);
     }
 
-    @SuppressWarnings("ObjectEquality")
     @Override
+    @SuppressWarnings("ObjectEquality")
     public Value put(final Key key, final Value value) {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
@@ -220,8 +220,8 @@ extends DelegateMap<Key, Value> {
         return super.put(key, value);
     }
 
-    @SuppressWarnings("ObjectEquality")
     @Override
+    @SuppressWarnings("ObjectEquality")
     public Value remove(final Object key) {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
