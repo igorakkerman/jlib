@@ -224,10 +224,12 @@ implements Map<Key, Value> {
     @SuppressWarnings("ReturnOfNull")
     @Nullable
     public Value get(final Object key) {
-        if (!isLastLookedUpKey(key)) {
+/*
+        if (! isLastLookedUpKey(key)) {
             clearLastLookedUpContainedItems();
             return delegateMap.get(key);
         }
+*/
 
         return lastLookedUpValue.orNull();
     }
@@ -309,5 +311,30 @@ implements Map<Key, Value> {
     @SuppressWarnings("CloneDoesntCallSuperClone")
     public Object clone() {
         return new ContainsKeyCacheMap<>(delegateMap);
+    }
+
+    public static void main(String... commandLineArguments) {
+        Map<String, String> hashMap = new HashMap<>();
+        hashMap.put("ja", "nein");
+        hashMap.put("gut", "schlecht");
+        hashMap.put("München", "Berlin");
+
+        Map<String, String> cacheMap = new ContainsKeyCacheMap<>(hashMap);
+
+        System.out.println("HashMap:  " + measure(hashMap));
+        System.out.println("CacheMap: " + measure(cacheMap));
+    }
+
+    private static long measure(final Map<String, String> map) {
+        final int MAX = 10000000;
+        final String MUC = "München";
+
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < MAX; i++)
+            if (map.containsKey(MUC))
+                map.get(MUC);
+        long end = System.currentTimeMillis();
+
+        return end - start;
     }
 }
