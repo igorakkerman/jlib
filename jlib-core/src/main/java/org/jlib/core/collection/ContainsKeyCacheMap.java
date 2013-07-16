@@ -21,14 +21,10 @@
 
 package org.jlib.core.collection;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Nullable;
-
-import org.jlib.core.system.AbstractObject;
 
 /**
  * <p>
@@ -83,8 +79,7 @@ import org.jlib.core.system.AbstractObject;
  * @author Igor Akkerman
  */
 public final class ContainsKeyCacheMap<Key, Value>
-extends AbstractObject
-implements Map<Key, Value> {
+extends DelegateMap<Key, Value> {
 
     /**
      * <p>
@@ -178,9 +173,6 @@ implements Map<Key, Value> {
         return new ContainsKeyCacheMap<>(new HashMap<>(sourceMap));
     }
 
-    /** {@link Map} to which all method calls are delegated */
-    private final Map<Key, Value> delegateMap;
-
     /** last looked up key */
     private Object lastLookedUpKey;
 
@@ -194,15 +186,13 @@ implements Map<Key, Value> {
      *        delegate {@link Map} to which all calls are delegated
      */
     public ContainsKeyCacheMap(final Map<Key, Value> delegateMap) {
-        super();
-
-        this.delegateMap = delegateMap;
+        super(delegateMap);
     }
 
     @Override
     @SuppressWarnings("SuspiciousMethodCalls")
     public boolean containsKey(final Object key) {
-        final Value value = delegateMap.get(key);
+        final Value value = super.get(key);
 
         lastLookedUpKey = key;
         lastLookedUpValue = value;
@@ -218,7 +208,7 @@ implements Map<Key, Value> {
             return lastLookedUpValue;
 
         clearLastLookedUpItems();
-        return delegateMap.get(key);
+        return super.get(key);
     }
 
     @SuppressWarnings("ObjectEquality")
@@ -227,22 +217,7 @@ implements Map<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return delegateMap.put(key, value);
-    }
-
-    @Override
-    public int size() {
-        return delegateMap.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return delegateMap.isEmpty();
-    }
-
-    @Override
-    public boolean containsValue(final Object value) {
-        return delegateMap.containsValue(value);
+        return super.put(key, value);
     }
 
     @SuppressWarnings("ObjectEquality")
@@ -251,14 +226,14 @@ implements Map<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return delegateMap.remove(key);
+        return super.remove(key);
     }
 
     @Override
     public void clear() {
         clearLastLookedUpItems();
 
-        delegateMap.clear();
+        super.clear();
     }
 
     /**
@@ -276,24 +251,6 @@ implements Map<Key, Value> {
         if (lastLookedUpKey != null && map.containsKey(lastLookedUpKey))
             clearLastLookedUpItems();
 
-        delegateMap.putAll(map);
-    }
-
-    @Override
-    @SuppressWarnings("NullableProblems")
-    public Set<Key> keySet() {
-        return delegateMap.keySet();
-    }
-
-    @Override
-    @SuppressWarnings("NullableProblems")
-    public Collection<Value> values() {
-        return delegateMap.values();
-    }
-
-    @Override
-    @SuppressWarnings("NullableProblems")
-    public Set<Map.Entry<Key, Value>> entrySet() {
-        return delegateMap.entrySet();
+        super.putAll(map);
     }
 }
