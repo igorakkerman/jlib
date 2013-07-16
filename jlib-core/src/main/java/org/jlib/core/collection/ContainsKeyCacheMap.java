@@ -28,9 +28,7 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.system.AbstractCloneable;
-
-import com.google.common.base.Optional;
+import org.jlib.core.system.AbstractObject;
 
 /**
  * <p>
@@ -84,8 +82,8 @@ import com.google.common.base.Optional;
  *
  * @author Igor Akkerman
  */
-public class ContainsKeyCacheMap<Key, Value>
-extends AbstractCloneable
+public final class ContainsKeyCacheMap<Key, Value>
+extends AbstractObject
 implements Map<Key, Value> {
 
     /**
@@ -177,17 +175,17 @@ implements Map<Key, Value> {
      * @return {@link ContainsKeyCacheMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final Map<Key, Value> sourceMap) {
-        return new ContainsKeyCacheMap<>(new HashMap<Key, Value>(sourceMap));
+        return new ContainsKeyCacheMap<>(new HashMap<>(sourceMap));
     }
 
     /** {@link Map} to which all method calls are delegated */
     private final Map<Key, Value> delegateMap;
 
-    /** last successfully looked up key */
-    private Optional<Object> lastLookedUpKey;
+    /** last looked up key */
+    private Object lastLookedUpKey;
 
-    /** last successfully looked up value for {@link #lastLookedUpKey} */
-    private Optional<Value> lastLookedUpValue;
+    /** last looked up value for {@link #lastLookedUpKey} */
+    private Value lastLookedUpValue;
 
     /**
      * Creates a new {@link ContainsKeyCacheMap}.
@@ -202,42 +200,32 @@ implements Map<Key, Value> {
     }
 
     @Override
-    public boolean containsKey(final Object key) {
-        lookup(key);
-
-        return lastLookedUpValue.isPresent();
-    }
-
     @SuppressWarnings("SuspiciousMethodCalls")
-    private void lookup(final Object key) {
+    public boolean containsKey(final Object key) {
         final Value value = delegateMap.get(key);
 
-        lastLookedUpKey = Optional.of(key);
-        lastLookedUpValue = Optional.fromNullable(value);
-    }
+        lastLookedUpKey = key;
+        lastLookedUpValue = value;
 
-    private boolean isLastLookedUpKey(final Object key) {
-        return lastLookedUpKey.isPresent() && lastLookedUpKey.get() == key;
+        return lastLookedUpValue != null;
     }
 
     @Override
-    @SuppressWarnings("ReturnOfNull")
+    @SuppressWarnings({ "ReturnOfNull", "ObjectEquality" })
     @Nullable
     public Value get(final Object key) {
-/*
-        if (! isLastLookedUpKey(key)) {
-            clearLastLookedUpContainedItems();
-            return delegateMap.get(key);
-        }
-*/
+        if (lastLookedUpKey == key)
+            return lastLookedUpValue;
 
-        return lastLookedUpValue.orNull();
+        clearLastLookedUpItems();
+        return delegateMap.get(key);
     }
 
+    @SuppressWarnings("ObjectEquality")
     @Override
     public Value put(final Key key, final Value value) {
-        if (isLastLookedUpKey(key))
-            clearLastLookedUpContainedItems();
+        if (lastLookedUpKey == key)
+            clearLastLookedUpItems();
 
         return delegateMap.put(key, value);
     }
@@ -257,17 +245,18 @@ implements Map<Key, Value> {
         return delegateMap.containsValue(value);
     }
 
+    @SuppressWarnings("ObjectEquality")
     @Override
     public Value remove(final Object key) {
-        if (isLastLookedUpKey(key))
-            clearLastLookedUpContainedItems();
+        if (lastLookedUpKey == key)
+            clearLastLookedUpItems();
 
         return delegateMap.remove(key);
     }
 
     @Override
     public void clear() {
-        clearLastLookedUpContainedItems();
+        clearLastLookedUpItems();
 
         delegateMap.clear();
     }
@@ -275,16 +264,17 @@ implements Map<Key, Value> {
     /**
      * Clears the last looked up contained Key and Value.
      */
-    protected void clearLastLookedUpContainedItems() {
-        lastLookedUpKey = Optional.absent();
-        lastLookedUpValue = Optional.absent();
+    @SuppressWarnings("AssignmentToNull")
+    private void clearLastLookedUpItems() {
+        lastLookedUpKey = null;
+        lastLookedUpValue = null;
     }
 
     @Override
     @SuppressWarnings({ "NullableProblems", "SuspiciousMethodCalls" })
     public void putAll(final Map<? extends Key, ? extends Value> map) {
-        if (lastLookedUpKey.isPresent() && map.containsKey(lastLookedUpKey.get()))
-            clearLastLookedUpContainedItems();
+        if (lastLookedUpKey != null && map.containsKey(lastLookedUpKey))
+            clearLastLookedUpItems();
 
         delegateMap.putAll(map);
     }
@@ -307,34 +297,36 @@ implements Map<Key, Value> {
         return delegateMap.entrySet();
     }
 
-    @Override
-    @SuppressWarnings("CloneDoesntCallSuperClone")
-    public Object clone() {
-        return new ContainsKeyCacheMap<>(delegateMap);
-    }
-
     public static void main(String... commandLineArguments) {
-        Map<String, String> hashMap = new HashMap<>();
-        hashMap.put("ja", "nein");
-        hashMap.put("gut", "schlecht");
-        hashMap.put("München", "Berlin");
+            final Map<String, String> hashMap = new HashMap<>();
+            hashMap.put("ja", "nein");
+            hashMap.put("gut", "schlecht");
+            hashMap.put("München", "Berlin");
 
-        Map<String, String> cacheMap = new ContainsKeyCacheMap<>(hashMap);
+            final Map<String, String> delegateMap = new DelegateMap<>(hashMap);
+            final Map<String, String> cacheMap = new ContainsKeyCacheMap<>(hashMap);
 
-        System.out.println("HashMap:  " + measure(hashMap));
-        System.out.println("CacheMap: " + measure(cacheMap));
+        for (int i = 0; i < 20; i++) {
+            System.out.println("HashMap:     " + measure(hashMap));
+            System.out.println("DelegateMap: " + measure(delegateMap));
+            System.out.println("CacheMap:    " + measure(cacheMap));
+        }
     }
 
     private static long measure(final Map<String, String> map) {
-        final int MAX = 10000000;
-        final String MUC = "München";
+        final int MAX = 100;
+        final String MUC = "ja";
 
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
+
         for (int i = 0; i < MAX; i++)
             if (map.containsKey(MUC))
                 map.get(MUC);
-        long end = System.currentTimeMillis();
 
-        return end - start;
+        long end = System.nanoTime();
+
+        return end - start ;
     }
+
+
 }
