@@ -8,7 +8,7 @@ import org.junit.Test;
 public class ContainsKeyCacheMapTest {
 
     @Test
-    public void performance(String... commandLineArguments) {
+    public void performance() {
         final Map<String, String> hashMap = new HashMap<>();
         hashMap.put("ja", "nein");
         hashMap.put("gut", "schlecht");
