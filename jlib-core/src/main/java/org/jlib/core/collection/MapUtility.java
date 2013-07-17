@@ -45,7 +45,7 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createHashMap() {
+    public static <Key, Value> Map<Key, Value> createCachingHashMap() {
         return new CachingMap<>(new HashMap<Key, Value>());
     }
 
@@ -68,7 +68,7 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity) {
+    public static <Key, Value> Map<Key, Value> createCachingHashMap(final int initialCapacity) {
         return new CachingMap<>(new HashMap<Key, Value>(initialCapacity));
     }
 
@@ -94,7 +94,7 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity, final int loadFactor) {
+    public static <Key, Value> Map<Key, Value> createCachingHashMap(final int initialCapacity, final int loadFactor) {
         return new CachingMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
     }
 
@@ -117,7 +117,7 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createHashMap(final Map<Key, Value> sourceMap) {
+    public static <Key, Value> Map<Key, Value> createCachingHashMap(final Map<Key, Value> sourceMap) {
         return new CachingMap<>(new HashMap<>(sourceMap));
     }
 
