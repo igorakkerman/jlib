@@ -31,7 +31,7 @@ extends AbstractObject {
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ProxyList}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap()}.
@@ -43,15 +43,15 @@ extends AbstractObject {
      * @param <Value>
      *        type of the values
      *
-     * @return {@link ProxyList} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap() {
-        return new ProxyList<>(new HashMap<Key, Value>());
+        return new CachingMap<>(new HashMap<Key, Value>());
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ProxyList}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int)}.
@@ -66,15 +66,15 @@ extends AbstractObject {
      * @param initialCapacity
      *        integer specifying the initial capacity of the delegate {@link HashMap}
      *
-     * @return {@link ProxyList} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity) {
-        return new ProxyList<>(new HashMap<Key, Value>(initialCapacity));
+        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity));
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ProxyList}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int, float)}.
@@ -92,15 +92,15 @@ extends AbstractObject {
      * @param loadFactor
      *        integer specifying the load factro of the delegate {@link HashMap}
      *
-     * @return {@link ProxyList} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity, final int loadFactor) {
-        return new ProxyList<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
+        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ProxyList}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(Map)}.
@@ -115,10 +115,10 @@ extends AbstractObject {
      * @param sourceMap
      *        {@link Map} containing the {@link Entry}s copied to the delegate {@link Map}
      *
-     * @return {@link ProxyList} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final Map<Key, Value> sourceMap) {
-        return new ProxyList<>(new HashMap<>(sourceMap));
+        return new CachingMap<>(new HashMap<>(sourceMap));
     }
 
     private MapUtility() {

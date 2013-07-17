@@ -38,7 +38,7 @@ import com.google.common.collect.ForwardingMap;
  * <p>
  * Note that if the requested {@link Key} is mapped to another {@link Value} in the delegate {@link Map} between the
  * calls to {@link #containsKey(Object)} and {@link Map#get(Object)}, the <em>former, now wrong</em>, {@link Value} will
- * be returned by the latter call.
+ * be returned by the latter call. This also happens, if the corresponding {@link Map.Entry} has been removed.
  * </p>
  * <p>
  * As in all <em>jlib</em> classes, neither {@code null} {@link Key}s nor {@code null} {@link Value}s are permitted and
@@ -235,9 +235,8 @@ extends ForwardingMap<Key, Value> {
     @Override
     @SuppressWarnings("ObjectEquality")
     public Value remove(final Object key) {
-        if (lastLookedUpKey == key) {
+        if (lastLookedUpKey == key)
             clearLastLookedUpItems();
-        }
 
         return super.remove(key);
     }
