@@ -26,10 +26,12 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ForwardingMap;
+
 /**
  * <p>
- * Proxy {@link Map} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by a
- * subsequent call to {@link #get(Object)} for the same {@link Key}. Note that the {@link Key} is <em>only</em> tested
+ * {@link ForwardingMap} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by
+ * a subsequent call to {@link #get(Object)} for the same {@link Key}. Note that the {@link Key} is <em>only</em> tested
  * for <em>identity</em>, <em>not</em> for <em>equality</em>. The other methods are delegated to the {@link Map}
  * specified to the constructor.
  * </p>
@@ -79,7 +81,7 @@ import javax.annotation.Nullable;
  * @author Igor Akkerman
  */
 public final class ContainsKeyCacheMap<Key, Value>
-extends DelegatingMap<Key, Value> {
+extends ForwardingMap<Key, Value> {
 
     /**
      * <p>
@@ -173,6 +175,9 @@ extends DelegatingMap<Key, Value> {
         return new ContainsKeyCacheMap<>(new HashMap<>(sourceMap));
     }
 
+    /** delegate {@link Map} */
+    private final Map<Key, Value> delegateMap;
+
     /** last looked up key */
     private Object lastLookedUpKey;
 
@@ -186,7 +191,14 @@ extends DelegatingMap<Key, Value> {
      *        delegate {@link Map} to which all calls are delegated
      */
     public ContainsKeyCacheMap(final Map<Key, Value> delegateMap) {
-        super(delegateMap);
+        super();
+
+        this.delegateMap = delegateMap;
+    }
+
+    @Override
+    protected Map<Key, Value> delegate() {
+        return delegateMap;
     }
 
     @Override
@@ -197,15 +209,16 @@ extends DelegatingMap<Key, Value> {
         lastLookedUpKey = key;
         lastLookedUpValue = value;
 
-        return lastLookedUpValue != null;
+        return value != null;
     }
 
     @Override
     @SuppressWarnings({ "ReturnOfNull", "ObjectEquality" })
     @Nullable
     public Value get(final Object key) {
-        if (lastLookedUpKey == key)
+        if (lastLookedUpKey == key) {
             return lastLookedUpValue;
+        }
 
         clearLastLookedUpItems();
         return super.get(key);
@@ -223,8 +236,9 @@ extends DelegatingMap<Key, Value> {
     @Override
     @SuppressWarnings("ObjectEquality")
     public Value remove(final Object key) {
-        if (lastLookedUpKey == key)
+        if (lastLookedUpKey == key) {
             clearLastLookedUpItems();
+        }
 
         return super.remove(key);
     }
@@ -248,8 +262,9 @@ extends DelegatingMap<Key, Value> {
     @Override
     @SuppressWarnings({ "NullableProblems", "SuspiciousMethodCalls" })
     public void putAll(final Map<? extends Key, ? extends Value> map) {
-        if (lastLookedUpKey != null && map.containsKey(lastLookedUpKey))
+        if (lastLookedUpKey != null && map.containsKey(lastLookedUpKey)) {
             clearLastLookedUpItems();
+        }
 
         super.putAll(map);
     }
