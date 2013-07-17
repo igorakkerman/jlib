@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-public class ContainsKeyCacheMapTest {
+public class CachingMapTest {
 
     @Test
     public void performance() {
@@ -18,7 +18,7 @@ public class ContainsKeyCacheMapTest {
             // intentilonally empty
         };
 
-        final Map<String, String> cacheMap = new ContainsKeyCacheMap<>(hashMap);
+        final Map<String, String> cacheMap = new CachingMap<>(hashMap);
 
         for (int i = 0; i < 20; i++) {
             System.out.println("HashMap:       " + measure(hashMap));

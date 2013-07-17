@@ -42,7 +42,7 @@ import com.google.common.collect.ForwardingMap;
  * </p>
  * <p>
  * As in all <em>jlib</em> classes, neither {@code null} {@link Key}s nor {@code null} {@link Value}s are permitted and
- * cause undefined behaviour, such as {@link RuntimeException}s or invalid results. Hence, a {@link ContainsKeyCacheMap}
+ * cause undefined behaviour, such as {@link RuntimeException}s or invalid results. Hence, a {@link CachingMap}
  * may not be used on delegate {@link Map}s containing {@code null} {@link Key}s or {@link Value}s.
  * </p>
  * <p>
@@ -79,12 +79,12 @@ import com.google.common.collect.ForwardingMap;
  *
  * @author Igor Akkerman
  */
-public final class ContainsKeyCacheMap<Key, Value>
+public final class CachingMap<Key, Value>
 extends ForwardingMap<Key, Value> {
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ContainsKeyCacheMap}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap()}.
@@ -96,15 +96,15 @@ extends ForwardingMap<Key, Value> {
      * @param <Value>
      *        type of the values
      *
-     * @return {@link ContainsKeyCacheMap} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap() {
-        return new ContainsKeyCacheMap<>(new HashMap<Key, Value>());
+        return new CachingMap<>(new HashMap<Key, Value>());
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ContainsKeyCacheMap}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int)}.
@@ -119,15 +119,15 @@ extends ForwardingMap<Key, Value> {
      * @param initialCapacity
      *        integer specifying the initial capacity of the delegate {@link HashMap}
      *
-     * @return {@link ContainsKeyCacheMap} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity) {
-        return new ContainsKeyCacheMap<>(new HashMap<Key, Value>(initialCapacity));
+        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity));
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ContainsKeyCacheMap}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int, float)}.
@@ -145,15 +145,15 @@ extends ForwardingMap<Key, Value> {
      * @param loadFactor
      *        integer specifying the load factro of the delegate {@link HashMap}
      *
-     * @return {@link ContainsKeyCacheMap} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity, final int loadFactor) {
-        return new ContainsKeyCacheMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
+        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
     }
 
     /**
      * <p>
-     * Proxies a newly created {@link HashMap} using a {@link ContainsKeyCacheMap}.
+     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
      * </p>
      * <p>
      * The delegate {@link HashMap} is created using {@link HashMap#HashMap(Map)}.
@@ -168,10 +168,10 @@ extends ForwardingMap<Key, Value> {
      * @param sourceMap
      *        {@link Map} containing the {@link Map.Entry}s copied to the delegate {@link Map}
      *
-     * @return {@link ContainsKeyCacheMap} proxying the new {@link HashMap}
+     * @return {@link CachingMap} proxying the new {@link HashMap}
      */
     public static <Key, Value> Map<Key, Value> createHashMap(final Map<Key, Value> sourceMap) {
-        return new ContainsKeyCacheMap<>(new HashMap<>(sourceMap));
+        return new CachingMap<>(new HashMap<>(sourceMap));
     }
 
     /** delegate {@link Map} */
@@ -184,12 +184,12 @@ extends ForwardingMap<Key, Value> {
     private Value lastLookedUpValue;
 
     /**
-     * Creates a new {@link ContainsKeyCacheMap}.
+     * Creates a new {@link CachingMap}.
      *
      * @param delegateMap
      *        delegate {@link Map} to which all calls are delegated
      */
-    public ContainsKeyCacheMap(final Map<Key, Value> delegateMap) {
+    public CachingMap(final Map<Key, Value> delegateMap) {
         super();
 
         this.delegateMap = delegateMap;
