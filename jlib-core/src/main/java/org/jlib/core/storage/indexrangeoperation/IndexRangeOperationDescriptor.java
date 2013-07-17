@@ -23,7 +23,7 @@ package org.jlib.core.storage.indexrangeoperation;
 
 import java.io.Serializable;
 
-import org.jlib.core.system.AbstractCloneable;
+import org.jlib.core.language.AbstractCloneable;
 
 /**
  * Descriptor of an operation on indexed objects specifying a source index range and a target index.

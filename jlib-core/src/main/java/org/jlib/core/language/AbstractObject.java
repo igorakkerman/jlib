@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.system;
+package org.jlib.core.language;
 
 import java.util.Collection;
 

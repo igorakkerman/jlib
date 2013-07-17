@@ -21,9 +21,10 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.array.ArrayUtility;
-
 import java.text.MessageFormat;
+
+import com.google.common.base.Optional;
+import org.jlib.core.array.ArrayUtility;
 
 /**
  * {@link IllegalArgumentException} using a formatted message.
@@ -34,19 +35,6 @@ public abstract class InvalidArgumentException
 extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
-
-    /**
-     * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of additional {@link Object} message arguments
-     */
-    public InvalidArgumentException(final String messageTemplate, final Object... messageArguments) {
-        this(messageTemplate, null, messageArguments);
-    }
 
     /**
      * Creates a new {@link InvalidArgumentException}.
@@ -70,8 +58,8 @@ extends IllegalArgumentException {
      * @param messageArguments
      *        comma separated sequence of additional {@link Object} message arguments
      */
-    // TODO: use FormattedMessageException style
-    public InvalidArgumentException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
+    // TODO: use ApplicationException style
+    public InvalidArgumentException(final String messageTemplate, final Optional<Throwable> cause, final Object... messageArguments) {
+        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause.orNull());
     }
 }

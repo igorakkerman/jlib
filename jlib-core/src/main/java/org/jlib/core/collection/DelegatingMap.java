@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.core.system.AbstractObject;
+import org.jlib.core.language.AbstractObject;
 
 public abstract class DelegatingMap<Key, Value>
 extends AbstractObject

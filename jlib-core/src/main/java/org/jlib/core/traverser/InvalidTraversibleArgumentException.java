@@ -21,6 +21,7 @@
 
 package org.jlib.core.traverser;
 
+import com.google.common.base.Optional;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
@@ -44,7 +45,13 @@ extends InvalidArgumentException {
      *        referenced {@link Traversible}
      */
     public InvalidTraversibleArgumentException(final Traversible<?> traversible) {
-        this(traversible, "{1}");
+        this(traversible, "; traversible = {0}", Optional.absent());
+    }
+
+    protected InvalidTraversibleArgumentException(final Traversible<?> traversible, final String messageTemplate,
+                                                  final Optional<Throwable> cause, final Object...messageArguments) {
+        super(messageTemplate, cause, messageArguments);
+        this.traversible = traversible;
     }
 
     /**
@@ -63,6 +70,8 @@ extends InvalidArgumentException {
                                                final Object... messageArguments) {
 
         this(traversible, messageTemplate, null, messageArguments);
+
+        this.traversible = traversible;
     }
 
     /**

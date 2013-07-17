@@ -23,7 +23,7 @@ package org.jlib.core.storage;
 
 import java.io.Serializable;
 
-import org.jlib.core.system.AbstractCloneable;
+import org.jlib.core.language.AbstractCloneable;
 
 import static org.jlib.core.math.MathUtility.count;
 

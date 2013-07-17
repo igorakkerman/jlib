@@ -21,15 +21,15 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.FormattedMessageException;
+import org.jlib.core.language.ApplicationException;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not accessible.
+ * {@link ApplicationException} thrown when a requested Value is not accessible.
  *
  * @author Igor Akkerman
  */
 public abstract class ValueNotAccessibleException
-extends FormattedMessageException {
+extends ApplicationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;

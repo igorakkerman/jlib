@@ -31,7 +31,7 @@ import org.jlib.core.text.textformatter.TextFormatter;
  *
  * @author Igor Akkerman
  */
-public abstract class FormattedMessageException
+public abstract class ApplicationException
 extends Exception {
 
     /** serialVersionUID */
@@ -44,16 +44,16 @@ extends Exception {
     private final String message;
 
     /**
-     * Creates a new {@link FormattedMessageException}.
+     * Creates a new {@link ApplicationException}.
      */
-    protected FormattedMessageException() {
+    protected ApplicationException() {
         super();
 
         message = super.getMessage();
     }
 
     /**
-     * Creates a new {@link FormattedMessageException}.
+     * Creates a new {@link ApplicationException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
@@ -61,38 +61,38 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected FormattedMessageException(final CharSequence messageTemplate, final Object... messageArguments) {
+    protected ApplicationException(final CharSequence messageTemplate, final Object... messageArguments) {
         super();
 
         message = createMessage(messageTemplate, messageArguments);
     }
 
     /**
-     * Creates a new {@link FormattedMessageException}.
+     * Creates a new {@link ApplicationException}.
      *
      * @param cause
-     *        Throwable that caused this {@link FormattedMessageException}
+     *        Throwable that caused this {@link ApplicationException}
      */
-    protected FormattedMessageException(final Throwable cause) {
+    protected ApplicationException(final Throwable cause) {
         super(cause);
 
         message = super.getMessage();
     }
 
     /**
-     * Creates a new {@link FormattedMessageException}.
+     * Creates a new {@link ApplicationException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link FormattedMessageException}
+     *        Throwable that caused this {@link ApplicationException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected FormattedMessageException(final CharSequence messageTemplate, final Throwable cause,
-                                        final Object... messageArguments) {
+    protected ApplicationException(final CharSequence messageTemplate, final Throwable cause,
+                                   final Object... messageArguments) {
         super(cause);
 
         message = createMessage(messageTemplate, messageArguments);

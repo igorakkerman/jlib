@@ -22,8 +22,7 @@
 package org.jlib.core.system;
 
 /**
- * Exception thrown when trying to retrieve the value of a property that is not
- * set.
+ * Exception thrown when trying to retrieve the value of a property that is not set.
  *
  * @author Igor Akkerman
  */
@@ -40,24 +39,20 @@ extends Exception {
      * Creates a new PropertyNotSetException.
      *
      * @param propertyName
-     *        String specifying the name of the property that is not set
+     *        {@link String} specifying the name of the property that is not set
      */
     public PropertyNotSetException(final String propertyName) {
         super();
+
         this.propertyName = propertyName;
     }
 
     /**
      * Returns the name of the property that is not set.
      *
-     * @return String specifying the name of the property that is not set
+     * @return {@link String} specifying the name of the property that is not set
      */
     public String getPropertyName() {
         return propertyName;
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "[" + propertyName + "]";
     }
 }

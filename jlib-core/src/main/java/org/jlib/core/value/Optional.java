@@ -23,7 +23,7 @@ package org.jlib.core.value;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.system.AbstractObject;
+import org.jlib.core.language.AbstractObject;
 
 public class Optional<Value>
 extends AbstractObject

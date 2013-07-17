@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.system.AbstractObject;
+import org.jlib.core.language.AbstractObject;
 
 /**
  * Skeletal implementation of a not initialized {@link Modifiable}.

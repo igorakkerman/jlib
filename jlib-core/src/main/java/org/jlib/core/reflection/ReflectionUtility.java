@@ -146,8 +146,7 @@ public final class ReflectionUtility {
     }
 
     /**
-     * Creates a new instance of the class defined in the specified system
-     * property.
+     * Creates a new instance of the class defined in the specified system property.
      *
      * @param <Obj>
      *        type of the object to create
@@ -163,7 +162,7 @@ public final class ReflectionUtility {
      *         method doesn't allow access to the specified system property
      *
      * @throws IllegalArgumentException
-     *         if (@code propertyName} is {@code null} or the empty String
+     *         if (@code propertyName} is the empty {@link String}
      *
      * @throws PropertyNotSetException
      *         if the specified system property is not set

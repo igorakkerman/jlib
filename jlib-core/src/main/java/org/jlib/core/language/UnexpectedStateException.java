@@ -67,7 +67,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    // TODO: use FormattedMessageException style
+    // TODO: use ApplicationException style
     public UnexpectedStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(messageTemplate, cause, messageArguments);
     }

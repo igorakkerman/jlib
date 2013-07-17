@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.system.AbstractObject;
+import org.jlib.core.language.AbstractObject;
 
 /**
  * {@link org.jlib.core.value.Value} of a {@link Value} that is guaranteed to be accessible.

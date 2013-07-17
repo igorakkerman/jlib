@@ -21,9 +21,9 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.array.ArrayUtility;
-
 import java.text.MessageFormat;
+
+import org.jlib.core.array.ArrayUtility;
 
 /**
  * {@link IllegalStateException} using a formatted message.
@@ -45,8 +45,9 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
+    // TODO: use ApplicationException style
     protected InvalidStateException(final String messageTemplate, final Object... messageArguments) {
-        this(messageTemplate, null, messageArguments);
+        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)));
     }
 
     /**
@@ -71,7 +72,7 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message States
      */
-    // TODO: use FormattedMessageException style
+    // TODO: use ApplicationException style
     protected InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
     }

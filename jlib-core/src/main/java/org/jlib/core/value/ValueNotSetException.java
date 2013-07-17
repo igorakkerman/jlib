@@ -21,10 +21,10 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.FormattedMessageException;
+import org.jlib.core.language.ApplicationException;
 
 /**
- * {@link FormattedMessageException} thrown when a requested Value is not set.
+ * {@link ApplicationException} thrown when a requested Value is not set.
  *
  * @author Igor Akkerman
  */

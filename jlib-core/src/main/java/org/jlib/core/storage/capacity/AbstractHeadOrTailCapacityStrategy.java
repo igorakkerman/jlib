@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage.capacity;
 
-import org.jlib.core.system.Valid;
+import org.jlib.core.language.Valid;
 
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.LinearIndexStorage;

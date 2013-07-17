@@ -19,28 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.system;
+package org.jlib.core.language;
 
-import org.jlib.core.language.UnexpectedStateException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-/**
- * Skeletal implementation of a {@link Cloneable} ensuring {@link #clone()} does not throw a
- * {@link CloneNotSupportedException}.
- *
- * @author Igor Akkerman
- */
-// TODO: parametrize with <Self>
-public abstract class AbstractCloneable
-extends AbstractObject
-implements Cloneable {
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.SOURCE;
 
-    @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        }
-        catch (final CloneNotSupportedException exception) {
-            throw new UnexpectedStateException(exception);
-        }
-    }
-}
+@Target(PARAMETER)
+@Retention(SOURCE)
+public @interface Valid {}

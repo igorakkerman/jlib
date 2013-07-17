@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.system.AbstractCloneable;
+import org.jlib.core.language.AbstractCloneable;
 import org.jlib.core.traverser.TraversibleIterator;
 
 import javax.annotation.Nullable;

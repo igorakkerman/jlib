@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.system.AbstractObject;
+import org.jlib.core.language.AbstractObject;
 
 /**
  * {@link SequenceTraverser} delegating its calls to another {@link SequenceTraverser}.

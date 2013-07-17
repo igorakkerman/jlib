@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.system.AbstractCloneable;
+import org.jlib.core.language.AbstractCloneable;
 
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
