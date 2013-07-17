@@ -65,7 +65,6 @@ import com.google.common.collect.ForwardingMap;
  * // dicouraged by clean coders
  * value = map.get(key);
  * if (value != null) {
- *     value = map.get(key);
  *     // commands with value
  * }
  * else {
