@@ -21,7 +21,6 @@
 
 package org.jlib.core.collection;
 
-import java.util.Collection;
 import java.util.List;
 
 import com.google.common.collect.ForwardingList;
@@ -35,11 +34,11 @@ import com.google.common.collect.ForwardingList;
  * <p>
  * Note that if the index of the requested {@link Item} is changed in the delegate {@link List} between the calls to
  * {@link #indexOf(Object)} and {@link #get(int)}, the <em>former, now wrong</em>, index will be returned by the latter
- * call.
+ * call. This also happens when the {@link Item} is removed from the delegate {@link List}.
  * </p>
  * <p>
  * As in all <em>jlib</em> classes, {@code null} {@link Item}s are <em>not</em> permitted and cause undefined behaviour,
- * such as {@link RuntimeException}s or invalid results. Hence, a {@link ProxyList} may not be used on delegate
+ * such as {@link RuntimeException}s or invalid results. Hence, a {@link CachingList} may not be used on delegate
  * {@link List}s containing {@code null} {@link Item}s.
  * </p>
  * <p>
@@ -76,7 +75,7 @@ import com.google.common.collect.ForwardingList;
  *
  * @author Igor Akkerman
  */
-public final class ProxyList<Item>
+public final class CachingList<Item>
 extends ForwardingList<Item> {
 
     /** delegate {@link List} */
@@ -89,12 +88,12 @@ extends ForwardingList<Item> {
     private Object lastLookedUpItem;
 
     /**
-     * Creates a new {@link ProxyList}.
+     * Creates a new {@link CachingList}.
      *
      * @param delegateList
      *        delegate {@link List} to which all calls are delegated
      */
-    public ProxyList(final List<Item> delegateList) {
+    public CachingList(final List<Item> delegateList) {
         super();
 
         this.delegateList = delegateList;
@@ -138,14 +137,5 @@ extends ForwardingList<Item> {
     private void clearLastLookedUpItems() {
         lastLookedUpItem = null;
         lastLookedUpItemIndex = -1;
-    }
-
-    @Override
-    @SuppressWarnings({ "NullableProblems", "SuspiciousMethodCalls" })
-    public boolean addAll(final Collection<? extends Item> list) {
-        if (lastLookedUpItem != null && list.contains(lastLookedUpItem))
-            clearLastLookedUpItems();
-
-        return super.addAll(list);
     }
 }
