@@ -21,8 +21,9 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.language.AbstractObject;
-import org.jlib.core.language.UnexpectedStateException;
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * Skeletal implementation of a {@link Cloneable} ensuring {@link #clone()} does not throw a
@@ -30,17 +31,21 @@ import org.jlib.core.language.UnexpectedStateException;
  *
  * @author Igor Akkerman
  */
-// TODO: parametrize with <Self>
-public abstract class AbstractCloneable
+public abstract class AbstractCloneable<Self extends AbstractCloneable<Self>>
 extends AbstractObject
 implements Cloneable {
 
     @Override
-    public Object clone() {
+    @SuppressWarnings("unchecked")
+    public Self clone() {
         try {
-            return super.clone();
+            final Self clonedObject = (Self) super.clone();
+
+            BeanUtils.copyProperties(clonedObject, this);
+
+            return clonedObject;
         }
-        catch (final CloneNotSupportedException exception) {
+        catch (final CloneNotSupportedException | InvocationTargetException | IllegalAccessException exception) {
             throw new UnexpectedStateException(exception);
         }
     }
