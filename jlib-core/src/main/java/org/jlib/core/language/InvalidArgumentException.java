@@ -21,10 +21,10 @@
 
 package org.jlib.core.language;
 
-import java.text.MessageFormat;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
+import static org.jlib.core.language.ExceptionUtility.formatMessage;
 
-import com.google.common.base.Optional;
-import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.text.textformatter.TextFormatter;
 
 /**
  * {@link IllegalArgumentException} using a formatted message.
@@ -36,30 +36,88 @@ extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
 
+    /** {@link String} specifying the message */
+    private final String message;
+
     /**
      * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param cause
-     *        Throwable that caused this {@link InvalidArgumentException}
      */
-    public InvalidArgumentException(final Throwable cause) {
-        super(cause);
+    protected InvalidArgumentException() {
+        super();
+
+        message = super.getMessage();
     }
 
     /**
      * Creates a new {@link InvalidArgumentException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
-     *
-     * @param cause
-     *        Throwable that caused this {@link InvalidArgumentException}
+     *        {@link CharSequence} specifying the message template
      *
      * @param messageArguments
-     *        comma separated sequence of additional {@link Object} message arguments
+     *        comma separated sequence of {@link Object} message arguments
      */
-    // TODO: use ApplicationException style
-    public InvalidArgumentException(final String messageTemplate, final Optional<Throwable> cause, final Object... messageArguments) {
-        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause.orNull());
+    protected InvalidArgumentException(final CharSequence messageTemplate, final Object... messageArguments) {
+        super();
+
+        message = createMessage(messageTemplate, messageArguments);
+    }
+
+    /**
+     * Creates a new {@link InvalidArgumentException}.
+     *k
+     * @param cause
+     *        {@link Exception} that caused this {@link InvalidArgumentException}
+     */
+    protected InvalidArgumentException(final Exception cause) {
+        super(cause);
+
+        message = super.getMessage();
+    }
+
+    /**
+     * Creates a new {@link InvalidArgumentException}.
+     *
+     * @param messageTemplate
+     *        {@link CharSequence} specifying the message template
+     *
+     * @param cause
+     *        {@link Exception} that caused this {@link InvalidArgumentException}
+     *
+     * @param messageArguments
+     *        comma separated sequence of {@link Object} message arguments
+     */
+    protected InvalidArgumentException(final CharSequence messageTemplate, final Exception cause,
+                                       final Object... messageArguments) {
+        super(cause);
+
+        message = createMessage(messageTemplate, messageArguments);
+    }
+
+    /**
+     * Creates the message applying the specified message arguments to the specified message template.
+     *
+     * @param messageTemplate
+     *        {@link CharSequence} specifying the message template
+     *
+     * @param messageArguments
+     *        comma separated sequence of {@link Object} message arguments
+     */
+    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
+        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
+    }
+
+    /**
+     * Returns the {@link TextFormatter} used to format the message.
+     *
+     * @return used {@link TextFormatter}
+     */
+    protected TextFormatter getMessageFormatter() {
+        return DEFAULT_MESSAGE_FORMATTER;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
     }
 }

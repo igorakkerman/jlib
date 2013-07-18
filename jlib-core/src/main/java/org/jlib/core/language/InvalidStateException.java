@@ -21,9 +21,10 @@
 
 package org.jlib.core.language;
 
-import java.text.MessageFormat;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
+import static org.jlib.core.language.ExceptionUtility.formatMessage;
 
-import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.text.textformatter.TextFormatter;
 
 /**
  * {@link IllegalStateException} using a formatted message.
@@ -36,44 +37,87 @@ extends IllegalStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
+    /** {@link String} specifying the message */
+    private final String message;
+
+    /**
+     * Creates a new {@link InvalidStateException}.
+     */
+    protected InvalidStateException() {
+        super();
+
+        message = super.getMessage();
+    }
+
     /**
      * Creates a new {@link InvalidStateException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
+     *        {@link CharSequence} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    // TODO: use ApplicationException style
-    protected InvalidStateException(final String messageTemplate, final Object... messageArguments) {
-        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)));
+    protected InvalidStateException(final CharSequence messageTemplate, final Object... messageArguments) {
+        super();
+
+        message = createMessage(messageTemplate, messageArguments);
     }
 
     /**
      * Creates a new {@link InvalidStateException}.
-     *
+     *k
      * @param cause
-     *        Throwable that caused this {@link InvalidStateException}
+     *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    protected InvalidStateException(final Throwable cause) {
+    protected InvalidStateException(final Exception cause) {
         super(cause);
+
+        message = super.getMessage();
     }
 
     /**
      * Creates a new {@link InvalidStateException}.
      *
      * @param messageTemplate
-     *        {@link String} specifying the message template
+     *        {@link CharSequence} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link InvalidStateException}
+     *        {@link Exception} that caused this {@link InvalidStateException}
      *
      * @param messageArguments
-     *        comma separated sequence of {@link Object} message States
+     *        comma separated sequence of {@link Object} message arguments
      */
-    // TODO: use ApplicationException style
-    protected InvalidStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(MessageFormat.format(messageTemplate, ArrayUtility.flatten(messageArguments)), cause);
+    protected InvalidStateException(final CharSequence messageTemplate, final Exception cause,
+                                   final Object... messageArguments) {
+        super(cause);
+
+        message = createMessage(messageTemplate, messageArguments);
     }
-}
+
+    /**
+     * Creates the message applying the specified message arguments to the specified message template.
+     *
+     * @param messageTemplate
+     *        {@link CharSequence} specifying the message template
+     *
+     * @param messageArguments
+     *        comma separated sequence of {@link Object} message arguments
+     */
+    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
+        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
+    }
+
+    /**
+     * Returns the {@link TextFormatter} used to format the message.
+     *
+     * @return used {@link TextFormatter}
+     */
+    protected TextFormatter getMessageFormatter() {
+        return DEFAULT_MESSAGE_FORMATTER;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }}

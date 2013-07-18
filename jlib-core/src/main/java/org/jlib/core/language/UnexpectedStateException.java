@@ -41,7 +41,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final String messageTemplate, final Object... messageArguments) {
+    public UnexpectedStateException(final CharSequence messageTemplate, final Object... messageArguments) {
         super(messageTemplate, messageArguments);
     }
 
@@ -68,7 +68,7 @@ extends InvalidStateException {
      *        comma separated sequence of error message arguments
      */
     // TODO: use ApplicationException style
-    public UnexpectedStateException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public UnexpectedStateException(final CharSequence messageTemplate, final Throwable cause, final Object... messageArguments) {
         super(messageTemplate, cause, messageArguments);
     }
 }

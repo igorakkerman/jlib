@@ -21,9 +21,9 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.array.ArrayUtility.flatten;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
+import static org.jlib.core.language.ExceptionUtility.formatMessage;
 
-import org.jlib.core.text.textformatter.MessageFormatTextFormatter;
 import org.jlib.core.text.textformatter.TextFormatter;
 
 /**
@@ -36,9 +36,6 @@ extends Exception {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 7508635402610527176L;
-
-    /** default {@link TextFormatter} used */
-    public static final TextFormatter DEFAULT_MESSAGE_FORMATTER = MessageFormatTextFormatter.getInstance();
 
     /** {@link String} specifying the message */
     private final String message;
@@ -69,11 +66,11 @@ extends Exception {
 
     /**
      * Creates a new {@link ApplicationException}.
-     *
+     *k
      * @param cause
-     *        Throwable that caused this {@link ApplicationException}
+     *        {@link Exception} that caused this {@link ApplicationException}
      */
-    protected ApplicationException(final Throwable cause) {
+    protected ApplicationException(final Exception cause) {
         super(cause);
 
         message = super.getMessage();
@@ -86,12 +83,12 @@ extends Exception {
      *        {@link CharSequence} specifying the message template
      *
      * @param cause
-     *        Throwable that caused this {@link ApplicationException}
+     *        {@link Exception} that caused this {@link ApplicationException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected ApplicationException(final CharSequence messageTemplate, final Throwable cause,
+    protected ApplicationException(final CharSequence messageTemplate, final Exception cause,
                                    final Object... messageArguments) {
         super(cause);
 
@@ -108,7 +105,7 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
-        return getMessageFormatter().applyTemplateArguments(messageTemplate, flatten(messageArguments));
+        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
     }
 
     /**
