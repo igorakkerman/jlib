@@ -118,14 +118,14 @@ extends ForwardingList<Item> {
     @Override
     public Item remove(final int index) {
         if (index == lastLookedUpItemIndex)
-            clearLastLookedUpItems();
+            clearLastLookedUpIndex();
 
         return super.remove(index);
     }
 
     @Override
     public void clear() {
-        clearLastLookedUpItems();
+        clearLastLookedUpIndex();
 
         super.clear();
     }
@@ -134,7 +134,7 @@ extends ForwardingList<Item> {
      * Clears the last looked up contained Key and Item.
      */
     @SuppressWarnings("AssignmentToNull")
-    private void clearLastLookedUpItems() {
+    private void clearLastLookedUpIndex() {
         lastLookedUpItem = null;
         lastLookedUpItemIndex = -1;
     }
