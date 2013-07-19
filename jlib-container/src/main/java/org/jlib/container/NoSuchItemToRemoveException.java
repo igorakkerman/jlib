@@ -34,6 +34,7 @@ extends InvalidContainerArgumentException {
     private static final long serialVersionUID = - 2921569537644842654L;
 
     /** Item to remove */
+    @SuppressWarnings("NonSerializableFieldInSerializableClass")
     private final Object item;
 
     /**
