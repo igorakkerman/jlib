@@ -27,7 +27,7 @@ import static org.jlib.core.language.ExceptionUtility.formatMessage;
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
 /**
- * {@link IllegalArgumentException} using a formatted message.
+ * {@link IllegalArgumentException} using a parametrized message.
  *
  * @author Igor Akkerman
  */
