@@ -19,17 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textformatter;
+package org.jlib.core.text.textbuilder;
 
 /**
  * Routine applying arguments to a textual template hereby allowing the text to be
- * formatted. Each {@link TextFormatter} implementation defines the individual format of
+ * formatted. Each {@link TextBuilder} implementation defines the individual format of
  * the template and the algorithm applying the arguments to the template's potential
  * placeholders.
  *
  * @author Igor Akkerman
  */
-public interface TextFormatter {
+public interface TextBuilder {
 
     /**
      * Applies the specified arguments to the specified template.

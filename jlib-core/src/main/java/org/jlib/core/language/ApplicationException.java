@@ -24,7 +24,7 @@ package org.jlib.core.language;
 import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
 import static org.jlib.core.language.ExceptionUtility.formatMessage;
 
-import org.jlib.core.text.textformatter.TextFormatter;
+import org.jlib.core.text.textbuilder.TemplateEngine;
 
 /**
  * Skeletal implementation of an {@link Exception} using a formatted message.
@@ -109,11 +109,11 @@ extends Exception {
     }
 
     /**
-     * Returns the {@link TextFormatter} used to format the message.
+     * Returns the {@link TemplateEngine} used to format the message.
      *
-     * @return used {@link TextFormatter}
+     * @return used {@link TemplateEngine}
      */
-    protected TextFormatter getMessageFormatter() {
+    protected TemplateEngine getMessageFormatter() {
         return DEFAULT_MESSAGE_FORMATTER;
     }
 

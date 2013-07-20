@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textformatter;
+package org.jlib.core.text.textbuilder;
 
 import java.text.MessageFormat;
 
 /**
- * {@link TextFormatter} using the {@link MessageFormat} template format
+ * {@link TemplateEngine} using the {@link MessageFormat} template format
  * and processing routine. Implemented as a singleton.
  *
  * @see MessageFormat#format(String, Object...)
@@ -32,31 +32,32 @@ import java.text.MessageFormat;
  * @author Igor Akkerman
  */
 // TODO: unit unittest
-public final class MessageFormatTextFormatter
-implements TextFormatter {
+public final class MessageFormatTemplateEngine
+implements TemplateEngine {
 
-    /** sole {@link MessageFormatTextFormatter} instance */
-    public static final MessageFormatTextFormatter INSTANCE = new MessageFormatTextFormatter();
+    /** sole {@link MessageFormatTemplateEngine} instance */
+    public static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
 
     /**
-     * Returns the sole {@link MessageFormatTextFormatter} instance.
+     * Returns the sole {@link MessageFormatTemplateEngine} instance.
      *
-     * @return sole {@link MessageFormatTextFormatter} instance
+     * @return sole {@link MessageFormatTemplateEngine} instance
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public static MessageFormatTextFormatter getInstance() {
+    public static MessageFormatTemplateEngine getInstance() {
         return INSTANCE;
     }
 
     /**
-     * Creates a new {@link MessageFormatTextFormatter}.
+     * Creates a new {@link MessageFormatTemplateEngine}.
      */
-    private MessageFormatTextFormatter() {
+    private MessageFormatTemplateEngine() {
         super();
     }
 
     @Override
-    public String applyTemplateArguments(final CharSequence template, final Object... arguments) {
+    @SuppressWarnings("UnnecessaryToStringCall") // wrong inspection warning!
+    public String applyArguments(final CharSequence template, final Object... arguments) {
         return MessageFormat.format(template.toString(), arguments);
     }
 }
