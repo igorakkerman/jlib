@@ -24,7 +24,7 @@ package org.jlib.core.text.textformatter;
 import java.text.MessageFormat;
 
 /**
- * {@link TextFormatter} using the {@link MessageFormat} template format
+ * {@link TextBuilder} using the {@link MessageFormat} template format
  * and processing routine. Implemented as a singleton.
  *
  * @see MessageFormat#format(String, Object...)
@@ -32,26 +32,26 @@ import java.text.MessageFormat;
  * @author Igor Akkerman
  */
 // TODO: unit unittest
-public final class MessageFormatTextFormatter
-implements TextFormatter {
+public final class MessageFormatTextBuilder
+implements TextBuilder {
 
-    /** sole {@link MessageFormatTextFormatter} instance */
-    public static final MessageFormatTextFormatter INSTANCE = new MessageFormatTextFormatter();
+    /** sole {@link MessageFormatTextBuilder} instance */
+    public static final MessageFormatTextBuilder INSTANCE = new MessageFormatTextBuilder();
 
     /**
-     * Returns the sole {@link MessageFormatTextFormatter} instance.
+     * Returns the sole {@link MessageFormatTextBuilder} instance.
      *
-     * @return sole {@link MessageFormatTextFormatter} instance
+     * @return sole {@link MessageFormatTextBuilder} instance
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public static MessageFormatTextFormatter getInstance() {
+    public static MessageFormatTextBuilder getInstance() {
         return INSTANCE;
     }
 
     /**
-     * Creates a new {@link MessageFormatTextFormatter}.
+     * Creates a new {@link MessageFormatTextBuilder}.
      */
-    private MessageFormatTextFormatter() {
+    private MessageFormatTextBuilder() {
         super();
     }
 

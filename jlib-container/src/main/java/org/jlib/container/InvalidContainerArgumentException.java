@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import com.google.common.base.Optional;
-import org.jlib.core.language.ExceptionUtility;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
@@ -37,8 +35,17 @@ extends InvalidTraversibleArgumentException {
     private static final long serialVersionUID = 4325711014434407944L;
 
     /** referenced {@link Container} */
-    @SuppressWarnings("NonSerializableFieldInSerializableClass")
     private final Container<?> container;
+
+    /**
+     * Creates a new {@link InvalidContainerArgumentException}.
+     *
+     * @param container
+     *        referenced {@link Container}
+     */
+    public InvalidContainerArgumentException(final Container<?> container) {
+        this(container, "{1}");
+    }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
@@ -52,11 +59,10 @@ extends InvalidTraversibleArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} message arguments
      */
-    public <Cont extends Container<?>> /*
-        */ InvalidContainerArgumentException(final Container<?> container, final String messageTemplate,
+    public InvalidContainerArgumentException(final Container<?> container, final String messageTemplate,
                                              final Object... messageArguments) {
 
-        this(container, Optional.absent(), messageTemplate, messageArguments);
+        this(container, messageTemplate, null, messageArguments);
     }
 
     /**
@@ -79,12 +85,6 @@ extends InvalidTraversibleArgumentException {
                                              final Throwable cause, final Object... messageArguments) {
 
         super(container, messageTemplate, cause, messageArguments);
-    }
-
-    protected InvalidContainerArgumentException(final String containerTypeName, final Container<?> container,
-                                                final Optional<Object> cause, final String messageTemplate,
-                                                final Object[] messageArguments) {
-        super(messageTemplate + "{0}")
 
         this.container = container;
     }
