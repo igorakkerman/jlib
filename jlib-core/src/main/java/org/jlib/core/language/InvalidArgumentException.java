@@ -95,7 +95,14 @@ extends IllegalArgumentException {
     }
 
     /**
+     * <p>
      * Creates the message applying the specified message arguments to the specified message template.
+     * </p>
+     * <p>
+     * The implementation in {@link InvalidArgumentException} simply calls
+     * {@link ExceptionUtility#formatMessage(TextFormatter, CharSequence, Object...)}.
+     * Subclasses may alter the default behaviour.
+     * </p>
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
@@ -103,7 +110,7 @@ extends IllegalArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
+    protected String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
         return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
     }
 
