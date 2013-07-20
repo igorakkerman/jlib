@@ -24,8 +24,8 @@ package org.jlib.core.text.textbuilder;
 import java.text.MessageFormat;
 
 /**
- * {@link TemplateEngine} using the {@link MessageFormat} template format
- * and processing routine. Implemented as a singleton.
+ * {@link TemplateEngine} using the {@link MessageFormat} template format and processing routine. Implemented as a
+ * singleton.
  *
  * @see MessageFormat#format(String, Object...)
  *
