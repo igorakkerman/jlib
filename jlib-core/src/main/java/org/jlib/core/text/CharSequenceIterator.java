@@ -41,10 +41,12 @@ extends AbstractIterator<Character> {
         characterSequenceLength = characterSequence.length();
     }
 
+    @Override
     public boolean hasNext() {
         return nextCharacterIndex < characterSequenceLength;
     }
 
+    @Override
     public Character next() {
         if (! hasNext())
             throw new NoSuchElementException();
