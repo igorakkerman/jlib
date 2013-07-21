@@ -21,18 +21,18 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+
+import static org.jlib.container.sequence.SequenceUtility.singleton;
+
 import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;
-
-import java.util.Collection;
-
-import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,
@@ -242,7 +242,8 @@ implements ObservedPrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount, final ValueObserver<Item>... observers) {
+    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount,
+                               final ValueObserver<Item>... observers) {
         assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
         int itemArrayIndex = 0;

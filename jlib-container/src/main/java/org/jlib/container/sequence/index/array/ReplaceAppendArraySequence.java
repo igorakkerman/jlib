@@ -21,19 +21,19 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+
+import static org.jlib.container.sequence.SequenceUtility.singleton;
+
 import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-
-import java.util.Collection;
-
-import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
@@ -230,7 +230,8 @@ implements ObservedAppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    private final void append(final Iterable<? extends Item> items, final int addedItemsCount, final ValueObserver<Item>... observers) {
+    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
+                              final ValueObserver<Item>... observers) {
         getCapacityStrategy().ensureTailCapacity(addedItemsCount);
 
         int storageItemIndex = getStorageItemIndex(getLastIndex());

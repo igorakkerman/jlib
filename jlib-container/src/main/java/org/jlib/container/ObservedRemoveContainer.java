@@ -23,6 +23,7 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
@@ -54,7 +55,7 @@ extends RemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -62,7 +63,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -79,7 +80,7 @@ extends RemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -87,7 +88,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -103,7 +104,7 @@ extends RemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -111,7 +112,7 @@ extends RemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemoveContainer}

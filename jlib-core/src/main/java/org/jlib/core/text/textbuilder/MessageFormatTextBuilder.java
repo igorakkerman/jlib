@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textformatter;
+package org.jlib.core.text.textbuilder;
 
 import java.text.MessageFormat;
 
@@ -56,6 +56,7 @@ implements TextBuilder {
     }
 
     @Override
+    @SuppressWarnings("UnnecessaryToStringCall") // wrong inspection warning!
     public String applyTemplateArguments(final CharSequence template, final Object... arguments) {
         return MessageFormat.format(template.toString(), arguments);
     }

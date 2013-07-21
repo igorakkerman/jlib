@@ -25,11 +25,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.jlib.core.language.AbstractCloneable;
-
 import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.InvalidNamedObjectStateException;
 
 /**
  * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.
@@ -87,13 +85,13 @@ implements Sequence<Item> {
 
     @Override
     public int getItemsCount()
-    throws InvalidContainerStateException {
+    throws InvalidNamedObjectStateException {
         return delegateSequence.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
-    throws InvalidContainerStateException {
+    throws InvalidNamedObjectStateException {
         return delegateSequence.isEmpty();
     }
 
@@ -109,38 +107,38 @@ implements Sequence<Item> {
 
     @Override
     public boolean contains(final Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
         return delegateSequence.contains(item);
     }
 
     @Override
     public boolean contains(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public List<Item> toSequentialList()
-    throws InvalidContainerStateException {
+    throws InvalidNamedObjectStateException {
         return delegateSequence.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
-    throws InvalidContainerStateException {
+    throws InvalidNamedObjectStateException {
         return delegateSequence.toArray();
     }
 

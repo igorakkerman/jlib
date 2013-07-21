@@ -21,11 +21,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.core.observer.ValueObserver;
-
 import java.util.Collection;
+
+import org.jlib.container.Container;
+import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link AppendSequence} to which Items can be appended.

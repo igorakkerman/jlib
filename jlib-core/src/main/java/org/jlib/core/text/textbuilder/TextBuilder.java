@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textformatter;
+package org.jlib.core.text.textbuilder;
 
 /**
  * Routine applying arguments to a textual template hereby allowing the text to be

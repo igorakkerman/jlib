@@ -21,8 +21,6 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.InvalidContainerArgumentException;
-
 /**
  * {@link InvalidContainerArgumentException} referencing a
  * {@link BinaryRelation}.
@@ -60,7 +58,8 @@ extends InvalidContainerArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
-    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation, final String messageTemplate, final Object... messageArguments) {
+    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
+                                                  final String messageTemplate, final Object... messageArguments) {
         this(binaryRelation, messageTemplate, (Throwable) null, messageArguments);
     }
 
@@ -80,7 +79,9 @@ extends InvalidContainerArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
-    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
+                                                  final String messageTemplate, final Throwable cause,
+                                                  final Object... messageArguments) {
         super(binaryRelation, messageTemplate, cause, messageArguments);
 
         this.binaryRelation = binaryRelation;

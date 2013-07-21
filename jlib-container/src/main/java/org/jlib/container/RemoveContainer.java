@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.language.InvalidNamedObjectArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveTraversible;
 import org.jlib.core.traverser.Traversible;
@@ -49,7 +49,7 @@ extends RemoveTraversible<Item> {
      * @param items
      *        {@link Traversible} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidNamedObjectArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
@@ -57,7 +57,7 @@ extends RemoveTraversible<Item> {
      *         if an error occurs during the operation
      */
     public void retain(Traversible<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -66,7 +66,7 @@ extends RemoveTraversible<Item> {
      * @param items
      *        {@link Container} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidNamedObjectArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
@@ -74,7 +74,7 @@ extends RemoveTraversible<Item> {
      *         if an error occurs during the operation
      */
     public void retain(Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -83,7 +83,7 @@ extends RemoveTraversible<Item> {
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidNamedObjectArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
@@ -91,7 +91,7 @@ extends RemoveTraversible<Item> {
      *         if an error occurs during the operation
      */
     public void retain(Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -100,7 +100,7 @@ extends RemoveTraversible<Item> {
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidNamedObjectArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
@@ -109,5 +109,5 @@ extends RemoveTraversible<Item> {
      */
     @SuppressWarnings("unchecked")
     public void retain(Item... items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException;
 }

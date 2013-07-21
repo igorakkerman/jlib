@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.InvalidContainerArgumentException;
-
 /**
  * {@link InvalidContainerArgumentException} referencing a {@link Sequence}.
  *

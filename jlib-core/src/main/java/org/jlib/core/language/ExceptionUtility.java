@@ -21,23 +21,26 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.array.ArrayUtility.flatten;
+import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
+import static org.jlib.core.text.TextUtility.removeOnce;
 
-import org.jlib.core.text.textformatter.MessageFormatTextFormatter;
-import org.jlib.core.text.textformatter.TextFormatter;
+import org.jlib.core.text.textbuilder.MessageFormatTemplateEngine;
+import org.jlib.core.text.textbuilder.TemplateEngine;
 
 public final class ExceptionUtility {
 
-    /** default {@link TextFormatter} used */
-    public static final TextFormatter DEFAULT_MESSAGE_FORMATTER = MessageFormatTextFormatter.getInstance();
+    /** default {@link TemplateEngine} used */
+    public static final TemplateEngine DEFAULT_MESSAGE_TEMPLATE_ENGINE = MessageFormatTemplateEngine.getInstance();
 
     private ExceptionUtility() {
         // no visible constructor
     }
 
-    public static String formatMessage(final TextFormatter messageFormatter, final CharSequence messageTemplate,
-                                       final Object... messageArguments) {
+    public static String createMessageFromExceptionName(final Exception exception) {
+        return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
+    }
 
-        return messageFormatter.applyTemplateArguments(messageTemplate, flatten(messageArguments));
+    public static String withNamedValue(final CharSequence message, final CharSequence valueName, final Object value) {
+        return message + "; " + valueName + "=" + value;
     }
 }

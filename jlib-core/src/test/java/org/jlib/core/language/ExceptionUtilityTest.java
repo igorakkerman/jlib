@@ -19,27 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.core.language;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
+import static org.jlib.core.language.ExceptionUtility.createMessageFromExceptionName;
 
-/**
- * {@link RemoveContainer} allowing all Items to be removed.
- *
- * @param <Item>
- *        type of items held in the {@link RemoveAllContainer}
- *
- * @author Igor Akkerman
- */
-public interface RemoveAllContainer<Item>
-extends RemoveContainer<Item> {
+import org.junit.Test;
 
-    /**
-     * Removes all Items of this {@link RemoveAllContainer}.
-     *
-     * @throws InvalidNamedObjectStateException
-     *         if an error occurs during the operation
-     */
-    public void removeAll()
-    throws InvalidNamedObjectStateException;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+
+public class ExceptionUtilityTest {
+
+    private static class IBliBlaBlubException
+    extends Exception {
+
+        private static final long serialVersionUID = 4507996594865173187L;
+    }
+
+    @Test
+    public void testCreateMessageFromExceptionName()
+    throws Exception {
+        assertThat(createMessageFromExceptionName(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
+    }
 }
