@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.container.EmptyContainer;
-import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.ObservedRemoveAllContainer;
 import org.jlib.container.ObservedReplaceContainer;
@@ -60,44 +60,44 @@ implements Sequence<Item>,
 
     @Override
     public void remove(final Item item)
-    throws NoSuchItemToRemoveException {
-        throw new NoSuchItemToRemoveException(this, item);
+    throws ItemToRemoveNotContainedException {
+        throw new ItemToRemoveNotContainedException(this, item);
     }
 
     @Override
     public void removeAll()
-    throws NoSuchItemToRemoveException {
+    throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
 
     @Override
     public void remove(final Container<? extends Item> items)
-    throws NoSuchItemToRemoveException {
+    throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
 
     @Override
     public void remove(final Collection<? extends Item> items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 
     @Override
     public void remove(final Iterable<? extends Item> items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 
@@ -109,14 +109,14 @@ implements Sequence<Item>,
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws NoSuchItemToRemoveException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
         // intentionally blank
     }
 

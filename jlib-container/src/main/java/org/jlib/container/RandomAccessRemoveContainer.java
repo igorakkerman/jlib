@@ -42,7 +42,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * @param item
      *        {@link Item} to remove
      *
-     * @throws NoSuchItemToRemoveException
+     * @throws ItemToRemoveNotContainedException
      *         if this {@link RandomAccessRemoveContainer} does not contain
      *         {@code Item}
      *
@@ -54,7 +54,7 @@ public interface RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the operation
      */
     public void remove(final Item item)
-    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this

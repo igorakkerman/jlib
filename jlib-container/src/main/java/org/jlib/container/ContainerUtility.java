@@ -66,7 +66,7 @@ public final class ContainerUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws NoSuchItemToRemoveException
+     * @throws ItemToRemoveNotContainedException
      *         if this {@link RemoveContainer} does not contain {@code Item}
      *
      * @throws InvalidContainerArgumentException
@@ -84,7 +84,7 @@ public final class ContainerUtility {
     @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item item,
                                      final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
+    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
            RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
@@ -96,7 +96,7 @@ public final class ContainerUtility {
                     container.remove(item);
                 }
                 catch (InvalidContainerArgumentException | InvalidNamedObjectStateException exception) {
-                    throw new OperatorException("remove: {0}", exception, item);
+                    throw new OperatorException(exception, "remove: {0}", item);
                 }
             }
         }, item, observers);

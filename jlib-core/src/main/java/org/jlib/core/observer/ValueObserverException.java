@@ -21,6 +21,8 @@
 
 package org.jlib.core.observer;
 
+import static org.jlib.core.language.ExceptionUtility.buildMessageWithNamedObject;
+
 /**
  * {@link ObserverException} thrown during an {@link ValueObserver} operation.
  *
@@ -35,20 +37,21 @@ extends ObserverException {
     /**
      * Creates a new {@link ValueObserverException}.
      *
-     * @param item
-     *        Item removed from {@code container}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template; {1} references
-     *        {@code item}
+     * @param value
+     *        observed {@link Object} value
      *
      * @param cause
      *        {@link Throwable} that caused this {@link ValueObserverException}
      *
+     * @param messageTemplate
+     *        {@link String} specifying the message template
+     *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ValueObserverException(final Object item, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(messageTemplate, cause, item, messageArguments);
+    public ValueObserverException(final CharSequence valueName, final Object value, final Exception cause,
+                                  final CharSequence messageTemplate, final Object... messageArguments) {
+
+        super(cause, buildMessageWithNamedObject(messageTemplate, valueName, value), messageArguments);
     }
 }

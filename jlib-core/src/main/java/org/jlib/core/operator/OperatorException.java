@@ -40,26 +40,27 @@ extends ApplicationException {
     /**
      * Creates a new {@link OperatorException}.
      *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template; {1} references
-     *        {@code value}
-     *
      * @param cause
      *        {@link RuntimeException} that caused this
      *        {@link OperatorException}
      *
+     * @param messageTemplate
+     *        {@link CharSequence} specifying the message template; {1} references
+     *        {@code value}
+     *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public OperatorException(final CharSequence messageTemplate, final RuntimeException cause,
+    public OperatorException(final RuntimeException cause, final CharSequence messageTemplate,
                              final Object... messageArguments) {
-        super(messageTemplate, cause, messageArguments);
+
+        super(cause, messageTemplate, messageArguments);
 
         this.cause = cause;
     }
 
     @Override
-    public synchronized RuntimeException getCause() {
+    public RuntimeException getCause() {
         return cause;
     }
 }

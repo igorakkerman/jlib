@@ -21,6 +21,8 @@
 
 package org.jlib.core.reflection;
 
+import org.jlib.core.language.NamedObjectApplicationException;
+
 /**
  * Exception thrown when a class cannot be instantiated. This Exception type may
  * be used by factories as a wrapper for any kind of Exceptions occurring when
@@ -29,7 +31,7 @@ package org.jlib.core.reflection;
  * @author Igor Akkerman
  */
 public class ClassInstantiationException
-extends Exception {
+extends NamedObjectApplicationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 324704714378755280L;
@@ -42,44 +44,35 @@ extends Exception {
      *
      * @param className
      *        name of the class that cannot be instantiated
+     *
      * @param cause
-     *        original Throwable that caused this Exception
+     *        original {@link Exception} that caused this {@link ClassInstantiationException}
      */
-    public ClassInstantiationException(final String className, final Throwable cause) {
-        super(cause);
-        this.className = className;
+    public ClassInstantiationException(final CharSequence className, final Exception cause) {
+        super("className", className, cause);
+
+        this.className = className.toString();
     }
 
     /**
-     * Creates a new ClassInstantiationException if the specified class cannot
-     * be instantiated.
+     * Creates a new {@link ClassInstantiationException} if the specified class cannot be instantiated.
      *
      * @param clazz
-     *        Class that cannot be instantiated
+     *        {@link Class} that cannot be instantiated
+     *
      * @param cause
-     *        original Throwable that caused this Exception
+     *        {@link Exception} that caused this {@link ClassInstantiationException}
      */
-    public ClassInstantiationException(final Class<?> clazz, final Throwable cause) {
+    public ClassInstantiationException(final Class<?> clazz, final Exception cause) {
         this(clazz.getSimpleName(), cause);
     }
 
     /**
      * Returns the name of the class that cannot be instantiated.
      *
-     * @return String specifying the name of the class
+     * @return {@link String} specifying the name of the class
      */
     public String getClassName() {
         return className;
-    }
-
-    /**
-     * Returns a String representation of this Exception.
-     *
-     * @return String containing the class name and the error text of the
-     *         Throwable that caused this Exception
-     */
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "[" + className + "][" + getCause() + "]";
     }
 }

@@ -179,7 +179,7 @@ implements org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence<
                     removeLastItem();
                 }
                 catch (final SoleItemNotRemoveableException exception) {
-                    throw new OperatorException("removeLastItem {0}", exception);
+                    throw new OperatorException(exception, "removeLastItem {0}");
                 }
             }
         },

@@ -22,7 +22,7 @@
 package org.jlib.container.binaryrelation;
 
 import org.jlib.container.Container;
-import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.core.traverser.RemoveTraverser;
 
 import java.util.Collection;
@@ -119,12 +119,12 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void remove(final Association<LeftValue, RightValue> association)
-    throws NoSuchItemToRemoveException {
+    throws ItemToRemoveNotContainedException {
         try {
             remove(association.getLeftValue(), association.getRightValue());
         }
         catch (final NoSuchAssociationValueException exception) {
-            throw new NoSuchItemToRemoveException(this, association, exception);
+            throw new ItemToRemoveNotContainedException(this, association, exception);
         }
     }
 

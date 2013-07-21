@@ -26,7 +26,7 @@ import java.util.Collections;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.NoSuchItemToRemoveException;
+import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.RandomAccessRemoveContainer;
 import org.jlib.container.RemoveAllContainer;
@@ -180,12 +180,12 @@ implements RandomAccessRemoveContainer<Item>,
 
     @Override
     public void remove(final Item item)
-    throws NoSuchItemToRemoveException, InvalidContainerDelegateStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerDelegateStateException {
         try {
             final boolean removed = getDelegateCollection().remove(item);
 
             if (! removed)
-                throw new NoSuchItemToRemoveException(this, item);
+                throw new ItemToRemoveNotContainedException(this, item);
         }
         catch (final UnsupportedOperationException exception) {
             throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - remove({3})",

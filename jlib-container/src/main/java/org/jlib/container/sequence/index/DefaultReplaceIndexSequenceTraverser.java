@@ -127,7 +127,7 @@ implements ObservedReplaceTraverser<Item>,
                     replace(newItem);
                 }
                 catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException("replace: {0}", exception, newItem);
+                    throw new OperatorException(exception, "replace: {0}", newItem);
                 }
             }
         }, /*

@@ -21,27 +21,23 @@
 
 package org.jlib.core.language;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import static org.jlib.core.language.ExceptionUtility.buildMessageWithNamedObject;
 
 /**
- * {@link InvalidStateException} targeting a named {@link Object}.
+ * {@link ApplicationException} targeting a named {@link Object}.
  *
  * @author Igor Akkerman
  */
-public abstract class InvalidNamedObjectStateException
-extends InvalidStateException {
+public abstract class NamedObjectApplicationException
+extends ApplicationException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 5372709827038391318L;
+    private static final long serialVersionUID = - 7508635402610527176L;
 
     /**
-     * Creates a new {@link InvalidNamedObjectStateException}.
-     *
-     * @param targetObjectName
-     *        {@link CharSequence} specifying the name of the targeted {@link Object}
-     *
-     * @param targetObject
-     *        targeted {@link Object}
+     * Creates a new {@link NamedObjectApplicationException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
@@ -49,14 +45,14 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidNamedObjectStateException(final CharSequence targetObjectName, final Object targetObject,
-                                            final CharSequence messageTemplate, final Object... messageArguments) {
+    protected NamedObjectApplicationException(final CharSequence targetObjectName, final Object targetObject,
+                                              final CharSequence messageTemplate, final Object... messageArguments) {
 
         super(buildMessageWithNamedObject(messageTemplate, targetObjectName, targetObject), messageArguments);
     }
 
     /**
-     * Creates a new {@link InvalidNamedObjectStateException}.
+     * Creates a new {@link NamedObjectApplicationException}.
      *
      * @param targetObjectName
      *        {@link CharSequence} specifying the name of the targeted {@link Object}
@@ -65,17 +61,35 @@ extends InvalidStateException {
      *        targeted {@link Object}
      *
      * @param cause
-     *        {@link Exception} that caused this {@link InvalidNamedObjectStateException}
+     *        {@link Exception} that caused this {@link NamedObjectApplicationException}
+     */
+    protected NamedObjectApplicationException(final CharSequence targetObjectName, final Object targetObject,
+                                              final Exception cause) {
+
+        this(targetObjectName, targetObject, cause, EMPTY);
+    }
+
+    /**
+     * Creates a new {@link NamedObjectApplicationException}.
      *
-     *@param messageTemplate
+     * @param targetObjectName
+     *        {@link CharSequence} specifying the name of the targeted {@link Object}
+     *
+     * @param targetObject
+     *        targeted {@link Object}
+     *
+     * @param cause
+     *        {@link Exception} that caused this {@link NamedObjectApplicationException}
+     *
+     * @param messageTemplate
      *        {@link CharSequence} specifying the message template
      *
-     *@param messageArguments
+     * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidNamedObjectStateException(final CharSequence targetObjectName, final Object targetObject,
-                                            final Exception cause, final CharSequence messageTemplate,
-                                            final Object... messageArguments) {
+    protected NamedObjectApplicationException(final CharSequence targetObjectName, final Object targetObject,
+                                              final Exception cause, final CharSequence messageTemplate,
+                                              final Object... messageArguments) {
 
         super(cause, buildMessageWithNamedObject(messageTemplate, targetObjectName, targetObject), messageArguments);
     }

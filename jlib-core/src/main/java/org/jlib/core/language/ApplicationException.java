@@ -22,6 +22,7 @@
 package org.jlib.core.language;
 
 import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
+import static org.jlib.core.language.ExceptionUtility.createMessageFromExceptionName;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -41,15 +42,6 @@ extends Exception {
 
     /**
      * Creates a new {@link ApplicationException}.
-     */
-    protected ApplicationException() {
-        super();
-
-        message = super.getMessage();
-    }
-
-    /**
-     * Creates a new {@link ApplicationException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
@@ -60,7 +52,7 @@ extends Exception {
     protected ApplicationException(final CharSequence messageTemplate, final Object... messageArguments) {
         super();
 
-        message = createMessage(messageTemplate, messageArguments);
+        message = getMessageFormatter().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
@@ -72,39 +64,26 @@ extends Exception {
     protected ApplicationException(final Exception cause) {
         super(cause);
 
-        message = super.getMessage();
+        message = createMessageFromExceptionName(this);
     }
 
     /**
      * Creates a new {@link ApplicationException}.
      *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
      * @param cause
      *        {@link Exception} that caused this {@link ApplicationException}
      *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
-    protected ApplicationException(final CharSequence messageTemplate, final Exception cause,
-                                   final Object... messageArguments) {
-        super(cause);
-
-        message = createMessage(messageTemplate, messageArguments);
-    }
-
-    /**
-     * Creates the message applying the specified message arguments to the specified message template.
-     *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
-        return getMessageFormatter().applyArguments(messageTemplate, messageArguments);
+    protected ApplicationException(final Exception cause, final CharSequence messageTemplate,
+                                   final Object... messageArguments) {
+        super(cause);
+
+        message = getMessageFormatter().applyArguments(messageTemplate, messageArguments);
     }
 
     /**

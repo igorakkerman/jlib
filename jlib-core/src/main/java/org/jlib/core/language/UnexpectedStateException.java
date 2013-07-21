@@ -57,16 +57,16 @@ extends InvalidStateException {
     /**
      * Creates a new {@link UnexpectedStateException}.
      *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
      * @param cause
      *        {@link Exception} that caused this {@link UnexpectedStateException}
+     *
+     * @param messageTemplate
+     *        {@link String} specifying the error message template
      *
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final CharSequence messageTemplate, final Exception cause,
+    public UnexpectedStateException(final Exception cause, final CharSequence messageTemplate,
                                     final Object... messageArguments) {
         super(cause, messageTemplate, messageArguments);
     }

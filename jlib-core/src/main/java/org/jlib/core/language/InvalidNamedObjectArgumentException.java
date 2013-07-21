@@ -21,10 +21,10 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.withNamedValue;
+import static org.jlib.core.language.ExceptionUtility.buildMessageWithNamedObject;
 
 /**
- * {@link InvalidArgumentException} referencing a named targeted {@link Object}.
+ * {@link InvalidArgumentException} targeting a named {@link Object}.
  *
  * @author Igor Akkerman
  */
@@ -52,7 +52,7 @@ extends InvalidArgumentException {
     public InvalidNamedObjectArgumentException(final CharSequence targetObjectName, final Object targetObject,
                                                final CharSequence messageTemplate, final Object... messageArguments) {
 
-        super(withNamedValue(messageTemplate, targetObjectName, targetObject), messageArguments);
+        super(buildMessageWithNamedObject(messageTemplate, targetObjectName, targetObject), messageArguments);
     }
 
     /**
@@ -77,6 +77,6 @@ extends InvalidArgumentException {
                                                   final Exception cause, final CharSequence messageTemplate,
                                                   final Object... messageArguments) {
 
-        super(cause, withNamedValue(messageTemplate, targetObjectName, targetObject), messageArguments);
+        super(cause, buildMessageWithNamedObject(messageTemplate, targetObjectName, targetObject), messageArguments);
     }
 }

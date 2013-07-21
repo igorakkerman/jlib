@@ -83,7 +83,8 @@ extends IllegalStateException {
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
-     *@param messageArguments
+     *
+     * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
     protected InvalidStateException(final Exception cause, final CharSequence messageTemplate,

@@ -51,6 +51,6 @@ extends ObserverException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public BeforeHandlerValueObserverException(final Object item, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(messageTemplate, cause, item, messageArguments);
+        super(cause, messageTemplate, item, messageArguments);
     }
 }

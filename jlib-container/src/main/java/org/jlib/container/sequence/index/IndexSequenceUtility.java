@@ -153,7 +153,7 @@ public final class IndexSequenceUtility {
                     sequence.remove(itemIndex);
                 }
                 catch (InvalidContainerArgumentException | InvalidNamedObjectStateException exception) {
-                    throw new OperatorException("remove: {0}", exception, itemIndex);
+                    throw new OperatorException(exception, "remove: {0}", itemIndex);
                 }
             }
         },

@@ -112,7 +112,7 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,Ind
                     insert(item);
                 }
                 catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException("insert: {0}", exception, item);
+                    throw new OperatorException(exception, "insert: {0}", item);
                 }
             }
         },

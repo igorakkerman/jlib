@@ -50,7 +50,7 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws NoSuchItemToRemoveException
+     * @throws ItemToRemoveNotContainedException
      *         if this {@link ObservedRandomAccessRemoveContainer} does not
      *         contain {@code Item}
      *
@@ -66,7 +66,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
+    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
            ValueObserverException;
 
     /**

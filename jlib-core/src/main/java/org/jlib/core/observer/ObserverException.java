@@ -38,16 +38,18 @@ extends InvalidStateException {
     /**
      * Creates a new {@link ObserverException}.
      *
+     * @param cause
+     *        {@link Exception} that caused this {@link ObserverException}
+     *
      * @param messageTemplate
      *        {@link String} specifying the message template
      *
-     * @param cause
-     *        {@link Throwable} that caused this {@link ObserverException}
-     *
-     * @param messageArguments
+     *@param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ObserverException(final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(messageTemplate, cause, messageArguments);
+    public ObserverException(final Exception cause, final CharSequence messageTemplate,
+                             final Object... messageArguments) {
+
+        super(cause, messageTemplate, messageArguments);
     }
 }

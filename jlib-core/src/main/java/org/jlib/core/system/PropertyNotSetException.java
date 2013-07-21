@@ -44,7 +44,7 @@ extends ApplicationException {
      *        {@link String} specifying the name of the property that is not set
      */
     public PropertyNotSetException(final String propertyName) {
-        super();
+        super(propertyName);
 
         this.propertyName = propertyName;
     }

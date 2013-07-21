@@ -34,11 +34,15 @@ extends ApplicationException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;
 
+    private transient final Value<?> value;
+
     /**
      * Creates a new {@link ValueNotAccessibleException}.
      */
-    public ValueNotAccessibleException() {
-        super();
+    public ValueNotAccessibleException(final Value<?> value) {
+        super(value.toString());
+
+        this.value = value;
     }
 
     /**
@@ -49,5 +53,9 @@ extends ApplicationException {
      */
     public ValueNotAccessibleException(final CharSequence valueName) {
         super(valueName);
+    }
+
+    public Value<?> getValue() {
+        return value;
     }
 }
