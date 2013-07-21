@@ -40,13 +40,18 @@ public final class ExceptionUtility {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
-    public static String namedObjectToString(final CharSequence objectName,
-                                                     final Object object) {
+    public static String namedObjectToString(final CharSequence objectName, final Object object) {
         return objectName.toString() + '=' + object;
     }
 
-    public static String buildMessageWithNamedObject(final CharSequence message, final CharSequence objectName,
-                                                     final Object object) {
+    public static String withObject(final CharSequence message, final Object object) {
+
+        return message.toString() + ';' + ' ' + object;
+    }
+
+    public static String withNamedObject(final CharSequence message, final CharSequence objectName,
+                                         final Object object) {
+
         return message.toString() + ';' + ' ' + objectName + '=' + object;
     }
 }

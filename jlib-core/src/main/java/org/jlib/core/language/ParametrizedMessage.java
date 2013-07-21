@@ -19,37 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.language;
 
-import org.jlib.core.language.AbstractObject;
+import static org.jlib.core.language.ExceptionUtility.withNamedObject;
+import static org.jlib.core.language.ExceptionUtility.withObject;
 
-public class ParametrizedText
-extends AbstractObject {
+import org.jlib.core.text.ParametrizedText;
 
-    private CharSequence template;
+public class ParametrizedMessage extends ParametrizedText {
 
-    private Object[] arguments;
-
-    public ParametrizedText(final CharSequence template, final Object... arguments) {
-        super();
-
-        this.template = template;
-        this.arguments = arguments;
+    public ParametrizedMessage(final CharSequence template, final Object... arguments) {
+        super(template, arguments);
     }
 
-    public String getTemplate() {
-        return template.toString();
+    public ParametrizedMessage with(final Object object) {
+
+        setTemplate(withObject(getTemplate(), object));
+
+        return this;
     }
 
-    protected void setTemplate(final CharSequence template) {
-        this.template = template;
-    }
+    public ParametrizedMessage with(final CharSequence objectName, final Object object) {
 
-    public Object[] getArguments() {
-        return arguments;
-    }
+        setTemplate(withNamedObject(getTemplate(), objectName, object));
 
-    protected void setArguments(final Object[] arguments) {
-        this.arguments = arguments;
+        return this;
     }
 }
