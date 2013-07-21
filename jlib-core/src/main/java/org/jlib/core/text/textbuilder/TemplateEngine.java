@@ -21,6 +21,8 @@
 
 package org.jlib.core.text.textbuilder;
 
+import org.jlib.core.text.ParametrizedText;
+
 /**
  * Routine applying arguments to a textual template, usually substituting placeholders. Each {@link TemplateEngine}
  * implementation defines the individual format of the template and the algorithm applying the arguments to this
@@ -44,4 +46,6 @@ public interface TemplateEngine {
      * @return {@link String} specifying the formatted text
      */
     public String applyArguments(CharSequence template, Object... arguments);
+
+    public String applyArguments(ParametrizedText parametrizedText);
 }
