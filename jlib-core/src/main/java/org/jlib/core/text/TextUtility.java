@@ -94,7 +94,7 @@ public final class TextUtility {
 
         final StringBuilder messageBuilder = new StringBuilder(sequenceLength * 2);
 
-//        messageBuilder.append(toLowerCase(sequence.charAt(0)));
+        messageBuilder.append(toLowerCase(sequence.charAt(0)));
 
         for (final char exceptionNameCharacter : asIterable(sequence, 1))
             if (isUpperCase(exceptionNameCharacter))
