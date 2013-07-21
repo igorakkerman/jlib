@@ -21,11 +21,13 @@
 
 package org.jlib.core.language;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
 
-import org.jlib.core.text.textbuilder.MessageFormatTemplateEngine;
-import org.jlib.core.text.textbuilder.TemplateEngine;
+import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
+import org.jlib.core.text.templateengine.TemplateEngine;
 
 public final class ExceptionMessageUtility {
 
@@ -51,8 +53,12 @@ public final class ExceptionMessageUtility {
         return message.toString() + ';' + ' ' + objectName + '=' + object;
     }
 
+    public static ParametrizedMessage message() {
+        return message(EMPTY);
+    }
+
     public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(messageTemplate, messageArguments);
+        return new ParametrizedMessage(DEFAULT_MESSAGE_TEMPLATE_ENGINE, messageTemplate, messageArguments);
     }
 
     private ExceptionMessageUtility() {

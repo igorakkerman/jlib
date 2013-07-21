@@ -21,9 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-
-import org.jlib.core.text.textbuilder.TemplateEngine;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 /**
  * {@link IllegalStateException} using a formatted message.
@@ -36,16 +34,11 @@ extends IllegalStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
-    /** {@link String} specifying the message */
-    private final String message;
-
     /**
      * Creates a new {@link InvalidStateException}.
      */
     protected InvalidStateException() {
-        super();
-
-        message = super.getMessage();
+        super(EMPTY);
     }
 
     /**
@@ -58,9 +51,7 @@ extends IllegalStateException {
      *        comma separated sequence of {@link Object} message arguments
      */
     protected InvalidStateException(final ParametrizedMessage parametrizedMessage) {
-        super();
-
-        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
+        super(parametrizedMessage.toString());
     }
 
     /**
@@ -70,9 +61,7 @@ extends IllegalStateException {
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
     protected InvalidStateException(final Exception cause) {
-        super(cause);
-
-        message = super.getMessage();
+        super(EMPTY, cause);
     }
 
     /**
@@ -81,29 +70,9 @@ extends IllegalStateException {
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
      *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidStateException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
-        super(cause);
-
-        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
-    }
-
-    /**
-     * Returns the {@link TemplateEngine} used to format the message.
-     *
-     * @return used {@link TemplateEngine}
-     */
-    protected TemplateEngine getMessageTemplateEngine() {
-        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+    protected InvalidStateException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
+        super(parametrizedMessage.toString(), cause);
     }
 }

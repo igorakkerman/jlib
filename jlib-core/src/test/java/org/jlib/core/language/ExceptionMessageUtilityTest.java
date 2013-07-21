@@ -19,19 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textbuilder;
+package org.jlib.core.language;
 
-import org.jlib.core.text.ParametrizedText;
+import static org.jlib.core.language.ExceptionMessageUtility.createMessageFromExceptionName;
 
-public abstract class AbstractTemplateEngine
-implements TemplateEngine {
+import org.junit.Test;
 
-    protected AbstractTemplateEngine() {
-        super();
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+
+public class ExceptionMessageUtilityTest {
+
+    private static class IBliBlaBlubException
+    extends Exception {
+
+        private static final long serialVersionUID = 4507996594865173187L;
     }
 
-    @Override
-    public String applyArguments(final ParametrizedText parametrizedText) {
-        return applyArguments(parametrizedText.getTemplate(), parametrizedText.getArguments());
+    @Test
+    public void testCreateMessageFromExceptionName()
+    throws Exception {
+        assertThat(createMessageFromExceptionName(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
     }
 }

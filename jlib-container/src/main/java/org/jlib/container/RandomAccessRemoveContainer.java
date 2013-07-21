@@ -23,8 +23,6 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
-
 /**
  * {@link RemoveContainer} allowing its Items to be removed by random access to
  * each specified Item.

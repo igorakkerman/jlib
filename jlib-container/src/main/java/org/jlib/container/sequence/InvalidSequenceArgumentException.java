@@ -58,8 +58,7 @@ extends InvalidContainerArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} error message arguments
      */
-    public InvalidSequenceArgumentException(final Sequence<?> sequence, final String messageTemplate,
-                                            final Object... messageArguments) {
+    public InvalidSequenceArgumentException(final Sequence<?> sequence, final ParametrizedMessage parametrizedMessage) {
         this(sequence, messageTemplate, null, messageArguments);
     }
 

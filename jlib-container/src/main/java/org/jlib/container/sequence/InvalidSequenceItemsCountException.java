@@ -50,8 +50,8 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        array of {@link Object} error message arguments
      */
-    public InvalidSequenceItemsCountException(final int itemsCount, final String messageTemplate, final Object... messageArguments) {
-        super(messageTemplate, messageArguments);
+    public InvalidSequenceItemsCountException(final int itemsCount, final ParametrizedMessage parametrizedMessage) {
+        super(parametrizedMessage);
 
         this.itemsCount = itemsCount;
     }

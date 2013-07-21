@@ -22,7 +22,7 @@
 package org.jlib.container.collection;
 
 import org.jlib.container.Container;
-import org.jlib.core.language.InvalidNamedObjectStateException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a delegate object
@@ -31,7 +31,7 @@ import org.jlib.core.language.InvalidNamedObjectStateException;
  * @author Igor Akkerman
  */
 public class InvalidContainerDelegateStateException
-extends InvalidNamedObjectStateException {
+extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;

@@ -23,7 +23,6 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.language.InvalidNamedObjectArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveTraversible;
 import org.jlib.core.traverser.Traversible;

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.textbuilder;
+package org.jlib.core.text.templateengine;
 
 import org.jlib.core.text.ParametrizedText;
 

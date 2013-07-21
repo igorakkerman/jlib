@@ -45,7 +45,7 @@ extends InvalidStateException {
      *        String specifying the name of the property that is not set
      */
     public ApplicationPropertyNotSetException(final String propertyName) {
-        super("propertyName='{0}'", propertyName);
+        super(propertyName, "propertyName='{0}'");
 
         this.propertyName = propertyName;
     }

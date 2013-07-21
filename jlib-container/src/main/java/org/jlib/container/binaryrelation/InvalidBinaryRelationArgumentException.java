@@ -59,7 +59,7 @@ extends InvalidContainerArgumentException {
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final String messageTemplate, final Object... messageArguments) {
+                                                  final ParametrizedMessage parametrizedMessage) {
         this(binaryRelation, messageTemplate, (Throwable) null, messageArguments);
     }
 

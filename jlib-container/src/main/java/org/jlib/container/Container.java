@@ -28,8 +28,6 @@ import java.util.RandomAccess;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.InvalidNamedObjectArgumentException;
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.Traversible;
 

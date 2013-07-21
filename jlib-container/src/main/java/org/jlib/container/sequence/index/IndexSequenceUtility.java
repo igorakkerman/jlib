@@ -25,7 +25,6 @@ import org.jlib.container.Container;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceStateException;
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;

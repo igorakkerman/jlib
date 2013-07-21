@@ -21,7 +21,10 @@
 
 package org.jlib.core.value;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ApplicationException} thrown when a requested Value is not accessible.
@@ -34,15 +37,10 @@ extends ApplicationException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;
 
-    private transient final Value<?> value;
+    private final String valueName;
 
-    /**
-     * Creates a new {@link ValueNotAccessibleException}.
-     */
-    public ValueNotAccessibleException(final Value<?> value) {
-        super(value.toString());
-
-        this.value = value;
+    protected ValueNotAccessibleException() {
+        super();
     }
 
     /**
@@ -52,10 +50,12 @@ extends ApplicationException {
      *        {@link CharSequence} specifying a descriptive name of the Value
      */
     public ValueNotAccessibleException(final CharSequence valueName) {
-        super(valueName);
+        super(message(valueName));
+
+        this.valueName = valueName.toString();
     }
 
-    public Value<?> getValue() {
-        return value;
+    public String getValueName() {
+        return valueName;
     }
 }

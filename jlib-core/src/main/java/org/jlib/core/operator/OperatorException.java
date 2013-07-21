@@ -22,6 +22,7 @@
 package org.jlib.core.operator;
 
 import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ApplicationException} thrown during the operation of an operator.
@@ -51,10 +52,9 @@ extends ApplicationException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public OperatorException(final RuntimeException cause, final CharSequence messageTemplate,
-                             final Object... messageArguments) {
+    public OperatorException(final RuntimeException cause, final ParametrizedMessage parametrizedMessage) {
 
-        super(cause, messageTemplate, messageArguments);
+        super(cause, parametrizedMessage);
 
         this.cause = cause;
     }

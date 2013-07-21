@@ -27,7 +27,6 @@ import java.util.Set;
 import static org.jlib.container.collection.CollectionUtility.toSet;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;

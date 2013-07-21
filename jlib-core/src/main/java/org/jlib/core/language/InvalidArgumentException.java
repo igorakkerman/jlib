@@ -21,10 +21,6 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-
-import org.jlib.core.text.textbuilder.TemplateEngine;
-
 /**
  * {@link IllegalArgumentException} using a parametrized message.
  *
@@ -35,23 +31,11 @@ extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
 
-    /** {@link String} specifying the message */
-    private final String message;
-
     /**
      * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
     protected InvalidArgumentException(final ParametrizedMessage parametrizedMessage) {
-
-        super();
-
-        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
+        super(parametrizedMessage.toString());
     }
 
     /**
@@ -59,29 +43,8 @@ extends IllegalArgumentException {
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidArgumentException}
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *@param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidArgumentException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
-        super(cause);
-
-        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
-    }
-
-    /**
-     * Returns the {@link TemplateEngine} used to create the message.
-     *
-     * @return used {@link TemplateEngine}
-     */
-    protected TemplateEngine getMessageTemplateEngine() {
-        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+    protected InvalidArgumentException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
+        super(parametrizedMessage.toString(), cause);
     }
 }

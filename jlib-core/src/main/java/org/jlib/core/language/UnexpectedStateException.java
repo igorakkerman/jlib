@@ -21,8 +21,6 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.text.ParametrizedText;
-
 /**
  * {@link InvalidStateException} thrown in an uexpected state.
  *
@@ -69,6 +67,6 @@ extends InvalidStateException {
      *        comma separated sequence of error message arguments
      */
     public UnexpectedStateException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
-        super(cause, parametrizedMessage);
+        super(parametrizedMessage, cause);
     }
 }

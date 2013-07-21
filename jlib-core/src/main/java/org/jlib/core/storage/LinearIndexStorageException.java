@@ -22,6 +22,7 @@
 package org.jlib.core.storage;
 
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid
@@ -35,9 +36,6 @@ extends InvalidArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 1514836335986845986L;
 
-    /** referenced {@link LinearIndexStorage} */
-    private transient final LinearIndexStorage<?> linearIndexStorage;
-
     /**
      * Creates a new {@link LinearIndexStorageException}.
      *
@@ -50,19 +48,7 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final String messageTemplate,
-                                       final Object... messageArguments) {
-        super(messageTemplate + "; '{0}'", linearIndexStorage, messageArguments);
-
-        this.linearIndexStorage = linearIndexStorage;
-    }
-
-    /**
-     * Returns the referenced {@link LinearIndexStorage}.
-     *
-     * @return referenced {@link LinearIndexStorage}
-     */
-    public LinearIndexStorage<?> getLinearIndexStorage() {
-        return linearIndexStorage;
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final ParametrizedMessage parametrizedMessage) {
+        super(parametrizedMessage.with("storage", linearIndexStorage));
     }
 }

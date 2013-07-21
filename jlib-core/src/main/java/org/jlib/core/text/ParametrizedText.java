@@ -22,17 +22,22 @@
 package org.jlib.core.text;
 
 import org.jlib.core.language.AbstractObject;
+import org.jlib.core.text.templateengine.TemplateEngine;
 
 public class ParametrizedText
 extends AbstractObject {
+
+    private final TemplateEngine templateEngine;
 
     private CharSequence template;
 
     private Object[] arguments;
 
-    public ParametrizedText(final CharSequence template, final Object... arguments) {
+    public ParametrizedText(final TemplateEngine templateEngine, final CharSequence template,
+                            final Object... arguments) {
         super();
 
+        this.templateEngine = templateEngine;
         this.template = template;
         this.arguments = arguments;
     }
@@ -51,5 +56,10 @@ extends AbstractObject {
 
     protected void setArguments(final Object[] arguments) {
         this.arguments = arguments;
+    }
+
+    @Override
+    public String toString() {
+        return templateEngine.applyArguments(template, arguments);
     }
 }

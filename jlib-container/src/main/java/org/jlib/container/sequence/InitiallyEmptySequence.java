@@ -29,8 +29,6 @@ import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.ObservedRemoveAllContainer;
 import org.jlib.container.ObservedReplaceContainer;
-import org.jlib.core.language.InvalidNamedObjectArgumentException;
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;

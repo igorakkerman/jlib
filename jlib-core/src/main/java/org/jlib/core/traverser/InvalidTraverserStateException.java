@@ -22,6 +22,7 @@
 package org.jlib.core.traverser;
 
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidStateException} thrown when an invalid state has been
@@ -75,9 +76,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate,
-                                          final Object... errorMessageArguments) {
-        super(messageTemplate, traversible, errorMessageArguments);
+    public InvalidTraverserStateException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage) {
+        super(parametrizedMessage, traversible);
 
         this.traversible = traversible;
     }

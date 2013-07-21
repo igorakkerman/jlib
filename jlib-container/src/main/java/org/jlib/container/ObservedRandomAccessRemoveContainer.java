@@ -23,7 +23,6 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 

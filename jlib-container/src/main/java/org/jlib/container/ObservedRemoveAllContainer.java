@@ -21,7 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 
 /**

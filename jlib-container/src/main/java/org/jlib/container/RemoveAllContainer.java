@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
-
 /**
  * {@link RemoveContainer} allowing all Items to be removed.
  *

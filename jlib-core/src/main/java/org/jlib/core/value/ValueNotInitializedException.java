@@ -28,26 +28,26 @@ import org.jlib.core.language.ApplicationException;
  *
  * @author Igor Akkerman
  */
-public class ValueNotSetException
+public class ValueNotInitializedException
 extends ValueNotAccessibleException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 4844161228178575622L;
 
     /**
-     * Creates a new {@link ValueNotSetException}.
+     * Creates a new {@link ValueNotInitializedException}.
      */
-    public ValueNotSetException() {
+    public ValueNotInitializedException() {
         super();
     }
 
     /**
-     * Creates a new {@link ValueNotSetException}.
+     * Creates a new {@link ValueNotInitializedException}.
      *
      * @param valueName
      *        {@link CharSequence} specifying a descriptive name of the Value
      */
-    public ValueNotSetException(final CharSequence valueName) {
+    public ValueNotInitializedException(final CharSequence valueName) {
         super(valueName);
     }
 }

@@ -21,10 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-import static org.jlib.core.language.ExceptionMessageUtility.createMessageFromExceptionName;
-
-import org.jlib.core.text.textbuilder.TemplateEngine;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 /**
  * Skeletal implementation of an {@link Exception} using a formatted message.
@@ -37,8 +34,15 @@ extends Exception {
     /** serialVersionUID */
     private static final long serialVersionUID = - 7508635402610527176L;
 
-    /** {@link String} specifying the message */
-    private final String message;
+    /**
+     * Creates a new {@link ApplicationException}.
+     *
+     * @param cause
+     *        {@link Exception} that caused this {@link ApplicationException}
+     */
+    protected ApplicationException() {
+        super(EMPTY);
+    }
 
     /**
      * Creates a new {@link ApplicationException}.
@@ -50,21 +54,17 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     protected ApplicationException(final ParametrizedMessage parametrizedMessage) {
-        super();
-
-        message = getMessageFormatter().applyArguments(parametrizedMessage);
+        super(parametrizedMessage.toString());
     }
 
     /**
      * Creates a new {@link ApplicationException}.
-     *k
+     *
      * @param cause
      *        {@link Exception} that caused this {@link ApplicationException}
      */
     protected ApplicationException(final Exception cause) {
-        super(cause);
-
-        message = createMessageFromExceptionName(this);
+        super(EMPTY, cause);
     }
 
     /**
@@ -80,22 +80,6 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     protected ApplicationException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
-        super(cause);
-
-        message = getMessageFormatter().applyArguments(parametrizedMessage);
-    }
-
-    /**
-     * Returns the {@link TemplateEngine} used to format the message.
-     *
-     * @return used {@link TemplateEngine}
-     */
-    protected TemplateEngine getMessageFormatter() {
-        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(parametrizedMessage.toString(), cause);
     }
 }

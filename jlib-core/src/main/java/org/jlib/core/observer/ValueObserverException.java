@@ -21,7 +21,7 @@
 
 package org.jlib.core.observer;
 
-import static org.jlib.core.language.ExceptionUtility.buildMessageWithNamedObject;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ObserverException} thrown during an {@link ValueObserver} operation.
@@ -49,9 +49,9 @@ extends ObserverException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public ValueObserverException(final CharSequence valueName, final Object value, final Exception cause,
-                                  final CharSequence messageTemplate, final Object... messageArguments) {
+    public ValueObserverException(final Object value, final Exception cause,
+                                  final ParametrizedMessage parametrizedMessage) {
 
-        super(cause, buildMessageWithNamedObject(messageTemplate, valueName, value), messageArguments);
+        super(cause, parametrizedMessage.with(value));
     }
 }

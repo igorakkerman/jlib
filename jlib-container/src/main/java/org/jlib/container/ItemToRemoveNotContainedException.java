@@ -21,12 +21,10 @@
 
 package org.jlib.container;
 
-import org.apache.commons.lang3.StringUtils;
-
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import org.jlib.core.language.ExceptionUtility;
-import org.jlib.core.language.InvalidNamedObjectArgumentException;
+import org.jlib.core.language.ExceptionMessageUtility;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link Container}
@@ -35,7 +33,7 @@ import org.jlib.core.language.InvalidNamedObjectArgumentException;
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidNamedObjectArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;
@@ -51,7 +49,7 @@ extends InvalidNamedObjectArgumentException {
      */
     public ItemToRemoveNotContainedException(final CharSequence containerName, final Container<?> container,
                                              final CharSequence itemName, final Object item) {
-        super(containerName, container, ExceptionUtility.buildMessageWithNamedObject(EMPTY, ));
+        super(containerName, container, ExceptionMessageUtility.withNamedObject(EMPTY, ));
     }
 
     /**

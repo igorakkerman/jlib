@@ -32,7 +32,6 @@ import org.jlib.container.RandomAccessRemoveContainer;
 import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.language.InvalidNamedObjectArgumentException;
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveIterableTraverser;

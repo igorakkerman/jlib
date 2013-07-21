@@ -47,13 +47,13 @@ implements Modifiable<Value> {
      *
      * @return never
      *
-     * @throws ValueNotSetException
+     * @throws ValueNotInitializedException
      *         always
      */
     @Override
     public Value getValue()
-    throws ValueNotSetException {
-        throw new ValueNotSetException();
+    throws ValueNotInitializedException {
+        throw new ValueNotInitializedException();
     }
 
     /**

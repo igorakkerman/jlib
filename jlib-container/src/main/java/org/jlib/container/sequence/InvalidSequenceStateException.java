@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
+import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidNamedObjectStateException} referencing a {@link Sequence}.
@@ -29,7 +29,7 @@ import org.jlib.core.language.InvalidNamedObjectStateException;
  * @author Igor Akkerman
  */
 public abstract class InvalidSequenceStateException
-extends InvalidNamedObjectStateException {
+extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1471989606171377366L;
@@ -60,8 +60,7 @@ extends InvalidNamedObjectStateException {
      * @param messageArguments
      *        sequence of {@link Object} error message arguments
      */
-    public InvalidSequenceStateException(final Sequence<?> sequence, final String messageTemplate,
-                                         final Object... messageArguments) {
+    public InvalidSequenceStateException(final Sequence<?> sequence, final ParametrizedMessage parametrizedMessage) {
         this(sequence, messageTemplate, null, messageArguments);
     }
 

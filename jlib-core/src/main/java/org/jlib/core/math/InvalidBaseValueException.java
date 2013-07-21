@@ -21,6 +21,8 @@
 
 package org.jlib.core.math;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
@@ -36,8 +38,7 @@ extends InvalidArgumentException {
 
     public InvalidBaseValueException(final int baseValue) {
 
-        // TODO: create constant for "{0}"
-        super("{0} < 1", baseValue);
+        super(message("{0} < 1", baseValue));
 
         this.baseValue = baseValue;
     }

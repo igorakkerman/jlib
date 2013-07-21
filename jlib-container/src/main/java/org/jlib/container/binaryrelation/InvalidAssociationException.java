@@ -21,6 +21,8 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.language.ParametrizedMessage;
+
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
  * {@link Association} cannot be added to a {@link BinaryRelation}.
@@ -51,7 +53,8 @@ extends InvalidBinaryRelationArgumentException {
      * @param rightValue
      *        RightValue of the invalid {@link Association}
      */
-    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
+    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                       final Object rightValue) {
         this(binaryRelation, leftValue, rightValue, "{1}: <{2}, {3}>");
     }
 
@@ -73,7 +76,9 @@ extends InvalidBinaryRelationArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
-    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue, final String messageTemplate, final Object... messageArguments) {
+    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                       final Object rightValue, final ParametrizedMessage parametrizedMessage) {
+
         this(binaryRelation, leftValue, rightValue, messageTemplate, (Throwable) null, messageArguments);
     }
 
@@ -99,7 +104,9 @@ extends InvalidBinaryRelationArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
-    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                       final Object rightValue, final String messageTemplate, final Throwable cause,
+                                       final Object... messageArguments) {
         super(binaryRelation, messageTemplate, cause, messageArguments, leftValue, rightValue);
 
         this.leftValue = leftValue;

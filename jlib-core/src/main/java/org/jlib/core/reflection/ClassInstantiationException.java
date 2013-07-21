@@ -21,8 +21,6 @@
 
 package org.jlib.core.reflection;
 
-import org.jlib.core.language.NamedObjectApplicationException;
-
 /**
  * Exception thrown when a class cannot be instantiated. This Exception type may
  * be used by factories as a wrapper for any kind of Exceptions occurring when
