@@ -21,8 +21,8 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.withNamedObject;
-import static org.jlib.core.language.ExceptionUtility.withObject;
+import static org.jlib.core.language.ExceptionMessageUtility.withNamedObject;
+import static org.jlib.core.language.ExceptionMessageUtility.withObject;
 
 import org.jlib.core.text.ParametrizedText;
 

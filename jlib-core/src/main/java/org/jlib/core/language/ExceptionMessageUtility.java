@@ -27,14 +27,10 @@ import static org.jlib.core.text.TextUtility.removeOnce;
 import org.jlib.core.text.textbuilder.MessageFormatTemplateEngine;
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
-public final class ExceptionUtility {
+public final class ExceptionMessageUtility {
 
     /** default {@link TemplateEngine} used */
     public static final TemplateEngine DEFAULT_MESSAGE_TEMPLATE_ENGINE = MessageFormatTemplateEngine.getInstance();
-
-    private ExceptionUtility() {
-        // no visible constructor
-    }
 
     public static String createMessageFromExceptionName(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
@@ -53,5 +49,9 @@ public final class ExceptionUtility {
                                          final Object object) {
 
         return message.toString() + ';' + ' ' + objectName + '=' + object;
+    }
+
+    private ExceptionMessageUtility() {
+        // no visible constructor
     }
 }

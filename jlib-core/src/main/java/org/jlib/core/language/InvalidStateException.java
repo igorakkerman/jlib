@@ -21,7 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
+import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -57,10 +57,10 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidStateException(final CharSequence messageTemplate, final Object... messageArguments) {
+    protected InvalidStateException(final ParametrizedMessage parametrizedMessage) {
         super();
 
-        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
     }
 
     /**
@@ -87,11 +87,10 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidStateException(final Exception cause, final CharSequence messageTemplate,
-                                    final Object... messageArguments) {
+    protected InvalidStateException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
         super(cause);
 
-        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
     }
 
     /**

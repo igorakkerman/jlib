@@ -21,7 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
+import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -47,11 +47,11 @@ extends IllegalArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidArgumentException(final CharSequence messageTemplate, final Object... messageArguments) {
+    protected InvalidArgumentException(final ParametrizedMessage parametrizedMessage) {
 
         super();
 
-        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
     }
 
     /**
@@ -65,11 +65,10 @@ extends IllegalArgumentException {
      *@param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidArgumentException(final Exception cause, final CharSequence messageTemplate,
-                                       final Object... messageArguments) {
+    protected InvalidArgumentException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
         super(cause);
 
-        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(parametrizedMessage);
     }
 
     /**

@@ -21,8 +21,8 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
-import static org.jlib.core.language.ExceptionUtility.createMessageFromExceptionName;
+import static org.jlib.core.language.ExceptionMessageUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
+import static org.jlib.core.language.ExceptionMessageUtility.createMessageFromExceptionName;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -49,10 +49,10 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected ApplicationException(final CharSequence messageTemplate, final Object... messageArguments) {
+    protected ApplicationException(final ParametrizedMessage parametrizedMessage) {
         super();
 
-        message = getMessageFormatter().applyArguments(messageTemplate, messageArguments);
+        message = getMessageFormatter().applyArguments(parametrizedMessage);
     }
 
     /**
@@ -79,11 +79,10 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected ApplicationException(final Exception cause, final CharSequence messageTemplate,
-                                   final Object... messageArguments) {
+    protected ApplicationException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
         super(cause);
 
-        message = getMessageFormatter().applyArguments(messageTemplate, messageArguments);
+        message = getMessageFormatter().applyArguments(parametrizedMessage);
     }
 
     /**
