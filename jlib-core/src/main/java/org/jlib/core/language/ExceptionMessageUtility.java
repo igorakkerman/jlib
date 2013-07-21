@@ -51,6 +51,10 @@ public final class ExceptionMessageUtility {
         return message.toString() + ';' + ' ' + objectName + '=' + object;
     }
 
+    public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new ParametrizedMessage(messageTemplate, messageArguments);
+    }
+
     private ExceptionMessageUtility() {
         // no visible constructor
     }
