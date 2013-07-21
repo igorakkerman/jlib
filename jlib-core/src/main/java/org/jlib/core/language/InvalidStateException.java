@@ -21,8 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
-import static org.jlib.core.language.ExceptionUtility.formatMessage;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -61,12 +60,12 @@ extends IllegalStateException {
     protected InvalidStateException(final CharSequence messageTemplate, final Object... messageArguments) {
         super();
 
-        message = createMessage(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
      * Creates a new {@link InvalidStateException}.
-     *k
+     *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
@@ -79,33 +78,19 @@ extends IllegalStateException {
     /**
      * Creates a new {@link InvalidStateException}.
      *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
-    protected InvalidStateException(final CharSequence messageTemplate, final Exception cause,
-                                   final Object... messageArguments) {
-        super(cause);
-
-        message = createMessage(messageTemplate, messageArguments);
-    }
-
-    /**
-     * Creates the message applying the specified message arguments to the specified message template.
-     *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
-     *
-     * @param messageArguments
+     *@param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
-        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
+    protected InvalidStateException(final Exception cause, final CharSequence messageTemplate,
+                                    final Object... messageArguments) {
+        super(cause);
+
+        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
@@ -113,11 +98,12 @@ extends IllegalStateException {
      *
      * @return used {@link TemplateEngine}
      */
-    protected TemplateEngine getMessageFormatter() {
-        return DEFAULT_MESSAGE_FORMATTER;
+    protected TemplateEngine getMessageTemplateEngine() {
+        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
     }
 
     @Override
     public String getMessage() {
         return message;
-    }}
+    }
+}

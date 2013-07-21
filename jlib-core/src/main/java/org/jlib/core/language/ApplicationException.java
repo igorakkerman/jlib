@@ -21,8 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
-import static org.jlib.core.language.ExceptionUtility.formatMessage;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -105,7 +104,7 @@ extends Exception {
      *        comma separated sequence of {@link Object} message arguments
      */
     private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
-        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
+        return getMessageFormatter().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
@@ -114,7 +113,7 @@ extends Exception {
      * @return used {@link TemplateEngine}
      */
     protected TemplateEngine getMessageFormatter() {
-        return DEFAULT_MESSAGE_FORMATTER;
+        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
     }
 
     @Override

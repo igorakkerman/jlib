@@ -119,7 +119,7 @@ implements LinearIndexStorage<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Object clone() {
+    public ArrayStorage<Item> clone() {
         final ArrayStorage<Item> cloneStorage = (ArrayStorage<Item>) super.clone();
 
         cloneStorage.delegateArray = copyOf(delegateArray, delegateArray.length);

@@ -21,6 +21,7 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -33,7 +34,8 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveAllContainer<Item>
-extends RemoveAllContainer<Item>, ObservedRemoveContainer<Item> {
+extends RemoveAllContainer<Item>,
+        ObservedRemoveContainer<Item> {
 
     /**
      * Removes all Items from this {@link Container}.
@@ -42,10 +44,10 @@ extends RemoveAllContainer<Item>, ObservedRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 }

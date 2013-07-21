@@ -21,14 +21,17 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.Traversible;
-
-import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
+
+import javax.annotation.Nullable;
+
+import org.jlib.core.language.InvalidNamedObjectArgumentException;
+import org.jlib.core.language.InvalidNamedObjectStateException;
+import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.Traversible;
 
 /**
  * Container of items.
@@ -39,18 +42,20 @@ import java.util.RandomAccess;
  * @author Igor Akkerman
  */
 public interface Container<Item>
-extends Traversible<Item>, Iterable<Item>, Cloneable {
+extends Traversible<Item>,
+        Iterable<Item>,
+        Cloneable {
 
     /**
      * Returns the number of Items in this {@link Container}.
      *
      * @return integer specifying the number of Items in this {@link Container}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     public int getItemsCount()
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 
     /**
      * Verifies whether this {@link Container} contains no Items.
@@ -58,11 +63,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@code true} if this {@link Container} contains no Items;
      *         {@code false} otherwise
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     public boolean isEmpty()
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 
     /**
      * Verifies whether this {@link Container} contains the specified Object.
@@ -77,11 +82,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(final Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    public boolean contains(Item item)
+    throws InvalidNamedObjectArgumentException, InvalidNamedObjectStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -97,11 +102,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    public boolean contains(Container<? extends Item> items)
+    throws InvalidNamedObjectArgumentException, InvalidNamedObjectStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -117,11 +122,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    public boolean contains(Collection<? extends Item> items)
+    throws InvalidNamedObjectArgumentException, InvalidNamedObjectStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the specified
@@ -137,12 +142,12 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public boolean contains(final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+    public boolean contains(Item... items)
+    throws InvalidNamedObjectArgumentException, InvalidNamedObjectStateException;
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
@@ -152,11 +157,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return {@link RandomAccess} {@link List} containing all of the Items of
      *         this {@link Container}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     public List<Item> toList()
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 
     /**
      * Returns a sequentially traversible {@link List} containing all of the
@@ -166,11 +171,11 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @return sequentially traversible {@link List} containing all of the Items
      *         of this {@link Container}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     public List<Item> toSequentialList()
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 
     /**
      * Returns an array containing all of the Items of this {@link Container} in
@@ -178,17 +183,17 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      *
      * @return array containing all of the Items of this {@link Container}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      */
     public Item[] toArray()
-    throws InvalidContainerStateException;
+    throws InvalidNamedObjectStateException;
 
     /**
-     * Verifies whether this {@link Container} is equal to the specified
-     * {@link Object}. This is true if all of the following conditions are
-     * satisfied:
-     *
+     * <p>
+     * Verifies whether this {@link Container} is equal to the specified {@link Object}. This is true if all of the
+     * following conditions are satisfied:
+     * </p>
      * <ul>
      * <li>this {@link Container} and the specified {@link Object} are instances
      * of the same class</li>
@@ -206,19 +211,26 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
     public boolean equals(@Nullable Object otherObject);
 
     /**
-     * Verifies whether the {@link Traverser} instances created by the
-     * {@link #createTraverser()} methods of this {@link Container} and the
-     * specified {@link Container} traverse the same number of Items in the same
-     * order and all traversed Items are equal. Two Items {@code item1} and
-     * {@code item2} are called equal if {@code item1.equals(item2)}.
+     * Returns the hash code of this {@link Container} confirming to {@link #equals(Object)}.
+     *
+     * @return integer specifying the hash code
+     */
+    @Override
+    public int hashCode();
+
+    /**
+     * Verifies whether the {@link Traverser} instances created by the {@link #createTraverser()} methods of this
+     * {@link Container} and the specified {@link Container} traverse the same number of Items in the same order and
+     * all traversed Items are equal. Two Items {@code item1} and {@code item2} are called equal if
+     * {@code item1.equals(item2)}.
      *
      * @param otherContainer
      *        compared {@link Container}
      *
-     * @return {@code true} if this {@link Container} and {@code otherContainer}
-     *         contain equal Items; {@code false} otherwise
+     * @return {@code true} if this {@link Container} and {@code otherContainer}contain equal Items;
+     *         {@code false} otherwise
      */
-    public boolean containsEqualItems(final Container<Item> otherContainer);
+    public boolean containsEqualItems(Container<Item> otherContainer);
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
@@ -230,10 +242,10 @@ extends Traversible<Item>, Iterable<Item>, Cloneable {
      * @param collection
      *        compared {@link Collection}
      *
-     * @return {@code true} if this {@link Container} and {@code otherContainer}
-     *         contain equal Items; {@code false} otherwise
+     * @return {@code true} if this {@link Container} and {@code otherContainer} contain equal Items;
+     *         {@code false} otherwise
      */
-    public boolean containsEqualItems(final Collection<Item> collection);
+    public boolean containsEqualItems(Collection<Item> collection);
 
     /**
      * Creates a copy of this {@link Container}.

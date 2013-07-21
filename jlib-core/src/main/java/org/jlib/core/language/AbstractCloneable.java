@@ -31,16 +31,17 @@ import org.apache.commons.beanutils.BeanUtils;
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractCloneable<Self extends AbstractCloneable<Self>>
+public abstract class AbstractCloneable
 extends AbstractObject
 implements Cloneable {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Self clone() {
+    public Object clone() {
         try {
-            final Self clonedObject = (Self) super.clone();
+            final Object clonedObject = super.clone();
 
+            // FIXME: delegate to generic cloner
             BeanUtils.copyProperties(clonedObject, this);
 
             return clonedObject;

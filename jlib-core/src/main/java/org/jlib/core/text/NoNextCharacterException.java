@@ -19,27 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.core.text;
 
-import org.jlib.core.language.InvalidNamedObjectStateException;
+import org.jlib.core.iterator.NoNextElementException;
 
-/**
- * {@link RemoveContainer} allowing all Items to be removed.
- *
- * @param <Item>
- *        type of items held in the {@link RemoveAllContainer}
- *
- * @author Igor Akkerman
- */
-public interface RemoveAllContainer<Item>
-extends RemoveContainer<Item> {
+public class NoNextCharacterException
+extends NoNextElementException {
 
-    /**
-     * Removes all Items of this {@link RemoveAllContainer}.
-     *
-     * @throws InvalidNamedObjectStateException
-     *         if an error occurs during the operation
-     */
-    public void removeAll()
-    throws InvalidNamedObjectStateException;
+    private static final long serialVersionUID = 7668227351508751791L;
+
+    public NoNextCharacterException(final CharSequence characterSequence) {
+        super("charSequence", characterSequence);
+    }
 }

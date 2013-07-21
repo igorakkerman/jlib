@@ -22,8 +22,7 @@
 package org.jlib.container.collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.language.InvalidNamedObjectStateException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a delegate object
@@ -32,7 +31,7 @@ import org.jlib.container.InvalidContainerStateException;
  * @author Igor Akkerman
  */
 public class InvalidContainerDelegateStateException
-extends InvalidContainerStateException {
+extends InvalidNamedObjectStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;
@@ -59,7 +58,9 @@ extends InvalidContainerStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateStateException(final Container<?> container, final Object delegate, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidContainerDelegateStateException(final Container<?> container, final Object delegate,
+                                                  final String messageTemplate, final Throwable cause,
+                                                  final Object... messageArguments) {
         super(container, messageTemplate, cause, delegate, messageArguments);
 
         this.delegate = delegate;

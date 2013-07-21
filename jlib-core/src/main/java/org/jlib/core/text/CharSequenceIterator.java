@@ -21,8 +21,6 @@
 
 package org.jlib.core.text;
 
-import java.util.NoSuchElementException;
-
 import org.jlib.core.iterator.AbstractIterator;
 
 final class CharSequenceIterator
@@ -30,26 +28,37 @@ extends AbstractIterator<Character> {
 
     private final CharSequence characterSequence;
 
-    private final int characterSequenceLength;
+    private int nextCharacterIndex;
 
-    private int nextCharacterIndex = 0;
+    private final int lastCharacterIndex;
 
     CharSequenceIterator(final CharSequence characterSequence) {
+        this(characterSequence, 0);
+    }
+
+    CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex) {
+        this(characterSequence, firstCharacterIndex, characterSequence.length() - 1);
+    }
+
+    CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex,
+                         final int lastCharacterIndex) {
         super();
 
         this.characterSequence = characterSequence;
-        characterSequenceLength = characterSequence.length();
+
+        nextCharacterIndex = firstCharacterIndex;
+        this.lastCharacterIndex = lastCharacterIndex;
     }
 
     @Override
     public boolean hasNext() {
-        return nextCharacterIndex < characterSequenceLength;
+        return nextCharacterIndex <= lastCharacterIndex;
     }
 
     @Override
     public Character next() {
         if (! hasNext())
-            throw new NoSuchElementException();
+            throw new NoNextCharacterException(characterSequence);
 
         return characterSequence.charAt(nextCharacterIndex++);
     }

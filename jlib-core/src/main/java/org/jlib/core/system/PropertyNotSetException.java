@@ -21,13 +21,15 @@
 
 package org.jlib.core.system;
 
+import org.jlib.core.language.ApplicationException;
+
 /**
  * Exception thrown when trying to retrieve the value of a property that is not set.
  *
  * @author Igor Akkerman
  */
 public class PropertyNotSetException
-extends Exception {
+extends ApplicationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 902825184458130007L;

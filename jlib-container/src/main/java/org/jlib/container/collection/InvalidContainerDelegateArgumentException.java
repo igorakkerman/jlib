@@ -22,7 +22,6 @@
 package org.jlib.container.collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when an argument caused an
@@ -61,7 +60,9 @@ extends InvalidContainerArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateArgumentException(final Container<?> container, final Object delegate, final Object argument, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public InvalidContainerDelegateArgumentException(final Container<?> container, final Object delegate,
+                                                     final Object argument, final String messageTemplate,
+                                                     final Throwable cause, final Object... messageArguments) {
         super(container, messageTemplate, cause, delegate, argument, messageArguments);
 
         this.delegate = delegate;

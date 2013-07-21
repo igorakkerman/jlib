@@ -23,6 +23,7 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.language.InvalidNamedObjectStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
@@ -57,15 +58,15 @@ extends RandomAccessRemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings({"unchecked", "DuplicateThrows"})
+    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
+    throws NoSuchItemToRemoveException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
            ValueObserverException;
 
     /**
@@ -83,7 +84,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -91,7 +92,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -108,7 +109,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -116,7 +117,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -133,7 +134,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -141,7 +142,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 
     /**
      * Removes all specified Items from this
@@ -157,7 +158,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidContainerStateException
+     * @throws InvalidNamedObjectStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -165,5 +166,5 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
 }

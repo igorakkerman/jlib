@@ -21,8 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_FORMATTER;
-import static org.jlib.core.language.ExceptionUtility.formatMessage;
+import static org.jlib.core.language.ExceptionUtility.DEFAULT_MESSAGE_TEMPLATE_ENGINE;
 
 import org.jlib.core.text.textbuilder.TemplateEngine;
 
@@ -41,15 +40,6 @@ extends IllegalArgumentException {
 
     /**
      * Creates a new {@link InvalidArgumentException}.
-     */
-    protected InvalidArgumentException() {
-        super();
-
-        message = super.getMessage();
-    }
-
-    /**
-     * Creates a new {@link InvalidArgumentException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
@@ -58,62 +48,37 @@ extends IllegalArgumentException {
      *        comma separated sequence of {@link Object} message arguments
      */
     protected InvalidArgumentException(final CharSequence messageTemplate, final Object... messageArguments) {
+
         super();
 
-        message = createMessage(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
      * Creates a new {@link InvalidArgumentException}.
-     *k
+     *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidArgumentException}
-     */
-    protected InvalidArgumentException(final Exception cause) {
-        super(cause);
-
-        message = super.getMessage();
-    }
-
-    /**
-     * Creates a new {@link InvalidArgumentException}.
      *
      * @param messageTemplate
      *        {@link CharSequence} specifying the message template
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidArgumentException}
-     *
-     * @param messageArguments
+     *@param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidArgumentException(final CharSequence messageTemplate, final Exception cause,
+    protected InvalidArgumentException(final Exception cause, final CharSequence messageTemplate,
                                        final Object... messageArguments) {
         super(cause);
 
-        message = createMessage(messageTemplate, messageArguments);
+        message = getMessageTemplateEngine().applyArguments(messageTemplate, messageArguments);
     }
 
     /**
-     * Creates the message applying the specified message arguments to the specified message template.
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
-    private String createMessage(final CharSequence messageTemplate, final Object... messageArguments) {
-        return formatMessage(getMessageFormatter(), messageTemplate, messageArguments);
-    }
-
-    /**
-     * Returns the {@link TemplateEngine} used to format the message.
+     * Returns the {@link TemplateEngine} used to create the message.
      *
      * @return used {@link TemplateEngine}
      */
-    protected TemplateEngine getMessageFormatter() {
-        return DEFAULT_MESSAGE_FORMATTER;
+    protected TemplateEngine getMessageTemplateEngine() {
+        return DEFAULT_MESSAGE_TEMPLATE_ENGINE;
     }
 
     @Override

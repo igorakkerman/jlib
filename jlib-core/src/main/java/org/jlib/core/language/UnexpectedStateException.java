@@ -29,8 +29,7 @@ package org.jlib.core.language;
 public class UnexpectedStateException
 extends InvalidStateException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 4203256054042738427L;
+    private static final long serialVersionUID = 4388525477338778336L;
 
     /**
      * Creates a new {@link UnexpectedStateException}.
@@ -49,9 +48,9 @@ extends InvalidStateException {
      * Creates a new {@link UnexpectedStateException}.
      *
      * @param cause
-     *        Throwable that caused this {@link UnexpectedStateException}
+     *        {@link Exception} that caused this {@link UnexpectedStateException}
      */
-    public UnexpectedStateException(final Throwable cause) {
+    public UnexpectedStateException(final Exception cause) {
         super(cause);
     }
 
@@ -62,13 +61,13 @@ extends InvalidStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        Throwable that caused this {@link UnexpectedStateException}
+     *        {@link Exception} that caused this {@link UnexpectedStateException}
      *
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    // TODO: use ApplicationException style
-    public UnexpectedStateException(final CharSequence messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(messageTemplate, cause, messageArguments);
+    public UnexpectedStateException(final CharSequence messageTemplate, final Exception cause,
+                                    final Object... messageArguments) {
+        super(cause, messageTemplate, messageArguments);
     }
 }

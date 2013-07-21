@@ -22,14 +22,18 @@
 package org.jlib.core.text;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
+
+import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
+import static org.jlib.core.text.TextUtility.removeOnce;
+
+import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.jlib.core.text.StringUtility.removeOnce;
 import static org.junit.Assert.assertThat;
-import org.junit.Test;
 
-public class StringUtilityTest {
+public class TextUtilityTest {
 
     @Test
     public void testRemoveOnceEmptyFromEmpty() {
@@ -64,5 +68,29 @@ public class StringUtilityTest {
     @Test
     public void testRemoveOnceMiddleFromDouble() {
         assertThat(removeOnce("BlaBlubBlub", "Blub"), is(equalTo("BlaBlub")));
+    }
+
+    public void unCamelCaseAllLowerCase() {
+        assertThat(camelCaseToLowerCaseWords("abcdefgeh"), is(equalTo("abcdefgeh")));
+    }
+
+    public void unCamelCaseEmptyString() {
+        assertThat(camelCaseToLowerCaseWords(EMPTY), is(equalTo(EMPTY)));
+    }
+
+    public void unCamelCaseLowerCaseStart() {
+        assertThat(camelCaseToLowerCaseWords("aBcdEfg"), is(equalTo("a bcd efg")));
+    }
+
+    public void unCamelCaseUpperCaseStart() {
+        assertThat(camelCaseToLowerCaseWords("AbcdEfg"), is(equalTo("abcd efg")));
+    }
+
+    public void unCamelCaseDoubleUpperCase() {
+        assertThat(camelCaseToLowerCaseWords("ABcdEfg"), is(equalTo("a bcd efg")));
+    }
+
+    public void unCamelCaseAllUpperCase() {
+        assertThat(camelCaseToLowerCaseWords("ABCDEFG"), is(equalTo("a b c d e f g")));
     }
 }

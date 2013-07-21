@@ -21,10 +21,9 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-
 import java.util.Collection;
+
+import org.jlib.container.Container;
 
 /**
  * {@link AssociateBinaryRelation} implemented using hashing for left and right
