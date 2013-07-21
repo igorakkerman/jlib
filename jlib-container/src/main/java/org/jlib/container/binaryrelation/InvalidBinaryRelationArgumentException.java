@@ -60,7 +60,7 @@ extends InvalidContainerArgumentException {
      */
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
                                                   final ParametrizedMessage parametrizedMessage) {
-        this(binaryRelation, messageTemplate, (Throwable) null, messageArguments);
+        this(binaryRelation, messageTemplate, (Exception) null, messageArguments);
     }
 
     /**
@@ -73,14 +73,14 @@ extends InvalidContainerArgumentException {
      *        {@link String} specifying the template of the error message
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidBinaryRelationArgumentException}
      *
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final String messageTemplate, final Throwable cause,
+                                                  final String messageTemplate, final Exception cause,
                                                   final Object... messageArguments) {
         super(binaryRelation, messageTemplate, cause, messageArguments);
 

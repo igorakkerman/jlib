@@ -31,6 +31,7 @@ import org.jlib.core.operator.OperatorException;
  *
  * @author Igor Akkerman
  */
+@SuppressWarnings("ProhibitedExceptionDeclared")
 public interface ValueObserver<Value> {
 
     /**

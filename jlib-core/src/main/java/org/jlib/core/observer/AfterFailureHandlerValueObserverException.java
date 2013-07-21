@@ -21,6 +21,7 @@
 
 package org.jlib.core.observer;
 
+import org.jlib.core.language.ParametrizedMessage;
 import org.jlib.core.operator.OperatorException;
 
 /**
@@ -31,7 +32,7 @@ import org.jlib.core.operator.OperatorException;
  * @author Igor Akkerman
  */
 public abstract class AfterFailureHandlerValueObserverException
-extends ObserverException {
+extends ValueObserverException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2379268967139497379L;
@@ -47,13 +48,14 @@ extends ObserverException {
      *        {@code item}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link AfterFailureHandlerValueObserverException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public AfterFailureHandlerValueObserverException(final Object item, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(cause, messageTemplate, item, messageArguments);
+    public AfterFailureHandlerValueObserverException(final Object value, final ParametrizedMessage message,
+                                                     final Exception cause) {
+        super(value, message, cause);
     }
 }

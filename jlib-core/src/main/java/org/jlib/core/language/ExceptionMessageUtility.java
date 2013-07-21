@@ -38,7 +38,7 @@ public final class ExceptionMessageUtility {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
-    public static String namedObjectToString(final CharSequence objectName, final Object object) {
+    public static String namedObject(final CharSequence objectName, final Object object) {
         return objectName.toString() + '=' + object;
     }
 
@@ -59,6 +59,10 @@ public final class ExceptionMessageUtility {
 
     public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
         return new ParametrizedMessage(DEFAULT_MESSAGE_TEMPLATE_ENGINE, messageTemplate, messageArguments);
+    }
+
+    public static ParametrizedMessage message(final int value) {
+        return message(Integer.toString(value));
     }
 
     private ExceptionMessageUtility() {

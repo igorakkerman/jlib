@@ -41,15 +41,8 @@ extends InvalidStateException {
      *
      * @param cause
      *        {@link Exception} that caused this {@link ObserverException}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template
-     *
-     *@param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
-    public ObserverException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
-
+    public ObserverException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
         super(parametrizedMessage, cause);
     }
 }

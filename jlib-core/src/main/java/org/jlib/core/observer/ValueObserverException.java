@@ -41,17 +41,11 @@ extends ObserverException {
      *        observed {@link Object} value
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link ValueObserverException}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
+     *        {@link Exception} that caused this {@link ValueObserverException}
      */
-    public ValueObserverException(final Object value, final Exception cause,
-                                  final ParametrizedMessage parametrizedMessage) {
+    public ValueObserverException(final Object value, final ParametrizedMessage parametrizedMessage,
+                                  final Exception cause) {
 
-        super(cause, parametrizedMessage.with(value));
+        super(parametrizedMessage.with(value), cause);
     }
 }

@@ -27,9 +27,11 @@ import static org.jlib.core.language.ExceptionMessageUtility.withObject;
 import org.jlib.core.text.ParametrizedText;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
-public class ParametrizedMessage extends ParametrizedText {
+public class ParametrizedMessage
+extends ParametrizedText {
 
-    public ParametrizedMessage(final TemplateEngine templateEngine, final CharSequence template, final Object... arguments) {
+    public ParametrizedMessage(final TemplateEngine templateEngine, final CharSequence template,
+                               final Object... arguments) {
         super(templateEngine, template, arguments);
     }
 

@@ -23,8 +23,8 @@ package org.jlib.core.value;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
+import com.google.common.base.Optional;
 import org.jlib.core.language.ApplicationException;
-import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ApplicationException} thrown when a requested Value is not accessible.
@@ -37,10 +37,12 @@ extends ApplicationException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;
 
-    private final String valueName;
+    private final Optional<String> valueName;
 
     protected ValueNotAccessibleException() {
         super();
+
+        valueName = Optional.absent();
     }
 
     /**
@@ -52,10 +54,10 @@ extends ApplicationException {
     public ValueNotAccessibleException(final CharSequence valueName) {
         super(message(valueName));
 
-        this.valueName = valueName.toString();
+        this.valueName = Optional.of(valueName.toString());
     }
 
-    public String getValueName() {
+    public Optional<String> getValueName() {
         return valueName;
     }
 }

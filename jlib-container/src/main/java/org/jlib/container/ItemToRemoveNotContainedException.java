@@ -62,10 +62,10 @@ extends InvalidArgumentException {
      *        Item to remove
      *
      * @param cause
-     *        Throwable that caused this {@link ItemToRemoveNotContainedException}
+     *        Exception that caused this {@link ItemToRemoveNotContainedException}
      */
     public ItemToRemoveNotContainedException(final CharSequence containerName, final Container<?> container,
-                                             final CharSequence itemName, final Object item, final Throwable cause) {
+                                             final CharSequence itemName, final Object item, final Exception cause) {
         super(container, "{1}: {2}", item);
     }
 }

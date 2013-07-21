@@ -21,6 +21,8 @@
 
 package org.jlib.core.observer;
 
+import org.jlib.core.language.ParametrizedMessage;
+
 /**
  * {@link ValueObserverException} thrown during a
  * {@link ValueObserver#handleAfterSuccess(Object)} operation.
@@ -28,7 +30,7 @@ package org.jlib.core.observer;
  * @author Igor Akkerman
  */
 public abstract class BeforeHandlerValueObserverException
-extends ObserverException {
+extends ValueObserverException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 3157732253924917254L;
@@ -36,21 +38,14 @@ extends ObserverException {
     /**
      * Creates a new {@link BeforeHandlerValueObserverException}.
      *
-     * @param item
-     *        Item removed from {@code container}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template; {1} references
-     *        {@code item}
+     * @param value
+     *        Value removed from {@code container}
      *
      * @param cause
-     *        {@link Throwable} that caused this
-     *        {@link BeforeHandlerValueObserverException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
+     *        {@link Exception} that caused this {@link BeforeHandlerValueObserverException}
      */
-    public BeforeHandlerValueObserverException(final Object item, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
-        super(cause, messageTemplate, item, messageArguments);
+    public BeforeHandlerValueObserverException(final Object value, final ParametrizedMessage message,
+                                               final Exception cause) {
+        super(value, message, cause);
     }
 }

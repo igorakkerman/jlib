@@ -52,9 +52,9 @@ extends InvalidTraverserStateException {
      *        traversed {@link Traversible}
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link NoPreviousItemException}
+     *        {@link Exception} that caused this {@link NoPreviousItemException}
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final Throwable cause) {
+    public NoPreviousItemException(final Traversible<?> traversible, final Exception cause) {
         super(traversible, cause);
     }
 
@@ -85,13 +85,13 @@ extends InvalidTraverserStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link NoPreviousItemException}
+     *        {@link Exception} that caused this {@link NoPreviousItemException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Throwable cause, final Object... messageArguments) {
+    public NoPreviousItemException(final Traversible<?> traversible, final String messageTemplate, final Exception cause, final Object... messageArguments) {
         super(traversible, messageTemplate, cause, messageArguments);
     }
 }

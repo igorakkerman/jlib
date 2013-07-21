@@ -32,7 +32,8 @@ import org.jlib.core.operator.OperatorException;
 public final class ObserverUtility {
 
     /** no visible constructor */
-    private ObserverUtility() {}
+    private ObserverUtility() {
+    }
 
     /**
      * Operates on the specified Value using the specified {@link HandledOperator} .
@@ -60,7 +61,9 @@ public final class ObserverUtility {
      *         </ul>
      */
     @SafeVarargs
-    public static <Value> void operate(final HandledOperator handledOperator, final Value value, final ValueObserver<Value>... observers)
+    @SuppressWarnings({ "ProhibitedExceptionDeclared", "ProhibitedExceptionThrown" })
+    public static <Value> void operate(final HandledOperator handledOperator, final Value value,
+                                       final ValueObserver<Value>... observers)
     throws RuntimeException {
         try {
             for (final ValueObserver<Value> observer : observers)

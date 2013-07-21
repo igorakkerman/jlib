@@ -52,9 +52,9 @@ extends NoPreviousItemException {
      *        traversed {@link Sequence}
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link Exception}
+     *        {@link Exception} that caused this {@link Exception}
      */
-    public NoPreviousSequenceItemException(final Sequence<?> sequence, final Throwable cause) {
+    public NoPreviousSequenceItemException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
     }
 }

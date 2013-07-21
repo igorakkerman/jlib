@@ -21,6 +21,8 @@
 
 package org.jlib.core.storage;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 public class InvalidAdditionalCapacityException
 extends LinearIndexStorageException {
 
@@ -39,6 +41,6 @@ extends LinearIndexStorageException {
      *        array of {@link Object} message arguments
      */
     public InvalidAdditionalCapacityException(final LinearIndexStorage<?> storage, final int additionalCapacity) {
-        super(storage, "{0}", additionalCapacity);
+        super(storage, message(additionalCapacity));
     }
 }

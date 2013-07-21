@@ -48,11 +48,11 @@ implements Modifiable<Value> {
     };
 
     private Optional() {
-        this.delegateValue = UNINITIALIZED_VALUE_HOLDER;
+        delegateValue = UNINITIALIZED_VALUE_HOLDER;
     }
 
     private Optional(final Value value) {
-        this.delegateValue = new Initialized<>(value);
+        delegateValue = new Initialized<>(value);
     }
 
     private org.jlib.core.value.Value<Value> delegateValue;

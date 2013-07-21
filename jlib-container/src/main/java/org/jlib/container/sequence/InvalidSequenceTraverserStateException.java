@@ -44,7 +44,7 @@ extends InvalidTraverserStateException {
      *        referenced {@link Sequence}
      */
     public InvalidSequenceTraverserStateException(final Sequence<?> sequence) {
-        this(sequence, (Throwable) null);
+        this(sequence, (Exception) null);
     }
 
     /**
@@ -69,10 +69,10 @@ extends InvalidTraverserStateException {
      *        referenced {@link Sequence}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceTraverserStateException}
      */
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Throwable cause) {
+    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Exception cause) {
         this(sequence, "{1}", cause);
     }
 
@@ -87,11 +87,11 @@ extends InvalidTraverserStateException {
      *        {@link String} specifying the error message
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceTraverserStateException}
      */
     public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String message,
-                                                  final Throwable cause) {
+                                                  final Exception cause) {
         super(sequence, message, cause);
 
         this.sequence = sequence;

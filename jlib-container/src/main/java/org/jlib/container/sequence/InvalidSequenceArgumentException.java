@@ -21,19 +21,19 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.ParametrizedMessage;
+
 /**
  * {@link InvalidContainerArgumentException} referencing a {@link Sequence}.
  *
  * @author Igor Akkerman
  */
 public abstract class InvalidSequenceArgumentException
-extends InvalidContainerArgumentException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 4935044142559108435L;
-
-    /** referenced {@link Sequence} */
-    private final Sequence<?> sequence;
 
     /**
      * Creates a new {@link InvalidSequenceArgumentException}.
@@ -42,7 +42,7 @@ extends InvalidContainerArgumentException {
      *        referenced {@link Sequence}
      */
     public InvalidSequenceArgumentException(final Sequence<?> sequence) {
-        this(sequence, (Throwable) null);
+        this(sequence, (Exception) null);
     }
 
     /**
@@ -70,10 +70,10 @@ extends InvalidContainerArgumentException {
      *        referenced {@link Sequence}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceArgumentException}
      */
-    public InvalidSequenceArgumentException(final Sequence<?> sequence, final Throwable cause) {
+    public InvalidSequenceArgumentException(final Sequence<?> sequence, final Exception cause) {
         this(sequence, "{1}", cause);
     }
 
@@ -88,14 +88,14 @@ extends InvalidContainerArgumentException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceArgumentException}
      *
      * @param messageArguments
      *        sequence of {@link Object} error message arguments
      */
     public InvalidSequenceArgumentException(final Sequence<?> sequence, final String messageTemplate,
-                                            final Throwable cause, final Object... messageArguments) {
+                                            final Exception cause, final Object... messageArguments) {
         super(sequence, messageTemplate, cause, messageArguments);
 
         this.sequence = sequence;

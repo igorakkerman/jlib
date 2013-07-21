@@ -21,6 +21,8 @@
 
 package org.jlib.core.traverser;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.language.ParametrizedMessage;
 
@@ -36,17 +38,14 @@ extends InvalidStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
-    /** traversed {@link Traversible} */
-    private transient final Traversible<?> traversible;
-
-    /**
+    /*
      * Creates a new {@link InvalidTraverserStateException}.
      *
      * @param traversible
      *        traversed {@link Traversible}
      */
     public InvalidTraverserStateException(final Traversible<?> traversible) {
-        this(traversible, "{1}");
+        super(message().with(traversible));
     }
 
     /**
@@ -56,11 +55,10 @@ extends InvalidStateException {
      *        traversed {@link Traversible}
      *
      * @param cause
-     *        {@link Throwable} that caused this
-     *        {@link InvalidStateException}
+     *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final Throwable cause) {
-        this(traversible, "{1}", cause);
+    public InvalidTraverserStateException(final Traversible<?> traversible, final Exception cause) {
+        super(message().with(traversible), cause);
     }
 
     /**
@@ -76,10 +74,9 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage) {
-        super(parametrizedMessage, traversible);
-
-        this.traversible = traversible;
+    public InvalidTraverserStateException(final Traversible<?> traversible,
+                                          final ParametrizedMessage message) {
+        super(message.with(traversible));
     }
 
     /**
@@ -92,26 +89,14 @@ extends InvalidStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        {@link Throwable} that caused this
-     *        {@link InvalidStateException}
+     *        {@link Exception} that caused this {@link InvalidStateException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final String messageTemplate,
-                                          final Throwable cause, final Object... messageArguments) {
-        super(messageTemplate, cause, traversible, messageArguments);
-
-        this.traversible = traversible;
-    }
-
-    /**
-     * Returns the traversed {@link Traversible}.
-     *
-     * @return traversed {@link Traversible}
-     */
-    public Traversible<?> getTraversible() {
-        return traversible;
+    public InvalidTraverserStateException(final Traversible<?> traversible, final ParametrizedMessage message,
+                                          final Exception cause) {
+        super(message.with(traversible), cause);
     }
 }

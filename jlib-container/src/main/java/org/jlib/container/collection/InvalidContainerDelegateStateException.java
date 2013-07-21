@@ -52,14 +52,14 @@ extends InvalidStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        Throwable that caused this
+     *        Exception that caused this
      *        {@link InvalidContainerDelegateStateException}
      *
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerDelegateStateException(final Container<?> container, final Object delegate,
-                                                  final String messageTemplate, final Throwable cause,
+                                                  final String messageTemplate, final Exception cause,
                                                   final Object... messageArguments) {
         super(container, messageTemplate, cause, delegate, messageArguments);
 

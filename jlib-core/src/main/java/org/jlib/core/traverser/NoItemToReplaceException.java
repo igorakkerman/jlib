@@ -50,10 +50,10 @@ extends InvalidTraverserStateException {
      *        traversed {@link Traversible}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link NoItemToReplaceException}
      */
-    public NoItemToReplaceException(final Traversible<?> traversible, final Throwable cause) {
+    public NoItemToReplaceException(final Traversible<?> traversible, final Exception cause) {
         super(traversible, cause);
     }
 }

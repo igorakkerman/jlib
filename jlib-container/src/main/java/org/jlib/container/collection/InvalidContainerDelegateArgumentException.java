@@ -54,7 +54,7 @@ extends InvalidContainerArgumentException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        Throwable that caused this
+     *        Exception that caused this
      *        {@link InvalidContainerDelegateArgumentException}
      *
      * @param messageArguments
@@ -62,7 +62,7 @@ extends InvalidContainerArgumentException {
      */
     public InvalidContainerDelegateArgumentException(final Container<?> container, final Object delegate,
                                                      final Object argument, final String messageTemplate,
-                                                     final Throwable cause, final Object... messageArguments) {
+                                                     final Exception cause, final Object... messageArguments) {
         super(container, messageTemplate, cause, delegate, argument, messageArguments);
 
         this.delegate = delegate;

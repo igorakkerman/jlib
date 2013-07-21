@@ -40,14 +40,14 @@ import org.jlib.core.system.SystemUtility;
  * Additionally, when using the methods of the class {@link Class} for
  * instantiating classes using reflection, many Exceptions have to be caught.
  * Usually, the application that uses these methods makes no difference why the
- * instantiation failed. They simply catch {@code Throwable} to perform the
+ * instantiation failed. They simply catch {@code Exception} to perform the
  * exception handling. This is not a clean way to handle this probli.
  * </p>
  * <p>
  * In contrast, the methods of this class throw one single checked exception,
  * {@link ClassInstantiationException}, so that the application only needs to
  * catch that single one. The {@code ClassInstantiationException} contains the
- * information about the original Throwable that caused it so if the actual
+ * information about the original Exception that caused it so if the actual
  * reason is of interest, it still can be retrieved.
  * </p>
  *
@@ -96,7 +96,7 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a
+     * Exception of any kind, it is wrapped into a
      * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
      *
@@ -120,7 +120,7 @@ public final class ReflectionUtility {
      * </p>
      * <p>
      * This method calls {@link Class#newInstance()}. If that method throws a
-     * Throwable of any kind, it is wrapped into a
+     * Exception of any kind, it is wrapped into a
      * {@code ClassInstantiationException}, which is then thrown by this method.
      * </p>
      *

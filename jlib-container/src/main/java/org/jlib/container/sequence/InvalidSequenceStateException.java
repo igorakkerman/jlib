@@ -44,7 +44,7 @@ extends InvalidStateException {
      *        referenced {@link Sequence}
      */
     public InvalidSequenceStateException(final Sequence<?> sequence) {
-        this(sequence, (Throwable) null);
+        this(sequence, (Exception) null);
     }
 
     /**
@@ -72,10 +72,10 @@ extends InvalidStateException {
      *        referenced {@link Sequence}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceStateException}
      */
-    public InvalidSequenceStateException(final Sequence<?> sequence, final Throwable cause) {
+    public InvalidSequenceStateException(final Sequence<?> sequence, final Exception cause) {
         this(sequence, "{1}", cause);
     }
 
@@ -90,14 +90,14 @@ extends InvalidStateException {
      *        {@link String} specifying the error message template
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidSequenceStateException}
      *
      * @param messageArguments
      *        sequence of {@link Object} error message arguments
      */
     public InvalidSequenceStateException(final Sequence<?> sequence, final String messageTemplate,
-                                         final Throwable cause, final Object... messageArguments) {
+                                         final Exception cause, final Object... messageArguments) {
         super(sequence, messageTemplate, cause, messageArguments);
 
         this.sequence = sequence;

@@ -21,6 +21,8 @@
 
 package org.jlib.core.system;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.ApplicationException;
 
 /**
@@ -44,7 +46,7 @@ extends ApplicationException {
      *        {@link String} specifying the name of the property that is not set
      */
     public PropertyNotSetException(final String propertyName) {
-        super(propertyName);
+        super(message(propertyName));
 
         this.propertyName = propertyName;
     }

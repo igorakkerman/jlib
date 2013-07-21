@@ -55,9 +55,9 @@ extends NoNextItemException {
      *        traversed {@link Sequence}
      *
      * @param cause
-     *        {@link Throwable} that caused this {@link Exception}
+     *        {@link Exception} that caused this {@link Exception}
      */
-    public NoNextSequenceItemException(final Sequence<?> sequence, final Throwable cause) {
+    public NoNextSequenceItemException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
 
         this.sequence = sequence;

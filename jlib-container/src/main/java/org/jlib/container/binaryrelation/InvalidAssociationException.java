@@ -79,7 +79,7 @@ extends InvalidBinaryRelationArgumentException {
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue, final ParametrizedMessage parametrizedMessage) {
 
-        this(binaryRelation, leftValue, rightValue, messageTemplate, (Throwable) null, messageArguments);
+        this(binaryRelation, leftValue, rightValue, messageTemplate, (Exception) null, messageArguments);
     }
 
     /**
@@ -98,14 +98,14 @@ extends InvalidBinaryRelationArgumentException {
      *        {@link String} specifying the template of the error message
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidBinaryRelationArgumentException}
      *
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                       final Object rightValue, final String messageTemplate, final Throwable cause,
+                                       final Object rightValue, final String messageTemplate, final Exception cause,
                                        final Object... messageArguments) {
         super(binaryRelation, messageTemplate, cause, messageArguments, leftValue, rightValue);
 

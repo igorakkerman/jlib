@@ -21,6 +21,8 @@
 
 package org.jlib.core.storage.capacity;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
 
@@ -30,6 +32,6 @@ extends LinearIndexStorageException {
     private static final long serialVersionUID = 2379753107475444861L;
 
     InvalidPartialCapacityException(final LinearIndexStorage<?> storage, final int partialCapacity) {
-        super(storage, "{0}", partialCapacity);
+        super(storage, message(partialCapacity));
     }
 }

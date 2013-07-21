@@ -40,10 +40,10 @@ extends InvalidTraverserStateException {
      *        traversed {@link Traversible}
      *
      * @param cause
-     *        {@link Throwable} that caused this
+     *        {@link Exception} that caused this
      *        {@link InvalidTraversibleStateException}
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final Throwable cause) {
+    public InvalidTraversibleStateException(final Traversible<?> traversible, final Exception cause) {
         super(traversible, cause);
     }
 }

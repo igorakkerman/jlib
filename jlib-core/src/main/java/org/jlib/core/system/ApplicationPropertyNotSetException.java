@@ -21,6 +21,8 @@
 
 package org.jlib.core.system;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.InvalidStateException;
 
 /**
@@ -35,27 +37,13 @@ extends InvalidStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 8781400138384560958L;
 
-    /** name of the property that is not set */
-    private final String propertyName;
-
     /**
      * Creates a new ApplicationPropertyNotSetException.
      *
      * @param propertyName
-     *        String specifying the name of the property that is not set
+     *        {@link CharSequence} specifying the name of the property that is not set
      */
-    public ApplicationPropertyNotSetException(final String propertyName) {
-        super(propertyName, "propertyName='{0}'");
-
-        this.propertyName = propertyName;
-    }
-
-    /**
-     * Returns the name of the property that is not set.
-     *
-     * @return String specifying the name of the property that is not set
-     */
-    public String getPropertyName() {
-        return propertyName;
+    public ApplicationPropertyNotSetException(final CharSequence propertyName) {
+        super(message(propertyName));
     }
 }
