@@ -23,8 +23,6 @@ package org.jlib.core.text.textbuilder;
 
 import java.text.MessageFormat;
 
-import org.jlib.core.text.ParametrizedText;
-
 /**
  * {@link TemplateEngine} using the {@link MessageFormat} template format and processing routine. Implemented as a
  * singleton.
@@ -35,6 +33,7 @@ import org.jlib.core.text.ParametrizedText;
  */
 // TODO: unit unittest
 public final class MessageFormatTemplateEngine
+extends AbstractTemplateEngine
 implements TemplateEngine {
 
     /** sole {@link MessageFormatTemplateEngine} instance */
@@ -61,10 +60,5 @@ implements TemplateEngine {
     @SuppressWarnings("UnnecessaryToStringCall") // wrong inspection warning!
     public String applyArguments(final CharSequence template, final Object... arguments) {
         return MessageFormat.format(template.toString(), arguments);
-    }
-
-    @Override
-    public String applyArguments(final ParametrizedText parametrizedText) {
-        return applyArguments(parametrizedText.getTemplate(), parametrizedText.getArguments());
     }
 }
