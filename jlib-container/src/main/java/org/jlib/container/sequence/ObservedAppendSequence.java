@@ -73,7 +73,7 @@ extends AppendSequence<Item> {
      * @throws InvalidSequenceArgumentException
      *         if {@code items}
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *

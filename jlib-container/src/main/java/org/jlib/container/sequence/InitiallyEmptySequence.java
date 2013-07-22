@@ -31,6 +31,7 @@ import org.jlib.container.ObservedRemoveAllContainer;
 import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.Traversible;
 
@@ -76,45 +77,45 @@ implements Sequence<Item>,
 
     @Override
     public void remove(final Collection<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     public void remove(final Iterable<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Traversible<? extends Item> items)
-    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws ItemToRemoveNotContainedException, InvalidNamedObjectStateException {
+    throws ItemToRemoveNotContainedException, InvalidTraversibleStateException {
         // intentionally blank
     }
 
@@ -149,35 +150,35 @@ implements Sequence<Item>,
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         // intentionally blank
     }
 

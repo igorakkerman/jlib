@@ -41,7 +41,7 @@ extends Sequence<Item>{
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void prepend(final Item item)
@@ -52,7 +52,7 @@ extends Sequence<Item>{
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void prepend(final Container<? extends Item> items)
@@ -63,7 +63,7 @@ extends Sequence<Item>{
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void prepend(final Collection<? extends Item> items)
@@ -74,7 +74,7 @@ extends Sequence<Item>{
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")

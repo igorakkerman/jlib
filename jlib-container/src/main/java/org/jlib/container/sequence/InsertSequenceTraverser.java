@@ -56,9 +56,9 @@ extends SequenceTraverser<Item> {
      * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void insert(final Item item)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException;
 }

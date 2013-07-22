@@ -25,6 +25,8 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 
 /**
@@ -50,19 +52,19 @@ extends RemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    public void retain(Container<? extends Item> items, ValueObserver<Item>... observers)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -75,19 +77,19 @@ extends RemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    public void retain(Collection<? extends Item> items, ValueObserver<Item>... observers)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Removes all Items from this {@link ObservedRandomAccessRemoveContainer}
@@ -99,24 +101,25 @@ extends RemoveContainer<Item> {
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    public void retain(ValueObserver<Item>[] observers, Item... items)
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Returns an {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemoveContainer}
      *
      * @return {@link ObservedRemoveTraverser} traversing the Items of this {@link ObservedRemoveContainer}
      */
+    @Override
     public ObservedRemoveTraverser<Item> createTraverser();
 }

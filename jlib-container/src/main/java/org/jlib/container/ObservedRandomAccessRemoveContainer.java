@@ -25,6 +25,8 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link RemoveContainer} allowing its remove operations to be attended by
@@ -53,11 +55,11 @@ extends RandomAccessRemoveContainer<Item> {
      *         if this {@link ObservedRandomAccessRemoveContainer} does not
      *         contain {@code Item}
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -65,7 +67,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
+    throws ItemToRemoveNotContainedException, InvalidTraversibleArgumentException, InvalidTraversibleStateException,
            ValueObserverException;
 
     /**
@@ -79,11 +81,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -91,7 +93,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -104,11 +106,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -116,7 +118,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -129,11 +131,11 @@ extends RandomAccessRemoveContainer<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -141,7 +143,7 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
      * Removes all specified Items from this
@@ -153,11 +155,11 @@ extends RandomAccessRemoveContainer<Item> {
      * @param observers
      *        array of {@link ValueObserver} instances attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -165,5 +167,5 @@ extends RandomAccessRemoveContainer<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 }

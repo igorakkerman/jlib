@@ -25,7 +25,7 @@ import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.ParametrizedMessage;
 
 /**
- * {@link InvalidContainerArgumentException} referencing a {@link Sequence}.
+ * {@link InvalidTraversibleArgumentException} referencing a {@link Sequence}.
  *
  * @author Igor Akkerman
  */

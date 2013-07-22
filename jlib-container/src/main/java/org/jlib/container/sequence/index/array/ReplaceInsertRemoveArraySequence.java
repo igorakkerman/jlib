@@ -24,7 +24,6 @@ package org.jlib.container.sequence.index.array;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
@@ -172,41 +171,41 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, ValueObserverException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, observers, items);
     }
 

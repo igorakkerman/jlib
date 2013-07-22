@@ -71,7 +71,7 @@ extends AbstractSequence<Item> {
 
     @Override
     public final int getItemsCount()
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         return itemsCountHolder.getValue();
     }
 

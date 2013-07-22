@@ -22,7 +22,6 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
 
@@ -57,10 +56,10 @@ extends ReplaceIndexSequence<Item> {
      *         if some property of {@code newItem} prevents the operation from
      *         being performed
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs performing the operation
      */
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidSequenceStateException;
+    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidTraversibleStateException;
 }

@@ -84,13 +84,13 @@ implements Sequence<Item> {
 
     @Override
     public int getItemsCount()
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         return delegateSequence.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         return delegateSequence.isEmpty();
     }
 
@@ -106,38 +106,38 @@ implements Sequence<Item> {
 
     @Override
     public boolean contains(final Item item)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         return delegateSequence.contains(item);
     }
 
     @Override
     public boolean contains(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public List<Item> toSequentialList()
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         return delegateSequence.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         return delegateSequence.toArray();
     }
 

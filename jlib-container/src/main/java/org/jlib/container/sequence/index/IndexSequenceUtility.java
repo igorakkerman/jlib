@@ -24,7 +24,6 @@ package org.jlib.container.sequence.index;
 import org.jlib.container.Container;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -131,7 +130,7 @@ public final class IndexSequenceUtility {
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -141,7 +140,7 @@ public final class IndexSequenceUtility {
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
                                      final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 
@@ -151,7 +150,7 @@ public final class IndexSequenceUtility {
                 try {
                     sequence.remove(itemIndex);
                 }
-                catch (InvalidContainerArgumentException | InvalidNamedObjectStateException exception) {
+                catch (InvalidTraversibleArgumentException | InvalidTraversibleStateException exception) {
                     throw new OperatorException(exception, "remove: {0}", itemIndex);
                 }
             }

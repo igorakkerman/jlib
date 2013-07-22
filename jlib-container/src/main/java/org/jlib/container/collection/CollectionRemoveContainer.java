@@ -33,6 +33,7 @@ import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
@@ -243,7 +244,7 @@ implements RandomAccessRemoveContainer<Item>,
 
     @Override
     public void retain(final Traversible<? extends Item> items)
-    throws InvalidNamedObjectArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 

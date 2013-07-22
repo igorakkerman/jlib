@@ -25,7 +25,7 @@ import org.jlib.container.Container;
 import org.jlib.core.language.InvalidStateException;
 
 /**
- * {@link InvalidContainerArgumentException} thrown when a delegate object
+ * {@link InvalidTraversibleArgumentException} thrown when a delegate object
  * signals an error.
  *
  * @author Igor Akkerman

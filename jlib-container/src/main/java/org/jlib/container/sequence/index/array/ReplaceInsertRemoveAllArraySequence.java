@@ -22,7 +22,6 @@
 package org.jlib.container.sequence.index.array;
 
 import org.jlib.container.ContainerUtility;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
@@ -154,14 +153,14 @@ implements ObservedRemoveAllSequence<Item> {
 
     @Override
     public void removeAll()
-    throws InvalidSequenceStateException {
+    throws InvalidTraversibleStateException {
         ContainerUtility.removeAll(this);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidSequenceStateException {
+    throws InvalidTraversibleStateException {
         ContainerUtility.removeAll(this, observers);
     }
 }

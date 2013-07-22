@@ -61,7 +61,7 @@ extends InsertSequenceTraverser<Item> {
      * @throws InvalidSequenceArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -70,7 +70,7 @@ extends InsertSequenceTraverser<Item> {
      */
     @SuppressWarnings("unchecked")
     public void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Registers the specified {@link ValueObserver} for the insert operations

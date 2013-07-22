@@ -31,7 +31,6 @@ import org.jlib.core.operator.OperatorException;
  *
  * @author Igor Akkerman
  */
-@SuppressWarnings("ProhibitedExceptionDeclared")
 public interface ValueObserver<Value> {
 
     /**
@@ -43,6 +42,7 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
+    @SuppressWarnings("ProhibitedExceptionDeclared")
     public void handleBefore(Value value)
     throws RuntimeException;
 
@@ -56,6 +56,7 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
+    @SuppressWarnings("ProhibitedExceptionDeclared")
     public void handleAfterSuccess(Value value)
     throws RuntimeException;
 
@@ -71,6 +72,7 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
+    @SuppressWarnings("ProhibitedExceptionDeclared")
     public void handleAfterFailure(Value value, OperatorException operatorException)
     throws RuntimeException;
 }

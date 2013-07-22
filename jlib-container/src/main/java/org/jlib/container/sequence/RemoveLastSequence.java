@@ -35,10 +35,10 @@ extends Sequence<Item> {
     /**
      * Removes the last Item of this {@link RemoveLastSequence}.
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if some property of this {@link RemoveLastSequence} forbids its
      *         last Item to be removed
      */
     public void removeLastItem()
-    throws InvalidSequenceStateException;
+    throws InvalidTraversibleStateException;
 }

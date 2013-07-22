@@ -26,7 +26,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
- * {@link InvalidContainerArgumentException} thrown when a {@link Container}
+ * {@link InvalidTraversibleArgumentException} thrown when a {@link Container}
  * does not contain the specified Item to remove.
  *
  * @author Igor Akkerman

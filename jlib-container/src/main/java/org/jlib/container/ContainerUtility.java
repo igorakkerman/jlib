@@ -24,6 +24,8 @@ package org.jlib.container;
 import java.util.Collection;
 import java.util.Set;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import static org.jlib.container.collection.CollectionUtility.toSet;
 
 import org.jlib.core.array.ArrayUtility;
@@ -32,6 +34,10 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.NoItemToRemoveException;
+import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversible;
@@ -68,11 +74,11 @@ public final class ContainerUtility {
      * @throws ItemToRemoveNotContainedException
      *         if this {@link RemoveContainer} does not contain {@code Item}
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -80,22 +86,25 @@ public final class ContainerUtility {
      *         {@link RuntimeException}
      */
     @SafeVarargs
-    @SuppressWarnings("DuplicateThrows")
+    // TODO: check declared exceptions
+    @SuppressWarnings({ "DuplicateThrows", "ProhibitedExceptionDeclared" })
     public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item item,
                                      final ValueObserver<Item>... observers)
-    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException,
+    throws ItemToRemoveNotContainedException, InvalidTraversibleArgumentException, InvalidTraversibleStateException,
            RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
+            @SuppressWarnings("OverlyBroadCatchBlock")
             public void operate()
             throws OperatorException, RuntimeException {
                 try {
                     container.remove(item);
                 }
-                catch (InvalidContainerArgumentException | InvalidNamedObjectStateException exception) {
-                    throw new OperatorException(exception, "remove: {0}", item);
+                // TODO: check caught exceptions
+                catch (InvalidTraversibleArgumentException | InvalidTraversibleStateException exception) {
+                    throw new OperatorException(message("remove: {0}", item), exception);
                 }
             }
         }, item, observers);
@@ -114,16 +123,16 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public static <Item> void remove(final RandomAccessRemoveContainer<Item> container,
                                      final Iterable<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         for (final Item item : items)
             container.remove(item);
     }
@@ -141,11 +150,11 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -155,7 +164,7 @@ public final class ContainerUtility {
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final RandomAccessRemoveContainer<Item> container, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, RuntimeException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
         remove(container, ArrayUtility.iterable(items));
     }
 
@@ -176,11 +185,11 @@ public final class ContainerUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -191,7 +200,7 @@ public final class ContainerUtility {
     @SuppressWarnings("DuplicateThrows")
     public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container,
                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, RuntimeException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
         for (final Item item : items)
             container.remove(item, observers);
     }
@@ -212,11 +221,11 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -226,7 +235,7 @@ public final class ContainerUtility {
     @SafeVarargs
     public static <Item> void remove(final ObservedRandomAccessRemoveContainer<Item> container,
                                      final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         remove(container, ArrayUtility.iterable(items), observers);
     }
 
@@ -243,15 +252,15 @@ public final class ContainerUtility {
      * @param items
      *        {@link Iterable} providing the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public static <Item> void retain(final RemoveTraversible<Item> traversible, final Iterable<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         final Set<Item> retainedItemsSet = toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = traversible.createTraverser();
@@ -277,17 +286,17 @@ public final class ContainerUtility {
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SafeVarargs
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final RetainedItem... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         retain(container, toSet(items));
     }
 
@@ -305,15 +314,15 @@ public final class ContainerUtility {
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
         while (itemsTraverser.isNextItemAccessible())
             if (! items.contains(itemsTraverser.getNextItem()))
@@ -337,11 +346,11 @@ public final class ContainerUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -350,7 +359,8 @@ public final class ContainerUtility {
     @SafeVarargs
     public static <Item> void retain(final ObservedRemoveContainer<Item> container,
                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
+
         final Set<Item> retainedItemsSet = toSet(items);
 
         final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser();
@@ -384,11 +394,11 @@ public final class ContainerUtility {
      * @param items
      *        comma separated sequence of the Items to retain
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -401,7 +411,7 @@ public final class ContainerUtility {
     public static <Item, RetainedItem extends Item> void retain(final ObservedRemoveContainer<Item> container,
                                                                 final ValueObserver<Item>[] observers,
                                                                 final RetainedItem... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, RuntimeException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
         retain(container, asList(items), observers);
     }
 
@@ -423,23 +433,25 @@ public final class ContainerUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-
+    // TODO: check declared exceptions
     @SafeVarargs
-    @SuppressWarnings("DuplicateThrows")
+    @SuppressWarnings({ "DuplicateThrows", "ProhibitedExceptionDeclared", "OverlyBroadThrowsClause" })
     public static <Item> void retain(final ObservedRemoveContainer<Item> container,
                                      final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, RuntimeException {
+    throws NoItemToRemoveException, InvalidTraversibleArgumentException, InvalidTraversibleStateException,
+           RuntimeException {
+
         final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
 
         for (final ValueObserver<Item> observer : observers)
@@ -453,18 +465,18 @@ public final class ContainerUtility {
     /**
      * Removes all Items of the specified {@link RemoveContainer}.
      *
-     * @param container
+     * @param traversible
      *        {@link RemoveContainer} containing the Items
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void removeAll(final RemoveContainer<Item> container)
-    throws InvalidNamedObjectStateException {
-        for (final RemoveTraverser<Item> traverser = container.createTraverser(); traverser.isNextItemAccessible(); ) {
+    public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
+    throws InvalidTraversibleStateException, NoItemToRemoveException, NoNextItemException {
+        for (final RemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();
             traverser.remove();
         }
@@ -483,13 +495,13 @@ public final class ContainerUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SafeVarargs
     public static <Item> void removeAll(final ObservedRemoveContainer<Item> container,
                                         final ValueObserver<Item>... observers)
-    throws InvalidNamedObjectStateException {
+    throws InvalidTraversibleStateException {
         for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser();
              traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();

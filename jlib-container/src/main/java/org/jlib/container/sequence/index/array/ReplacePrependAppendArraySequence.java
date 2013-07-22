@@ -185,28 +185,28 @@ implements ObservedPrependSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(singleton(item), 1, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(items, items.getItemsCount(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(items, items.size(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(iterable(items), items.length, observers);
     }
 

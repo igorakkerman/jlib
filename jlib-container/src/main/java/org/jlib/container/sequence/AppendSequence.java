@@ -49,7 +49,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void append(final Container<? extends Item> items)
@@ -60,7 +60,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void append(final Collection<? extends Item> items)
@@ -71,7 +71,7 @@ extends Sequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")

@@ -23,6 +23,9 @@ package org.jlib.container;
 
 import java.util.Collection;
 
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+
 /**
  * {@link RemoveContainer} allowing its Items to be removed by random access to
  * each specified Item.
@@ -44,15 +47,15 @@ public interface RandomAccessRemoveContainer<Item> {
      *         if this {@link RandomAccessRemoveContainer} does not contain
      *         {@code Item}
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void remove(final Item item)
-    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws ItemToRemoveNotContainedException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items contained by the specified {@link Container} from this
@@ -61,15 +64,15 @@ public interface RandomAccessRemoveContainer<Item> {
      * @param items
      *        {@link Container} containing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void remove(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
@@ -78,15 +81,15 @@ public interface RandomAccessRemoveContainer<Item> {
      * @param items
      *        {@link Collection} containing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void remove(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
@@ -95,15 +98,15 @@ public interface RandomAccessRemoveContainer<Item> {
      * @param items
      *        {@link Iterable} providing the Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void remove(final Iterable<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * Removes all specified Items from this {@link RandomAccessRemoveContainer}
@@ -112,14 +115,14 @@ public interface RandomAccessRemoveContainer<Item> {
      * @param items
      *        comma separated sequence of Items to remove
      *
-     * @throws InvalidContainerArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

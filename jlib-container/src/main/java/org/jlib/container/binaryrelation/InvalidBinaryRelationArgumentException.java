@@ -22,13 +22,13 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * {@link InvalidContainerArgumentException} referencing a
+ * {@link InvalidTraversibleArgumentException} referencing a
  * {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
 public abstract class InvalidBinaryRelationArgumentException
-extends InvalidContainerArgumentException {
+extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5603158282885764114L;

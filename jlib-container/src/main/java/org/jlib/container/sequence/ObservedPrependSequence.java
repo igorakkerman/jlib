@@ -42,12 +42,12 @@ extends PrependSequence<Item> {
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
@@ -64,7 +64,7 @@ extends PrependSequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -73,7 +73,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
@@ -90,7 +90,7 @@ extends PrependSequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -99,7 +99,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all specified Items to this {@link ObservedPrependSequence}.
@@ -114,7 +114,7 @@ extends PrependSequence<Item> {
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidSequenceStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -123,5 +123,5 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException;
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
 }

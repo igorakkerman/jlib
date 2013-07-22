@@ -21,19 +21,26 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
+
 import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.InvalidSequenceArgumentException;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
+import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
+import org.jlib.core.language.ExceptionMessageUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-import static org.jlib.core.array.ArrayUtility.traversible;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.ObservedReplaceTraverser;
+import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * Default implementation of a {@link ReplaceIndexSequenceTraverser}.
@@ -48,14 +55,11 @@ import static org.jlib.core.array.ArrayUtility.traversible;
  */
 public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ReplaceInsertIndexSequence<Item>>
 extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>, org.jlib.core.traverser.ObservedReplaceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.InsertSequenceTraverser<Item>,IndexSequenceTraverser<Item>,
-           org.jlib.container.sequence.ReplaceSequenceTraverser<Item> {
+implements ObservedInsertSequenceTraverser<Item>,
+           IndexSequenceTraverser<Item>,
+           InsertSequenceTraverser<Item>,
+           ObservedReplaceTraverser<Item>,
+           ReplaceTraverser<Item> {
 
     /** insert {@link ValueObserver} items */
     private final AppendSequence<ValueObserver<Item>> traverserInsertObservers = new FillupArraySequence<>();
@@ -101,24 +105,23 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,Ind
 
     @Override
     @SafeVarargs
+    @SuppressWarnings("ProhibitedExceptionDeclared")
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidSequenceArgumentException, InvalidSequenceStateException, RuntimeException {
+    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
+            @SuppressWarnings("ProhibitedExceptionDeclared")
             public void operate()
             throws OperatorException, RuntimeException {
                 try {
                     insert(item);
                 }
                 catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException(exception, "insert: {0}", item);
+                    throw new OperatorException(message("insert: {0}", item), exception);
                 }
             }
-        },
-
-                                item,
-                                concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
+        }, item, concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
     }
 
     @Override

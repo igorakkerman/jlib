@@ -22,6 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * Ability to remove <em>all</em> Items;
@@ -43,10 +44,10 @@ extends RemoveAllContainer<Item>,
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidNamedObjectStateException
+     * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidNamedObjectStateException;
+    throws InvalidTraversibleStateException;
 }

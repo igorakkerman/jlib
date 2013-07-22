@@ -22,13 +22,13 @@
 package org.jlib.container.sequence;
 
 /**
- * {@link InvalidSequenceStateException} thrown when attempting to store an invalid number of Items in a
+ * {@link InvalidTraversibleStateException} thrown when attempting to store an invalid number of Items in a
  * {@link Sequence}.
  *
  * @author Igor Akkerman
  */
 public class InvalidStoredItemsCountException
-extends InvalidSequenceStateException {
+extends InvalidTraversibleStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5400803962181030353L;

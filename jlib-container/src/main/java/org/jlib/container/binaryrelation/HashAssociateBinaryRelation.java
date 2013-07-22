@@ -119,7 +119,7 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
-    throws InvalidContainerArgumentException {
+    throws InvalidTraversibleArgumentException {
         BinaryRelationUtility.associate(this, associations);
     }
 

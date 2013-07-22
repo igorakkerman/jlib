@@ -31,7 +31,8 @@ import org.jlib.core.observer.ValueObserver;
 public final class TraversibleUtility {
 
     /** no visible constructor */
-    private TraversibleUtility() {}
+    private TraversibleUtility() {
+    }
 
     /**
      * Verifies whether the {@link Traverser} instances created by the {@link Traversible#createTraverser()} methods of
@@ -51,7 +52,8 @@ public final class TraversibleUtility {
      * @return {@code true} if {@code traverser1} and {@code traverser2} provide equal Items;
      *         {@code false} otherwise
      */
-    public static <Item> boolean haveEqualItems(final Traversible<Item> traversible1, final Traversible<Item> traversible2) {
+    public static <Item> boolean haveEqualItems(final Traversible<Item> traversible1,
+                                                final Traversible<Item> traversible2) {
         final Traverser<?> traverser1 = traversible1.createTraverser();
         final Traverser<?> traverser2 = traversible2.createTraverser();
 
@@ -121,9 +123,12 @@ public final class TraversibleUtility {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during one of the remove operations
      */
+    // TODO: check declared exceptions
+    @SuppressWarnings("OverlyBroadThrowsClause")
     public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
     throws InvalidTraversibleStateException {
-        for (final RemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
+        for (final RemoveTraverser<Item> traverser = traversible.createTraverser();
+             traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();
             traverser.remove();
         }
@@ -146,9 +151,13 @@ public final class TraversibleUtility {
      *         if an error occurs during one of the remove operations
      */
     @SafeVarargs
-    public static <Item> void removeAll(final ObservedRemoveTraversible<Item> traversible, final ValueObserver<Item>... observers)
+    // TODO: check declared exceptions
+    @SuppressWarnings("OverlyBroadThrowsClause")
+    public static <Item> void removeAll(final ObservedRemoveTraversible<Item> traversible,
+                                        final ValueObserver<Item>... observers)
     throws InvalidTraversibleStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
+        for (final ObservedRemoveTraverser<Item> traverser = traversible.createTraverser();
+             traverser.isNextItemAccessible(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }

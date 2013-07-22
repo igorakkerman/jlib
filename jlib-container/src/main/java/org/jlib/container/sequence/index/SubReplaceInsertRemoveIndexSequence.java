@@ -26,7 +26,6 @@ import java.util.Collection;
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.SoleItemNotRemoveableException;
-import org.jlib.container.sequence.InvalidSequenceStateException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
@@ -113,47 +112,47 @@ implements ObservedReplaceIndexSequence<Item>,
 
     @Override
     public void retain(final Container<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         ContainerUtility.retain(this, items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidContainerArgumentException, InvalidNamedObjectStateException, ValueObserverException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException {
         ContainerUtility.retain(this, observers, items);
     }
 
     @Override
     public void removeFirstItem()
-    throws InvalidSequenceStateException {
+    throws InvalidTraversibleStateException {
         remove(getFirstIndex());
     }
 
@@ -166,7 +165,7 @@ implements ObservedReplaceIndexSequence<Item>,
 
     @Override
     public void removeLastItem()
-    throws InvalidSequenceStateException {
+    throws InvalidTraversibleStateException {
         remove(getLastIndex());
     }
 
