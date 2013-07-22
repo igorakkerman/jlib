@@ -21,9 +21,9 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
+import org.jlib.container.binaryrelation.BinaryRelation;
 import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.BinaryRelation;
 
 /**
  * {@link InvalidPairException} thrown when trying to invalidy add an
@@ -42,15 +42,10 @@ extends InvalidPairException {
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
-     *
-     * @param leftValue
-     *        LeftValue of the {@link Pair}
-     *
-     * @param rightValue
-     *        RightValue of the {@link Pair}
      */
-    public PairAlreadyContainedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                         final Object rightValue) {
-        super(binaryRelation, leftValue, rightValue);
+    public <LeftValue, RightValue> /*
+        */ PairAlreadyContainedException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
+                                         final Pair<LeftValue, RightValue> pair) {
+        super(binaryRelation, pair);
     }
 }
