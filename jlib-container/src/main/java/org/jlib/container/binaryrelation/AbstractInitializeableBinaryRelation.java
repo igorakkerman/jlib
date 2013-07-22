@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
+import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation} allowing to be filled
@@ -56,15 +56,15 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws AssociationAlreadyContainedException
+     * @throws PairAlreadyContainedException
      *         if the specified {@link Pair} already exists
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if some property of the specified {@link Pair} prevents it
      *         from being added
      */
     protected abstract void associate(LeftValue leftValue, RightValue rightValue)
-    throws AssociationAlreadyContainedException, InvalidAssociationException;
+    throws PairAlreadyContainedException, InvalidPairException;
 
     /**
      * Asserts that the specified LeftValue is associated with the specified
@@ -76,10 +76,10 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if some property of the specified {@link Pair} prevents it
      *         from being added
      */
     protected abstract void assertAssociated(LeftValue leftValue, RightValue rightValue)
-    throws InvalidAssociationException;
+    throws InvalidPairException;
 }

@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
+import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
  * {@link BinaryRelation} implemented using hashing for left and right hand side
@@ -110,16 +110,16 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws AssociationAlreadyContainedException, InvalidAssociationException {
+    throws PairAlreadyContainedException, InvalidPairException {
         if (contains(leftValue, rightValue))
-            throw new AssociationAlreadyContainedException(this, leftValue, rightValue);
+            throw new PairAlreadyContainedException(this, leftValue, rightValue);
 
         assertAssociated(leftValue, rightValue);
     }
 
     @Override
     protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         assertAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
         assertAssociatedOneWay(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
     }

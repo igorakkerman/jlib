@@ -58,12 +58,12 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     public HashAssociateRemoveBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(associations);
     }
 
@@ -74,12 +74,12 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param pairs
      *        {@link Collection} of {@link Pair} items to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code pairs} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     public HashAssociateRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(pairs);
     }
 
@@ -90,20 +90,20 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      * @param pairs
      *        comma separated sequence of the {@link Pair} items to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code pairs} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     @SuppressWarnings("unchecked")
     public HashAssociateRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(pairs);
     }
 
     // overridden to be made public
     @Override
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super.associate(leftValue, rightValue);
     }
 
@@ -111,7 +111,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     public void remove(final LeftValue leftValue, final RightValue rightValue)
     throws NoSuchAssociationValueException {
         if (! contains(leftValue, rightValue))
-            throw new NoSuchAssociationException(this, leftValue, rightValue);
+            throw new NoSuchPairException(this, leftValue, rightValue);
 
         leftToRightMap.get(leftValue).remove(rightValue);
         rightToLeftMap.get(rightValue).remove(leftValue);

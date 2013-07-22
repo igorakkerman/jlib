@@ -56,12 +56,12 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
     public HashAssociateBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(associations);
     }
 
@@ -72,12 +72,12 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
      * @param pairs
      *        {@link Collection} of {@link Pair} items to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code pairs} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
     public HashAssociateBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(pairs);
     }
 
@@ -88,33 +88,33 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
      * @param pairs
      *        comma separated sequence of the {@link Pair} items to add
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if {@code pairs} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
     @SuppressWarnings("unchecked")
     public HashAssociateBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super(pairs);
     }
 
     @Override
     // raising visibility from protected to public
     public void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super.associate(leftValue, rightValue);
     }
 
     @Override
     // raising visibility from protected to public
     public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         super.assertAssociated(leftValue, rightValue);
     }
 
     @Override
     public void associate(final Pair<LeftValue, RightValue> pair)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         associate(pair.getLeftValue(), pair.getRightValue());
     }
 
@@ -127,37 +127,37 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     @Override
     @SuppressWarnings("unchecked")
     public void associate(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         BinaryRelationUtility.associate(this, pairs);
     }
 
     @Override
     public void associate(final Collection<? extends Pair<LeftValue, RightValue>> associations)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
     public void assertContained(final Pair<LeftValue, RightValue> pair)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         assertAssociated(pair.getLeftValue(), pair.getRightValue());
     }
 
     @Override
     public void assertContained(final Container<? extends Pair<LeftValue, RightValue>> associations)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         BinaryRelationUtility.assertContained(this, associations);
     }
 
     @Override
     public void assertContained(final Collection<? extends Pair<LeftValue, RightValue>> associations)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void assertContained(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidAssociationException {
+    throws InvalidPairException {
         BinaryRelationUtility.assertContained(this, pairs);
     }
 }

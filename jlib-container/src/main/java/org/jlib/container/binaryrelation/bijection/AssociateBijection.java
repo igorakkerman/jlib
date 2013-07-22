@@ -22,8 +22,8 @@
 package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AssociateBinaryRelation;
+import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
@@ -51,7 +51,7 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws AssociationAlreadyContainedException
+     * @throws PairAlreadyContainedException
      *         if the specified {@link Pair} already exists
      *
      * @throws LeftValueAlreadyAssociatedException
@@ -60,14 +60,14 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * @throws RightValueAlreadyAssociatedException
      *         if {@code rightValue} is already associated to another LeftValue
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override
     public void associate(LeftValue leftValue, RightValue rightValue)
-    throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
-           RightValueAlreadyAssociatedException, InvalidAssociationException;
+    throws PairAlreadyContainedException, LeftValueAlreadyAssociatedException,
+           RightValueAlreadyAssociatedException, InvalidPairException;
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -89,11 +89,11 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         if the {@link Pair} is equal to another
      *         {@link Pair} in this {@link AssociateBijection}, it is ignored
      *
-     * @throws InvalidAssociationException
+     * @throws InvalidPairException
      *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override
     public void assertAssociated(LeftValue leftValue, RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException;
+    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException;
 }

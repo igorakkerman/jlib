@@ -76,4 +76,9 @@ extends AbstractCloneable {
     public RightValue getRightValue() {
         return rightValue;
     }
+
+    @Override
+    public String toString() {
+        return "<" + leftValue + ", " + rightValue + '>';
+    }
 }

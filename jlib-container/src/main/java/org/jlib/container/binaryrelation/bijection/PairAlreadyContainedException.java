@@ -19,34 +19,38 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.binaryrelation.bijection;
+
+import org.jlib.container.binaryrelation.InvalidPairException;
+import org.jlib.container.binaryrelation.Pair;
+import org.jlib.container.binaryrelation.BinaryRelation;
 
 /**
- * Exception thrown when trying to associate a value with another value by a
- * {@link BinaryRelation} which allows a value to be associated with only one
- * other value, and the first value is already associated with some third value.
+ * {@link InvalidPairException} thrown when trying to invalidy add an
+ * {@link Pair} to a {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
-public abstract class ValueAlreadyAssociatedException
+public class PairAlreadyContainedException
 extends InvalidPairException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 6309445418086228661L;
+    private static final long serialVersionUID = - 1416174523765702421L;
 
     /**
-     * Creates a new {@link ValueAlreadyAssociatedException}.
+     * Creates a new {@link PairAlreadyContainedException}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the invalid {@link Pair}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the invalid {@link Pair}
+     *        RightValue of the {@link Pair}
      */
-    public ValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
+    public PairAlreadyContainedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                         final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);
     }
 }

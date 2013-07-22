@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 import java.util.Set;
 
-import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
+import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 import org.jlib.container.collection.CollectionUtility;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.RemoveTraverser;
@@ -58,7 +58,7 @@ public class BinaryRelationUtility {
      * @param pair
      *        associated Pair
      *
-     * @throws AssociationAlreadyContainedException
+     * @throws PairAlreadyContainedException
      *         if {@code binaryRelation} already contains {@code pair}
      *
      * @throws InvalidBinaryRelationArgumentException
@@ -66,9 +66,9 @@ public class BinaryRelationUtility {
      *         associated to {@code binaryRelation}
      */
     public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue> pair)
-    throws AssociationAlreadyContainedException, InvalidBinaryRelationArgumentException {
+    throws PairAlreadyContainedException, InvalidBinaryRelationArgumentException {
         if (binaryRelation.contains(pair))
-            throw new AssociationAlreadyContainedException(binaryRelation, pair.getLeftValue(),
+            throw new PairAlreadyContainedException(binaryRelation, pair.getLeftValue(),
                                                            pair.getRightValue());
         binaryRelation.assertContained(pair);
     }
@@ -94,7 +94,7 @@ public class BinaryRelationUtility {
      * @param associations
      *        {@link Iterable} providing the Associations to associate
      *
-     * @throws AssociationAlreadyContainedException
+     * @throws PairAlreadyContainedException
      *         if {@code binaryRelation} already contains one Pair in
      *         {@code associations}
      *
@@ -127,7 +127,7 @@ public class BinaryRelationUtility {
      * @param pairs
      *        {@link Iterable} providing the Associations to associate
      *
-     * @throws AssociationAlreadyContainedException
+     * @throws PairAlreadyContainedException
      *         if {@code binaryRelation} already contains one Pair in
      *         {@code pairs}
      *

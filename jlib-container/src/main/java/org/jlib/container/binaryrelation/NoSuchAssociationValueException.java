@@ -21,14 +21,16 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
 /**
- * {@link InvalidAssociationException} thrown when referencing an
+ * {@link InvalidPairException} thrown when referencing an
  * {@link Pair} not contained by the specified {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
 public abstract class NoSuchAssociationValueException
-extends InvalidBinaryRelationArgumentException {
+extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 5642778973583219541L;

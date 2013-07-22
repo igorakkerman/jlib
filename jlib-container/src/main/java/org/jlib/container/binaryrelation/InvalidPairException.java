@@ -21,69 +21,66 @@
 
 package org.jlib.container.binaryrelation;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
- * {@link InvalidTraversibleArgumentException} referencing a
- * {@link BinaryRelation}.
+ * {@link InvalidBinaryRelationArgumentException} thrown when an
+ * {@link Pair} cannot be added to a {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
-public abstract class InvalidBinaryRelationArgumentException
+public abstract class InvalidPairException
 extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 5603158282885764114L;
+    private static final long serialVersionUID = 6498242933289941100L;
 
     /**
-     * Creates a new {@link InvalidBinaryRelationArgumentException}.
+     * Creates a new {@link InvalidPairException}.
+     *
+     * @param binaryRelation
+     *        referenced {@link BinaryRelation}
+     */
+    public <LeftValue, RightValue> /*
+        */ InvalidPairException(@SuppressWarnings("TypeMayBeWeakened")  /*
+                             */ final BinaryRelation<LeftValue, RightValue> binaryRelation,
+                                final Pair<LeftValue, RightValue> pair) {
+        super(binaryRelation, message(pair));
+    }
+
+    /**
+     * Creates a new {@link InvalidPairException}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation) {
-        super(binaryRelation);
+    public <LeftValue, RightValue> /*
+        */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
+                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message) {
+
+        super(binaryRelation, message.with(pair));
     }
 
     /**
-     * Creates a new {@link InvalidBinaryRelationArgumentException}.
+     * Creates a new {@link InvalidPairException}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the template of the error message
-     *
-     * @param messageArguments
-     *        sequence of {@link Object} parameters of the error message
-     */
-    @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final ExceptionMessage message) {
-        super(binaryRelation, message);
-    }
-
-    /**
-     * Creates a new {@link InvalidBinaryRelationArgumentException}.
-     *
-     * @param binaryRelation
-     *        referenced {@link BinaryRelation}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the template of the error message
      *
      * @param cause
      *        {@link Exception} that caused this
      *        {@link InvalidBinaryRelationArgumentException}
-     *
-     * @param messageArguments
-     *        sequence of {@link Object} parameters of the error message
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final ExceptionMessage message, final Exception cause) {
-        super(binaryRelation, message, cause);
+    public <LeftValue, RightValue> /*
+        */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
+                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message,
+                                final Exception cause) {
+
+        super(binaryRelation, message.with(pair), cause);
     }
 }
