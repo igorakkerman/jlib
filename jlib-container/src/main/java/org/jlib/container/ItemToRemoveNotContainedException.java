@@ -21,11 +21,9 @@
 
 package org.jlib.container;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.core.language.ExceptionMessageUtility;
-import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link Container}
@@ -48,24 +46,13 @@ extends InvalidTraversibleArgumentException {
      * @param item
      *        Item to remove
      */
-    public ItemToRemoveNotContainedException(final Container<?> container, final Object item) {
-        super(container));
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final Container<?> container,
+                                             final Object item) {
+        super(container, message(item.toString()));
     }
 
-    /**
-     * Creates a new {@link ItemToRemoveNotContainedException}.
-     *
-     * @param container
-     *        referenced {@link Container}
-     *
-     * @param item
-     *        Item to remove
-     *
-     * @param cause
-     *        Exception that caused this {@link ItemToRemoveNotContainedException}
-     */
-    public ItemToRemoveNotContainedException(final CharSequence containerName, final Container<?> container,
-                                             final CharSequence itemName, final Object item, final Exception cause) {
-        super(container, "{1}: {2}", item);
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final Container<?> container,
+                                             final Object item, final Exception cause) {
+        super(container, message(item.toString()), cause);
     }
 }
