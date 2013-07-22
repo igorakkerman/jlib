@@ -5,6 +5,7 @@
       <value>
         <option name="GENERATE_FINAL_LOCALS" value="true" />
         <option name="GENERATE_FINAL_PARAMETERS" value="true" />
+        <option name="LAYOUT_STATIC_IMPORTS_SEPARATELY" value="false" />
         <option name="USE_FQ_CLASS_NAMES_IN_JAVADOC" value="false" />
         <option name="INSERT_INNER_CLASS_IMPORTS" value="true" />
         <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="1000" />
@@ -31,23 +32,14 @@
             <emptyLine />
             <package name="org.apache.commons.collections" withSubpackages="true" static="false" />
             <emptyLine />
-            <package name="org.apache.commons.io" withSubpackages="true" static="true" />
-            <emptyLine />
-            <package name="org.apache.commons" withSubpackages="true" static="true" />
-            <emptyLine />
             <package name="org.jlib.core.system" withSubpackages="true" static="false" />
             <emptyLine />
-            <package name="org.jlib.core" withSubpackages="true" static="true" />
+            <package name="org.jlib.core" withSubpackages="true" static="false" />
             <emptyLine />
-            <package name="org.jlib.container" withSubpackages="true" static="true" />
-            <emptyLine />
-            <package name="org.jlib.unittest" withSubpackages="true" static="true" />
-            <emptyLine />
-            <package name="org.jlib" withSubpackages="true" static="true" />
+            <package name="org.jlib.container" withSubpackages="true" static="false" />
             <emptyLine />
             <package name="" withSubpackages="true" static="false" />
             <emptyLine />
-            <package name="" withSubpackages="true" static="true" />
           </value>
         </option>
         <option name="STATIC_FIELDS_ORDER_WEIGHT" value="2" />
