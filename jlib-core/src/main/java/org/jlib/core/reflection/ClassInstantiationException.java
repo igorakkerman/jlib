@@ -21,6 +21,10 @@
 
 package org.jlib.core.reflection;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
+import org.jlib.core.language.ApplicationException;
+
 /**
  * Exception thrown when a class cannot be instantiated. This Exception type may
  * be used by factories as a wrapper for any kind of Exceptions occurring when
@@ -29,7 +33,7 @@ package org.jlib.core.reflection;
  * @author Igor Akkerman
  */
 public class ClassInstantiationException
-extends NamedObjectApplicationException {
+extends ApplicationException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 324704714378755280L;
@@ -47,7 +51,7 @@ extends NamedObjectApplicationException {
      *        original {@link Exception} that caused this {@link ClassInstantiationException}
      */
     public ClassInstantiationException(final CharSequence className, final Exception cause) {
-        super("className", className, cause);
+        super(message(className), cause);
 
         this.className = className.toString();
     }
@@ -62,7 +66,7 @@ extends NamedObjectApplicationException {
      *        {@link Exception} that caused this {@link ClassInstantiationException}
      */
     public ClassInstantiationException(final Class<?> clazz, final Exception cause) {
-        this(clazz.getSimpleName(), cause);
+        this(clazz.getName(), cause);
     }
 
     /**
