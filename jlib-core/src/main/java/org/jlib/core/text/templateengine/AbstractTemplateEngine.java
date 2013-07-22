@@ -21,9 +21,11 @@
 
 package org.jlib.core.text.templateengine;
 
+import org.jlib.core.language.AbstractObject;
 import org.jlib.core.text.ParametrizedText;
 
 public abstract class AbstractTemplateEngine
+extends AbstractObject
 implements TemplateEngine {
 
     protected AbstractTemplateEngine() {
