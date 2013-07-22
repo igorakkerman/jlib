@@ -27,7 +27,7 @@ import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
- * {@link Association} cannot be added to a {@link BinaryRelation}.
+ * {@link Pair} cannot be added to a {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
@@ -44,10 +44,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the invalid {@link Association}
+     *        LeftValue of the invalid {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the invalid {@link Association}
+     *        RightValue of the invalid {@link Pair}
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue) {
@@ -61,10 +61,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the invalid {@link Association}
+     *        LeftValue of the invalid {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the invalid {@link Association}
+     *        RightValue of the invalid {@link Pair}
      *
      * @param messageTemplate
      *        {@link String} specifying the template of the error message
@@ -85,10 +85,10 @@ extends InvalidBinaryRelationArgumentException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the invalid {@link Association}
+     *        LeftValue of the invalid {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the invalid {@link Association}
+     *        RightValue of the invalid {@link Pair}
      *
      * @param messageTemplate
      *        {@link String} specifying the template of the error message

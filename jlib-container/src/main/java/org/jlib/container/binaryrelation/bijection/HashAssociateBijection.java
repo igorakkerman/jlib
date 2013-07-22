@@ -24,14 +24,14 @@ package org.jlib.container.binaryrelation.bijection;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.Pair;
 import org.jlib.container.binaryrelation.BinaryRelationUtility;
 import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
 /**
- * {@link HashBijection} allowing the addition of new {@link Association} items.
+ * {@link HashBijection} allowing the addition of new {@link Pair} items.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link Bijection}
@@ -59,21 +59,21 @@ implements AssociateBijection<LeftValue, RightValue> {
      *
      * @throws LeftValueAlreadyAssociatedException
      *         if the LeftValue of one Item in {@code associations} is already
-     *         associated to another RightValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         associated to another RightValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws RightValueAlreadyAssociatedException
      *         if the RightValue of one Item in {@code associations} is already
-     *         associated to another LeftValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         associated to another LeftValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws InvalidAssociationException
      *         if some property of one Item in {@code associations} prevents it
      *         from being added
      */
-    public HashAssociateBijection(final Container<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBijection(final Container<Pair<LeftValue, RightValue>> associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         super(associations);
     }
@@ -82,57 +82,57 @@ implements AssociateBijection<LeftValue, RightValue> {
      * Creates a new HashAddBijection containing the Associations contained by
      * the specified Collection.
      *
-     * @param associations
+     * @param pairs
      *        Collection of the Associations to add
      *
      * @throws LeftValueAlreadyAssociatedException
-     *         if the LeftValue of one Item in {@code associations} is already
-     *         associated to another RightValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         if the LeftValue of one Item in {@code pairs} is already
+     *         associated to another RightValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws RightValueAlreadyAssociatedException
-     *         if the RightValue of one Item in {@code associations} is already
-     *         associated to another LeftValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         if the RightValue of one Item in {@code pairs} is already
+     *         associated to another LeftValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws InvalidAssociationException
-     *         if some property of one Item in {@code associations} prevents it
+     *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
-    public HashAssociateBijection(final Collection<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     /**
      * Creates a new HashAddBijection containing the Associations specified in a
      * comma separated sequence.
      *
-     * @param associations
+     * @param pairs
      *        Comma separated sequence of the Associations to add
      *
      * @throws LeftValueAlreadyAssociatedException
-     *         if the LeftValue of one Item in {@code associations} is already
-     *         associated to another RightValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         if the LeftValue of one Item in {@code pairs} is already
+     *         associated to another RightValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws RightValueAlreadyAssociatedException
-     *         if the RightValue of one Item in {@code associations} is already
-     *         associated to another LeftValue; if an {@link Association} is
-     *         equal to another {@link Association} in the
+     *         if the RightValue of one Item in {@code pairs} is already
+     *         associated to another LeftValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
      * @throws InvalidAssociationException
-     *         if some property of one Item in {@code associations} prevents it
+     *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
     @SuppressWarnings("unchecked")
-    public HashAssociateBijection(final Association<LeftValue, RightValue>... associations)
+    public HashAssociateBijection(final Pair<LeftValue, RightValue>... pairs)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     @Override
@@ -151,21 +151,21 @@ implements AssociateBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void associate(final Association<LeftValue, RightValue> association)
+    public void associate(final Pair<LeftValue, RightValue> pair)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
            RightValueAlreadyAssociatedException, InvalidAssociationException {
-        associate(association.getLeftValue(), association.getRightValue());
+        associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     @Override
-    public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(final Container<? extends Pair<LeftValue, RightValue>> associations)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
            RightValueAlreadyAssociatedException, InvalidAssociationException {
         BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
-    public void associate(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(final Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
            RightValueAlreadyAssociatedException, InvalidAssociationException {
         BinaryRelationUtility.associate(this, associations);
@@ -173,34 +173,34 @@ implements AssociateBijection<LeftValue, RightValue> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void associate(final Association<LeftValue, RightValue>... associations)
+    public void associate(final Pair<LeftValue, RightValue>... pairs)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
            RightValueAlreadyAssociatedException, InvalidAssociationException {
-        BinaryRelationUtility.associate(this, associations);
+        BinaryRelationUtility.associate(this, pairs);
     }
 
     @Override
-    public void assertContained(final Association<LeftValue, RightValue> association)
+    public void assertContained(final Pair<LeftValue, RightValue> pair)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
-        BinaryRelationUtility.assertContained(this, association);
+        BinaryRelationUtility.assertContained(this, pair);
     }
 
     @Override
-    public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(final Container<? extends Pair<LeftValue, RightValue>> associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         BinaryRelationUtility.assertContained(this, associations);
     }
 
     @Override
-    public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(final Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
         BinaryRelationUtility.assertContained(this, associations);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void assertContained(final Association<LeftValue, RightValue>... associations)
+    public void assertContained(final Pair<LeftValue, RightValue>... pairs)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException {
-        BinaryRelationUtility.assertContained(this, associations);
+        BinaryRelationUtility.assertContained(this, pairs);
     }
 }

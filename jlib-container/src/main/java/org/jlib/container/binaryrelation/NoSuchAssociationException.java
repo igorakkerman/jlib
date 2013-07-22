@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 /**
  * {@link InvalidAssociationException} thrown when referencing an
- * {@link Association} not contained by the specified {@link BinaryRelation}.
+ * {@link Pair} not contained by the specified {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
@@ -40,10 +40,10 @@ extends InvalidAssociationException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      */
     public NoSuchAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);

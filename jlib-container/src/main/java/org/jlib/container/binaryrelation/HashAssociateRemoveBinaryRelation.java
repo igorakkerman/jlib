@@ -53,7 +53,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
-     * {@link Association} items contained by the specified {@link Container}.
+     * {@link Pair} items contained by the specified {@link Container}.
      *
      * @param associations
      *        Container of the Associations to add
@@ -62,42 +62,42 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *         if {@code associations} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAssociateRemoveBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
+    public HashAssociateRemoveBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException {
         super(associations);
     }
 
     /**
      * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
-     * {@link Association} items contained by the specified {@link Collection}.
+     * {@link Pair} items contained by the specified {@link Collection}.
      *
-     * @param associations
-     *        {@link Collection} of {@link Association} items to add
+     * @param pairs
+     *        {@link Collection} of {@link Pair} items to add
      *
      * @throws InvalidAssociationException
-     *         if {@code associations} violate the rules of this
+     *         if {@code pairs} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
-    public HashAssociateRemoveBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
+    public HashAssociateRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
     throws InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     /**
      * Creates a new HashAddRemoveBinaryRelation containing the
-     * {@link Association} items specified in a comma separated sequence.
+     * {@link Pair} items specified in a comma separated sequence.
      *
-     * @param associations
-     *        comma separated sequence of the {@link Association} items to add
+     * @param pairs
+     *        comma separated sequence of the {@link Pair} items to add
      *
      * @throws InvalidAssociationException
-     *         if {@code associations} violate the rules of this
+     *         if {@code pairs} violate the rules of this
      *         {@link HashAssociateRemoveBinaryRelation}
      */
     @SuppressWarnings("unchecked")
-    public HashAssociateRemoveBinaryRelation(final Association<LeftValue, RightValue>... associations)
+    public HashAssociateRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
     throws InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     // overridden to be made public
@@ -118,13 +118,13 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final Association<LeftValue, RightValue> association)
+    public void remove(final Pair<LeftValue, RightValue> pair)
     throws ItemToRemoveNotContainedException {
         try {
-            remove(association.getLeftValue(), association.getRightValue());
+            remove(pair.getLeftValue(), pair.getRightValue());
         }
         catch (final NoSuchAssociationValueException exception) {
-            throw new ItemToRemoveNotContainedException(this, association, exception);
+            throw new ItemToRemoveNotContainedException(this, pair, exception);
         }
     }
 
@@ -134,44 +134,44 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final Iterable<? extends Association<LeftValue, RightValue>> associations) {
+    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
         BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
-    public void remove(final Container<? extends Association<LeftValue, RightValue>> associations) {
+    public void remove(final Container<? extends Pair<LeftValue, RightValue>> associations) {
         BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
-    public void remove(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
         BinaryRelationUtility.remove(this, associations);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Association<LeftValue, RightValue>... associations) {
-        BinaryRelationUtility.remove(this, associations);
+    public void remove(final Pair<LeftValue, RightValue>... pairs) {
+        BinaryRelationUtility.remove(this, pairs);
     }
 
     @Override
-    public void retain(final Container<? extends Association<LeftValue, RightValue>> associations) {
+    public void retain(final Container<? extends Pair<LeftValue, RightValue>> associations) {
         BinaryRelationUtility.retain(this, associations);
     }
 
     @Override
-    public void retain(final Collection<? extends Association<LeftValue, RightValue>> associations) {
+    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
         BinaryRelationUtility.retain(this, associations);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final Association<LeftValue, RightValue>... associations) {
-        BinaryRelationUtility.retain(this, associations);
+    public void retain(final Pair<LeftValue, RightValue>... pairs) {
+        BinaryRelationUtility.retain(this, pairs);
     }
 
     @Override
-    public RemoveTraverser<Association<LeftValue, RightValue>> createTraverser() {
+    public RemoveTraverser<Pair<LeftValue, RightValue>> createTraverser() {
         return new DefaultRemoveBinaryRelationTraverser<>(this);
     }
 }

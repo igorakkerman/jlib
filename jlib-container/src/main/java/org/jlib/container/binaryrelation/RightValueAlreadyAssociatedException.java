@@ -34,7 +34,7 @@ extends ValueAlreadyAssociatedException {
 
     /**
      * Creates a new {@link RightValueAlreadyAssociatedException} for the
-     * specified {@link BinaryRelation} and the specified {@link Association}.
+     * specified {@link BinaryRelation} and the specified {@link Pair}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}

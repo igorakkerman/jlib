@@ -43,7 +43,7 @@ import org.jlib.core.value.ValueNotAccessibleException;
  */
 public class DefaultRemoveBinaryRelationTraverser<LeftValue, RightValue, Relation extends RemoveBinaryRelation<LeftValue, RightValue>>
 extends DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation>
-implements RemoveTraverser<Association<LeftValue, RightValue>> {
+implements RemoveTraverser<Pair<LeftValue, RightValue>> {
 
     /**
      * Creates a new RemoveBinaryRelationTraverser.

@@ -51,7 +51,7 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
-     * {@link Association} items contained by the specified {@link Container}.
+     * {@link Pair} items contained by the specified {@link Container}.
      *
      * @param associations
      *        Container of the Associations to add
@@ -60,42 +60,42 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
      *         if {@code associations} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
-    public HashAssociateBinaryRelation(final Container<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException {
         super(associations);
     }
 
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
-     * {@link Association} items contained by the specified {@link Collection}.
+     * {@link Pair} items contained by the specified {@link Collection}.
      *
-     * @param associations
-     *        {@link Collection} of {@link Association} items to add
+     * @param pairs
+     *        {@link Collection} of {@link Pair} items to add
      *
      * @throws InvalidAssociationException
-     *         if {@code associations} violates the rules of this
+     *         if {@code pairs} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
-    public HashAssociateBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations)
+    public HashAssociateBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
     throws InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     /**
      * Creates a new {@link HashAssociateBinaryRelation} containing the
-     * {@link Association} items specified in a comma separated sequence.
+     * {@link Pair} items specified in a comma separated sequence.
      *
-     * @param associations
-     *        comma separated sequence of the {@link Association} items to add
+     * @param pairs
+     *        comma separated sequence of the {@link Pair} items to add
      *
      * @throws InvalidAssociationException
-     *         if {@code associations} violates the rules of this
+     *         if {@code pairs} violates the rules of this
      *         {@link HashAssociateBinaryRelation}
      */
     @SuppressWarnings("unchecked")
-    public HashAssociateBinaryRelation(final Association<LeftValue, RightValue>... associations)
+    public HashAssociateBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
     throws InvalidAssociationException {
-        super(associations);
+        super(pairs);
     }
 
     @Override
@@ -113,51 +113,51 @@ implements AssociateBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void associate(final Association<LeftValue, RightValue> association)
+    public void associate(final Pair<LeftValue, RightValue> pair)
     throws InvalidAssociationException {
-        associate(association.getLeftValue(), association.getRightValue());
+        associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     @Override
-    public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(final Container<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidTraversibleArgumentException {
         BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void associate(final Association<LeftValue, RightValue>... associations)
+    public void associate(final Pair<LeftValue, RightValue>... pairs)
+    throws InvalidAssociationException {
+        BinaryRelationUtility.associate(this, pairs);
+    }
+
+    @Override
+    public void associate(final Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException {
         BinaryRelationUtility.associate(this, associations);
     }
 
     @Override
-    public void associate(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(final Pair<LeftValue, RightValue> pair)
     throws InvalidAssociationException {
-        BinaryRelationUtility.associate(this, associations);
+        assertAssociated(pair.getLeftValue(), pair.getRightValue());
     }
 
     @Override
-    public void assertContained(final Association<LeftValue, RightValue> association)
-    throws InvalidAssociationException {
-        assertAssociated(association.getLeftValue(), association.getRightValue());
-    }
-
-    @Override
-    public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(final Container<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException {
         BinaryRelationUtility.assertContained(this, associations);
     }
 
     @Override
-    public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(final Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException {
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void assertContained(final Association<LeftValue, RightValue>... associations)
+    public void assertContained(final Pair<LeftValue, RightValue>... pairs)
     throws InvalidAssociationException {
-        BinaryRelationUtility.assertContained(this, associations);
+        BinaryRelationUtility.assertContained(this, pairs);
     }
 }

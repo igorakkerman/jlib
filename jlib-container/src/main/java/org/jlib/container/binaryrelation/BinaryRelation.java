@@ -39,7 +39,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public interface BinaryRelation<LeftValue, RightValue>
-extends Container<Association<LeftValue, RightValue>> {
+extends Container<Pair<LeftValue, RightValue>> {
 
     /**
      * Returns the Set of RightValues associated with the specified LeftValue.

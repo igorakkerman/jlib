@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 /**
  * {@link InvalidAssociationException} thrown when referencing an
- * {@link Association} not contained by the specified {@link BinaryRelation}.
+ * {@link Pair} not contained by the specified {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
@@ -33,7 +33,7 @@ extends InvalidBinaryRelationArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = 5642778973583219541L;
 
-    /** LeftValue or RightValue of the {@link Association} */
+    /** LeftValue or RightValue of the {@link Pair} */
     private final Object value;
 
     /**
@@ -46,7 +46,7 @@ extends InvalidBinaryRelationArgumentException {
      *        {@link String} specifying the value name
      *
      * @param value
-     *        LeftValue or RightValue of the {@link Association}
+     *        LeftValue or RightValue of the {@link Pair}
      */
     public NoSuchAssociationValueException(final BinaryRelation<?, ?> binaryRelation, final String valueName, final Object value) {
         super(binaryRelation, "{1}: {2} '{3}'", value);
@@ -55,9 +55,9 @@ extends InvalidBinaryRelationArgumentException {
     }
 
     /**
-     * Returns the LeftValue of the invalid {@link Association}.
+     * Returns the LeftValue of the invalid {@link Pair}.
      *
-     * @return LeftValue of the {@link Association}
+     * @return LeftValue of the {@link Pair}
      */
     public Object getValue() {
         return value;

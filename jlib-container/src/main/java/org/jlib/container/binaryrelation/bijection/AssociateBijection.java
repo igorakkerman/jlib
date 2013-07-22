@@ -22,13 +22,13 @@
 package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AssociateBinaryRelation;
-import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.Pair;
 import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 
 /**
- * Bijection allowing to add new {@link Association} items.
+ * Bijection allowing to add new {@link Pair} items.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the {@link Bijection}
@@ -46,13 +46,13 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * {@link Bijection}.
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      *
      * @throws AssociationAlreadyContainedException
-     *         if the specified {@link Association} already exists
+     *         if the specified {@link Pair} already exists
      *
      * @throws LeftValueAlreadyAssociatedException
      *         if {@code leftValue} is already associated to another RightValue
@@ -61,7 +61,7 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         if {@code rightValue} is already associated to another LeftValue
      *
      * @throws InvalidAssociationException
-     *         if some property of the {@link Association} prevents it from
+     *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override
@@ -74,23 +74,23 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * {@link Bijection}.
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      *
      * @throws LeftValueAlreadyAssociatedException
      *         if {@code leftValue} is already associated to another RightValue;
-     *         if the {@link Association} is equal to another
-     *         {@link Association} in this {@link AssociateBijection}, it is ignored
+     *         if the {@link Pair} is equal to another
+     *         {@link Pair} in this {@link AssociateBijection}, it is ignored
      *
      * @throws RightValueAlreadyAssociatedException
      *         if {@code rightValue} is already associated to another LeftValue;
-     *         if the {@link Association} is equal to another
-     *         {@link Association} in this {@link AssociateBijection}, it is ignored
+     *         if the {@link Pair} is equal to another
+     *         {@link Pair} in this {@link AssociateBijection}, it is ignored
      *
      * @throws InvalidAssociationException
-     *         if some property of the {@link Association} prevents it from
+     *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override

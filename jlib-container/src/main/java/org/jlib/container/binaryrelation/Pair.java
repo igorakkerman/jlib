@@ -34,25 +34,25 @@ import org.jlib.core.language.AbstractCloneable;
  *
  * @author Igor Akkerman
  */
-public class Association<LeftValue, RightValue>
+public class Pair<LeftValue, RightValue>
 extends AbstractCloneable {
 
-    /** LeftValue of this Association */
+    /** LeftValue of this Pair */
     private final LeftValue leftValue;
 
-    /** RightValue of this Association */
+    /** RightValue of this Pair */
     private final RightValue rightValue;
 
     /**
-     * Creates a new Association.
+     * Creates a new Pair.
      *
      * @param leftValue
-     *        {@link LeftValue} of this {@link Association}
+     *        {@link LeftValue} of this {@link Pair}
      *
      * @param rightValue
-     *        {@link RightValue} of this {@link Association}
+     *        {@link RightValue} of this {@link Pair}
      */
-    public Association(final LeftValue leftValue, final RightValue rightValue) {
+    public Pair(final LeftValue leftValue, final RightValue rightValue) {
         super();
 
         this.leftValue = leftValue;
@@ -60,18 +60,18 @@ extends AbstractCloneable {
     }
 
     /**
-     * Returns the object on the left hand side of this {@link Association}.
+     * Returns the object on the left hand side of this {@link Pair}.
      *
-     * @return {@link LeftValue} of this {@link Association}
+     * @return {@link LeftValue} of this {@link Pair}
      */
     public LeftValue getLeftValue() {
         return leftValue;
     }
 
     /**
-     * Returns the object on the right hand side of this {@link Association}.
+     * Returns the object on the right hand side of this {@link Pair}.
      *
-     * @return {@link RightValue} of this {@link Association}
+     * @return {@link RightValue} of this {@link Pair}
      */
     public RightValue getRightValue() {
         return rightValue;

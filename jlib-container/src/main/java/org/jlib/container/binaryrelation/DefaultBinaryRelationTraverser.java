@@ -33,7 +33,7 @@ import org.jlib.core.value.Uninitialized;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
- * Default implementation of a {@link Traverser} over the {@link Association}
+ * Default implementation of a {@link Traverser} over the {@link Pair}
  * items of a {@link BinaryRelation}.
  *
  * @param <LeftValue>
@@ -48,7 +48,7 @@ import org.jlib.core.value.ValueNotAccessibleException;
  * @author Igor Akkerman
  */
 public class DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation extends BinaryRelation<LeftValue, RightValue>>
-implements Traverser<Association<LeftValue, RightValue>> {
+implements Traverser<Pair<LeftValue, RightValue>> {
 
     /** traversed {@link BinaryRelation} */
     private final Relation binaryRelation;
@@ -63,7 +63,7 @@ implements Traverser<Association<LeftValue, RightValue>> {
     private LeftValue leftValue;
 
     /** {@link Modifiable} for the index of the last accessed Item */
-    private Modifiable<Association<LeftValue, RightValue>> lastAccessedItemHolder;
+    private Modifiable<Pair<LeftValue, RightValue>> lastAccessedItemHolder;
 
     /**
      * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
@@ -91,11 +91,11 @@ implements Traverser<Association<LeftValue, RightValue>> {
      * Unregisters the last accessed Item.
      */
     protected void unsetLastAccessedItem() {
-        lastAccessedItemHolder = new Uninitialized<Association<LeftValue, RightValue>>() {
+        lastAccessedItemHolder = new Uninitialized<Pair<LeftValue, RightValue>>() {
 
             @Override
-            public void setValue(final Association<LeftValue, RightValue> association) {
-                lastAccessedItemHolder = new InitializedModifiable<>(association);
+            public void setValue(final Pair<LeftValue, RightValue> pair) {
+                lastAccessedItemHolder = new InitializedModifiable<>(pair);
             }
         };
     }
@@ -114,18 +114,18 @@ implements Traverser<Association<LeftValue, RightValue>> {
     }
 
     @Override
-    public Association<LeftValue, RightValue> getNextItem()
+    public Pair<LeftValue, RightValue> getNextItem()
     throws NoNextItemException {
         try {
             if (! rightValuesIterator.hasNext())
                 readNextLeftValue();
 
-            final Association<LeftValue, RightValue> association = new Association<>(leftValue,
+            final Pair<LeftValue, RightValue> pair = new Pair<>(leftValue,
                                                                                      rightValuesIterator.next());
 
-            lastAccessedItemHolder.setValue(association);
+            lastAccessedItemHolder.setValue(pair);
 
-            return association;
+            return pair;
         }
         catch (final NoSuchElementException exception) {
             throw new NoNextItemException(binaryRelation, exception);
@@ -142,15 +142,15 @@ implements Traverser<Association<LeftValue, RightValue>> {
     }
 
     /**
-     * Returns the last {@link Association} returned by this
+     * Returns the last {@link Pair} returned by this
      * {@link DefaultBinaryRelationTraverser}.
      *
-     * @return last returned {@link Association}
+     * @return last returned {@link Pair}
      *
      * @throws ValueNotAccessibleException
-     *         if no {@link Association} has been accessed
+     *         if no {@link Pair} has been accessed
      */
-    protected Association<LeftValue, RightValue> getLastAccessedItem()
+    protected Pair<LeftValue, RightValue> getLastAccessedItem()
     throws ValueNotAccessibleException {
         return lastAccessedItemHolder.getValue();
     }

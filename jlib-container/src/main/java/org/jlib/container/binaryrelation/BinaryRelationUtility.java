@@ -41,36 +41,36 @@ public class BinaryRelationUtility {
     }
 
     /**
-     * Adds the specified Association to the specified
+     * Adds the specified Pair to the specified
      * {@link AssociateBinaryRelation} that does not yet contain the
-     * Association.
+     * Pair.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
-     *        {@link AssociateBinaryRelation} to which the Association is
+     *        {@link AssociateBinaryRelation} to which the Pair is
      *        associated
      *
-     * @param association
-     *        associated Association
+     * @param pair
+     *        associated Pair
      *
      * @throws AssociationAlreadyContainedException
-     *         if {@code binaryRelation} already contains {@code association}
+     *         if {@code binaryRelation} already contains {@code pair}
      *
      * @throws InvalidBinaryRelationArgumentException
-     *         if some property of {@code association} prevents it from being
+     *         if some property of {@code pair} prevents it from being
      *         associated to {@code binaryRelation}
      */
-    public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Association<LeftValue, RightValue> association)
+    public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue> pair)
     throws AssociationAlreadyContainedException, InvalidBinaryRelationArgumentException {
-        if (binaryRelation.contains(association))
-            throw new AssociationAlreadyContainedException(binaryRelation, association.getLeftValue(),
-                                                           association.getRightValue());
-        binaryRelation.assertContained(association);
+        if (binaryRelation.contains(pair))
+            throw new AssociationAlreadyContainedException(binaryRelation, pair.getLeftValue(),
+                                                           pair.getRightValue());
+        binaryRelation.assertContained(pair);
     }
 
     /**
@@ -78,13 +78,13 @@ public class BinaryRelationUtility {
      * specified {@link AssociateBinaryRelation}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param <Associations>
-     *        type of the {@link Iterable} containing the {@link Association}
+     *        type of the {@link Iterable} containing the {@link Pair}
      *        items
      *
      * @param binaryRelation
@@ -95,18 +95,18 @@ public class BinaryRelationUtility {
      *        {@link Iterable} providing the Associations to associate
      *
      * @throws AssociationAlreadyContainedException
-     *         if {@code binaryRelation} already contains one Association in
+     *         if {@code binaryRelation} already contains one Pair in
      *         {@code associations}
      *
      * @throws InvalidBinaryRelationArgumentException
-     *         if some property of one Association in {@code associations}
+     *         if some property of one Pair in {@code associations}
      *         prevents it from being associated to {@code binaryRelation}
      */
     // @formatter:off
-    public static <LeftValue, RightValue, Associations extends Iterable<? extends Association<LeftValue, RightValue>>> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Associations associations) {
+    public static <LeftValue, RightValue, Associations extends Iterable<? extends Pair<LeftValue, RightValue>>> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Associations associations) {
         // @formatter:on
-        for (final Association<LeftValue, RightValue> association : associations)
-            binaryRelation.associate(association);
+        for (final Pair<LeftValue, RightValue> pair : associations)
+            binaryRelation.associate(pair);
     }
 
     /**
@@ -115,41 +115,41 @@ public class BinaryRelationUtility {
      *
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link AssociateBinaryRelation} to which the Associations are
      *        associated
      *
-     * @param associations
+     * @param pairs
      *        {@link Iterable} providing the Associations to associate
      *
      * @throws AssociationAlreadyContainedException
-     *         if {@code binaryRelation} already contains one Association in
-     *         {@code associations}
+     *         if {@code binaryRelation} already contains one Pair in
+     *         {@code pairs}
      *
      * @throws InvalidBinaryRelationArgumentException
-     *         if some property of one Association in {@code associations}
+     *         if some property of one Pair in {@code pairs}
      *         prevents it from being associated to {@code binaryRelation}
      */
     @SafeVarargs
-    public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Association<LeftValue, RightValue>... associations) {
-        associate(binaryRelation, ArrayUtility.iterable(associations));
+    public static <LeftValue, RightValue> void associate(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue>... pairs) {
+        associate(binaryRelation, ArrayUtility.iterable(pairs));
     }
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains the
      * specified Associations. If the {@link AssociateBinaryRelation} does not
-     * contain the Association, it is associated.
+     * contain the Pair, it is associated.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link AssociateBinaryRelation} to which the Associations are
@@ -158,32 +158,32 @@ public class BinaryRelationUtility {
      * @param associations
      *        {@link Iterable} providing the Associations to associate
      */
-    public static <LeftValue, RightValue> void assertContained(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Association<LeftValue, RightValue>> associations) {
-        for (final Association<LeftValue, RightValue> newAssociation : associations)
-            binaryRelation.assertContained(newAssociation);
+    public static <LeftValue, RightValue> void assertContained(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
+        for (final Pair<LeftValue, RightValue> newPair : associations)
+            binaryRelation.assertContained(newPair);
     }
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains the
      * specified Associations. If the {@link AssociateBinaryRelation} does not
-     * contain the Association, it is associated.
+     * contain the Pair, it is associated.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link AssociateBinaryRelation} to which the Associations are
      *        associated
      *
-     * @param associations
+     * @param pairs
      *        {@link Iterable} providing the Associations to associate
      */
     @SafeVarargs
-    public static <LeftValue, RightValue> void assertContained(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Association<LeftValue, RightValue>... associations) {
-        assertContained(binaryRelation, ArrayUtility.iterable(associations));
+    public static <LeftValue, RightValue> void assertContained(final AssociateBinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue>... pairs) {
+        assertContained(binaryRelation, ArrayUtility.iterable(pairs));
     }
 
     /**
@@ -191,10 +191,10 @@ public class BinaryRelationUtility {
      * the specified {@link RemoveBinaryRelation}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link RemoveBinaryRelation} containing the Associations
@@ -202,9 +202,9 @@ public class BinaryRelationUtility {
      * @param associations
      *        {@link Iterable} providing the Associations to remove
      */
-    public static <LeftValue, RightValue> void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Association<LeftValue, RightValue>> associations) {
-        for (final Association<LeftValue, RightValue> association : associations)
-            binaryRelation.remove(association);
+    public static <LeftValue, RightValue> void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
+        for (final Pair<LeftValue, RightValue> pair : associations)
+            binaryRelation.remove(pair);
     }
 
     /**
@@ -212,20 +212,20 @@ public class BinaryRelationUtility {
      * the specified {@link RemoveBinaryRelation}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link RemoveBinaryRelation} containing the Associations
      *
-     * @param associations
+     * @param pairs
      *        {@link Iterable} providing the Associations to remove
      */
     @SafeVarargs
-    public static <LeftValue, RightValue> void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Association<LeftValue, RightValue>... associations) {
-        remove(binaryRelation, ArrayUtility.iterable(associations));
+    public static <LeftValue, RightValue> void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue>... pairs) {
+        remove(binaryRelation, ArrayUtility.iterable(pairs));
     }
 
     /**
@@ -234,10 +234,10 @@ public class BinaryRelationUtility {
      * by the specified {@link Iterable}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link RemoveBinaryRelation} containing the Associations to remove
@@ -245,10 +245,10 @@ public class BinaryRelationUtility {
      * @param associations
      *        {@link Iterable} providing the Associations to retain
      */
-    public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Association<LeftValue, RightValue>> associations) {
-        final Set<Association<LeftValue, RightValue>> retainedAssociationsSet = CollectionUtility.toSet(associations);
+    public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
+        final Set<Pair<LeftValue, RightValue>> retainedAssociationsSet = CollectionUtility.toSet(associations);
 
-        final RemoveTraverser<Association<LeftValue, RightValue>> binaryRelationTraverser = binaryRelation.createTraverser();
+        final RemoveTraverser<Pair<LeftValue, RightValue>> binaryRelationTraverser = binaryRelation.createTraverser();
 
         while (binaryRelationTraverser.isNextItemAccessible())
             if (! retainedAssociationsSet.contains(binaryRelationTraverser.getNextItem()))
@@ -261,10 +261,10 @@ public class BinaryRelationUtility {
      * contained by the specified {@link Collection}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
      *        {@link RemoveBinaryRelation} containing the Associations to remove
@@ -272,8 +272,8 @@ public class BinaryRelationUtility {
      * @param associations
      *        {@link Collection} containing the Associations to retain
      */
-    public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Collection<? extends Association<LeftValue, RightValue>> associations) {
-        final RemoveTraverser<Association<LeftValue, RightValue>> associationsTraverser = binaryRelation.createTraverser();
+    public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final Collection<? extends Pair<LeftValue, RightValue>> associations) {
+        final RemoveTraverser<Pair<LeftValue, RightValue>> associationsTraverser = binaryRelation.createTraverser();
 
         while (associationsTraverser.isNextItemAccessible())
             if (! associations.contains(associationsTraverser.getNextItem()))
@@ -286,13 +286,13 @@ public class BinaryRelationUtility {
      * contained by the specified {@link Collection}.
      *
      * @param <LeftValue>
-     *        type of the left value of the {@link Association}
+     *        type of the left value of the {@link Pair}
      *
      * @param <RightValue>
-     *        type of the right value of the {@link Association}
+     *        type of the right value of the {@link Pair}
      *
      * @param <RetainedAssociation>
-     *        type of the retained {@link Association}
+     *        type of the retained {@link Pair}
      *
      * @param binaryRelation
      *        {@link RemoveBinaryRelation} containing the Associations to remove
@@ -301,7 +301,7 @@ public class BinaryRelationUtility {
      *        {@link Collection} containing the Associations to retain
      */
     @SafeVarargs
-    public static <LeftValue, RightValue, RetainedAssociation extends Association<LeftValue, RightValue>> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final RetainedAssociation... associations) {
+    public static <LeftValue, RightValue, RetainedAssociation extends Pair<LeftValue, RightValue>> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation, final RetainedAssociation... associations) {
         // necessary as we need the contains() method fot the associations sequence
         retain(binaryRelation, CollectionUtility.toSet(associations));
     }

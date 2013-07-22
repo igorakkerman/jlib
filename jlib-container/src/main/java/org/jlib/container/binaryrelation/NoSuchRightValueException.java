@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 /**
  * Exception thrown when a {@link BinaryRelation} does not contain an
- * {@link Association} with the requested right value.
+ * {@link Pair} with the requested right value.
  *
  * @author Igor Akkerman
  */
@@ -40,7 +40,7 @@ extends NoSuchAssociationValueException {
      *        referenced {@link BinaryRelation}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      */
     public NoSuchRightValueException(final BinaryRelation<?, ?> binaryRelation, final Object rightValue) {
         super(binaryRelation, "rightValue", rightValue);

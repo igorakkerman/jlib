@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import org.jlib.container.RemoveContainer;
 
 /**
- * {@link BinaryRelation} allowing the removal of {@link Association} items.
+ * {@link BinaryRelation} allowing the removal of {@link Pair} items.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the BinaryRelation
@@ -35,21 +35,21 @@ import org.jlib.container.RemoveContainer;
  * @author Igor Akkerman
  */
 public interface RemoveBinaryRelation<LeftValue, RightValue>
-extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Association<LeftValue, RightValue>> {
+extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Pair<LeftValue, RightValue>> {
 
     /**
-     * Removes the {@link Association} specified by its LeftValue and RightValue
+     * Removes the {@link Pair} specified by its LeftValue and RightValue
      * from this {@link RemoveBinaryRelation}.
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      *
      * @throws NoSuchAssociationValueException
      *         if this {@link RemoveBinaryRelation} does not contain the
-     *         specified {@link Association}
+     *         specified {@link Pair}
      */
     public void remove(LeftValue leftValue, RightValue rightValue)
     throws NoSuchAssociationValueException;

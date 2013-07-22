@@ -26,7 +26,7 @@ import java.util.Collection;
 import org.jlib.container.Container;
 
 /**
- * {@link BinaryRelation} allowing to associate and remove {@link Association}
+ * {@link BinaryRelation} allowing to associate and remove {@link Pair}
  * Items.
  *
  * @param <LeftValue>
@@ -47,13 +47,13 @@ extends BinaryRelation<LeftValue, RightValue> {
      * {@link AssociateBinaryRelation}.
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      *
      * @throws InvalidAssociationException
-     *         if some property of the specified {@link Association} prevents it
+     *         if some property of the specified {@link Pair} prevents it
      *         from being associated
      */
     public void associate(LeftValue leftValue, RightValue rightValue)
@@ -64,13 +64,13 @@ extends BinaryRelation<LeftValue, RightValue> {
      * {@link AssociateBinaryRelation}.
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      *
      * @throws InvalidAssociationException
-     *         if some property of the {@link Association} prevents it from
+     *         if some property of the {@link Pair} prevents it from
      *         being associated
      */
     public void assertAssociated(LeftValue leftValue, RightValue rightValue)
@@ -80,14 +80,14 @@ extends BinaryRelation<LeftValue, RightValue> {
      * Associates the specified Item to the specified
      * {@link AssociateBinaryRelation}.
      *
-     * @param association
-     *        {@link Association} to create
+     * @param pair
+     *        {@link Pair} to create
      *
      * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated, for instance, if it is already contained
      */
-    public void associate(Association<LeftValue, RightValue> association)
+    public void associate(Pair<LeftValue, RightValue> pair)
     throws InvalidAssociationException;
 
     /**
@@ -104,7 +104,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
-    public void associate(Container<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(Container<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -118,22 +118,22 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
-    public void associate(Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
      * Associates all specified Items to the specified
      * {@link AssociateBinaryRelation}.
      *
-     * @param associations
+     * @param pairs
      *        comma separated sequence of Items to associate
      *
      * @throws InvalidAssociationException
-     *         if some property of an Item in {@code associations} prevents it
+     *         if some property of an Item in {@code pairs} prevents it
      *         from being associated, for instance, if it is already contained
      */
     @SuppressWarnings("unchecked")
-    public void associate(Association<LeftValue, RightValue>... associations)
+    public void associate(Pair<LeftValue, RightValue>... pairs)
     throws InvalidAssociationException;
 
     /**
@@ -141,14 +141,14 @@ extends BinaryRelation<LeftValue, RightValue> {
      * specified Item. If the {@link AssociateBinaryRelation} does not contain
      * the Item, it is associated.
      *
-     * @param association
-     *        {@link Association} to create
+     * @param pair
+     *        {@link Pair} to create
      *
      * @throws InvalidAssociationException
      *         if some property of {@code item} prevents it from being
      *         associated
      */
-    public void assertContained(Association<LeftValue, RightValue> association)
+    public void assertContained(Pair<LeftValue, RightValue> pair)
     throws InvalidAssociationException;
 
     /**
@@ -164,7 +164,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated
      */
-    public void assertContained(Container<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(Container<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -179,14 +179,14 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of {@code item} prevents it from being
      *         associated
      */
-    public void assertContained(Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(Collection<? extends Pair<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
      * Asserts that the specified {@link AssociateBinaryRelation} contains all
      * specified Items to the specified {@link AssociateBinaryRelation}.
      *
-     * @param associations
+     * @param pairs
      *        comma separated sequence of Items to associate
      *
      * @throws InvalidAssociationException
@@ -194,6 +194,6 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         associated
      */
     @SuppressWarnings("unchecked")
-    public void assertContained(Association<LeftValue, RightValue>... associations)
+    public void assertContained(Pair<LeftValue, RightValue>... pairs)
     throws InvalidAssociationException;
 }

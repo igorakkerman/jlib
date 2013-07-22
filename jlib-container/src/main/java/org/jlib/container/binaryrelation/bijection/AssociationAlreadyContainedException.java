@@ -21,13 +21,13 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.Association;
+import org.jlib.container.binaryrelation.Pair;
 import org.jlib.container.binaryrelation.BinaryRelation;
 import org.jlib.container.binaryrelation.InvalidAssociationException;
 
 /**
  * {@link InvalidAssociationException} thrown when trying to invalidy add an
- * {@link Association} to a {@link BinaryRelation}.
+ * {@link Pair} to a {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
@@ -44,10 +44,10 @@ extends InvalidAssociationException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the {@link Association}
+     *        LeftValue of the {@link Pair}
      *
      * @param rightValue
-     *        RightValue of the {@link Association}
+     *        RightValue of the {@link Pair}
      */
     public AssociationAlreadyContainedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);

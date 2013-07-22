@@ -72,40 +72,40 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      */
-    public HashBinaryRelation(final Container<Association<LeftValue, RightValue>> associations) {
+    public HashBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations) {
         super();
 
-        for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.getLeftValue(), association.getRightValue());
+        for (final Pair<LeftValue, RightValue> pair : associations)
+            associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     /**
      * Creates a new HashBinaryRelation containing the Associations contained by
      * the specified Collection.
      *
-     * @param associations
+     * @param pairs
      *        Collection of the Associations to add
      */
-    public HashBinaryRelation(final Collection<Association<LeftValue, RightValue>> associations) {
+    public HashBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs) {
         super();
 
-        for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.getLeftValue(), association.getRightValue());
+        for (final Pair<LeftValue, RightValue> pair : pairs)
+            associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     /**
      * Creates a new HashBinaryRelation containing the Associations specified in
      * a comma separated sequence.
      *
-     * @param associations
+     * @param pairs
      *        Comma separated sequence of the Associations to add
      */
     @SuppressWarnings("unchecked")
-    public HashBinaryRelation(final Association<LeftValue, RightValue>... associations) {
+    public HashBinaryRelation(final Pair<LeftValue, RightValue>... pairs) {
         super();
 
-        for (final Association<LeftValue, RightValue> association : associations)
-            associate(association.getLeftValue(), association.getRightValue());
+        for (final Pair<LeftValue, RightValue> pair : pairs)
+            associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     @Override

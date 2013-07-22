@@ -37,7 +37,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public abstract class AbstractBinaryRelation<LeftValue, RightValue>
-extends AbstractContainer<Association<LeftValue, RightValue>>
+extends AbstractContainer<Pair<LeftValue, RightValue>>
 implements BinaryRelation<LeftValue, RightValue> {
 
     /**
@@ -48,7 +48,7 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Traverser<Association<LeftValue, RightValue>> createTraverser() {
+    public Traverser<Pair<LeftValue, RightValue>> createTraverser() {
         return new DefaultBinaryRelationTraverser<>(this);
     }
 
@@ -58,7 +58,7 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public boolean contains(final Association<LeftValue, RightValue> association) {
-        return contains(association.getLeftValue(), association.getRightValue());
+    public boolean contains(final Pair<LeftValue, RightValue> pair) {
+        return contains(pair.getLeftValue(), pair.getRightValue());
     }
 }
