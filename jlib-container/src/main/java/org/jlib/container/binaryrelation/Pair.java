@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.core.language.AbstractCloneable;
 
 /**
  * Binary association.
@@ -35,7 +35,7 @@ import org.jlib.core.language.AbstractObject;
  * @author Igor Akkerman
  */
 public class Pair<LeftValue, RightValue>
-extends AbstractObject {
+extends AbstractCloneable {
 
     /** LeftValue of this Pair */
     private final LeftValue leftValue;
