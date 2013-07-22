@@ -26,6 +26,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
 
+import org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine;
 import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
 import org.jlib.core.text.templateengine.PrintfTemplateEngine;
 
@@ -46,6 +47,10 @@ public final class ExceptionMessageUtility {
 
     public static ExceptionMessage message() {
         return message(EMPTY);
+    }
+
+    public static ExceptionMessage message(final Object object) {
+        return new ExceptionMessage(IgnoreArgumentsTemplateEngine.getInstance(), object.toString());
     }
 
     public static ExceptionMessage message(final CharSequence messageTemplate, final Object... messageArguments) {

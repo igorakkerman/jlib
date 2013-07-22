@@ -21,11 +21,13 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
- * {@link InvalidTraversibleArgumentException} thrown when a requested Item is not
- * found.
+ * {@link InvalidTraversibleArgumentException} thrown when a requested Item is not found.
  *
  * @author Igor Akkerman
  */
@@ -34,9 +36,6 @@ extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 8162511917404174346L;
-
-    /** Item that could not be found */
-    private final Object item;
 
     /**
      * Creates a new {@link NoSuchSequenceItemException}.
@@ -50,18 +49,8 @@ extends InvalidTraversibleArgumentException {
      * @param item
      *        Item that could not be found
      */
-    public <Item> NoSuchSequenceItemException(final Sequence<Item> sequence, final Item item) {
-        super(sequence, "{1}: {2}", item);
-
-        this.item = item;
-    }
-
-    /**
-     * Returns the item of this {@link NoSuchSequenceItemException}.
-     *
-     * @return {@link Object} specifying the item
-     */
-    public Object getItem() {
-        return item;
+    public <Item> NoSuchSequenceItemException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<Item> sequence,
+                                              final Item item) {
+        super(sequence, message(item));
     }
 }

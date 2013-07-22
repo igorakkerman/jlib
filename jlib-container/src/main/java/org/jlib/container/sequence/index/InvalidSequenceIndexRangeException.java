@@ -41,8 +41,7 @@ extends InvalidTraversibleArgumentException {
      * Creates a new {@link InvalidSequenceIndexRangeException}.
      *
      * @param sequence
-     *        {@link IndexSequence} for which this
-     *        {@link InvalidSequenceIndexRangeException} is thrown
+     *        {@link IndexSequence} for which this {@link InvalidSequenceIndexRangeException} is thrown
      *
      * @param fromIndex
      *        integer specifying the from index
