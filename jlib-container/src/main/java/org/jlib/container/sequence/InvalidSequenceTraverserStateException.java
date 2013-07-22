@@ -21,6 +21,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 
 /**
@@ -34,17 +35,15 @@ extends InvalidTraverserStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 7078599807599575854L;
 
-    /** referenced {@link Sequence} */
-    private final Sequence<?> sequence;
-
     /**
      * Creates a new {@link InvalidSequenceTraverserStateException}.
      *
      * @param sequence
      *        referenced {@link Sequence}
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidSequenceTraverserStateException(final Sequence<?> sequence) {
-        this(sequence, (Exception) null);
+        super(sequence);
     }
 
     /**
@@ -55,30 +54,29 @@ extends InvalidTraverserStateException {
      *        referenced {@link Sequence}
      *
      * @param message
-     *        {@link String} specifying the error message
+     *        the {@link ExceptionMessage}
      */
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String message) {
-        this(sequence, message, null);
+    public InvalidSequenceTraverserStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
+                                                  final ExceptionMessage message) {
+        super(sequence, message);
     }
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException} with the
-     * specified cause.
+     * Creates a new {@link InvalidSequenceTraverserStateException} with the specified cause.
      *
      * @param sequence
      *        referenced {@link Sequence}
      *
      * @param cause
-     *        {@link Exception} that caused this
-     *        {@link InvalidSequenceTraverserStateException}
+     *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Exception cause) {
-        this(sequence, "{1}", cause);
+        super(sequence, cause);
     }
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException} with the
-     * specified error message and cause.
+     * Creates a new {@link InvalidSequenceTraverserStateException} with the specified error message and cause.
      *
      * @param sequence
      *        referenced {@link Sequence}
@@ -87,23 +85,11 @@ extends InvalidTraverserStateException {
      *        {@link String} specifying the error message
      *
      * @param cause
-     *        {@link Exception} that caused this
-     *        {@link InvalidSequenceTraverserStateException}
+     *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
      */
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final String message,
+    @SuppressWarnings("TypeMayBeWeakened")
+    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final ExceptionMessage message,
                                                   final Exception cause) {
         super(sequence, message, cause);
-
-        this.sequence = sequence;
-    }
-
-    /**
-     * Returns the referenced {@link Sequence}.
-     *
-     * @return referenced {@link Sequence}
-     */
-    @Override
-    public Sequence<?> getTraversible() {
-        return sequence;
     }
 }
