@@ -21,11 +21,15 @@
 
 package org.jlib.core.array;
 
+import java.util.Arrays;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ExceptionMessageUtility.printf;
+
+import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.TwoWayTraverser;
-
-import java.util.Arrays;
 
 /**
  * {@link TwoWayTraverser} over the items of an array.
@@ -36,6 +40,7 @@ import java.util.Arrays;
  * @author Igor Akkerman
  */
 public class ArrayTraverser<Item>
+extends AbstractObject
 implements TwoWayTraverser<Item> {
 
     /** array to traverse */
@@ -87,7 +92,7 @@ implements TwoWayTraverser<Item> {
     @Override
     public Item getNextItem() {
         if (! isNextItemAccessible())
-            throw new NoNextItemException(traversible, "{1}: {2}", Arrays.toString(array));
+            throw new NoNextItemException(traversible, message(Arrays.toString(array)));
 
         return array[currentIndex++];
     }
@@ -101,8 +106,14 @@ implements TwoWayTraverser<Item> {
     public Item getPreviousItem()
     throws NoPreviousItemException {
         if (! isPreviousItemAccessible())
-            throw new NoPreviousItemException(traversible, "{1}: {2}", Arrays.toString(array));
+            throw new NoPreviousItemException(traversible, message(Arrays.toString(array)));
 
         return array[-- currentIndex];
+    }
+
+    public static void main(String... commandLineArguments) {
+        System.out.println(new ArrayTraverser<>(new Integer[]{ 1, 2, 3 }));
+
+        throw new NoPreviousItemException(new ArrayTraversible<>(new Integer[]{ 1, 2, 3 }), printf());
     }
 }

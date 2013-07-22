@@ -21,8 +21,9 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.language.AbstractCloneable;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
+import org.jlib.core.language.AbstractCloneable;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 public abstract class AbstractLinearIndexStorage<Item>
@@ -99,10 +100,11 @@ implements LinearIndexStorage<Item> {
 
     protected void ensureIndexValid(final String indexName, final int index) {
         if (index < 0)
-            throw new InvalidIndexException(this, "{1} = {2} < 0", indexName, index);
+            throw new InvalidIndexException(this, message("{0} = {1} < 0", indexName, index));
 
         if (index > getCapacity() - 1)
-            throw new InvalidIndexException(this, "{1} = {2} > {3} = capacity - 1", indexName, index, getCapacity());
+            throw new InvalidIndexException(this,
+                                            message("{0} = {1} > {2} = capacity - 1", indexName, index, getCapacity()));
     }
 
     protected void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
@@ -111,8 +113,8 @@ implements LinearIndexStorage<Item> {
         ensureIndexValid(endIndexName, endIndex);
 
         if (endIndex < beginIndex)
-            throw new InvalidIndexException(this, "{1} = {2} < {3} = {4}", endIndexName, endIndex, beginIndex,
-                                            beginIndexName);
+            throw new InvalidIndexException(this, message("{0} = {1} < {2} = {3}", endIndexName, endIndex, beginIndex,
+                                                          beginIndexName));
     }
 
     protected void validateOperationDescriptor(final IndexRangeOperationDescriptor copyDescriptor) {

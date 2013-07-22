@@ -37,14 +37,35 @@ extends ParametrizedText {
 
     public ParametrizedMessage with(final Object object) {
 
-        setTemplate(withObject(getTemplate(), object));
+        withObject(getTemplateBuilder(), object);
 
         return this;
     }
 
     public ParametrizedMessage with(final CharSequence objectName, final Object object) {
 
-        setTemplate(withNamedObject(getTemplate(), objectName, object));
+        withNamedObject(getTemplateBuilder(), objectName, object);
+
+        return this;
+    }
+
+    @Override
+    public ParametrizedMessage append(final Object object) {
+        super.append(object);
+
+        return this;
+    }
+
+    @Override
+    public ParametrizedMessage append(final char character) {
+        super.append(character);
+
+        return this;
+    }
+
+    @Override
+    public ParametrizedMessage append(final int integer) {
+        super.append(integer);
 
         return this;
     }

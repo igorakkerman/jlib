@@ -27,27 +27,38 @@ import org.jlib.core.text.templateengine.TemplateEngine;
 public class ParametrizedText
 extends AbstractObject {
 
+    public static final int EXPECTED_ARGUMENT_LENGTH = 30;
+
+    public static final int EXPECTED_ADDITIONAL_LENGTH = 50;
+
+    private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {
+        return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
+    }
+
     private final TemplateEngine templateEngine;
 
-    private CharSequence template;
+    private final StringBuilder templateBuilder;
 
     private Object[] arguments;
 
     public ParametrizedText(final TemplateEngine templateEngine, final CharSequence template,
                             final Object... arguments) {
+        this(templateEngine, computeExpectedBufferSize(template, arguments), template, arguments);
+    }
+
+    public ParametrizedText(final TemplateEngine templateEngine, final int bufferSize, final CharSequence template,
+                            final Object... arguments) {
         super();
 
         this.templateEngine = templateEngine;
-        this.template = template;
+
+        templateBuilder = new StringBuilder(bufferSize).append(template);
+
         this.arguments = arguments;
     }
 
-    public String getTemplate() {
-        return template.toString();
-    }
-
-    protected void setTemplate(final CharSequence template) {
-        this.template = template;
+    protected StringBuilder getTemplateBuilder() {
+        return templateBuilder;
     }
 
     public Object[] getArguments() {
@@ -58,8 +69,26 @@ extends AbstractObject {
         this.arguments = arguments;
     }
 
+    public ParametrizedText append(final Object object) {
+        templateBuilder.append(object);
+
+        return this;
+    }
+
+    public ParametrizedText append(final char character) {
+        templateBuilder.append(character);
+
+        return this;
+    }
+
+    public ParametrizedText append(final int integer) {
+        templateBuilder.append(integer);
+
+        return this;
+    }
+
     @Override
     public String toString() {
-        return templateEngine.applyArguments(template, arguments);
+        return templateEngine.applyArguments(templateBuilder.toString(), arguments);
     }
 }

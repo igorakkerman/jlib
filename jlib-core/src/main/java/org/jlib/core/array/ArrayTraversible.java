@@ -21,6 +21,7 @@
 
 package org.jlib.core.array;
 
+import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.TwoWayTraverser;
 import org.jlib.core.traverser.TwoWayTraversible;
 
@@ -33,6 +34,7 @@ import org.jlib.core.traverser.TwoWayTraversible;
  * @author Igor Akkerman
  */
 public class ArrayTraversible<Item>
+extends AbstractObject
 implements TwoWayTraversible<Item> {
 
     /** Items to traverse */

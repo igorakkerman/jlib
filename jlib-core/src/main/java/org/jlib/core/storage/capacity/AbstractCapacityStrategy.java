@@ -21,8 +21,9 @@
 
 package org.jlib.core.storage.capacity;
 
-import org.jlib.core.language.AbstractObject;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
+import org.jlib.core.language.AbstractObject;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
@@ -82,11 +83,12 @@ extends AbstractObject {
 
     protected void ensureIndexValid(final int index) {
         if (index < contentIndexRegistry.getFirstItemIndex())
-            throw new InvalidIndexException(storage, "index = {1} > {2} = firstItemIndex", index,
-                                            contentIndexRegistry.getFirstItemIndex());
+            throw new InvalidIndexException(storage, message("index = {0} > {1} = firstItemIndex", index,
+                                                             contentIndexRegistry.getFirstItemIndex()));
 
-        if (index > contentIndexRegistry.getLastItemIndex())
-            throw new InvalidIndexException(storage, "index = {1} < {2} = lastItemIndex", index,
-                                            contentIndexRegistry.getLastItemIndex());
+        if (index > contentIndexRegistry.getLastItemIndex()) {
+            throw new InvalidIndexException(storage, message("index = {0} < {1} = lastItemIndex", index,
+                                                             contentIndexRegistry.getLastItemIndex()));
+        }
     }
 }

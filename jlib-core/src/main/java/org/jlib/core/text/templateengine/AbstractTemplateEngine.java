@@ -34,6 +34,6 @@ implements TemplateEngine {
 
     @Override
     public String applyArguments(final ParametrizedText parametrizedText) {
-        return applyArguments(parametrizedText.getTemplate(), parametrizedText.getArguments());
+        return applyArguments(parametrizedText.toString(), parametrizedText.getArguments());
     }
 }
