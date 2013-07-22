@@ -78,8 +78,12 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      */
     public final Metrix createMatrix(final int width, final int height)
     throws InvalidArgumentException {
-        ensureDimensionValid("width", width);
-        ensureDimensionValid("height", height);
+
+        if (width < 1)
+            throw new InvalidMatrixWidthException(width);
+
+        if (height < 1)
+            throw new InvalidMatrixHeightException(height);
 
         return createMatrix(0, 0, width - 1, height - 1);
     }
@@ -141,24 +145,5 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      */
     public final Metrix createMatrix(final Entry[][] entries) {
         return createMatrix(0, 0, entries);
-    }
-
-    /**
-     * Verifies whether the specified {@link Matrix} dimension has a positive
-     * value.
-     *
-     * @param dimensionName
-     *        String specifying the dimension name
-     *
-     * @param dimensionValue
-     *        integer specifying the dimension value
-     *
-     * @throws InvalidArgumentException
-     *         if {@code dimensionValue < 1}
-     */
-    private void ensureDimensionValid(final String dimensionName, final int dimensionValue)
-    throws InvalidArgumentException {
-        if (dimensionValue < 1)
-            throw new InvalidArgumentException(dimensionName + " == " + dimensionValue + " < 1");
     }
 }

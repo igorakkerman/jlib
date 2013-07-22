@@ -1,6 +1,9 @@
 package org.jlib.container.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidArgumentException} thrown when an array of {@link Matrix} Entries is specified with either the
@@ -9,18 +12,9 @@ import org.jlib.core.language.InvalidArgumentException;
  * @author Igor Akkerman
  */
 public abstract class InvalidMatrixEntriesDimensionException
-extends InvalidMatrixArgumentException {
+extends InvalidTraversibleArgumentException {
 
-    private final Object[][] entries;
-
-    /** invalid dimension index */
-    private final int index;
-
-    /** invalid dimension value */
-    private final int invalidValue;
-
-    /** correct dimension value */
-    private final int correctValue;
+    private static final long serialVersionUID = - 7552630985350522465L;
 
     /**
      * Creates a new {@link InvalidMatrixEntriesDimensionException}.
@@ -37,38 +31,6 @@ extends InvalidMatrixArgumentException {
     protected InvalidMatrixEntriesDimensionException(final Matrix<?> matrix, final Object[][] entries, final int index,
                                                      final int invalidValue, final int correctValue) {
 
-        super(matrix, "[1]{2} != {3}, {0}", index, invalidValue, correctValue);
-        this.entries = entries;
-
-        this.index = index;
-        this.invalidValue = invalidValue;
-        this.correctValue = correctValue;
-    }
-
-    /**
-     * Returns the index locating the invalid dimension value.
-     *
-     * @return integer specifying theindex
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * Returns the invalid dimension value.
-     *
-     * @return integer specifying the invalid dimension value
-     */
-    public int getInvalidValue() {
-        return invalidValue;
-    }
-
-    /**
-     * Returns the correct dimension value.
-     *
-     * @return integer specifying the correct dimension value
-     */
-    public int getCorrectValue() {
-        return correctValue;
+        super(matrix, message("[{0}]{1} != {2}", index, invalidValue, correctValue));
     }
 }
