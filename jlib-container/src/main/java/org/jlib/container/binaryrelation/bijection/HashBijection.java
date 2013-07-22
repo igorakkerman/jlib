@@ -31,11 +31,11 @@ import java.util.Set;
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.InvalidPairException;
+import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
 import org.jlib.container.binaryrelation.NoSuchRightValueException;
-import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
 
 /**
  * {@link Bijection} implemented using hashing for left and right hand side
@@ -73,13 +73,13 @@ implements Bijection<LeftValue, RightValue> {
      * @param associations
      *        Container of the Associations to add
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code associations} is already
      *         associated to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code associations} is already
      *         associated to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
@@ -90,7 +90,7 @@ implements Bijection<LeftValue, RightValue> {
      *         from being added
      */
     public HashBijection(final Container<Pair<LeftValue, RightValue>> associations)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException {
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : associations)
@@ -104,13 +104,13 @@ implements Bijection<LeftValue, RightValue> {
      * @param pairs
      *        Collection of the Associations to add
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
      *         associated to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
      *         associated to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
@@ -121,7 +121,7 @@ implements Bijection<LeftValue, RightValue> {
      *         from being added
      */
     public HashBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException {
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : pairs)
@@ -135,13 +135,13 @@ implements Bijection<LeftValue, RightValue> {
      * @param pairs
      *        Comma separated sequence of the Associations to add
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
      *         associated to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
      *         {@link HashAssociateBijection}, it is ignored
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
      *         associated to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
@@ -153,7 +153,7 @@ implements Bijection<LeftValue, RightValue> {
      */
     @SuppressWarnings("unchecked")
     public HashBijection(final Pair<LeftValue, RightValue>... pairs)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException {
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : pairs)
@@ -162,8 +162,7 @@ implements Bijection<LeftValue, RightValue> {
 
     @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
-    throws PairAlreadyContainedException, LeftValueAlreadyAssociatedException,
-           RightValueAlreadyAssociatedException, InvalidPairException {
+    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         if (contains(leftValue, rightValue))
             throw new PairAlreadyContainedException(this, leftValue, rightValue);
 
@@ -172,7 +171,7 @@ implements Bijection<LeftValue, RightValue> {
 
     @Override
     protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException {
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         if (contains(leftValue, rightValue))
             return;
 
@@ -190,10 +189,10 @@ implements Bijection<LeftValue, RightValue> {
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if {@code leftValue} is already associated to another RightValue
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if {@code rightValue} is already associated to another LeftValue
      *
      * @throws InvalidPairException
@@ -202,12 +201,12 @@ implements Bijection<LeftValue, RightValue> {
      */
     // InvalidPairException may be thrown by subclasses
     protected void doAssociate(final LeftValue leftValue, final RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException {
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         if (hasLeft(leftValue))
-            throw new LeftValueAlreadyAssociatedException(this, leftValue, rightValue);
+            throw new LeftValueAlreadyRelatedException(this, leftValue, rightValue);
 
         if (hasRight(rightValue))
-            throw new RightValueAlreadyAssociatedException(this, leftValue, rightValue);
+            throw new RightValueAlreadyRelatedException(this, leftValue, rightValue);
 
         leftToRightMap.put(leftValue, rightValue);
         rightToLeftMap.put(rightValue, leftValue);

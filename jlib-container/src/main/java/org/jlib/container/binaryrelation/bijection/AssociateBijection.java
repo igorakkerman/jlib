@@ -23,9 +23,9 @@ package org.jlib.container.binaryrelation.bijection;
 
 import org.jlib.container.binaryrelation.AssociateBinaryRelation;
 import org.jlib.container.binaryrelation.InvalidPairException;
+import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
-import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
+import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
 
 /**
  * Bijection allowing to add new {@link Pair} items.
@@ -54,10 +54,10 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * @throws PairAlreadyContainedException
      *         if the specified {@link Pair} already exists
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if {@code leftValue} is already associated to another RightValue
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if {@code rightValue} is already associated to another LeftValue
      *
      * @throws InvalidPairException
@@ -66,8 +66,7 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      */
     @Override
     public void associate(LeftValue leftValue, RightValue rightValue)
-    throws PairAlreadyContainedException, LeftValueAlreadyAssociatedException,
-           RightValueAlreadyAssociatedException, InvalidPairException;
+    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException;
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -79,12 +78,12 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws LeftValueAlreadyAssociatedException
+     * @throws LeftValueAlreadyRelatedException
      *         if {@code leftValue} is already associated to another RightValue;
      *         if the {@link Pair} is equal to another
      *         {@link Pair} in this {@link AssociateBijection}, it is ignored
      *
-     * @throws RightValueAlreadyAssociatedException
+     * @throws RightValueAlreadyRelatedException
      *         if {@code rightValue} is already associated to another LeftValue;
      *         if the {@link Pair} is equal to another
      *         {@link Pair} in this {@link AssociateBijection}, it is ignored
@@ -95,5 +94,5 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      */
     @Override
     public void assertAssociated(LeftValue leftValue, RightValue rightValue)
-    throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidPairException;
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException;
 }

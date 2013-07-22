@@ -22,8 +22,8 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * {@link InvalidPairException} thrown when referencing an
- * {@link Pair} not contained by the specified {@link BinaryRelation}.
+ * {@link InvalidPairException} thrown when referencing an {@link Pair} not contained by the specified
+ * {@link BinaryRelation}.
  *
  * @author Igor Akkerman
  */
@@ -38,15 +38,11 @@ extends InvalidPairException {
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
-     *
-     * @param leftValue
-     *        LeftValue of the {@link Pair}
-     *
-     * @param rightValue
-     *        RightValue of the {@link Pair}
      */
-    public NoSuchPairException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                               final Object rightValue) {
-        super(binaryRelation, leftValue, rightValue);
+    public <LeftValue, RightValue> /*
+        */ NoSuchPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
+                               final Pair<LeftValue, RightValue> pair) {
+
+        super(binaryRelation, pair);
     }
 }

@@ -22,31 +22,31 @@
 package org.jlib.container.binaryrelation;
 
 /**
- * Exception thrown when trying to associate a value with another value by a
- * {@link BinaryRelation} which allows a value to be associated with only one
- * other value, and the first value is already associated with some third value.
+ * {@link ValueAlreadyRelatedException} for a LeftValue.
  *
  * @author Igor Akkerman
  */
-public abstract class ValueAlreadyAssociatedException
+public class RightValueAlreadyRelatedException
 extends InvalidPairException {
 
     /** serialVersionUID */
-    private static final long serialVersionUID = - 6309445418086228661L;
+    private static final long serialVersionUID = - 2805417022226046022L;
 
     /**
-     * Creates a new {@link ValueAlreadyAssociatedException}.
+     * Creates a new {@link RightValueAlreadyRelatedException} for the
+     * specified {@link BinaryRelation} and the specified {@link Pair}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue of the invalid {@link Pair}
+     *        LeftValue to which {@code rightValue} cannot be associated
      *
      * @param rightValue
-     *        RightValue of the invalid {@link Pair}
+     *        already associated RightValue
      */
-    public ValueAlreadyAssociatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue, final Object rightValue) {
+    public RightValueAlreadyRelatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
+                                             final Object rightValue) {
         super(binaryRelation, leftValue, rightValue);
     }
 }
