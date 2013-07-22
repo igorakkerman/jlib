@@ -36,17 +36,15 @@ extends InvalidTraversibleArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 5603158282885764114L;
 
-    /** referenced {@link BinaryRelation} */
-    private final BinaryRelation<?, ?> binaryRelation;
-
     /**
      * Creates a new {@link InvalidBinaryRelationArgumentException}.
      *
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation) {
-        this(binaryRelation, "{1}");
+        super(binaryRelation);
     }
 
     /**
@@ -61,9 +59,10 @@ extends InvalidTraversibleArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
                                                   final ExceptionMessage message) {
-        this(binaryRelation, messageTemplate, (Exception) null, messageArguments);
+        super(binaryRelation, message);
     }
 
     /**
@@ -82,21 +81,9 @@ extends InvalidTraversibleArgumentException {
      * @param messageArguments
      *        sequence of {@link Object} parameters of the error message
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final String messageTemplate, final Exception cause,
-                                                  final Object... messageArguments) {
-        super(binaryRelation, messageTemplate, cause, messageArguments);
-
-        this.binaryRelation = binaryRelation;
-    }
-
-    /**
-     * Returns the referenced {@link BinaryRelation}.
-     *
-     * @return referenced {@link BinaryRelation}
-     */
-    @Override
-    public BinaryRelation<?, ?> getContainer() {
-        return binaryRelation;
+                                                  final ExceptionMessage message, final Exception cause) {
+        super(binaryRelation, message, cause);
     }
 }

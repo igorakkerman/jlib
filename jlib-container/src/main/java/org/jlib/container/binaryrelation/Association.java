@@ -21,18 +21,21 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.language.AbstractCloneable;
+
 /**
- * Association in a BinaryRelation.
+ * Binary association.
  *
  * @param <LeftValue>
- *        type of the values on the left hand side of the BinaryRelation
+ *        type of the left hand side value of the {@link BinaryRelation}
  *
  * @param <RightValue>
- *        type of the values on the right hand side of the BinaryRelation
+ *        type of the right hand side value of the {@link BinaryRelation}
  *
  * @author Igor Akkerman
  */
-public class Association<LeftValue, RightValue> {
+public class Association<LeftValue, RightValue>
+extends AbstractCloneable {
 
     /** LeftValue of this Association */
     private final LeftValue leftValue;
@@ -44,10 +47,10 @@ public class Association<LeftValue, RightValue> {
      * Creates a new Association.
      *
      * @param leftValue
-     *        LeftValue of this Association
+     *        {@link LeftValue} of this {@link Association}
      *
      * @param rightValue
-     *        RightValue of this Association
+     *        {@link RightValue} of this {@link Association}
      */
     public Association(final LeftValue leftValue, final RightValue rightValue) {
         super();
@@ -57,35 +60,20 @@ public class Association<LeftValue, RightValue> {
     }
 
     /**
-     * Returns the object on the left hand side of this Association.
+     * Returns the object on the left hand side of this {@link Association}.
      *
-     * @return LeftValue of this Association
+     * @return {@link LeftValue} of this {@link Association}
      */
     public LeftValue getLeftValue() {
         return leftValue;
     }
 
     /**
-     * Returns the object on the right hand side of this Association.
+     * Returns the object on the right hand side of this {@link Association}.
      *
-     * @return RightValue of this Association
+     * @return {@link RightValue} of this {@link Association}
      */
     public RightValue getRightValue() {
         return rightValue;
-    }
-
-    @Override
-    public boolean equals(final Object otherObject) {
-        if (! (otherObject instanceof Association<?, ?>))
-            return false;
-
-        final Association<?, ?> otherAssociation = (Association<?, ?>) otherObject;
-
-        return leftValue.equals(otherAssociation.getLeftValue()) && rightValue.equals(otherAssociation.getRightValue());
-    }
-
-    @Override
-    public int hashCode() {
-        return leftValue.hashCode() * 2 + rightValue.hashCode();
     }
 }

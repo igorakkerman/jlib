@@ -21,6 +21,8 @@
 
 package org.jlib.container.binaryrelation;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.ExceptionMessage;
 
 /**
@@ -34,12 +36,6 @@ extends InvalidBinaryRelationArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 6498242933289941100L;
-
-    /** LeftValue of the invalid {@link Association} */
-    private final Object leftValue;
-
-    /** RightValue of the invalid {@link Association} */
-    private final Object rightValue;
 
     /**
      * Creates a new {@link InvalidAssociationException}.
@@ -55,7 +51,7 @@ extends InvalidBinaryRelationArgumentException {
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue) {
-        this(binaryRelation, leftValue, rightValue, "{1}: <{2}, {3}>");
+        super(binaryRelation, message().with("<{0}, {1}>", leftValue, rightValue));
     }
 
     /**
@@ -79,7 +75,7 @@ extends InvalidBinaryRelationArgumentException {
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                        final Object rightValue, final ExceptionMessage message) {
 
-        this(binaryRelation, leftValue, rightValue, messageTemplate, (Exception) null, messageArguments);
+        super(binaryRelation, leftValue, rightValue);
     }
 
     /**
@@ -108,26 +104,5 @@ extends InvalidBinaryRelationArgumentException {
                                        final Object rightValue, final String messageTemplate, final Exception cause,
                                        final Object... messageArguments) {
         super(binaryRelation, messageTemplate, cause, messageArguments, leftValue, rightValue);
-
-        this.leftValue = leftValue;
-        this.rightValue = rightValue;
-    }
-
-    /**
-     * Returns the LeftValue of the invalid {@link Association}.
-     *
-     * @return LeftValue of the {@link Association}
-     */
-    public Object getLeftValue() {
-        return leftValue;
-    }
-
-    /**
-     * Returns the rightValue of this {@link InvalidAssociationException}.
-     *
-     * @return RightValue of the {@link Association}
-     */
-    public Object getRightValue() {
-        return rightValue;
     }
 }
