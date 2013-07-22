@@ -21,125 +21,124 @@
 
 package org.jlib.core.number;
 
-import org.junit.Test;
-
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.jlib.core.number.NumberUtility.isEven;
 import static org.jlib.core.number.NumberUtility.isOdd;
 import static org.jlib.core.number.NumberUtility.parseHexDigit;
-import static org.junit.Assert.ensureEquals;
-import static org.junit.Assert.ensureFalse;
-import static org.junit.Assert.ensureTrue;
+import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 public class NumberUtilityTest {
 
     @Test
     public void testParseHexDigit0() {
-        ensureEquals(0, parseHexDigit('0'));
+        assertThat((byte) 0, is(equalTo(parseHexDigit('0'))));
     }
 
     @Test
     public void testParseHexDigit1() {
-        ensureEquals(1, parseHexDigit('1'));
+        assertThat((byte) 1, is(equalTo(parseHexDigit('1'))));
     }
 
     @Test
     public void testParseHexDigit2() {
-        ensureEquals(2, parseHexDigit('2'));
+        assertThat((byte) 2, is(equalTo(parseHexDigit('2'))));
     }
 
     @Test
     public void testParseHexDigit3() {
-        ensureEquals(3, parseHexDigit('3'));
+        assertThat((byte) 3, is(equalTo(parseHexDigit('3'))));
     }
 
     @Test
     public void testParseHexDigit4() {
-        ensureEquals(4, parseHexDigit('4'));
+        assertThat((byte) 4, is(equalTo(parseHexDigit('4'))));
     }
 
     @Test
     public void testParseHexDigit5() {
-        ensureEquals(5, parseHexDigit('5'));
+        assertThat((byte) 5, is(equalTo(parseHexDigit('5'))));
     }
 
     @Test
     public void testParseHexDigit6() {
-        ensureEquals(6, parseHexDigit('6'));
+        assertThat((byte) 6, is(equalTo(parseHexDigit('6'))));
     }
 
     @Test
     public void testParseHexDigit7() {
-        ensureEquals(7, parseHexDigit('7'));
+        assertThat((byte) 7, is(equalTo(parseHexDigit('7'))));
     }
 
     @Test
     public void testParseHexDigit8() {
-        ensureEquals(8, parseHexDigit('8'));
+        assertThat((byte) 8, is(equalTo(parseHexDigit('8'))));
     }
 
     @Test
     public void testParseHexDigit9() {
-        ensureEquals(9, parseHexDigit('9'));
+        assertThat((byte) 9, is(equalTo(parseHexDigit('9'))));
     }
 
     @Test
     public void testParseHexDigitA() {
-        ensureEquals(10, parseHexDigit('A'));
+        assertThat((byte) 10, is(equalTo(parseHexDigit('A'))));
     }
 
     @Test
     public void testParseHexDigitB() {
-        ensureEquals(11, parseHexDigit('B'));
+        assertThat((byte) 11, is(equalTo(parseHexDigit('B'))));
     }
 
     @Test
     public void testParseHexDigitC() {
-        ensureEquals(12, parseHexDigit('C'));
+        assertThat((byte) 12, is(equalTo(parseHexDigit('C'))));
     }
 
     @Test
     public void testParseHexDigitD() {
-        ensureEquals(13, parseHexDigit('D'));
+        assertThat((byte) 13, is(equalTo(parseHexDigit('D'))));
     }
 
     @Test
     public void testParseHexDigitE() {
-        ensureEquals(14, parseHexDigit('E'));
+        assertThat((byte) 14, is(equalTo(parseHexDigit('E'))));
     }
 
     @Test
     public void testParseHexDigitF() {
-        ensureEquals(15, parseHexDigit('F'));
+        assertThat((byte) 15, is(equalTo(parseHexDigit('F'))));
     }
 
     @Test
     public void testParseHexDigitSmallA() {
-        ensureEquals(10, parseHexDigit('a'));
+        assertThat((byte) 10, is(equalTo(parseHexDigit('a'))));
     }
 
     @Test
     public void testParseHexDigitSmallB() {
-        ensureEquals(11, parseHexDigit('b'));
+        assertThat((byte) 11, is(equalTo(parseHexDigit('b'))));
     }
 
     @Test
     public void testParseHexDigitSmallC() {
-        ensureEquals(12, parseHexDigit('c'));
+        assertThat((byte) 12, is(equalTo(parseHexDigit('c'))));
     }
 
     @Test
     public void testParseHexDigitSmallD() {
-        ensureEquals(13, parseHexDigit('d'));
+        assertThat((byte) 13, is(equalTo(parseHexDigit('d'))));
     }
 
     @Test
     public void testParseHexDigitSmallE() {
-        ensureEquals(14, parseHexDigit('e'));
+        assertThat((byte) 14, is(equalTo(parseHexDigit('e'))));
     }
 
     @Test
     public void testParseHexDigitSmallF() {
-        ensureEquals(15, parseHexDigit('f'));
+        assertThat((byte) 15, is(equalTo(parseHexDigit('f'))));
     }
 
     @Test(expected = NumberFormatException.class)
@@ -164,51 +163,51 @@ public class NumberUtilityTest {
 
     @Test
     public final void testIsEven0() {
-        ensureTrue(isEven(0));
+        assertThat(isEven(0), is(true));
     }
 
     @Test
     public final void testIsEven1() {
-        ensureFalse(isEven(1));
+        assertThat(isEven(1), is(false));
     }
 
     @Test
     public final void testIsEven2() {
-        ensureTrue(isEven(2));
+        assertThat(isEven(2), is(true));
     }
 
     @Test
     public final void testIsEvenMinus1() {
-        ensureFalse(isEven(- 1));
+        assertThat(isEven(- 1), is(false));
     }
 
     @Test
     public final void testIsEvenMinus2() {
-        ensureTrue(isEven(- 2));
+        assertThat(isEven(- 2), is(true));
     }
 
     @Test
     public final void testIsOdd() {
-        ensureFalse(isOdd(0));
+        assertThat(isOdd(0), is(false));
     }
 
     @Test
     public final void testIsOdd1() {
-        ensureTrue(isOdd(1));
+        assertThat(isOdd(1), is(true));
     }
 
     @Test
     public final void testIsOdd2() {
-        ensureFalse(isOdd(2));
+        assertThat(isOdd(2), is(false));
     }
 
     @Test
     public final void testIsOddMinus1() {
-        ensureTrue(isOdd(- 1));
+        assertThat(isOdd(- 1), is(true));
     }
 
     @Test
     public final void testIsOddMinus2() {
-        ensureFalse(isOdd(- 2));
+        assertThat(isOdd(- 2), is(false));
     }
 }
