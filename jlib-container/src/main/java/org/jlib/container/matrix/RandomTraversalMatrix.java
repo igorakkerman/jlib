@@ -21,11 +21,11 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.Traverser;
-
 import java.util.Iterator;
 import java.util.RandomAccess;
+
+import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * {@link Matrix} traversable in various orders. A {@link Sequence} of all

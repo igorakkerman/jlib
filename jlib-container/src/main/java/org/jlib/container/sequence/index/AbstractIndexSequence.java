@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
 
 import org.jlib.container.Container;
@@ -55,15 +57,16 @@ implements IndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the maximum index of this ArraySequence
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     public AbstractIndexSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexException {
         super();
 
-        if (firstIndex > lastIndex)
-            throw new InvalidSequenceIndexException(this, firstIndex, lastIndex);
+        if (lastIndex < firstIndex)
+            throw new InvalidSequenceIndexException(this, message("lastIndex = {0} < {1} = firstIndex", lastIndex,
+                                                                  firstIndex));
 
         this.firstIndex = firstIndex;
         this.lastIndex = lastIndex;
@@ -120,7 +123,7 @@ implements IndexSequence<Item> {
 
     @Override
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         return new SubIndexSequence<>(this, fromIndex, toIndex);
     }
 

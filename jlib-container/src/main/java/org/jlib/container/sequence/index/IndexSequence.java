@@ -21,9 +21,9 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.Sequence;
-
 import java.util.RandomAccess;
+
+import org.jlib.container.sequence.Sequence;
 
 /**
  * Non-empty {@link Sequence} allowing random access to its Items using their
@@ -128,13 +128,10 @@ extends Sequence<Item>, RandomAccess {
      *
      * @throws InvalidSequenceIndexException
      *         if
-     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
-     *
-     * @throws InvalidSequenceIndexRangeException
-     *         if {@code fromIndex > toIndex}
+     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex() || @code fromIndex > toIndex}
      */
     public IndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException;
 
     /**
      * Returns an IndexSequenceTraverser traversing the Items of this
@@ -173,13 +170,12 @@ extends Sequence<Item>, RandomAccess {
 
     /**
      * {@inheritDoc}
-     *
-     * Additionally, for an {@link IndexSequence}, the following conditions must
-     * be satisfied:
-     *
+     * <p>
+     * Additionally, for an {@link IndexSequence}, the following condition must be satisfied:
+     * </p>
      * <ul>
-     * <li>this {@link IndexSequence} and the specified {@link IndexSequence}
-     * have the same minimum and maximum indices</li>
+     * <li>this {@link IndexSequence} and the specified {@link IndexSequence} have the same minimum and maximum
+     * indices</li>
      * </ul>
      *
      * @param otherObject
@@ -190,4 +186,14 @@ extends Sequence<Item>, RandomAccess {
      */
     @Override
     public boolean equals(Object otherObject);
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * For an {@link IndexSequence}, the minimum and maximum indices must be taken into the account when computing the
+     * hash code.
+     * </p>
+     */
+    @Override
+    int hashCode();
 }

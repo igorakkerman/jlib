@@ -25,6 +25,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link AppendSequence} to which Items can be appended.

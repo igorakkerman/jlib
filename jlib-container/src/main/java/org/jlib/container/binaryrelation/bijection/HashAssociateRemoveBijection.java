@@ -21,6 +21,8 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.binaryrelation.Association;
@@ -30,8 +32,6 @@ import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchAssociationValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 import org.jlib.core.traverser.RemoveTraverser;
-
-import java.util.Collection;
 
 /**
  * {@link HashAssociateBijection} allowing the removal of {@link Association}

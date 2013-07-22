@@ -21,11 +21,11 @@
 
 package org.jlib.container.binaryrelation;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.core.traverser.RemoveTraverser;
-
-import java.util.Collection;
 
 /**
  * {@link AssociateBinaryRelation} implemented using hashing for left and right

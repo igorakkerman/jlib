@@ -21,17 +21,17 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
+import org.jlib.container.sequence.InvalidStoredItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
-import org.jlib.container.sequence.InvalidStoredItemsCountException;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-
-import java.util.Collection;
 
 /**
  * {@link AbstractIndexSequence} that can be initialized.
@@ -54,11 +54,11 @@ extends AbstractIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected AbstractInitializeableIndexSequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
 
         initialize();

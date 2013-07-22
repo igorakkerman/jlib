@@ -27,6 +27,7 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.container.sequence.index.LinearIndexStorageSequence;
 import org.jlib.core.array.ArrayStorage;
 import org.jlib.core.storage.LinearIndexStorage;
@@ -52,11 +53,11 @@ extends LinearIndexStorageSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected ArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 

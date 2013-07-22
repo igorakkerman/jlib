@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
@@ -29,8 +31,6 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
 import org.jlib.container.sequence.index.SubReplaceIndexSequence;
 import org.jlib.core.observer.ValueObserver;
-
-import java.util.Collection;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -54,11 +54,11 @@ implements ObservedReplaceIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected ReplaceArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 
@@ -171,7 +171,7 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     public ObservedReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
     }
 

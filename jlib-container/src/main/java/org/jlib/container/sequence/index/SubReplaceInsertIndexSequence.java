@@ -25,6 +25,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
@@ -61,11 +62,11 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code firstIndex > lastIndex}
      */
     public SubReplaceInsertIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
@@ -100,7 +101,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         return new SubReplaceInsertIndexSequence<>(this, fromIndex, toIndex);
     }
 

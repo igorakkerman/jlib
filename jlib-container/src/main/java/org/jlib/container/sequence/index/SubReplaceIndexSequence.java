@@ -22,6 +22,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
@@ -58,17 +59,17 @@ implements ObservedReplaceIndexSequence<Item> {
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code firstIndex > lastIndex}
      */
     public SubReplaceIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
     @Override
     public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
     }
 

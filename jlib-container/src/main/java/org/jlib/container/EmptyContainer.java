@@ -21,15 +21,15 @@
 
 package org.jlib.container;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.Traverser;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.traverser.Traverser;
 
 /**
  * Empty {@link Sequence}.

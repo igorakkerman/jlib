@@ -21,22 +21,22 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Observer;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+import static org.jlib.core.observer.ObserverUtility.operate;
+
 import org.jlib.container.Container;
 import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.ObservedAppendSequence;
-import static org.jlib.core.observer.ObserverUtility.operate;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.traverser.Traverser;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Observer;
-
-import static org.jlib.core.array.ArrayUtility.iterable;
 
 /**
  * Default implementation of a {@link ReplaceSequence} and

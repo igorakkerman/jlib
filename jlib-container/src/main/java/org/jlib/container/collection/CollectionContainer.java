@@ -21,13 +21,13 @@
 
 package org.jlib.container.collection;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.jlib.container.AbstractContainer;
 import org.jlib.container.Container;
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
-
-import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link Container}. A

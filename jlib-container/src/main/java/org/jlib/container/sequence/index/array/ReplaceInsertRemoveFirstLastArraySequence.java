@@ -21,17 +21,17 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
+import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedRemoveFirstSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import java.util.Collection;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be removed at its
@@ -57,11 +57,11 @@ implements ObservedRemoveFirstSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected ReplaceInsertRemoveFirstLastArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 

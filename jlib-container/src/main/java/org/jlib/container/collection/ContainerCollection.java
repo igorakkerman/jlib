@@ -21,11 +21,11 @@
 
 package org.jlib.container.collection;
 
-import org.jlib.container.Container;
-
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
+
+import org.jlib.container.Container;
 
 /**
  * Adapter allowing a {@link Container} to be used as a {@link Collection}. A

@@ -51,11 +51,11 @@ implements ObservedRemoveAllSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected ReplaceInsertRemoveAllArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 

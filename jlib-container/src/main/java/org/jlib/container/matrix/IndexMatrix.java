@@ -21,10 +21,10 @@
 
 package org.jlib.container.matrix;
 
+import java.util.RandomAccess;
+
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-
-import java.util.RandomAccess;
 
 /**
  * Indexed {@link Matrix} providing {@link RandomAccess} to its entries.

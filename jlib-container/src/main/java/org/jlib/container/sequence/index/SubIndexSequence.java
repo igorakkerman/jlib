@@ -57,11 +57,11 @@ extends AbstractIndexSequence<Item> {
      * @throws InvalidSequenceIndexException
      *         if {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code firstIndex > lastIndex}
      */
     public SubIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
 
         ensureSubIndexRangeValid(baseSequence, firstIndex, lastIndex);

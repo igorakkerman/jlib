@@ -71,18 +71,18 @@ implements ObservedReplaceIndexSequence<Item>,
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code firstIndex > lastIndex}
      */
     public SubReplaceInsertRemoveIndexSequence(final BaseSequence baseSequence, final int firstIndex,
                                                final int lastIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
     @Override
     public SubReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         return new SubReplaceInsertRemoveIndexSequence<>(this, fromIndex, toIndex);
     }
 

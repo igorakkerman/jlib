@@ -82,7 +82,7 @@ extends IndexMatrixEntity<Entry> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public IndexMatrixColumn clone() {
-        return (IndexMatrixColumn) super.clone();
+    public IndexMatrixColumn<Entry> clone() {
+        return (IndexMatrixColumn<Entry>) super.clone();
     }
 }

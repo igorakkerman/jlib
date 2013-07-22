@@ -62,11 +62,11 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the initial last index
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     protected ReplaceInsertArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 
@@ -285,7 +285,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
         return new SubReplaceInsertIndexSequence<Item, ReplaceInsertArraySequence<Item>>(this, fromIndex, toIndex);
     }
 

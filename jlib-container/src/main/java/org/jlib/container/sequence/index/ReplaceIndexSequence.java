@@ -22,6 +22,7 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
@@ -49,8 +50,7 @@ extends IndexSequence<Item> {
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
      * @throws InvalidTraversibleArgumentException
-     *         if some property of {@code newItem} prevents the operation from
-     *         being performed
+     *         if some property of {@code newItem} prevents the operation from being performed
      *
      * @throws InvalidTraversibleStateException
      *         if an error occurs performing the operation
@@ -63,5 +63,5 @@ extends IndexSequence<Item> {
      */
     @Override
     public ReplaceIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException;
 }

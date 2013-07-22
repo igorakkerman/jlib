@@ -21,10 +21,10 @@
 
 package org.jlib.container.binaryrelation;
 
+import java.util.Set;
+
 import org.jlib.container.Container;
 import org.jlib.core.traverser.Traverser;
-
-import java.util.Set;
 
 /**
  * Binary association between various Objects. Each Object on either of the two

@@ -48,9 +48,9 @@ public interface IndexSequenceCreator<Item, Sequenze extends AbstractInitializea
      *
      * @return newly created {@link IndexSequence}
      *
-     * @throws InvalidSequenceIndexRangeException
+     * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
     public Sequenze createSequence(int firstIndex, int lastIndex)
-    throws InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException;
 }

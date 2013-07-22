@@ -21,13 +21,13 @@
 
 package org.jlib.container.matrix;
 
+import java.util.RandomAccess;
+
 import org.jlib.container.EmptyContainer;
 import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
-
-import java.util.RandomAccess;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.

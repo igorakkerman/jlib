@@ -21,18 +21,19 @@
 
 package org.jlib.container;
 
-import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.language.AbstractCloneable;
-import org.jlib.core.traverser.TraversibleIterator;
-
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import static org.jlib.core.traverser.TraversibleUtility.haveEqualItems;
+
+import org.jlib.core.iterator.IteratorUtility;
+import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.traverser.TraversibleIterator;
 
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container

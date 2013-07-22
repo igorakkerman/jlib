@@ -21,6 +21,13 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.AbstractInitializeableBinaryRelation;
 import org.jlib.container.binaryrelation.Association;
@@ -29,13 +36,6 @@ import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.NoSuchLeftValueException;
 import org.jlib.container.binaryrelation.NoSuchRightValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * {@link Bijection} implemented using hashing for left and right hand side

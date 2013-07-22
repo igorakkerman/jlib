@@ -21,13 +21,13 @@
 
 package org.jlib.container.binaryrelation;
 
+import java.util.Collection;
+import java.util.Set;
+
 import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
 import org.jlib.container.collection.CollectionUtility;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.RemoveTraverser;
-
-import java.util.Collection;
-import java.util.Set;
 
 /**
  * Facade utility for {@link BinaryRelation} creation and operations.

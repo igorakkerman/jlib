@@ -21,9 +21,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Container;
-
 import java.util.Collection;
+
+import org.jlib.container.Container;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link Sequence} to which Items can be prepended.

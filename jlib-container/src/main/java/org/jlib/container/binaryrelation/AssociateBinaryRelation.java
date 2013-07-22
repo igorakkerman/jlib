@@ -21,9 +21,9 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.Container;
-
 import java.util.Collection;
+
+import org.jlib.container.Container;
 
 /**
  * {@link BinaryRelation} allowing to associate and remove {@link Association}

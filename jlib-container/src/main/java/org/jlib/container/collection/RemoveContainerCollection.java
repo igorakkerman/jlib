@@ -21,11 +21,11 @@
 
 package org.jlib.container.collection;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.RemoveContainer;
-
-import java.util.Collection;
 
 /**
  * Adapter allowing a {@link RemoveContainer} to be used as a {@link Collection}.

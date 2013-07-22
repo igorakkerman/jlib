@@ -21,10 +21,10 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.sequence.Sequence;
-
-import java.util.Collection;
 
 /**
  * {@link IndexSequence} into which an {@link Item} can be inserted at a specified index.
@@ -92,5 +92,5 @@ extends IndexSequence<Item> {
      */
     @Override
     public InsertIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException, InvalidSequenceIndexException;
 }

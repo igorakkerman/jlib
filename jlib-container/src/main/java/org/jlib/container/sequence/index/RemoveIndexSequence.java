@@ -48,5 +48,5 @@ extends IndexSequence<Item> {
      */
     @Override
     public RemoveIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException;
 }

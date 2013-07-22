@@ -22,7 +22,6 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.ReplaceContainer;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 public class DelegatingReplaceSequence<Item>
 extends DelegatingSequence<Item>

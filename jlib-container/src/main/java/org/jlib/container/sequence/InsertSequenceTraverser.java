@@ -22,6 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**

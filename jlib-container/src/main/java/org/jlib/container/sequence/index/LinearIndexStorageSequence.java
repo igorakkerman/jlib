@@ -50,7 +50,7 @@ extends AbstractInitializeableIndexSequence<Item> {
     }
 
     public LinearIndexStorageSequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 

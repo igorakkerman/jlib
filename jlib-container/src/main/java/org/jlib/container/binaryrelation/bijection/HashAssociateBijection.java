@@ -21,14 +21,14 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.container.binaryrelation.Association;
 import org.jlib.container.binaryrelation.BinaryRelationUtility;
 import org.jlib.container.binaryrelation.InvalidAssociationException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
-
-import java.util.Collection;
 
 /**
  * {@link HashBijection} allowing the addition of new {@link Association} items.
