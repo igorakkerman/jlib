@@ -91,7 +91,8 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage, final Exception cause) {
-        super(traversible, messageTemplate, cause, messageArguments);
+    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage,
+                               final Exception cause) {
+        super(traversible, parametrizedMessage, cause);
     }
 }
