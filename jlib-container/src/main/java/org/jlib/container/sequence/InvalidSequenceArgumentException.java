@@ -58,7 +58,7 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} error message arguments
      */
-    public InvalidSequenceArgumentException(final Sequence<?> sequence, final ParametrizedMessage parametrizedMessage) {
+    public InvalidSequenceArgumentException(final Sequence<?> sequence, final ParametrizedMessage message) {
         this(sequence, messageTemplate, null, messageArguments);
     }
 

@@ -53,8 +53,8 @@ extends Exception {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected ApplicationException(final ParametrizedMessage parametrizedMessage) {
-        super(parametrizedMessage.toString());
+    protected ApplicationException(final ParametrizedMessage message) {
+        super(message.toString());
     }
 
     /**
@@ -75,7 +75,7 @@ extends Exception {
      *
      *
      */
-    protected ApplicationException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
-        super(parametrizedMessage.toString(), cause);
+    protected ApplicationException(final ParametrizedMessage message, final Exception cause) {
+        super(message.toString(), cause);
     }
 }

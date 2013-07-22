@@ -60,7 +60,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        sequence of {@link Object} error message arguments
      */
-    public InvalidSequenceStateException(final Sequence<?> sequence, final ParametrizedMessage parametrizedMessage) {
+    public InvalidSequenceStateException(final Sequence<?> sequence, final ParametrizedMessage message) {
         this(sequence, messageTemplate, null, messageArguments);
     }
 

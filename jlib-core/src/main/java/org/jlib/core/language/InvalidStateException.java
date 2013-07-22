@@ -50,8 +50,8 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidStateException(final ParametrizedMessage parametrizedMessage) {
-        super(parametrizedMessage.toString());
+    protected InvalidStateException(final ParametrizedMessage message) {
+        super(message.toString());
     }
 
     /**
@@ -72,7 +72,7 @@ extends IllegalStateException {
      *
      *
      */
-    protected InvalidStateException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
-        super(parametrizedMessage.toString(), cause);
+    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
+        super(message.toString(), cause);
     }
 }

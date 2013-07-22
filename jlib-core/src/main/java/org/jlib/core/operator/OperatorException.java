@@ -44,9 +44,9 @@ extends ApplicationException {
      * @param cause
      *        {@link RuntimeException} that caused this {@link OperatorException}
      */
-    public OperatorException(final ParametrizedMessage parametrizedMessage, final RuntimeException cause) {
+    public OperatorException(final ParametrizedMessage message, final RuntimeException cause) {
 
-        super(parametrizedMessage, cause);
+        super(message, cause);
 
         this.cause = cause;
     }

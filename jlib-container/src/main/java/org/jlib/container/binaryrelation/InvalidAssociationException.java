@@ -77,7 +77,7 @@ extends InvalidBinaryRelationArgumentException {
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                       final Object rightValue, final ParametrizedMessage parametrizedMessage) {
+                                       final Object rightValue, final ParametrizedMessage message) {
 
         this(binaryRelation, leftValue, rightValue, messageTemplate, (Exception) null, messageArguments);
     }

@@ -22,6 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidArgumentException} thrown when trying to create a
@@ -50,8 +51,8 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        array of {@link Object} error message arguments
      */
-    public InvalidSequenceItemsCountException(final int itemsCount, final ParametrizedMessage parametrizedMessage) {
-        super(parametrizedMessage);
+    public InvalidSequenceItemsCountException(final int itemsCount, final ParametrizedMessage message) {
+        super(message);
 
         this.itemsCount = itemsCount;
     }

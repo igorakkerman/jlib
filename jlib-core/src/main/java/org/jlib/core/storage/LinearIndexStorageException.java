@@ -48,7 +48,8 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        array of {@link Object} message arguments
      */
-    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final ParametrizedMessage parametrizedMessage) {
-        super(parametrizedMessage.with("storage", linearIndexStorage));
+    public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,
+                                       final ParametrizedMessage message) {
+        super(message.with("storage", linearIndexStorage));
     }
 }

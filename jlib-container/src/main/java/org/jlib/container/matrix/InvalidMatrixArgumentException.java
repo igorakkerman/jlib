@@ -24,7 +24,7 @@ extends InvalidArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidMatrixArgumentException(final Matrix matrix, final ParametrizedMessage parametrizedMessage) {
+    public InvalidMatrixArgumentException(final Matrix matrix, final ParametrizedMessage message) {
         super(messageTemplate, matrix, messageArguments);
 
         this.matrix = matrix;

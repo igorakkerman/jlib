@@ -43,9 +43,8 @@ extends ObserverException {
      * @param cause
      *        {@link Exception} that caused this {@link ValueObserverException}
      */
-    public ValueObserverException(final Object value, final ParametrizedMessage parametrizedMessage,
-                                  final Exception cause) {
+    public ValueObserverException(final Object value, final ParametrizedMessage message, final Exception cause) {
 
-        super(parametrizedMessage.with(value), cause);
+        super(message.with(value), cause);
     }
 }

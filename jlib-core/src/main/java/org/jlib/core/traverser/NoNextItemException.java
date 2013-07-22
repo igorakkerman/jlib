@@ -71,8 +71,8 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage) {
-        super(traversible, parametrizedMessage);
+    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage message) {
+        super(traversible, message);
     }
 
     /**
@@ -91,8 +91,8 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage parametrizedMessage,
+    public NoNextItemException(final Traversible<?> traversible, final ParametrizedMessage message,
                                final Exception cause) {
-        super(traversible, parametrizedMessage, cause);
+        super(traversible, message, cause);
     }
 }
