@@ -42,19 +42,11 @@ extends ApplicationException {
      * Creates a new {@link OperatorException}.
      *
      * @param cause
-     *        {@link RuntimeException} that caused this
-     *        {@link OperatorException}
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template; {1} references
-     *        {@code value}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
+     *        {@link RuntimeException} that caused this {@link OperatorException}
      */
-    public OperatorException(final RuntimeException cause, final ParametrizedMessage parametrizedMessage) {
+    public OperatorException(final ParametrizedMessage parametrizedMessage, final RuntimeException cause) {
 
-        super(cause, parametrizedMessage);
+        super(parametrizedMessage, cause);
 
         this.cause = cause;
     }

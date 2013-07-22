@@ -73,13 +73,9 @@ extends Exception {
      * @param cause
      *        {@link Exception} that caused this {@link ApplicationException}
      *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
      *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
      */
-    protected ApplicationException(final Exception cause, final ParametrizedMessage parametrizedMessage) {
+    protected ApplicationException(final ParametrizedMessage parametrizedMessage, final Exception cause) {
         super(parametrizedMessage.toString(), cause);
     }
 }

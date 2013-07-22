@@ -180,7 +180,7 @@ implements ObservedRemoveFirstSequence<Item> {
                     removeFirstItem();
                 }
                 catch (final SoleItemNotRemoveableException exception) {
-                    throw new OperatorException(exception, "removeFirstItem {0}");
+                    throw new OperatorException("removeFirstItem {0}", exception);
                 }
             }
         },

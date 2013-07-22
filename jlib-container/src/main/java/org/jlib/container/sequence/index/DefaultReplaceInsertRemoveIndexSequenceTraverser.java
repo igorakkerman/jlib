@@ -181,7 +181,7 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
                     remove();
                 }
                 catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException(exception, "remove: {0}");
+                    throw new OperatorException("remove: {0}", exception);
                 }
             }
         },
