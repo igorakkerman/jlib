@@ -27,12 +27,15 @@ import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
 
 import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
+import org.jlib.core.text.templateengine.PrintfTemplateEngine;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
 public final class ExceptionMessageUtility {
 
     /** default {@link TemplateEngine} used */
     public static final TemplateEngine DEFAULT_MESSAGE_TEMPLATE_ENGINE = MessageFormatTemplateEngine.getInstance();
+
+    public static final TemplateEngine PRINTF_MESSAGE_TEMPLATE_ENGINE = PrintfTemplateEngine.getInstance();
 
     public static String createMessageFromExceptionName(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
@@ -63,6 +66,18 @@ public final class ExceptionMessageUtility {
 
     public static ParametrizedMessage message(final int value) {
         return message(Integer.toString(value));
+    }
+
+    public static ParametrizedMessage printf() {
+        return printf(EMPTY);
+    }
+
+    public static ParametrizedMessage printf(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new ParametrizedMessage(PRINTF_MESSAGE_TEMPLATE_ENGINE, messageTemplate, messageArguments);
+    }
+
+    public static ParametrizedMessage printf(final int value) {
+        return printf(Integer.toString(value));
     }
 
     private ExceptionMessageUtility() {
