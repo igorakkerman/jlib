@@ -31,66 +31,66 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.junit.Ensure.ensureThat;
+import static org.junit.Assert.assertThat;
 
 public class TextUtilityTest {
 
     @Test
     public void testRemoveOnceEmptyFromEmpty() {
-        ensureThat(removeOnce(EMPTY, EMPTY), isEmptyString());
+        assertThat(removeOnce(EMPTY, EMPTY), isEmptyString());
     }
 
     @Test
     public void testRemoveOnceEmptyFromFull() {
-        ensureThat(removeOnce("Blubber", EMPTY), is(equalTo("Blubber")));
+        assertThat(removeOnce("Blubber", EMPTY), is(equalTo("Blubber")));
     }
 
     @Test
     public void testRemoveOnceAll() {
-        ensureThat(removeOnce("Blub", "Blub"), isEmptyString());
+        assertThat(removeOnce("Blub", "Blub"), isEmptyString());
     }
 
     @Test
     public void testRemoveOnceBeginning() {
-        ensureThat(removeOnce("Blubber", "Blub"), is(equalTo("ber")));
+        assertThat(removeOnce("Blubber", "Blub"), is(equalTo("ber")));
     }
 
     @Test
     public void testRemoveOnceEnd() {
-        ensureThat(removeOnce("Blubber", "ber"), is(equalTo("Blub")));
+        assertThat(removeOnce("Blubber", "ber"), is(equalTo("Blub")));
     }
 
     @Test
     public void testRemoveOnceBeginningFromDouble() {
-        ensureThat(removeOnce("BlaBlubBla", "Bla"), is(equalTo("BlubBla")));
+        assertThat(removeOnce("BlaBlubBla", "Bla"), is(equalTo("BlubBla")));
     }
 
     @Test
     public void testRemoveOnceMiddleFromDouble() {
-        ensureThat(removeOnce("BlaBlubBlub", "Blub"), is(equalTo("BlaBlub")));
+        assertThat(removeOnce("BlaBlubBlub", "Blub"), is(equalTo("BlaBlub")));
     }
 
     public void unCamelCaseAllLowerCase() {
-        ensureThat(camelCaseToLowerCaseWords("abcdefgeh"), is(equalTo("abcdefgeh")));
+        assertThat(camelCaseToLowerCaseWords("abcdefgeh"), is(equalTo("abcdefgeh")));
     }
 
     public void unCamelCaseEmptyString() {
-        ensureThat(camelCaseToLowerCaseWords(EMPTY), is(equalTo(EMPTY)));
+        assertThat(camelCaseToLowerCaseWords(EMPTY), is(equalTo(EMPTY)));
     }
 
     public void unCamelCaseLowerCaseStart() {
-        ensureThat(camelCaseToLowerCaseWords("aBcdEfg"), is(equalTo("a bcd efg")));
+        assertThat(camelCaseToLowerCaseWords("aBcdEfg"), is(equalTo("a bcd efg")));
     }
 
     public void unCamelCaseUpperCaseStart() {
-        ensureThat(camelCaseToLowerCaseWords("AbcdEfg"), is(equalTo("abcd efg")));
+        assertThat(camelCaseToLowerCaseWords("AbcdEfg"), is(equalTo("abcd efg")));
     }
 
     public void unCamelCaseDoubleUpperCase() {
-        ensureThat(camelCaseToLowerCaseWords("ABcdEfg"), is(equalTo("a bcd efg")));
+        assertThat(camelCaseToLowerCaseWords("ABcdEfg"), is(equalTo("a bcd efg")));
     }
 
     public void unCamelCaseAllUpperCase() {
-        ensureThat(camelCaseToLowerCaseWords("ABCDEFG"), is(equalTo("a b c d e f g")));
+        assertThat(camelCaseToLowerCaseWords("ABCDEFG"), is(equalTo("a b c d e f g")));
     }
 }

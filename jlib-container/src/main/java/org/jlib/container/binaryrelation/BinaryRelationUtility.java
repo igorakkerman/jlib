@@ -220,7 +220,7 @@ public class BinaryRelationUtility {
                               final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
 
         for (final Pair<LeftValue, RightValue> pair : pairs)
-            binaryRelation.remove((Pair<LeftValue, RightValue>) pair);
+            binaryRelation.remove(pair);
     }
 
     /**

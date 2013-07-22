@@ -26,9 +26,9 @@ import org.junit.Test;
 import static org.jlib.core.number.NumberUtility.isEven;
 import static org.jlib.core.number.NumberUtility.isOdd;
 import static org.jlib.core.number.NumberUtility.parseHexDigit;
-import static org.junit.Ensure.ensureEquals;
-import static org.junit.Ensure.ensureFalse;
-import static org.junit.Ensure.ensureTrue;
+import static org.junit.Assert.ensureEquals;
+import static org.junit.Assert.ensureFalse;
+import static org.junit.Assert.ensureTrue;
 
 public class NumberUtilityTest {
 
