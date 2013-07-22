@@ -30,6 +30,7 @@ import static org.jlib.container.sequence.SequenceUtility.singleton;
 import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;

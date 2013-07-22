@@ -36,6 +36,7 @@ import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.Traverser;
 
 /**

@@ -31,6 +31,7 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 

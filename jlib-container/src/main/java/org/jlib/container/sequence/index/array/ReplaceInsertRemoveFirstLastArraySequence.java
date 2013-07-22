@@ -28,6 +28,7 @@ import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedRemoveFirstSequence;
 import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;

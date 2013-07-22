@@ -35,9 +35,6 @@ extends NoNextItemException {
     /** serialVersionUID */
     private static final long serialVersionUID = 3286617731417853890L;
 
-    /** traversed {@link Sequence} */
-    private final Sequence<?> sequence;
-
     /**
      * Creates a new {@link NoNextSequenceItemException}.
      *
@@ -57,14 +54,8 @@ extends NoNextItemException {
      * @param cause
      *        {@link Exception} that caused this {@link Exception}
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public NoNextSequenceItemException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
-
-        this.sequence = sequence;
-    }
-
-    @Override
-    public Sequence<?> getTraversible() {
-        return sequence;
     }
 }

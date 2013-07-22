@@ -38,6 +38,7 @@ import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
