@@ -21,7 +21,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
@@ -49,7 +48,7 @@ extends IndexSequence<Item> {
      * @throws SequenceIndexOutOfBoundsException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code newItem} prevents the operation from
      *         being performed
      *
@@ -57,7 +56,7 @@ extends IndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidTraversibleStateException;
+    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * @return {@link ReplaceIndexSequence} view of the specified subsequence

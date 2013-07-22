@@ -47,7 +47,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      *
@@ -57,7 +57,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
@@ -70,7 +70,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if {@code items}
      *
      * @throws InvalidTraversibleArgumentException
@@ -83,7 +83,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
@@ -96,7 +96,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -106,7 +106,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
      * Appends all specified Items to this {@link ObservedAppendSequence}.
@@ -117,7 +117,7 @@ extends AppendSequence<Item> {
      * @param items
      *        comma separated sequence of Items to append
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -127,5 +127,5 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 }

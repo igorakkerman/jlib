@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+
 /**
  * {@link Sequence} allowing its first Item to be removed.
  *

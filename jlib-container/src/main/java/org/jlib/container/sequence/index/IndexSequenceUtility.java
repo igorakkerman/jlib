@@ -23,11 +23,12 @@ package org.jlib.container.sequence.index;
 
 import org.jlib.container.Container;
 import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link IndexSequence} utility.
@@ -126,7 +127,7 @@ public final class IndexSequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
      *
@@ -140,7 +141,7 @@ public final class IndexSequenceUtility {
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
                                      final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 

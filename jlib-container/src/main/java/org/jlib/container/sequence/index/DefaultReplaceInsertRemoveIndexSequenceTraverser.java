@@ -22,11 +22,11 @@
 package org.jlib.container.sequence.index;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
@@ -35,6 +35,7 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
+import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
@@ -157,21 +158,21 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
 
     @Override
     public void remove()
-    throws NoSequenceItemToRemoveException {
+    throws NoItemToRemoveException {
         try {
             getSequence().remove(getLastAccessedItemIndex());
 
             unsetLastAccessedItem();
         }
         catch (final ValueNotAccessibleException exception) {
-            throw new NoSequenceItemToRemoveException(getSequence(), exception);
+            throw new NoItemToRemoveException(getSequence(), exception);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... operationObservers)
-    throws NoSequenceItemToRemoveException, ValueObserverException, RuntimeException {
+    throws NoItemToRemoveException, ValueObserverException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
@@ -180,13 +181,11 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
                 try {
                     remove();
                 }
-                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException("remove: {0}", exception);
+                catch (InvalidTraversibleArgumentException | InvalidSequenceTraverserStateException exception) {
+                    throw new OperatorException(message("remove()"), exception);
                 }
             }
-        },
-
-                                concatenated(traverserRemoveObservers, traversible(operationObservers)).toArray());
+        }, concatenated(traverserRemoveObservers, traversible(operationObservers)).toArray());
     }
 
     @Override

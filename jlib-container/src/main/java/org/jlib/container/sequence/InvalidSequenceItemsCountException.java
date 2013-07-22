@@ -21,8 +21,9 @@
 
 package org.jlib.container.sequence;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidArgumentException} thrown when trying to create a
@@ -36,33 +37,13 @@ extends InvalidArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 23142560184875814L;
 
-    /** invalid number of Items */
-    private final int itemsCount;
-
     /**
      * Creates a new {@link InvalidSequenceItemsCountException}.
      *
      * @param itemsCount
      *        integer specifying the invalid number of Items
-     *
-     * @param messageTemplate
-     *        String specifying the error message template
-     *
-     * @param messageArguments
-     *        array of {@link Object} error message arguments
      */
-    public InvalidSequenceItemsCountException(final int itemsCount, final ParametrizedMessage message) {
-        super(message);
-
-        this.itemsCount = itemsCount;
-    }
-
-    /**
-     * Returns the invalid number of Items.
-     *
-     * @return integer specifying the invalid number of Items
-     */
-    public int getItemsCount() {
-        return itemsCount;
+    public InvalidSequenceItemsCountException(final int itemsCount) {
+        super(message("itemsCount == {0} < 1", itemsCount));
     }
 }

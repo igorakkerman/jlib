@@ -23,6 +23,7 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link IndexSequenceTraverser} allowing observed insertion of Items.
@@ -58,7 +59,7 @@ extends InsertSequenceTraverser<Item> {
      * @param item
      *        Item to insert
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
      * @throws InvalidTraversibleStateException
@@ -70,7 +71,7 @@ extends InsertSequenceTraverser<Item> {
      */
     @SuppressWarnings("unchecked")
     public void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Registers the specified {@link ValueObserver} for the insert operations

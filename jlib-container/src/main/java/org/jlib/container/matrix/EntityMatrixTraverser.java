@@ -23,6 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceTraverser;
+import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.Traverser;
 
 /**

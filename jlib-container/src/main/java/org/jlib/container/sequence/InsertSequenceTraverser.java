@@ -22,6 +22,7 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link SequenceTraverser} over a {@link InsertSequence}.
@@ -53,12 +54,12 @@ extends SequenceTraverser<Item> {
      * @param item
      *        Item to insert
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
     public void insert(final Item item)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

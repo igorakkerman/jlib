@@ -21,10 +21,11 @@
 
 package org.jlib.container.sequence;
 
+import java.util.Collection;
+
 import org.jlib.container.Container;
 import org.jlib.core.observer.ValueObserver;
-
-import java.util.Collection;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link PrependSequence} to which Items can be prepended.
@@ -38,7 +39,7 @@ public interface ObservedPrependSequence<Item>
 extends PrependSequence<Item> {
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
@@ -47,7 +48,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Container} to this
@@ -60,7 +61,7 @@ extends PrependSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -73,7 +74,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
@@ -86,7 +87,7 @@ extends PrependSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -99,7 +100,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
      * Prepends all specified Items to this {@link ObservedPrependSequence}.
@@ -110,7 +111,7 @@ extends PrependSequence<Item> {
      * @param items
      *        comma separated sequence of Items to prepend
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -123,5 +124,5 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException;
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 }

@@ -122,28 +122,28 @@ implements Sequence<Item>,
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         // intentionally blank
     }
 

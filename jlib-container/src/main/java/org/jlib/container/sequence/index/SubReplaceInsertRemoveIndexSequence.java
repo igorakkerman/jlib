@@ -28,6 +28,8 @@ import org.jlib.container.ContainerUtility;
 import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link SubReplaceInsertIndexSequence} view of the Items stored in a base

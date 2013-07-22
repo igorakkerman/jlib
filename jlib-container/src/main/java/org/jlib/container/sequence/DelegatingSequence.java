@@ -27,6 +27,8 @@ import java.util.List;
 
 import org.jlib.container.Container;
 import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.

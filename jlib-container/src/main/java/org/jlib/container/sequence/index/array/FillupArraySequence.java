@@ -26,7 +26,6 @@ import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.DelegatingSequence;
 import org.jlib.container.sequence.InitiallyEmptySequence;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import static org.jlib.core.observer.ObserverUtility.operate;
 import org.jlib.core.observer.ValueObserver;
@@ -86,27 +85,27 @@ extends DelegatingSequence<Item> {
 
         @Override
         public void append(final Container<? extends Item> items)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         public void append(final Collection<? extends Item> items)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             operate(new HandledOperator() {
                 @Override
                 public void operate() {
@@ -119,7 +118,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -135,7 +134,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -145,7 +144,7 @@ extends DelegatingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
-        throws InvalidSequenceArgumentException {
+        throws InvalidTraversibleArgumentException {
             if (items.length == 0)
                 return;
 

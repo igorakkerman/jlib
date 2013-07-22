@@ -21,9 +21,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.Container;
-
 import java.util.Collection;
+
+import org.jlib.container.Container;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link Sequence} to which Items can be appended.
@@ -37,15 +38,15 @@ public interface AppendSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
     public void append(final Item item)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -53,10 +54,10 @@ extends Sequence<Item> {
      *         if an error occurs during the operation
      */
     public void append(final Container<? extends Item> items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -64,10 +65,10 @@ extends Sequence<Item> {
      *         if an error occurs during the operation
      */
     public void append(final Collection<? extends Item> items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -76,5 +77,5 @@ extends Sequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(final Item... items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 }

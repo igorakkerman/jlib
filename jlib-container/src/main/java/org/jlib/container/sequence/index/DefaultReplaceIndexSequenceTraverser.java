@@ -22,11 +22,11 @@
 package org.jlib.container.sequence.index;
 
 import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
 
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
@@ -86,7 +86,7 @@ implements ObservedReplaceTraverser<Item>,
      *         if {@code startIndex < sequence.getFirstIndex() ||
      *                   startIndex > sequence.getLastIndex()}
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code newItem} prevents the operation from
      *         being performed
      *
@@ -94,7 +94,7 @@ implements ObservedReplaceTraverser<Item>,
      *         if an error occurs performing the operation
      */
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidTraversibleStateException {
+    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         super(sequence, initialNextItemIndex);
     }
 
@@ -105,7 +105,7 @@ implements ObservedReplaceTraverser<Item>,
 
     @Override
     public final void replace(final Item newItem)
-    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidTraversibleStateException {
+    throws NoItemToReplaceException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
@@ -117,7 +117,7 @@ implements ObservedReplaceTraverser<Item>,
     @Override
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoItemToReplaceException, InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException {
+    throws NoItemToReplaceException, InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
@@ -126,8 +126,8 @@ implements ObservedReplaceTraverser<Item>,
                 try {
                     replace(newItem);
                 }
-                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException(exception, "replace: {0}", newItem);
+                catch (InvalidTraversibleArgumentException | InvalidSequenceTraverserStateException exception) {
+                    throw new OperatorException(message("replace: {0}", newItem), exception);
                 }
             }
         }, /*

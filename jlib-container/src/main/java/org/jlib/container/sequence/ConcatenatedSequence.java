@@ -21,6 +21,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.Traversible;
 import org.jlib.core.traverser.TraversibleUtility;
 import org.jlib.core.traverser.TwoWayTraversible;

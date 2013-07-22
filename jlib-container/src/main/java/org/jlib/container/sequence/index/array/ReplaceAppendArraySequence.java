@@ -34,6 +34,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.

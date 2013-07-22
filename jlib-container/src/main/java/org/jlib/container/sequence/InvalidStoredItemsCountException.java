@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+
 /**
  * {@link InvalidTraversibleStateException} thrown when attempting to store an invalid number of Items in a
  * {@link Sequence}.

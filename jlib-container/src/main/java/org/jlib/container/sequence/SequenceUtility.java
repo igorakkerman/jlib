@@ -21,12 +21,13 @@
 
 package org.jlib.container.sequence;
 
+import java.util.Iterator;
+
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraversible;
-
-import java.util.Iterator;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.
@@ -67,12 +68,12 @@ public final class SequenceUtility {
      * @param item
      *        appended Item
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     public static <Item> void append(final AppendSequence<Item> sequence, final Item item)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         sequence.append(item);
     }
 
@@ -89,7 +90,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -111,13 +112,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         append(sequence, ArrayUtility.iterable(items));
     }
 
@@ -138,13 +139,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         sequence.append(item, observers);
     }
 
@@ -165,7 +166,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -191,13 +192,13 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         append(sequence, ArrayUtility.iterable(items), observers);
     }
 
@@ -214,12 +215,12 @@ public final class SequenceUtility {
      * @param item
      *        prepended Item
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item item)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         sequence.prepend(item);
     }
 
@@ -236,7 +237,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -258,13 +259,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item... items)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(sequence, ArrayUtility.iterable(items));
     }
 
@@ -285,13 +286,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         sequence.prepend(item, observers);
     }
 
@@ -312,7 +313,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -338,13 +339,13 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidSequenceArgumentException {
+    throws InvalidTraversibleArgumentException {
         prepend(sequence, ArrayUtility.iterable(items), observers);
     }
 
@@ -368,21 +369,21 @@ public final class SequenceUtility {
     }
 
     /**
-     * Returns the specified sequence size if it is positive.
+     * Returns the specified sequence itemsCount if it is positive.
      *
-     * @param size
-     *        positive integer specifying the sequence size
+     * @param itemsCount
+     *        positive integer specifying the sequence itemsCount
      *
-     * @return {@code size} if {@code size >= 1}
+     * @return {@code itemsCount} if {@code itemsCount >= 1}
      *
      * @throws InvalidSequenceItemsCountException
-     *         if {@code size < 1}
+     *         if {@code itemsCount < 1}
      */
-    public static int getValidatedSequenceItemsCount(final int size)
+    public static int getValidatedSequenceItemsCount(final int itemsCount)
     throws InvalidSequenceItemsCountException {
-        if (size < 1)
-            throw new InvalidSequenceItemsCountException(size, "size == {0} < 1");
+        if (itemsCount < 1)
+            throw new InvalidSequenceItemsCountException(itemsCount);
 
-        return size;
+        return itemsCount;
     }
 }

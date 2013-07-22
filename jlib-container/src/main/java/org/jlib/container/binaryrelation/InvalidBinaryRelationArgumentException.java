@@ -21,6 +21,9 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
 /**
  * {@link InvalidTraversibleArgumentException} referencing a
  * {@link BinaryRelation}.

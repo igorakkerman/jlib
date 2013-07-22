@@ -28,16 +28,15 @@ import static org.jlib.container.sequence.SequenceUtility.concatenated;
 
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.InsertSequenceTraverser;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.language.ExceptionMessageUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
@@ -94,7 +93,7 @@ implements ObservedInsertSequenceTraverser<Item>,
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
     public DefaultReplaceInsertIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         super(sequence, initialNextItemIndex);
     }
 
@@ -107,7 +106,7 @@ implements ObservedInsertSequenceTraverser<Item>,
     @SafeVarargs
     @SuppressWarnings("ProhibitedExceptionDeclared")
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidSequenceArgumentException, InvalidTraversibleStateException, RuntimeException {
+    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
@@ -117,7 +116,7 @@ implements ObservedInsertSequenceTraverser<Item>,
                 try {
                     insert(item);
                 }
-                catch (InvalidSequenceArgumentException | InvalidSequenceTraverserStateException exception) {
+                catch (InvalidTraversibleArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException(message("insert: {0}", item), exception);
                 }
             }

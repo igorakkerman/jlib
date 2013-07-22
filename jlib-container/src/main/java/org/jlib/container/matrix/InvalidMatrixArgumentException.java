@@ -1,6 +1,7 @@
 package org.jlib.container.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidArgumentException} referencing a {@link Matrix}.
@@ -25,7 +26,7 @@ extends InvalidArgumentException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidMatrixArgumentException(final Matrix matrix, final ParametrizedMessage message) {
-        super(messageTemplate, matrix, messageArguments);
+        super(message.with(matrix));
 
         this.matrix = matrix;
     }

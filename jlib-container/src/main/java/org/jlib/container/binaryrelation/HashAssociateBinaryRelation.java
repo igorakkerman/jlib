@@ -24,6 +24,7 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 import org.jlib.container.Container;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
  * {@link AssociateBinaryRelation} implemented using hashing for left and right

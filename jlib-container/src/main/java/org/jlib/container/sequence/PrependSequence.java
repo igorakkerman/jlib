@@ -37,7 +37,7 @@ public interface PrependSequence<Item>
 extends Sequence<Item>{
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
@@ -45,10 +45,10 @@ extends Sequence<Item>{
      *         if an error occurs during the operation
      */
     public void prepend(final Item item)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -56,10 +56,10 @@ extends Sequence<Item>{
      *         if an error occurs during the operation
      */
     public void prepend(final Container<? extends Item> items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -67,10 +67,10 @@ extends Sequence<Item>{
      *         if an error occurs during the operation
      */
     public void prepend(final Collection<? extends Item> items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 
     /**
-     * @throws InvalidSequenceArgumentException
+     * @throws InvalidTraversibleArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
@@ -79,5 +79,5 @@ extends Sequence<Item>{
      */
     @SuppressWarnings("unchecked")
     public void prepend(final Item... items)
-    throws InvalidSequenceArgumentException;
+    throws InvalidTraversibleArgumentException;
 }

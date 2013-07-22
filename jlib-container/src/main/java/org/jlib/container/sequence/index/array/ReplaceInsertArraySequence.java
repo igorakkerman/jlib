@@ -21,8 +21,13 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
+import static org.jlib.core.array.ArrayUtility.iterable;
+
+import static org.jlib.container.sequence.SequenceUtility.singleton;
+
 import org.jlib.container.Container;
-import org.jlib.container.sequence.InvalidSequenceArgumentException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
@@ -34,11 +39,7 @@ import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-
-import java.util.Collection;
-
-import static org.jlib.container.sequence.SequenceUtility.singleton;
-import static org.jlib.core.array.ArrayUtility.iterable;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -186,7 +187,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceArgumentException, InvalidTraversibleStateException {
+    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         insert(index, singleton(item), 1, observers);
     }
 

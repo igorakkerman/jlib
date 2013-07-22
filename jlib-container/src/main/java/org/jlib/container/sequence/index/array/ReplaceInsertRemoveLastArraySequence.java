@@ -21,17 +21,20 @@
 
 package org.jlib.container.sequence.index.array;
 
+import java.util.Collection;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.container.Container;
-import org.jlib.container.sequence.InvalidSequenceItemsCountException;
-import org.jlib.container.sequence.Sequence;
 import org.jlib.container.SoleItemNotRemoveableException;
+import org.jlib.container.sequence.InvalidSequenceItemsCountException;
+import org.jlib.container.sequence.ObservedRemoveLastSequence;
+import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import java.util.Collection;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -43,8 +46,8 @@ import java.util.Collection;
  */
 public class ReplaceInsertRemoveLastArraySequence<Item>
 extends ReplaceInsertArraySequence<Item>
-implements org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence<Item>,
-           org.jlib.container.sequence.ObservedRemoveLastSequence<Item> {
+implements ObservedReplaceInsertIndexSequence<Item>,
+           ObservedRemoveLastSequence<Item> {
 
     /**
      * Creates a new uninitialized {@link ReplaceInsertRemoveLastArraySequence}
@@ -179,11 +182,9 @@ implements org.jlib.container.sequence.index.ObservedReplaceInsertIndexSequence<
                     removeLastItem();
                 }
                 catch (final SoleItemNotRemoveableException exception) {
-                    throw new OperatorException("removeLastItem {0}", exception);
+                    throw new OperatorException(message("removeLastItem()"), exception);
                 }
             }
-        },
-
-                                getStoredItem(getLastIndex()), observers);
+        }, getStoredItem(getLastIndex()), observers);
     }
 }
