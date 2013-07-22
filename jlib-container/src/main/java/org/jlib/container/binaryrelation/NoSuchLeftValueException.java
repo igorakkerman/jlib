@@ -21,6 +21,11 @@
 
 package org.jlib.container.binaryrelation;
 
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ExceptionMessageUtility.namedObject;
+
 /**
  * Exception thrown when a {@link BinaryRelation} does not contain an
  * {@link Pair} with the requested left value.
@@ -28,7 +33,7 @@ package org.jlib.container.binaryrelation;
  * @author Igor Akkerman
  */
 public class NoSuchLeftValueException
-extends NoSuchAssociationValueException {
+extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 723559454379105926L;
@@ -42,7 +47,10 @@ extends NoSuchAssociationValueException {
      * @param leftValue
      *        LeftValue of the {@link Pair}
      */
-    public NoSuchLeftValueException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue) {
-        super(binaryRelation, "leftValue", leftValue);
+    public <LeftValue> /*
+        */ NoSuchLeftValueException(@SuppressWarnings("TypeMayBeWeakened") /*
+                                 */ final BinaryRelation<LeftValue, ?> binaryRelation, final LeftValue leftValue) {
+
+        super(binaryRelation, message(namedObject("leftValue", leftValue)));
     }
 }

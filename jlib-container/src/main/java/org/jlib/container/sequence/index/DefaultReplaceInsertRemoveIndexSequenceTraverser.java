@@ -21,15 +21,6 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.array.ArrayUtility.traversible;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-
-import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.array.FillupArraySequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
@@ -38,6 +29,16 @@ import org.jlib.core.operator.OperatorException;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.value.ValueNotAccessibleException;
+
+import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
+import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
+import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.index.array.FillupArraySequence;
+
+import static org.jlib.container.sequence.SequenceUtility.concatenated;
+import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * Default implementation of a {@link RemoveIndexSequenceTraverser},
@@ -53,7 +54,7 @@ import org.jlib.core.value.ValueNotAccessibleException;
  */
 public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertRemoveIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
-implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>
+implements ObservedInsertSequenceTraverser<Item>
 {
 
     /** remove {@link ValueObserver} items */

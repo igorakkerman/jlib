@@ -29,7 +29,6 @@ import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.Pair;
 import org.jlib.container.binaryrelation.DefaultRemoveBinaryRelationTraverser;
 import org.jlib.container.binaryrelation.LeftValueAlreadyAssociatedException;
-import org.jlib.container.binaryrelation.NoSuchAssociationValueException;
 import org.jlib.container.binaryrelation.RightValueAlreadyAssociatedException;
 import org.jlib.core.traverser.RemoveTraverser;
 
@@ -141,7 +140,7 @@ implements RemoveBijection<LeftValue, RightValue> {
 
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchAssociationValueException {
+    throws NoSuchPairValueException {
         leftToRightMap.remove(leftValue);
         rightToLeftMap.remove(rightValue);
     }
