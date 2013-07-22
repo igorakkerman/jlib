@@ -21,23 +21,30 @@
 
 package org.jlib.core.language;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
+
 /**
- * Skeletal implementation of a {@link Cloneable} ensuring {@link #clone()} does not throw a
- * {@link CloneNotSupportedException}.
+ * Skeletal implementation of an {@link AbstractCloneable} using a automated deep copy algorithm in {@link #clone()}.
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractCloneable
-extends AbstractObject
-implements Cloneable {
+public abstract class AutoCloneable
+extends AbstractCloneable {
 
     @Override
     @SuppressWarnings("unchecked")
     public Object clone() {
         try {
-            return super.clone();
+            final Object clonedObject = super.clone();
+
+            // TODO: delegate to generic CloneStrategy
+            BeanUtils.copyProperties(clonedObject, this);
+
+            return clonedObject;
         }
-        catch (CloneNotSupportedException exception) {
+        catch (final InvocationTargetException | IllegalAccessException exception) {
             throw new UnexpectedStateException(exception);
         }
     }
