@@ -21,8 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.withNamedObject;
-import static org.jlib.core.language.ExceptionMessageUtility.withObject;
+import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 
 import org.jlib.core.text.ParametrizedText;
 import org.jlib.core.text.templateengine.TemplateEngine;
@@ -37,14 +36,14 @@ extends ParametrizedText {
 
     public ParametrizedMessage with(final Object object) {
 
-        withObject(getTemplateBuilder(), object);
+        getTemplateBuilder().append(';').append(' ').append(object);
 
         return this;
     }
 
     public ParametrizedMessage with(final CharSequence objectName, final Object object) {
 
-        withNamedObject(getTemplateBuilder(), objectName, object);
+        appendNamedObject(getTemplateBuilder().append(';').append(' '), objectName, object);
 
         return this;
     }

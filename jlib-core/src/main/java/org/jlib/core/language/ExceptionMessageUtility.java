@@ -36,18 +36,12 @@ public final class ExceptionMessageUtility {
     }
 
     public static String namedObject(final CharSequence objectName, final Object object) {
-        return objectName.toString() + '=' + object;
+        return appendNamedObject(new StringBuilder(objectName.length() + 50), objectName, object).toString();
     }
 
-    public static StringBuilder withObject(final StringBuilder messageBuilder, final Object object) {
-
-        return messageBuilder.append(';').append(' ').append(object);
-    }
-
-    public static StringBuilder withNamedObject(final StringBuilder messageBuilder, final CharSequence objectName,
-                                                final Object object) {
-
-        return messageBuilder.append(';').append(' ').append(objectName).append('=').append(object);
+    public static StringBuilder appendNamedObject(final StringBuilder namedObjectBuilder, final CharSequence objectName,
+                                                  final Object object) {
+        return namedObjectBuilder.append(objectName).append('=').append(object);
     }
 
     public static ParametrizedMessage message() {
