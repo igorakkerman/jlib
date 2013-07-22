@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.AssociateBinaryRelation;
+import org.jlib.container.binaryrelation.AddBinaryRelation;
 import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
 import org.jlib.container.binaryrelation.Pair;
@@ -38,8 +38,9 @@ import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
  *
  * @author Igor Akkerman
  */
-public interface AssociateBijection<LeftValue, RightValue>
-extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, RightValue> {
+public interface AddBijection<LeftValue, RightValue>
+extends Bijection<LeftValue, RightValue>,
+        AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
@@ -55,17 +56,17 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         if the specified {@link Pair} already exists
      *
      * @throws LeftValueAlreadyRelatedException
-     *         if {@code leftValue} is already associated to another RightValue
+     *         if {@code leftValue} is already added to another RightValue
      *
      * @throws RightValueAlreadyRelatedException
-     *         if {@code rightValue} is already associated to another LeftValue
+     *         if {@code rightValue} is already added to another LeftValue
      *
      * @throws InvalidPairException
      *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override
-    public void associate(LeftValue leftValue, RightValue rightValue)
+    public void addPair(LeftValue leftValue, RightValue rightValue)
     throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException;
 
     /**
@@ -79,20 +80,20 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *        RightValue of the {@link Pair}
      *
      * @throws LeftValueAlreadyRelatedException
-     *         if {@code leftValue} is already associated to another RightValue;
+     *         if {@code leftValue} is already added to another RightValue;
      *         if the {@link Pair} is equal to another
-     *         {@link Pair} in this {@link AssociateBijection}, it is ignored
+     *         {@link Pair} in this {@link AddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
-     *         if {@code rightValue} is already associated to another LeftValue;
+     *         if {@code rightValue} is already added to another LeftValue;
      *         if the {@link Pair} is equal to another
-     *         {@link Pair} in this {@link AssociateBijection}, it is ignored
+     *         {@link Pair} in this {@link AddBijection}, it is ignored
      *
      * @throws InvalidPairException
      *         if some property of the {@link Pair} prevents it from
      *         being added
      */
     @Override
-    public void assertAssociated(LeftValue leftValue, RightValue rightValue)
+    public void ensureContained(LeftValue leftValue, RightValue rightValue)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException;
 }

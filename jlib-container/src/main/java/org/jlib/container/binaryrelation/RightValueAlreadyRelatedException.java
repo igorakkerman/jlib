@@ -40,10 +40,10 @@ extends InvalidPairException {
      *        referenced {@link BinaryRelation}
      *
      * @param leftValue
-     *        LeftValue to which {@code rightValue} cannot be associated
+     *        LeftValue to which {@code rightValue} cannot be added
      *
      * @param rightValue
-     *        already associated RightValue
+     *        already added RightValue
      */
     public RightValueAlreadyRelatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
                                              final Object rightValue) {

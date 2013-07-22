@@ -72,21 +72,21 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public void insert(final int index, final Item item) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, item);
     }
 
     @Override
     public void insert(final int index, final Container<? extends Item> items) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items);
     }
 
     @Override
     public void insert(final int index, final Collection<? extends Item> items) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items);
     }
@@ -94,7 +94,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item... items) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items);
     }
@@ -120,7 +120,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, item, observers);
     }
@@ -128,7 +128,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Container<? extends Item> items, final ValueObserver<Item>... observers) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items, observers);
     }
@@ -136,7 +136,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Collection<? extends Item> items, final ValueObserver<Item>... observers) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items, observers);
     }
@@ -144,7 +144,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final ValueObserver<Item>[] observers, final Item... items) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, observers, items);
     }

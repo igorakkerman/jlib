@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation.bijection;
 import org.jlib.container.binaryrelation.RemoveBinaryRelation;
 
 /**
- * Bijection allowing to add new associations.
+ * Bijection allowing to add new pairs.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the bijection

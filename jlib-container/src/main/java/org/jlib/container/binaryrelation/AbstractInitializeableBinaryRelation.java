@@ -67,19 +67,13 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
     throws PairAlreadyContainedException, InvalidPairException;
 
     /**
-     * Asserts that the specified LeftValue is associated with the specified
+     * Ensures that the specified LeftValue is added with the specified
      * RightValue.
-     *
-     * @param leftValue
-     *        LeftValue of the {@link Pair}
-     *
-     * @param rightValue
-     *        RightValue of the {@link Pair}
      *
      * @throws InvalidPairException
      *         if some property of the specified {@link Pair} prevents it
      *         from being added
      */
-    protected abstract void assertAssociated(LeftValue leftValue, RightValue rightValue)
+    protected abstract void ensureContained(Pair<LeftValue, RightValue> pair)
     throws InvalidPairException;
 }

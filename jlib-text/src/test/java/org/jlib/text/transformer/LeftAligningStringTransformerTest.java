@@ -1,6 +1,6 @@
 package org.jlib.text.transformer;
 
-import org.junit.Assert;
+import org.junit.Ensure;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
@@ -11,7 +11,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
  * Test case for LeftAligningStringTransformer.
- * 
+ *
  * @author Igor Akkerman
  */
 @RunWith(Theories.class)
@@ -56,6 +56,6 @@ public class LeftAligningStringTransformerTest {
         StringTransformer stringTransformer = new LeftAligningStringTransformer(data.finalStringLength, 'x');
         StringBuilder stringBuilder = new StringBuilder(data.inputString);
         stringTransformer.transform(stringBuilder);
-        Assert.assertThat(data.toString(), stringBuilder.toString(), is(equalTo(data.expectedTransformedString)));
+        Ensure.ensureThat(data.toString(), stringBuilder.toString(), is(equalTo(data.expectedTransformedString)));
     }
 }

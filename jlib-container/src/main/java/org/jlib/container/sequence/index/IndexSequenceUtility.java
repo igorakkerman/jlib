@@ -44,7 +44,7 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Asserts that the specified index is inside the valid bounds of the
+     * Ensures that the specified index is inside the valid bounds of the
      * specified {@link IndexSequence}.
      *
      * @param sequence
@@ -57,7 +57,7 @@ public final class IndexSequenceUtility {
      *         if
      *         {@code index < sequence.getFirstIndex() || index > sequence.getLastIndex()}
      */
-    public static void assertIndexValid(final IndexSequence<?> sequence, final int index)
+    public static void ensureIndexValid(final IndexSequence<?> sequence, final int index)
     throws InvalidSequenceIndexException {
 
         if (index < sequence.getFirstIndex())

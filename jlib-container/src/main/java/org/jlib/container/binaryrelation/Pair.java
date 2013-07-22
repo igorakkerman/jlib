@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import org.jlib.core.language.AbstractCloneable;
 
 /**
- * Binary association.
+ * Binary pair.
  *
  * @param <LeftValue>
  *        type of the left hand side value of the {@link BinaryRelation}

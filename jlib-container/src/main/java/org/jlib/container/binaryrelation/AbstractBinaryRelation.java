@@ -21,8 +21,9 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.AbstractContainer;
 import org.jlib.core.traverser.Traverser;
+
+import org.jlib.container.AbstractContainer;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation}.

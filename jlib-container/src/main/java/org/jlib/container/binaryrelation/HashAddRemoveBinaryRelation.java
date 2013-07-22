@@ -23,12 +23,13 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.core.traverser.RemoveTraverser;
 
+import org.jlib.container.Container;
+import org.jlib.container.ItemToRemoveNotContainedException;
+
 /**
- * {@link AssociateBinaryRelation} implemented using hashing for left and right
+ * {@link AddBinaryRelation} implemented using hashing for left and right
  * hand side items.
  *
  * @param <LeftValue>
@@ -40,35 +41,35 @@ import org.jlib.core.traverser.RemoveTraverser;
  *
  * @author Igor Akkerman
  */
-public class HashAssociateRemoveBinaryRelation<LeftValue, RightValue>
-extends HashAssociateBinaryRelation<LeftValue, RightValue>
+public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
+extends HashAddBinaryRelation<LeftValue, RightValue>
 implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
-     * Creates a new initially empty {@link HashAssociateRemoveBinaryRelation}.
+     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
      */
-    public HashAssociateRemoveBinaryRelation() {
+    public HashAddRemoveBinaryRelation() {
         super();
     }
 
     /**
-     * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
      * {@link Pair} items contained by the specified {@link Container}.
      *
-     * @param associations
-     *        Container of the Associations to add
+     * @param pairs
+     *        Container of the Pairs to add
      *
      * @throws InvalidPairException
-     *         if {@code associations} violate the rules of this
-     *         {@link HashAssociateRemoveBinaryRelation}
+     *         if {@code pairs} violate the rules of this
+     *         {@link HashAddRemoveBinaryRelation}
      */
-    public HashAssociateRemoveBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations)
+    public HashAddRemoveBinaryRelation(final Container<Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
-        super(associations);
+        super(pairs);
     }
 
     /**
-     * Creates a new {@link HashAssociateRemoveBinaryRelation} containing the
+     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
      * {@link Pair} items contained by the specified {@link Collection}.
      *
      * @param pairs
@@ -76,9 +77,9 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *
      * @throws InvalidPairException
      *         if {@code pairs} violate the rules of this
-     *         {@link HashAssociateRemoveBinaryRelation}
+     *         {@link HashAddRemoveBinaryRelation}
      */
-    public HashAssociateRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
+    public HashAddRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         super(pairs);
     }
@@ -92,40 +93,47 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
      *
      * @throws InvalidPairException
      *         if {@code pairs} violate the rules of this
-     *         {@link HashAssociateRemoveBinaryRelation}
+     *         {@link HashAddRemoveBinaryRelation}
      */
     @SuppressWarnings("unchecked")
-    public HashAssociateRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
+    public HashAddRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
     throws InvalidPairException {
         super(pairs);
     }
 
     // overridden to be made public
     @Override
-    public void associate(final LeftValue leftValue, final RightValue rightValue)
+    public void addPair(final LeftValue leftValue, final RightValue rightValue)
     throws InvalidPairException {
-        super.associate(leftValue, rightValue);
+        super.addPair(leftValue, rightValue);
     }
 
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchPairValueException {
-        if (! contains(leftValue, rightValue))
-            throw new NoSuchPairException(this, leftValue, rightValue);
-
-        leftToRightMap.get(leftValue).remove(rightValue);
-        rightToLeftMap.get(rightValue).remove(leftValue);
+    throws NoSuchLeftValueException, NoSuchRightValueException {
+        remove(new Pair(leftValue, rightValue));
     }
 
     @Override
     public void remove(final Pair<LeftValue, RightValue> pair)
     throws ItemToRemoveNotContainedException {
         try {
-            remove(pair.getLeftValue(), pair.getRightValue());
+            removePair(pair);
         }
-        catch (final NoSuchPairValueException exception) {
+        catch (final NoSuchPairException exception) {
             throw new ItemToRemoveNotContainedException(this, pair, exception);
         }
+    }
+
+    private void removePair(final Pair<LeftValue, RightValue> pair) {
+        final LeftValue leftValue = pair.getLeftValue();
+        final RightValue rightValue = pair.getRightValue();
+
+        if (! contains(leftValue, rightValue))
+            throw new NoSuchPairException(this, new Pair(leftValue, rightValue));
+
+        leftToRightMap.get(leftValue).remove(rightValue);
+        rightToLeftMap.get(rightValue).remove(leftValue);
     }
 
     @Override
@@ -134,18 +142,18 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
-        BinaryRelationUtility.remove(this, associations);
+    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+        BinaryRelationUtility.remove(this, pairs);
     }
 
     @Override
-    public void remove(final Container<? extends Pair<LeftValue, RightValue>> associations) {
-        BinaryRelationUtility.remove(this, associations);
+    public void remove(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
+        BinaryRelationUtility.remove(this, pairs);
     }
 
     @Override
-    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
-        BinaryRelationUtility.remove(this, associations);
+    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+        BinaryRelationUtility.remove(this, pairs);
     }
 
     @Override
@@ -155,13 +163,13 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(final Container<? extends Pair<LeftValue, RightValue>> associations) {
-        BinaryRelationUtility.retain(this, associations);
+    public void retain(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
+        BinaryRelationUtility.retain(this, pairs);
     }
 
     @Override
-    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
-        BinaryRelationUtility.retain(this, associations);
+    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+        BinaryRelationUtility.retain(this, pairs);
     }
 
     @Override

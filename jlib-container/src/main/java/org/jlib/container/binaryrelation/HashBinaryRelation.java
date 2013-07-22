@@ -48,13 +48,13 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     /**
      * {@link Map} assigning each LeftValue the {@link Set} of RightValues
-     * associated with it
+     * added with it
      */
     protected Map<LeftValue, Set<RightValue>> leftToRightMap = new HashMap<LeftValue, Set<RightValue>>();
 
     /**
      * {@link Map} assigning each RightValue the Set of LeftValue items
-     * associated with it
+     * added with it
      */
     protected Map<RightValue, Set<LeftValue>> rightToLeftMap = new HashMap<RightValue, Set<LeftValue>>();
 
@@ -66,25 +66,25 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new HashBinaryRelation containing the Associations contained by
+     * Creates a new HashBinaryRelation containing the Pairs contained by
      * the specified jlib Container.
      *
-     * @param associations
-     *        Container of the Associations to add
+     * @param pairs
+     *        Container of the Pairs to add
      */
-    public HashBinaryRelation(final Container<Pair<LeftValue, RightValue>> associations) {
+    public HashBinaryRelation(final Container<Pair<LeftValue, RightValue>> pairs) {
         super();
 
-        for (final Pair<LeftValue, RightValue> pair : associations)
+        for (final Pair<LeftValue, RightValue> pair : pairs)
             associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     /**
-     * Creates a new HashBinaryRelation containing the Associations contained by
+     * Creates a new HashBinaryRelation containing the Pairs contained by
      * the specified Collection.
      *
      * @param pairs
-     *        Collection of the Associations to add
+     *        Collection of the Pairs to add
      */
     public HashBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs) {
         super();
@@ -94,11 +94,11 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new HashBinaryRelation containing the Associations specified in
+     * Creates a new HashBinaryRelation containing the Pairs specified in
      * a comma separated sequence.
      *
      * @param pairs
-     *        Comma separated sequence of the Associations to add
+     *        Comma separated sequence of the Pairs to add
      */
     @SuppressWarnings("unchecked")
     public HashBinaryRelation(final Pair<LeftValue, RightValue>... pairs) {
@@ -114,18 +114,18 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
         if (contains(leftValue, rightValue))
             throw new PairAlreadyContainedException(this, leftValue, rightValue);
 
-        assertAssociated(leftValue, rightValue);
+        ensureAssociated(leftValue, rightValue);
     }
 
     @Override
-    protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    protected void ensureAssociated(final LeftValue leftValue, final RightValue rightValue)
     throws InvalidPairException {
-        assertAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
-        assertAssociatedOneWay(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
+        ensureAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
+        ensureAssociatedOneWay(rightValue, leftValue, rightToLeftMap, hasRight(rightValue));
     }
 
     /**
-     * Creates a unidirectional association between the specified values.
+     * Creates a unidirectional pair between the specified values.
      *
      * @param <Value1>
      *        type of first value
@@ -144,10 +144,10 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
      *        items
      *
      * @param value1Exists
-     *        boolean specifying whether {@code value1} is associated to at
+     *        boolean specifying whether {@code value1} is added to at
      *        least one Value2 item
      */
-    private <Value1, Value2> void assertAssociatedOneWay(final Value1 value1, final Value2 value2, final Map<Value1, Set<Value2>> value1ToValue2SetMap, final boolean value1Exists) {
+    private <Value1, Value2> void ensureAssociatedOneWay(final Value1 value1, final Value2 value2, final Map<Value1, Set<Value2>> value1ToValue2SetMap, final boolean value1Exists) {
         final Set<Value2> value2Set = value1Exists
                                       ? value1ToValue2SetMap.get(value1)
                                       : new HashSet<Value2>();

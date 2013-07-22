@@ -23,12 +23,13 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Set;
 
-import org.jlib.container.Container;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.Container;
+
 /**
- * Binary association between various Objects. Each Object on either of the two
- * sides may be associated with a Set of Objects on the other side.
+ * Binary pair between various Objects. Each Object on either of the two
+ * sides may be added with a Set of Objects on the other side.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the BinaryRelation
@@ -42,64 +43,62 @@ public interface BinaryRelation<LeftValue, RightValue>
 extends Container<Pair<LeftValue, RightValue>> {
 
     /**
-     * Returns the Set of RightValues associated with the specified LeftValue.
+     * Returns the Set of RightValues added with the specified LeftValue.
      *
      * @param leftValue
-     *        LeftValue associated with the Set of RightValues to return
+     *        LeftValue added with the Set of RightValues to return
      *
-     * @return {@link Set} of RightValues associated with {@code leftValue};
-     *         empty {@link Set} if no RightValue is associated with
-     *         {@code leftValue}
+     * @return {@link Set} of {@link RightValue}s added with {@code leftValue};
+     *         empty {@link Set} if no {@link RightValue} is added with {@code leftValue}
      */
     public Set<RightValue> getRightSet(LeftValue leftValue);
 
     /**
-     * Returns the Set of LeftValues associated with the specified RightValue.
+     * Returns the Set of LeftValues added with the specified RightValue.
      *
      * @param rightValue
-     *        RightValue associated with the Set of LeftValues to return
+     *        RightValue added with the Set of LeftValues to return
      *
-     * @return {@link Set} of RightValues associated with {@code leftValue}
-     *         empty {@link Set} if no RightValue is associated with
+     * @return {@link Set} of RightValues added with {@code leftValue} empty {@link Set} if no RightValue is added with
      *         {@code leftValue}
      */
     public Set<LeftValue> getLeftSet(RightValue rightValue);
 
     /**
-     * Verifies whether the specified LeftValue is associated with the specified
+     * Verifies whether the specified LeftValue is added with the specified
      * RightValue.
      *
      * @param leftValue
-     *        LeftValue of the potential association
+     *        LeftValue of the potential pair
      *
      * @param rightValue
-     *        RightValue of the potential association
+     *        RightValue of the potential pair
      *
-     * @return {@code true} if {@code leftValue} is associated with
+     * @return {@code true} if {@code leftValue} is added with
      *         {@code rightValue}
      */
     public boolean contains(LeftValue leftValue, RightValue rightValue);
 
     /**
-     * Verifies whether the specified LeftValue is associated with some
+     * Verifies whether the specified LeftValue is added with some
      * RightValue by this BinaryRelation.
      *
      * @param leftValue
      *        the LeftValue
      *
-     * @return {@code true} if {@code leftValue} is associated with some
+     * @return {@code true} if {@code leftValue} is added with some
      *         RightValue; {@code false} otherwise
      */
     public boolean hasLeft(LeftValue leftValue);
 
     /**
-     * Verifies whether the specified RightValue is associated with some
+     * Verifies whether the specified RightValue is added with some
      * LeftValue by this BinaryRelation.
      *
      * @param rightValue
      *        the RightValue
      *
-     * @return {@code true} if {@code rightValue} is associated with some
+     * @return {@code true} if {@code rightValue} is added with some
      *         LeftValue; {@code false} otherwise
      */
     public boolean hasRight(RightValue rightValue);

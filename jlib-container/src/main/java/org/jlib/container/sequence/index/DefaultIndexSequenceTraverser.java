@@ -82,7 +82,7 @@ implements IndexSequenceTraverser<Item> {
     public DefaultIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex) {
         super(sequence);
 
-        IndexSequenceUtility.assertIndexValid(sequence, initialNextItemIndex);
+        IndexSequenceUtility.ensureIndexValid(sequence, initialNextItemIndex);
 
         potentialNextItemIndex = initialNextItemIndex;
 

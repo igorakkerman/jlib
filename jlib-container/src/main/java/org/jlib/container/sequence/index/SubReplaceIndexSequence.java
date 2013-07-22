@@ -76,7 +76,7 @@ implements ObservedReplaceIndexSequence<Item> {
     @Override
     public void replace(final int index, final Item newItem)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem);
     }
@@ -85,7 +85,7 @@ implements ObservedReplaceIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem, observers);
     }

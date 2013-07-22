@@ -34,7 +34,7 @@ import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
 import org.jlib.core.traverser.RemoveTraverser;
 
 /**
- * {@link HashAssociateBijection} allowing the removal of {@link Pair}
+ * {@link HashAddBijection} allowing the removal of {@link Pair}
  * items.
  *
  * @param <LeftValue>
@@ -45,96 +45,96 @@ import org.jlib.core.traverser.RemoveTraverser;
  *
  * @author Igor Akkerman
  */
-public class HashAssociateRemoveBijection<LeftValue, RightValue>
-extends HashAssociateBijection<LeftValue, RightValue>
+public class HashAddRemoveBijection<LeftValue, RightValue>
+extends HashAddBijection<LeftValue, RightValue>
 implements RemoveBijection<LeftValue, RightValue> {
 
     /** Creates a new initially empty HashAddBijection. */
-    public HashAssociateRemoveBijection() {
+    public HashAddRemoveBijection() {
         super();
     }
 
     /**
-     * Creates a new HashAddBijection containing the Associations contained by
+     * Creates a new HashAddBijection containing the Pairs contained by
      * the specified jlib Container.
      *
-     * @param associations
-     *        Container of the Associations to add
-     *
-     * @throws LeftValueAlreadyRelatedException
-     *         if the LeftValue of one Item in {@code associations} is already
-     *         associated to another RightValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
-     *
-     * @throws RightValueAlreadyRelatedException
-     *         if the RightValue of one Item in {@code associations} is already
-     *         associated to another LeftValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
-     *
-     * @throws InvalidPairException
-     *         if some property of one Item in {@code associations} prevents it
-     *         from being added
-     */
-    public HashAssociateRemoveBijection(final Container<Pair<LeftValue, RightValue>> associations)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super(associations);
-    }
-
-    /**
-     * Creates a new HashAddBijection containing the Associations contained by
-     * the specified Collection.
-     *
      * @param pairs
-     *        Collection of the Associations to add
+     *        Container of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
-     *         associated to another RightValue; if an {@link Pair} is
+     *         added to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
-     *         associated to another LeftValue; if an {@link Pair} is
+     *         added to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws InvalidPairException
      *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
-    public HashAssociateRemoveBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
+    public HashAddRemoveBijection(final Container<Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super(pairs);
     }
 
     /**
-     * Creates a new HashAddBijection containing the Associations specified in a
-     * comma separated sequence.
+     * Creates a new HashAddBijection containing the Pairs contained by
+     * the specified Collection.
      *
      * @param pairs
-     *        Comma separated sequence of the Associations to add
+     *        Collection of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
-     *         associated to another RightValue; if an {@link Pair} is
+     *         added to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
-     *         associated to another LeftValue; if an {@link Pair} is
+     *         added to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
+     *
+     * @throws InvalidPairException
+     *         if some property of one Item in {@code pairs} prevents it
+     *         from being added
+     */
+    public HashAddRemoveBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
+    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+        super(pairs);
+    }
+
+    /**
+     * Creates a new HashAddBijection containing the Pairs specified in a
+     * comma separated sequence.
+     *
+     * @param pairs
+     *        Comma separated sequence of the Pairs to add
+     *
+     * @throws LeftValueAlreadyRelatedException
+     *         if the LeftValue of one Item in {@code pairs} is already
+     *         added to another RightValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
+     *         {@link HashAddBijection}, it is ignored
+     *
+     * @throws RightValueAlreadyRelatedException
+     *         if the RightValue of one Item in {@code pairs} is already
+     *         added to another LeftValue; if an {@link Pair} is
+     *         equal to another {@link Pair} in the
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws InvalidPairException
      *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
     @SuppressWarnings("unchecked")
-    public HashAssociateRemoveBijection(final Pair<LeftValue, RightValue>... pairs)
+    public HashAddRemoveBijection(final Pair<LeftValue, RightValue>... pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super(pairs);
     }
@@ -157,18 +157,18 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+        ContainerUtility.remove(this, pairs);
     }
 
     @Override
-    public void remove(final Container<? extends Pair<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+    public void remove(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
+        ContainerUtility.remove(this, pairs);
     }
 
     @Override
-    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
-        ContainerUtility.remove(this, associations);
+    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+        ContainerUtility.remove(this, pairs);
     }
 
     @Override
@@ -178,13 +178,13 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(final Container<? extends Pair<LeftValue, RightValue>> associations) {
-        ContainerUtility.retain(this, associations);
+    public void retain(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
+        ContainerUtility.retain(this, pairs);
     }
 
     @Override
-    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> associations) {
-        ContainerUtility.retain(this, associations);
+    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+        ContainerUtility.retain(this, pairs);
     }
 
     @Override

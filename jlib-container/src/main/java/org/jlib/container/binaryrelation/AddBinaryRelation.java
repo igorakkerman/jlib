@@ -26,25 +26,24 @@ import java.util.Collection;
 import org.jlib.container.Container;
 
 /**
- * {@link BinaryRelation} allowing to associate and remove {@link Pair}
+ * {@link BinaryRelation} allowing to add and remove {@link Pair}
  * Items.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the
- *        {@link AssociateBinaryRelation}
+ *        {@link AddBinaryRelation}
  *
  * @param <RightValue>
  *        type of the values on the right hand side of the
- *        {@link AssociateBinaryRelation}
+ *        {@link AddBinaryRelation}
  *
  * @author Igor Akkerman
  */
-public interface AssociateBinaryRelation<LeftValue, RightValue>
-extends BinaryRelation<LeftValue, RightValue> {
+public interface AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}.
      *
      * @param leftValue
      *        LeftValue of the {@link Pair}
@@ -54,14 +53,14 @@ extends BinaryRelation<LeftValue, RightValue> {
      *
      * @throws InvalidPairException
      *         if some property of the specified {@link Pair} prevents it
-     *         from being associated
+     *         from being added
      */
-    public void associate(LeftValue leftValue, RightValue rightValue)
+    public void addPair(LeftValue leftValue, RightValue rightValue)
     throws InvalidPairException;
 
     /**
      * Associates the specified LeftValue with the specified RightValue in this
-     * {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}.
      *
      * @param leftValue
      *        LeftValue of the {@link Pair}
@@ -71,129 +70,129 @@ extends BinaryRelation<LeftValue, RightValue> {
      *
      * @throws InvalidPairException
      *         if some property of the {@link Pair} prevents it from
-     *         being associated
+     *         being added
      */
-    public void assertAssociated(LeftValue leftValue, RightValue rightValue)
+    public void ensureContained(LeftValue leftValue, RightValue rightValue)
     throws InvalidPairException;
 
     /**
      * Associates the specified Item to the specified
-     * {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}.
      *
      * @param pair
      *        {@link Pair} to create
      *
      * @throws InvalidPairException
      *         if some property of {@code item} prevents it from being
-     *         associated, for instance, if it is already contained
+     *         added, for instance, if it is already contained
      */
-    public void associate(Pair<LeftValue, RightValue> pair)
+    public void add(Pair<LeftValue, RightValue> pair)
     throws InvalidPairException;
 
     /**
      * Associates all Items contained by the specified {@link Container} to this
-     * {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}.
      *
-     * @param associations
-     *        {@link Container} containing the Items to associate
-     *
-     * @throws InvalidPairException
-     *         if {@code associations}
+     * @param pairs
+     *        {@link Container} containing the {@link Pair}s to add
      *
      * @throws InvalidPairException
-     *         if some property of an Item in {@code associations} prevents it
-     *         from being associated, for instance, if it is already contained
+     *         if {@code pairs}
+     *
+     * @throws InvalidPairException
+     *         if some property of an Item in {@code pairs} prevents it
+     *         from being added, for instance, if it is already contained
      */
-    public void associate(Container<? extends Pair<LeftValue, RightValue>> associations)
+    public void addPairs(Container<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException;
 
     /**
      * Associates all Items contained by the specified {@link Collection} to the
-     * specified {@link AssociateBinaryRelation}.
+     * specified {@link AddBinaryRelation}.
      *
-     * @param associations
-     *        {@link Collection} containing the Items to associate
+     * @param pairs
+     *        {@link Collection} containing the {@link Pair}s to add
      *
      * @throws InvalidPairException
-     *         if some property of an Item in {@code associations} prevents it
-     *         from being associated, for instance, if it is already contained
+     *         if some property of a {@link Pair} in {@code pairs} prevents it
+     *         from being added, for instance, if it is already contained
      */
-    public void associate(Collection<? extends Pair<LeftValue, RightValue>> associations)
+    public void addPairs(Collection<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException;
 
     /**
      * Associates all specified Items to the specified
-     * {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}.
      *
      * @param pairs
-     *        comma separated sequence of Items to associate
+     *        comma separated sequence of Items to add
      *
      * @throws InvalidPairException
      *         if some property of an Item in {@code pairs} prevents it
-     *         from being associated, for instance, if it is already contained
+     *         from being added, for instance, if it is already contained
      */
     @SuppressWarnings("unchecked")
-    public void associate(Pair<LeftValue, RightValue>... pairs)
+    public void addPairs(Pair<LeftValue, RightValue>... pairs)
     throws InvalidPairException;
 
     /**
-     * Asserts that the specified {@link AssociateBinaryRelation} contains the
-     * specified Item. If the {@link AssociateBinaryRelation} does not contain
-     * the Item, it is associated.
+     * Ensures that the specified {@link AddBinaryRelation} contains the
+     * specified Item. If the {@link AddBinaryRelation} does not contain
+     * the Item, it is added.
      *
      * @param pair
      *        {@link Pair} to create
      *
      * @throws InvalidPairException
      *         if some property of {@code item} prevents it from being
-     *         associated
+     *         added
      */
-    public void assertContained(Pair<LeftValue, RightValue> pair)
+    public void ensureContained(Pair<LeftValue, RightValue> pair)
     throws InvalidPairException;
 
     /**
-     * Asserts that the specified {@link AssociateBinaryRelation} contains all
+     * Ensures that the specified {@link AddBinaryRelation} contains all
      * Items contained by the specified {@link Container} to this
-     * {@link AssociateBinaryRelation}. If the {@link AssociateBinaryRelation}
-     * does not contain the Item, it is associated.
-     *
-     * @param associations
-     *        {@link Container} containing the Items to associate
-     *
-     * @throws InvalidPairException
-     *         if some property of an Item in {@code associations} prevents it
-     *         from being associated
-     */
-    public void assertContained(Container<? extends Pair<LeftValue, RightValue>> associations)
-    throws InvalidPairException;
-
-    /**
-     * Asserts that the specified {@link AssociateBinaryRelation} contains all
-     * Items contained by the specified {@link Collection} to this
-     * {@link AssociateBinaryRelation}.
-     *
-     * @param associations
-     *        {@link Collection} containing the Items to associate
-     *
-     * @throws InvalidPairException
-     *         if some property of {@code item} prevents it from being
-     *         associated
-     */
-    public void assertContained(Collection<? extends Pair<LeftValue, RightValue>> associations)
-    throws InvalidPairException;
-
-    /**
-     * Asserts that the specified {@link AssociateBinaryRelation} contains all
-     * specified Items to the specified {@link AssociateBinaryRelation}.
+     * {@link AddBinaryRelation}. If the {@link AddBinaryRelation}
+     * does not contain the Item, it is added.
      *
      * @param pairs
-     *        comma separated sequence of Items to associate
+     *        {@link Container} containing the Items to add
+     *
+     * @throws InvalidPairException
+     *         if some property of an Item in {@code pairs} prevents it
+     *         from being added
+     */
+    public void ensureContained(Container<? extends Pair<LeftValue, RightValue>> pairs)
+    throws InvalidPairException;
+
+    /**
+     * Ensures that the specified {@link AddBinaryRelation} contains all
+     * Items contained by the specified {@link Collection} to this
+     * {@link AddBinaryRelation}.
+     *
+     * @param pairs
+     *        {@link Collection} containing the Items to add
      *
      * @throws InvalidPairException
      *         if some property of {@code item} prevents it from being
-     *         associated
+     *         added
+     */
+    public void ensureContained(Collection<? extends Pair<LeftValue, RightValue>> pairs)
+    throws InvalidPairException;
+
+    /**
+     * Ensures that the specified {@link AddBinaryRelation} contains all
+     * specified Items to the specified {@link AddBinaryRelation}.
+     *
+     * @param pairs
+     *        comma separated sequence of Items to add
+     *
+     * @throws InvalidPairException
+     *         if some property of {@code item} prevents it from being
+     *         added
      */
     @SuppressWarnings("unchecked")
-    public void assertContained(Pair<LeftValue, RightValue>... pairs)
+    public void ensureContained(Pair<LeftValue, RightValue>... pairs)
     throws InvalidPairException;
 }

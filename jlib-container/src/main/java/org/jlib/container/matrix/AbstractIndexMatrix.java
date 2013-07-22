@@ -141,7 +141,7 @@ implements IndexMatrix<Entry> {
     @Override
     public final Entry get(final int columnIndex, final int rowIndex)
     throws MatrixIndexOutOfBoundsException {
-        assertIndicesValid(columnIndex, rowIndex);
+        ensureIndicesValid(columnIndex, rowIndex);
 
         return getStoredEntry(columnIndex, rowIndex);
     }
@@ -197,7 +197,7 @@ implements IndexMatrix<Entry> {
     }
 
     /**
-     * Asserts that the specified column and row indices are within the index
+     * Ensures that the specified column and row indices are within the index
      * bounds of this {@link IndexMatrix}.
      *
      * @param columnIndex
@@ -210,7 +210,7 @@ implements IndexMatrix<Entry> {
      *         if
      *         {@code columnIndex < getFirstColumnIndex() || columnIndex > getLastColumnIndex() || rowIndex < getFirstRowIndex() || rowIndex > getLastRowIndex()}
      */
-    protected void assertIndicesValid(final int columnIndex, final int rowIndex)
+    protected void ensureIndicesValid(final int columnIndex, final int rowIndex)
     throws MatrixIndexOutOfBoundsException {
 
         if (columnIndex < firstColumnIndex)

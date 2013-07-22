@@ -71,7 +71,7 @@ extends AbstractIndexMatrix<Entry> {
      */
     protected void replace(final int columnIndex, final int rowIndex, final Entry entry)
     throws MatrixIndexOutOfBoundsException {
-        assertIndicesValid(columnIndex, rowIndex);
+        ensureIndicesValid(columnIndex, rowIndex);
 
         replaceStoredEntry(columnIndex, rowIndex, entry);
     }

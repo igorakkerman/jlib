@@ -26,120 +26,120 @@ import org.junit.Test;
 import static org.jlib.core.number.NumberUtility.isEven;
 import static org.jlib.core.number.NumberUtility.isOdd;
 import static org.jlib.core.number.NumberUtility.parseHexDigit;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Ensure.ensureEquals;
+import static org.junit.Ensure.ensureFalse;
+import static org.junit.Ensure.ensureTrue;
 
 public class NumberUtilityTest {
 
     @Test
     public void testParseHexDigit0() {
-        assertEquals(0, parseHexDigit('0'));
+        ensureEquals(0, parseHexDigit('0'));
     }
 
     @Test
     public void testParseHexDigit1() {
-        assertEquals(1, parseHexDigit('1'));
+        ensureEquals(1, parseHexDigit('1'));
     }
 
     @Test
     public void testParseHexDigit2() {
-        assertEquals(2, parseHexDigit('2'));
+        ensureEquals(2, parseHexDigit('2'));
     }
 
     @Test
     public void testParseHexDigit3() {
-        assertEquals(3, parseHexDigit('3'));
+        ensureEquals(3, parseHexDigit('3'));
     }
 
     @Test
     public void testParseHexDigit4() {
-        assertEquals(4, parseHexDigit('4'));
+        ensureEquals(4, parseHexDigit('4'));
     }
 
     @Test
     public void testParseHexDigit5() {
-        assertEquals(5, parseHexDigit('5'));
+        ensureEquals(5, parseHexDigit('5'));
     }
 
     @Test
     public void testParseHexDigit6() {
-        assertEquals(6, parseHexDigit('6'));
+        ensureEquals(6, parseHexDigit('6'));
     }
 
     @Test
     public void testParseHexDigit7() {
-        assertEquals(7, parseHexDigit('7'));
+        ensureEquals(7, parseHexDigit('7'));
     }
 
     @Test
     public void testParseHexDigit8() {
-        assertEquals(8, parseHexDigit('8'));
+        ensureEquals(8, parseHexDigit('8'));
     }
 
     @Test
     public void testParseHexDigit9() {
-        assertEquals(9, parseHexDigit('9'));
+        ensureEquals(9, parseHexDigit('9'));
     }
 
     @Test
     public void testParseHexDigitA() {
-        assertEquals(10, parseHexDigit('A'));
+        ensureEquals(10, parseHexDigit('A'));
     }
 
     @Test
     public void testParseHexDigitB() {
-        assertEquals(11, parseHexDigit('B'));
+        ensureEquals(11, parseHexDigit('B'));
     }
 
     @Test
     public void testParseHexDigitC() {
-        assertEquals(12, parseHexDigit('C'));
+        ensureEquals(12, parseHexDigit('C'));
     }
 
     @Test
     public void testParseHexDigitD() {
-        assertEquals(13, parseHexDigit('D'));
+        ensureEquals(13, parseHexDigit('D'));
     }
 
     @Test
     public void testParseHexDigitE() {
-        assertEquals(14, parseHexDigit('E'));
+        ensureEquals(14, parseHexDigit('E'));
     }
 
     @Test
     public void testParseHexDigitF() {
-        assertEquals(15, parseHexDigit('F'));
+        ensureEquals(15, parseHexDigit('F'));
     }
 
     @Test
     public void testParseHexDigitSmallA() {
-        assertEquals(10, parseHexDigit('a'));
+        ensureEquals(10, parseHexDigit('a'));
     }
 
     @Test
     public void testParseHexDigitSmallB() {
-        assertEquals(11, parseHexDigit('b'));
+        ensureEquals(11, parseHexDigit('b'));
     }
 
     @Test
     public void testParseHexDigitSmallC() {
-        assertEquals(12, parseHexDigit('c'));
+        ensureEquals(12, parseHexDigit('c'));
     }
 
     @Test
     public void testParseHexDigitSmallD() {
-        assertEquals(13, parseHexDigit('d'));
+        ensureEquals(13, parseHexDigit('d'));
     }
 
     @Test
     public void testParseHexDigitSmallE() {
-        assertEquals(14, parseHexDigit('e'));
+        ensureEquals(14, parseHexDigit('e'));
     }
 
     @Test
     public void testParseHexDigitSmallF() {
-        assertEquals(15, parseHexDigit('f'));
+        ensureEquals(15, parseHexDigit('f'));
     }
 
     @Test(expected = NumberFormatException.class)
@@ -164,51 +164,51 @@ public class NumberUtilityTest {
 
     @Test
     public final void testIsEven0() {
-        assertTrue(isEven(0));
+        ensureTrue(isEven(0));
     }
 
     @Test
     public final void testIsEven1() {
-        assertFalse(isEven(1));
+        ensureFalse(isEven(1));
     }
 
     @Test
     public final void testIsEven2() {
-        assertTrue(isEven(2));
+        ensureTrue(isEven(2));
     }
 
     @Test
     public final void testIsEvenMinus1() {
-        assertFalse(isEven(- 1));
+        ensureFalse(isEven(- 1));
     }
 
     @Test
     public final void testIsEvenMinus2() {
-        assertTrue(isEven(- 2));
+        ensureTrue(isEven(- 2));
     }
 
     @Test
     public final void testIsOdd() {
-        assertFalse(isOdd(0));
+        ensureFalse(isOdd(0));
     }
 
     @Test
     public final void testIsOdd1() {
-        assertTrue(isOdd(1));
+        ensureTrue(isOdd(1));
     }
 
     @Test
     public final void testIsOdd2() {
-        assertFalse(isOdd(2));
+        ensureFalse(isOdd(2));
     }
 
     @Test
     public final void testIsOddMinus1() {
-        assertTrue(isOdd(- 1));
+        ensureTrue(isOdd(- 1));
     }
 
     @Test
     public final void testIsOddMinus2() {
-        assertFalse(isOdd(- 2));
+        ensureFalse(isOdd(- 2));
     }
 }

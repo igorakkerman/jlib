@@ -27,7 +27,7 @@ import org.jlib.core.traverser.Traverser;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
- * Default implementation of a {@link Traverser} over the Associations of a
+ * Default implementation of a {@link Traverser} over the Pairs of a
  * {@link RemoveBinaryRelation}.
  *
  * @param <LeftValue>

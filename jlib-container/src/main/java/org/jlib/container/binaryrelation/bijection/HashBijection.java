@@ -53,10 +53,10 @@ public class HashBijection<LeftValue, RightValue>
 extends AbstractInitializeableBinaryRelation<LeftValue, RightValue>
 implements Bijection<LeftValue, RightValue> {
 
-    /** Map assigning each LeftValue the RightValue associated with it */
+    /** Map assigning each LeftValue the RightValue added with it */
     protected Map<LeftValue, RightValue> leftToRightMap = new HashMap<LeftValue, RightValue>();
 
-    /** Map assigning each RightValue the LeftValue associated with it */
+    /** Map assigning each RightValue the LeftValue added with it */
     protected Map<RightValue, LeftValue> rightToLeftMap = new HashMap<RightValue, LeftValue>();
 
     /**
@@ -67,54 +67,54 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new HashBijection containing the Associations contained by the
+     * Creates a new HashBijection containing the Pairs contained by the
      * specified jlib Container.
      *
-     * @param associations
-     *        Container of the Associations to add
+     * @param pairs
+     *        Container of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
-     *         if the LeftValue of one Item in {@code associations} is already
-     *         associated to another RightValue; if an {@link Pair} is
+     *         if the LeftValue of one Item in {@code pairs} is already
+     *         added to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
-     *         if the RightValue of one Item in {@code associations} is already
-     *         associated to another LeftValue; if an {@link Pair} is
+     *         if the RightValue of one Item in {@code pairs} is already
+     *         added to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws InvalidPairException
-     *         if some property of one Item in {@code associations} prevents it
+     *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
-    public HashBijection(final Container<Pair<LeftValue, RightValue>> associations)
+    public HashBijection(final Container<Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super();
 
-        for (final Pair<LeftValue, RightValue> pair : associations)
+        for (final Pair<LeftValue, RightValue> pair : pairs)
             associate(pair.getLeftValue(), pair.getRightValue());
     }
 
     /**
-     * Creates a new HashBijection containing the Associations contained by the
+     * Creates a new HashBijection containing the Pairs contained by the
      * specified Collection.
      *
      * @param pairs
-     *        Collection of the Associations to add
+     *        Collection of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
-     *         associated to another RightValue; if an {@link Pair} is
+     *         added to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
-     *         associated to another LeftValue; if an {@link Pair} is
+     *         added to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws InvalidPairException
      *         if some property of one Item in {@code pairs} prevents it
@@ -129,23 +129,23 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     /**
-     * Creates a new HashBijection containing the Associations specified in a
+     * Creates a new HashBijection containing the Pairs specified in a
      * comma separated sequence.
      *
      * @param pairs
-     *        Comma separated sequence of the Associations to add
+     *        Comma separated sequence of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
-     *         associated to another RightValue; if an {@link Pair} is
+     *         added to another RightValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws RightValueAlreadyRelatedException
      *         if the RightValue of one Item in {@code pairs} is already
-     *         associated to another LeftValue; if an {@link Pair} is
+     *         added to another LeftValue; if an {@link Pair} is
      *         equal to another {@link Pair} in the
-     *         {@link HashAssociateBijection}, it is ignored
+     *         {@link HashAddBijection}, it is ignored
      *
      * @throws InvalidPairException
      *         if some property of one Item in {@code pairs} prevents it
@@ -170,7 +170,7 @@ implements Bijection<LeftValue, RightValue> {
     }
 
     @Override
-    protected void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    protected void ensureAssociated(final LeftValue leftValue, final RightValue rightValue)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         if (contains(leftValue, rightValue))
             return;
@@ -190,13 +190,13 @@ implements Bijection<LeftValue, RightValue> {
      *        RightValue of the {@link Pair}
      *
      * @throws LeftValueAlreadyRelatedException
-     *         if {@code leftValue} is already associated to another RightValue
+     *         if {@code leftValue} is already added to another RightValue
      *
      * @throws RightValueAlreadyRelatedException
-     *         if {@code rightValue} is already associated to another LeftValue
+     *         if {@code rightValue} is already added to another LeftValue
      *
      * @throws InvalidPairException
-     *         if some property of the {@code associations} prevents it from
+     *         if some property of the {@code pairs} prevents it from
      *         being added
      */
     // InvalidPairException may be thrown by subclasses

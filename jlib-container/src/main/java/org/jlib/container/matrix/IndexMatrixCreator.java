@@ -78,8 +78,8 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      */
     public final Metrix createMatrix(final int width, final int height)
     throws InvalidArgumentException {
-        assertDimensionValid("width", width);
-        assertDimensionValid("height", height);
+        ensureDimensionValid("width", width);
+        ensureDimensionValid("height", height);
 
         return createMatrix(0, 0, width - 1, height - 1);
     }
@@ -105,10 +105,10 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      */
     public final Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final Entry[][] entries) {
         final int width = entries.length;
-        assertWidthValid(width);
+        ensureWidthValid(width);
 
         final int height = entries[0].length;
-        assertHeightValid(height);
+        ensureHeightValid(height);
 
         final Metrix matrix = createMatrix(firstColumnIndex, firstRowIndex, width, height);
 
@@ -156,7 +156,7 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      * @throws InvalidArgumentException
      *         if {@code dimensionValue < 1}
      */
-    private void assertDimensionValid(final String dimensionName, final int dimensionValue)
+    private void ensureDimensionValid(final String dimensionName, final int dimensionValue)
     throws InvalidArgumentException {
         if (dimensionValue < 1)
             throw new InvalidArgumentException(dimensionName + " == " + dimensionValue + " < 1");

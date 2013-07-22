@@ -262,7 +262,7 @@ extends AbstractIndexSequence<Item> {
      */
     protected void replace(final int index, final Item newItem)
     throws InvalidSequenceIndexException {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         replaceStoredItem(index, newItem);
     }
@@ -291,7 +291,7 @@ extends AbstractIndexSequence<Item> {
     @SuppressWarnings("unchecked")
     protected void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
     throws InvalidSequenceIndexException, RuntimeException {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         replaceStoredItem(index, newItem, observers);
     }

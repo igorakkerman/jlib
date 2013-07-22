@@ -226,7 +226,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         int storageItemIndex = getStorageItemIndex(index);
 
@@ -261,7 +261,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      */
     @SafeVarargs
     private final void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount, final ValueObserver<Item>... observers) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         int storageItemIndex = getStorageItemIndex(index);
 

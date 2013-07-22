@@ -213,7 +213,7 @@ implements ObservedPrependSequence<Item> {
 
     // FIXME: implement
     private void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
-        assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
+        ensureCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
         int itemArrayIndex = 0;
 
@@ -245,7 +245,7 @@ implements ObservedPrependSequence<Item> {
     @SafeVarargs
     private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount,
                                final ValueObserver<Item>... observers) {
-        assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
+        ensureCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
         int itemArrayIndex = 0;
 

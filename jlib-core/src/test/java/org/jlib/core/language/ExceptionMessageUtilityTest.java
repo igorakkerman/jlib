@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Ensure.ensureThat;
 
 public class ExceptionMessageUtilityTest {
 
@@ -40,6 +40,6 @@ public class ExceptionMessageUtilityTest {
     @Test
     public void testCreateMessageFromExceptionName()
     throws Exception {
-        assertThat(createMessageFromExceptionName(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
+        ensureThat(createMessageFromExceptionName(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
     }
 }

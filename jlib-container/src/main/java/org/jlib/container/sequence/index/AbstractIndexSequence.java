@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexValid;
+import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
 
 import org.jlib.container.Container;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
@@ -75,7 +75,7 @@ implements IndexSequence<Item> {
     @Override
     public final Item get(final int index)
     throws InvalidSequenceIndexException {
-        assertIndexValid(this, index);
+        ensureIndexValid(this, index);
 
         return getStoredItem(index);
     }

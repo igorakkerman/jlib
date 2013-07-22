@@ -99,7 +99,7 @@ implements ObservedReplaceIndexSequence<Item>,
 
     @Override
     public void remove(final int index) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().remove(index);
     }
@@ -107,7 +107,7 @@ implements ObservedReplaceIndexSequence<Item>,
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final int index, final ValueObserver<Item>... observers) {
-        IndexSequenceUtility.assertIndexValid(this, index);
+        IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().remove(index, observers);
     }
