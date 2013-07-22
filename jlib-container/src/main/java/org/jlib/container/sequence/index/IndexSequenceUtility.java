@@ -21,6 +21,8 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 import org.jlib.container.Container;
 import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.core.observer.ObserverUtility;
@@ -51,23 +53,21 @@ public final class IndexSequenceUtility {
      * @param index
      *        integer specifying the index to verify
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code index < sequence.getFirstIndex() || index > sequence.getLastIndex()}
      */
     public static void assertIndexValid(final IndexSequence<?> sequence, final int index)
-    throws SequenceIndexOutOfBoundsException {
-        final int firstIndex = sequence.getFirstIndex();
+    throws InvalidSequenceIndexException {
 
-        if (index < firstIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " < " + firstIndex +
-                                                                         " == firstIndex");
+        if (index < sequence.getFirstIndex())
+            throw new InvalidSequenceIndexException(sequence, message("index = {0} < {1} = firstIndex", index,
+                                                                      sequence.getFirstIndex()));
 
-        final int lastIndex = sequence.getLastIndex();
-
-        if (index > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, index, "index == " + index + " > " + lastIndex +
-                                                                         " == lastIndex");
+        if (index > sequence.getLastIndex()) {
+            throw new InvalidSequenceIndexException(sequence, message("index = {0} > {1} = lastIndex", index,
+                                                                      sequence.getLastIndex()));
+        }
     }
 
     /**
@@ -85,7 +85,7 @@ public final class IndexSequenceUtility {
      * @param toIndex
      *        integer specifying the to index
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
      *
@@ -93,18 +93,18 @@ public final class IndexSequenceUtility {
      *         if {@code fromIndex > toIndex}
      */
     public static void assertIndexRangeValid(final IndexSequence<?> sequence, final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         final int firstIndex = sequence.getFirstIndex();
 
         if (fromIndex < firstIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, fromIndex, "fromIndex == " + fromIndex + " < " +
-                                                                             firstIndex + " == firstIndex");
+            throw new InvalidSequenceIndexException(sequence, fromIndex, "fromIndex == " + fromIndex + " < " +
+                                                                         firstIndex + " == firstIndex");
 
         final int lastIndex = sequence.getLastIndex();
 
         if (toIndex > lastIndex)
-            throw new SequenceIndexOutOfBoundsException(sequence, toIndex, "toIndex == " + toIndex + " < " + lastIndex +
-                                                                           " == lastIndex");
+            throw new InvalidSequenceIndexException(sequence, toIndex, "toIndex == " + toIndex + " < " + lastIndex +
+                                                                       " == lastIndex");
 
         if (toIndex < fromIndex)
             throw new InvalidSequenceIndexRangeException(sequence, fromIndex, toIndex);

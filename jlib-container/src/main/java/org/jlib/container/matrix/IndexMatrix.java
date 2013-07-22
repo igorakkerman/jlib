@@ -22,7 +22,7 @@
 package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 
 import java.util.RandomAccess;
 
@@ -51,13 +51,13 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      * @return Item stored at the specified position in this
      *         ArrayMatrix
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code nextint < getMinint() ||
      *         nextint > getMaxint() || nextint <
      *         getMinint || nextint > getMaxint()}
      */
     public Entry get(final int columnIndex, final int rowIndex)
-    throws SequenceIndexOutOfBoundsException;
+    throws InvalidSequenceIndexException;
 
     /**
      * Returns the specified {@link IndexMatrixColumn} of this

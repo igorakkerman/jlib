@@ -33,8 +33,8 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.container.sequence.index.InsertIndexSequence;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
 import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
@@ -187,7 +187,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         insert(index, singleton(item), 1, observers);
     }
 
@@ -222,7 +222,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      * @param insertedItemsCount
      *        integer specifying the number of inserted Items
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
@@ -256,7 +256,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     @SafeVarargs
@@ -286,7 +286,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         return new SubReplaceInsertIndexSequence<Item, ReplaceInsertArraySequence<Item>>(this, fromIndex, toIndex);
     }
 
@@ -297,7 +297,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }
 }

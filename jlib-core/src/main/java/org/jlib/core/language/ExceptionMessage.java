@@ -26,22 +26,21 @@ import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 import org.jlib.core.text.ParametrizedText;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
-public class ParametrizedMessage
+public class ExceptionMessage
 extends ParametrizedText {
 
-    public ParametrizedMessage(final TemplateEngine templateEngine, final CharSequence template,
-                               final Object... arguments) {
+    public ExceptionMessage(final TemplateEngine templateEngine, final CharSequence template, final Object... arguments) {
         super(templateEngine, template, arguments);
     }
 
-    public ParametrizedMessage with(final Object object) {
+    public ExceptionMessage with(final Object object) {
 
         getTemplateBuilder().append(';').append(' ').append(object);
 
         return this;
     }
 
-    public ParametrizedMessage with(final CharSequence objectName, final Object object) {
+    public ExceptionMessage with(final CharSequence objectName, final Object object) {
 
         appendNamedObject(getTemplateBuilder().append(';').append(' '), objectName, object);
 
@@ -49,21 +48,21 @@ extends ParametrizedText {
     }
 
     @Override
-    public ParametrizedMessage append(final Object object) {
+    public ExceptionMessage append(final Object object) {
         super.append(object);
 
         return this;
     }
 
     @Override
-    public ParametrizedMessage append(final char character) {
+    public ExceptionMessage append(final char character) {
         super.append(character);
 
         return this;
     }
 
     @Override
-    public ParametrizedMessage append(final int integer) {
+    public ExceptionMessage append(final int integer) {
         super.append(integer);
 
         return this;

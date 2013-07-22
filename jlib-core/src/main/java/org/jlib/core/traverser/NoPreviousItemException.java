@@ -21,7 +21,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link InvalidTraverserStateException} thrown when there is no next Item to
@@ -71,7 +71,7 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final ParametrizedMessage message) {
+    public NoPreviousItemException(final Traversible<?> traversible, final ExceptionMessage message) {
         super(traversible, message);
     }
 
@@ -91,7 +91,7 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final ParametrizedMessage message,
+    public NoPreviousItemException(final Traversible<?> traversible, final ExceptionMessage message,
                                    final Exception cause) {
         super(traversible, message, cause);
     }

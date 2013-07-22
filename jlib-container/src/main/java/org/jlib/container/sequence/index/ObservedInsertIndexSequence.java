@@ -53,7 +53,7 @@ extends InsertIndexSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
      * @throws InvalidTraversibleArgumentException
@@ -65,7 +65,7 @@ extends InsertIndexSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * Inserts the specified Items at the specified index of this

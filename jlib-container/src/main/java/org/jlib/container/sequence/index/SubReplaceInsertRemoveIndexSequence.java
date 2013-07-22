@@ -67,7 +67,7 @@ implements ObservedReplaceIndexSequence<Item>,
      * @param lastIndex
      *        integer specifying the index of the last Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
@@ -76,13 +76,13 @@ implements ObservedReplaceIndexSequence<Item>,
      */
     public SubReplaceInsertRemoveIndexSequence(final BaseSequence baseSequence, final int firstIndex,
                                                final int lastIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
     @Override
     public SubReplaceInsertRemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         return new SubReplaceInsertRemoveIndexSequence<>(this, fromIndex, toIndex);
     }
 
@@ -93,7 +93,7 @@ implements ObservedReplaceIndexSequence<Item>,
 
     @Override
     public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         return new DefaultReplaceInsertRemoveIndexSequenceTraverser<>(this, startIndex);
     }
 

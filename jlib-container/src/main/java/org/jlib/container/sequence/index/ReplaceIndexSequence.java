@@ -45,7 +45,7 @@ extends IndexSequence<Item> {
      * @param newItem
      *        new Item to store
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
      * @throws InvalidTraversibleArgumentException
@@ -56,12 +56,12 @@ extends IndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * @return {@link ReplaceIndexSequence} view of the specified subsequence
      */
     @Override
     public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 }

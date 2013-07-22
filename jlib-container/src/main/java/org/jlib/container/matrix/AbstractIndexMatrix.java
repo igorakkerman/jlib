@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.traverser.Traverser;
 
 /**
@@ -133,7 +133,7 @@ implements IndexMatrix<Entry> {
      *
      * @return Item stored at the specified position in this AbstractIndexMatrix
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code nextColumnIndex < getMinColumnIndex() ||
      *         nextColumnIndex > getMaxColumnIndex() || nextRowIndex <
      *         getMinRowIndex || nextRowIndex > getMaxRowIndex()}

@@ -21,8 +21,8 @@
 
 package org.jlib.core.storage;
 
+import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid
@@ -49,7 +49,7 @@ extends InvalidArgumentException {
      *        array of {@link Object} message arguments
      */
     public LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,
-                                       final ParametrizedMessage message) {
+                                       final ExceptionMessage message) {
         super(message.with("storage", linearIndexStorage));
     }
 }

@@ -147,12 +147,12 @@ implements org.jlib.container.sequence.ObservedInsertSequenceTraverser<Item>,
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
     public DefaultReplaceInsertRemoveIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         super(sequence, initialNextItemIndex);
     }
 

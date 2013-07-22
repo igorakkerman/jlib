@@ -21,23 +21,23 @@
 
 package org.jlib.container.sequence.index;
 
+import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
 /**
  * {@link InvalidTraversibleArgumentException} thrown when a {@link IndexSequence}
  * is accessed with an invalid index.
  *
  * @author Igor Akkerman
  */
-public class SequenceIndexOutOfBoundsException
+public class InvalidSequenceIndexException
 extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1501618255867836784L;
 
-    /** invalid index */
-    private final int invalidIndex;
-
     /**
-     * Creates a new SequenceIndexOutOfBoundsException for the specified invalid
+     * Creates a new InvalidSequenceIndexException for the specified invalid
      * invalidIndex and the specified message.
      *
      * @param sequence
@@ -50,18 +50,8 @@ extends InvalidTraversibleArgumentException {
      *        {@link String} specifying the message explaining the invalid
      *        access
      */
-    public SequenceIndexOutOfBoundsException(final IndexSequence<?> sequence, final int invalidIndex, final String message) {
-        super(sequence, "[{1}]: {2} {0}", invalidIndex, message);
-
-        this.invalidIndex = invalidIndex;
-    }
-
-    /**
-     * Returns the invalid index of this SequenceIndexOutOfBoundsException.
-     *
-     * @return integer specifying the invalid index
-     */
-    public int getInvalidIndex() {
-        return invalidIndex;
+    public InvalidSequenceIndexException(@SuppressWarnings("TypeMayBeWeakened") final IndexSequence<?> sequence,
+                                         final ExceptionMessage message) {
+        super(sequence, message);
     }
 }

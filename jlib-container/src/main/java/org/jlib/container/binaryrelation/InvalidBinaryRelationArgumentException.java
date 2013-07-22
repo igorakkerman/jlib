@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
 /**
@@ -62,7 +62,7 @@ extends InvalidTraversibleArgumentException {
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidBinaryRelationArgumentException(final BinaryRelation<?, ?> binaryRelation,
-                                                  final ParametrizedMessage message) {
+                                                  final ExceptionMessage message) {
         this(binaryRelation, messageTemplate, (Exception) null, messageArguments);
     }
 

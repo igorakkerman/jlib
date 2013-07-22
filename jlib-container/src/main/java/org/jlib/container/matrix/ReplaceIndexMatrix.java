@@ -21,7 +21,7 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.index.SequenceIndexOutOfBoundsException;
+import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 
 /**
  * {@link IndexMatrix} allowing the replacement of entries.
@@ -47,7 +47,7 @@ extends IndexMatrix<Entry> {
      * @param entry
      *        Item to store.
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code nextint < getMinint() ||
      *         nextint > getMaxint() || nextint <
      *         getMinint || nextint > getMaxint()}

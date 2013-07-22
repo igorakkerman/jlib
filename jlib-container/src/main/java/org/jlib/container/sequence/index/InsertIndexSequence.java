@@ -92,5 +92,5 @@ extends IndexSequence<Item> {
      */
     @Override
     public InsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 }

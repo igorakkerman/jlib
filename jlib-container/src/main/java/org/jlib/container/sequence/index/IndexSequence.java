@@ -46,11 +46,11 @@ extends Sequence<Item>, RandomAccess {
      *
      * @return Item stored at {@code index}
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     public Item get(final int index)
-    throws SequenceIndexOutOfBoundsException;
+    throws InvalidSequenceIndexException;
 
     /**
      * Returns the first index of this {@link IndexSequence}.
@@ -126,7 +126,7 @@ extends Sequence<Item>, RandomAccess {
      *
      * @return {@link IndexSequence} view of the specified subsequence
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
      *
@@ -134,7 +134,7 @@ extends Sequence<Item>, RandomAccess {
      *         if {@code fromIndex > toIndex}
      */
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 
     /**
      * Returns an IndexSequenceTraverser traversing the Items of this
@@ -164,12 +164,12 @@ extends Sequence<Item>, RandomAccess {
      *         {@link IndexSequence} initially pointing to the beginning of this
      *         {@link IndexSequence}
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
     public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException;
+    throws InvalidSequenceIndexException;
 
     /**
      * {@inheritDoc}

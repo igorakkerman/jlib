@@ -21,7 +21,7 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link InvalidTraverserStateException} thrown when the traversed
@@ -39,7 +39,7 @@ extends InvalidTraversibleStateException {
         super(traversible);
     }
 
-    public InvalidTraverserStateException(final Traversible<?> traversible, final ParametrizedMessage message) {
+    public InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message) {
         super(traversible, message);
     }
 
@@ -57,7 +57,7 @@ extends InvalidTraversibleStateException {
         super(traversible, cause);
     }
 
-    public InvalidTraverserStateException(final Traversible<?> traversible, final ParametrizedMessage message,
+    public InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message,
                                           final Exception cause) {
         super(traversible, message, cause);
     }

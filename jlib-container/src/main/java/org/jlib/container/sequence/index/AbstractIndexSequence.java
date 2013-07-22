@@ -71,7 +71,7 @@ implements IndexSequence<Item> {
 
     @Override
     public final Item get(final int index)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         assertIndexValid(this, index);
 
         return getStoredItem(index);
@@ -120,7 +120,7 @@ implements IndexSequence<Item> {
 
     @Override
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         return new SubIndexSequence<>(this, fromIndex, toIndex);
     }
 
@@ -214,7 +214,7 @@ implements IndexSequence<Item> {
 
     @Override
     public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         return new DefaultIndexSequenceTraverser<>(this, startIndex);
     }
 }

@@ -21,6 +21,10 @@
 
 package org.jlib.container.sequence.index;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
 /**
  * {@link InvalidTraversibleArgumentException} thrown if an invalid index range has
  * been used with an {@link IndexSequence}.
@@ -32,12 +36,6 @@ extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5716666495830602559L;
-
-    /** from index */
-    private final int fromIndex;
-
-    /** to index */
-    private final int toIndex;
 
     /**
      * Creates a new {@link InvalidSequenceIndexRangeException}.
@@ -53,29 +51,8 @@ extends InvalidTraversibleArgumentException {
      *        integer specifying the to index
      *
      */
+    @SuppressWarnings("TypeMayBeWeakened")
     public InvalidSequenceIndexRangeException(final IndexSequence<?> sequence, final int fromIndex, final int toIndex) {
-        super(sequence, "fromIndex == " + fromIndex + " > " + toIndex + " == toIndex: ");
-
-        this.fromIndex = fromIndex;
-        this.toIndex = toIndex;
-    }
-
-    /**
-     * Returns the from index of this {@link InvalidSequenceIndexRangeException}
-     * .
-     *
-     * @return integer specifying the from index
-     */
-    public int getFromIndex() {
-        return fromIndex;
-    }
-
-    /**
-     * Returns the to index of this {@link InvalidSequenceIndexRangeException}.
-     *
-     * @return integer specifying the toIndex
-     */
-    public int getToIndex() {
-        return toIndex;
+        super(sequence, message("fromIndex = {0} > {1} = toIndex: ", fromIndex, toIndex));
     }
 }

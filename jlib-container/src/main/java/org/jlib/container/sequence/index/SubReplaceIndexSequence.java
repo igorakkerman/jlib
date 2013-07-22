@@ -54,7 +54,7 @@ implements ObservedReplaceIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the index of the last Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
@@ -62,19 +62,19 @@ implements ObservedReplaceIndexSequence<Item> {
      *         if {@code firstIndex > lastIndex}
      */
     public SubReplaceIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
     @Override
     public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
     }
 
     @Override
     public void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem);
@@ -83,7 +83,7 @@ implements ObservedReplaceIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem, observers);
@@ -96,7 +96,7 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
     }
 }

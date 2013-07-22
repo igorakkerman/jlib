@@ -75,7 +75,7 @@ implements IndexSequenceTraverser<Item> {
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code initialNextItemIndex < sequence.getFirstIndex() || initialNextItemIndex > sequence.getLastIndex()}
      */
@@ -122,7 +122,7 @@ implements IndexSequenceTraverser<Item> {
 
             return sequenceItem;
         }
-        catch (final SequenceIndexOutOfBoundsException exception) {
+        catch (final InvalidSequenceIndexException exception) {
             throw new NoPreviousSequenceItemException(getSequence(), exception);
         }
     }
@@ -137,7 +137,7 @@ implements IndexSequenceTraverser<Item> {
 
             return sequenceItem;
         }
-        catch (final SequenceIndexOutOfBoundsException exception) {
+        catch (final InvalidSequenceIndexException exception) {
             throw new NoNextSequenceItemException(getSequence(), exception);
         }
     }
@@ -150,11 +150,11 @@ implements IndexSequenceTraverser<Item> {
      *
      * @return Item stored at {@code itemIndex}
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code itemIndex} is out of the index bounds
      */
     private Item getSequenceItem(final int itemIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         final Item item = getSequence().get(itemIndex);
 
         setLastAccessedItemIndex(itemIndex);

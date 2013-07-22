@@ -49,7 +49,7 @@ extends ReplaceIndexSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the replacement
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
      * @throws InvalidTraversibleArgumentException
@@ -61,5 +61,5 @@ extends ReplaceIndexSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

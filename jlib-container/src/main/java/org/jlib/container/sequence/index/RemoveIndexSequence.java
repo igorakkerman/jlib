@@ -41,12 +41,12 @@ extends IndexSequence<Item> {
      *        integer specifying the index
      */
     public void remove(final int index)
-    throws SequenceIndexOutOfBoundsException;
+    throws InvalidSequenceIndexException;
 
     /**
      * @return {@link RemoveIndexSequence} view of the specified subsequence
      */
     @Override
     public RemoveIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException;
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 }

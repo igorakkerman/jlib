@@ -257,11 +257,11 @@ extends AbstractIndexSequence<Item> {
      * @param newItem
      *        Item to store
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
     protected void replace(final int index, final Item newItem)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         replaceStoredItem(index, newItem);
@@ -281,7 +281,7 @@ extends AbstractIndexSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
      * @throws RuntimeException
@@ -290,7 +290,7 @@ extends AbstractIndexSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     protected void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, RuntimeException {
+    throws InvalidSequenceIndexException, RuntimeException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         replaceStoredItem(index, newItem, observers);

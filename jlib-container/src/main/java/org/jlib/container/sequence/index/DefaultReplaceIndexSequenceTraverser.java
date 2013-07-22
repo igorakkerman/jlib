@@ -82,7 +82,7 @@ implements ObservedReplaceTraverser<Item>,
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code startIndex < sequence.getFirstIndex() ||
      *                   startIndex > sequence.getLastIndex()}
      *
@@ -94,7 +94,7 @@ implements ObservedReplaceTraverser<Item>,
      *         if an error occurs performing the operation
      */
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         super(sequence, initialNextItemIndex);
     }
 

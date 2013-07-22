@@ -88,7 +88,7 @@ implements ObservedInsertSequenceTraverser<Item>,
      * @param initialNextItemIndex
      *        integer specifying the index of the initial next Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */

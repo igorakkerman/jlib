@@ -54,14 +54,14 @@ extends AbstractIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the index of the last {@link Item}
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
      * @throws InvalidSequenceIndexRangeException
      *         if {@code firstIndex > lastIndex}
      */
     public SubIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
 
         assertIndexRangeValid(baseSequence, firstIndex, lastIndex);

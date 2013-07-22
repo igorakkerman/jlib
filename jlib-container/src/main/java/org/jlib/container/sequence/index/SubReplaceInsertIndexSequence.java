@@ -57,7 +57,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      * @param lastIndex
      *        integer specifying the index of the last Item
      *
-     * @throws SequenceIndexOutOfBoundsException
+     * @throws InvalidSequenceIndexException
      *         if
      *         {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
      *
@@ -65,7 +65,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *         if {@code firstIndex > lastIndex}
      */
     public SubReplaceInsertIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         super(baseSequence, firstIndex, lastIndex);
     }
 
@@ -100,7 +100,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws SequenceIndexOutOfBoundsException, InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         return new SubReplaceInsertIndexSequence<>(this, fromIndex, toIndex);
     }
 
@@ -111,14 +111,14 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws SequenceIndexOutOfBoundsException {
+    throws InvalidSequenceIndexException {
         return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws SequenceIndexOutOfBoundsException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         IndexSequenceUtility.assertIndexValid(this, index);
 
         getBaseSequence().insert(index, item, observers);

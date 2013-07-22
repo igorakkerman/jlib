@@ -44,27 +44,27 @@ public final class ExceptionMessageUtility {
         return namedObjectBuilder.append(objectName).append('=').append(object);
     }
 
-    public static ParametrizedMessage message() {
+    public static ExceptionMessage message() {
         return message(EMPTY);
     }
 
-    public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(MessageFormatTemplateEngine.getInstance(), messageTemplate, messageArguments);
+    public static ExceptionMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new ExceptionMessage(MessageFormatTemplateEngine.getInstance(), messageTemplate, messageArguments);
     }
 
-    public static ParametrizedMessage message(final int value) {
+    public static ExceptionMessage message(final int value) {
         return message(Integer.toString(value));
     }
 
-    public static ParametrizedMessage printf() {
+    public static ExceptionMessage printf() {
         return printf(EMPTY);
     }
 
-    public static ParametrizedMessage printf(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(PrintfTemplateEngine.getInstance(), messageTemplate, messageArguments);
+    public static ExceptionMessage printf(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new ExceptionMessage(PrintfTemplateEngine.getInstance(), messageTemplate, messageArguments);
     }
 
-    public static ParametrizedMessage printf(final int value) {
+    public static ExceptionMessage printf(final int value) {
         return printf(Integer.toString(value));
     }
 

@@ -34,7 +34,7 @@ extends IllegalArgumentException {
     /**
      * Creates a new {@link InvalidArgumentException}.
      */
-    protected InvalidArgumentException(final ParametrizedMessage message) {
+    protected InvalidArgumentException(final ExceptionMessage message) {
         super(message.toString());
     }
 
@@ -44,7 +44,7 @@ extends IllegalArgumentException {
      * @param cause
      *        {@link Exception} that caused this {@link InvalidArgumentException}
      */
-    protected InvalidArgumentException(final ParametrizedMessage message, final Exception cause) {
+    protected InvalidArgumentException(final ExceptionMessage message, final Exception cause) {
         super(message.toString(), cause);
     }
 }

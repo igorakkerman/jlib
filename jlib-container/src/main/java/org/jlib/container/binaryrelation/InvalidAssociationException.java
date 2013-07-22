@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
@@ -77,7 +77,7 @@ extends InvalidBinaryRelationArgumentException {
      *        sequence of {@link Object} parameters of the error message
      */
     public InvalidAssociationException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                       final Object rightValue, final ParametrizedMessage message) {
+                                       final Object rightValue, final ExceptionMessage message) {
 
         this(binaryRelation, leftValue, rightValue, messageTemplate, (Exception) null, messageArguments);
     }

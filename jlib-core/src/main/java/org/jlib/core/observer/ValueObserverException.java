@@ -21,7 +21,7 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link ObserverException} thrown during an {@link ValueObserver} operation.
@@ -43,7 +43,7 @@ extends ObserverException {
      * @param cause
      *        {@link Exception} that caused this {@link ValueObserverException}
      */
-    public ValueObserverException(final Object value, final ParametrizedMessage message, final Exception cause) {
+    public ValueObserverException(final Object value, final ExceptionMessage message, final Exception cause) {
 
         super(message.with(value), cause);
     }
