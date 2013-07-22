@@ -25,6 +25,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import org.jlib.core.language.ExceptionMessageUtility;
 import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link Container}
@@ -33,7 +34,7 @@ import org.jlib.core.language.InvalidArgumentException;
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidArgumentException {
+extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;
@@ -47,9 +48,8 @@ extends InvalidArgumentException {
      * @param item
      *        Item to remove
      */
-    public ItemToRemoveNotContainedException(final CharSequence containerName, final Container<?> container,
-                                             final CharSequence itemName, final Object item) {
-        super(containerName, container, ExceptionMessageUtility.withNamedObject(EMPTY, ));
+    public ItemToRemoveNotContainedException(final Container<?> container, final Object item) {
+        super(container));
     }
 
     /**

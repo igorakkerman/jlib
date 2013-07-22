@@ -24,7 +24,6 @@ package org.jlib.core.array;
 import java.util.Arrays;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
-import static org.jlib.core.language.ExceptionMessageUtility.printf;
 
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.NoNextItemException;
@@ -109,11 +108,5 @@ implements TwoWayTraverser<Item> {
             throw new NoPreviousItemException(traversible, message(Arrays.toString(array)));
 
         return array[-- currentIndex];
-    }
-
-    public static void main(String... commandLineArguments) {
-        System.out.println(new ArrayTraverser<>(new Integer[]{ 1, 2, 3 }));
-
-        throw new NoPreviousItemException(new ArrayTraversible<>(new Integer[]{ 1, 2, 3 }), printf());
     }
 }
