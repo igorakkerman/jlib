@@ -80,6 +80,6 @@ extends AbstractBinaryRelation<LeftValue, RightValue> {
      *         if some property of the specified {@link Association} prevents it
      *         from being added
      */
-    protected abstract void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    protected abstract void assertAssociated(LeftValue leftValue, RightValue rightValue)
     throws InvalidAssociationException;
 }

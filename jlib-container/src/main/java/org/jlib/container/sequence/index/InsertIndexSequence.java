@@ -91,6 +91,6 @@ extends IndexSequence<Item> {
      * @return {@link InsertIndexSequence} view of the specified subsequence
      */
     @Override
-    public InsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public InsertIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 }

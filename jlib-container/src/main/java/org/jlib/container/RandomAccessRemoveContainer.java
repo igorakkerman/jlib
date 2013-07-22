@@ -54,7 +54,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void remove(final Item item)
+    public void remove(Item item)
     throws ItemToRemoveNotContainedException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -71,7 +71,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void remove(final Container<? extends Item> items)
+    public void remove(Container<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -88,7 +88,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void remove(final Collection<? extends Item> items)
+    public void remove(Collection<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -105,7 +105,7 @@ public interface RandomAccessRemoveContainer<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void remove(final Iterable<? extends Item> items)
+    public void remove(Iterable<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -123,6 +123,6 @@ public interface RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(final Item... items)
+    public void remove(Item... items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

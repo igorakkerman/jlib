@@ -39,46 +39,46 @@ implements Modifiable<Value> {
                new Optional<Value>();
     }
 
-    private final org.jlib.core.value.Value<Value> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Value>() {
+    private final Accessor<Value> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Value>() {
 
         @Override
         public void setValue(final Value value) {
-            delegateValue = new InitializedModifiable<>(value);
+            delegateAccessor = new InitializedModifiable<>(value);
         }
     };
 
     private Optional() {
-        delegateValue = UNINITIALIZED_VALUE_HOLDER;
+        delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
     }
 
     private Optional(final Value value) {
-        delegateValue = new Initialized<>(value);
+        delegateAccessor = new Initialized<>(value);
     }
 
-    private org.jlib.core.value.Value<Value> delegateValue;
+    private Accessor<Value> delegateAccessor;
 
     @Override
     public void setValue(Value value) {
-        delegateValue = new Initialized<>(value);
+        delegateAccessor = new Initialized<>(value);
     }
 
     public void unsetValue() {
-        delegateValue = UNINITIALIZED_VALUE_HOLDER;
+        delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
     }
 
     @Override
     public boolean isValueAccessible() {
-        return delegateValue.isValueAccessible();
+        return delegateAccessor.isValueAccessible();
     }
 
     @Override
     public Value getValue()
     throws ValueNotAccessibleException {
-        return delegateValue.getValue();
+        return delegateAccessor.getValue();
     }
 
     @Override
     public String toString() {
-        return delegateValue.toString();
+        return delegateAccessor.toString();
     }
 }

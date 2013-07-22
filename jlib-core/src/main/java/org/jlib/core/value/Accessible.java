@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.AbstractObject;
 
 /**
- * {@link org.jlib.core.value.Value} of a {@link Value} that is guaranteed to be accessible.
+ * {@link Accessor} of a {@link Value} that is guaranteed to be accessible.
  *
  * @param <Value>
  *        type of the value
@@ -33,7 +33,7 @@ import org.jlib.core.language.AbstractObject;
  */
 public abstract class Accessible<Value>
 extends AbstractObject
-implements org.jlib.core.value.Value<Value> {
+implements Accessor<Value> {
 
     /**
      * Returns the {@link Value}. Since the {@link Value} is guaranteed to be accessible, <em>no</em>
@@ -49,7 +49,8 @@ implements org.jlib.core.value.Value<Value> {
      * {@inheritDoc}
      * </p>
      * <p>
-     * In this implementation the {@link Value} is guaranteed to be accessible, hence always returned is {@code true}.
+     * All instances of {@link Accessible} guarantee the {@link Value} to be accessible, hence always returns
+     * {@code true}.
      * </p>
      *
      * @return {@code true} always

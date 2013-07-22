@@ -31,7 +31,6 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 
@@ -212,7 +211,7 @@ implements ObservedPrependSequence<Item> {
     }
 
     // FIXME: implement
-    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
+    private void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
         assertCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
 
         int itemArrayIndex = 0;

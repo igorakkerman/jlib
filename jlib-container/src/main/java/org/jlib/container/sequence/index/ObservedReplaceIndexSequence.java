@@ -60,6 +60,6 @@ extends ReplaceIndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     @SuppressWarnings("unchecked")
-    public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
+    public void replace(int index, Item newItem, ValueObserver<Item>... observers)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

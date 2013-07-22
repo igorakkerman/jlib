@@ -159,7 +159,7 @@ implements IndexMatrix<Entry> {
      *
      * @return Item stored at the specified position in this AbstractIndexMatrix
      */
-    protected abstract Entry getStoredEntry(final int columnIndex, final int rowIndex);
+    protected abstract Entry getStoredEntry(int columnIndex, int rowIndex);
 
     /**
      * Returns the Sequence of the MatrixColumns of this ArrayMatrix.

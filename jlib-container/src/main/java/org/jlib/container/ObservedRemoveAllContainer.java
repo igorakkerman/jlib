@@ -48,6 +48,6 @@ extends RemoveAllContainer<Item>,
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void removeAll(final ValueObserver<Item>... observers)
+    public void removeAll(ValueObserver<Item>... observers)
     throws InvalidTraversibleStateException;
 }

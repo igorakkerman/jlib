@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link org.jlib.core.value.Value} of a modifiable {@link Value}.
+ * {@link Accessor} of a modifiable {@link Value}.
  *
  * @param <Value>
  *        type of the value
@@ -32,7 +32,7 @@ import org.jlib.core.language.InvalidArgumentException;
  * @author Igor Akkerman
  */
 public interface Modifiable<Value>
-extends org.jlib.core.value.Value<Value> {
+extends Accessor<Value> {
 
     /**
      * Registers the new {@link Value}.

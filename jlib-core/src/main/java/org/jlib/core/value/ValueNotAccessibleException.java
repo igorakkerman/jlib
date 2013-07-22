@@ -27,7 +27,7 @@ import com.google.common.base.Optional;
 import org.jlib.core.language.ApplicationException;
 
 /**
- * {@link ApplicationException} thrown when a requested Value is not accessible.
+ * {@link ApplicationException} thrown when a requested value is not accessible.
  *
  * @author Igor Akkerman
  */
@@ -49,7 +49,7 @@ extends ApplicationException {
      * Creates a new {@link ValueNotAccessibleException}.
      *
      * @param valueName
-     *        {@link CharSequence} specifying a descriptive name of the Value
+     *        {@link CharSequence} specifying a descriptive name of the Accessor
      */
     public ValueNotAccessibleException(final CharSequence valueName) {
         super(message(valueName));

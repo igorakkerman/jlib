@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.ApplicationException;
 
 /**
- * {@link ApplicationException} thrown when a requested Value is not set.
+ * {@link ApplicationException} thrown when a requested {@link Accessor} value is not set.
  *
  * @author Igor Akkerman
  */
@@ -45,7 +45,7 @@ extends ValueNotAccessibleException {
      * Creates a new {@link ValueNotInitializedException}.
      *
      * @param valueName
-     *        {@link CharSequence} specifying a descriptive name of the Value
+     *        {@link CharSequence} specifying a descriptive name of the Accessor
      */
     public ValueNotInitializedException(final CharSequence valueName) {
         super(valueName);

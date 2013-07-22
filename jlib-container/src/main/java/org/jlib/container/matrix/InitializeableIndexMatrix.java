@@ -90,5 +90,5 @@ extends AbstractIndexMatrix<Entry> {
      * @param entry
      *        Entry replacing the former Entry
      */
-    protected abstract void replaceStoredEntry(final int columnIndex, final int rowIndex, final Entry entry);
+    protected abstract void replaceStoredEntry(int columnIndex, int rowIndex, Entry entry);
 }

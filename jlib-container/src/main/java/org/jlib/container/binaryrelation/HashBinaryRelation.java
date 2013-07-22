@@ -21,14 +21,14 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.Container;
-import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import org.jlib.container.Container;
+import org.jlib.container.binaryrelation.bijection.AssociationAlreadyContainedException;
 
 /**
  * {@link BinaryRelation} implemented using hashing for left and right hand side
@@ -137,7 +137,7 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
      *        first value
      *
      * @param value2
-     *        second Value
+     *        second value
      *
      * @param value1ToValue2SetMap
      *        {@link Map} associating Value1 items with a {@link Set} of Value2

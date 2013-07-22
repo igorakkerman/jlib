@@ -66,7 +66,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public void remove(final Item item, final ValueObserver<Item>... observers)
+    public void remove(Item item, ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversibleArgumentException, InvalidTraversibleStateException,
            ValueObserverException;
 
@@ -92,7 +92,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(Container<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
@@ -117,7 +117,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(Collection<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
@@ -142,7 +142,7 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(Iterable<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 
     /**
@@ -166,6 +166,6 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(ValueObserver<Item>[] observers, final Item... items)
+    public void remove(ValueObserver<Item>[] observers, Item... items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, ValueObserverException;
 }

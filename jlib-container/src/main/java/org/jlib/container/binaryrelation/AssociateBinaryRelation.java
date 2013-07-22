@@ -73,7 +73,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of the {@link Association} prevents it from
      *         being associated
      */
-    public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    public void assertAssociated(LeftValue leftValue, RightValue rightValue)
     throws InvalidAssociationException;
 
     /**
@@ -87,7 +87,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of {@code item} prevents it from being
      *         associated, for instance, if it is already contained
      */
-    public void associate(final Association<LeftValue, RightValue> association)
+    public void associate(Association<LeftValue, RightValue> association)
     throws InvalidAssociationException;
 
     /**
@@ -104,7 +104,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
-    public void associate(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(Container<? extends Association<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -118,7 +118,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated, for instance, if it is already contained
      */
-    public void associate(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void associate(Collection<? extends Association<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -133,7 +133,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         from being associated, for instance, if it is already contained
      */
     @SuppressWarnings("unchecked")
-    public void associate(final Association<LeftValue, RightValue>... associations)
+    public void associate(Association<LeftValue, RightValue>... associations)
     throws InvalidAssociationException;
 
     /**
@@ -148,7 +148,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of {@code item} prevents it from being
      *         associated
      */
-    public void assertContained(final Association<LeftValue, RightValue> association)
+    public void assertContained(Association<LeftValue, RightValue> association)
     throws InvalidAssociationException;
 
     /**
@@ -164,7 +164,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of an Item in {@code associations} prevents it
      *         from being associated
      */
-    public void assertContained(final Container<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(Container<? extends Association<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -179,7 +179,7 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         if some property of {@code item} prevents it from being
      *         associated
      */
-    public void assertContained(final Collection<? extends Association<LeftValue, RightValue>> associations)
+    public void assertContained(Collection<? extends Association<LeftValue, RightValue>> associations)
     throws InvalidAssociationException;
 
     /**
@@ -194,6 +194,6 @@ extends BinaryRelation<LeftValue, RightValue> {
      *         associated
      */
     @SuppressWarnings("unchecked")
-    public void assertContained(final Association<LeftValue, RightValue>... associations)
+    public void assertContained(Association<LeftValue, RightValue>... associations)
     throws InvalidAssociationException;
 }

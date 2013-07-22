@@ -47,6 +47,6 @@ extends RemoveFirstSequence<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void removeFirstItem(final ValueObserver<Item>... observers)
+    public void removeFirstItem(ValueObserver<Item>... observers)
     throws ValueObserverException;
 }

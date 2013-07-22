@@ -40,5 +40,5 @@ public interface MatrixTraversalOrder {
      *
      * @return new {@link MatrixTraverser} over the Items of {@code matrix}
      */
-    public <Entry> MatrixTraverser<Entry> createTraverser(final RandomTraversalMatrix<Entry> matrix);
+    public <Entry> MatrixTraverser<Entry> createTraverser(RandomTraversalMatrix<Entry> matrix);
 }

@@ -85,7 +85,7 @@ extends Matrix<Entry> {
      *         traversing the Items of this {@link Matrix} using the specified
      *         {@link MatrixTraversalOrder}.
      */
-    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder);
+    public MatrixTraversible<Entry> traversedInOrder(MatrixTraversalOrder iterationOrder);
 
     /**
      * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
@@ -95,5 +95,5 @@ extends Matrix<Entry> {
      *        {@link MatrixTraversalOrder} used by default {@link Traverser
      *        Traversers}
      */
-    public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder);
+    public void setDefaultTraversalOrder(MatrixTraversalOrder defaultIterationOrder);
 }

@@ -64,7 +64,7 @@ extends InsertIndexSequence<Item> {
      *         if an error occurs performing the operation
      */
     @SuppressWarnings("unchecked")
-    public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
+    public void insert(int index, Item item, ValueObserver<Item>... observers)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
@@ -82,7 +82,7 @@ extends InsertIndexSequence<Item> {
      *        attending the operation
      */
     @SuppressWarnings("unchecked")
-    public void insert(int index, Container<? extends Item> items, final ValueObserver<Item>... observers);
+    public void insert(int index, Container<? extends Item> items, ValueObserver<Item>... observers);
 
     /**
      * Inserts the specified Items at the specified index of this
@@ -99,7 +99,7 @@ extends InsertIndexSequence<Item> {
      *        attending the operation
      */
     @SuppressWarnings("unchecked")
-    public void insert(int index, Collection<? extends Item> items, final ValueObserver<Item>... observers);
+    public void insert(int index, Collection<? extends Item> items, ValueObserver<Item>... observers);
 
     /**
      * Inserts the specified Items at the specified index of this
@@ -115,5 +115,5 @@ extends InsertIndexSequence<Item> {
      *        comma separated sequence holding the Items to insert
      */
     @SuppressWarnings("unchecked")
-    public void insert(int index, final ValueObserver<Item>[] observers, Item... items);
+    public void insert(int index, ValueObserver<Item>[] observers, Item... items);
 }

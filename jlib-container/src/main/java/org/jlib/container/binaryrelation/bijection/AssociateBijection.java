@@ -65,7 +65,7 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         being added
      */
     @Override
-    public void associate(final LeftValue leftValue, final RightValue rightValue)
+    public void associate(LeftValue leftValue, RightValue rightValue)
     throws AssociationAlreadyContainedException, LeftValueAlreadyAssociatedException,
            RightValueAlreadyAssociatedException, InvalidAssociationException;
 
@@ -94,6 +94,6 @@ extends Bijection<LeftValue, RightValue>, AssociateBinaryRelation<LeftValue, Rig
      *         being added
      */
     @Override
-    public void assertAssociated(final LeftValue leftValue, final RightValue rightValue)
+    public void assertAssociated(LeftValue leftValue, RightValue rightValue)
     throws LeftValueAlreadyAssociatedException, RightValueAlreadyAssociatedException, InvalidAssociationException;
 }

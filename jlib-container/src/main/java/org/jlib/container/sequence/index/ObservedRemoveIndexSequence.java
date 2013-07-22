@@ -49,5 +49,5 @@ extends RemoveIndexSequence<Item>, ObservedRemoveFirstSequence<Item>, ObservedRe
      *
      */
     @SuppressWarnings("unchecked")
-    public void remove(final int index, final ValueObserver<Item>... observers);
+    public void remove(int index, ValueObserver<Item>... observers);
 }

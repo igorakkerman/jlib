@@ -39,6 +39,6 @@ public interface RemoveBijection<LeftValue, RightValue>
 extends Bijection<LeftValue, RightValue>, RemoveBinaryRelation<LeftValue, RightValue> {
 
     @Override
-    public void remove(final LeftValue leftValue, final RightValue rightValue)
+    public void remove(LeftValue leftValue, RightValue rightValue)
     throws NoSuchAssociationValueException;
 }

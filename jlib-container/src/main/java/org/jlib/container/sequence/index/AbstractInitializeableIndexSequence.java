@@ -307,7 +307,7 @@ extends AbstractIndexSequence<Item> {
      * @param newItem
      *        Item to store
      */
-    protected abstract void replaceStoredItem(final int index, final Item newItem);
+    protected abstract void replaceStoredItem(int index, Item newItem);
 
     /**
      * Replaces the Item stored at the specified index in this

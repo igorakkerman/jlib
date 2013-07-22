@@ -42,7 +42,7 @@ extends Sequence<Item> {
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
-    public void append(final Item item)
+    public void append(Item item)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -53,7 +53,7 @@ extends Sequence<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void append(final Container<? extends Item> items)
+    public void append(Container<? extends Item> items)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -64,7 +64,7 @@ extends Sequence<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void append(final Collection<? extends Item> items)
+    public void append(Collection<? extends Item> items)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -76,6 +76,6 @@ extends Sequence<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void append(final Item... items)
+    public void append(Item... items)
     throws InvalidTraversibleArgumentException;
 }

@@ -30,7 +30,6 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
 import org.jlib.container.sequence.index.IndexSequenceUtility;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
 import org.jlib.container.sequence.index.SubReplaceInsertRemoveIndexSequence;
 import org.jlib.core.observer.ValueObserver;

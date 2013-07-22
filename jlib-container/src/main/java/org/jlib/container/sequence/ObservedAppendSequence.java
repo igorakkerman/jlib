@@ -56,7 +56,7 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(final Item item, final ValueObserver<Item>... observers)
+    public void append(Item item, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -82,7 +82,7 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void append(Container<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -105,7 +105,7 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    public void append(Collection<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -126,6 +126,6 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(ValueObserver<Item>[] observers, final Item... items)
+    public void append(ValueObserver<Item>[] observers, Item... items)
     throws InvalidTraversibleArgumentException;
 }

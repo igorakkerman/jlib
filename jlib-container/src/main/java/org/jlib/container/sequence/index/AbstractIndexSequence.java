@@ -59,11 +59,11 @@ implements IndexSequence<Item> {
      *         if {@code lastIndex < firstIndex}
      */
     public AbstractIndexSequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexRangeException {
+    throws InvalidSequenceIndexException {
         super();
 
         if (firstIndex > lastIndex)
-            throw new InvalidSequenceIndexRangeException(this, firstIndex, lastIndex);
+            throw new InvalidSequenceIndexException(this, firstIndex, lastIndex);
 
         this.firstIndex = firstIndex;
         this.lastIndex = lastIndex;
@@ -86,7 +86,7 @@ implements IndexSequence<Item> {
      *
      * @return Item stored at {@code index}
      */
-    protected abstract Item getStoredItem(final int index);
+    protected abstract Item getStoredItem(int index);
 
     @Override
     public final Item getFirstItem() {

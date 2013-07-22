@@ -47,7 +47,7 @@ extends PrependSequence<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Item item, final ValueObserver<Item>... observers)
+    public void prepend(Item item, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
@@ -73,7 +73,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void prepend(Container<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
@@ -99,7 +99,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    public void prepend(Collection<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
@@ -123,6 +123,6 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(ValueObserver<Item>[] observers, final Item... items)
+    public void prepend(ValueObserver<Item>[] observers, Item... items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 }

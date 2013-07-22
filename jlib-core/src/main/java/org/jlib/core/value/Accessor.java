@@ -22,14 +22,14 @@
 package org.jlib.core.value;
 
 /**
- * Value of a {@link Value}.
+ * Accessor of a {@link Value}.
  *
  * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Value<Value> {
+public interface Accessor<Value> {
 
     /**
      * Returns the accessed {@link Value}.

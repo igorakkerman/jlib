@@ -39,7 +39,7 @@ implements OperatedValue<Value> {
      * Creates a new {@link InitializedOperated}.
      *
      * @param initialValue
-     *        initial Value
+     *        initial Accessor
      */
     public InitializedOperated(final Value initialValue) {
         super(initialValue);

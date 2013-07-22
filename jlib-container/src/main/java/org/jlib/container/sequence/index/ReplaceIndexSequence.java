@@ -55,13 +55,13 @@ extends IndexSequence<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs performing the operation
      */
-    public void replace(final int index, final Item newItem)
+    public void replace(int index, Item newItem)
     throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 
     /**
      * @return {@link ReplaceIndexSequence} view of the specified subsequence
      */
     @Override
-    public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public ReplaceIndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 }

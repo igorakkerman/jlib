@@ -52,5 +52,5 @@ extends IndexMatrix<Entry> {
      *         nextint > getMaxint() || nextint <
      *         getMinint || nextint > getMaxint()}
      */
-    public void replace(final int columnIndex, final int rowIndex, final Entry entry);
+    public void replace(int columnIndex, int rowIndex, Entry entry);
 }

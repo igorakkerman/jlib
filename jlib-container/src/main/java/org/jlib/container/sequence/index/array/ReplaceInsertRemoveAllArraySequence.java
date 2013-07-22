@@ -26,7 +26,6 @@ import java.util.Collection;
 import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 

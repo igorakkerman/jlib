@@ -71,7 +71,7 @@ public final class IndexSequenceUtility {
     }
 
     /**
-     * Asserts that the specified <em>from</em> and <em>to</em> indices are
+     * Ensures that the specified <em>from</em> and <em>to</em> indices are
      * valid, that is,
      * {@code sequence.getFirstIndex() <= fromIndex <= toIndex <= sequence.getLastIndex()}
      * .
@@ -86,33 +86,27 @@ public final class IndexSequenceUtility {
      *        integer specifying the to index
      *
      * @throws InvalidSequenceIndexException
-     *         if
-     *         {@code fromIndex < getFirstIndex() || toIndex > getLastIndex()}
-     *
-     * @throws InvalidSequenceIndexRangeException
-     *         if {@code fromIndex > toIndex}
+     *         if {@code fromIndex < getFirstIndex() || toIndex > getLastIndex() || toIndex < fromIndex}
      */
-    public static void assertIndexRangeValid(final IndexSequence<?> sequence, final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
-        final int firstIndex = sequence.getFirstIndex();
+    public static void ensureSubIndexRangeValid(final IndexSequence<?> sequence, final int fromIndex, final int toIndex)
+    throws InvalidSequenceIndexException {
 
-        if (fromIndex < firstIndex)
-            throw new InvalidSequenceIndexException(sequence, fromIndex, "fromIndex == " + fromIndex + " < " +
-                                                                         firstIndex + " == firstIndex");
+        if (fromIndex < sequence.getFirstIndex())
+            throw new InvalidSequenceIndexException(sequence, message("fromIndex = {0} < {1} = firstIndex", fromIndex,
+                                                                      sequence.getFirstIndex()));
 
-        final int lastIndex = sequence.getLastIndex();
+        if (toIndex > sequence.getLastIndex())
+            throw new InvalidSequenceIndexException(sequence, message("toIndex = {0} > {1} = lastIndex", toIndex,
+                                                                      sequence.getLastIndex()));
 
-        if (toIndex > lastIndex)
-            throw new InvalidSequenceIndexException(sequence, toIndex, "toIndex == " + toIndex + " < " + lastIndex +
-                                                                       " == lastIndex");
-
-        if (toIndex < fromIndex)
-            throw new InvalidSequenceIndexRangeException(sequence, fromIndex, toIndex);
+        if (toIndex < fromIndex) {
+            throw new InvalidSequenceIndexException(sequence,
+                                                    message("toIndex = {0} < {1} = fromIndex", toIndex, fromIndex));
+        }
     }
 
     /**
-     * Removes the specified Item from the specified {@link RemoveIndexSequence}
-     * .
+     * Removes the specified Item from the specified {@link RemoveIndexSequence}.
      *
      * @param <Item>
      *        type of the items held in the {@link Container}
@@ -152,7 +146,8 @@ public final class IndexSequenceUtility {
                     sequence.remove(itemIndex);
                 }
                 catch (InvalidTraversibleArgumentException | InvalidTraversibleStateException exception) {
-                    throw new OperatorException(exception, "remove: {0}", itemIndex);
+                    throw new OperatorException(message("remove: {0}", itemIndex).with("sequence", sequence),
+                                                exception);
                 }
             }
         },

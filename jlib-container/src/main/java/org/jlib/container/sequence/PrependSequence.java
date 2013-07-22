@@ -44,7 +44,7 @@ extends Sequence<Item>{
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void prepend(final Item item)
+    public void prepend(Item item)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -55,7 +55,7 @@ extends Sequence<Item>{
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void prepend(final Container<? extends Item> items)
+    public void prepend(Container<? extends Item> items)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -66,7 +66,7 @@ extends Sequence<Item>{
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void prepend(final Collection<? extends Item> items)
+    public void prepend(Collection<? extends Item> items)
     throws InvalidTraversibleArgumentException;
 
     /**
@@ -78,6 +78,6 @@ extends Sequence<Item>{
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void prepend(final Item... items)
+    public void prepend(Item... items)
     throws InvalidTraversibleArgumentException;
 }

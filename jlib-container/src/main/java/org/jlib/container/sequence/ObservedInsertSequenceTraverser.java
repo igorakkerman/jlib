@@ -70,7 +70,7 @@ extends InsertSequenceTraverser<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void insert(final Item item, final ValueObserver<Item>... operationObservers)
+    public void insert(Item item, ValueObserver<Item>... operationObservers)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException;
 
     /**
@@ -80,5 +80,5 @@ extends InsertSequenceTraverser<Item> {
      * @param insertObserver
      *        additional insert {@link ValueObserver}
      */
-    public void addInsertObserver(final ValueObserver<Item> insertObserver);
+    public void addInsertObserver(ValueObserver<Item> insertObserver);
 }

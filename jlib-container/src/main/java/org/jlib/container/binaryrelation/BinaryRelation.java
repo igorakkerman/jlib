@@ -51,7 +51,7 @@ extends Container<Association<LeftValue, RightValue>> {
      *         empty {@link Set} if no RightValue is associated with
      *         {@code leftValue}
      */
-    public Set<RightValue> getRightSet(final LeftValue leftValue);
+    public Set<RightValue> getRightSet(LeftValue leftValue);
 
     /**
      * Returns the Set of LeftValues associated with the specified RightValue.
@@ -63,7 +63,7 @@ extends Container<Association<LeftValue, RightValue>> {
      *         empty {@link Set} if no RightValue is associated with
      *         {@code leftValue}
      */
-    public Set<LeftValue> getLeftSet(final RightValue rightValue);
+    public Set<LeftValue> getLeftSet(RightValue rightValue);
 
     /**
      * Verifies whether the specified LeftValue is associated with the specified
@@ -78,7 +78,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * @return {@code true} if {@code leftValue} is associated with
      *         {@code rightValue}
      */
-    public boolean contains(final LeftValue leftValue, final RightValue rightValue);
+    public boolean contains(LeftValue leftValue, RightValue rightValue);
 
     /**
      * Verifies whether the specified LeftValue is associated with some
@@ -90,7 +90,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * @return {@code true} if {@code leftValue} is associated with some
      *         RightValue; {@code false} otherwise
      */
-    public boolean hasLeft(final LeftValue leftValue);
+    public boolean hasLeft(LeftValue leftValue);
 
     /**
      * Verifies whether the specified RightValue is associated with some
@@ -102,7 +102,7 @@ extends Container<Association<LeftValue, RightValue>> {
      * @return {@code true} if {@code rightValue} is associated with some
      *         LeftValue; {@code false} otherwise
      */
-    public boolean hasRight(final RightValue rightValue);
+    public boolean hasRight(RightValue rightValue);
 
     /**
      * Returns a {@link Set} containing the LeftValues of this

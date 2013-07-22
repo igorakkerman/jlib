@@ -49,7 +49,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      */
-    public Item get(final int index)
+    public Item get(int index)
     throws InvalidSequenceIndexException;
 
     /**
@@ -93,7 +93,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
-    public int getItemIndex(final Item item)
+    public int getItemIndex(Item item)
     throws NoSuchSequenceItemException;
 
     /**
@@ -109,7 +109,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws NoSuchSequenceItemException
      *         if this {@link IndexSequence} does not contain {@code item}
      */
-    public int getLastItemIndex(final Item item)
+    public int getLastItemIndex(Item item)
     throws NoSuchSequenceItemException;
 
     /**
@@ -133,7 +133,7 @@ extends Sequence<Item>, RandomAccess {
      * @throws InvalidSequenceIndexRangeException
      *         if {@code fromIndex > toIndex}
      */
-    public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    public IndexSequence<Item> getSubsequenceView(int fromIndex, int toIndex)
     throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException;
 
     /**
@@ -168,7 +168,7 @@ extends Sequence<Item>, RandomAccess {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public IndexSequenceTraverser<Item> createTraverser(int startIndex)
     throws InvalidSequenceIndexException;
 
     /**
@@ -189,5 +189,5 @@ extends Sequence<Item>, RandomAccess {
      *         {@link IndexSequence}; {@code false} otherwise
      */
     @Override
-    public boolean equals(final Object otherObject);
+    public boolean equals(Object otherObject);
 }

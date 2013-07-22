@@ -56,7 +56,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      *         nextint > getMaxint() || nextint <
      *         getMinint || nextint > getMaxint()}
      */
-    public Entry get(final int columnIndex, final int rowIndex)
+    public Entry get(int columnIndex, int rowIndex)
     throws InvalidSequenceIndexException;
 
     /**
@@ -68,7 +68,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      *
      * @return IndexMatrixColumn representing the column with {@code nextint}
      */
-    public IndexMatrixColumn<Entry> getColumn(final int columnIndex);
+    public IndexMatrixColumn<Entry> getColumn(int columnIndex);
 
     /**
      * Returns the specified {@link IndexMatrixColumn} of the specified column
@@ -87,7 +87,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      * @return IndexMatrixColumn representing the specified portion of the
      *         column with {@code nextint}
      */
-    public IndexMatrixColumn<Entry> getColumn(final int columnIndex, final int firstRowIndex, final int lastRowIndex);
+    public IndexMatrixColumn<Entry> getColumn(int columnIndex, int firstRowIndex, int lastRowIndex);
 
     /**
      * Returns the specified {@link IndexMatrixRow} of this {@link IndexMatrix}.
@@ -97,7 +97,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      *
      * @return IndexMatrixRow representing the row with {@code nextint}
      */
-    public IndexMatrixRow<Entry> getRow(final int rowIndex);
+    public IndexMatrixRow<Entry> getRow(int rowIndex);
 
     /**
      * Returns the specified {@link IndexMatrixRow} of this {@link IndexMatrix}.
@@ -115,7 +115,7 @@ extends RandomTraversalMatrix<Entry>, RandomAccess {
      * @return IndexMatrixRow representing the specified portion of the row with
      *         {@code nextint}
      */
-    public IndexSequence<Entry> getRow(final int rowIndex, final int firstColumnIndex, final int lastColumnIndex);
+    public IndexSequence<Entry> getRow(int rowIndex, int firstColumnIndex, int lastColumnIndex);
 
     /**
      * Returns the first column index of this {@link IndexMatrix}.

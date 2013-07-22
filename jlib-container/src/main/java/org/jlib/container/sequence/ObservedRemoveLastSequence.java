@@ -47,6 +47,6 @@ extends RemoveLastSequence<Item> {
      *         and may not be empty
      */
     @SuppressWarnings("unchecked")
-    public void removeLastItem(final ValueObserver<Item>... observers)
+    public void removeLastItem(ValueObserver<Item>... observers)
     throws SoleItemNotRemoveableException;
 }

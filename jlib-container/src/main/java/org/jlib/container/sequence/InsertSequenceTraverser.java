@@ -60,6 +60,6 @@ extends SequenceTraverser<Item> {
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
      */
-    public void insert(final Item item)
+    public void insert(Item item)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
 }

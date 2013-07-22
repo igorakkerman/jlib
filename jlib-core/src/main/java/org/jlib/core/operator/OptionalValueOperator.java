@@ -22,7 +22,7 @@
 package org.jlib.core.operator;
 
 /**
- * Operator operating on an optional Value.
+ * Operator operating on an optional Accessor.
  *
  * @param <Value>
  *        type of the value to operate on
@@ -32,15 +32,15 @@ package org.jlib.core.operator;
 public interface OptionalValueOperator<Value> {
 
     /**
-     * Performs the operation on the specified Value.
+     * Performs the operation on the specified Accessor.
      *
      * @param value
-     *        Value to operate on
+     *        Accessor to operate on
      */
     public void operate(Value value);
 
     /**
-     * Performs the operation if no Value is registered.
+     * Performs the operation if no Accessor is registered.
      */
     public void operateUnset();
 }

@@ -21,10 +21,10 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.value.Value;
+import org.jlib.core.value.Accessor;
 
 /**
- * {@link Value} operating on the held Vallue using an
+ * {@link Accessor} operating on the held Vallue using an
  * {@link OptionalValueOperator}.
  *
  * @param <Vallue>
@@ -33,7 +33,7 @@ import org.jlib.core.value.Value;
  * @author Igor Akkerman
  */
 interface OperatedValue<Vallue>
-extends Value<Vallue> {
+extends Accessor<Vallue> {
 
     /**
      * Operates on the held Vallue using the specified

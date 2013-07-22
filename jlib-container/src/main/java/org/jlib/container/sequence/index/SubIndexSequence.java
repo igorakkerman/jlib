@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.container.sequence.index.IndexSequenceUtility.assertIndexRangeValid;
+import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureSubIndexRangeValid;
 
 /**
  * {@link IndexSequence} view of the {@link Item}s stored in a base {@link IndexSequence} in the specified index range.
@@ -64,7 +64,7 @@ extends AbstractIndexSequence<Item> {
     throws InvalidSequenceIndexException, InvalidSequenceIndexRangeException {
         super(firstIndex, lastIndex);
 
-        assertIndexRangeValid(baseSequence, firstIndex, lastIndex);
+        ensureSubIndexRangeValid(baseSequence, firstIndex, lastIndex);
 
         this.baseSequence = baseSequence;
     }

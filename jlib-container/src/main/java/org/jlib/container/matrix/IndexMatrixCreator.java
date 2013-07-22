@@ -58,8 +58,8 @@ public abstract class IndexMatrixCreator<Metrix extends InitializeableIndexMatri
      *         if {@code lastColumnIndex < firstColumnIndex || lastRowIndex <
      *         firstRowIndex}
      */
-    public abstract Metrix createMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex,
-                                        final int lastRowIndex);
+    public abstract Metrix createMatrix(int firstColumnIndex, int firstRowIndex, int lastColumnIndex,
+                                        int lastRowIndex);
 
     /**
      * Creates a new {@link InitializeableIndexMatrix} with the a minimum column

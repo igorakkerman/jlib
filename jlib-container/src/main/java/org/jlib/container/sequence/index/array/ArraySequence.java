@@ -27,7 +27,6 @@ import org.jlib.container.Container;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.InvalidSequenceIndexRangeException;
 import org.jlib.container.sequence.index.LinearIndexStorageSequence;
 import org.jlib.core.array.ArrayStorage;
 import org.jlib.core.storage.LinearIndexStorage;
@@ -153,6 +152,7 @@ extends LinearIndexStorageSequence<Item> {
         super(firstIndex, items);
     }
 
+    @Override
     protected LinearIndexStorage<Item> createStorage() {
         return new ArrayStorage<>();
     }
