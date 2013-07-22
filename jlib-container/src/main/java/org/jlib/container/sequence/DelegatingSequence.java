@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.container.Container;
-import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.AutoCloneable;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
 import org.jlib.core.traverser.InvalidTraversibleStateException;
 
@@ -40,7 +40,7 @@ import org.jlib.core.traverser.InvalidTraversibleStateException;
  * @author Igor Akkerman
  */
 public class DelegatingSequence<Item>
-extends AbstractCloneable
+extends AutoCloneable
 implements Sequence<Item> {
 
     /** delegate {@link Sequence} */

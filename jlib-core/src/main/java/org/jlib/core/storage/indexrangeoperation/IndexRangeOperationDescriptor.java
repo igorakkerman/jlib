@@ -23,7 +23,7 @@ package org.jlib.core.storage.indexrangeoperation;
 
 import java.io.Serializable;
 
-import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.AutoCloneable;
 
 /**
  * Descriptor of an operation on indexed objects specifying a source index range and a target index.
@@ -31,7 +31,7 @@ import org.jlib.core.language.AbstractCloneable;
  * @author Igor Akkerman
  */
 public class IndexRangeOperationDescriptor
-extends AbstractCloneable
+extends AutoCloneable
 implements Serializable {
 
     /** serialVersionUID */

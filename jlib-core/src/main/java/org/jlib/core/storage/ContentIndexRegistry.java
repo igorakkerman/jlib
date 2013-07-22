@@ -23,7 +23,7 @@ package org.jlib.core.storage;
 
 import java.io.Serializable;
 
-import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.AutoCloneable;
 
 import static org.jlib.core.math.MathUtility.count;
 
@@ -36,7 +36,7 @@ import static org.jlib.core.math.MathUtility.count;
  * @author Igor Akkerman
  */
 public class ContentIndexRegistry
-extends AbstractCloneable
+extends AutoCloneable
 implements Serializable {
 
     /** serialVersionUID */

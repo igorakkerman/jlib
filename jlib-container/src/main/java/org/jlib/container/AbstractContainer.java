@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 import static org.jlib.core.traverser.TraversibleUtility.haveEqualItems;
 
 import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.AutoCloneable;
 import org.jlib.core.traverser.TraversibleIterator;
 
 /**
@@ -47,7 +47,7 @@ import org.jlib.core.traverser.TraversibleIterator;
  * @author Igor Akkerman
  */
 public abstract class AbstractContainer<Item>
-extends AbstractCloneable
+extends AutoCloneable
 implements Container<Item> {
 
     /**

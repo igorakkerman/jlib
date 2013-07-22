@@ -23,11 +23,11 @@ package org.jlib.core.storage;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.core.language.AbstractCloneable;
+import org.jlib.core.language.AutoCloneable;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 public abstract class AbstractLinearIndexStorage<Item>
-extends AbstractCloneable
+extends AutoCloneable
 implements LinearIndexStorage<Item> {
 
     /**

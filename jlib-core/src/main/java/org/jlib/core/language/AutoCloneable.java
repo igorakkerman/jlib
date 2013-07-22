@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- * Skeletal implementation of an {@link AbstractCloneable} using a automated deep copy algorithm in {@link #clone()}.
+ * Skeletal implementation of an {@link AutoCloneable} using a automated deep copy algorithm in {@link #clone()}.
  *
  * @author Igor Akkerman
  */
