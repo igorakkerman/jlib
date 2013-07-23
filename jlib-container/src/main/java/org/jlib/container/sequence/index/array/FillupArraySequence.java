@@ -31,7 +31,7 @@ import static org.jlib.core.observer.ObserverUtility.operate;
 import org.jlib.container.Container;
 import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.DelegatingSequence;
+import org.jlib.container.sequence.ForwardingSequence;
 import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.core.observer.ValueObserver;
@@ -49,7 +49,7 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public class FillupArraySequence<Item>
-extends DelegatingSequence<Item> {
+extends ForwardingSequence<Item> {
 
     /**
      * Creates a new {@link FillupArraySequence}.

@@ -23,24 +23,24 @@ package org.jlib.container.sequence;
 
 import org.jlib.container.ReplaceContainer;
 
-public class DelegatingReplaceSequence<Item>
-extends DelegatingSequence<Item>
+public class ForwardingReplaceSequence<Item>
+extends ForwardingSequence<Item>
 implements ReplaceContainer<Item> {
 
     private final ReplaceContainer<Item> delegateReplaceContainer;
 
     /**
-     * Creates a new {@link DelegatingSequence}.
+     * Creates a new {@link ForwardingSequence}.
      *
      * @param initialDelegateSequence
      *        initial delegate {@link DelegateSequence}
      */
     public <DelegateSequence extends Sequence<Item> & ReplaceContainer<Item>> /*
-        */ DelegatingReplaceSequence(final DelegateSequence initialDelegateSequence) {
+        */ ForwardingReplaceSequence(final DelegateSequence initialDelegateSequence) {
 
         super(initialDelegateSequence);
 
-        delegateSequence = initialDelegateSequence;
+        delegateReplaceContainer = initialDelegateSequence;
     }
 
     @Override
@@ -49,7 +49,7 @@ implements ReplaceContainer<Item> {
     }
 
     @Override
-    public DelegatingReplaceSequenceTraverser<Item> createTraverser() {
-        return new DelegatingReplaceSequenceTraverser<>(getDelegateSequence().createTraverser());
+    public ForwardingReplaceSequenceTraverser<Item> createTraverser() {
+        return new ForwardingReplaceSequenceTraverser<>(getDelegateSequence().createTraverser());
     }
 }

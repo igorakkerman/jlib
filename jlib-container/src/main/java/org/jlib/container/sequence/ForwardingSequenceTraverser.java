@@ -31,7 +31,7 @@ import org.jlib.core.language.AbstractObject;
  *
  * @author Igor Akkerman
  */
-public class DelegatingSequenceTraverser<Item>
+public class ForwardingSequenceTraverser<Item>
 extends AbstractObject
 implements SequenceTraverser<Item> {
 
@@ -39,19 +39,19 @@ implements SequenceTraverser<Item> {
      private final SequenceTraverser<Item> delegateTraverser;
 
     /**
-     * Creates a new {@link DelegatingSequenceTraverser}.
+     * Creates a new {@link ForwardingSequenceTraverser}.
      *
      * @param delegateTraverser
      *        {@link SequenceTraverser} used as delegate
      */
-    public DelegatingSequenceTraverser(final SequenceTraverser<Item> delegateTraverser) {
+    public ForwardingSequenceTraverser(final SequenceTraverser<Item> delegateTraverser) {
         super();
 
         this.delegateTraverser = delegateTraverser;
     }
 
     /**
-     * Returns the {@link SequenceTraverser} of this {@link DelegatingSequenceTraverser}.
+     * Returns the {@link SequenceTraverser} of this {@link ForwardingSequenceTraverser}.
      *
      * @return the {@link SequenceTraverser}
      */

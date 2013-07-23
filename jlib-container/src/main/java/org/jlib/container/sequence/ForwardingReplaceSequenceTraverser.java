@@ -32,15 +32,15 @@ import org.jlib.core.traverser.ReplaceTraverser;
  *
  * @author Igor Akkerman
  */
-public class DelegatingReplaceSequenceTraverser<Item>
-extends DelegatingSequenceTraverser<Item>
+public class ForwardingReplaceSequenceTraverser<Item>
+extends ForwardingSequenceTraverser<Item>
 implements SequenceTraverser<Item>,
            ReplaceTraverser<Item> {
 
     private final ReplaceTraverser<Item> delegateReplaceTraverser;
 
     public <DelegateTraverser extends SequenceTraverser<Item> & ReplaceTraverser<Item>> /*
-        */ DelegatingReplaceSequenceTraverser(final DelegateTraverser delegateTraverser) {
+        */ ForwardingReplaceSequenceTraverser(final DelegateTraverser delegateTraverser) {
 
         super(delegateTraverser);
 
