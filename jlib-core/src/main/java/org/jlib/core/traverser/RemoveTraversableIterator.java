@@ -24,34 +24,34 @@ package org.jlib.core.traverser;
 import java.util.Iterator;
 
 /**
- * {@link Iterator} over the Items of a {@link Traversible} and a {@link RemoveTraversible}.
+ * {@link Iterator} over the Items of a {@link Traversable} and a {@link RemoveTraversable}.
  *
  * @param <Item>
- *        type of Items of the {@link RemoveTraversible}
+ *        type of Items of the {@link RemoveTraversable}
  *
  * @param <Travble>
- *        type of the traversed {@link RemoveTraversible}
+ *        type of the traversed {@link RemoveTraversable}
  *
  * @author Igor Akkerman
  */
-public class RemoveTraversibleIterator<Item, Travble extends RemoveTraversible<Item>>
-extends TraversibleIterator<Item, Travble> {
+public class RemoveTraversableIterator<Item, Travble extends RemoveTraversable<Item>>
+extends TraversableIterator<Item, Travble> {
 
     /** delegate {@link RemoveTraverser} */
     private RemoveTraverser<Item> delegateTraverser;
 
     /**
-     * Creates a new {@link RemoveTraversibleIterator}.
+     * Creates a new {@link RemoveTraversableIterator}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public RemoveTraversibleIterator(final Travble traversible) {
-        super(traversible);
+    public RemoveTraversableIterator(final Travble traversable) {
+        super(traversable);
     }
 
     /**
-     * Registers the specified {@link RemoveTraverser} as delegate for this {@link RemoveTraversibleIterator}.
+     * Registers the specified {@link RemoveTraverser} as delegate for this {@link RemoveTraversableIterator}.
      *
      * @param delegateTraverser
      *        delegate {@link Traverser}
@@ -61,12 +61,12 @@ extends TraversibleIterator<Item, Travble> {
     }
 
     @Override
-    protected void createTraverser(final Travble traversible) {
-        final Traverser<Item> traverser = traversible.createTraverser();
+    protected void createTraverser(final Travble traversable) {
+        final Traverser<Item> traverser = traversable.createTraverser();
 
         setTraverser(traverser);
 
-        // safe cast since traversible.createTraverser returns a Traverser<Item> AND a RemoveTraverser
+        // safe cast since traversable.createTraverser returns a Traverser<Item> AND a RemoveTraverser
         setRemoveTraverser((RemoveTraverser<Item>) traverser);
     }
 

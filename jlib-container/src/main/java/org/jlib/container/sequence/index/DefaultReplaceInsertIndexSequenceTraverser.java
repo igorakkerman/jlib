@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.array.ArrayUtility.traversable;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
@@ -36,8 +36,8 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -106,7 +106,7 @@ implements ObservedInsertSequenceTraverser<Item>,
     @SafeVarargs
     @SuppressWarnings("ProhibitedExceptionDeclared")
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
         ObserverUtility.operate(new HandledOperator() {
 
             @Override
@@ -116,11 +116,11 @@ implements ObservedInsertSequenceTraverser<Item>,
                 try {
                     insert(item);
                 }
-                catch (InvalidTraversibleArgumentException | InvalidSequenceTraverserStateException exception) {
+                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException(message("insert: {0}", item), exception);
                 }
             }
-        }, item, concatenated(traverserInsertObservers, traversible(operationObservers)).toArray());
+        }, item, concatenated(traverserInsertObservers, traversable(operationObservers)).toArray());
     }
 
     @Override

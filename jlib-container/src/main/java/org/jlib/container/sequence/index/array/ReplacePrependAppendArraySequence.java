@@ -33,7 +33,7 @@ import org.jlib.container.sequence.ObservedPrependSequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,
@@ -186,28 +186,28 @@ implements ObservedPrependSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(singleton(item), 1, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(items, items.getItemsCount(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(items, items.size(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void prepend(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(iterable(items), items.length, observers);
     }
 

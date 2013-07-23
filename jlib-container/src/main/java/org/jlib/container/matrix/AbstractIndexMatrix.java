@@ -250,8 +250,8 @@ implements IndexMatrix<Entry> {
     }
 
     @Override
-    public MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
-        return new MatrixTraversible<Entry>() {
+    public MatrixTraversable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
+        return new MatrixTraversable<Entry>() {
 
             @Override
             public MatrixTraverser<Entry> createTraverser() {

@@ -25,9 +25,9 @@ import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.TwoWayTraversible;
+import org.jlib.core.traverser.TwoWayTraversable;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.
@@ -68,12 +68,12 @@ public final class SequenceUtility {
      * @param item
      *        appended Item
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     public static <Item> void append(final AppendSequence<Item> sequence, final Item item)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         sequence.append(item);
     }
 
@@ -90,7 +90,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -112,13 +112,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(sequence, ArrayUtility.iterable(items));
     }
 
@@ -139,13 +139,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         sequence.append(item, observers);
     }
 
@@ -166,7 +166,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -192,13 +192,13 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final ObservedAppendSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(sequence, ArrayUtility.iterable(items), observers);
     }
 
@@ -215,12 +215,12 @@ public final class SequenceUtility {
      * @param item
      *        prepended Item
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item item)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         sequence.prepend(item);
     }
 
@@ -237,7 +237,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -259,13 +259,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(sequence, ArrayUtility.iterable(items));
     }
 
@@ -286,13 +286,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         sequence.prepend(item, observers);
     }
 
@@ -313,7 +313,7 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -339,33 +339,33 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         prepend(sequence, ArrayUtility.iterable(items), observers);
     }
 
     /**
-     * Returns a concatenated view of the specified {@link TwoWayTraversible}
+     * Returns a concatenated view of the specified {@link TwoWayTraversable}
      * instances. The behaviour of the returned {@link Sequence} and its
      * {@link Traverser} or {@link Iterator} is unspecified if one of the
-     * {@link TwoWayTraversible} instances is modified.
+     * {@link TwoWayTraversable} instances is modified.
      *
      * @param <Item>
-     *        type of the items provided by {@code traversibles}
+     *        type of the items provided by {@code traversables}
      *
-     * @param traversibles
-     *        comma separated sequence of {@link TwoWayTraversible} instances
+     * @param traversables
+     *        comma separated sequence of {@link TwoWayTraversable} instances
      *
      * @return concatenated {@link Sequence} view
      */
     @SafeVarargs
-    public static <Item> Sequence<Item> concatenated(final TwoWayTraversible<Item>... traversibles) {
-        return new ConcatenatedSequence<>(traversibles);
+    public static <Item> Sequence<Item> concatenated(final TwoWayTraversable<Item>... traversables) {
+        return new ConcatenatedSequence<>(traversables);
     }
 
     /**

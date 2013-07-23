@@ -27,44 +27,44 @@ import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidStateException;
 
 /**
- * {@link InvalidTraverserStateException} thrown when the traversed {@link Traversible} claims a state error.
+ * {@link InvalidTraverserStateException} thrown when the traversed {@link Traversable} claims a state error.
  *
  * @author Igor Akkerman
  */
-public class InvalidTraversibleStateException
+public class InvalidTraversableArgumentException
 extends InvalidStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
     /*
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Creates a new {@link InvalidTraversableArgumentException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible) {
-        super(message().with(traversible));
+    public InvalidTraversableArgumentException(final Traversable<?> traversable) {
+        super(message().with(traversable));
     }
 
     /**
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Creates a new {@link InvalidTraversableArgumentException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final Exception cause) {
-        super(message().with(traversible), cause);
+    public InvalidTraversableArgumentException(final Traversable<?> traversable, final Exception cause) {
+        super(message().with(traversable), cause);
     }
 
     /**
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Creates a new {@link InvalidTraversableArgumentException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -73,15 +73,15 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final ExceptionMessage message) {
-        super(message.with(traversible));
+    public InvalidTraversableArgumentException(final Traversable<?> traversable, final ExceptionMessage message) {
+        super(message.with(traversable));
     }
 
     /**
-     * Creates a new {@link InvalidTraversibleStateException}.
+     * Creates a new {@link InvalidTraversableArgumentException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -93,8 +93,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidTraversibleStateException(final Traversible<?> traversible, final ExceptionMessage message,
-                                          final Exception cause) {
-        super(message.with(traversible), cause);
+    public InvalidTraversableArgumentException(final Traversable<?> traversable, final ExceptionMessage message,
+                                               final Exception cause) {
+        super(message.with(traversable), cause);
     }
 }

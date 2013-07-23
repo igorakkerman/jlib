@@ -46,7 +46,7 @@ extends RemoveTraverser<Item> {
      * @throws NoItemToRemoveException
      *         if not called immediately after traversing an Item
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error is caused by a delegate used to remove the Item
      *
      * @throws ValueObserverException
@@ -58,7 +58,7 @@ extends RemoveTraverser<Item> {
      */
     @SuppressWarnings("unchecked")
     public void remove(ValueObserver<Item>... observers)
-    throws NoItemToRemoveException, InvalidTraversibleStateException, ValueObserverException, RuntimeException;
+    throws NoItemToRemoveException, InvalidTraversableStateException, ValueObserverException, RuntimeException;
 
     /**
      * Registers the specified {@link ValueObserver} for the remove operations

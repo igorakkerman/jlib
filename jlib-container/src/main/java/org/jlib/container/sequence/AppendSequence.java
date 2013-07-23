@@ -24,7 +24,7 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link Sequence} to which Items can be appended.
@@ -38,44 +38,44 @@ public interface AppendSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      */
     public void append(Item item)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void append(Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void append(Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void append(Item... items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 }

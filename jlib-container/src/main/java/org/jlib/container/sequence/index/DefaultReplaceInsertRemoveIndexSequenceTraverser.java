@@ -26,7 +26,7 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.value.ValueNotAccessibleException;
 
@@ -37,7 +37,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.array.FillupArraySequence;
 
 import static org.jlib.container.sequence.SequenceUtility.concatenated;
-import static org.jlib.core.array.ArrayUtility.traversible;
+import static org.jlib.core.array.ArrayUtility.traversable;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
@@ -119,11 +119,11 @@ implements ObservedInsertSequenceTraverser<Item>
                 try {
                     remove();
                 }
-                catch (InvalidTraversibleArgumentException | InvalidSequenceTraverserStateException exception) {
+                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
                     throw new OperatorException(message("remove()"), exception);
                 }
             }
-        }, concatenated(traverserRemoveObservers, traversible(operationObservers)).toArray());
+        }, concatenated(traverserRemoveObservers, traversable(operationObservers)).toArray());
     }
 
     @Override

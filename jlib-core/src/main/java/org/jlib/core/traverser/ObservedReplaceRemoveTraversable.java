@@ -22,14 +22,14 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link ObservedReplaceRemoveTraversible} over its Items.
+ * {@link ObservedReplaceRemoveTraversable} over its Items.
  *
  * @param <Item>
  *        type of the traversed Items
  *
  * @author Igor Akkerman
  */
-public interface ObservedReplaceRemoveTraversible<Item>
+public interface ObservedReplaceRemoveTraversable<Item>
 extends ReplaceRemoveTraverser<Item>, ObservedReplaceTraverser<Item>, ObservedRemoveTraverser<Item> {
 
     public ObservedReplaceRemoveTraverser<Item> createTraverser();

@@ -22,26 +22,21 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link Traverser} allowing returned Items to be removed.
+ * Object providing a {@link ObservedReplaceTraversable} over its Items.
  *
  * @param <Item>
- *        type of the traversed items
+ *        type of the traversed Items
  *
  * @author Igor Akkerman
  */
-public interface RemoveTraverser<Item>
-extends Traverser<Item> {
+public interface ObservedReplaceTraversable<Item>
+extends ReplaceTraversable<Item> {
 
     /**
-     * Removes the last Item returned by this {@link RemoveTraverser}.
+     * Returns a new {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceTraversable}.
      *
-     * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link Traverser#getNextItem()}
-     *         or a similar method
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error was caused by a delegate used to remove the item
+     * @return newly created {@link ObservedReplaceTraverser}
      */
-    public void remove()
-    throws NoItemToRemoveException, InvalidTraversableStateException;
+    @Override
+    public ObservedReplaceTraverser<Item> createTraverser();
 }

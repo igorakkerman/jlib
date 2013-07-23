@@ -23,16 +23,16 @@ package org.jlib.container;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
- * {@link InvalidTraversibleArgumentException} thrown when a {@link Container}
+ * {@link InvalidTraversableArgumentException} thrown when a {@link Container}
  * does not contain the specified Item to remove.
  *
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidTraversibleArgumentException {
+extends InvalidTraversableArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;

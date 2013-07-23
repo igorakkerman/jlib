@@ -34,7 +34,7 @@ import org.jlib.container.sequence.index.InvalidSequenceIndexException;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
@@ -186,28 +186,28 @@ implements ObservedAppendSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(singleton(item), 1, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(items, items.getItemsCount(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(items, items.size(), observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public final void append(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         append(iterable(items), items.length, observers);
     }
 

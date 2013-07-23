@@ -38,8 +38,8 @@ import org.jlib.container.sequence.index.SubReplaceInsertIndexSequence;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link ReplaceAppendArraySequence} into which Items can be inserted.
@@ -187,7 +187,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         insert(index, singleton(item), 1, observers);
     }
 

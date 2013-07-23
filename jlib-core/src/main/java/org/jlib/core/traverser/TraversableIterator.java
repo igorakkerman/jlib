@@ -26,38 +26,38 @@ import org.jlib.core.iterator.AbstractIterator;
 import java.util.Iterator;
 
 /**
- * {@link Iterator} over the Items of a {@link Traversible}.
+ * {@link Iterator} over the Items of a {@link Traversable}.
  *
  * @param <Item>
- *        type of items of the {@link Traversible}
+ *        type of items of the {@link Traversable}
  *
  * @param <Travble>
- *        type of the traversed {@link Traversible}
+ *        type of the traversed {@link Traversable}
  *
  * @author Igor Akkerman
  */
-public class TraversibleIterator<Item, Travble extends Traversible<Item>>
+public class TraversableIterator<Item, Travble extends Traversable<Item>>
 extends AbstractIterator<Item> {
 
     /** delegate {@link Traverser} */
     private Traverser<Item> delegateTraverser;
 
     /**
-     * Creates a new {@link TraversibleIterator}.
+     * Creates a new {@link TraversableIterator}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public TraversibleIterator(final Travble traversible) {
+    public TraversableIterator(final Travble traversable) {
         super();
 
-        createTraverser(traversible);
+        createTraverser(traversable);
     }
 
     /**
      * <p>
      * Registers a newly created delegate {@link Traverser} for the specified
-     * {@link Traversible}.
+     * {@link Traversable}.
      * </p>
      * <p>
      * This method must be overridden by subclasses using parametric
@@ -65,17 +65,17 @@ extends AbstractIterator<Item> {
      * the concrete type.
      * </p>
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    protected void createTraverser(final Travble traversible) {
-        setTraverser(traversible.createTraverser());
+    protected void createTraverser(final Travble traversable) {
+        setTraverser(traversable.createTraverser());
     }
 
     /**
      * <p>
      * Registers the specified {@link Traverser} as delegate for this
-     * {@link TraversibleIterator}.
+     * {@link TraversableIterator}.
      * </p>
      * <p>
      * Subclasses must re-implement (not override!) this method registering the

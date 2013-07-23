@@ -28,10 +28,10 @@ import java.util.RandomAccess;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.Traversible;
 
 /**
  * Container of items.
@@ -42,7 +42,7 @@ import org.jlib.core.traverser.Traversible;
  * @author Igor Akkerman
  */
 public interface Container<Item>
-extends Traversible<Item>,
+extends Traversable<Item>,
         Iterable<Item> {
 
     /**
@@ -50,11 +50,11 @@ extends Traversible<Item>,
      *
      * @return integer specifying the number of Items in this {@link Container}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public int getItemsCount()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 
     /**
      * Verifies whether this {@link Container} contains no Items.
@@ -62,11 +62,11 @@ extends Traversible<Item>,
      * @return {@code true} if this {@link Container} contains no Items;
      *         {@code false} otherwise
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public boolean isEmpty()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 
     /**
      * Verifies whether this {@link Container} contains the specified Object.
@@ -77,15 +77,15 @@ extends Traversible<Item>,
      * @return {@code true} if this {@link Container} contains {@code object};
      *         {@code false} otherwise
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public boolean contains(Item item)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -97,15 +97,15 @@ extends Traversible<Item>,
      * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public boolean contains(Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the Items in the
@@ -117,15 +117,15 @@ extends Traversible<Item>,
      * @return {@code true} if this {@link Container} contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public boolean contains(Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Verifies whether this {@link Container} contains all of the specified
@@ -137,16 +137,16 @@ extends Traversible<Item>,
      * @return {@code true} if this {@link Container} contains all of the
      *         {@code objects}; {@code false} otherwise
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public boolean contains(Item... items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
@@ -156,25 +156,25 @@ extends Traversible<Item>,
      * @return {@link RandomAccess} {@link List} containing all of the Items of
      *         this {@link Container}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public List<Item> toList()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 
     /**
-     * Returns a sequentially traversible {@link List} containing all of the
+     * Returns a sequentially traversable {@link List} containing all of the
      * Items of this {@link Container} in the proper order as returned by this
      * {@link Container}'s Traverser.
      *
-     * @return sequentially traversible {@link List} containing all of the Items
+     * @return sequentially traversable {@link List} containing all of the Items
      *         of this {@link Container}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public List<Item> toSequentialList()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 
     /**
      * Returns an array containing all of the Items of this {@link Container} in
@@ -182,11 +182,11 @@ extends Traversible<Item>,
      *
      * @return array containing all of the Items of this {@link Container}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public Item[] toArray()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 
     /**
      * <p>

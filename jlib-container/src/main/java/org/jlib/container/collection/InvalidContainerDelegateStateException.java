@@ -27,7 +27,7 @@ import org.jlib.core.traverser.InvalidTraverserStateException;
 import org.jlib.container.Container;
 
 /**
- * {@link InvalidTraversibleArgumentException} thrown when a delegate object
+ * {@link InvalidTraversableArgumentException} thrown when a delegate object
  * signals an error.
  *
  * @author Igor Akkerman

@@ -25,40 +25,40 @@ import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link InvalidTraverserStateException} thrown when the traversed
- * {@link Traversible} claims a state error.
+ * {@link Traversable} claims a state error.
  *
  * @author Igor Akkerman
  */
 public abstract class InvalidTraverserStateException
-extends InvalidTraversibleStateException {
+extends InvalidTraversableStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1706750148627927636L;
 
-    protected InvalidTraverserStateException(final Traversible<?> traversible) {
-        super(traversible);
+    protected InvalidTraverserStateException(final Traversable<?> traversable) {
+        super(traversable);
     }
 
-    protected InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message) {
-        super(traversible, message);
+    protected InvalidTraverserStateException(final Traversable<?> traversable, final ExceptionMessage message) {
+        super(traversable, message);
     }
 
     /**
      * Creates a new {@link InvalidTraverserStateException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param cause
      *        {@link Exception} that caused this
-     *        {@link InvalidTraversibleStateException}
+     *        {@link InvalidTraversableStateException}
      */
-    protected InvalidTraverserStateException(final Traversible<?> traversible, final Exception cause) {
-        super(traversible, cause);
+    protected InvalidTraverserStateException(final Traversable<?> traversable, final Exception cause) {
+        super(traversable, cause);
     }
 
-    protected InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message,
+    protected InvalidTraverserStateException(final Traversable<?> traversable, final ExceptionMessage message,
                                              final Exception cause) {
-        super(traversible, message, cause);
+        super(traversable, message, cause);
     }
 }

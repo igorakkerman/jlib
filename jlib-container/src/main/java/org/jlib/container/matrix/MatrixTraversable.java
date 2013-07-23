@@ -19,22 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.container.matrix;
 
 /**
- * {@link Object} traversible by a {@link Traverser}.
+ * {@link Iterable} providing a {@link MatrixTraverser} traversing the Items of
+ * a {@link Matrix}.
  *
- * @param <Item>
- *        type of items returned by the {@link Traverser}
+ * @param <Entry>
+ *        type of the entries returned by the {@link MatrixTraversable}.
  *
  * @author Igor Akkerman
  */
-public interface Traversible<Item> {
+public interface MatrixTraversable<Entry> {
 
     /**
-     * Returns a new {@link Traverser} over the Items of this {@link Traversible}.
+     * Creates a {@link MatrixTraverser} traversing the Entries of this
+     * {@link MatrixTraversable} in the default order. The default order may be
+     * defined by the concrete implementation or even made customizable.
      *
-     * @return newly createTraverser}
+     * @return a new {@link MatrixTraverser} over the Entries of this
+     *         {@link Matrix}
      */
-    public Traverser<Item> createTraverser();
+    public MatrixTraverser<Entry> createTraverser();
 }

@@ -38,31 +38,31 @@ extends InvalidTraverserStateException {
     /**
      * Creates a new {@link NoPreviousItemException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public NoPreviousItemException(final Traversible<?> traversible) {
-        super(traversible);
+    public NoPreviousItemException(final Traversable<?> traversable) {
+        super(traversable);
     }
 
     /**
      * Creates a new {@link NoPreviousItemException} with the specified cause.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param cause
      *        {@link Exception} that caused this {@link NoPreviousItemException}
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final Exception cause) {
-        super(traversible, cause);
+    public NoPreviousItemException(final Traversable<?> traversable, final Exception cause) {
+        super(traversable, cause);
     }
 
     /**
      * Creates a new {@link NoPreviousItemException} with the specified cause.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -71,15 +71,15 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final ExceptionMessage message) {
-        super(traversible, message);
+    public NoPreviousItemException(final Traversable<?> traversable, final ExceptionMessage message) {
+        super(traversable, message);
     }
 
     /**
      * Creates a new {@link NoPreviousItemException} with the specified cause.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -91,8 +91,8 @@ extends InvalidTraverserStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Traversible<?> traversible, final ExceptionMessage message,
+    public NoPreviousItemException(final Traversable<?> traversable, final ExceptionMessage message,
                                    final Exception cause) {
-        super(traversible, message, cause);
+        super(traversable, message, cause);
     }
 }

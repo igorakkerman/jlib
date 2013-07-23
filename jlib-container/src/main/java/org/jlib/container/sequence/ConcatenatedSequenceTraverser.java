@@ -22,8 +22,8 @@
 package org.jlib.container.sequence;
 
 import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.traverser.TwoWayTraversable;
 import org.jlib.core.traverser.TwoWayTraverser;
-import org.jlib.core.traverser.TwoWayTraversible;
 
 /**
  * {@link TwoWayTraverser} over the Items of a
@@ -42,15 +42,15 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
 
     /**
      * {@link TwoWayTraverser} of the concatenated
-     * {@link TwoWayTraversible} instances
+     * {@link TwoWayTraversable} instances
      */
-    private final TwoWayTraverser<TwoWayTraversible<Item>> traversiblesTraverser;
+    private final TwoWayTraverser<TwoWayTraversable<Item>> traversablesTraverser;
 
     /**
      * {@link TwoWayTraverser} over the current
-     * {@link TwoWayTraversible}
+     * {@link TwoWayTraversable}
      */
-    private TwoWayTraverser<Item> currentTraversibleTraverser;
+    private TwoWayTraverser<Item> currentTraversableTraverser;
 
     /**
      * Creates a new {@link ConcatenatedSequenceTraverser}.
@@ -62,24 +62,24 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
         super(concatenatedSequence);
 
-        traversiblesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversibles());
+        traversablesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversables());
 
-        currentTraversibleTraverser = traversiblesTraverser.hasNextItem()
-                                      ? traversiblesTraverser.getNextItem().createTraverser()
+        currentTraversableTraverser = traversablesTraverser.hasNextItem()
+                                      ? traversablesTraverser.getNextItem().createTraverser()
                                       : EmptySequenceTraverser.<Item>getInstance();
     }
 
     @Override
     public boolean isPreviousItemAccessible() {
-        while (! currentTraversibleTraverser.isPreviousItemAccessible()) {
-            if (! traversiblesTraverser.isPreviousItemAccessible())
+        while (! currentTraversableTraverser.isPreviousItemAccessible()) {
+            if (! traversablesTraverser.isPreviousItemAccessible())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createTraverser();
+            currentTraversableTraverser = traversablesTraverser.getPreviousItem().createTraverser();
 
             // navigate to the tail of the previous Sequence
-            while (currentTraversibleTraverser.hasNextItem())
-                currentTraversibleTraverser.getNextItem();
+            while (currentTraversableTraverser.hasNextItem())
+                currentTraversableTraverser.getNextItem();
         }
 
         return true;
@@ -91,16 +91,16 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
         if (! isPreviousItemAccessible())
             throw new NoPreviousSequenceItemException(getSequence());
 
-        return currentTraversibleTraverser.getPreviousItem();
+        return currentTraversableTraverser.getPreviousItem();
     }
 
     @Override
     public boolean hasNextItem() {
-        while (! currentTraversibleTraverser.hasNextItem()) {
-            if (! traversiblesTraverser.hasNextItem())
+        while (! currentTraversableTraverser.hasNextItem()) {
+            if (! traversablesTraverser.hasNextItem())
                 return false;
 
-            currentTraversibleTraverser = traversiblesTraverser.getNextItem().createTraverser();
+            currentTraversableTraverser = traversablesTraverser.getNextItem().createTraverser();
         }
 
         return true;
@@ -112,6 +112,6 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
         if (! hasNextItem())
             throw new NoPreviousSequenceItemException(getSequence());
 
-        return currentTraversibleTraverser.getPreviousItem();
+        return currentTraversableTraverser.getPreviousItem();
     }
 }

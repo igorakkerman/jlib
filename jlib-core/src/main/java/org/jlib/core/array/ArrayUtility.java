@@ -21,8 +21,8 @@
 
 package org.jlib.core.array;
 
+import org.jlib.core.traverser.TwoWayTraversable;
 import org.jlib.core.traverser.TwoWayTraverser;
-import org.jlib.core.traverser.TwoWayTraversible;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns a new {@link TwoWayTraversible} adapter for the specified Items.
+     * Returns a new {@link TwoWayTraversable} adapter for the specified Items.
      *
      * @param <Item>
      *        type of the items held in the array
@@ -65,11 +65,11 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      *
-     * @return {@link TwoWayTraversible} adapter for {@code items}
+     * @return {@link TwoWayTraversable} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> TwoWayTraversible<Item> traversible(final Item... items) {
-        return new ArrayTraversible<>(items);
+    public static <Item> TwoWayTraversable<Item> traversable(final Item... items) {
+        return new ArrayTraversable<>(items);
     }
 
     /**
@@ -81,7 +81,7 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      *
-     * @return {@link TwoWayTraversible} adapter for {@code items}
+     * @return {@link TwoWayTraversable} adapter for {@code items}
      */
     @SafeVarargs
     public static <Item> TwoWayTraverser<Item> createTraverser(final Item... items) {

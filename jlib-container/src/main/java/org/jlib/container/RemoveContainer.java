@@ -23,10 +23,10 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
-import org.jlib.core.traverser.RemoveTraversible;
-import org.jlib.core.traverser.Traversible;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.RemoveTraversable;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * {@link Container} allowing Items to be removed.
@@ -37,27 +37,27 @@ import org.jlib.core.traverser.Traversible;
  * @author Igor Akkerman
  */
 public interface RemoveContainer<Item>
-extends RemoveTraversible<Item> {
+extends RemoveTraversable<Item> {
 
 //    public void remove(ItemContext<Item, ? extends RemoveContainer<Item>> itemContext);
     // TODO: throws some constraint exception
 
     /**
      * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Traversible}.
+     * <em>except</em> the Items contained by the specified {@link Traversable}.
      *
      * @param items
-     *        {@link Traversible} containing the Items to retain
+     *        {@link Traversable} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(Traversible<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    public void retain(Traversable<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -66,15 +66,15 @@ extends RemoveTraversible<Item> {
      * @param items
      *        {@link Container} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void retain(Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -83,15 +83,15 @@ extends RemoveTraversible<Item> {
      * @param items
      *        {@link Collection} containing the Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void retain(Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -100,14 +100,14 @@ extends RemoveTraversible<Item> {
      * @param items
      *        comma separated sequence of Items to retain
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void retain(Item... items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

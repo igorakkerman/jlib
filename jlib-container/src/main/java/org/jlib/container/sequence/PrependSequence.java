@@ -24,7 +24,7 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.container.Container;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link Sequence} to which Items can be prepended.
@@ -38,47 +38,47 @@ public interface PrependSequence<Item>
 extends Sequence<Item>{
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void prepend(Item item)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void prepend(Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void prepend(Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void prepend(Item... items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 }

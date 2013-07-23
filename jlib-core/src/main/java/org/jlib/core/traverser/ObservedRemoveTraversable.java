@@ -22,33 +22,21 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link Traversible} always providing a constant {@link Traverser}.
+ * Object providing a {@link ObservedRemoveTraversable} over its Items.
  *
  * @param <Item>
- *        type of the Items traversed by the {@link Traverser}
+ *        type of the traversed Items
  *
  * @author Igor Akkerman
  */
-public class ConstantTraverserTraversible<Item>
-implements Traversible<Item> {
-
-    /** returned {@link Traverser}r */
-    private final Traverser<Item> traverser;
+public interface ObservedRemoveTraversable<Item>
+extends RemoveTraversable<Item> {
 
     /**
-     * Creates a new {@link ConstantTraverserTraversible}.
+     * Returns a new {@link ObservedRemoveTraverser} over the Items of this {@link ObservedRemoveTraversable}.
      *
-     * @param traverser
-     *        constantly returned {@link Traverser}
+     * @return newly created {@link ObservedRemoveTraverser}
      */
-    public ConstantTraverserTraversible(final Traverser<Item> traverser) {
-        super();
-
-        this.traverser = traverser;
-    }
-
     @Override
-    public Traverser<Item> createTraverser() {
-        return traverser;
-    }
+    public ObservedRemoveTraverser<Item> createTraverser();
 }

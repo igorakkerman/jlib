@@ -116,7 +116,7 @@ import org.jlib.core.traverser.Traverser;
  */
 //@formatter:on
 public interface Matrix<Entry>
-extends Container<Entry>, MatrixTraversible<Entry> {
+extends Container<Entry>, MatrixTraversable<Entry> {
 
     /**
      * Returns the number of columns of this {@link Matrix}.

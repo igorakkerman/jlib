@@ -36,24 +36,24 @@ extends InvalidTraverserStateException {
     /**
      * Creates a new {@link NoItemToReplaceException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public NoItemToReplaceException(final Traversible<?> traversible) {
-        super(traversible);
+    public NoItemToReplaceException(final Traversable<?> traversable) {
+        super(traversable);
     }
 
     /**
      * Creates a new {@link NoItemToReplaceException} with the specified cause.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param cause
      *        {@link Exception} that caused this
      *        {@link NoItemToReplaceException}
      */
-    public NoItemToReplaceException(final Traversible<?> traversible, final Exception cause) {
-        super(traversible, cause);
+    public NoItemToReplaceException(final Traversable<?> traversable, final Exception cause) {
+        super(traversable, cause);
     }
 }

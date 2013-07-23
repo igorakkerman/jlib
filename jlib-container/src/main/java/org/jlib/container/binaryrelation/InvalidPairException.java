@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversibleArgumentException;
  * @author Igor Akkerman
  */
 public abstract class InvalidPairException
-extends InvalidTraversibleArgumentException {
+extends InvalidTraversableArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 6498242933289941100L;

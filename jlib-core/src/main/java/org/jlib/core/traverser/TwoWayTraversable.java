@@ -22,21 +22,22 @@
 package org.jlib.core.traverser;
 
 /**
- * Object providing a {@link ObservedRemoveTraversible} over its Items.
+ * {@link Object} traversable by a {@link TwoWayTraverser}.
  *
  * @param <Item>
- *        type of the traversed Items
+ *        type of items returned by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveTraversible<Item>
-extends RemoveTraversible<Item> {
+public interface TwoWayTraversable<Item>
+extends Traversable<Item> {
 
     /**
-     * Returns a new {@link ObservedRemoveTraverser} over the Items of this {@link ObservedRemoveTraversible}.
+     * Returns a new {@link TwoWayTraverser} over the Items of this
+     * {@link TwoWayTraversable}.
      *
-     * @return newly created {@link ObservedRemoveTraverser}
+     * @return newly createTraverser}
      */
     @Override
-    public ObservedRemoveTraverser<Item> createTraverser();
+    public TwoWayTraverser<Item> createTraverser();
 }

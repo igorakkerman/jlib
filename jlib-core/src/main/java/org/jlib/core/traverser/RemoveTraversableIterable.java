@@ -21,23 +21,24 @@
 
 package org.jlib.core.traverser;
 
-/**
- * {@link Object} traversible by a {@link TwoWayTraverser}.
- *
- * @param <Item>
- *        type of items returned by the {@link Traverser}
- *
- * @author Igor Akkerman
- */
-public interface TwoWayTraversible<Item>
-extends Traversible<Item> {
+import java.util.Iterator;
 
-    /**
-     * Returns a new {@link TwoWayTraverser} over the Items of this
-     * {@link TwoWayTraversible}.
-     *
-     * @return newly createTraverser}
-     */
+import org.jlib.core.language.AbstractObject;
+
+public class RemoveTraversableIterable<Item>
+extends AbstractObject
+implements Iterable<Item> {
+
+    private final RemoveTraversable<Item> traversable;
+
+    public RemoveTraversableIterable(final RemoveTraversable<Item> traversable) {
+        super();
+
+        this.traversable = traversable;
+    }
+
     @Override
-    public TwoWayTraverser<Item> createTraverser();
+    public Iterator<Item> iterator() {
+        return new RemoveTraversableIterator<>(traversable);
+    }
 }

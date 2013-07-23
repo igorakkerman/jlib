@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link Sequence} allowing its last Item to be removed.
@@ -37,10 +37,10 @@ extends Sequence<Item> {
     /**
      * Removes the last Item of this {@link RemoveLastSequence}.
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if some property of this {@link RemoveLastSequence} forbids its
      *         last Item to be removed
      */
     public void removeLastItem()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 }

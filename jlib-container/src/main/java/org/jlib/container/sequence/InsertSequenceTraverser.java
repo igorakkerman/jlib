@@ -22,8 +22,8 @@
 package org.jlib.container.sequence;
 
 import org.jlib.container.sequence.index.IndexSequenceTraverser;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link SequenceTraverser} over a {@link InsertSequence}.
@@ -55,12 +55,12 @@ extends SequenceTraverser<Item> {
      * @param item
      *        Item to insert
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being inserted
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void insert(Item item)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException;
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -29,8 +29,8 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link IndexSequence} utility.
@@ -121,11 +121,11 @@ public final class IndexSequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -135,7 +135,7 @@ public final class IndexSequenceUtility {
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
                                      final ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException, RuntimeException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 
@@ -145,7 +145,7 @@ public final class IndexSequenceUtility {
                 try {
                     sequence.remove(itemIndex);
                 }
-                catch (InvalidTraversibleArgumentException | InvalidTraversibleStateException exception) {
+                catch (InvalidTraversableArgumentException | InvalidTraversableStateException exception) {
                     throw new OperatorException(message("remove: {0}", itemIndex).with("sequence", sequence),
                                                 exception);
                 }

@@ -36,7 +36,7 @@ import org.jlib.container.sequence.InitiallyEmptySequence;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.Traverser;
 
 /**
@@ -86,27 +86,27 @@ extends ForwardingSequence<Item> {
 
         @Override
         public void append(final Container<? extends Item> items)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         public void append(final Collection<? extends Item> items)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @Override
         @SafeVarargs
         public final void append(final Item... items)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
 
         @SafeVarargs
         @Override
         public final void append(final Item item, final ValueObserver<Item>... observers)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             operate(new HandledOperator() {
                 @Override
                 public void operate() {
@@ -119,7 +119,7 @@ extends ForwardingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Container<? extends Item> items, final ValueObserver<Item>... observers)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -135,7 +135,7 @@ extends ForwardingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             if (items.isEmpty())
                 return;
 
@@ -145,7 +145,7 @@ extends ForwardingSequence<Item> {
         @SafeVarargs
         @Override
         public final void append(final ValueObserver<Item>[] observers, final Item... items)
-        throws InvalidTraversibleArgumentException {
+        throws InvalidTraversableArgumentException {
             if (items.length == 0)
                 return;
 

@@ -21,24 +21,22 @@
 
 package org.jlib.core.traverser;
 
-import java.util.Iterator;
+/**
+ * {@link Traversable} providing  allowing Items to be removed.
+ *
+ * @param <Item>
+ *        type of the traversed items
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveTraversable<Item>
+extends Traversable<Item> {
 
-import org.jlib.core.language.AbstractObject;
-
-public class TraversibleIterable<Item>
-extends AbstractObject
-implements Iterable<Item>{
-
-    private final Traversible<Item> traversible;
-
-    public TraversibleIterable(final Traversible<Item> traversible) {
-        super();
-
-        this.traversible = traversible;
-    }
-
+    /**
+     * Returns a new {@link RemoveTraverser} over the Items of this {@link RemoveTraversable}.
+     *
+     * @return newly createTraverser}
+     */
     @Override
-    public Iterator<Item> iterator() {
-        return new TraversibleIterator<>(traversible);
-    }
+    public RemoveTraverser<Item> createTraverser();
 }

@@ -27,7 +27,7 @@ import org.jlib.container.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link ReplaceInsertArraySequence} to which Items can be added.
@@ -153,14 +153,14 @@ implements ObservedRemoveAllSequence<Item> {
 
     @Override
     public void removeAll()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         ContainerUtility.removeAll(this);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         ContainerUtility.removeAll(this, observers);
     }
 }

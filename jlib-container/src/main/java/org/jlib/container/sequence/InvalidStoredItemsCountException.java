@@ -21,16 +21,16 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link InvalidTraversibleStateException} thrown when attempting to store an invalid number of Items in a
+ * {@link InvalidTraversableStateException} thrown when attempting to store an invalid number of Items in a
  * {@link Sequence}.
  *
  * @author Igor Akkerman
  */
 public class InvalidStoredItemsCountException
-extends InvalidTraversibleStateException {
+extends InvalidTraversableStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5400803962181030353L;

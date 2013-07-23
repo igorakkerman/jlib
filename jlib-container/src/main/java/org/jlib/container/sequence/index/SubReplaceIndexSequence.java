@@ -22,8 +22,8 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link ReplaceIndexSequence} view of the Items stored in another
@@ -75,7 +75,7 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     public void replace(final int index, final Item newItem)
-    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem);
@@ -84,7 +84,7 @@ implements ObservedReplaceIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().replace(index, newItem, observers);

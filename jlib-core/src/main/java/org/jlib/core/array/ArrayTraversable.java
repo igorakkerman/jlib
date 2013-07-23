@@ -19,29 +19,39 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.traverser;
+package org.jlib.core.array;
+
+import org.jlib.core.language.AbstractObject;
+import org.jlib.core.traverser.TwoWayTraversable;
+import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
- * {@link Traverser} allowing returned Items to be removed.
+ * Wrapper for an items allowing it to be used as {@link TwoWayTraversable}.
  *
  * @param <Item>
- *        type of the traversed items
+ *        type of the items held in the arrays
  *
  * @author Igor Akkerman
  */
-public interface RemoveTraverser<Item>
-extends Traverser<Item> {
+public class ArrayTraversable<Item>
+extends AbstractObject
+implements TwoWayTraversable<Item> {
+
+    /** Items to traverse */
+    private final Item[] items;
 
     /**
-     * Removes the last Item returned by this {@link RemoveTraverser}.
+     * Creates a new {@link ArrayTraversable} for the specified Items.
      *
-     * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link Traverser#getNextItem()}
-     *         or a similar method
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error was caused by a delegate used to remove the item
+     * @param items
+     *        array of Items to traverse
      */
-    public void remove()
-    throws NoItemToRemoveException, InvalidTraversableStateException;
+    public ArrayTraversable(final Item[] items) {
+        this.items = items;
+    }
+
+    @Override
+    public TwoWayTraverser<Item> createTraverser() {
+        return new ArrayTraverser<>(items);
+    }
 }

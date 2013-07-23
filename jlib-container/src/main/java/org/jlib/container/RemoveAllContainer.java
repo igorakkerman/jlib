@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link RemoveContainer} allowing all Items to be removed.
@@ -37,9 +37,9 @@ extends RemoveContainer<Item> {
     /**
      * Removes all Items of this {@link RemoveAllContainer}.
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     public void removeAll()
-    throws InvalidTraversibleStateException;
+    throws InvalidTraversableStateException;
 }

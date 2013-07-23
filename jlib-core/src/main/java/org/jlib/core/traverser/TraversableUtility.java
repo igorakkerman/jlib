@@ -24,38 +24,38 @@ package org.jlib.core.traverser;
 import org.jlib.core.observer.ValueObserver;
 
 /**
- * Utility providing operations on {@link Traverser} and {@link Traversible} instances.
+ * Utility providing operations on {@link Traverser} and {@link Traversable} instances.
  *
  * @author Igor Akkerman
  */
-public final class TraversibleUtility {
+public final class TraversableUtility {
 
     /** no visible constructor */
-    private TraversibleUtility() {
+    private TraversableUtility() {
     }
 
     /**
-     * Verifies whether the {@link Traverser} instances created by the {@link Traversible#createTraverser()} methods of
-     * the two specified {@link Traversible} instances traverse the same number of Items in the same order and all
+     * Verifies whether the {@link Traverser} instances created by the {@link Traversable#createTraverser()} methods of
+     * the two specified {@link Traversable} instances traverse the same number of Items in the same order and all
      * traversed Items are equal. Two Items {@code item1} and {@code item2} are called equal if
      * {@code item1.equals(item2)}.
      *
      * @param <Item>
-     *        type of the items traversed by {@code traversible1} and {@code traversible2}
+     *        type of the items traversed by {@code traversable1} and {@code traversable2}
      *
-     * @param traversible1
-     *        first traversed {@link Traversible}
+     * @param traversable1
+     *        first traversed {@link Traversable}
      *
-     * @param traversible2
-     *        second traversed {@link Traversible}
+     * @param traversable2
+     *        second traversed {@link Traversable}
      *
      * @return {@code true} if {@code traverser1} and {@code traverser2} provide equal Items;
      *         {@code false} otherwise
      */
-    public static <Item> boolean haveEqualItems(final Traversible<Item> traversible1,
-                                                final Traversible<Item> traversible2) {
-        final Traverser<?> traverser1 = traversible1.createTraverser();
-        final Traverser<?> traverser2 = traversible2.createTraverser();
+    public static <Item> boolean haveEqualItems(final Traversable<Item> traversable1,
+                                                final Traversable<Item> traversable2) {
+        final Traverser<?> traverser1 = traversable1.createTraverser();
+        final Traverser<?> traverser2 = traversable2.createTraverser();
 
         do {
             // if either traverser has Items accessible and the other traverser is done
@@ -73,15 +73,15 @@ public final class TraversibleUtility {
     }
 
     /**
-     * Returns the number of Items provided by the specified {@link TwoWayTraversible}.
+     * Returns the number of Items provided by the specified {@link TwoWayTraversable}.
      *
-     * @param traversible
-     * {@link TwoWayTraversible} providing the items
+     * @param traversable
+     * {@link TwoWayTraversable} providing the items
      *
      * @return integer specifying the number of Items
      */
-    public static int getItemsCount(final TwoWayTraversible<?> traversible) {
-        final TwoWayTraverser<?> itemsTraverser = traversible.createTraverser();
+    public static int getItemsCount(final TwoWayTraversable<?> traversable) {
+        final TwoWayTraverser<?> itemsTraverser = traversable.createTraverser();
 
         int itemsCount = 0;
 
@@ -97,37 +97,37 @@ public final class TraversibleUtility {
     /**
      * Returns the sum of number of Items provided by the specified {@link TwoWayTraverser} instances.
      *
-     * @param traversibles
-     * comma separated sequence of {@link TwoWayTraversible} instances
+     * @param traversables
+     * comma separated sequence of {@link TwoWayTraversable} instances
      *
      * @return integer specifying the number of Items
      */
-    public static int getItemsCount(final TwoWayTraversible<?>... traversibles) {
+    public static int getItemsCount(final TwoWayTraversable<?>... traversables) {
         int itemsCount = 0;
 
-        for (final TwoWayTraversible<?> traversible : traversibles)
-            itemsCount += getItemsCount(traversible);
+        for (final TwoWayTraversable<?> traversable : traversables)
+            itemsCount += getItemsCount(traversable);
 
         return itemsCount;
     }
 
     /**
-     * Removes all Items of the specified {@link RemoveTraversible}.
+     * Removes all Items of the specified {@link RemoveTraversable}.
      *
-     * @param traversible
-     *        {@link RemoveTraversible} providing the Items
+     * @param traversable
+     *        {@link RemoveTraversable} providing the Items
      *
      * @param <Item>
-     *        type of the items of {@code traversible}
+     *        type of the items of {@code traversable}
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during one of the remove operations
      */
     // TODO: check declared exceptions
     @SuppressWarnings("OverlyBroadThrowsClause")
-    public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
-    throws InvalidTraversibleStateException {
-        for (final RemoveTraverser<Item> traverser = traversible.createTraverser();
+    public static <Item> void removeAll(final RemoveTraversable<Item> traversable)
+    throws InvalidTraversableStateException {
+        for (final RemoveTraverser<Item> traverser = traversable.createTraverser();
              traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove();
@@ -135,47 +135,47 @@ public final class TraversibleUtility {
     }
 
     /**
-     * Removes all Items of the specified {@link RemoveTraversible}.
+     * Removes all Items of the specified {@link RemoveTraversable}.
      *
-     * @param traversible
-     *        {@link RemoveTraversible} providing the Items
+     * @param traversable
+     *        {@link RemoveTraversable} providing the Items
      *
      * @param <Item>
-     *        type of the items of {@code traversible}
+     *        type of the items of {@code traversable}
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversibleStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during one of the remove operations
      */
     @SafeVarargs
     // TODO: check declared exceptions
     @SuppressWarnings("OverlyBroadThrowsClause")
-    public static <Item> void removeAll(final ObservedRemoveTraversible<Item> traversible,
+    public static <Item> void removeAll(final ObservedRemoveTraversable<Item> traversable,
                                         final ValueObserver<Item>... observers)
-    throws InvalidTraversibleStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = traversible.createTraverser();
+    throws InvalidTraversableStateException {
+        for (final ObservedRemoveTraverser<Item> traverser = traversable.createTraverser();
              traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }
     }
 
-    public static <Item> Iterable<Item> iterable(final Traversible<Item> traversible) {
-        return new TraversibleIterable<>(traversible);
+    public static <Item> Iterable<Item> iterable(final Traversable<Item> traversable) {
+        return new TraversableIterable<>(traversable);
     }
 
-    public static <Item> Iterable<Item> iterable(final RemoveTraversible<Item> traversible) {
-        return new RemoveTraversibleIterable<>(traversible);
+    public static <Item> Iterable<Item> iterable(final RemoveTraversable<Item> traversable) {
+        return new RemoveTraversableIterable<>(traversable);
     }
 
-    public static <Item> Traversible<Item> traversible(final Iterable<Item> iterable) {
-        return new IterableTraversible<>(iterable);
+    public static <Item> Traversable<Item> traversable(final Iterable<Item> iterable) {
+        return new IterableTraversable<>(iterable);
     }
 
-    public static <Item> RemoveTraversible<Item> removeTraversible(final Iterable<Item> iterable) {
-        return new RemoveIterableTraversible<>(iterable);
+    public static <Item> RemoveTraversable<Item> removeTraversable(final Iterable<Item> iterable) {
+        return new RemoveIterableTraversable<>(iterable);
     }
 }

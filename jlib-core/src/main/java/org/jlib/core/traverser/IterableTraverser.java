@@ -38,8 +38,8 @@ implements Traverser<Item> {
     /** delegate {@link Iterator} */
     private final Iterator<Item> delegateIterator;
 
-    /** referenced {@link Traversible} in case of an error */
-    private final Traversible<Item> traversible = new ConstantTraverserTraversible<>(this);
+    /** referenced {@link Traversable} in case of an error */
+    private final Traversable<Item> traversable = new ConstantTraverserTraversable<>(this);
 
     /**
      * Creates a new {@link IterableTraverser} for the specified delegate
@@ -61,7 +61,7 @@ implements Traverser<Item> {
             return delegateIterator.next();
         }
         catch (final NoSuchElementException exception) {
-            throw new NoNextItemException(traversible, exception);
+            throw new NoNextItemException(traversable, exception);
         }
     }
 

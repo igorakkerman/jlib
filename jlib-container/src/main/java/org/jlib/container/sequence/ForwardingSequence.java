@@ -26,8 +26,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.core.language.AutoCloneable;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.Container;
 
@@ -87,13 +87,13 @@ implements Sequence<Item> {
 
     @Override
     public int getItemsCount()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         return delegateSequence.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         return delegateSequence.isEmpty();
     }
 
@@ -109,38 +109,38 @@ implements Sequence<Item> {
 
     @Override
     public boolean contains(final Item item)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return delegateSequence.contains(item);
     }
 
     @Override
     public boolean contains(final Container<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
-    throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return delegateSequence.contains(items);
     }
 
     @Override
     public List<Item> toSequentialList()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         return delegateSequence.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         return delegateSequence.toArray();
     }
 

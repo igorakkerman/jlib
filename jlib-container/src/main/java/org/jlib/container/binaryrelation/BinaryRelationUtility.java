@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.RemoveTraverser;
 
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
@@ -71,7 +71,7 @@ public class BinaryRelationUtility {
     public static <LeftValue, RightValue> /*
                */ void associate(final AddBinaryRelation<LeftValue, RightValue> binaryRelation,
                                  final Pair<LeftValue, RightValue> pair)
-    throws PairAlreadyContainedException, InvalidTraversibleArgumentException {
+    throws PairAlreadyContainedException, InvalidTraversableArgumentException {
 
         if (binaryRelation.contains(pair))
             throw new PairAlreadyContainedException(binaryRelation, pair);

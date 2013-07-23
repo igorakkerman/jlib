@@ -21,22 +21,22 @@
 
 package org.jlib.core.traverser;
 
-/**
- * Object providing a {@link ObservedReplaceTraversible} over its Items.
- *
- * @param <Item>
- *        type of the traversed Items
- *
- * @author Igor Akkerman
- */
-public interface ObservedReplaceTraversible<Item>
-extends ReplaceTraversible<Item> {
+import org.jlib.core.language.AbstractObject;
 
-    /**
-     * Returns a new {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceTraversible}.
-     *
-     * @return newly created {@link ObservedReplaceTraverser}
-     */
+public class IterableTraversable<Item>
+extends AbstractObject
+implements Traversable<Item> {
+
+    private final Iterable<Item> iterable;
+
+    public IterableTraversable(final Iterable<Item> iterable) {
+        super();
+
+        this.iterable = iterable;
+    }
+
     @Override
-    public ObservedReplaceTraverser<Item> createTraverser();
+    public Traverser<Item> createTraverser() {
+        return new IterableTraverser<>(iterable);
+    }
 }

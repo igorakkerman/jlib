@@ -48,8 +48,8 @@ implements TwoWayTraverser<Item> {
     /** length of the array */
     private final int arrayLength;
 
-    /** corresponding {@link ArrayTraversible} */
-    private final ArrayTraversible<Item> traversible;
+    /** corresponding {@link ArrayTraversable} */
+    private final ArrayTraversable<Item> traversable;
 
     /** current index */
     private int currentIndex = 0;
@@ -77,7 +77,7 @@ implements TwoWayTraverser<Item> {
     public ArrayTraverser(final Item[] array, final int initialIndex) {
         this.array = array;
 
-        traversible = new ArrayTraversible<>(array);
+        traversable = new ArrayTraversable<>(array);
 
         arrayLength = array.length;
         currentIndex = initialIndex;
@@ -91,7 +91,7 @@ implements TwoWayTraverser<Item> {
     @Override
     public Item getNextItem() {
         if (! hasNextItem())
-            throw new NoNextItemException(traversible, message(Arrays.toString(array)));
+            throw new NoNextItemException(traversable, message(Arrays.toString(array)));
 
         return array[currentIndex++];
     }
@@ -105,7 +105,7 @@ implements TwoWayTraverser<Item> {
     public Item getPreviousItem()
     throws NoPreviousItemException {
         if (! isPreviousItemAccessible())
-            throw new NoPreviousItemException(traversible, message(Arrays.toString(array)));
+            throw new NoPreviousItemException(traversable, message(Arrays.toString(array)));
 
         return array[-- currentIndex];
     }

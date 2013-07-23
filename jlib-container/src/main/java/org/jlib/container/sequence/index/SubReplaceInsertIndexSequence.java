@@ -25,8 +25,8 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link SubReplaceIndexSequence} view of the Items stored in another
@@ -119,7 +119,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     @Override
     @SuppressWarnings("unchecked")
     public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidSequenceIndexException, InvalidTraversibleArgumentException, InvalidTraversibleStateException {
+    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, item, observers);

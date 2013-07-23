@@ -22,22 +22,19 @@
 package org.jlib.core.traverser;
 
 /**
- * {@link Traversible} providing a {@link ReplaceTraversible} over its Items.
+ * {@link Object} traversable by a {@link Traverser}.
  *
  * @param <Item>
- *        type of the traversed Items
+ *        type of items returned by the {@link Traverser}
  *
  * @author Igor Akkerman
  */
-public interface ReplaceTraversible<Item>
-extends Traversible<Item> {
+public interface Traversable<Item> {
 
     /**
-     * Returns a new {@link ReplaceTraverser} over the Items of this {@link ReplaceTraversible}
-     * .
+     * Returns a new {@link Traverser} over the Items of this {@link Traversable}.
      *
-     * @return newly created {@link ReplaceTraverser}
+     * @return newly createTraverser}
      */
-    @Override
-    public ReplaceTraverser<Item> createTraverser();
+    public Traverser<Item> createTraverser();
 }

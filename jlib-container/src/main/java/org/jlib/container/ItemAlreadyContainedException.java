@@ -23,16 +23,16 @@ package org.jlib.container;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
- * {@link InvalidTraversibleArgumentException} thrown when trying to invalidly add
+ * {@link InvalidTraversableArgumentException} thrown when trying to invalidly add
  * an Item to a {@link Container} that already exists.
  *
  * @author Igor Akkerman
  */
 public class ItemAlreadyContainedException
-extends InvalidTraversibleArgumentException {
+extends InvalidTraversableArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1090527595338576596L;

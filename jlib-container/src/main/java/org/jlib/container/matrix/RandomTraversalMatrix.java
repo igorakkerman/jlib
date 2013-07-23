@@ -65,7 +65,7 @@ extends Matrix<Entry> {
 
     /**
      * <p>
-     * Returns a {@link MatrixTraversible} providing a {@link MatrixTraverser}
+     * Returns a {@link MatrixTraversable} providing a {@link MatrixTraverser}
      * traversing the Items of this {@link Matrix} using the specified
      * {@link MatrixTraversalOrder}.
      * </p>
@@ -81,11 +81,11 @@ extends Matrix<Entry> {
      * @param iterationOrder
      *        {@link MatrixTraversalOrder} used by the returned {@link Iterable}
      *
-     * @return {@link MatrixTraversible} providing a {@link MatrixTraverser}
+     * @return {@link MatrixTraversable} providing a {@link MatrixTraverser}
      *         traversing the Items of this {@link Matrix} using the specified
      *         {@link MatrixTraversalOrder}.
      */
-    public MatrixTraversible<Entry> traversedInOrder(MatrixTraversalOrder iterationOrder);
+    public MatrixTraversable<Entry> traversedInOrder(MatrixTraversalOrder iterationOrder);
 
     /**
      * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}

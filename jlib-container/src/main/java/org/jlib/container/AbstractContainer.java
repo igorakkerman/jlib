@@ -29,11 +29,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import static org.jlib.core.traverser.TraversibleUtility.haveEqualItems;
-
 import org.jlib.core.iterator.IteratorUtility;
 import org.jlib.core.language.AutoCloneable;
-import org.jlib.core.traverser.TraversibleIterator;
+import org.jlib.core.traverser.TraversableIterator;
+
+import static org.jlib.core.traverser.TraversableUtility.haveEqualItems;
 
 /**
  * Skeletal implementation of a {@link Container}. A concrete Container
@@ -203,6 +203,6 @@ implements Container<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return new TraversibleIterator<>(this);
+        return new TraversableIterator<>(this);
     }
 }

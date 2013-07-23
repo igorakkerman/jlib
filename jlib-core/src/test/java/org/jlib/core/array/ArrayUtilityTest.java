@@ -26,7 +26,7 @@ import org.junit.Test;
 public abstract class ArrayUtilityTest {
 
     @Test
-    public void testTraversible()
+    public void testTraversable()
     throws Exception {
 
     }

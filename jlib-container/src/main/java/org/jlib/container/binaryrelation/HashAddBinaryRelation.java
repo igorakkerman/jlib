@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 import org.jlib.container.Container;
 
@@ -121,7 +121,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void addPairs(final Container<? extends Pair<LeftValue, RightValue>> pairs)
-    throws InvalidTraversibleArgumentException {
+    throws InvalidTraversableArgumentException {
         BinaryRelationUtility.add(this, pairs);
     }
 

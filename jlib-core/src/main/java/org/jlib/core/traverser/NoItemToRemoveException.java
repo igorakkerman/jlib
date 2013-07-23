@@ -36,23 +36,23 @@ extends InvalidTraverserStateException {
     /**
      * Creates a new {@link NoItemToRemoveException}.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      */
-    public NoItemToRemoveException(final Traversible<?> traversible) {
-        super(traversible);
+    public NoItemToRemoveException(final Traversable<?> traversable) {
+        super(traversable);
     }
 
     /**
      * Creates a new {@link NoItemToRemoveException} with the specified cause.
      *
-     * @param traversible
-     *        traversed {@link Traversible}
+     * @param traversable
+     *        traversed {@link Traversable}
      *
      * @param cause
      *        {@link Exception} that caused this {@link NoItemToRemoveException}
      */
-    public NoItemToRemoveException(final Traversible<?> traversible, final Exception cause) {
-        super(traversible, cause);
+    public NoItemToRemoveException(final Traversable<?> traversable, final Exception cause) {
+        super(traversable, cause);
     }
 }

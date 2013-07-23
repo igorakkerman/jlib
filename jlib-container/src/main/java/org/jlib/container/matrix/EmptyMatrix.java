@@ -87,7 +87,7 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     }
 
     @Override
-    public final MatrixTraversible<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
+    public final MatrixTraversable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
     }

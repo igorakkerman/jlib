@@ -21,10 +21,10 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.InvalidTraversibleStateException;
-import org.jlib.core.traverser.Traversible;
-import org.jlib.core.traverser.TraversibleUtility;
-import org.jlib.core.traverser.TwoWayTraversible;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.TraversableUtility;
+import org.jlib.core.traverser.TwoWayTraversable;
 import org.jlib.core.value.Accessible;
 import org.jlib.core.value.Initialized;
 
@@ -40,15 +40,15 @@ import org.jlib.core.value.Initialized;
 public class ConcatenatedSequence<Item>
 extends AbstractSequence<Item> {
 
-    /** array of concatenated {@link TwoWayTraversible} items */
-    private TwoWayTraversible<Item>[] traversibles;
+    /** array of concatenated {@link TwoWayTraversable} items */
+    private TwoWayTraversable<Item>[] traversables;
 
     /** total number of {@link Sequence} Items */
     private Accessible<Integer> itemsCountHolder = new Accessible<Integer>() {
 
         @Override
         public Integer getValue() {
-            final int itemsCount = TraversibleUtility.getItemsCount(traversibles);
+            final int itemsCount = TraversableUtility.getItemsCount(traversables);
 
             itemsCountHolder = new Initialized<>(itemsCount);
 
@@ -59,20 +59,20 @@ extends AbstractSequence<Item> {
     /**
      * Creates a new {@link ConcatenatedSequence}.
      *
-     * @param traversibles
-     *        comma separated sequence of concatenated {@link TwoWayTraversible}
+     * @param traversables
+     *        comma separated sequence of concatenated {@link TwoWayTraversable}
      *        items
      */
     @SafeVarargs
-    public ConcatenatedSequence(final TwoWayTraversible<Item>... traversibles) {
+    public ConcatenatedSequence(final TwoWayTraversable<Item>... traversables) {
         super();
 
-        this.traversibles = traversibles;
+        this.traversables = traversables;
     }
 
     @Override
     public final int getItemsCount()
-    throws InvalidTraversibleStateException {
+    throws InvalidTraversableStateException {
         return itemsCountHolder.getValue();
     }
 
@@ -82,12 +82,12 @@ extends AbstractSequence<Item> {
     }
 
     /**
-     * Returns the {@link Traversible} items.
+     * Returns the {@link Traversable} items.
      *
-     * @return array of {@link TwoWayTraversible} instances
+     * @return array of {@link TwoWayTraversable} instances
      */
-    public TwoWayTraversible<Item>[] getTraversibles() {
-        return traversibles;
+    public TwoWayTraversable<Item>[] getTraversables() {
+        return traversables;
     }
 
     @Override
@@ -95,7 +95,7 @@ extends AbstractSequence<Item> {
     public ConcatenatedSequence clone() {
         final ConcatenatedSequence clone = (ConcatenatedSequence) super.clone();
 
-        clone.traversibles = traversibles.clone();
+        clone.traversables = traversables.clone();
 
         return clone;
     }

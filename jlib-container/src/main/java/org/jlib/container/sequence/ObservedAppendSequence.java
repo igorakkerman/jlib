@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.container.Container;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link AppendSequence} to which Items can be appended.
@@ -48,7 +48,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of {@code item} prevents it from being appended,
      *         for instance, if it is already contained
      *
@@ -58,7 +58,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(Item item, ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Container} to this
@@ -71,10 +71,10 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if {@code items}
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -84,7 +84,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(Container<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
      * Appends all Items contained by the specified {@link Collection} to this
@@ -97,7 +97,7 @@ extends AppendSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -107,7 +107,7 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(Collection<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 
     /**
      * Appends all specified Items to this {@link ObservedAppendSequence}.
@@ -118,7 +118,7 @@ extends AppendSequence<Item> {
      * @param items
      *        comma separated sequence of Items to append
      *
-     * @throws InvalidTraversibleArgumentException
+     * @throws InvalidTraversableArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being appended, for instance, if it is already contained
      *
@@ -128,5 +128,5 @@ extends AppendSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void append(ValueObserver<Item>[] observers, Item... items)
-    throws InvalidTraversibleArgumentException;
+    throws InvalidTraversableArgumentException;
 }

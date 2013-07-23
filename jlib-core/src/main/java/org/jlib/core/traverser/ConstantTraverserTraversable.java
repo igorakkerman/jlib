@@ -21,22 +21,34 @@
 
 package org.jlib.core.traverser;
 
-import org.jlib.core.language.AbstractObject;
+/**
+ * {@link Traversable} always providing a constant {@link Traverser}.
+ *
+ * @param <Item>
+ *        type of the Items traversed by the {@link Traverser}
+ *
+ * @author Igor Akkerman
+ */
+public class ConstantTraverserTraversable<Item>
+implements Traversable<Item> {
 
-public class RemoveIterableTraversible<Item>
-extends AbstractObject
-implements RemoveTraversible<Item> {
+    /** returned {@link Traverser}r */
+    private final Traverser<Item> traverser;
 
-    private final Iterable<Item> iterable;
-
-    public RemoveIterableTraversible(final Iterable<Item> iterable) {
+    /**
+     * Creates a new {@link ConstantTraverserTraversable}.
+     *
+     * @param traverser
+     *        constantly returned {@link Traverser}
+     */
+    public ConstantTraverserTraversable(final Traverser<Item> traverser) {
         super();
 
-        this.iterable = iterable;
+        this.traverser = traverser;
     }
 
     @Override
-    public RemoveTraverser<Item> createTraverser() {
-        return new RemoveIterableTraverser<>(iterable);
+    public Traverser<Item> createTraverser() {
+        return traverser;
     }
 }
