@@ -59,7 +59,8 @@ implements RemoveTraverser<Pair<LeftValue, RightValue>> {
     public void remove()
     throws NoItemToRemoveException {
         try {
-            getBinaryRelation().remove(getLastAccessedItem());
+            final Pair<LeftValue, RightValue> lastAccessedItem = getLastAccessedItem();
+//            getBinaryRelation().remove(lastAccessedItem);
 
             unsetLastAccessedItem();
         }

@@ -47,10 +47,10 @@ extends BinaryRelation<LeftValue, RightValue>, RemoveContainer<Pair<LeftValue, R
      * @param rightValue
      *        RightValue of the {@link Pair}
      *
-     * @throws NoSuchPairValueException
+     * @throws NoSuchPairException
      *         if this {@link RemoveBinaryRelation} does not contain the
      *         specified {@link Pair}
      */
     public void remove(LeftValue leftValue, RightValue rightValue)
-    throws NoSuchPairValueException;
+    throws NoSuchPairException;
 }
