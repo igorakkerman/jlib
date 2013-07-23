@@ -21,8 +21,10 @@
 
 package org.jlib.container.collection;
 
+import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.traverser.InvalidTraverserStateException;
+
 import org.jlib.container.Container;
-import org.jlib.core.language.InvalidStateException;
 
 /**
  * {@link InvalidTraversibleArgumentException} thrown when a delegate object
@@ -31,13 +33,10 @@ import org.jlib.core.language.InvalidStateException;
  * @author Igor Akkerman
  */
 public class InvalidContainerDelegateStateException
-extends InvalidStateException {
+extends InvalidTraverserStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;
-
-    /** delegate {@link Object} */
-    private final Object delegate;
 
     /**
      * Creates a new {@link InvalidContainerDelegateStateException}.
@@ -59,19 +58,7 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerDelegateStateException(final Container<?> container, final Object delegate,
-                                                  final String messageTemplate, final Exception cause,
-                                                  final Object... messageArguments) {
-        super(container, messageTemplate, cause, delegate, messageArguments);
-
-        this.delegate = delegate;
-    }
-
-    /**
-     * Returns the delegate.
-     *
-     * @return delegate {@link Object}
-     */
-    public Object getDelegate() {
-        return delegate;
+                                                  final ExceptionMessage message, final Exception cause) {
+        super(container, message.with(delegate), cause);
     }
 }

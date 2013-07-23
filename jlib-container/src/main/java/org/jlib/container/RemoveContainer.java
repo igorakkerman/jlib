@@ -39,7 +39,7 @@ import org.jlib.core.traverser.Traversible;
 public interface RemoveContainer<Item>
 extends RemoveTraversible<Item> {
 
-    public void remove(ItemContext<Item, ? extends RemoveContainer<Item>> itemContext);
+//    public void remove(ItemContext<Item, ? extends RemoveContainer<Item>> itemContext);
     // TODO: throws some constraint exception
 
     /**

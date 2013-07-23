@@ -21,8 +21,17 @@
 
 package org.jlib.container.collection;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+
+import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+import org.jlib.core.traverser.InvalidTraversibleStateException;
+import org.jlib.core.traverser.RemoveIterableTraverser;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.Traversible;
 
 import org.jlib.container.Container;
 import org.jlib.container.ContainerUtility;
@@ -31,13 +40,9 @@ import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.container.RandomAccessRemoveContainer;
 import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
-import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.traverser.InvalidTraversibleArgumentException;
-import org.jlib.core.traverser.InvalidTraversibleStateException;
-import org.jlib.core.traverser.RemoveIterableTraverser;
-import org.jlib.core.traverser.RemoveTraverser;
-import org.jlib.core.traverser.Traversible;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.traverser.TraversibleUtility.iterable;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
@@ -88,12 +93,11 @@ implements RandomAccessRemoveContainer<Item>,
             getDelegateCollection().add(item);
         }
         catch (final InvalidArgumentException exception) {
-            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), item,
-                                                                "{1}: {2} - add({3})", exception);
+            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), message(item),
+                                                                exception);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - add({3})",
-                                                             exception, item);
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), message(item), exception);
         }
     }
 
@@ -120,7 +124,7 @@ implements RandomAccessRemoveContainer<Item>,
         }
         catch (final UnsupportedOperationException exception) {
             throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
-                                                             "{1}: Collections.addAll({2}, {3})", exception, items);
+                                                             message("addAll: {0}", items), exception);
         }
     }
 
@@ -169,12 +173,13 @@ implements RandomAccessRemoveContainer<Item>,
             Collections.addAll(getDelegateCollection(), items);
         }
         catch (final InvalidArgumentException | InvalidStateException exception) {
-            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(), items,
-                                                                "{1}: Collections.addAll({2}, {3})", exception);
+            throw new InvalidContainerDelegateArgumentException(this, getDelegateCollection(),
+                                                                message("addAll: {0}", Arrays.toString(items)),
+                                                                exception);
         }
         catch (final UnsupportedOperationException exception) {
             throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
-                                                             "{1}: Collections.addAll({2}, {3})", exception, items);
+                                                             message("addAll: {0}", items), exception);
         }
     }
 
@@ -188,8 +193,8 @@ implements RandomAccessRemoveContainer<Item>,
                 throw new ItemToRemoveNotContainedException(this, item);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - remove({3})",
-                                                             exception, item);
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
+                                                             message("remove: {0}", item), exception);
         }
     }
 
@@ -200,7 +205,7 @@ implements RandomAccessRemoveContainer<Item>,
             getDelegateCollection().clear();
         }
         catch (final UnsupportedOperationException exception) {
-            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - clear()",
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), message("removeAll"),
                                                              exception);
         }
     }
@@ -212,8 +217,9 @@ implements RandomAccessRemoveContainer<Item>,
             getDelegateCollection().removeAll(items);
         }
         catch (final UnsupportedOperationException exception) {
-            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), "{1}: {2} - removeAll({3})",
-                                                             exception, items);
+            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
+                                                             message("remove: {0}", items),
+                                                             exception);
         }
     }
 
@@ -245,7 +251,7 @@ implements RandomAccessRemoveContainer<Item>,
     @Override
     public void retain(final Traversible<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
-        ContainerUtility.retain(this, items);
+        ContainerUtility.retain(this, iterable(items));
     }
 
     @Override

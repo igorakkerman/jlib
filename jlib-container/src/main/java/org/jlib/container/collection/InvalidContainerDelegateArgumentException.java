@@ -21,8 +21,10 @@
 
 package org.jlib.container.collection;
 
-import org.jlib.container.Container;
+import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversibleArgumentException;
+
+import org.jlib.container.Container;
 
 /**
  * {@link InvalidTraversibleArgumentException} thrown when an argument caused an
@@ -35,9 +37,6 @@ extends InvalidTraversibleArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;
-
-    /** delegate {@link Object} */
-    private final Object delegate;
 
     /**
      * Creates a new {@link InvalidContainerDelegateArgumentException}.
@@ -62,19 +61,7 @@ extends InvalidTraversibleArgumentException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerDelegateArgumentException(final Container<?> container, final Object delegate,
-                                                     final Object argument, final String messageTemplate,
-                                                     final Exception cause, final Object... messageArguments) {
-        super(container, messageTemplate, cause, delegate, argument, messageArguments);
-
-        this.delegate = delegate;
-    }
-
-    /**
-     * Returns the delegate.
-     *
-     * @return delegate {@link Object}
-     */
-    public Object getDelegate() {
-        return delegate;
+                                                     ExceptionMessage message, final Exception cause) {
+        super(container, message.with(delegate), cause);
     }
 }

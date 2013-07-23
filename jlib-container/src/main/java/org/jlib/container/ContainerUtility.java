@@ -24,10 +24,6 @@ package org.jlib.container;
 import java.util.Collection;
 import java.util.Set;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import static org.jlib.container.collection.CollectionUtility.toSet;
-
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
@@ -43,6 +39,8 @@ import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversible;
 
 import static java.util.Arrays.asList;
+import static org.jlib.container.collection.CollectionUtility.toSet;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * Utility class providing methods operating on {@link Container} instances.
@@ -253,8 +251,7 @@ public final class ContainerUtility {
      *        {@link Iterable} providing the Items to retain
      *
      * @throws InvalidTraversibleArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
+     *         if the operation cannot be completed due to some property of one {@link Item} in {@code items}
      *
      * @throws InvalidTraversibleStateException
      *         if an error occurs during the operation
