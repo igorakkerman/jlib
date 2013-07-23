@@ -33,7 +33,7 @@ import org.jlib.core.traverser.ReplaceTraverser;
  *
  * @author Igor Akkerman
  */
-public class EmptyMatrixTraverser<Entry>
+public final class EmptyMatrixTraverser<Entry>
 implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
 
     /** sole {@link EmptyMatrixTraverser} instance */

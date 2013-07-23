@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import java.util.RandomAccess;
 
-import org.jlib.container.EmptyContainer;
+import org.jlib.container.InitiallyEmptyContainer;
 import org.jlib.container.ReplaceContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
@@ -37,8 +37,8 @@ import org.jlib.container.sequence.index.IndexSequence;
  * @param <Entry>
  *        type of entries of the {@link Matrix}
  */
-public class EmptyMatrix<Entry>
-extends EmptyContainer<Entry>
+public final class EmptyMatrix<Entry>
+extends InitiallyEmptyContainer<Entry>
 implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
 
     /** sole {@link EmptyMatrix} instance */
@@ -57,7 +57,7 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
     /**
      * Creates a new {@link EmptyMatrix}.
      */
-    protected EmptyMatrix() {
+    private EmptyMatrix() {
         super();
     }
 

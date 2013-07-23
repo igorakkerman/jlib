@@ -21,15 +21,10 @@
 
 package org.jlib.container;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.io.Serializable;
 
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.Traverser;
 
 /**
  * Empty {@link Sequence}.
@@ -39,8 +34,12 @@ import org.jlib.core.traverser.Traverser;
  *
  * @author Igor Akkerman
  */
-public class EmptyContainer<Item>
-implements Container<Item> {
+public final class EmptyContainer<Item>
+extends InitiallyEmptyContainer<Item>
+implements Container<Item>,
+           Serializable {
+
+    private static final long serialVersionUID = 8790659392867781894L;
 
     /** sole instance of this class */
     private static final EmptyContainer<?> INSTANCE = new EmptyContainer<>();
@@ -62,80 +61,18 @@ implements Container<Item> {
     /**
      * Creates a new {@link EmptyContainer}.
      */
-    protected EmptyContainer() {
+    private EmptyContainer() {
         super();
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
-        return EmptyContainerTraverser.getInstance();
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+    public boolean equals(final Object otherObject) {
+        return otherObject == this;
     }
 
     @Override
-    public final int getItemsCount() {
-        return 0;
-    }
-
-    @Override
-    public final boolean isEmpty() {
-        return true;
-    }
-
-    @Override
-    public final boolean contains(final Item item) {
-        return false;
-    }
-
-    @Override
-    public final boolean contains(final Container<? extends Item> items) {
-        return false;
-    }
-
-    @Override
-    public final boolean contains(final Collection<? extends Item> items) {
-        return false;
-    }
-
-    @Override
-    @SafeVarargs
-    public final boolean contains(final Item... items) {
-        return false;
-    }
-
-    @Override
-    public List<Item> toList() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<Item> toSequentialList() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public final Item[] toArray() {
-        return ArrayUtility.getEmptyArray();
-    }
-
-    @Override
-    public Iterator<Item> iterator() {
-        return Collections.emptyIterator();
-    }
-
-    // equals/hashCode don't need to be extended as Object.equals already checks for identity
-
-    @Override
-    public boolean containsEqualItems(final Container<Item> otherContainer) {
-        return otherContainer.isEmpty();
-    }
-
-    @Override
-    public boolean containsEqualItems(final Collection<Item> collection) {
-        return collection.isEmpty();
-    }
-
-    @Override
-    public EmptyContainer<Item> clone() {
-        return this;
+    public int hashCode() {
+        return System.identityHashCode(this);
     }
 }

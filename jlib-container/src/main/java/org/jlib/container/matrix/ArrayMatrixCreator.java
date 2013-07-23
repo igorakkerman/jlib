@@ -29,7 +29,7 @@ package org.jlib.container.matrix;
  *
  * @author Igor Akkerman
  */
-public class ArrayMatrixCreator<Entry>
+public final class ArrayMatrixCreator<Entry>
 extends IndexMatrixCreator<ArrayMatrix<Entry>, Entry> {
 
     /** sole {@link ArrayMatrixCreator} instance */

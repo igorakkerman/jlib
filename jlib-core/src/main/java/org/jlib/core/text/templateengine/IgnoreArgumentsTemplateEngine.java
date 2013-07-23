@@ -21,7 +21,7 @@
 
 package org.jlib.core.text.templateengine;
 
-public class IgnoreArgumentsTemplateEngine
+public final class IgnoreArgumentsTemplateEngine
 extends AbstractTemplateEngine {
 
     /** sole {@link IgnoreArgumentsTemplateEngine} instance */

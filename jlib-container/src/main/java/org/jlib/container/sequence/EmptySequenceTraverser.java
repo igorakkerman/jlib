@@ -39,7 +39,7 @@ import org.jlib.container.sequence.index.IndexSequenceTraverser;
  *
  * @author Igor Akkerman
  */
-public class EmptySequenceTraverser<Item>
+public final class EmptySequenceTraverser<Item>
 extends AbstractSequenceTraverser<Item, InitiallyEmptySequence<Item>>
 implements ObservedRemoveTraverser<Item>,
            ObservedReplaceTraverser<Item>,

@@ -36,7 +36,7 @@ import org.jlib.core.traverser.TwoWayTraverser;
  *
  * @author Igor Akkerman
  */
-public class EmptyContainerTraverser<Item>
+public final class EmptyContainerTraverser<Item>
 implements TwoWayTraverser<Item> {
 
     /** sole {@link EmptyContainerTraverser} instance */
