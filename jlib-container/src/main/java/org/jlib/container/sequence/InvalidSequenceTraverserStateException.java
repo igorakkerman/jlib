@@ -42,7 +42,7 @@ extends InvalidTraverserStateException {
      *        referenced {@link Sequence}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence) {
+    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence) {
         super(sequence);
     }
 
@@ -56,8 +56,8 @@ extends InvalidTraverserStateException {
      * @param message
      *        the {@link ExceptionMessage}
      */
-    public InvalidSequenceTraverserStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
-                                                  final ExceptionMessage message) {
+    protected InvalidSequenceTraverserStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
+                                                     final ExceptionMessage message) {
         super(sequence, message);
     }
 
@@ -71,7 +71,7 @@ extends InvalidTraverserStateException {
      *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Exception cause) {
+    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
     }
 
@@ -88,8 +88,8 @@ extends InvalidTraverserStateException {
      *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public InvalidSequenceTraverserStateException(final Sequence<?> sequence, final ExceptionMessage message,
-                                                  final Exception cause) {
+    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence, final ExceptionMessage message,
+                                                     final Exception cause) {
         super(sequence, message, cause);
     }
 }

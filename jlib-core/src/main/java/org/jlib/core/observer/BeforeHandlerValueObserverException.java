@@ -44,8 +44,8 @@ extends ValueObserverException {
      * @param cause
      *        {@link Exception} that caused this {@link BeforeHandlerValueObserverException}
      */
-    public BeforeHandlerValueObserverException(final Object value, final ExceptionMessage message,
-                                               final Exception cause) {
+    protected BeforeHandlerValueObserverException(final Object value, final ExceptionMessage message,
+                                                  final Exception cause) {
         super(value, message, cause);
     }
 }

@@ -40,37 +40,37 @@ extends AbstractInitializeableIndexSequence<Item> {
     private CapacityStrategy capacityStrategy;
 
     @SafeVarargs
-    public LinearIndexStorageSequence(final int firstIndex, final Item... items) {
+    protected LinearIndexStorageSequence(final int firstIndex, final Item... items) {
         super(firstIndex, items);
     }
 
     @SafeVarargs
-    public LinearIndexStorageSequence(final Item... items) {
+    protected LinearIndexStorageSequence(final Item... items) {
         super(items);
     }
 
-    public LinearIndexStorageSequence(final int firstIndex, final int lastIndex)
+    protected LinearIndexStorageSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexException {
         super(firstIndex, lastIndex);
     }
 
-    public LinearIndexStorageSequence(final Container<? extends Item> items) {
+    protected LinearIndexStorageSequence(final Container<? extends Item> items) {
         super(items);
     }
 
-    public LinearIndexStorageSequence(final Collection<? extends Item> items) {
+    protected LinearIndexStorageSequence(final Collection<? extends Item> items) {
         super(items);
     }
 
-    public LinearIndexStorageSequence(final int firstIndex, final Container<? extends Item> items) {
+    protected LinearIndexStorageSequence(final int firstIndex, final Container<? extends Item> items) {
         super(firstIndex, items);
     }
 
-    public LinearIndexStorageSequence(final int firstIndex, final Collection<? extends Item> items) {
+    protected LinearIndexStorageSequence(final int firstIndex, final Collection<? extends Item> items) {
         super(firstIndex, items);
     }
 
-    public LinearIndexStorageSequence(final int itemsCount)
+    protected LinearIndexStorageSequence(final int itemsCount)
     throws InvalidSequenceItemsCountException {
         super(itemsCount);
     }

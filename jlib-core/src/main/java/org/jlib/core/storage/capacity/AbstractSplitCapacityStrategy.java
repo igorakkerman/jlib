@@ -29,8 +29,8 @@ public abstract class AbstractSplitCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
 implements SplitCapacityStrategy {
 
-    public AbstractSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                         final ContentIndexRegistry contentIndexRegistry) {
+    protected AbstractSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                            final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 

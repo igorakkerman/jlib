@@ -35,11 +35,11 @@ extends InvalidTraversibleStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 1706750148627927636L;
 
-    public InvalidTraverserStateException(final Traversible<?> traversible) {
+    protected InvalidTraverserStateException(final Traversible<?> traversible) {
         super(traversible);
     }
 
-    public InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message) {
+    protected InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message) {
         super(traversible, message);
     }
 
@@ -53,12 +53,12 @@ extends InvalidTraversibleStateException {
      *        {@link Exception} that caused this
      *        {@link InvalidTraversibleStateException}
      */
-    public InvalidTraverserStateException(final Traversible<?> traversible, final Exception cause) {
+    protected InvalidTraverserStateException(final Traversible<?> traversible, final Exception cause) {
         super(traversible, cause);
     }
 
-    public InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message,
-                                          final Exception cause) {
+    protected InvalidTraverserStateException(final Traversible<?> traversible, final ExceptionMessage message,
+                                             final Exception cause) {
         super(traversible, message, cause);
     }
 }

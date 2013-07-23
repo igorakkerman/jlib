@@ -35,7 +35,7 @@ extends AbstractSequence<Item> {
     /**
      * Creates a new {@link AbstractNonEmptySequence}.
      */
-    public AbstractNonEmptySequence() {
+    protected AbstractNonEmptySequence() {
         super();
     }
 

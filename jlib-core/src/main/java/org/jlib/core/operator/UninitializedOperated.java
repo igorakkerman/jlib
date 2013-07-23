@@ -39,7 +39,7 @@ implements OperatedValue<Value> {
     /**
      * Creates a new {@link UninitializedOperated}.
      */
-    public UninitializedOperated() {
+    protected UninitializedOperated() {
         super();
     }
 

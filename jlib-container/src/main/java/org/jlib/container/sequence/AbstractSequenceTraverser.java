@@ -44,7 +44,7 @@ implements SequenceTraverser<Item> {
      * @param sequence
      *        traversed {@link Sequence}
      */
-    public AbstractSequenceTraverser(final Sequenze sequence) {
+    protected AbstractSequenceTraverser(final Sequenze sequence) {
         super();
 
         this.sequence = sequence;

@@ -37,7 +37,7 @@ public abstract class BinaryRelationException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      */
-    public BinaryRelationException(final BinaryRelation<?, ?> binaryRelation) {
+    protected BinaryRelationException(final BinaryRelation<?, ?> binaryRelation) {
         super();
 
         this.binaryRelation = binaryRelation;

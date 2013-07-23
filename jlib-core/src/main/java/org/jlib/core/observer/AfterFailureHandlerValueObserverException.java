@@ -54,8 +54,8 @@ extends ValueObserverException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public AfterFailureHandlerValueObserverException(final Object value, final ExceptionMessage message,
-                                                     final Exception cause) {
+    protected AfterFailureHandlerValueObserverException(final Object value, final ExceptionMessage message,
+                                                        final Exception cause) {
         super(value, message, cause);
     }
 }

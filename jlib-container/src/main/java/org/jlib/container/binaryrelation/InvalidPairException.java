@@ -44,7 +44,7 @@ extends InvalidTraversibleArgumentException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      */
-    public <LeftValue, RightValue> /*
+    protected <LeftValue, RightValue> /*
         */ InvalidPairException(@SuppressWarnings("TypeMayBeWeakened")  /*
                              */ final BinaryRelation<LeftValue, RightValue> binaryRelation,
                                 final Pair<LeftValue, RightValue> pair) {
@@ -58,7 +58,7 @@ extends InvalidTraversibleArgumentException {
      *        referenced {@link BinaryRelation}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public <LeftValue, RightValue> /*
+    protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
                                 Pair<LeftValue, RightValue> pair, final ExceptionMessage message) {
 
@@ -76,10 +76,9 @@ extends InvalidTraversibleArgumentException {
      *        {@link InvalidBinaryRelationArgumentException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public <LeftValue, RightValue> /*
+    protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
-                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message,
-                                final Exception cause) {
+                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message, final Exception cause) {
 
         super(binaryRelation, message.with(pair), cause);
     }

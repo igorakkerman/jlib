@@ -60,7 +60,7 @@ implements IndexSequence<Item> {
      * @throws InvalidSequenceIndexException
      *         if {@code lastIndex < firstIndex}
      */
-    public AbstractIndexSequence(final int firstIndex, final int lastIndex)
+    protected AbstractIndexSequence(final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexException {
         super();
 

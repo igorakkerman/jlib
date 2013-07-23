@@ -71,7 +71,8 @@ implements IndexMatrix<Entry> {
      * @param lastRowIndex
      *        integer specifying the index of the last row
      */
-    public AbstractIndexMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex, final int lastRowIndex) {
+    protected AbstractIndexMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex,
+                                  final int lastRowIndex) {
         super();
 
         this.firstColumnIndex = firstColumnIndex;

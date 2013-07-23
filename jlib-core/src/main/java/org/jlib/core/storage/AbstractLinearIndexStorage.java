@@ -36,7 +36,7 @@ implements LinearIndexStorage<Item> {
      * @param initialCapacity
      *        integer specifying the initial capacity
      */
-    public AbstractLinearIndexStorage(final int initialCapacity)
+    protected AbstractLinearIndexStorage(final int initialCapacity)
     throws InvalidCapacityException {
         super();
 

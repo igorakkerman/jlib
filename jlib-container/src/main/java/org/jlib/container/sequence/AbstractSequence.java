@@ -38,7 +38,7 @@ implements Sequence<Item> {
     /**
      * Creates a new {@link AbstractSequence}.
      */
-    public AbstractSequence() {
+    protected AbstractSequence() {
         super();
     }
 }

@@ -42,7 +42,7 @@ implements MatrixTraverser<Entry> {
      * @param matrix
      *        {@link Matrix} to traverse
      */
-    public AbstractMatrixTraverser(final Matrix<Entry> matrix) {
+    protected AbstractMatrixTraverser(final Matrix<Entry> matrix) {
         this.matrix = matrix;
     }
 

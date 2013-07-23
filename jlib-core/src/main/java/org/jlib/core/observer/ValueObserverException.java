@@ -43,7 +43,7 @@ extends ObserverException {
      * @param cause
      *        {@link Exception} that caused this {@link ValueObserverException}
      */
-    public ValueObserverException(final Object value, final ExceptionMessage message, final Exception cause) {
+    protected ValueObserverException(final Object value, final ExceptionMessage message, final Exception cause) {
 
         super(message.with(value), cause);
     }

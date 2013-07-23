@@ -47,7 +47,8 @@ extends AbstractIndexMatrix<Entry> {
      * @param lastRowIndex
      *        integer specifying the index of the last row
      */
-    public InitializeableIndexMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex, final int lastRowIndex) {
+    protected InitializeableIndexMatrix(final int firstColumnIndex, final int firstRowIndex, final int lastColumnIndex,
+                                        final int lastRowIndex) {
 
         super(firstColumnIndex, firstRowIndex, lastColumnIndex, lastRowIndex);
     }

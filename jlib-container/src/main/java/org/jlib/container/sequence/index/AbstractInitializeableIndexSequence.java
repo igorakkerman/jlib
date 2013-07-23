@@ -115,7 +115,7 @@ extends AbstractIndexSequence<Item> {
      * @param items
      *        {@link Collection} of Items to store
      */
-    public AbstractInitializeableIndexSequence(final Collection<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final Collection<? extends Item> items) {
         this(0, items);
     }
 
@@ -129,7 +129,7 @@ extends AbstractIndexSequence<Item> {
      * @param items
      *        {@link Collection} of Items to store
      */
-    public AbstractInitializeableIndexSequence(final int firstIndex, final Collection<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final int firstIndex, final Collection<? extends Item> items) {
         this(firstIndex, firstIndex + items.size() - 1);
 
         storeItems(items);
@@ -142,7 +142,7 @@ extends AbstractIndexSequence<Item> {
      * @param items
      *        {@link Container} of Items to store
      */
-    public AbstractInitializeableIndexSequence(final Container<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final Container<? extends Item> items) {
         this(0, items);
     }
 
@@ -156,7 +156,7 @@ extends AbstractIndexSequence<Item> {
      * @param items
      *        {@link Container} of Items to store
      */
-    public AbstractInitializeableIndexSequence(final int firstIndex, final Container<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final int firstIndex, final Container<? extends Item> items) {
         this(firstIndex, firstIndex + items.getItemsCount() - 1);
 
         storeItems(items);

@@ -30,8 +30,8 @@ public abstract class AbstractHeadOrTailCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
 implements HeadOrTailCapacityStrategy {
 
-    public AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                              final ContentIndexRegistry contentIndexRegistry) {
+    protected AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
+                                                 final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);
     }
 

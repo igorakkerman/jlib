@@ -42,7 +42,7 @@ extends InvalidStateException {
      * @param cause
      *        {@link Exception} that caused this {@link ObserverException}
      */
-    public ObserverException(final ExceptionMessage message, final Exception cause) {
+    protected ObserverException(final ExceptionMessage message, final Exception cause) {
         super(message, cause);
     }
 }

@@ -51,7 +51,7 @@ extends ApplicationException {
      * @param valueName
      *        {@link CharSequence} specifying a descriptive name of the Accessor
      */
-    public ValueNotAccessibleException(final CharSequence valueName) {
+    protected ValueNotAccessibleException(final CharSequence valueName) {
         super(message(valueName));
 
         this.valueName = Optional.of(valueName.toString());
