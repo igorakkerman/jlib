@@ -21,9 +21,10 @@
 
 package org.jlib.container;
 
+import org.jlib.core.traverser.ReplaceTraverser;
+
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.ReplaceTraverser;
 
 /**
  * <p>
@@ -44,6 +45,6 @@ import org.jlib.core.traverser.ReplaceTraverser;
 public interface ReplaceContainer<Item>
 extends Container<Item> {
 
-    public void replace(ItemContext<Item, ? extends ReplaceContainer> itemContext);
+//    public void replace(ItemContext<Item, ? extends ReplaceContainer> itemContext);
     // TODO: throws some constraint exception
 }
