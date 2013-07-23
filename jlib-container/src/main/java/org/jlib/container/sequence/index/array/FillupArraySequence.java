@@ -128,7 +128,7 @@ extends ForwardingSequence<Item> {
 
             final ObservedReplaceAppendRemoveSequence<Item> delegateSequence = getDelegateSequence();
 
-            while (traverser.isNextItemAccessible())
+            while (traverser.hasNextItem())
                 delegateSequence.append(traverser.getNextItem(), observers);
         }
 

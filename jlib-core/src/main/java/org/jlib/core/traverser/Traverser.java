@@ -36,7 +36,7 @@ public interface Traverser<Item> {
      *
      * @return {@code true} if there is a next Item; {@code false} otherwise
      */
-    public boolean isNextItemAccessible();
+    public boolean hasNextItem();
 
     /**
      * Returns the next Item traversed by this {@link Traverser}.

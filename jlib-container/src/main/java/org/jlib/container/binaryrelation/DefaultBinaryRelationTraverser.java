@@ -109,7 +109,7 @@ implements Traverser<Pair<LeftValue, RightValue>> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return rightValuesIterator.hasNext() || leftValuesIterator.hasNext();
     }
 

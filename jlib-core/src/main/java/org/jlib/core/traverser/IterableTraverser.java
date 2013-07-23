@@ -66,7 +66,7 @@ implements Traverser<Item> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return delegateIterator.hasNext();
     }
 

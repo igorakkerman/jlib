@@ -152,7 +152,7 @@ implements IndexSequence<Item> {
 
         getNextItemString(stringBuilder, itemsTraverser);
 
-        while (itemsTraverser.isNextItemAccessible()) {
+        while (itemsTraverser.hasNextItem()) {
             stringBuilder.append(", ");
             getNextItemString(stringBuilder, itemsTraverser);
         }

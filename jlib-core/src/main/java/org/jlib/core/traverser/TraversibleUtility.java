@@ -59,11 +59,11 @@ public final class TraversibleUtility {
 
         do {
             // if either traverser has Items accessible and the other traverser is done
-            if (traverser1.isNextItemAccessible() != traverser2.isNextItemAccessible())
+            if (traverser1.hasNextItem() != traverser2.hasNextItem())
                 return false;
 
             // if both traversers are done
-            if (! traverser1.isNextItemAccessible())
+            if (! traverser1.hasNextItem())
                 return true;
         }
         // while the Items returned by both Traversers are equal
@@ -85,7 +85,7 @@ public final class TraversibleUtility {
 
         int itemsCount = 0;
 
-        while (itemsTraverser.isNextItemAccessible()) {
+        while (itemsTraverser.hasNextItem()) {
             itemsTraverser.getNextItem();
 
             itemsCount++;
@@ -128,7 +128,7 @@ public final class TraversibleUtility {
     public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
     throws InvalidTraversibleStateException {
         for (final RemoveTraverser<Item> traverser = traversible.createTraverser();
-             traverser.isNextItemAccessible(); ) {
+             traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove();
         }
@@ -157,7 +157,7 @@ public final class TraversibleUtility {
                                         final ValueObserver<Item>... observers)
     throws InvalidTraversibleStateException {
         for (final ObservedRemoveTraverser<Item> traverser = traversible.createTraverser();
-             traverser.isNextItemAccessible(); ) {
+             traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }

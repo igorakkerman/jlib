@@ -64,7 +64,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
 
         traversiblesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversibles());
 
-        currentTraversibleTraverser = traversiblesTraverser.isNextItemAccessible()
+        currentTraversibleTraverser = traversiblesTraverser.hasNextItem()
                                       ? traversiblesTraverser.getNextItem().createTraverser()
                                       : EmptySequenceTraverser.<Item>getInstance();
     }
@@ -78,7 +78,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
             currentTraversibleTraverser = traversiblesTraverser.getPreviousItem().createTraverser();
 
             // navigate to the tail of the previous Sequence
-            while (currentTraversibleTraverser.isNextItemAccessible())
+            while (currentTraversibleTraverser.hasNextItem())
                 currentTraversibleTraverser.getNextItem();
         }
 
@@ -95,9 +95,9 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
-        while (! currentTraversibleTraverser.isNextItemAccessible()) {
-            if (! traversiblesTraverser.isNextItemAccessible())
+    public boolean hasNextItem() {
+        while (! currentTraversibleTraverser.hasNextItem()) {
+            if (! traversiblesTraverser.hasNextItem())
                 return false;
 
             currentTraversibleTraverser = traversiblesTraverser.getNextItem().createTraverser();
@@ -109,7 +109,7 @@ extends AbstractSequenceTraverser<Item, Sequenze> {
     @Override
     public Item getNextItem()
     throws NoNextSequenceItemException {
-        if (! isNextItemAccessible())
+        if (! hasNextItem())
             throw new NoPreviousSequenceItemException(getSequence());
 
         return currentTraversibleTraverser.getPreviousItem();

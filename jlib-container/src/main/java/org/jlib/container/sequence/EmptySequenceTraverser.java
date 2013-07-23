@@ -75,7 +75,7 @@ implements ObservedRemoveTraverser<Item>,
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return false;
     }
 

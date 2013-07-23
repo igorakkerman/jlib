@@ -69,7 +69,7 @@ extends AbstractMatrixTraverser<Entry> {
 
     @Override
     public boolean hasNextEntity() {
-        return entitiesTraverser.isNextItemAccessible();
+        return entitiesTraverser.hasNextItem();
     }
 
     @Override
@@ -79,13 +79,13 @@ extends AbstractMatrixTraverser<Entry> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
-        return entityTraverser.isNextItemAccessible() || hasNextEntity();
+    public boolean hasNextItem() {
+        return entityTraverser.hasNextItem() || hasNextEntity();
     }
 
     @Override
     public Entry getNextItem() {
-        if (! entityTraverser.isNextItemAccessible())
+        if (! entityTraverser.hasNextItem())
             gotoNextEntity();
 
         return entityTraverser.getNextItem();

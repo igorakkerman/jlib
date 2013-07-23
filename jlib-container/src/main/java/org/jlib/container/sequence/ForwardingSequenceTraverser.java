@@ -77,7 +77,7 @@ implements SequenceTraverser<Item> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
-        return delegateTraverser.isNextItemAccessible();
+    public boolean hasNextItem() {
+        return delegateTraverser.hasNextItem();
     }
 }

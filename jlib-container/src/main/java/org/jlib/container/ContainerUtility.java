@@ -261,7 +261,7 @@ public final class ContainerUtility {
         final Set<Item> retainedItemsSet = toSet(items);
 
         final RemoveTraverser<Item> containerTraverser = traversible.createTraverser();
-        while (containerTraverser.isNextItemAccessible())
+        while (containerTraverser.hasNextItem())
             if (! retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove();
     }
@@ -321,7 +321,7 @@ public final class ContainerUtility {
     public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items)
     throws InvalidTraversibleArgumentException, InvalidTraversibleStateException {
         final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
-        while (itemsTraverser.isNextItemAccessible())
+        while (itemsTraverser.hasNextItem())
             if (! items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
     }
@@ -365,7 +365,7 @@ public final class ContainerUtility {
         for (final ValueObserver<Item> observer : observers)
             containerTraverser.addRemoveObserver(observer);
 
-        while (containerTraverser.isNextItemAccessible())
+        while (containerTraverser.hasNextItem())
             if (! retainedItemsSet.contains(containerTraverser.getNextItem()))
                 containerTraverser.remove(observers);
     }
@@ -454,7 +454,7 @@ public final class ContainerUtility {
         for (final ValueObserver<Item> observer : observers)
             itemsTraverser.addRemoveObserver(observer);
 
-        while (itemsTraverser.isNextItemAccessible())
+        while (itemsTraverser.hasNextItem())
             if (! items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
     }
@@ -473,7 +473,7 @@ public final class ContainerUtility {
      */
     public static <Item> void removeAll(final RemoveTraversible<Item> traversible)
     throws InvalidTraversibleStateException, NoItemToRemoveException, NoNextItemException {
-        for (final RemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.isNextItemAccessible(); ) {
+        for (final RemoveTraverser<Item> traverser = traversible.createTraverser(); traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove();
         }
@@ -500,7 +500,7 @@ public final class ContainerUtility {
                                         final ValueObserver<Item>... observers)
     throws InvalidTraversibleStateException {
         for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser();
-             traverser.isNextItemAccessible(); ) {
+             traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }

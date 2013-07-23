@@ -60,7 +60,7 @@ implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return false;
     }
 

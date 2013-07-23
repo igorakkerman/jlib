@@ -84,13 +84,13 @@ implements TwoWayTraverser<Item> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return currentIndex < arrayLength;
     }
 
     @Override
     public Item getNextItem() {
-        if (! isNextItemAccessible())
+        if (! hasNextItem())
             throw new NoNextItemException(traversible, message(Arrays.toString(array)));
 
         return array[currentIndex++];

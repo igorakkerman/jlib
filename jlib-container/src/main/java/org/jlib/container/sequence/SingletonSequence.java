@@ -54,7 +54,7 @@ extends AbstractNonEmptySequence<Item> {
         }
 
         @Override
-        public boolean isNextItemAccessible() {
+        public boolean hasNextItem() {
             return true;
         }
 
@@ -84,7 +84,7 @@ extends AbstractNonEmptySequence<Item> {
         }
 
         @Override
-        public boolean isNextItemAccessible() {
+        public boolean hasNextItem() {
             return false;
         }
 
@@ -120,8 +120,8 @@ extends AbstractNonEmptySequence<Item> {
             }
 
             @Override
-            public boolean isNextItemAccessible() {
-                return currentTraverserState.isNextItemAccessible();
+            public boolean hasNextItem() {
+                return currentTraverserState.hasNextItem();
             }
 
             @Override

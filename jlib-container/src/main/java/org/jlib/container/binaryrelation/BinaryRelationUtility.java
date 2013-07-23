@@ -269,7 +269,7 @@ public class BinaryRelationUtility {
 
         final RemoveTraverser<Pair<LeftValue, RightValue>> binaryRelationTraverser = binaryRelation.createTraverser();
 
-        while (binaryRelationTraverser.isNextItemAccessible())
+        while (binaryRelationTraverser.hasNextItem())
             if (! retainedPairsSet.contains(binaryRelationTraverser.getNextItem()))
                 binaryRelationTraverser.remove();
     }
@@ -295,7 +295,7 @@ public class BinaryRelationUtility {
                                                       final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
         final RemoveTraverser<Pair<LeftValue, RightValue>> pairsTraverser = binaryRelation.createTraverser();
 
-        while (pairsTraverser.isNextItemAccessible())
+        while (pairsTraverser.hasNextItem())
             if (! pairs.contains(pairsTraverser.getNextItem()))
                 pairsTraverser.remove();
     }

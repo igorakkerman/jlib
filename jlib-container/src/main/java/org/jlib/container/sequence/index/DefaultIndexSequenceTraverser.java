@@ -108,7 +108,7 @@ implements IndexSequenceTraverser<Item> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return potentialNextItemIndex <= getSequence().getLastIndex();
     }
 
@@ -176,7 +176,7 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public int getNextItemIndex() {
-        if (! isNextItemAccessible())
+        if (! hasNextItem())
             throw new NoPreviousSequenceItemException(getSequence());
 
         return potentialNextItemIndex;

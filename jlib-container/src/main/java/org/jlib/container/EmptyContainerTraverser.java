@@ -68,7 +68,7 @@ implements TwoWayTraverser<Item> {
     }
 
     @Override
-    public boolean isNextItemAccessible() {
+    public boolean hasNextItem() {
         return false;
     }
 
