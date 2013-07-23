@@ -162,4 +162,20 @@ public final class TraversibleUtility {
             traverser.remove(observers);
         }
     }
+
+    public static <Item> Iterable<Item> iterable(final Traversible<Item> traversible) {
+        return new TraversibleIterable<>(traversible);
+    }
+
+    public static <Item> Iterable<Item> iterable(final RemoveTraversible<Item> traversible) {
+        return new RemoveTraversibleIterable<>(traversible);
+    }
+
+    public static <Item> Traversible<Item> traversible(final Iterable<Item> iterable) {
+        return new IterableTraversible<>(iterable);
+    }
+
+    public static <Item> RemoveTraversible<Item> removeTraversible(final Iterable<Item> iterable) {
+        return new RemoveIterableTraversible<>(iterable);
+    }
 }
