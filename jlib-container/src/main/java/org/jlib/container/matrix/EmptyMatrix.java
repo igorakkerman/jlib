@@ -25,7 +25,7 @@ import java.util.RandomAccess;
 
 import org.jlib.container.EmptyContainer;
 import org.jlib.container.ReplaceContainer;
-import org.jlib.container.sequence.InitiallyEmptySequence;
+import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 
@@ -68,12 +68,12 @@ implements RandomTraversalMatrix<Entry>, ReplaceContainer<Entry>, RandomAccess {
 
     @Override
     public final Sequence<IndexSequence<Entry>> getRows() {
-        return InitiallyEmptySequence.getInstance();
+        return EmptySequence.getInstance();
     }
 
     @Override
     public final Sequence<IndexSequence<Entry>> getColumns() {
-        return InitiallyEmptySequence.getInstance();
+        return EmptySequence.getInstance();
     }
 
     @Override
