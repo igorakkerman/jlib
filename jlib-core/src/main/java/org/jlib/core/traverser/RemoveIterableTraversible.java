@@ -25,7 +25,7 @@ import org.jlib.core.language.AbstractObject;
 
 public class RemoveIterableTraversible<Item>
 extends AbstractObject
-implements Traversible<Item> {
+implements RemoveTraversible<Item> {
 
     private final Iterable<Item> iterable;
 
