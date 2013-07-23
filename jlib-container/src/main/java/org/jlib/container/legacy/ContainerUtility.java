@@ -327,7 +327,7 @@ public final class ContainerUtility {
      */
     public static <Item> void retain(final RemoveContainer<Item> container, final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        final RemoveTraverser<Item> itemsTraverser = container.createTraverser();
+        final RemoveTraverser<Item> itemsTraverser = null; // container.createTraverser();
         while (itemsTraverser.hasNextItem())
             if (! items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
@@ -367,7 +367,7 @@ public final class ContainerUtility {
 
         final Set<Item> retainedItemsSet = toSet(items);
 
-        final ObservedRemoveTraverser<Item> containerTraverser = container.createTraverser();
+        final ObservedRemoveTraverser<Item> containerTraverser = null; // container.createTraverser();
 
         for (final ValueObserver<Item> observer : observers)
             containerTraverser.addRemoveObserver(observer);
@@ -456,7 +456,7 @@ public final class ContainerUtility {
     throws NoItemToRemoveException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            RuntimeException {
 
-        final ObservedRemoveTraverser<Item> itemsTraverser = container.createTraverser();
+        final ObservedRemoveTraverser<Item> itemsTraverser = null; // container.createTraverser();
 
         for (final ValueObserver<Item> observer : observers)
             itemsTraverser.addRemoveObserver(observer);
@@ -506,7 +506,7 @@ public final class ContainerUtility {
     public static <Item> void removeAll(final ObservedRemoveContainer<Item> container,
                                         final ValueObserver<Item>... observers)
     throws InvalidTraversableStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = container.createTraverser();
+        for (final ObservedRemoveTraverser<Item> traverser = null; // container.createTraverser();
              traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);

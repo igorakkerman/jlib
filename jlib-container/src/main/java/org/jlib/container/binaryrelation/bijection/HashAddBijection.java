@@ -22,6 +22,10 @@
 package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
+import java.util.Iterator;
+
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.ReadContainer;
 import org.jlib.container.binaryrelation.InvalidPairException;
@@ -197,5 +201,39 @@ implements AddBijection<LeftValue, RightValue> {
     public void ensureContained(final Pair<LeftValue, RightValue>... pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         BinaryRelationUtility.ensureContained(this, pairs);
+    }
+
+    @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Pair<LeftValue, RightValue>... pairs)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Pair<LeftValue, RightValue>> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Pair<LeftValue, RightValue>> iterator() {
+        return null;
     }
 }

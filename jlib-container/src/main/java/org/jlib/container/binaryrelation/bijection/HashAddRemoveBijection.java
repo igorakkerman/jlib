@@ -23,15 +23,19 @@ package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
 
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.core.traverser.Traversable;
+
 import org.jlib.container.ReadContainer;
-import org.jlib.container.legacy.ContainerUtility;
+import org.jlib.container.binaryrelation.DefaultRemoveBinaryRelationTraverser;
 import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
+import org.jlib.container.binaryrelation.NoSuchPairException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.DefaultRemoveBinaryRelationTraverser;
 import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
-
-import org.jlib.core.traverser.RemoveTraverser;
+import org.jlib.container.legacy.ContainerUtility;
 
 /**
  * {@link HashAddBijection} allowing the removal of {@link Pair}
@@ -141,46 +145,57 @@ implements RemoveBijection<LeftValue, RightValue> {
 
     @Override
     public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchPairValueException {
+    throws NoSuchPairException {
         leftToRightMap.remove(leftValue);
         rightToLeftMap.remove(rightValue);
     }
 
-    @Override
     public void remove(final Pair<LeftValue, RightValue> pair) {
         remove(pair.getLeftValue(), pair.getRightValue());
     }
 
+//    @Override
+//    public void removeAll() {
+//        ContainerUtility.remove(this, this);
+//    }
+//
+//    @Override
+//    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    public void remove(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void remove(final Pair<LeftValue, RightValue>... pairs) {
+//        ContainerUtility.remove(this, pairs);
+//    }
+
     @Override
-    public void removeAll() {
-        ContainerUtility.remove(this, this);
+    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+
     }
 
     @Override
-    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
-        ContainerUtility.remove(this, pairs);
+    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+
     }
 
-    @Override
-    public void remove(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-        ContainerUtility.remove(this, pairs);
-    }
-
-    @Override
-    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-        ContainerUtility.remove(this, pairs);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Pair<LeftValue, RightValue>... pairs) {
-        ContainerUtility.remove(this, pairs);
-    }
-
-    @Override
-    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-        ContainerUtility.retain(this, pairs);
-    }
+//    @Override
+//    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.retain(this, pairs);
+//    }
 
     @Override
     public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {

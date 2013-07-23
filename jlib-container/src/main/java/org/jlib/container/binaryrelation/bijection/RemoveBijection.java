@@ -21,6 +21,7 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
+import org.jlib.container.binaryrelation.NoSuchPairException;
 import org.jlib.container.binaryrelation.RemoveBinaryRelation;
 
 /**
@@ -39,5 +40,5 @@ extends Bijection<LeftValue, RightValue>, RemoveBinaryRelation<LeftValue, RightV
 
     @Override
     public void remove(LeftValue leftValue, RightValue rightValue)
-    throws NoSuchPairValueException;
+    throws NoSuchPairException;
 }
