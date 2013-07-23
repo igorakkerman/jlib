@@ -28,10 +28,10 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 
 /**
- * {@link GetContainer} allowing Items to be removed.
+ * {@link ReadContainer} allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link GetContainer}
+ *        type of items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
@@ -56,10 +56,10 @@ public interface RemoveContainer<Item> {
 
     /**
      * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link GetContainer}.
+     * <em>except</em> the Items contained by the specified {@link ReadContainer}.
      *
      * @param items
-     *        {@link GetContainer} containing the Items to retain
+     *        {@link ReadContainer} containing the Items to retain
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -68,7 +68,7 @@ public interface RemoveContainer<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(GetContainer<? extends Item> items)
+    public void retain(ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**

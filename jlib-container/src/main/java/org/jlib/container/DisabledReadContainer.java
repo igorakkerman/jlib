@@ -22,33 +22,34 @@
 package org.jlib.container;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Iterator;
 
-final class DisabledGetContainer<Item>
-implements GetContainer<Item> {
+import org.jlib.core.traverser.Traverser;
 
-    // FIXME: remove Traversable if it is only present to use the correct Exception
+final class DisabledReadContainer<Item>
+extends AbstractDisabledContainer<Item>
+implements ReadContainer<Item> {
 
-    /** sole {@link DisabledGetContainer} instance */
-    private static final DisabledGetContainer<?> INSTANCE = new DisabledGetContainer<Object>();
+    /** sole {@link DisabledReadContainer} instance */
+    private static final ReadContainer<?> INSTANCE = new DisabledReadContainer<Object>();
 
     /**
-     * Returns the sole {@link DisabledGetContainer} instance.
+     * Returns the sole {@link DisabledReadContainer} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledGetContainer} instance
+     * @return sole {@link DisabledReadContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledGetContainer<Item> getInstance() {
-        return (DisabledGetContainer<Item>) INSTANCE;
+    public static <Item> ReadContainer<Item> getInstance() {
+        return (ReadContainer<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledGetContainer}.
+     * Creates a new {@link DisabledReadContainer}.
      */
-    private DisabledGetContainer() {
+    private DisabledReadContainer() {
         super();
     }
 
@@ -71,7 +72,7 @@ implements GetContainer<Item> {
     }
 
     @Override
-    public boolean contains(final GetContainer<? extends Item> items)
+    public boolean contains(final ReadContainer<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
@@ -90,30 +91,17 @@ implements GetContainer<Item> {
     }
 
     @Override
-    public List<Item> toList()
-    throws ForbiddenCastException {
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public List<Item> toSequentialList()
-    throws ForbiddenCastException {
+    public Iterator<Item> iterator() {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public Item[] toArray()
-    throws ForbiddenCastException {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public boolean containsEqualItems(final GetContainer<Item> otherContainer) {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public boolean containsEqualItems(final Collection<Item> collection) {
+    public Traverser<Item> createTraverser() {
         throw new ForbiddenCastException(this);
     }
 }

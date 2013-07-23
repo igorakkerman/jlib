@@ -26,7 +26,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
  * {@link InvalidTraversableStateException} thrown when trying to remove the sole
- * Item of a {@link GetContainer} that may not be empty.
+ * Item of a {@link ReadContainer} that may not be empty.
  *
  * @author Igor Akkerman
  */

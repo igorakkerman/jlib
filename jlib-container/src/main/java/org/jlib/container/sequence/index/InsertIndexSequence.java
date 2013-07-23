@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -58,9 +58,9 @@ extends IndexSequence<Item> {
      *        integer specifying the index
      *
      * @param items
-     *        {@link GetContainer} holding the Items to insert
+     *        {@link ReadContainer} holding the Items to insert
      */
-    public void insert(int index, GetContainer<? extends Item> items);
+    public void insert(int index, ReadContainer<? extends Item> items);
 
     /**
      * Inserts the specified Items at the specified index of this

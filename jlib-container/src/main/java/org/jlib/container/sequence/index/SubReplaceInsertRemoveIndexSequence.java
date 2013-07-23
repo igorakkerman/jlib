@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
@@ -113,7 +113,7 @@ implements ObservedReplaceIndexSequence<Item>,
     }
 
     @Override
-    public void retain(final GetContainer<? extends Item> items)
+    public void retain(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         ContainerUtility.retain(this, items);
     }
@@ -133,7 +133,7 @@ implements ObservedReplaceIndexSequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }

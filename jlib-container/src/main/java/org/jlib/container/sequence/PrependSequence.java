@@ -23,7 +23,8 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
+
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
@@ -56,7 +57,7 @@ extends Sequence<Item>{
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void prepend(GetContainer<? extends Item> items)
+    public void prepend(ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException;
 
     /**

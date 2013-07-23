@@ -29,10 +29,11 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 final class DisabledObservedDirectRemoveContainer<Item>
+extends AbstractDisabledContainer<Item>
 implements ObservedDirectRemoveContainer<Item> {
 
     /** sole {@link DisabledObservedDirectRemoveContainer} instance */
-    private static final DisabledObservedDirectRemoveContainer<?> INSTANCE = new DisabledObservedDirectRemoveContainer<>();
+    private static final ObservedDirectRemoveContainer<?> INSTANCE = new DisabledObservedDirectRemoveContainer<>();
 
     /**
      * Returns the sole {@link DisabledObservedDirectRemoveContainer} instance.
@@ -40,8 +41,8 @@ implements ObservedDirectRemoveContainer<Item> {
      * @return sole {@link DisabledObservedDirectRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedDirectRemoveContainer<Item> getInstance() {
-        return (DisabledObservedDirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> ObservedDirectRemoveContainer<Item> getInstance() {
+        return (ObservedDirectRemoveContainer<Item>) INSTANCE;
     }
 
     /**
@@ -61,7 +62,7 @@ implements ObservedDirectRemoveContainer<Item> {
 
     @Override
     @SafeVarargs
-    public final void remove(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void remove(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }

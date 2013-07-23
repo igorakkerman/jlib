@@ -21,7 +21,7 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.core.traverser.Traverser;
 
 // @formatter:off
@@ -116,7 +116,7 @@ import org.jlib.core.traverser.Traverser;
  */
 //@formatter:on
 public interface Matrix<Entry>
-extends GetContainer<Entry>, MatrixTraversable<Entry> {
+extends ReadContainer<Entry>, MatrixTraversable<Entry> {
 
     /**
      * Returns the number of columns of this {@link Matrix}.

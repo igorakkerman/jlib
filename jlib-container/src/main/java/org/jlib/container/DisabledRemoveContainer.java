@@ -28,10 +28,11 @@ import org.jlib.core.traverser.Traversable;
 
 
 final class DisabledRemoveContainer<Item>
+extends AbstractDisabledContainer<Item>
 implements RemoveContainer<Item> {
 
     /** sole {@link DisabledRemoveContainer} instance */
-    private static final DisabledRemoveContainer<?> INSTANCE = new DisabledRemoveContainer<>();
+    private static final RemoveContainer<?> INSTANCE = new DisabledRemoveContainer<>();
 
     /**
      * Returns the sole {@link DisabledRemoveContainer} instance.
@@ -39,8 +40,8 @@ implements RemoveContainer<Item> {
      * @return sole {@link DisabledRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveContainer<Item> getInstance() {
-        return (DisabledRemoveContainer<Item>) INSTANCE;
+    public static <Item> RemoveContainer<Item> getInstance() {
+        return (RemoveContainer<Item>) INSTANCE;
     }
 
     /**
@@ -57,7 +58,7 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public void retain(final GetContainer<? extends Item> items)
+    public void retain(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

@@ -19,20 +19,16 @@
  *     limitations under the License.
  */
 
-/**
- * jlib ReadContainer framework introduces a clean and strong typed hierarchy.
- *
- * @author Igor Akkerman
- */
-// TODO: when implemented modification listener model, implement standard listeners like:
-//         boolean listener returning whether an item has been modified
-//         int counting listener returning the number of modified items
-//         List<Item> listener returning the modified/removed items
-
-// TODO: have a look at Guava
-// TODO: add/correct package-info.java for all packages
-
-// TODO: update javadoc for all classes to reflect refactorings
-
 package org.jlib.container;
 
+public class AbstractDisabledContainer<Item> {
+
+    public AbstractDisabledContainer() {
+        super();
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
+}

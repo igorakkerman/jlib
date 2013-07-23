@@ -26,11 +26,11 @@ import java.util.Collection;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 final class DisabledDirectRemoveContainer<Item>
+extends AbstractDisabledContainer<Item>
 implements DirectRemoveContainer<Item> {
-// FIXME: remove Traversable if it is only present to use the correct Exception
 
     /** sole {@link DisabledDirectRemoveContainer} instance */
-    private static final DisabledDirectRemoveContainer<?> INSTANCE = new DisabledDirectRemoveContainer<>();
+    private static final DirectRemoveContainer<?> INSTANCE = new DisabledDirectRemoveContainer<>();
 
     /**
      * Returns the sole {@link DisabledDirectRemoveContainer} instance.
@@ -38,8 +38,8 @@ implements DirectRemoveContainer<Item> {
      * @return sole {@link DisabledDirectRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledDirectRemoveContainer<Item> getInstance() {
-        return (DisabledDirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> DirectRemoveContainer<Item> getInstance() {
+        return (DirectRemoveContainer<Item>) INSTANCE;
     }
 
     /**
@@ -56,7 +56,7 @@ implements DirectRemoveContainer<Item> {
     }
 
     @Override
-    public void remove(final GetContainer<? extends Item> items)
+    public void remove(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

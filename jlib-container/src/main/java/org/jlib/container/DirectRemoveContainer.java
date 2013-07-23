@@ -31,7 +31,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * each specified Item.
  *
  * @param <Item>
- *        type of items held in the {@link GetContainer}
+ *        type of items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
@@ -58,11 +58,11 @@ public interface DirectRemoveContainer<Item> {
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items contained by the specified {@link GetContainer} from this
+     * Removes all Items contained by the specified {@link ReadContainer} from this
      * {@link DirectRemoveContainer}.
      *
      * @param items
-     *        {@link GetContainer} containing the Items to remove
+     *        {@link ReadContainer} containing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -71,7 +71,7 @@ public interface DirectRemoveContainer<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(GetContainer<? extends Item> items)
+    public void remove(ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**

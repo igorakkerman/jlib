@@ -25,10 +25,11 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 final class DisabledObservedRemoveAllContainer<Item>
+extends AbstractDisabledContainer<Item>
 implements ObservedRemoveAllContainer<Item> {
 
     /** sole {@link DisabledObservedRemoveAllContainer} instance */
-    private static final DisabledObservedRemoveAllContainer<?> INSTANCE = new DisabledObservedRemoveAllContainer<>();
+    private static final ObservedRemoveAllContainer<?> INSTANCE = new DisabledObservedRemoveAllContainer<>();
 
     /**
      * Returns the sole {@link DisabledObservedRemoveAllContainer} instance.
@@ -36,8 +37,8 @@ implements ObservedRemoveAllContainer<Item> {
      * @return sole {@link DisabledObservedRemoveAllContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemoveAllContainer<Item> getInstance() {
-        return (DisabledObservedRemoveAllContainer<Item>) INSTANCE;
+    public static <Item> ObservedRemoveAllContainer<Item> getInstance() {
+        return (ObservedRemoveAllContainer<Item>) INSTANCE;
     }
 
     /**

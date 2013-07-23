@@ -34,7 +34,7 @@ import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.Traversable;
 
 import org.jlib.container.DirectRemoveContainer;
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedRemoveContainer;
@@ -51,7 +51,7 @@ import static org.jlib.core.traverser.TraversableUtility.iterable;
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
- *        type of the items held in the {@link GetContainer}
+ *        type of the items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
@@ -134,7 +134,7 @@ implements DirectRemoveContainer<Item>,
      * {@link Collection}.
      *
      * @param items
-     *        {@link GetContainer} of added Items
+     *        {@link ReadContainer} of added Items
      *
      * @throws InvalidContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
@@ -144,7 +144,7 @@ implements DirectRemoveContainer<Item>,
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
-    public void add(final GetContainer<? extends Item> items)
+    public void add(final ReadContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         for (final Item item : items)
             getDelegateCollection().add(item);
@@ -224,7 +224,7 @@ implements DirectRemoveContainer<Item>,
     }
 
     @Override
-    public void remove(final GetContainer<? extends Item> items)
+    public void remove(final ReadContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         CollectionUtility.removeAll(getDelegateCollection(), items);
     }
@@ -255,7 +255,7 @@ implements DirectRemoveContainer<Item>,
     }
 
     @Override
-    public void retain(final GetContainer<? extends Item> items)
+    public void retain(final ReadContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.retain(this, items);
     }

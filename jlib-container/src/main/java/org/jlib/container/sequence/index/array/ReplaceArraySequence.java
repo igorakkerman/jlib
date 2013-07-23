@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
@@ -134,9 +134,9 @@ implements ObservedReplaceIndexSequence<Item> {
      * {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceArraySequence(final GetContainer<? extends Item> items) {
+    public ReplaceArraySequence(final ReadContainer<? extends Item> items) {
         super(items);
     }
 
@@ -148,9 +148,9 @@ implements ObservedReplaceIndexSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
+    public ReplaceArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 

@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
 import org.jlib.container.binaryrelation.Pair;
@@ -52,10 +52,10 @@ implements AddBijection<LeftValue, RightValue> {
 
     /**
      * Creates a new HashAddBijection containing the Pairs contained by
-     * the specified jlib GetContainer.
+     * the specified jlib ReadContainer.
      *
      * @param pairs
-     *        GetContainer of the Pairs to add
+     *        ReadContainer of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
@@ -73,7 +73,7 @@ implements AddBijection<LeftValue, RightValue> {
      *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
-    public HashAddBijection(final GetContainer<Pair<LeftValue, RightValue>> pairs)
+    public HashAddBijection(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super(pairs);
     }
@@ -156,7 +156,7 @@ implements AddBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void addPairs(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    public void addPairs(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         BinaryRelationUtility.add(this, pairs);
     }
@@ -181,7 +181,7 @@ implements AddBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void ensureContained(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    public void ensureContained(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         BinaryRelationUtility.ensureContained(this, pairs);
     }

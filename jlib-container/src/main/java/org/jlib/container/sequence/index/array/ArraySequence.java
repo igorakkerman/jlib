@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
@@ -133,9 +133,9 @@ extends LinearIndexStorageSequence<Item> {
      * containing the specified {@link Item}s.
      *
      * @param items
-     *        {@link GetContainer} of {@link Item}s to store
+     *        {@link ReadContainer} of {@link Item}s to store
      */
-    public ArraySequence(final GetContainer<? extends Item> items) {
+    public ArraySequence(final ReadContainer<? extends Item> items) {
         super(items);
     }
 
@@ -147,9 +147,9 @@ extends LinearIndexStorageSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link GetContainer} of {@link Item}s to store
+     *        {@link ReadContainer} of {@link Item}s to store
      */
-    public ArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
+    public ArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 

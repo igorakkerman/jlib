@@ -24,7 +24,7 @@ package org.jlib.container.collection;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 
 /**
  * {@link InvalidTraversableArgumentException} thrown when an argument caused an
@@ -42,7 +42,7 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link InvalidContainerDelegateArgumentException}.
      *
      * @param container
-     *        referenced {@link GetContainer}
+     *        referenced {@link ReadContainer}
      *
      * @param delegate
      *        delegate {@link Object}
@@ -60,7 +60,7 @@ extends InvalidTraversableArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateArgumentException(final GetContainer<?> container, final Object delegate,
+    public InvalidContainerDelegateArgumentException(final ReadContainer<?> container, final Object delegate,
                                                      ExceptionMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }

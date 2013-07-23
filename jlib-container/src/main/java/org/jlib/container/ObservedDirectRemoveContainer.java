@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link GetContainer}
+ *        type of items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
@@ -70,11 +70,11 @@ public interface ObservedDirectRemoveContainer<Item> {
            ValueObserverException;
 
     /**
-     * Removes all Items contained by the specified {@link GetContainer} from this
+     * Removes all Items contained by the specified {@link ReadContainer} from this
      * {@link ObservedDirectRemoveContainer}.
      *
      * @param items
-     *        {@link GetContainer} containing the Items to remove
+     *        {@link ReadContainer} containing the Items to remove
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -91,7 +91,7 @@ public interface ObservedDirectRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(GetContainer<? extends Item> items, ValueObserver<Item>... observers)
+    public void remove(ReadContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 
     /**

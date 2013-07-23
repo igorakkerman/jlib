@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation.bijection;
 
 import java.util.Collection;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.binaryrelation.InvalidPairException;
 import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
@@ -56,10 +56,10 @@ implements RemoveBijection<LeftValue, RightValue> {
 
     /**
      * Creates a new HashAddBijection containing the Pairs contained by
-     * the specified jlib GetContainer.
+     * the specified jlib ReadContainer.
      *
      * @param pairs
-     *        GetContainer of the Pairs to add
+     *        ReadContainer of the Pairs to add
      *
      * @throws LeftValueAlreadyRelatedException
      *         if the LeftValue of one Item in {@code pairs} is already
@@ -77,7 +77,7 @@ implements RemoveBijection<LeftValue, RightValue> {
      *         if some property of one Item in {@code pairs} prevents it
      *         from being added
      */
-    public HashAddRemoveBijection(final GetContainer<Pair<LeftValue, RightValue>> pairs)
+    public HashAddRemoveBijection(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
     throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
         super(pairs);
     }
@@ -162,7 +162,7 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+    public void remove(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
         ContainerUtility.remove(this, pairs);
     }
 
@@ -178,7 +178,7 @@ implements RemoveBijection<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
         ContainerUtility.retain(this, pairs);
     }
 

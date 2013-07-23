@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.core.traverser.TwoWayTraversable;
 
 /**
@@ -33,7 +33,7 @@ import org.jlib.core.traverser.TwoWayTraversable;
  * @author Igor Akkerman
  */
 public interface Sequence<Item>
-extends GetContainer<Item>,
+extends ReadContainer<Item>,
         TwoWayTraversable<Item> {
 
     /**

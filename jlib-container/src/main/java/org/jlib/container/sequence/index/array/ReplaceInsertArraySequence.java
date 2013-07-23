@@ -27,7 +27,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertIndexSequenceTraverser;
@@ -143,9 +143,9 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      * {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceInsertArraySequence(final GetContainer<? extends Item> items) {
+    public ReplaceInsertArraySequence(final ReadContainer<? extends Item> items) {
         super(items);
     }
 
@@ -157,9 +157,9 @@ implements ObservedReplaceInsertIndexSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceInsertArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
+    public ReplaceInsertArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 
@@ -169,7 +169,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public void insert(final int index, final GetContainer<? extends Item> items) {
+    public void insert(final int index, final ReadContainer<? extends Item> items) {
         insert(index, items, items.getItemsCount());
     }
 
@@ -193,7 +193,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void insert(final int index, final GetContainer<? extends Item> items, final ValueObserver<Item>... observers) {
+    public void insert(final int index, final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers) {
         insert(index, items, items.getItemsCount(), observers);
     }
 

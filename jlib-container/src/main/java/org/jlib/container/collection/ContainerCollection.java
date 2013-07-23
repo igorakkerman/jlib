@@ -25,32 +25,32 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 
 /**
- * Adapter allowing a {@link GetContainer} to be used as a {@link Collection}. A
- * {@link ContainerCollection} is backed by a {@link GetContainer} specified at
+ * Adapter allowing a {@link ReadContainer} to be used as a {@link Collection}. A
+ * {@link ContainerCollection} is backed by a {@link ReadContainer} specified at
  * initialization.
  *
  * @param <Item>
- *        type of the items held in the {@link GetContainer}
+ *        type of the items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
-    /** adapted and backed {@link GetContainer} */
-    private final GetContainer<Item> delegateContainer;
+    /** adapted and backed {@link ReadContainer} */
+    private final ReadContainer<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
-     * {@link GetContainer}.
+     * {@link ReadContainer}.
      *
      * @param delegateContainer
-     *        {@link GetContainer} backing this {@link ContainerCollection}
+     *        {@link ReadContainer} backing this {@link ContainerCollection}
      */
-    public ContainerCollection(final GetContainer<Item> delegateContainer) {
+    public ContainerCollection(final ReadContainer<Item> delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
@@ -94,14 +94,14 @@ extends AbstractCollection<Item> {
     /**
      * <p>
      * Verifies whether the specified {@link Object} is itself an
-     * ContainerCollection and the Containers backed by this GetContainer and the
+     * ContainerCollection and the Containers backed by this ReadContainer and the
      * specified {@link ContainerCollection}, respectively, are equal by their
      * {@code equals} methods.
      * </p>
      *
      * @param otherObject
-     *        Object to which the backed GetContainer is compared
-     * @return {@code true} if the backed GetContainer is equal to
+     *        Object to which the backed ReadContainer is compared
+     * @return {@code true} if the backed ReadContainer is equal to
      *         {@code otherObject}; {@code false} otherwise
      */
     @Override

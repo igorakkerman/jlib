@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.RemoveTraverser;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.ItemToRemoveNotContainedException;
 
 /**
@@ -54,16 +54,16 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link GetContainer}.
+     * {@link Pair} items contained by the specified {@link ReadContainer}.
      *
      * @param pairs
-     *        GetContainer of the Pairs to add
+     *        ReadContainer of the Pairs to add
      *
      * @throws InvalidPairException
      *         if {@code pairs} violate the rules of this
      *         {@link HashAddRemoveBinaryRelation}
      */
-    public HashAddRemoveBinaryRelation(final GetContainer<Pair<LeftValue, RightValue>> pairs)
+    public HashAddRemoveBinaryRelation(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         super(pairs);
     }
@@ -147,7 +147,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void remove(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+    public void remove(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
         BinaryRelationUtility.remove(this, pairs);
     }
 
@@ -163,7 +163,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void retain(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
         BinaryRelationUtility.retain(this, pairs);
     }
 

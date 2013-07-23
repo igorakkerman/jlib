@@ -22,6 +22,7 @@
 package org.jlib.container;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
@@ -30,21 +31,23 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.Traverser;
 
 /**
- * Skeletal implementation of a {@link GetContainer}. A concrete GetContainer
+ * Skeletal implementation of a {@link ReadContainer}. A concrete ReadContainer
  * implementation needs only to extend this class and implement the
- * {@link GetContainer#iterator()} method. Other methods may be overridden for
+ * {@link ReadContainer#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  *
  * @param <Item>
- *        type of items held in the {@link GetContainer}
+ *        type of items held in the {@link ReadContainer}
  *
  * @author Igor Akkerman
  */
 public class GodContainer<Item>
 extends AbstractObject
-implements GetContainer<Item>,
+implements JdkAwareContainer<Item>,
+           ReadContainer<Item>,
            RemoveContainer<Item>,
            DirectRemoveContainer<Item>,
            RemoveAllContainer<Item>,
@@ -52,8 +55,11 @@ implements GetContainer<Item>,
            ObservedDirectRemoveContainer<Item>,
            ObservedRemoveAllContainer<Item> {
 
-    private GetContainer<Item> delegateGetContainer = /*
-     */ DisabledGetContainer.getInstance();
+    private JdkAwareContainer<Item> delegateJdkAwareContainer = /*
+     */ DisabledJdkAwareContainer.getInstance();
+
+    private ReadContainer<Item> delegateReadContainer = /*
+     */ DisabledReadContainer.getInstance();
 
     private RemoveContainer<Item> delegateRemoveContainer = /*
      */ DisabledRemoveContainer.getInstance();
@@ -77,12 +83,12 @@ implements GetContainer<Item>,
         super();
     }
 
-    public GetContainer<Item> getDelegateGetContainer() {
-        return delegateGetContainer;
+    public ReadContainer<Item> getDelegateReadContainer() {
+        return delegateReadContainer;
     }
 
-    public void setDelegateGetContainer(final GetContainer<Item> delegateGetContainer) {
-        this.delegateGetContainer = delegateGetContainer;
+    public void setDelegateReadContainer(final ReadContainer<Item> delegateReadContainer) {
+        this.delegateReadContainer = delegateReadContainer;
     }
 
     public RemoveContainer<Item> getDelegateRemoveContainer() {
@@ -139,66 +145,66 @@ implements GetContainer<Item>,
     @Override
     public int getItemsCount()
     throws InvalidTraversableStateException {
-        return delegateGetContainer.getItemsCount();
+        return delegateReadContainer.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
     throws InvalidTraversableStateException {
-        return delegateGetContainer.isEmpty();
+        return delegateReadContainer.isEmpty();
     }
 
     @Override
     public boolean contains(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateGetContainer.contains(item);
+        return delegateReadContainer.contains(item);
     }
 
     @Override
-    public boolean contains(final GetContainer<? extends Item> items)
+    public boolean contains(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateGetContainer.contains(items);
+        return delegateReadContainer.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateGetContainer.contains(items);
+        return delegateReadContainer.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateGetContainer.contains(items);
+        return delegateReadContainer.contains(items);
     }
 
     @Override
     public List<Item> toList()
     throws InvalidTraversableStateException {
-        return delegateGetContainer.toList();
+        return delegateJdkAwareContainer.toList();
     }
 
     @Override
     public List<Item> toSequentialList()
     throws InvalidTraversableStateException {
-        return delegateGetContainer.toSequentialList();
+        return delegateJdkAwareContainer.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
     throws InvalidTraversableStateException {
-        return delegateGetContainer.toArray();
+        return delegateJdkAwareContainer.toArray();
     }
 
     @Override
-    public boolean containsEqualItems(final GetContainer<Item> otherContainer) {
-        return delegateGetContainer.containsEqualItems(otherContainer);
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return delegateReadContainer.containsEqualItems(otherContainer);
     }
 
     @Override
-    public boolean containsEqualItems(final Collection<Item> collection) {
-        return delegateGetContainer.containsEqualItems(collection);
+    public boolean containsEqualItems(final Iterable<Item> collection) {
+        return delegateJdkAwareContainer.containsEqualItems(collection);
     }
 
     @Override
@@ -218,7 +224,7 @@ implements GetContainer<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         delegateObservedDirectRemoveContainer.remove(items, observers);
     }
@@ -246,7 +252,7 @@ implements GetContainer<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         delegateObservedRemoveContainer.retain(items, observers);
     }
@@ -278,7 +284,7 @@ implements GetContainer<Item>,
     }
 
     @Override
-    public void remove(final GetContainer<? extends Item> items)
+    public void remove(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         delegateDirectRemoveContainer.remove(items);
     }
@@ -309,7 +315,7 @@ implements GetContainer<Item>,
     }
 
     @Override
-    public void retain(final GetContainer<? extends Item> items)
+    public void retain(final ReadContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         delegateRemoveContainer.retain(items);
     }
@@ -325,5 +331,15 @@ implements GetContainer<Item>,
     public void retain(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         delegateRemoveContainer.retain(items);
+    }
+
+    @Override
+    public Traverser<Item> createTraverser() {
+        return delegateReadContainer.createTraverser();
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return delegateReadContainer.iterator();
     }
 }

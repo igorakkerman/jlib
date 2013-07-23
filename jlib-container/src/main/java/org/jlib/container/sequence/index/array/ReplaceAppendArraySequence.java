@@ -27,7 +27,7 @@ import static org.jlib.core.array.ArrayUtility.iterable;
 
 import static org.jlib.container.sequence.SequenceUtility.singleton;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedAppendSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
@@ -138,9 +138,9 @@ implements ObservedAppendSequence<Item> {
      * {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceAppendArraySequence(final GetContainer<? extends Item> items) {
+    public ReplaceAppendArraySequence(final ReadContainer<? extends Item> items) {
         super(items);
     }
 
@@ -152,9 +152,9 @@ implements ObservedAppendSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link GetContainer} of Items to store
+     *        {@link ReadContainer} of Items to store
      */
-    public ReplaceAppendArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
+    public ReplaceAppendArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 
@@ -165,7 +165,7 @@ implements ObservedAppendSequence<Item> {
     }
 
     @Override
-    public void append(final GetContainer<? extends Item> items) {
+    public void append(final ReadContainer<? extends Item> items) {
         // intentionally not using SequenceUtility for efficiency
         append(items, items.getItemsCount());
     }
@@ -192,7 +192,7 @@ implements ObservedAppendSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public final void append(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void append(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException {
         append(items, items.getItemsCount(), observers);
     }
@@ -212,7 +212,7 @@ implements ObservedAppendSequence<Item> {
     }
 
     /**
-     * Appends all Items contained by the specified {@link GetContainer} to this
+     * Appends all Items contained by the specified {@link ReadContainer} to this
      * {@link ObservedAppendSequence}.
      *
      * @param items

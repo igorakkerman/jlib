@@ -28,7 +28,7 @@ import java.util.Observer;
 import static org.jlib.core.array.ArrayUtility.iterable;
 import static org.jlib.core.observer.ObserverUtility.operate;
 
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.AppendSequence;
 import org.jlib.container.sequence.ForwardingSequence;
 import org.jlib.container.sequence.InitiallyEmptySequence;
@@ -84,7 +84,7 @@ extends ForwardingSequence<Item> {
         }
 
         @Override
-        public void append(final GetContainer<? extends Item> items)
+        public void append(final ReadContainer<? extends Item> items)
         throws InvalidTraversableArgumentException {
             setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
         }
@@ -117,7 +117,7 @@ extends ForwardingSequence<Item> {
 
         @SafeVarargs
         @Override
-        public final void append(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+        public final void append(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
         throws InvalidTraversableArgumentException {
             if (items.isEmpty())
                 return;

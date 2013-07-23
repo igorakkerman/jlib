@@ -25,18 +25,18 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.jlib.container.ForwardingContainer;
-import org.jlib.container.GetContainer;
+import org.jlib.container.ReadContainer;
 
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link GetContainer}. A
+ * Adapter allowing a {@link Collection} to be used as a {@link ReadContainer}. A
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
- *        type of items held in the {@link GetContainer}
+ *        type of items held in the {@link ReadContainer}
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>

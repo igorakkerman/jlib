@@ -29,10 +29,11 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 final class DisabledObservedRemoveContainer<Item>
+extends AbstractDisabledContainer<Item>
 implements ObservedRemoveContainer<Item> {
 
     /** sole {@link DisabledObservedRemoveContainer} instance */
-    private static final DisabledObservedRemoveContainer<?> INSTANCE = new DisabledObservedRemoveContainer<>();
+    private static final ObservedRemoveContainer<?> INSTANCE = new DisabledObservedRemoveContainer<>();
 
     /**
      * Returns the sole {@link DisabledObservedRemoveContainer} instance.
@@ -40,8 +41,8 @@ implements ObservedRemoveContainer<Item> {
      * @return sole {@link DisabledObservedRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemoveContainer<Item> getInstance() {
-        return (DisabledObservedRemoveContainer<Item>) INSTANCE;
+    public static <Item> ObservedRemoveContainer<Item> getInstance() {
+        return (ObservedRemoveContainer<Item>) INSTANCE;
     }
 
     /**
@@ -53,7 +54,7 @@ implements ObservedRemoveContainer<Item> {
 
     @Override
     @SafeVarargs
-    public final void retain(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }
