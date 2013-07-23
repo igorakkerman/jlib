@@ -22,15 +22,18 @@
 package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
+import java.util.Iterator;
+
+import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.ReadContainer;
-import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.sequence.index.IndexSequenceTraverser;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.container.sequence.index.linearindexstorage.LinearIndexStorageSequence;
-import org.jlib.core.array.ArrayStorage;
-import org.jlib.core.storage.LinearIndexStorage;
+import org.jlib.container.sequence.index.NoSuchSequenceItemException;
 
 /**
  * {@link IndexSequence} baked by an array.
@@ -41,120 +44,107 @@ import org.jlib.core.storage.LinearIndexStorage;
  * @author Igor Akkerman
  */
 public class ArraySequence<Item>
-extends LinearIndexStorageSequence<Item> {
+implements IndexSequence<Item> {
+    private LinearIndexStorage<Item> delegate;
 
-    /**
-     * Creates a new uninitialized {@link ArraySequence} with the specified
-     * first and last indices.
-     *
-     * @param firstIndex
-     *        integer specifying the initial first index
-     *
-     * @param lastIndex
-     *        integer specifying the initial last index
-     *
-     * @throws InvalidSequenceIndexException
-     *         if {@code lastIndex < firstIndex}
-     */
-    protected ArraySequence(final int firstIndex, final int lastIndex)
+    @Override
+    public Item get(final int index)
     throws InvalidSequenceIndexException {
-        super(firstIndex, lastIndex);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with a first index of {@code 0} and
-     * the specified number of {@link Item}s.
-     *
-     * @param itemsCount
-     *        integer specifying the initial number of {@link Item}s
-     *
-     * @throws InvalidSequenceItemsCountException
-     *         if {@code itemsCount < 1}
-     */
-    public ArraySequence(final int itemsCount)
-    throws InvalidSequenceItemsCountException {
-        super(itemsCount);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified {@link Item}s.
-     *
-     * @param items
-     *        comma separated sequence of {@link Item}s to store
-     */
-    @SafeVarargs
-    public ArraySequence(final Item... items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified {@link Item}s.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        comma separated sequence of {@link Item}s to store
-     */
-    @SafeVarargs
-    public ArraySequence(final int firstIndex, final Item... items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified {@link Item}s.
-     *
-     * @param items
-     *        {@link Collection} of {@link Item}s to store
-     */
-    public ArraySequence(final Collection<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified {@link Item}s.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link Collection} of {@link Item}s to store
-     */
-    public ArraySequence(final int firstIndex, final Collection<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with a first index of {@code 0}
-     * containing the specified {@link Item}s.
-     *
-     * @param items
-     *        {@link ReadContainer} of {@link Item}s to store
-     */
-    public ArraySequence(final ReadContainer<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ArraySequence} with the specified first index
-     * containing the specified {@link Item}s.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link ReadContainer} of {@link Item}s to store
-     */
-    public ArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
-        super(firstIndex, items);
+        return null;
     }
 
     @Override
-    protected LinearIndexStorage<Item> createStorage() {
-        return new ArrayStorage<>();
+    public int getFirstIndex() {
+        return 0;
+    }
+
+    @Override
+    public int getLastIndex() {
+        return 0;
+    }
+
+    @Override
+    public Item getFirstItem() {
+        return null;
+    }
+
+    @Override
+    public Item getLastItem() {
+        return null;
+    }
+
+    @Override
+    public int getItemIndex(final Item item)
+    throws NoSuchSequenceItemException {
+        return 0;
+    }
+
+    @Override
+    public int getLastItemIndex(final Item item)
+    throws NoSuchSequenceItemException {
+        return 0;
+    }
+
+    @Override
+    public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws InvalidSequenceIndexException {
+        return null;
+    }
+
+    @Override
+    public IndexSequenceTraverser<Item> createTraverser() {
+        return null;
+    }
+
+    @Override
+    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    throws InvalidSequenceIndexException {
+        return null;
+    }
+
+    @Override
+    public int getItemsCount()
+    throws InvalidTraversableStateException {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final ReadContainer<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return null;
     }
 }

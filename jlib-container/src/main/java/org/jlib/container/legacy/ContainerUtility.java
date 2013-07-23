@@ -301,7 +301,7 @@ public final class ContainerUtility {
     public static <Item, RetainedItem extends Item> void retain(final RemoveContainer<Item> container,
                                                                 final RetainedItem... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        retain(container, toSet(items));
+//        retain(container, toSet(items));
     }
 
     /**

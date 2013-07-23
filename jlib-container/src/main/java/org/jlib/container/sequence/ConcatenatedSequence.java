@@ -21,13 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableUtility;
-import org.jlib.core.traverser.TwoWayTraversable;
-import org.jlib.core.value.Accessible;
-import org.jlib.core.value.Initialized;
-
 /**
  * {@link Sequence} representing the concatenation of other {@link Sequence}
  * instances.
@@ -38,65 +31,65 @@ import org.jlib.core.value.Initialized;
  * @author Igor Akkerman
  */
 public class ConcatenatedSequence<Item>
-extends AbstractSequence<Item> {
+/*extends AbstractSequence<Item> */{
 
-    /** array of concatenated {@link TwoWayTraversable} items */
-    private TwoWayTraversable<Item>[] traversables;
-
-    /** total number of {@link Sequence} Items */
-    private Accessible<Integer> itemsCountHolder = new Accessible<Integer>() {
-
-        @Override
-        public Integer getValue() {
-            final int itemsCount = TraversableUtility.getItemsCount(traversables);
-
-            itemsCountHolder = new Initialized<>(itemsCount);
-
-            return itemsCount;
-        }
-    };
-
-    /**
-     * Creates a new {@link ConcatenatedSequence}.
-     *
-     * @param traversables
-     *        comma separated sequence of concatenated {@link TwoWayTraversable}
-     *        items
-     */
-    @SafeVarargs
-    public ConcatenatedSequence(final TwoWayTraversable<Item>... traversables) {
-        super();
-
-        this.traversables = traversables;
-    }
-
-    @Override
-    public final int getItemsCount()
-    throws InvalidTraversableStateException {
-        return itemsCountHolder.getValue();
-    }
-
-    @Override
-    public SequenceTraverser<Item> createTraverser() {
-        return new ConcatenatedSequenceTraverser<>(this);
-    }
-
-    /**
-     * Returns the {@link Traversable} items.
-     *
-     * @return array of {@link TwoWayTraversable} instances
-     */
-    public TwoWayTraversable<Item>[] getTraversables() {
-        return traversables;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ConcatenatedSequence clone() {
-        final ConcatenatedSequence clone = (ConcatenatedSequence) super.clone();
-
-        clone.traversables = traversables.clone();
-
-        return clone;
-    }
+//    /** array of concatenated {@link TwoWayTraversable} items */
+//    private TwoWayTraversable<Item>[] traversables;
+//
+//    /** total number of {@link Sequence} Items */
+//    private Accessible<Integer> itemsCountHolder = new Accessible<Integer>() {
+//
+//        @Override
+//        public Integer getValue() {
+//            final int itemsCount = TraversableUtility.getItemsCount(traversables);
+//
+//            itemsCountHolder = new Initialized<>(itemsCount);
+//
+//            return itemsCount;
+//        }
+//    };
+//
+//    /**
+//     * Creates a new {@link ConcatenatedSequence}.
+//     *
+//     * @param traversables
+//     *        comma separated sequence of concatenated {@link TwoWayTraversable}
+//     *        items
+//     */
+//    @SafeVarargs
+//    public ConcatenatedSequence(final TwoWayTraversable<Item>... traversables) {
+//        super();
+//
+//        this.traversables = traversables;
+//    }
+//
+//    @Override
+//    public final int getItemsCount()
+//    throws InvalidTraversableStateException {
+//        return itemsCountHolder.getValue();
+//    }
+//
+//    @Override
+//    public SequenceTraverser<Item> createTraverser() {
+//        return new ConcatenatedSequenceTraverser<>(this);
+//    }
+//
+//    /**
+//     * Returns the {@link Traversable} items.
+//     *
+//     * @return array of {@link TwoWayTraversable} instances
+//     */
+//    public TwoWayTraversable<Item>[] getTraversables() {
+//        return traversables;
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public ConcatenatedSequence clone() {
+//        final ConcatenatedSequence clone = (ConcatenatedSequence) super.clone();
+//
+//        clone.traversables = traversables.clone();
+//
+//        return clone;
+//    }
 }

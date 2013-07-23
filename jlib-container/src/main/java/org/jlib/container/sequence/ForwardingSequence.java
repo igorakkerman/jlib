@@ -102,9 +102,9 @@ implements Sequence<Item> {
         return delegateSequence.containsEqualItems(otherContainer);
     }
 
-    @Override
+//    @Override
     public boolean containsEqualItems(final Iterable<Item> collection) {
-        return delegateSequence.containsEqualItems(collection);
+        return false; // delegateSequence.containsEqualItems(collection);
     }
 
     @Override
@@ -132,21 +132,21 @@ implements Sequence<Item> {
         return delegateSequence.contains(items);
     }
 
-    @Override
+//    @Override
     public List<Item> toSequentialList()
     throws InvalidTraversableStateException {
-        return delegateSequence.toSequentialList();
+        return null; // delegateSequence.toSequentialList();
     }
 
-    @Override
+//    @Override
     public Item[] toArray()
     throws InvalidTraversableStateException {
-        return delegateSequence.toArray();
+        return null; // delegateSequence.toArray();
     }
 
-    @Override
+//    @Override
     public List<Item> toList() {
-        return delegateSequence.toList();
+        return null; // delegateSequence.toList();
     }
 
     @Override

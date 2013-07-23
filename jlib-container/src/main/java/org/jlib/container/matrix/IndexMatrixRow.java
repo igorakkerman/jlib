@@ -79,10 +79,4 @@ extends IndexMatrixEntity<Entry> {
     protected Entry getStoredItem(final int columnIndex) {
         return getMatrixEntry(columnIndex, getEntityIndex());
     }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public IndexMatrixRow clone() {
-        return (IndexMatrixRow) super.clone();
-    }
 }

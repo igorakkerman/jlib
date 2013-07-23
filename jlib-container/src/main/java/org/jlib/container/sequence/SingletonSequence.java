@@ -21,6 +21,14 @@
 
 package org.jlib.container.sequence;
 
+import java.util.Collection;
+import java.util.Iterator;
+
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.ReadContainer;
+
 /**
  * Sequence containing exactly one Item.
  *
@@ -135,5 +143,39 @@ extends AbstractNonEmptySequence<Item> {
     @Override
     public int getItemsCount() {
         return 1;
+    }
+
+    @Override
+    public boolean contains(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final ReadContainer<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return null;
     }
 }

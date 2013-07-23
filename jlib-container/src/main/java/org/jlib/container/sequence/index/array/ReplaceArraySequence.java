@@ -21,16 +21,7 @@
 
 package org.jlib.container.sequence.index.array;
 
-import java.util.Collection;
-
-import org.jlib.container.ReadContainer;
-import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.DefaultReplaceIndexSequenceTraverser;
-import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.container.sequence.index.ObservedReplaceIndexSequence;
-import org.jlib.container.sequence.index.SubReplaceIndexSequence;
-import org.jlib.core.observer.ValueObserver;
 
 /**
  * {@link ArraySequence} allowing its Items to be replaced.
@@ -41,149 +32,149 @@ import org.jlib.core.observer.ValueObserver;
  * @author Igor Akkerman
  */
 public class ReplaceArraySequence<Item>
-extends ArraySequence<Item>
-implements ObservedReplaceIndexSequence<Item> {
+/*extends ArraySequence<Item>
+implements ObservedReplaceIndexSequence<Item> */{
 
-    /**
-     * Creates a new uninitialized {@link ReplaceArraySequence} with the
-     * specified first and last indices.
-     *
-     * @param firstIndex
-     *        integer specifying the initial first index
-     *
-     * @param lastIndex
-     *        integer specifying the initial last index
-     *
-     * @throws InvalidSequenceIndexException
-     *         if {@code lastIndex < firstIndex}
-     */
-    protected ReplaceArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException {
-        super(firstIndex, lastIndex);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with a first index of
-     * {@code 0} and the specified number of Items.
-     *
-     * @param itemsCount
-     *        integer specifying the initial number of Items
-     *
-     * @throws InvalidSequenceItemsCountException
-     *         if {@code itemsCount < 1}
-     */
-    protected ReplaceArraySequence(final int itemsCount)
-    throws InvalidSequenceItemsCountException {
-        super(itemsCount);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    public ReplaceArraySequence(final Item... items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with the specified first index
-     * containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    public ReplaceArraySequence(final int firstIndex, final Item... items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        {@link Collection} of Items to store
-     */
-    public ReplaceArraySequence(final Collection<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with the specified first index
-     * containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link Collection} of Items to store
-     */
-    public ReplaceArraySequence(final int firstIndex, final Collection<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        {@link ReadContainer} of Items to store
-     */
-    public ReplaceArraySequence(final ReadContainer<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceArraySequence} with the specified first index
-     * containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link ReadContainer} of Items to store
-     */
-    public ReplaceArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    @Override
-    // raising visibility from protected to public
-    public void replace(final int index, final Item newItem)
-    throws InvalidSequenceIndexException {
-        super.replace(index, newItem);
-    }
-
-    @Override
-    @SafeVarargs
-    // raising visibility from protected to public
-    public final void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-    throws InvalidSequenceIndexException {
-        super.replace(index, newItem, observers);
-    }
-
-    @Override
-    public ObservedReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
-        return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
-    }
-
-    @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
-    throws InvalidSequenceIndexException {
-        return new DefaultReplaceIndexSequenceTraverser<>(this);
-    }
-
-    @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
-    throws InvalidSequenceIndexException {
-        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
-    }
+//    /**
+//     * Creates a new uninitialized {@link ReplaceArraySequence} with the
+//     * specified first and last indices.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the initial first index
+//     *
+//     * @param lastIndex
+//     *        integer specifying the initial last index
+//     *
+//     * @throws InvalidSequenceIndexException
+//     *         if {@code lastIndex < firstIndex}
+//     */
+//    protected ReplaceArraySequence(final int firstIndex, final int lastIndex)
+//    throws InvalidSequenceIndexException {
+//        super(firstIndex, lastIndex);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with a first index of
+//     * {@code 0} and the specified number of Items.
+//     *
+//     * @param itemsCount
+//     *        integer specifying the initial number of Items
+//     *
+//     * @throws InvalidSequenceItemsCountException
+//     *         if {@code itemsCount < 1}
+//     */
+//    protected ReplaceArraySequence(final int itemsCount)
+//    throws InvalidSequenceItemsCountException {
+//        super(itemsCount);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        comma separated sequence of Items to store
+//     */
+//    @SafeVarargs
+//    public ReplaceArraySequence(final Item... items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with the specified first index
+//     * containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        comma separated sequence of Items to store
+//     */
+//    @SafeVarargs
+//    public ReplaceArraySequence(final int firstIndex, final Item... items) {
+//        super(firstIndex, items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        {@link Collection} of Items to store
+//     */
+//    public ReplaceArraySequence(final Collection<? extends Item> items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with the specified first index
+//     * containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        {@link Collection} of Items to store
+//     */
+//    public ReplaceArraySequence(final int firstIndex, final Collection<? extends Item> items) {
+//        super(firstIndex, items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        {@link ReadContainer} of Items to store
+//     */
+//    public ReplaceArraySequence(final ReadContainer<? extends Item> items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceArraySequence} with the specified first index
+//     * containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        {@link ReadContainer} of Items to store
+//     */
+//    public ReplaceArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
+//        super(firstIndex, items);
+//    }
+//
+//    @Override
+//    // raising visibility from protected to public
+//    public void replace(final int index, final Item newItem)
+//    throws InvalidSequenceIndexException {
+//        super.replace(index, newItem);
+//    }
+//
+//    @Override
+//    @SafeVarargs
+//    // raising visibility from protected to public
+//    public final void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
+//    throws InvalidSequenceIndexException {
+//        super.replace(index, newItem, observers);
+//    }
+//
+//    @Override
+//    public ObservedReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+//    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
+//        return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
+//    }
+//
+//    @Override
+//    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
+//    throws InvalidSequenceIndexException {
+//        return new DefaultReplaceIndexSequenceTraverser<>(this);
+//    }
+//
+//    @Override
+//    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    throws InvalidSequenceIndexException {
+//        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+//    }
 }

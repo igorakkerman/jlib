@@ -21,12 +21,11 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
-
 import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
+
+import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * Skeletal implementation of an {@link IndexSequence}.
@@ -162,10 +161,9 @@ implements IndexSequence<Item> {
         return stringBuilder.toString();
     }
 
-    @Override
     protected boolean hasMatchingProperties(final ReadContainer<Item> otherContainer) {
-        if (! super.hasMatchingProperties(otherContainer))
-            return false;
+//        if (! super.hasMatchingProperties(otherContainer))
+//            return false;
 
         final IndexSequence<Item> otherSequence = (IndexSequence<Item>) otherContainer;
 

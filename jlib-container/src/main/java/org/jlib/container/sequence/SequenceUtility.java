@@ -365,7 +365,7 @@ public final class SequenceUtility {
      */
     @SafeVarargs
     public static <Item> Sequence<Item> concatenated(final TwoWayTraversable<Item>... traversables) {
-        return new ConcatenatedSequence<>(traversables);
+        return null; // new ConcatenatedSequence<>(traversables);
     }
 
     /**

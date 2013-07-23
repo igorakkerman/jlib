@@ -21,18 +21,14 @@
 
 package org.jlib.container.sequence.index.linearindexstorage;
 
-import org.jlib.core.language.AbstractObject;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.capacity.CapacityStrategy;
-import org.jlib.core.storage.capacity.minimal.MinimalCapacityStrategy;
-
-import org.jlib.container.sequence.AbstractSequence;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.array.ArraySequence;
 
 public final class LinearIndexStorageSequence<Item>
-extends AbstractSequence<Item>
-implements Sequence {
+//extends AbstractSequence<Item>
+//implements Sequence
+
+{
 
     /** {@link LinearIndexStorage} used to store the {@link Item}s */
     private LinearIndexStorage<Item> storage;

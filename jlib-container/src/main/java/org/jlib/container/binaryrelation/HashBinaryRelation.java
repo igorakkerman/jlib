@@ -44,7 +44,7 @@ import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException
  * @author Igor Akkerman
  */
 public class HashBinaryRelation<LeftValue, RightValue>
-extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
+/*extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> */{
 
     /**
      * {@link Map} assigning each LeftValue the {@link Set} of RightValues
@@ -108,16 +108,16 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
             associate(pair.getLeftValue(), pair.getRightValue());
     }
 
-    @Override
+//    @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
     throws PairAlreadyContainedException, InvalidPairException {
-        if (contains(leftValue, rightValue))
-            throw new PairAlreadyContainedException(this, leftValue, rightValue);
+//        if (contains(leftValue, rightValue))
+//            throw new PairAlreadyContainedException(this, leftValue, rightValue);
 
         ensureAssociated(leftValue, rightValue);
     }
 
-    @Override
+//    @Override
     protected void ensureAssociated(final LeftValue leftValue, final RightValue rightValue)
     throws InvalidPairException {
         ensureAssociatedOneWay(leftValue, rightValue, leftToRightMap, hasLeft(leftValue));
@@ -158,37 +158,37 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
             value1ToValue2SetMap.put(value1, value2Set);
     }
 
-    @Override
+//    @Override
     public boolean hasLeft(final LeftValue leftValue) {
         return leftToRightMap.containsKey(leftValue);
     }
 
-    @Override
+//    @Override
     public boolean hasRight(final RightValue rightValue) {
         return rightToLeftMap.containsKey(rightValue);
     }
 
-    @Override
+//    @Override
     public Set<LeftValue> getLeftValues() {
         return leftToRightMap.keySet();
     }
 
-    @Override
+//    @Override
     public Set<LeftValue> getLeftSet(final RightValue rightValue) {
         return rightToLeftMap.get(rightValue);
     }
 
-    @Override
+//    @Override
     public Set<RightValue> getRightValues() {
         return rightToLeftMap.keySet();
     }
 
-    @Override
+//    @Override
     public Set<RightValue> getRightSet(final LeftValue leftValue) {
         return leftToRightMap.get(leftValue);
     }
 
-    @Override
+//    @Override
     public int getItemsCount() {
         return leftToRightMap.size();
     }

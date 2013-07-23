@@ -24,11 +24,12 @@ package org.jlib.container.collection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.ForwardingContainer;
-import org.jlib.container.ReadContainer;
-
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
+
+import org.jlib.container.ReadContainer;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link ReadContainer}. A
@@ -40,7 +41,9 @@ import org.jlib.core.traverser.Traverser;
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>
-extends ForwardingContainer<Item> {
+implements ReadContainer<Item> {
+
+    private static final long serialVersionUID = 4025909176358714675L;
 
     /** adapted and backed {@link Collection} */
     private final Collection<Item> delegateCollection;
@@ -63,6 +66,12 @@ extends ForwardingContainer<Item> {
     }
 
     @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
     public Traverser<Item> createTraverser() {
         return new IterableTraverser<>(this);
     }
@@ -79,14 +88,30 @@ extends ForwardingContainer<Item> {
         return delegateCollection.contains(item);
     }
 
+    @Override
+    public boolean contains(final ReadContainer<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
     // implemented for efficiency
     @Override
     public boolean contains(final Collection<? extends Item> collection) {
         return delegateCollection.containsAll(collection);
     }
 
-    // implemented for efficiency
     @Override
+    public boolean contains(final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return false;
+    }
+
+    // implemented for efficiency
     @SuppressWarnings("unchecked")
     public Item[] toArray() {
         return (Item[]) delegateCollection.toArray();

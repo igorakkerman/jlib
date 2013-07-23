@@ -21,18 +21,7 @@
 
 package org.jlib.container.binaryrelation.bijection;
 
-import java.util.Collection;
-import java.util.Iterator;
-
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-
-import org.jlib.container.ReadContainer;
-import org.jlib.container.binaryrelation.InvalidPairException;
-import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
 import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.BinaryRelationUtility;
-import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
 
 /**
  * {@link HashBijection} allowing the addition of new {@link Pair} items.
@@ -46,194 +35,194 @@ import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
  * @author Igor Akkerman
  */
 public class HashAddBijection<LeftValue, RightValue>
-extends HashBijection<LeftValue, RightValue>
-implements AddBijection<LeftValue, RightValue> {
+/*extends HashBijection<LeftValue, RightValue>
+implements AddBijection<LeftValue, RightValue> */{
 
-    /** Creates a new initially empty HashAddBijection. */
-    public HashAddBijection() {
-        super();
-    }
-
-    /**
-     * Creates a new HashAddBijection containing the Pairs contained by
-     * the specified jlib ReadContainer.
-     *
-     * @param pairs
-     *        ReadContainer of the Pairs to add
-     *
-     * @throws LeftValueAlreadyRelatedException
-     *         if the LeftValue of one Item in {@code pairs} is already
-     *         added to another RightValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws RightValueAlreadyRelatedException
-     *         if the RightValue of one Item in {@code pairs} is already
-     *         added to another LeftValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws InvalidPairException
-     *         if some property of one Item in {@code pairs} prevents it
-     *         from being added
-     */
-    public HashAddBijection(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super(pairs);
-    }
-
-    /**
-     * Creates a new HashAddBijection containing the Pairs contained by
-     * the specified Collection.
-     *
-     * @param pairs
-     *        Collection of the Pairs to add
-     *
-     * @throws LeftValueAlreadyRelatedException
-     *         if the LeftValue of one Item in {@code pairs} is already
-     *         added to another RightValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws RightValueAlreadyRelatedException
-     *         if the RightValue of one Item in {@code pairs} is already
-     *         added to another LeftValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws InvalidPairException
-     *         if some property of one Item in {@code pairs} prevents it
-     *         from being added
-     */
-    public HashAddBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super(pairs);
-    }
-
-    /**
-     * Creates a new HashAddBijection containing the Pairs specified in a
-     * comma separated sequence.
-     *
-     * @param pairs
-     *        Comma separated sequence of the Pairs to add
-     *
-     * @throws LeftValueAlreadyRelatedException
-     *         if the LeftValue of one Item in {@code pairs} is already
-     *         added to another RightValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws RightValueAlreadyRelatedException
-     *         if the RightValue of one Item in {@code pairs} is already
-     *         added to another LeftValue; if an {@link Pair} is
-     *         equal to another {@link Pair} in the
-     *         {@link HashAddBijection}, it is ignored
-     *
-     * @throws InvalidPairException
-     *         if some property of one Item in {@code pairs} prevents it
-     *         from being added
-     */
-    @SuppressWarnings("unchecked")
-    public HashAddBijection(final Pair<LeftValue, RightValue>... pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super(pairs);
-    }
-
-    @Override
-    // raising visibility from protected to public
-    public void addPair(final LeftValue leftValue, final RightValue rightValue)
-    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super.associate(leftValue, rightValue);
-    }
-
-    @Override
-    // raising visibility from protected to public
-    public void ensureContained(final LeftValue leftValue, final RightValue rightValue)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        super.ensureAssociated(leftValue, rightValue);
-    }
-
-    @Override
-    public void add(final Pair<LeftValue, RightValue> pair)
-    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        addPair(pair.getLeftValue(), pair.getRightValue());
-    }
-
-    @Override
-    public void addPairs(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
-    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.add(this, pairs);
-    }
-
-    @Override
-    public void addPairs(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
-    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.add(this, pairs);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void addPairs(final Pair<LeftValue, RightValue>... pairs)
-    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.add(this, pairs);
-    }
-
-    @Override
-    public void ensureContained(final Pair<LeftValue, RightValue> pair)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.ensureContained(this, pair);
-    }
-
-    @Override
-    public void ensureContained(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.ensureContained(this, pairs);
-    }
-
-    @Override
-    public void ensureContained(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.ensureContained(this, pairs);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void ensureContained(final Pair<LeftValue, RightValue>... pairs)
-    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-        BinaryRelationUtility.ensureContained(this, pairs);
-    }
-
-    @Override
-    public boolean isEmpty()
-    throws InvalidTraversableStateException {
-        return false;
-    }
-
-    @Override
-    public boolean contains(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return false;
-    }
-
-    @Override
-    public boolean contains(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return false;
-    }
-
-    @Override
-    public boolean contains(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return false;
-    }
-
-    @Override
-    public boolean containsEqualItems(final ReadContainer<Pair<LeftValue, RightValue>> otherContainer) {
-        return false;
-    }
-
-    @Override
-    public Iterator<Pair<LeftValue, RightValue>> iterator() {
-        return null;
-    }
+//    /** Creates a new initially empty HashAddBijection. */
+//    public HashAddBijection() {
+//        super();
+//    }
+//
+//    /**
+//     * Creates a new HashAddBijection containing the Pairs contained by
+//     * the specified jlib ReadContainer.
+//     *
+//     * @param pairs
+//     *        ReadContainer of the Pairs to add
+//     *
+//     * @throws LeftValueAlreadyRelatedException
+//     *         if the LeftValue of one Item in {@code pairs} is already
+//     *         added to another RightValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws RightValueAlreadyRelatedException
+//     *         if the RightValue of one Item in {@code pairs} is already
+//     *         added to another LeftValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws InvalidPairException
+//     *         if some property of one Item in {@code pairs} prevents it
+//     *         from being added
+//     */
+//    public HashAddBijection(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    /**
+//     * Creates a new HashAddBijection containing the Pairs contained by
+//     * the specified Collection.
+//     *
+//     * @param pairs
+//     *        Collection of the Pairs to add
+//     *
+//     * @throws LeftValueAlreadyRelatedException
+//     *         if the LeftValue of one Item in {@code pairs} is already
+//     *         added to another RightValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws RightValueAlreadyRelatedException
+//     *         if the RightValue of one Item in {@code pairs} is already
+//     *         added to another LeftValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws InvalidPairException
+//     *         if some property of one Item in {@code pairs} prevents it
+//     *         from being added
+//     */
+//    public HashAddBijection(final Collection<Pair<LeftValue, RightValue>> pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    /**
+//     * Creates a new HashAddBijection containing the Pairs specified in a
+//     * comma separated sequence.
+//     *
+//     * @param pairs
+//     *        Comma separated sequence of the Pairs to add
+//     *
+//     * @throws LeftValueAlreadyRelatedException
+//     *         if the LeftValue of one Item in {@code pairs} is already
+//     *         added to another RightValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws RightValueAlreadyRelatedException
+//     *         if the RightValue of one Item in {@code pairs} is already
+//     *         added to another LeftValue; if an {@link Pair} is
+//     *         equal to another {@link Pair} in the
+//     *         {@link HashAddBijection}, it is ignored
+//     *
+//     * @throws InvalidPairException
+//     *         if some property of one Item in {@code pairs} prevents it
+//     *         from being added
+//     */
+//    @SuppressWarnings("unchecked")
+//    public HashAddBijection(final Pair<LeftValue, RightValue>... pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    @Override
+//    // raising visibility from protected to public
+//    public void addPair(final LeftValue leftValue, final RightValue rightValue)
+//    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        super.associate(leftValue, rightValue);
+//    }
+//
+//    @Override
+//    // raising visibility from protected to public
+//    public void ensureContained(final LeftValue leftValue, final RightValue rightValue)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        super.ensureAssociated(leftValue, rightValue);
+//    }
+//
+//    @Override
+//    public void add(final Pair<LeftValue, RightValue> pair)
+//    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        addPair(pair.getLeftValue(), pair.getRightValue());
+//    }
+//
+//    @Override
+//    public void addPairs(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.add(this, pairs);
+//    }
+//
+//    @Override
+//    public void addPairs(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.add(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void addPairs(final Pair<LeftValue, RightValue>... pairs)
+//    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.add(this, pairs);
+//    }
+//
+//    @Override
+//    public void ensureContained(final Pair<LeftValue, RightValue> pair)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.ensureContained(this, pair);
+//    }
+//
+//    @Override
+//    public void ensureContained(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.ensureContained(this, pairs);
+//    }
+//
+//    @Override
+//    public void ensureContained(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.ensureContained(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void ensureContained(final Pair<LeftValue, RightValue>... pairs)
+//    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
+//        BinaryRelationUtility.ensureContained(this, pairs);
+//    }
+//
+//    @Override
+//    public boolean isEmpty()
+//    throws InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean contains(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean contains(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean contains(final Pair<LeftValue, RightValue>... pairs)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean containsEqualItems(final ReadContainer<Pair<LeftValue, RightValue>> otherContainer) {
+//        return false;
+//    }
+//
+//    @Override
+//    public Iterator<Pair<LeftValue, RightValue>> iterator() {
+//        return null;
+//    }
 }

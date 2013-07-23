@@ -21,9 +21,14 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.ReadContainer;
 
 /**
  * {@link ReplaceIndexSequence} view of the Items stored in another
@@ -39,8 +44,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public class SubReplaceIndexSequence<Item, BaseSequence extends ObservedReplaceIndexSequence<Item>>
-extends SubIndexSequence<Item, BaseSequence>
+public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
 implements ObservedReplaceIndexSequence<Item> {
 
     /**
@@ -64,21 +68,65 @@ implements ObservedReplaceIndexSequence<Item> {
      */
     public SubReplaceIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
     throws InvalidSequenceIndexException, InvalidSequenceIndexException {
-        super(baseSequence, firstIndex, lastIndex);
+//        super(baseSequence, firstIndex, lastIndex);
     }
 
-    @Override
-    public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
-        return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
-    }
+//    @Override
+//    public InsertIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+//    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
+////        return new SubReplaceIndexSequence<>(this, fromIndex, toIndex);
+//    }
 
     @Override
     public void replace(final int index, final Item newItem)
     throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
-        getBaseSequence().replace(index, newItem);
+//        getBaseSequence().replace(index, newItem);
+    }
+
+    @Override
+    public Item get(final int index)
+    throws InvalidSequenceIndexException {
+        return null;
+    }
+
+    @Override
+    public int getFirstIndex() {
+        return 0;
+    }
+
+    @Override
+    public int getLastIndex() {
+        return 0;
+    }
+
+    @Override
+    public Item getFirstItem() {
+        return null;
+    }
+
+    @Override
+    public Item getLastItem() {
+        return null;
+    }
+
+    @Override
+    public int getItemIndex(final Item item)
+    throws NoSuchSequenceItemException {
+        return 0;
+    }
+
+    @Override
+    public int getLastItemIndex(final Item item)
+    throws NoSuchSequenceItemException {
+        return 0;
+    }
+
+    @Override
+    public ReplaceIndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
+    throws InvalidSequenceIndexException {
+        return null;
     }
 
     @Override
@@ -87,17 +135,63 @@ implements ObservedReplaceIndexSequence<Item> {
     throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
-        getBaseSequence().replace(index, newItem, observers);
+//        getBaseSequence().replace(index, newItem, observers);
     }
 
     @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser() {
+    public IndexSequenceTraverser<Item> createTraverser() {
         return new DefaultReplaceIndexSequenceTraverser<>(this);
     }
 
     @Override
-    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
     throws InvalidSequenceIndexException {
         return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+    }
+
+    @Override
+    public int getItemsCount()
+    throws InvalidTraversableStateException {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final ReadContainer<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return null;
     }
 }

@@ -23,15 +23,16 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
+import org.jlib.core.array.ArrayUtility;
+import org.jlib.core.observer.ObserverUtility;
+import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.operator.HandledOperator;
+
 import org.jlib.container.ReadContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.InvalidStoredItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.SequenceUtility;
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.operator.HandledOperator;
 
 /**
  * {@link AbstractIndexSequence} that can be initialized.
@@ -189,10 +190,10 @@ extends AbstractIndexSequence<Item> {
      *         if {@code items.getItemsCount() != getItemsCount()}
      */
     protected void storeItems(final ReadContainer<? extends Item> items) {
-        if (items.getItemsCount() != getItemsCount())
-            throw new InvalidStoredItemsCountException(this, items.getItemsCount(),
-                                                       "{0}: items.getItemsCount() == {1} != {2} == getItemsCount()",
-                                                       getItemsCount());
+//        if (items.getItemsCount() != getItemsCount())
+//            throw new InvalidStoredItemsCountException(this, items.getItemsCount(),
+//                                                       "{0}: items.getItemsCount() == {1} != {2} == getItemsCount()",
+//                                                       getItemsCount());
         storeItems((Iterable<? extends Item>) items);
     }
 
@@ -207,10 +208,10 @@ extends AbstractIndexSequence<Item> {
      *         if {@code items.size() != getItemsCount()}
      */
     protected void storeItems(final Collection<? extends Item> items) {
-        if (items.size() != getItemsCount())
-            throw new InvalidStoredItemsCountException(this, items.size(),
-                                                       "{0}: items.size() == {1} != {2} == getItemsCount()",
-                                                       getItemsCount());
+//        if (items.size() != getItemsCount())
+//            throw new InvalidStoredItemsCountException(this, items.size(),
+//                                                       "{0}: items.size() == {1} != {2} == getItemsCount()",
+//                                                       getItemsCount());
         storeItems((Iterable<? extends Item>) items);
     }
 
@@ -226,10 +227,10 @@ extends AbstractIndexSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     protected void storeItems(final Item... items) {
-        if (items.length != getItemsCount())
-            throw new InvalidStoredItemsCountException(this, items.length,
-                                                       "{0}: items.length == {1} != {2} == getItemsCount()",
-                                                       getItemsCount());
+//        if (items.length != getItemsCount())
+//            throw new InvalidStoredItemsCountException(this, items.length,
+//                                                       "{0}: items.length == {1} != {2} == getItemsCount()",
+//                                                       getItemsCount());
         storeItems(ArrayUtility.iterable(items));
     }
 

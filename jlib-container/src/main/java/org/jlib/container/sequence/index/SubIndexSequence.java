@@ -21,6 +21,14 @@
 
 package org.jlib.container.sequence.index;
 
+import java.util.Collection;
+import java.util.Iterator;
+
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.ReadContainer;
+
 import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureSubIndexRangeValid;
 
 /**
@@ -81,5 +89,39 @@ extends AbstractIndexSequence<Item> {
      */
     protected BaseSequence getBaseSequence() {
         return baseSequence;
+    }
+
+    @Override
+    public boolean contains(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final ReadContainer<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean contains(final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return null;
     }
 }

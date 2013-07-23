@@ -21,21 +21,6 @@
 
 package org.jlib.container.sequence.index.array;
 
-import java.util.Collection;
-
-import static org.jlib.core.array.ArrayUtility.iterable;
-
-import static org.jlib.container.sequence.SequenceUtility.singleton;
-
-import org.jlib.container.ReadContainer;
-import org.jlib.container.sequence.InvalidSequenceItemsCountException;
-import org.jlib.container.sequence.ObservedAppendSequence;
-import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-
 /**
  * {@link ReplaceArraySequence} to which Items can be added.
  *
@@ -45,212 +30,212 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
  * @author Igor Akkerman
  */
 public class ReplaceAppendArraySequence<Item>
-extends ReplaceArraySequence<Item>
-implements ObservedAppendSequence<Item> {
+/*extends ReplaceArraySequence<Item>
+implements ObservedAppendSequence<Item> */{
 
-    /**
-     * Creates a new uninitialized {@link ReplaceAppendArraySequence} with the
-     * specified first and last indices.
-     *
-     * @param firstIndex
-     *        integer specifying the initial first index
-     *
-     * @param lastIndex
-     *        integer specifying the initial last index
-     *
-     * @throws InvalidSequenceIndexException
-     *         if {@code lastIndex < firstIndex}
-     */
-    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException {
-        super(firstIndex, lastIndex);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
-     * {@code 0} and the specified number of Items.
-     *
-     * @param itemsCount
-     *        integer specifying the initial number of Items
-     *
-     * @throws InvalidSequenceItemsCountException
-     *         if {@code itemsCount < 1}
-     */
-    protected ReplaceAppendArraySequence(final int itemsCount)
-    throws InvalidSequenceItemsCountException {
-        super(itemsCount);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    public ReplaceAppendArraySequence(final Item... items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
-     * index containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        comma separated sequence of Items to store
-     */
-    @SafeVarargs
-    public ReplaceAppendArraySequence(final int firstIndex, final Item... items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        {@link Collection} of Items to store
-     */
-    public ReplaceAppendArraySequence(final Collection<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
-     * index containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link Collection} of Items to store
-     */
-    public ReplaceAppendArraySequence(final int firstIndex, final Collection<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
-     * {@code 0} containing the specified Items.
-     *
-     * @param items
-     *        {@link ReadContainer} of Items to store
-     */
-    public ReplaceAppendArraySequence(final ReadContainer<? extends Item> items) {
-        super(items);
-    }
-
-    /**
-     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
-     * index containing the specified Items.
-     *
-     * @param firstIndex
-     *        integer specifying the first index
-     *
-     * @param items
-     *        {@link ReadContainer} of Items to store
-     */
-    public ReplaceAppendArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
-        super(firstIndex, items);
-    }
-
-    @Override
-    public void append(final Item item) {
-        // intentionally not using SequenceUtility for efficiency
-        append(singleton(item));
-    }
-
-    @Override
-    public void append(final ReadContainer<? extends Item> items) {
-        // intentionally not using SequenceUtility for efficiency
-        append(items, items.getItemsCount());
-    }
-
-    @Override
-    public void append(final Collection<? extends Item> items) {
-        // intentionally not using SequenceUtility for efficiency
-        append(items, items.size());
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final void append(final Item... items) {
-        // intentionally not using SequenceUtility for efficiency
-        append(iterable(items), items.length);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final void append(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
-        append(singleton(item), 1, observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final void append(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
-        append(items, items.getItemsCount(), observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
-        append(items, items.size(), observers);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final void append(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversableArgumentException {
-        append(iterable(items), items.length, observers);
-    }
-
-    /**
-     * Appends all Items contained by the specified {@link ReadContainer} to this
-     * {@link ObservedAppendSequence}.
-     *
-     * @param items
-     *        {@link Iterable} providing the Items to add
-     *
-     * @param addedItemsCount
-     *        integer specifying the number of added Items; {@code items} must
-     *        provide at least these {@code addedItemsCount} Items
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the operation
-     *
-     * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
-     *         {@link RuntimeException}
-     */
-    @SafeVarargs
-    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
-                              final ValueObserver<Item>... observers) {
-        getCapacityStrategy().ensureTailCapacity(addedItemsCount);
-
-        int storageItemIndex = getStorageItemIndex(getLastIndex());
-
-        for (final Item item : items) {
-            final int currentStorageItemIndex = ++ storageItemIndex;
-            ObserverUtility.operate(new HandledOperator() {
-
-                @Override
-                public void operate() {
-                    getStorage().replaceItem(currentStorageItemIndex, item);
-                }
-            },
-
-                                    item, observers);
-        }
-
-        setLastIndex(getLastIndex() + addedItemsCount);
-        getStorage().incrementLastItemIndex(addedItemsCount);
-    }
+//    /**
+//     * Creates a new uninitialized {@link ReplaceAppendArraySequence} with the
+//     * specified first and last indices.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the initial first index
+//     *
+//     * @param lastIndex
+//     *        integer specifying the initial last index
+//     *
+//     * @throws InvalidSequenceIndexException
+//     *         if {@code lastIndex < firstIndex}
+//     */
+//    protected ReplaceAppendArraySequence(final int firstIndex, final int lastIndex)
+//    throws InvalidSequenceIndexException {
+//        super(firstIndex, lastIndex);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+//     * {@code 0} and the specified number of Items.
+//     *
+//     * @param itemsCount
+//     *        integer specifying the initial number of Items
+//     *
+//     * @throws InvalidSequenceItemsCountException
+//     *         if {@code itemsCount < 1}
+//     */
+//    protected ReplaceAppendArraySequence(final int itemsCount)
+//    throws InvalidSequenceItemsCountException {
+//        super(itemsCount);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        comma separated sequence of Items to store
+//     */
+//    @SafeVarargs
+//    public ReplaceAppendArraySequence(final Item... items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+//     * index containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        comma separated sequence of Items to store
+//     */
+//    @SafeVarargs
+//    public ReplaceAppendArraySequence(final int firstIndex, final Item... items) {
+//        super(firstIndex, items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        {@link Collection} of Items to store
+//     */
+//    public ReplaceAppendArraySequence(final Collection<? extends Item> items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+//     * index containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        {@link Collection} of Items to store
+//     */
+//    public ReplaceAppendArraySequence(final int firstIndex, final Collection<? extends Item> items) {
+//        super(firstIndex, items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with a first index of
+//     * {@code 0} containing the specified Items.
+//     *
+//     * @param items
+//     *        {@link ReadContainer} of Items to store
+//     */
+//    public ReplaceAppendArraySequence(final ReadContainer<? extends Item> items) {
+//        super(items);
+//    }
+//
+//    /**
+//     * Creates a new {@link ReplaceAppendArraySequence} with the specified first
+//     * index containing the specified Items.
+//     *
+//     * @param firstIndex
+//     *        integer specifying the first index
+//     *
+//     * @param items
+//     *        {@link ReadContainer} of Items to store
+//     */
+//    public ReplaceAppendArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
+//        super(firstIndex, items);
+//    }
+//
+//    @Override
+//    public void append(final Item item) {
+//        // intentionally not using SequenceUtility for efficiency
+//        append(singleton(item));
+//    }
+//
+//    @Override
+//    public void append(final ReadContainer<? extends Item> items) {
+//        // intentionally not using SequenceUtility for efficiency
+//        append(items, items.getItemsCount());
+//    }
+//
+//    @Override
+//    public void append(final Collection<? extends Item> items) {
+//        // intentionally not using SequenceUtility for efficiency
+//        append(items, items.size());
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public final void append(final Item... items) {
+//        // intentionally not using SequenceUtility for efficiency
+//        append(iterable(items), items.length);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public final void append(final Item item, final ValueObserver<Item>... observers)
+//    throws InvalidTraversableArgumentException {
+//        append(singleton(item), 1, observers);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public final void append(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    throws InvalidTraversableArgumentException {
+//        append(items, items.getItemsCount(), observers);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+//    throws InvalidTraversableArgumentException {
+//        append(items, items.size(), observers);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public final void append(final ValueObserver<Item>[] observers, final Item... items)
+//    throws InvalidTraversableArgumentException {
+//        append(iterable(items), items.length, observers);
+//    }
+//
+//    /**
+//     * Appends all Items contained by the specified {@link ReadContainer} to this
+//     * {@link ObservedAppendSequence}.
+//     *
+//     * @param items
+//     *        {@link Iterable} providing the Items to add
+//     *
+//     * @param addedItemsCount
+//     *        integer specifying the number of added Items; {@code items} must
+//     *        provide at least these {@code addedItemsCount} Items
+//     *
+//     * @param observers
+//     *        comma separated sequence of {@link ValueObserver} instances
+//     *        attending the operation
+//     *
+//     * @throws RuntimeException
+//     *         if a {@link ValueObserver} operation throws this
+//     *         {@link RuntimeException}
+//     */
+//    @SafeVarargs
+//    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
+//                              final ValueObserver<Item>... observers) {
+//        getCapacityStrategy().ensureTailCapacity(addedItemsCount);
+//
+//        int storageItemIndex = getStorageItemIndex(getLastIndex());
+//
+//        for (final Item item : items) {
+//            final int currentStorageItemIndex = ++ storageItemIndex;
+//            ObserverUtility.operate(new HandledOperator() {
+//
+//                @Override
+//                public void operate() {
+//                    getStorage().replaceItem(currentStorageItemIndex, item);
+//                }
+//            },
+//
+//                                    item, observers);
+//        }
+//
+//        setLastIndex(getLastIndex() + addedItemsCount);
+//        getStorage().incrementLastItemIndex(addedItemsCount);
+//    }
 }
