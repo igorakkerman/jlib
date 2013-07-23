@@ -23,6 +23,9 @@ package org.jlib.container.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
 
+import static org.jlib.container.matrix.MatrixUtility.ensureHeightValid;
+import static org.jlib.container.matrix.MatrixUtility.ensureWidthValid;
+
 /**
  * Creator of instances of a certain subtype of {@link IndexMatrix}.
  *

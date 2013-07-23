@@ -67,4 +67,16 @@ public final class MatrixUtility {
             return new EntityMatrixTraverser<>(matrix, matrix.getColumns());
         }
     };
+
+    public static void ensureWidthValid(final int width)
+    throws InvalidMatrixWidthException {
+        if (width < 1)
+            throw new InvalidMatrixWidthException(width);
+    }
+
+    public static void ensureHeightValid(final int height)
+    throws InvalidMatrixWidthException {
+        if (height < 1)
+            throw new InvalidMatrixHeightException(height);
+    }
 }
