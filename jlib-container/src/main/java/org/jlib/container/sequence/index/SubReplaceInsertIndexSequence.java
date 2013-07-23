@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
@@ -78,7 +78,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
     }
 
     @Override
-    public void insert(final int index, final Container<? extends Item> items) {
+    public void insert(final int index, final GetContainer<? extends Item> items) {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items);
@@ -127,7 +127,7 @@ implements ObservedReplaceInsertIndexSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void insert(final int index, final Container<? extends Item> items, final ValueObserver<Item>... observers) {
+    public void insert(final int index, final GetContainer<? extends Item> items, final ValueObserver<Item>... observers) {
         IndexSequenceUtility.ensureIndexValid(this, index);
 
         getBaseSequence().insert(index, items, observers);

@@ -23,12 +23,12 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.container.sequence.index.LinearIndexStorageSequence;
+import org.jlib.container.sequence.index.linearindexstorage.LinearIndexStorageSequence;
 import org.jlib.core.array.ArrayStorage;
 import org.jlib.core.storage.LinearIndexStorage;
 
@@ -133,9 +133,9 @@ extends LinearIndexStorageSequence<Item> {
      * containing the specified {@link Item}s.
      *
      * @param items
-     *        {@link Container} of {@link Item}s to store
+     *        {@link GetContainer} of {@link Item}s to store
      */
-    public ArraySequence(final Container<? extends Item> items) {
+    public ArraySequence(final GetContainer<? extends Item> items) {
         super(items);
     }
 
@@ -147,9 +147,9 @@ extends LinearIndexStorageSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Container} of {@link Item}s to store
+     *        {@link GetContainer} of {@link Item}s to store
      */
-    public ArraySequence(final int firstIndex, final Container<? extends Item> items) {
+    public ArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 

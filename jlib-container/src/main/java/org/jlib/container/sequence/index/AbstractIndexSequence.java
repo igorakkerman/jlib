@@ -25,7 +25,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 
 /**
@@ -163,7 +163,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    protected boolean hasMatchingProperties(final Container<Item> otherContainer) {
+    protected boolean hasMatchingProperties(final GetContainer<Item> otherContainer) {
         if (! super.hasMatchingProperties(otherContainer))
             return false;
 

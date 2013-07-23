@@ -30,25 +30,22 @@ import javax.annotation.Nullable;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Container of items.
+ * GetContainer of items.
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
-public interface Container<Item>
-extends Traversable<Item>,
-        Iterable<Item> {
+public interface GetContainer<Item> {
 
     /**
-     * Returns the number of Items in this {@link Container}.
+     * Returns the number of Items in this {@link GetContainer}.
      *
-     * @return integer specifying the number of Items in this {@link Container}
+     * @return integer specifying the number of Items in this {@link GetContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -57,9 +54,9 @@ extends Traversable<Item>,
     throws InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link Container} contains no Items.
+     * Verifies whether this {@link GetContainer} contains no Items.
      *
-     * @return {@code true} if this {@link Container} contains no Items;
+     * @return {@code true} if this {@link GetContainer} contains no Items;
      *         {@code false} otherwise
      *
      * @throws InvalidTraversableStateException
@@ -69,12 +66,12 @@ extends Traversable<Item>,
     throws InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link Container} contains the specified Object.
+     * Verifies whether this {@link GetContainer} contains the specified Object.
      *
      * @param item
      *        Item to verify
      *
-     * @return {@code true} if this {@link Container} contains {@code object};
+     * @return {@code true} if this {@link GetContainer} contains {@code object};
      *         {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -88,13 +85,13 @@ extends Traversable<Item>,
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link Container} contains all of the Items in the
-     * specified Container.
+     * Verifies whether this {@link GetContainer} contains all of the Items in the
+     * specified GetContainer.
      *
      * @param items
-     *        Container containing the Items to verify
+     *        GetContainer containing the Items to verify
      *
-     * @return {@code true} if this {@link Container} contains all of the Items
+     * @return {@code true} if this {@link GetContainer} contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -104,17 +101,17 @@ extends Traversable<Item>,
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(Container<? extends Item> items)
+    public boolean contains(GetContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link Container} contains all of the Items in the
+     * Verifies whether this {@link GetContainer} contains all of the Items in the
      * specified Collection.
      *
      * @param items
      *        {@link Collection} containing the Items to verify
      *
-     * @return {@code true} if this {@link Container} contains all of the Items
+     * @return {@code true} if this {@link GetContainer} contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -128,13 +125,13 @@ extends Traversable<Item>,
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link Container} contains all of the specified
+     * Verifies whether this {@link GetContainer} contains all of the specified
      * Items.
      *
      * @param items
      *        comma separated sequence of Items to verify
      *
-     * @return {@code true} if this {@link Container} contains all of the
+     * @return {@code true} if this {@link GetContainer} contains all of the
      *         {@code objects}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -150,11 +147,11 @@ extends Traversable<Item>,
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
-     * of this {@link Container} in the proper order as returned by this
-     * {@link Container}'s Traverser.
+     * of this {@link GetContainer} in the proper order as returned by this
+     * {@link GetContainer}'s Traverser.
      *
      * @return {@link RandomAccess} {@link List} containing all of the Items of
-     *         this {@link Container}
+     *         this {@link GetContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -164,11 +161,11 @@ extends Traversable<Item>,
 
     /**
      * Returns a sequentially traversable {@link List} containing all of the
-     * Items of this {@link Container} in the proper order as returned by this
-     * {@link Container}'s Traverser.
+     * Items of this {@link GetContainer} in the proper order as returned by this
+     * {@link GetContainer}'s Traverser.
      *
      * @return sequentially traversable {@link List} containing all of the Items
-     *         of this {@link Container}
+     *         of this {@link GetContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -177,10 +174,10 @@ extends Traversable<Item>,
     throws InvalidTraversableStateException;
 
     /**
-     * Returns an array containing all of the Items of this {@link Container} in
-     * the proper order as returned by this {@link Container}'s Traverser.
+     * Returns an array containing all of the Items of this {@link GetContainer} in
+     * the proper order as returned by this {@link GetContainer}'s Traverser.
      *
-     * @return array containing all of the Items of this {@link Container}
+     * @return array containing all of the Items of this {@link GetContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -190,18 +187,18 @@ extends Traversable<Item>,
 
     /**
      * <p>
-     * Verifies whether this {@link Container} is equal to the specified {@link Object}. This is true if all of the
+     * Verifies whether this {@link GetContainer} is equal to the specified {@link Object}. This is true if all of the
      * following conditions are satisfied:
      * </p>
      * <ul>
-     * <li>this {@link Container} and the specified {@link Object} are instances
+     * <li>this {@link GetContainer} and the specified {@link Object} are instances
      * of the same class</li>
-     * <li>this {@link Container} and the specified {@link Object} contain equal
-     * Items, as verified by {@link #containsEqualItems(Container)}</li>
+     * <li>this {@link GetContainer} and the specified {@link Object} contain equal
+     * Items, as verified by {@link #containsEqualItems(GetContainer)}</li>
      * </ul>
      *
      * @param otherObject
-     *        Object to compare to this Container
+     *        Object to compare to this GetContainer
      *
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
@@ -210,7 +207,7 @@ extends Traversable<Item>,
     public boolean equals(@Nullable Object otherObject);
 
     /**
-     * Returns the hash code of this {@link Container} confirming to {@link #equals(Object)}.
+     * Returns the hash code of this {@link GetContainer} confirming to {@link #equals(Object)}.
      *
      * @return integer specifying the hash code
      */
@@ -219,21 +216,21 @@ extends Traversable<Item>,
 
     /**
      * Verifies whether the {@link Traverser} instances created by the {@link #createTraverser()} methods of this
-     * {@link Container} and the specified {@link Container} traverse the same number of Items in the same order and
+     * {@link GetContainer} and the specified {@link GetContainer} traverse the same number of Items in the same order and
      * all traversed Items are equal. Two Items {@code item1} and {@code item2} are called equal if
      * {@code item1.equals(item2)}.
      *
      * @param otherContainer
-     *        compared {@link Container}
+     *        compared {@link GetContainer}
      *
-     * @return {@code true} if this {@link Container} and {@code otherContainer}contain equal Items;
+     * @return {@code true} if this {@link GetContainer} and {@code otherContainer}contain equal Items;
      *         {@code false} otherwise
      */
-    public boolean containsEqualItems(Container<Item> otherContainer);
+    public boolean containsEqualItems(GetContainer<Item> otherContainer);
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
-     * {@link Iterable#iterator()} methods of this {@link Container} and the
+     * {@link Iterable#iterator()} methods of this {@link GetContainer} and the
      * specified {@link Collection} traverse the same number of Items in the
      * same order and all traversed Items are equal. Two Items {@code item1} and
      * {@code item2} are called equal if {@code item1.equals(item2)}.
@@ -241,7 +238,7 @@ extends Traversable<Item>,
      * @param collection
      *        compared {@link Collection}
      *
-     * @return {@code true} if this {@link Container} and {@code otherContainer} contain equal Items;
+     * @return {@code true} if this {@link GetContainer} and {@code otherContainer} contain equal Items;
      *         {@code false} otherwise
      */
     public boolean containsEqualItems(Collection<Item> collection);

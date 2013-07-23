@@ -29,7 +29,7 @@ import org.jlib.core.language.AutoCloneable;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 
 /**
  * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.
@@ -98,7 +98,7 @@ implements Sequence<Item> {
     }
 
     @Override
-    public boolean containsEqualItems(final Container<Item> otherContainer) {
+    public boolean containsEqualItems(final GetContainer<Item> otherContainer) {
         return delegateSequence.containsEqualItems(otherContainer);
     }
 
@@ -114,7 +114,7 @@ implements Sequence<Item> {
     }
 
     @Override
-    public boolean contains(final Container<? extends Item> items)
+    public boolean contains(final GetContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return delegateSequence.contains(items);
     }

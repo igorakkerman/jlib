@@ -25,32 +25,32 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 
 /**
- * Adapter allowing a {@link Container} to be used as a {@link Collection}. A
- * {@link ContainerCollection} is backed by a {@link Container} specified at
+ * Adapter allowing a {@link GetContainer} to be used as a {@link Collection}. A
+ * {@link ContainerCollection} is backed by a {@link GetContainer} specified at
  * initialization.
  *
  * @param <Item>
- *        type of the items held in the {@link Container}
+ *        type of the items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
-    /** adapted and backed {@link Container} */
-    private final Container<Item> delegateContainer;
+    /** adapted and backed {@link GetContainer} */
+    private final GetContainer<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
-     * {@link Container}.
+     * {@link GetContainer}.
      *
      * @param delegateContainer
-     *        {@link Container} backing this {@link ContainerCollection}
+     *        {@link GetContainer} backing this {@link ContainerCollection}
      */
-    public ContainerCollection(final Container<Item> delegateContainer) {
+    public ContainerCollection(final GetContainer<Item> delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
@@ -94,14 +94,14 @@ extends AbstractCollection<Item> {
     /**
      * <p>
      * Verifies whether the specified {@link Object} is itself an
-     * ContainerCollection and the Containers backed by this Container and the
+     * ContainerCollection and the Containers backed by this GetContainer and the
      * specified {@link ContainerCollection}, respectively, are equal by their
      * {@code equals} methods.
      * </p>
      *
      * @param otherObject
-     *        Object to which the backed Container is compared
-     * @return {@code true} if the backed Container is equal to
+     *        Object to which the backed GetContainer is compared
+     * @return {@code true} if the backed GetContainer is equal to
      *         {@code otherObject}; {@code false} otherwise
      */
     @Override

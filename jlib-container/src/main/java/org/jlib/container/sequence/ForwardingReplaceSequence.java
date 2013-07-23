@@ -21,11 +21,8 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ReplaceContainer;
-
 public class ForwardingReplaceSequence<Item>
-extends ForwardingSequence<Item>
-implements ReplaceContainer<Item> {
+extends ForwardingSequence<Item> {
 
     private final ReplaceContainer<Item> delegateReplaceContainer;
 
@@ -35,7 +32,7 @@ implements ReplaceContainer<Item> {
      * @param initialDelegateSequence
      *        initial delegate {@link DelegateSequence}
      */
-    public <DelegateSequence extends Sequence<Item> & ReplaceContainer<Item>> /*
+    public <DelegateSequence extends Sequence<Item>> /*
         */ ForwardingReplaceSequence(final DelegateSequence initialDelegateSequence) {
 
         super(initialDelegateSequence);

@@ -23,7 +23,8 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
@@ -52,11 +53,11 @@ extends PrependSequence<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
 
     /**
-     * Prepends all Items contained by the specified {@link Container} to this
+     * Prepends all Items contained by the specified {@link GetContainer} to this
      * {@link ObservedPrependSequence}.
      *
      * @param items
-     *        {@link Container} containing the Items to prepend
+     *        {@link GetContainer} containing the Items to prepend
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -74,7 +75,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(Container<? extends Item> items, ValueObserver<Item>... observers)
+    public void prepend(GetContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
 
     /**

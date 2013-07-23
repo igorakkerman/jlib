@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
@@ -67,12 +67,12 @@ extends AbstractInitializeableBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new HashBinaryRelation containing the Pairs contained by
-     * the specified jlib Container.
+     * the specified jlib GetContainer.
      *
      * @param pairs
-     *        Container of the Pairs to add
+     *        GetContainer of the Pairs to add
      */
-    public HashBinaryRelation(final Container<Pair<LeftValue, RightValue>> pairs) {
+    public HashBinaryRelation(final GetContainer<Pair<LeftValue, RightValue>> pairs) {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : pairs)

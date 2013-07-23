@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.InvalidStoredItemsCountException;
 import org.jlib.container.sequence.Sequence;
@@ -140,9 +140,9 @@ extends AbstractIndexSequence<Item> {
      * index of {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    protected AbstractInitializeableIndexSequence(final Container<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final GetContainer<? extends Item> items) {
         this(0, items);
     }
 
@@ -154,9 +154,9 @@ extends AbstractIndexSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    protected AbstractInitializeableIndexSequence(final int firstIndex, final Container<? extends Item> items) {
+    protected AbstractInitializeableIndexSequence(final int firstIndex, final GetContainer<? extends Item> items) {
         this(firstIndex, firstIndex + items.getItemsCount() - 1);
 
         storeItems(items);
@@ -183,12 +183,12 @@ extends AbstractIndexSequence<Item> {
      * {@link AbstractInitializeableIndexSequence}.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      *
      * @throws InvalidStoredItemsCountException
      *         if {@code items.getItemsCount() != getItemsCount()}
      */
-    protected void storeItems(final Container<? extends Item> items) {
+    protected void storeItems(final GetContainer<? extends Item> items) {
         if (items.getItemsCount() != getItemsCount())
             throw new InvalidStoredItemsCountException(this, items.getItemsCount(),
                                                        "{0}: items.getItemsCount() == {1} != {2} == getItemsCount()",

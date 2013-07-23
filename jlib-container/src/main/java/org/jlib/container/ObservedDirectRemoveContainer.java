@@ -33,16 +33,15 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRandomAccessRemoveContainer<Item>
-extends RandomAccessRemoveContainer<Item> {
+public interface ObservedDirectRemoveContainer<Item> {
 
     /**
      * Removes the specified Item from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedDirectRemoveContainer}.
      *
      * @param item
      *        Item to remove
@@ -52,7 +51,7 @@ extends RandomAccessRemoveContainer<Item> {
      *        attending the removal
      *
      * @throws ItemToRemoveNotContainedException
-     *         if this {@link ObservedRandomAccessRemoveContainer} does not
+     *         if this {@link ObservedDirectRemoveContainer} does not
      *         contain {@code Item}
      *
      * @throws InvalidTraversableArgumentException
@@ -71,11 +70,11 @@ extends RandomAccessRemoveContainer<Item> {
            ValueObserverException;
 
     /**
-     * Removes all Items contained by the specified {@link Container} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * Removes all Items contained by the specified {@link GetContainer} from this
+     * {@link ObservedDirectRemoveContainer}.
      *
      * @param items
-     *        {@link Container} containing the Items to remove
+     *        {@link GetContainer} containing the Items to remove
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -92,12 +91,12 @@ extends RandomAccessRemoveContainer<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(Container<? extends Item> items, ValueObserver<Item>... observers)
+    public void remove(GetContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedDirectRemoveContainer}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -122,7 +121,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedDirectRemoveContainer}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -147,7 +146,7 @@ extends RandomAccessRemoveContainer<Item> {
 
     /**
      * Removes all specified Items from this
-     * {@link ObservedRandomAccessRemoveContainer}.
+     * {@link ObservedDirectRemoveContainer}.
      *
      * @param items
      *        comma separated sequence of Items to remove

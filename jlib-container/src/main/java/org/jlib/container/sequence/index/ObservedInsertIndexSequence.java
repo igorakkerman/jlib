@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
@@ -76,14 +76,14 @@ extends InsertIndexSequence<Item> {
      *        integer specifying the index
      *
      * @param items
-     *        {@link Container} holding the Items to insert
+     *        {@link GetContainer} holding the Items to insert
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      */
     @SuppressWarnings("unchecked")
-    public void insert(int index, Container<? extends Item> items, ValueObserver<Item>... observers);
+    public void insert(int index, GetContainer<? extends Item> items, ValueObserver<Item>... observers);
 
     /**
      * Inserts the specified Items at the specified index of this

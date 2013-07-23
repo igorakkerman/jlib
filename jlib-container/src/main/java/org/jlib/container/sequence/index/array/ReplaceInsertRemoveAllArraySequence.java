@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.ContainerUtility;
+import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.core.observer.ValueObserver;

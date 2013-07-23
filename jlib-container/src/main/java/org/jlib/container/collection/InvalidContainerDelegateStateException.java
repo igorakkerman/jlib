@@ -24,7 +24,7 @@ package org.jlib.container.collection;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 
 /**
  * {@link InvalidTraversableArgumentException} thrown when a delegate object
@@ -42,7 +42,7 @@ extends InvalidTraverserStateException {
      * Creates a new {@link InvalidContainerDelegateStateException}.
      *
      * @param container
-     *        referenced {@link Container}
+     *        referenced {@link GetContainer}
      *
      * @param delegate
      *        delegate Object
@@ -57,7 +57,7 @@ extends InvalidTraverserStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateStateException(final Container<?> container, final Object delegate,
+    public InvalidContainerDelegateStateException(final GetContainer<?> container, final Object delegate,
                                                   final ExceptionMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }

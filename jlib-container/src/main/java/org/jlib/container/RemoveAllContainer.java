@@ -31,8 +31,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface RemoveAllContainer<Item>
-extends RemoveContainer<Item> {
+public interface RemoveAllContainer<Item> {
 
     /**
      * Removes all Items of this {@link RemoveAllContainer}.

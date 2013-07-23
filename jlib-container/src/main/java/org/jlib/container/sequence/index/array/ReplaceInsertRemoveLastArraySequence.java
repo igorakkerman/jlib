@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedRemoveLastSequence;
@@ -139,9 +139,9 @@ implements ObservedReplaceInsertIndexSequence<Item>,
      * index of {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    public ReplaceInsertRemoveLastArraySequence(final Container<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final GetContainer<? extends Item> items) {
         super(items);
     }
 
@@ -153,9 +153,9 @@ implements ObservedReplaceInsertIndexSequence<Item>,
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final Container<? extends Item> items) {
+    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 

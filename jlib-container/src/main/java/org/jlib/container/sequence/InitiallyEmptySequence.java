@@ -23,12 +23,12 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.EmptyContainer;
+import org.jlib.container.GetContainer;
+import org.jlib.container.ObservedDirectRemoveContainer;
+import org.jlib.container.legacy.EmptyContainer;
 import org.jlib.container.ItemToRemoveNotContainedException;
-import org.jlib.container.ObservedRandomAccessRemoveContainer;
 import org.jlib.container.ObservedRemoveAllContainer;
-import org.jlib.container.ObservedReplaceContainer;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
@@ -47,7 +47,7 @@ public abstract class InitiallyEmptySequence<Item>
 extends EmptyContainer<Item>
 implements Sequence<Item>,
            ObservedReplaceContainer<Item>,
-           ObservedRandomAccessRemoveContainer<Item>,
+           ObservedDirectRemoveContainer<Item>,
            ObservedRemoveAllContainer<Item> {
 
     /**
@@ -70,7 +70,7 @@ implements Sequence<Item>,
     }
 
     @Override
-    public void remove(final Container<? extends Item> items)
+    public void remove(final GetContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
@@ -95,7 +95,7 @@ implements Sequence<Item>,
     }
 
     @Override
-    public void retain(final Container<? extends Item> items)
+    public void retain(final GetContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
@@ -128,7 +128,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException {
         // intentionally blank
     }
@@ -163,7 +163,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         // intentionally blank
     }

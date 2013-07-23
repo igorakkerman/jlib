@@ -24,22 +24,23 @@ package org.jlib.container.collection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.AbstractContainer;
-import org.jlib.container.Container;
+import org.jlib.container.ForwardingContainer;
+import org.jlib.container.GetContainer;
+
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link Container}. A
+ * Adapter allowing a {@link Collection} to be used as a {@link GetContainer}. A
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link GetContainer}
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>
-extends AbstractContainer<Item> {
+extends ForwardingContainer<Item> {
 
     /** adapted and backed {@link Collection} */
     private final Collection<Item> delegateCollection;

@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right
@@ -52,16 +52,16 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAddBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link Container}.
+     * {@link Pair} items contained by the specified {@link GetContainer}.
      *
      * @param pairs
-     *        Container of the Pairs to add
+     *        GetContainer of the Pairs to add
      *
      * @throws InvalidPairException
      *         if {@code pairs} violates the rules of this
      *         {@link HashAddBinaryRelation}
      */
-    public HashAddBinaryRelation(final Container<Pair<LeftValue, RightValue>> pairs)
+    public HashAddBinaryRelation(final GetContainer<Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         super(pairs);
     }
@@ -120,7 +120,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void addPairs(final Container<? extends Pair<LeftValue, RightValue>> pairs)
+    public void addPairs(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidTraversableArgumentException {
         BinaryRelationUtility.add(this, pairs);
     }
@@ -145,7 +145,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void ensureContained(final Container<? extends Pair<LeftValue, RightValue>> pairs)
+    public void ensureContained(final GetContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         BinaryRelationUtility.ensureContained(this, pairs);
     }

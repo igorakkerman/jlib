@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
+import org.jlib.container.GetContainer;
 import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.ObservedRemoveFirstSequence;
@@ -138,9 +138,9 @@ implements ObservedRemoveFirstSequence<Item> {
      * first index of {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    public ReplaceInsertRemoveFirstLastArraySequence(final Container<? extends Item> items) {
+    public ReplaceInsertRemoveFirstLastArraySequence(final GetContainer<? extends Item> items) {
         super(items);
     }
 
@@ -152,9 +152,9 @@ implements ObservedRemoveFirstSequence<Item> {
      *        integer specifying the first index
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    public ReplaceInsertRemoveFirstLastArraySequence(final int firstIndex, final Container<? extends Item> items) {
+    public ReplaceInsertRemoveFirstLastArraySequence(final int firstIndex, final GetContainer<? extends Item> items) {
         super(firstIndex, items);
     }
 

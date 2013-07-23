@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.legacy;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -28,13 +28,15 @@ import java.util.List;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.GetContainer;
+
 import static java.util.Collections.emptyIterator;
 import static java.util.Collections.emptyList;
 import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 
 public abstract class AbstractEmptyContainer<Item>
 extends AbstractObject
-implements Container<Item> {
+implements GetContainer<Item> {
 
     protected AbstractEmptyContainer() {
         super();
@@ -61,7 +63,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean contains(final Container<? extends Item> items) {
+    public final boolean contains(final GetContainer<? extends Item> items) {
         return false;
     }
 
@@ -97,7 +99,7 @@ implements Container<Item> {
     }
 
     @Override
-    public final boolean containsEqualItems(final Container<Item> otherContainer) {
+    public final boolean containsEqualItems(final GetContainer<Item> otherContainer) {
         return otherContainer.isEmpty();
     }
 

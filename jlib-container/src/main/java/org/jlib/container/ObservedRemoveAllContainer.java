@@ -29,16 +29,14 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * the remove operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAllContainer<Item>
-extends RemoveAllContainer<Item>,
-        ObservedRemoveContainer<Item> {
+public interface ObservedRemoveAllContainer<Item> {
 
     /**
-     * Removes all Items from this {@link Container}.
+     * Removes all Items from this {@link GetContainer}.
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

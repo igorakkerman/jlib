@@ -25,22 +25,17 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.Traversable;
 
 /**
- * {@link Container} allowing Items to be removed.
+ * {@link GetContainer} allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link Container}
+ *        type of items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
-public interface RemoveContainer<Item>
-extends RemoveTraversable<Item> {
-
-//    public void remove(ItemContext<Item, ? extends RemoveContainer<Item>> itemContext);
-    // TODO: throws some constraint exception
+public interface RemoveContainer<Item> {
 
     /**
      * Removes all Items from this {@link RemoveContainer}
@@ -61,10 +56,10 @@ extends RemoveTraversable<Item> {
 
     /**
      * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Container}.
+     * <em>except</em> the Items contained by the specified {@link GetContainer}.
      *
      * @param items
-     *        {@link Container} containing the Items to retain
+     *        {@link GetContainer} containing the Items to retain
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -73,7 +68,7 @@ extends RemoveTraversable<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(Container<? extends Item> items)
+    public void retain(GetContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**

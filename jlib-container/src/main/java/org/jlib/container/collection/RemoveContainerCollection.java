@@ -23,8 +23,8 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.ObservedRandomAccessRemoveContainer;
+import org.jlib.container.GetContainer;
+import org.jlib.container.ObservedDirectRemoveContainer;
 import org.jlib.container.RemoveContainer;
 
 /**
@@ -40,21 +40,21 @@ import org.jlib.container.RemoveContainer;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link ObservedRandomAccessRemoveContainer} */
-    private final ObservedRandomAccessRemoveContainer<Item> delegateContainer;
+    /** adapted and backed {@link ObservedDirectRemoveContainer} */
+    private final ObservedDirectRemoveContainer<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
      * {@link RemoveContainer}.
      *
      * @param <DelegateContainer>
-     *        type of the delegate {@link Container}
+     *        type of the delegate {@link GetContainer}
      *
      * @param delegateContainer
      *        {@link RemoveContainer} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends Container<Item> & ObservedRandomAccessRemoveContainer<Item>> //
+    public <DelegateContainer extends GetContainer<Item> & ObservedDirectRemoveContainer<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

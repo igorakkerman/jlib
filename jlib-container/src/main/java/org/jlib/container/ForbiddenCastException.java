@@ -21,23 +21,16 @@
 
 package org.jlib.container;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
+import org.jlib.core.language.InvalidStateException;
 
-/**
- * {@link ReplaceContainer} traversed by an {@link ObservedReplaceContainer}.
- *
- * @param <Item>
- *        type of items held in the {@link Sequence}
- *
- * @author Igor Akkerman
- */
-public interface ObservedReplaceContainer<Item> {
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-    /**
-     * Returns an {@link ObservedReplaceTraverser} over the Items of this {@link ObservedReplaceContainer}.
-     *
-     * @return {@link ObservedReplaceTraverser} traversing the Items of this {@link ObservedReplaceContainer}
-     */
-    public ObservedReplaceTraverser<Item> createTraverser();
+public class ForbiddenCastException
+extends InvalidStateException {
+
+    private static final long serialVersionUID = - 2378979200033998213L;
+
+    public ForbiddenCastException(final Object object) {
+        super(message(object));
+    }
 }

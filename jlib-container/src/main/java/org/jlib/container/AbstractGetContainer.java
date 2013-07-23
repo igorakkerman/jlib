@@ -30,52 +30,38 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import org.jlib.core.iterator.IteratorUtility;
-import org.jlib.core.language.AutoCloneable;
+import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.TraversableIterator;
 
 import static org.jlib.core.traverser.TraversableUtility.haveEqualItems;
 
-/**
- * Skeletal implementation of a {@link Container}. A concrete Container
- * implementation needs only to extend this class and implement the
- * {@link Container#iterator()} method. Other methods may be overridden for
- * efficiency reasons.
- *
- * @param <Item>
- *        type of items held in the {@link Container}
- *
- * @author Igor Akkerman
- */
-public abstract class AbstractContainer<Item>
-extends AutoCloneable
-implements Container<Item> {
-
-    /**
-     * Creates a new empty Container.
-     */
-    protected AbstractContainer() {
-        super();
-    }
+public class AbstractGetContainer<Item>
+extends AbstractObject
+implements GetContainer<Item> {
 
     @Override
     public boolean contains(final Item item) {
-        for (final Object containedItem : this)
-            if (containedItem.equals(item))
+        for (final Object containedItem : this) {
+            if (containedItem.equals(item)) {
                 return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public boolean contains(final Container<? extends Item> items) {
+    public boolean contains(final GetContainer<? extends Item> items) {
         return contains((Iterable<? extends Item>) items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items) {
-        for (final Item item : items)
-            if (! contains(item))
+        for (final Item item : items) {
+            if (! contains(item)) {
                 return false;
+            }
+        }
         return true;
     }
 
@@ -85,19 +71,21 @@ implements Container<Item> {
     }
 
     /**
-     * Verifies whether this Container contains all of the Items returned by the
+     * Verifies whether this GetContainer contains all of the Items returned by the
      * Traverser of the specified Iterable.
      *
      * @param items
      *        Iterable creating the Traverser returning the Items to verify
      *
-     * @return {@code true} if this Container contains all of the Items
+     * @return {@code true} if this GetContainer contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      */
     private boolean contains(final Iterable<? extends Item> items) {
-        for (final Item item : items)
-            if (! contains(item))
+        for (final Item item : items) {
+            if (! contains(item)) {
                 return false;
+            }
+        }
         return true;
     }
 
@@ -107,8 +95,9 @@ implements Container<Item> {
         @SuppressWarnings("unchecked")
         final Item[] targetArray = (Item[]) new Object[itemsCount];
         int index = 0;
-        for (final Item item : this)
+        for (final Item item : this) {
             targetArray[index++] = item;
+        }
 
         return targetArray;
     }
@@ -124,7 +113,7 @@ implements Container<Item> {
     }
 
     /**
-     * Appends the Items of this {@link Container} to the specified {@link List}
+     * Appends the Items of this {@link GetContainer} to the specified {@link List}
      * .
      *
      * @param <Lizt>
@@ -136,35 +125,37 @@ implements Container<Item> {
      * @return filled {@link List} {@code list}
      */
     private <Lizt extends List<Item>> Lizt appendContainedItemsToList(final Lizt list) {
-        for (final Item item : this)
+        for (final Item item : this) {
             list.add(item);
+        }
 
         return list;
     }
 
     @Override
     public final boolean equals(final @Nullable Object otherObject) {
-        if (otherObject == null || ! getClass().equals(otherObject.getClass()))
+        if (otherObject == null || ! getClass().equals(otherObject.getClass())) {
             return false;
+        }
 
         @SuppressWarnings("unchecked")
-        final Container<Item> otherContainer = (Container<Item>) otherObject;
+        final GetContainer<Item> otherContainer = (GetContainer<Item>) otherObject;
 
         return hasMatchingProperties(otherContainer) && containsEqualItems(otherContainer);
     }
 
     /**
-     * Verifies whether additional properties of this {@link Container} match
-     * those of the specified {@link Container} providing a prerequisite for
+     * Verifies whether additional properties of this {@link GetContainer} match
+     * those of the specified {@link GetContainer} providing a prerequisite for
      * equality.
      *
      * @param otherContainer
-     *        {@link Container} compared to this {@link Container}
+     *        {@link GetContainer} compared to this {@link GetContainer}
      *
      * @return {@code true} if the additional properties are prerequisites for
      *         equality; {@code false} otherwise
      */
-    protected boolean hasMatchingProperties(final Container<Item> otherContainer) {
+    protected boolean hasMatchingProperties(final GetContainer<Item> otherContainer) {
         return true;
     }
 
@@ -174,7 +165,7 @@ implements Container<Item> {
     }
 
     @Override
-    public boolean containsEqualItems(final Container<Item> otherContainer) {
+    public boolean containsEqualItems(final GetContainer<Item> otherContainer) {
         return getItemsCount() == otherContainer.getItemsCount() && //
                haveEqualItems(this, otherContainer);
     }
@@ -189,20 +180,22 @@ implements Container<Item> {
     // TODO: use Apache Commons Lang
     public int hashCode() {
         int hashCode = 0;
-        for (final Item item : this)
+        for (final Item item : this) {
             hashCode += item.hashCode();
+        }
         hashCode *= getItemsCount();
         return hashCode;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public AbstractContainer<Item> clone() {
-        return (AbstractContainer<Item>) super.clone();
+    public ForwardingGodContainer<Item> clone() {
+        return (ForwardingGodContainer<Item>) super.clone();
     }
 
     @Override
     public Iterator<Item> iterator() {
         return new TraversableIterator<>(this);
     }
+
 }

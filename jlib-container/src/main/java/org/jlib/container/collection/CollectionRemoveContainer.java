@@ -33,11 +33,11 @@ import org.jlib.core.traverser.RemoveIterableTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.Container;
-import org.jlib.container.ContainerUtility;
+import org.jlib.container.DirectRemoveContainer;
+import org.jlib.container.GetContainer;
+import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.RandomAccessRemoveContainer;
 import org.jlib.container.RemoveAllContainer;
 import org.jlib.container.RemoveContainer;
 
@@ -51,13 +51,13 @@ import static org.jlib.core.traverser.TraversableUtility.iterable;
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
- *        type of the items held in the {@link Container}
+ *        type of the items held in the {@link GetContainer}
  *
  * @author Igor Akkerman
  */
 public class CollectionRemoveContainer<Item>
 extends CollectionContainer<Item>
-implements RandomAccessRemoveContainer<Item>,
+implements DirectRemoveContainer<Item>,
            RemoveAllContainer<Item> {
 
     /**
@@ -134,7 +134,7 @@ implements RandomAccessRemoveContainer<Item>,
      * {@link Collection}.
      *
      * @param items
-     *        {@link Container} of added Items
+     *        {@link GetContainer} of added Items
      *
      * @throws InvalidContainerDelegateArgumentException
      *         if an Item in {@code items} caused an error during the operation
@@ -144,7 +144,7 @@ implements RandomAccessRemoveContainer<Item>,
      *         if an error occured during the operation of the delegate
      *         {@link Collection}
      */
-    public void add(final Container<? extends Item> items)
+    public void add(final GetContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         for (final Item item : items)
             getDelegateCollection().add(item);
@@ -224,7 +224,7 @@ implements RandomAccessRemoveContainer<Item>,
     }
 
     @Override
-    public void remove(final Container<? extends Item> items)
+    public void remove(final GetContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         CollectionUtility.removeAll(getDelegateCollection(), items);
     }
@@ -255,7 +255,7 @@ implements RandomAccessRemoveContainer<Item>,
     }
 
     @Override
-    public void retain(final Container<? extends Item> items)
+    public void retain(final GetContainer<? extends Item> items)
     throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
         ContainerUtility.retain(this, items);
     }

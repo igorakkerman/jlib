@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.AbstractContainer;
+import org.jlib.container.ForwardingContainer;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation}.
@@ -38,7 +38,7 @@ import org.jlib.container.AbstractContainer;
  * @author Igor Akkerman
  */
 public abstract class AbstractBinaryRelation<LeftValue, RightValue>
-extends AbstractContainer<Pair<LeftValue, RightValue>>
+extends ForwardingContainer<Pair<LeftValue, RightValue>>
 implements BinaryRelation<LeftValue, RightValue> {
 
     /**

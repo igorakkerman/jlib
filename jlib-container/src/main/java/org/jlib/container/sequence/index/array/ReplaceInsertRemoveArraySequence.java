@@ -23,8 +23,8 @@ package org.jlib.container.sequence.index.array;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.ContainerUtility;
+import org.jlib.container.GetContainer;
+import org.jlib.container.legacy.ContainerUtility;
 import org.jlib.container.sequence.InvalidSequenceItemsCountException;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.DefaultReplaceInsertRemoveIndexSequenceTraverser;
@@ -139,9 +139,9 @@ implements ObservedReplaceIndexSequence<Item> {
      * of {@code 0} containing the specified Items.
      *
      * @param items
-     *        {@link Container} of Items to store
+     *        {@link GetContainer} of Items to store
      */
-    public ReplaceInsertRemoveArraySequence(final Container<? extends Item> items) {
+    public ReplaceInsertRemoveArraySequence(final GetContainer<? extends Item> items) {
         super(items);
     }
 
@@ -170,7 +170,7 @@ implements ObservedReplaceIndexSequence<Item> {
     }
 
     @Override
-    public void retain(final Container<? extends Item> items)
+    public void retain(final GetContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         ContainerUtility.retain(this, items);
     }
@@ -190,7 +190,7 @@ implements ObservedReplaceIndexSequence<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final GetContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         ContainerUtility.retain(this, items, observers);
     }
