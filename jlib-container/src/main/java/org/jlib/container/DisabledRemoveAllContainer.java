@@ -34,8 +34,8 @@ implements RemoveAllContainer<Item> {
      * @return sole {@link DisabledRemoveAllContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> RemoveAllContainer<Item> getInstance() {
-        return (RemoveAllContainer<Item>) INSTANCE;
+    public static <Item> DisabledRemoveAllContainer<Item> getInstance() {
+        return (DisabledRemoveAllContainer<Item>) INSTANCE;
     }
 
     /**

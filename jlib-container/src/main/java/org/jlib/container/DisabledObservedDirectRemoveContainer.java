@@ -41,8 +41,8 @@ implements ObservedDirectRemoveContainer<Item> {
      * @return sole {@link DisabledObservedDirectRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> ObservedDirectRemoveContainer<Item> getInstance() {
-        return (ObservedDirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledObservedDirectRemoveContainer<Item> getInstance() {
+        return (DisabledObservedDirectRemoveContainer<Item>) INSTANCE;
     }
 
     /**

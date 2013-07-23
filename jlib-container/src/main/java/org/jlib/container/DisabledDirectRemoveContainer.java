@@ -38,8 +38,8 @@ implements DirectRemoveContainer<Item> {
      * @return sole {@link DisabledDirectRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DirectRemoveContainer<Item> getInstance() {
-        return (DirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledDirectRemoveContainer<Item> getInstance() {
+        return (DisabledDirectRemoveContainer<Item>) INSTANCE;
     }
 
     /**

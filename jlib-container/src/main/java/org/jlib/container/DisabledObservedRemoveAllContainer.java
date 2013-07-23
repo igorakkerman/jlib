@@ -37,8 +37,8 @@ implements ObservedRemoveAllContainer<Item> {
      * @return sole {@link DisabledObservedRemoveAllContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> ObservedRemoveAllContainer<Item> getInstance() {
-        return (ObservedRemoveAllContainer<Item>) INSTANCE;
+    public static <Item> DisabledObservedRemoveAllContainer<Item> getInstance() {
+        return (DisabledObservedRemoveAllContainer<Item>) INSTANCE;
     }
 
     /**

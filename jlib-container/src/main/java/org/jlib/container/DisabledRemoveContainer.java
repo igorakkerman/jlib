@@ -40,8 +40,8 @@ implements RemoveContainer<Item> {
      * @return sole {@link DisabledRemoveContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> RemoveContainer<Item> getInstance() {
-        return (RemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledRemoveContainer<Item> getInstance() {
+        return (DisabledRemoveContainer<Item>) INSTANCE;
     }
 
     /**

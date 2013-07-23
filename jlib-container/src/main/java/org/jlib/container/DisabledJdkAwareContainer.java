@@ -42,8 +42,8 @@ implements JdkAwareContainer<Item> {
      * @return sole {@link DisabledReadContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> JdkAwareContainer<Item> getInstance() {
-        return (JdkAwareContainer<Item>) INSTANCE;
+    public static <Item> DisabledJdkAwareContainer<Item> getInstance() {
+        return (DisabledJdkAwareContainer<Item>) INSTANCE;
     }
 
     /**

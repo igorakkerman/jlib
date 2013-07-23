@@ -42,8 +42,8 @@ implements ReadContainer<Item> {
      * @return sole {@link DisabledReadContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> ReadContainer<Item> getInstance() {
-        return (ReadContainer<Item>) INSTANCE;
+    public static <Item> DisabledReadContainer<Item> getInstance() {
+        return (DisabledReadContainer<Item>) INSTANCE;
     }
 
     /**
