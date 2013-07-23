@@ -35,7 +35,7 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
  * @author Igor Akkerman
  */
 public final class EmptyContainer<Item>
-extends InitiallyEmptyContainer<Item>
+extends AbstractEmptyContainer<Item>
 implements Container<Item>,
            Serializable {
 

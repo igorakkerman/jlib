@@ -22,19 +22,21 @@
 package org.jlib.container;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
-public class InitiallyEmptyContainer<Item>
+import static java.util.Collections.emptyIterator;
+import static java.util.Collections.emptyList;
+import static org.jlib.core.array.ArrayUtility.getEmptyArray;
+
+public abstract class AbstractEmptyContainer<Item>
 extends AbstractObject
 implements Container<Item> {
 
-    public InitiallyEmptyContainer() {
+    protected AbstractEmptyContainer() {
         super();
     }
 
@@ -44,63 +46,63 @@ implements Container<Item> {
     }
 
     @Override
-    public int getItemsCount() {
+    public final int getItemsCount() {
         return 0;
     }
 
     @Override
-    public boolean isEmpty() {
+    public final boolean isEmpty() {
         return true;
     }
 
     @Override
-    public boolean contains(final Item item) {
+    public final boolean contains(final Item item) {
         return false;
     }
 
     @Override
-    public boolean contains(final Container<? extends Item> items) {
+    public final boolean contains(final Container<? extends Item> items) {
         return false;
     }
 
     @Override
-    public boolean contains(final Collection<? extends Item> items) {
+    public final boolean contains(final Collection<? extends Item> items) {
         return false;
     }
 
     @Override
     @SafeVarargs
-    public boolean contains(final Item... items) {
+    public final boolean contains(final Item... items) {
         return false;
     }
 
     @Override
-    public List<Item> toList() {
-        return Collections.emptyList();
+    public final List<Item> toList() {
+        return emptyList();
     }
 
     @Override
     public List<Item> toSequentialList() {
-        return Collections.emptyList();
+        return emptyList();
     }
 
     @Override
     public final Item[] toArray() {
-        return ArrayUtility.getEmptyArray();
+        return getEmptyArray();
     }
 
     @Override
-    public Iterator<Item> iterator() {
-        return Collections.emptyIterator();
+    public final Iterator<Item> iterator() {
+        return emptyIterator();
     }
 
     @Override
-    public boolean containsEqualItems(final Container<Item> otherContainer) {
+    public final boolean containsEqualItems(final Container<Item> otherContainer) {
         return otherContainer.isEmpty();
     }
 
     @Override
-    public boolean containsEqualItems(final Collection<Item> collection) {
+    public final boolean containsEqualItems(final Collection<Item> collection) {
         return collection.isEmpty();
     }
 }
