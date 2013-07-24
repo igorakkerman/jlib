@@ -45,6 +45,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    boolean contains(Traversable<? extends Item> items)
+    boolean containsItems(Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -23,13 +23,13 @@ package org.jlib.container;
 
 import org.jlib.core.language.AbstractObject;
 
-public final class DefaultToArray<Item, DelegateContainer extends GetItemsCount<Item> & Iterable<Item>>
+public final class IterableToArray<Item, DelegateContainer extends GetItemsCount<Item> & Iterable<Item>>
 extends AbstractObject
 implements ToArray<Item> {
 
     private final DelegateContainer delegateContainer;
 
-    public DefaultToArray(final DelegateContainer delegateContainer) {
+    public IterableToArray(final DelegateContainer delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;

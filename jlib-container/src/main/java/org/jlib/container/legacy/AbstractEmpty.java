@@ -74,7 +74,7 @@ implements ToRandomAccessList<Item>,
     }
 
     @Override
-    public final boolean contains(final Collection<? extends Item> items) {
+    public final boolean containsItems(final Collection<? extends Item> items) {
         return false;
     }
 

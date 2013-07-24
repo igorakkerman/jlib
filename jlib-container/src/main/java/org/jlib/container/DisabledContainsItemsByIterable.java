@@ -21,35 +21,34 @@
 
 package org.jlib.container;
 
-final class DisabledContainsItemsByArray<Item>
-implements ContainsItemsByArray<Item> {
+final class DisabledContainsItemsByIterable<Item>
+implements ContainsItemsByIterable<Item> {
 
-    /** sole {@link DisabledContainsItemsByArray} instance */
-    private static final DisabledContainsItemsByArray<?> INSTANCE = new DisabledContainsItemsByArray<Object>();
+    /** sole {@link DisabledContainsItemsByIterable} instance */
+    private static final DisabledContainsItemsByIterable<?> INSTANCE = new DisabledContainsItemsByIterable<Object>();
 
     /**
-     * Returns the sole {@link DisabledContainsItemsByArray} instance.
+     * Returns the sole {@link DisabledContainsItemsByIterable} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledContainsItemsByArray} instance
+     * @return sole {@link DisabledContainsItemsByIterable} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledContainsItemsByArray<Item> getInstance() {
-        return (DisabledContainsItemsByArray<Item>) INSTANCE;
+    public static <Item> DisabledContainsItemsByIterable<Item> getInstance() {
+        return (DisabledContainsItemsByIterable<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledContainsItemsByArray}.
+     * Creates a new {@link DisabledContainsItemsByIterable}.
      */
-    private DisabledContainsItemsByArray() {
+    private DisabledContainsItemsByIterable() {
         super();
     }
 
     @Override
-    @SafeVarargs
-    public final boolean containsItems(final Item... items)
+    public boolean containsItems(final Iterable<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

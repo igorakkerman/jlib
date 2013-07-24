@@ -190,20 +190,20 @@ implements ToRandomAccessList<Item>,
     @Override
     public boolean contains(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateContainsContainer.contains(items);
+        return delegateContainsContainer.containsItems(items);
     }
 
     @Override
-    public boolean contains(final Collection<? extends Item> items)
+    public boolean containsItems(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateContainsContainer.contains(items);
+        return delegateContainsContainer.containsItems(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateContainsContainer.contains(items);
+        return delegateContainsContainer.containsItems(items);
     }
 
     @Override

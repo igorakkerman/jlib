@@ -45,6 +45,6 @@ extends ItemOperationStrategy<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    boolean contains(Item... items)
+    boolean containsItems(Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -21,35 +21,36 @@
 
 package org.jlib.container;
 
-final class DisabledContainsItemsByArray<Item>
-implements ContainsItemsByArray<Item> {
+import java.util.Collection;
 
-    /** sole {@link DisabledContainsItemsByArray} instance */
-    private static final DisabledContainsItemsByArray<?> INSTANCE = new DisabledContainsItemsByArray<Object>();
+final class DisabledContainsItemsByCollection<Item>
+implements ContainsItemsByCollection<Item> {
+
+    /** sole {@link DisabledContainsItemsByCollection} instance */
+    private static final DisabledContainsItemsByCollection<?> INSTANCE = new DisabledContainsItemsByCollection<Object>();
 
     /**
-     * Returns the sole {@link DisabledContainsItemsByArray} instance.
+     * Returns the sole {@link DisabledContainsItemsByCollection} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledContainsItemsByArray} instance
+     * @return sole {@link DisabledContainsItemsByCollection} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledContainsItemsByArray<Item> getInstance() {
-        return (DisabledContainsItemsByArray<Item>) INSTANCE;
+    public static <Item> DisabledContainsItemsByCollection<Item> getInstance() {
+        return (DisabledContainsItemsByCollection<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledContainsItemsByArray}.
+     * Creates a new {@link DisabledContainsItemsByCollection}.
      */
-    private DisabledContainsItemsByArray() {
+    private DisabledContainsItemsByCollection() {
         super();
     }
 
     @Override
-    @SafeVarargs
-    public final boolean containsItems(final Item... items)
+    public boolean containsItems(final Collection<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
