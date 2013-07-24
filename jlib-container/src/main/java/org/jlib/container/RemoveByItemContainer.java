@@ -35,17 +35,17 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface DirectRemoveContainer<Item>
+public interface RemoveByItemContainer<Item>
 extends Container<Item> {
 
     /**
-     * Removes the specified Item from this {@link DirectRemoveContainer}.
+     * Removes the specified Item from this {@link RemoveByItemContainer}.
      *
      * @param item
      *        {@link Item} to remove
      *
      * @throws ItemToRemoveNotContainedException
-     *         if this {@link DirectRemoveContainer} does not contain
+     *         if this {@link RemoveByItemContainer} does not contain
      *         {@code Item}
      *
      * @throws InvalidTraversableArgumentException
@@ -60,7 +60,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link DirectRemoveContainer}.
+     * {@link RemoveByItemContainer}.
      *
      * @param items
      *        {@link TraversableContainer} containing the Items to remove
@@ -77,7 +77,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link DirectRemoveContainer}.
+     * {@link RemoveByItemContainer}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -94,7 +94,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link DirectRemoveContainer}.
+     * {@link RemoveByItemContainer}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -110,7 +110,7 @@ extends Container<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all specified Items from this {@link DirectRemoveContainer}
+     * Removes all specified Items from this {@link RemoveByItemContainer}
      * .
      *
      * @param items

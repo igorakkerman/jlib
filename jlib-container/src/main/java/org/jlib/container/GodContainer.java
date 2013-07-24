@@ -50,7 +50,7 @@ implements JdkAwareContainer<Item>,
            TraversableContainer<Item>,
            ContainsContainer<Item>,
            RemoveContainer<Item>,
-           DirectRemoveContainer<Item>,
+           RemoveByItemContainer<Item>,
            RemoveAllContainer<Item>,
            ObservedRemoveContainer<Item>,
            ObservedDirectRemoveContainer<Item>,
@@ -68,8 +68,8 @@ implements JdkAwareContainer<Item>,
     private RemoveContainer<Item> delegateRemoveContainer = /*
      */ DisabledRemoveContainer.getInstance();
 
-    private DirectRemoveContainer<Item> delegateDirectRemoveContainer = /*
-     */ DisabledDirectRemoveContainer.getInstance();
+    private RemoveByItemContainer<Item> delegateRemoveByItemContainer = /*
+     */ DisabledRemoveByItemContainer.getInstance();
 
     private RemoveAllContainer<Item> delegateRemoveAllContainer = /*
      */ DisabledRemoveAllContainer.getInstance();
@@ -119,12 +119,12 @@ implements JdkAwareContainer<Item>,
         this.delegateRemoveContainer = delegateRemoveContainer;
     }
 
-    public DirectRemoveContainer<Item> getDelegateDirectRemoveContainer() {
-        return delegateDirectRemoveContainer;
+    public RemoveByItemContainer<Item> getDelegateRemoveByItemContainer() {
+        return delegateRemoveByItemContainer;
     }
 
-    public void setDelegateDirectRemoveContainer(final DirectRemoveContainer<Item> delegateDirectRemoveContainer) {
-        this.delegateDirectRemoveContainer = delegateDirectRemoveContainer;
+    public void setDelegateRemoveByItemContainer(final RemoveByItemContainer<Item> delegateRemoveByItemContainer) {
+        this.delegateRemoveByItemContainer = delegateRemoveByItemContainer;
     }
 
     public RemoveAllContainer<Item> getDelegateRemoveAllContainer() {
@@ -305,32 +305,32 @@ implements JdkAwareContainer<Item>,
     @Override
     public void remove(final Item item)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateDirectRemoveContainer.remove(item);
+        delegateRemoveByItemContainer.remove(item);
     }
 
     @Override
     public void remove(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateDirectRemoveContainer.remove(items);
+        delegateRemoveByItemContainer.remove(items);
     }
 
     @Override
     public void remove(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateDirectRemoveContainer.remove(items);
+        delegateRemoveByItemContainer.remove(items);
     }
 
     @Override
     public void remove(final Iterable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateDirectRemoveContainer.remove(items);
+        delegateRemoveByItemContainer.remove(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateDirectRemoveContainer.remove(items);
+        delegateRemoveByItemContainer.remove(items);
     }
 
     @Override

@@ -40,7 +40,7 @@ import org.jlib.container.RemoveContainer;
  */
 public class CollectionRemoveContainer<Item>
 /*extends CollectionContainer<Item>
-implements DirectRemoveContainer<Item>,
+implements RemoveByItemContainer<Item>,
            RemoveAllContainer<Item> */{
 //
 //    /**

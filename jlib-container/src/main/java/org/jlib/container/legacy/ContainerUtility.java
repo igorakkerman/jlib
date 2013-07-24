@@ -38,7 +38,7 @@ import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.RemoveTraverser;
 
-import org.jlib.container.DirectRemoveContainer;
+import org.jlib.container.RemoveByItemContainer;
 import org.jlib.container.TraversableContainer;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedDirectRemoveContainer;
@@ -93,7 +93,7 @@ public final class ContainerUtility {
     @SafeVarargs
     // TODO: check declared exceptions
     @SuppressWarnings({ "DuplicateThrows", "ProhibitedExceptionDeclared" })
-    public static <Item> void remove(final DirectRemoveContainer<Item> container, final Item item,
+    public static <Item> void remove(final RemoveByItemContainer<Item> container, final Item item,
                                      final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            RuntimeException {
@@ -135,7 +135,7 @@ public final class ContainerUtility {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void remove(final DirectRemoveContainer<Item> container,
+    public static <Item> void remove(final RemoveByItemContainer<Item> container,
                                      final Iterable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         for (final Item item : items)
@@ -168,7 +168,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final DirectRemoveContainer<Item> container, final Item... items)
+    public static <Item> void remove(final RemoveByItemContainer<Item> container, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
         remove(container, ArrayUtility.iterable(items));
     }

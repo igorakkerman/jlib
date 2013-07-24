@@ -25,27 +25,27 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-final class DisabledDirectRemoveContainer<Item>
+final class DisabledRemoveByItemContainer<Item>
 extends AbstractDisabledContainer<Item>
-implements DirectRemoveContainer<Item> {
+implements RemoveByItemContainer<Item> {
 
-    /** sole {@link DisabledDirectRemoveContainer} instance */
-    private static final DirectRemoveContainer<?> INSTANCE = new DisabledDirectRemoveContainer<>();
+    /** sole {@link DisabledRemoveByItemContainer} instance */
+    private static final RemoveByItemContainer<?> INSTANCE = new DisabledRemoveByItemContainer<>();
 
     /**
-     * Returns the sole {@link DisabledDirectRemoveContainer} instance.
+     * Returns the sole {@link DisabledRemoveByItemContainer} instance.
      *
-     * @return sole {@link DisabledDirectRemoveContainer} instance
+     * @return sole {@link DisabledRemoveByItemContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledDirectRemoveContainer<Item> getInstance() {
-        return (DisabledDirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledRemoveByItemContainer<Item> getInstance() {
+        return (DisabledRemoveByItemContainer<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledDirectRemoveContainer}.
+     * Creates a new {@link DisabledRemoveByItemContainer}.
      */
-    private DisabledDirectRemoveContainer() {
+    private DisabledRemoveByItemContainer() {
         super();
     }
 
