@@ -21,7 +21,7 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
@@ -123,7 +123,7 @@ implements IndexSequence<Item> {
     @Override
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws InvalidSequenceIndexException {
-        return new SubIndexSequence<>(this, fromIndex, toIndex);
+        return null; // new SubIndexSequence<>(this, fromIndex, toIndex);
     }
 
     @Override
@@ -161,7 +161,8 @@ implements IndexSequence<Item> {
         return stringBuilder.toString();
     }
 
-    protected boolean hasMatchingProperties(final ReadContainer<Item> otherContainer) {
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
 //        if (! super.hasMatchingProperties(otherContainer))
 //            return false;
 

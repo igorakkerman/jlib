@@ -31,7 +31,8 @@ import java.util.Iterator;
 public final class IterableUtility {
 
     /** no visible constructor */
-    private IterableUtility() {}
+    private IterableUtility() {
+    }
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
@@ -105,5 +106,39 @@ public final class IterableUtility {
             itemsCount += getItemsCount(iterable);
 
         return itemsCount;
+    }
+
+    public static <Item> boolean contains(final Iterable<Item> iterable, final Item item) {
+        for (final Object containedItem : iterable)
+            if (containedItem.equals(item))
+                return true;
+
+        return false;
+    }
+
+    /**
+     * Verifies whether this TraversableContainer contains all of the Items returned by the
+     * Traverser of the specified Iterable.
+     *
+     * @param containedItems
+     *        {@link Iterable} providing the contained {@link Item}s;
+     *        if {@code containedItems} provides a {@code null} value, the behaviour is unspecified,
+     *        an {@link Exception} may be thrown
+     *
+     * @param lookedUpItems
+     *        {@link Iterable} providing the looked up {@link Item}s;
+     *        if {@code lookedUpItems} provides a {@code null} value, the behaviour is unspecified,
+     *        an {@link Exception} may be thrown
+     *
+     * @return {@code true} if this TraversableContainer contains all of the Items
+     *         contained by {@code otherContainer}; {@code false} otherwise
+     */
+    public static <Item> boolean contains(final Iterable<Item> containedItems,
+                                          final Iterable<? extends Item> lookedUpItems) {
+        for (final Item lookedUpItem : lookedUpItems)
+            if (! contains(containedItems, lookedUpItem))
+                return false;
+
+        return true;
     }
 }

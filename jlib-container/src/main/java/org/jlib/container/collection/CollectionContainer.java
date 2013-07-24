@@ -29,19 +29,19 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link ReadContainer}. A
+ * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
- *        type of items held in the {@link ReadContainer}
+ *        type of items held in the {@link TraversableContainer}
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>
-implements ReadContainer<Item> {
+implements TraversableContainer<Item> {
 
     private static final long serialVersionUID = 4025909176358714675L;
 
@@ -72,6 +72,11 @@ implements ReadContainer<Item> {
     }
 
     @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+        return false;
+    }
+
+    @Override
     public Traverser<Item> createTraverser() {
         return new IterableTraverser<>(this);
     }
@@ -83,31 +88,27 @@ implements ReadContainer<Item> {
     }
 
     // implemented for efficiency
-    @Override
     public boolean contains(final Item item) {
         return delegateCollection.contains(item);
     }
 
-    @Override
-    public boolean contains(final ReadContainer<? extends Item> items)
+    public boolean contains(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
     // implemented for efficiency
-    @Override
     public boolean contains(final Collection<? extends Item> collection) {
         return delegateCollection.containsAll(collection);
     }
 
-    @Override
     public boolean contains(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
     @Override
-    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
         return false;
     }
 

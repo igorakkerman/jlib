@@ -38,7 +38,7 @@ extends ForwardingSequence<Item> {
         */ ForwardingReplaceSequence(final DelegateSequence initialDelegateSequence) {
 
 //        super(initialDelegateSequence);
-        super(null);
+        super();
 
         delegateTraversable = initialDelegateSequence;
     }
@@ -48,7 +48,6 @@ extends ForwardingSequence<Item> {
         return super.equals(otherObject);
     }
 
-    @Override
     public ForwardingReplaceSequenceTraverser<Item> createTraverser() {
 //        return new ForwardingReplaceSequenceTraverser<>(getDelegateSequence().createTraverser());
         return null;

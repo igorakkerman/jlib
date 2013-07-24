@@ -58,7 +58,7 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public void retain(final ReadContainer<? extends Item> items)
+    public void retain(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

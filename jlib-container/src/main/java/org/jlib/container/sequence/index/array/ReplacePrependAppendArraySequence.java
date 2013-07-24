@@ -126,9 +126,9 @@ implements ObservedPrependSequence<Item> */{
 //     * index of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link ReadContainer} of Items to store
+//     *        {@link TraversableContainer} of Items to store
 //     */
-//    public ReplacePrependAppendArraySequence(final ReadContainer<? extends Item> items) {
+//    public ReplacePrependAppendArraySequence(final TraversableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -140,9 +140,9 @@ implements ObservedPrependSequence<Item> */{
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link ReadContainer} of Items to store
+//     *        {@link TraversableContainer} of Items to store
 //     */
-//    public ReplacePrependAppendArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
+//    public ReplacePrependAppendArraySequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
 //        super(firstIndex, items);
 //    }
 //
@@ -153,7 +153,7 @@ implements ObservedPrependSequence<Item> */{
 //    }
 //
 //    @Override
-//    public void prepend(final ReadContainer<? extends Item> items) {
+//    public void prepend(final TraversableContainer<? extends Item> items) {
 //        // intentionally not using SequenceUtility for efficiency
 //        prepend(items, items.getItemsCount());
 //    }
@@ -180,7 +180,7 @@ implements ObservedPrependSequence<Item> */{
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public final void prepend(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    public final void prepend(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException {
 //        prepend(items, items.getItemsCount(), observers);
 //    }
@@ -212,7 +212,7 @@ implements ObservedPrependSequence<Item> */{
 //    }
 //
 //    /**
-//     * Prepends all Items contained by the specified {@link ReadContainer} to this
+//     * Prepends all Items contained by the specified {@link TraversableContainer} to this
 //     * {@link ObservedPrependSequence}.
 //     *
 //     * @param items

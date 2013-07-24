@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
@@ -67,12 +67,12 @@ public class HashBinaryRelation<LeftValue, RightValue>
 
     /**
      * Creates a new HashBinaryRelation containing the Pairs contained by
-     * the specified jlib ReadContainer.
+     * the specified jlib TraversableContainer.
      *
      * @param pairs
-     *        ReadContainer of the Pairs to add
+     *        TraversableContainer of the Pairs to add
      */
-    public HashBinaryRelation(final ReadContainer<Pair<LeftValue, RightValue>> pairs) {
+    public HashBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs) {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : pairs)

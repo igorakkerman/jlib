@@ -47,16 +47,16 @@ implements RemoveBinaryRelation<LeftValue, RightValue> */{
 //
 //    /**
 //     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-//     * {@link Pair} items contained by the specified {@link ReadContainer}.
+//     * {@link Pair} items contained by the specified {@link TraversableContainer}.
 //     *
 //     * @param pairs
-//     *        ReadContainer of the Pairs to add
+//     *        TraversableContainer of the Pairs to add
 //     *
 //     * @throws InvalidPairException
 //     *         if {@code pairs} violate the rules of this
 //     *         {@link HashAddRemoveBinaryRelation}
 //     */
-//    public HashAddRemoveBinaryRelation(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
+//    public HashAddRemoveBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidPairException {
 //        super(pairs);
 //    }
@@ -140,7 +140,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void remove(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.remove(this, pairs);
 //    }
 //
@@ -156,7 +156,7 @@ implements RemoveBinaryRelation<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void retain(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.retain(this, pairs);
 //    }
 //

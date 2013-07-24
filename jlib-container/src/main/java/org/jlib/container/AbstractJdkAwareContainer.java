@@ -28,7 +28,6 @@ import java.util.List;
 
 import org.jlib.core.iterator.IterableUtility;
 import org.jlib.core.language.AbstractObject;
-import org.jlib.core.traverser.TraversableIterator;
 
 public abstract class AbstractJdkAwareContainer<Item>
 extends AbstractObject
@@ -63,7 +62,7 @@ implements JdkAwareContainer<Item> {
     }
 
     /**
-     * Appends the Items of this {@link ReadContainer} to the specified {@link List}
+     * Appends the Items of this {@link TraversableContainer} to the specified {@link List}
      * .
      *
      * @param <Lizt>
@@ -88,6 +87,6 @@ implements JdkAwareContainer<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return new TraversableIterator<>(this);
+        return null; // new TraversableIterator<>(this);
     }
 }

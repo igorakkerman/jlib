@@ -23,7 +23,7 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
@@ -62,11 +62,11 @@ extends AppendSequence<Item> {
     throws InvalidTraversableArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link ReadContainer} to this
+     * Appends all Items contained by the specified {@link TraversableContainer} to this
      * {@link ObservedAppendSequence}.
      *
      * @param items
-     *        {@link ReadContainer} containing the Items to append
+     *        {@link TraversableContainer} containing the Items to append
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -84,7 +84,7 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(ReadContainer<? extends Item> items, ValueObserver<Item>... observers)
+    public void append(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException;
 
     /**

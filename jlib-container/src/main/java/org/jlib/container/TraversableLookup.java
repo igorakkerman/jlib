@@ -26,27 +26,16 @@ import java.util.Collection;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-/**
- * {@link RemoveContainer} allowing its Items to be removed by random access to
- * each specified Item.
- *
- * @param <Item>
- *        type of items held in the {@link TraversableContainer}
- *
- * @author Igor Akkerman
- */
-public interface DirectRemoveContainer<Item>
-extends Container<Item> {
+public interface TraversableLookup<Item> extends Container<Item> {
 
     /**
-     * Removes the specified Item from this {@link DirectRemoveContainer}.
+     * Verifies whether this {@link TraversableContainer} contains the specified Object.
      *
      * @param item
-     *        {@link Item} to remove
+     *        Item to verify
      *
-     * @throws ItemToRemoveNotContainedException
-     *         if this {@link DirectRemoveContainer} does not contain
-     *         {@code Item}
+     * @return {@code true} if this {@link TraversableContainer} contains {@code object};
+     *         {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -55,15 +44,18 @@ extends Container<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(Item item)
-    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException;
+    public boolean contains(Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link DirectRemoveContainer}.
+     * Verifies whether this {@link TraversableContainer} contains all of the Items in the
+     * specified TraversableContainer.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to remove
+     *        TraversableContainer containing the Items to verify
+     *
+     * @return {@code true} if this {@link TraversableContainer} contains all of the Items
+     *         contained by {@code otherContainer}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -72,58 +64,47 @@ extends Container<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(TraversableContainer<? extends Item> items)
+    public boolean contains(TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items contained by the specified {@link Collection} from this
-     * {@link DirectRemoveContainer}.
+     * Verifies whether this {@link TraversableContainer} contains all of the Items in the
+     * specified Collection.
      *
      * @param items
-     *        {@link Collection} containing the Items to remove
+     *        {@link Collection} containing the Items to verify
+     *
+     * @return {@code true} if this {@link TraversableContainer} contains all of the Items
+     *         contained by {@code collection}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(Collection<? extends Item> items)
+    public boolean contains(Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link DirectRemoveContainer}.
+     * Verifies whether this {@link TraversableContainer} contains all of the specified
+     * Items.
      *
      * @param items
-     *        {@link Iterable} providing the Items to remove
+     *        comma separated sequence of Items to verify
+     *
+     * @return {@code true} if this {@link TraversableContainer} contains all of the
+     *         {@code objects}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public void remove(Iterable<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
-
-    /**
-     * Removes all specified Items from this {@link DirectRemoveContainer}
-     * .
-     *
-     * @param items
-     *        comma separated sequence of Items to remove
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void remove(Item... items)
+    public boolean contains(Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

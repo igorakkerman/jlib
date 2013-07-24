@@ -23,7 +23,7 @@ package org.jlib.container.legacy;
 
 import java.io.Serializable;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
@@ -37,7 +37,7 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
  */
 public final class EmptyContainer<Item>
 extends AbstractEmptyContainer<Item>
-implements ReadContainer<Item>,
+implements TraversableContainer<Item>,
            Serializable {
 
     private static final long serialVersionUID = 8790659392867781894L;
@@ -64,6 +64,11 @@ implements ReadContainer<Item>,
      */
     private EmptyContainer() {
         super();
+    }
+
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+        return false;
     }
 
     @Override

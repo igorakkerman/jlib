@@ -34,20 +34,21 @@ import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
 /**
- * Skeletal implementation of a {@link ReadContainer}. A concrete ReadContainer
+ * Skeletal implementation of a {@link TraversableContainer}. A concrete TraversableContainer
  * implementation needs only to extend this class and implement the
- * {@link ReadContainer#iterator()} method. Other methods may be overridden for
+ * {@link TraversableContainer#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  *
  * @param <Item>
- *        type of items held in the {@link ReadContainer}
+ *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
 public class GodContainer<Item>
 extends AbstractObject
 implements JdkAwareContainer<Item>,
-           ReadContainer<Item>,
+           TraversableContainer<Item>,
+           ContainsContainer<Item>,
            RemoveContainer<Item>,
            DirectRemoveContainer<Item>,
            RemoveAllContainer<Item>,
@@ -58,8 +59,11 @@ implements JdkAwareContainer<Item>,
     private JdkAwareContainer<Item> delegateJdkAwareContainer = /*
      */ DisabledJdkAwareContainer.getInstance();
 
-    private ReadContainer<Item> delegateReadContainer = /*
-     */ DisabledReadContainer.getInstance();
+    private TraversableContainer<Item> delegateTraversableContainer = /*
+     */ DisabledTraversableContainer.getInstance();
+
+    private ContainsContainer<Item> delegateContainsContainer = /*
+     */ DisabledContainsContainer.getInstance();
 
     private RemoveContainer<Item> delegateRemoveContainer = /*
      */ DisabledRemoveContainer.getInstance();
@@ -83,12 +87,28 @@ implements JdkAwareContainer<Item>,
         super();
     }
 
-    public ReadContainer<Item> getDelegateReadContainer() {
-        return delegateReadContainer;
+    public JdkAwareContainer<Item> getDelegateJdkAwareContainer() {
+        return delegateJdkAwareContainer;
     }
 
-    public void setDelegateReadContainer(final ReadContainer<Item> delegateReadContainer) {
-        this.delegateReadContainer = delegateReadContainer;
+    public void setDelegateJdkAwareContainer(final JdkAwareContainer<Item> delegateJdkAwareContainer) {
+        this.delegateJdkAwareContainer = delegateJdkAwareContainer;
+    }
+
+    public TraversableContainer<Item> getDelegateTraversableContainer() {
+        return delegateTraversableContainer;
+    }
+
+    public void setDelegateTraversableContainer(final TraversableContainer<Item> delegateTraversableContainer) {
+        this.delegateTraversableContainer = delegateTraversableContainer;
+    }
+
+    public ContainsContainer<Item> getDelegateContainsContainer() {
+        return delegateContainsContainer;
+    }
+
+    public void setDelegateContainsContainer(final ContainsContainer<Item> delegateContainsContainer) {
+        this.delegateContainsContainer = delegateContainsContainer;
     }
 
     public RemoveContainer<Item> getDelegateRemoveContainer() {
@@ -145,38 +165,43 @@ implements JdkAwareContainer<Item>,
     @Override
     public int getItemsCount()
     throws InvalidTraversableStateException {
-        return delegateReadContainer.getItemsCount();
+        return delegateTraversableContainer.getItemsCount();
     }
 
     @Override
     public boolean isEmpty()
     throws InvalidTraversableStateException {
-        return delegateReadContainer.isEmpty();
+        return delegateTraversableContainer.isEmpty();
+    }
+
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+        return delegateTraversableContainer.hasMatchingProperties(otherContainer);
     }
 
     @Override
     public boolean contains(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateReadContainer.contains(item);
+        return delegateContainsContainer.contains(item);
     }
 
     @Override
-    public boolean contains(final ReadContainer<? extends Item> items)
+    public boolean contains(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateReadContainer.contains(items);
+        return delegateContainsContainer.contains(items);
     }
 
     @Override
     public boolean contains(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateReadContainer.contains(items);
+        return delegateContainsContainer.contains(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateReadContainer.contains(items);
+        return delegateContainsContainer.contains(items);
     }
 
     @Override
@@ -198,8 +223,8 @@ implements JdkAwareContainer<Item>,
     }
 
     @Override
-    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
-        return delegateReadContainer.containsEqualItems(otherContainer);
+    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+        return delegateTraversableContainer.containsEqualItems(otherContainer);
     }
 
     @Override
@@ -224,7 +249,7 @@ implements JdkAwareContainer<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         delegateObservedDirectRemoveContainer.remove(items, observers);
     }
@@ -252,7 +277,7 @@ implements JdkAwareContainer<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         delegateObservedRemoveContainer.retain(items, observers);
     }
@@ -284,7 +309,7 @@ implements JdkAwareContainer<Item>,
     }
 
     @Override
-    public void remove(final ReadContainer<? extends Item> items)
+    public void remove(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         delegateDirectRemoveContainer.remove(items);
     }
@@ -315,7 +340,7 @@ implements JdkAwareContainer<Item>,
     }
 
     @Override
-    public void retain(final ReadContainer<? extends Item> items)
+    public void retain(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         delegateRemoveContainer.retain(items);
     }
@@ -335,11 +360,11 @@ implements JdkAwareContainer<Item>,
 
     @Override
     public Traverser<Item> createTraverser() {
-        return delegateReadContainer.createTraverser();
+        return delegateTraversableContainer.createTraverser();
     }
 
     @Override
     public Iterator<Item> iterator() {
-        return delegateReadContainer.iterator();
+        return delegateTraversableContainer.iterator();
     }
 }

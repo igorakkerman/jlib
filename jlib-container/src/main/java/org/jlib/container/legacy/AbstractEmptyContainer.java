@@ -28,8 +28,9 @@ import java.util.List;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.ContainsContainer;
 import org.jlib.container.JdkAwareContainer;
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 
 import static java.util.Collections.emptyIterator;
 import static java.util.Collections.emptyList;
@@ -37,8 +38,9 @@ import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 
 public abstract class AbstractEmptyContainer<Item>
 extends AbstractObject
-implements ReadContainer<Item>,
-           JdkAwareContainer<Item> {
+implements TraversableContainer<Item>,
+           JdkAwareContainer<Item>,
+           ContainsContainer<Item> {
 
     protected AbstractEmptyContainer() {
         super();
@@ -65,7 +67,7 @@ implements ReadContainer<Item>,
     }
 
     @Override
-    public final boolean contains(final ReadContainer<? extends Item> items) {
+    public final boolean contains(final TraversableContainer<? extends Item> items) {
         return false;
     }
 
@@ -101,7 +103,7 @@ implements ReadContainer<Item>,
     }
 
     @Override
-    public final boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
+    public final boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
         return otherContainer.isEmpty();
     }
 

@@ -21,18 +21,18 @@
 
 package org.jlib.container;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 /**
- * {@link InvalidTraversableArgumentException} thrown when a {@link ReadContainer}
- * does not contain the specified Item to remove.
+ * {@link InvalidTraversableArgumentException} thrown when a {@link DirectRemoveContainer} does not contain the
+ * specified {@link Item} to remove.
  *
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;
@@ -41,18 +41,19 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link ItemToRemoveNotContainedException}.
      *
      * @param container
-     *        referenced {@link ReadContainer}
+     *        referenced {@link TraversableContainer}
      *
      * @param item
      *        Item to remove
      */
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final ReadContainer<?> container,
-                                             final Object item) {
-        super(container, message(item.toString()));
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
+                                             final DirectRemoveContainer<?> container, final Object item) {
+        super(container, message(item));
     }
 
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final ReadContainer<?> container,
-                                             final Object item, final Exception cause) {
-        super(container, message(item.toString()), cause);
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
+                                             final DirectRemoveContainer<?> container, final Object item,
+                                             final Exception cause) {
+        super(container, message(item), cause);
     }
 }

@@ -45,10 +45,10 @@ implements AddBijection<LeftValue, RightValue> */{
 //
 //    /**
 //     * Creates a new HashAddBijection containing the Pairs contained by
-//     * the specified jlib ReadContainer.
+//     * the specified jlib TraversableContainer.
 //     *
 //     * @param pairs
-//     *        ReadContainer of the Pairs to add
+//     *        TraversableContainer of the Pairs to add
 //     *
 //     * @throws LeftValueAlreadyRelatedException
 //     *         if the LeftValue of one Item in {@code pairs} is already
@@ -66,7 +66,7 @@ implements AddBijection<LeftValue, RightValue> */{
 //     *         if some property of one Item in {@code pairs} prevents it
 //     *         from being added
 //     */
-//    public HashAddBijection(final ReadContainer<Pair<LeftValue, RightValue>> pairs)
+//    public HashAddBijection(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
 //    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        super(pairs);
 //    }
@@ -149,7 +149,7 @@ implements AddBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void addPairs(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public void addPairs(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        BinaryRelationUtility.add(this, pairs);
 //    }
@@ -174,7 +174,7 @@ implements AddBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void ensureContained(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public void ensureContained(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        BinaryRelationUtility.ensureContained(this, pairs);
 //    }
@@ -199,7 +199,7 @@ implements AddBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public boolean contains(final ReadContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public boolean contains(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
@@ -217,7 +217,7 @@ implements AddBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public boolean containsEqualItems(final ReadContainer<Pair<LeftValue, RightValue>> otherContainer) {
+//    public boolean containsEqualItems(final TraversableContainer<Pair<LeftValue, RightValue>> otherContainer) {
 //        return false;
 //    }
 //

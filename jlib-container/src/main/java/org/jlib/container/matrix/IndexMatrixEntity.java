@@ -27,7 +27,7 @@ import java.util.Iterator;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 
 /**
@@ -110,32 +110,28 @@ extends AbstractIndexSequence<Entry> {
         return entityIndex;
     }
 
-    @Override
     public boolean contains(final Entry entry)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
-    @Override
-    public boolean contains(final ReadContainer<? extends Entry> entries)
+    public boolean contains(final TraversableContainer<? extends Entry> entries)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
-    @Override
     public boolean contains(final Collection<? extends Entry> entries)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
-    @Override
     public boolean contains(final Entry... entries)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }
 
     @Override
-    public boolean containsEqualItems(final ReadContainer<Entry> otherContainer) {
+    public boolean containsEqualItems(final TraversableContainer<Entry> otherContainer) {
         return false;
     }
 

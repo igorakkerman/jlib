@@ -27,10 +27,9 @@ import java.util.List;
 import java.util.RandomAccess;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
 public interface JdkAwareContainer<Item>
-extends Traversable<Item>,
+extends Container<Item>,
         Iterable<Item> {
 
     /**
@@ -46,11 +45,11 @@ extends Traversable<Item>,
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
-     * of this {@link ReadContainer} in the proper order as returned by this
-     * {@link ReadContainer}'s Traverser.
+     * of this {@link TraversableContainer} in the proper order as returned by this
+     * {@link TraversableContainer}'s Traverser.
      *
      * @return {@link RandomAccess} {@link List} containing all of the Items of
-     *         this {@link ReadContainer}
+     *         this {@link TraversableContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -60,11 +59,11 @@ extends Traversable<Item>,
 
     /**
      * Returns a sequentially traversable {@link List} containing all of the
-     * Items of this {@link ReadContainer} in the proper order as returned by this
-     * {@link ReadContainer}'s Traverser.
+     * Items of this {@link TraversableContainer} in the proper order as returned by this
+     * {@link TraversableContainer}'s Traverser.
      *
      * @return sequentially traversable {@link List} containing all of the Items
-     *         of this {@link ReadContainer}
+     *         of this {@link TraversableContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -73,10 +72,10 @@ extends Traversable<Item>,
     throws InvalidTraversableStateException;
 
     /**
-     * Returns an array containing all of the Items of this {@link ReadContainer} in
-     * the proper order as returned by this {@link ReadContainer}'s Traverser.
+     * Returns an array containing all of the Items of this {@link TraversableContainer} in
+     * the proper order as returned by this {@link TraversableContainer}'s Traverser.
      *
-     * @return array containing all of the Items of this {@link ReadContainer}
+     * @return array containing all of the Items of this {@link TraversableContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -86,7 +85,7 @@ extends Traversable<Item>,
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
-     * {@link Iterable#iterator()} methods of this {@link ReadContainer} and the
+     * {@link Iterable#iterator()} methods of this {@link TraversableContainer} and the
      * specified {@link Collection} traverse the same number of Items in the
      * same order and all traversed Items are equal. Two Items {@code item1} and
      * {@code item2} are called equal if {@code item1.equals(item2)}.
@@ -95,7 +94,7 @@ extends Traversable<Item>,
      * @param collection
      *        compared {@link Collection}
      *
-     * @return {@code true} if this {@link ReadContainer} and {@code otherContainer} contain equal Items;
+     * @return {@code true} if this {@link TraversableContainer} and {@code otherContainer} contain equal Items;
      *         {@code false} otherwise
      */
     public boolean containsEqualItems(Iterable<Item> collection);

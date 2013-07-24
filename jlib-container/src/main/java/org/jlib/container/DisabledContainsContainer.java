@@ -22,47 +22,32 @@
 package org.jlib.container;
 
 import java.util.Collection;
-import java.util.Iterator;
 
-import org.jlib.core.traverser.Traverser;
-
-final class DisabledReadContainer<Item>
+final class DisabledContainsContainer<Item>
 extends AbstractDisabledContainer<Item>
-implements ReadContainer<Item> {
+implements ContainsContainer<Item> {
 
-    /** sole {@link DisabledReadContainer} instance */
-    private static final ReadContainer<?> INSTANCE = new DisabledReadContainer<Object>();
+    /** sole {@link DisabledContainsContainer} instance */
+    private static final DisabledContainsContainer<?> INSTANCE = new DisabledContainsContainer<Object>();
 
     /**
-     * Returns the sole {@link DisabledReadContainer} instance.
+     * Returns the sole {@link DisabledContainsContainer} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledReadContainer} instance
+     * @return sole {@link DisabledContainsContainer} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledReadContainer<Item> getInstance() {
-        return (DisabledReadContainer<Item>) INSTANCE;
+    public static <Item> DisabledContainsContainer<Item> getInstance() {
+        return (DisabledContainsContainer<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledReadContainer}.
+     * Creates a new {@link DisabledContainsContainer}.
      */
-    private DisabledReadContainer() {
+    private DisabledContainsContainer() {
         super();
-    }
-
-    @Override
-    public int getItemsCount()
-    throws ForbiddenCastException {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public boolean isEmpty()
-    throws ForbiddenCastException {
-        throw new ForbiddenCastException(this);
     }
 
     @Override
@@ -72,7 +57,7 @@ implements ReadContainer<Item> {
     }
 
     @Override
-    public boolean contains(final ReadContainer<? extends Item> items)
+    public boolean contains(final TraversableContainer<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
@@ -87,21 +72,6 @@ implements ReadContainer<Item> {
     @SafeVarargs
     public final boolean contains(final Item... items)
     throws ForbiddenCastException {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public boolean containsEqualItems(final ReadContainer<Item> otherContainer) {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public Iterator<Item> iterator() {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public Traverser<Item> createTraverser() {
         throw new ForbiddenCastException(this);
     }
 }

@@ -56,7 +56,6 @@ implements BinaryRelation<LeftValue, RightValue> {
         return hasLeft(leftValue) && getRightSet(leftValue).contains(rightValue);
     }
 
-    @Override
     public boolean contains(final Pair<LeftValue, RightValue> pair) {
         return contains(pair.getLeftValue(), pair.getRightValue());
     }

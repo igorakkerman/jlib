@@ -39,7 +39,7 @@ import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.RemoveTraverser;
 
 import org.jlib.container.DirectRemoveContainer;
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedDirectRemoveContainer;
 import org.jlib.container.ObservedRemoveContainer;
@@ -50,7 +50,7 @@ import static org.jlib.container.collection.CollectionUtility.toSet;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * Utility class providing methods operating on {@link ReadContainer} instances.
+ * Utility class providing methods operating on {@link TraversableContainer} instances.
  *
  * @author Igor Akkerman
  */
@@ -64,7 +64,7 @@ public final class ContainerUtility {
      * Removes the specified Item of this {@link RemoveContainer}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Item
@@ -120,7 +120,7 @@ public final class ContainerUtility {
      * specified {@link RemoveContainer}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Items
@@ -147,7 +147,7 @@ public final class ContainerUtility {
      * specified {@link RemoveContainer}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link RemoveContainer} containing the Items
@@ -178,7 +178,7 @@ public final class ContainerUtility {
      * specified {@link ObservedRemoveContainer}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Items
@@ -215,7 +215,7 @@ public final class ContainerUtility {
      * specified {@link RemoveContainer}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link RemoveContainer} containing the Items
@@ -249,7 +249,7 @@ public final class ContainerUtility {
      * specified {@link Iterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param traversable
      *        {@link RemoveContainer} containing the Items to remove
@@ -279,10 +279,10 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param <RetainedItem>
-     *        type of the items retained in the {@link ReadContainer}
+     *        type of the items retained in the {@link TraversableContainer}
      *
      * @param container
      *        {@link RemoveContainer} containing the Items to remove
@@ -310,7 +310,7 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link RemoveContainer} containing the Items to remove
@@ -338,7 +338,7 @@ public final class ContainerUtility {
      * <em>except</em> the Items provided by the specified {@link Iterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Items to remove
@@ -383,10 +383,10 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param <RetainedItem>
-     *        type of the items retained in the {@link ReadContainer}
+     *        type of the items retained in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Items to remove
@@ -425,7 +425,7 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
      *        {@link ObservedRemoveContainer} containing the Items to remove
@@ -473,7 +473,7 @@ public final class ContainerUtility {
      *        {@link RemoveContainer} containing the Items
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -493,7 +493,7 @@ public final class ContainerUtility {
      *        {@link ObservedRemoveContainer} containing the Items
      *
      * @param <Item>
-     *        type of the items held in the {@link ReadContainer}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -515,17 +515,17 @@ public final class ContainerUtility {
 
     /**
      * Returns the sum of number of Items in all of the specified
-     * {@link ReadContainer} instances.
+     * {@link TraversableContainer} instances.
      *
      * @param containers
      *        array of {@link Iterable} instances providing the Items
      *
      * @return integer specifying the total number of Items
      */
-    public static int getItemsCount(final ReadContainer<?>[] containers) {
+    public static int getItemsCount(final TraversableContainer<?>[] containers) {
         int itemsCount = 0;
 
-        for (final ReadContainer<?> container : containers)
+        for (final TraversableContainer<?> container : containers)
             itemsCount += container.getItemsCount();
 
         return itemsCount;

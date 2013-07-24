@@ -23,7 +23,7 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.ObservedDirectRemoveContainer;
 import org.jlib.container.RemoveContainer;
 
@@ -48,13 +48,13 @@ extends ContainerCollection<Item> {
      * {@link RemoveContainer}.
      *
      * @param <DelegateContainer>
-     *        type of the delegate {@link ReadContainer}
+     *        type of the delegate {@link TraversableContainer}
      *
      * @param delegateContainer
      *        {@link RemoveContainer} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ReadContainer<Item> & ObservedDirectRemoveContainer<Item>> //
+    public <DelegateContainer extends TraversableContainer<Item> & ObservedDirectRemoveContainer<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

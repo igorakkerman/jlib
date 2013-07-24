@@ -27,7 +27,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 /**
  * {@link InvalidTraversableArgumentException} thrown when trying to invalidly add
- * an Item to a {@link ReadContainer} that already exists.
+ * an Item to a {@link TraversableContainer} that already exists.
  *
  * @author Igor Akkerman
  */
@@ -41,13 +41,13 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link ItemAlreadyContainedException}.
      *
      * @param container
-     *        referenced {@link ReadContainer}
+     *        referenced {@link TraversableContainer}
      *
      * @param item
      *        already contained Item
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public ItemAlreadyContainedException(final ReadContainer<?> container, final Object item) {
+    public ItemAlreadyContainedException(final TraversableContainer<?> container, final Object item) {
 
         super(container, message(item.toString()));
     }

@@ -62,7 +62,7 @@ implements ObservedDirectRemoveContainer<Item> {
 
     @Override
     @SafeVarargs
-    public final void remove(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }

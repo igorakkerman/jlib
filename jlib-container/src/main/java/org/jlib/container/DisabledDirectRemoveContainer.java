@@ -56,7 +56,7 @@ implements DirectRemoveContainer<Item> {
     }
 
     @Override
-    public void remove(final ReadContainer<? extends Item> items)
+    public void remove(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

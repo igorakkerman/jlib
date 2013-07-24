@@ -68,7 +68,7 @@ public class FillupArraySequence<Item> {
 //        }
 //
 //        @Override
-//        public void append(final ReadContainer<? extends Item> items)
+//        public void append(final TraversableContainer<? extends Item> items)
 //        throws InvalidTraversableArgumentException {
 //            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
 //        }
@@ -101,7 +101,7 @@ public class FillupArraySequence<Item> {
 //
 //        @SafeVarargs
 //        @Override
-//        public final void append(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//        public final void append(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //        throws InvalidTraversableArgumentException {
 //            if (items.isEmpty())
 //                return;

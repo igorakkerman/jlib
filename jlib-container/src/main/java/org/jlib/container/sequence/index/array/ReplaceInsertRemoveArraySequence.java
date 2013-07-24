@@ -125,9 +125,9 @@ implements ObservedReplaceIndexSequence<Item> */{
 //     * of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link ReadContainer} of Items to store
+//     *        {@link TraversableContainer} of Items to store
 //     */
-//    public ReplaceInsertRemoveArraySequence(final ReadContainer<? extends Item> items) {
+//    public ReplaceInsertRemoveArraySequence(final TraversableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -156,7 +156,7 @@ implements ObservedReplaceIndexSequence<Item> */{
 //    }
 //
 //    @Override
-//    public void retain(final ReadContainer<? extends Item> items)
+//    public void retain(final TraversableContainer<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        ContainerUtility.retain(this, items);
 //    }
@@ -176,7 +176,7 @@ implements ObservedReplaceIndexSequence<Item> */{
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
 //        ContainerUtility.retain(this, items, observers);
 //    }

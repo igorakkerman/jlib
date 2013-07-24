@@ -126,9 +126,9 @@ implements ObservedReplaceInsertIndexSequence<Item>,
 //     * index of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link ReadContainer} of Items to store
+//     *        {@link TraversableContainer} of Items to store
 //     */
-//    public ReplaceInsertRemoveLastArraySequence(final ReadContainer<? extends Item> items) {
+//    public ReplaceInsertRemoveLastArraySequence(final TraversableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -140,9 +140,9 @@ implements ObservedReplaceInsertIndexSequence<Item>,
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link ReadContainer} of Items to store
+//     *        {@link TraversableContainer} of Items to store
 //     */
-//    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final ReadContainer<? extends Item> items) {
+//    public ReplaceInsertRemoveLastArraySequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
 //        super(firstIndex, items);
 //    }
 //

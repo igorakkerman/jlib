@@ -52,7 +52,7 @@ public final class SequenceUtility {
      * @return new singleton {@link Sequence}
      */
     public static <Item> Sequence<Item> singleton(final Item item) {
-        return new SingletonSequence<Item>(item);
+        return null; //new SingletonSequence<Item>(item);
     }
 
     /**

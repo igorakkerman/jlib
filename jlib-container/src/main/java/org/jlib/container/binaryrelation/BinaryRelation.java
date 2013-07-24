@@ -25,7 +25,7 @@ import java.util.Set;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 
 /**
  * Binary pair between various Objects. Each Object on either of the two
@@ -40,7 +40,7 @@ import org.jlib.container.ReadContainer;
  * @author Igor Akkerman
  */
 public interface BinaryRelation<LeftValue, RightValue>
-extends ReadContainer<Pair<LeftValue, RightValue>> {
+extends TraversableContainer<Pair<LeftValue, RightValue>> {
 
     /**
      * Returns the Set of RightValues added with the specified LeftValue.

@@ -71,7 +71,7 @@ implements ObservedInsertIndexSequence<Item> */{
 //    }
 //
 //    @Override
-//    public void insert(final int index, final ReadContainer<? extends Item> items) {
+//    public void insert(final int index, final TraversableContainer<? extends Item> items) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().insert(index, items);
@@ -120,7 +120,7 @@ implements ObservedInsertIndexSequence<Item> */{
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void insert(final int index, final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers) {
+//    public void insert(final int index, final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().insert(index, items, observers);

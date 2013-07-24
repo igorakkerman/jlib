@@ -33,7 +33,7 @@ import org.jlib.core.traverser.Traversable;
 import org.jlib.container.ItemToRemoveNotContainedException;
 import org.jlib.container.ObservedDirectRemoveContainer;
 import org.jlib.container.ObservedRemoveAllContainer;
-import org.jlib.container.ReadContainer;
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.legacy.AbstractEmptyContainer;
 
 /**
@@ -60,7 +60,7 @@ implements Sequence<Item>,
 
     public void remove(final Item item)
     throws ItemToRemoveNotContainedException {
-        throw new ItemToRemoveNotContainedException(this, item);
+        // throw new ItemToRemoveNotContainedException(this, item);
     }
 
     public void removeAll()
@@ -68,7 +68,7 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void remove(final ReadContainer<? extends Item> items)
+    public void remove(final TraversableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
@@ -89,7 +89,7 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void retain(final ReadContainer<? extends Item> items)
+    public void retain(final TraversableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
@@ -119,7 +119,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException {
         // intentionally blank
     }
@@ -153,7 +153,7 @@ implements Sequence<Item>,
     }
 
     @SuppressWarnings("unchecked")
-    public void retain(final ReadContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         // intentionally blank
     }
@@ -173,6 +173,11 @@ implements Sequence<Item>,
     @Override
     public EmptySequenceTraverser<Item> createTraverser() {
         return EmptySequenceTraverser.getInstance();
+    }
+
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+        return false;
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity

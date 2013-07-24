@@ -23,6 +23,7 @@ package org.jlib.container.matrix;
 
 import java.util.RandomAccess;
 
+import org.jlib.container.TraversableContainer;
 import org.jlib.container.legacy.AbstractEmptyContainer;
 import org.jlib.container.sequence.EmptySequence;
 import org.jlib.container.sequence.Sequence;
@@ -95,5 +96,10 @@ implements RandomTraversalMatrix<Entry>,
     @Override
     public final void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {
         // the iteration order is void in an EmptyMatrix
+    }
+
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Entry> otherContainer) {
+        return false;
     }
 }
