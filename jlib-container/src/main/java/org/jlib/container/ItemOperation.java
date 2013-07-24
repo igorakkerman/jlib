@@ -26,6 +26,6 @@ package org.jlib.container;
  *
  * @author Igor Akkerman
  */
-public interface Container<Item> {
+public interface ItemOperation<Item> {
     // intentionally empty
 }

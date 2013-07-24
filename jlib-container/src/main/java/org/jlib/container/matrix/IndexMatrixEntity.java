@@ -27,7 +27,6 @@ import java.util.Iterator;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 
 /**

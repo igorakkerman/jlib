@@ -23,45 +23,9 @@ package org.jlib.container;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
-/**
- * Readable container of {@link Item}s.
- *
- * @param <Item>
- *        type of items held in the {@link TraversableContainer}
- *
- * @author Igor Akkerman
- */
-public interface TraversableContainer<Item>
-extends Container<Item>,
-        Traversable<Item>,
-        Iterable<Item> {
-
-    /**
-     * Returns the number of Items in this {@link TraversableContainer}.
-     *
-     * @return integer specifying the number of Items in this {@link TraversableContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public int getItemsCount()
-    throws InvalidTraversableStateException;
-
-    /**
-     * Verifies whether this {@link TraversableContainer} contains no Items.
-     *
-     * @return {@code true} if this {@link TraversableContainer} contains no Items;
-     *         {@code false} otherwise
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public boolean isEmpty()
-    throws InvalidTraversableStateException;
+public interface Equals<Item> extends ItemOperation<Item> {
 
     /**
      * <p>
@@ -69,7 +33,7 @@ extends Container<Item>,
      * {@link TraversableContainer} providing a prerequisite for equality.
      * </p>
      * <p>
-     * The implementation in {@link AbstractTraversableContainer} verifies the number of contained {@link Item}s, as provided
+     * The implementation in {@link HashCodeFromIteratorOperation} verifies the number of contained {@link Item}s, as provided
      * by {@link #getItemsCount()}.
      * </p>
      *
@@ -78,7 +42,7 @@ extends Container<Item>,
      *
      * @return {@code true} if the additional properties are prerequisites for equality; {@code false} otherwise
      */
-    public boolean hasMatchingProperties(TraversableContainer<Item> otherContainer);
+    public boolean hasMatchingProperties(Container<Item> otherContainer);
 
     /**
      * Verifies whether the {@link Traverser} instances created by the {@link #createTraverser()} methods of this
@@ -101,9 +65,9 @@ extends Container<Item>,
      * </p>
      * <ul>
      * <li>this {@link TraversableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link TraversableContainer} and the specified {@link Container} contain equal {@link Item}s, as verified by
+     * <li>this {@link TraversableContainer} and the specified {@link ItemOperation} contain equal {@link Item}s, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
-     * <li>this {@link TraversableContainer} and the specified {@link Container} contain equal metadata, as verified by
+     * <li>this {@link TraversableContainer} and the specified {@link ItemOperation} contain equal metadata, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
      * </ul>
      *

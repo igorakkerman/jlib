@@ -21,27 +21,27 @@
 
 package org.jlib.container;
 
-final class DisabledRemoveAllContainer<Item>
-extends AbstractDisabledContainer<Item>
-implements RemoveAllContainer<Item> {
+final class DisabledRemoveAll<Item>
+extends DisabledContainer<Item>
+implements RemoveAll<Item> {
 
-    /** sole {@link DisabledRemoveAllContainer} instance */
-    private static final RemoveAllContainer<?> INSTANCE = new DisabledRemoveAllContainer<>();
+    /** sole {@link DisabledRemoveAll} instance */
+    private static final RemoveAll<?> INSTANCE = new DisabledRemoveAll<>();
 
     /**
-     * Returns the sole {@link DisabledRemoveAllContainer} instance.
+     * Returns the sole {@link DisabledRemoveAll} instance.
      *
-     * @return sole {@link DisabledRemoveAllContainer} instance
+     * @return sole {@link DisabledRemoveAll} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveAllContainer<Item> getInstance() {
-        return (DisabledRemoveAllContainer<Item>) INSTANCE;
+    public static <Item> DisabledRemoveAll<Item> getInstance() {
+        return (DisabledRemoveAll<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveAllContainer}.
+     * Creates a new {@link DisabledRemoveAll}.
      */
-    private DisabledRemoveAllContainer() {
+    private DisabledRemoveAll() {
         super();
     }
 

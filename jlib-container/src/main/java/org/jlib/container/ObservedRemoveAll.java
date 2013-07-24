@@ -21,24 +21,32 @@
 
 package org.jlib.container;
 
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link RemoveContainer} allowing all Items to be removed.
+ * Ability to remove <em>all</em> Items;
+ * the remove operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link RemoveAllContainer}
+ *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface RemoveAllContainer<Item> {
+public interface ObservedRemoveAll<Item>
+extends ItemOperation<Item> {
 
     /**
-     * Removes all Items of this {@link RemoveAllContainer}.
+     * Removes all Items from this {@link TraversableContainer}.
+     *
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void removeAll()
+    @SuppressWarnings("unchecked")
+    public void removeAll(ValueObserver<Item>... observers)
     throws InvalidTraversableStateException;
 }

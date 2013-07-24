@@ -21,7 +21,6 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.AbstractNonEmptySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;

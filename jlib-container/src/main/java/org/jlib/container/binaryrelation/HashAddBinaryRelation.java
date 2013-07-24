@@ -25,8 +25,6 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-import org.jlib.container.TraversableContainer;
-
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right
  * hand side items.

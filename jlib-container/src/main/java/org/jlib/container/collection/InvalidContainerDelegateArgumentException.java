@@ -24,8 +24,6 @@ package org.jlib.container.collection;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-import org.jlib.container.TraversableContainer;
-
 /**
  * {@link InvalidTraversableArgumentException} thrown when an argument caused an
  * error in a delegate {@link Object}.

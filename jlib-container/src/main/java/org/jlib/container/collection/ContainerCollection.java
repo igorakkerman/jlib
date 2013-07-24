@@ -25,8 +25,6 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.TraversableContainer;
-
 /**
  * Adapter allowing a {@link TraversableContainer} to be used as a {@link Collection}. A
  * {@link ContainerCollection} is backed by a {@link TraversableContainer} specified at

@@ -73,6 +73,10 @@ public final class TraversableUtility {
         return false;
     }
 
+    public static boolean isEmpty(final Traversable<?> traversable) {
+        return !traversable.createTraverser().hasNextItem();
+    }
+
     /**
      * Returns the number of Items provided by the specified {@link TwoWayTraversable}.
      *

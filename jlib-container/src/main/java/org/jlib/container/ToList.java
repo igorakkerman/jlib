@@ -21,27 +21,13 @@
 
 package org.jlib.container;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public interface JdkAwareContainer<Item>
-extends Container<Item>,
-        Iterable<Item> {
-
-    /**
-     * Returns the number of Items in this {@link JdkAwareContainer}.
-     *
-     * @return integer specifying the number of Items in this {@link JdkAwareContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public int getItemsCount()
-    throws InvalidTraversableStateException;
+public interface ToList<Item>
+extends ItemOperation<Item> {
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
@@ -71,31 +57,4 @@ extends Container<Item>,
     public List<Item> toSequentialList()
     throws InvalidTraversableStateException;
 
-    /**
-     * Returns an array containing all of the Items of this {@link TraversableContainer} in
-     * the proper order as returned by this {@link TraversableContainer}'s Traverser.
-     *
-     * @return array containing all of the Items of this {@link TraversableContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public Item[] toArray()
-    throws InvalidTraversableStateException;
-
-    /**
-     * Verifies whether the {@link Iterator} instances created by the
-     * {@link Iterable#iterator()} methods of this {@link TraversableContainer} and the
-     * specified {@link Collection} traverse the same number of Items in the
-     * same order and all traversed Items are equal. Two Items {@code item1} and
-     * {@code item2} are called equal if {@code item1.equals(item2)}.
-     *
-     *
-     * @param collection
-     *        compared {@link Collection}
-     *
-     * @return {@code true} if this {@link TraversableContainer} and {@code otherContainer} contain equal Items;
-     *         {@code false} otherwise
-     */
-    public boolean containsEqualItems(Iterable<Item> collection);
 }

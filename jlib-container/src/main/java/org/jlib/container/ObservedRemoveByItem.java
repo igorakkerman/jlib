@@ -29,7 +29,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link RemoveContainer} allowing its remove operations to be attended by
+ * {@link Remove} allowing its remove operations to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
@@ -37,12 +37,12 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedDirectRemoveContainer<Item>
-extends Container<Item> {
+public interface ObservedRemoveByItem<Item>
+extends ItemOperation<Item> {
 
     /**
      * Removes the specified Item from this
-     * {@link ObservedDirectRemoveContainer}.
+     * {@link ObservedRemoveByItem}.
      *
      * @param item
      *        Item to remove
@@ -52,7 +52,7 @@ extends Container<Item> {
      *        attending the removal
      *
      * @throws ItemToRemoveNotContainedException
-     *         if this {@link ObservedDirectRemoveContainer} does not
+     *         if this {@link ObservedRemoveByItem} does not
      *         contain {@code Item}
      *
      * @throws InvalidTraversableArgumentException
@@ -72,7 +72,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link ObservedDirectRemoveContainer}.
+     * {@link ObservedRemoveByItem}.
      *
      * @param items
      *        {@link TraversableContainer} containing the Items to remove
@@ -97,7 +97,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link ObservedDirectRemoveContainer}.
+     * {@link ObservedRemoveByItem}.
      *
      * @param items
      *        {@link Collection} containing the Items to remove
@@ -122,7 +122,7 @@ extends Container<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link ObservedDirectRemoveContainer}.
+     * {@link ObservedRemoveByItem}.
      *
      * @param items
      *        {@link Iterable} providing the Items to remove
@@ -147,7 +147,7 @@ extends Container<Item> {
 
     /**
      * Removes all specified Items from this
-     * {@link ObservedDirectRemoveContainer}.
+     * {@link ObservedRemoveByItem}.
      *
      * @param items
      *        comma separated sequence of Items to remove

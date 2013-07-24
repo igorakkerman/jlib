@@ -19,32 +19,23 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container;
 
-import org.jlib.core.traverser.TwoWayTraversable;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.ItemOperation;
+public class IsEmptyFromItemsCount<Item> implements IsEmpty<Item> {
 
-/**
- * Ordered sequence of Items.
- *
- * @param <Item>
- *        type of items held in the {@link Sequence}
- *
- * @author Igor Akkerman
- */
-public interface Sequence<Item>
-extends TwoWayTraversable<Item>,
-        ItemOperation<Item>,
-        org.jlib.core.traverser.Traversable<Item>,
-        Iterable<Item> {
+    private final ItemsCount<Item> delegateContainer;
 
-    /**
-     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
-     * in the correct order.
-     *
-     * @return {@link SequenceTraverser} over the Items of this Sequence
-     */
+    public IsEmptyFromItemsCount(final ItemsCount<Item> itemsCount) {
+        super();
+
+        this.delegateContainer = itemsCount;
+    }
+
     @Override
-    public SequenceTraverser<Item> createTraverser();
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return delegateContainer.getItemsCount() == 0;
+    }
 }

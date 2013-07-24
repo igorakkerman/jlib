@@ -27,7 +27,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.container.TraversableContainer;
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**

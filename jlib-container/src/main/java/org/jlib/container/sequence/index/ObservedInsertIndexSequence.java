@@ -23,7 +23,6 @@ package org.jlib.container.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.TraversableContainer;
 import org.jlib.container.sequence.InsertSequence;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;

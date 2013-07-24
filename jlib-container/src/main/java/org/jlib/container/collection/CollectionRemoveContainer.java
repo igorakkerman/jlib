@@ -23,14 +23,13 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ObservedRemoveContainer;
-import org.jlib.container.TraversableContainer;
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.ObservedRemove;
+import org.jlib.container.Remove;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link RemoveContainer}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRemoveContainer} as internal {@link Collection} operations
+ * used as a {@link Remove}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRemove} as internal {@link Collection} operations
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
@@ -39,9 +38,9 @@ import org.jlib.container.RemoveContainer;
  * @author Igor Akkerman
  */
 public class CollectionRemoveContainer<Item>
-/*extends CollectionContainer<Item>
-implements RemoveByItemContainer<Item>,
-           RemoveAllContainer<Item> */{
+/*extends CollectionOperation<Item>
+implements RemoveByItem<Item>,
+           RemoveAll<Item> */{
 //
 //    /**
 //     * Creates a new {@link CollectionRemoveContainer} backed by the specified

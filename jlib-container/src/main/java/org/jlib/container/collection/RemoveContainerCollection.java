@@ -23,13 +23,13 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.TraversableContainer;
-import org.jlib.container.ObservedDirectRemoveContainer;
-import org.jlib.container.RemoveContainer;
+import org.jlib.container.ObservedRemoveByItem;
+import org.jlib.container.ItemOperation;
+import org.jlib.container.Remove;
 
 /**
- * Adapter allowing a {@link RemoveContainer} to be used as a {@link Collection}.
- * A {@link RemoveContainerCollection} is backed by a {@link RemoveContainer}
+ * Adapter allowing a {@link Remove} to be used as a {@link Collection}.
+ * A {@link RemoveContainerCollection} is backed by a {@link Remove}
  * specified at initialization.
  *
  * @param <Item>
@@ -40,21 +40,21 @@ import org.jlib.container.RemoveContainer;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link ObservedDirectRemoveContainer} */
-    private final ObservedDirectRemoveContainer<Item> delegateContainer;
+    /** adapted and backed {@link ObservedRemoveByItem} */
+    private final ObservedRemoveByItem<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
-     * {@link RemoveContainer}.
+     * {@link Remove}.
      *
      * @param <DelegateContainer>
      *        type of the delegate {@link TraversableContainer}
      *
      * @param delegateContainer
-     *        {@link RemoveContainer} backing this
+     *        {@link Remove} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends TraversableContainer<Item> & ObservedDirectRemoveContainer<Item>> //
+    public <DelegateContainer extends ObservedRemoveByItem<Item> & ItemOperation<Item> & org.jlib.core.traverser.Traversable<Item> & Iterable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

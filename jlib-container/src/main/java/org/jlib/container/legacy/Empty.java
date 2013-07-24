@@ -23,7 +23,7 @@ package org.jlib.container.legacy;
 
 import java.io.Serializable;
 
-import org.jlib.container.TraversableContainer;
+import org.jlib.container.ItemOperation;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
@@ -35,34 +35,36 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
  *
  * @author Igor Akkerman
  */
-public final class EmptyContainer<Item>
-extends AbstractEmptyContainer<Item>
-implements TraversableContainer<Item>,
-           Serializable {
+public final class Empty<Item>
+extends AbstractEmpty<Item>
+implements Serializable,
+           ItemOperation<Item>,
+           org.jlib.core.traverser.Traversable<Item>,
+           Iterable<Item> {
 
     private static final long serialVersionUID = 8790659392867781894L;
 
     /** sole instance of this class */
-    private static final EmptyContainer<?> INSTANCE = new EmptyContainer<>();
+    private static final Empty<?> INSTANCE = new Empty<>();
 
     /**
      * Returns the sole instance of this class.
      *
      * @param <Item>
      *        type of potential items potentially held in this
-     *        {@link EmptyContainer}
+     *        {@link Empty}
      *
      * @return sole {@link ReplaceIndexSequence}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> EmptyContainer<Item> getInstance() {
-        return (EmptyContainer<Item>) INSTANCE;
+    public static <Item> Empty<Item> getInstance() {
+        return (Empty<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptyContainer}.
+     * Creates a new {@link Empty}.
      */
-    private EmptyContainer() {
+    private Empty() {
         super();
     }
 

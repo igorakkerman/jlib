@@ -21,14 +21,24 @@
 
 package org.jlib.container;
 
-public class AbstractDisabledContainer<Item> {
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
-    public AbstractDisabledContainer() {
-        super();
-    }
+/**
+ * {@link Remove} allowing all Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link RemoveAll}
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveAll<Item> {
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
+    /**
+     * Removes all Items of this {@link RemoveAll}.
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public void removeAll()
+    throws InvalidTraversableStateException;
 }

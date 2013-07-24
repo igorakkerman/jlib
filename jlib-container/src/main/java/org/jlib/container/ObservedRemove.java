@@ -37,8 +37,8 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveContainer<Item>
-extends Container<Item> {
+public interface ObservedRemove<Item>
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this {@link TraversableContainer} <em>except</em> the Items contained by
@@ -66,7 +66,7 @@ extends Container<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedDirectRemoveContainer}
+     * Removes all Items from this {@link ObservedRemoveByItem}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
@@ -91,7 +91,7 @@ extends Container<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 
     /**
-     * Removes all Items from this {@link ObservedDirectRemoveContainer}
+     * Removes all Items from this {@link ObservedRemoveByItem}
      * <em>except</em> the specified Items.
      *
      * @param observers

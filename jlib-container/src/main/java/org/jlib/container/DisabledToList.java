@@ -22,65 +22,60 @@
 package org.jlib.container;
 
 import java.util.Iterator;
+import java.util.List;
 
-import org.jlib.core.traverser.Traverser;
+final class DisabledToList<Item>
+extends DisabledContainer<Item>
+implements ToList<Item> {
 
-final class DisabledTraversableContainer<Item>
-extends AbstractDisabledContainer<Item>
-implements TraversableContainer<Item> {
-
-    /** sole {@link DisabledTraversableContainer} instance */
-    private static final TraversableContainer<?> INSTANCE = new DisabledTraversableContainer<Object>();
+    /** sole {@link DisabledToList} instance */
+    private static final ToList<?> INSTANCE = new DisabledToList<>();
 
     /**
-     * Returns the sole {@link DisabledTraversableContainer} instance.
+     * Returns the sole {@link DisabledTraversableOperation} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledTraversableContainer} instance
+     * @return sole {@link DisabledTraversableOperation} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledTraversableContainer<Item> getInstance() {
-        return (DisabledTraversableContainer<Item>) INSTANCE;
+    public static <Item> DisabledToList<Item> getInstance() {
+        return (DisabledToList<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledTraversableContainer}.
+     * Creates a new {@link DisabledToList}.
      */
-    private DisabledTraversableContainer() {
+    private DisabledToList() {
         super();
     }
 
     @Override
-    public int getItemsCount()
+    public List<Item> toList()
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean isEmpty()
+    public List<Item> toSequentialList()
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+    public Item[] toArray()
+    throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+    public boolean containsEqualItems(final Iterable<Item> collection) {
         throw new ForbiddenCastException(this);
     }
 
     @Override
     public Iterator<Item> iterator() {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public Traverser<Item> createTraverser() {
         throw new ForbiddenCastException(this);
     }
 }

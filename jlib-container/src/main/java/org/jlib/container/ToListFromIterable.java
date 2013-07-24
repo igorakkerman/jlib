@@ -22,38 +22,40 @@
 package org.jlib.container;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jlib.core.iterator.IterableUtility;
 import org.jlib.core.language.AbstractObject;
 
-public abstract class AbstractJdkAwareContainer<Item>
+public class ToListFromIterable<Item>
 extends AbstractObject
-implements JdkAwareContainer<Item> {
+implements ToList<Item> {
 
-    protected AbstractJdkAwareContainer() {
-        super();
+    private static final int DEFAULT_EXPECTED_ITEMS_COUNT = 20;
+
+    private final Iterable<Item> iterable;
+
+    private final int expectedItemsCount;
+
+    public ToListFromIterable(final Collection<Item> collection) {
+        this(collection, collection.size());
     }
 
-    @Override
-    public Item[] toArray() {
+    public ToListFromIterable(final Iterable<Item> iterable) {
+        this(iterable, DEFAULT_EXPECTED_ITEMS_COUNT);
+    }
 
-        @SuppressWarnings("unchecked")
-        final Item[] targetArray = (Item[]) new Object[getItemsCount()];
+    public ToListFromIterable(final Iterable<Item> iterable, int expectedItemsCount) {
+        super();
 
-        int index = 0;
-
-        for (final Item item : this)
-            targetArray[index++] = item;
-
-        return targetArray;
+        this.iterable = iterable;
+        this.expectedItemsCount = expectedItemsCount;
     }
 
     @Override
     public List<Item> toList() {
-        return appendContainedItemsToList(new ArrayList<Item>(getItemsCount()));
+        return appendContainedItemsToList(new ArrayList<Item>(expectedItemsCount));
     }
 
     @Override
@@ -74,19 +76,9 @@ implements JdkAwareContainer<Item> {
      * @return filled {@link List} {@code list}
      */
     protected <Lizt extends List<Item>> Lizt appendContainedItemsToList(final Lizt list) {
-        for (final Item item : this)
+        for (final Item item : iterable)
             list.add(item);
 
         return list;
-    }
-
-    @Override
-    public boolean containsEqualItems(final Iterable<Item> iterable) {
-        return IterableUtility.provideEqualItems(this, iterable);
-    }
-
-    @Override
-    public Iterator<Item> iterator() {
-        return null; // new TraversableIterator<>(this);
     }
 }

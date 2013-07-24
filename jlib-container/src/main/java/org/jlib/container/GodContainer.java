@@ -46,53 +46,53 @@ import org.jlib.core.traverser.Traverser;
  */
 public class GodContainer<Item>
 extends AbstractObject
-implements JdkAwareContainer<Item>,
-           TraversableContainer<Item>,
-           ContainsContainer<Item>,
-           RemoveContainer<Item>,
-           RemoveByItemContainer<Item>,
-           RemoveAllContainer<Item>,
-           ObservedRemoveContainer<Item>,
-           ObservedDirectRemoveContainer<Item>,
-           ObservedRemoveAllContainer<Item> {
+implements ToList<Item>,
+           Contains<Item>,
+           Remove<Item>,
+           RemoveByItem<Item>,
+           RemoveAll<Item>,
+           ObservedRemove<Item>,
+           ObservedRemoveByItem<Item>,
+           ObservedRemoveAll<Item>,ItemOperation<Item>,Traversable<Item>,
+           Iterable<Item> {
 
-    private JdkAwareContainer<Item> delegateJdkAwareContainer = /*
-     */ DisabledJdkAwareContainer.getInstance();
+    private ToList<Item> delegateToListContainer = /*
+     */ DisabledToList.getInstance();
 
-    private TraversableContainer<Item> delegateTraversableContainer = /*
-     */ DisabledTraversableContainer.getInstance();
+    private ItemsCount<Item> delegateItemsCount = /*
+     */ DisabledItemsCountContainer.getInstance();
 
-    private ContainsContainer<Item> delegateContainsContainer = /*
-     */ DisabledContainsContainer.getInstance();
+    private Contains<Item> delegateContainsContainer = /*
+     */ DisabledContains.getInstance();
 
-    private RemoveContainer<Item> delegateRemoveContainer = /*
-     */ DisabledRemoveContainer.getInstance();
+    private Remove<Item> delegateRemove = /*
+     */ DisabledRemove.getInstance();
 
-    private RemoveByItemContainer<Item> delegateRemoveByItemContainer = /*
-     */ DisabledRemoveByItemContainer.getInstance();
+    private RemoveByItem<Item> delegateRemoveByItemContainer = /*
+     */ DisabledRemoveByItem.getInstance();
 
-    private RemoveAllContainer<Item> delegateRemoveAllContainer = /*
-     */ DisabledRemoveAllContainer.getInstance();
+    private RemoveAll<Item> delegateRemoveAll = /*
+     */ DisabledRemoveAll.getInstance();
 
-    private ObservedRemoveContainer<Item> delegateObservedRemoveContainer = /*
-     */ DisabledObservedRemoveContainer.getInstance();
+    private ObservedRemove<Item> delegateObservedRemoveContainer = /*
+     */ DisabledObservedRemove.getInstance();
 
-    private ObservedDirectRemoveContainer<Item> delegateObservedDirectRemoveContainer = /*
-     */ DisabledObservedDirectRemoveContainer.getInstance();
+    private ObservedRemoveByItem<Item> delegateObservedRemoveByItemContainer = /*
+     */ DisabledObservedRemoveByItem.getInstance();
 
-    private ObservedRemoveAllContainer<Item> delegateObservedRemoveAllContainer = /*
-     */ DisabledObservedRemoveAllContainer.getInstance();
+    private ObservedRemoveAll<Item> delegateObservedRemoveAllContainer = /*
+     */ DisabledObservedRemoveAll.getInstance();
 
     public GodContainer() {
         super();
     }
 
-    public JdkAwareContainer<Item> getDelegateJdkAwareContainer() {
-        return delegateJdkAwareContainer;
+    public ToList<Item> getDelegateToListContainer() {
+        return delegateToListContainer;
     }
 
-    public void setDelegateJdkAwareContainer(final JdkAwareContainer<Item> delegateJdkAwareContainer) {
-        this.delegateJdkAwareContainer = delegateJdkAwareContainer;
+    public void setDelegateToListContainer(final ToList<Item> delegateToListContainer) {
+        this.delegateToListContainer = delegateToListContainer;
     }
 
     public TraversableContainer<Item> getDelegateTraversableContainer() {
@@ -103,62 +103,62 @@ implements JdkAwareContainer<Item>,
         this.delegateTraversableContainer = delegateTraversableContainer;
     }
 
-    public ContainsContainer<Item> getDelegateContainsContainer() {
+    public Contains<Item> getDelegateContainsContainer() {
         return delegateContainsContainer;
     }
 
-    public void setDelegateContainsContainer(final ContainsContainer<Item> delegateContainsContainer) {
+    public void setDelegateContainsContainer(final Contains<Item> delegateContainsContainer) {
         this.delegateContainsContainer = delegateContainsContainer;
     }
 
-    public RemoveContainer<Item> getDelegateRemoveContainer() {
-        return delegateRemoveContainer;
+    public Remove<Item> getDelegateRemove() {
+        return delegateRemove;
     }
 
-    public void setDelegateRemoveContainer(final RemoveContainer<Item> delegateRemoveContainer) {
-        this.delegateRemoveContainer = delegateRemoveContainer;
+    public void setDelegateRemove(final Remove<Item> delegateRemove) {
+        this.delegateRemove = delegateRemove;
     }
 
-    public RemoveByItemContainer<Item> getDelegateRemoveByItemContainer() {
+    public RemoveByItem<Item> getDelegateRemoveByItemContainer() {
         return delegateRemoveByItemContainer;
     }
 
-    public void setDelegateRemoveByItemContainer(final RemoveByItemContainer<Item> delegateRemoveByItemContainer) {
+    public void setDelegateRemoveByItemContainer(final RemoveByItem<Item> delegateRemoveByItemContainer) {
         this.delegateRemoveByItemContainer = delegateRemoveByItemContainer;
     }
 
-    public RemoveAllContainer<Item> getDelegateRemoveAllContainer() {
-        return delegateRemoveAllContainer;
+    public RemoveAll<Item> getDelegateRemoveAll() {
+        return delegateRemoveAll;
     }
 
-    public void setDelegateRemoveAllContainer(final RemoveAllContainer<Item> delegateRemoveAllContainer) {
-        this.delegateRemoveAllContainer = delegateRemoveAllContainer;
+    public void setDelegateRemoveAll(final RemoveAll<Item> delegateRemoveAll) {
+        this.delegateRemoveAll = delegateRemoveAll;
     }
 
-    public ObservedRemoveContainer<Item> getDelegateObservedRemoveContainer() {
+    public ObservedRemove<Item> getDelegateObservedRemoveContainer() {
         return delegateObservedRemoveContainer;
     }
 
     public void setDelegateObservedRemoveContainer(
-                                                  final ObservedRemoveContainer<Item> delegateObservedRemoveContainer) {
+                                                  final ObservedRemove<Item> delegateObservedRemoveContainer) {
         this.delegateObservedRemoveContainer = delegateObservedRemoveContainer;
     }
 
-    public ObservedDirectRemoveContainer<Item> getDelegateObservedDirectRemoveContainer() {
-        return delegateObservedDirectRemoveContainer;
+    public ObservedRemoveByItem<Item> getDelegateObservedRemoveByItemContainer() {
+        return delegateObservedRemoveByItemContainer;
     }
 
-    public void setDelegateObservedDirectRemoveContainer(
-                                                        final ObservedDirectRemoveContainer<Item> delegateObservedDirectRemoveContainer) {
-        this.delegateObservedDirectRemoveContainer = delegateObservedDirectRemoveContainer;
+    public void setDelegateObservedRemoveByItemContainer(
+                                                        final ObservedRemoveByItem<Item> delegateObservedRemoveByItemContainer) {
+        this.delegateObservedRemoveByItemContainer = delegateObservedRemoveByItemContainer;
     }
 
-    public ObservedRemoveAllContainer<Item> getDelegateObservedRemoveAllContainer() {
+    public ObservedRemoveAll<Item> getDelegateObservedRemoveAllContainer() {
         return delegateObservedRemoveAllContainer;
     }
 
     public void setDelegateObservedRemoveAllContainer(
-                                                     final ObservedRemoveAllContainer<Item> delegateObservedRemoveAllContainer) {
+                                                     final ObservedRemoveAll<Item> delegateObservedRemoveAllContainer) {
         this.delegateObservedRemoveAllContainer = delegateObservedRemoveAllContainer;
     }
 
@@ -207,19 +207,19 @@ implements JdkAwareContainer<Item>,
     @Override
     public List<Item> toList()
     throws InvalidTraversableStateException {
-        return delegateJdkAwareContainer.toList();
+        return delegateToListContainer.toList();
     }
 
     @Override
     public List<Item> toSequentialList()
     throws InvalidTraversableStateException {
-        return delegateJdkAwareContainer.toSequentialList();
+        return delegateToListContainer.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
     throws InvalidTraversableStateException {
-        return delegateJdkAwareContainer.toArray();
+        return delegateToListContainer.toArray();
     }
 
     @Override
@@ -229,7 +229,7 @@ implements JdkAwareContainer<Item>,
 
     @Override
     public boolean containsEqualItems(final Iterable<Item> collection) {
-        return delegateJdkAwareContainer.containsEqualItems(collection);
+        return delegateToListContainer.containsEqualItems(collection);
     }
 
     @Override
@@ -244,35 +244,35 @@ implements JdkAwareContainer<Item>,
     public void remove(final Item item, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException {
-        delegateObservedDirectRemoveContainer.remove(item, observers);
+        delegateObservedRemoveByItemContainer.remove(item, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedDirectRemoveContainer.remove(items, observers);
+        delegateObservedRemoveByItemContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedDirectRemoveContainer.remove(items, observers);
+        delegateObservedRemoveByItemContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedDirectRemoveContainer.remove(items, observers);
+        delegateObservedRemoveByItemContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedDirectRemoveContainer.remove(observers, items);
+        delegateObservedRemoveByItemContainer.remove(observers, items);
     }
 
     @Override
@@ -299,7 +299,7 @@ implements JdkAwareContainer<Item>,
     @Override
     public void removeAll()
     throws InvalidTraversableStateException {
-        delegateRemoveAllContainer.removeAll();
+        delegateRemoveAll.removeAll();
     }
 
     @Override
@@ -336,26 +336,26 @@ implements JdkAwareContainer<Item>,
     @Override
     public void retain(final Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveContainer.retain(items);
+        delegateRemove.retain(items);
     }
 
     @Override
     public void retain(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveContainer.retain(items);
+        delegateRemove.retain(items);
     }
 
     @Override
     public void retain(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveContainer.retain(items);
+        delegateRemove.retain(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveContainer.retain(items);
+        delegateRemove.retain(items);
     }
 
     @Override

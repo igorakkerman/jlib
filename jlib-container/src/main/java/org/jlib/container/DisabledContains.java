@@ -23,30 +23,32 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-final class DisabledContainsContainer<Item>
-extends AbstractDisabledContainer<Item>
-implements ContainsContainer<Item> {
+import org.jlib.core.traverser.Traversable;
 
-    /** sole {@link DisabledContainsContainer} instance */
-    private static final DisabledContainsContainer<?> INSTANCE = new DisabledContainsContainer<Object>();
+final class DisabledContains<Item>
+extends DisabledContainer<Item>
+implements Contains<Item> {
+
+    /** sole {@link DisabledContains} instance */
+    private static final DisabledContains<?> INSTANCE = new DisabledContains<Object>();
 
     /**
-     * Returns the sole {@link DisabledContainsContainer} instance.
+     * Returns the sole {@link DisabledContains} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledContainsContainer} instance
+     * @return sole {@link DisabledContains} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledContainsContainer<Item> getInstance() {
-        return (DisabledContainsContainer<Item>) INSTANCE;
+    public static <Item> DisabledContains<Item> getInstance() {
+        return (DisabledContains<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledContainsContainer}.
+     * Creates a new {@link DisabledContains}.
      */
-    private DisabledContainsContainer() {
+    private DisabledContains() {
         super();
     }
 
@@ -57,7 +59,13 @@ implements ContainsContainer<Item> {
     }
 
     @Override
-    public boolean contains(final TraversableContainer<? extends Item> items)
+    public boolean contains(final Traversable<? extends Item> items)
+    throws ForbiddenCastException {
+        throw new ForbiddenCastException(this);
+    }
+
+    @Override
+    public boolean contains(final Iterable<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

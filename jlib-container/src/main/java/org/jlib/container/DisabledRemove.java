@@ -27,27 +27,27 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.Traversable;
 
 
-final class DisabledRemoveContainer<Item>
-extends AbstractDisabledContainer<Item>
-implements RemoveContainer<Item> {
+final class DisabledRemove<Item>
+extends DisabledContainer<Item>
+implements Remove<Item> {
 
-    /** sole {@link DisabledRemoveContainer} instance */
-    private static final RemoveContainer<?> INSTANCE = new DisabledRemoveContainer<>();
+    /** sole {@link DisabledRemove} instance */
+    private static final Remove<?> INSTANCE = new DisabledRemove<>();
 
     /**
-     * Returns the sole {@link DisabledRemoveContainer} instance.
+     * Returns the sole {@link DisabledRemove} instance.
      *
-     * @return sole {@link DisabledRemoveContainer} instance
+     * @return sole {@link DisabledRemove} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveContainer<Item> getInstance() {
-        return (DisabledRemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledRemove<Item> getInstance() {
+        return (DisabledRemove<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveContainer}.
+     * Creates a new {@link DisabledRemove}.
      */
-    private DisabledRemoveContainer() {
+    private DisabledRemove() {
         super();
     }
 
@@ -58,7 +58,7 @@ implements RemoveContainer<Item> {
     }
 
     @Override
-    public void retain(final TraversableContainer<? extends Item> items)
+    public void retain(final Contains<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

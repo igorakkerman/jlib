@@ -28,7 +28,7 @@ import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
- * Singleton {@link Traverser} of an {@link EmptyContainer}.
+ * Singleton {@link Traverser} of an {@link Empty}.
  *
  * @param <Item>
  *        type of items potentially provided by the
@@ -75,12 +75,12 @@ implements TwoWayTraverser<Item> {
     @Override
     public Item getPreviousItem()
     throws NoPreviousItemException {
-        throw new NoPreviousItemException(EmptyContainer.getInstance());
+        throw new NoPreviousItemException(Empty.getInstance());
     }
 
     @Override
     public Item getNextItem()
     throws NoNextItemException {
-        throw new NoNextItemException(EmptyContainer.getInstance());
+        throw new NoNextItemException(Empty.getInstance());
     }
 }

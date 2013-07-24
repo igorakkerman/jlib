@@ -25,24 +25,45 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
 /**
- * {@link TraversableContainer} allowing Items to be removed.
+ * {@link Remove} allowing its Items to be removed by random access to
+ * each specified Item.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface RemoveContainer<Item> {
+public interface RemoveByItem<Item>
+extends ItemOperation<Item> {
 
     /**
-     * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Traversable}.
+     * Removes the specified Item from this {@link RemoveByItem}.
+     *
+     * @param item
+     *        {@link Item} to remove
+     *
+     * @throws ItemToRemoveNotContainedException
+     *         if this {@link RemoveByItem} does not contain
+     *         {@code Item}
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public void remove(Item item)
+    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException;
+
+    /**
+     * Removes all Items contained by the specified {@link TraversableContainer} from this
+     * {@link RemoveByItem}.
      *
      * @param items
-     *        {@link Traversable} containing the Items to retain
+     *        {@link TraversableContainer} containing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -51,15 +72,15 @@ public interface RemoveContainer<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(Traversable<? extends Item> items)
+    public void remove(TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link TraversableContainer}.
+     * Removes all Items contained by the specified {@link Collection} from this
+     * {@link RemoveByItem}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to retain
+     *        {@link Collection} containing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -68,15 +89,15 @@ public interface RemoveContainer<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(TraversableContainer<? extends Item> items)
+    public void remove(Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the Items contained by the specified {@link Collection}.
+     * Removes all Items provided by the specified {@link Iterable} from this
+     * {@link RemoveByItem}.
      *
      * @param items
-     *        {@link Collection} containing the Items to retain
+     *        {@link Iterable} providing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -85,15 +106,15 @@ public interface RemoveContainer<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(Collection<? extends Item> items)
+    public void remove(Iterable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items from this {@link RemoveContainer}
-     * <em>except</em> the specified Items.
+     * Removes all specified Items from this {@link RemoveByItem}
+     * .
      *
      * @param items
-     *        comma separated sequence of Items to retain
+     *        comma separated sequence of Items to remove
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -103,6 +124,6 @@ public interface RemoveContainer<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(Item... items)
+    public void remove(Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

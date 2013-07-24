@@ -25,16 +25,18 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
-public interface TraversableLookup<Item> extends Container<Item> {
+public interface Contains<Item>
+extends ItemOperation<Item> {
 
     /**
-     * Verifies whether this {@link TraversableContainer} contains the specified Object.
+     * Verifies whether this {@link ReadContainer} contains the specified Object.
      *
      * @param item
      *        Item to verify
      *
-     * @return {@code true} if this {@link TraversableContainer} contains {@code object};
+     * @return {@code true} if this {@link ReadContainer} contains {@code object};
      *         {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -48,13 +50,13 @@ public interface TraversableLookup<Item> extends Container<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link TraversableContainer} contains all of the Items in the
-     * specified TraversableContainer.
+     * Verifies whether this {@link ReadContainer} contains all of the Items in the
+     * specified ReadContainer.
      *
      * @param items
-     *        TraversableContainer containing the Items to verify
+     *        ReadContainer containing the Items to verify
      *
-     * @return {@code true} if this {@link TraversableContainer} contains all of the Items
+     * @return {@code true} if this {@link ReadContainer} contains all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -64,17 +66,37 @@ public interface TraversableLookup<Item> extends Container<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(TraversableContainer<? extends Item> items)
+    public boolean contains(Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link TraversableContainer} contains all of the Items in the
+     * Verifies whether this {@link ReadContainer} contains all of the Items in the
+     * specified ReadContainer.
+     *
+     * @param items
+     *        ReadContainer containing the Items to verify
+     *
+     * @return {@code true} if this {@link ReadContainer} contains all of the Items
+     *         contained by {@code otherContainer}; {@code false} otherwise
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public boolean contains(Iterable<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+
+    /**
+     * Verifies whether this {@link ReadContainer} contains all of the Items in the
      * specified Collection.
      *
      * @param items
      *        {@link Collection} containing the Items to verify
      *
-     * @return {@code true} if this {@link TraversableContainer} contains all of the Items
+     * @return {@code true} if this {@link ReadContainer} contains all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
@@ -88,13 +110,13 @@ public interface TraversableLookup<Item> extends Container<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Verifies whether this {@link TraversableContainer} contains all of the specified
+     * Verifies whether this {@link ReadContainer} contains all of the specified
      * Items.
      *
      * @param items
      *        comma separated sequence of Items to verify
      *
-     * @return {@code true} if this {@link TraversableContainer} contains all of the
+     * @return {@code true} if this {@link ReadContainer} contains all of the
      *         {@code objects}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException

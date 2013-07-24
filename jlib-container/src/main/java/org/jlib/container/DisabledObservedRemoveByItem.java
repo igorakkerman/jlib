@@ -28,27 +28,27 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-final class DisabledObservedDirectRemoveContainer<Item>
-extends AbstractDisabledContainer<Item>
-implements ObservedDirectRemoveContainer<Item> {
+final class DisabledObservedRemoveByItem<Item>
+extends DisabledContainer<Item>
+implements ObservedRemoveByItem<Item> {
 
-    /** sole {@link DisabledObservedDirectRemoveContainer} instance */
-    private static final ObservedDirectRemoveContainer<?> INSTANCE = new DisabledObservedDirectRemoveContainer<>();
+    /** sole {@link DisabledObservedRemoveByItem} instance */
+    private static final ObservedRemoveByItem<?> INSTANCE = new DisabledObservedRemoveByItem<>();
 
     /**
-     * Returns the sole {@link DisabledObservedDirectRemoveContainer} instance.
+     * Returns the sole {@link DisabledObservedRemoveByItem} instance.
      *
-     * @return sole {@link DisabledObservedDirectRemoveContainer} instance
+     * @return sole {@link DisabledObservedRemoveByItem} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedDirectRemoveContainer<Item> getInstance() {
-        return (DisabledObservedDirectRemoveContainer<Item>) INSTANCE;
+    public static <Item> DisabledObservedRemoveByItem<Item> getInstance() {
+        return (DisabledObservedRemoveByItem<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedDirectRemoveContainer}.
+     * Creates a new {@link DisabledObservedRemoveByItem}.
      */
-    private DisabledObservedDirectRemoveContainer() {
+    private DisabledObservedRemoveByItem() {
         super();
     }
 

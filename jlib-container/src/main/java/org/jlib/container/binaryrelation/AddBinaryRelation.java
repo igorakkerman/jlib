@@ -23,8 +23,6 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-import org.jlib.container.TraversableContainer;
-
 /**
  * {@link BinaryRelation} allowing to add and remove {@link Pair}
  * Items.

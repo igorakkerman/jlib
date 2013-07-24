@@ -28,21 +28,23 @@ import java.util.List;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ContainsContainer;
-import org.jlib.container.JdkAwareContainer;
-import org.jlib.container.TraversableContainer;
+import org.jlib.container.Contains;
+import org.jlib.container.ItemOperation;
+import org.jlib.container.ToList;
 
 import static java.util.Collections.emptyIterator;
 import static java.util.Collections.emptyList;
 import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 
-public abstract class AbstractEmptyContainer<Item>
+public abstract class AbstractEmpty<Item>
 extends AbstractObject
-implements TraversableContainer<Item>,
-           JdkAwareContainer<Item>,
-           ContainsContainer<Item> {
+implements ToList<Item>,
+           Contains<Item>,
+           ItemOperation<Item>,
+           org.jlib.core.traverser.Traversable<Item>,
+           Iterable<Item> {
 
-    protected AbstractEmptyContainer() {
+    protected AbstractEmpty() {
         super();
     }
 

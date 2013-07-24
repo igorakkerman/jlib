@@ -21,7 +21,19 @@
 
 package org.jlib.container;
 
-public interface ContainerTraverser<Item, Cont extends TraversableContainer<Item>> {
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
-//    public ItemContext<Item, Cont> GET_LAST_ACCESSED_ITEM_CONTEXT
+public interface ItemsCount<Item>
+extends ItemOperation<Item> {
+
+    /**
+     * Returns the number of Items in this {@link TraversableContainer}.
+     *
+     * @return integer specifying the number of Items in this {@link TraversableContainer}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public int getItemsCount()
+    throws InvalidTraversableStateException;
 }

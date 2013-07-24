@@ -29,11 +29,13 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.TraversableUtility;
 
-public abstract class AbstractTraversableContainer<Item>
+public abstract class HashCodeFromIteratorOperation<Item>
 extends AbstractObject
-implements TraversableContainer<Item> {
+implements ItemOperation<Item>,
+           org.jlib.core.traverser.Traversable<Item>,
+           Iterable<Item> {
 
-    public AbstractTraversableContainer() {
+    public HashCodeFromIteratorOperation() {
         super();
     }
 
