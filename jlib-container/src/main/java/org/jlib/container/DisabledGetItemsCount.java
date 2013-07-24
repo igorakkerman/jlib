@@ -21,36 +21,35 @@
 
 package org.jlib.container;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+final class DisabledGetItemsCount<Item>
+implements GetItemsCount<Item> {
 
-final class DisabledObservedRemoveAll<Item>
-implements ObservedRemoveAll<Item> {
-
-    /** sole {@link DisabledObservedRemoveAll} instance */
-    private static final ObservedRemoveAll<?> INSTANCE = new DisabledObservedRemoveAll<>();
+    /** sole {@link DisabledGetItemsCount} instance */
+    private static final DisabledGetItemsCount<?> INSTANCE = new DisabledGetItemsCount<Object>();
 
     /**
-     * Returns the sole {@link DisabledObservedRemoveAll} instance.
+     * Returns the sole {@link DisabledGetItemsCount} instance.
      *
-     * @return sole {@link DisabledObservedRemoveAll} instance
+     * @param <Item>
+     *        type of the Item
+     *
+     * @return sole {@link DisabledGetItemsCount} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemoveAll<Item> getInstance() {
-        return (DisabledObservedRemoveAll<Item>) INSTANCE;
+    public static <Item> DisabledGetItemsCount<Item> getInstance() {
+        return (DisabledGetItemsCount<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRemoveAll}.
+     * Creates a new {@link DisabledGetItemsCount}.
      */
-    private DisabledObservedRemoveAll() {
+    private DisabledGetItemsCount() {
         super();
     }
 
     @Override
-    @SafeVarargs
-    public final void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException {
+    public int getItemsCount()
+    throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 }

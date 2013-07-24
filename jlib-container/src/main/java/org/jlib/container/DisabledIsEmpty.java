@@ -21,36 +21,35 @@
 
 package org.jlib.container;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+final class DisabledIsEmpty<Item>
+implements IsEmpty<Item>{
 
-final class DisabledObservedRemoveAll<Item>
-implements ObservedRemoveAll<Item> {
-
-    /** sole {@link DisabledObservedRemoveAll} instance */
-    private static final ObservedRemoveAll<?> INSTANCE = new DisabledObservedRemoveAll<>();
+    /** sole {@link DisabledIsEmpty} instance */
+    private static final DisabledIsEmpty<?> INSTANCE = new DisabledIsEmpty<Object>();
 
     /**
-     * Returns the sole {@link DisabledObservedRemoveAll} instance.
+     * Returns the sole {@link DisabledIsEmpty} instance.
      *
-     * @return sole {@link DisabledObservedRemoveAll} instance
+     * @param <Item>
+     *        type of the Item
+     *
+     * @return sole {@link DisabledIsEmpty} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemoveAll<Item> getInstance() {
-        return (DisabledObservedRemoveAll<Item>) INSTANCE;
+    public static <Item> DisabledIsEmpty<Item> getInstance() {
+        return (DisabledIsEmpty<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRemoveAll}.
+     * Creates a new {@link DisabledIsEmpty}.
      */
-    private DisabledObservedRemoveAll() {
+    private DisabledIsEmpty() {
         super();
     }
 
     @Override
-    @SafeVarargs
-    public final void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException {
+    public boolean isEmpty()
+    throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 }

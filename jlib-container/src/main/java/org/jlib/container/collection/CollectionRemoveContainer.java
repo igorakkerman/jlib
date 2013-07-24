@@ -23,13 +23,13 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ObservedRetainByTraversable;
+import org.jlib.container.ObservedRetainItemsByTraversable;
 import org.jlib.container.RetainItemsByTraversable;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
  * used as a {@link RetainItemsByTraversable}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRetainByTraversable} as internal {@link Collection} operations
+ * an {@link ObservedRetainItemsByTraversable} as internal {@link Collection} operations
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>

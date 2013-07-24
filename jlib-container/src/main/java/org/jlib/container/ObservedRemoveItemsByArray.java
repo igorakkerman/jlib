@@ -27,23 +27,24 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * Ability to removeItem Items; the removeItem operations can be attended by {@link ValueObserver}
- * instances.
+ * {@link RetainItemsByTraversable} allowing its removeItem operations to be attended by
+ * {@link ValueObserver} instances.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRetainItemsByArray<Item>
+public interface ObservedRemoveItemsByArray<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveItemByItem}
-     * <em>except</em> the specified Items.
+     * Removes all specified Items from this
+     * {@link ObservedRemoveItemByItem}.
+     *
      *
      * @param items
-     *        comma separated sequence of Items to retainItems
+     *        comma separated sequence of Items to remove
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the removal
@@ -59,10 +60,10 @@ extends ItemOperationStrategy<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retainItems(Item[] items, ValueObserver<Item>... observers)
+    public void removeItems(Item[] items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 
     @SuppressWarnings("unchecked")
-    public void retainItems(ValueObserver<Item>[] observers, Item... items)
+    public void removeItems(ValueObserver<Item>[] observers, Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

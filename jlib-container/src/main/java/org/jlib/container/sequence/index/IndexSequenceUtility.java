@@ -23,7 +23,7 @@ package org.jlib.container.sequence.index;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.container.ObservedRetainByTraversable;
+import org.jlib.container.ObservedRetainItemsByTraversable;
 
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
@@ -112,7 +112,7 @@ public final class IndexSequenceUtility {
      *        type of the items held in the {@link TraversableContainer}
      *
      * @param sequence
-     *        {@link ObservedRetainByTraversable} containing the Item
+     *        {@link ObservedRetainItemsByTraversable} containing the Item
      *
      * @param itemIndex
      *        index of the Item to removeItem

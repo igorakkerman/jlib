@@ -25,32 +25,33 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
 /**
- * Ability to removeItem Items; the removeItem operations can be attended by {@link ValueObserver}
- * instances.
+ * {@link RetainItemsByTraversable} allowing its removeItem operations to be attended by
+ * {@link ValueObserver} instances.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRetainByTraversable<Item>
+public interface ObservedRemoveItemsByIterable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link TraversableContainer} <em>except</em> the Items contained by the specified
-     * {@link TraversableContainer}.
+     * Removes all Items provided by the specified {@link Iterable} from this
+     * {@link ObservedRemoveItemByItem}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to retainItems
+     *        {@link Iterable} providing the Items to remove
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances attending the removal
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
      *
      * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one {@link Item} in {@code items}
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
@@ -59,6 +60,6 @@ extends ItemOperationStrategy<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retainItems(Traversable<? extends Item> items, ValueObserver<Item>... observers)
+    public void removeItems(Iterable<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

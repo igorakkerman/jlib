@@ -25,29 +25,28 @@ import java.util.Iterator;
 
 import org.jlib.core.traverser.Traverser;
 
-final class DisabledItemsCountContainer<Item>
- {
+final class DisabledItemsCountContainerXXXX<Item> {
 
-    /** sole {@link DisabledItemsCountContainer} instance */
-    private static final TraversableContainer<?> INSTANCE = new DisabledItemsCountContainer<Object>();
+    /** sole {@link DisabledItemsCountContainerXXXX} instance */
+    private static final TraversableContainer<?> INSTANCE = new DisabledItemsCountContainerXXXX<Object>();
 
     /**
-     * Returns the sole {@link DisabledItemsCountContainer} instance.
+     * Returns the sole {@link DisabledItemsCountContainerXXXX} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledItemsCountContainer} instance
+     * @return sole {@link DisabledItemsCountContainerXXXX} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledItemsCountContainer<Item> getInstance() {
-        return (DisabledItemsCountContainer<Item>) INSTANCE;
+    public static <Item> DisabledItemsCountContainerXXXX<Item> getInstance() {
+        return (DisabledItemsCountContainerXXXX<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledItemsCountContainer}.
+     * Creates a new {@link DisabledItemsCountContainerXXXX}.
      */
-    private DisabledItemsCountContainer() {
+    private DisabledItemsCountContainerXXXX() {
         super();
     }
 

@@ -28,47 +28,62 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-final class DisabledObservedRetainByTraversable<Item>
+final class DisabledObservedRemoveItemByItemXXX<Item>
 
-implements ObservedRetainByTraversable<Item> {
+implements ObservedRemoveItemByItem<Item> {
 
-    /** sole {@link DisabledObservedRetainByTraversable} instance */
-    private static final ObservedRetainByTraversable<?> INSTANCE = new DisabledObservedRetainByTraversable<>();
+    /** sole {@link DisabledObservedRemoveItemByItemXXX} instance */
+    private static final ObservedRemoveItemByItem<?> INSTANCE = new DisabledObservedRemoveItemByItemXXX<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRetainByTraversable} instance.
+     * Returns the sole {@link DisabledObservedRemoveItemByItemXXX} instance.
      *
-     * @return sole {@link DisabledObservedRetainByTraversable} instance
+     * @return sole {@link DisabledObservedRemoveItemByItemXXX} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRetainByTraversable<Item> getInstance() {
-        return (DisabledObservedRetainByTraversable<Item>) INSTANCE;
+    public static <Item> DisabledObservedRemoveItemByItemXXX<Item> getInstance() {
+        return (DisabledObservedRemoveItemByItemXXX<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRetainByTraversable}.
+     * Creates a new {@link DisabledObservedRemoveItemByItemXXX}.
      */
-    private DisabledObservedRetainByTraversable() {
+    private DisabledObservedRemoveItemByItemXXX() {
         super();
     }
 
     @Override
     @SafeVarargs
-    public final void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void remove(final Item item, final ValueObserver<Item>... observers)
+    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
+           ValueObserverException {
+        throw new ForbiddenCastException(this);
+    }
+
+    @Override
+    @SafeVarargs
+    public final void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
     @SafeVarargs
-    public final void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
     @SafeVarargs
-    public final void retain(final ValueObserver<Item>[] observers, final Item... items)
+    public final void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+        throw new ForbiddenCastException(this);
+    }
+
+    @Override
+    @SafeVarargs
+    public final void remove(final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }

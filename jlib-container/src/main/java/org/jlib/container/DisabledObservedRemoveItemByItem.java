@@ -22,35 +22,38 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-final class DisabledObservedRemoveAll<Item>
-implements ObservedRemoveAll<Item> {
+final class DisabledObservedRemoveItemByItem<Item>
+implements ObservedRemoveItemByItem<Item> {
 
-    /** sole {@link DisabledObservedRemoveAll} instance */
-    private static final ObservedRemoveAll<?> INSTANCE = new DisabledObservedRemoveAll<>();
+    /** sole {@link DisabledObservedRemoveItemByItem} instance */
+    private static final ObservedRemoveItemByItem<?> INSTANCE = new DisabledObservedRemoveItemByItem<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRemoveAll} instance.
+     * Returns the sole {@link DisabledObservedRemoveItemByItem} instance.
      *
-     * @return sole {@link DisabledObservedRemoveAll} instance
+     * @return sole {@link DisabledObservedRemoveItemByItem} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemoveAll<Item> getInstance() {
-        return (DisabledObservedRemoveAll<Item>) INSTANCE;
+    public static <Item> DisabledObservedRemoveItemByItem<Item> getInstance() {
+        return (DisabledObservedRemoveItemByItem<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRemoveAll}.
+     * Creates a new {@link DisabledObservedRemoveItemByItem}.
      */
-    private DisabledObservedRemoveAll() {
+    private DisabledObservedRemoveItemByItem() {
         super();
     }
 
     @Override
     @SafeVarargs
-    public final void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException {
+    public final void removeItem(final Item item, final ValueObserver<Item>... observers)
+    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
+           ValueObserverException {
         throw new ForbiddenCastException(this);
     }
 }
