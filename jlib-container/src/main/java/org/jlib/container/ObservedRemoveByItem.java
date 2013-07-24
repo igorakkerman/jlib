@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import java.util.Collection;
-
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
@@ -69,103 +67,4 @@ extends ItemOperationStrategy<Item> {
     public void remove(Item item, ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException;
-
-    /**
-     * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link ObservedRemoveByItem}.
-     *
-     * @param items
-     *        {@link TraversableContainer} containing the Items to removeItem
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     */
-    @SuppressWarnings("unchecked")
-    public void remove(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
-
-    /**
-     * Removes all Items contained by the specified {@link Collection} from this
-     * {@link ObservedRemoveByItem}.
-     *
-     * @param items
-     *        {@link Collection} containing the Items to removeItem
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     */
-    @SuppressWarnings("unchecked")
-    public void remove(Collection<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
-
-    /**
-     * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link ObservedRemoveByItem}.
-     *
-     * @param items
-     *        {@link Iterable} providing the Items to removeItem
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     */
-    @SuppressWarnings("unchecked")
-    public void remove(Iterable<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
-
-    /**
-     * Removes all specified Items from this
-     * {@link ObservedRemoveByItem}.
-     *
-     * @param items
-     *        comma separated sequence of Items to removeItem
-     *
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the removal
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     */
-    @SuppressWarnings("unchecked")
-    public void remove(ValueObserver<Item>[] observers, Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

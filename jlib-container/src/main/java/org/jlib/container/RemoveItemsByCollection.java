@@ -21,32 +21,29 @@
 
 package org.jlib.container;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import java.util.Collection;
+
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * Ability to removeItem Items; the removeItem operations can be attended by {@link ValueObserver}
- * instances.
+ * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
+ * each specified Item.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRetainItemsByArray<Item>
+public interface RemoveItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveByItem}
-     * <em>except</em> the specified Items.
+     * Removes all Items contained by the specified {@link Collection} from this
+     * {@link RemoveItemsByCollection}.
      *
      * @param items
-     *        comma separated sequence of Items to retainItems
-     *
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the removal
+     *        {@link Collection} containing the Items to removeItem
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -54,15 +51,7 @@ extends ItemOperationStrategy<Item> {
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
-    public void retainItems(Item[] items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
-
-    @SuppressWarnings("unchecked")
-    public void retainItems(ValueObserver<Item>[] observers, Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public void removeItems(Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

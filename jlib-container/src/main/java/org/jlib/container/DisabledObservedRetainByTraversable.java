@@ -29,7 +29,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 final class DisabledObservedRetainByTraversable<Item>
-extends DisabledContainer<Item>
+
 implements ObservedRetainByTraversable<Item> {
 
     /** sole {@link DisabledObservedRetainByTraversable} instance */

@@ -25,7 +25,7 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 final class DisabledObservedRemoveAll<Item>
-extends DisabledContainer<Item>
+
 implements ObservedRemoveAll<Item> {
 
     /** sole {@link DisabledObservedRemoveAll} instance */

@@ -21,14 +21,25 @@
 
 package org.jlib.container;
 
-public abstract class DisabledContainer<Item> {
+import java.util.List;
 
-    protected DisabledContainer() {
-        super();
-    }
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
+public interface ToSequentialList<Item>
+extends ItemOperationStrategy<Item> {
+
+    /**
+     * Returns a sequentially traversable {@link List} containing all of the
+     * Items of this {@link TraversableContainer} in the proper order as returned by this
+     * {@link TraversableContainer}'s Traverser.
+     *
+     * @return sequentially traversable {@link List} containing all of the Items
+     *         of this {@link TraversableContainer}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public List<Item> toSequentialList()
+    throws InvalidTraversableStateException;
+
 }

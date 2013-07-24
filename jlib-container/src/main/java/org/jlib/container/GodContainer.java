@@ -46,7 +46,7 @@ import org.jlib.core.traverser.Traverser;
  */
 public class GodContainer<Item>
 extends AbstractObject
-implements ToList<Item>,
+implements ToRandomAccessList<Item>,
            ContainsItemsByCollection<Item>,
            RetainItemsByTraversable<Item>,
            RemoveItemByItem<Item>,
@@ -56,8 +56,8 @@ implements ToList<Item>,
            ObservedRemoveAll<Item>,ItemOperationStrategy<Item>,Traversable<Item>,
            Iterable<Item> {
 
-    private ToList<Item> delegateToListContainer = /*
-     */ DisabledToList.getInstance();
+    private ToRandomAccessList<Item> delegateToRandomAccessListContainer = /*
+     */ DisabledToRandomAccessList.getInstance();
 
     private GetItemsCount<Item> delegateGetItemsCount = /*
      */ DisabledItemsCountContainer.getInstance();
@@ -87,12 +87,13 @@ implements ToList<Item>,
         super();
     }
 
-    public ToList<Item> getDelegateToListContainer() {
-        return delegateToListContainer;
+    public ToRandomAccessList<Item> getDelegateToRandomAccessListContainer() {
+        return delegateToRandomAccessListContainer;
     }
 
-    public void setDelegateToListContainer(final ToList<Item> delegateToListContainer) {
-        this.delegateToListContainer = delegateToListContainer;
+    public void setDelegateToRandomAccessListContainer(
+                                                      final ToRandomAccessList<Item> delegateToRandomAccessListContainer) {
+        this.delegateToRandomAccessListContainer = delegateToRandomAccessListContainer;
     }
 
     public TraversableContainer<Item> getDelegateTraversableContainer() {
@@ -206,21 +207,21 @@ implements ToList<Item>,
     }
 
     @Override
-    public List<Item> toList()
+    public List<Item> toRandomAccessList()
     throws InvalidTraversableStateException {
-        return delegateToListContainer.toList();
+        return delegateToRandomAccessListContainer.toRandomAccessList();
     }
 
     @Override
     public List<Item> toSequentialList()
     throws InvalidTraversableStateException {
-        return delegateToListContainer.toSequentialList();
+        return delegateToRandomAccessListContainer.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
     throws InvalidTraversableStateException {
-        return delegateToListContainer.toArray();
+        return delegateToRandomAccessListContainer.toArray();
     }
 
     @Override
@@ -230,7 +231,7 @@ implements ToList<Item>,
 
     @Override
     public boolean containsEqualItems(final Iterable<Item> collection) {
-        return delegateToListContainer.containsEqualItems(collection);
+        return delegateToRandomAccessListContainer.containsEqualItems(collection);
     }
 
     @Override
@@ -310,28 +311,28 @@ implements ToList<Item>,
     }
 
     @Override
-    public void remove(final TraversableContainer<? extends Item> items)
+    public void removeItems(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveByItemContainer.remove(items);
+        delegateRemoveByItemContainer.removeItems(items);
     }
 
     @Override
-    public void remove(final Collection<? extends Item> items)
+    public void removeItems(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveByItemContainer.remove(items);
+        delegateRemoveByItemContainer.removeItems(items);
     }
 
     @Override
-    public void remove(final Iterable<? extends Item> items)
+    public void removeItems(final Iterable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveByItemContainer.remove(items);
+        delegateRemoveByItemContainer.removeItems(items);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Item... items)
+    public void removeItems(final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveByItemContainer.remove(items);
+        delegateRemoveByItemContainer.removeItems(items);
     }
 
     @Override

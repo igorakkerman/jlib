@@ -30,7 +30,7 @@ import org.jlib.core.traverser.Traverser;
 
 import org.jlib.container.ContainsItemsByCollection;
 import org.jlib.container.ItemOperationStrategy;
-import org.jlib.container.ToList;
+import org.jlib.container.ToRandomAccessList;
 
 import static java.util.Collections.emptyIterator;
 import static java.util.Collections.emptyList;
@@ -38,7 +38,7 @@ import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 
 public abstract class AbstractEmpty<Item>
 extends AbstractObject
-implements ToList<Item>,
+implements ToRandomAccessList<Item>,
            ContainsItemsByCollection<Item>,
            ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
@@ -85,7 +85,7 @@ implements ToList<Item>,
     }
 
     @Override
-    public final List<Item> toList() {
+    public final List<Item> toRandomAccessList() {
         return emptyList();
     }
 

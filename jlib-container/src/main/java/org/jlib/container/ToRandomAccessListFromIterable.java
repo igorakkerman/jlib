@@ -28,9 +28,9 @@ import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
 
-public class ToListFromIterable<Item>
+public class ToRandomAccessListFromIterable<Item>
 extends AbstractObject
-implements ToList<Item> {
+implements ToRandomAccessList<Item> {
 
     private static final int DEFAULT_EXPECTED_ITEMS_COUNT = 20;
 
@@ -38,15 +38,15 @@ implements ToList<Item> {
 
     private final int expectedItemsCount;
 
-    public ToListFromIterable(final Collection<Item> collection) {
+    public ToRandomAccessListFromIterable(final Collection<Item> collection) {
         this(collection, collection.size());
     }
 
-    public ToListFromIterable(final Iterable<Item> iterable) {
+    public ToRandomAccessListFromIterable(final Iterable<Item> iterable) {
         this(iterable, DEFAULT_EXPECTED_ITEMS_COUNT);
     }
 
-    public ToListFromIterable(final Iterable<Item> iterable, int expectedItemsCount) {
+    public ToRandomAccessListFromIterable(final Iterable<Item> iterable, int expectedItemsCount) {
         super();
 
         this.iterable = iterable;
@@ -54,7 +54,7 @@ implements ToList<Item> {
     }
 
     @Override
-    public List<Item> toList() {
+    public List<Item> toRandomAccessList() {
         return appendContainedItemsToList(new ArrayList<Item>(expectedItemsCount));
     }
 

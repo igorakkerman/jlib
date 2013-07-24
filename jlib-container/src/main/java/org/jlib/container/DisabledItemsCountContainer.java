@@ -26,7 +26,7 @@ import java.util.Iterator;
 import org.jlib.core.traverser.Traverser;
 
 final class DisabledItemsCountContainer<Item>
-extends DisabledContainer<Item> {
+ {
 
     /** sole {@link DisabledItemsCountContainer} instance */
     private static final TraversableContainer<?> INSTANCE = new DisabledItemsCountContainer<Object>();

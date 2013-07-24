@@ -28,7 +28,7 @@ import org.jlib.core.traverser.Traversable;
 
 
 final class DisabledRetainItemsByTraversable<Item>
-extends DisabledContainer<Item>
+
 implements RetainItemsByTraversable<Item> {
 
     /** sole {@link DisabledRetainItemsByTraversable} instance */

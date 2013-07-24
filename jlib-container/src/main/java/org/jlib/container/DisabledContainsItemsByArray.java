@@ -21,33 +21,36 @@
 
 package org.jlib.container;
 
-final class DisabledRemoveAllItems<Item>
+final class DisabledContainsItemsByArray<Item>
 
-implements RemoveAllItems<Item> {
+implements ContainsItemsByArray<Item> {
 
-    /** sole {@link DisabledRemoveAllItems} instance */
-    private static final RemoveAllItems<?> INSTANCE = new DisabledRemoveAllItems<>();
+    /** sole {@link DisabledContainsItemsByArray} instance */
+    private static final DisabledContainsItemsByArray<?> INSTANCE = new DisabledContainsItemsByArray<Object>();
 
     /**
-     * Returns the sole {@link DisabledRemoveAllItems} instance.
+     * Returns the sole {@link DisabledContainsItemsByArray} instance.
      *
-     * @return sole {@link DisabledRemoveAllItems} instance
+     * @param <Item>
+     *        type of the Item
+     *
+     * @return sole {@link DisabledContainsItemsByArray} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveAllItems<Item> getInstance() {
-        return (DisabledRemoveAllItems<Item>) INSTANCE;
+    public static <Item> DisabledContainsItemsByArray<Item> getInstance() {
+        return (DisabledContainsItemsByArray<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveAllItems}.
+     * Creates a new {@link DisabledContainsItemsByArray}.
      */
-    private DisabledRemoveAllItems() {
+    private DisabledContainsItemsByArray() {
         super();
     }
 
-
     @Override
-    public void removeAllItems()
+    @SafeVarargs
+    public final boolean contains(final Item... items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

@@ -21,33 +21,38 @@
 
 package org.jlib.container;
 
-final class DisabledRemoveAllItems<Item>
+import java.util.Collection;
 
-implements RemoveAllItems<Item> {
+import org.jlib.core.traverser.Traversable;
 
-    /** sole {@link DisabledRemoveAllItems} instance */
-    private static final RemoveAllItems<?> INSTANCE = new DisabledRemoveAllItems<>();
+final class DisabledContainsItemsByTraversable<Item>
+implements ContainsItemsByTraversable<Item> {
+
+    /** sole {@link DisabledContainsItemsByTraversable} instance */
+    private static final DisabledContainsItemsByTraversable<?> INSTANCE = new DisabledContainsItemsByTraversable<Object>();
 
     /**
-     * Returns the sole {@link DisabledRemoveAllItems} instance.
+     * Returns the sole {@link DisabledContainsItemsByTraversable} instance.
      *
-     * @return sole {@link DisabledRemoveAllItems} instance
+     * @param <Item>
+     *        type of the Item
+     *
+     * @return sole {@link DisabledContainsItemsByTraversable} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveAllItems<Item> getInstance() {
-        return (DisabledRemoveAllItems<Item>) INSTANCE;
+    public static <Item> DisabledContainsItemsByTraversable<Item> getInstance() {
+        return (DisabledContainsItemsByTraversable<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveAllItems}.
+     * Creates a new {@link DisabledContainsItemsByTraversable}.
      */
-    private DisabledRemoveAllItems() {
+    private DisabledContainsItemsByTraversable() {
         super();
     }
 
-
     @Override
-    public void removeAllItems()
+    public boolean containsItems(final Traversable<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

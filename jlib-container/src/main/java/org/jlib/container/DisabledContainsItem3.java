@@ -21,68 +21,59 @@
 
 package org.jlib.container;
 
-import java.util.Iterator;
+import java.util.Collection;
 
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.traverser.Traversable;
 
-final class DisabledTraversableOperation<Item>
+final class DisabledContainsItem3<Item>
 
-implements ItemOperationStrategy<Item>,
-           org.jlib.core.traverser.Traversable<Item>,
-           Iterable<Item> {
+implements ContainsItemsByCollection<Item> {
 
-    /** sole {@link DisabledTraversableOperation} instance */
-    private static final TraversableContainer<?> INSTANCE = new DisabledTraversableOperation<Object>();
+    /** sole {@link DisabledContainsItem3} instance */
+    private static final DisabledContainsItem3<?> INSTANCE = new DisabledContainsItem3<Object>();
 
     /**
-     * Returns the sole {@link DisabledTraversableOperation} instance.
+     * Returns the sole {@link DisabledContainsItem3} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledTraversableOperation} instance
+     * @return sole {@link DisabledContainsItem3} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledTraversableOperation<Item> getInstance() {
-        return (DisabledTraversableOperation<Item>) INSTANCE;
+    public static <Item> DisabledContainsItem3<Item> getInstance() {
+        return (DisabledContainsItem3<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledTraversableOperation}.
+     * Creates a new {@link DisabledContainsItem3}.
      */
-    private DisabledTraversableOperation() {
+    private DisabledContainsItem3() {
         super();
     }
 
     @Override
-    public int getItemsCount()
+    public boolean containsItems(final Traversable<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean isEmpty()
+    public boolean contains(final Iterable<? extends Item> items)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+    public boolean contains(final Collection<? extends Item> items)
+    throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public Iterator<Item> iterator() {
-        throw new ForbiddenCastException(this);
-    }
-
-    @Override
-    public Traverser<Item> createTraverser() {
+    @SafeVarargs
+    public final boolean contains(final Item... items)
+    throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 }

@@ -24,12 +24,12 @@ package org.jlib.container;
 import java.util.Iterator;
 import java.util.List;
 
-final class DisabledToList<Item>
-extends DisabledContainer<Item>
-implements ToList<Item> {
+final class DisabledToRandomAccessList<Item>
 
-    /** sole {@link DisabledToList} instance */
-    private static final ToList<?> INSTANCE = new DisabledToList<>();
+implements ToRandomAccessList<Item> {
+
+    /** sole {@link DisabledToRandomAccessList} instance */
+    private static final ToRandomAccessList<?> INSTANCE = new DisabledToRandomAccessList<>();
 
     /**
      * Returns the sole {@link DisabledTraversableOperation} instance.
@@ -40,19 +40,19 @@ implements ToList<Item> {
      * @return sole {@link DisabledTraversableOperation} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledToList<Item> getInstance() {
-        return (DisabledToList<Item>) INSTANCE;
+    public static <Item> DisabledToRandomAccessList<Item> getInstance() {
+        return (DisabledToRandomAccessList<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledToList}.
+     * Creates a new {@link DisabledToRandomAccessList}.
      */
-    private DisabledToList() {
+    private DisabledToRandomAccessList() {
         super();
     }
 
     @Override
-    public List<Item> toList()
+    public List<Item> toRandomAccessList()
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

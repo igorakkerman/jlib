@@ -26,7 +26,7 @@ import java.util.Collection;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
 final class DisabledRemoveItemByItem<Item>
-extends DisabledContainer<Item>
+
 implements RemoveItemByItem<Item> {
 
     /** sole {@link DisabledRemoveItemByItem} instance */
@@ -56,26 +56,26 @@ implements RemoveItemByItem<Item> {
     }
 
     @Override
-    public void remove(final TraversableContainer<? extends Item> items)
+    public void removeItems(final TraversableContainer<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public void remove(final Collection<? extends Item> items)
+    public void removeItems(final Collection<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public void remove(final Iterable<? extends Item> items)
+    public void removeItems(final Iterable<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
     @SafeVarargs
-    public final void remove(final Item... items)
+    public final void removeItems(final Item... items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

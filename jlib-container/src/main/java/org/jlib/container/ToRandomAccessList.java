@@ -26,7 +26,7 @@ import java.util.RandomAccess;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public interface ToList<Item>
+public interface ToRandomAccessList<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
@@ -40,21 +40,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public List<Item> toList()
+    public List<Item> toRandomAccessList()
     throws InvalidTraversableStateException;
-
-    /**
-     * Returns a sequentially traversable {@link List} containing all of the
-     * Items of this {@link TraversableContainer} in the proper order as returned by this
-     * {@link TraversableContainer}'s Traverser.
-     *
-     * @return sequentially traversable {@link List} containing all of the Items
-     *         of this {@link TraversableContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public List<Item> toSequentialList()
-    throws InvalidTraversableStateException;
-
 }

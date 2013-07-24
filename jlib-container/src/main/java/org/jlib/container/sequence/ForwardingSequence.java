@@ -135,8 +135,8 @@ implements Sequence<Item> */{
 //    }
 //
 ////    @Override
-//    public List<Item> toList() {
-//        return null; // delegateSequence.toList();
+//    public List<Item> toRandomAccessList() {
+//        return null; // delegateSequence.toRandomAccessList();
 //    }
 //
 //    @Override
