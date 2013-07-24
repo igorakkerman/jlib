@@ -25,11 +25,11 @@ import java.util.Collection;
 
 import org.jlib.container.ObservedRemoveByItem;
 import org.jlib.container.ItemOperationStrategy;
-import org.jlib.container.Remove;
+import org.jlib.container.RetainItemsByTraversable;
 
 /**
- * Adapter allowing a {@link Remove} to be used as a {@link Collection}.
- * A {@link RemoveContainerCollection} is backed by a {@link Remove}
+ * Adapter allowing a {@link RetainItemsByTraversable} to be used as a {@link Collection}.
+ * A {@link RemoveContainerCollection} is backed by a {@link RetainItemsByTraversable}
  * specified at initialization.
  *
  * @param <Item>
@@ -45,13 +45,13 @@ extends ContainerCollection<Item> {
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
-     * {@link Remove}.
+     * {@link RetainItemsByTraversable}.
      *
      * @param <DelegateContainer>
      *        type of the delegate {@link TraversableContainer}
      *
      * @param delegateContainer
-     *        {@link Remove} backing this
+     *        {@link RetainItemsByTraversable} backing this
      *        {@link RemoveContainerCollection}
      */
     public <DelegateContainer extends ObservedRemoveByItem<Item> & ItemOperationStrategy<Item> & org.jlib.core.traverser.Traversable<Item> & Iterable<Item>> //

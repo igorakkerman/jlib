@@ -27,7 +27,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link Remove} allowing its Items to be removed by random access to
+ * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
  * each specified Item.
  *
  * @param <Item>
@@ -35,17 +35,17 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface RemoveByItem<Item>
+public interface RemoveItemByItem<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes the specified Item from this {@link RemoveByItem}.
+     * Removes the specified Item from this {@link RemoveItemByItem}.
      *
      * @param item
-     *        {@link Item} to remove
+     *        {@link Item} to removeItem
      *
      * @throws ItemToRemoveNotContainedException
-     *         if this {@link RemoveByItem} does not contain
+     *         if this {@link RemoveItemByItem} does not contain
      *         {@code Item}
      *
      * @throws InvalidTraversableArgumentException
@@ -55,15 +55,15 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(Item item)
+    public void removeItem(Item item)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
      * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link RemoveByItem}.
+     * {@link RemoveItemByItem}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to remove
+     *        {@link TraversableContainer} containing the Items to removeItem
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -77,10 +77,10 @@ extends ItemOperationStrategy<Item> {
 
     /**
      * Removes all Items contained by the specified {@link Collection} from this
-     * {@link RemoveByItem}.
+     * {@link RemoveItemByItem}.
      *
      * @param items
-     *        {@link Collection} containing the Items to remove
+     *        {@link Collection} containing the Items to removeItem
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -94,10 +94,10 @@ extends ItemOperationStrategy<Item> {
 
     /**
      * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link RemoveByItem}.
+     * {@link RemoveItemByItem}.
      *
      * @param items
-     *        {@link Iterable} providing the Items to remove
+     *        {@link Iterable} providing the Items to removeItem
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -110,11 +110,11 @@ extends ItemOperationStrategy<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all specified Items from this {@link RemoveByItem}
+     * Removes all specified Items from this {@link RemoveItemByItem}
      * .
      *
      * @param items
-     *        comma separated sequence of Items to remove
+     *        comma separated sequence of Items to removeItem
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

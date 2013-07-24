@@ -43,7 +43,7 @@ extends RemoveLastSequence<Item> {
      *        attending the removal
      *
      * @throws SoleItemNotRemoveableException
-     *         if this {@link ObservedRemoveLastSequence} contains only one Item
+     *         if this {@link ObservedRemoveLastSequence} containsItem only one Item
      *         and may not be empty
      */
     @SuppressWarnings("unchecked")

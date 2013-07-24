@@ -23,22 +23,17 @@ package org.jlib.container;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-/**
- * {@link Remove} allowing all Items to be removed.
- *
- * @param <Item>
- *        type of items held in the {@link RemoveAll}
- *
- * @author Igor Akkerman
- */
-public interface RemoveAll<Item> {
+public interface GetItemsCount<Item>
+extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items of this {@link RemoveAll}.
+     * Returns the number of Items in this {@link TraversableContainer}.
+     *
+     * @return integer specifying the number of Items in this {@link TraversableContainer}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void removeAll()
+    public int getItemsCount()
     throws InvalidTraversableStateException;
 }

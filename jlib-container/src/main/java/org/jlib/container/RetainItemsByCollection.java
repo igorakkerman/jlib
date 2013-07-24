@@ -21,20 +21,35 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public interface IsEmpty<Item>
-extends ItemOperationStrategy<Item> {
+/**
+ * {@link TraversableContainer} allowing Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link TraversableContainer}
+ *
+ * @author Igor Akkerman
+ */
+public interface RetainItemsByCollection<Item> {
 
     /**
-     * Verifies whether this {@link TraversableContainer} containsItem no Items.
+     * Removes all Items from this {@link RetainItemsByCollection}
+     * <em>except</em> the Items contained by the specified {@link Collection}.
      *
-     * @return {@code true} if this {@link TraversableContainer} containsItem no Items;
-     *         {@code false} otherwise
+     * @param items
+     *        {@link Collection} containing the Items to retainItems
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public boolean isEmpty()
-    throws InvalidTraversableStateException;
+    public void retainItems(Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

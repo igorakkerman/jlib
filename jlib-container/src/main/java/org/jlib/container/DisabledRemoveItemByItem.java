@@ -25,32 +25,32 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-final class DisabledRemoveByItem<Item>
+final class DisabledRemoveItemByItem<Item>
 extends DisabledContainer<Item>
-implements RemoveByItem<Item> {
+implements RemoveItemByItem<Item> {
 
-    /** sole {@link DisabledRemoveByItem} instance */
-    private static final RemoveByItem<?> INSTANCE = new DisabledRemoveByItem<>();
+    /** sole {@link DisabledRemoveItemByItem} instance */
+    private static final RemoveItemByItem<?> INSTANCE = new DisabledRemoveItemByItem<>();
 
     /**
-     * Returns the sole {@link DisabledRemoveByItem} instance.
+     * Returns the sole {@link DisabledRemoveItemByItem} instance.
      *
-     * @return sole {@link DisabledRemoveByItem} instance
+     * @return sole {@link DisabledRemoveItemByItem} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveByItem<Item> getInstance() {
-        return (DisabledRemoveByItem<Item>) INSTANCE;
+    public static <Item> DisabledRemoveItemByItem<Item> getInstance() {
+        return (DisabledRemoveItemByItem<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveByItem}.
+     * Creates a new {@link DisabledRemoveItemByItem}.
      */
-    private DisabledRemoveByItem() {
+    private DisabledRemoveItemByItem() {
         super();
     }
 
     @Override
-    public void remove(final Item item)
+    public void removeItem(final Item item)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

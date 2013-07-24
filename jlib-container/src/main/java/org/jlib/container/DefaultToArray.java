@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import org.jlib.core.language.AbstractObject;
 
-public final class DefaultToArray<Item, DelegateContainer extends ItemsCount<Item> & Iterable<Item>>
+public final class DefaultToArray<Item, DelegateContainer extends GetItemsCount<Item> & Iterable<Item>>
 extends AbstractObject
 implements ToArray<Item> {
 

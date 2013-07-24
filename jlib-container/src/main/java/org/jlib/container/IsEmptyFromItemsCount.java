@@ -25,12 +25,12 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public class IsEmptyFromItemsCount<Item> implements IsEmpty<Item> {
 
-    private final ItemsCount<Item> delegateContainer;
+    private final GetItemsCount<Item> delegateContainer;
 
-    public IsEmptyFromItemsCount(final ItemsCount<Item> itemsCount) {
+    public IsEmptyFromItemsCount(final GetItemsCount<Item> getItemsCount) {
         super();
 
-        this.delegateContainer = itemsCount;
+        this.delegateContainer = getItemsCount;
     }
 
     @Override

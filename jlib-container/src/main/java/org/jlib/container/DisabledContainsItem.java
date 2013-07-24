@@ -25,35 +25,35 @@ import java.util.Collection;
 
 import org.jlib.core.traverser.Traversable;
 
-final class DisabledContains<Item>
+final class DisabledContainsItem<Item>
 extends DisabledContainer<Item>
-implements Contains<Item> {
+implements ContainsItemsByCollection<Item> {
 
-    /** sole {@link DisabledContains} instance */
-    private static final DisabledContains<?> INSTANCE = new DisabledContains<Object>();
+    /** sole {@link DisabledContainsItem} instance */
+    private static final DisabledContainsItem<?> INSTANCE = new DisabledContainsItem<Object>();
 
     /**
-     * Returns the sole {@link DisabledContains} instance.
+     * Returns the sole {@link DisabledContainsItem} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link DisabledContains} instance
+     * @return sole {@link DisabledContainsItem} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledContains<Item> getInstance() {
-        return (DisabledContains<Item>) INSTANCE;
+    public static <Item> DisabledContainsItem<Item> getInstance() {
+        return (DisabledContainsItem<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledContains}.
+     * Creates a new {@link DisabledContainsItem}.
      */
-    private DisabledContains() {
+    private DisabledContainsItem() {
         super();
     }
 
     @Override
-    public boolean contains(final Item item)
+    public boolean containsItem(final Item item)
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

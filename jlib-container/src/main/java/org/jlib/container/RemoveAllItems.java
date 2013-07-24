@@ -21,13 +21,24 @@
 
 package org.jlib.container;
 
-public interface HashCode<Item>
-extends ItemOperationStrategy<Item> {
+import org.jlib.core.traverser.InvalidTraversableStateException;
+
+/**
+ * {@link RetainItemsByTraversable} allowing all Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link RemoveAllItems}
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveAllItems<Item> {
 
     /**
-     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
+     * Removes all Items of this {@link RemoveAllItems}.
      *
-     * @return integer specifying the hash code
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
      */
-    public int getHashCode();
+    public void removeAllItems()
+    throws InvalidTraversableStateException;
 }

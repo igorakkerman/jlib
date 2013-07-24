@@ -27,38 +27,38 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.Traversable;
 
 
-final class DisabledRemove<Item>
+final class DisabledRetainItemsByTraversable<Item>
 extends DisabledContainer<Item>
-implements Remove<Item> {
+implements RetainItemsByTraversable<Item> {
 
-    /** sole {@link DisabledRemove} instance */
-    private static final Remove<?> INSTANCE = new DisabledRemove<>();
+    /** sole {@link DisabledRetainItemsByTraversable} instance */
+    private static final RetainItemsByTraversable<?> INSTANCE = new DisabledRetainItemsByTraversable<>();
 
     /**
-     * Returns the sole {@link DisabledRemove} instance.
+     * Returns the sole {@link DisabledRetainItemsByTraversable} instance.
      *
-     * @return sole {@link DisabledRemove} instance
+     * @return sole {@link DisabledRetainItemsByTraversable} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemove<Item> getInstance() {
-        return (DisabledRemove<Item>) INSTANCE;
+    public static <Item> DisabledRetainItemsByTraversable<Item> getInstance() {
+        return (DisabledRetainItemsByTraversable<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemove}.
+     * Creates a new {@link DisabledRetainItemsByTraversable}.
      */
-    private DisabledRemove() {
+    private DisabledRetainItemsByTraversable() {
         super();
     }
 
     @Override
-    public void retain(final Traversable<? extends Item> items)
+    public void retainItems(final Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }
 
     @Override
-    public void retain(final Contains<? extends Item> items)
+    public void retain(final ContainsItemsByArray<? extends Item> items)
     throws InvalidTraversableArgumentException, ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

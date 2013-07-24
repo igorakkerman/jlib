@@ -45,7 +45,7 @@ extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
 implements ObservedInsertSequenceTraverser<Item>
 {
 
-    /** remove {@link ValueObserver} items */
+    /** removeItem {@link ValueObserver} items */
 //    private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();
 
     /**
@@ -86,7 +86,7 @@ implements ObservedInsertSequenceTraverser<Item>
     public void remove()
     throws NoItemToRemoveException {
 //        try {
-//            getSequence().remove(getLastAccessedItemIndex());
+//            getSequence().removeItem(getLastAccessedItemIndex());
 //
 //            unsetLastAccessedItem();
 //        }
@@ -105,10 +105,10 @@ implements ObservedInsertSequenceTraverser<Item>
 //            public void operate()
 //            throws OperatorException, RuntimeException {
 //                try {
-//                    remove();
+//                    removeItem();
 //                }
 //                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
-//                    throw new OperatorException(message("remove()"), exception);
+//                    throw new OperatorException(message("removeItem()"), exception);
 //                }
 //            }
 //        }, concatenated(traverserRemoveObservers, traversable(operationObservers)).toArray());

@@ -37,7 +37,7 @@ import org.jlib.container.binaryrelation.Pair;
  */
 public class HashAddRemoveBijection<LeftValue, RightValue>
 /*extends HashAddBijection<LeftValue, RightValue>
-implements RemoveBijection<LeftValue, RightValue> */{
+implements RetainItemsByTraversableBijection<LeftValue, RightValue> */{
 
 //    /** Creates a new initially empty HashAddBijection. */
 //    public HashAddRemoveBijection() {
@@ -130,68 +130,68 @@ implements RemoveBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void remove(final LeftValue leftValue, final RightValue rightValue)
+//    public void removeItem(final LeftValue leftValue, final RightValue rightValue)
 //    throws NoSuchPairException {
-//        leftToRightMap.remove(leftValue);
-//        rightToLeftMap.remove(rightValue);
+//        leftToRightMap.removeItem(leftValue);
+//        rightToLeftMap.removeItem(rightValue);
 //    }
 //
-//    public void remove(final Pair<LeftValue, RightValue> pair) {
-//        remove(pair.getLeftValue(), pair.getRightValue());
+//    public void removeItem(final Pair<LeftValue, RightValue> pair) {
+//        removeItem(pair.getLeftValue(), pair.getRightValue());
 //    }
 //
 ////    @Override
-////    public void removeAll() {
-////        ContainerUtility.remove(this, this);
+////    public void removeAllItems() {
+////        ContainerUtility.removeItem(this, this);
 ////    }
 ////
 ////    @Override
-////    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.remove(this, pairs);
+////    public void removeItem(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.removeItem(this, pairs);
 ////    }
 ////
 ////    @Override
-////    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.remove(this, pairs);
+////    public void removeItem(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.removeItem(this, pairs);
 ////    }
 ////
 ////    @Override
-////    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.remove(this, pairs);
+////    public void removeItem(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.removeItem(this, pairs);
 ////    }
 ////
 ////    @Override
 ////    @SuppressWarnings("unchecked")
-////    public void remove(final Pair<LeftValue, RightValue>... pairs) {
-////        ContainerUtility.remove(this, pairs);
+////    public void removeItem(final Pair<LeftValue, RightValue>... pairs) {
+////        ContainerUtility.removeItem(this, pairs);
 ////    }
 //
 //    @Override
-//    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> items)
+//    public void retainItems(final Traversable<? extends Pair<LeftValue, RightValue>> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //
 //    }
 //
 //    @Override
-//    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public void retainItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //
 //    }
 //
 ////    @Override
-////    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.retain(this, pairs);
+////    public void retainItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.retainItems(this, pairs);
 ////    }
 //
 //    @Override
-//    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-//        ContainerUtility.retain(this, pairs);
+//    public void retainItems(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.retainItems(this, pairs);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final Pair<LeftValue, RightValue>... pairs) {
-//        ContainerUtility.retain(this, pairs);
+//    public void retainItems(final Pair<LeftValue, RightValue>... pairs) {
+//        ContainerUtility.retainItems(this, pairs);
 //    }
 //
 //    @Override

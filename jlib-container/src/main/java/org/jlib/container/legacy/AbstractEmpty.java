@@ -28,7 +28,7 @@ import java.util.List;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.Contains;
+import org.jlib.container.ContainsItemsByCollection;
 import org.jlib.container.ItemOperationStrategy;
 import org.jlib.container.ToList;
 
@@ -39,7 +39,7 @@ import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 public abstract class AbstractEmpty<Item>
 extends AbstractObject
 implements ToList<Item>,
-           Contains<Item>,
+           ContainsItemsByCollection<Item>,
            ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
            Iterable<Item> {
@@ -64,7 +64,7 @@ implements ToList<Item>,
     }
 
     @Override
-    public final boolean contains(final Item item) {
+    public final boolean containsItem(final Item item) {
         return false;
     }
 

@@ -28,27 +28,27 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-final class DisabledObservedRemove<Item>
+final class DisabledObservedRetainByTraversable<Item>
 extends DisabledContainer<Item>
-implements ObservedRemove<Item> {
+implements ObservedRetainByTraversable<Item> {
 
-    /** sole {@link DisabledObservedRemove} instance */
-    private static final ObservedRemove<?> INSTANCE = new DisabledObservedRemove<>();
+    /** sole {@link DisabledObservedRetainByTraversable} instance */
+    private static final ObservedRetainByTraversable<?> INSTANCE = new DisabledObservedRetainByTraversable<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRemove} instance.
+     * Returns the sole {@link DisabledObservedRetainByTraversable} instance.
      *
-     * @return sole {@link DisabledObservedRemove} instance
+     * @return sole {@link DisabledObservedRetainByTraversable} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRemove<Item> getInstance() {
-        return (DisabledObservedRemove<Item>) INSTANCE;
+    public static <Item> DisabledObservedRetainByTraversable<Item> getInstance() {
+        return (DisabledObservedRetainByTraversable<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRemove}.
+     * Creates a new {@link DisabledObservedRetainByTraversable}.
      */
-    private DisabledObservedRemove() {
+    private DisabledObservedRetainByTraversable() {
         super();
     }
 

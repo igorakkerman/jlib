@@ -160,7 +160,7 @@ implements Bijection<LeftValue, RightValue> */{
 //    @Override
 //    protected void associate(final LeftValue leftValue, final RightValue rightValue)
 //    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-//        if (contains(leftValue, rightValue))
+//        if (containsItem(leftValue, rightValue))
 //            throw new PairAlreadyContainedException(this, leftValue, rightValue);
 //
 //        doAssociate(leftValue, rightValue);
@@ -169,7 +169,7 @@ implements Bijection<LeftValue, RightValue> */{
 //    @Override
 //    protected void ensureAssociated(final LeftValue leftValue, final RightValue rightValue)
 //    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-//        if (contains(leftValue, rightValue))
+//        if (containsItem(leftValue, rightValue))
 //            return;
 //
 //        associate(leftValue, rightValue);
@@ -276,7 +276,7 @@ implements Bijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public boolean contains(final LeftValue leftValue, final RightValue rightValue) {
+//    public boolean containsItem(final LeftValue leftValue, final RightValue rightValue) {
 //        return leftToRightMap.get(leftValue).equals(rightValue);
 //    }
 //*/

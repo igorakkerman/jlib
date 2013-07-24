@@ -22,31 +22,44 @@
 package org.jlib.container;
 
 import org.jlib.core.observer.ValueObserver;
+import org.jlib.core.observer.ValueObserverException;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * Ability to removeItem <em>all</em> Items;
- * the removeItem operations can be attended by {@link ValueObserver} instances.
+ * Ability to removeItem Items; the removeItem operations can be attended by {@link ValueObserver}
+ * instances.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item>
+public interface ObservedRetainItemsByArray<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link TraversableContainer}.
+     * Removes all Items from this {@link ObservedRemoveByItem}
+     * <em>except</em> the specified Items.
+     *
+     *
+     * @param items
+     *        comma separated sequence of Items to retainItems
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     *        array of {@link ValueObserver} instances attending the removal
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
+     *
+     * @throws ValueObserverException
+     *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void removeAll(ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException;
+    public void retainItems(Item[] items, ValueObserver<Item>... observers)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

@@ -22,7 +22,7 @@
 package org.jlib.container;
 
 /**
- * Tagging interface for all containers.
+ * Tagging interface for all container operation strategies on {@link Item}s.
  *
  * @author Igor Akkerman
  */

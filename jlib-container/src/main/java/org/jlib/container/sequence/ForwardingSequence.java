@@ -98,28 +98,28 @@ implements Sequence<Item> */{
 //    }
 //
 //    @Override
-//    public boolean contains(final Item item)
+//    public boolean containsItem(final Item item)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        return delegateSequence.contains(item);
+//        return delegateSequence.containsItem(item);
 //    }
 //
 //    @Override
-//    public boolean contains(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final TraversableContainer<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        return delegateSequence.contains(items);
+//        return delegateSequence.containsItem(items);
 //    }
 //
 //    @Override
-//    public boolean contains(final Collection<? extends Item> items)
+//    public boolean containsItem(final Collection<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        return delegateSequence.contains(items);
+//        return delegateSequence.containsItem(items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public boolean contains(final Item... items)
+//    public boolean containsItem(final Item... items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        return delegateSequence.contains(items);
+//        return delegateSequence.containsItem(items);
 //    }
 //
 ////    @Override

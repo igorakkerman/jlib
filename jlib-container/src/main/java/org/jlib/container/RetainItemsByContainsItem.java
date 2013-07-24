@@ -23,33 +23,25 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * Ability to remove Items; the remove operations can be attended by {@link ValueObserver}
- * instances.
+ * {@link TraversableContainer} allowing Items to be removed.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemove<Item>
-extends ItemOperationStrategy<Item> {
+public interface RetainItemsByContainsItem<Item> {
 
     /**
-     * Removes all Items from this {@link TraversableContainer} <em>except</em> the Items contained by
-     * the specified {@link TraversableContainer}.
+     * Removes all Items from this {@link RetainItemsByContainsItem}
+     * <em>except</em> the Items contained by the specified {@link TraversableContainer}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to retain
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     *        {@link TraversableContainer} containing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -57,24 +49,16 @@ extends ItemOperationStrategy<Item> {
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
-    public void retain(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public void retainItems(ContainsItem<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items from this {@link ObservedRemoveByItem}
+     * Removes all Items from this {@link RetainItemsByContainsItem}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
-     *        {@link Collection} containing the Items to retain
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     *        {@link Collection} containing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -82,23 +66,16 @@ extends ItemOperationStrategy<Item> {
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
-    public void retain(Collection<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public void retain(Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 
     /**
-     * Removes all Items from this {@link ObservedRemoveByItem}
+     * Removes all Items from this {@link RetainItemsByContainsItem}
      * <em>except</em> the specified Items.
      *
-     * @param observers
-     *        array of {@link ValueObserver} instances attending the removal
-     *
      * @param items
-     *        comma separated sequence of Items to retain
+     *        comma separated sequence of Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -106,11 +83,8 @@ extends ItemOperationStrategy<Item> {
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retain(ValueObserver<Item>[] observers, Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public void retain(Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

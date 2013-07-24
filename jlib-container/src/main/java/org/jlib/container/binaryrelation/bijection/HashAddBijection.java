@@ -199,19 +199,19 @@ implements AddBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public boolean contains(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public boolean containsItem(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
 //
 //    @Override
-//    public boolean contains(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
+//    public boolean containsItem(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
 //
 //    @Override
-//    public boolean contains(final Pair<LeftValue, RightValue>... pairs)
+//    public boolean containsItem(final Pair<LeftValue, RightValue>... pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }

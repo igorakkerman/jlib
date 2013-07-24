@@ -26,14 +26,15 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import org.jlib.core.iterator.IterableUtility;
+import org.jlib.core.language.EqualsStrategy;
 import org.jlib.core.traverser.Traverser;
 
-public class IsEqualFromIterator<Item>
-implements IsEqual<Item> {
+public class EqualsStrategyFromIterator<Item>
+implements EqualsStrategy<Item> {
 
     private final Iterable<Item> iterable;
 
-    public IsEqualFromIterator(final Iterable<Item> iterable) {
+    public EqualsStrategyFromIterator(final Iterable<Item> iterable) {
         super();
 
         this.iterable = iterable;
@@ -57,7 +58,7 @@ implements IsEqual<Item> {
             return false;
 
         @SuppressWarnings("unchecked")
-        final IsEqualFromIterator<Item> otherContainer = (IsEqualFromIterator<Item>) otherObject;
+        final EqualsStrategyFromIterator<Item> otherContainer = (EqualsStrategyFromIterator<Item>) otherObject;
 
         return IterableUtility.provideEqualItems(otherContainer.iterable, iterable);
     }

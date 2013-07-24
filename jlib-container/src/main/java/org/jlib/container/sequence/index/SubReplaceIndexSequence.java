@@ -37,7 +37,7 @@ package org.jlib.container.sequence.index;
  */
 public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
 /*implements ObservedReplaceIndexSequence<Item>,
-           Contains<Item> */{
+           ContainsItem<Item> */{
 
 //    /**
 //     * Creates a new {@link SubReplaceIndexSequence}.
@@ -154,25 +154,25 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    }
 //
 //    @Override
-//    public boolean contains(final Item item)
+//    public boolean containsItem(final Item item)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
 //
 //    @Override
-//    public boolean contains(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final TraversableContainer<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
 //
 //    @Override
-//    public boolean contains(final Collection<? extends Item> items)
+//    public boolean containsItem(final Collection<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }
 //
 //    @Override
-//    public boolean contains(final Item... items)
+//    public boolean containsItem(final Item... items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //        return false;
 //    }

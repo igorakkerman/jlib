@@ -146,53 +146,53 @@ implements ObservedReplaceIndexSequence<Item> */{
 //    }
 //
 //    @Override
-//    public void remove(final int index) {
+//    public void removeItem(final int index) {
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void remove(final int index, final ValueObserver<Item>... observers) {
-//        IndexSequenceUtility.remove(this, index, observers);
+//    public void removeItem(final int index, final ValueObserver<Item>... observers) {
+//        IndexSequenceUtility.removeItem(this, index, observers);
 //    }
 //
 //    @Override
-//    public void retain(final TraversableContainer<? extends Item> items)
+//    public void retainItems(final TraversableContainer<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        ContainerUtility.retain(this, items);
+//        ContainerUtility.retainItems(this, items);
 //    }
 //
 //    @Override
-//    public void retain(final Collection<? extends Item> items)
+//    public void retainItems(final Collection<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        ContainerUtility.retain(this, items);
+//        ContainerUtility.retainItems(this, items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final Item... items)
+//    public void retainItems(final Item... items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        ContainerUtility.retain(this, items);
+//        ContainerUtility.retainItems(this, items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    public void retainItems(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-//        ContainerUtility.retain(this, items, observers);
+//        ContainerUtility.retainItems(this, items, observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
+//    public void retainItems(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-//        ContainerUtility.retain(this, items, observers);
+//        ContainerUtility.retainItems(this, items, observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final ValueObserver<Item>[] observers, final Item... items)
+//    public void retainItems(final ValueObserver<Item>[] observers, final Item... items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-//        ContainerUtility.retain(this, observers, items);
+//        ContainerUtility.retainItems(this, observers, items);
 //    }
 //
 //    @Override

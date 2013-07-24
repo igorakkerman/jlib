@@ -100,7 +100,7 @@ public final class CollectionUtility {
      *        Collection from which {@code items} are removed
      *
      * @param items
-     *        {@link Iterable} providing the items to remove
+     *        {@link Iterable} providing the items to removeItem
      */
     public static <CollectionItem, RemovedItem extends CollectionItem> void removeAll(
                                                                                      final Collection<CollectionItem> collection,

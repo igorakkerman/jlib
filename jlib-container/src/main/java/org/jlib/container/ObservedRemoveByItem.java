@@ -29,7 +29,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link Remove} allowing its remove operations to be attended by
+ * {@link RetainItemsByTraversable} allowing its removeItem operations to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
@@ -45,7 +45,7 @@ extends ItemOperationStrategy<Item> {
      * {@link ObservedRemoveByItem}.
      *
      * @param item
-     *        Item to remove
+     *        Item to removeItem
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -75,7 +75,7 @@ extends ItemOperationStrategy<Item> {
      * {@link ObservedRemoveByItem}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to remove
+     *        {@link TraversableContainer} containing the Items to removeItem
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -100,7 +100,7 @@ extends ItemOperationStrategy<Item> {
      * {@link ObservedRemoveByItem}.
      *
      * @param items
-     *        {@link Collection} containing the Items to remove
+     *        {@link Collection} containing the Items to removeItem
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -125,7 +125,7 @@ extends ItemOperationStrategy<Item> {
      * {@link ObservedRemoveByItem}.
      *
      * @param items
-     *        {@link Iterable} providing the Items to remove
+     *        {@link Iterable} providing the Items to removeItem
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -150,7 +150,7 @@ extends ItemOperationStrategy<Item> {
      * {@link ObservedRemoveByItem}.
      *
      * @param items
-     *        comma separated sequence of Items to remove
+     *        comma separated sequence of Items to removeItem
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the removal

@@ -68,14 +68,14 @@ extends AbstractCollection<Item> {
     @SuppressWarnings("unchecked")
     public boolean contains(final Object object) {
         // (pretty) safe cast thanks to type erasure
-        return false; //delegateContainer.contains((Item) object);
+        return false; //delegateContainer.containsItem((Item) object);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean containsAll(final Collection<?> items) {
         // (pretty) safe cast thanks to type erasure
-        return false; // delegateContainer.contains((Collection<? extends Item>) items);
+        return false; // delegateContainer.containsItem((Collection<? extends Item>) items);
     }
 
     @Override

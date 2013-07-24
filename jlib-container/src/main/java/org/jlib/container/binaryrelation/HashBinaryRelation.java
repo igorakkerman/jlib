@@ -110,7 +110,7 @@ public class HashBinaryRelation<LeftValue, RightValue>
 //    @Override
     protected void associate(final LeftValue leftValue, final RightValue rightValue)
     throws PairAlreadyContainedException, InvalidPairException {
-//        if (contains(leftValue, rightValue))
+//        if (containsItem(leftValue, rightValue))
 //            throw new PairAlreadyContainedException(this, leftValue, rightValue);
 
         ensureAssociated(leftValue, rightValue);

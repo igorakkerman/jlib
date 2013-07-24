@@ -21,33 +21,33 @@
 
 package org.jlib.container;
 
-final class DisabledRemoveAll<Item>
+final class DisabledRemoveAllItems<Item>
 extends DisabledContainer<Item>
-implements RemoveAll<Item> {
+implements RemoveAllItems<Item> {
 
-    /** sole {@link DisabledRemoveAll} instance */
-    private static final RemoveAll<?> INSTANCE = new DisabledRemoveAll<>();
+    /** sole {@link DisabledRemoveAllItems} instance */
+    private static final RemoveAllItems<?> INSTANCE = new DisabledRemoveAllItems<>();
 
     /**
-     * Returns the sole {@link DisabledRemoveAll} instance.
+     * Returns the sole {@link DisabledRemoveAllItems} instance.
      *
-     * @return sole {@link DisabledRemoveAll} instance
+     * @return sole {@link DisabledRemoveAllItems} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledRemoveAll<Item> getInstance() {
-        return (DisabledRemoveAll<Item>) INSTANCE;
+    public static <Item> DisabledRemoveAllItems<Item> getInstance() {
+        return (DisabledRemoveAllItems<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledRemoveAll}.
+     * Creates a new {@link DisabledRemoveAllItems}.
      */
-    private DisabledRemoveAll() {
+    private DisabledRemoveAllItems() {
         super();
     }
 
 
     @Override
-    public void removeAll()
+    public void removeAllItems()
     throws ForbiddenCastException {
         throw new ForbiddenCastException(this);
     }

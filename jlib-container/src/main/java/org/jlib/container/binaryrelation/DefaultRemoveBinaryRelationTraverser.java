@@ -28,7 +28,7 @@ import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
  * Default implementation of a {@link Traverser} over the Pairs of a
- * {@link RemoveBinaryRelation}.
+ * {@link RetainItemsByTraversableBinaryRelation}.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the binaryRelation
@@ -37,11 +37,11 @@ import org.jlib.core.value.ValueNotAccessibleException;
  *        type of the values on the right hand side of the binaryRelation
  *
  * @param <Relation>
- *        type of the traversed {@link RemoveBinaryRelation}
+ *        type of the traversed {@link RetainItemsByTraversableBinaryRelation}
  *
  * @author Igor Akkerman
  */
-public class DefaultRemoveBinaryRelationTraverser<LeftValue, RightValue, Relation extends RemoveBinaryRelation<LeftValue, RightValue>>
+public class DefaultRemoveBinaryRelationTraverser<LeftValue, RightValue, Relation extends RetainItemsByTraversableBinaryRelation<LeftValue, RightValue>>
 extends DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation>
 implements RemoveTraverser<Pair<LeftValue, RightValue>> {
 
@@ -49,7 +49,7 @@ implements RemoveTraverser<Pair<LeftValue, RightValue>> {
      * Creates a new RemoveBinaryRelationTraverser.
      *
      * @param binaryRelation
-     *        RemoveBinaryRelation traversed by this Traverser
+     *        RetainItemsByTraversableBinaryRelation traversed by this Traverser
      */
     public DefaultRemoveBinaryRelationTraverser(final Relation binaryRelation) {
         super(binaryRelation);
@@ -60,7 +60,7 @@ implements RemoveTraverser<Pair<LeftValue, RightValue>> {
     throws NoItemToRemoveException {
         try {
             final Pair<LeftValue, RightValue> lastAccessedItem = getLastAccessedItem();
-//            getBinaryRelation().remove(lastAccessedItem);
+//            getBinaryRelation().removeItem(lastAccessedItem);
 
             unsetLastAccessedItem();
         }

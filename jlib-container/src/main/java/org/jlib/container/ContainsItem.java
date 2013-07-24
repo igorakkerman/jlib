@@ -21,28 +21,28 @@
 
 package org.jlib.container;
 
-import org.jlib.container.sequence.Sequence;
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-/**
- * {@link InvalidTraversableStateException} thrown when trying to removeItem the sole
- * Item of a {@link TraversableContainer} that may not be empty.
- *
- * @author Igor Akkerman
- */
-public class SoleItemNotRemoveableException
-extends InvalidTraversableStateException {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 7467942886021869121L;
+public interface ContainsItem<Item>
+extends ItemOperationStrategy<Item> {
 
     /**
-     * Creates a new {@link SoleItemNotRemoveableException}.
+     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
      *
-     * @param sequence
-     *        targeted {@link Sequence}
+     * @param item
+     *        Item to verify
+     *
+     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
+     *         {@code false} otherwise
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
      */
-    public SoleItemNotRemoveableException(final Sequence<?> sequence) {
-        super(sequence);
-    }
+    public boolean containsItem(Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

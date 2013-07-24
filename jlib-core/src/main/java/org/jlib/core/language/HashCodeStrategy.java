@@ -19,17 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.core.language;
 
-import org.jlib.core.language.EqualsStrategy;
+public interface HashCodeStrategy<Item>
+extends ItemOperationStrategy<Item> {
 
-public class EqualItemsCountEqualsHashCode<Item> extends EqualsStrategy<Item> {
-
-    private final GetItemsCount<Item> itemsCount;
-
-    public EqualItemsCountEqualsHashCode(final GetItemsCount<Item> getItemsCount) {
-        super();
-
-        this.itemsCount = getItemsCount;
-    }
+    /**
+     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
+     *
+     * @return integer specifying the hash code
+     */
+    public int getHashCode(Object object);
 }

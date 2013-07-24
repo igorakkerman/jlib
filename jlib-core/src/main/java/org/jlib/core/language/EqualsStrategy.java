@@ -19,11 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.core.language;
 
-import javax.annotation.Nullable;
-
-public interface IsEqual<Item> extends ItemOperationStrategy<Item> {
+public interface EqualsStrategy<Item> {
 
     /**
      * <p>
@@ -44,12 +42,5 @@ public interface IsEqual<Item> extends ItemOperationStrategy<Item> {
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
-    public boolean isEqual(@Nullable Object otherObject);
-
-    /**
-     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
-     *
-     * @return integer specifying the hash code
-     */
-    public int getHashCode();
+    public boolean areEqual(Item thisItem, Object Object);
 }

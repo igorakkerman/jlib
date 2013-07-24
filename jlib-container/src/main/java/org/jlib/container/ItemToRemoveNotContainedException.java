@@ -26,8 +26,8 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when a {@link RemoveByItem} does not contain the
- * specified {@link Item} to remove.
+ * {@link InvalidTraversableArgumentException} thrown when a {@link RemoveItemByItem} does not contain the
+ * specified {@link Item} to removeItem.
  *
  * @author Igor Akkerman
  */
@@ -44,15 +44,15 @@ extends InvalidContainerArgumentException {
      *        referenced {@link TraversableContainer}
      *
      * @param item
-     *        Item to remove
+     *        Item to removeItem
      */
     public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveByItem<?> container, final Object item) {
+                                             final RemoveItemByItem<?> container, final Object item) {
         super(container, message(item));
     }
 
     public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveByItem<?> container, final Object item,
+                                             final RemoveItemByItem<?> container, final Object item,
                                              final Exception cause) {
         super(container, message(item), cause);
     }

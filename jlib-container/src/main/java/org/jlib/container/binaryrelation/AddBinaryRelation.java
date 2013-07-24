@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 /**
- * {@link BinaryRelation} allowing to add and remove {@link Pair}
+ * {@link BinaryRelation} allowing to add and removeItem {@link Pair}
  * Items.
  *
  * @param <LeftValue>
@@ -134,7 +134,7 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
     throws InvalidPairException;
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains the
+     * Ensures that the specified {@link AddBinaryRelation} containsItem the
      * specified Item. If the {@link AddBinaryRelation} does not contain
      * the Item, it is added.
      *
@@ -149,7 +149,7 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
     throws InvalidPairException;
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains all
+     * Ensures that the specified {@link AddBinaryRelation} containsItem all
      * Items contained by the specified {@link TraversableContainer} to this
      * {@link AddBinaryRelation}. If the {@link AddBinaryRelation}
      * does not contain the Item, it is added.
@@ -165,7 +165,7 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
     throws InvalidPairException;
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains all
+     * Ensures that the specified {@link AddBinaryRelation} containsItem all
      * Items contained by the specified {@link Collection} to this
      * {@link AddBinaryRelation}.
      *
@@ -180,7 +180,7 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
     throws InvalidPairException;
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains all
+     * Ensures that the specified {@link AddBinaryRelation} containsItem all
      * specified Items to the specified {@link AddBinaryRelation}.
      *
      * @param pairs

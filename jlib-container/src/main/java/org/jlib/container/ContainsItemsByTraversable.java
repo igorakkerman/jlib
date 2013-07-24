@@ -21,19 +21,30 @@
 
 package org.jlib.container;
 
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
-public interface ItemsCount<Item>
+public interface ContainsItemsByTraversable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Returns the number of Items in this {@link TraversableContainer}.
+     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
+     * specified ReadContainer.
      *
-     * @return integer specifying the number of Items in this {@link TraversableContainer}
+     * @param items
+     *        ReadContainer containing the Items to verify
+     *
+     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
+     *         contained by {@code otherContainer}; {@code false} otherwise
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public int getItemsCount()
-    throws InvalidTraversableStateException;
+    boolean contains(Traversable<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -23,13 +23,13 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ObservedRemove;
-import org.jlib.container.Remove;
+import org.jlib.container.ObservedRetainByTraversable;
+import org.jlib.container.RetainItemsByTraversable;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link Remove}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRemove} as internal {@link Collection} operations
+ * used as a {@link RetainItemsByTraversable}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRetainByTraversable} as internal {@link Collection} operations
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
@@ -39,8 +39,8 @@ import org.jlib.container.Remove;
  */
 public class CollectionRemoveContainer<Item>
 /*extends CollectionOperation<Item>
-implements RemoveByItem<Item>,
-           RemoveAll<Item> */{
+implements RemoveItemByItem<Item>,
+           RemoveAllItems<Item> */{
 //
 //    /**
 //     * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -166,87 +166,87 @@ implements RemoveByItem<Item>,
 //    }
 //
 //    @Override
-//    public void remove(final Item item)
+//    public void removeItem(final Item item)
 //    throws ItemToRemoveNotContainedException, InvalidContainerDelegateStateException {
 //        try {
-//            final boolean removed = getDelegateCollection().remove(item);
+//            final boolean removed = getDelegateCollection().removeItem(item);
 //
 //            if (! removed)
 //                throw new ItemToRemoveNotContainedException(this, item);
 //        }
 //        catch (final UnsupportedOperationException exception) {
 //            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
-//                                                             message("remove: {0}", item), exception);
+//                                                             message("removeItem: {0}", item), exception);
 //        }
 //    }
 //
 //    @Override
-//    public void removeAll()
+//    public void removeAllItems()
 //    throws InvalidContainerDelegateStateException {
 //        try {
 //            getDelegateCollection().clear();
 //        }
 //        catch (final UnsupportedOperationException exception) {
-//            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), message("removeAll"),
+//            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(), message("removeAllItems"),
 //                                                             exception);
 //        }
 //    }
 //
 //    @Override
-//    public void remove(final Collection<? extends Item> items)
+//    public void removeItem(final Collection<? extends Item> items)
 //    throws InvalidContainerDelegateStateException {
 //        try {
-//            getDelegateCollection().removeAll(items);
+//            getDelegateCollection().removeAllItems(items);
 //        }
 //        catch (final UnsupportedOperationException exception) {
 //            throw new InvalidContainerDelegateStateException(this, getDelegateCollection(),
-//                                                             message("remove: {0}", items),
+//                                                             message("removeItem: {0}", items),
 //                                                             exception);
 //        }
 //    }
 //
 //    @Override
-//    public void remove(final TraversableContainer<? extends Item> items)
+//    public void removeItem(final TraversableContainer<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
-//        CollectionUtility.removeAll(getDelegateCollection(), items);
+//        CollectionUtility.removeAllItems(getDelegateCollection(), items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void remove(final Item... items)
+//    public void removeItem(final Item... items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
-//        ContainerUtility.remove(this, items);
+//        ContainerUtility.removeItem(this, items);
 //    }
 //
 //    @Override
-//    public void remove(final Iterable<? extends Item> items)
+//    public void removeItem(final Iterable<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
-//        ContainerUtility.remove(this, items);
+//        ContainerUtility.removeItem(this, items);
 //    }
 //
 //    @Override
-//    public void retain(final Collection<? extends Item> items)
+//    public void retainItems(final Collection<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        getDelegateCollection().retainAll(items);
 //    }
 //
 //    @Override
-//    public void retain(final Traversable<? extends Item> items)
+//    public void retainItems(final Traversable<? extends Item> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        ContainerUtility.retain(this, iterable(items));
+//        ContainerUtility.retainItems(this, iterable(items));
 //    }
 //
 //    @Override
-//    public void retain(final TraversableContainer<? extends Item> items)
+//    public void retainItems(final TraversableContainer<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
-//        ContainerUtility.retain(this, items);
+//        ContainerUtility.retainItems(this, items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void retain(final Item... items)
+//    public void retainItems(final Item... items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
-//        ContainerUtility.retain(this, items);
+//        ContainerUtility.retainItems(this, items);
 //    }
 //
 //    @Override
