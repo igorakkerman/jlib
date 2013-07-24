@@ -24,7 +24,7 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface ItemsCount<Item>
-extends ItemOperation<Item> {
+extends ItemOperationStrategy<Item> {
 
     /**
      * Returns the number of Items in this {@link TraversableContainer}.

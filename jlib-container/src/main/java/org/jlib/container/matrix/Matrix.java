@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemOperation;
+import org.jlib.container.ItemOperationStrategy;
 
 // @formatter:off
 
@@ -118,7 +118,7 @@ import org.jlib.container.ItemOperation;
 //@formatter:on
 public interface Matrix<Entry>
 extends MatrixTraversable<Entry>,
-        ItemOperation<Entry>,
+        ItemOperationStrategy<Entry>,
         org.jlib.core.traverser.Traversable<Entry>,
         Iterable<Entry> {
 

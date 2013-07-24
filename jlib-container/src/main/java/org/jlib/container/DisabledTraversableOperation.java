@@ -27,7 +27,7 @@ import org.jlib.core.traverser.Traverser;
 
 final class DisabledTraversableOperation<Item>
 extends DisabledContainer<Item>
-implements ItemOperation<Item>,
+implements ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
            Iterable<Item> {
 

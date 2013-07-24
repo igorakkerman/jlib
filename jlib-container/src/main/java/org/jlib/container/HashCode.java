@@ -21,20 +21,13 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
-
-public interface ToArray<Item>
+public interface HashCode<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Returns an array containing all of the Items of this {@link TraversableContainer} in
-     * the proper order as returned by this {@link TraversableContainer}'s Traverser.
+     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
      *
-     * @return array containing all of the Items of this {@link TraversableContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
+     * @return integer specifying the hash code
      */
-    public Item[] toArray()
-    throws InvalidTraversableStateException;
+    public int getHashCode();
 }

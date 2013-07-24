@@ -29,7 +29,7 @@ import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
 import org.jlib.container.Contains;
-import org.jlib.container.ItemOperation;
+import org.jlib.container.ItemOperationStrategy;
 import org.jlib.container.ToList;
 
 import static java.util.Collections.emptyIterator;
@@ -40,7 +40,7 @@ public abstract class AbstractEmpty<Item>
 extends AbstractObject
 implements ToList<Item>,
            Contains<Item>,
-           ItemOperation<Item>,
+           ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
            Iterable<Item> {
 

@@ -27,7 +27,7 @@ import java.util.RandomAccess;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface ToList<Item>
-extends ItemOperation<Item> {
+extends ItemOperationStrategy<Item> {
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items

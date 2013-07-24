@@ -38,7 +38,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveByItem<Item>
-extends ItemOperation<Item> {
+extends ItemOperationStrategy<Item> {
 
     /**
      * Removes the specified Item from this

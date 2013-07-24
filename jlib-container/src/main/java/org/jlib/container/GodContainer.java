@@ -53,7 +53,7 @@ implements ToList<Item>,
            RemoveAll<Item>,
            ObservedRemove<Item>,
            ObservedRemoveByItem<Item>,
-           ObservedRemoveAll<Item>,ItemOperation<Item>,Traversable<Item>,
+           ObservedRemoveAll<Item>,ItemOperationStrategy<Item>,Traversable<Item>,
            Iterable<Item> {
 
     private ToList<Item> delegateToListContainer = /*

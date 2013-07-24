@@ -24,7 +24,7 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface IsEmpty<Item>
-extends ItemOperation<Item> {
+extends ItemOperationStrategy<Item> {
 
     /**
      * Verifies whether this {@link TraversableContainer} contains no Items.

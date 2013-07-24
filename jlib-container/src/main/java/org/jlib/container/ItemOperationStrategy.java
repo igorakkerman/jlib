@@ -21,20 +21,11 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
-
-public interface ToArray<Item>
-extends ItemOperationStrategy<Item> {
-
-    /**
-     * Returns an array containing all of the Items of this {@link TraversableContainer} in
-     * the proper order as returned by this {@link TraversableContainer}'s Traverser.
-     *
-     * @return array containing all of the Items of this {@link TraversableContainer}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public Item[] toArray()
-    throws InvalidTraversableStateException;
+/**
+ * Tagging interface for all containers.
+ *
+ * @author Igor Akkerman
+ */
+public interface ItemOperationStrategy<Item> {
+    // intentionally empty
 }

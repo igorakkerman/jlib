@@ -23,7 +23,7 @@ package org.jlib.container.sequence;
 
 import org.jlib.core.traverser.TwoWayTraversable;
 
-import org.jlib.container.ItemOperation;
+import org.jlib.container.ItemOperationStrategy;
 
 /**
  * Ordered sequence of Items.
@@ -35,7 +35,7 @@ import org.jlib.container.ItemOperation;
  */
 public interface Sequence<Item>
 extends TwoWayTraversable<Item>,
-        ItemOperation<Item>,
+        ItemOperationStrategy<Item>,
         org.jlib.core.traverser.Traversable<Item>,
         Iterable<Item> {
 

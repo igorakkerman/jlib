@@ -28,7 +28,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 
 public interface Contains<Item>
-extends ItemOperation<Item> {
+extends ItemOperationStrategy<Item> {
 
     /**
      * Verifies whether this {@link ReadContainer} contains the specified Object.

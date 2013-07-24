@@ -23,7 +23,7 @@ package org.jlib.container.legacy;
 
 import java.io.Serializable;
 
-import org.jlib.container.ItemOperation;
+import org.jlib.container.ItemOperationStrategy;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
@@ -38,7 +38,7 @@ import org.jlib.container.sequence.index.ReplaceIndexSequence;
 public final class Empty<Item>
 extends AbstractEmpty<Item>
 implements Serializable,
-           ItemOperation<Item>,
+           ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
            Iterable<Item> {
 

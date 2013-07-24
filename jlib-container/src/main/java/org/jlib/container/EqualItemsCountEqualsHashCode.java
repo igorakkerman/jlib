@@ -21,11 +21,13 @@
 
 package org.jlib.container;
 
-/**
- * Tagging interface for all containers.
- *
- * @author Igor Akkerman
- */
-public interface ItemOperation<Item> {
-    // intentionally empty
+public class EqualItemsCountEqualsHashCode<Item> extends IsEqual<Item> {
+
+    private final ItemsCount<Item> itemsCount;
+
+    public EqualItemsCountEqualsHashCode(final ItemsCount<Item> itemsCount) {
+        super();
+
+        this.itemsCount = itemsCount;
+    }
 }
