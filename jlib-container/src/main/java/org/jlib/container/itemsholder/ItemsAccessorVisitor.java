@@ -4,7 +4,7 @@ import org.jlib.core.traverser.Traversable;
 
 import org.jlib.container.ContainsItem;
 
-public interface ItemsHolderVisitor<Item, Result> {
+public interface ItemsAccessorVisitor<Item, Result> {
 
     public Result visitTraversable(Traversable<? extends Item> items);
 

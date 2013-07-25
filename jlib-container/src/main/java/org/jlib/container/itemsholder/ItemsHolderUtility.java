@@ -1,50 +1,42 @@
 package org.jlib.container.itemsholder;
 
-import java.util.Collection;
-
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.IterableTraversable;
 import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.Traverser;
 
 import org.jlib.container.ContainsItem;
 
 public final class ItemsHolderUtility {
 
-    public static <Item> ItemsHolderAdapter<Item> allOf(final Collection<Item> items) {
-        return new ContainsItemTraversableItemsHolderAdapter<>(items);
+    public static <Item> ItemsAccessor<Item> allOf(final Traversable<? extends Item> items) {
+        return new ItemsAccessor<Item>() {
+
+            @Override
+            public <Result> Result accept(final ItemsAccessorVisitor<Item, Result> visitor) {
+                return visitor.visitTraversable(items);
+            }
+        };
     }
 
-    public static interface ContainsItemTraversableItemsHolderAdapter<Item>
-    extends Traversable<Item>,
-            ContainsItem<Item> {
-        // unifying interface
+    public static <Item> ItemsAccessor<Item> allOf(final ContainsItem<? extends Item> items) {
+        return new ItemsAccessor<Item>() {
+
+            @Override
+            public <Result> Result accept(final ItemsAccessorVisitor<Item, Result> visitor) {
+                return visitor.visitContainsItem(items);
+            }
+        };
     }
 
-    private static class CollectionAdapter<Item> implements ContainsItemTraversableItemsHolderAdapter<Item> {
+    public static <Item, ItemsHolder extends Traversable<? extends Item> & ContainsItem<Item>> /*
+        */ ItemsAccessor<Item> allOfX(final ItemsHolder items) {
+        return new ItemsAccessor<Item>() {
 
-        private final Collection<Item> items;
-
-        private CollectionAdapter(final Collection<Item> items) {
-            super();
-
-            this.items = items;
-        }
-
-        @Override
-        public boolean containsItem(final Item item)
-        throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-            return items.contains(item);
-        }
-
-        @Override
-        public Traverser<Item> createTraverser() {
-
-            // TODO: create static method in appropriate place
-            return new IterableTraversable<>(items).createTraverser();
-        }
+            @Override
+            public <Result> Result accept(final ItemsAccessorVisitor<Item, Result> visitor) {
+                return visitor.visitContainsItemTraversable(items);
+            }
+        };
     }
+
 
     private ItemsHolderUtility() {
     }
