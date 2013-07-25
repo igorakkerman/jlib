@@ -41,7 +41,7 @@ public interface RetainItemsByCollection<Item> {
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
-     *        {@link Collection} containing the Items to retainItems
+     *        {@link Collection} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

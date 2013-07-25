@@ -28,7 +28,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 
 /**
- * Ability to removeItem Items; the removeItem operations can be attended by {@link ValueObserver}
+ * Ability to retainItems Items; the retainItems operations can be attended by {@link ValueObserver}
  * instances.
  *
  * @param <Item>
@@ -44,7 +44,7 @@ extends ItemOperationStrategy<Item> {
      * {@link TraversableContainer}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to retainItems
+     *        {@link TraversableContainer} containing the Items to removeItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances attending the removal

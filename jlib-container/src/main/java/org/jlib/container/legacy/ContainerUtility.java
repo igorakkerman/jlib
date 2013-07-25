@@ -69,7 +69,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Item
      *
      * @param item
-     *        {@link Item} to removeItem
+     *        {@link Item} to retainItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -108,7 +108,7 @@ public final class ContainerUtility {
                 }
                 // TODO: check caught exceptions
                 catch (InvalidTraversableArgumentException | InvalidTraversableStateException exception) {
-                    throw new OperatorException(message("removeItem: {0}", item), exception);
+                    throw new OperatorException(message("retainItems: {0}", item), exception);
                 }
             }
         }, item, observers);
@@ -125,7 +125,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to removeItem
+     *        {@link Iterable} providing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -152,7 +152,7 @@ public final class ContainerUtility {
      *        {@link RetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to removeItem
+     *        {@link Iterable} providing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -183,7 +183,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to removeItem
+     *        {@link Iterable} providing the Items to retainItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -223,7 +223,7 @@ public final class ContainerUtility {
      *        array of {@link ValueObserver} instances attending the removal
      *
      * @param items
-     *        {@link Iterable} providing the Items to removeItem
+     *        {@link Iterable} providing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -251,10 +251,10 @@ public final class ContainerUtility {
      *        type of the items held in the {@link TraversableContainer}
      *
      * @param traversable
-     *        {@link RetainItemsByTraversable} containing the Items to removeItem
+     *        {@link RetainItemsByTraversable} containing the Items to retainItems
      *
      * @param items
-     *        {@link Iterable} providing the Items to retainItems
+     *        {@link Iterable} providing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one {@link Item} in {@code items}
@@ -284,10 +284,10 @@ public final class ContainerUtility {
      *        type of the items retained in the {@link TraversableContainer}
      *
      * @param container
-     *        {@link RetainItemsByTraversable} containing the Items to removeItem
+     *        {@link RetainItemsByTraversable} containing the Items to retainItems
      *
      * @param items
-     *        {@link Collection} containing the Items to retainItems
+     *        {@link Collection} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -300,7 +300,7 @@ public final class ContainerUtility {
     public static <Item, RetainedItem extends Item> void retain(final RetainItemsByTraversable<Item> container,
                                                                 final RetainedItem... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-//        retainItems(container, toSet(items));
+//        removeItems(container, toSet(items));
     }
 
     /**
@@ -312,10 +312,10 @@ public final class ContainerUtility {
      *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
-     *        {@link RetainItemsByTraversable} containing the Items to removeItem
+     *        {@link RetainItemsByTraversable} containing the Items to retainItems
      *
      * @param items
-     *        {@link Collection} containing the Items to retainItems
+     *        {@link Collection} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -340,10 +340,10 @@ public final class ContainerUtility {
      *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
-     *        {@link ObservedRetainItemsByTraversable} containing the Items to removeItem
+     *        {@link ObservedRetainItemsByTraversable} containing the Items to retainItems
      *
      * @param items
-     *        {@link Iterable} providing the Items to retainItems
+     *        {@link Iterable} providing the Items to removeItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -388,14 +388,14 @@ public final class ContainerUtility {
      *        type of the items retained in the {@link TraversableContainer}
      *
      * @param container
-     *        {@link ObservedRetainItemsByTraversable} containing the Items to removeItem
+     *        {@link ObservedRetainItemsByTraversable} containing the Items to retainItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
      * @param items
-     *        comma separated sequence of the Items to retainItems
+     *        comma separated sequence of the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of
@@ -427,10 +427,10 @@ public final class ContainerUtility {
      *        type of the items held in the {@link TraversableContainer}
      *
      * @param container
-     *        {@link ObservedRetainItemsByTraversable} containing the Items to removeItem
+     *        {@link ObservedRetainItemsByTraversable} containing the Items to retainItems
      *
      * @param items
-     *        {@link Collection} containing the Items to retainItems
+     *        {@link Collection} containing the Items to removeItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

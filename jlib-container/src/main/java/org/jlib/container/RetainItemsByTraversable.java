@@ -40,7 +40,7 @@ public interface RetainItemsByTraversable<Item> {
      * <em>except</em> the Items contained by the specified {@link Traversable}.
      *
      * @param items
-     *        {@link Traversable} containing the Items to retainItems
+     *        {@link Traversable} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

@@ -25,8 +25,8 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * Ability to removeItem <em>all</em> Items;
- * the removeItem operations can be attended by {@link ValueObserver} instances.
+ * Ability to retainItems <em>all</em> Items;
+ * the retainItems operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}

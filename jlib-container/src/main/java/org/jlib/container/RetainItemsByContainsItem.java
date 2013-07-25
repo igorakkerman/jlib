@@ -35,11 +35,11 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 public interface RetainItemsByContainsItem<Item> {
 
     /**
-     * Removes all Items from this {@link RetainItemsByContainsItem}
-     * <em>except</em> the Items contained by the specified {@link TraversableContainer}.
+     * Removes all Items from this object <em>except</em> those for which the specified {@link ContainsItem}'s
+     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to retainItems
+     *        {@link TraversableContainer} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

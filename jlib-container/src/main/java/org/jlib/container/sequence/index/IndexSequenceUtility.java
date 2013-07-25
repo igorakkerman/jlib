@@ -115,7 +115,7 @@ public final class IndexSequenceUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Item
      *
      * @param itemIndex
-     *        index of the Item to removeItem
+     *        index of the Item to retainItems
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -146,7 +146,7 @@ public final class IndexSequenceUtility {
                     sequence.remove(itemIndex);
                 }
                 catch (InvalidTraversableArgumentException | InvalidTraversableStateException exception) {
-                    throw new OperatorException(message("removeItem: {0}", itemIndex).with("sequence", sequence),
+                    throw new OperatorException(message("retainItems: {0}", itemIndex).with("sequence", sequence),
                                                 exception);
                 }
             }

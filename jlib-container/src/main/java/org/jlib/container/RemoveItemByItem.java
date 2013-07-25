@@ -40,7 +40,7 @@ extends ItemOperationStrategy<Item> {
      * Removes the specified Item from this {@link RemoveItemByItem}.
      *
      * @param item
-     *        {@link Item} to removeItem
+     *        {@link Item} to retainItems
      *
      * @throws ItemToRemoveNotContainedException
      *         if this {@link RemoveItemByItem} does not contain

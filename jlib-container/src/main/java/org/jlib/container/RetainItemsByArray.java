@@ -39,7 +39,7 @@ public interface RetainItemsByArray<Item> {
      * <em>except</em> the specified Items.
      *
      * @param items
-     *        comma separated sequence of Items to retainItems
+     *        comma separated sequence of Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

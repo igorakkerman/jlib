@@ -43,7 +43,7 @@ extends ItemOperationStrategy<Item> {
      * {@link RemoveItemsByCollection}.
      *
      * @param items
-     *        {@link Collection} containing the Items to removeItem
+     *        {@link Collection} containing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

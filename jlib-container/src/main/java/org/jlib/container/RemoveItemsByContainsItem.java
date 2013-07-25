@@ -21,34 +21,25 @@
 
 package org.jlib.container;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
 /**
- * {@link RetainItemsByTraversable} allowing its retainItems operations to be attended by
- * {@link ValueObserver} instances.
+ * {@link TraversableContainer} allowing Items to be removed.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveItemsByTraversable<Item>
-extends ItemOperationStrategy<Item> {
+public interface RemoveItemsByContainsItem<Item> {
 
     /**
-     * Removes all Items contained by the specified {@link TraversableContainer} from this
-     * {@link ObservedRemoveItemByItem}.
+     * Removes all Items from this object for which the specified {@link ContainsItem}'s
+     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to remove
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     *        {@link TraversableContainer} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -56,11 +47,7 @@ extends ItemOperationStrategy<Item> {
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
-    public void removeItems(Traversable<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public void removeItems(ContainsItem<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

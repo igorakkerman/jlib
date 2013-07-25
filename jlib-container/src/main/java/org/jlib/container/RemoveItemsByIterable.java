@@ -41,7 +41,7 @@ extends ItemOperationStrategy<Item> {
      * {@link RemoveItemsByIterable}.
      *
      * @param items
-     *        {@link Iterable} providing the Items to removeItem
+     *        {@link Iterable} providing the Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one

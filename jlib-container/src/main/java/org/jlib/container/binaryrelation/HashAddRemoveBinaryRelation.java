@@ -102,13 +102,13 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void removeItem(final LeftValue leftValue, final RightValue rightValue)
+//    public void retainItems(final LeftValue leftValue, final RightValue rightValue)
 //    throws NoSuchLeftValueException, NoSuchRightValueException {
-//        removeItem(new Pair(leftValue, rightValue));
+//        retainItems(new Pair(leftValue, rightValue));
 //    }
 //
 //    @Override
-//    public void removeItem(final Pair<LeftValue, RightValue> pair)
+//    public void retainItems(final Pair<LeftValue, RightValue> pair)
 //    throws ItemToRemoveNotContainedException {
 //        try {
 //            removePair(pair);
@@ -125,34 +125,18 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
 //        if (! containsItem(leftValue, rightValue))
 //            throw new NoSuchPairException(this, new Pair(leftValue, rightValue));
 //
-//        leftToRightMap.get(leftValue).removeItem(rightValue);
-//        rightToLeftMap.get(rightValue).removeItem(leftValue);
+//        leftToRightMap.get(leftValue).retainItems(rightValue);
+//        rightToLeftMap.get(rightValue).retainItems(leftValue);
 //    }
 //
 //    @Override
 //    public void removeAllItems() {
-//        BinaryRelationUtility.removeItem(this, this);
+//        BinaryRelationUtility.retainItems(this, this);
 //    }
 //
 //    @Override
-//    public void removeItem(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
-//        BinaryRelationUtility.removeItem(this, pairs);
-//    }
-//
-//    @Override
-//    public void removeItem(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-//        BinaryRelationUtility.removeItem(this, pairs);
-//    }
-//
-//    @Override
-//    public void removeItem(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-//        BinaryRelationUtility.removeItem(this, pairs);
-//    }
-//
-//    @Override
-//    @SuppressWarnings("unchecked")
-//    public void removeItem(final Pair<LeftValue, RightValue>... pairs) {
-//        BinaryRelationUtility.removeItem(this, pairs);
+//    public void retainItems(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.retainItems(this, pairs);
 //    }
 //
 //    @Override
@@ -169,6 +153,22 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
 //    @SuppressWarnings("unchecked")
 //    public void retainItems(final Pair<LeftValue, RightValue>... pairs) {
 //        BinaryRelationUtility.retainItems(this, pairs);
+//    }
+//
+//    @Override
+//    public void removeItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.removeItems(this, pairs);
+//    }
+//
+//    @Override
+//    public void removeItems(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.removeItems(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void removeItems(final Pair<LeftValue, RightValue>... pairs) {
+//        BinaryRelationUtility.removeItems(this, pairs);
 //    }
 //
 //    @Override

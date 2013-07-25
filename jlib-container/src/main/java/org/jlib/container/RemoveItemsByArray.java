@@ -40,7 +40,7 @@ extends ItemOperationStrategy<Item> {
      * Removes all specified Items from this {@link RemoveItemsByArray}.
      *
      * @param items
-     *        comma separated sequence of Items to removeItem
+     *        comma separated sequence of Items to retainItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
