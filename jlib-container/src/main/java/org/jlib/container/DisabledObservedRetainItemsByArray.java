@@ -25,35 +25,41 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
-final class DisabledObservedRetainItemsByTraversable<Item>
+final class DisabledObservedRetainItemsByArray<Item>
 
-implements ObservedRetainItemsByTraversable<Item> {
+implements ObservedRetainItemsByArray<Item> {
 
-    /** sole {@link DisabledObservedRetainItemsByTraversable} instance */
-    private static final DisabledObservedRetainItemsByTraversable<?> INSTANCE = new DisabledObservedRetainItemsByTraversable<>();
+    /** sole {@link DisabledObservedRetainItemsByArray} instance */
+    private static final DisabledObservedRetainItemsByArray<?> INSTANCE = new DisabledObservedRetainItemsByArray<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRetainItemsByTraversable} instance.
+     * Returns the sole {@link DisabledObservedRetainItemsByArray} instance.
      *
-     * @return sole {@link DisabledObservedRetainItemsByTraversable} instance
+     * @return sole {@link DisabledObservedRetainItemsByArray} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRetainItemsByTraversable<Item> getInstance() {
-        return (DisabledObservedRetainItemsByTraversable<Item>) INSTANCE;
+    public static <Item> DisabledObservedRetainItemsByArray<Item> getInstance() {
+        return (DisabledObservedRetainItemsByArray<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRetainItemsByTraversable}.
+     * Creates a new {@link DisabledObservedRetainItemsByArray}.
      */
-    private DisabledObservedRetainItemsByTraversable() {
+    private DisabledObservedRetainItemsByArray() {
         super();
     }
 
     @Override
     @SafeVarargs
-    public final void retainItems(final Traversable<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void retainItems(final ValueObserver<Item>[] observers, final Item... items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+        throw new ForbiddenCastException(this);
+    }
+
+    @Override
+    @SafeVarargs
+    public final void retainItems(final Item[] items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }

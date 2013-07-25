@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import java.util.Collection;
-
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
@@ -51,40 +49,5 @@ public interface RetainItemsByContainsItem<Item> {
      *         if an error occurs during the operation
      */
     public void retainItems(ContainsItem<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
-
-    /**
-     * Removes all Items from this {@link RetainItemsByContainsItem}
-     * <em>except</em> the Items contained by the specified {@link Collection}.
-     *
-     * @param items
-     *        {@link Collection} containing the Items to retainItems
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public void retain(Collection<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
-
-    /**
-     * Removes all Items from this {@link RetainItemsByContainsItem}
-     * <em>except</em> the specified Items.
-     *
-     * @param items
-     *        comma separated sequence of Items to retainItems
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    @SuppressWarnings("unchecked")
-    public void retain(Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

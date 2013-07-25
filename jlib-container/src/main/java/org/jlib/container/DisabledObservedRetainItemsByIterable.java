@@ -25,35 +25,34 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
-final class DisabledObservedRetainItemsByTraversable<Item>
+final class DisabledObservedRetainItemsByIterable<Item>
 
-implements ObservedRetainItemsByTraversable<Item> {
+implements ObservedRetainItemsByIterable<Item> {
 
-    /** sole {@link DisabledObservedRetainItemsByTraversable} instance */
-    private static final DisabledObservedRetainItemsByTraversable<?> INSTANCE = new DisabledObservedRetainItemsByTraversable<>();
+    /** sole {@link DisabledObservedRetainItemsByIterable} instance */
+    private static final DisabledObservedRetainItemsByIterable<?> INSTANCE = new DisabledObservedRetainItemsByIterable<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRetainItemsByTraversable} instance.
+     * Returns the sole {@link DisabledObservedRetainItemsByIterable} instance.
      *
-     * @return sole {@link DisabledObservedRetainItemsByTraversable} instance
+     * @return sole {@link DisabledObservedRetainItemsByIterable} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRetainItemsByTraversable<Item> getInstance() {
-        return (DisabledObservedRetainItemsByTraversable<Item>) INSTANCE;
+    public static <Item> DisabledObservedRetainItemsByIterable<Item> getInstance() {
+        return (DisabledObservedRetainItemsByIterable<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRetainItemsByTraversable}.
+     * Creates a new {@link DisabledObservedRetainItemsByIterable}.
      */
-    private DisabledObservedRetainItemsByTraversable() {
+    private DisabledObservedRetainItemsByIterable() {
         super();
     }
 
     @Override
     @SafeVarargs
-    public final void retainItems(final Traversable<? extends Item> items, final ValueObserver<Item>... observers)
+    public final void retainItems(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         throw new ForbiddenCastException(this);
     }

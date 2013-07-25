@@ -27,27 +27,27 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 
-final class DisabledObservedRetainItemsByTraversable<Item>
+final class DisabledObservedRetainItemsByContainsItem<Item>
 
-implements ObservedRetainItemsByTraversable<Item> {
+implements ObservedRetainItemsByContainsItem<Item> {
 
-    /** sole {@link DisabledObservedRetainItemsByTraversable} instance */
-    private static final DisabledObservedRetainItemsByTraversable<?> INSTANCE = new DisabledObservedRetainItemsByTraversable<>();
+    /** sole {@link DisabledObservedRetainItemsByContainsItem} instance */
+    private static final DisabledObservedRetainItemsByContainsItem<?> INSTANCE = new DisabledObservedRetainItemsByContainsItem<>();
 
     /**
-     * Returns the sole {@link DisabledObservedRetainItemsByTraversable} instance.
+     * Returns the sole {@link DisabledObservedRetainItemsByContainsItem} instance.
      *
-     * @return sole {@link DisabledObservedRetainItemsByTraversable} instance
+     * @return sole {@link DisabledObservedRetainItemsByContainsItem} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> DisabledObservedRetainItemsByTraversable<Item> getInstance() {
-        return (DisabledObservedRetainItemsByTraversable<Item>) INSTANCE;
+    public static <Item> DisabledObservedRetainItemsByContainsItem<Item> getInstance() {
+        return (DisabledObservedRetainItemsByContainsItem<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link DisabledObservedRetainItemsByTraversable}.
+     * Creates a new {@link DisabledObservedRetainItemsByContainsItem}.
      */
-    private DisabledObservedRetainItemsByTraversable() {
+    private DisabledObservedRetainItemsByContainsItem() {
         super();
     }
 
