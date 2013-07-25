@@ -21,33 +21,24 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link TraversableContainer} allowing Items to be removed.
+ * {@link RetainItemsByTraversable} allowing all Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link RemoveAll}
  *
  * @author Igor Akkerman
  */
-public interface RemoveItemsByContainsItem<Item> {
+public interface RemoveAll<Item> {
 
     /**
-     * Removes all Items from this object for which the specified {@link ContainsItem}'s
-     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
-     *
-     * @param items
-     *        {@link TraversableContainer} containing the Items to removeItems
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     * Removes all Items of this {@link RemoveAll}.
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void removeItems(ContainsItem<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    public void removeAll()
+    throws InvalidTraversableStateException;
 }

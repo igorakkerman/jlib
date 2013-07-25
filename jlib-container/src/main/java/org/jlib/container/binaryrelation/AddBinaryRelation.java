@@ -24,7 +24,7 @@ package org.jlib.container.binaryrelation;
 import java.util.Collection;
 
 /**
- * {@link BinaryRelation} allowing to add and retainItems {@link Pair}
+ * {@link BinaryRelation} allowing to add and retain {@link Pair}
  * Items.
  *
  * @param <LeftValue>

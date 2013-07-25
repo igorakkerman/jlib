@@ -26,7 +26,7 @@ import java.util.Collection;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 
 public interface ContainsItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {

@@ -41,7 +41,7 @@ public class ConcatenatedSequence<Item>
 //
 //        @Override
 //        public Integer getValue() {
-//            final int itemsCount = TraversableUtility.getItemsCount(traversables);
+//            final int itemsCount = TraversableUtility.getCount(traversables);
 //
 //            itemsCountHolder = new Initialized<>(itemsCount);
 //
@@ -64,7 +64,7 @@ public class ConcatenatedSequence<Item>
 //    }
 //
 //    @Override
-//    public final int getItemsCount()
+//    public final int getCount()
 //    throws InvalidTraversableStateException {
 //        return itemsCountHolder.getValue();
 //    }

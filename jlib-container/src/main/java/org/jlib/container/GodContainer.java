@@ -1,17 +1,18 @@
 package org.jlib.container;
 
-import org.jlib.core.traverser.Traversable;
-
 public interface GodContainer<Item>
-extends ToRandomAccessList<Item>,
+
+/*
+ToRandomAccessList<Item>,
         ContainsItemsByContainsTraversable<Item>,
         RetainItemsByTraversable<Item>,
         RemoveItemByItem<Item>,
-        RemoveAllItems<Item>,
+        RemoveAll<Item>,
         ObservedRetainItemsByTraversable<Item>,
-        ObservedRemoveItemByItem<Item>,
-        ObservedRemoveAllItems<Item>,
+        ObservedRemove<Item>,
+        ObservedRemoveAll<Item>,
         ItemOperationStrategy<Item>,Traversable<Item>,
-        Iterable<Item> {
+        Iterable<Item> */
+{
 
 }

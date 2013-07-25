@@ -19,11 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.strategy;
 
 import org.jlib.core.language.AbstractObject;
 
-public final class IterableToArray<Item, DelegateContainer extends GetItemsCount<Item> & Iterable<Item>>
+import org.jlib.container.GetCount;
+import org.jlib.container.ToArray;
+
+public final class IterableToArray<Item, DelegateContainer extends GetCount<Item> & Iterable<Item>>
 extends AbstractObject
 implements ToArray<Item> {
 
@@ -39,7 +42,7 @@ implements ToArray<Item> {
     public Item[] toArray() {
 
         @SuppressWarnings("unchecked")
-        final Item[] targetArray = (Item[]) new Object[delegateContainer.getItemsCount()];
+        final Item[] targetArray = (Item[]) new Object[delegateContainer.getCount()];
 
         int index = 0;
 

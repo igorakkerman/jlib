@@ -25,7 +25,7 @@ import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
- * {@link InvalidTraversableStateException} thrown when trying to retainItems the sole
+ * {@link InvalidTraversableStateException} thrown when trying to retain the sole
  * Item of a {@link TraversableContainer} that may not be empty.
  *
  * @author Igor Akkerman

@@ -152,7 +152,7 @@ implements ObservedAppendSequence<Item> */{
 //    @Override
 //    public void append(final TraversableContainer<? extends Item> items) {
 //        // intentionally not using SequenceUtility for efficiency
-//        append(items, items.getItemsCount());
+//        append(items, items.getCount());
 //    }
 //
 //    @Override
@@ -179,7 +179,7 @@ implements ObservedAppendSequence<Item> */{
 //    @SuppressWarnings("unchecked")
 //    public final void append(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException {
-//        append(items, items.getItemsCount(), observers);
+//        append(items, items.getCount(), observers);
 //    }
 //
 //    @Override

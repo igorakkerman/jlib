@@ -25,7 +25,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 
 public interface ContainsItemsByTraversable<Item>
 extends ItemOperationStrategy<Item> {

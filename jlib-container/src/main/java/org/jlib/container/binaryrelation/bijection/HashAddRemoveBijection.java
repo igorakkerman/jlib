@@ -130,68 +130,68 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void retainItems(final LeftValue leftValue, final RightValue rightValue)
+//    public void retain(final LeftValue leftValue, final RightValue rightValue)
 //    throws NoSuchPairException {
-//        leftToRightMap.retainItems(leftValue);
-//        rightToLeftMap.retainItems(rightValue);
+//        leftToRightMap.retain(leftValue);
+//        rightToLeftMap.retain(rightValue);
 //    }
 //
-//    public void retainItems(final Pair<LeftValue, RightValue> pair) {
-//        retainItems(pair.getLeftValue(), pair.getRightValue());
+//    public void retain(final Pair<LeftValue, RightValue> pair) {
+//        retain(pair.getLeftValue(), pair.getRightValue());
 //    }
 //
 ////    @Override
-////    public void removeAllItems() {
-////        ContainerUtility.retainItems(this, this);
+////    public void removeAll() {
+////        ContainerUtility.retain(this, this);
 ////    }
 ////
 ////    @Override
-////    public void retainItems(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.retainItems(this, pairs);
+////    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.retain(this, pairs);
 ////    }
 ////
 ////    @Override
-////    public void retainItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.retainItems(this, pairs);
+////    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.retain(this, pairs);
 ////    }
 ////
 ////    @Override
-////    public void retainItems(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.retainItems(this, pairs);
+////    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.retain(this, pairs);
 ////    }
 ////
 ////    @Override
 ////    @SuppressWarnings("unchecked")
-////    public void retainItems(final Pair<LeftValue, RightValue>... pairs) {
-////        ContainerUtility.retainItems(this, pairs);
+////    public void retain(final Pair<LeftValue, RightValue>... pairs) {
+////        ContainerUtility.retain(this, pairs);
 ////    }
 //
 //    @Override
-//    public void removeItems(final Traversable<? extends Pair<LeftValue, RightValue>> items)
+//    public void remove(final Traversable<? extends Pair<LeftValue, RightValue>> items)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //
 //    }
 //
 //    @Override
-//    public void removeItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 //
 //    }
 //
 ////    @Override
-////    public void removeItems(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
-////        ContainerUtility.removeItems(this, pairs);
+////    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////        ContainerUtility.remove(this, pairs);
 ////    }
 //
 //    @Override
-//    public void removeItems(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-//        ContainerUtility.removeItems(this, pairs);
+//    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        ContainerUtility.remove(this, pairs);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void removeItems(final Pair<LeftValue, RightValue>... pairs) {
-//        ContainerUtility.removeItems(this, pairs);
+//    public void remove(final Pair<LeftValue, RightValue>... pairs) {
+//        ContainerUtility.remove(this, pairs);
 //    }
 //
 //    @Override

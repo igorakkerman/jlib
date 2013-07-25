@@ -51,7 +51,7 @@ implements GodContainer<Item> {
     private ToRandomAccessList<Item> delegateToRandomAccessListContainer = /*
      */ DisabledToRandomAccessList.getInstance();
 
-    private GetItemsCount<Item> delegateGetItemsCount = /*
+    private GetCount<Item> delegateGetCount = /*
      */ DisabledGetItemsCount.getInstance();
 
     private ContainsItemsByContainsTraversable<Item> delegateContainsContainer = /*
@@ -63,16 +63,16 @@ implements GodContainer<Item> {
     private RemoveItemByItem<Item> delegateRemoveByItemContainer = /*
      */ DisabledRemoveItemByItem.getInstance();
 
-    private RemoveAllItems<Item> delegateRemoveAllItems = /*
+    private RemoveAll<Item> delegateRemoveAll = /*
      */ DisabledRemoveAllItems.getInstance();
 
     private ObservedRetainItemsByTraversable<Item> delegateObservedRetainItemsByTraversableContainer = /*
      */ DisabledObservedRetainItemsByTraversable.getInstance();
 
-    private ObservedRemoveItemByItem<Item> delegateObservedRemoveItemByItemContainer = /*
+    private ObservedRemove<Item> delegateObservedRemoveContainer = /*
      */ DisabledObservedRemoveItemByItem.getInstance();
 
-    private ObservedRemoveAllItems<Item> delegateObservedRemoveAllItemsContainer = /*
+    private ObservedRemoveAll<Item> delegateObservedRemoveAllContainer = /*
      */ DisabledObservedRemoveAllItems.getInstance();
 
     public ForwardingGodContainer() {
@@ -121,12 +121,12 @@ implements GodContainer<Item> {
         this.delegateRemoveByItemContainer = delegateRemoveByItemContainer;
     }
 
-    public RemoveAllItems<Item> getDelegateRemoveAllItems() {
-        return delegateRemoveAllItems;
+    public RemoveAll<Item> getDelegateRemoveAll() {
+        return delegateRemoveAll;
     }
 
-    public void setDelegateRemoveAllItems(final RemoveAllItems<Item> delegateRemoveAllItems) {
-        this.delegateRemoveAllItems = delegateRemoveAllItems;
+    public void setDelegateRemoveAll(final RemoveAll<Item> delegateRemoveAll) {
+        this.delegateRemoveAll = delegateRemoveAll;
     }
 
     public ObservedRetainItemsByTraversable<Item> getDelegateObservedRetainItemsByTraversableContainer() {
@@ -138,22 +138,20 @@ implements GodContainer<Item> {
         this.delegateObservedRetainItemsByTraversableContainer = delegateObservedRetainItemsByTraversableContainer;
     }
 
-    public ObservedRemoveItemByItem<Item> getDelegateObservedRemoveItemByItemContainer() {
-        return delegateObservedRemoveItemByItemContainer;
+    public ObservedRemove<Item> getDelegateObservedRemoveContainer() {
+        return delegateObservedRemoveContainer;
     }
 
-    public void setDelegateObservedRemoveItemByItemContainer(
-                                                            final ObservedRemoveItemByItem<Item> delegateObservedRemoveItemByItemContainer) {
-        this.delegateObservedRemoveItemByItemContainer = delegateObservedRemoveItemByItemContainer;
+    public void setDelegateObservedRemoveContainer(final ObservedRemove<Item> delegateObservedRemoveContainer) {
+        this.delegateObservedRemoveContainer = delegateObservedRemoveContainer;
     }
 
-    public ObservedRemoveAllItems<Item> getDelegateObservedRemoveAllItemsContainer() {
-        return delegateObservedRemoveAllItemsContainer;
+    public ObservedRemoveAll<Item> getDelegateObservedRemoveAllContainer() {
+        return delegateObservedRemoveAllContainer;
     }
 
-    public void setDelegateObservedRemoveAllItemsContainer(
-                                                          final ObservedRemoveAllItems<Item> delegateObservedRemoveAllItemsContainer) {
-        this.delegateObservedRemoveAllItemsContainer = delegateObservedRemoveAllItemsContainer;
+    public void setDelegateObservedRemoveAllContainer(final ObservedRemoveAll<Item> delegateObservedRemoveAllContainer) {
+        this.delegateObservedRemoveAllContainer = delegateObservedRemoveAllContainer;
     }
 
     @Override
@@ -230,7 +228,7 @@ implements GodContainer<Item> {
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
     throws InvalidTraversableStateException {
-        delegateObservedRemoveAllItemsContainer.removeAll(observers);
+        delegateObservedRemoveAllContainer.removeAll(observers);
     }
 
     @Override
@@ -238,35 +236,35 @@ implements GodContainer<Item> {
     public void remove(final Item item, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException {
-        delegateObservedRemoveItemByItemContainer.remove(item, observers);
+        delegateObservedRemoveContainer.remove(item, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedRemoveItemByItemContainer.remove(items, observers);
+        delegateObservedRemoveContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedRemoveItemByItemContainer.remove(items, observers);
+        delegateObservedRemoveContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedRemoveItemByItemContainer.remove(items, observers);
+        delegateObservedRemoveContainer.remove(items, observers);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedRemoveItemByItemContainer.remove(observers, items);
+        delegateObservedRemoveContainer.remove(observers, items);
     }
 
     @Override
@@ -291,9 +289,9 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public void removeAllItems()
+    public void removeAll()
     throws InvalidTraversableStateException {
-        delegateRemoveAllItems.removeAllItems();
+        delegateRemoveAll.removeAll();
     }
 
     @Override

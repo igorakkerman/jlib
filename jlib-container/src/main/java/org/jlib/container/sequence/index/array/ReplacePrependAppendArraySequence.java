@@ -155,7 +155,7 @@ implements ObservedPrependSequence<Item> */{
 //    @Override
 //    public void prepend(final TraversableContainer<? extends Item> items) {
 //        // intentionally not using SequenceUtility for efficiency
-//        prepend(items, items.getItemsCount());
+//        prepend(items, items.getCount());
 //    }
 //
 //    @Override
@@ -182,7 +182,7 @@ implements ObservedPrependSequence<Item> */{
 //    @SuppressWarnings("unchecked")
 //    public final void prepend(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidTraversableArgumentException {
-//        prepend(items, items.getItemsCount(), observers);
+//        prepend(items, items.getCount(), observers);
 //    }
 //
 //    @Override
@@ -201,7 +201,7 @@ implements ObservedPrependSequence<Item> */{
 //
 //    // FIXME: implement
 //    private void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
-//        ensureCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
+//        ensureCapacityWithHole(getCount() + prependedItemsCount, 0, prependedItemsCount);
 //
 //        int itemArrayIndex = 0;
 //
@@ -233,7 +233,7 @@ implements ObservedPrependSequence<Item> */{
 //    @SafeVarargs
 //    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount,
 //                               final ValueObserver<Item>... observers) {
-//        ensureCapacityWithHole(getItemsCount() + prependedItemsCount, 0, prependedItemsCount);
+//        ensureCapacityWithHole(getCount() + prependedItemsCount, 0, prependedItemsCount);
 //
 //        int itemArrayIndex = 0;
 //

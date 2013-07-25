@@ -147,7 +147,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     *        {@link TraversableContainer} of Items to store
 //     */
 //    protected AbstractInitializeableIndexSequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
-//        this(firstIndex, firstIndex + items.getItemsCount() - 1);
+//        this(firstIndex, firstIndex + items.getCount() - 1);
 //
 //        storeItems(items);
 //    }
@@ -176,13 +176,13 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     *        {@link TraversableContainer} of Items to store
 //     *
 //     * @throws InvalidStoredItemsCountException
-//     *         if {@code items.getItemsCount() != getItemsCount()}
+//     *         if {@code items.getCount() != getCount()}
 //     */
 //    protected void storeItems(final TraversableContainer<? extends Item> items) {
-////        if (items.getItemsCount() != getItemsCount())
-////            throw new InvalidStoredItemsCountException(this, items.getItemsCount(),
-////                                                       "{0}: items.getItemsCount() == {1} != {2} == getItemsCount()",
-////                                                       getItemsCount());
+////        if (items.getCount() != getCount())
+////            throw new InvalidStoredItemsCountException(this, items.getCount(),
+////                                                       "{0}: items.getCount() == {1} != {2} == getCount()",
+////                                                       getCount());
 //        storeItems((Iterable<? extends Item>) items);
 //    }
 //
@@ -194,13 +194,13 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     *        {@link Collection} of Items to store
 //     *
 //     * @throws InvalidStoredItemsCountException
-//     *         if {@code items.size() != getItemsCount()}
+//     *         if {@code items.size() != getCount()}
 //     */
 //    protected void storeItems(final Collection<? extends Item> items) {
-////        if (items.size() != getItemsCount())
+////        if (items.size() != getCount())
 ////            throw new InvalidStoredItemsCountException(this, items.size(),
-////                                                       "{0}: items.size() == {1} != {2} == getItemsCount()",
-////                                                       getItemsCount());
+////                                                       "{0}: items.size() == {1} != {2} == getCount()",
+////                                                       getCount());
 //        storeItems((Iterable<? extends Item>) items);
 //    }
 //
@@ -212,14 +212,14 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     *        comma separated sequence of Items to store
 //     *
 //     * @throws InvalidStoredItemsCountException
-//     *         if {@code items.length != getItemsCount()}
+//     *         if {@code items.length != getCount()}
 //     */
 //    @SuppressWarnings("unchecked")
 //    protected void storeItems(final Item... items) {
-////        if (items.length != getItemsCount())
+////        if (items.length != getCount())
 ////            throw new InvalidStoredItemsCountException(this, items.length,
-////                                                       "{0}: items.length == {1} != {2} == getItemsCount()",
-////                                                       getItemsCount());
+////                                                       "{0}: items.length == {1} != {2} == getCount()",
+////                                                       getCount());
 //        storeItems(ArrayUtility.iterable(items));
 //    }
 //

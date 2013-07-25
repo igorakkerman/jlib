@@ -124,6 +124,6 @@ implements ObservedRemoveTraverser<Item>,
 
     @Override
     public void addRemoveObserver(final ValueObserver<Item> removeObserver) {
-        // intentionally empty: no Item to retainItems, hence no retainItems operation to observe
+        // intentionally empty: no Item to retain, hence no retain operation to observe
     }
 }

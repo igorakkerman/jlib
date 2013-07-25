@@ -19,26 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.strategy;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-/**
- * {@link RetainItemsByTraversable} allowing all Items to be removed.
- *
- * @param <Item>
- *        type of items held in the {@link RemoveAllItems}
- *
- * @author Igor Akkerman
- */
-public interface RemoveAllItems<Item> {
+import org.jlib.container.GetCount;
+import org.jlib.container.IsEmpty;
 
-    /**
-     * Removes all Items of this {@link RemoveAllItems}.
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public void removeAllItems()
-    throws InvalidTraversableStateException;
+public class IsEmptyFromItemsCount<Item> implements IsEmpty<Item> {
+
+    private final GetCount<Item> delegateContainer;
+
+    public IsEmptyFromItemsCount(final GetCount<Item> getCount) {
+        super();
+
+        this.delegateContainer = getCount;
+    }
+
+    @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return delegateContainer.getCount() == 0;
+    }
 }

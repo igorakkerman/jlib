@@ -29,7 +29,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A

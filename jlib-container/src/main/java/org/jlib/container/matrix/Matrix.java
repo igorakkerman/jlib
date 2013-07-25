@@ -23,7 +23,7 @@ package org.jlib.container.matrix;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 
 // @formatter:off
 

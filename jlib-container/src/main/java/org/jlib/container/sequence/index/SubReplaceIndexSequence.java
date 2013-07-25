@@ -142,7 +142,7 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    }
 //
 //    @Override
-//    public int getItemsCount()
+//    public int getCount()
 //    throws InvalidTraversableStateException {
 //        return 0;
 //    }

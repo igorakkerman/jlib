@@ -24,35 +24,32 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
+import org.jlib.container.itemsholder.ItemsAccessor;
+
 /**
- * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
- * each specified Item.
+ * {@link TraversableContainer} allowing Items to be removed.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface RetainItemsByItem<Item>
-extends ItemOperationStrategy<Item> {
+public interface Remove<Item> {
 
     /**
-     * Removes all {@link Item}s from this object <em>except</em> for the specified {@link Item}.
+     * Removes all Items from this object for which the specified {@link ContainsItem}'s
+     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
      *
-     * @param item
-     *        {@link Item} to retain
-     *
-     * @throws ItemToRemoveNotContainedException
-     *         if this {@link RetainItemsByItem} does not contain
-     *         {@code Item}
+     * @param items
+     *        {@link TraversableContainer} containing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retainItems(Item item)
+    public void remove(ItemsAccessor<Item> itemsAccessor)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -21,19 +21,33 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public interface GetItemsCount<Item>
+/**
+ * Ability to retain <em>all</em> Items;
+ * the retain operations can be attended by {@link ValueObserver} instances.
+ *
+ * @param <Item>
+ *        type of items held in the {@link TraversableContainer}
+ *
+ * @author Igor Akkerman
+ */
+public interface ObservedRemoveAll<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Returns the number of Items in this {@link TraversableContainer}.
+     * Removes all Items from this {@link TraversableContainer}.
      *
-     * @return integer specifying the number of Items in this {@link TraversableContainer}
+     * @param observers
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public int getItemsCount()
+    @SuppressWarnings("unchecked")
+    public void removeAll(ValueObserver<Item>... observers)
     throws InvalidTraversableStateException;
 }

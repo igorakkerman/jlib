@@ -19,25 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.strategy;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.TraversableUtility;
 
-import com.google.common.collect.Iterables;
+import org.jlib.container.IsEmpty;
 
-public class IsEmptyFromIterator<Item> implements IsEmpty<Item> {
+public class IsEmptyFromTraverser<Item> implements IsEmpty<Item> {
 
-    private final Iterable<Item> iterable;
+    private final Traversable<Item> traversable;
 
-    public IsEmptyFromIterator(final Iterable<Item> iterable) {
+    public IsEmptyFromTraverser(final Traversable<Item> traversable) {
         super();
 
-        this.iterable = iterable;
+        this.traversable = traversable;
     }
 
     @Override
     public boolean isEmpty()
     throws InvalidTraversableStateException {
-        return Iterables.isEmpty(iterable);
+        return TraversableUtility.isEmpty(traversable);
     }
 }

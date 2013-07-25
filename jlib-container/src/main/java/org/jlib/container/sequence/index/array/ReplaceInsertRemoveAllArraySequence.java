@@ -146,15 +146,15 @@ implements ObservedRemoveAllSequence<Item> */{
 //    }
 //
 //    @Override
-//    public void removeAllItems()
+//    public void removeAll()
 //    throws InvalidTraversableStateException {
-//        ContainerUtility.removeAllItems(this);
+//        ContainerUtility.removeAll(this);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void removeAllItems(final ValueObserver<Item>... observers)
+//    public void removeAll(final ValueObserver<Item>... observers)
 //    throws InvalidTraversableStateException {
-//        ContainerUtility.removeAllItems(this, observers);
+//        ContainerUtility.removeAll(this, observers);
 //    }
 }

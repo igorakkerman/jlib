@@ -8,8 +8,6 @@ import org.jlib.core.traverser.IterableTraversable;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ContainsItem;
-
 public final class ItemsHolderUtility {
 
     public static <Item> ItemsAccessor<Item> allOf(final Traversable<Item> items) {
@@ -39,6 +37,16 @@ public final class ItemsHolderUtility {
             @Override
             public <Result> Result accept(final ItemsAccessorVisitor<Item, Result> visitor) {
                 return visitor.visitContainsItemTraversable(items);
+            }
+        };
+    }
+
+    public static <Item> ItemsAccessor<Item> item(final Item item) {
+        return new ItemsAccessor<Item>() {
+
+            @Override
+            public <Result> Result accept(final ItemsAccessorVisitor<Item, Result> visitor) {
+                return visitor.visitItem(item);
             }
         };
     }

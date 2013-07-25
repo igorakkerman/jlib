@@ -21,6 +21,7 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface IsEmpty<Item>

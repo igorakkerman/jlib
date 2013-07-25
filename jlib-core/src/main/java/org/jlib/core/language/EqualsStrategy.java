@@ -21,7 +21,9 @@
 
 package org.jlib.core.language;
 
-public interface EqualsStrategy<Item> {
+import javax.annotation.Nullable;
+
+public interface EqualsStrategy<Obj> {
 
     /**
      * <p>
@@ -30,7 +32,7 @@ public interface EqualsStrategy<Item> {
      * </p>
      * <ul>
      * <li>this {@link TraversableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Item}s, as verified by
+     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
      * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
@@ -42,5 +44,5 @@ public interface EqualsStrategy<Item> {
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
-    public boolean areEqual(Item thisItem, Object Object);
+    public boolean areEqual(Obj thisObject, @Nullable Object otherObject);
 }

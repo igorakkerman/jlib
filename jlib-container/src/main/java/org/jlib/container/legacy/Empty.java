@@ -23,7 +23,7 @@ package org.jlib.container.legacy;
 
 import java.io.Serializable;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 

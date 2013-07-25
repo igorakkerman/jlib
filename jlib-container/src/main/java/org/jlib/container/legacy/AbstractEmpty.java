@@ -28,7 +28,7 @@ import java.util.List;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.container.ToRandomAccessList;
 
 import static java.util.Collections.emptyIterator;

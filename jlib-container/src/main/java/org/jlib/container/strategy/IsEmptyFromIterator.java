@@ -19,17 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.strategy;
 
-import org.jlib.core.language.EqualsStrategy;
+import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public class EqualItemsCountEqualsHashCode<Item> extends EqualsStrategy<Item> {
+import org.jlib.container.IsEmpty;
 
-    private final GetItemsCount<Item> itemsCount;
+import com.google.common.collect.Iterables;
 
-    public EqualItemsCountEqualsHashCode(final GetItemsCount<Item> getItemsCount) {
+public class IsEmptyFromIterator<Item> implements IsEmpty<Item> {
+
+    private final Iterable<Item> iterable;
+
+    public IsEmptyFromIterator(final Iterable<Item> iterable) {
         super();
 
-        this.itemsCount = getItemsCount;
+        this.iterable = iterable;
+    }
+
+    @Override
+    public boolean isEmpty()
+    throws InvalidTraversableStateException {
+        return Iterables.isEmpty(iterable);
     }
 }

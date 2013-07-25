@@ -152,7 +152,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */{
 //
 //    @Override
 //    public void insert(final int index, final TraversableContainer<? extends Item> items) {
-//        insert(index, items, items.getItemsCount());
+//        insert(index, items, items.getCount());
 //    }
 //
 //    @Override
@@ -176,7 +176,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */{
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void insert(final int index, final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
-//        insert(index, items, items.getItemsCount(), observers);
+//        insert(index, items, items.getCount(), observers);
 //    }
 //
 //    @Override

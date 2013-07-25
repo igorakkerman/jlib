@@ -23,6 +23,7 @@ package org.jlib.container;
 
 import java.util.List;
 
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface ToSequentialList<Item>

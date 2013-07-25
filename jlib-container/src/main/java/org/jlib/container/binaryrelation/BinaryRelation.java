@@ -25,7 +25,7 @@ import java.util.Set;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperationStrategy;
 
 /**
  * Binary pair between various Objects. Each Object on either of the two

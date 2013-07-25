@@ -42,7 +42,7 @@ import static java.util.Arrays.copyOf;
  * @author Igor Akkerman
  */
 
-// TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the strategies!!!!
+// TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the strategy!!!!
 // TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the exceptions for clarity?
 public class ArrayStorage<Item>
 extends AbstractLinearIndexStorage<Item>

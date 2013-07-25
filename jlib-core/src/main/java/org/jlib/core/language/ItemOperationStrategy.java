@@ -19,25 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.core.language;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableUtility;
-
-public class IsEmptyFromTraverser<Item> implements IsEmpty<Item> {
-
-    private final Traversable<Item> traversable;
-
-    public IsEmptyFromTraverser(final Traversable<Item> traversable) {
-        super();
-
-        this.traversable = traversable;
-    }
-
-    @Override
-    public boolean isEmpty()
-    throws InvalidTraversableStateException {
-        return TraversableUtility.isEmpty(traversable);
-    }
+/**
+ * Tagging interface for all container operation strategy on {@link Item}s.
+ *
+ * @author Igor Akkerman
+ */
+public interface ItemOperationStrategy<Item> {
+    // intentionally empty
 }

@@ -247,7 +247,7 @@ implements Bijection<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public int getItemsCount() {
+//    public int getCount() {
 //        return rightToLeftMap.size();
 //    }
 //

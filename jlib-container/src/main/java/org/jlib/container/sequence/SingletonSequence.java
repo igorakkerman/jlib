@@ -133,7 +133,7 @@ class SingletonSequence<Item>
 //    }
 //
 //    @Override
-//    public int getItemsCount() {
+//    public int getCount() {
 //        return 1;
 //    }
 //

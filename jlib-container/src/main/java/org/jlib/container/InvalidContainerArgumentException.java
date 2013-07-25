@@ -23,6 +23,7 @@ package org.jlib.container;
 
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;

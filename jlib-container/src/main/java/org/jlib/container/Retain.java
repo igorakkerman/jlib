@@ -21,31 +21,41 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.itemsholder.ItemsAccessor;
 
-public interface ContainsItems<Item>
+/**
+ * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
+ * each specified Item.
+ *
+ * @param <Item>
+ *        type of items held in the {@link TraversableContainer}
+ *
+ * @author Igor Akkerman
+ */
+public interface Retain<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
-     * specified ReadContainer.
+     * Removes all {@link Item}s from this object <em>except</em> for the specified {@link Item}.
      *
-     * @param items
-     *        ReadContainer containing the Items to verify
+     * @param item
+     *        {@link Item} to retain
      *
-     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
-     *         contained by {@code otherContainer}; {@code false} otherwise
+     * @throws ItemToRemoveNotContainedException
+     *         if this {@link Retain} does not contain
+     *         {@code Item}
      *
      * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    boolean containsItems(ItemsAccessor<? extends Item> items)
+    public void retainItems(ItemsAccessor<Item> itemsAccessor)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

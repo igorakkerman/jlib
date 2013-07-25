@@ -76,9 +76,9 @@ implements Sequence<Item> */{
 //    }
 //
 //    @Override
-//    public int getItemsCount()
+//    public int getCount()
 //    throws InvalidTraversableStateException {
-//        return delegateSequence.getItemsCount();
+//        return delegateSequence.getCount();
 //    }
 //
 //    @Override

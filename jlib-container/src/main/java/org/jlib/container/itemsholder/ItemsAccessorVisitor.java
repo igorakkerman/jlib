@@ -2,9 +2,9 @@ package org.jlib.container.itemsholder;
 
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.ContainsItem;
-
 public interface ItemsAccessorVisitor<Item, Result> {
+
+    public Result visitItem(Item item);
 
     public Result visitTraversable(Traversable<? extends Item> items);
 

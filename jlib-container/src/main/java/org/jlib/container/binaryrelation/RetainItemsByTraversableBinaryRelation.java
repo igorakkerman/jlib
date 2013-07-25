@@ -21,8 +21,6 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.container.RetainItemsByTraversable;
-
 /**
  * {@link BinaryRelation} allowing the removal of {@link Pair} items.
  *
