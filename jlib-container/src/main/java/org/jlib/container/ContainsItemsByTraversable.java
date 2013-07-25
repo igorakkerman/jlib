@@ -23,9 +23,10 @@ package org.jlib.container;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
 
-public interface ContainsItemsByTraversable<Item>
+import org.jlib.container.itemsholder.ItemsHolderAdapter;
+
+public interface ContainsItems<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
@@ -45,6 +46,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    boolean containsItems(Traversable<? extends Item> items)
+    boolean containsItems(ItemsHolderAdapter<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

@@ -21,31 +21,35 @@
 
 package org.jlib.container;
 
-import java.util.Collection;
-
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
-public interface ContainsItemsByCollection<Item>
-extends ItemOperationStrategy<Item> {
+/**
+ * {@link TraversableContainer} allowing Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link TraversableContainer}
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveItemsByContainsItemTraversable<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
-     * specified Collection.
+     * Removes all Items from this object for which the specified {@link ContainsItem}'s
+     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
      *
      * @param items
-     *        {@link Collection} containing the Items to verify
-     *
-     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
-     *         contained by {@code collection}; {@code false} otherwise
+     *        {@link TraversableContainer} containing the Items to removeItems
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
-     *         item in {@code items}
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    boolean containsItems(Collection<? extends Item> items)
+    public <ItemsHolder extends Traversable<? extends Item> & ContainsItem<? extends Item>> /*
+        */ void removeItems(ItemsHolder items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

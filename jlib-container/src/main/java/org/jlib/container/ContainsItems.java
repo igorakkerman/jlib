@@ -24,26 +24,27 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public interface ContainsItemsByIterable<Item>
+import org.jlib.container.itemsholder.ItemsHolderAdapter;
+
+public interface ContainsItems<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
-     * specified ReadContainer.
+     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
      *
-     * @param items
-     *        ReadContainer containing the Items to verify
+     * @param item
+     *        Item to verify
      *
-     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
-     *         contained by {@code otherContainer}; {@code false} otherwise
+     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
+     *         {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    boolean containsItems(Iterable<? extends Item> items)
+    public boolean containsItems(ItemsHolderAdapter<Item> itemsHolderAdapter)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

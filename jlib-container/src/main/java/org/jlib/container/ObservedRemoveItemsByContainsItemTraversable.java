@@ -35,7 +35,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveItemsByIterable<Item>
+public interface ObservedRemoveItemsByContainsItemTraversable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
@@ -60,6 +60,7 @@ extends ItemOperationStrategy<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void removeItems(Iterable<? extends Item> items, ValueObserver<Item>... observers)
+    public <ItemsHolder extends Iterable<? extends Item> & ContainsItem<? extends Item>> /*
+        */ void removeItems(ItemsHolder items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

@@ -21,43 +21,49 @@
 
 package org.jlib.container;
 
+import java.util.Collection;
+
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * Ability to retainItems Items; the retainItems operations can be attended by {@link ValueObserver}
  * instances.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRetainItemsByIterable<Item>
+public interface ObservedRetainItemsByContainsItemTraversable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link IterableContainer} <em>except</em> the Items contained by the specified
-     * {@link IterableContainer}.
+     * Removes all Items from this {@link ObservedRemoveItemByItem}
+     * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items
-     *        {@link IterableContainer} containing the Items to removeItems
+     *        {@link Collection} containing the Items to removeItems
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances attending the removal
+     *        comma separated sequence of {@link ValueObserver} instances
+     *        attending the removal
      *
-     * @throws InvalidIterableArgumentException
-     *         if the operation cannot be completed due to some property of one {@link Item} in {@code items}
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
-     * @throws InvalidIterableStateException
+     * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void retainItems(Iterable<? extends Item> items, ValueObserver<Item>... observers)
+    public <ItemsHolder extends Traversable<? extends Item> & ContainsItem<? extends Item>> /*
+        */ void retainItems(ItemsHolder items, ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
 }

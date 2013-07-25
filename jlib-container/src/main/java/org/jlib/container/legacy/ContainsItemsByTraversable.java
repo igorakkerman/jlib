@@ -19,29 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.legacy;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
-/**
- * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
- * each specified Item.
- *
- * @param <Item>
- *        type of items held in the {@link TraversableContainer}
- *
- * @author Igor Akkerman
- */
-public interface RemoveItemsByIterable<Item>
+import org.jlib.container.ItemOperationStrategy;
+
+public interface ContainsItemsByTraversable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items provided by the specified {@link Iterable} from this
-     * {@link RemoveItemsByIterable}.
+     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
+     * specified ReadContainer.
      *
      * @param items
-     *        {@link Iterable} providing the Items to retainItems
+     *        ReadContainer containing the Items to verify
+     *
+     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
+     *         contained by {@code otherContainer}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -50,6 +47,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void removeItems(Iterable<? extends Item> items)
+    boolean containsItems(Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

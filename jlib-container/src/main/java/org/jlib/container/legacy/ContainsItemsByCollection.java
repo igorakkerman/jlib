@@ -19,49 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.legacy;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-/**
- * Ability to retainItems Items; the retainItems operations can be attended by {@link ValueObserver}
- * instances.
- *
- * @param <Item>
- *        type of items held in the {@link TraversableContainer}
- *
- * @author Igor Akkerman
- */
-public interface ObservedRetainItemsByCollection<Item>
+import org.jlib.container.ItemOperationStrategy;
+
+public interface ContainsItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveItemByItem}
-     * <em>except</em> the Items contained by the specified {@link Collection}.
+     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
+     * specified Collection.
      *
      * @param items
-     *        {@link Collection} containing the Items to removeItems
+     *        {@link Collection} containing the Items to verify
      *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
+     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
+     *         contained by {@code collection}; {@code false} otherwise
      *
      * @throws InvalidTraversableArgumentException
      *         if the operation cannot be completed due to some property of one
-     *         Item in {@code items}
+     *         item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
      */
-    @SuppressWarnings("unchecked")
-    public void retainItems(Collection<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    boolean containsItems(Collection<? extends Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }
