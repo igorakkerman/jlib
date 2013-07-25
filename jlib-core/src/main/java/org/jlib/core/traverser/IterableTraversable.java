@@ -37,6 +37,6 @@ implements Traversable<Item> {
 
     @Override
     public Traverser<Item> createTraverser() {
-        return new IterableTraverser<>(iterable);
+        return new IterableTraverser<Item>(iterable);
     }
 }
