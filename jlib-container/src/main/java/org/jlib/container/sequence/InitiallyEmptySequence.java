@@ -31,8 +31,8 @@ import org.jlib.core.traverser.ObservedReplaceTraversable;
 import org.jlib.core.traverser.Traversable;
 
 import org.jlib.container.ItemToRemoveNotContainedException;
+import org.jlib.container.ObservedRemoveAllItems;
 import org.jlib.container.ObservedRemoveItemByItem;
-import org.jlib.container.ObservedRemoveAll;
 import org.jlib.container.legacy.AbstractEmpty;
 
 /**
@@ -48,7 +48,7 @@ extends AbstractEmpty<Item>
 implements Sequence<Item>,
            ObservedReplaceTraversable<Item>,
            ObservedRemoveItemByItem<Item>,
-           ObservedRemoveAll<Item> {
+           ObservedRemoveAllItems<Item> {
 
     /**
      * Creates a new {@link InitiallyEmptySequence}.

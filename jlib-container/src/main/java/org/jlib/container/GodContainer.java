@@ -53,7 +53,7 @@ implements ToRandomAccessList<Item>,
            RemoveAllItems<Item>,
            ObservedRetainItemsByTraversable<Item>,
            ObservedRemoveItemByItem<Item>,
-           ObservedRemoveAll<Item>,ItemOperationStrategy<Item>,Traversable<Item>,
+           ObservedRemoveAllItems<Item>,ItemOperationStrategy<Item>,Traversable<Item>,
            Iterable<Item> {
 
     private ToRandomAccessList<Item> delegateToRandomAccessListContainer = /*
@@ -80,8 +80,8 @@ implements ToRandomAccessList<Item>,
     private ObservedRemoveItemByItem<Item> delegateObservedRemoveItemByItemContainer = /*
      */ DisabledObservedRemoveItemByItem.getInstance();
 
-    private ObservedRemoveAll<Item> delegateObservedRemoveAllContainer = /*
-     */ DisabledObservedRemoveAll.getInstance();
+    private ObservedRemoveAllItems<Item> delegateObservedRemoveAllItemsContainer = /*
+     */ DisabledObservedRemoveAllItems.getInstance();
 
     public GodContainer() {
         super();
@@ -155,13 +155,13 @@ implements ToRandomAccessList<Item>,
         this.delegateObservedRemoveItemByItemContainer = delegateObservedRemoveItemByItemContainer;
     }
 
-    public ObservedRemoveAll<Item> getDelegateObservedRemoveAllContainer() {
-        return delegateObservedRemoveAllContainer;
+    public ObservedRemoveAllItems<Item> getDelegateObservedRemoveAllItemsContainer() {
+        return delegateObservedRemoveAllItemsContainer;
     }
 
-    public void setDelegateObservedRemoveAllContainer(
-                                                     final ObservedRemoveAll<Item> delegateObservedRemoveAllContainer) {
-        this.delegateObservedRemoveAllContainer = delegateObservedRemoveAllContainer;
+    public void setDelegateObservedRemoveAllItemsContainer(
+                                                          final ObservedRemoveAllItems<Item> delegateObservedRemoveAllItemsContainer) {
+        this.delegateObservedRemoveAllItemsContainer = delegateObservedRemoveAllItemsContainer;
     }
 
     @Override
@@ -238,7 +238,7 @@ implements ToRandomAccessList<Item>,
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
     throws InvalidTraversableStateException {
-        delegateObservedRemoveAllContainer.removeAll(observers);
+        delegateObservedRemoveAllItemsContainer.removeAll(observers);
     }
 
     @Override

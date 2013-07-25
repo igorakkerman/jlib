@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item>
+public interface ObservedRemoveAllItems<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
