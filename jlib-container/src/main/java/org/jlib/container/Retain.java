@@ -56,6 +56,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retainItems(ItemsAccessor<Item> itemsAccessor)
+    public void retain(ItemsAccessor<Item> itemsAccessor)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }
