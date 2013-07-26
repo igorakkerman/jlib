@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  *
  * @author Igor Akkerman
  */
-public interface RemoveSingle<Item>
+public interface RemoveSingleByItem<Item>
 extends ItemOperationStrategy<Item> {
 
     /**

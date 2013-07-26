@@ -177,7 +177,7 @@ implements GodContainer<Item> {
 
     private GetCount<Item> delegateGetCount = disabledGodContainer;
 
-    private RemoveSingle<Item> delegateRemoveSingle = disabledGodContainer;
+    private RemoveSingleByItem<Item> delegateRemoveSingleByItem = disabledGodContainer;
 
     private RemoveMany<Item> delegateRemoveMany = disabledGodContainer;
 
@@ -280,7 +280,7 @@ implements GodContainer<Item> {
     @Override
     public void remove(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemoveSingle.remove(item);
+        delegateRemoveSingleByItem.remove(item);
     }
 
     @Override
@@ -359,8 +359,8 @@ implements GodContainer<Item> {
         this.delegateIterable = delegateIterable;
     }
 
-    public void setDelegateRemoveSingle(final RemoveSingle<Item> delegateRemoveSingle) {
-        this.delegateRemoveSingle = delegateRemoveSingle;
+    public void setDelegateRemoveSingleByItem(final RemoveSingleByItem<Item> delegateRemoveSingleByItem) {
+        this.delegateRemoveSingleByItem = delegateRemoveSingleByItem;
     }
 
     public void setDelegateContainsSingle(final ContainsSingle<Item> delegateContainsSingle) {
