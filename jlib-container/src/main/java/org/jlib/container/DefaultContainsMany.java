@@ -27,7 +27,8 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.container.itemssupplier.ItemsSupplier;
 import org.jlib.container.itemssupplier.ItemsSupplierVisitor;
 
-public class DefaultContainsMany<Item> implements ContainsMany<Item> {
+public class DefaultContainsMany<Item>
+implements ContainsMany<Item> {
 
     private final ContainsSingle<Item> containsSingle;
 

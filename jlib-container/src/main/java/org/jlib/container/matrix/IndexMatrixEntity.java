@@ -124,7 +124,8 @@ extends AbstractIndexSequence<Entry> {
         return false;
     }
 
-    public boolean contains(final Entry... entries)
+    @SafeVarargs
+    public final boolean contains(final Entry... entries)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return false;
     }

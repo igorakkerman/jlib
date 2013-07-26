@@ -11,7 +11,33 @@ import org.jlib.core.traverser.TraversableIterator;
 
 import org.jlib.container.ContainsSingle;
 
+import com.google.common.collect.Iterables;
+import static java.util.Collections.singleton;
+
 public final class ItemsSupplierUtility {
+
+    public static <Item> ItemsSupplier<Item> item(final Item suppliedItem) {
+
+        return new PreferContainsManyItemsSupplier<Item>() {
+
+            @Override
+            public boolean contains(final Item item)
+            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+                return suppliedItem.equals(item);
+            }
+
+            @Override
+            public boolean contains(final Iterable<Item> iterable)
+            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+                return Iterables.contains(iterable, suppliedItem);
+            }
+
+            @Override
+            public Iterator<Item> iterator() {
+                return singleton(suppliedItem).iterator();
+            }
+        };
+    }
 
     public static <Item, ContainsSingleTraversable extends ContainsSingle<Item> & Traversable<Item>> /*
                */ ItemsSupplier<Item> allOf(final ContainsSingleTraversable items) {
