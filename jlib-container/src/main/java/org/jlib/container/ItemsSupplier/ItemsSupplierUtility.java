@@ -1,4 +1,4 @@
-package org.jlib.container.ItemsSupplier;
+package org.jlib.container.itemssupplier;
 
 import java.util.Collection;
 
@@ -9,34 +9,75 @@ import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.Contains;
 import org.jlib.container.ContainsByTraversable;
-import org.jlib.container.ContainsSingle;
 
 public final class ItemsSupplierUtility {
 
-    public static <Item> ItemsSupplier<Item> allOfTraversable(final Traversable<Item> items) {
-        return new ItemsSupplier<Item>() {
+    public static abstract class PreferTraverseItemsSupplier<Item>
+    implements ItemsSupplier<Item> {
+
+        private final ItemsSupplier<Item> items;
+
+        protected PreferTraverseItemsSupplier(final ItemsSupplier<Item> items) {
+            super();
+
+            this.items = items;
+        }
+
+        @Override
+        public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
+            return visitor.visitPerferTraverse(items);
+        }
+    }
+
+    public static abstract class PreferContainsSingleItemsSupplier<Item>
+    implements ItemsSupplier<Item> {
+
+        private final ItemsSupplier<Item> items;
+
+        protected PreferContainsSingleItemsSupplier(final ItemsSupplier<Item> items) {
+            super();
+
+            this.items = items;
+        }
+
+        @Override
+        public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
+            return visitor.visitPreferContainsSingle(items);
+        }
+    }
+
+    public static abstract class PreferContainsManyItemsSupplier<Item>
+    implements ItemsSupplier<Item> {
+
+        private final ItemsSupplier<Item> items;
+
+        protected PreferContainsManyItemsSupplier(final ItemsSupplier<Item> items) {
+            super();
+
+            this.items = items;
+        }
+
+        @Override
+        public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
+            return visitor.visitPreferContainsMany(items);
+        }
+    }
+
+    public static <Item> items<Item> allOfContainsSingle(final Contains<Item> items) {
+        return new items<Item>() {
 
             @Override
             public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
-                return visitor.visitTraversable(items);
+                return visitor.visitPreferContainsSingle(items);
             }
         };
     }
 
-    public static <Item> ItemsSupplier<Item> allOfContainsSingle(final ContainsSingle<Item> items) {
-        return new ItemsSupplier<Item>() {
-
-            @Override
-            public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
-                return visitor.visitContainsSingle(items);
-            }
-        };
-    }
-
-    public static <Item, TraversableContains extends Traversable<Item> & ContainsSingle<Item>> /*
-        */ ItemsSupplier<Item> allOfContainsSingleTraverable(final TraversableContains items) {
-        return new ItemsSupplier<Item>() {
+    public static <Item, TraversableContains extends Traversable<Item> & Contains<Item>> /*
+        */ items<Item> allOfContainsSingleTraverable(final TraversableContains items) {
+        return new items<Item>() {
 
             @Override
             public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
@@ -45,19 +86,19 @@ public final class ItemsSupplierUtility {
         };
     }
 
-    public static <Item> ItemsSupplier<Item> allOfContainsMany(final ContainsByTraversable<Item> items) {
-        return new ItemsSupplier<Item>() {
+    public static <Item> items<Item> allOfContainsMany(final ContainsByTraversable<Item> items) {
+        return new items<Item>() {
 
             @Override
             public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
-                return visitor.visitContainsMany(items);
+                return visitor.visitPreferContainsMany(items);
             }
         };
     }
 
     public static <Item, TraversableContains extends Traversable<Item> & ContainsByTraversable<Item>> /*
-        */ ItemsSupplier<Item> allOfContainsManyTraversable(final TraversableContains items) {
-        return new ItemsSupplier<Item>() {
+        */ items<Item> allOfContainsManyTraversable(final TraversableContains items) {
+        return new items<Item>() {
 
             @Override
             public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
@@ -68,7 +109,7 @@ public final class ItemsSupplierUtility {
 
     public static interface ContainsSingleTraversable<Item>
     extends Traversable<Item>,
-            ContainsSingle<Item> {
+            Contains<Item> {
         // unifying interface
     }
 
@@ -78,7 +119,7 @@ public final class ItemsSupplierUtility {
         // unifying interface
     }
 
-    public static <Item> ItemsSupplier<Item> allOf(final Collection<Item> items) {
+    public static <Item> items<Item> allOf(final Collection<Item> items) {
 
         return allOfContainsSingleTraverable(new ContainsSingleTraversable<Item>() {
 
@@ -118,6 +159,6 @@ public final class ItemsSupplierUtility {
         });
     }
 
-    private ItemsSupplierUtility() {
+    private itemsUtility() {
     }
 }
