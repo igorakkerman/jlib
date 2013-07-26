@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ItemsSupplier.ItemsSupplier;
+import org.jlib.container.itemssupplier.ItemsSupplier;
 
 /**
  * Skeletal implementation of a {@link TraversableContainer}. A concrete TraversableContainer
