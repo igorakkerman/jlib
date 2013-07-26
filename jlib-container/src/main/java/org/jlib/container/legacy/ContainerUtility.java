@@ -38,7 +38,7 @@ import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.RemoveTraverser;
 
-import org.jlib.container.ObservedRemove;
+import org.jlib.container.ObservedRemoveMany;
 import org.jlib.container.ItemToRemoveNotContainedException;
 
 import static java.util.Arrays.asList;
@@ -199,7 +199,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final ObservedRemove<Item> container,
+    public static <Item> void remove(final ObservedRemoveMany<Item> container,
                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
         for (final Item item : items)
@@ -234,7 +234,7 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item> void remove(final ObservedRemove<Item> container,
+    public static <Item> void remove(final ObservedRemoveMany<Item> container,
                                      final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         remove(container, ArrayUtility.iterable(items), observers);

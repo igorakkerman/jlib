@@ -9,6 +9,9 @@ import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.ContainsByTraversable;
+import org.jlib.container.ContainsSingle;
+
 public final class ItemsSupplierUtility {
 
     public static <Item> ItemsSupplier<Item> allOfTraversable(final Traversable<Item> items) {
@@ -42,7 +45,7 @@ public final class ItemsSupplierUtility {
         };
     }
 
-    public static <Item> ItemsSupplier<Item> allOfContainsMany(final ContainsMany<Item> items) {
+    public static <Item> ItemsSupplier<Item> allOfContainsMany(final ContainsByTraversable<Item> items) {
         return new ItemsSupplier<Item>() {
 
             @Override
@@ -52,7 +55,7 @@ public final class ItemsSupplierUtility {
         };
     }
 
-    public static <Item, TraversableContains extends Traversable<Item> & ContainsMany<Item>> /*
+    public static <Item, TraversableContains extends Traversable<Item> & ContainsByTraversable<Item>> /*
         */ ItemsSupplier<Item> allOfContainsManyTraversable(final TraversableContains items) {
         return new ItemsSupplier<Item>() {
 
@@ -71,18 +74,8 @@ public final class ItemsSupplierUtility {
 
     public static interface ContainsManyTraversable<Item>
     extends Traversable<Item>,
-            ContainsMany<Item> {
+            ContainsByTraversable<Item> {
         // unifying interface
-    }
-
-    public static <Item> ItemsSupplier<Item> item(final Item item) {
-        return new ItemsSupplier<Item>() {
-
-            @Override
-            public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
-                return visitor.visitItem(item);
-            }
-        };
     }
 
     public static <Item> ItemsSupplier<Item> allOf(final Collection<Item> items) {

@@ -143,6 +143,18 @@ implements GodContainer<Item> {
         public Traverser<Item> createTraverser() {
             throw new ForbiddenCastException(this);
         }
+
+        @Override
+        public boolean contains(final Item item)
+        throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+            throw new ForbiddenCastException(this);
+        }
+
+        @Override
+        public void remove(final Item item)
+        throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+            throw new ForbiddenCastException(this);
+        }
     };
 
     private ToArray<Item> delegateToArray = disabledGodContainer;
@@ -165,11 +177,15 @@ implements GodContainer<Item> {
 
     private GetCount<Item> delegateGetCount = disabledGodContainer;
 
-    private Remove<Item> delegateRemove = disabledGodContainer;
+    private RemoveSingle<Item> delegateRemoveSingle = disabledGodContainer;
 
-    private ObservedRemove<Item> delegateObservedRemove = disabledGodContainer;
+    private RemoveMany<Item> delegateRemoveMany = disabledGodContainer;
 
-    private Contains<Item> delegateContains = disabledGodContainer;
+    private ObservedRemoveMany<Item> delegateObservedRemoveMany = disabledGodContainer;
+
+    private ContainsSingle<Item> delegateContainsSingle = disabledGodContainer;
+
+    private ContainsMany<Item> delegateContainsMany = disabledGodContainer;
 
     private Traversable<Item> delegateTraversable = disabledGodContainer;
 
@@ -244,7 +260,7 @@ implements GodContainer<Item> {
     @Override
     public boolean contains(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateContains.contains(items);
+        return delegateContainsMany.contains(items);
     }
 
     @Override
@@ -252,13 +268,25 @@ implements GodContainer<Item> {
     public void remove(final ItemsSupplier<Item> items, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException {
-        delegateObservedRemove.remove(items, observers);
+        delegateObservedRemoveMany.remove(items, observers);
     }
 
     @Override
     public void remove(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemove.remove(items);
+        delegateRemoveMany.remove(items);
+    }
+
+    @Override
+    public void remove(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        delegateRemoveSingle.remove(item);
+    }
+
+    @Override
+    public boolean contains(final Item item)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return delegateContainsSingle.contains(item);
     }
 
     @Override
@@ -311,16 +339,16 @@ implements GodContainer<Item> {
         this.delegateGetCount = delegateGetCount;
     }
 
-    public void setDelegateRemove(final Remove<Item> delegateRemove) {
-        this.delegateRemove = delegateRemove;
+    public void setDelegateRemoveMany(final RemoveMany<Item> delegateRemoveMany) {
+        this.delegateRemoveMany = delegateRemoveMany;
     }
 
-    public void setDelegateObservedRemove(final ObservedRemove<Item> delegateObservedRemove) {
-        this.delegateObservedRemove = delegateObservedRemove;
+    public void setDelegateObservedRemoveMany(final ObservedRemoveMany<Item> delegateObservedRemoveMany) {
+        this.delegateObservedRemoveMany = delegateObservedRemoveMany;
     }
 
-    public void setDelegateContains(final Contains<Item> delegateContains) {
-        this.delegateContains = delegateContains;
+    public void setDelegateContainsMany(final ContainsMany<Item> delegateContainsMany) {
+        this.delegateContainsMany = delegateContainsMany;
     }
 
     public void setDelegateTraversable(final Traversable<Item> delegateTraversable) {
@@ -329,5 +357,13 @@ implements GodContainer<Item> {
 
     public void setDelegateIterable(final Iterable<Item> delegateIterable) {
         this.delegateIterable = delegateIterable;
+    }
+
+    public void setDelegateRemoveSingle(final RemoveSingle<Item> delegateRemoveSingle) {
+        this.delegateRemoveSingle = delegateRemoveSingle;
+    }
+
+    public void setDelegateContainsSingle(final ContainsSingle<Item> delegateContainsSingle) {
+        this.delegateContainsSingle = delegateContainsSingle;
     }
 }

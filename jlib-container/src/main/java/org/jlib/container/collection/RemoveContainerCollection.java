@@ -23,7 +23,8 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ObservedRemove;
+import org.jlib.container.ObservedRemoveMany;
+
 import org.jlib.core.language.ItemOperationStrategy;
 
 /**
@@ -39,8 +40,8 @@ import org.jlib.core.language.ItemOperationStrategy;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link ObservedRemove} */
-    private final ObservedRemove<Item> delegateContainer;
+    /** adapted and backed {@link ObservedRemoveMany} */
+    private final ObservedRemoveMany<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
@@ -53,7 +54,7 @@ extends ContainerCollection<Item> {
      *        {@link RetainItemsByTraversable} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ObservedRemove<Item> & ItemOperationStrategy<Item> & org.jlib.core.traverser.Traversable<Item> & Iterable<Item>> //
+    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperationStrategy<Item> & org.jlib.core.traverser.Traversable<Item> & Iterable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

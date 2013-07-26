@@ -26,34 +26,17 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.TraversableIterable;
 
-import org.jlib.container.ItemsSupplier.ContainsMany;
-import org.jlib.container.ItemsSupplier.ContainsSingle;
 import org.jlib.container.ItemsSupplier.ItemsSupplier;
 import org.jlib.container.ItemsSupplier.ItemsSupplierVisitor;
 
-public class DefaultContains<Item> implements Contains<Item> {
+public class DefaultContainsMany<Item> implements ContainsMany<Item> {
 
-    /** sole {@link DefaultContains} instance */
-    private static final DefaultContains<?> INSTANCE = new DefaultContains<>();
+    private final ContainsSingle<Item> containsSingle;
 
-    /**
-     * Returns the sole {@link DefaultContains} instance.
-     *
-     * @param <Item>
-     *        type of the Item
-     *
-     * @return sole {@link DefaultContains} instance
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> DefaultContains<Item> getInstance() {
-        return (DefaultContains<Item>) INSTANCE;
-    }
-
-    /**
-     * Creates a new {@link DefaultContains}.
-     */
-    private DefaultContains() {
+    public DefaultContainsMany(final ContainsSingle<Item> containsSingle) {
         super();
+
+        this.containsSingle = containsSingle;
     }
 
     @Override
@@ -61,15 +44,9 @@ public class DefaultContains<Item> implements Contains<Item> {
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return items.accept(new ItemsSupplierVisitor<Item, Boolean>() {
             @Override
-            public Boolean visitItem(final Item item) {
-                // FIXME: implement for this structure
-                return null;
-            }
-
-            @Override
             public Boolean visitTraversable(final Traversable<? extends Item> items) {
                 for (Item item : new TraversableIterable<>(items))
-                    if (! visitItem(item))
+                    if (! containsSingle.contains(item))
                         return false;
 
                 return true;
@@ -83,7 +60,7 @@ public class DefaultContains<Item> implements Contains<Item> {
             }
 
             @Override
-            public Boolean visitContainsMany(final ContainsMany<Item> items) {
+            public Boolean visitContainsMany(final ContainsByTraversable<Item> items) {
                 return null;
             }
 
@@ -94,7 +71,7 @@ public class DefaultContains<Item> implements Contains<Item> {
             }
 
             @Override
-            public <ContainsManyTraversable extends Traversable<Item> & ContainsMany<Item>> Boolean visitContainsManyTraversable(
+            public <ContainsManyTraversable extends Traversable<Item> & ContainsByTraversable<Item>> Boolean visitContainsManyTraversable(
                                                                                                                                 final ContainsManyTraversable items) {
                 return null;
             }

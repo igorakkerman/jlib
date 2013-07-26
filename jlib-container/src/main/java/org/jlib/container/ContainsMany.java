@@ -22,27 +22,30 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.ItemsSupplier.ItemsSupplier;
 
-/**
- * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
- * {@link ValueObserver} instances.
- *
- * @param <Item>
- *        type of items held in the {@link TraversableContainer}
- *
- * @author Igor Akkerman
- */
-public interface ObservedRemove<Item>
+public interface ContainsMany<Item>
 extends ItemOperationStrategy<Item> {
 
-    @SuppressWarnings("unchecked")
-    public void remove(ItemsSupplier<Item> items, ValueObserver<Item>... observers)
-    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
-           ValueObserverException;
+    /**
+     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
+     *
+     * @param item
+     *        Item to verify
+     *
+     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
+     *         {@code false} otherwise
+     *
+     * @throws InvalidTraversableArgumentException
+     *         if the operation cannot be completed due to some property of
+     *         {@code item}
+     *
+     * @throws InvalidTraversableStateException
+     *         if an error occurs during the operation
+     */
+    public boolean contains(ItemsSupplier<Item> items)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

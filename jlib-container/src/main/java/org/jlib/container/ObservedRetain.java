@@ -44,7 +44,7 @@ public interface ObservedRetain<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemove}
+     * Removes all Items from this {@link ObservedRemoveMany}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items

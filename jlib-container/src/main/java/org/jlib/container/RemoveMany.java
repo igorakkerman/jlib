@@ -27,25 +27,31 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.ItemsSupplier.ItemsSupplier;
 
-public interface Contains<Item>
+/**
+ * {@link TraversableContainer} allowing Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link TraversableContainer}
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveMany<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
+     * Removes all Items from this object for which the specified {@link ContainsSingle}'s
+     * {@link ContainsSingle#containsItem(Object)} method returns {@code true}.
      *
-     * @param item
-     *        Item to verify
-     *
-     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
-     *         {@code false} otherwise
+     * @param items
+     *        {@link TraversableContainer} containing the Items to remove
      *
      * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(ItemsSupplier<Item> items)
+    public void remove(ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }
