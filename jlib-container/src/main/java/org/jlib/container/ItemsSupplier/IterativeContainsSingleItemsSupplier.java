@@ -32,7 +32,7 @@ extends IterativeContainsManyItemsSupplier<Item> {
     }
 
     @Override
-    public boolean contains(final Item item)
+    public final boolean contains(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         for (final Item containedItem : this)
             if (containedItem.equals(item))

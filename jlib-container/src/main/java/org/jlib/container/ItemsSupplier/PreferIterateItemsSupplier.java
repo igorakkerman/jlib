@@ -29,7 +29,7 @@ extends IterativeContainsSingleItemsSupplier<Item> {
     }
 
     @Override
-    public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
+    public final <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
         return visitor.visitPerferTraverse(this);
     }
 }

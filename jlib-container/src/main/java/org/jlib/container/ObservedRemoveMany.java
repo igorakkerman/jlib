@@ -27,7 +27,7 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.ItemsSupplier.ItemsSupplier;
+import org.jlib.container.itemssupplier.ItemsSupplier;
 
 /**
  * {@link RetainItemsByTraversable} allowing its retain operations to be attended by

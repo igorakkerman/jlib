@@ -30,7 +30,7 @@ implements ItemsSupplier<Item> {
     }
 
     @Override
-    public <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
+    public final <Result> Result accept(final ItemsSupplierVisitor<Item, Result> visitor) {
         return visitor.visitPreferContainsSingle(this);
     }
 }

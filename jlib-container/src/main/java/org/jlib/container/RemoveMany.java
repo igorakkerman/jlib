@@ -25,7 +25,7 @@ import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.ItemsSupplier.ItemsSupplier;
+import org.jlib.container.itemssupplier.ItemsSupplier;
 
 /**
  * {@link TraversableContainer} allowing Items to be removed.
