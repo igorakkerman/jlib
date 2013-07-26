@@ -23,11 +23,9 @@ package org.jlib.container;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableIterable;
 
-import org.jlib.container.ItemsSupplier.ItemsSupplier;
-import org.jlib.container.ItemsSupplier.ItemsSupplierVisitor;
+import org.jlib.container.itemssupplier.ItemsSupplier;
+import org.jlib.container.itemssupplier.ItemsSupplierVisitor;
 
 public class DefaultContainsMany<Item> implements ContainsMany<Item> {
 
@@ -43,37 +41,29 @@ public class DefaultContainsMany<Item> implements ContainsMany<Item> {
     public boolean contains(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         return items.accept(new ItemsSupplierVisitor<Item, Boolean>() {
-            @Override
-            public Boolean visitTraversable(final Traversable<? extends Item> items) {
-                for (Item item : new TraversableIterable<>(items))
+
+            // single working strategy in this case
+            private boolean iterativeContains(final Iterable<Item> items) {
+                for (final Item item : items)
                     if (! containsSingle.contains(item))
                         return false;
 
                 return true;
             }
 
-            // FIXME: implement rest
-
             @Override
-            public Boolean visitContainsSingle(final ContainsSingle<Item> items) {
-                return null;
+            public Boolean visitPerferTraverse(final ItemsSupplier<Item> items) {
+                return iterativeContains(items);
             }
 
             @Override
-            public Boolean visitContainsMany(final ContainsByIterable<Item> items) {
-                return null;
+            public Boolean visitPreferContainsSingle(final ItemsSupplier<Item> items) {
+                return iterativeContains(items);
             }
 
             @Override
-            public <ContainsSingleTraversable extends Traversable<Item> & ContainsSingle<Item>> Boolean visitContainsSingleTraversable(
-                                                                                                                                      final ContainsSingleTraversable items) {
-                return null;
-            }
-
-            @Override
-            public <ContainsManyTraversable extends Traversable<Item> & ContainsByIterable<Item>> Boolean visitContainsManyTraversable(
-                                                                                                                                final ContainsManyTraversable items) {
-                return null;
+            public Boolean visitPreferContainsMany(final ItemsSupplier<Item> items) {
+                return iterativeContains(items);
             }
         });
     }
