@@ -27,7 +27,7 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemsholder.ItemsAccessor;
+import org.jlib.container.ItemsSupplier.ItemsSupplier;
 
 /**
  * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
@@ -41,33 +41,8 @@ import org.jlib.container.itemsholder.ItemsAccessor;
 public interface ObservedRemove<Item>
 extends ItemOperationStrategy<Item> {
 
-    /**
-     * Removes the specified Item from this
-     * {@link ObservedRemove}.
-     *
-     * @param item
-     *        Item to retain
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws ItemToRemoveNotContainedException
-     *         if this {@link ObservedRemove} does not
-     *         contain {@code Item}
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
-     */
-    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public void remove(ItemsAccessor<Item> itemsAccessor, ValueObserver<Item>... observers)
+    @SuppressWarnings("unchecked")
+    public void remove(ItemsSupplier<Item> items, ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException;
 }

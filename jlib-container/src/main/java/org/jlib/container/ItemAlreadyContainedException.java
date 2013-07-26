@@ -21,9 +21,10 @@
 
 package org.jlib.container;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidTraversableArgumentException} thrown when trying to invalidly add
@@ -32,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
  * @author Igor Akkerman
  */
 public class ItemAlreadyContainedException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1090527595338576596L;
@@ -47,7 +48,7 @@ extends InvalidTraversableArgumentException {
      *        already contained Item
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public ItemAlreadyContainedException(final TraversableContainer<?> container, final Object item) {
+    public ItemAlreadyContainedException(final ItemOperationStrategy<?> container, final Object item) {
 
         super(container, message(item.toString()));
     }

@@ -19,33 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.ItemsSupplier;
 
-import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.ItemsSupplier.ItemsSupplier;
+public interface ContainsMany<Item>
+extends ContainsSingle<Item> {
 
-public interface Contains<Item>
-extends ItemOperationStrategy<Item> {
-
-    /**
-     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
-     *
-     * @param item
-     *        Item to verify
-     *
-     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
-     *         {@code false} otherwise
-     *
-     * @throws InvalidTraversableArgumentException
-     *         if the operation cannot be completed due to some property of
-     *         {@code item}
-     *
-     * @throws InvalidTraversableStateException
-     *         if an error occurs during the operation
-     */
-    public boolean contains(ItemsSupplier<Item> items)
+    public boolean contains(Traversable<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

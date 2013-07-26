@@ -23,7 +23,6 @@ package org.jlib.container;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
@@ -56,11 +55,6 @@ implements ToRandomAccessList<Item> {
     @Override
     public List<Item> toRandomAccessList() {
         return appendContainedItemsToList(new ArrayList<Item>(expectedItemsCount));
-    }
-
-    @Override
-    public List<Item> toSequentialList() {
-        return appendContainedItemsToList(new LinkedList<Item>());
     }
 
     /**

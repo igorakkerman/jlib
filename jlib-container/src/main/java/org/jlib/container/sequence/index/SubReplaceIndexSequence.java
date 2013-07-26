@@ -37,7 +37,7 @@ package org.jlib.container.sequence.index;
  */
 public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
 /*implements ObservedReplaceIndexSequence<Item>,
-           ContainsItem<Item> */{
+           ContainsSingle<Item> */{
 
 //    /**
 //     * Creates a new {@link SubReplaceIndexSequence}.

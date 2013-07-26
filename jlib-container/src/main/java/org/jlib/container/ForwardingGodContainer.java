@@ -33,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.itemsholder.ItemsAccessor;
+import org.jlib.container.ItemsSupplier.ItemsSupplier;
 
 /**
  * Skeletal implementation of a {@link TraversableContainer}. A concrete TraversableContainer
@@ -53,7 +53,7 @@ implements GodContainer<Item> {
     private final GodContainer<Item> disabledGodContainer = new GodContainer<Item>() {
 
         @Override
-        public boolean contains(final ItemsAccessor<Item> itemsAccessor)
+        public boolean contains(final ItemsSupplier<Item> items)
         throws InvalidTraversableArgumentException, InvalidTraversableStateException {
             throw new ForbiddenCastException(this);
         }
@@ -77,7 +77,7 @@ implements GodContainer<Item> {
 
         @SafeVarargs
         @Override
-        public final void remove(final ItemsAccessor<Item> itemsAccessor, final ValueObserver<Item>... observers)
+        public final void remove(final ItemsSupplier<Item> items, final ValueObserver<Item>... observers)
         throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
                ValueObserverException {
             throw new ForbiddenCastException(this);
@@ -92,13 +92,13 @@ implements GodContainer<Item> {
 
         @SafeVarargs
         @Override
-        public final void retain(final ItemsAccessor<Item> itemsAccessor, final ValueObserver<Item>... observers)
+        public final void retain(final ItemsSupplier<Item> items, final ValueObserver<Item>... observers)
         throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
-        public void remove(final ItemsAccessor<Item> itemsAccessor)
+        public void remove(final ItemsSupplier<Item> items)
         throws InvalidTraversableArgumentException, InvalidTraversableStateException {
             throw new ForbiddenCastException(this);
         }
@@ -110,7 +110,7 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public void retain(final ItemsAccessor<Item> itemsAccessor)
+        public void retain(final ItemsSupplier<Item> items)
         throws InvalidTraversableArgumentException, InvalidTraversableStateException {
             throw new ForbiddenCastException(this);
         }
@@ -193,9 +193,9 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public void retain(final ItemsAccessor<Item> itemsAccessor)
+    public void retain(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRetain.retain(itemsAccessor);
+        delegateRetain.retain(items);
     }
 
     @Override
@@ -212,9 +212,9 @@ implements GodContainer<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void retain(final ItemsAccessor<Item> itemsAccessor, final ValueObserver<Item>... observers)
+    public void retain(final ItemsSupplier<Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
-        delegateObservedRetain.retain(itemsAccessor, observers);
+        delegateObservedRetain.retain(items, observers);
     }
 
     @Override
@@ -242,23 +242,23 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public boolean contains(final ItemsAccessor<Item> itemsAccessor)
+    public boolean contains(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateContains.contains(itemsAccessor);
+        return delegateContains.contains(items);
     }
 
     @Override
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public void remove(final ItemsAccessor<Item> itemsAccessor, final ValueObserver<Item>... observers)
+    public void remove(final ItemsSupplier<Item> items, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException {
-        delegateObservedRemove.remove(itemsAccessor, observers);
+        delegateObservedRemove.remove(items, observers);
     }
 
     @Override
-    public void remove(final ItemsAccessor<Item> itemsAccessor)
+    public void remove(final ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        delegateRemove.remove(itemsAccessor);
+        delegateRemove.remove(items);
     }
 
     @Override

@@ -21,10 +21,12 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemsholder.ItemsAccessor;
+import org.jlib.container.ItemsSupplier.ContainsSingle;
+import org.jlib.container.ItemsSupplier.ItemsSupplier;
 
 /**
  * {@link TraversableContainer} allowing Items to be removed.
@@ -34,11 +36,12 @@ import org.jlib.container.itemsholder.ItemsAccessor;
  *
  * @author Igor Akkerman
  */
-public interface Remove<Item> {
+public interface Remove<Item>
+extends ItemOperationStrategy<Item> {
 
     /**
-     * Removes all Items from this object for which the specified {@link ContainsItem}'s
-     * {@link ContainsItem#containsItem(Object)} method returns {@code true}.
+     * Removes all Items from this object for which the specified {@link ContainsSingle}'s
+     * {@link ContainsSingle#containsItem(Object)} method returns {@code true}.
      *
      * @param items
      *        {@link TraversableContainer} containing the Items to remove
@@ -50,6 +53,6 @@ public interface Remove<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void remove(ItemsAccessor<Item> itemsAccessor)
+    public void remove(ItemsSupplier<Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }
