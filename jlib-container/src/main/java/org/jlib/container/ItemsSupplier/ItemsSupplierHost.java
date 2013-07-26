@@ -19,17 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.itemssupplier;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
+public interface ItemsSupplierHost<Item> {
 
-import org.jlib.container.ContainsSingle;
-
-public interface ContainsByTraversable<Item>
-extends ContainsSingle<Item> {
-
-    public boolean contains(Traversable<Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    public <Result> Result accept(ItemsSupplierVisitor<Item, Result> visitor);
 }

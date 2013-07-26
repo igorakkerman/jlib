@@ -60,7 +60,7 @@ public class DefaultContainsMany<Item> implements ContainsMany<Item> {
             }
 
             @Override
-            public Boolean visitContainsMany(final ContainsByTraversable<Item> items) {
+            public Boolean visitContainsMany(final ContainsByIterable<Item> items) {
                 return null;
             }
 
@@ -71,7 +71,7 @@ public class DefaultContainsMany<Item> implements ContainsMany<Item> {
             }
 
             @Override
-            public <ContainsManyTraversable extends Traversable<Item> & ContainsByTraversable<Item>> Boolean visitContainsManyTraversable(
+            public <ContainsManyTraversable extends Traversable<Item> & ContainsByIterable<Item>> Boolean visitContainsManyTraversable(
                                                                                                                                 final ContainsManyTraversable items) {
                 return null;
             }
