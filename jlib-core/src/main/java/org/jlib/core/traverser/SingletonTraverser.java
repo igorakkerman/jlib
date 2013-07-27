@@ -21,23 +21,21 @@
 
 package org.jlib.core.traverser;
 
-import javax.swing.plaf.nimbus.State;
-
 public class SingletonTraverser<Item, Travble extends SingletonTraversable<Item>>
-extends TraversableAware<Item, SingletonTraversable<Item>>
+extends TraversableAware<Item, Travble>
 implements TwoWayTraverser<Item> {
 
     private final Item item;
 
     private final TwoWayTraverser<Item> delegateTraverser;
 
-    private final StuckTraverserState<Item, Travble, SingletonTraverserState> stuck =
-    new StuckTraverserState<>(getTraversable());
+    private final TwoWayTraverserState<Item, SingletonTraverserState> stuck = /*
+     */ new StuckTraverserState<>(getTraversable());
 
-    class SingletonTraverserState
+    private class SingletonTraverserState
     extends ForwardingTraverserState<Item, Travble, SingletonTraverserState> {
 
-        SingletonTraverserState(final Travble traversable) {
+        private SingletonTraverserState(final Travble traversable) {
             super(traversable, stuck);
 
             new StuckTraverserState<Item, Travble, SingletonTraverserState>(traversable);
@@ -45,7 +43,7 @@ implements TwoWayTraverser<Item> {
     }
 
     @SuppressWarnings("InstanceVariableOfConcreteClass")
-    final SingletonTraverserState beforeItem = /*
+    private final SingletonTraverserState beforeItem = /*
      */ new SingletonTraverserState(getTraversable()) {
 
         @Override
@@ -66,7 +64,7 @@ implements TwoWayTraverser<Item> {
     };
 
     @SuppressWarnings("InstanceVariableOfConcreteClass")
-    final SingletonTraverserState afterItem = /*
+    private final SingletonTraverserState afterItem = /*
      */ new SingletonTraverserState(getTraversable()) {
 
         @Override
@@ -86,7 +84,7 @@ implements TwoWayTraverser<Item> {
         }
     };
 
-    public SingletonTraverser(final SingletonTraversable<Item> traversable) {
+    public SingletonTraverser(final Travble traversable) {
         super(traversable);
 
         item = traversable.getItem();

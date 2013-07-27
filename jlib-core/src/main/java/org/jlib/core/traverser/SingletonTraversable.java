@@ -32,12 +32,12 @@ implements TwoWayTraversable<Item> {
         this.item = item;
     }
 
+    public Item getItem() {
+        return item;
+    }
+
     @Override
     public TwoWayTraverser<Item> createTraverser() {
         return new SingletonTraverser<>(this);
-    }
-
-    public Item getItem() {
-        return item;
     }
 }
