@@ -189,4 +189,8 @@ public final class TraversableUtility {
 
         return false;
     }
+
+    public static <Item> TwoWayTraversable<Item> singletonTraversable(final Item item) {
+        return new SingletonTraversable<>(item);
+    }
 }
