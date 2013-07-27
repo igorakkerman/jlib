@@ -21,7 +21,7 @@
 
 package org.jlib.core.traverser;
 
-public class StatefulTwoWayTraverser<Item, Travble extends TwoWayTraversable<Item>, State extends TwoWayTraverserState<Item, State>>
+public final class StatefulTwoWayTraverser<Item, Travble extends Traversable<Item>, State extends TwoWayTraverserState<Item, State>>
 extends StatefulTraverser<Item, Travble, State>
 implements TwoWayTraverser<Item>{
 

@@ -21,6 +21,8 @@
 
 package org.jlib.core.traverser;
 
+import javax.swing.plaf.nimbus.State;
+
 public class SingletonTraverser<Item, Travble extends SingletonTraversable<Item>>
 extends TraversableAware<Item, SingletonTraversable<Item>>
 implements TwoWayTraverser<Item> {
@@ -28,6 +30,69 @@ implements TwoWayTraverser<Item> {
     private final Item item;
 
     private final TwoWayTraverser<Item> delegateTraverser;
+
+    private final StuckTraverserState<Item, Travble, SingletonTraverserState> stuck =
+    new StuckTraverserState<>(getTraversable());
+
+    class SingletonTraverserState
+    extends ForwardingTraverserState<Item, Travble, SingletonTraverserState> {
+
+        SingletonTraverserState(final Travble traversable) {
+            super(traversable, stuck);
+
+            new StuckTraverserState<Item, Travble, SingletonTraverserState>(traversable);
+        }
+    }
+
+    @SuppressWarnings("InstanceVariableOfConcreteClass")
+    final SingletonTraverserState beforeItem = /*
+     */ new SingletonTraverserState(getTraversable()) {
+
+        @Override
+        public SingletonTraverserState getNextState() {
+            return afterItem;
+        }
+
+        @Override
+        public boolean hasNextItem() {
+            return true;
+        }
+
+        @Override
+        public Item getNextItem()
+        throws NoNextItemException {
+            return item;
+        }
+    };
+
+    @SuppressWarnings("InstanceVariableOfConcreteClass")
+    final SingletonTraverserState afterItem = /*
+     */ new SingletonTraverserState(getTraversable()) {
+
+        @Override
+        public SingletonTraverserState getPreviousState() {
+            return beforeItem;
+        }
+
+        @Override
+        public boolean hasPreviousItem() {
+            return true;
+        }
+
+        @Override
+        public Item getPreviousItem()
+        throws NoPreviousItemException {
+            return item;
+        }
+    };
+
+    public SingletonTraverser(final SingletonTraversable<Item> traversable) {
+        super(traversable);
+
+        item = traversable.getItem();
+
+        delegateTraverser = new StatefulTwoWayTraverser<>(traversable, beforeItem);
+    }
 
     @Override
     public boolean hasPreviousItem() {
@@ -49,68 +114,5 @@ implements TwoWayTraverser<Item> {
     public Item getNextItem()
     throws NoNextItemException {
         return delegateTraverser.getNextItem();
-    }
-
-    public abstract class SingletonTraverserState
-    implements TwoWayTraverserState<Item, SingletonTraverserState> {
-
-        private final TwoWayTraverserState<Item, SingletonTraverserState> stuck;
-
-        protected SingletonTraverserState(final SingletonTraversable<Item> traversable) {
-            super();
-
-            stuck = new StuckTraverserState<>(traversable);
-        }
-    }
-
-    private final TwoWayTraverserState=new Item>(
-
-    getTraversable()
-
-    )
-
-    {
-
-        @Override public TwoWayTraverserState<Item, SingletonTraverserState<Item>> getNextState () {
-        return afterItem;
-    }
-
-        @Override public boolean hasNextItem () {
-        return true;
-    }
-
-        @Override public Item getNextItem ()
-        throws NoNextItemException {
-        return item;
-    }
-    }
-
-    ;
-
-    private final TwoWayTraverserState<Item, SingletonTraverserState<Item>> afterItem = new LastItemTraverserState<Item>(
-                                                                                                                        getTraversable()) {
-
-        @Override
-        public STwoWayTraverserState<Item, SingletonTraverserState<Item>> getPreviousState() {
-            return beforeItem;
-        }
-
-        @Override
-        public boolean hasPreviousItem() {
-            return true;
-        }
-
-        @Override
-        public Item getPreviousItem()
-        throws NoPreviousItemException {
-            return item;
-        }
-    };
-
-    public SingletonTraverser(final Travble traversable) {
-        delegateTraverser = new StatefulTwoWayTraverser<Item, Travble, TwoWayTraverserState<Item,>>(traversable,
-                                                                                                    beforeItem);
-
-        item = traversable.getItem();
     }
 }
