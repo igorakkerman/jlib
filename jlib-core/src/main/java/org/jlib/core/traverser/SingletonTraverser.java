@@ -21,16 +21,9 @@
 
 package org.jlib.core.traverser;
 
-import static org.jlib.core.traverser.SingletonTraverser.*;
-
 public class SingletonTraverser<Item, Travble extends SingletonTraversable<Item>>
-extends AbstractTraverser<Item, SingletonTraversable<Item>>
+extends TraversableAware<Item, SingletonTraversable<Item>>
 implements TwoWayTraverser<Item> {
-
-    public static abstract class SingletonTraverserState<Item>
-    implements TwoWayTraverserState<Item, SingletonTraverserState<Item>> {
-
-    }
 
     private final Item item;
 
@@ -58,29 +51,47 @@ implements TwoWayTraverser<Item> {
         return delegateTraverser.getNextItem();
     }
 
-    private final TwoWayTraverserState<Item,> beforeItem = new FirstItemTraverserState<Item>(getTraversable()) {
+    public abstract class SingletonTraverserState
+    implements TwoWayTraverserState<Item, SingletonTraverserState> {
 
-        @Override
-        public TwoWayTraverserState<Item> getNextState() {
-            return afterItem;
+        private final TwoWayTraverserState<Item, SingletonTraverserState> stuck;
+
+        protected SingletonTraverserState(final SingletonTraversable<Item> traversable) {
+            super();
+
+            stuck = new StuckTraverserState<>(traversable);
         }
+    }
 
-        @Override
-        public boolean hasNextItem() {
-            return true;
-        }
+    private final TwoWayTraverserState=new Item>(
 
-        @Override
-        public Item getNextItem()
+    getTraversable()
+
+    )
+
+    {
+
+        @Override public TwoWayTraverserState<Item, SingletonTraverserState<Item>> getNextState () {
+        return afterItem;
+    }
+
+        @Override public boolean hasNextItem () {
+        return true;
+    }
+
+        @Override public Item getNextItem ()
         throws NoNextItemException {
-            return item;
-        }
-    };
+        return item;
+    }
+    }
 
-    private final TwoWayTraverserState<Item> afterItem = new LastItemTraverserState<Item>(getTraversable()) {
+    ;
+
+    private final TwoWayTraverserState<Item, SingletonTraverserState<Item>> afterItem = new LastItemTraverserState<Item>(
+                                                                                                                        getTraversable()) {
 
         @Override
-        public TwoWayTraverserState<Item> getPreviousState() {
+        public STwoWayTraverserState<Item, SingletonTraverserState<Item>> getPreviousState() {
             return beforeItem;
         }
 

@@ -22,7 +22,7 @@
 package org.jlib.core.traverser;
 
 public class StatefulTraverser<Item, Travble extends Traversable<Item>, State extends TraverserState<Item, State>>
-extends AbstractTraverser<Item, Travble> {
+extends TraversableAware<Item, Travble> {
 
     private State currentState;
 

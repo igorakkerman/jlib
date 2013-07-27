@@ -21,17 +21,18 @@
 
 package org.jlib.core.traverser;
 
-public abstract class AbstractTraverserState<Item> implements TwoWayTraverserState<Item> {
+public abstract class TraversableAware<Item, Travble extends Traversable<Item>>
+implements Traverser<Item> {
 
-    private final Traversable<Item> traversable;
+    private final Travble traversable;
 
-    protected AbstractTraverserState(final Traversable<Item> traversable) {
+    public TraversableAware(final Travble traversable) {
         super();
 
         this.traversable = traversable;
     }
 
-    protected Traversable<Item> getTraversable() {
+    protected Travble getTraversable() {
         return traversable;
     }
 }

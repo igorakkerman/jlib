@@ -189,4 +189,9 @@ public final class TraversableUtility {
 
         return false;
     }
+
+    public static <Item, State extends TwoWayTraverserState<Item>> /*
+        */ State last(final State state) {
+
+    }
 }
