@@ -11,25 +11,18 @@ import org.jlib.core.traverser.TraversableIterator;
 
 import org.jlib.container.ContainsSingle;
 
-import com.google.common.collect.Iterables;
 import static java.util.Collections.singleton;
 
 public final class ItemsSupplierUtility {
 
     public static <Item> ItemsSupplier<Item> item(final Item suppliedItem) {
 
-        return new PreferContainsManyItemsSupplier<Item>() {
+        return new ItemsSupplier<Item>() {
 
             @Override
             public boolean contains(final Item item)
             throws InvalidTraversableArgumentException, InvalidTraversableStateException {
                 return suppliedItem.equals(item);
-            }
-
-            @Override
-            public boolean contains(final Iterable<Item> iterable)
-            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-                return Iterables.contains(iterable, suppliedItem);
             }
 
             @Override
@@ -42,7 +35,7 @@ public final class ItemsSupplierUtility {
     public static <Item, ContainsSingleTraversable extends ContainsSingle<Item> & Traversable<Item>> /*
                */ ItemsSupplier<Item> allOf(final ContainsSingleTraversable items) {
 
-        return new PreferContainsSingleItemsSupplier<Item>() {
+        return new ItemsSupplier<Item>() {
 
             @Override
             public boolean contains(final Item item)
@@ -59,7 +52,7 @@ public final class ItemsSupplierUtility {
 
     public static <Item> ItemsSupplier<Item> allOf(final Traversable<Item> items) {
 
-        return new PreferIterateItemsSupplier<Item>() {
+        return new IterativeContainsItemsSupplier<Item>() {
             @Override
             public Iterator<Item> iterator() {
                 return new TraversableIterator<>(items);
@@ -69,7 +62,7 @@ public final class ItemsSupplierUtility {
 
     public static <Item> ItemsSupplier<Item> allOf(final Collection<Item> items) {
 
-        return new PreferContainsSingleItemsSupplier<Item>() {
+        return new ItemsSupplier<Item>() {
 
             @Override
             public boolean contains(final Item item)
@@ -87,7 +80,7 @@ public final class ItemsSupplierUtility {
     @SafeVarargs
     public static <Item> ItemsSupplier<Item> allOf(final Item... items) {
 
-        return new PreferIterateItemsSupplier<Item>() {
+        return new IterativeContainsItemsSupplier<Item>() {
 
             @Override
             public Iterator<Item> iterator() {
@@ -98,7 +91,8 @@ public final class ItemsSupplierUtility {
 
     public static <Item> ItemsSupplier<Item> allOf(final Iterable<Item> items) {
 
-        return new PreferIterateItemsSupplier<Item>() {
+        return new IterativeContainsItemsSupplier<Item>() {
+
             @Override
             public Iterator<Item> iterator() {
                 return items.iterator();

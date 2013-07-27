@@ -25,47 +25,26 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.itemssupplier.ItemsSupplier;
-import org.jlib.container.itemssupplier.ItemsSupplierVisitor;
 
 public class DefaultContainsMany<Item>
 implements ContainsMany<Item> {
 
-    private final ContainsSingle<Item> containsSingle;
+    private final ContainsSingle<Item> containedItems;
 
-    public DefaultContainsMany(final ContainsSingle<Item> containsSingle) {
+    public DefaultContainsMany(final ContainsSingle<Item> containedItems) {
         super();
 
-        this.containsSingle = containsSingle;
+        this.containedItems = containedItems;
     }
 
     @Override
-    public boolean contains(final ItemsSupplier<Item> items)
+    public boolean contains(final ItemsSupplier<Item> lookupItems)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return items.accept(new ItemsSupplierVisitor<Item, Boolean>() {
 
-            // single working strategy in this case
-            private boolean iterativeContains(final Iterable<Item> items) {
-                for (final Item item : items)
-                    if (! containsSingle.contains(item))
-                        return false;
+        for (final Item lookupItem : lookupItems)
+            if (! containedItems.contains(lookupItem))
+                return false;
 
-                return true;
-            }
-
-            @Override
-            public Boolean visitPerferTraverse(final ItemsSupplier<Item> items) {
-                return iterativeContains(items);
-            }
-
-            @Override
-            public Boolean visitPreferContainsSingle(final ItemsSupplier<Item> items) {
-                return iterativeContains(items);
-            }
-
-            @Override
-            public Boolean visitPreferContainsMany(final ItemsSupplier<Item> items) {
-                return iterativeContains(items);
-            }
-        });
+        return true;
     }
 }

@@ -24,20 +24,19 @@ package org.jlib.container.itemssupplier;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-public abstract class IterativeContainsSingleItemsSupplier<Item>
-extends IterativeContainsManyItemsSupplier<Item> {
+import com.google.common.collect.Iterables;
 
-    public IterativeContainsSingleItemsSupplier() {
+public abstract class IterativeContainsItemsSupplier<Item>
+implements ItemsSupplier<Item> {
+
+    public IterativeContainsItemsSupplier() {
         super();
     }
 
     @Override
     public final boolean contains(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        for (final Item containedItem : this)
-            if (containedItem.equals(item))
-                return true;
 
-        return false;
+        return Iterables.contains(this, item);
     }
 }

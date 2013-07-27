@@ -21,63 +21,32 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.VoidObject;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import org.jlib.container.itemssupplier.ItemsSupplier;
-import org.jlib.container.itemssupplier.ItemsSupplierVisitor;
-
-import static org.jlib.core.language.VoidObject.VOID;
 
 public class DefaultRemoveMany<Item>
 implements RemoveMany<Item> {
 
-    private final RemoveSingleByItem<Item> removeSingle;
+    private final Iterable<Item> containedItems;
 
-    private final Iterable<Item> iterable;
+    private final RemoveSingleByItem<Item> removableContainedItems;
 
     public <RemoveSingleIterable extends RemoveSingleByItem<Item> & Iterable<Item>> /*
-        */ DefaultRemoveMany(final RemoveSingleIterable removeSingleIterable) {
+        */ DefaultRemoveMany(final RemoveSingleIterable containedItems) {
 
         super();
 
-        this.removeSingle = removeSingleIterable;
-        this.iterable = removeSingleIterable;
+        this.containedItems = containedItems;
+        removableContainedItems = containedItems;
     }
 
     @Override
-    public void remove(final ItemsSupplier<Item> items)
+    public void remove(final ItemsSupplier<Item> removedItems)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        items.accept(new ItemsSupplierVisitor<Item, VoidObject>() {
-
-            private void removeContained(final ContainsSingle<Item> removedItems) {
-                for (final Item containedItem : iterable)
-                    if (removedItems.contains(containedItem))
-                        removeSingle.remove(containedItem);
-            }
-
-            @Override
-            public VoidObject visitPerferTraverse(final ItemsSupplier<Item> removedItems) {
-                for (final Item item : removedItems)
-                    removeSingle.remove(item);
-
-                return VOID;
-            }
-
-            @Override
-            public VoidObject visitPreferContainsSingle(final ItemsSupplier<Item> removedItems) {
-                removeContained(removedItems);
-
-                return VOID;
-            }
-
-            @Override
-            public VoidObject visitPreferContainsMany(final ItemsSupplier<Item> removedItems) {
-                removeContained(removedItems);
-
-                return VOID;
-            }
-        });
+        for (final Item containedItem : containedItems)
+            if (removedItems.contains(containedItem))
+                removableContainedItems.remove(containedItem);
     }
 }
