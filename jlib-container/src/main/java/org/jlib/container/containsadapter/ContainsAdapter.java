@@ -19,14 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.container;
+package org.jlib.container.containsadapter;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import java.util.Iterator;
 
-public interface ContainsByIterable<Item>
-extends ContainsSingle<Item> {
+import org.jlib.container.ContainsSingle;
 
-    public boolean contains(Iterable<Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+public abstract class ContainsAdapter<Item>
+implements Iterable<Item>,
+           ContainsSingle<Item> {
+
+    private final Iterable<Item> items;
+
+    protected ContainsAdapter(final Iterable<Item> items) {
+        super();
+
+        this.items = items;
+    }
+
+    protected final Iterable<Item> getItems() {
+        return items;
+    }
+
+    @Override
+    public final Iterator<Item> iterator() {
+        return items.iterator();
+    }
 }

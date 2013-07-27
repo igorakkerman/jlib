@@ -47,12 +47,12 @@ extends InvalidContainerArgumentException {
      *        Item to retain
      */
     public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveMany<?> container, final Object item) {
+                                             final RemoveManyByItem<?> container, final Object item) {
         super(container, message(item));
     }
 
     public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveMany<?> container, final Object item,
+                                             final RemoveManyByItem<?> container, final Object item,
                                              final Exception cause) {
         super(container, message(item), cause);
     }

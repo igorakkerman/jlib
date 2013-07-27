@@ -24,17 +24,15 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemssupplier.ItemsSupplier;
-
-public class DefaultRemoveMany<Item>
-implements RemoveMany<Item> {
+public class DefaultRemoveManyByItem<Item>
+implements RemoveManyByItem<Item> {
 
     private final Iterable<Item> containedItems;
 
     private final RemoveSingleByItem<Item> removableContainedItems;
 
     public <RemoveSingleIterable extends RemoveSingleByItem<Item> & Iterable<Item>> /*
-        */ DefaultRemoveMany(final RemoveSingleIterable containedItems) {
+        */ DefaultRemoveManyByItem(final RemoveSingleIterable containedItems) {
 
         super();
 
@@ -43,8 +41,10 @@ implements RemoveMany<Item> {
     }
 
     @Override
-    public void remove(final ItemsSupplier<Item> removedItems)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable removedItems)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+
         for (final Item containedItem : containedItems)
             if (removedItems.contains(containedItem))
                 removableContainedItems.remove(containedItem);

@@ -24,8 +24,6 @@ package org.jlib.container;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemssupplier.ItemsSupplier;
-
 public class DefaultRetain<Item>
 implements Retain<Item> {
 
@@ -43,7 +41,8 @@ implements Retain<Item> {
     }
 
     @Override
-    public void retain(final ItemsSupplier<Item> retainedItems)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable retainedItems)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 
         for (final Item containedItem : containedItems)

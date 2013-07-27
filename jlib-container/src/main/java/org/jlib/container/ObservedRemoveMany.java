@@ -27,8 +27,6 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemssupplier.ItemsSupplier;
-
 /**
  * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
  * {@link ValueObserver} instances.
@@ -42,7 +40,9 @@ public interface ObservedRemoveMany<Item>
 extends ItemOperationStrategy<Item> {
 
     @SuppressWarnings("unchecked")
-    public void remove(ItemsSupplier<Item> items, ValueObserver<Item>... observers)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
+
     throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
            ValueObserverException;
 }

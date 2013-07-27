@@ -25,8 +25,6 @@ import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemssupplier.ItemsSupplier;
-
 /**
  * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
  * each specified Item.
@@ -56,6 +54,7 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public void retain(ItemsSupplier<Item> items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsIterable items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

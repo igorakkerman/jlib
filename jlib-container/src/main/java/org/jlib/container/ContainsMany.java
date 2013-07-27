@@ -25,8 +25,6 @@ import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
-import org.jlib.container.itemssupplier.ItemsSupplier;
-
 public interface ContainsMany<Item>
 extends ItemOperationStrategy<Item> {
 
@@ -46,6 +44,7 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidTraversableStateException
      *         if an error occurs during the operation
      */
-    public boolean contains(ItemsSupplier<Item> items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ boolean contains(ContainsIterable items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException;
 }

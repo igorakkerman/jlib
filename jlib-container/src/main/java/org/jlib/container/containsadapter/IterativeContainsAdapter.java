@@ -19,24 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.itemssupplier;
+package org.jlib.container.containsadapter;
 
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 import com.google.common.collect.Iterables;
 
-public abstract class IterativeContainsItemsSupplier<Item>
-implements ItemsSupplier<Item> {
+public class IterativeContainsAdapter<Item>
+extends ContainsAdapter<Item> {
 
-    public IterativeContainsItemsSupplier() {
-        super();
+    public IterativeContainsAdapter(final Iterable<Item> items) {
+        super(items);
     }
 
     @Override
     public final boolean contains(final Item item)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
 
-        return Iterables.contains(this, item);
+        return Iterables.contains(getItems(), item);
     }
 }
