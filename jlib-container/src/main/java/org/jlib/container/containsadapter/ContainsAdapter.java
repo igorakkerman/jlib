@@ -21,28 +21,29 @@
 
 package org.jlib.container.containsadapter;
 
-import java.util.Iterator;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.Traverser;
 
 import org.jlib.container.ContainsSingle;
 
 public abstract class ContainsAdapter<Item>
-implements Iterable<Item>,
+implements Traversable<Item>,
            ContainsSingle<Item> {
 
-    private final Iterable<Item> items;
+    private final Traversable<Item> items;
 
-    protected ContainsAdapter(final Iterable<Item> items) {
+    protected ContainsAdapter(final Traversable<Item> items) {
         super();
 
         this.items = items;
     }
 
-    protected final Iterable<Item> getItems() {
+    protected final Traversable<Item> getItems() {
         return items;
     }
 
     @Override
-    public final Iterator<Item> iterator() {
-        return items.iterator();
+    public final Traverser<Item> createTraverser() {
+        return items.createTraverser();
     }
 }

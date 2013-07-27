@@ -68,9 +68,9 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 //    }
 //
 //    @Override
-//    public boolean isPreviousItemAccessible() {
-//        while (! currentTraversableTraverser.isPreviousItemAccessible()) {
-//            if (! traversablesTraverser.isPreviousItemAccessible())
+//    public boolean hasPreviousItem() {
+//        while (! currentTraversableTraverser.hasPreviousItem()) {
+//            if (! traversablesTraverser.hasPreviousItem())
 //                return false;
 //
 //            currentTraversableTraverser = traversablesTraverser.getPreviousItem().createTraverser();
@@ -86,7 +86,7 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 //    @Override
 //    public Item getPreviousItem()
 //    throws NoPreviousSequenceItemException {
-////        if (! isPreviousItemAccessible())
+////        if (! hasPreviousItem())
 ////            throw new NoPreviousSequenceItemException(getSequence());
 //
 //        return currentTraversableTraverser.getPreviousItem();

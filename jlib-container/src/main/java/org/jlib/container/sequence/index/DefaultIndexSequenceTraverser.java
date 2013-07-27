@@ -103,7 +103,7 @@ implements IndexSequenceTraverser<Item> {
     }
 
     @Override
-    public boolean isPreviousItemAccessible() {
+    public boolean hasPreviousItem() {
         return potentialNextItemIndex - 1 >= getSequence().getFirstIndex();
     }
 

@@ -97,14 +97,14 @@ implements TwoWayTraverser<Item> {
     }
 
     @Override
-    public boolean isPreviousItemAccessible() {
+    public boolean hasPreviousItem() {
         return currentIndex >= 0;
     }
 
     @Override
     public Item getPreviousItem()
     throws NoPreviousItemException {
-        if (! isPreviousItemAccessible())
+        if (! hasPreviousItem())
             throw new NoPreviousItemException(traversable, message(Arrays.toString(array)));
 
         return array[-- currentIndex];

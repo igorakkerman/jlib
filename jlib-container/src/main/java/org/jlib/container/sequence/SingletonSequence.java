@@ -43,7 +43,7 @@ class SingletonSequence<Item>
 //                                                                                                                           this) {
 //
 //        @Override
-//        public boolean isPreviousItemAccessible() {
+//        public boolean hasPreviousItem() {
 //            return false;
 //        }
 //
@@ -71,7 +71,7 @@ class SingletonSequence<Item>
 //                                                                                                                           this) {
 //
 //        @Override
-//        public boolean isPreviousItemAccessible() {
+//        public boolean hasPreviousItem() {
 //            return true;
 //        }
 //
@@ -109,8 +109,8 @@ class SingletonSequence<Item>
 //        return new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
 //
 //            @Override
-//            public boolean isPreviousItemAccessible() {
-//                return currentTraverserState.isPreviousItemAccessible();
+//            public boolean hasPreviousItem() {
+//                return currentTraverserState.hasPreviousItem();
 //            }
 //
 //            @Override

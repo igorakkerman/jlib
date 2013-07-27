@@ -27,7 +27,7 @@ package org.jlib.core.traverser;
  * @param <Item>
  *        type of the items traversed by the {@link Traverser}.
  */
-public interface TraverserState<Item>
+public interface TraverserState<Item, State extends TraverserState<Item, State>>
 extends Traverser<Item> {
 
     /**
@@ -35,5 +35,5 @@ extends Traverser<Item> {
      *
      * @return next {@link TraverserState}
      */
-    public TraverserState<Item> getNextState();
+    public State getNextState();
 }

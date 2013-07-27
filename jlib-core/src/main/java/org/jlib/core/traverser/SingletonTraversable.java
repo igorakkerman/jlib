@@ -19,24 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.containsadapter;
+package org.jlib.core.traverser;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableUtility;
+public class SingletonTraversable<Item>
+implements TwoWayTraversable<Item> {
 
-public class IterativeContainsAdapter<Item>
-extends ContainsAdapter<Item> {
+    private final Item item;
 
-    public IterativeContainsAdapter(final Traversable<Item> items) {
-        super(items);
+    public SingletonTraversable(final Item item) {
+        super();
+
+        this.item = item;
     }
 
     @Override
-    public final boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    public TwoWayTraverser<Item> createTraverser() {
+        return new SingletonTraverser<>(this);
+    }
 
-        return TraversableUtility.contains(getItems(), item);
+    public Item getItem() {
+        return item;
     }
 }

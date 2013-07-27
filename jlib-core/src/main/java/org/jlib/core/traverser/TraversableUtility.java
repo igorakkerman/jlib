@@ -74,7 +74,7 @@ public final class TraversableUtility {
     }
 
     public static boolean isEmpty(final Traversable<?> traversable) {
-        return !traversable.createTraverser().hasNextItem();
+        return ! traversable.createTraverser().hasNextItem();
     }
 
     /**
@@ -132,8 +132,7 @@ public final class TraversableUtility {
     @SuppressWarnings("OverlyBroadThrowsClause")
     public static <Item> void removeAll(final RemoveTraversable<Item> traversable)
     throws InvalidTraversableStateException {
-        for (final RemoveTraverser<Item> traverser = traversable.createTraverser();
-             traverser.hasNextItem(); ) {
+        for (final RemoveTraverser<Item> traverser = traversable.createTraverser(); traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove();
         }
@@ -161,8 +160,7 @@ public final class TraversableUtility {
     public static <Item> void removeAll(final ObservedRemoveTraversable<Item> traversable,
                                         final ValueObserver<Item>... observers)
     throws InvalidTraversableStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = traversable.createTraverser();
-             traverser.hasNextItem(); ) {
+        for (final ObservedRemoveTraverser<Item> traverser = traversable.createTraverser(); traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);
         }
@@ -182,5 +180,13 @@ public final class TraversableUtility {
 
     public static <Item> RemoveTraversable<Item> removeTraversable(final Iterable<Item> iterable) {
         return new RemoveIterableTraversable<>(iterable);
+    }
+
+    public static <Item> boolean contains(final Traversable<Item> items, final Item item) {
+        for (final Item containedItem : iterable(items))
+            if (containedItem.equals(item))
+                return true;
+
+        return false;
     }
 }

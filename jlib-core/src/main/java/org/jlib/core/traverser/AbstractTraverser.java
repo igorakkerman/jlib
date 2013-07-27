@@ -19,24 +19,19 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.containsadapter;
+package org.jlib.core.traverser;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableUtility;
+public abstract class AbstractTraverser<Item, Travble extends Traversable<Item>> implements Traverser<Item> {
 
-public class IterativeContainsAdapter<Item>
-extends ContainsAdapter<Item> {
+    private final Travble traversable;
 
-    public IterativeContainsAdapter(final Traversable<Item> items) {
-        super(items);
+    public AbstractTraverser(final Travble traversable) {
+        super();
+
+        this.traversable = traversable;
     }
 
-    @Override
-    public final boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-
-        return TraversableUtility.contains(getItems(), item);
+    protected Travble getTraversable() {
+        return traversable;
     }
 }

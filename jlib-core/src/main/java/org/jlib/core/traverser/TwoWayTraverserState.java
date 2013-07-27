@@ -19,24 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.containsadapter;
+package org.jlib.core.traverser;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableUtility;
+/**
+ * Traverser state.
+ *
+ * @param <Item>
+ *        type of the items traversed by the {@link Traverser}.
+ */
+public interface TwoWayTraverserState<Item, State extends TwoWayTraverserState<Item, State>>
+extends TraverserState<Item, State>, TwoWayTraverser<Item> {
 
-public class IterativeContainsAdapter<Item>
-extends ContainsAdapter<Item> {
-
-    public IterativeContainsAdapter(final Traversable<Item> items) {
-        super(items);
-    }
-
-    @Override
-    public final boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-
-        return TraversableUtility.contains(getItems(), item);
-    }
+    /**
+     * Returns the previous {@link TwoWayTraverserState}
+     *
+     * @return previous {@link TwoWayTraverserState}
+     */
+    public State getPreviousState();
 }
