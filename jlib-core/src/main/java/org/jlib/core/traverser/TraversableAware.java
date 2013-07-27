@@ -21,8 +21,7 @@
 
 package org.jlib.core.traverser;
 
-public abstract class TraversableAware<Item, Travble extends Traversable<Item>>
-implements Traverser<Item> {
+public abstract class TraversableAware<Item, Travble extends Traversable<Item>> {
 
     private final Travble traversable;
 

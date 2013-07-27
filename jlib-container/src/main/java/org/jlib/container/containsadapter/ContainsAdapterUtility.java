@@ -2,25 +2,21 @@ package org.jlib.container.containsadapter;
 
 import java.util.Collection;
 
-import org.jlib.core.array.ArrayIterable;
-import org.jlib.core.array.ArrayTraversable;
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TraversableIterable;
 
 import org.jlib.container.ContainsSingle;
 
-import static java.util.Collections.singleton;
-import static org.jlib.core.traverser.TraversableUtility.iterable;
+import static org.jlib.core.traverser.TraversableUtility.singletonTraversable;
 import static org.jlib.core.traverser.TraversableUtility.traversable;
 
 public final class ContainsAdapterUtility {
 
     public static <Item> ContainsAdapter<Item> item(final Item suppliedItem) {
 
-        return new ContainsAdapter<Item>(singleton(suppliedItem)) {
+        return new ContainsAdapter<Item>(singletonTraversable(suppliedItem)) {
 
             @Override
             public boolean contains(final Item item)
@@ -68,7 +64,7 @@ public final class ContainsAdapterUtility {
 
     public static <Item> ContainsAdapter<Item> allOf(final Iterable<Item> items) {
 
-        return new IterativeContainsAdapter<>(items);
+        return new IterativeContainsAdapter<>(traversable(items));
     }
 
     private ContainsAdapterUtility() {
