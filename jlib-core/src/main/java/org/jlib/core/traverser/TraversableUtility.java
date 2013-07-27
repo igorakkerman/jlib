@@ -53,8 +53,7 @@ public final class TraversableUtility {
      *         {@code false} otherwise
      */
     @SuppressWarnings({ "FeatureEnvy" })
-    public static <Item> boolean provideEqualItems(final Traversable<Item> traversable1,
-                                                   final Traversable<Item> traversable2) {
+    public static <Item> boolean equals(final Traversable<Item> traversable1, final Traversable<Item> traversable2) {
         final Traverser<?> traverser1 = traversable1.createTraverser();
         final Traverser<?> traverser2 = traversable2.createTraverser();
 
