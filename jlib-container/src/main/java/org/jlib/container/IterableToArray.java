@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.strategy;
+package org.jlib.container;
 
 import org.jlib.core.language.AbstractObject;
 

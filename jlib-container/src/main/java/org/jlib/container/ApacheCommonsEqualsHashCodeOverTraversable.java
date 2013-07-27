@@ -26,18 +26,21 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import org.jlib.core.iterator.IterableUtility;
-import org.jlib.core.language.EqualsStrategy;
+import org.jlib.core.language.EqualsHashCodeStrategy;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.TraversableUtility;
 import org.jlib.core.traverser.Traverser;
 
-public class EqualsStrategyFromIterator<Item>
-implements EqualsStrategy<Item> {
+import org.apache.commons.collections15.CollectionUtils;
+import org.apache.commons.collections15.IteratorUtils;
 
-    private final Iterable<Item> iterable;
+public class ApacheCommonsEqualsHashCodeOverTraversable<Item>
+extends EqualsHashCodeStrategy<Traversable<Item>> {
 
-    public EqualsStrategyFromIterator(final Iterable<Item> iterable) {
+    private final Traversable<Item> items;
+
+    public ApacheCommonsEqualsHashCodeOverTraversable() {
         super();
-
-        this.iterable = iterable;
     }
 
     /**
@@ -53,14 +56,11 @@ implements EqualsStrategy<Item> {
      *         {@code false} otherwise
      */
     @Override
-    public final boolean isEqual(final @Nullable Object otherObject) {
+    public final boolean isEqual(final Traversable) {
         if (otherObject == null || ! getClass().equals(otherObject.getClass()))
             return false;
 
-        @SuppressWarnings("unchecked")
-        final EqualsStrategyFromIterator<Item> otherContainer = (EqualsStrategyFromIterator<Item>) otherObject;
-
-        return IterableUtility.provideEqualItems(otherContainer.iterable, iterable);
+        return TraversableUtility.equals()
     }
 
     @Override
@@ -71,5 +71,15 @@ implements EqualsStrategy<Item> {
             hashCodeBuilder.append(item);
 
         return hashCodeBuilder.toHashCode();
+    }
+
+    @Override
+    public boolean equals(final Traversable<Item> thisObject, @Nullable final Object otherObject) {
+        return false;
+    }
+
+    @Override
+    public int getHashCode(final Object thisObject) {
+        return 0;
     }
 }

@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.strategy;
+package org.jlib.container;
 
 import javax.annotation.Nullable;
 
 import org.jlib.core.language.EqualsStrategy;
-
-import org.jlib.container.GetCount;
 
 public class EqualItemsCount<Item>
 implements EqualsStrategy<GetCount<Item>> {
@@ -54,7 +52,7 @@ implements EqualsStrategy<GetCount<Item>> {
     }
 
     @Override
-    public boolean areEqual(final GetCount<Item> thisObject, @Nullable final Object otherObject) {
+    public boolean equals(final GetCount<Item> thisObject, @Nullable final Object otherObject) {
         return otherObject instanceof GetCount<?> && //
                thisObject.getCount() == ((GetCount<?>) otherObject).getCount();
     }

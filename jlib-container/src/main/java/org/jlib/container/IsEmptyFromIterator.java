@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.strategy;
+package org.jlib.container;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
@@ -27,7 +27,8 @@ import org.jlib.container.IsEmpty;
 
 import com.google.common.collect.Iterables;
 
-public class IsEmptyFromIterator<Item> implements IsEmpty<Item> {
+public class IsEmptyFromIterator<Item>
+implements IsEmpty<Item> {
 
     private final Iterable<Item> iterable;
 

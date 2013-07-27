@@ -19,26 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.strategy;
+package org.jlib.container;
 
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.TraversableUtility;
 
-import org.jlib.container.GetCount;
 import org.jlib.container.IsEmpty;
 
-public class IsEmptyFromItemsCount<Item> implements IsEmpty<Item> {
+public class IsEmptyFromTraverser<Item>
+implements IsEmpty<Item> {
 
-    private final GetCount<Item> delegateContainer;
+    private final Traversable<Item> traversable;
 
-    public IsEmptyFromItemsCount(final GetCount<Item> getCount) {
+    public IsEmptyFromTraverser(final Traversable<Item> traversable) {
         super();
 
-        this.delegateContainer = getCount;
+        this.traversable = traversable;
     }
 
     @Override
     public boolean isEmpty()
     throws InvalidTraversableStateException {
-        return delegateContainer.getCount() == 0;
+        return TraversableUtility.isEmpty(traversable);
     }
 }
