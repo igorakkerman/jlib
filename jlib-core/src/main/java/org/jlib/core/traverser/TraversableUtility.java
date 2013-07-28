@@ -38,7 +38,7 @@ public final class TraversableUtility {
      * Verifies whether the {@link Traverser} instances created by the {@link Traversable#createTraverser()} methods of
      * the two specified {@link Traversable} instances traverse the same number of Items in the same order and all
      * traversed Items are equal. Two Items {@code item1} and {@code item2} are called equal if
-     * {@code item1.equals(item2)}.
+     * {@code item1.provideEqualItems(item2)}.
      *
      * @param <Item>
      *        type of the items traversed by {@code traversable1} and {@code traversable2}
@@ -53,7 +53,8 @@ public final class TraversableUtility {
      *         {@code false} otherwise
      */
     @SuppressWarnings({ "FeatureEnvy" })
-    public static <Item> boolean equals(final Traversable<Item> traversable1, final Traversable<Item> traversable2) {
+    public static <Item> boolean provideEqualItems(final Traversable<Item> traversable1,
+                                                   final Traversable<Item> traversable2) {
         final Traverser<?> traverser1 = traversable1.createTraverser();
         final Traverser<?> traverser2 = traversable2.createTraverser();
 

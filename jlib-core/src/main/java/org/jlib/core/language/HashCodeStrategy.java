@@ -29,5 +29,5 @@ extends ItemOperationStrategy<Item> {
      *
      * @return integer specifying the hash code
      */
-    public int getHashCode(Object thisObject);
+    public int getHashCode(Item item);
 }

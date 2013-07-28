@@ -37,12 +37,12 @@ implements EqualsHashCodeStrategy<Obj> {
     }
 
     @Override
-    public boolean equals(final Obj thisObject, @Nullable final Object otherObject) {
-        return equalsStrategy.equals(thisObject, otherObject);
+    public boolean areEqual(final Obj thisObject, @Nullable final Object otherObject) {
+        return equalsStrategy.areEqual(thisObject, otherObject);
     }
 
     @Override
-    public int getHashCode(final Object thisObject) {
-        return hashCodeStrategy.getHashCode(thisObject);
+    public int getHashCode(final Obj object) {
+        return hashCodeStrategy.getHashCode(object);
     }
 }
