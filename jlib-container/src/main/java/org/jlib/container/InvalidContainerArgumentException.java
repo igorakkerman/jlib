@@ -42,30 +42,30 @@ extends InvalidStateException {
     /*
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
+     * @param container
      *        traversed {@link ItemOperationStrategy}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable) {
-        super(message().with(traversable));
+    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container) {
+        super(message().with(container));
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
+     * @param container
      *        traversed {@link ItemOperationStrategy}
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final Exception cause) {
-        super(message().with(traversable), cause);
+    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final Exception cause) {
+        super(message().with(container), cause);
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
+     * @param container
      *        traversed {@link ItemOperationStrategy}
      *
      * @param messageTemplate
@@ -75,14 +75,14 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final ExceptionMessage message) {
-        super(message.with(traversable));
+    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final ExceptionMessage message) {
+        super(message.with(container));
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
+     * @param container
      *        traversed {@link ItemOperationStrategy}
      *
      * @param messageTemplate
@@ -95,8 +95,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final ExceptionMessage message,
+    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final ExceptionMessage message,
                                              final Exception cause) {
-        super(message.with(traversable), cause);
+        super(message.with(container), cause);
     }
 }
