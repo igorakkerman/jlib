@@ -122,7 +122,7 @@ public class FillupArraySequence<Item> {
 //            if (items.isEmpty())
 //                return;
 //
-//            append((Iterable<? extends Item>) items, observers);
+//            append((Traversable<? extends Item>) items, observers);
 //        }
 //
 //        @SafeVarargs
@@ -150,7 +150,7 @@ public class FillupArraySequence<Item> {
 //         *        attending the operations
 //         */
 //        @SuppressWarnings("unchecked")
-//        private void append(final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
+//        private void append(final Traversable<? extends Item> items, final ValueObserver<Item>... observers) {
 //            final Iterator<? extends Item> iterator = items.iterator();
 //            append(iterator.next(), observers);
 //

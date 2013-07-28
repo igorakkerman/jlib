@@ -21,18 +21,19 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.traverser.Traversable;
+
+import static org.jlib.core.traverser.TraversableUtility.traversable;
 
 public class DefaultRemoveManyByItem<Item>
 implements RemoveManyByItem<Item> {
 
-    private final Iterable<Item> containedItems;
+    private final Traversable<Item> containedItems;
 
     private final RemoveSingleByItem<Item> removableContainedItems;
 
-    public <RemoveSingleIterable extends RemoveSingleByItem<Item> & Iterable<Item>> /*
-        */ DefaultRemoveManyByItem(final RemoveSingleIterable containedItems) {
+    public <RemoveSingleTraversable extends Traversable<Item> & RemoveSingleByItem<Item>> /*
+        */ DefaultRemoveManyByItem(final RemoveSingleTraversable containedItems) {
 
         super();
 
@@ -41,11 +42,11 @@ implements RemoveManyByItem<Item> {
     }
 
     @Override
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsIterable removedItems)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsTraversable removedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item containedItem : containedItems)
+        for (final Item containedItem : iterable(containedItems))
             if (removedItems.contains(containedItem))
                 removableContainedItems.remove(containedItem);
     }

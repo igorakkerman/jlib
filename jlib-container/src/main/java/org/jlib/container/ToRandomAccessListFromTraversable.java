@@ -22,33 +22,31 @@
 package org.jlib.container;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
+import org.jlib.core.traverser.Traversable;
 
-public class ToRandomAccessListFromIterable<Item>
+import static org.jlib.core.traverser.TraversableUtility.iterable;
+
+public class ToRandomAccessListFromTraversable<Item>
 extends AbstractObject
 implements ToRandomAccessList<Item> {
 
     private static final int DEFAULT_EXPECTED_ITEMS_COUNT = 20;
 
-    private final Iterable<Item> iterable;
+    private final Traversable<Item> traversable;
 
     private final int expectedItemsCount;
 
-    public ToRandomAccessListFromIterable(final Collection<Item> collection) {
-        this(collection, collection.size());
+    public ToRandomAccessListFromTraversable(final Traversable<Item> traversable) {
+        this(traversable, DEFAULT_EXPECTED_ITEMS_COUNT);
     }
 
-    public ToRandomAccessListFromIterable(final Iterable<Item> iterable) {
-        this(iterable, DEFAULT_EXPECTED_ITEMS_COUNT);
-    }
-
-    public ToRandomAccessListFromIterable(final Iterable<Item> iterable, int expectedItemsCount) {
+    public ToRandomAccessListFromTraversable(final Traversable<Item> traversable, int expectedItemsCount) {
         super();
 
-        this.iterable = iterable;
+        this.traversable = traversable;
         this.expectedItemsCount = expectedItemsCount;
     }
 
@@ -70,7 +68,7 @@ implements ToRandomAccessList<Item> {
      * @return filled {@link List} {@code list}
      */
     protected <Lizt extends List<Item>> Lizt appendContainedItemsToList(final Lizt list) {
-        for (final Item item : iterable)
+        for (final Item item : iterable(traversable))
             list.add(item);
 
         return list;

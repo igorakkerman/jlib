@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerStateException;
-
 /**
  * {@link RetainItemsByTraversable} allowing all Items to be removed.
  *

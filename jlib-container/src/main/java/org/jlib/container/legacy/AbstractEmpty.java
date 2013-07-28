@@ -26,9 +26,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.container.ToRandomAccessList;
 
 import static java.util.Collections.emptyIterator;
@@ -41,7 +41,7 @@ implements ToRandomAccessList<Item>,
            ContainsItemsByContainsTraversable<Item>,
            ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
-           Iterable<Item> {
+           Traversable<Item> {
 
     protected AbstractEmpty() {
         super();
@@ -109,7 +109,7 @@ implements ToRandomAccessList<Item>,
     }
 
     @Override
-    public final boolean containsEqualItems(final Iterable<Item> iterable) {
-        return ! iterable.iterator().hasNext();
+    public final boolean containsEqualItems(final Traversable<Item> traversable) {
+        return ! traversable.iterator().hasNext();
     }
 }

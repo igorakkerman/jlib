@@ -21,10 +21,11 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceTraverser;
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.Traverser;
+
+import org.jlib.container.sequence.Sequence;
+import org.jlib.container.sequence.SequenceTraverser;
 
 /**
  * AbstractIndexMatrixTraverser traversing the items of a
@@ -60,7 +61,8 @@ extends AbstractMatrixTraverser<Entry> {
      *        {@link Sequence} of all entities, each specified as a
      *        {@link Sequence} of entries of the {@link Matrix}
      */
-    public EntityMatrixTraverser(final RandomTraversalMatrix<Entry> matrix, final Sequence<? extends Sequence<Entry>> entities) {
+    public EntityMatrixTraverser(final RandomTraversalMatrix<Entry> matrix,
+                                 final Sequence<? extends Sequence<Entry>> entities) {
         super(matrix);
 
         entitiesTraverser = entities.createTraverser();

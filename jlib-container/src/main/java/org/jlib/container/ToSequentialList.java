@@ -25,8 +25,6 @@ import java.util.List;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
-import org.jlib.container.InvalidContainerStateException;
-
 public interface ToSequentialList<Item>
 extends ItemOperationStrategy<Item> {
 

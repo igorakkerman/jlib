@@ -22,6 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.traverser.Traversable;
 
 public interface ContainsMany<Item>
 extends ItemOperationStrategy<Item> {
@@ -42,7 +43,7 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ boolean contains(ContainsIterable items)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ boolean contains(ContainsTraversable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

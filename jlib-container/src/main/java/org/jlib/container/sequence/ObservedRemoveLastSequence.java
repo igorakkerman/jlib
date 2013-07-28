@@ -21,8 +21,9 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.SoleItemNotRemoveableException;
 import org.jlib.core.observer.ValueObserver;
+
+import org.jlib.container.SoleItemNotRemoveableException;
 
 /**
  * {@link Sequence} allowing its tail Item to be removed.

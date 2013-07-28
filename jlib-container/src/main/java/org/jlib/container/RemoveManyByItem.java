@@ -22,9 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * {@link TraversableContainer} allowing Items to be removed.
@@ -51,7 +49,7 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsIterable items)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsTraversable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

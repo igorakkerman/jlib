@@ -21,8 +21,9 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.traverser.Traversable;
+
+import static org.jlib.core.traverser.TraversableUtility.traversable;
 
 public class DefaultContainsMany<Item>
 implements ContainsMany<Item> {
@@ -36,11 +37,11 @@ implements ContainsMany<Item> {
     }
 
     @Override
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ boolean contains(final ContainsIterable lookupItems)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ boolean contains(final ContainsTraversable lookupItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item lookupItem : lookupItems)
+        for (final Item lookupItem : iterable(lookupItems))
             if (! containedItems.contains(lookupItem))
                 return false;
 

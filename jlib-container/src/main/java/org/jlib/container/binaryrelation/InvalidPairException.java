@@ -21,11 +21,11 @@
 
 package org.jlib.container.binaryrelation;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
 import org.jlib.core.language.ExceptionMessage;
 
 import org.jlib.container.InvalidContainerArgumentException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an

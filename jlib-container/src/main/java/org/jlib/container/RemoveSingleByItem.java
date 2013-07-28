@@ -23,9 +23,6 @@ package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 /**
  * {@link TraversableContainer} allowing Items to be removed.
  *

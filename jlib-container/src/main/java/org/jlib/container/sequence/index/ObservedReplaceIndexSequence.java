@@ -21,12 +21,11 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.container.sequence.Sequence;
-
 import org.jlib.core.observer.ValueObserver;
 
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link IndexSequence} and {@link ReplaceSequence}.

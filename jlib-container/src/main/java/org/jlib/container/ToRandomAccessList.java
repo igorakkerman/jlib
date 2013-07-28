@@ -26,8 +26,6 @@ import java.util.RandomAccess;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
-import org.jlib.container.InvalidContainerStateException;
-
 public interface ToRandomAccessList<Item>
 extends ItemOperationStrategy<Item> {
 

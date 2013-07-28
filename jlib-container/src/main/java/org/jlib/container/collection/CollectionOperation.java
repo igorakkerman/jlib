@@ -24,13 +24,12 @@ package org.jlib.container.collection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
-import org.jlib.core.traverser.IterableTraverser;
+import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.traverser.TraversableTraverser;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A
@@ -44,7 +43,7 @@ import org.jlib.core.language.ItemOperationStrategy;
 public class CollectionOperation<Item>
 implements ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
-           Iterable<Item> {
+           Traversable<Item> {
 
     private static final long serialVersionUID = 4025909176358714675L;
 
@@ -81,7 +80,7 @@ implements ItemOperationStrategy<Item>,
 
     @Override
     public Traverser<Item> createTraverser() {
-        return new IterableTraverser<>(this);
+        return new TraversableTraverser<>(this);
     }
 
     // implemented for efficiency

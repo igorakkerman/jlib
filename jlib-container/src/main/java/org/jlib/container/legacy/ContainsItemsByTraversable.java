@@ -21,12 +21,11 @@
 
 package org.jlib.container.legacy;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 public interface ContainsItemsByTraversable<Item>
 extends ItemOperationStrategy<Item> {

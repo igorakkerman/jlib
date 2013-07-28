@@ -26,7 +26,6 @@ import java.util.Iterator;
 
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 
 /**

@@ -21,18 +21,19 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.traverser.Traversable;
+
+import static org.jlib.core.traverser.TraversableUtility.traversable;
 
 public class DefaultRetain<Item>
 implements Retain<Item> {
 
     private final RemoveSingleByItem<Item> removableContainedItems;
 
-    private final Iterable<Item> containedItems;
+    private final Traversable<Item> containedItems;
 
-    public <RemoveIterable extends RemoveSingleByItem<Item> & Iterable<Item>> /*
-        */ DefaultRetain(final RemoveIterable containedItems) {
+    public <RemoveTraversable extends Traversable<Item> & RemoveSingleByItem<Item>> /*
+        */ DefaultRetain(final RemoveTraversable containedItems) {
 
         super();
 
@@ -41,11 +42,12 @@ implements Retain<Item> {
     }
 
     @Override
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable retainedItems)
+    @SuppressWarnings("TypeMayBeWeakened")
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsTraversable retainedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item containedItem : containedItems)
+        for (final Item containedItem : iterable(containedItems))
             if (! retainedItems.contains(containedItem))
                 removableContainedItems.remove(containedItem);
     }

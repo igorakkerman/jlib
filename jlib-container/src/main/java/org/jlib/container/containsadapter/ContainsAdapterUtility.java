@@ -3,13 +3,11 @@ package org.jlib.container.containsadapter;
 import java.util.Collection;
 
 import org.jlib.core.array.ArrayUtility;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.Traversable;
 
 import org.jlib.container.ContainsSingle;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 import static org.jlib.core.traverser.TraversableUtility.singletonTraversable;
 import static org.jlib.core.traverser.TraversableUtility.traversable;
@@ -48,7 +46,7 @@ public final class ContainsAdapterUtility {
 
     public static <Item> ContainsAdapter<Item> allOf(final Collection<Item> items) {
 
-        return new ContainsAdapter<Item>(traversable(items)) {
+        return new ContainsAdapter<Item>(iterable(items)) {
 
             @Override
             public boolean contains(final Item item)
@@ -61,12 +59,12 @@ public final class ContainsAdapterUtility {
     @SafeVarargs
     public static <Item> ContainsAdapter<Item> allOf(final Item... items) {
 
-        return new IterativeContainsAdapter<>(ArrayUtility.traversable(items));
+        return new IterativeContainsAdapter<>(ArrayUtility.iterable(items));
     }
 
-    public static <Item> ContainsAdapter<Item> allOf(final Iterable<Item> items) {
+    public static <Item> ContainsAdapter<Item> allOf(final Traversable<Item> items) {
 
-        return new IterativeContainsAdapter<>(traversable(items));
+        return new IterativeContainsAdapter<>(iterable(items));
     }
 
     private ContainsAdapterUtility() {

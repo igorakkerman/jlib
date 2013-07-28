@@ -146,7 +146,7 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 ////    }
 ////
 ////    @Override
-////    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+////    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
 ////        ContainerUtility.retain(this, pairs);
 ////    }
 ////

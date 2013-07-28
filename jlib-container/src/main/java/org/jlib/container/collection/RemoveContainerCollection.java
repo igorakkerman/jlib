@@ -23,9 +23,9 @@ package org.jlib.container.collection;
 
 import java.util.Collection;
 
-import org.jlib.container.ObservedRemoveMany;
-
 import org.jlib.core.language.ItemOperationStrategy;
+
+import org.jlib.container.ObservedRemoveMany;
 
 /**
  * Adapter allowing a {@link RetainItemsByTraversable} to be used as a {@link Collection}.
@@ -54,7 +54,7 @@ extends ContainerCollection<Item> {
      *        {@link RetainItemsByTraversable} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperationStrategy<Item> & org.jlib.core.traverser.Traversable<Item> & Iterable<Item>> //
+    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperationStrategy<Item> & org.jlib.core.traverser.Traversable<Item> & Traversable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

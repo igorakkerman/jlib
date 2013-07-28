@@ -24,8 +24,9 @@ package org.jlib.container.matrix;
 import java.util.Iterator;
 import java.util.RandomAccess;
 
-import org.jlib.container.sequence.Sequence;
 import org.jlib.core.traverser.Traverser;
+
+import org.jlib.container.sequence.Sequence;
 
 /**
  * {@link Matrix} traversable in various orders. A {@link Sequence} of all
@@ -79,7 +80,7 @@ extends Matrix<Entry> {
      * </pre>
      *
      * @param iterationOrder
-     *        {@link MatrixTraversalOrder} used by the returned {@link Iterable}
+     *        {@link MatrixTraversalOrder} used by the returned {@link Traversable}
      *
      * @return {@link MatrixTraversable} providing a {@link MatrixTraverser}
      *         traversing the Items of this {@link Matrix} using the specified

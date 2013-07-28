@@ -21,10 +21,10 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import org.jlib.container.sequence.Sequence;
 import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.sequence.Sequence;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a requested Item is not found.

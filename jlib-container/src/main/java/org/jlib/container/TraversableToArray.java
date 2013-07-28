@@ -22,17 +22,17 @@
 package org.jlib.container;
 
 import org.jlib.core.language.AbstractObject;
+import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.GetCount;
-import org.jlib.container.ToArray;
+import static org.jlib.core.traverser.TraversableUtility.iterable;
 
-public final class IterableToArray<Item, DelegateContainer extends GetCount<Item> & Iterable<Item>>
+public final class TraversableToArray<Item, DelegateContainer extends GetCount<Item> & Traversable<Item>>
 extends AbstractObject
 implements ToArray<Item> {
 
     private final DelegateContainer delegateContainer;
 
-    public IterableToArray(final DelegateContainer delegateContainer) {
+    public TraversableToArray(final DelegateContainer delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
@@ -46,7 +46,7 @@ implements ToArray<Item> {
 
         int index = 0;
 
-        for (final Item item : delegateContainer)
+        for (final Item item : iterable(delegateContainer))
             targetArray[index++] = item;
 
         return targetArray;

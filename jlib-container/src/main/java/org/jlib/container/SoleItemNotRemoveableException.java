@@ -22,7 +22,6 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link InvalidContainerStateException} thrown when trying to retain the sole

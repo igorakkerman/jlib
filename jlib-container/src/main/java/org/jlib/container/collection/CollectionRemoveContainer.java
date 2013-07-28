@@ -216,7 +216,7 @@ implements RemoveItemByItem<Item>,
 //    }
 //
 //    @Override
-//    public void retain(final Iterable<? extends Item> items)
+//    public void retain(final Traversable<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        ContainerUtility.retain(this, items);
 //    }
@@ -249,6 +249,6 @@ implements RemoveItemByItem<Item>,
 //    @Override
 //    public RemoveTraverser<Item> createTraverser()
 //    throws InvalidContainerDelegateStateException {
-//        return new RemoveIterableTraverser<>(getDelegateCollection());
+//        return new RemoveTraversableTraverser<>(getDelegateCollection());
 //    }
 }

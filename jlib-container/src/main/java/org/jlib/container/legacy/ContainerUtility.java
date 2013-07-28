@@ -30,18 +30,16 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.NoItemToRemoveException;
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.RemoveTraverser;
 
-import org.jlib.container.ObservedRemoveMany;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.ItemToRemoveNotContainedException;
+import org.jlib.container.ObservedRemoveMany;
 
 import static java.util.Arrays.asList;
 import static org.jlib.container.collection.CollectionUtility.toSet;
@@ -114,7 +112,7 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items provided by the specified {@link Iterable} from the
+     * Removes all Items provided by the specified {@link Traversable} from the
      * specified {@link RetainItemsByTraversable}.
      *
      * @param <Item>
@@ -124,7 +122,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to retain
+     *        {@link Traversable} providing the Items to retain
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -133,7 +131,7 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void remove(final RemoveItemByItem<Item> container, final Iterable<? extends Item> items)
+    public static <Item> void remove(final RemoveItemByItem<Item> container, final Traversable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         for (final Item item : items)
             container.removeItem(item);
@@ -150,7 +148,7 @@ public final class ContainerUtility {
      *        {@link RetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to retain
+     *        {@link Traversable} providing the Items to retain
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -171,7 +169,7 @@ public final class ContainerUtility {
     }
 
     /**
-     * Removes all Items provided by the specified {@link Iterable} from the
+     * Removes all Items provided by the specified {@link Traversable} from the
      * specified {@link ObservedRetainItemsByTraversable}.
      *
      * @param <Item>
@@ -181,7 +179,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Items
      *
      * @param items
-     *        {@link Iterable} providing the Items to retain
+     *        {@link Traversable} providing the Items to retain
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -200,7 +198,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final ObservedRemoveMany<Item> container, final Iterable<? extends Item> items,
+    public static <Item> void remove(final ObservedRemoveMany<Item> container, final Traversable<? extends Item> items,
                                      final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         for (final Item item : items)
@@ -221,7 +219,7 @@ public final class ContainerUtility {
      *        array of {@link ValueObserver} instances attending the removal
      *
      * @param items
-     *        {@link Iterable} providing the Items to retain
+     *        {@link Traversable} providing the Items to retain
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -243,7 +241,7 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items from the specified {@link RemoveTraversable} <em>except</em> the Items provided by the
-     * specified {@link Iterable}.
+     * specified {@link Traversable}.
      *
      * @param <Item>
      *        type of the items held in the {@link TraversableContainer}
@@ -252,7 +250,7 @@ public final class ContainerUtility {
      *        {@link RetainItemsByTraversable} containing the Items to retain
      *
      * @param items
-     *        {@link Iterable} providing the Items to remove
+     *        {@link Traversable} providing the Items to remove
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one {@link Item} in {@code items}
@@ -260,7 +258,7 @@ public final class ContainerUtility {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public static <Item> void retain(final RemoveTraversable<Item> traversable, final Iterable<? extends Item> items)
+    public static <Item> void retain(final RemoveTraversable<Item> traversable, final Traversable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         final Set<Item> retainedItemsSet = toSet(items);
 
@@ -333,7 +331,7 @@ public final class ContainerUtility {
 
     /**
      * Removes all Items from the specified {@link ObservedRetainItemsByTraversable}
-     * <em>except</em> the Items provided by the specified {@link Iterable}.
+     * <em>except</em> the Items provided by the specified {@link Traversable}.
      *
      * @param <Item>
      *        type of the items held in the {@link TraversableContainer}
@@ -342,7 +340,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByTraversable} containing the Items to retain
      *
      * @param items
-     *        {@link Iterable} providing the Items to remove
+     *        {@link Traversable} providing the Items to remove
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -360,7 +358,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     public static <Item> void retain(final ObservedRetainItemsByTraversable<Item> container,
-                                     final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
+                                     final Traversable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
 
         final Set<Item> retainedItemsSet = toSet(items);
@@ -516,7 +514,7 @@ public final class ContainerUtility {
      * {@link TraversableContainer} instances.
      *
      * @param containers
-     *        array of {@link Iterable} instances providing the Items
+     *        array of {@link Traversable} instances providing the Items
      *
      * @return integer specifying the total number of Items
      */

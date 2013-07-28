@@ -24,8 +24,6 @@ package org.jlib.container;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.InvalidContainerStateException;
-
 /**
  * Ability to retain <em>all</em> Items;
  * the retain operations can be attended by {@link ValueObserver} instances.

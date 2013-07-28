@@ -93,7 +93,7 @@ implements Sequence<Item> */ {
 //    }
 //
 ////    @Override
-//    public boolean containsEqualItems(final Iterable<Item> collection) {
+//    public boolean containsEqualItems(final Traversable<Item> collection) {
 //        return false; // delegateSequence.containsEqualItems(collection);
 //    }
 //

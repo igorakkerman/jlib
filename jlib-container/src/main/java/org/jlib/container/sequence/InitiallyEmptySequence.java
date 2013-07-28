@@ -25,16 +25,14 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.ObservedReplaceTraversable;
 import org.jlib.core.traverser.Traversable;
 
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.ItemToRemoveNotContainedException;
-import org.jlib.container.ObservedRemoveMany;
 import org.jlib.container.ObservedRemoveAll;
+import org.jlib.container.ObservedRemoveMany;
 import org.jlib.container.legacy.AbstractEmpty;
 
 /**
@@ -79,7 +77,7 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void remove(final Iterable<? extends Item> items)
+    public void remove(final Traversable<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
@@ -148,7 +146,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final Traversable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }

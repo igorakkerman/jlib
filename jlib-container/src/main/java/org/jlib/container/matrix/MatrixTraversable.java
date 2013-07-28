@@ -22,7 +22,7 @@
 package org.jlib.container.matrix;
 
 /**
- * {@link Iterable} providing a {@link MatrixTraverser} traversing the Items of
+ * {@link Traversable} providing a {@link MatrixTraverser} traversing the Items of
  * a {@link Matrix}.
  *
  * @param <Entry>

@@ -201,7 +201,7 @@ implements ObservedAppendSequence<Item> */ {
 //     * {@link ObservedAppendSequence}.
 //     *
 //     * @param items
-//     *        {@link Iterable} providing the Items to add
+//     *        {@link Traversable} providing the Items to add
 //     *
 //     * @param addedItemsCount
 //     *        integer specifying the number of added Items; {@code items} must
@@ -216,7 +216,7 @@ implements ObservedAppendSequence<Item> */ {
 //     *         {@link RuntimeException}
 //     */
 //    @SafeVarargs
-//    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
+//    private final void append(final Traversable<? extends Item> items, final int addedItemsCount,
 //                              final ValueObserver<Item>... observers) {
 //        getCapacityStrategy().ensureTailCapacity(addedItemsCount);
 //

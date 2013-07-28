@@ -32,7 +32,7 @@ import org.jlib.container.sequence.Sequence;
  * @author Igor Akkerman
  */
 public abstract class AbstractInitializeableIndexSequence<Item>
-/*extends AbstractIndexSequence<Item> */{
+/*extends AbstractIndexSequence<Item> */ {
 
 //    /**
 //     * Creates a new uninitialized {@link AbstractInitializeableIndexSequence}
@@ -183,7 +183,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 ////            throw new InvalidStoredItemsCountException(this, items.getCount(),
 ////                                                       "{0}: items.getCount() == {1} != {2} == getCount()",
 ////                                                       getCount());
-//        storeItems((Iterable<? extends Item>) items);
+//        storeItems((Traversable<? extends Item>) items);
 //    }
 //
 //    /**
@@ -201,7 +201,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 ////            throw new InvalidStoredItemsCountException(this, items.size(),
 ////                                                       "{0}: items.size() == {1} != {2} == getCount()",
 ////                                                       getCount());
-//        storeItems((Iterable<? extends Item>) items);
+//        storeItems((Traversable<? extends Item>) items);
 //    }
 //
 //    /**
@@ -228,9 +228,9 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     * {@link AbstractInitializeableIndexSequence}.
 //     *
 //     * @param items
-//     *        {@link Iterable} providing Items to store
+//     *        {@link Traversable} providing Items to store
 //     */
-//    protected void storeItems(final Iterable<? extends Item> items) {
+//    protected void storeItems(final Traversable<? extends Item> items) {
 //        int index = getFirstIndex();
 //
 //        for (final Item item : items)

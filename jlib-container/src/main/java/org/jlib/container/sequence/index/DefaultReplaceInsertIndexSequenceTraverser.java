@@ -22,13 +22,11 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.sequence.InsertSequenceTraverser;
 import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
@@ -112,7 +110,7 @@ implements ObservedInsertSequenceTraverser<Item>,
 //                    throw new OperatorException(message("insert: {0}", item), exception);
 //                }
 //            }
-//        }, item, concatenated(traverserInsertObservers, traversable(operationObservers)).toArray());
+//        }, item, concatenated(traverserInsertObservers, iterable(operationObservers)).toArray());
     }
 
     @Override

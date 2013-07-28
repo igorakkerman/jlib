@@ -22,15 +22,13 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.NoItemToReplaceException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 import org.jlib.core.value.ValueNotAccessibleException;
 
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -125,6 +123,6 @@ implements ObservedReplaceTraverser<Item>,
 //                }
 //            }
 //        }, /*
-//     */ newItem, concatenated(traverserReplaceObservers, traversable(operationObservers)).toArray());
+//     */ newItem, concatenated(traverserReplaceObservers, iterable(operationObservers)).toArray());
     }
 }

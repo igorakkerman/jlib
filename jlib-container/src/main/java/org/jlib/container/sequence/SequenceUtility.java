@@ -25,11 +25,10 @@ import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-
-import org.jlib.container.InvalidContainerArgumentException;
-
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraversable;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.
@@ -80,7 +79,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Appends all Items provided by the specified {@link Iterable} to the
+     * Appends all Items provided by the specified {@link Traversable} to the
      * specified {@link AppendSequence}.
      *
      * @param <Item>
@@ -90,13 +89,13 @@ public final class SequenceUtility {
      *        {@link AppendSequence} to which the Items are appended
      *
      * @param items
-     *        {@link Iterable} providing the Items to append
+     *        {@link Traversable} providing the Items to append
      *
      * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
-    public static <Item> void append(final AppendSequence<Item> sequence, final Iterable<? extends Item> items) {
+    public static <Item> void append(final AppendSequence<Item> sequence, final Traversable<? extends Item> items) {
         for (final Item item : items)
             sequence.append(item);
     }
@@ -112,7 +111,7 @@ public final class SequenceUtility {
      *        {@link AppendSequence} to which the Items are appended
      *
      * @param items
-     *        {@link Iterable} providing the Items to append
+     *        {@link Traversable} providing the Items to append
      *
      * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
@@ -153,7 +152,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Appends all Items provided by the specified {@link Iterable} to the
+     * Appends all Items provided by the specified {@link Traversable} to the
      * specified {@link AppendSequence}.
      *
      * @param <Item>
@@ -163,7 +162,7 @@ public final class SequenceUtility {
      *        {@link ObservedAppendSequence} to which the Items are appended
      *
      * @param items
-     *        {@link Iterable} providing the Items to append
+     *        {@link Traversable} providing the Items to append
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -174,8 +173,8 @@ public final class SequenceUtility {
      *         being appended to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Iterable<? extends Item> items,
-                                     final ValueObserver<Item>... observers) {
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence,
+                                     final Traversable<? extends Item> items, final ValueObserver<Item>... observers) {
         for (final Item item : items)
             sequence.append(item, observers);
     }
@@ -191,7 +190,7 @@ public final class SequenceUtility {
      *        {@link ObservedAppendSequence} to which the Items are appended
      *
      * @param items
-     *        {@link Iterable} providing the Items to append
+     *        {@link Traversable} providing the Items to append
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
@@ -230,7 +229,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Prepends all Items provided by the specified {@link Iterable} to the
+     * Prepends all Items provided by the specified {@link Traversable} to the
      * specified {@link PrependSequence}.
      *
      * @param <Item>
@@ -240,13 +239,13 @@ public final class SequenceUtility {
      *        {@link PrependSequence} to which the Items are prepended
      *
      * @param items
-     *        {@link Iterable} providing the Items to prepend
+     *        {@link Traversable} providing the Items to prepend
      *
      * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
-    public static <Item> void prepend(final PrependSequence<Item> sequence, final Iterable<? extends Item> items) {
+    public static <Item> void prepend(final PrependSequence<Item> sequence, final Traversable<? extends Item> items) {
         for (final Item item : items)
             sequence.prepend(item);
     }
@@ -262,7 +261,7 @@ public final class SequenceUtility {
      *        {@link PrependSequence} to which the Items are prepended
      *
      * @param items
-     *        {@link Iterable} providing the Items to prepend
+     *        {@link Traversable} providing the Items to prepend
      *
      * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
@@ -303,7 +302,7 @@ public final class SequenceUtility {
     }
 
     /**
-     * Prepends all Items provided by the specified {@link Iterable} to the
+     * Prepends all Items provided by the specified {@link Traversable} to the
      * specified {@link PrependSequence}.
      *
      * @param <Item>
@@ -313,7 +312,7 @@ public final class SequenceUtility {
      *        {@link ObservedPrependSequence} to which the Items are prepended
      *
      * @param items
-     *        {@link Iterable} providing the Items to prepend
+     *        {@link Traversable} providing the Items to prepend
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -325,7 +324,7 @@ public final class SequenceUtility {
      */
     @SafeVarargs
     public static <Item> void prepend(final ObservedPrependSequence<Item> sequence,
-                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
+                                      final Traversable<? extends Item> items, final ValueObserver<Item>... observers) {
         for (final Item item : items)
             sequence.prepend(item, observers);
     }
@@ -341,7 +340,7 @@ public final class SequenceUtility {
      *        {@link ObservedPrependSequence} to which the Items are prepended
      *
      * @param items
-     *        {@link Iterable} providing the Items to prepend
+     *        {@link Traversable} providing the Items to prepend
      *
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation

@@ -21,12 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.TraversableUtility;
-
-import org.jlib.container.IsEmpty;
 
 public class IsEmptyFromTraverser<Item>
 implements IsEmpty<Item> {

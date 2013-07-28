@@ -21,11 +21,11 @@
 
 package org.jlib.container.containsadapter;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.TraversableUtility;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 public class IterativeContainsAdapter<Item>
 extends ContainsAdapter<Item> {

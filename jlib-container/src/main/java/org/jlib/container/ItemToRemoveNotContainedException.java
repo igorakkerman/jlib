@@ -21,8 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerArgumentException;
-
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**

@@ -24,6 +24,7 @@ package org.jlib.container.legacy;
 import java.io.Serializable;
 
 import org.jlib.core.language.ItemOperationStrategy;
+
 import org.jlib.container.sequence.Sequence;
 import org.jlib.container.sequence.index.ReplaceIndexSequence;
 
@@ -40,7 +41,7 @@ extends AbstractEmpty<Item>
 implements Serializable,
            ItemOperationStrategy<Item>,
            org.jlib.core.traverser.Traversable<Item>,
-           Iterable<Item> {
+           Traversable<Item> {
 
     private static final long serialVersionUID = 8790659392867781894L;
 

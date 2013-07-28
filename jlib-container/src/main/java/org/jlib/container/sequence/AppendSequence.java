@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import java.util.Collection;
-
 import org.jlib.container.InvalidContainerArgumentException;
 
 /**
@@ -52,29 +50,8 @@ extends Sequence<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public void append(TraversableContainer<? extends Item> items)
+    public void append(ContainsTraversable<? extends Item> items)
     throws InvalidContainerArgumentException;
 
-    /**
-     * @throws InvalidContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
-     *
-     * @throws InvalidContainerStateException
-     *         if an error occurs during the operation
-     */
-    public void append(Collection<? extends Item> items)
-    throws InvalidContainerArgumentException;
 
-    /**
-     * @throws InvalidContainerArgumentException
-     *         if some property of an Item in {@code items} prevents it from
-     *         being appended, for instance, if it is already contained
-     *
-     * @throws InvalidContainerStateException
-     *         if an error occurs during the operation
-     */
-    @SuppressWarnings("unchecked")
-    public void append(Item... items)
-    throws InvalidContainerArgumentException;
 }

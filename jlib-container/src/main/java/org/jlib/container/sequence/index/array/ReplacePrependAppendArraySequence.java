@@ -200,7 +200,7 @@ implements ObservedPrependSequence<Item> */ {
 //    }
 //
 //    // FIXME: implement
-//    private void prepend(final Iterable<? extends Item> items, final int prependedItemsCount) {
+//    private void prepend(final Traversable<? extends Item> items, final int prependedItemsCount) {
 //        ensureCapacityWithHole(getCount() + prependedItemsCount, 0, prependedItemsCount);
 //
 //        int itemArrayIndex = 0;
@@ -216,7 +216,7 @@ implements ObservedPrependSequence<Item> */ {
 //     * {@link ObservedPrependSequence}.
 //     *
 //     * @param items
-//     *        {@link Iterable} providing the Items to add
+//     *        {@link Traversable} providing the Items to add
 //     *
 //     * @param prependedItemsCount
 //     *        integer specifying the number of added Items; {@code items} must
@@ -231,7 +231,7 @@ implements ObservedPrependSequence<Item> */ {
 //     *         {@link RuntimeException}
 //     */
 //    @SafeVarargs
-//    private final void prepend(final Iterable<? extends Item> items, final int prependedItemsCount,
+//    private final void prepend(final Traversable<? extends Item> items, final int prependedItemsCount,
 //                               final ValueObserver<Item>... observers) {
 //        ensureCapacityWithHole(getCount() + prependedItemsCount, 0, prependedItemsCount);
 //

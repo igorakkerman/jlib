@@ -36,7 +36,7 @@ package org.jlib.container.binaryrelation;
  */
 public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
 /*extends HashAddBinaryRelation<LeftValue, RightValue>
-implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
+implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
 //
 //    /**
 //     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
@@ -135,7 +135,7 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
 //    }
 //
 //    @Override
-//    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.retain(this, pairs);
 //    }
 //

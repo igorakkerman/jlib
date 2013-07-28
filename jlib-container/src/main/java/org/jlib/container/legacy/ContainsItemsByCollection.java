@@ -23,10 +23,10 @@ package org.jlib.container.legacy;
 
 import java.util.Collection;
 
+import org.jlib.core.language.ItemOperationStrategy;
+
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
-
-import org.jlib.core.language.ItemOperationStrategy;
 
 public interface ContainsItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {

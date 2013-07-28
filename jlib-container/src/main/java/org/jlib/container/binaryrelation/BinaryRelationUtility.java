@@ -27,7 +27,6 @@ import java.util.Set;
 import org.jlib.core.array.ArrayUtility;
 
 import org.jlib.container.InvalidContainerArgumentException;
-
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
 import static org.jlib.container.collection.CollectionUtility.toSet;
@@ -80,7 +79,7 @@ public class BinaryRelationUtility {
     }
 
     /**
-     * Adds all {@link Pair}s provided by the specified {@link Iterable} to the specified {@link AddBinaryRelation}.
+     * Adds all {@link Pair}s provided by the specified {@link Traversable} to the specified {@link AddBinaryRelation}.
      *
      * @param <LeftValue>
      *        type of the left value of the {@link Pair}
@@ -89,7 +88,7 @@ public class BinaryRelationUtility {
      *        type of the right value of the {@link Pair}
      *
      * @param <Pairs>
-     *        type of the {@link Iterable} containing the {@link Pair}
+     *        type of the {@link Traversable} containing the {@link Pair}
      *        items
      *
      * @param binaryRelation
@@ -97,7 +96,7 @@ public class BinaryRelationUtility {
      *        added
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to add
+     *        {@link Traversable} providing the Pairs to add
      *
      * @throws PairAlreadyContainedException
      *         if {@code binaryRelation} already containsItem one Pair in
@@ -108,7 +107,7 @@ public class BinaryRelationUtility {
      *         prevents it from being added to {@code binaryRelation}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public static <LeftValue, RightValue, Pairs extends Iterable<? extends Pair<LeftValue, RightValue>>> /*
+    public static <LeftValue, RightValue, Pairs extends Traversable<? extends Pair<LeftValue, RightValue>>> /*
                */ void add(final AddBinaryRelation<LeftValue, RightValue> binaryRelation, final Pairs pairs) {
 
         for (final Pair<LeftValue, RightValue> pair : pairs)
@@ -131,7 +130,7 @@ public class BinaryRelationUtility {
      *        added
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to add
+     *        {@link Traversable} providing the Pairs to add
      *
      * @throws PairAlreadyContainedException
      *         if {@code binaryRelation} already containsItem one Pair in
@@ -164,11 +163,11 @@ public class BinaryRelationUtility {
      *        added
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to add
+     *        {@link Traversable} providing the Pairs to add
      */
     public static <LeftValue, RightValue> /*
                */ void ensureContained(final AddBinaryRelation<LeftValue, RightValue> binaryRelation,
-                                       final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+                                       final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
 
         for (final Pair<LeftValue, RightValue> newPair : pairs)
             binaryRelation.ensureContained(newPair);
@@ -190,7 +189,7 @@ public class BinaryRelationUtility {
      *        added
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to add
+     *        {@link Traversable} providing the Pairs to add
      */
     @SafeVarargs
     public static <LeftValue, RightValue> void ensureContained(
@@ -200,7 +199,7 @@ public class BinaryRelationUtility {
     }
 
     /**
-     * Removes all Pairs provided by the specified {@link Iterable} from
+     * Removes all Pairs provided by the specified {@link Traversable} from
      * the specified {@link RetainItemsByTraversableBinaryRelation}.
      *
      * @param <LeftValue>
@@ -213,11 +212,11 @@ public class BinaryRelationUtility {
      *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to retain
+     *        {@link Traversable} providing the Pairs to retain
      */
     public static <LeftValue, RightValue> /*
                */ void remove(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
-                              final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+                              final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
 
 //        for (final Pair<LeftValue, RightValue> pair : pairs)
 //            binaryRelation.retain(pair);
@@ -237,7 +236,7 @@ public class BinaryRelationUtility {
      *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to retain
+     *        {@link Traversable} providing the Pairs to retain
      */
     @SafeVarargs
     public static <LeftValue, RightValue> void remove(
@@ -248,7 +247,7 @@ public class BinaryRelationUtility {
 
     /**
      * Removes all Pairs from the specified {@link AddBinaryRelation} <em>except</em> the Pairs provided by the
-     * specified {@link Iterable}.
+     * specified {@link Traversable}.
      *
      * @param <LeftValue>
      *        type of the left value of the {@link Pair}
@@ -260,11 +259,11 @@ public class BinaryRelationUtility {
      *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs to retain
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to remove
+     *        {@link Traversable} providing the Pairs to remove
      */
     public static <LeftValue, RightValue> /*
                */ void retain(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
-                              final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+                              final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
 
         final Set<Pair<LeftValue, RightValue>> retainedPairsSet = toSet(pairs);
 

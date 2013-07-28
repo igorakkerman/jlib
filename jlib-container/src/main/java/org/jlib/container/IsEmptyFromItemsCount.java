@@ -21,11 +21,6 @@
 
 package org.jlib.container;
 
-import org.jlib.container.InvalidContainerStateException;
-
-import org.jlib.container.GetCount;
-import org.jlib.container.IsEmpty;
-
 public class IsEmptyFromItemsCount<Item>
 implements IsEmpty<Item> {
 

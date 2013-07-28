@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -30,6 +28,8 @@ import org.jlib.core.operator.OperatorException;
 
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link IndexSequence} utility.

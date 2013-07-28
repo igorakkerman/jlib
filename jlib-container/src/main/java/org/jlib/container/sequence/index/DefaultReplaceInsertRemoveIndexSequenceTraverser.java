@@ -110,7 +110,7 @@ implements ObservedInsertSequenceTraverser<Item> {
 //                    throw new OperatorException(message("retain()"), exception);
 //                }
 //            }
-//        }, concatenated(traverserRemoveObservers, traversable(operationObservers)).toArray());
+//        }, concatenated(traverserRemoveObservers, iterable(operationObservers)).toArray());
 
     }
 

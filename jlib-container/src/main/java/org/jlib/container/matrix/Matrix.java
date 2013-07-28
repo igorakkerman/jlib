@@ -21,9 +21,8 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.core.traverser.Traverser;
-
 import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.traverser.Traverser;
 
 // @formatter:off
 
@@ -106,8 +105,8 @@ import org.jlib.core.language.ItemOperationStrategy;
  * <p>
  * <!-- TODO: update documentation --> A default algorithm of how this
  * ArrayMatrix is traversed by {@link Traverser Traversers} returned by
- * {@link #iterator()} can be defined specifying a default {@link Iterable} as
- * iterable provider.
+ * {@link #iterator()} can be defined specifying a default {@link Traversable} as
+ * traversable provider.
  * </p>
  *
  * @param <Entry>
@@ -120,7 +119,7 @@ public interface Matrix<Entry>
 extends MatrixTraversable<Entry>,
         ItemOperationStrategy<Entry>,
         org.jlib.core.traverser.Traversable<Entry>,
-        Iterable<Entry> {
+        Traversable<Entry> {
 
     /**
      * Returns the number of columns of this {@link Matrix}.

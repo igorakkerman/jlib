@@ -26,9 +26,7 @@ import java.util.Collection;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * Ability to retain Items; the retain operations can be attended by {@link ValueObserver}
@@ -64,7 +62,7 @@ extends ItemOperationStrategy<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsIterable containsIterable, ValueObserver<Item>... observers)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsTraversable containsTraversable, ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }
