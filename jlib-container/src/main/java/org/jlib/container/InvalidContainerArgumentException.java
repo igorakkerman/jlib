@@ -22,6 +22,7 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraverserStateException;
@@ -34,7 +35,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
  * @author Igor Akkerman
  */
 public class InvalidContainerArgumentException
-extends InvalidStateException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
