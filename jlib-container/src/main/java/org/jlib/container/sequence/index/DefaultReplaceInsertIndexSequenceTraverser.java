@@ -22,8 +22,10 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
@@ -96,7 +98,7 @@ implements ObservedInsertSequenceTraverser<Item>,
     @SafeVarargs
     @SuppressWarnings("ProhibitedExceptionDeclared")
     public final void insert(final Item item, final ValueObserver<Item>... operationObservers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
 //        ObserverUtility.operate(new HandledOperator() {
 //
 //            @Override
@@ -106,7 +108,7 @@ implements ObservedInsertSequenceTraverser<Item>,
 //                try {
 //                    insert(item);
 //                }
-//                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
 //                    throw new OperatorException(message("insert: {0}", item), exception);
 //                }
 //            }

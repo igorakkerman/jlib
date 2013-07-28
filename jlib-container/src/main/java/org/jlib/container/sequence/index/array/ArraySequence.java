@@ -33,7 +33,7 @@ import org.jlib.container.sequence.index.IndexSequence;
  * @author Igor Akkerman
  */
 public class ArraySequence<Item>
-/*implements IndexSequence<Item> */{
+/*implements IndexSequence<Item> */ {
 //    private LinearIndexStorage<Item> delegate;
 //
 //    @Override
@@ -93,37 +93,37 @@ public class ArraySequence<Item>
 //
 //    @Override
 //    public int getCount()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return 0;
 //    }
 //
 //    @Override
 //    public boolean isEmpty()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Item item)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final TraversableContainer<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Collection<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Item... items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //

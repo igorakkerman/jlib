@@ -21,7 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.TraversableUtility;
 
@@ -40,7 +41,7 @@ implements IsEmpty<Item> {
 
     @Override
     public boolean isEmpty()
-    throws InvalidTraversableStateException {
+    throws InvalidContainerStateException {
         return TraversableUtility.isEmpty(traversable);
     }
 }

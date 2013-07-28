@@ -3,8 +3,10 @@ package org.jlib.container.containsadapter;
 import java.util.Collection;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.Traversable;
 
 import org.jlib.container.ContainsSingle;
@@ -20,7 +22,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return suppliedItem.equals(item);
             }
         };
@@ -33,7 +35,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return items.contains(item);
             }
         };
@@ -50,7 +52,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return items.contains(item);
             }
         };

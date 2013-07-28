@@ -32,7 +32,7 @@ package org.jlib.container.sequence;
  */
 public class ForwardingSequence<Item>
 /*extends AutoCloneable
-implements Sequence<Item> */{
+implements Sequence<Item> */ {
 
 //    /** delegate {@link Sequence} */
 //    private Sequence<Item> delegateSequence;
@@ -77,13 +77,13 @@ implements Sequence<Item> */{
 //
 //    @Override
 //    public int getCount()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return delegateSequence.getCount();
 //    }
 //
 //    @Override
 //    public boolean isEmpty()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return delegateSequence.isEmpty();
 //    }
 //
@@ -99,38 +99,38 @@ implements Sequence<Item> */{
 //
 //    @Override
 //    public boolean containsItem(final Item item)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return delegateSequence.containsItem(item);
 //    }
 //
 //    @Override
 //    public boolean containsItem(final TraversableContainer<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return delegateSequence.containsItem(items);
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Collection<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return delegateSequence.containsItem(items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public boolean containsItem(final Item... items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return delegateSequence.containsItem(items);
 //    }
 //
 ////    @Override
 //    public List<Item> toSequentialList()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return null; // delegateSequence.toSequentialList();
 //    }
 //
 ////    @Override
 //    public Item[] toArray()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return null; // delegateSequence.toArray();
 //    }
 //

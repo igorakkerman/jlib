@@ -24,7 +24,8 @@ package org.jlib.container;
 import java.util.List;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerStateException;
 
 public interface ToSequentialList<Item>
 extends ItemOperationStrategy<Item> {
@@ -37,10 +38,9 @@ extends ItemOperationStrategy<Item> {
      * @return sequentially traversable {@link List} containing all of the Items
      *         of this {@link TraversableContainer}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public List<Item> toSequentialList()
-    throws InvalidTraversableStateException;
-
+    throws InvalidContainerStateException;
 }

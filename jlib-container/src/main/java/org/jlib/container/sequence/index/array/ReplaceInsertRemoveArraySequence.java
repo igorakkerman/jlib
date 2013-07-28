@@ -33,7 +33,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public class ReplaceInsertRemoveArraySequence<Item>
 /*extends ReplaceInsertRemoveFirstLastArraySequence<Item>
-implements ObservedReplaceIndexSequence<Item> */{
+implements ObservedReplaceIndexSequence<Item> */ {
 //
 //    /**
 //     * Creates a new uninitialized {@link ReplaceInsertRemoveArraySequence} with
@@ -157,41 +157,41 @@ implements ObservedReplaceIndexSequence<Item> */{
 //
 //    @Override
 //    public void remove(final TraversableContainer<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, items);
 //    }
 //
 //    @Override
 //    public void remove(final Collection<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void remove(final Item... items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, items);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
 //        ContainerUtility.remove(this, items, observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
 //        ContainerUtility.remove(this, items, observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void remove(final ValueObserver<Item>[] observers, final Item... items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
 //        ContainerUtility.remove(this, observers, items);
 //    }
 //

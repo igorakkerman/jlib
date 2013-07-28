@@ -22,16 +22,16 @@
 package org.jlib.container;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
- * {@link InvalidTraversableStateException} thrown when trying to retain the sole
+ * {@link InvalidContainerStateException} thrown when trying to retain the sole
  * Item of a {@link TraversableContainer} that may not be empty.
  *
  * @author Igor Akkerman
  */
 public class SoleItemNotRemoveableException
-extends InvalidTraversableStateException {
+extends InvalidContainerStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 7467942886021869121L;

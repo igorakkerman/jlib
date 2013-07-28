@@ -25,8 +25,10 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.ObservedReplaceTraversable;
 import org.jlib.core.traverser.Traversable;
 
@@ -73,99 +75,99 @@ implements Sequence<Item>,
     }
 
     public void remove(final Collection<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     public void remove(final Iterable<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     public void retain(final TraversableContainer<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     public void retain(final Traversable<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         // intentionally blank
     }
 
     public void retain(final Collection<? extends Item> items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
-    throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
+    throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException {
+    throws InvalidContainerStateException {
         // intentionally blank
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
     public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 

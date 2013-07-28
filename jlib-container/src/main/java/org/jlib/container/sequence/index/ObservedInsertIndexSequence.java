@@ -24,9 +24,11 @@ package org.jlib.container.sequence.index;
 import java.util.Collection;
 
 import org.jlib.container.sequence.InsertSequence;
+
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link IndexSequence} and {@link InsertSequence}.
@@ -56,16 +58,16 @@ extends InsertIndexSequence<Item> {
      * @throws InvalidSequenceIndexException
      *         if {@code index < getFirstIndex() || index > getLastIndex()}
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents the operation from
      *         being performed
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs performing the operation
      */
     @SuppressWarnings("unchecked")
     public void insert(int index, Item item, ValueObserver<Item>... observers)
-    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException;
+    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException;
 
     /**
      * Inserts the specified Items at the specified index of this

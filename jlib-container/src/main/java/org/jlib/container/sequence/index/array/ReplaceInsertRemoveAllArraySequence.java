@@ -33,7 +33,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public class ReplaceInsertRemoveAllArraySequence<Item>
 /*extends ReplaceInsertRemoveArraySequence<Item>
-implements ObservedRemoveAllSequence<Item> */{
+implements ObservedRemoveAllSequence<Item> */ {
 
 //    /**
 //     * Creates a new uninitialized {@link ReplaceInsertRemoveAllArraySequence}
@@ -147,14 +147,14 @@ implements ObservedRemoveAllSequence<Item> */{
 //
 //    @Override
 //    public void removeAll()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        ContainerUtility.removeAll(this);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void removeAll(final ValueObserver<Item>... observers)
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        ContainerUtility.removeAll(this, observers);
 //    }
 }

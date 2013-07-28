@@ -24,7 +24,8 @@ package org.jlib.container.binaryrelation;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
@@ -33,7 +34,7 @@ import org.jlib.core.traverser.InvalidTraversableArgumentException;
  * @author Igor Akkerman
  */
 public abstract class InvalidPairException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 6498242933289941100L;
@@ -78,7 +79,8 @@ extends InvalidTraversableArgumentException {
     @SuppressWarnings("TypeMayBeWeakened")
     protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
-                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message, final Exception cause) {
+                                Pair<LeftValue, RightValue> pair, final ExceptionMessage message,
+                                final Exception cause) {
 
         super(binaryRelation, message.with(pair), cause);
     }

@@ -22,16 +22,17 @@
 package org.jlib.container.collection;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when an argument caused an
+ * {@link InvalidContainerArgumentException} thrown when an argument caused an
  * error in a delegate {@link Object}.
  *
  * @author Igor Akkerman
  */
 public class InvalidContainerDelegateArgumentException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;

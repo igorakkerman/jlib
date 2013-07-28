@@ -37,7 +37,7 @@ package org.jlib.container.sequence.index;
  */
 public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequence<Item>>
 /*implements ObservedReplaceIndexSequence<Item>,
-           ContainsSingle<Item> */{
+           ContainsSingle<Item> */ {
 
 //    /**
 //     * Creates a new {@link SubReplaceIndexSequence}.
@@ -71,7 +71,7 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //
 //    @Override
 //    public void replace(final int index, final Item newItem)
-//    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().replace(index, newItem);
@@ -124,7 +124,7 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void replace(final int index, final Item newItem, final ValueObserver<Item>... observers)
-//    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().replace(index, newItem, observers);
@@ -143,37 +143,37 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //
 //    @Override
 //    public int getCount()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return 0;
 //    }
 //
 //    @Override
 //    public boolean isEmpty()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Item item)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final TraversableContainer<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Collection<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Item... items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //

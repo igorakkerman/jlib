@@ -23,7 +23,8 @@ package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * Ability to retain <em>all</em> Items;
@@ -44,10 +45,10 @@ extends ItemOperationStrategy<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void removeAll(ValueObserver<Item>... observers)
-    throws InvalidTraversableStateException;
+    throws InvalidContainerStateException;
 }

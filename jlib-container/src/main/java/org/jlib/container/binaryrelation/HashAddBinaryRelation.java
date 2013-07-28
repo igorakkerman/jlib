@@ -23,7 +23,7 @@ package org.jlib.container.binaryrelation;
 
 import java.util.Collection;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right
@@ -119,7 +119,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void addPairs(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         BinaryRelationUtility.add(this, pairs);
     }
 

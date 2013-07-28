@@ -21,7 +21,7 @@
 
 package org.jlib.container.binaryrelation;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.container.InvalidContainerArgumentException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 import static org.jlib.core.language.ExceptionMessageUtility.namedObject;
@@ -33,7 +33,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.namedObject;
  * @author Igor Akkerman
  */
 public class NoSuchLeftValueException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 723559454379105926L;

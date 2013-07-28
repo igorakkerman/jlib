@@ -24,8 +24,9 @@ package org.jlib.container.sequence;
 import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link PrependSequence} to which Items can be prepended.
@@ -39,16 +40,16 @@ public interface ObservedPrependSequence<Item>
 extends PrependSequence<Item> {
 
     /**
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents it from being
      *         prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
     public void prepend(Item item, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link TraversableContainer} to this
@@ -61,11 +62,11 @@ extends PrependSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -74,7 +75,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**
      * Prepends all Items contained by the specified {@link Collection} to this
@@ -87,11 +88,11 @@ extends PrependSequence<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -100,7 +101,7 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(Collection<? extends Item> items, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**
      * Prepends all specified Items to this {@link ObservedPrependSequence}.
@@ -111,11 +112,11 @@ extends PrependSequence<Item> {
      * @param items
      *        comma separated sequence of Items to prepend
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of an Item in {@code items} prevents it from
      *         being prepended, for instance, if it is already contained
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -124,5 +125,5 @@ extends PrependSequence<Item> {
      */
     @SuppressWarnings("unchecked")
     public void prepend(ValueObserver<Item>[] observers, Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 }

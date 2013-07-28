@@ -22,7 +22,8 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerStateException;
 
 public interface IsEmpty<Item>
 extends ItemOperationStrategy<Item> {
@@ -33,9 +34,9 @@ extends ItemOperationStrategy<Item> {
      * @return {@code true} if this {@link TraversableContainer} containsItem no Items;
      *         {@code false} otherwise
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public boolean isEmpty()
-    throws InvalidTraversableStateException;
+    throws InvalidContainerStateException;
 }

@@ -33,7 +33,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public class ReplaceInsertArraySequence<Item>
 /*extends ReplacePrependAppendArraySequence<Item>
-implements ObservedReplaceInsertIndexSequence<Item> */{
+implements ObservedReplaceInsertIndexSequence<Item> */ {
 
 //    /**
 //     * Creates a new uninitialized {@link ReplaceInsertArraySequence} with the
@@ -169,7 +169,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */{
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-//    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
 //        insert(index, singleton(item), 1, observers);
 //    }
 //

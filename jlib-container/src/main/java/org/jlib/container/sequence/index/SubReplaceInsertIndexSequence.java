@@ -37,7 +37,7 @@ package org.jlib.container.sequence.index;
  */
 public class SubReplaceInsertIndexSequence<Item, BaseSequence extends ObservedReplaceIndexSequence<Item>/* & ObservedInsertIndexSequence<Item>*/>
 /*extends SubReplaceIndexSequence<Item, BaseSequence>
-implements ObservedInsertIndexSequence<Item> */{
+implements ObservedInsertIndexSequence<Item> */ {
 
 //    /**
 //     * Creates a new {@link SubReplaceInsertIndexSequence}.
@@ -112,7 +112,7 @@ implements ObservedInsertIndexSequence<Item> */{
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public void insert(final int index, final Item item, final ValueObserver<Item>... observers)
-//    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().insert(index, item, observers);

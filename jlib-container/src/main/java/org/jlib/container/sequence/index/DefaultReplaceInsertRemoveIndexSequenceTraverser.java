@@ -42,8 +42,7 @@ import org.jlib.container.sequence.Sequence;
  */
 public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
-implements ObservedInsertSequenceTraverser<Item>
-{
+implements ObservedInsertSequenceTraverser<Item> {
 
     /** retain {@link ValueObserver} items */
 //    private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();
@@ -82,7 +81,7 @@ implements ObservedInsertSequenceTraverser<Item>
         super(sequence, initialNextItemIndex);
     }
 
-//    @Override
+    //    @Override
     public void remove()
     throws NoItemToRemoveException {
 //        try {
@@ -95,7 +94,7 @@ implements ObservedInsertSequenceTraverser<Item>
 //        }
     }
 
-//    @Override
+    //    @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... operationObservers)
     throws NoItemToRemoveException, ValueObserverException, RuntimeException {
@@ -107,7 +106,7 @@ implements ObservedInsertSequenceTraverser<Item>
 //                try {
 //                    retain();
 //                }
-//                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
 //                    throw new OperatorException(message("retain()"), exception);
 //                }
 //            }
@@ -115,7 +114,7 @@ implements ObservedInsertSequenceTraverser<Item>
 
     }
 
-//    @Override
+    //    @Override
     public final void addRemoveObserver(final ValueObserver<Item> removeObserver) {
 //        traverserRemoveObservers.append(removeObserver);
     }

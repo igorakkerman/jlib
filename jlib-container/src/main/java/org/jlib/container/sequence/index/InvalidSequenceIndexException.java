@@ -22,16 +22,17 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when a {@link IndexSequence}
+ * {@link InvalidContainerArgumentException} thrown when a {@link IndexSequence}
  * is accessed with an invalid index.
  *
  * @author Igor Akkerman
  */
 public class InvalidSequenceIndexException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1501618255867836784L;

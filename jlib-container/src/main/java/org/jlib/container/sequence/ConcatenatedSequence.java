@@ -31,7 +31,7 @@ package org.jlib.container.sequence;
  * @author Igor Akkerman
  */
 public class ConcatenatedSequence<Item>
-/*extends AbstractSequence<Item> */{
+/*extends AbstractSequence<Item> */ {
 
 //    /** array of concatenated {@link TwoWayTraversable} items */
 //    private TwoWayTraversable<Item>[] traversables;
@@ -65,7 +65,7 @@ public class ConcatenatedSequence<Item>
 //
 //    @Override
 //    public final int getCount()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return itemsCountHolder.getValue();
 //    }
 //

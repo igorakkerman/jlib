@@ -22,8 +22,6 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
 
 public interface ContainsMany<Item>
 extends ItemOperationStrategy<Item> {
@@ -37,14 +35,14 @@ extends ItemOperationStrategy<Item> {
      * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
      *         {@code false} otherwise
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ boolean contains(ContainsIterable items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

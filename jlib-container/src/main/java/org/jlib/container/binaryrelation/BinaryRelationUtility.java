@@ -25,7 +25,8 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
@@ -70,7 +71,7 @@ public class BinaryRelationUtility {
     public static <LeftValue, RightValue> /*
                */ void associate(final AddBinaryRelation<LeftValue, RightValue> binaryRelation,
                                  final Pair<LeftValue, RightValue> pair)
-    throws PairAlreadyContainedException, InvalidTraversableArgumentException {
+    throws PairAlreadyContainedException, InvalidContainerArgumentException {
 
 //        if (binaryRelation.containsItem(pair))
 //            throw new PairAlreadyContainedException(binaryRelation, pair);
@@ -239,8 +240,9 @@ public class BinaryRelationUtility {
      *        {@link Iterable} providing the Pairs to retain
      */
     @SafeVarargs
-    public static <LeftValue, RightValue> void remove(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
-                                                      final Pair<LeftValue, RightValue>... pairs) {
+    public static <LeftValue, RightValue> void remove(
+                                                     final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
+                                                     final Pair<LeftValue, RightValue>... pairs) {
         remove(binaryRelation, ArrayUtility.iterable(pairs));
     }
 
@@ -290,8 +292,9 @@ public class BinaryRelationUtility {
      * @param pairs
      *        {@link Collection} containing the Pairs to remove
      */
-    public static <LeftValue, RightValue> void retain(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
-                                                      final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+    public static <LeftValue, RightValue> void retain(
+                                                     final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
+                                                     final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
 //        final RemoveTraverser<Pair<LeftValue, RightValue>> pairsTraverser = binaryRelation.createTraverser();
 
 //        while (pairsTraverser.hasNextItem())

@@ -37,7 +37,7 @@ import java.util.Collection;
 public class CollectionRemoveContainer<Item>
 /*extends CollectionOperation<Item>
 implements RemoveItemByItem<Item>,
-           RemoveAll<Item> */{
+           RemoveAll<Item> */ {
 //
 //    /**
 //     * Creates a new {@link CollectionRemoveContainer} backed by the specified
@@ -229,7 +229,7 @@ implements RemoveItemByItem<Item>,
 //
 //    @Override
 //    public void remove(final Traversable<? extends Item> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, iterable(items));
 //    }
 //

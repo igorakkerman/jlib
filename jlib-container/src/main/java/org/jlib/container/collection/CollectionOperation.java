@@ -24,8 +24,9 @@ package org.jlib.container.collection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
@@ -69,7 +70,7 @@ implements ItemOperationStrategy<Item>,
 
     @Override
     public boolean isEmpty()
-    throws InvalidTraversableStateException {
+    throws InvalidContainerStateException {
         return false;
     }
 
@@ -95,7 +96,7 @@ implements ItemOperationStrategy<Item>,
     }
 
     public boolean contains(final TraversableContainer<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 
@@ -105,7 +106,7 @@ implements ItemOperationStrategy<Item>,
     }
 
     public boolean contains(final Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 

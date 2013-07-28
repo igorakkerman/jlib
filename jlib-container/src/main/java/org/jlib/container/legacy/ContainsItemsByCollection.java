@@ -23,8 +23,8 @@ package org.jlib.container.legacy;
 
 import java.util.Collection;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
@@ -41,13 +41,13 @@ extends ItemOperationStrategy<Item> {
      * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         item in {@code items}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     boolean containsItems(Collection<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

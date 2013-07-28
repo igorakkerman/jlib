@@ -21,8 +21,9 @@
 
 package org.jlib.container.containsadapter;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.Traversable;
 import org.jlib.core.traverser.TraversableUtility;
 
@@ -35,7 +36,7 @@ extends ContainsAdapter<Item> {
 
     @Override
     public final boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         return TraversableUtility.contains(getItems(), item);
     }

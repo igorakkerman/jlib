@@ -22,8 +22,9 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
@@ -47,14 +48,14 @@ extends ItemOperationStrategy<Item> {
      *         if this {@link Retain} does not contain
      *         {@code Item}
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void retain(ContainsIterable items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

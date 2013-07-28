@@ -25,7 +25,9 @@ import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraversable;
 
@@ -68,12 +70,12 @@ public final class SequenceUtility {
      * @param item
      *        appended Item
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     public static <Item> void append(final AppendSequence<Item> sequence, final Item item)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         sequence.append(item);
     }
 
@@ -90,7 +92,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
@@ -112,13 +114,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to append
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void append(final AppendSequence<Item> sequence, final Item... items)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         append(sequence, ArrayUtility.iterable(items));
     }
 
@@ -139,13 +141,14 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents it from being appended
      *         to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Item item,
+                                     final ValueObserver<Item>... observers)
+    throws InvalidContainerArgumentException {
         sequence.append(item, observers);
     }
 
@@ -166,12 +169,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final Iterable<? extends Item> items,
+                                     final ValueObserver<Item>... observers) {
         for (final Item item : items)
             sequence.append(item, observers);
     }
@@ -192,13 +196,14 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being appended to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversableArgumentException {
+    public static <Item> void append(final ObservedAppendSequence<Item> sequence, final ValueObserver<Item>[] observers,
+                                     final Item... items)
+    throws InvalidContainerArgumentException {
         append(sequence, ArrayUtility.iterable(items), observers);
     }
 
@@ -215,12 +220,12 @@ public final class SequenceUtility {
      * @param item
      *        prepended Item
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item item)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         sequence.prepend(item);
     }
 
@@ -237,7 +242,7 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
@@ -259,13 +264,13 @@ public final class SequenceUtility {
      * @param items
      *        {@link Iterable} providing the Items to prepend
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
     public static <Item> void prepend(final PrependSequence<Item> sequence, final Item... items)
-    throws InvalidTraversableArgumentException {
+    throws InvalidContainerArgumentException {
         prepend(sequence, ArrayUtility.iterable(items));
     }
 
@@ -286,13 +291,14 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code item} prevents it from being prepended
      *         to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item, final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException {
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Item item,
+                                      final ValueObserver<Item>... observers)
+    throws InvalidContainerArgumentException {
         sequence.prepend(item, observers);
     }
 
@@ -313,12 +319,13 @@ public final class SequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence,
+                                      final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
         for (final Item item : items)
             sequence.prepend(item, observers);
     }
@@ -339,13 +346,14 @@ public final class SequenceUtility {
      * @param observers
      *        array of {@link ValueObserver} instances attending the operation
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of one Item in {@code items} prevents it from
      *         being prepended to {@code sequence}
      */
     @SafeVarargs
-    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence, final ValueObserver<Item>[] observers, final Item... items)
-    throws InvalidTraversableArgumentException {
+    public static <Item> void prepend(final ObservedPrependSequence<Item> sequence,
+                                      final ValueObserver<Item>[] observers, final Item... items)
+    throws InvalidContainerArgumentException {
         prepend(sequence, ArrayUtility.iterable(items), observers);
     }
 

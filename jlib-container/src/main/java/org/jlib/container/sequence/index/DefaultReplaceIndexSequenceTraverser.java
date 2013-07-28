@@ -22,8 +22,10 @@
 package org.jlib.container.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
+
 import org.jlib.core.traverser.NoItemToReplaceException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
@@ -77,15 +79,15 @@ implements ObservedReplaceTraverser<Item>,
      *         if {@code startIndex < sequence.getFirstIndex() ||
      *                   startIndex > sequence.getLastIndex()}
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if some property of {@code newItem} prevents the operation from
      *         being performed
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs performing the operation
      */
     public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
-    throws InvalidSequenceIndexException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
         super(sequence, initialNextItemIndex);
     }
 
@@ -96,7 +98,7 @@ implements ObservedReplaceTraverser<Item>,
 
     @Override
     public final void replace(final Item newItem)
-    throws NoItemToReplaceException, InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws NoItemToReplaceException, InvalidContainerArgumentException, InvalidContainerStateException {
         try {
             getSequence().replace(getLastAccessedItemIndex(), newItem);
         }
@@ -108,7 +110,8 @@ implements ObservedReplaceTraverser<Item>,
     @Override
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
-    throws NoItemToReplaceException, InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
+    throws NoItemToReplaceException, InvalidContainerArgumentException, InvalidContainerStateException,
+           RuntimeException {
 //        ObserverUtility.operate(new HandledOperator() {
 //
 //            @Override
@@ -117,7 +120,7 @@ implements ObservedReplaceTraverser<Item>,
 //                try {
 //                    replace(newItem);
 //                }
-//                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
 //                    throw new OperatorException(message("replace: {0}", newItem), exception);
 //                }
 //            }

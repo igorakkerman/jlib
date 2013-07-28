@@ -37,7 +37,7 @@ import org.jlib.container.binaryrelation.Pair;
  */
 public class HashAddRemoveBijection<LeftValue, RightValue>
 /*extends HashAddBijection<LeftValue, RightValue>
-implements RetainItemsByTraversableBijection<LeftValue, RightValue> */{
+implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 
 //    /** Creates a new initially empty HashAddBijection. */
 //    public HashAddRemoveBijection() {
@@ -168,13 +168,13 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */{
 //
 //    @Override
 //    public void remove(final Traversable<? extends Pair<LeftValue, RightValue>> items)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //
 //    }
 //
 //    @Override
 //    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //
 //    }
 //

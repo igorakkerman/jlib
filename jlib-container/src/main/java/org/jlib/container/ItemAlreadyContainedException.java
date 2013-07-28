@@ -22,12 +22,13 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when trying to invalidly add
+ * {@link InvalidContainerArgumentException} thrown when trying to invalidly add
  * an Item to a {@link TraversableContainer} that already exists.
  *
  * @author Igor Akkerman

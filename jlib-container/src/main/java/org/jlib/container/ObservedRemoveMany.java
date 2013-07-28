@@ -24,8 +24,9 @@ package org.jlib.container;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
@@ -43,6 +44,6 @@ extends ItemOperationStrategy<Item> {
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
 
-    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
+    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException;
 }

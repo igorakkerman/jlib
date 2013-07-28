@@ -31,7 +31,7 @@ package org.jlib.container.sequence.index.array;
  */
 public class ReplaceAppendArraySequence<Item>
 /*extends ReplaceArraySequence<Item>
-implements ObservedAppendSequence<Item> */{
+implements ObservedAppendSequence<Item> */ {
 
 //    /**
 //     * Creates a new uninitialized {@link ReplaceAppendArraySequence} with the
@@ -171,28 +171,28 @@ implements ObservedAppendSequence<Item> */{
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public final void append(final Item item, final ValueObserver<Item>... observers)
-//    throws InvalidTraversableArgumentException {
+//    throws InvalidContainerArgumentException {
 //        append(singleton(item), 1, observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public final void append(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
-//    throws InvalidTraversableArgumentException {
+//    throws InvalidContainerArgumentException {
 //        append(items, items.getCount(), observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public final void append(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
-//    throws InvalidTraversableArgumentException {
+//    throws InvalidContainerArgumentException {
 //        append(items, items.size(), observers);
 //    }
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
 //    public final void append(final ValueObserver<Item>[] observers, final Item... items)
-//    throws InvalidTraversableArgumentException {
+//    throws InvalidContainerArgumentException {
 //        append(iterable(items), items.length, observers);
 //    }
 //

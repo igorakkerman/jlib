@@ -26,8 +26,9 @@ import java.util.Collection;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * Ability to retain Items; the retain operations can be attended by {@link ValueObserver}
@@ -52,11 +53,11 @@ extends ItemOperationStrategy<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversableStateExceptionk
+     * @throws InvalidContainerStateExceptionk
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
@@ -65,5 +66,5 @@ extends ItemOperationStrategy<Item> {
     @SuppressWarnings("unchecked")
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void retain(ContainsIterable containsIterable, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }

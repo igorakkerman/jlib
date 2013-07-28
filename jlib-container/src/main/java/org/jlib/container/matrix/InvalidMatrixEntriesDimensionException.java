@@ -1,7 +1,8 @@
 package org.jlib.container.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import org.jlib.container.InvalidContainerArgumentException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
@@ -12,7 +13,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
  * @author Igor Akkerman
  */
 public abstract class InvalidMatrixEntriesDimensionException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     private static final long serialVersionUID = - 7552630985350522465L;
 

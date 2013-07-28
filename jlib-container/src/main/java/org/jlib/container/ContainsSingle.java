@@ -21,11 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-
 public interface ContainsSingle<Item> {
 
     public boolean contains(Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

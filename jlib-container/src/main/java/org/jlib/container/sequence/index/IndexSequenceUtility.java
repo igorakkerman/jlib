@@ -27,8 +27,9 @@ import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 /**
  * {@link IndexSequence} utility.
@@ -119,11 +120,11 @@ public final class IndexSequenceUtility {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code itemIndex}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
      * @throws RuntimeException
@@ -133,7 +134,7 @@ public final class IndexSequenceUtility {
     @SuppressWarnings("unchecked")
     public static <Item> void remove(final RemoveIndexSequence<Item> sequence, final int itemIndex,
                                      final ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
 
         ObserverUtility.operate(new HandledOperator() {
 
@@ -143,7 +144,7 @@ public final class IndexSequenceUtility {
                 try {
                     sequence.remove(itemIndex);
                 }
-                catch (InvalidTraversableArgumentException | InvalidTraversableStateException exception) {
+                catch (InvalidContainerArgumentException | InvalidContainerStateException exception) {
                     throw new OperatorException(message("retain: {0}", itemIndex).with("sequence", sequence),
                                                 exception);
                 }

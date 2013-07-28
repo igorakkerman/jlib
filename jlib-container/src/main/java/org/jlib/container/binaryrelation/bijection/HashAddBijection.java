@@ -36,7 +36,7 @@ import org.jlib.container.binaryrelation.Pair;
  */
 public class HashAddBijection<LeftValue, RightValue>
 /*extends HashBijection<LeftValue, RightValue>
-implements AddBijection<LeftValue, RightValue> */{
+implements AddBijection<LeftValue, RightValue> */ {
 
 //    /** Creates a new initially empty HashAddBijection. */
 //    public HashAddBijection() {
@@ -194,25 +194,25 @@ implements AddBijection<LeftValue, RightValue> */{
 //
 //    @Override
 //    public boolean isEmpty()
-//    throws InvalidTraversableStateException {
+//    throws InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Collection<? extends Pair<LeftValue, RightValue>> pairs)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //
 //    @Override
 //    public boolean containsItem(final Pair<LeftValue, RightValue>... pairs)
-//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
 //

@@ -24,15 +24,15 @@ package org.jlib.container.sequence.index;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 import org.jlib.container.sequence.Sequence;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.container.InvalidContainerArgumentException;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when a requested Item is not found.
+ * {@link InvalidContainerArgumentException} thrown when a requested Item is not found.
  *
  * @author Igor Akkerman
  */
 public class NoSuchSequenceItemException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 8162511917404174346L;

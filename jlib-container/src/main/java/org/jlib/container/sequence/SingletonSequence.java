@@ -139,25 +139,25 @@ class SingletonSequence<Item>
 //
 ////    @Override
 ////    public boolean containsItem(final Item item)
-////    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+////    throws InvalidContainerArgumentException, InvalidContainerStateException {
 ////        return false;
 ////    }
 ////
 ////    @Override
 ////    public boolean containsItem(final TraversableContainer<? extends Item> items)
-////    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+////    throws InvalidContainerArgumentException, InvalidContainerStateException {
 ////        return false;
 ////    }
 ////
 ////    @Override
 ////    public boolean containsItem(final Collection<? extends Item> items)
-////    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+////    throws InvalidContainerArgumentException, InvalidContainerStateException {
 ////        return false;
 ////    }
 ////
 ////    @Override
 ////    public boolean containsItem(final Item... items)
-////    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+////    throws InvalidContainerArgumentException, InvalidContainerStateException {
 ////        return false;
 ////    }
 //

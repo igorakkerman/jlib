@@ -24,8 +24,8 @@ package org.jlib.container.matrix;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 
@@ -76,7 +76,8 @@ extends AbstractIndexSequence<Entry> {
      * @param lastEntityEntryIndex
      *        integer specifying the last index of the entity part
      */
-    protected IndexMatrixEntity(final IndexMatrix<Entry> matrix, final int entityIndex, final int firstEntityEntryIndex, final int lastEntityEntryIndex) {
+    protected IndexMatrixEntity(final IndexMatrix<Entry> matrix, final int entityIndex, final int firstEntityEntryIndex,
+                                final int lastEntityEntryIndex) {
         super(firstEntityEntryIndex, lastEntityEntryIndex);
 
         this.matrix = matrix;
@@ -110,23 +111,23 @@ extends AbstractIndexSequence<Entry> {
     }
 
     public boolean contains(final Entry entry)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 
     public boolean contains(final TraversableContainer<? extends Entry> entries)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 
     public boolean contains(final Collection<? extends Entry> entries)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 
     @SafeVarargs
     public final boolean contains(final Entry... entries)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
 

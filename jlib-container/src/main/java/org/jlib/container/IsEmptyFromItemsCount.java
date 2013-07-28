@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.container.InvalidContainerStateException;
 
 import org.jlib.container.GetCount;
 import org.jlib.container.IsEmpty;
@@ -39,7 +39,7 @@ implements IsEmpty<Item> {
 
     @Override
     public boolean isEmpty()
-    throws InvalidTraversableStateException {
+    throws InvalidContainerStateException {
         return delegateContainer.getCount() == 0;
     }
 }
