@@ -21,11 +21,13 @@
 
 package org.jlib.core.language;
 
-/**
- * Tagging interface for all container operation strategy on {@link Item}s.
- *
- * @author Igor Akkerman
- */
-public interface ItemOperationStrategy<Item> {
-    // intentionally empty
+public interface HashCode<Item>
+extends ItemOperation<Item> {
+
+    /**
+     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
+     *
+     * @return integer specifying the hash code
+     */
+    public int getHashCode(Item item);
 }

@@ -24,13 +24,13 @@ package org.jlib.container;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link InvalidTraverserStateException} thrown when the traversed {@link ItemOperationStrategy} claims a state error.
+ * {@link InvalidTraverserStateException} thrown when the traversed {@link ItemOperation} claims a state error.
  *
  * @author Igor Akkerman
  */
@@ -44,9 +44,9 @@ extends InvalidArgumentException {
      * Creates a new {@link InvalidContainerArgumentException}.
      *
      * @param container
-     *        traversed {@link ItemOperationStrategy}
+     *        traversed {@link ItemOperation}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container) {
+    public InvalidContainerArgumentException(final ItemOperation<?> container) {
         super(message().with(container));
     }
 
@@ -54,12 +54,12 @@ extends InvalidArgumentException {
      * Creates a new {@link InvalidContainerArgumentException}.
      *
      * @param container
-     *        traversed {@link ItemOperationStrategy}
+     *        traversed {@link ItemOperation}
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final Exception cause) {
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final Exception cause) {
         super(message().with(container), cause);
     }
 
@@ -67,7 +67,7 @@ extends InvalidArgumentException {
      * Creates a new {@link InvalidContainerArgumentException}.
      *
      * @param container
-     *        traversed {@link ItemOperationStrategy}
+     *        traversed {@link ItemOperation}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -76,7 +76,7 @@ extends InvalidArgumentException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final ExceptionMessage message) {
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message) {
         super(message.with(container));
     }
 
@@ -84,7 +84,7 @@ extends InvalidArgumentException {
      * Creates a new {@link InvalidContainerArgumentException}.
      *
      * @param container
-     *        traversed {@link ItemOperationStrategy}
+     *        traversed {@link ItemOperation}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -96,7 +96,7 @@ extends InvalidArgumentException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> container, final ExceptionMessage message,
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message,
                                              final Exception cause) {
         super(message.with(container), cause);
     }

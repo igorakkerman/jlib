@@ -23,13 +23,13 @@ package org.jlib.container;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import org.jlib.core.language.HashCodeStrategy;
+import org.jlib.core.language.HashCode;
 import org.jlib.core.traverser.Traversable;
 
 import static org.jlib.core.traverser.TraversableUtility.iterable;
 
 public class ApacheCommonsTraversableHashCode<Item>
-implements HashCodeStrategy<Traversable<Item>> {
+implements HashCode<Traversable<Item>> {
 
     /** sole {@link ApacheCommonsTraversableHashCode} instance */
     private static final ApacheCommonsTraversableHashCode<?> INSTANCE = new ApacheCommonsTraversableHashCode<>();

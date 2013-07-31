@@ -21,8 +21,8 @@
 
 package org.jlib.core.language;
 
-public interface EqualsHashCodeStrategy<Obj>
-extends EqualsStrategy<Obj>,
-        HashCodeStrategy<Obj> {
+public interface EqualsHashCode<Obj>
+extends Equals<Obj>,
+        HashCode<Obj> {
     // unifying to provide uniform provideEqualItems/hashCode
 }

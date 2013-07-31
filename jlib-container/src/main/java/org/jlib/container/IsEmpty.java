@@ -21,10 +21,10 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 
 public interface IsEmpty<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Verifies whether this {@link TraversableContainer} containsItem no Items.

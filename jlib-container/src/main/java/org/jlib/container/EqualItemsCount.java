@@ -23,10 +23,10 @@ package org.jlib.container;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.EqualsStrategy;
+import org.jlib.core.language.Equals;
 
 public class EqualItemsCount<Item>
-implements EqualsStrategy<GetCount<Item>> {
+implements Equals<GetCount<Item>> {
 
     /** sole {@link EqualItemsCount} instance */
     private static final EqualItemsCount<?> INSTANCE = new EqualItemsCount<>();

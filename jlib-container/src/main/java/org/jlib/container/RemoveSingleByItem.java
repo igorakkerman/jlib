@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 
 /**
  * {@link TraversableContainer} allowing Items to be removed.
@@ -32,7 +32,7 @@ import org.jlib.core.language.ItemOperationStrategy;
  * @author Igor Akkerman
  */
 public interface RemoveSingleByItem<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s

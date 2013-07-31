@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
@@ -47,7 +47,7 @@ extends InvalidContainerArgumentException {
      *        already contained Item
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public ItemAlreadyContainedException(final ItemOperationStrategy<?> container, final Object item) {
+    public ItemAlreadyContainedException(final ItemOperation<?> container, final Object item) {
 
         super(container, message(item.toString()));
     }

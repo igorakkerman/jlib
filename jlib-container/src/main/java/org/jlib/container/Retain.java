@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.Traversable;
 
 /**
@@ -34,7 +34,7 @@ import org.jlib.core.traverser.Traversable;
  * @author Igor Akkerman
  */
 public interface Retain<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all {@link Item}s from this object <em>except</em> for the specified {@link Item}.

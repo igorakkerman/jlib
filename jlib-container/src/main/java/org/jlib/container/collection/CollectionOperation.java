@@ -24,7 +24,7 @@ package org.jlib.container.collection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.TraversableTraverser;
 import org.jlib.core.traverser.Traverser;
 
@@ -41,7 +41,7 @@ import org.jlib.container.InvalidContainerStateException;
  * @author Igor Akkerman
  */
 public class CollectionOperation<Item>
-implements ItemOperationStrategy<Item>,
+implements ItemOperation<Item>,
            org.jlib.core.traverser.Traversable<Item>,
            Traversable<Item> {
 

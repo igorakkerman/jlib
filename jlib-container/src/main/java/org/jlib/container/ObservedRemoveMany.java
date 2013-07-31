@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.Traversable;
@@ -36,7 +36,7 @@ import org.jlib.core.traverser.Traversable;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveMany<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     @SuppressWarnings("unchecked")
     public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*

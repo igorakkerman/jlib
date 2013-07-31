@@ -23,10 +23,10 @@ package org.jlib.container;
 
 import java.util.List;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 
 public interface ToSequentialList<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Returns a sequentially traversable {@link List} containing all of the

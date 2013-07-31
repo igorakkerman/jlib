@@ -23,13 +23,13 @@ package org.jlib.container;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.EqualsStrategy;
+import org.jlib.core.language.Equals;
 import org.jlib.core.traverser.Traversable;
 
 import static org.jlib.core.traverser.TraversableUtility.provideEqualItems;
 
 public final class IterativeEqualsOverTraversable<Item>
-implements EqualsStrategy<Traversable<Item>> {
+implements Equals<Traversable<Item>> {
 
     /** sole {@link IterativeEqualsOverTraversable} instance */
     private static final IterativeEqualsOverTraversable<?> INSTANCE = new IterativeEqualsOverTraversable<>();

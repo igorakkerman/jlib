@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.Traversable;
@@ -38,7 +38,7 @@ import org.jlib.core.traverser.Traversable;
  * @author Igor Akkerman
  */
 public interface ObservedRetain<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this {@link ObservedRemoveMany}

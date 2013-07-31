@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.Traversable;
 
 /**
@@ -33,7 +33,7 @@ import org.jlib.core.traverser.Traversable;
  * @author Igor Akkerman
  */
 public interface RemoveManyByItem<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s

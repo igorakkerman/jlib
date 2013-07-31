@@ -21,11 +21,11 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.Traversable;
 
 public interface ContainsMany<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Verifies whether this {@link ReadContainer} containsItem the specified Object.

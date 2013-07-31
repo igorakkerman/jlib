@@ -21,6 +21,8 @@
 
 package org.jlib.container;
 
+import org.jlib.core.language.ItemOperation;
+
 import org.jlib.container.sequence.Sequence;
 
 /**
@@ -41,7 +43,7 @@ extends InvalidContainerStateException {
      * @param sequence
      *        targeted {@link Sequence}
      */
-    public SoleItemNotRemoveableException(final Sequence<?> sequence) {
+    public SoleItemNotRemoveableException(final ItemOperation<?> sequence) {
         super(sequence);
     }
 }

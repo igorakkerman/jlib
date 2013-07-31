@@ -23,22 +23,21 @@ package org.jlib.core.language;
 
 import javax.annotation.Nullable;
 
-public class ForwardingEqualsHashCodeStrategy<Obj>
-implements EqualsHashCodeStrategy<Obj> {
+public class ForwardingEqualsHashCode<Obj>
+implements EqualsHashCode<Obj> {
 
-    private final EqualsStrategy<Obj> equalsStrategy;
+    private final Equals<Obj> equals;
 
-    private final HashCodeStrategy<Obj> hashCodeStrategy;
+    private final HashCode<Obj> hashCodeStrategy;
 
-    public ForwardingEqualsHashCodeStrategy(final EqualsStrategy<Obj> equalsStrategy,
-                                            final HashCodeStrategy<Obj> hashCodeStrategy) {
-        this.equalsStrategy = equalsStrategy;
+    public ForwardingEqualsHashCode(final Equals<Obj> equals, final HashCode<Obj> hashCodeStrategy) {
+        this.equals = equals;
         this.hashCodeStrategy = hashCodeStrategy;
     }
 
     @Override
     public boolean areEqual(final Obj thisObject, @Nullable final Object otherObject) {
-        return equalsStrategy.areEqual(thisObject, otherObject);
+        return equals.areEqual(thisObject, otherObject);
     }
 
     @Override
