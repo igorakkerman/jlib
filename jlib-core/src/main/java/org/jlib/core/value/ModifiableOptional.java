@@ -25,21 +25,23 @@ import javax.annotation.Nullable;
 
 import org.jlib.core.language.AbstractObject;
 
-public class Optional<Value>
+public class ModifiableOptional<Value>
 extends AbstractObject
 implements Modifiable<Value> {
 
-    public static <Value> Optional<Value> from(final Value value) {
-        return new Optional<>(value);
+    public static <Value> ModifiableOptional<Value> from(final Value value) {
+        return new ModifiableOptional<>(value);
     }
 
-    public static <Value> Optional<Value> fromNullable(@Nullable final Value value) {
+    public static <Value> ModifiableOptional<Value> fromNullable(@Nullable final Value value) {
         return value != null ?
                from(value) :
-               new Optional<Value>();
+               new ModifiableOptional<Value>();
     }
 
-    private final Accessor<Value> UNINITIALIZED_VALUE_HOLDER = new Uninitialized<Value>() {
+    private Accessor<Value> delegateAccessor;
+
+    private final Accessor<Value> UNINITIALIZED = new Uninitialized<Value>() {
 
         @Override
         public void setValue(final Value value) {
@@ -47,15 +49,14 @@ implements Modifiable<Value> {
         }
     };
 
-    private Optional() {
-        delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
+    private ModifiableOptional() {
+        delegateAccessor = UNINITIALIZED;
     }
 
-    private Optional(final Value value) {
+    private ModifiableOptional(final Value value) {
         delegateAccessor = new Initialized<>(value);
     }
 
-    private Accessor<Value> delegateAccessor;
 
     @Override
     public void setValue(Value value) {
@@ -63,7 +64,7 @@ implements Modifiable<Value> {
     }
 
     public void unsetValue() {
-        delegateAccessor = UNINITIALIZED_VALUE_HOLDER;
+        delegateAccessor = UNINITIALIZED;
     }
 
     @Override
