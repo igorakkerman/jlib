@@ -46,7 +46,7 @@ public final class ContainsAdapterUtility {
 
     public static <Item> ContainsAdapter<Item> allOf(final Collection<Item> items) {
 
-        return new ContainsAdapter<Item>(iterable(items)) {
+        return new ContainsAdapter<Item>(traversable(items)) {
 
             @Override
             public boolean contains(final Item item)
@@ -59,14 +59,11 @@ public final class ContainsAdapterUtility {
     @SafeVarargs
     public static <Item> ContainsAdapter<Item> allOf(final Item... items) {
 
-        return new IterativeContainsAdapter<>(ArrayUtility.iterable(items));
+        return new IterativeContainsAdapter<>(ArrayUtility.traversable(items));
     }
 
-    public static <Item> ContainsAdapter<Item> allOf(final Traversable<Item> items) {
-
-        return new IterativeContainsAdapter<>(iterable(items));
-    }
-
+    /** no visible constructor */
     private ContainsAdapterUtility() {
+        // no visible constructor
     }
 }
