@@ -25,6 +25,10 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.jlib.container.Container;
+
+import static org.jlib.container.containsadapter.ContainsAdapterUtility.allOf;
+
 /**
  * Adapter allowing a {@link TraversableContainer} to be used as a {@link Collection}. A
  * {@link ContainerCollection} is backed by a {@link TraversableContainer} specified at
@@ -39,7 +43,7 @@ public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
     /** adapted and backed {@link TraversableContainer} */
-    private final TraversableContainer<Item> delegateContainer;
+    private final Container<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
@@ -48,34 +52,35 @@ extends AbstractCollection<Item> {
      * @param delegateContainer
      *        {@link TraversableContainer} backing this {@link ContainerCollection}
      */
-    public ContainerCollection(final TraversableContainer<Item> delegateContainer) {
+    public ContainerCollection(final Container<Item> delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
     }
 
     @Override
+    @SuppressWarnings("NullableProblems")
     public Iterator<Item> iterator() {
         return delegateContainer.iterator();
     }
 
     @Override
     public int size() {
-        return delegateContainer.getItemsCount();
+        return delegateContainer.getCount();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean contains(final Object object) {
         // (pretty) safe cast thanks to type erasure
-        return false; //delegateContainer.containsItem((Item) object);
+        return delegateContainer.contains((Item) object);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean containsAll(final Collection<?> items) {
         // (pretty) safe cast thanks to type erasure
-        return false; // delegateContainer.containsItem((Collection<? extends Item>) items);
+        return delegateContainer.contains(allOf((Collection<? extends Item>) items));
     }
 
     @Override

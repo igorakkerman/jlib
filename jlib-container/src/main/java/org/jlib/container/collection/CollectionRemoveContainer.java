@@ -35,7 +35,7 @@ import java.util.Collection;
  * @author Igor Akkerman
  */
 public class CollectionRemoveContainer<Item>
-/*extends CollectionOperation<Item>
+/*extends CollectionContainer<Item>
 implements RemoveItemByItem<Item>,
            RemoveAll<Item> */ {
 //

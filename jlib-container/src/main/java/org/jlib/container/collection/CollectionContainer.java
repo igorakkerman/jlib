@@ -21,29 +21,32 @@
 
 package org.jlib.container.collection;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-import org.jlib.core.language.ItemOperation;
-import org.jlib.core.traverser.TraversableTraverser;
+import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
+import org.jlib.container.Container;
 import org.jlib.container.InvalidContainerArgumentException;
 import org.jlib.container.InvalidContainerStateException;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A
- * {@link CollectionOperation} is backed by a {@link Collection} specified at
+ * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
  *        type of items held in the {@link TraversableContainer}
  * @author Igor Akkerman
  */
-public class CollectionOperation<Item>
-implements ItemOperation<Item>,
-           org.jlib.core.traverser.Traversable<Item>,
-           Traversable<Item> {
+public class CollectionContainer<Item>
+implements Container<Item> {
 
     private static final long serialVersionUID = 4025909176358714675L;
 
@@ -55,15 +58,15 @@ implements ItemOperation<Item>,
      * {@link Collection}.
      *
      * @param delegateCollection
-     *        {@link Collection} backing this {@link CollectionOperation}
+     *        {@link Collection} backing this {@link CollectionContainer}
      */
-    public CollectionOperation(final Collection<Item> delegateCollection) {
+    public CollectionContainer(final Collection<Item> delegateCollection) {
         this.delegateCollection = delegateCollection;
     }
 
     // implemented for efficiency
     @Override
-    public int getItemsCount() {
+    public int getCount() {
         return delegateCollection.size();
     }
 
@@ -74,27 +77,22 @@ implements ItemOperation<Item>,
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
-        return false;
-    }
-
-    @Override
     public Traverser<Item> createTraverser() {
-        return new TraversableTraverser<>(this);
+        // TODO: create utility method
+        return new IterableTraverser<>(delegateCollection);
     }
 
-    // implemented for efficiency
     @Override
     public Iterator<Item> iterator() {
         return delegateCollection.iterator();
     }
 
-    // implemented for efficiency
+    @Override
     public boolean contains(final Item item) {
         return delegateCollection.contains(item);
     }
 
-    public boolean contains(final TraversableContainer<? extends Item> items)
+    public boolean contains(final Container<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
@@ -104,17 +102,38 @@ implements ItemOperation<Item>,
         return delegateCollection.containsAll(collection);
     }
 
-    public boolean contains(final Item... items)
+    @SafeVarargs
+    public final boolean contains(final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        return false;
+        return delegateCollection.containsAll(toSet());
     }
 
     @Override
-    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
-        return false;
+    public Set<Item> toSet() {
+        // TODO: transform to default strategy used by an Iterable & ToSet
+
+        final Set<Item> set = new HashSet<>(getCount());
+
+        // TODO: create and use utility method / strategy for copying an Iterable's Items to a given Collection
+        for (final Item item : this)
+            set.add(item);
+
+        return set;
     }
 
-    // implemented for efficiency
+    @Override
+    public List<Item> toSequentialList()
+    throws InvalidContainerStateException {
+        final List<Item> list = new LinkedList<>();
+
+        // TODO: create and use utility method / strategy for copying an Iterable's Items to a given Collection
+        for (final Item item : this)
+            list.add(item);
+
+        return list;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public Item[] toArray() {
         return (Item[]) delegateCollection.toArray();
@@ -122,9 +141,9 @@ implements ItemOperation<Item>,
 
     /**
      * Returns the {@link Collection} adapted and backed by this
-     * {@link CollectionOperation}.
+     * {@link CollectionContainer}.
      *
-     * @return delegate {@link Collection} of this {@link CollectionOperation}
+     * @return delegate {@link Collection} of this {@link CollectionContainer}
      */
     protected Collection<Item> getDelegateCollection() {
         return delegateCollection;
