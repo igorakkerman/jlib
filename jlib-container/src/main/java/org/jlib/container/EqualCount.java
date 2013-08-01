@@ -25,34 +25,34 @@ import javax.annotation.Nullable;
 
 import org.jlib.core.language.Equals;
 
-public class EqualItemsCount<Item>
+public class EqualCount<Item>
 implements Equals<GetCount<Item>> {
 
-    /** sole {@link EqualItemsCount} instance */
-    private static final EqualItemsCount<?> INSTANCE = new EqualItemsCount<>();
+    /** sole {@link EqualCount} instance */
+    private static final EqualCount<?> INSTANCE = new EqualCount<>();
 
     /**
-     * Returns the sole {@link EqualItemsCount} instance.
+     * Returns the sole {@link EqualCount} instance.
      *
      * @param <Item>
      *        type of the Item
      *
-     * @return sole {@link EqualItemsCount} instance
+     * @return sole {@link EqualCount} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Item> EqualItemsCount<Item> getInstance() {
-        return (EqualItemsCount<Item>) INSTANCE;
+    public static <Item> EqualCount<Item> getInstance() {
+        return (EqualCount<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EqualItemsCount}.
+     * Creates a new {@link EqualCount}.
      */
-    private EqualItemsCount() {
+    private EqualCount() {
         super();
     }
 
     @Override
-    public boolean equals(final GetCount<Item> thisObject, @Nullable final Object otherObject) {
+    public boolean areEqual(final GetCount<Item> thisObject, @Nullable final Object otherObject) {
         return otherObject instanceof GetCount<?> && //
                thisObject.getCount() == ((GetCount<?>) otherObject).getCount();
     }
