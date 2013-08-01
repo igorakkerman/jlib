@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import org.jlib.core.traverser.Traversable;
 
-import static org.jlib.core.traverser.TraversableUtility.traversable;
+import static org.jlib.core.traverser.TraversableUtility.iterable;
 
 public class DefaultContainsMany<Item>
 implements ContainsMany<Item> {
