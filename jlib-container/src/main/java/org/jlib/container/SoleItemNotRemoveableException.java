@@ -23,8 +23,6 @@ package org.jlib.container;
 
 import org.jlib.core.language.ItemOperation;
 
-import org.jlib.container.sequence.Sequence;
-
 /**
  * {@link InvalidContainerStateException} thrown when trying to retain the sole
  * Item of a {@link TraversableContainer} that may not be empty.
@@ -40,10 +38,10 @@ extends InvalidContainerStateException {
     /**
      * Creates a new {@link SoleItemNotRemoveableException}.
      *
-     * @param sequence
+     * @param itemOp
      *        targeted {@link Sequence}
      */
-    public SoleItemNotRemoveableException(final ItemOperation<?> sequence) {
-        super(sequence);
+    public SoleItemNotRemoveableException(final ItemOperation<?> itemOperation) {
+        super(itemOperation);
     }
 }
