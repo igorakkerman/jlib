@@ -21,11 +21,11 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.traverser.TwoWayTraversable;
-import org.jlib.core.traverser.TwoWayTraverser;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jlib.core.traverser.TwoWayTraversable;
+import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
  * Utility for arrays.
@@ -36,9 +36,6 @@ public final class ArrayUtility {
 
     /** empty array of Objects */
     public static final Object[] EMPTY_ARRAY = new Object[0];
-
-    /** no visible constructor */
-    private ArrayUtility() {}
 
     /**
      * Returns a new {@link Iterable} adapter for the specified Items.
@@ -176,5 +173,9 @@ public final class ArrayUtility {
     public static <Item> Item[] createArray(final int length)
     throws NegativeArraySizeException {
         return (Item[]) new Object[length];
+    }
+
+    /** no visible constructor */
+    private ArrayUtility() {
     }
 }
