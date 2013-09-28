@@ -21,19 +21,14 @@
 
 package org.jlib.core.array;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+import static org.jlib.core.array.ArrayUtility.emptyArray;
 import org.junit.Test;
 
-import static org.jlib.core.array.ArrayUtility.getEmptyArray;
-import static org.jlib.core.array.ArrayUtility.iterable;
-
-public class ArrayUtilityWrapAsIterableTest
-extends ArrayUtilityTest {
+public class ArrayUtilityEmptyArrayUnitTest {
 
     @Test
-    public void testEmpty()
-    throws Exception {
-        String[] strings = getEmptyArray();
-
-        iterable();
+    public void returnedArrayEmpty() {
+        assertThat(emptyArray()).isEmpty();
     }
 }

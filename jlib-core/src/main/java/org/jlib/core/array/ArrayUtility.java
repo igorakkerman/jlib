@@ -37,8 +37,16 @@ public final class ArrayUtility {
     /** empty array of Objects */
     public static final Object[] EMPTY_ARRAY = new Object[0];
 
+    /**
+     * Returns a typesafe empty array of {@link Item}s.
+     *
+     * @param <Item>
+     *        type of potential {@link Item}s in the array
+     *
+     * @return empty array of {@link Item}s
+     */
     @SuppressWarnings("unchecked")
-    public <Item> Item[] emptyArray() {
+    public static <Item> Item[] emptyArray() {
         return (Item[]) EMPTY_ARRAY;
     }
 
@@ -145,19 +153,6 @@ public final class ArrayUtility {
         final List<Object> allItems = new ArrayList<>(getFlattenedItemsCount(items));
         flatten(allItems, items);
         return (Item[]) allItems.toArray();
-    }
-
-    /**
-     * Returns a typesafe empty array of Items.
-     *
-     * @param <Item>
-     *        type of potential Items in the array
-     *
-     * @return empty array of Items
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> Item[] getEmptyArray() {
-        return (Item[]) EMPTY_ARRAY;
     }
 
     /**
