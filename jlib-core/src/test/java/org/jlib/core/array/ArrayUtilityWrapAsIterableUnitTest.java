@@ -21,43 +21,7 @@
 
 package org.jlib.core.array;
 
-import org.junit.Test;
+public class ArrayUtilityWrapAsIterableUnitTest
+extends ArrayUtilityEmptyArrayUnitTest {
 
-public abstract class ArrayUtilityTest {
-
-    @Test
-    public void testTraversable()
-    throws Exception {
-
-    }
-
-    @Test
-    public void testCreateTraverser()
-    throws Exception {
-
-    }
-
-    @Test
-    public void testGetFlattenedItemsCount()
-    throws Exception {
-
-    }
-
-    @Test
-    public void testFlatten()
-    throws Exception {
-
-    }
-
-    @Test
-    public void testGetEmptyArray()
-    throws Exception {
-
-    }
-
-    @Test
-    public void testCreateArray()
-    throws Exception {
-
-    }
 }
