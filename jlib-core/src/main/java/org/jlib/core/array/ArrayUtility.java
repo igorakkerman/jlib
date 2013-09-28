@@ -37,6 +37,11 @@ public final class ArrayUtility {
     /** empty array of Objects */
     public static final Object[] EMPTY_ARRAY = new Object[0];
 
+    @SuppressWarnings("unchecked")
+    public <Item> Item[] emptyArray() {
+        return (Item[]) EMPTY_ARRAY;
+    }
+
     /**
      * Returns a new {@link Iterable} adapter for the specified Items.
      *
