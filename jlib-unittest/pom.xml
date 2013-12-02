@@ -53,15 +53,17 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit-dep</artifactId>
-            <!-- change scope from managed 'unittest' to 'compile' -->
+            <!-- change scope from managed 'test' to 'compile' -->
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
-            <!-- change scope from managed 'unittest' to 'compile' -->
+            <!-- change scope from managed 'test' to 'compile' -->
             <scope>compile</scope>
         </dependency>
+
+
     </dependencies>
 </project>
