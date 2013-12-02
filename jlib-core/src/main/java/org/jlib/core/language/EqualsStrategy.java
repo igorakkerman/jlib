@@ -25,24 +25,5 @@ import javax.annotation.Nullable;
 
 public interface EqualsStrategy<Obj> {
 
-    /**
-     * <p>
-     * Verifies whether this {@link TraversableContainer} is equal to the specified {@link Object}. This is true if all of the
-     * following conditions are satisfied:
-     * </p>
-     * <ul>
-     * <li>this {@link TraversableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
-     * {@link #containsEqualItems(TraversableContainer)}</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
-     * {@link #containsEqualItems(TraversableContainer)}</li>
-     * </ul>
-     *
-     * @param otherObject
-     *        Object to compare to this TraversableContainer
-     *
-     * @return {@code true} if all of the conditions stated above are satisfied;
-     *         {@code false} otherwise
-     */
     public boolean areEqual(Obj thisObject, @Nullable Object otherObject);
 }

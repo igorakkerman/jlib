@@ -21,15 +21,15 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
-
 import org.jlib.core.text.ParametrizedText;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
-public class ExceptionMessage
-extends ParametrizedText {
+import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 
-    public ExceptionMessage(final TemplateEngine templateEngine, final CharSequence template, final Object... arguments) {
+public class ExceptionMessage
+extends ParametrizedText<Object> {
+
+    public ExceptionMessage(final TemplateEngine<Object> templateEngine, final CharSequence template, final Object... arguments) {
         super(templateEngine, template, arguments);
     }
 

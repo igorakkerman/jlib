@@ -50,7 +50,7 @@ public final class MathUtility {
     // Returns a representation of ths specified number to the specified base;
     // such that sum(result[index]^index) == number
     // TODO: Javadoc
-    public static int[] toBase(int number, int base)
+    public static int[] toBase(int number, final int base)
     throws InvalidBaseValueException {
 
         if (base < 1)
@@ -62,7 +62,7 @@ public final class MathUtility {
         for (maximumValueForCurrentDigitsCount = base; maximumValueForCurrentDigitsCount <= number; maximumValueForCurrentDigitsCount *= base)
             digitsCount++;
 
-        int[] digits = new int[digitsCount + 1];
+        final int[] digits = new int[digitsCount + 1];
 
         for (int digitIndex = digitsCount; digitIndex >= 0; digitIndex--) {
             digits[digitIndex] = 0;

@@ -61,7 +61,7 @@ public final class NullableUtility {
      *         {@code false} otherwise
      */
     private static boolean allNull(final Object... objects) {
-        for (Object object : objects)
+        for (final Object object : objects)
             if (object != null)
                 return false;
 

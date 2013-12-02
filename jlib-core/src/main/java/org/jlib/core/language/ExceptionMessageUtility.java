@@ -21,16 +21,15 @@
 
 package org.jlib.core.language;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-
-import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
-import static org.jlib.core.text.TextUtility.removeOnce;
-
 import org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine;
 import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
 import org.jlib.core.text.templateengine.PrintfTemplateEngine;
 
-public final class ExceptionMessageUtility {
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
+import static org.jlib.core.text.TextUtility.removeOnce;
+
+public final class  ExceptionMessageUtility {
 
     public static String createMessageFromExceptionName(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));

@@ -24,7 +24,7 @@ package org.jlib.core.text;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
-public class ParametrizedText
+public class ParametrizedText<Argument>
 extends AbstractObject {
 
     public static final int EXPECTED_ARGUMENT_LENGTH = 30;
@@ -35,19 +35,21 @@ extends AbstractObject {
         return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
     }
 
-    private final TemplateEngine templateEngine;
+    private final TemplateEngine<Argument> templateEngine;
 
     private final StringBuilder templateBuilder;
 
-    private Object[] arguments;
+    private Argument[] arguments;
 
-    public ParametrizedText(final TemplateEngine templateEngine, final CharSequence template,
-                            final Object... arguments) {
+    @SafeVarargs
+    public ParametrizedText(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+                            final Argument... arguments) {
         this(templateEngine, computeExpectedBufferSize(template, arguments), template, arguments);
     }
 
-    public ParametrizedText(final TemplateEngine templateEngine, final int bufferSize, final CharSequence template,
-                            final Object... arguments) {
+    @SafeVarargs
+    public ParametrizedText(final TemplateEngine<Argument> templateEngine, final int bufferSize, final CharSequence template,
+                            final Argument... arguments) {
         super();
 
         this.templateEngine = templateEngine;
@@ -61,33 +63,35 @@ extends AbstractObject {
         return templateBuilder;
     }
 
-    public Object[] getArguments() {
+    public Argument[] getArguments() {
         return arguments;
     }
 
-    protected void setArguments(final Object[] arguments) {
+    @SuppressWarnings("unchecked")
+    protected void setArguments(final Argument... arguments) {
         this.arguments = arguments;
     }
 
-    public ParametrizedText append(final Object object) {
+    public ParametrizedText<Argument> append(final Object object) {
         templateBuilder.append(object);
 
         return this;
     }
 
-    public ParametrizedText append(final char character) {
+    public ParametrizedText<Argument> append(final char character) {
         templateBuilder.append(character);
 
         return this;
     }
 
-    public ParametrizedText append(final int integer) {
+    public ParametrizedText<Argument> append(final int integer) {
         templateBuilder.append(integer);
 
         return this;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public String toString() {
         return templateEngine.applyArguments(templateBuilder.toString(), arguments);
     }
