@@ -110,7 +110,7 @@ extends ForwardingMap<Key, Value> {
     @Override
     @SuppressWarnings("SuspiciousMethodCalls")
     public boolean containsKey(final Object key) {
-        final Value value = super.get(key);
+        final Value value = delegateMap.get(key);
 
         lastLookedUpKey = key;
         lastLookedUpValue = value;
@@ -122,12 +122,11 @@ extends ForwardingMap<Key, Value> {
     @SuppressWarnings({ "ReturnOfNull", "ObjectEquality" })
     @Nullable
     public Value get(final Object key) {
-        if (lastLookedUpKey == key) {
+        if (lastLookedUpKey == key)
             return lastLookedUpValue;
-        }
 
         clearLastLookedUpItems();
-        return super.get(key);
+        return delegateMap.get(key);
     }
 
     @Override
@@ -136,7 +135,7 @@ extends ForwardingMap<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return super.put(key, value);
+        return delegateMap.put(key, value);
     }
 
     @Override
@@ -145,14 +144,14 @@ extends ForwardingMap<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return super.remove(key);
+        return delegateMap.remove(key);
     }
 
     @Override
     public void clear() {
         clearLastLookedUpItems();
 
-        super.clear();
+        delegateMap.clear();
     }
 
     /**
@@ -171,6 +170,6 @@ extends ForwardingMap<Key, Value> {
             clearLastLookedUpItems();
         }
 
-        super.putAll(map);
+        delegateMap.putAll(map);
     }
 }
