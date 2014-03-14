@@ -24,11 +24,10 @@ package org.jlib.container;
 import java.util.List;
 import java.util.RandomAccess;
 
-import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.language.ItemOperation;
 
 public interface ToRandomAccessList<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
@@ -38,9 +37,9 @@ extends ItemOperationStrategy<Item> {
      * @return {@link RandomAccess} {@link List} containing all of the Items of
      *         this {@link TraversableContainer}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public List<Item> toRandomAccessList()
-    throws InvalidTraversableStateException;
+    throws InvalidContainerStateException;
 }

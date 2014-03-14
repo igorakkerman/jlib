@@ -21,20 +21,19 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.language.ItemOperation;
 
 public interface GetCount<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Returns the number of Items in this {@link TraversableContainer}.
      *
      * @return integer specifying the number of Items in this {@link TraversableContainer}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public int getCount()
-    throws InvalidTraversableStateException;
+    throws InvalidContainerStateException;
 }

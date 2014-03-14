@@ -23,11 +23,10 @@ package org.jlib.container;
 
 import java.util.Collection;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * Ability to retain Items; the retain operations can be attended by {@link ValueObserver}
@@ -39,7 +38,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * @author Igor Akkerman
  */
 public interface ObservedRetain<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this {@link ObservedRemoveMany}
@@ -52,18 +51,18 @@ extends ItemOperationStrategy<Item> {
      *        comma separated sequence of {@link ValueObserver} instances
      *        attending the removal
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversableStateExceptionk
+     * @throws InvalidContainerStateExceptionk
      *         if an error occurs during the operation
      *
      * @throws ValueObserverException
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsIterable containsIterable, ValueObserver<Item>... observers)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException;
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsTraversable containsTraversable, ValueObserver<Item>... observers)
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }

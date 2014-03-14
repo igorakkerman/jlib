@@ -21,12 +21,10 @@
 
 package org.jlib.container;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link InvalidTraversableArgumentException} thrown when a {@link RemoveItemByItem} does not contain the
+ * {@link InvalidContainerArgumentException} thrown when a {@link RemoveItemByItem} does not contain the
  * specified {@link Item} to retain.
  *
  * @author Igor Akkerman

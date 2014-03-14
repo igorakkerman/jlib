@@ -38,7 +38,7 @@ extends Traverser<Item> {
      * @return {@code true} if this {@link TwoWayTraverser} has a previous Item;
      *         {@code false} otherwise
      */
-    public boolean isPreviousItemAccessible();
+    public boolean hasPreviousItem();
 
     /**
      * Returns the previous Item of this {@link TwoWayTraverser}.

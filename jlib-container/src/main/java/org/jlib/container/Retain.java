@@ -21,9 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.language.ItemOperation;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
@@ -35,7 +34,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * @author Igor Akkerman
  */
 public interface Retain<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all {@link Item}s from this object <em>except</em> for the specified {@link Item}.
@@ -47,14 +46,14 @@ extends ItemOperationStrategy<Item> {
      *         if this {@link Retain} does not contain
      *         {@code Item}
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
      *         {@code item}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsIterable items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsTraversable items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

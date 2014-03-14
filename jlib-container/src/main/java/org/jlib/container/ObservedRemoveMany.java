@@ -21,11 +21,10 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
@@ -37,12 +36,12 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveMany<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsTraversable items, ValueObserver<Item>... observers)
 
-    throws ItemToRemoveNotContainedException, InvalidTraversableArgumentException, InvalidTraversableStateException,
+    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException;
 }

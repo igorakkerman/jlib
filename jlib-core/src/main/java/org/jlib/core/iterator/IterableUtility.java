@@ -54,7 +54,7 @@ public final class IterableUtility {
      * @return {@code true} if {@code iterator1} and {@code iterator2} provide
      *         equal Items; {@code false} otherwise
      */
-    public static <Item> boolean provideEqualItems(final Iterable<Item> iterable1, final Iterable<Item> iterable2) {
+    public static <Item> boolean equals(Iterable<Item> iterable1, final Iterable<Item> iterable2) {
         final Iterator<?> iterator1 = iterable1.iterator();
         final Iterator<?> iterator2 = iterable2.iterator();
 

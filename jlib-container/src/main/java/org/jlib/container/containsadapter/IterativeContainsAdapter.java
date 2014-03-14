@@ -21,22 +21,23 @@
 
 package org.jlib.container.containsadapter;
 
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.Traversable;
+import org.jlib.core.traverser.TraversableUtility;
 
-import com.google.common.collect.Iterables;
+import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.InvalidContainerStateException;
 
 public class IterativeContainsAdapter<Item>
 extends ContainsAdapter<Item> {
 
-    public IterativeContainsAdapter(final Iterable<Item> items) {
+    public IterativeContainsAdapter(final Traversable<Item> items) {
         super(items);
     }
 
     @Override
     public final boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        return Iterables.contains(getItems(), item);
+        return TraversableUtility.contains(getItems(), item);
     }
 }

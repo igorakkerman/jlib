@@ -22,19 +22,20 @@
 package org.jlib.container;
 
 import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.language.ItemOperationStrategy;
+import org.jlib.core.language.ItemOperation;
 import org.jlib.core.traverser.InvalidTraverserStateException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link InvalidTraverserStateException} thrown when the traversed {@link ItemOperationStrategy} claims a state error.
+ * {@link InvalidTraverserStateException} thrown when the traversed {@link ItemOperation} claims a state error.
  *
  * @author Igor Akkerman
  */
 public class InvalidContainerArgumentException
-extends InvalidStateException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
@@ -42,31 +43,31 @@ extends InvalidStateException {
     /*
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
-     *        traversed {@link ItemOperationStrategy}
+     * @param container
+     *        traversed {@link ItemOperation}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable) {
-        super(message().with(traversable));
+    public InvalidContainerArgumentException(final ItemOperation<?> container) {
+        super(message().with(container));
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
-     *        traversed {@link ItemOperationStrategy}
+     * @param container
+     *        traversed {@link ItemOperation}
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final Exception cause) {
-        super(message().with(traversable), cause);
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final Exception cause) {
+        super(message().with(container), cause);
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
-     *        traversed {@link ItemOperationStrategy}
+     * @param container
+     *        traversed {@link ItemOperation}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -75,15 +76,15 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final ExceptionMessage message) {
-        super(message.with(traversable));
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message) {
+        super(message.with(container));
     }
 
     /**
      * Creates a new {@link InvalidContainerArgumentException}.
      *
-     * @param traversable
-     *        traversed {@link ItemOperationStrategy}
+     * @param container
+     *        traversed {@link ItemOperation}
      *
      * @param messageTemplate
      *        {@link String} specifying the error message template
@@ -95,8 +96,8 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperationStrategy<?> traversable, final ExceptionMessage message,
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message,
                                              final Exception cause) {
-        super(message.with(traversable), cause);
+        super(message.with(container), cause);
     }
 }

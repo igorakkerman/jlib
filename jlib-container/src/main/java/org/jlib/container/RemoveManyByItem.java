@@ -21,9 +21,8 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.language.ItemOperation;
+import org.jlib.core.traverser.Traversable;
 
 /**
  * {@link TraversableContainer} allowing Items to be removed.
@@ -34,7 +33,7 @@ import org.jlib.core.traverser.InvalidTraversableStateException;
  * @author Igor Akkerman
  */
 public interface RemoveManyByItem<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s
@@ -43,14 +42,14 @@ extends ItemOperationStrategy<Item> {
      * @param items
      *        {@link TraversableContainer} containing the Items to remove
      *
-     * @throws InvalidTraversableArgumentException
+     * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
      *         Item in {@code items}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsIterable items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException;
+    public <ContainsTraversable extends Traversable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsTraversable items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

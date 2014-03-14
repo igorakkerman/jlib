@@ -21,11 +21,10 @@
 
 package org.jlib.container;
 
-import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.language.ItemOperation;
 
 public interface ToArray<Item>
-extends ItemOperationStrategy<Item> {
+extends ItemOperation<Item> {
 
     /**
      * Returns an array containing all of the Items of this {@link TraversableContainer} in
@@ -33,9 +32,9 @@ extends ItemOperationStrategy<Item> {
      *
      * @return array containing all of the Items of this {@link TraversableContainer}
      *
-     * @throws InvalidTraversableStateException
+     * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     public Item[] toArray()
-    throws InvalidTraversableStateException;
+    throws InvalidContainerStateException;
 }
