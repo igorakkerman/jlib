@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.AbstractContainer;
-
 /**
  * Skeletal implementation of a {@link Sequence}.
  *
@@ -32,7 +30,7 @@ import org.jlib.container.AbstractContainer;
  * @author Igor Akkerman
  */
 public abstract class AbstractSequence<Item>
-extends AbstractContainer<Item>
+//extends ForwardingContainer<Item>
 implements Sequence<Item> {
 
     /**

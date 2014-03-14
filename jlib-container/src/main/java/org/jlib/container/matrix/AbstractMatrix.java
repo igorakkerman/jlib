@@ -21,8 +21,6 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.AbstractContainer;
-
 /**
  * Skeletal implementation of a {@link Matrix}.
  *
@@ -32,7 +30,7 @@ import org.jlib.container.AbstractContainer;
  * @author Igor Akkerman
  */
 public abstract class AbstractMatrix<Entry>
-extends AbstractContainer<Entry>
+//extends ForwardingContainer<Entry>
 implements Matrix<Entry> {
 
     /**

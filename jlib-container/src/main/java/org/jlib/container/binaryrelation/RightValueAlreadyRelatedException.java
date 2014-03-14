@@ -45,8 +45,8 @@ extends InvalidPairException {
      * @param rightValue
      *        already added RightValue
      */
-    public RightValueAlreadyRelatedException(final BinaryRelation<?, ?> binaryRelation, final Object leftValue,
-                                             final Object rightValue) {
-        super(binaryRelation, leftValue, rightValue);
+    public <LeftValue, RightValue> /*
+        */ RightValueAlreadyRelatedException(final BinaryRelation<LeftValue, RightValue> binaryRelation, final Pair<LeftValue, RightValue> pair) {
+        super(binaryRelation, pair);
     }
 }

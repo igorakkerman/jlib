@@ -59,7 +59,7 @@ implements Modifiable<Value> {
 
 
     @Override
-    public void setValue(Value value) {
+    public void setValue(final Value value) {
         delegateAccessor = new Initialized<>(value);
     }
 

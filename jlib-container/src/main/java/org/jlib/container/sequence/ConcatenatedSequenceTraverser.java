@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.traverser.TwoWayTraversable;
 import org.jlib.core.traverser.TwoWayTraverser;
 
 /**
@@ -38,80 +36,80 @@ import org.jlib.core.traverser.TwoWayTraverser;
  * @author Igor Akkerman
  */
 public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSequence<Item>>
-extends AbstractSequenceTraverser<Item, Sequenze> {
+/*extends AbstractSequenceTraverser<Item, Sequenze> */{
 
-    /**
-     * {@link TwoWayTraverser} of the concatenated
-     * {@link TwoWayTraversable} instances
-     */
-    private final TwoWayTraverser<TwoWayTraversable<Item>> traversablesTraverser;
-
-    /**
-     * {@link TwoWayTraverser} over the current
-     * {@link TwoWayTraversable}
-     */
-    private TwoWayTraverser<Item> currentTraversableTraverser;
-
-    /**
-     * Creates a new {@link ConcatenatedSequenceTraverser}.
-     *
-     * @param concatenatedSequence
-     *        {@link Sequence} of concatenated {@link Sequence} instances;
-     *        {@code concatenatedSequence} may be empty
-     */
-    public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
-        super(concatenatedSequence);
-
-        traversablesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversables());
-
-        currentTraversableTraverser = traversablesTraverser.hasNextItem()
-                                      ? traversablesTraverser.getNextItem().createTraverser()
-                                      : EmptySequenceTraverser.<Item>getInstance();
-    }
-
-    @Override
-    public boolean isPreviousItemAccessible() {
-        while (! currentTraversableTraverser.isPreviousItemAccessible()) {
-            if (! traversablesTraverser.isPreviousItemAccessible())
-                return false;
-
-            currentTraversableTraverser = traversablesTraverser.getPreviousItem().createTraverser();
-
-            // navigate to the tail of the previous Sequence
-            while (currentTraversableTraverser.hasNextItem())
-                currentTraversableTraverser.getNextItem();
-        }
-
-        return true;
-    }
-
-    @Override
-    public Item getPreviousItem()
-    throws NoPreviousSequenceItemException {
-        if (! isPreviousItemAccessible())
-            throw new NoPreviousSequenceItemException(getSequence());
-
-        return currentTraversableTraverser.getPreviousItem();
-    }
-
-    @Override
-    public boolean hasNextItem() {
-        while (! currentTraversableTraverser.hasNextItem()) {
-            if (! traversablesTraverser.hasNextItem())
-                return false;
-
-            currentTraversableTraverser = traversablesTraverser.getNextItem().createTraverser();
-        }
-
-        return true;
-    }
-
-    @Override
-    public Item getNextItem()
-    throws NoNextSequenceItemException {
-        if (! hasNextItem())
-            throw new NoPreviousSequenceItemException(getSequence());
-
-        return currentTraversableTraverser.getPreviousItem();
-    }
+//    /**
+//     * {@link TwoWayTraverser} of the concatenated
+//     * {@link TwoWayTraversable} instances
+//     */
+//    private final TwoWayTraverser<TwoWayTraversable<Item>> traversablesTraverser;
+//
+//    /**
+//     * {@link TwoWayTraverser} over the current
+//     * {@link TwoWayTraversable}
+//     */
+//    private TwoWayTraverser<Item> currentTraversableTraverser;
+//
+//    /**
+//     * Creates a new {@link ConcatenatedSequenceTraverser}.
+//     *
+//     * @param concatenatedSequence
+//     *        {@link Sequence} of concatenated {@link Sequence} instances;
+//     *        {@code concatenatedSequence} may be empty
+//     */
+//    public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
+//        super(concatenatedSequence);
+//
+////        traversablesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversables());
+//
+////        currentTraversableTraverser = traversablesTraverser.hasNextItem()
+////                                      ? traversablesTraverser.getNextItem().createTraverser()
+////                                      : EmptySequenceTraverser.<Item>getInstance();
+//    }
+//
+//    @Override
+//    public boolean isPreviousItemAccessible() {
+//        while (! currentTraversableTraverser.isPreviousItemAccessible()) {
+//            if (! traversablesTraverser.isPreviousItemAccessible())
+//                return false;
+//
+//            currentTraversableTraverser = traversablesTraverser.getPreviousItem().createTraverser();
+//
+//            // navigate to the tail of the previous Sequence
+//            while (currentTraversableTraverser.hasNextItem())
+//                currentTraversableTraverser.getNextItem();
+//        }
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public Item getPreviousItem()
+//    throws NoPreviousSequenceItemException {
+////        if (! isPreviousItemAccessible())
+////            throw new NoPreviousSequenceItemException(getSequence());
+//
+//        return currentTraversableTraverser.getPreviousItem();
+//    }
+//
+//    @Override
+//    public boolean hasNextItem() {
+//        while (! currentTraversableTraverser.hasNextItem()) {
+//            if (! traversablesTraverser.hasNextItem())
+//                return false;
+//
+//            currentTraversableTraverser = traversablesTraverser.getNextItem().createTraverser();
+//        }
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public Item getNextItem()
+//    throws NoNextSequenceItemException {
+//        if (! hasNextItem())
+//            throw new NoPreviousSequenceItemException(getSequence());
+//
+//        return currentTraversableTraverser.getPreviousItem();
+//    }
 }

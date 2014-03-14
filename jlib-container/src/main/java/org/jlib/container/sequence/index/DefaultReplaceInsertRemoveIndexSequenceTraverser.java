@@ -21,24 +21,12 @@
 
 package org.jlib.container.sequence.index;
 
-import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.NoItemToRemoveException;
-import org.jlib.core.value.ValueNotAccessibleException;
 
-import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
 import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
 import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.array.FillupArraySequence;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-import static org.jlib.core.array.ArrayUtility.traversable;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * Default implementation of a {@link RemoveIndexSequenceTraverser},
@@ -52,13 +40,13 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
  *
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceInsertRemoveIndexSequence<Item>>
+public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
 extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
 implements ObservedInsertSequenceTraverser<Item>
 {
 
-    /** remove {@link ValueObserver} items */
-    private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();
+    /** retain {@link ValueObserver} items */
+//    private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();
 
     /**
      * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceTraverser}
@@ -94,40 +82,41 @@ implements ObservedInsertSequenceTraverser<Item>
         super(sequence, initialNextItemIndex);
     }
 
-    @Override
+//    @Override
     public void remove()
     throws NoItemToRemoveException {
-        try {
-            getSequence().remove(getLastAccessedItemIndex());
-
-            unsetLastAccessedItem();
-        }
-        catch (final ValueNotAccessibleException exception) {
-            throw new NoItemToRemoveException(getSequence(), exception);
-        }
+//        try {
+//            getSequence().retain(getLastAccessedItemIndex());
+//
+//            unsetLastAccessedItem();
+//        }
+//        catch (final ValueNotAccessibleException exception) {
+//            throw new NoItemToRemoveException(getSequence(), exception);
+//        }
     }
 
-    @Override
+//    @Override
     @SuppressWarnings("unchecked")
     public void remove(final ValueObserver<Item>... operationObservers)
     throws NoItemToRemoveException, ValueObserverException, RuntimeException {
-        ObserverUtility.operate(new HandledOperator() {
+//        ObserverUtility.operate(new HandledOperator() {
+//
+//            @Override
+//            public void operate()
+//            throws OperatorException, RuntimeException {
+//                try {
+//                    retain();
+//                }
+//                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
+//                    throw new OperatorException(message("retain()"), exception);
+//                }
+//            }
+//        }, concatenated(traverserRemoveObservers, traversable(operationObservers)).toArray());
 
-            @Override
-            public void operate()
-            throws OperatorException, RuntimeException {
-                try {
-                    remove();
-                }
-                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException(message("remove()"), exception);
-                }
-            }
-        }, concatenated(traverserRemoveObservers, traversable(operationObservers)).toArray());
     }
 
-    @Override
+//    @Override
     public final void addRemoveObserver(final ValueObserver<Item> removeObserver) {
-        traverserRemoveObservers.append(removeObserver);
+//        traverserRemoveObservers.append(removeObserver);
     }
 }

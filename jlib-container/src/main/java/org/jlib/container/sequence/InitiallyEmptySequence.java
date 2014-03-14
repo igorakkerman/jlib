@@ -23,17 +23,17 @@ package org.jlib.container.sequence;
 
 import java.util.Collection;
 
-import org.jlib.container.Container;
-import org.jlib.container.EmptyContainer;
-import org.jlib.container.ItemToRemoveNotContainedException;
-import org.jlib.container.ObservedRandomAccessRemoveContainer;
-import org.jlib.container.ObservedRemoveAllContainer;
-import org.jlib.container.ObservedReplaceContainer;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
+import org.jlib.core.traverser.ObservedReplaceTraversable;
 import org.jlib.core.traverser.Traversable;
+
+import org.jlib.container.ItemToRemoveNotContainedException;
+import org.jlib.container.ObservedRemoveMany;
+import org.jlib.container.ObservedRemoveAll;
+import org.jlib.container.legacy.AbstractEmpty;
 
 /**
  * {@link Sequence} that is empty when created.
@@ -44,11 +44,11 @@ import org.jlib.core.traverser.Traversable;
  * @author Igor Akkerman
  */
 public abstract class InitiallyEmptySequence<Item>
-extends EmptyContainer<Item>
+extends AbstractEmpty<Item>
 implements Sequence<Item>,
-           ObservedReplaceContainer<Item>,
-           ObservedRandomAccessRemoveContainer<Item>,
-           ObservedRemoveAllContainer<Item> {
+           ObservedReplaceTraversable<Item>,
+           ObservedRemoveMany<Item>,
+           ObservedRemoveAll<Item> {
 
     /**
      * Creates a new {@link InitiallyEmptySequence}.
@@ -57,62 +57,52 @@ implements Sequence<Item>,
         super();
     }
 
-    @Override
     public void remove(final Item item)
     throws ItemToRemoveNotContainedException {
-        throw new ItemToRemoveNotContainedException(this, item);
+        // throw new ItemToRemoveNotContainedException(this, item);
     }
 
-    @Override
     public void removeAll()
     throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
 
-    @Override
-    public void remove(final Container<? extends Item> items)
+    public void remove(final TraversableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
 
-    @Override
     public void remove(final Collection<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
     public void remove(final Iterable<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public void remove(final Item... items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
-    public void retain(final Container<? extends Item> items)
+    public void retain(final TraversableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
     public void retain(final Traversable<? extends Item> items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
     public void retain(final Collection<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
         // intentionally blank
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public void retain(final Item... items)
     throws ItemToRemoveNotContainedException, InvalidTraversableStateException {
@@ -128,7 +118,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException {
         // intentionally blank
     }
@@ -161,21 +151,18 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    @Override
     @SuppressWarnings("unchecked")
-    public void retain(final Container<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         // intentionally blank
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public void retain(final Collection<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
         // intentionally blank
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public void retain(final ValueObserver<Item>[] observers, final Item... items)
     throws InvalidTraversableArgumentException, InvalidTraversableStateException, ValueObserverException {
@@ -185,6 +172,11 @@ implements Sequence<Item>,
     @Override
     public EmptySequenceTraverser<Item> createTraverser() {
         return EmptySequenceTraverser.getInstance();
+    }
+
+    @Override
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+        return false;
     }
 
     // equals/hashCode don't need to be extended as Object.equals already checks for identity

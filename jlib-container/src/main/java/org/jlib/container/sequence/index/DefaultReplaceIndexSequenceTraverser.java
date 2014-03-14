@@ -21,25 +21,15 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.array.ArrayUtility.traversable;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import static org.jlib.container.sequence.SequenceUtility.concatenated;
-
-import org.jlib.container.sequence.AppendSequence;
-import org.jlib.container.sequence.InvalidSequenceTraverserStateException;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.array.FillupArraySequence;
-import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 import org.jlib.core.traverser.NoItemToReplaceException;
 import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 import org.jlib.core.value.ValueNotAccessibleException;
+
+import org.jlib.container.sequence.Sequence;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser}
@@ -58,7 +48,7 @@ implements ObservedReplaceTraverser<Item>,
            IndexSequenceTraverser<Item> {
 
     /** replace {@link ValueObserver} items */
-    private final AppendSequence<ValueObserver<Item>> traverserReplaceObservers = new FillupArraySequence<>();
+//    private final AppendSequence<ValueObserver<Item>> traverserReplaceObservers = new FillupArraySequence<>();
 
     /**
      * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
@@ -101,7 +91,7 @@ implements ObservedReplaceTraverser<Item>,
 
     @Override
     public final void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
-        traverserReplaceObservers.append(replaceObserver);
+//        traverserReplaceObservers.append(replaceObserver);
     }
 
     @Override
@@ -119,19 +109,19 @@ implements ObservedReplaceTraverser<Item>,
     @SafeVarargs
     public final void replace(final Item newItem, final ValueObserver<Item>... operationObservers)
     throws NoItemToReplaceException, InvalidTraversableArgumentException, InvalidTraversableStateException, RuntimeException {
-        ObserverUtility.operate(new HandledOperator() {
-
-            @Override
-            public void operate()
-            throws OperatorException, RuntimeException {
-                try {
-                    replace(newItem);
-                }
-                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
-                    throw new OperatorException(message("replace: {0}", newItem), exception);
-                }
-            }
-        }, /*
-     */ newItem, concatenated(traverserReplaceObservers, traversable(operationObservers)).toArray());
+//        ObserverUtility.operate(new HandledOperator() {
+//
+//            @Override
+//            public void operate()
+//            throws OperatorException, RuntimeException {
+//                try {
+//                    replace(newItem);
+//                }
+//                catch (InvalidTraversableArgumentException | InvalidSequenceTraverserStateException exception) {
+//                    throw new OperatorException(message("replace: {0}", newItem), exception);
+//                }
+//            }
+//        }, /*
+//     */ newItem, concatenated(traverserReplaceObservers, traversable(operationObservers)).toArray());
     }
 }

@@ -1,10 +1,10 @@
 /*
  * jlib - The Free Java Library
- * 
+ *
  *    http://www.jlib.org
- *    
+ *
  * Copyright (c) 2006-2008 Igor Akkerman
- * 
+ *
  * jlib is distributed under the
  *
  *    COMMON PUBLIC LICENSE VERSION 1.0
@@ -17,17 +17,17 @@ package org.jlib.text;
 
 /**
  * Utility class providing static methods for String operations and manipulations.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class StringPadUtility {
-    
+
     /** no visible constructor */
     private StringPadUtility() {}
 
     /**
      * Pads the specified String with the blank character at the back to the specified length.
-     * 
+     *
      * @param string
      *        String to pad
      * @param length
@@ -41,7 +41,7 @@ public final class StringPadUtility {
     /**
      * Pads the specified String with the blank character using the specified PaddingType to the
      * specified length.
-     * 
+     *
      * @param string
      *        String to pad
      * @param length
@@ -57,7 +57,7 @@ public final class StringPadUtility {
     /**
      * Pads the specified String with the specified character using the specified PaddingType to the
      * specified length.
-     * 
+     *
      * @param string
      *        String to pad
      * @param length
@@ -78,7 +78,7 @@ public final class StringPadUtility {
 
         StringBuilder stringBuilder = new StringBuilder(length);
 
-        // TODO: use StringFormatter strategies instead
+        // TODO: use StringFormatter strategy instead
         switch (paddingType) {
             case FRONT:
                 for (; currentLength < length; currentLength ++)
@@ -116,12 +116,12 @@ public final class StringPadUtility {
 //            return string;
 //
 //        StringBuilder stringBuilder = new StringBuilder(stringLength << 1);
-//        
+//
 //        try {
 ////        stringBuilder.append();
-//        
+//
 //        int nextWhitespaceIndex;
-//        
+//
 //        nextWhitespaceIndex = indexOfWhitespace(string, whitespaceIndex + 1, endIndex);
 //
 
@@ -129,7 +129,7 @@ public final class StringPadUtility {
 //        int nextLIne
 //        for (int whitespaceIndex = 0; whitespaceIndex < stringLength; whitespaceIndex ++) {
 //            newWhitespaceIndex = subStringUntilNextWhitespace(stringBuilder, string, whitespaceIndex, );
-//            if (newWhitespaceIndex != whitespaceIndex) { 
+//            if (newWhitespaceIndex != whitespaceIndex) {
 //                stringBuilder.append(LINE_SEPARATOR);
 //                whitespaceIndex = newWhitespaceIndex;
 //            }
@@ -137,7 +137,7 @@ public final class StringPadUtility {
 //
 //        return stringBuilder.toString();
 //    }
-        
+
     // FIXME: fix this method
 //    private static int indexOfWhitespace(String string, int startIndex, int endIndex)
 //    throws NoWhitespaceCharacterException, NullPointerException, IndexOutOfBoundsException {

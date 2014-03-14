@@ -21,6 +21,12 @@
 
 package org.jlib.container.matrix;
 
+import java.util.Collection;
+import java.util.Iterator;
+
+import org.jlib.core.traverser.InvalidTraversableArgumentException;
+import org.jlib.core.traverser.InvalidTraversableStateException;
+
 import org.jlib.container.sequence.index.AbstractIndexSequence;
 
 /**
@@ -101,5 +107,36 @@ extends AbstractIndexSequence<Entry> {
      */
     protected int getEntityIndex() {
         return entityIndex;
+    }
+
+    public boolean contains(final Entry entry)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    public boolean contains(final TraversableContainer<? extends Entry> entries)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    public boolean contains(final Collection<? extends Entry> entries)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @SafeVarargs
+    public final boolean contains(final Entry... entries)
+    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+        return false;
+    }
+
+    @Override
+    public boolean containsEqualItems(final TraversableContainer<Entry> otherContainer) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Entry> iterator() {
+        return null;
     }
 }

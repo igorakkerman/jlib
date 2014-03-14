@@ -21,8 +21,6 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureSubIndexRangeValid;
-
 /**
  * {@link IndexSequence} view of the {@link Item}s stored in a base {@link IndexSequence} in the specified index range.
  * The {@link Item}s in this {@link SubIndexSequence} will have the same index as they had in the base
@@ -37,49 +35,83 @@ import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureSubIn
  * @author Igor Akkerman
  */
 public class SubIndexSequence<Item, BaseSequence extends IndexSequence<Item>>
-extends AbstractIndexSequence<Item> {
+/*extends AbstractIndexSequence<Item> */{
 
-    /** BaseSequence of this {@link SubIndexSequence} */
-    private final BaseSequence baseSequence;
-
-    /**
-     * Creates a new {@link SubIndexSequence}.
-     *
-     * @param baseSequence
-     *        base {@link IndexSequence}
-     *
-     * @param firstIndex
-     *        integer specifying the index of the first {@link Item}
-     *
-     * @param lastIndex
-     *        integer specifying the index of the last {@link Item}
-     *
-     * @throws InvalidSequenceIndexException
-     *         if {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
-     *
-     * @throws InvalidSequenceIndexException
-     *         if {@code firstIndex > lastIndex}
-     */
-    public SubIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
-    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
-        super(firstIndex, lastIndex);
-
-        ensureSubIndexRangeValid(baseSequence, firstIndex, lastIndex);
-
-        this.baseSequence = baseSequence;
-    }
-
-    @Override
-    protected Item getStoredItem(final int index) {
-        return baseSequence.get(index);
-    }
-
-    /**
-     * Returns the base BaseSequence of this {@link SubIndexSequence}.
-     *
-     * @return BaseSequence of this {@link SubIndexSequence}
-     */
-    protected BaseSequence getBaseSequence() {
-        return baseSequence;
-    }
+//    /** BaseSequence of this {@link SubIndexSequence} */
+//    private final BaseSequence baseSequence;
+//
+//    /**
+//     * Creates a new {@link SubIndexSequence}.
+//     *
+//     * @param baseSequence
+//     *        base {@link IndexSequence}
+//     *
+//     * @param firstIndex
+//     *        integer specifying the index of the first {@link Item}
+//     *
+//     * @param lastIndex
+//     *        integer specifying the index of the last {@link Item}
+//     *
+//     * @throws InvalidSequenceIndexException
+//     *         if {@code firstIndex < baseSequence.getFirstIndex() || lastIndex > baseSequence.getLastIndex()}
+//     *
+//     * @throws InvalidSequenceIndexException
+//     *         if {@code firstIndex > lastIndex}
+//     */
+//    public SubIndexSequence(final BaseSequence baseSequence, final int firstIndex, final int lastIndex)
+//    throws InvalidSequenceIndexException, InvalidSequenceIndexException {
+//        super(firstIndex, lastIndex);
+//
+//        ensureSubIndexRangeValid(baseSequence, firstIndex, lastIndex);
+//
+//        this.baseSequence = baseSequence;
+//    }
+//
+//    @Override
+//    protected Item getStoredItem(final int index) {
+//        return baseSequence.get(index);
+//    }
+//
+//    /**
+//     * Returns the base BaseSequence of this {@link SubIndexSequence}.
+//     *
+//     * @return BaseSequence of this {@link SubIndexSequence}
+//     */
+//    protected BaseSequence getBaseSequence() {
+//        return baseSequence;
+//    }
+//
+//    @Override
+//    public boolean containsItem(final Item item)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean containsItem(final Collection<? extends Item> items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean containsItem(final Item... items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//        return false;
+//    }
+//
+//    @Override
+//    public Iterator<Item> iterator() {
+//        return null;
+//    }
 }

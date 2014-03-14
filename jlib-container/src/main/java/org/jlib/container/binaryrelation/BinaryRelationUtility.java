@@ -26,7 +26,6 @@ import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.RemoveTraverser;
 
 import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
 
@@ -62,7 +61,7 @@ public class BinaryRelationUtility {
      *        added Pair
      *
      * @throws PairAlreadyContainedException
-     *         if {@code binaryRelation} already contains {@code pair}
+     *         if {@code binaryRelation} already containsItem {@code pair}
      *
      * @throws InvalidBinaryRelationArgumentException
      *         if some property of {@code pair} prevents it from being
@@ -73,8 +72,8 @@ public class BinaryRelationUtility {
                                  final Pair<LeftValue, RightValue> pair)
     throws PairAlreadyContainedException, InvalidTraversableArgumentException {
 
-        if (binaryRelation.contains(pair))
-            throw new PairAlreadyContainedException(binaryRelation, pair);
+//        if (binaryRelation.containsItem(pair))
+//            throw new PairAlreadyContainedException(binaryRelation, pair);
 
         binaryRelation.ensureContained(pair);
     }
@@ -100,7 +99,7 @@ public class BinaryRelationUtility {
      *        {@link Iterable} providing the Pairs to add
      *
      * @throws PairAlreadyContainedException
-     *         if {@code binaryRelation} already contains one Pair in
+     *         if {@code binaryRelation} already containsItem one Pair in
      *         {@code pairs}
      *
      * @throws InvalidBinaryRelationArgumentException
@@ -134,7 +133,7 @@ public class BinaryRelationUtility {
      *        {@link Iterable} providing the Pairs to add
      *
      * @throws PairAlreadyContainedException
-     *         if {@code binaryRelation} already contains one Pair in
+     *         if {@code binaryRelation} already containsItem one Pair in
      *         {@code pairs}
      *
      * @throws InvalidBinaryRelationArgumentException
@@ -149,7 +148,7 @@ public class BinaryRelationUtility {
     }
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains the
+     * Ensures that the specified {@link AddBinaryRelation} containsItem the
      * specified Pairs. If the {@link AddBinaryRelation} does not
      * contain the Pair, it is added.
      *
@@ -175,7 +174,7 @@ public class BinaryRelationUtility {
     }
 
     /**
-     * Ensures that the specified {@link AddBinaryRelation} contains the
+     * Ensures that the specified {@link AddBinaryRelation} containsItem the
      * specified Pairs. If the {@link AddBinaryRelation} does not
      * contain the Pair, it is added.
      *
@@ -201,7 +200,7 @@ public class BinaryRelationUtility {
 
     /**
      * Removes all Pairs provided by the specified {@link Iterable} from
-     * the specified {@link RemoveBinaryRelation}.
+     * the specified {@link RetainItemsByTraversableBinaryRelation}.
      *
      * @param <LeftValue>
      *        type of the left value of the {@link Pair}
@@ -210,22 +209,22 @@ public class BinaryRelationUtility {
      *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
-     *        {@link RemoveBinaryRelation} containing the Pairs
+     *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to remove
+     *        {@link Iterable} providing the Pairs to retain
      */
     public static <LeftValue, RightValue> /*
-               */ void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
+               */ void remove(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
                               final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
 
-        for (final Pair<LeftValue, RightValue> pair : pairs)
-            binaryRelation.remove(pair);
+//        for (final Pair<LeftValue, RightValue> pair : pairs)
+//            binaryRelation.retain(pair);
     }
 
     /**
      * Removes all Pairs in the specified comma separated sequence from
-     * the specified {@link RemoveBinaryRelation}.
+     * the specified {@link RetainItemsByTraversableBinaryRelation}.
      *
      * @param <LeftValue>
      *        type of the left value of the {@link Pair}
@@ -234,13 +233,13 @@ public class BinaryRelationUtility {
      *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
-     *        {@link RemoveBinaryRelation} containing the Pairs
+     *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to remove
+     *        {@link Iterable} providing the Pairs to retain
      */
     @SafeVarargs
-    public static <LeftValue, RightValue> void remove(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
+    public static <LeftValue, RightValue> void remove(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
                                                       final Pair<LeftValue, RightValue>... pairs) {
         remove(binaryRelation, ArrayUtility.iterable(pairs));
     }
@@ -256,22 +255,22 @@ public class BinaryRelationUtility {
      *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
-     *        {@link RemoveBinaryRelation} containing the Pairs to remove
+     *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs to retain
      *
      * @param pairs
-     *        {@link Iterable} providing the Pairs to retain
+     *        {@link Iterable} providing the Pairs to remove
      */
     public static <LeftValue, RightValue> /*
-               */ void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
+               */ void retain(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
                               final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
 
         final Set<Pair<LeftValue, RightValue>> retainedPairsSet = toSet(pairs);
 
-        final RemoveTraverser<Pair<LeftValue, RightValue>> binaryRelationTraverser = binaryRelation.createTraverser();
-
-        while (binaryRelationTraverser.hasNextItem())
-            if (! retainedPairsSet.contains(binaryRelationTraverser.getNextItem()))
-                binaryRelationTraverser.remove();
+//        final RemoveTraverser<Pair<LeftValue, RightValue>> binaryRelationTraverser = binaryRelation.createTraverser();
+//
+//        while (binaryRelationTraverser.hasNextItem())
+//            if (! retainedPairsSet.containsItem(binaryRelationTraverser.getNextItem()))
+//                binaryRelationTraverser.retain();
     }
 
     /**
@@ -286,18 +285,18 @@ public class BinaryRelationUtility {
      *        type of the right value of the {@link Pair}
      *
      * @param binaryRelation
-     *        {@link RemoveBinaryRelation} containing the Pairs to remove
+     *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs to retain
      *
      * @param pairs
-     *        {@link Collection} containing the Pairs to retain
+     *        {@link Collection} containing the Pairs to remove
      */
-    public static <LeftValue, RightValue> void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
+    public static <LeftValue, RightValue> void retain(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
                                                       final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-        final RemoveTraverser<Pair<LeftValue, RightValue>> pairsTraverser = binaryRelation.createTraverser();
+//        final RemoveTraverser<Pair<LeftValue, RightValue>> pairsTraverser = binaryRelation.createTraverser();
 
-        while (pairsTraverser.hasNextItem())
-            if (! pairs.contains(pairsTraverser.getNextItem()))
-                pairsTraverser.remove();
+//        while (pairsTraverser.hasNextItem())
+//            if (! pairs.containsItem(pairsTraverser.getNextItem()))
+//                pairsTraverser.retain();
     }
 
     /**
@@ -315,16 +314,16 @@ public class BinaryRelationUtility {
      *        type of the retained {@link Pair}
      *
      * @param binaryRelation
-     *        {@link RemoveBinaryRelation} containing the Pairs to remove
+     *        {@link RetainItemsByTraversableBinaryRelation} containing the Pairs to retain
      *
      * @param pairs
-     *        {@link Collection} containing the Pairs to retain
+     *        {@link Collection} containing the Pairs to remove
      */
     @SafeVarargs
     public static <LeftValue, RightValue, RetainedPair extends Pair<LeftValue, RightValue>> /*
-               */ void retain(final RemoveBinaryRelation<LeftValue, RightValue> binaryRelation,
+               */ void retain(final RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> binaryRelation,
                               final RetainedPair... pairs) {
-        // necessary as we need the contains() method for the pairs sequence
-        retain(binaryRelation, toSet(pairs));
+        // necessary as we need the containsItem() method for the pairs sequence
+//        remove(binaryRelation, toSet(pairs));
     }
 }

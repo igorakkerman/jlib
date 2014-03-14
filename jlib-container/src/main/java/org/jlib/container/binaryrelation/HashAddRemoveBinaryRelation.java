@@ -21,13 +21,6 @@
 
 package org.jlib.container.binaryrelation;
 
-import java.util.Collection;
-
-import org.jlib.core.traverser.RemoveTraverser;
-
-import org.jlib.container.Container;
-import org.jlib.container.ItemToRemoveNotContainedException;
-
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right
  * hand side items.
@@ -42,144 +35,144 @@ import org.jlib.container.ItemToRemoveNotContainedException;
  * @author Igor Akkerman
  */
 public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
-extends HashAddBinaryRelation<LeftValue, RightValue>
-implements RemoveBinaryRelation<LeftValue, RightValue> {
-
-    /**
-     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
-     */
-    public HashAddRemoveBinaryRelation() {
-        super();
-    }
-
-    /**
-     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link Container}.
-     *
-     * @param pairs
-     *        Container of the Pairs to add
-     *
-     * @throws InvalidPairException
-     *         if {@code pairs} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
-     */
-    public HashAddRemoveBinaryRelation(final Container<Pair<LeftValue, RightValue>> pairs)
-    throws InvalidPairException {
-        super(pairs);
-    }
-
-    /**
-     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link Collection}.
-     *
-     * @param pairs
-     *        {@link Collection} of {@link Pair} items to add
-     *
-     * @throws InvalidPairException
-     *         if {@code pairs} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
-     */
-    public HashAddRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
-    throws InvalidPairException {
-        super(pairs);
-    }
-
-    /**
-     * Creates a new HashAddRemoveBinaryRelation containing the
-     * {@link Pair} items specified in a comma separated sequence.
-     *
-     * @param pairs
-     *        comma separated sequence of the {@link Pair} items to add
-     *
-     * @throws InvalidPairException
-     *         if {@code pairs} violate the rules of this
-     *         {@link HashAddRemoveBinaryRelation}
-     */
-    @SuppressWarnings("unchecked")
-    public HashAddRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
-    throws InvalidPairException {
-        super(pairs);
-    }
-
-    // overridden to be made public
-    @Override
-    public void addPair(final LeftValue leftValue, final RightValue rightValue)
-    throws InvalidPairException {
-        super.addPair(leftValue, rightValue);
-    }
-
-    @Override
-    public void remove(final LeftValue leftValue, final RightValue rightValue)
-    throws NoSuchLeftValueException, NoSuchRightValueException {
-        remove(new Pair(leftValue, rightValue));
-    }
-
-    @Override
-    public void remove(final Pair<LeftValue, RightValue> pair)
-    throws ItemToRemoveNotContainedException {
-        try {
-            removePair(pair);
-        }
-        catch (final NoSuchPairException exception) {
-            throw new ItemToRemoveNotContainedException(this, pair, exception);
-        }
-    }
-
-    private void removePair(final Pair<LeftValue, RightValue> pair) {
-        final LeftValue leftValue = pair.getLeftValue();
-        final RightValue rightValue = pair.getRightValue();
-
-        if (! contains(leftValue, rightValue))
-            throw new NoSuchPairException(this, new Pair(leftValue, rightValue));
-
-        leftToRightMap.get(leftValue).remove(rightValue);
-        rightToLeftMap.get(rightValue).remove(leftValue);
-    }
-
-    @Override
-    public void removeAll() {
-        BinaryRelationUtility.remove(this, this);
-    }
-
-    @Override
-    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
-        BinaryRelationUtility.remove(this, pairs);
-    }
-
-    @Override
-    public void remove(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
-        BinaryRelationUtility.remove(this, pairs);
-    }
-
-    @Override
-    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-        BinaryRelationUtility.remove(this, pairs);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void remove(final Pair<LeftValue, RightValue>... pairs) {
-        BinaryRelationUtility.remove(this, pairs);
-    }
-
-    @Override
-    public void retain(final Container<? extends Pair<LeftValue, RightValue>> pairs) {
-        BinaryRelationUtility.retain(this, pairs);
-    }
-
-    @Override
-    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
-        BinaryRelationUtility.retain(this, pairs);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void retain(final Pair<LeftValue, RightValue>... pairs) {
-        BinaryRelationUtility.retain(this, pairs);
-    }
-
-    @Override
-    public RemoveTraverser<Pair<LeftValue, RightValue>> createTraverser() {
-        return new DefaultRemoveBinaryRelationTraverser<>(this);
-    }
+/*extends HashAddBinaryRelation<LeftValue, RightValue>
+implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */{
+//
+//    /**
+//     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
+//     */
+//    public HashAddRemoveBinaryRelation() {
+//        super();
+//    }
+//
+//    /**
+//     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
+//     * {@link Pair} items contained by the specified {@link TraversableContainer}.
+//     *
+//     * @param pairs
+//     *        TraversableContainer of the Pairs to add
+//     *
+//     * @throws InvalidPairException
+//     *         if {@code pairs} violate the rules of this
+//     *         {@link HashAddRemoveBinaryRelation}
+//     */
+//    public HashAddRemoveBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
+//    throws InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    /**
+//     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
+//     * {@link Pair} items contained by the specified {@link Collection}.
+//     *
+//     * @param pairs
+//     *        {@link Collection} of {@link Pair} items to add
+//     *
+//     * @throws InvalidPairException
+//     *         if {@code pairs} violate the rules of this
+//     *         {@link HashAddRemoveBinaryRelation}
+//     */
+//    public HashAddRemoveBinaryRelation(final Collection<Pair<LeftValue, RightValue>> pairs)
+//    throws InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    /**
+//     * Creates a new HashAddRemoveBinaryRelation containing the
+//     * {@link Pair} items specified in a comma separated sequence.
+//     *
+//     * @param pairs
+//     *        comma separated sequence of the {@link Pair} items to add
+//     *
+//     * @throws InvalidPairException
+//     *         if {@code pairs} violate the rules of this
+//     *         {@link HashAddRemoveBinaryRelation}
+//     */
+//    @SuppressWarnings("unchecked")
+//    public HashAddRemoveBinaryRelation(final Pair<LeftValue, RightValue>... pairs)
+//    throws InvalidPairException {
+//        super(pairs);
+//    }
+//
+//    // overridden to be made public
+//    @Override
+//    public void addPair(final LeftValue leftValue, final RightValue rightValue)
+//    throws InvalidPairException {
+//        super.addPair(leftValue, rightValue);
+//    }
+//
+//    @Override
+//    public void retain(final LeftValue leftValue, final RightValue rightValue)
+//    throws NoSuchLeftValueException, NoSuchRightValueException {
+//        retain(new Pair(leftValue, rightValue));
+//    }
+//
+//    @Override
+//    public void retain(final Pair<LeftValue, RightValue> pair)
+//    throws ItemToRemoveNotContainedException {
+//        try {
+//            removePair(pair);
+//        }
+//        catch (final NoSuchPairException exception) {
+//            throw new ItemToRemoveNotContainedException(this, pair, exception);
+//        }
+//    }
+//
+//    private void removePair(final Pair<LeftValue, RightValue> pair) {
+//        final LeftValue leftValue = pair.getLeftValue();
+//        final RightValue rightValue = pair.getRightValue();
+//
+//        if (! containsItem(leftValue, rightValue))
+//            throw new NoSuchPairException(this, new Pair(leftValue, rightValue));
+//
+//        leftToRightMap.get(leftValue).retain(rightValue);
+//        rightToLeftMap.get(rightValue).retain(leftValue);
+//    }
+//
+//    @Override
+//    public void removeAll() {
+//        BinaryRelationUtility.retain(this, this);
+//    }
+//
+//    @Override
+//    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.retain(this, pairs);
+//    }
+//
+//    @Override
+//    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.retain(this, pairs);
+//    }
+//
+//    @Override
+//    public void retain(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.retain(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void retain(final Pair<LeftValue, RightValue>... pairs) {
+//        BinaryRelationUtility.retain(this, pairs);
+//    }
+//
+//    @Override
+//    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    public void remove(final Collection<? extends Pair<LeftValue, RightValue>> pairs) {
+//        BinaryRelationUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public void remove(final Pair<LeftValue, RightValue>... pairs) {
+//        BinaryRelationUtility.remove(this, pairs);
+//    }
+//
+//    @Override
+//    public RemoveTraverser<Pair<LeftValue, RightValue>> createTraverser() {
+//        return new DefaultRemoveBinaryRelationTraverser<>(this);
+//    }
 }

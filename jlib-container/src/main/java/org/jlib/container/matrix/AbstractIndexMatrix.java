@@ -21,10 +21,10 @@
 
 package org.jlib.container.matrix;
 
-import org.jlib.container.sequence.index.AbstractIndexSequence;
+import org.jlib.core.traverser.Traverser;
+
 import org.jlib.container.sequence.index.IndexSequence;
 import org.jlib.container.sequence.index.InvalidSequenceIndexException;
-import org.jlib.core.traverser.Traverser;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.
@@ -170,13 +170,15 @@ implements IndexMatrix<Entry> {
      */
     @Override
     public IndexSequence<? extends IndexMatrixColumn<Entry>> getColumns() {
-        return new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
+        return null;
 
-            @Override
-            public IndexMatrixColumn<Entry> getStoredItem(final int columnIndex) {
-                return getColumn(columnIndex);
-            }
-        };
+//        new AbstractIndexSequence<IndexMatrixColumn<Entry>>(firstColumnIndex, lastColumnIndex) {
+//
+//            @Override
+//            public IndexMatrixColumn<Entry> getStoredItem(final int columnIndex) {
+//                return getColumn(columnIndex);
+//            }
+//        };
     }
 
     /**
@@ -188,13 +190,14 @@ implements IndexMatrix<Entry> {
      */
     @Override
     public IndexSequence<? extends IndexMatrixRow<Entry>> getRows() {
-        return new AbstractIndexSequence<IndexMatrixRow<Entry>>(firstRowIndex, lastRowIndex) {
-
-            @Override
-            public IndexMatrixRow<Entry> getStoredItem(final int rowIndex) {
-                return getRow(rowIndex);
-            }
-        };
+        return null;
+//        new AbstractIndexSequence<IndexMatrixRow<Entry>>(firstRowIndex, lastRowIndex) {
+//
+//            @Override
+//            public IndexMatrixRow<Entry> getStoredItem(final int rowIndex) {
+//                return getRow(rowIndex);
+//            }
+//        };
     }
 
     /**

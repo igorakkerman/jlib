@@ -21,12 +21,10 @@
 
 package org.jlib.container.sequence.index;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import org.jlib.container.sequence.AbstractNonEmptySequence;
 
 import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
-
-import org.jlib.container.Container;
-import org.jlib.container.sequence.AbstractNonEmptySequence;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * Skeletal implementation of an {@link IndexSequence}.
@@ -124,7 +122,7 @@ implements IndexSequence<Item> {
     @Override
     public IndexSequence<Item> getSubsequenceView(final int fromIndex, final int toIndex)
     throws InvalidSequenceIndexException {
-        return new SubIndexSequence<>(this, fromIndex, toIndex);
+        return null; // new SubIndexSequence<>(this, fromIndex, toIndex);
     }
 
     @Override
@@ -163,9 +161,9 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    protected boolean hasMatchingProperties(final Container<Item> otherContainer) {
-        if (! super.hasMatchingProperties(otherContainer))
-            return false;
+    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+//        if (! super.hasMatchingProperties(otherContainer))
+//            return false;
 
         final IndexSequence<Item> otherSequence = (IndexSequence<Item>) otherContainer;
 

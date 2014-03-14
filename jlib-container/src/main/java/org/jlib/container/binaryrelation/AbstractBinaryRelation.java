@@ -23,8 +23,6 @@ package org.jlib.container.binaryrelation;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.AbstractContainer;
-
 /**
  * Skeletal implementation of a {@link BinaryRelation}.
  *
@@ -38,7 +36,7 @@ import org.jlib.container.AbstractContainer;
  * @author Igor Akkerman
  */
 public abstract class AbstractBinaryRelation<LeftValue, RightValue>
-extends AbstractContainer<Pair<LeftValue, RightValue>>
+//extends ForwardingContainer<Pair<LeftValue, RightValue>>
 implements BinaryRelation<LeftValue, RightValue> {
 
     /**
@@ -58,7 +56,6 @@ implements BinaryRelation<LeftValue, RightValue> {
         return hasLeft(leftValue) && getRightSet(leftValue).contains(rightValue);
     }
 
-    @Override
     public boolean contains(final Pair<LeftValue, RightValue> pair) {
         return contains(pair.getLeftValue(), pair.getRightValue());
     }

@@ -24,8 +24,6 @@ package org.jlib.container.collection;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
-import org.jlib.container.Container;
-
 /**
  * {@link InvalidTraversableArgumentException} thrown when an argument caused an
  * error in a delegate {@link Object}.
@@ -42,7 +40,7 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link InvalidContainerDelegateArgumentException}.
      *
      * @param container
-     *        referenced {@link Container}
+     *        referenced {@link TraversableContainer}
      *
      * @param delegate
      *        delegate {@link Object}
@@ -60,7 +58,7 @@ extends InvalidTraversableArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateArgumentException(final Container<?> container, final Object delegate,
+    public InvalidContainerDelegateArgumentException(final TraversableContainer<?> container, final Object delegate,
                                                      ExceptionMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }

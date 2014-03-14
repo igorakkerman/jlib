@@ -23,8 +23,6 @@ package org.jlib.container.sequence.index;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
-import org.jlib.container.Container;
-import org.jlib.container.ObservedRemoveContainer;
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
@@ -109,13 +107,13 @@ public final class IndexSequenceUtility {
      * Removes the specified Item from the specified {@link RemoveIndexSequence}.
      *
      * @param <Item>
-     *        type of the items held in the {@link Container}
+     *        type of the items held in the {@link TraversableContainer}
      *
      * @param sequence
-     *        {@link ObservedRemoveContainer} containing the Item
+     *        {@link ObservedRetainItemsByTraversable} containing the Item
      *
      * @param itemIndex
-     *        index of the Item to remove
+     *        index of the Item to retain
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -146,7 +144,7 @@ public final class IndexSequenceUtility {
                     sequence.remove(itemIndex);
                 }
                 catch (InvalidTraversableArgumentException | InvalidTraversableStateException exception) {
-                    throw new OperatorException(message("remove: {0}", itemIndex).with("sequence", sequence),
+                    throw new OperatorException(message("retain: {0}", itemIndex).with("sequence", sequence),
                                                 exception);
                 }
             }

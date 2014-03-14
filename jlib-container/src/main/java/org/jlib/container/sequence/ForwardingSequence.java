@@ -21,16 +21,6 @@
 
 package org.jlib.container.sequence;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import org.jlib.core.language.AutoCloneable;
-import org.jlib.core.traverser.InvalidTraversableArgumentException;
-import org.jlib.core.traverser.InvalidTraversableStateException;
-
-import org.jlib.container.Container;
-
 /**
  * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.
  * The delegate {@link Sequence} may be altered during the lifetime of the {@link ForwardingSequence}.
@@ -41,122 +31,122 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 public class ForwardingSequence<Item>
-extends AutoCloneable
-implements Sequence<Item> {
+/*extends AutoCloneable
+implements Sequence<Item> */{
 
-    /** delegate {@link Sequence} */
-    private Sequence<Item> delegateSequence;
-
-    /**
-     * Creates a new {@link ForwardingSequence}.
-     *
-     * @param initialDelegateSequence
-     *        initial delegate {@link DelegateSequence}
-     */
-    public <DelegateSequence extends Sequence<Item>> /*
-        */ ForwardingSequence(final DelegateSequence initialDelegateSequence) {
-
-        super();
-
-        delegateSequence = initialDelegateSequence;
-    }
-
-    /**
-     * Returns the {@link Sequence}.
-     *
-     * @return {@link Sequence}
-     */
-    protected Sequence<Item> getDelegateSequence() {
-        return delegateSequence;
-    }
-
-    /**
-     * Registers the {@link ForwardingSequence}.
-     *
-     * @param delegateSequence
-     *        {@link Sequence}
-     */
-    protected void setDelegateSequence(final Sequence<Item> delegateSequence) {
-        this.delegateSequence = delegateSequence;
-    }
-
-    @Override
-    public Iterator<Item> iterator() {
-        return delegateSequence.iterator();
-    }
-
-    @Override
-    public int getItemsCount()
-    throws InvalidTraversableStateException {
-        return delegateSequence.getItemsCount();
-    }
-
-    @Override
-    public boolean isEmpty()
-    throws InvalidTraversableStateException {
-        return delegateSequence.isEmpty();
-    }
-
-    @Override
-    public boolean containsEqualItems(final Container<Item> otherContainer) {
-        return delegateSequence.containsEqualItems(otherContainer);
-    }
-
-    @Override
-    public boolean containsEqualItems(final Collection<Item> collection) {
-        return delegateSequence.containsEqualItems(collection);
-    }
-
-    @Override
-    public boolean contains(final Item item)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateSequence.contains(item);
-    }
-
-    @Override
-    public boolean contains(final Container<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateSequence.contains(items);
-    }
-
-    @Override
-    public boolean contains(final Collection<? extends Item> items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateSequence.contains(items);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public boolean contains(final Item... items)
-    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
-        return delegateSequence.contains(items);
-    }
-
-    @Override
-    public List<Item> toSequentialList()
-    throws InvalidTraversableStateException {
-        return delegateSequence.toSequentialList();
-    }
-
-    @Override
-    public Item[] toArray()
-    throws InvalidTraversableStateException {
-        return delegateSequence.toArray();
-    }
-
-    @Override
-    public List<Item> toList() {
-        return delegateSequence.toList();
-    }
-
-    @Override
-    public ForwardingSequenceTraverser<Item> createTraverser() {
-        return new ForwardingSequenceTraverser<>(delegateSequence.createTraverser());
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ForwardingSequence<Item> clone() {
-        return (ForwardingSequence<Item>) super.clone();
-    }
+//    /** delegate {@link Sequence} */
+//    private Sequence<Item> delegateSequence;
+//
+//    /**
+//     * Creates a new {@link ForwardingSequence}.
+//     *
+//     * @param initialDelegateSequence
+//     *        initial delegate {@link DelegateSequence}
+//     */
+//    public <DelegateSequence extends Sequence<Item>> /*
+//        */ ForwardingSequence(final DelegateSequence initialDelegateSequence) {
+//
+//        super();
+//
+//        delegateSequence = initialDelegateSequence;
+//    }
+//
+//    /**
+//     * Returns the {@link Sequence}.
+//     *
+//     * @return {@link Sequence}
+//     */
+//    protected Sequence<Item> getDelegateSequence() {
+//        return delegateSequence;
+//    }
+//
+//    /**
+//     * Registers the {@link ForwardingSequence}.
+//     *
+//     * @param delegateSequence
+//     *        {@link Sequence}
+//     */
+//    protected void setDelegateSequence(final Sequence<Item> delegateSequence) {
+//        this.delegateSequence = delegateSequence;
+//    }
+//
+//    @Override
+//    public Iterator<Item> iterator() {
+//        return delegateSequence.iterator();
+//    }
+//
+//    @Override
+//    public int getCount()
+//    throws InvalidTraversableStateException {
+//        return delegateSequence.getCount();
+//    }
+//
+//    @Override
+//    public boolean isEmpty()
+//    throws InvalidTraversableStateException {
+//        return delegateSequence.isEmpty();
+//    }
+//
+//    @Override
+//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//        return delegateSequence.containsEqualItems(otherContainer);
+//    }
+//
+////    @Override
+//    public boolean containsEqualItems(final Iterable<Item> collection) {
+//        return false; // delegateSequence.containsEqualItems(collection);
+//    }
+//
+//    @Override
+//    public boolean containsItem(final Item item)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return delegateSequence.containsItem(item);
+//    }
+//
+//    @Override
+//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return delegateSequence.containsItem(items);
+//    }
+//
+//    @Override
+//    public boolean containsItem(final Collection<? extends Item> items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return delegateSequence.containsItem(items);
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public boolean containsItem(final Item... items)
+//    throws InvalidTraversableArgumentException, InvalidTraversableStateException {
+//        return delegateSequence.containsItem(items);
+//    }
+//
+////    @Override
+//    public List<Item> toSequentialList()
+//    throws InvalidTraversableStateException {
+//        return null; // delegateSequence.toSequentialList();
+//    }
+//
+////    @Override
+//    public Item[] toArray()
+//    throws InvalidTraversableStateException {
+//        return null; // delegateSequence.toArray();
+//    }
+//
+////    @Override
+//    public List<Item> toRandomAccessList() {
+//        return null; // delegateSequence.toRandomAccessList();
+//    }
+//
+//    @Override
+//    public ForwardingSequenceTraverser<Item> createTraverser() {
+//        return new ForwardingSequenceTraverser<>(delegateSequence.createTraverser());
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public ForwardingSequence<Item> clone() {
+//        return (ForwardingSequence<Item>) super.clone();
+//    }
 }

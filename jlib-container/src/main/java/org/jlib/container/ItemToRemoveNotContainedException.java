@@ -21,18 +21,18 @@
 
 package org.jlib.container;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
 
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 /**
- * {@link InvalidTraversableArgumentException} thrown when a {@link Container}
- * does not contain the specified Item to remove.
+ * {@link InvalidTraversableArgumentException} thrown when a {@link RemoveItemByItem} does not contain the
+ * specified {@link Item} to retain.
  *
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;
@@ -41,18 +41,19 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link ItemToRemoveNotContainedException}.
      *
      * @param container
-     *        referenced {@link Container}
+     *        referenced {@link TraversableContainer}
      *
      * @param item
-     *        Item to remove
+     *        Item to retain
      */
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final Container<?> container,
-                                             final Object item) {
-        super(container, message(item.toString()));
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
+                                             final RemoveManyByItem<?> container, final Object item) {
+        super(container, message(item));
     }
 
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened") final Container<?> container,
-                                             final Object item, final Exception cause) {
-        super(container, message(item.toString()), cause);
+    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
+                                             final RemoveManyByItem<?> container, final Object item,
+                                             final Exception cause) {
+        super(container, message(item), cause);
     }
 }

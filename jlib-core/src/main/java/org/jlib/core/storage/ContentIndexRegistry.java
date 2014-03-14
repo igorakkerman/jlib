@@ -54,7 +54,7 @@ implements Serializable {
      * @param storage
      *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
-    public ContentIndexRegistry(int firstItemIndex, int lastItemIndex)
+    public ContentIndexRegistry(final int firstItemIndex, final int lastItemIndex)
     throws LinearIndexStorageException {
         super();
 
@@ -77,7 +77,7 @@ implements Serializable {
      * @param firstItemIndex
      *        integer specifying the index of the first {@link Item}
      */
-    public void setFirstItemIndex(int firstItemIndex) {
+    public void setFirstItemIndex(final int firstItemIndex) {
         this.firstItemIndex = firstItemIndex;
     }
 
@@ -96,7 +96,7 @@ implements Serializable {
      * @param lastItemIndex
      *        integer specifying the index of the last {@link Item}
      */
-    public void setLastItemIndex(int lastItemIndex) {
+    public void setLastItemIndex(final int lastItemIndex) {
         this.lastItemIndex = lastItemIndex;
     }
 
@@ -106,7 +106,7 @@ implements Serializable {
      * @param increment
      *        positive or negative integer specifying the increment
      */
-    public void incrementFirstItemIndex(int increment) {
+    public void incrementFirstItemIndex(final int increment) {
         firstItemIndex += increment;
     }
 
@@ -116,7 +116,7 @@ implements Serializable {
      * @param increment
      *        positive or negative integer specifying the increment
      */
-    public void incrementLastItemIndex(int increment) {
+    public void incrementLastItemIndex(final int increment) {
         lastItemIndex += increment;
     }
 

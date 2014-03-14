@@ -52,7 +52,7 @@ public final class SequenceUtility {
      * @return new singleton {@link Sequence}
      */
     public static <Item> Sequence<Item> singleton(final Item item) {
-        return new SingletonSequence<Item>(item);
+        return null; //new SingletonSequence<Item>(item);
     }
 
     /**
@@ -365,7 +365,7 @@ public final class SequenceUtility {
      */
     @SafeVarargs
     public static <Item> Sequence<Item> concatenated(final TwoWayTraversable<Item>... traversables) {
-        return new ConcatenatedSequence<>(traversables);
+        return null; // new ConcatenatedSequence<>(traversables);
     }
 
     /**

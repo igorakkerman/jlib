@@ -25,32 +25,30 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.Container;
-
 /**
- * Adapter allowing a {@link Container} to be used as a {@link Collection}. A
- * {@link ContainerCollection} is backed by a {@link Container} specified at
+ * Adapter allowing a {@link TraversableContainer} to be used as a {@link Collection}. A
+ * {@link ContainerCollection} is backed by a {@link TraversableContainer} specified at
  * initialization.
  *
  * @param <Item>
- *        type of the items held in the {@link Container}
+ *        type of the items held in the {@link TraversableContainer}
  *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
-    /** adapted and backed {@link Container} */
-    private final Container<Item> delegateContainer;
+    /** adapted and backed {@link TraversableContainer} */
+    private final TraversableContainer<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
-     * {@link Container}.
+     * {@link TraversableContainer}.
      *
      * @param delegateContainer
-     *        {@link Container} backing this {@link ContainerCollection}
+     *        {@link TraversableContainer} backing this {@link ContainerCollection}
      */
-    public ContainerCollection(final Container<Item> delegateContainer) {
+    public ContainerCollection(final TraversableContainer<Item> delegateContainer) {
         super();
 
         this.delegateContainer = delegateContainer;
@@ -70,14 +68,14 @@ extends AbstractCollection<Item> {
     @SuppressWarnings("unchecked")
     public boolean contains(final Object object) {
         // (pretty) safe cast thanks to type erasure
-        return delegateContainer.contains((Item) object);
+        return false; //delegateContainer.containsItem((Item) object);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean containsAll(final Collection<?> items) {
         // (pretty) safe cast thanks to type erasure
-        return delegateContainer.contains((Collection<? extends Item>) items);
+        return false; // delegateContainer.containsItem((Collection<? extends Item>) items);
     }
 
     @Override
@@ -94,14 +92,14 @@ extends AbstractCollection<Item> {
     /**
      * <p>
      * Verifies whether the specified {@link Object} is itself an
-     * ContainerCollection and the Containers backed by this Container and the
+     * ContainerCollection and the Containers backed by this TraversableContainer and the
      * specified {@link ContainerCollection}, respectively, are equal by their
      * {@code equals} methods.
      * </p>
      *
      * @param otherObject
-     *        Object to which the backed Container is compared
-     * @return {@code true} if the backed Container is equal to
+     *        Object to which the backed TraversableContainer is compared
+     * @return {@code true} if the backed TraversableContainer is equal to
      *         {@code otherObject}; {@code false} otherwise
      */
     @Override

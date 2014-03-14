@@ -25,7 +25,7 @@ import java.util.Set;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.Container;
+import org.jlib.core.language.ItemOperationStrategy;
 
 /**
  * Binary pair between various Objects. Each Object on either of the two
@@ -40,7 +40,9 @@ import org.jlib.container.Container;
  * @author Igor Akkerman
  */
 public interface BinaryRelation<LeftValue, RightValue>
-extends Container<Pair<LeftValue, RightValue>> {
+extends ItemOperationStrategy<Pair<LeftValue,RightValue>>,
+        org.jlib.core.traverser.Traversable<Pair<LeftValue,RightValue>>,
+        Iterable<Pair<LeftValue, RightValue>> {
 
     /**
      * Returns the Set of RightValues added with the specified LeftValue.

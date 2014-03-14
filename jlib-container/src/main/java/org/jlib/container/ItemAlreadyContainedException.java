@@ -21,18 +21,19 @@
 
 package org.jlib.container;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
+import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.InvalidTraversableArgumentException;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidTraversableArgumentException} thrown when trying to invalidly add
- * an Item to a {@link Container} that already exists.
+ * an Item to a {@link TraversableContainer} that already exists.
  *
  * @author Igor Akkerman
  */
 public class ItemAlreadyContainedException
-extends InvalidTraversableArgumentException {
+extends InvalidContainerArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1090527595338576596L;
@@ -41,13 +42,13 @@ extends InvalidTraversableArgumentException {
      * Creates a new {@link ItemAlreadyContainedException}.
      *
      * @param container
-     *        referenced {@link Container}
+     *        referenced {@link TraversableContainer}
      *
      * @param item
      *        already contained Item
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    public ItemAlreadyContainedException(final Container<?> container, final Object item) {
+    public ItemAlreadyContainedException(final ItemOperationStrategy<?> container, final Object item) {
 
         super(container, message(item.toString()));
     }

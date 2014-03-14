@@ -21,6 +21,7 @@
 
 package org.jlib.container.sequence;
 
+import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraversableStateException;
 
 /**
@@ -54,8 +55,8 @@ extends InvalidTraversableStateException {
      *        comma separated sequence of Object error message arguments
      */
     public InvalidStoredItemsCountException(final Sequence<?> sequence, final int invalidItemsCount,
-                                            final String errorMessageTemplate, final Object... errorMessageArguments) {
-        super(sequence, errorMessageTemplate, invalidItemsCount, errorMessageArguments);
+                                            ExceptionMessage exceptionMessage) {
+        super(sequence, exceptionMessage.append(invalidItemsCount));
 
         this.invalidItemsCount = invalidItemsCount;
     }

@@ -21,13 +21,12 @@
 
 package org.jlib.container.sequence;
 
-import org.jlib.container.ReplaceContainer;
+import org.jlib.core.traverser.ReplaceTraversable;
 
 public class ForwardingReplaceSequence<Item>
-extends ForwardingSequence<Item>
-implements ReplaceContainer<Item> {
+extends ForwardingSequence<Item> {
 
-    private final ReplaceContainer<Item> delegateReplaceContainer;
+    private final ReplaceTraversable<Item> delegateTraversable;
 
     /**
      * Creates a new {@link ForwardingSequence}.
@@ -35,12 +34,13 @@ implements ReplaceContainer<Item> {
      * @param initialDelegateSequence
      *        initial delegate {@link DelegateSequence}
      */
-    public <DelegateSequence extends Sequence<Item> & ReplaceContainer<Item>> /*
+    public <DelegateSequence extends ReplaceTraversable<Item>> /*
         */ ForwardingReplaceSequence(final DelegateSequence initialDelegateSequence) {
 
-        super(initialDelegateSequence);
+//        super(initialDelegateSequence);
+        super();
 
-        delegateReplaceContainer = initialDelegateSequence;
+        delegateTraversable = initialDelegateSequence;
     }
 
     @Override
@@ -48,8 +48,8 @@ implements ReplaceContainer<Item> {
         return super.equals(otherObject);
     }
 
-    @Override
     public ForwardingReplaceSequenceTraverser<Item> createTraverser() {
-        return new ForwardingReplaceSequenceTraverser<>(getDelegateSequence().createTraverser());
+//        return new ForwardingReplaceSequenceTraverser<>(getDelegateSequence().createTraverser());
+        return null;
     }
 }
