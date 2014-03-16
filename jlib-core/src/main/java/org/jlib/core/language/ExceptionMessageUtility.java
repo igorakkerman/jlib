@@ -31,7 +31,7 @@ import static org.jlib.core.text.TextUtility.removeOnce;
 
 public final class  ExceptionMessageUtility {
 
-    public static String createMessageFromExceptionName(final Exception exception) {
+    public static String autoMessage(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
