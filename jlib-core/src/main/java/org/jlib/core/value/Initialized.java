@@ -52,11 +52,11 @@ extends Accessible<Value> {
 
         value = initialValue;
 
-        ensureValueValid();
+        ensureValid();
     }
 
     @Override
-    public Value getValue() {
+    public Value get() {
         return value;
     }
 
@@ -69,15 +69,15 @@ extends Accessible<Value> {
      * @throws InvalidArgumentException
      *         if {@code value} is invalid
      */
-    protected void setValue(final Value value)
+    protected void set(final Value value)
     throws InvalidArgumentException {
-        ensureValueValid();
+        ensureValid();
 
         this.value = value;
     }
 
     @SuppressWarnings("EmptyMethod")
-    protected void ensureValueValid() {
+    protected void ensureValid() {
         // perform optional validation in subclasses
     }
 }

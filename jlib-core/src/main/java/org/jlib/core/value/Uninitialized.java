@@ -43,17 +43,17 @@ implements Modifiable<Value> {
     }
 
     /**
-     * Always throws a {@link ValueNotAccessibleException}.
+     * Always throws a {@link NotAccessibleException}.
      *
      * @return never
      *
-     * @throws ValueNotInitializedException
+     * @throws NotInitializedException
      *         always
      */
     @Override
-    public Value getValue()
-    throws ValueNotInitializedException {
-        throw new ValueNotInitializedException();
+    public Value get()
+    throws NotInitializedException {
+        throw new NotInitializedException();
     }
 
     /**
@@ -64,7 +64,7 @@ implements Modifiable<Value> {
      * @return {@code false}
      */
     @Override
-    public final boolean isValueAccessible() {
+    public final boolean canGet() {
         return false;
     }
 

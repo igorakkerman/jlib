@@ -36,11 +36,11 @@ public interface Accessor<Value> {
      *
      * @return accessed {@link Value}
      *
-     * @throws ValueNotAccessibleException
+     * @throws NotAccessibleException
      *         if no {@link Value} can be accessed
      */
-    public Value getValue()
-    throws ValueNotAccessibleException;
+    public Value get()
+    throws NotAccessibleException;
 
     /**
      * Returns whether a {@link Value} can be accessed.
@@ -48,5 +48,5 @@ public interface Accessor<Value> {
      * @return {@code true} if a {@link Value} can be accessed;
      *         {@code false} otherwise
      */
-    public boolean isValueAccessible();
+    public boolean canGet();
 }

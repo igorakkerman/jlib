@@ -37,12 +37,12 @@ implements Accessor<Value> {
 
     /**
      * Returns the {@link Value}. Since the {@link Value} is guaranteed to be accessible, <em>no</em>
-     * {@link ValueNotAccessibleException} will be thrown.
+     * {@link NotAccessibleException} will be thrown.
      *
      * @return registered {@link Value}
      */
     @Override
-    public abstract Value getValue();
+    public abstract Value get();
 
     /**
      * <p>
@@ -56,12 +56,12 @@ implements Accessor<Value> {
      * @return {@code true} always
      */
     @Override
-    public final boolean isValueAccessible() {
+    public final boolean canGet() {
         return true;
     }
 
     @Override
     public final String toString() {
-        return getValue().toString();
+        return get().toString();
     }
 }

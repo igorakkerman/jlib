@@ -47,6 +47,6 @@ implements OperatedValue<Value> {
 
     @Override
     public final void operate(final OptionalValueOperator<Value> operator) {
-        operator.operate(getValue());
+        operator.operate(get());
     }
 }

@@ -25,18 +25,18 @@ import javax.annotation.Nullable;
 
 import org.jlib.core.language.AbstractObject;
 
-public class ModifiableOptional<Value>
+public class OptionalModifiable<Value>
 extends AbstractObject
 implements Modifiable<Value> {
 
-    public static <Value> ModifiableOptional<Value> from(final Value value) {
-        return new ModifiableOptional<>(value);
+    public static <Value> OptionalModifiable<Value> from(final Value value) {
+        return new OptionalModifiable<>(value);
     }
 
-    public static <Value> ModifiableOptional<Value> fromNullable(@Nullable final Value value) {
+    public static <Value> OptionalModifiable<Value> fromNullable(@Nullable final Value value) {
         return value != null ?
                from(value) :
-               new ModifiableOptional<Value>();
+               new OptionalModifiable<>();
     }
 
     private Accessor<Value> delegateAccessor;
@@ -44,37 +44,37 @@ implements Modifiable<Value> {
     private final Accessor<Value> UNINITIALIZED = new Uninitialized<Value>() {
 
         @Override
-        public void setValue(final Value value) {
+        public void set(final Value value) {
             delegateAccessor = new InitializedModifiable<>(value);
         }
     };
 
-    private ModifiableOptional() {
+    private OptionalModifiable() {
         delegateAccessor = UNINITIALIZED;
     }
 
-    private ModifiableOptional(final Value value) {
+    private OptionalModifiable(final Value value) {
         delegateAccessor = new Initialized<>(value);
     }
 
     @Override
-    public void setValue(final Value value) {
+    public void set(final Value value) {
         delegateAccessor = new Initialized<>(value);
     }
 
-    public void unsetValue() {
+    public void unset() {
         delegateAccessor = UNINITIALIZED;
     }
 
     @Override
-    public boolean isValueAccessible() {
-        return delegateAccessor.isValueAccessible();
+    public boolean canGet() {
+        return delegateAccessor.canGet();
     }
 
     @Override
-    public Value getValue()
-    throws ValueNotAccessibleException {
-        return delegateAccessor.getValue();
+    public Value get()
+    throws NotAccessibleException {
+        return delegateAccessor.get();
     }
 
     @Override

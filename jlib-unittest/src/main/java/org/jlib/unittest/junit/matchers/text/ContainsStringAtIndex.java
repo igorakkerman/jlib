@@ -38,7 +38,7 @@ extends SubstringMatcher {
 
     @Factory
     public static ContainsStringAtIndex containsString(String substring, SubstringIndex substringIndex) {
-        return new ContainsStringAtIndex(substring, substringIndex.getValue());
+        return new ContainsStringAtIndex(substring, substringIndex.get());
     }
 
     @Factory
