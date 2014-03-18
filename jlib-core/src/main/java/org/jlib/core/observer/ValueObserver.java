@@ -43,8 +43,10 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    public void handleBefore(Value value)
-    throws RuntimeException;
+    default public void handleBefore(final Value value)
+    throws RuntimeException {
+        // intentionally without functionality
+    }
 
     /**
      * Performs actions after the targeted operation has been successfully
@@ -57,8 +59,10 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    public void handleAfterSuccess(Value value)
-    throws RuntimeException;
+    default public void handleAfterSuccess(final Value value)
+    throws RuntimeException {
+        // intentionally without functionality
+    }
 
     /**
      * Performs actions before the targeted operation.
@@ -73,6 +77,8 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    public void handleAfterFailure(Value value, OperatorException operatorException)
-    throws RuntimeException;
+    default public void handleAfterFailure(final Value value, final OperatorException operatorException)
+    throws RuntimeException {
+        // intentionally without functionality
+    }
 }
