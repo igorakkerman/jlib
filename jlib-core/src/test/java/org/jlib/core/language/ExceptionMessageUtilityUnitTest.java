@@ -21,7 +21,7 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.createMessageFromExceptionName;
+import static org.jlib.core.language.ExceptionMessageUtility.autoMessage;
 
 import org.junit.Test;
 
@@ -40,6 +40,6 @@ public class ExceptionMessageUtilityUnitTest {
     @Test
     public void testCreateMessageFromExceptionName()
     throws Exception {
-        assertThat(createMessageFromExceptionName(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
+        assertThat(autoMessage(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
     }
 }

@@ -24,16 +24,16 @@ package org.jlib.core.text.templateengine;
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.text.ParametrizedText;
 
-public abstract class AbstractTemplateEngine
+public abstract class AbstractTemplateEngine<Argument>
 extends AbstractObject
-implements TemplateEngine {
+implements TemplateEngine<Argument> {
 
     protected AbstractTemplateEngine() {
         super();
     }
 
     @Override
-    public String applyArguments(final ParametrizedText parametrizedText) {
+    public String applyArguments(final ParametrizedText<Argument> parametrizedText) {
         return applyArguments(parametrizedText.toString(), parametrizedText.getArguments());
     }
 }

@@ -23,4 +23,7 @@ package org.jlib.unittest.junit.matchers.array;
 
 public class IsEmpty {
 
+    public static void main(final String... commandLineArguments) {
+
+    }
 }

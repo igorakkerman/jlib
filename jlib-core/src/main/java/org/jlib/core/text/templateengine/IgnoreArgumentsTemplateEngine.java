@@ -22,7 +22,7 @@
 package org.jlib.core.text.templateengine;
 
 public final class IgnoreArgumentsTemplateEngine
-extends AbstractTemplateEngine {
+extends AbstractTemplateEngine<Object> {
 
     /** sole {@link IgnoreArgumentsTemplateEngine} instance */
     private static final IgnoreArgumentsTemplateEngine INSTANCE = new IgnoreArgumentsTemplateEngine();

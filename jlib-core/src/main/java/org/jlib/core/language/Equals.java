@@ -23,7 +23,7 @@ package org.jlib.core.language;
 
 import javax.annotation.Nullable;
 
-public interface Equals<Obj> {
+public interface EqualsStrategy<Obj> {
 
     /**
      * <p>
@@ -32,9 +32,9 @@ public interface Equals<Obj> {
      * </p>
      * <ul>
      * <li>this {@link TraversableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperation} contain equal {@link Obj}s, as verified by
+     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperation} contain equal metadata, as verified by
+     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
      * {@link #containsEqualItems(TraversableContainer)}</li>
      * </ul>
      *

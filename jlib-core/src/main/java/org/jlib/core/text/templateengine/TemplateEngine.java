@@ -24,28 +24,32 @@ package org.jlib.core.text.templateengine;
 import org.jlib.core.text.ParametrizedText;
 
 /**
- * Routine applying arguments to a textual template, usually substituting placeholders. Each {@link TemplateEngine}
- * implementation defines the individual format of the template and the algorithm applying the arguments to this
- * template, for example, substituting its placeholders.
+ * Routine applying {@link Argument}s to a textual template, usually substituting placeholders.
+ * Each {@link TemplateEngine} implementation defines the individual format of the template and the algorithm applying
+ * the {@link Argument}s to this template, for example, substituting its placeholders.
+ *
+ * @param <Argument>
+ *        type of the arguments
  *
  * @author Igor Akkerman
  */
-public interface TemplateEngine {
+public interface TemplateEngine<Argument> {
 
     /**
      * Applies the specified arguments to the specified template containing placeholders.
      *
      * @param template
-     *        {@link CharSequence} specifying the template containing the placeholders
+     *        {@link CharSequence} template containing the placeholders
      *
      * @param arguments
-     *        {@link CharSequence} specifying the arguments applied on {@code template};
+     *        array of {@link Argument}s applied on {@code template};
      *        the arguments are passed to the replacing routine in the correct
      *        order without any transformation
      *
      * @return {@link String} specifying the formatted text
      */
-    public String applyArguments(CharSequence template, Object... arguments);
+    @SuppressWarnings("unchecked")
+    public String applyArguments(CharSequence template, Argument... arguments);
 
-    public String applyArguments(ParametrizedText parametrizedText);
+    public String applyArguments(ParametrizedText<Argument> parametrizedText);
 }

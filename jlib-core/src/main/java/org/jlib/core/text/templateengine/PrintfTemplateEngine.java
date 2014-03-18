@@ -33,8 +33,8 @@ import java.text.MessageFormat;
  */
 // TODO: unit unittest
 public final class PrintfTemplateEngine
-extends AbstractTemplateEngine
-implements TemplateEngine {
+extends AbstractTemplateEngine<Object>
+implements TemplateEngine<Object> {
 
     /** sole {@link PrintfTemplateEngine} instance */
     public static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
 public final class NullableUtility {
 
     /** no visible constructor */
-    private NullableUtility() {}
+    private NullableUtility() {
+    }
 
     /**
      * Compares the specified Objects for mutual equality. Two Objects {@code object1}, {@code object2} are considered
@@ -46,9 +47,9 @@ public final class NullableUtility {
      *         {@code false} otherwise
      */
     public static boolean equalOrNull(final Object... objects) {
-        return objects.length == 0 || (objects[0] != null
-                                       ? SystemUtility.equal(objects)
-                                       : allNull(objects));
+        return objects.length == 0 || (objects[0] != null ?
+                                       SystemUtility.equal(objects) :
+                                       allNull(objects));
     }
 
     /**
@@ -61,7 +62,7 @@ public final class NullableUtility {
      *         {@code false} otherwise
      */
     private static boolean allNull(final Object... objects) {
-        for (Object object : objects)
+        for (final Object object : objects)
             if (object != null)
                 return false;
 
@@ -80,8 +81,8 @@ public final class NullableUtility {
      *         {@code object} is {@code null}
      */
     public static int getHashCodeOrZero(final @Nullable Object object) {
-        return object != null
-               ? object.hashCode()
-               : 0;
+        return object != null ?
+               object.hashCode() :
+               0;
     }
 }

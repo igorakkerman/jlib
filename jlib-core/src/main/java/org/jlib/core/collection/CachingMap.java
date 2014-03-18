@@ -21,7 +21,6 @@
 
 package org.jlib.core.collection;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -82,98 +81,6 @@ import com.google.common.collect.ForwardingMap;
 public final class CachingMap<Key, Value>
 extends ForwardingMap<Key, Value> {
 
-    /**
-     * <p>
-     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
-     * </p>
-     * <p>
-     * The delegate {@link HashMap} is created using {@link HashMap#HashMap()}.
-     * </p>
-     *
-     * @param <Key>
-     *        type of the keys
-     *
-     * @param <Value>
-     *        type of the values
-     *
-     * @return {@link CachingMap} proxying the new {@link HashMap}
-     */
-    public static <Key, Value> Map<Key, Value> createHashMap() {
-        return new CachingMap<>(new HashMap<Key, Value>());
-    }
-
-    /**
-     * <p>
-     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
-     * </p>
-     * <p>
-     * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int)}.
-     * </p>
-     *
-     * @param <Key>
-     *        type of the keys
-     *
-     * @param <Value>
-     *        type of the values
-     *
-     * @param initialCapacity
-     *        integer specifying the initial capacity of the delegate {@link HashMap}
-     *
-     * @return {@link CachingMap} proxying the new {@link HashMap}
-     */
-    public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity) {
-        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity));
-    }
-
-    /**
-     * <p>
-     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
-     * </p>
-     * <p>
-     * The delegate {@link HashMap} is created using {@link HashMap#HashMap(int, float)}.
-     * </p>
-     *
-     * @param <Key>
-     *        type of the keys
-     *
-     * @param <Value>
-     *        type of the values
-     *
-     * @param initialCapacity
-     *        integer specifying the initial capacity of the delegate {@link HashMap}
-     *
-     * @param loadFactor
-     *        integer specifying the load factro of the delegate {@link HashMap}
-     *
-     * @return {@link CachingMap} proxying the new {@link HashMap}
-     */
-    public static <Key, Value> Map<Key, Value> createHashMap(final int initialCapacity, final int loadFactor) {
-        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
-    }
-
-    /**
-     * <p>
-     * Proxies a newly created {@link HashMap} using a {@link CachingMap}.
-     * </p>
-     * <p>
-     * The delegate {@link HashMap} is created using {@link HashMap#HashMap(Map)}.
-     * </p>
-     *
-     * @param <Key>
-     *        type of the keys
-     *
-     * @param <Value>
-     *        type of the values
-     *
-     * @param sourceMap
-     *        {@link Map} containing the {@link Map.Entry}s copied to the delegate {@link Map}
-     *
-     * @return {@link CachingMap} proxying the new {@link HashMap}
-     */
-    public static <Key, Value> Map<Key, Value> createHashMap(final Map<Key, Value> sourceMap) {
-        return new CachingMap<>(new HashMap<>(sourceMap));
-    }
-
     /** delegate {@link Map} */
     private final Map<Key, Value> delegateMap;
 
@@ -203,7 +110,7 @@ extends ForwardingMap<Key, Value> {
     @Override
     @SuppressWarnings("SuspiciousMethodCalls")
     public boolean containsKey(final Object key) {
-        final Value value = super.get(key);
+        final Value value = delegateMap.get(key);
 
         lastLookedUpKey = key;
         lastLookedUpValue = value;
@@ -215,12 +122,11 @@ extends ForwardingMap<Key, Value> {
     @SuppressWarnings({ "ReturnOfNull", "ObjectEquality" })
     @Nullable
     public Value get(final Object key) {
-        if (lastLookedUpKey == key) {
+        if (lastLookedUpKey == key)
             return lastLookedUpValue;
-        }
 
         clearLastLookedUpItems();
-        return super.get(key);
+        return delegateMap.get(key);
     }
 
     @Override
@@ -229,7 +135,7 @@ extends ForwardingMap<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return super.put(key, value);
+        return delegateMap.put(key, value);
     }
 
     @Override
@@ -238,14 +144,14 @@ extends ForwardingMap<Key, Value> {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
-        return super.remove(key);
+        return delegateMap.remove(key);
     }
 
     @Override
     public void clear() {
         clearLastLookedUpItems();
 
-        super.clear();
+        delegateMap.clear();
     }
 
     /**
@@ -264,6 +170,6 @@ extends ForwardingMap<Key, Value> {
             clearLastLookedUpItems();
         }
 
-        super.putAll(map);
+        delegateMap.putAll(map);
     }
 }
