@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 /**
  * {@link IndexSequence} view of the {@link Item}s stored in a base {@link IndexSequence} in the specified index range.

@@ -24,5 +24,5 @@
  *
  * @author Igor Akkerman
  */
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 

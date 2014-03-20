@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 /**
  * Sequence containing exactly one Item.

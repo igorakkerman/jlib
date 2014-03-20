@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 public interface ContainsItemsByTraversable<Item>
 extends ItemOperationStrategy<Item> {

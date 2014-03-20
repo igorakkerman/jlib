@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
 import org.jlib.core.language.ExceptionMessage;
 
-import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when an argument caused an

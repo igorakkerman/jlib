@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import java.util.Collection;
 import java.util.Set;
@@ -36,13 +36,13 @@ import org.jlib.core.traverser.ObservedRemoveTraverser;
 import org.jlib.core.traverser.RemoveTraversable;
 import org.jlib.core.traverser.RemoveTraverser;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.ItemToRemoveNotContainedException;
-import org.jlib.container.ObservedRemoveMany;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
+import org.jlib.container.operation.ItemToRemoveNotContainedException;
+import org.jlib.container.operation.ObservedRemoveMany;
 
 import static java.util.Arrays.asList;
-import static org.jlib.container.collection.CollectionUtility.toSet;
+import static org.jlib.container.operation.collection.CollectionUtility.toSet;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
@@ -296,7 +296,7 @@ public final class ContainerUtility {
     public static <Item, RetainedItem extends Item> void retain(final RetainItemsByTraversable<Item> container,
                                                                 final RetainedItem... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-//        remove(container, toSet(items));
+//        remove(operation, toSet(items));
     }
 
     /**
@@ -323,7 +323,7 @@ public final class ContainerUtility {
     public static <Item> void retain(final RetainItemsByTraversable<Item> container,
                                      final Collection<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        final RemoveTraverser<Item> itemsTraverser = null; // container.createTraverser();
+        final RemoveTraverser<Item> itemsTraverser = null; // operation.createTraverser();
         while (itemsTraverser.hasNextItem())
             if (! items.contains(itemsTraverser.getNextItem()))
                 itemsTraverser.remove();
@@ -363,7 +363,7 @@ public final class ContainerUtility {
 
         final Set<Item> retainedItemsSet = toSet(items);
 
-        final ObservedRemoveTraverser<Item> containerTraverser = null; // container.createTraverser();
+        final ObservedRemoveTraverser<Item> containerTraverser = null; // operation.createTraverser();
 
         for (final ValueObserver<Item> observer : observers)
             containerTraverser.addRemoveObserver(observer);
@@ -452,7 +452,7 @@ public final class ContainerUtility {
     throws NoItemToRemoveException, InvalidContainerArgumentException, InvalidContainerStateException,
            RuntimeException {
 
-        final ObservedRemoveTraverser<Item> itemsTraverser = null; // container.createTraverser();
+        final ObservedRemoveTraverser<Item> itemsTraverser = null; // operation.createTraverser();
 
         for (final ValueObserver<Item> observer : observers)
             itemsTraverser.addRemoveObserver(observer);
@@ -502,7 +502,7 @@ public final class ContainerUtility {
     public static <Item> void removeAll(final ObservedRetainItemsByTraversable<Item> container,
                                         final ValueObserver<Item>... observers)
     throws InvalidContainerStateException {
-        for (final ObservedRemoveTraverser<Item> traverser = null; // container.createTraverser();
+        for (final ObservedRemoveTraverser<Item> traverser = null; // operation.createTraverser();
              traverser.hasNextItem(); ) {
             traverser.getNextItem();
             traverser.remove(observers);

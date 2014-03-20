@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 /**
  * {@link AbstractIndexMatrix} that can be initialized.

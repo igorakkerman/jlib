@@ -1,8 +1,8 @@
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
 
-import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 

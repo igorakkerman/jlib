@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.array;
+package org.jlib.container.operation.sequence.index.array;
 
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * {@link ReplaceAppendArraySequence} from which Items can be hd at its ends,

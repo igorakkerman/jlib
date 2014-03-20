@@ -24,4 +24,4 @@
  *
  * @author Igor Akkerman
  */
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;

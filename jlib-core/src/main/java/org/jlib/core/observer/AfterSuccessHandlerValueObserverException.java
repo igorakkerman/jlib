@@ -39,7 +39,7 @@ extends ValueObserverException {
      * Creates a new {@link AfterSuccessHandlerValueObserverException}.
      *
      * @param value
-     *        Item removed from {@code container}
+     *        Item removed from {@code operation}
      *
      * @param messageTemplate
      *        {@link String} specifying the message template; {1} references

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 import java.util.Collection;
 

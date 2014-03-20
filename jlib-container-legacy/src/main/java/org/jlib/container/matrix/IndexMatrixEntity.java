@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.sequence.index.AbstractIndexSequence;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
+import org.jlib.container.operation.sequence.index.AbstractIndexSequence;
 
 /**
  * Entity of an {@link IndexMatrix} like a column or row.

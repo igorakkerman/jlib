@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.BinaryRelation;
-import org.jlib.container.binaryrelation.InvalidPairException;
-import org.jlib.container.binaryrelation.Pair;
+import org.jlib.container.operation.binaryrelation.BinaryRelation;
+import org.jlib.container.operation.binaryrelation.InvalidPairException;
+import org.jlib.container.operation.binaryrelation.Pair;
 
 /**
  * {@link InvalidPairException} thrown when trying to invalidy add an

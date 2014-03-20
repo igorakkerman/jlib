@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.sequence.ObservedRemoveFirstSequence;
-import org.jlib.container.sequence.ObservedRemoveLastSequence;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.ObservedRemoveFirstSequence;
+import org.jlib.container.operation.sequence.ObservedRemoveLastSequence;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * {@link RemoveIndexSequence} .

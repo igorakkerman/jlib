@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
-import org.jlib.container.sequence.NoNextSequenceItemException;
-import org.jlib.container.sequence.NoPreviousSequenceItemException;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceTraverser;
+import org.jlib.container.operation.sequence.NoNextSequenceItemException;
+import org.jlib.container.operation.sequence.NoPreviousSequenceItemException;
+import org.jlib.container.operation.sequence.Sequence;
+import org.jlib.container.operation.sequence.SequenceTraverser;
 
 /**
  * {@link SequenceTraverser} over an {@link IndexSequence}.

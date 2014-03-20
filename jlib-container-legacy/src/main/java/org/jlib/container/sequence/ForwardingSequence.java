@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 /**
  * {@link Sequence} delegating all operations to the specified delegate {@link Sequence}.

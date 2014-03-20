@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import java.util.Collection;
 
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * {@link IndexSequence} into which an {@link Item} can be inserted at a specified index.

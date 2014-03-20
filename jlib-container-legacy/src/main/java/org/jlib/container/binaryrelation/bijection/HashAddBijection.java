@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.Pair;
+import org.jlib.container.operation.binaryrelation.Pair;
 
 /**
  * {@link HashBijection} allowing the addition of new {@link Pair} items.

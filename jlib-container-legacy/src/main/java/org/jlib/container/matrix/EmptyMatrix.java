@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import java.util.RandomAccess;
 
-import org.jlib.container.legacy.AbstractEmpty;
-import org.jlib.container.sequence.EmptySequence;
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.IndexSequence;
+import org.jlib.container.operation.legacy.AbstractEmpty;
+import org.jlib.container.operation.sequence.EmptySequence;
+import org.jlib.container.operation.sequence.Sequence;
+import org.jlib.container.operation.sequence.index.IndexSequence;
 
 /**
  * Empty {@link Matrix}. Implemented as a singleton.

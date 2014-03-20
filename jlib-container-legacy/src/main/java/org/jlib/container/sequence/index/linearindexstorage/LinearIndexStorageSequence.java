@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.linearindexstorage;
+package org.jlib.container.operation.sequence.index.linearindexstorage;
 
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.capacity.CapacityStrategy;

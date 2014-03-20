@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
 import java.util.Collection;
 import java.util.HashSet;

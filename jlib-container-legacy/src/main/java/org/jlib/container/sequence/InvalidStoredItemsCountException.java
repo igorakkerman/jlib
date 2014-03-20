@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.ExceptionMessage;
 
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
  * {@link InvalidContainerStateException} thrown when attempting to store an invalid number of Items in a

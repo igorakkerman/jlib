@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import java.util.Iterator;
 import java.util.RandomAccess;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * {@link Matrix} traversable in various orders. A {@link Sequence} of all

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.NoItemToReplaceException;
@@ -27,9 +27,9 @@ import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 import org.jlib.core.value.ValueNotAccessibleException;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * Default implementation of a {@link IndexSequenceTraverser}

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 /**
  * {@link ReplaceIndexSequence} view of the Items stored in another

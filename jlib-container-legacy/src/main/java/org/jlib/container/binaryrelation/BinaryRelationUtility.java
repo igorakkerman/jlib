@@ -19,17 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.binaryrelation.bijection.PairAlreadyContainedException;
 
-import static org.jlib.container.collection.CollectionUtility.toSet;
+import static org.jlib.container.operation.collection.CollectionUtility.toSet;
 
 /**
  * Facade utility for {@link BinaryRelation} creation and operations.

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.NoItemToRemoveException;
@@ -29,7 +29,7 @@ import org.jlib.core.traverser.ObservedReplaceTraverser;
 import org.jlib.core.traverser.RemoveTraverser;
 import org.jlib.core.traverser.ReplaceTraverser;
 
-import org.jlib.container.sequence.index.IndexSequenceTraverser;
+import org.jlib.container.operation.sequence.index.IndexSequenceTraverser;
 
 /**
  * {@link IndexSequenceTraverser} of an {@link InitiallyEmptySequence}.

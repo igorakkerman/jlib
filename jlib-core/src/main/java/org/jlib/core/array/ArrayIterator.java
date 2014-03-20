@@ -21,12 +21,17 @@
 
 package org.jlib.core.array;
 
-import org.jlib.core.iterator.AbstractIterator;
+import java.util.Arrays;
 
-import java.util.Iterator;
+import org.jlib.core.iterator.BidiIterator;
+import org.jlib.core.iterator.NoNextItemException;
+import org.jlib.core.iterator.NoPreviousItemException;
+import org.jlib.core.language.AbstractObject;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
- * {@link Iterator} over the items of an array.
+ * {@link BidiIterator} over the items of an array.
  *
  * @param <Item>
  *        type of the items held in the array
@@ -34,13 +39,17 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public class ArrayIterator<Item>
-extends AbstractIterator<Item> {
+extends AbstractObject
+implements BidiIterator<Item> {
 
     /** array to traverse */
     private final Item[] array;
 
     /** length of the array */
     private final int arrayLength;
+
+    /** corresponding {@link ArrayIterable} */
+    private final ArrayIterable<Item> iterable;
 
     /** current index */
     private int currentIndex = 0;
@@ -67,19 +76,37 @@ extends AbstractIterator<Item> {
      */
     public ArrayIterator(final Item[] array, final int initialIndex) {
         this.array = array;
+
+        iterable = new ArrayIterable<>(array);
+
         arrayLength = array.length;
         currentIndex = initialIndex;
     }
 
-    // @see java.util.Iterator#hasNext()
     @Override
     public boolean hasNext() {
         return currentIndex < arrayLength;
     }
 
-    // @see java.util.Iterator#next()
     @Override
     public Item next() {
+        if (! hasNext())
+            throw new NoNextItemException(iterable, message(Arrays.toString(array)));
+
         return array[currentIndex++];
+    }
+
+    @Override
+    public boolean hasPrevious() {
+        return currentIndex >= 0;
+    }
+
+    @Override
+    public Item previous()
+    throws NoPreviousItemException {
+        if (! hasPrevious())
+            throw new NoPreviousItemException(iterable, message(Arrays.toString(array)));
+
+        return array[-- currentIndex];
     }
 }

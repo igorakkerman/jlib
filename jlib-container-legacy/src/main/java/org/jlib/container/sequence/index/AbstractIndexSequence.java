@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
-import org.jlib.container.sequence.AbstractNonEmptySequence;
+import org.jlib.container.operation.sequence.AbstractNonEmptySequence;
 
-import static org.jlib.container.sequence.index.IndexSequenceUtility.ensureIndexValid;
+import static org.jlib.container.operation.sequence.index.IndexSequenceUtility.ensureIndexValid;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**

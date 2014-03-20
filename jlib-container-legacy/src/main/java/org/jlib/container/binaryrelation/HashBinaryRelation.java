@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
+import org.jlib.container.operation.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
  * {@link BinaryRelation} implemented using hashing for left and right hand side

@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import java.util.Collection;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 public interface ContainsItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {

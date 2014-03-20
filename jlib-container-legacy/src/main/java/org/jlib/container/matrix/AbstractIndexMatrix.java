@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.sequence.index.IndexSequence;
-import org.jlib.container.sequence.index.InvalidSequenceIndexException;
+import org.jlib.container.operation.sequence.index.IndexSequence;
+import org.jlib.container.operation.sequence.index.InvalidSequenceIndexException;
 
 /**
  * Skeletal implementation of an {@link IndexMatrix}.

@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.AddBinaryRelation;
-import org.jlib.container.binaryrelation.InvalidPairException;
-import org.jlib.container.binaryrelation.LeftValueAlreadyRelatedException;
-import org.jlib.container.binaryrelation.Pair;
-import org.jlib.container.binaryrelation.RightValueAlreadyRelatedException;
+import org.jlib.container.operation.binaryrelation.AddBinaryRelation;
+import org.jlib.container.operation.binaryrelation.InvalidPairException;
+import org.jlib.container.operation.binaryrelation.LeftValueAlreadyRelatedException;
+import org.jlib.container.operation.binaryrelation.Pair;
+import org.jlib.container.operation.binaryrelation.RightValueAlreadyRelatedException;
 
 /**
  * Bijection allowing to add new {@link Pair} items.

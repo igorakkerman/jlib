@@ -19,10 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.NoSuchPairException;
-import org.jlib.container.binaryrelation.RetainItemsByTraversableBinaryRelation;
+import org.jlib.container.operation.binaryrelation.NoSuchPairException;
+import org.jlib.container.operation.binaryrelation.RetainItemsByTraversableBinaryRelation;
 
 /**
  * Bijection allowing to add new pairs.

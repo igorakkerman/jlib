@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
-import org.jlib.container.binaryrelation.BinaryRelation;
-import org.jlib.container.binaryrelation.NoSuchLeftValueException;
-import org.jlib.container.binaryrelation.NoSuchRightValueException;
+import org.jlib.container.operation.binaryrelation.BinaryRelation;
+import org.jlib.container.operation.binaryrelation.NoSuchLeftValueException;
+import org.jlib.container.operation.binaryrelation.NoSuchRightValueException;
 
 /**
  * One-To-One pair of values with other values. The further values are

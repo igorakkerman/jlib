@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 import org.jlib.core.language.ExceptionMessage;
 
-import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 

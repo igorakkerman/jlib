@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 /**
  * {@link BinaryRelation} allowing the removal of {@link Pair} items.

@@ -19,15 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.jlib.container.Container;
+import org.jlib.container.operation.Container;
 
-import static org.jlib.container.containsadapter.ContainsAdapterUtility.allOf;
+import static org.jlib.container.operation.containsadapter.ContainsAdapterUtility.allOf;
 
 /**
  * Adapter allowing a {@link TraversableContainer} to be used as a {@link Collection}. A

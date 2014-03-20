@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
 import java.util.Collection;
 
 import org.jlib.core.language.ItemOperation;
 
-import org.jlib.container.ObservedRemoveMany;
+import org.jlib.container.operation.ObservedRemoveMany;
 
 /**
  * Adapter allowing a {@link RetainItemsByTraversable} to be used as a {@link Collection}.

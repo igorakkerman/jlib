@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
  * {@link Sequence} allowing its last Item to be removed.

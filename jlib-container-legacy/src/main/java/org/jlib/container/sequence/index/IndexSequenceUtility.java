@@ -19,15 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ObserverUtility;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 

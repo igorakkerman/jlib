@@ -24,8 +24,8 @@ package org.jlib.core.array;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.core.traverser.TwoWayTraversable;
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.iterator.BidiIterator;
+import org.jlib.core.iterator.BidiIterable;
 
 /**
  * Utility for arrays.
@@ -67,7 +67,7 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns a new {@link TwoWayTraversable} adapter for the specified Items.
+     * Returns a new {@link BidiIterable} adapter for the specified Items.
      *
      * @param <Item>
      *        type of the items held in the array
@@ -75,15 +75,15 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      *
-     * @return {@link TwoWayTraversable} adapter for {@code items}
+     * @return {@link BidiIterable} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> TwoWayTraversable<Item> traversable(final Item... items) {
-        return new ArrayTraversable<>(items);
+    public static <Item> BidiIterable<Item> traversable(final Item... items) {
+        return new ArrayIterable<Item>(items);
     }
 
     /**
-     * Returns a new {@link TwoWayTraverser} over the specified Items.
+     * Returns a new {@link BidiIterator} over the specified Items.
      *
      * @param <Item>
      *        type of the items held in the array
@@ -91,11 +91,11 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of Items to traverse
      *
-     * @return {@link TwoWayTraversable} adapter for {@code items}
+     * @return {@link BidiIterable} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> TwoWayTraverser<Item> createTraverser(final Item... items) {
-        return new ArrayTraverser<>(items);
+    public static <Item> BidiIterator<Item> createTraverser(final Item... items) {
+        return new ArrayIterator<>(items);
     }
 
     /**

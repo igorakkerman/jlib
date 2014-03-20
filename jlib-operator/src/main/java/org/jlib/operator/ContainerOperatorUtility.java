@@ -1,14 +1,14 @@
 /*
  * jlib - The Free Java Library
- * 
+ *
  * http://www.jlib.org
- * 
+ *
  * Copyright (c) 2006-2008 Igor Akkerman
- * 
+ *
  * jlib is distributed under the
- * 
+ *
  * COMMON PUBLIC LICENSE VERSION 1.0
- * 
+ *
  * http://www.opensource.org/licenses/cpl1.0.php
  */
 
@@ -18,16 +18,16 @@ import java.util.HashSet;
 
 import java.util.Set;
 
-import org.jlib.container.Container;
-import org.jlib.container.sequence.ArraySequenceCreator;
-import org.jlib.container.sequence.IndexSequence;
+import org.jlib.container.operation.Container;
+import org.jlib.container.operation.sequence.ArraySequenceCreator;
+import org.jlib.container.operation.sequence.IndexSequence;
 import org.jlib.core.operator.BinaryOperator;
 import org.jlib.core.operator.IdentityItemBinaryOperator;
 
 /**
  * Utility class providing methods applying {@link BinaryOperator
  * BinaryOperators} on {@link Container Containers}.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class ContainerOperatorUtility {
@@ -37,7 +37,7 @@ public final class ContainerOperatorUtility {
 
     /**
      * Creates a Set containing the items of the specified array.
-     * 
+     *
      * @param <SetItem>
      *        type of the items in the Set; super type of
      *        {@code <ArrayItem>}
@@ -60,7 +60,7 @@ public final class ContainerOperatorUtility {
      * <i>c</i>, ... be the first items returned by the Container's Traverser
      * in the correct order, and let the BinaryOperator be represented by
      * <i>*</i>. Then this method returns the result of <i>((a*b)*c)*...</i>.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the BinaryOperator is applied
      * @param collection
@@ -99,7 +99,7 @@ public final class ContainerOperatorUtility {
      * Container is empty, the value returned by the operator's
      * {@link IdentityItemBinaryOperator#identityItem()} method is
      * returned.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
@@ -124,7 +124,7 @@ public final class ContainerOperatorUtility {
      * be the first items returned by the non empty Container's Traverser in
      * the correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>((a*b)*c)*...</i>.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
@@ -154,7 +154,7 @@ public final class ContainerOperatorUtility {
      * <i>z</i> be the last items returned by the Container's Traverser in the
      * correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>...*(x*(y*z))</i>.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the BinaryOperator is applied
      * @param container
@@ -199,7 +199,7 @@ public final class ContainerOperatorUtility {
      * the Container is empty, the value returned by the operator's
      * {@link IdentityItemBinaryOperator#identityItem()} method is
      * returned.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the IdentityItemBinaryOperator is
      *        applied
@@ -224,7 +224,7 @@ public final class ContainerOperatorUtility {
      * <i>z</i> be the last items returned by the Container's Traverser in the
      * correct order, and let the operator be represented by <i>*</i>. Then this
      * method returns the result of <i>...*(x*(y*z))</i>.
-     * 
+     *
      * @param <Value>
      *        type of the values to which the IdentityItemBinaryOperator is
      *        applied

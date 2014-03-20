@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.SoleItemNotRemoveableException;
+import org.jlib.container.operation.SoleItemNotRemoveableException;
 
 /**
  * {@link Sequence} allowing its tail Item to be removed.

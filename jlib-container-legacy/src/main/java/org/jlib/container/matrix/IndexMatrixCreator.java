@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidArgumentException;
 
-import static org.jlib.container.matrix.MatrixUtility.ensureHeightValid;
-import static org.jlib.container.matrix.MatrixUtility.ensureWidthValid;
+import static org.jlib.container.operation.matrix.MatrixUtility.ensureHeightValid;
+import static org.jlib.container.operation.matrix.MatrixUtility.ensureWidthValid;
 
 /**
  * Creator of instances of a certain subtype of {@link IndexMatrix}.

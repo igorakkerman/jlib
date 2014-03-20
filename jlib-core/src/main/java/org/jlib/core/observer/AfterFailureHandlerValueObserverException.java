@@ -41,7 +41,7 @@ extends ValueObserverException {
      * Creates a new {@link AfterFailureHandlerValueObserverException}.
      *
      * @param item
-     *        Item removed from {@code container}
+     *        Item removed from {@code operation}
      *
      * @param messageTemplate
      *        {@link String} specifying the message template; {1} references

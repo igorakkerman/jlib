@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ import org.jlib.core.language.AbstractObject;
 import org.jlib.core.language.ItemOperationStrategy;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.ToRandomAccessList;
+import org.jlib.container.operation.ToRandomAccessList;
 
 import static java.util.Collections.emptyIterator;
 import static java.util.Collections.emptyList;

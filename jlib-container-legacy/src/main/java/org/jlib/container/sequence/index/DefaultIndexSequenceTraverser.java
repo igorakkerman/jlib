@@ -19,17 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.value.InitializedModifiable;
 import org.jlib.core.value.Modifiable;
 import org.jlib.core.value.Uninitialized;
 import org.jlib.core.value.ValueNotAccessibleException;
 
-import org.jlib.container.sequence.AbstractSequenceTraverser;
-import org.jlib.container.sequence.NoNextSequenceItemException;
-import org.jlib.container.sequence.NoPreviousSequenceItemException;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.AbstractSequenceTraverser;
+import org.jlib.container.operation.sequence.NoNextSequenceItemException;
+import org.jlib.container.operation.sequence.NoPreviousSequenceItemException;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * Default implementation of an {@link IndexSequenceTraverser}.

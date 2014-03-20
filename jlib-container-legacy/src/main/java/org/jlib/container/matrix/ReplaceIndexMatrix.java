@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
-import org.jlib.container.sequence.index.InvalidSequenceIndexException;
+import org.jlib.container.operation.sequence.index.InvalidSequenceIndexException;
 
 /**
  * {@link IndexMatrix} allowing the replacement of entries.

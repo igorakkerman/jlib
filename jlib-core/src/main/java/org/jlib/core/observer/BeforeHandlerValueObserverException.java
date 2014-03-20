@@ -39,7 +39,7 @@ extends ValueObserverException {
      * Creates a new {@link BeforeHandlerValueObserverException}.
      *
      * @param value
-     *        Value removed from {@code container}
+     *        Value removed from {@code operation}
      *
      * @param cause
      *        {@link Exception} that caused this {@link BeforeHandlerValueObserverException}

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import java.util.Collection;
 
@@ -28,12 +28,12 @@ import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.ObservedReplaceTraversable;
 import org.jlib.core.traverser.Traversable;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.ItemToRemoveNotContainedException;
-import org.jlib.container.ObservedRemoveAll;
-import org.jlib.container.ObservedRemoveMany;
-import org.jlib.container.legacy.AbstractEmpty;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
+import org.jlib.container.operation.ItemToRemoveNotContainedException;
+import org.jlib.container.operation.ObservedRemoveAll;
+import org.jlib.container.operation.ObservedRemoveMany;
+import org.jlib.container.operation.legacy.AbstractEmpty;
 
 /**
  * {@link Sequence} that is empty when created.

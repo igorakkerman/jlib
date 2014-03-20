@@ -21,7 +21,8 @@
 
 package org.jlib.core.array;
 
-import java.util.Iterator;
+import org.jlib.core.iterator.BidiIterable;
+import org.jlib.core.iterator.BidiIterator;
 
 /**
  * Wrapper for an array allowing it to be used as {@link Iterable}.
@@ -32,7 +33,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public class ArrayIterable<Item>
-implements Iterable<Item> {
+implements BidiIterable<Item> {
 
     /** array to traverse */
     private final Item[] array;
@@ -49,7 +50,7 @@ implements Iterable<Item> {
 
     // @see java.lang.Iterable#iterator()
     @Override
-    public Iterator<Item> iterator() {
+    public BidiIterator<Item> iterator() {
         return new ArrayIterator<>(array);
     }
 }

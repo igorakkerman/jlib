@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.container.binaryrelation.bijection.PairAlreadyContainedException;
+import org.jlib.container.operation.binaryrelation.bijection.PairAlreadyContainedException;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation} allowing to be filled

@@ -19,9 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,9 +31,9 @@ import java.util.Set;
 import org.jlib.core.traverser.IterableTraverser;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.Container;
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.Container;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
  * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A

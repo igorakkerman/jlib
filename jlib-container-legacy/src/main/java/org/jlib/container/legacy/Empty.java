@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import java.io.Serializable;
 
 import org.jlib.core.language.ItemOperationStrategy;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.index.ReplaceIndexSequence;
+import org.jlib.container.operation.sequence.Sequence;
+import org.jlib.container.operation.sequence.index.ReplaceIndexSequence;
 
 /**
  * Empty {@link Sequence}.

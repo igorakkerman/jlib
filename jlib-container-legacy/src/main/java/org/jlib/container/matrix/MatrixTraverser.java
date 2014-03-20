@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.Traverser;

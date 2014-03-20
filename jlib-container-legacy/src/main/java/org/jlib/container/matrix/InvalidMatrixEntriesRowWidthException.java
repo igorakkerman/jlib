@@ -1,4 +1,4 @@
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 /**
  * {@link InvalidMatrixEntriesDimensionException} for a row with an invalid width.

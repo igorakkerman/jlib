@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import java.util.Iterator;
 
@@ -28,7 +28,7 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraversable;
 
-import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
 
 /**
  * Facade utility for {@link Sequence} creation and operations.

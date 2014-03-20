@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation.bijection;
+package org.jlib.container.operation.binaryrelation.bijection;
 
 /**
  * {@link Bijection} implemented using hashing for left and right hand side

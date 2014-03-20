@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.legacy;
+package org.jlib.container.operation.legacy;
 
 import org.jlib.core.traverser.NoNextItemException;
 import org.jlib.core.traverser.NoPreviousItemException;
 import org.jlib.core.traverser.Traverser;
 import org.jlib.core.traverser.TwoWayTraverser;
 
-import org.jlib.container.sequence.InitiallyEmptySequence;
+import org.jlib.container.operation.sequence.InitiallyEmptySequence;
 
 /**
  * Singleton {@link Traverser} of an {@link Empty}.

@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.binaryrelation;
+package org.jlib.container.operation.binaryrelation;
 
 import java.util.Collection;
 
-import org.jlib.container.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
 
 /**
  * {@link AddBinaryRelation} implemented using hashing for left and right

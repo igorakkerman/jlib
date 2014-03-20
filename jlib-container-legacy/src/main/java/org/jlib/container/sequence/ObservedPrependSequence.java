@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
  * {@link PrependSequence} to which Items can be prepended.

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.collection;
+package org.jlib.container.operation.collection;
 
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.traverser.InvalidTraverserStateException;

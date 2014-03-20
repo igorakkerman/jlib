@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
-import org.jlib.container.InvalidContainerArgumentException;
-import org.jlib.container.InvalidContainerStateException;
-import org.jlib.container.sequence.index.IndexSequenceTraverser;
+import org.jlib.container.operation.InvalidContainerArgumentException;
+import org.jlib.container.operation.InvalidContainerStateException;
+import org.jlib.container.operation.sequence.index.IndexSequenceTraverser;
 
 /**
  * {@link SequenceTraverser} over a {@link InsertSequence}.

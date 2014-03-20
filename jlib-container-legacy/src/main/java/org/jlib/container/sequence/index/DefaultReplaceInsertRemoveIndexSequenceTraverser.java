@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.traverser.NoItemToRemoveException;
 
-import org.jlib.container.sequence.ObservedInsertSequenceTraverser;
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.ObservedInsertSequenceTraverser;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * Default implementation of a {@link RemoveIndexSequenceTraverser},

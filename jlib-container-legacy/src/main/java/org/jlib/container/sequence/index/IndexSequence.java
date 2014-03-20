@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index;
+package org.jlib.container.operation.sequence.index;
 
 import java.util.RandomAccess;
 
-import org.jlib.container.sequence.Sequence;
+import org.jlib.container.operation.sequence.Sequence;
 
 /**
  * Non-empty {@link Sequence} allowing random access to its Items using their

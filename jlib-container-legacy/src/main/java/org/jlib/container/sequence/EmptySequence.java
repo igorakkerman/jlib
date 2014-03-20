@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence;
+package org.jlib.container.operation.sequence;
 
 public final class EmptySequence<Item>
 extends InitiallyEmptySequence<Item> {

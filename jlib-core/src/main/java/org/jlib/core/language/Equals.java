@@ -23,7 +23,7 @@ package org.jlib.core.language;
 
 import javax.annotation.Nullable;
 
-public interface EqualsStrategy<Obj> {
+public interface Equals<Obj> {
 
     /**
      * <p>

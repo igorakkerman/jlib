@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.array;
+package org.jlib.container.operation.sequence.index.array;
 
-import org.jlib.container.sequence.AppendSequence;
+import org.jlib.container.operation.sequence.AppendSequence;
 
 /**
  * Default implementation of a {@link ReplaceSequence} and

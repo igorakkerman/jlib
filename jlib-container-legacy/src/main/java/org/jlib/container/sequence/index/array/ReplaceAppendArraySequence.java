@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.sequence.index.array;
+package org.jlib.container.operation.sequence.index.array;
 
 /**
  * {@link ReplaceArraySequence} to which Items can be added.

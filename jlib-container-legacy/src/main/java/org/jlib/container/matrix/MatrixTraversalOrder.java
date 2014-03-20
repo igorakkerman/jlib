@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 /**
  * Abstract factory for {@link MatrixTraverser} instances, representing the

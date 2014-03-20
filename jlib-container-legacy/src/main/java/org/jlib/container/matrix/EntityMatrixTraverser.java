@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.matrix;
+package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.traverser.Traverser;
 
-import org.jlib.container.sequence.Sequence;
-import org.jlib.container.sequence.SequenceTraverser;
+import org.jlib.container.operation.sequence.Sequence;
+import org.jlib.container.operation.sequence.SequenceTraverser;
 
 /**
  * AbstractIndexMatrixTraverser traversing the items of a

@@ -22,7 +22,7 @@
 package org.jlib.core.language;
 
 /**
- * Tagging interface for all container operation strategy on {@link Item}s.
+ * Tagging interface for all operation operation strategy on {@link Item}s.
  *
  * @author Igor Akkerman
  */
