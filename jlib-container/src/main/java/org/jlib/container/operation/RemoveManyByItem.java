@@ -24,10 +24,10 @@ package org.jlib.container.operation;
 import org.jlib.core.language.ItemOperation;
 
 /**
- * {@link TraversableContainer} allowing Items to be removed.
+ * {@link IterableContainer} allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -39,7 +39,7 @@ extends ItemOperation<Item> {
      * {@link ContainsSingle#containsItem(Object)} method returns {@code true}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to remove
+     *        {@link IterableContainer} containing the Items to remove
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -48,7 +48,7 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsTraversable extends org.jlib.core.traverser.Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsTraversable items)
+    public <ContainsIterable extends org.jlib.core.iterator.Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

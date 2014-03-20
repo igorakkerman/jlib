@@ -52,11 +52,11 @@ extends PrependSequence<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**
-     * Prepends all Items contained by the specified {@link TraversableContainer} to this
+     * Prepends all Items contained by the specified {@link IterableContainer} to this
      * {@link ObservedPrependSequence}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to prepend
+     *        {@link IterableContainer} containing the Items to prepend
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -74,7 +74,7 @@ extends PrependSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void prepend(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
+    public void prepend(IterableContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**

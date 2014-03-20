@@ -25,15 +25,15 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.NoNextItemException;
+import org.jlib.core.iterator.Iterator;
 import org.jlib.core.value.InitializedModifiable;
 import org.jlib.core.value.Modifiable;
 import org.jlib.core.value.Uninitialized;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
- * Default implementation of a {@link Traverser} over the {@link Pair}
+ * Default implementation of a {@link Iterator} over the {@link Pair}
  * items of a {@link BinaryRelation}.
  *
  * @param <LeftValue>
@@ -47,8 +47,8 @@ import org.jlib.core.value.ValueNotAccessibleException;
  *
  * @author Igor Akkerman
  */
-public class DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation extends BinaryRelation<LeftValue, RightValue>>
-implements Traverser<Pair<LeftValue, RightValue>> {
+public class DefaultBinaryRelationIterator<LeftValue, RightValue, Relation extends BinaryRelation<LeftValue, RightValue>>
+implements Iterator<Pair<LeftValue, RightValue>> {
 
     /** traversed {@link BinaryRelation} */
     private final Relation binaryRelation;
@@ -66,13 +66,13 @@ implements Traverser<Pair<LeftValue, RightValue>> {
     private Modifiable<Pair<LeftValue, RightValue>> lastAccessedItemHolder;
 
     /**
-     * Creates a new {@link DefaultBinaryRelationTraverser} for the specified
+     * Creates a new {@link DefaultBinaryRelationIterator} for the specified
      * {@link BinaryRelation}.
      *
      * @param binaryRelation
      *        traversed {@link BinaryRelation}
      */
-    public DefaultBinaryRelationTraverser(final Relation binaryRelation) {
+    public DefaultBinaryRelationIterator(final Relation binaryRelation) {
         super();
 
         this.binaryRelation = binaryRelation;
@@ -109,7 +109,7 @@ implements Traverser<Pair<LeftValue, RightValue>> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return rightValuesIterator.hasNext() || leftValuesIterator.hasNext();
     }
 
@@ -143,7 +143,7 @@ implements Traverser<Pair<LeftValue, RightValue>> {
 
     /**
      * Returns the last {@link Pair} returned by this
-     * {@link DefaultBinaryRelationTraverser}.
+     * {@link DefaultBinaryRelationIterator}.
      *
      * @return last returned {@link Pair}
      *

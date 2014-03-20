@@ -22,12 +22,12 @@
 package org.jlib.container.operation.legacy;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.Traversable;
+import org.jlib.core.iterator.Iterable;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
-public interface ContainsItemsByTraversable<Item>
+public interface ContainsItemsByIterable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
@@ -47,6 +47,6 @@ extends ItemOperationStrategy<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    boolean containsItems(Traversable<? extends Item> items)
+    boolean containsItems(Iterable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

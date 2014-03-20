@@ -38,5 +38,5 @@ extends Iterable<Item> {
      * @return newly iterator}
      */
     @Override
-    public RemoveIterator<Item> createTraverser();
+    public RemoveIterator<Item> iterator();
 }

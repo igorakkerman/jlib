@@ -22,32 +22,32 @@
 package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraverserStateException;
+import org.jlib.core.iterator.InvalidIteratorStateException;
 
 /**
- * {@link InvalidTraverserStateException} referencing a {@link Sequence}.
+ * {@link InvalidIteratorStateException} referencing a {@link Sequence}.
  *
  * @author Igor Akkerman
  */
-public abstract class InvalidSequenceTraverserStateException
-extends InvalidTraverserStateException {
+public abstract class InvalidSequenceIteratorStateException
+extends InvalidIteratorStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7078599807599575854L;
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException}.
+     * Creates a new {@link InvalidSequenceIteratorStateException}.
      *
      * @param sequence
      *        referenced {@link Sequence}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence) {
+    protected InvalidSequenceIteratorStateException(final Sequence<?> sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException} with the
+     * Creates a new {@link InvalidSequenceIteratorStateException} with the
      * specified error message.
      *
      * @param sequence
@@ -56,27 +56,27 @@ extends InvalidTraverserStateException {
      * @param message
      *        the {@link ExceptionMessage}
      */
-    protected InvalidSequenceTraverserStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
+    protected InvalidSequenceIteratorStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
                                                      final ExceptionMessage message) {
         super(sequence, message);
     }
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException} with the specified cause.
+     * Creates a new {@link InvalidSequenceIteratorStateException} with the specified cause.
      *
      * @param sequence
      *        referenced {@link Sequence}
      *
      * @param cause
-     *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
+     *        {@link Exception} that caused this {@link InvalidSequenceIteratorStateException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence, final Exception cause) {
+    protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
     }
 
     /**
-     * Creates a new {@link InvalidSequenceTraverserStateException} with the specified error message and cause.
+     * Creates a new {@link InvalidSequenceIteratorStateException} with the specified error message and cause.
      *
      * @param sequence
      *        referenced {@link Sequence}
@@ -85,10 +85,10 @@ extends InvalidTraverserStateException {
      *        {@link String} specifying the error message
      *
      * @param cause
-     *        {@link Exception} that caused this {@link InvalidSequenceTraverserStateException}
+     *        {@link Exception} that caused this {@link InvalidSequenceIteratorStateException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    protected InvalidSequenceTraverserStateException(final Sequence<?> sequence, final ExceptionMessage message,
+    protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final ExceptionMessage message,
                                                      final Exception cause) {
         super(sequence, message, cause);
     }

@@ -36,11 +36,11 @@ public interface ObservedInsertSequence<Item>
 extends InsertSequence<Item> {
 
     /**
-     * Returns the {@link ObservedInsertSequenceTraverser}
+     * Returns the {@link ObservedInsertSequenceIterator}
      *
-     * @return {@link ObservedInsertSequenceTraverser} traversing the Items of
+     * @return {@link ObservedInsertSequenceIterator} traversing the Items of
      *         this {@link ObservedInsertSequence}
      */
     @Override
-    public ObservedInsertSequenceTraverser<Item> createTraverser();
+    public ObservedInsertSequenceIterator<Item> iterator();
 }

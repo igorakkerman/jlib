@@ -27,7 +27,7 @@ import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.ToRandomAccessList;
 
@@ -38,18 +38,18 @@ import static org.jlib.core.array.ArrayUtility.getEmptyArray;
 public abstract class AbstractEmpty<Item>
 extends AbstractObject
 implements ToRandomAccessList<Item>,
-           ContainsItemsByContainsTraversable<Item>,
+           ContainsItemsByContainsIterable<Item>,
            ItemOperationStrategy<Item>,
-           org.jlib.core.traverser.Traversable<Item>,
-           Traversable<Item> {
+           org.jlib.core.iterator.Iterable<Item>,
+           Iterable<Item> {
 
     protected AbstractEmpty() {
         super();
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
-        return EmptyContainerTraverser.getInstance();
+    public Iterator<Item> iterator() {
+        return EmptyContainerIterator.getInstance();
     }
 
     @Override
@@ -68,7 +68,7 @@ implements ToRandomAccessList<Item>,
     }
 
     @Override
-    public final boolean contains(final TraversableContainer<? extends Item> items) {
+    public final boolean contains(final IterableContainer<? extends Item> items) {
         return false;
     }
 
@@ -104,12 +104,12 @@ implements ToRandomAccessList<Item>,
     }
 
     @Override
-    public final boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+    public final boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
         return otherContainer.isEmpty();
     }
 
     @Override
-    public final boolean containsEqualItems(final Traversable<Item> traversable) {
-        return ! traversable.iterator().hasNext();
+    public final boolean containsEqualItems(final Iterable<Item> iterable) {
+        return ! iterable.iterator().hasNext();
     }
 }

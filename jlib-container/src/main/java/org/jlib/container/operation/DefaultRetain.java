@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.iterator.TraversableUtility.iterable;
+import static org.jlib.core.iterator.IterableUtility.iterable;
 
 public class DefaultRetain<Item>
 implements Retain<Item> {
@@ -30,8 +30,8 @@ implements Retain<Item> {
 
     private final Iterable<Item> containedItems;
 
-    public <RemoveTraversable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
-        */ DefaultRetain(final RemoveTraversable containedItems) {
+    public <RemoveIterable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
+        */ DefaultRetain(final RemoveIterable containedItems) {
 
         super();
 
@@ -41,8 +41,8 @@ implements Retain<Item> {
 
     @Override
     @SuppressWarnings("TypeMayBeWeakened")
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsTraversable retainedItems)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable retainedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item containedItem : iterable(containedItems))

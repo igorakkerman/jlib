@@ -37,7 +37,7 @@ import org.jlib.container.operation.binaryrelation.Pair;
  */
 public class HashAddRemoveBijection<LeftValue, RightValue>
 /*extends HashAddBijection<LeftValue, RightValue>
-implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
+implements RetainItemsByIterableBijection<LeftValue, RightValue> */ {
 
 //    /** Creates a new initially empty HashAddBijection. */
 //    public HashAddRemoveBijection() {
@@ -46,10 +46,10 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 //
 //    /**
 //     * Creates a new HashAddBijection containing the Pairs contained by
-//     * the specified jlib TraversableContainer.
+//     * the specified jlib IterableContainer.
 //     *
 //     * @param pairs
-//     *        TraversableContainer of the Pairs to add
+//     *        IterableContainer of the Pairs to add
 //     *
 //     * @throws LeftValueAlreadyRelatedException
 //     *         if the LeftValue of one Item in {@code pairs} is already
@@ -67,7 +67,7 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 //     *         if some property of one Item in {@code pairs} prevents it
 //     *         from being added
 //     */
-//    public HashAddRemoveBijection(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
+//    public HashAddRemoveBijection(final IterableContainer<Pair<LeftValue, RightValue>> pairs)
 //    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        super(pairs);
 //    }
@@ -146,12 +146,12 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 ////    }
 ////
 ////    @Override
-////    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
+////    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
 ////        ContainerUtility.retain(this, pairs);
 ////    }
 ////
 ////    @Override
-////    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////    public void retain(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 ////        ContainerUtility.retain(this, pairs);
 ////    }
 ////
@@ -167,19 +167,19 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 ////    }
 //
 //    @Override
-//    public void remove(final Traversable<? extends Pair<LeftValue, RightValue>> items)
+//    public void remove(final Iterable<? extends Pair<LeftValue, RightValue>> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //
 //    }
 //
 //    @Override
-//    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+//    public void remove(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //
 //    }
 //
 ////    @Override
-////    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+////    public void remove(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 ////        ContainerUtility.remove(this, pairs);
 ////    }
 //
@@ -195,7 +195,7 @@ implements RetainItemsByTraversableBijection<LeftValue, RightValue> */ {
 //    }
 //
 //    @Override
-//    public RemoveTraverser<Pair<LeftValue, RightValue>> createTraverser() {
-//        return new DefaultRemoveBinaryRelationTraverser<>(this);
+//    public RemoveIterator<Pair<LeftValue, RightValue>> iterator() {
+//        return new DefaultRemoveBinaryRelationIterator<>(this);
 //    }
 }

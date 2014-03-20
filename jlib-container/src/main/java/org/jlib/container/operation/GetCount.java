@@ -27,9 +27,9 @@ public interface GetCount<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Returns the number of Items in this {@link TraversableContainer}.
+     * Returns the number of Items in this {@link IterableContainer}.
      *
-     * @return integer specifying the number of Items in this {@link TraversableContainer}
+     * @return integer specifying the number of Items in this {@link IterableContainer}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

@@ -22,18 +22,18 @@
 package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 /**
- * {@link Traverser} over a {@link Matrix}.
+ * {@link Iterator} over a {@link Matrix}.
  *
  * @param <Item>
  *        type of Items held in the matrix
  *
  * @author Igor Akkerman
  */
-public interface MatrixTraverser<Item>
-extends Traverser<Item> {
+public interface MatrixIterator<Item>
+extends Iterator<Item> {
 
     /**
      * Verifies whether the iteration has a next entity (like a row or column).

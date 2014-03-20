@@ -27,24 +27,24 @@ implements BidiIterator<Item> {
 
     private final Item item;
 
-    private final BidiIterator<Item> delegateTraverser;
+    private final BidiIterator<Item> delegateIterator;
 
     private final BidiIteratorState<Item, SingletonIteratorState> stuck = /*
-     */ new StuckIteratorState<>(getTraversable());
+     */ new StuckIteratorState<>(getIterable());
 
     private class SingletonIteratorState
     extends ForwardingIteratorState<Item, Travble, SingletonIteratorState> {
 
-        private SingletonIteratorState(final Travble traversable) {
-            super(traversable, stuck);
+        private SingletonIteratorState(final Travble iterable) {
+            super(iterable, stuck);
 
-            new StuckIteratorState<Item, Travble, SingletonIteratorState>(traversable);
+            new StuckIteratorState<Item, Travble, SingletonIteratorState>(iterable);
         }
     }
 
     @SuppressWarnings("InstanceVariableOfConcreteClass")
     private final SingletonIteratorState beforeItem = /*
-     */ new SingletonIteratorState(getTraversable()) {
+     */ new SingletonIteratorState(getIterable()) {
 
         @Override
         public SingletonIteratorState nextState() {
@@ -52,7 +52,7 @@ implements BidiIterator<Item> {
         }
 
         @Override
-        public boolean hasNextItem() {
+        public boolean hasNext() {
             return true;
         }
 
@@ -65,7 +65,7 @@ implements BidiIterator<Item> {
 
     @SuppressWarnings("InstanceVariableOfConcreteClass")
     private final SingletonIteratorState afterItem = /*
-     */ new SingletonIteratorState(getTraversable()) {
+     */ new SingletonIteratorState(getIterable()) {
 
         @Override
         public SingletonIteratorState previousState() {
@@ -84,33 +84,33 @@ implements BidiIterator<Item> {
         }
     };
 
-    public SingletonIterator(final Travble traversable) {
-        super(traversable);
+    public SingletonIterator(final Travble iterable) {
+        super(iterable);
 
-        item = traversable.getItem();
+        item = iterable.getItem();
 
-        delegateTraverser = new StatefulBidiIterator<>(traversable, beforeItem);
+        delegateIterator = new StatefulBidiIterator<>(iterable, beforeItem);
     }
 
     @Override
     public boolean hasPrevious() {
-        return delegateTraverser.hasPrevious();
+        return delegateIterator.hasPrevious();
     }
 
     @Override
     public Item previous()
     throws NoPreviousItemException {
-        return delegateTraverser.previous();
+        return delegateIterator.previous();
     }
 
     @Override
-    public boolean hasNextItem() {
-        return delegateTraverser.hasNextItem();
+    public boolean hasNext() {
+        return delegateIterator.hasNext();
     }
 
     @Override
     public Item getNextItem()
     throws NoNextItemException {
-        return delegateTraverser.getNextItem();
+        return delegateIterator.next();
     }
 }

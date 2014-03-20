@@ -39,7 +39,7 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link ItemToRemoveNotContainedException}.
      *
      * @param container
-     *        referenced {@link TraversableContainer}
+     *        referenced {@link IterableContainer}
      *
      * @param item
      *        Item to retain

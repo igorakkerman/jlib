@@ -25,7 +25,7 @@ import org.jlib.core.language.ItemOperation;
 
 /**
  * {@link InvalidContainerStateException} thrown when trying to retain the sole
- * Item of a {@link TraversableContainer} that may not be empty.
+ * Item of a {@link IterableContainer} that may not be empty.
  *
  * @author Igor Akkerman
  */

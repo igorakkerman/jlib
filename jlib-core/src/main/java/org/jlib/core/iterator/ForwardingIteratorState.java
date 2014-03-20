@@ -25,47 +25,47 @@ public abstract class ForwardingIteratorState<Item, Travble extends BidiIterable
 extends IterableAware<Item, Travble>
 implements BidiIteratorState<Item, State> {
 
-    private final BidiIteratorState<Item, State> delegateTraverserState;
+    private final BidiIteratorState<Item, State> delegateIteratorState;
 
-    ForwardingIteratorState(final Travble traversable, final BidiIteratorState<Item, State> delegateTraverserState) {
-        super(traversable);
+    ForwardingIteratorState(final Travble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
+        super(iterable);
 
-        this.delegateTraverserState = delegateTraverserState;
+        this.delegateIteratorState = delegateIteratorState;
     }
 
-    protected BidiIteratorState<Item, State> getDelegateTraverserState() {
-        return delegateTraverserState;
+    protected BidiIteratorState<Item, State> getDelegateIteratorState() {
+        return delegateIteratorState;
     }
 
     @Override
     public State previousState() {
-        return delegateTraverserState.previousState();
+        return delegateIteratorState.previousState();
     }
 
     @Override
     public State nextState() {
-        return delegateTraverserState.nextState();
+        return delegateIteratorState.nextState();
     }
 
     @Override
-    public boolean hasNextItem() {
-        return delegateTraverserState.hasNext();
+    public boolean hasNext() {
+        return delegateIteratorState.hasNext();
     }
 
     @Override
     public Item getNextItem()
     throws NoNextItemException {
-        return delegateTraverserState.getNext();
+        return delegateIteratorState.getNext();
     }
 
     @Override
     public boolean hasPrevious() {
-        return delegateTraverserState.hasPrevious();
+        return delegateIteratorState.hasPrevious();
     }
 
     @Override
     public Item previous()
     throws NoPreviousItemException {
-        return delegateTraverserState.previous();
+        return delegateIteratorState.previous();
     }
 }

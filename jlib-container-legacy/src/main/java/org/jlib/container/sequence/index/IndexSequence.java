@@ -134,30 +134,30 @@ extends Sequence<Item>, RandomAccess {
     throws InvalidSequenceIndexException;
 
     /**
-     * Returns an IndexSequenceTraverser traversing the Items of this
-     * IndexSequence in proper sequence. Initially, the Traverser points to the
+     * Returns an IndexSequenceIterator traversing the Items of this
+     * IndexSequence in proper sequence. Initially, the Iterator points to the
      * beginning of this {@link IndexSequence}, that is, the Item returned by
      * the first call to {@code nextIndex()} is the Item stored at
      * {@code getFirstIndex()} .
      *
-     * @return {@link IndexSequenceTraverser} over the Items of this
+     * @return {@link IndexSequenceIterator} over the Items of this
      *         {@link IndexSequence} initially pointing to the beginning of this
      *         {@link IndexSequence}
      */
     @Override
-    public IndexSequenceTraverser<Item> createTraverser();
+    public IndexSequenceIterator<Item> iterator();
 
     /**
-     * Returns an {@link IndexSequenceTraverser} traversing the Items of this
+     * Returns an {@link IndexSequenceIterator} traversing the Items of this
      * IndexSequence in proper sequence. That is, the Item returned by the first
      * call to {@code nextIndex()} is the Item stored at the specified start
      * index.
      *
      * @param startIndex
      *        integer specifying the index of the first Item returned by the
-     *        Traverser
+     *        Iterator
      *
-     * @return IndexSequenceTraverser over the Items of this
+     * @return IndexSequenceIterator over the Items of this
      *         {@link IndexSequence} initially pointing to the beginning of this
      *         {@link IndexSequence}
      *
@@ -165,7 +165,7 @@ extends Sequence<Item>, RandomAccess {
      *         if
      *         {@code startIndex < getFirstIndex() || startIndex > getLastIndex()}
      */
-    public IndexSequenceTraverser<Item> createTraverser(int startIndex)
+    public IndexSequenceIterator<Item> iterator(int startIndex)
     throws InvalidSequenceIndexException;
 
     /**

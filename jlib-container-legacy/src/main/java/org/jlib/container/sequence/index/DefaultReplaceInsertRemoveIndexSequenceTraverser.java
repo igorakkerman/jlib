@@ -23,13 +23,13 @@ package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.NoItemToRemoveException;
+import org.jlib.core.iterator.NoItemToRemoveException;
 
-import org.jlib.container.operation.sequence.ObservedInsertSequenceTraverser;
+import org.jlib.container.operation.sequence.ObservedInsertSequenceIterator;
 import org.jlib.container.operation.sequence.Sequence;
 
 /**
- * Default implementation of a {@link RemoveIndexSequenceTraverser},
+ * Default implementation of a {@link RemoveIndexSequenceIterator},
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -40,15 +40,15 @@ import org.jlib.container.operation.sequence.Sequence;
  *
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertRemoveIndexSequenceTraverser<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
-extends DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze>
-implements ObservedInsertSequenceTraverser<Item> {
+public class DefaultReplaceInsertRemoveIndexSequenceIterator<Item, Sequenze extends ObservedReplaceIndexSequence<Item>>
+extends DefaultReplaceInsertIndexSequenceIterator<Item, Sequenze>
+implements ObservedInsertSequenceIterator<Item> {
 
     /** retain {@link ValueObserver} items */
-//    private final AppendSequence<ValueObserver<Item>> traverserRemoveObservers = new FillupArraySequence<>();
+//    private final AppendSequence<ValueObserver<Item>> iteratorRemoveObservers = new FillupArraySequence<>();
 
     /**
-     * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceTraverser}
+     * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceIterator}
      * over the Items of the specified
      * {@link ReplaceAppendInsertRemoveIndexSequence} beginning at its first
      * index.
@@ -56,12 +56,12 @@ implements ObservedInsertSequenceTraverser<Item> {
      * @param sequence
      *        {@link ReplaceAppendInsertRemoveIndexSequence} to traverse
      */
-    public DefaultReplaceInsertRemoveIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceInsertRemoveIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceTraverser}
+     * Creates a new {@link DefaultReplaceInsertRemoveIndexSequenceIterator}
      * over the Items of the specified
      * {@link ReplaceAppendInsertRemoveIndexSequence} beginning the traversal at
      * the specified index.
@@ -76,7 +76,7 @@ implements ObservedInsertSequenceTraverser<Item> {
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultReplaceInsertRemoveIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceInsertRemoveIndexSequenceIterator(final Sequenze sequence, final int initialNextItemIndex)
     throws InvalidSequenceIndexException {
         super(sequence, initialNextItemIndex);
     }
@@ -106,16 +106,16 @@ implements ObservedInsertSequenceTraverser<Item> {
 //                try {
 //                    retain();
 //                }
-//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceIteratorStateException exception) {
 //                    throw new OperatorException(message("retain()"), exception);
 //                }
 //            }
-//        }, concatenated(traverserRemoveObservers, iterable(operationObservers)).toArray());
+//        }, concatenated(iteratorRemoveObservers, iterable(operationObservers)).toArray());
 
     }
 
     //    @Override
     public final void addRemoveObserver(final ValueObserver<Item> removeObserver) {
-//        traverserRemoveObservers.append(removeObserver);
+//        iteratorRemoveObservers.append(removeObserver);
     }
 }

@@ -61,11 +61,11 @@ extends AppendSequence<Item> {
     throws InvalidContainerArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link TraversableContainer} to this
+     * Appends all Items contained by the specified {@link IterableContainer} to this
      * {@link ObservedAppendSequence}.
      *
      * @param items
-     *        {@link TraversableContainer} containing the Items to append
+     *        {@link IterableContainer} containing the Items to append
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -83,7 +83,7 @@ extends AppendSequence<Item> {
      *         {@link RuntimeException}
      */
     @SuppressWarnings("unchecked")
-    public void append(TraversableContainer<? extends Item> items, ValueObserver<Item>... observers)
+    public void append(IterableContainer<? extends Item> items, ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException;
 
     /**

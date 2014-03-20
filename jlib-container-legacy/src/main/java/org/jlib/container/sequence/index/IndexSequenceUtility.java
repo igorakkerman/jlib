@@ -108,10 +108,10 @@ public final class IndexSequenceUtility {
      * Removes the specified Item from the specified {@link RemoveIndexSequence}.
      *
      * @param <Item>
-     *        type of the items held in the {@link TraversableContainer}
+     *        type of the items held in the {@link IterableContainer}
      *
      * @param sequence
-     *        {@link ObservedRetainItemsByTraversable} containing the Item
+     *        {@link ObservedRetainItemsByIterable} containing the Item
      *
      * @param itemIndex
      *        index of the Item to retain

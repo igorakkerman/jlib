@@ -125,9 +125,9 @@ implements ObservedReplaceIndexSequence<Item> */ {
 //     * of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceInsertRemoveArraySequence(final TraversableContainer<? extends Item> items) {
+//    public ReplaceInsertRemoveArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -156,7 +156,7 @@ implements ObservedReplaceIndexSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public void remove(final TraversableContainer<? extends Item> items)
+//    public void remove(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, items);
 //    }
@@ -176,7 +176,7 @@ implements ObservedReplaceIndexSequence<Item> */ {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    public void remove(final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
 //        ContainerUtility.remove(this, items, observers);
 //    }
@@ -202,12 +202,12 @@ implements ObservedReplaceIndexSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser() {
-//        return new DefaultReplaceInsertRemoveIndexSequenceTraverser<>(this);
+//    public ObservedReplaceInsertRemoveIndexSequenceIterator<Item> iterator() {
+//        return new DefaultReplaceInsertRemoveIndexSequenceIterator<>(this);
 //    }
 //
 //    @Override
-//    public ObservedReplaceInsertRemoveIndexSequenceTraverser<Item> createTraverser(final int startIndex) {
-//        return new DefaultReplaceInsertRemoveIndexSequenceTraverser<>(this, startIndex);
+//    public ObservedReplaceInsertRemoveIndexSequenceIterator<Item> iterator(final int startIndex) {
+//        return new DefaultReplaceInsertRemoveIndexSequenceIterator<>(this, startIndex);
 //    }
 }

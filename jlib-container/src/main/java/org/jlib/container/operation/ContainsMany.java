@@ -42,7 +42,7 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ boolean contains(ContainsTraversable items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ boolean contains(ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

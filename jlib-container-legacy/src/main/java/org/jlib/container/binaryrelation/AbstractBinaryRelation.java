@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation}.
@@ -47,8 +47,8 @@ implements BinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public Traverser<Pair<LeftValue, RightValue>> createTraverser() {
-        return new DefaultBinaryRelationTraverser<>(this);
+    public Iterator<Pair<LeftValue, RightValue>> iterator() {
+        return new DefaultBinaryRelationIterator<>(this);
     }
 
     @Override

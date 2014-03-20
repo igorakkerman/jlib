@@ -24,7 +24,7 @@ package org.jlib.container.operation.binaryrelation;
 import java.util.Set;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 /**
  * Binary pair between various Objects. Each Object on either of the two
@@ -40,8 +40,8 @@ import org.jlib.core.traverser.Traverser;
  */
 public interface BinaryRelation<LeftValue, RightValue>
 extends ItemOperationStrategy<Pair<LeftValue, RightValue>>,
-        org.jlib.core.traverser.Traversable<Pair<LeftValue, RightValue>>,
-        Traversable<Pair<LeftValue, RightValue>> {
+        org.jlib.core.iterator.Iterable<Pair<LeftValue, RightValue>>,
+        Iterable<Pair<LeftValue, RightValue>> {
 
     /**
      * Returns the Set of RightValues added with the specified LeftValue.
@@ -108,7 +108,7 @@ extends ItemOperationStrategy<Pair<LeftValue, RightValue>>,
      * Returns a {@link Set} containing the LeftValues of this
      * {@link BinaryRelation}. The {@link Set} is updated when this
      * {@link BinaryRelation} is modified. Note that, in that case, the values
-     * returned by the {@link Set}'s {@link Traverser} may be inconsistent. The
+     * returned by the {@link Set}'s {@link Iterator} may be inconsistent. The
      * {@link Set} is immutable, that is, calling one of its modifying
      * operations results in an {@link UnsupportedOperationException}.
      *
@@ -120,7 +120,7 @@ extends ItemOperationStrategy<Pair<LeftValue, RightValue>>,
      * Returns a {@link Set} containing the RightValues of this
      * {@link BinaryRelation}. The {@link Set} is updated when this
      * {@link BinaryRelation} is modified. Note that, in that case, the values
-     * returned by the {@link Set}'s {@link Traverser} may be inconsistent. The
+     * returned by the {@link Set}'s {@link Iterator} may be inconsistent. The
      * {@link Set} is immutable, that is, calling one of its modifying
      * operations results in an {@link UnsupportedOperationException}.
      *

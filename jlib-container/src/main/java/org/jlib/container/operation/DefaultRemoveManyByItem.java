@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.iterator.TraversableUtility.iterable;
+import static org.jlib.core.iterator.IterableUtility.iterable;
 
 public class DefaultRemoveManyByItem<Item>
 implements RemoveManyByItem<Item> {
@@ -30,8 +30,8 @@ implements RemoveManyByItem<Item> {
 
     private final RemoveSingleByItem<Item> removableContainedItems;
 
-    public <RemoveSingleTraversable extends org.jlib.core.traverser.Iterable<Item> & RemoveSingleByItem<Item>> /*
-        */ DefaultRemoveManyByItem(final RemoveSingleTraversable containedItems) {
+    public <RemoveSingleIterable extends org.jlib.core.iterator.Iterable<Item> & RemoveSingleByItem<Item>> /*
+        */ DefaultRemoveManyByItem(final RemoveSingleIterable containedItems) {
 
         super();
 
@@ -40,8 +40,8 @@ implements RemoveManyByItem<Item> {
     }
 
     @Override
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsTraversable removedItems)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable removedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item containedItem : iterable(containedItems))

@@ -36,7 +36,7 @@ package org.jlib.container.operation.binaryrelation;
  */
 public class HashAddRemoveBinaryRelation<LeftValue, RightValue>
 /*extends HashAddBinaryRelation<LeftValue, RightValue>
-implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
+implements RetainItemsByIterableBinaryRelation<LeftValue, RightValue> */ {
 //
 //    /**
 //     * Creates a new initially empty {@link HashAddRemoveBinaryRelation}.
@@ -47,16 +47,16 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
 //
 //    /**
 //     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-//     * {@link Pair} items contained by the specified {@link TraversableContainer}.
+//     * {@link Pair} items contained by the specified {@link IterableContainer}.
 //     *
 //     * @param pairs
-//     *        TraversableContainer of the Pairs to add
+//     *        IterableContainer of the Pairs to add
 //     *
 //     * @throws InvalidPairException
 //     *         if {@code pairs} violate the rules of this
 //     *         {@link HashAddRemoveBinaryRelation}
 //     */
-//    public HashAddRemoveBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
+//    public HashAddRemoveBinaryRelation(final IterableContainer<Pair<LeftValue, RightValue>> pairs)
 //    throws InvalidPairException {
 //        super(pairs);
 //    }
@@ -135,12 +135,12 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
 //    }
 //
 //    @Override
-//    public void retain(final Traversable<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void retain(final Iterable<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.retain(this, pairs);
 //    }
 //
 //    @Override
-//    public void retain(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void retain(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.retain(this, pairs);
 //    }
 //
@@ -156,7 +156,7 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
 //    }
 //
 //    @Override
-//    public void remove(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
+//    public void remove(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs) {
 //        BinaryRelationUtility.remove(this, pairs);
 //    }
 //
@@ -172,7 +172,7 @@ implements RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> */ {
 //    }
 //
 //    @Override
-//    public RemoveTraverser<Pair<LeftValue, RightValue>> createTraverser() {
-//        return new DefaultRemoveBinaryRelationTraverser<>(this);
+//    public RemoveIterator<Pair<LeftValue, RightValue>> iterator() {
+//        return new DefaultRemoveBinaryRelationIterator<>(this);
 //    }
 }

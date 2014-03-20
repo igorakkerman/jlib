@@ -29,13 +29,13 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 /**
- * Skeletal implementation of a {@link TraversableContainer}. A concrete TraversableContainer
+ * Skeletal implementation of a {@link IterableContainer}. A concrete IterableContainer
  * implementation needs only to extend this class and implement the
- * {@link TraversableContainer#iterator()} method. Other methods may be overridden for
+ * {@link IterableContainer#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -46,8 +46,8 @@ implements GodContainer<Item> {
     private final GodContainer<Item> disabledGodContainer = new GodContainer<Item>() {
 
         @Override
-        public <ContainsTraversable extends org.jlib.core.traverser.Iterable<Item> & ContainsSingle<Item>> /*
-            */ boolean contains(ContainsTraversable items)
+        public <ContainsIterable extends org.jlib.core.iterator.Iterable<Item> & ContainsSingle<Item>> /*
+            */ boolean contains(ContainsIterable items)
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -71,8 +71,8 @@ implements GodContainer<Item> {
 
         @SafeVarargs
         @Override
-        public final <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsTraversable items, final ValueObserver<Item>... observers)
+        public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
         throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
                ValueObserverException {
             throw new ForbiddenCastException(this);
@@ -87,15 +87,15 @@ implements GodContainer<Item> {
 
         @SafeVarargs
         @Override
-        public final <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsTraversable items, final ValueObserver<Item>... observers)
+        public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable items, final ValueObserver<Item>... observers)
         throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
-        public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsTraversable items)
+        public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable items)
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -107,8 +107,8 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsTraversable items)
+        public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable items)
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -138,7 +138,7 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public Iterator<Item> createTraverser() {
+        public Iterator<Item> iterator() {
             throw new ForbiddenCastException(this);
         }
 
@@ -207,8 +207,8 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsTraversable items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateRetain.retain(items);
     }
@@ -227,8 +227,8 @@ implements GodContainer<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsTraversable items, final ValueObserver<Item>... observers)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(final ContainsIterable items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         delegateObservedRetain.retain(items, observers);
     }
@@ -258,24 +258,24 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ boolean contains(final ContainsTraversable items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ boolean contains(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateContainsMany.contains(items);
     }
 
     @Override
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsTraversable items, final ValueObserver<Item>... observers)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException {
         delegateObservedRemoveMany.remove(items, observers);
     }
 
     @Override
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsTraversable items)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateRemoveManyByItem.remove(items);
     }
@@ -293,8 +293,8 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public Iterator<Item> createTraverser() {
-        return delegateIterable.createTraverser();
+    public Iterator<Item> iterator() {
+        return delegateIterable.iterator();
     }
 
     @Override
@@ -354,7 +354,7 @@ implements GodContainer<Item> {
         this.delegateContainsMany = delegateContainsMany;
     }
 
-    public void setDelegateTraversable(final Iterable<Item> delegateIterable) {
+    public void setDelegateIterable(final Iterable<Item> delegateIterable) {
         this.delegateIterable = delegateIterable;
     }
 

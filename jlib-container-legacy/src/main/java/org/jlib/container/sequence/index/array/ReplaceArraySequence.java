@@ -125,9 +125,9 @@ implements ObservedReplaceIndexSequence<Item> */{
 //     * {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceArraySequence(final TraversableContainer<? extends Item> items) {
+//    public ReplaceArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -139,9 +139,9 @@ implements ObservedReplaceIndexSequence<Item> */{
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceArraySequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
+//    public ReplaceArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);
 //    }
 //
@@ -167,14 +167,14 @@ implements ObservedReplaceIndexSequence<Item> */{
 //    }
 //
 //    @Override
-//    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser()
+//    public ObservedReplaceIndexSequenceIterator<Item> iterator()
 //    throws InvalidSequenceIndexException {
-//        return new DefaultReplaceIndexSequenceTraverser<>(this);
+//        return new DefaultReplaceIndexSequenceIterator<>(this);
 //    }
 //
 //    @Override
-//    public ObservedReplaceIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    public ObservedReplaceIndexSequenceIterator<Item> iterator(final int startIndex)
 //    throws InvalidSequenceIndexException {
-//        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+//        return new DefaultReplaceIndexSequenceIterator<>(this, startIndex);
 //    }
 }

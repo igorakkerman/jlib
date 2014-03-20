@@ -88,12 +88,12 @@ implements Sequence<Item> */ {
 //    }
 //
 //    @Override
-//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//    public boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
 //        return delegateSequence.containsEqualItems(otherContainer);
 //    }
 //
 ////    @Override
-//    public boolean containsEqualItems(final Traversable<Item> collection) {
+//    public boolean containsEqualItems(final Iterable<Item> collection) {
 //        return false; // delegateSequence.containsEqualItems(collection);
 //    }
 //
@@ -104,7 +104,7 @@ implements Sequence<Item> */ {
 //    }
 //
 //    @Override
-//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return delegateSequence.containsItem(items);
 //    }
@@ -140,8 +140,8 @@ implements Sequence<Item> */ {
 //    }
 //
 //    @Override
-//    public ForwardingSequenceTraverser<Item> createTraverser() {
-//        return new ForwardingSequenceTraverser<>(delegateSequence.createTraverser());
+//    public ForwardingSequenceIterator<Item> iterator() {
+//        return new ForwardingSequenceIterator<>(delegateSequence.iterator());
 //    }
 //
 //    @Override

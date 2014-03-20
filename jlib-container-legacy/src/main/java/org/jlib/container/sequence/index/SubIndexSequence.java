@@ -88,7 +88,7 @@ public class SubIndexSequence<Item, BaseSequence extends IndexSequence<Item>>
 //    }
 //
 //    @Override
-//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
@@ -106,7 +106,7 @@ public class SubIndexSequence<Item, BaseSequence extends IndexSequence<Item>>
 //    }
 //
 //    @Override
-//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//    public boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
 //        return false;
 //    }
 //

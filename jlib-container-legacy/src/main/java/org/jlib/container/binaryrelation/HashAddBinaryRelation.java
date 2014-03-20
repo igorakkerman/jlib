@@ -50,16 +50,16 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAddBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link TraversableContainer}.
+     * {@link Pair} items contained by the specified {@link IterableContainer}.
      *
      * @param pairs
-     *        TraversableContainer of the Pairs to add
+     *        IterableContainer of the Pairs to add
      *
      * @throws InvalidPairException
      *         if {@code pairs} violates the rules of this
      *         {@link HashAddBinaryRelation}
      */
-    public HashAddBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
+    public HashAddBinaryRelation(final IterableContainer<Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         super(pairs);
     }
@@ -118,7 +118,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void addPairs(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    public void addPairs(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidContainerArgumentException {
         BinaryRelationUtility.add(this, pairs);
     }
@@ -143,7 +143,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
     }
 
     @Override
-    public void ensureContained(final TraversableContainer<? extends Pair<LeftValue, RightValue>> pairs)
+    public void ensureContained(final IterableContainer<? extends Pair<LeftValue, RightValue>> pairs)
     throws InvalidPairException {
         BinaryRelationUtility.ensureContained(this, pairs);
     }

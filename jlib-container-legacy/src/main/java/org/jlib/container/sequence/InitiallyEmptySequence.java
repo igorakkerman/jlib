@@ -25,8 +25,8 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.traverser.ObservedReplaceTraversable;
-import org.jlib.core.traverser.Traversable;
+import org.jlib.core.iterator.ObservedReplaceIterable;
+import org.jlib.core.iterator.Iterable;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
@@ -46,7 +46,7 @@ import org.jlib.container.operation.legacy.AbstractEmpty;
 public abstract class InitiallyEmptySequence<Item>
 extends AbstractEmpty<Item>
 implements Sequence<Item>,
-           ObservedReplaceTraversable<Item>,
+           ObservedReplaceIterable<Item>,
            ObservedRemoveMany<Item>,
            ObservedRemoveAll<Item> {
 
@@ -67,7 +67,7 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void remove(final TraversableContainer<? extends Item> items)
+    public void remove(final IterableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException {
         // intentionally blank
     }
@@ -77,7 +77,7 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void remove(final Traversable<? extends Item> items)
+    public void remove(final Iterable<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
@@ -88,12 +88,12 @@ implements Sequence<Item>,
         // intentionally blank
     }
 
-    public void retain(final TraversableContainer<? extends Item> items)
+    public void retain(final IterableContainer<? extends Item> items)
     throws ItemToRemoveNotContainedException, InvalidContainerStateException {
         // intentionally blank
     }
 
-    public void retain(final Traversable<? extends Item> items)
+    public void retain(final Iterable<? extends Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         // intentionally blank
     }
@@ -118,7 +118,7 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException {
         // intentionally blank
     }
@@ -146,13 +146,13 @@ implements Sequence<Item>,
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(final Traversable<? extends Item> items, final ValueObserver<Item>... observers)
+    public void remove(final Iterable<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
 
     @SuppressWarnings("unchecked")
-    public void retain(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+    public void retain(final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         // intentionally blank
     }
@@ -170,12 +170,12 @@ implements Sequence<Item>,
     }
 
     @Override
-    public EmptySequenceTraverser<Item> createTraverser() {
-        return EmptySequenceTraverser.getInstance();
+    public EmptySequenceIterator<Item> iterator() {
+        return EmptySequenceIterator.getInstance();
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+    public boolean hasMatchingProperties(final IterableContainer<Item> otherContainer) {
         return false;
     }
 

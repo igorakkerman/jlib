@@ -21,35 +21,35 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.traverser.InvalidTraverserStateException;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.iterator.InvalidIteratorStateException;
+import org.jlib.core.iterator.ReplaceIterator;
 
 /**
- * {@link SequenceTraverser} delegating its calls to another {@link SequenceTraverser}.
+ * {@link SequenceIterator} delegating its calls to another {@link SequenceIterator}.
  *
  * @param <Item>
  *        type of the items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public class ForwardingReplaceSequenceTraverser<Item>
-extends ForwardingSequenceTraverser<Item>
-implements SequenceTraverser<Item>,
-           ReplaceTraverser<Item> {
+public class ForwardingReplaceSequenceIterator<Item>
+extends ForwardingSequenceIterator<Item>
+implements SequenceIterator<Item>,
+           ReplaceIterator<Item> {
 
-    private final ReplaceTraverser<Item> delegateReplaceTraverser;
+    private final ReplaceIterator<Item> delegateReplaceIterator;
 
-    public <DelegateTraverser extends SequenceTraverser<Item> & ReplaceTraverser<Item>> /*
-        */ ForwardingReplaceSequenceTraverser(final DelegateTraverser delegateTraverser) {
+    public <DelegateIterator extends SequenceIterator<Item> & ReplaceIterator<Item>> /*
+        */ ForwardingReplaceSequenceIterator(final DelegateIterator delegateIterator) {
 
-        super(delegateTraverser);
+        super(delegateIterator);
 
-        delegateReplaceTraverser = delegateTraverser;
+        delegateReplaceIterator = delegateIterator;
     }
 
     @Override
     public void replace(final Item newItem)
-    throws InvalidTraverserStateException {
-        delegateReplaceTraverser.replace(newItem);
+    throws InvalidIteratorStateException {
+        delegateReplaceIterator.replace(newItem);
     }
 }

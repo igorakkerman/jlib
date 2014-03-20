@@ -27,10 +27,10 @@ public interface ToArray<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Returns an array containing all of the Items of this {@link TraversableContainer} in
-     * the proper order as returned by this {@link TraversableContainer}'s Traverser.
+     * Returns an array containing all of the Items of this {@link IterableContainer} in
+     * the proper order as returned by this {@link IterableContainer}'s Iterator.
      *
-     * @return array containing all of the Items of this {@link TraversableContainer}
+     * @return array containing all of the Items of this {@link IterableContainer}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.containsadapter;
 
-import org.jlib.core.iterator.TraversableUtility;
+import org.jlib.core.iterator.IterableUtility;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
@@ -37,6 +37,6 @@ extends ContainsAdapter<Item> {
     public final boolean contains(final Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        return TraversableUtility.contains(getItems(), item);
+        return IterableUtility.contains(getItems(), item);
     }
 }

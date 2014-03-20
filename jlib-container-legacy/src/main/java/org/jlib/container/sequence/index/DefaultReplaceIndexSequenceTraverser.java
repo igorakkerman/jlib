@@ -22,9 +22,9 @@
 package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.NoItemToReplaceException;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.iterator.NoItemToReplaceException;
+import org.jlib.core.iterator.ObservedReplaceIterator;
+import org.jlib.core.iterator.ReplaceIterator;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
@@ -32,7 +32,7 @@ import org.jlib.container.operation.InvalidContainerStateException;
 import org.jlib.container.operation.sequence.Sequence;
 
 /**
- * Default implementation of a {@link IndexSequenceTraverser}
+ * Default implementation of a {@link IndexSequenceIterator}
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
@@ -41,29 +41,29 @@ import org.jlib.container.operation.sequence.Sequence;
  *
  * @author Igor Akkerman
  */
-public class DefaultReplaceIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends DefaultIndexSequenceTraverser<Item, Sequenze>
-implements ObservedReplaceTraverser<Item>,
-           ReplaceTraverser<Item>,
-           IndexSequenceTraverser<Item> {
+public class DefaultReplaceIndexSequenceIterator<Item, Sequenze extends ReplaceIndexSequence<Item>>
+extends DefaultIndexSequenceIterator<Item, Sequenze>
+implements ObservedReplaceIterator<Item>,
+           ReplaceIterator<Item>,
+           IndexSequenceIterator<Item> {
 
     /** replace {@link ValueObserver} items */
-//    private final AppendSequence<ValueObserver<Item>> traverserReplaceObservers = new FillupArraySequence<>();
+//    private final AppendSequence<ValueObserver<Item>> iteratorReplaceObservers = new FillupArraySequence<>();
 
     /**
-     * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
+     * Creates a new {@link DefaultReplaceIndexSequenceIterator} over the Items
      * of the specified {@link ObservedReplaceIndexSequence} beginning at its
      * first index.
      *
      * @param sequence
      *        {@link ReplaceIndexSequence} to traverse
      */
-    public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultReplaceIndexSequenceTraverser} over the Items
+     * Creates a new {@link DefaultReplaceIndexSequenceIterator} over the Items
      * of the specified {@link ReplaceIndexSequence} beginning the traversal at
      * the specified index.
      *
@@ -84,14 +84,14 @@ implements ObservedReplaceTraverser<Item>,
      * @throws InvalidContainerStateException
      *         if an error occurs performing the operation
      */
-    public DefaultReplaceIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceIndexSequenceIterator(final Sequenze sequence, final int initialNextItemIndex)
     throws InvalidSequenceIndexException, InvalidContainerArgumentException, InvalidContainerStateException {
         super(sequence, initialNextItemIndex);
     }
 
     @Override
     public final void addReplaceObserver(final ValueObserver<Item> replaceObserver) {
-//        traverserReplaceObservers.append(replaceObserver);
+//        iteratorReplaceObservers.append(replaceObserver);
     }
 
     @Override
@@ -118,11 +118,11 @@ implements ObservedReplaceTraverser<Item>,
 //                try {
 //                    replace(newItem);
 //                }
-//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceIteratorStateException exception) {
 //                    throw new OperatorException(message("replace: {0}", newItem), exception);
 //                }
 //            }
 //        }, /*
-//     */ newItem, concatenated(traverserReplaceObservers, iterable(operationObservers)).toArray());
+//     */ newItem, concatenated(iteratorReplaceObservers, iterable(operationObservers)).toArray());
     }
 }

@@ -26,11 +26,11 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 /**
- * {@link RetainItemsByTraversable} allowing its retain operations to be attended by
+ * {@link RetainItemsByIterable} allowing its retain operations to be attended by
  * {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -38,8 +38,8 @@ public interface ObservedRemoveMany<Item>
 extends ItemOperation<Item> {
 
     @SuppressWarnings("unchecked")
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsTraversable items, ValueObserver<Item>... observers)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
 
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException;

@@ -125,9 +125,9 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     * {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceInsertArraySequence(final TraversableContainer<? extends Item> items) {
+//    public ReplaceInsertArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -139,9 +139,9 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceInsertArraySequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
+//    public ReplaceInsertArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);
 //    }
 //
@@ -151,7 +151,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public void insert(final int index, final TraversableContainer<? extends Item> items) {
+//    public void insert(final int index, final IterableContainer<? extends Item> items) {
 //        insert(index, items, items.getCount());
 //    }
 //
@@ -175,7 +175,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void insert(final int index, final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
+//    public void insert(final int index, final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
 //        insert(index, items, items.getCount(), observers);
 //    }
 //
@@ -207,7 +207,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     * @throws InvalidSequenceIndexException
 //     *         if {@code index < getFirstIndex() || index > getLastIndex()}
 //     */
-//    private void insert(final int index, final Traversable<? extends Item> items, final int insertedItemsCount) {
+//    private void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 //        int storageItemIndex = getStorageItemIndex(index);
@@ -242,7 +242,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     *         if {@code index < getFirstIndex() || index > getLastIndex()}
 //     */
 //    @SafeVarargs
-//    private final void insert(final int index, final Traversable<? extends Item> items, final int insertedItemsCount, final ValueObserver<Item>... observers) {
+//    private final void insert(final int index, final Iterable<? extends Item> items, final int insertedItemsCount, final ValueObserver<Item>... observers) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 //        int storageItemIndex = getStorageItemIndex(index);
@@ -273,13 +273,13 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser() {
-//        return createTraverser(getFirstIndex());
+//    public ObservedReplaceInsertIndexSequenceIterator<Item> iterator() {
+//        return iterator(getFirstIndex());
 //    }
 //
 //    @Override
-//    public ObservedReplaceInsertIndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    public ObservedReplaceInsertIndexSequenceIterator<Item> iterator(final int startIndex)
 //    throws InvalidSequenceIndexException {
-//        return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
+//        return new DefaultReplaceInsertIndexSequenceIterator<>(this, startIndex);
 //    }
 }

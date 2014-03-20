@@ -21,27 +21,27 @@
 
 package org.jlib.container.operation.legacy;
 
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.NoPreviousItemException;
-import org.jlib.core.traverser.Traverser;
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.iterator.NoNextItemException;
+import org.jlib.core.iterator.NoPreviousItemException;
+import org.jlib.core.iterator.Iterator;
+import org.jlib.core.iterator.TwoWayIterator;
 
 import org.jlib.container.operation.sequence.InitiallyEmptySequence;
 
 /**
- * Singleton {@link Traverser} of an {@link Empty}.
+ * Singleton {@link Iterator} of an {@link Empty}.
  *
  * @param <Item>
  *        type of items potentially provided by the
- *        {@link EmptyContainerTraverser}
+ *        {@link EmptyContainerIterator}
  *
  * @author Igor Akkerman
  */
-public final class EmptyContainerTraverser<Item>
-implements TwoWayTraverser<Item> {
+public final class EmptyContainerIterator<Item>
+implements TwoWayIterator<Item> {
 
-    /** sole {@link EmptyContainerTraverser} instance */
-    private static final EmptyContainerTraverser<?> INSTANCE = new EmptyContainerTraverser<>();
+    /** sole {@link EmptyContainerIterator} instance */
+    private static final EmptyContainerIterator<?> INSTANCE = new EmptyContainerIterator<>();
 
     /**
      * Returns the sole instance of this class.
@@ -49,17 +49,17 @@ implements TwoWayTraverser<Item> {
      * @param <Item>
      *        type of the potential {@link InitiallyEmptySequence} items
      *
-     * @return sole {@link EmptyContainerTraverser}
+     * @return sole {@link EmptyContainerIterator}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> EmptyContainerTraverser<Item> getInstance() {
-        return (EmptyContainerTraverser<Item>) INSTANCE;
+    public static <Item> EmptyContainerIterator<Item> getInstance() {
+        return (EmptyContainerIterator<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptyContainerTraverser}.
+     * Creates a new {@link EmptyContainerIterator}.
      */
-    private EmptyContainerTraverser() {
+    private EmptyContainerIterator() {
         super();
     }
 
@@ -69,7 +69,7 @@ implements TwoWayTraverser<Item> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return false;
     }
 

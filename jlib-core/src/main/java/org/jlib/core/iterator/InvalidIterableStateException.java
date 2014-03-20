@@ -40,8 +40,8 @@ extends InvalidStateException {
     /*
      * Creates a new {@link InvalidIterableStateException}.
      *
-     * @param traversable
-     *        traversed {@link Traversable}
+     * @param iterable
+     *        traversed {@link Iterable}
      */
     public InvalidIterableStateException(final Iterable<?> iterable) {
         super(message().with(iterable));

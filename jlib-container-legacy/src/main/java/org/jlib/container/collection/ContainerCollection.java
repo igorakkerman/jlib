@@ -30,27 +30,27 @@ import org.jlib.container.operation.Container;
 import static org.jlib.container.operation.containsadapter.ContainsAdapterUtility.allOf;
 
 /**
- * Adapter allowing a {@link TraversableContainer} to be used as a {@link Collection}. A
- * {@link ContainerCollection} is backed by a {@link TraversableContainer} specified at
+ * Adapter allowing a {@link IterableContainer} to be used as a {@link Collection}. A
+ * {@link ContainerCollection} is backed by a {@link IterableContainer} specified at
  * initialization.
  *
  * @param <Item>
- *        type of the items held in the {@link TraversableContainer}
+ *        type of the items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
-    /** adapted and backed {@link TraversableContainer} */
+    /** adapted and backed {@link IterableContainer} */
     private final Container<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
-     * {@link TraversableContainer}.
+     * {@link IterableContainer}.
      *
      * @param delegateContainer
-     *        {@link TraversableContainer} backing this {@link ContainerCollection}
+     *        {@link IterableContainer} backing this {@link ContainerCollection}
      */
     public ContainerCollection(final Container<Item> delegateContainer) {
         super();
@@ -97,14 +97,14 @@ extends AbstractCollection<Item> {
     /**
      * <p>
      * Verifies whether the specified {@link Object} is itself an
-     * ContainerCollection and the Containers backed by this TraversableContainer and the
+     * ContainerCollection and the Containers backed by this IterableContainer and the
      * specified {@link ContainerCollection}, respectively, are equal by their
      * {@code equals} methods.
      * </p>
      *
      * @param otherObject
-     *        Object to which the backed TraversableContainer is compared
-     * @return {@code true} if the backed TraversableContainer is equal to
+     *        Object to which the backed IterableContainer is compared
+     * @return {@code true} if the backed IterableContainer is equal to
      *         {@code otherObject}; {@code false} otherwise
      */
     @Override

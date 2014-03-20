@@ -23,15 +23,15 @@ package org.jlib.core.iterator;
 
 public abstract class IterableAware<Item, Travble extends Iterable<Item>> {
 
-    private final Travble traversable;
+    private final Travble iterable;
 
-    public IterableAware(final Travble traversable) {
+    public IterableAware(final Travble iterable) {
         super();
 
-        this.traversable = traversable;
+        this.iterable = iterable;
     }
 
-    protected Travble getTraversable() {
-        return traversable;
+    protected Travble getIterable() {
+        return iterable;
     }
 }

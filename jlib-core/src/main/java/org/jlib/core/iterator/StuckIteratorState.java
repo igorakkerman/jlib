@@ -25,8 +25,8 @@ public final class StuckIteratorState<Item, Travble extends Iterable<Item>, Stat
 extends IterableAware<Item, Travble>
 implements BidiIteratorState<Item, State> {
 
-    public StuckIteratorState(final Travble traversable) {
-        super(traversable);
+    public StuckIteratorState(final Travble iterable) {
+        super(iterable);
     }
 
     @Override
@@ -37,27 +37,27 @@ implements BidiIteratorState<Item, State> {
     @Override
     public Item previous()
     throws NoPreviousItemException {
-        throw new NoPreviousItemException(getTraversable());
+        throw new NoPreviousItemException(getIterable());
     }
 
     @Override
     public State previousState() {
-        throw new NoPreviousItemException(getTraversable());
+        throw new NoPreviousItemException(getIterable());
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return false;
     }
 
     @Override
     public Item getNextItem()
     throws NoNextItemException {
-        throw new NoNextItemException(getTraversable());
+        throw new NoNextItemException(getIterable());
     }
 
     @Override
     public State nextState() {
-        throw new NoNextItemException(getTraversable());
+        throw new NoNextItemException(getIterable());
     }
 }

@@ -28,8 +28,8 @@ import org.jlib.core.language.ItemOperation;
 import org.jlib.container.operation.ObservedRemoveMany;
 
 /**
- * Adapter allowing a {@link RetainItemsByTraversable} to be used as a {@link Collection}.
- * A {@link RemoveContainerCollection} is backed by a {@link RetainItemsByTraversable}
+ * Adapter allowing a {@link RetainItemsByIterable} to be used as a {@link Collection}.
+ * A {@link RemoveContainerCollection} is backed by a {@link RetainItemsByIterable}
  * specified at initialization.
  *
  * @param <Item>
@@ -45,16 +45,16 @@ extends ContainerCollection<Item> {
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
-     * {@link RetainItemsByTraversable}.
+     * {@link RetainItemsByIterable}.
      *
      * @param <DelegateContainer>
-     *        type of the delegate {@link TraversableContainer}
+     *        type of the delegate {@link IterableContainer}
      *
      * @param delegateContainer
-     *        {@link RetainItemsByTraversable} backing this
+     *        {@link RetainItemsByIterable} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperation<Item> & org.jlib.core.traverser.Traversable<Item> & Traversable<Item>> //
+    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperation<Item> & org.jlib.core.iterator.Iterable<Item> & Iterable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

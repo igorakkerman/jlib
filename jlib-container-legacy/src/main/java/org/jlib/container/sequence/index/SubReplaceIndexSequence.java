@@ -131,14 +131,14 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser() {
-//        return new DefaultReplaceIndexSequenceTraverser<>(this);
+//    public IndexSequenceIterator<Item> iterator() {
+//        return new DefaultReplaceIndexSequenceIterator<>(this);
 //    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    public IndexSequenceIterator<Item> iterator(final int startIndex)
 //    throws InvalidSequenceIndexException {
-//        return new DefaultReplaceIndexSequenceTraverser<>(this, startIndex);
+//        return new DefaultReplaceIndexSequenceIterator<>(this, startIndex);
 //    }
 //
 //    @Override
@@ -160,7 +160,7 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    }
 //
 //    @Override
-//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
@@ -178,7 +178,7 @@ public class SubReplaceIndexSequence<Item, BaseSequence extends ReplaceIndexSequ
 //    }
 //
 //    @Override
-//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//    public boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
 //        return false;
 //    }
 //

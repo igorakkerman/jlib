@@ -25,23 +25,23 @@ import org.jlib.core.observer.ValueObserver;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
-import org.jlib.container.operation.sequence.index.IndexSequenceTraverser;
+import org.jlib.container.operation.sequence.index.IndexSequenceIterator;
 
 /**
- * {@link IndexSequenceTraverser} allowing observed insertion of Items.
+ * {@link IndexSequenceIterator} allowing observed insertion of Items.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface ObservedInsertSequenceTraverser<Item>
-extends InsertSequenceTraverser<Item> {
+public interface ObservedInsertSequenceIterator<Item>
+extends InsertSequenceIterator<Item> {
 
     /**
      * <p>
      * Inserts the specified Item into the sequence at the current position of
-     * this {@link IndexSequenceTraverser}.
+     * this {@link IndexSequenceIterator}.
      * </p>
      * <p>
      * The Item is inserted immediately before the next Item that would have
@@ -77,7 +77,7 @@ extends InsertSequenceTraverser<Item> {
 
     /**
      * Registers the specified {@link ValueObserver} for the insert operations
-     * of this {@link ObservedRemoveSequenceTraverser}.
+     * of this {@link ObservedRemoveSequenceIterator}.
      *
      * @param insertObserver
      *        additional insert {@link ValueObserver}

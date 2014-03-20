@@ -25,7 +25,7 @@ public interface HashCode<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Returns the hash code of this {@link TraversableContainer} confirming to {@link #equals(Object)}.
+     * Returns the hash code of this {@link IterableContainer} confirming to {@link #equals(Object)}.
      *
      * @return integer specifying the hash code
      */

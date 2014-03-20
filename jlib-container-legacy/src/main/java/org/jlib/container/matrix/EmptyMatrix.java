@@ -62,8 +62,8 @@ implements RandomTraversalMatrix<Entry>,
     }
 
     @Override
-    public final EmptyMatrixTraverser<Entry> createTraverser() {
-        return EmptyMatrixTraverser.getInstance();
+    public final EmptyMatrixIterator<Entry> iterator() {
+        return EmptyMatrixIterator.getInstance();
     }
 
     @Override
@@ -87,7 +87,7 @@ implements RandomTraversalMatrix<Entry>,
     }
 
     @Override
-    public final MatrixTraversable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
+    public final MatrixIterable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
         // the iteration order is void in an EmptyMatrix
         return this;
     }
@@ -98,7 +98,7 @@ implements RandomTraversalMatrix<Entry>,
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Entry> otherContainer) {
+    public boolean hasMatchingProperties(final IterableContainer<Entry> otherContainer) {
         return false;
     }
 }

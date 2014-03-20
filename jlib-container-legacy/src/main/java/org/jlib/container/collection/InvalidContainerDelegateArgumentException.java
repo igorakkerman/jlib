@@ -41,7 +41,7 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link InvalidContainerDelegateArgumentException}.
      *
      * @param container
-     *        referenced {@link TraversableContainer}
+     *        referenced {@link IterableContainer}
      *
      * @param delegate
      *        delegate {@link Object}
@@ -59,7 +59,7 @@ extends InvalidContainerArgumentException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateArgumentException(final TraversableContainer<?> container, final Object delegate,
+    public InvalidContainerDelegateArgumentException(final IterableContainer<?> container, final Object delegate,
                                                      ExceptionMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }

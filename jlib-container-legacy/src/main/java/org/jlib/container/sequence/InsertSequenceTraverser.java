@@ -23,23 +23,23 @@ package org.jlib.container.operation.sequence;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
-import org.jlib.container.operation.sequence.index.IndexSequenceTraverser;
+import org.jlib.container.operation.sequence.index.IndexSequenceIterator;
 
 /**
- * {@link SequenceTraverser} over a {@link InsertSequence}.
+ * {@link SequenceIterator} over a {@link InsertSequence}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface InsertSequenceTraverser<Item>
-extends SequenceTraverser<Item> {
+public interface InsertSequenceIterator<Item>
+extends SequenceIterator<Item> {
 
     /**
      * <p>
      * Inserts the specified Item into the sequence at the current position of
-     * this {@link IndexSequenceTraverser}.
+     * this {@link IndexSequenceIterator}.
      * </p>
      * <p>
      * The Item is inserted immediately before the next Item that would have

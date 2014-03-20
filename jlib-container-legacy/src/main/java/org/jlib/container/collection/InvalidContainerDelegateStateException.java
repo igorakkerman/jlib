@@ -22,7 +22,7 @@
 package org.jlib.container.operation.collection;
 
 import org.jlib.core.language.ExceptionMessage;
-import org.jlib.core.traverser.InvalidTraverserStateException;
+import org.jlib.core.iterator.InvalidIteratorStateException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a delegate object
@@ -31,7 +31,7 @@ import org.jlib.core.traverser.InvalidTraverserStateException;
  * @author Igor Akkerman
  */
 public class InvalidContainerDelegateStateException
-extends InvalidTraverserStateException {
+extends InvalidIteratorStateException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;
@@ -40,7 +40,7 @@ extends InvalidTraverserStateException {
      * Creates a new {@link InvalidContainerDelegateStateException}.
      *
      * @param container
-     *        referenced {@link TraversableContainer}
+     *        referenced {@link IterableContainer}
      *
      * @param delegate
      *        delegate Object
@@ -55,7 +55,7 @@ extends InvalidTraverserStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    public InvalidContainerDelegateStateException(final TraversableContainer<?> container, final Object delegate,
+    public InvalidContainerDelegateStateException(final IterableContainer<?> container, final Object delegate,
                                                   final ExceptionMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }

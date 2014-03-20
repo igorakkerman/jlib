@@ -25,8 +25,8 @@ public final class StatefulBidiIterator<Item, Travble extends Iterable<Item>, St
 extends StatefulIterator<Item, Travble, State>
 implements BidiIterator<Item> {
 
-    public StatefulBidiIterator(final Travble traversable, final State initialState) {
-        super(traversable, initialState);
+    public StatefulBidiIterator(final Travble iterable, final State initialState) {
+        super(iterable, initialState);
     }
 
     @Override
@@ -37,7 +37,7 @@ implements BidiIterator<Item> {
     @Override
     public final Item previous()
     throws NoNextItemException {
-        final Item previousItem = getCurrentState().getNextItem();
+        final Item previousItem = getCurrentState().next();
 
         setCurrentState(getCurrentState().nextState());
 

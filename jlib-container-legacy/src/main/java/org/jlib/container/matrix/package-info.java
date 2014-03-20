@@ -20,7 +20,7 @@
  */
 
 /**
- * jlib ArrayMatrix and ArrayMatrix Traversers.
+ * jlib ArrayMatrix and ArrayMatrix Iterators.
  *
  * @author Igor Akkerman
  */

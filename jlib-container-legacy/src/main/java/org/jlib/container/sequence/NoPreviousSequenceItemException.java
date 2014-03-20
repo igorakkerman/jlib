@@ -21,11 +21,11 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.traverser.NoPreviousItemException;
+import org.jlib.core.iterator.NoPreviousItemException;
 
 /**
  * {@link NoPreviousItemException} thrown when there is no previous Item to
- * return by a {@link SequenceTraverser}.
+ * return by a {@link SequenceIterator}.
  *
  * @author Igor Akkerman
  */

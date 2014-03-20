@@ -22,7 +22,7 @@
 package org.jlib.container.operation.sequence;
 
 /**
- * Skeletal implementation of a {@link SequenceTraverser}.
+ * Skeletal implementation of a {@link SequenceIterator}.
  *
  * @param <Item>
  *        type of the items held in the {@link Sequence}
@@ -32,19 +32,19 @@ package org.jlib.container.operation.sequence;
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractSequenceTraverser<Item, Sequenze extends Sequence<Item>>
-implements SequenceTraverser<Item> {
+public abstract class AbstractSequenceIterator<Item, Sequenze extends Sequence<Item>>
+implements SequenceIterator<Item> {
 
     /** traversed {@link Sequence} */
     private final Sequenze sequence;
 
     /**
-     * Creates a new {@link AbstractSequenceTraverser}.
+     * Creates a new {@link AbstractSequenceIterator}.
      *
      * @param sequence
      *        traversed {@link Sequence}
      */
-    protected AbstractSequenceTraverser(final Sequenze sequence) {
+    protected AbstractSequenceIterator(final Sequenze sequence) {
         super();
 
         this.sequence = sequence;

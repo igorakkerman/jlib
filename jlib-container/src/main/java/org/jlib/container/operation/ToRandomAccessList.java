@@ -31,11 +31,11 @@ extends ItemOperation<Item> {
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
-     * of this {@link TraversableContainer} in the proper order as returned by this
-     * {@link TraversableContainer}'s Traverser.
+     * of this {@link IterableContainer} in the proper order as returned by this
+     * {@link IterableContainer}'s Iterator.
      *
      * @return {@link RandomAccess} {@link List} containing all of the Items of
-     *         this {@link TraversableContainer}
+     *         this {@link IterableContainer}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

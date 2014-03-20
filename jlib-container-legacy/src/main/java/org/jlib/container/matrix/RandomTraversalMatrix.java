@@ -24,15 +24,15 @@ package org.jlib.container.operation.matrix;
 import java.util.Iterator;
 import java.util.RandomAccess;
 
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.sequence.Sequence;
 
 /**
- * {@link Matrix} traversable in various orders. A {@link Sequence} of all
+ * {@link Matrix} iterable in various orders. A {@link Sequence} of all
  * columns or rows can be retrieved and the {@link Matrix} can be traversed by a
- * custom {@link MatrixTraverser}. The default {@link MatrixTraverser} returned
- * by {@link #createTraverser()} and the default {@link Iterator} returned by
+ * custom {@link MatrixIterator}. The default {@link MatrixIterator} returned
+ * by {@link #iterator()} and the default {@link Iterator} returned by
  * {@link #iterator()} can be customized using
  * {@link #setDefaultTraversalOrder(MatrixTraversalOrder)}. A
  * {@link RandomTraversalMatrix} is not necessarily a {@link RandomAccess}
@@ -66,7 +66,7 @@ extends Matrix<Entry> {
 
     /**
      * <p>
-     * Returns a {@link MatrixTraversable} providing a {@link MatrixTraverser}
+     * Returns a {@link MatrixIterable} providing a {@link MatrixIterator}
      * traversing the Items of this {@link Matrix} using the specified
      * {@link MatrixTraversalOrder}.
      * </p>
@@ -80,21 +80,21 @@ extends Matrix<Entry> {
      * </pre>
      *
      * @param iterationOrder
-     *        {@link MatrixTraversalOrder} used by the returned {@link Traversable}
+     *        {@link MatrixTraversalOrder} used by the returned {@link Iterable}
      *
-     * @return {@link MatrixTraversable} providing a {@link MatrixTraverser}
+     * @return {@link MatrixIterable} providing a {@link MatrixIterator}
      *         traversing the Items of this {@link Matrix} using the specified
      *         {@link MatrixTraversalOrder}.
      */
-    public MatrixTraversable<Entry> traversedInOrder(MatrixTraversalOrder iterationOrder);
+    public MatrixIterable<Entry> traversedInOrder(MatrixTraversalOrder iterationOrder);
 
     /**
-     * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
-     * returned by {@link #createTraverser()}.
+     * Registers the {@link MatrixTraversalOrder} used by each {@link Iterator}
+     * returned by {@link #iterator()}.
      *
      * @param defaultIterationOrder
-     *        {@link MatrixTraversalOrder} used by default {@link Traverser
-     *        Traversers}
+     *        {@link MatrixTraversalOrder} used by default {@link Iterator
+     *        Iterators}
      */
     public void setDefaultTraversalOrder(MatrixTraversalOrder defaultIterationOrder);
 }

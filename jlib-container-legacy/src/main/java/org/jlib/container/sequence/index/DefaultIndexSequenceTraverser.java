@@ -26,13 +26,13 @@ import org.jlib.core.value.Modifiable;
 import org.jlib.core.value.Uninitialized;
 import org.jlib.core.value.ValueNotAccessibleException;
 
-import org.jlib.container.operation.sequence.AbstractSequenceTraverser;
+import org.jlib.container.operation.sequence.AbstractSequenceIterator;
 import org.jlib.container.operation.sequence.NoNextSequenceItemException;
 import org.jlib.container.operation.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.operation.sequence.Sequence;
 
 /**
- * Default implementation of an {@link IndexSequenceTraverser}.
+ * Default implementation of an {@link IndexSequenceIterator}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -42,9 +42,9 @@ import org.jlib.container.operation.sequence.Sequence;
  *
  * @author Igor Akkerman
  */
-public class DefaultIndexSequenceTraverser<Item, Sequenze extends IndexSequence<Item>>
-extends AbstractSequenceTraverser<Item, Sequenze>
-implements IndexSequenceTraverser<Item> {
+public class DefaultIndexSequenceIterator<Item, Sequenze extends IndexSequence<Item>>
+extends AbstractSequenceIterator<Item, Sequenze>
+implements IndexSequenceIterator<Item> {
 
     /** index of the potential next traversed Item */
     private int potentialNextItemIndex;
@@ -53,20 +53,20 @@ implements IndexSequenceTraverser<Item> {
     private Modifiable<Integer> lastAccessedItemIndexHolder;
 
     /**
-     * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
+     * Creates a new {@link DefaultIndexSequenceIterator} over the Items of the
      * specified {@link IndexSequence} beginning at its first index.
      *
      * @param sequence
      *        {@link IndexSequence} to traverse
      */
-    public DefaultIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
 
         potentialNextItemIndex = sequence.getFirstIndex();
     }
 
     /**
-     * Creates a new {@link DefaultIndexSequenceTraverser} over the Items of the
+     * Creates a new {@link DefaultIndexSequenceIterator} over the Items of the
      * specified {@link IndexSequence} beginning the traversal at the specified
      * index.
      *
@@ -80,7 +80,7 @@ implements IndexSequenceTraverser<Item> {
      *         if
      *         {@code initialNextItemIndex < sequence.getFirstIndex() || initialNextItemIndex > sequence.getLastIndex()}
      */
-    public DefaultIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex) {
+    public DefaultIndexSequenceIterator(final Sequenze sequence, final int initialNextItemIndex) {
         super(sequence);
 
         IndexSequenceUtility.ensureIndexValid(sequence, initialNextItemIndex);
@@ -109,7 +109,7 @@ implements IndexSequenceTraverser<Item> {
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return potentialNextItemIndex <= getSequence().getLastIndex();
     }
 
@@ -177,7 +177,7 @@ implements IndexSequenceTraverser<Item> {
 
     @Override
     public int getNextItemIndex() {
-        if (! hasNextItem())
+        if (! hasNext())
             throw new NoPreviousSequenceItemException(getSequence());
 
         return potentialNextItemIndex;
@@ -195,7 +195,7 @@ implements IndexSequenceTraverser<Item> {
 
     /**
      * Returns the index of the last Item accessed by this
-     * {@link DefaultIndexSequenceTraverser}.
+     * {@link DefaultIndexSequenceIterator}.
      *
      * @return integer specifying the index of the last accessed Item
      *
@@ -209,7 +209,7 @@ implements IndexSequenceTraverser<Item> {
 
     /**
      * Registers the index of the last Item accessed by this
-     * {@link DefaultIndexSequenceTraverser}.
+     * {@link DefaultIndexSequenceIterator}.
      *
      * @param lastAccessedItemIndex
      *        integer specifying the index

@@ -21,14 +21,14 @@
 
 package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.core.traverser.NoItemToRemoveException;
-import org.jlib.core.traverser.RemoveTraverser;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.NoItemToRemoveException;
+import org.jlib.core.iterator.RemoveIterator;
+import org.jlib.core.iterator.Iterator;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**
- * Default implementation of a {@link Traverser} over the Pairs of a
- * {@link RetainItemsByTraversableBinaryRelation}.
+ * Default implementation of a {@link Iterator} over the Pairs of a
+ * {@link RetainItemsByIterableBinaryRelation}.
  *
  * @param <LeftValue>
  *        type of the values on the left hand side of the binaryRelation
@@ -37,21 +37,21 @@ import org.jlib.core.value.ValueNotAccessibleException;
  *        type of the values on the right hand side of the binaryRelation
  *
  * @param <Relation>
- *        type of the traversed {@link RetainItemsByTraversableBinaryRelation}
+ *        type of the traversed {@link RetainItemsByIterableBinaryRelation}
  *
  * @author Igor Akkerman
  */
-public class DefaultRemoveBinaryRelationTraverser<LeftValue, RightValue, Relation extends RetainItemsByTraversableBinaryRelation<LeftValue, RightValue>>
-extends DefaultBinaryRelationTraverser<LeftValue, RightValue, Relation>
-implements RemoveTraverser<Pair<LeftValue, RightValue>> {
+public class DefaultRemoveBinaryRelationIterator<LeftValue, RightValue, Relation extends RetainItemsByIterableBinaryRelation<LeftValue, RightValue>>
+extends DefaultBinaryRelationIterator<LeftValue, RightValue, Relation>
+implements RemoveIterator<Pair<LeftValue, RightValue>> {
 
     /**
-     * Creates a new RemoveBinaryRelationTraverser.
+     * Creates a new RemoveBinaryRelationIterator.
      *
      * @param binaryRelation
-     *        RetainItemsByTraversableBinaryRelation traversed by this Traverser
+     *        RetainItemsByIterableBinaryRelation traversed by this Iterator
      */
-    public DefaultRemoveBinaryRelationTraverser(final Relation binaryRelation) {
+    public DefaultRemoveBinaryRelationIterator(final Relation binaryRelation) {
         super(binaryRelation);
     }
 

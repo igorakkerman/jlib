@@ -29,12 +29,12 @@ public interface ToSequentialList<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Returns a sequentially traversable {@link List} containing all of the
-     * Items of this {@link TraversableContainer} in the proper order as returned by this
-     * {@link TraversableContainer}'s Traverser.
+     * Returns a sequentially iterable {@link List} containing all of the
+     * Items of this {@link IterableContainer} in the proper order as returned by this
+     * {@link IterableContainer}'s Iterator.
      *
-     * @return sequentially traversable {@link List} containing all of the Items
-     *         of this {@link TraversableContainer}
+     * @return sequentially iterable {@link List} containing all of the Items
+     *         of this {@link IterableContainer}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

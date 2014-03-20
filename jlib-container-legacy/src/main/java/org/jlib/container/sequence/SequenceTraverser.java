@@ -21,18 +21,18 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.iterator.TwoWayIterator;
 
 /**
- * {@link TwoWayTraverser} over the Items of a {@link Sequence}.
+ * {@link TwoWayIterator} over the Items of a {@link Sequence}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface SequenceTraverser<Item>
-extends TwoWayTraverser<Item> {
+public interface SequenceIterator<Item>
+extends TwoWayIterator<Item> {
 
     /**
      * @throws NoPreviousSequenceItemException

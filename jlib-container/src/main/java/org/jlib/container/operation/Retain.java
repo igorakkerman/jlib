@@ -24,11 +24,11 @@ package org.jlib.container.operation;
 import org.jlib.core.language.ItemOperation;
 
 /**
- * {@link RetainItemsByTraversable} allowing its Items to be removed by random access to
+ * {@link RetainItemsByIterable} allowing its Items to be removed by random access to
  * each specified Item.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -52,7 +52,7 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsTraversable extends org.jlib.core.traverser.Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsTraversable items)
+    public <ContainsIterable extends org.jlib.core.iterator.Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

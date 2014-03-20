@@ -64,31 +64,31 @@ public final class CollectionUtility {
 
     /**
      * Creates a Set containing the items provided by the specified
-     * {@link Traversable}.
+     * {@link Iterable}.
      *
      * @param <SetItem>
      *        type of the items held in the {@link Set}
      *
-     * @param <TraversableItem>
-     *        type of the items provided by the {@link Traversable}; subtype of
+     * @param <IterableItem>
+     *        type of the items provided by the {@link Iterable}; subtype of
      *        {@code <SetItem>}
      *
-     * @param traversable
-     *        the source traversable
+     * @param iterable
+     *        the source iterable
      *
-     * @return Set containing the Items of {@code traversable}
+     * @return Set containing the Items of {@code iterable}
      */
-    public static <SetItem, TraversableItem extends SetItem> Set<SetItem> toSet(
-                                                                               final Traversable<TraversableItem> traversable) {
+    public static <SetItem, IterableItem extends SetItem> Set<SetItem> toSet(
+                                                                               final Iterable<IterableItem> iterable) {
         final Set<SetItem> set = new HashSet<SetItem>();
-        for (TraversableItem item : traversable)
+        for (IterableItem item : iterable)
             set.add(item);
         return set;
     }
 
     /**
      * Removes all items from the specified {@link Collection} provided by
-     * the specified {@link Traversable}.
+     * the specified {@link Iterable}.
      *
      * @param <CollectionItem>
      *        type of the items held in the {@link Collection}
@@ -101,11 +101,11 @@ public final class CollectionUtility {
      *        Collection from which {@code items} are removed
      *
      * @param items
-     *        {@link Traversable} providing the items to retain
+     *        {@link Iterable} providing the items to retain
      */
     public static <CollectionItem, RemovedItem extends CollectionItem> void removeAll(
                                                                                      final Collection<CollectionItem> collection,
-                                                                                     final Traversable<RemovedItem> items) {
+                                                                                     final Iterable<RemovedItem> items) {
         for (RemovedItem item : items)
             collection.remove(item);
     }

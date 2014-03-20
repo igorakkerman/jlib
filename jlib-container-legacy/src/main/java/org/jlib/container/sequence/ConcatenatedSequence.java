@@ -33,15 +33,15 @@ package org.jlib.container.operation.sequence;
 public class ConcatenatedSequence<Item>
 /*extends AbstractSequence<Item> */ {
 
-//    /** array of concatenated {@link TwoWayTraversable} items */
-//    private TwoWayTraversable<Item>[] traversables;
+//    /** array of concatenated {@link TwoWayIterable} items */
+//    private TwoWayIterable<Item>[] iterables;
 //
 //    /** total number of {@link Sequence} Items */
 //    private Accessible<Integer> itemsCountHolder = new Accessible<Integer>() {
 //
 //        @Override
 //        public Integer getValue() {
-//            final int itemsCount = TraversableUtility.getCount(traversables);
+//            final int itemsCount = IterableUtility.getCount(iterables);
 //
 //            itemsCountHolder = new Initialized<>(itemsCount);
 //
@@ -52,15 +52,15 @@ public class ConcatenatedSequence<Item>
 //    /**
 //     * Creates a new {@link ConcatenatedSequence}.
 //     *
-//     * @param traversables
-//     *        comma separated sequence of concatenated {@link TwoWayTraversable}
+//     * @param iterables
+//     *        comma separated sequence of concatenated {@link TwoWayIterable}
 //     *        items
 //     */
 //    @SafeVarargs
-//    public ConcatenatedSequence(final TwoWayTraversable<Item>... traversables) {
+//    public ConcatenatedSequence(final TwoWayIterable<Item>... iterables) {
 //        super();
 //
-//        this.traversables = traversables;
+//        this.iterables = iterables;
 //    }
 //
 //    @Override
@@ -70,17 +70,17 @@ public class ConcatenatedSequence<Item>
 //    }
 //
 //    @Override
-//    public SequenceTraverser<Item> createTraverser() {
-//        return new ConcatenatedSequenceTraverser<>(this);
+//    public SequenceIterator<Item> iterator() {
+//        return new ConcatenatedSequenceIterator<>(this);
 //    }
 //
 //    /**
-//     * Returns the {@link Traversable} items.
+//     * Returns the {@link Iterable} items.
 //     *
-//     * @return array of {@link TwoWayTraversable} instances
+//     * @return array of {@link TwoWayIterable} instances
 //     */
-//    public TwoWayTraversable<Item>[] getTraversables() {
-//        return traversables;
+//    public TwoWayIterable<Item>[] getIterables() {
+//        return iterables;
 //    }
 //
 //    @Override
@@ -88,7 +88,7 @@ public class ConcatenatedSequence<Item>
 //    public ConcatenatedSequence clone() {
 //        final ConcatenatedSequence clone = (ConcatenatedSequence) super.clone();
 //
-//        clone.traversables = traversables.clone();
+//        clone.iterables = iterables.clone();
 //
 //        return clone;
 //    }

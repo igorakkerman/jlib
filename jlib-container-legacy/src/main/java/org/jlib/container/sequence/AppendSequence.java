@@ -50,7 +50,7 @@ extends Sequence<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public void append(ContainsTraversable<? extends Item> items)
+    public void append(ContainsIterable<? extends Item> items)
     throws InvalidContainerArgumentException;
 
 

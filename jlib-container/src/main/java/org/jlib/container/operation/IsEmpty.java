@@ -27,9 +27,9 @@ public interface IsEmpty<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Verifies whether this {@link TraversableContainer} containsItem no Items.
+     * Verifies whether this {@link IterableContainer} containsItem no Items.
      *
-     * @return {@code true} if this {@link TraversableContainer} containsItem no Items;
+     * @return {@code true} if this {@link IterableContainer} containsItem no Items;
      *         {@code false} otherwise
      *
      * @throws InvalidContainerStateException

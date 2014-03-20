@@ -22,7 +22,7 @@
 package org.jlib.container.operation.matrix;
 
 /**
- * Abstract factory for {@link MatrixTraverser} instances, representing the
+ * Abstract factory for {@link MatrixIterator} instances, representing the
  * iteration order of a {@link RandomTraversalMatrix}.
  *
  * @author Igor Akkerman
@@ -30,7 +30,7 @@ package org.jlib.container.operation.matrix;
 public interface MatrixTraversalOrder {
 
     /**
-     * Creates a new {@link MatrixTraverser} for the specified {@link Matrix}.
+     * Creates a new {@link MatrixIterator} for the specified {@link Matrix}.
      *
      * @param <Entry>
      *        type of the Entries of the {@link Matrix}
@@ -38,7 +38,7 @@ public interface MatrixTraversalOrder {
      * @param matrix
      *        {@link RandomTraversalMatrix} to traverse
      *
-     * @return new {@link MatrixTraverser} over the Items of {@code matrix}
+     * @return new {@link MatrixIterator} over the Items of {@code matrix}
      */
-    public <Entry> MatrixTraverser<Entry> createTraverser(RandomTraversalMatrix<Entry> matrix);
+    public <Entry> MatrixIterator<Entry> iterator(RandomTraversalMatrix<Entry> matrix);
 }

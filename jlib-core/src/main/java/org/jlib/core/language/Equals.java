@@ -27,19 +27,19 @@ public interface Equals<Obj> {
 
     /**
      * <p>
-     * Verifies whether this {@link TraversableContainer} is equal to the specified {@link Object}. This is true if all of the
+     * Verifies whether this {@link IterableContainer} is equal to the specified {@link Object}. This is true if all of the
      * following conditions are satisfied:
      * </p>
      * <ul>
-     * <li>this {@link TraversableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
-     * {@link #containsEqualItems(TraversableContainer)}</li>
-     * <li>this {@link TraversableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
-     * {@link #containsEqualItems(TraversableContainer)}</li>
+     * <li>this {@link IterableContainer} and the specified {@link Object} are instances of the same class</li>
+     * <li>this {@link IterableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
+     * {@link #containsEqualItems(IterableContainer)}</li>
+     * <li>this {@link IterableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
+     * {@link #containsEqualItems(IterableContainer)}</li>
      * </ul>
      *
      * @param otherObject
-     *        Object to compare to this TraversableContainer
+     *        Object to compare to this IterableContainer
      *
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise

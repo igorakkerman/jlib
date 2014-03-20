@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.matrix;
 
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.sequence.index.IndexSequence;
 import org.jlib.container.operation.sequence.index.InvalidSequenceIndexException;
@@ -51,7 +51,7 @@ implements IndexMatrix<Entry> {
     private final int lastRowIndex;
 
     /**
-     * {@link MatrixTraversalOrder} used by each {@link Traverser} returned by
+     * {@link MatrixTraversalOrder} used by each {@link Iterator} returned by
      * {@link #iterator()}.
      */
     private MatrixTraversalOrder defaultIterationOrder;
@@ -237,39 +237,39 @@ implements IndexMatrix<Entry> {
     }
 
     /**
-     * Creates a {@link MatrixTraverser} traversing the Items of this
+     * Creates a {@link MatrixIterator} traversing the Items of this
      * {@link AbstractIndexMatrix}. The order in which the Items are traversed
      * is specified using
      * {@link #setDefaultTraversalOrder(MatrixTraversalOrder)}.
      *
-     * @return new {@link MatrixTraverser} for this AbstractIndexMatrix
+     * @return new {@link MatrixIterator} for this AbstractIndexMatrix
      *
      * @see #setDefaultTraversalOrder(MatrixTraversalOrder)
      * @see MatrixTraversalOrder
      */
     @Override
-    public MatrixTraverser<Entry> createTraverser() {
-        return defaultIterationOrder.createTraverser(this);
+    public MatrixIterator<Entry> iterator() {
+        return defaultIterationOrder.iterator(this);
     }
 
     @Override
-    public MatrixTraversable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
-        return new MatrixTraversable<Entry>() {
+    public MatrixIterable<Entry> traversedInOrder(final MatrixTraversalOrder iterationOrder) {
+        return new MatrixIterable<Entry>() {
 
             @Override
-            public MatrixTraverser<Entry> createTraverser() {
-                return iterationOrder.createTraverser(AbstractIndexMatrix.this);
+            public MatrixIterator<Entry> iterator() {
+                return iterationOrder.iterator(AbstractIndexMatrix.this);
             }
         };
     }
 
     /**
-     * Registers the {@link MatrixTraversalOrder} used by each {@link Traverser}
+     * Registers the {@link MatrixTraversalOrder} used by each {@link Iterator}
      * returned by {@link #iterator()}.
      *
      * @param defaultIterationOrder
-     *        {@link MatrixTraversalOrder} used by default {@link Traverser
-     *        Traversers}
+     *        {@link MatrixTraversalOrder} used by default {@link Iterator
+     *        Iterators}
      */
     @Override
     public void setDefaultTraversalOrder(final MatrixTraversalOrder defaultIterationOrder) {

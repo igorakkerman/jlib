@@ -32,7 +32,7 @@ import org.jlib.core.observer.ValueObserverException;
  * instances.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -61,7 +61,7 @@ extends ItemOperation<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public <ContainsTraversable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsTraversable containsTraversable, ValueObserver<Item>... observers)
+    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void retain(ContainsIterable containsIterable, ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }

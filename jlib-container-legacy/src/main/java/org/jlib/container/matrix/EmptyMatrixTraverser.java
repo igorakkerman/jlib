@@ -21,11 +21,11 @@
 
 package org.jlib.container.operation.matrix;
 
-import org.jlib.core.traverser.NoNextItemException;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.iterator.NoNextItemException;
+import org.jlib.core.iterator.ReplaceIterator;
 
 /**
- * {@link MatrixTraverser} of an {@link EmptyMatrix}. Implemented as a
+ * {@link MatrixIterator} of an {@link EmptyMatrix}. Implemented as a
  * singleton.
  *
  * @param <Entry>
@@ -33,34 +33,34 @@ import org.jlib.core.traverser.ReplaceTraverser;
  *
  * @author Igor Akkerman
  */
-public final class EmptyMatrixTraverser<Entry>
-implements MatrixTraverser<Entry>, ReplaceTraverser<Entry> {
+public final class EmptyMatrixIterator<Entry>
+implements MatrixIterator<Entry>, ReplaceIterator<Entry> {
 
-    /** sole {@link EmptyMatrixTraverser} instance */
-    private static final EmptyMatrixTraverser<?> INSTANCE = new EmptyMatrixTraverser<>();
+    /** sole {@link EmptyMatrixIterator} instance */
+    private static final EmptyMatrixIterator<?> INSTANCE = new EmptyMatrixIterator<>();
 
     /**
-     * Returns the sole {@link EmptyMatrixTraverser} instance.
+     * Returns the sole {@link EmptyMatrixIterator} instance.
      *
      * @param <Entry>
      *        type of the entries potentially held in the {@link EmptyMatrix}
      *
-     * @return sole {@link EmptyMatrixTraverser} instance
+     * @return sole {@link EmptyMatrixIterator} instance
      */
     @SuppressWarnings("unchecked")
-    public static <Entry> EmptyMatrixTraverser<Entry> getInstance() {
-        return (EmptyMatrixTraverser<Entry>) INSTANCE;
+    public static <Entry> EmptyMatrixIterator<Entry> getInstance() {
+        return (EmptyMatrixIterator<Entry>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptyMatrixTraverser}.
+     * Creates a new {@link EmptyMatrixIterator}.
      */
-    private EmptyMatrixTraverser() {
+    private EmptyMatrixIterator() {
         super();
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return false;
     }
 

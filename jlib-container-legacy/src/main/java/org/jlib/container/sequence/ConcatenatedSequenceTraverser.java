@@ -21,10 +21,10 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.traverser.TwoWayTraverser;
+import org.jlib.core.iterator.TwoWayIterator;
 
 /**
- * {@link TwoWayTraverser} over the Items of a
+ * {@link TwoWayIterator} over the Items of a
  * {@link ConcatenatedSequence}.
  *
  * @param <Item>
@@ -35,49 +35,49 @@ import org.jlib.core.traverser.TwoWayTraverser;
  *
  * @author Igor Akkerman
  */
-public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSequence<Item>>
-/*extends AbstractSequenceTraverser<Item, Sequenze> */{
+public class ConcatenatedSequenceIterator<Item, Sequenze extends ConcatenatedSequence<Item>>
+/*extends AbstractSequenceIterator<Item, Sequenze> */{
 
 //    /**
-//     * {@link TwoWayTraverser} of the concatenated
-//     * {@link TwoWayTraversable} instances
+//     * {@link TwoWayIterator} of the concatenated
+//     * {@link TwoWayIterable} instances
 //     */
-//    private final TwoWayTraverser<TwoWayTraversable<Item>> traversablesTraverser;
+//    private final TwoWayIterator<TwoWayIterable<Item>> iterablesIterator;
 //
 //    /**
-//     * {@link TwoWayTraverser} over the current
-//     * {@link TwoWayTraversable}
+//     * {@link TwoWayIterator} over the current
+//     * {@link TwoWayIterable}
 //     */
-//    private TwoWayTraverser<Item> currentTraversableTraverser;
+//    private TwoWayIterator<Item> currentIterableIterator;
 //
 //    /**
-//     * Creates a new {@link ConcatenatedSequenceTraverser}.
+//     * Creates a new {@link ConcatenatedSequenceIterator}.
 //     *
 //     * @param concatenatedSequence
 //     *        {@link Sequence} of concatenated {@link Sequence} instances;
 //     *        {@code concatenatedSequence} may be empty
 //     */
-//    public ConcatenatedSequenceTraverser(final Sequenze concatenatedSequence) {
+//    public ConcatenatedSequenceIterator(final Sequenze concatenatedSequence) {
 //        super(concatenatedSequence);
 //
-////        traversablesTraverser = ArrayUtility.createTraverser(concatenatedSequence.getTraversables());
+////        iterablesIterator = ArrayUtility.iterator(concatenatedSequence.getIterables());
 //
-////        currentTraversableTraverser = traversablesTraverser.hasNextItem()
-////                                      ? traversablesTraverser.getNextItem().createTraverser()
-////                                      : EmptySequenceTraverser.<Item>getInstance();
+////        currentIterableIterator = iterablesIterator.hasNext()
+////                                      ? iterablesIterator.getNextItem().iterator()
+////                                      : EmptySequenceIterator.<Item>getInstance();
 //    }
 //
 //    @Override
 //    public boolean hasPreviousItem() {
-//        while (! currentTraversableTraverser.hasPreviousItem()) {
-//            if (! traversablesTraverser.hasPreviousItem())
+//        while (! currentIterableIterator.hasPreviousItem()) {
+//            if (! iterablesIterator.hasPreviousItem())
 //                return false;
 //
-//            currentTraversableTraverser = traversablesTraverser.getPreviousItem().createTraverser();
+//            currentIterableIterator = iterablesIterator.getPreviousItem().iterator();
 //
 //            // navigate to the tail of the previous Sequence
-//            while (currentTraversableTraverser.hasNextItem())
-//                currentTraversableTraverser.getNextItem();
+//            while (currentIterableIterator.hasNext())
+//                currentIterableIterator.getNextItem();
 //        }
 //
 //        return true;
@@ -89,16 +89,16 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 ////        if (! hasPreviousItem())
 ////            throw new NoPreviousSequenceItemException(getSequence());
 //
-//        return currentTraversableTraverser.getPreviousItem();
+//        return currentIterableIterator.getPreviousItem();
 //    }
 //
 //    @Override
-//    public boolean hasNextItem() {
-//        while (! currentTraversableTraverser.hasNextItem()) {
-//            if (! traversablesTraverser.hasNextItem())
+//    public boolean hasNext() {
+//        while (! currentIterableIterator.hasNext()) {
+//            if (! iterablesIterator.hasNext())
 //                return false;
 //
-//            currentTraversableTraverser = traversablesTraverser.getNextItem().createTraverser();
+//            currentIterableIterator = iterablesIterator.getNextItem().iterator();
 //        }
 //
 //        return true;
@@ -107,9 +107,9 @@ public class ConcatenatedSequenceTraverser<Item, Sequenze extends ConcatenatedSe
 //    @Override
 //    public Item getNextItem()
 //    throws NoNextSequenceItemException {
-//        if (! hasNextItem())
+//        if (! hasNext())
 //            throw new NoPreviousSequenceItemException(getSequence());
 //
-//        return currentTraversableTraverser.getPreviousItem();
+//        return currentIterableIterator.getPreviousItem();
 //    }
 }

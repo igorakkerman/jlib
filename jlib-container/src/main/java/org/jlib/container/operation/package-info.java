@@ -20,7 +20,7 @@
  */
 
 /**
- * jlib TraversableContainer framework introduces a clean and strong typed hierarchy.
+ * jlib IterableContainer framework introduces a clean and strong typed hierarchy.
  *
  * @author Igor Akkerman
  */

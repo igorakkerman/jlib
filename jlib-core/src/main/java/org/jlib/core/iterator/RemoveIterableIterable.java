@@ -36,7 +36,7 @@ implements RemoveIterable<Item> {
     }
 
     @Override
-    public RemoveIterator<Item> createTraverser() {
-        return new RemoveIterableTraverser<>(iterable);
+    public RemoveIterator<Item> iterator() {
+        return new RemoveIterableIterator<>(iterable);
     }
 }

@@ -22,32 +22,32 @@
 package org.jlib.container.operation.sequence;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.NoItemToRemoveException;
-import org.jlib.core.traverser.NoItemToReplaceException;
-import org.jlib.core.traverser.ObservedRemoveTraverser;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
-import org.jlib.core.traverser.RemoveTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.iterator.NoItemToRemoveException;
+import org.jlib.core.iterator.NoItemToReplaceException;
+import org.jlib.core.iterator.ObservedRemoveIterator;
+import org.jlib.core.iterator.ObservedReplaceIterator;
+import org.jlib.core.iterator.RemoveIterator;
+import org.jlib.core.iterator.ReplaceIterator;
 
-import org.jlib.container.operation.sequence.index.IndexSequenceTraverser;
+import org.jlib.container.operation.sequence.index.IndexSequenceIterator;
 
 /**
- * {@link IndexSequenceTraverser} of an {@link InitiallyEmptySequence}.
+ * {@link IndexSequenceIterator} of an {@link InitiallyEmptySequence}.
  *
  * @param <Item>
  *        type of items held in the {@link InitiallyEmptySequence}
  *
  * @author Igor Akkerman
  */
-public final class EmptySequenceTraverser<Item>
-extends AbstractSequenceTraverser<Item, InitiallyEmptySequence<Item>>
-implements ObservedRemoveTraverser<Item>,
-           ObservedReplaceTraverser<Item>,
-           ReplaceTraverser<Item>,
-           RemoveTraverser<Item> {
+public final class EmptySequenceIterator<Item>
+extends AbstractSequenceIterator<Item, InitiallyEmptySequence<Item>>
+implements ObservedRemoveIterator<Item>,
+           ObservedReplaceIterator<Item>,
+           ReplaceIterator<Item>,
+           RemoveIterator<Item> {
 
-    /** sole {@link EmptySequenceTraverser} instance */
-    private static final EmptySequenceTraverser<?> INSTANCE = new EmptySequenceTraverser<>();
+    /** sole {@link EmptySequenceIterator} instance */
+    private static final EmptySequenceIterator<?> INSTANCE = new EmptySequenceIterator<>();
 
     /**
      * Returns the sole instance of this class.
@@ -55,17 +55,17 @@ implements ObservedRemoveTraverser<Item>,
      * @param <Item>
      *        type of the potential {@link InitiallyEmptySequence} items
      *
-     * @return sole {@link EmptySequenceTraverser}
+     * @return sole {@link EmptySequenceIterator}
      */
     @SuppressWarnings("unchecked")
-    public static <Item> EmptySequenceTraverser<Item> getInstance() {
-        return (EmptySequenceTraverser<Item>) INSTANCE;
+    public static <Item> EmptySequenceIterator<Item> getInstance() {
+        return (EmptySequenceIterator<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link EmptySequenceTraverser}.
+     * Creates a new {@link EmptySequenceIterator}.
      */
-    private EmptySequenceTraverser() {
+    private EmptySequenceIterator() {
         super(EmptySequence.<Item> /**/ getInstance());
     }
 
@@ -75,7 +75,7 @@ implements ObservedRemoveTraverser<Item>,
     }
 
     @Override
-    public boolean hasNextItem() {
+    public boolean hasNext() {
         return false;
     }
 

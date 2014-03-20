@@ -24,7 +24,7 @@ package org.jlib.core.iterator;
 import java.util.Iterator;
 
 /**
- * {@link Object} traversable by a {@link BidiIterator}.
+ * {@link Object} iterable by a {@link BidiIterator}.
  *
  * @param <Item>
  *        type of items returned by the {@link Iterator}

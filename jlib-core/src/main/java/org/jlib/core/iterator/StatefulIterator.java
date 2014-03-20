@@ -27,21 +27,21 @@ implements Iterator<Item> {
 
     private State currentState;
 
-    public StatefulIterator(final Travble traversable, final State initialState) {
-        super(traversable);
+    public StatefulIterator(final Travble iterable, final State initialState) {
+        super(iterable);
 
         currentState = initialState;
     }
 
     @Override
-    public final boolean hasNextItem() {
-        return currentState.hasNextItem();
+    public final boolean hasNext() {
+        return currentState.hasNext();
     }
 
     @Override
     public final Item getNextItem()
     throws NoNextItemException {
-        final Item nextItem = currentState.getNextItem();
+        final Item nextItem = currentState.next();
 
         currentState = currentState.nextState();
 

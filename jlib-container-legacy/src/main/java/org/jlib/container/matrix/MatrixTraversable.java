@@ -22,23 +22,23 @@
 package org.jlib.container.operation.matrix;
 
 /**
- * {@link Traversable} providing a {@link MatrixTraverser} traversing the Items of
+ * {@link Iterable} providing a {@link MatrixIterator} traversing the Items of
  * a {@link Matrix}.
  *
  * @param <Entry>
- *        type of the entries returned by the {@link MatrixTraversable}.
+ *        type of the entries returned by the {@link MatrixIterable}.
  *
  * @author Igor Akkerman
  */
-public interface MatrixTraversable<Entry> {
+public interface MatrixIterable<Entry> {
 
     /**
-     * Creates a {@link MatrixTraverser} traversing the Entries of this
-     * {@link MatrixTraversable} in the default order. The default order may be
+     * Creates a {@link MatrixIterator} traversing the Entries of this
+     * {@link MatrixIterable} in the default order. The default order may be
      * defined by the concrete implementation or even made customizable.
      *
-     * @return a new {@link MatrixTraverser} over the Entries of this
+     * @return a new {@link MatrixIterator} over the Entries of this
      *         {@link Matrix}
      */
-    public MatrixTraverser<Entry> createTraverser();
+    public MatrixIterator<Entry> iterator();
 }

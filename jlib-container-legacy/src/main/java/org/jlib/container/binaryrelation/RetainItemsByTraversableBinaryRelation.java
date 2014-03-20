@@ -32,13 +32,13 @@ package org.jlib.container.operation.binaryrelation;
  *
  * @author Igor Akkerman
  */
-public interface RetainItemsByTraversableBinaryRelation<LeftValue, RightValue>
+public interface RetainItemsByIterableBinaryRelation<LeftValue, RightValue>
 extends BinaryRelation<LeftValue, RightValue>,
-        RetainItemsByTraversable<Pair<LeftValue, RightValue>> {
+        RetainItemsByIterable<Pair<LeftValue, RightValue>> {
 
     /**
      * Removes the {@link Pair} specified by its LeftValue and RightValue
-     * from this {@link RetainItemsByTraversableBinaryRelation}.
+     * from this {@link RetainItemsByIterableBinaryRelation}.
      *
      * @param leftValue
      *        LeftValue of the {@link Pair}
@@ -47,7 +47,7 @@ extends BinaryRelation<LeftValue, RightValue>,
      *        RightValue of the {@link Pair}
      *
      * @throws NoSuchPairException
-     *         if this {@link RetainItemsByTraversableBinaryRelation} does not contain the
+     *         if this {@link RetainItemsByIterableBinaryRelation} does not contain the
      *         specified {@link Pair}
      */
     public void remove(LeftValue leftValue, RightValue rightValue)

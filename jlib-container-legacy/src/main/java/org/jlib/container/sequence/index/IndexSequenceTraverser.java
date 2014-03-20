@@ -24,23 +24,23 @@ package org.jlib.container.operation.sequence.index;
 import org.jlib.container.operation.sequence.NoNextSequenceItemException;
 import org.jlib.container.operation.sequence.NoPreviousSequenceItemException;
 import org.jlib.container.operation.sequence.Sequence;
-import org.jlib.container.operation.sequence.SequenceTraverser;
+import org.jlib.container.operation.sequence.SequenceIterator;
 
 /**
- * {@link SequenceTraverser} over an {@link IndexSequence}.
+ * {@link SequenceIterator} over an {@link IndexSequence}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public interface IndexSequenceTraverser<Item>
-extends SequenceTraverser<Item> {
+public interface IndexSequenceIterator<Item>
+extends SequenceIterator<Item> {
 
     /**
-     * Returns the previous Item of this Traverser.
+     * Returns the previous Item of this Iterator.
      *
-     * @return the previous Item of this Traverser
+     * @return the previous Item of this Iterator
      *
      * @throws NoPreviousSequenceItemException
      *         sif there is no previous Item
@@ -49,9 +49,9 @@ extends SequenceTraverser<Item> {
     throws NoPreviousSequenceItemException;
 
     /**
-     * Returns the next Item of this Traverser.
+     * Returns the next Item of this Iterator.
      *
-     * @return the next Item of this Traverser; returns
+     * @return the next Item of this Iterator; returns
      *         {@code getLastIndex() + 1} if there is no next Item
      *
      * @throws NoNextSequenceItemException

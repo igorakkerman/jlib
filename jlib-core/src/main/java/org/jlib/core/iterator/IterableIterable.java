@@ -36,7 +36,7 @@ implements Iterable<Item> {
     }
 
     @Override
-    public Iterator<Item> createTraverser() {
-        return new IterableTraverser<>(iterable);
+    public Iterator<Item> iterator() {
+        return new IterableIterator<>(iterable);
     }
 }

@@ -144,15 +144,15 @@ implements IndexSequence<Item> {
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder(8 * getItemsCount());
 
-        final IndexSequenceTraverser<Item> itemsTraverser = createTraverser();
+        final IndexSequenceIterator<Item> itemsIterator = iterator();
 
         stringBuilder.append('[');
 
-        getNextItemString(stringBuilder, itemsTraverser);
+        getNextItemString(stringBuilder, itemsIterator);
 
-        while (itemsTraverser.hasNextItem()) {
+        while (itemsIterator.hasNext()) {
             stringBuilder.append(", ");
-            getNextItemString(stringBuilder, itemsTraverser);
+            getNextItemString(stringBuilder, itemsIterator);
         }
 
         stringBuilder.append(']');
@@ -161,7 +161,7 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+    public boolean hasMatchingProperties(final IterableContainer<Item> otherContainer) {
 //        if (! super.hasMatchingProperties(otherContainer))
 //            return false;
 
@@ -172,20 +172,20 @@ implements IndexSequence<Item> {
 
     /**
      * Appends a {@link String} representation of the next Item returned by the
-     * specified {@link IndexSequenceTraverser} to the specified
+     * specified {@link IndexSequenceIterator} to the specified
      * {@link StringBuilder}.
      *
      * @param stringBuilder
      *        {@link StringBuilder} to which the Item representation is appended
      *
-     * @param itemsTraverser
-     *        {@link IndexSequenceTraverser} providing the Item
+     * @param itemsIterator
+     *        {@link IndexSequenceIterator} providing the Item
      */
     private void getNextItemString(final StringBuilder stringBuilder,
-                                   final IndexSequenceTraverser<Item> itemsTraverser) {
-        stringBuilder.append(itemsTraverser.getNextItemIndex());
+                                   final IndexSequenceIterator<Item> itemsIterator) {
+        stringBuilder.append(itemsIterator.getNextItemIndex());
         stringBuilder.append(": ");
-        stringBuilder.append(itemsTraverser.getNextItem());
+        stringBuilder.append(itemsIterator.next());
     }
 
     /**
@@ -209,13 +209,13 @@ implements IndexSequence<Item> {
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createTraverser() {
-        return createTraverser(firstIndex);
+    public IndexSequenceIterator<Item> iterator() {
+        return iterator(firstIndex);
     }
 
     @Override
-    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+    public IndexSequenceIterator<Item> iterator(final int startIndex)
     throws InvalidSequenceIndexException {
-        return new DefaultIndexSequenceTraverser<>(this, startIndex);
+        return new DefaultIndexSequenceIterator<>(this, startIndex);
     }
 }

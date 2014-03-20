@@ -57,7 +57,7 @@ public final class ContainerOperatorUtility {
     /**
      * Applies the specified BinaryOperator on the items of the specified non
      * empty Container with left associativity. Let <i>a</i>, <i>b</i>,
-     * <i>c</i>, ... be the first items returned by the Container's Traverser
+     * <i>c</i>, ... be the first items returned by the Container's Iterator
      * in the correct order, and let the BinaryOperator be represented by
      * <i>*</i>. Then this method returns the result of <i>((a*b)*c)*...</i>.
      *
@@ -79,12 +79,12 @@ public final class ContainerOperatorUtility {
         if (collection.isEmpty())
             throw new IllegalArgumentException();
 
-        final Traverser<Value> collectionTraverser = collection.iterator();
+        final Iterator<Value> collectionIterator = collection.iterator();
 
-        Value result = collectionTraverser.next();
+        Value result = collectionIterator.next();
 
-        while (collectionTraverser.hasNext())
-            result = operator.operate(result, collectionTraverser.next());
+        while (collectionIterator.hasNext())
+            result = operator.operate(result, collectionIterator.next());
 
         return result;
     }
@@ -93,7 +93,7 @@ public final class ContainerOperatorUtility {
      * Applies the specified IdentityItemBinaryOperator on the items of
      * the specified Container with left associativity, returning the operator's
      * identity item if the Container is empty. Let <i>a</i>, <i>b</i>,
-     * <i>c</i>, ... be the first items returned by the Container's Traverser
+     * <i>c</i>, ... be the first items returned by the Container's Iterator
      * in the correct order, and let the operator be represented by <i>*</i>.
      * Then this method returns the result of <i>((a*b)*c)*...</i>. If the
      * Container is empty, the value returned by the operator's
@@ -121,7 +121,7 @@ public final class ContainerOperatorUtility {
      * Applies the specified BinaryOperator on the items of the specified
      * Container with left associativity, returning the specified identity
      * item if the Container is empty. Let <i>a</i>, <i>b</i>, <i>c</i>, ...
-     * be the first items returned by the non empty Container's Traverser in
+     * be the first items returned by the non empty Container's Iterator in
      * the correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>((a*b)*c)*...</i>.
      *
@@ -151,7 +151,7 @@ public final class ContainerOperatorUtility {
     /**
      * Applies the specified BinaryOperator on the items of the specified non
      * empty Container with right associativity. Let ..., <i>x</i>, <i>y</i>,
-     * <i>z</i> be the last items returned by the Container's Traverser in the
+     * <i>z</i> be the last items returned by the Container's Iterator in the
      * correct order, and let the BinaryOperator be represented by <i>*</i>.
      * Then this method returns the result of <i>...*(x*(y*z))</i>.
      *
@@ -194,7 +194,7 @@ public final class ContainerOperatorUtility {
      * the specified Container with right associativity, returning the
      * operator's identity item if the Container is empty. Let ..., <i>x</i>,
      * <i>y</i>, <i>z</i> be the last items returned by the Container's
-     * Traverser in the correct order, and let the operator be represented by
+     * Iterator in the correct order, and let the operator be represented by
      * <i>*</i>. Then this method returns the result of <i>...*(x*(y*z))</i>. If
      * the Container is empty, the value returned by the operator's
      * {@link IdentityItemBinaryOperator#identityItem()} method is
@@ -221,7 +221,7 @@ public final class ContainerOperatorUtility {
      * Applies the specified IdentityItemBinaryOperator on the items of
      * the specified Container with right associativity, returning the specified
      * identity item if the Container is empty. Let ..., <i>x</i>, <i>y</i>,
-     * <i>z</i> be the last items returned by the Container's Traverser in the
+     * <i>z</i> be the last items returned by the Container's Iterator in the
      * correct order, and let the operator be represented by <i>*</i>. Then this
      * method returns the result of <i>...*(x*(y*z))</i>.
      *

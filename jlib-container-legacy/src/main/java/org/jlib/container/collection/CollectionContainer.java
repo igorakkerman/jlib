@@ -28,20 +28,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.jlib.core.traverser.IterableTraverser;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.IterableIterator;
+import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.Container;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link TraversableContainer}. A
+ * Adapter allowing a {@link Collection} to be used as a {@link IterableContainer}. A
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>
@@ -76,9 +76,9 @@ implements Container<Item> {
     }
 
     @Override
-    public Traverser<Item> createTraverser() {
+    public Iterator<Item> iterator() {
         // TODO: create utility method
-        return new IterableTraverser<>(delegateCollection);
+        return new IterableIterator<>(delegateCollection);
     }
 
     @Override

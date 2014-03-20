@@ -22,7 +22,7 @@
 package org.jlib.container.operation;
 
 /**
- * {@link RetainItemsByTraversable} allowing all Items to be removed.
+ * {@link RetainItemsByIterable} allowing all Items to be removed.
  *
  * @param <Item>
  *        type of items held in the {@link RemoveAll}

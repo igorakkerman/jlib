@@ -40,8 +40,8 @@ public final class Empty<Item>
 extends AbstractEmpty<Item>
 implements Serializable,
            ItemOperationStrategy<Item>,
-           org.jlib.core.traverser.Traversable<Item>,
-           Traversable<Item> {
+           org.jlib.core.iterator.Iterable<Item>,
+           Iterable<Item> {
 
     private static final long serialVersionUID = 8790659392867781894L;
 
@@ -70,7 +70,7 @@ implements Serializable,
     }
 
     @Override
-    public boolean hasMatchingProperties(final TraversableContainer<Item> otherContainer) {
+    public boolean hasMatchingProperties(final IterableContainer<Item> otherContainer) {
         return false;
     }
 

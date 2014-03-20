@@ -35,11 +35,11 @@ class SingletonSequence<Item>
 //    /** sole item of this {@link SingletonSequence} */
 //    private final Item item;
 //
-//    /** current {@link SequenceTraverser} state */
-//    private SequenceTraverser<Item> currentTraverserState;
+//    /** current {@link SequenceIterator} state */
+//    private SequenceIterator<Item> currentIteratorState;
 //
-//    /** {@link SequenceTraverser} state at the {@link SingletonSequence} head */
-//    private final SequenceTraverser<Item> headTraverserState = new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(
+//    /** {@link SequenceIterator} state at the {@link SingletonSequence} head */
+//    private final SequenceIterator<Item> headIteratorState = new AbstractSequenceIterator<Item, SingletonSequence<Item>>(
 //                                                                                                                           this) {
 //
 //        @Override
@@ -54,20 +54,20 @@ class SingletonSequence<Item>
 //        }
 //
 //        @Override
-//        public boolean hasNextItem() {
+//        public boolean hasNext() {
 //            return true;
 //        }
 //
 //        @Override
 //        public Item getNextItem() {
-//            currentTraverserState = tailTraverserState;
+//            currentIteratorState = tailIteratorState;
 //
 //            return item;
 //        }
 //    };
 //
-//    /** {@link SequenceTraverser} state at the {@link SingletonSequence} tail */
-//    private final SequenceTraverser<Item> tailTraverserState = new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(
+//    /** {@link SequenceIterator} state at the {@link SingletonSequence} tail */
+//    private final SequenceIterator<Item> tailIteratorState = new AbstractSequenceIterator<Item, SingletonSequence<Item>>(
 //                                                                                                                           this) {
 //
 //        @Override
@@ -78,13 +78,13 @@ class SingletonSequence<Item>
 //        @Override
 //        public Item getPreviousItem()
 //        throws NoPreviousSequenceItemException {
-//            currentTraverserState = headTraverserState;
+//            currentIteratorState = headIteratorState;
 //
 //            return item;
 //        }
 //
 //        @Override
-//        public boolean hasNextItem() {
+//        public boolean hasNext() {
 //            return false;
 //        }
 //
@@ -105,29 +105,29 @@ class SingletonSequence<Item>
 //    }
 //
 //    @Override
-//    public SequenceTraverser<Item> createTraverser() {
-//        return new AbstractSequenceTraverser<Item, SingletonSequence<Item>>(this) {
+//    public SequenceIterator<Item> iterator() {
+//        return new AbstractSequenceIterator<Item, SingletonSequence<Item>>(this) {
 //
 //            @Override
 //            public boolean hasPreviousItem() {
-//                return currentTraverserState.hasPreviousItem();
+//                return currentIteratorState.hasPreviousItem();
 //            }
 //
 //            @Override
 //            public Item getPreviousItem()
 //            throws NoPreviousSequenceItemException {
-//                return currentTraverserState.getPreviousItem();
+//                return currentIteratorState.getPreviousItem();
 //            }
 //
 //            @Override
-//            public boolean hasNextItem() {
-//                return currentTraverserState.hasNextItem();
+//            public boolean hasNext() {
+//                return currentIteratorState.hasNext();
 //            }
 //
 //            @Override
 //            public Item getNextItem()
 //            throws NoNextSequenceItemException {
-//                return currentTraverserState.getNextItem();
+//                return currentIteratorState.getNextItem();
 //            }
 //        };
 //    }
@@ -144,7 +144,7 @@ class SingletonSequence<Item>
 ////    }
 ////
 ////    @Override
-////    public boolean containsItem(final TraversableContainer<? extends Item> items)
+////    public boolean containsItem(final IterableContainer<? extends Item> items)
 ////    throws InvalidContainerArgumentException, InvalidContainerStateException {
 ////        return false;
 ////    }
@@ -162,7 +162,7 @@ class SingletonSequence<Item>
 ////    }
 //
 //    @Override
-//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//    public boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
 //        return false;
 //    }
 //

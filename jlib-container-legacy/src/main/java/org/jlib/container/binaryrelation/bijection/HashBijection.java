@@ -60,10 +60,10 @@ implements Bijection<LeftValue, RightValue> */{
 //    */
 ///**
 //     * Creates a new HashBijection containing the Pairs contained by the
-//     * specified jlib TraversableContainer.
+//     * specified jlib IterableContainer.
 //     *
 //     * @param pairs
-//     *        TraversableContainer of the Pairs to add
+//     *        IterableContainer of the Pairs to add
 //     *
 //     * @throws LeftValueAlreadyRelatedException
 //     *         if the LeftValue of one Item in {@code pairs} is already
@@ -82,7 +82,7 @@ implements Bijection<LeftValue, RightValue> */{
 //     *         from being added
 //     *//*
 //
-//    public HashBijection(final TraversableContainer<Pair<LeftValue, RightValue>> pairs)
+//    public HashBijection(final IterableContainer<Pair<LeftValue, RightValue>> pairs)
 //    throws LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        super();
 //

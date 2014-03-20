@@ -81,12 +81,12 @@ public class ArraySequence<Item>
 //    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser() {
+//    public IndexSequenceIterator<Item> iterator() {
 //        return null;
 //    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    public IndexSequenceIterator<Item> iterator(final int startIndex)
 //    throws InvalidSequenceIndexException {
 //        return null;
 //    }
@@ -110,7 +110,7 @@ public class ArraySequence<Item>
 //    }
 //
 //    @Override
-//    public boolean containsItem(final TraversableContainer<? extends Item> items)
+//    public boolean containsItem(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        return false;
 //    }
@@ -128,7 +128,7 @@ public class ArraySequence<Item>
 //    }
 //
 //    @Override
-//    public boolean containsEqualItems(final TraversableContainer<Item> otherContainer) {
+//    public boolean containsEqualItems(final IterableContainer<Item> otherContainer) {
 //        return false;
 //    }
 //

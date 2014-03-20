@@ -78,7 +78,7 @@ public final class ArrayUtility {
      * @return {@link BidiIterable} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> BidiIterable<Item> traversable(final Item... items) {
+    public static <Item> BidiIterable<Item> iterable(final Item... items) {
         return new ArrayIterable<Item>(items);
     }
 
@@ -94,7 +94,7 @@ public final class ArrayUtility {
      * @return {@link BidiIterable} adapter for {@code items}
      */
     @SafeVarargs
-    public static <Item> BidiIterator<Item> createTraverser(final Item... items) {
+    public static <Item> BidiIterator<Item> iterator(final Item... items) {
         return new ArrayIterator<>(items);
     }
 
@@ -111,9 +111,9 @@ public final class ArrayUtility {
         int itemsCount = 0;
 
         for (final Object item : items)
-            itemsCount += item.getClass().isArray()
-                          ? getFlattenedItemsCount((Object[]) item)
-                          : 1;
+            itemsCount += item.getClass().isArray() ?
+                          getFlattenedItemsCount((Object[]) item) :
+                          1;
 
         return itemsCount;
     }

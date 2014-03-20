@@ -27,7 +27,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add
- * an Item to a {@link TraversableContainer} that already exists.
+ * an Item to a {@link IterableContainer} that already exists.
  *
  * @author Igor Akkerman
  */
@@ -41,7 +41,7 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link ItemAlreadyContainedException}.
      *
      * @param container
-     *        referenced {@link TraversableContainer}
+     *        referenced {@link IterableContainer}
      *
      * @param item
      *        already contained Item

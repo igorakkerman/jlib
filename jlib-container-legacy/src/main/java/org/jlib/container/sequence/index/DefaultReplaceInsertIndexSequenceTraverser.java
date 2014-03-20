@@ -22,17 +22,17 @@
 package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.traverser.ObservedReplaceTraverser;
-import org.jlib.core.traverser.ReplaceTraverser;
+import org.jlib.core.iterator.ObservedReplaceIterator;
+import org.jlib.core.iterator.ReplaceIterator;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
-import org.jlib.container.operation.sequence.InsertSequenceTraverser;
-import org.jlib.container.operation.sequence.ObservedInsertSequenceTraverser;
+import org.jlib.container.operation.sequence.InsertSequenceIterator;
+import org.jlib.container.operation.sequence.ObservedInsertSequenceIterator;
 import org.jlib.container.operation.sequence.Sequence;
 
 /**
- * Default implementation of a {@link ReplaceIndexSequenceTraverser}.
+ * Default implementation of a {@link ReplaceIndexSequenceIterator}.
  *
  * @param <Item>
  *        type of items held in the {@link Sequence}
@@ -42,19 +42,19 @@ import org.jlib.container.operation.sequence.Sequence;
  *
  * @author Igor Akkerman
  */
-public class DefaultReplaceInsertIndexSequenceTraverser<Item, Sequenze extends ReplaceIndexSequence<Item>>
-extends DefaultReplaceIndexSequenceTraverser<Item, Sequenze>
-implements ObservedInsertSequenceTraverser<Item>,
-           IndexSequenceTraverser<Item>,
-           InsertSequenceTraverser<Item>,
-           ObservedReplaceTraverser<Item>,
-           ReplaceTraverser<Item> {
+public class DefaultReplaceInsertIndexSequenceIterator<Item, Sequenze extends ReplaceIndexSequence<Item>>
+extends DefaultReplaceIndexSequenceIterator<Item, Sequenze>
+implements ObservedInsertSequenceIterator<Item>,
+           IndexSequenceIterator<Item>,
+           InsertSequenceIterator<Item>,
+           ObservedReplaceIterator<Item>,
+           ReplaceIterator<Item> {
 
     /** insert {@link ValueObserver} items */
-//    private final AppendSequence<ValueObserver<Item>> traverserInsertObservers = new FillupArraySequence<>();
+//    private final AppendSequence<ValueObserver<Item>> iteratorInsertObservers = new FillupArraySequence<>();
 
     /**
-     * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
+     * Creates a new {@link DefaultReplaceInsertIndexSequenceIterator} over the
      * Items of the specified {@link ObservedReplaceIndexSequence} and
      * {@link InsertIndexSequence} beginning at its first index.
      *
@@ -62,12 +62,12 @@ implements ObservedInsertSequenceTraverser<Item>,
      *        {@link ObservedReplaceIndexSequence} and
      *        {@link InsertIndexSequence} to traverse
      */
-    public DefaultReplaceInsertIndexSequenceTraverser(final Sequenze sequence) {
+    public DefaultReplaceInsertIndexSequenceIterator(final Sequenze sequence) {
         super(sequence);
     }
 
     /**
-     * Creates a new {@link DefaultReplaceInsertIndexSequenceTraverser} over the
+     * Creates a new {@link DefaultReplaceInsertIndexSequenceIterator} over the
      * Items of the specified {@link ObservedReplaceIndexSequence} and
      * {@link InsertIndexSequence} beginning at the specified index.
      *
@@ -82,7 +82,7 @@ implements ObservedInsertSequenceTraverser<Item>,
      *         if
      *         {@code startIndex < sequence.getFirstIndex() || startIndex > sequence.getLastIndex()}
      */
-    public DefaultReplaceInsertIndexSequenceTraverser(final Sequenze sequence, final int initialNextItemIndex)
+    public DefaultReplaceInsertIndexSequenceIterator(final Sequenze sequence, final int initialNextItemIndex)
     throws InvalidSequenceIndexException {
         super(sequence, initialNextItemIndex);
     }
@@ -106,16 +106,16 @@ implements ObservedInsertSequenceTraverser<Item>,
 //                try {
 //                    insert(item);
 //                }
-//                catch (InvalidContainerArgumentException | InvalidSequenceTraverserStateException exception) {
+//                catch (InvalidContainerArgumentException | InvalidSequenceIteratorStateException exception) {
 //                    throw new OperatorException(message("insert: {0}", item), exception);
 //                }
 //            }
-//        }, item, concatenated(traverserInsertObservers, iterable(operationObservers)).toArray());
+//        }, item, concatenated(iteratorInsertObservers, iterable(operationObservers)).toArray());
     }
 
     @Override
     public final void addInsertObserver(final ValueObserver<Item> insertObserver) {
-//        traverserInsertObservers.append(insertObserver);
+//        iteratorInsertObservers.append(insertObserver);
 
     }
 }

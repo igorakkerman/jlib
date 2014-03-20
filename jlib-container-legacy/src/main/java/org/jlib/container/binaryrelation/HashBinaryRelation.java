@@ -66,12 +66,12 @@ public class HashBinaryRelation<LeftValue, RightValue>
 
     /**
      * Creates a new HashBinaryRelation containing the Pairs contained by
-     * the specified jlib TraversableContainer.
+     * the specified jlib IterableContainer.
      *
      * @param pairs
-     *        TraversableContainer of the Pairs to add
+     *        IterableContainer of the Pairs to add
      */
-    public HashBinaryRelation(final TraversableContainer<Pair<LeftValue, RightValue>> pairs) {
+    public HashBinaryRelation(final IterableContainer<Pair<LeftValue, RightValue>> pairs) {
         super();
 
         for (final Pair<LeftValue, RightValue> pair : pairs)

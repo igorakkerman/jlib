@@ -33,12 +33,12 @@ public interface InsertSequence<Item>
 extends Sequence<Item> {
 
     /**
-     * Returns a InsertSequenceTraverser traversing the Items of this Sequence
+     * Returns a InsertSequenceIterator traversing the Items of this Sequence
      * in proper order.
      *
-     * @return {@link InsertSequenceTraverser} traversing the Items of this
+     * @return {@link InsertSequenceIterator} traversing the Items of this
      *         Sequence in proper order
      */
     @Override
-    public InsertSequenceTraverser<Item> createTraverser();
+    public InsertSequenceIterator<Item> iterator();
 }

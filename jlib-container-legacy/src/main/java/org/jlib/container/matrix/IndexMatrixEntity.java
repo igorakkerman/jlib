@@ -114,7 +114,7 @@ extends AbstractIndexSequence<Entry> {
         return false;
     }
 
-    public boolean contains(final TraversableContainer<? extends Entry> entries)
+    public boolean contains(final IterableContainer<? extends Entry> entries)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
         return false;
     }
@@ -131,7 +131,7 @@ extends AbstractIndexSequence<Entry> {
     }
 
     @Override
-    public boolean containsEqualItems(final TraversableContainer<Entry> otherContainer) {
+    public boolean containsEqualItems(final IterableContainer<Entry> otherContainer) {
         return false;
     }
 

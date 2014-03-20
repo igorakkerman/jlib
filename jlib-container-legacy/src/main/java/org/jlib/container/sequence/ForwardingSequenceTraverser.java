@@ -24,60 +24,60 @@ package org.jlib.container.operation.sequence;
 import org.jlib.core.language.AbstractObject;
 
 /**
- * {@link SequenceTraverser} delegating its calls to another {@link SequenceTraverser}.
+ * {@link SequenceIterator} delegating its calls to another {@link SequenceIterator}.
  *
  * @param <Item>
  *        type of the items held in the {@link Sequence}
  *
  * @author Igor Akkerman
  */
-public class ForwardingSequenceTraverser<Item>
+public class ForwardingSequenceIterator<Item>
 extends AbstractObject
-implements SequenceTraverser<Item> {
+implements SequenceIterator<Item> {
 
-    /** {@link SequenceTraverser} to which all calls are delegated */
-     private final SequenceTraverser<Item> delegateTraverser;
+    /** {@link SequenceIterator} to which all calls are delegated */
+     private final SequenceIterator<Item> delegateIterator;
 
     /**
-     * Creates a new {@link ForwardingSequenceTraverser}.
+     * Creates a new {@link ForwardingSequenceIterator}.
      *
-     * @param delegateTraverser
-     *        {@link SequenceTraverser} used as delegate
+     * @param delegateIterator
+     *        {@link SequenceIterator} used as delegate
      */
-    public ForwardingSequenceTraverser(final SequenceTraverser<Item> delegateTraverser) {
+    public ForwardingSequenceIterator(final SequenceIterator<Item> delegateIterator) {
         super();
 
-        this.delegateTraverser = delegateTraverser;
+        this.delegateIterator = delegateIterator;
     }
 
     /**
-     * Returns the {@link SequenceTraverser} of this {@link ForwardingSequenceTraverser}.
+     * Returns the {@link SequenceIterator} of this {@link ForwardingSequenceIterator}.
      *
-     * @return the {@link SequenceTraverser}
+     * @return the {@link SequenceIterator}
      */
-    protected SequenceTraverser getDelegateTraverser() {
-        return delegateTraverser;
+    protected SequenceIterator getDelegateIterator() {
+        return delegateIterator;
     }
 
     @Override
     public Item getPreviousItem()
     throws NoPreviousSequenceItemException {
-        return delegateTraverser.getPreviousItem();
+        return delegateIterator.getPreviousItem();
     }
 
     @Override
     public Item getNextItem()
     throws NoNextSequenceItemException {
-        return delegateTraverser.getNextItem();
+        return delegateIterator.next();
     }
 
     @Override
     public boolean hasPreviousItem() {
-        return delegateTraverser.hasPreviousItem();
+        return delegateIterator.hasPreviousItem();
     }
 
     @Override
-    public boolean hasNextItem() {
-        return delegateTraverser.hasNextItem();
+    public boolean hasNext() {
+        return delegateIterator.hasNext();
     }
 }

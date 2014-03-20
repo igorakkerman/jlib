@@ -7,9 +7,9 @@ import org.jlib.core.iterator.AbstractIterator;
 
 /**
  * <p>
- * Traverser over the {@link Character Characters} of a {@link CharSequence}.
+ * Iterator over the {@link Character Characters} of a {@link CharSequence}.
  * </p>
- * 
+ *
  * <p>
  * This implementation's {@link #remove()} method throws an
  * {@link UnsupportedOperationException} as a general {@link CharSequence} does
@@ -20,43 +20,43 @@ import org.jlib.core.iterator.AbstractIterator;
  * {@link CharSequence CharSequences} supporting deletion of {@link Character
  * Characters}.
  * </p>
- * 
+ *
  * @author Igor Akkerman
  */
-public class CharSequenceTraverser
+public class CharSequenceIterator
 extends AbstractIterator<Character> {
 
     /**
-     * Returns an {@link Iterable} creating CharSequenceTraversers over the
+     * Returns an {@link Iterable} creating CharSequenceIterators over the
      * {@link Character Characters} of a {@link CharSequence}.
-     * 
+     *
      * @param iterableCharSequence
      *        {@link CharSequence} to iterate
-     * @return {@link Iterable} creating CharSequenceTraversers over the
+     * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of {@code iterableCharSequence}
      */
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence) {
         return new Iterable<Character>() {
 
             @Override
-            public Traverser<Character> iterator() {
-                return new CharSequenceTraverser(iterableCharSequence);
+            public Iterator<Character> iterator() {
+                return new CharSequenceIterator(iterableCharSequence);
             }
         };
     }
 
     /**
-     * Returns an {@link Iterable} creating CharSequenceTraversers over the
+     * Returns an {@link Iterable} creating CharSequenceIterators over the
      * {@link Character Characters} of the subsequence specified by the index of
      * its first character (inclusive) contained by the specified
      * {@link CharSequence}.
-     * 
+     *
      * @param iterableCharSequence
      *        {@link CharSequence} to iterate
      * @param firstCharacterIndex
      *        integer specifying the index of the first character of the
      *        subsequence
-     * @return {@link Iterable} creating CharSequenceTraversers over the
+     * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
@@ -68,18 +68,18 @@ extends AbstractIterator<Character> {
         return new Iterable<Character>() {
 
             @Override
-            public Traverser<Character> iterator() {
-                return new CharSequenceTraverser(iterableCharSequence, firstCharacterIndex);
+            public Iterator<Character> iterator() {
+                return new CharSequenceIterator(iterableCharSequence, firstCharacterIndex);
             }
         };
     }
 
     /**
-     * Returns an {@link Iterable} creating CharSequenceTraversers over the
+     * Returns an {@link Iterable} creating CharSequenceIterators over the
      * {@link Character Characters} of the subsequence specified by the indices
      * of its first and last characters (inclusive) contained by the specified
      * {@link CharSequence}.
-     * 
+     *
      * @param iterableCharSequence
      *        {@link CharSequence} to iterate
      * @param firstCharacterIndex
@@ -88,7 +88,7 @@ extends AbstractIterator<Character> {
      * @param lastCharacterIndex
      *        integer specifying the index of the last character of the
      *        subsequence
-     * @return {@link Iterable} creating CharSequenceTraversers over the
+     * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
@@ -104,13 +104,13 @@ extends AbstractIterator<Character> {
         return new Iterable<Character>() {
 
             @Override
-            public Traverser<Character> iterator() {
-                return new CharSequenceTraverser(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
+            public Iterator<Character> iterator() {
+                return new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
             }
         };
     }
 
-    /** {@link CharSequence} iterated by this CharSequenceTraverser */
+    /** {@link CharSequence} iterated by this CharSequenceIterator */
     private final CharSequence iteratedCharSequence;
 
     /** index of next iterated character */
@@ -120,13 +120,13 @@ extends AbstractIterator<Character> {
     protected int lastCharacterIndex;
 
     /**
-     * Creates a new CharSequenceTraverser over the {@link Character Characters}
+     * Creates a new CharSequenceIterator over the {@link Character Characters}
      * of the specified {@link CharSequence}.
-     * 
+     *
      * @param iteratedCharSequence
      *        {@link CharSequence} to iterate
      */
-    public CharSequenceTraverser(final CharSequence iteratedCharSequence) {
+    public CharSequenceIterator(final CharSequence iteratedCharSequence) {
         // a call to another constructor would throw an Exception for an empty iteratedCharSequence
         // also, the indices checks are skipped here
         this.iteratedCharSequence = iteratedCharSequence;
@@ -135,10 +135,10 @@ extends AbstractIterator<Character> {
     }
 
     /**
-     * Creates a new CharSequenceTraverser over the {@link Character Characters}
+     * Creates a new CharSequenceIterator over the {@link Character Characters}
      * of the subsequence specified by the index of its first character
      * (inclusive) contained by the specified {@link CharSequence}.
-     * 
+     *
      * @param iteratedCharSequence
      *        {@link CharSequence} to iterate
      * @param firstCharacterIndex
@@ -149,7 +149,7 @@ extends AbstractIterator<Character> {
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
      */
-    public CharSequenceTraverser(final CharSequence iteratedCharSequence, final int firstCharacterIndex) {
+    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex) {
         if (firstCharacterIndex < 0)
             throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
 
@@ -162,10 +162,10 @@ extends AbstractIterator<Character> {
     }
 
     /**
-     * Creates a new CharSequenceTraverser over the {@link Character Characters}
+     * Creates a new CharSequenceIterator over the {@link Character Characters}
      * of the subsequence specified by the indices of its first and last
      * characters (inclusive) contained by the specified {@link CharSequence}.
-     * 
+     *
      * @param iteratedCharSequence
      *        {@link CharSequence} to iterate
      * @param firstCharacterIndex
@@ -181,7 +181,7 @@ extends AbstractIterator<Character> {
      * @throws CharSequenceEndIndexAboveBoundException
      *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
      */
-    public CharSequenceTraverser(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
+    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
                                 final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
     CharSequenceEndIndexAboveBoundException {

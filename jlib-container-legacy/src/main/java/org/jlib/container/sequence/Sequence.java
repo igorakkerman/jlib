@@ -22,8 +22,8 @@
 package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.traverser.Traversable;
-import org.jlib.core.traverser.TwoWayTraversable;
+import org.jlib.core.iterator.Iterable;
+import org.jlib.core.iterator.TwoWayIterable;
 
 /**
  * Ordered sequence of Items.
@@ -34,19 +34,19 @@ import org.jlib.core.traverser.TwoWayTraversable;
  * @author Igor Akkerman
  */
 public interface Sequence<Item>
-extends TwoWayTraversable<Item>,
+extends TwoWayIterable<Item>,
         ItemOperationStrategy<Item>,
-        org.jlib.core.traverser.Traversable<Item>,
-        Traversable<Item> {
+        org.jlib.core.iterator.Iterable<Item>,
+        Iterable<Item> {
 
     /**
-     * Returns a {@link SequenceTraverser} traversing the Items of this Sequence
+     * Returns a {@link SequenceIterator} traversing the Items of this Sequence
      * in the correct order.
      *
-     * @return {@link SequenceTraverser} over the Items of this Sequence
+     * @return {@link SequenceIterator} over the Items of this Sequence
      */
     @Override
-    public SequenceTraverser<Item> createTraverser();
+    public SequenceIterator<Item> iterator();
 }
 
 

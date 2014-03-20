@@ -29,7 +29,7 @@ import org.jlib.core.observer.ValueObserver;
  * the retain operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link TraversableContainer}
+ *        type of items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -37,7 +37,7 @@ public interface ObservedRemoveAll<Item>
 extends ItemOperation<Item> {
 
     /**
-     * Removes all Items from this {@link TraversableContainer}.
+     * Removes all Items from this {@link IterableContainer}.
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

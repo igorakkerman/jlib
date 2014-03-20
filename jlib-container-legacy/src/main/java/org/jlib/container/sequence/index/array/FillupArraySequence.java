@@ -68,7 +68,7 @@ public class FillupArraySequence<Item> {
 //        }
 //
 //        @Override
-//        public void append(final TraversableContainer<? extends Item> items)
+//        public void append(final IterableContainer<? extends Item> items)
 //        throws InvalidContainerArgumentException {
 //            setDelegateSequence(new ReplaceInsertRemoveArraySequence<Item>(items));
 //        }
@@ -101,18 +101,18 @@ public class FillupArraySequence<Item> {
 //
 //        @SafeVarargs
 //        @Override
-//        public final void append(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//        public final void append(final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //        throws InvalidContainerArgumentException {
 //            if (items.isEmpty())
 //                return;
 //
-//            final Traverser<? extends Item> traverser = items.createTraverser();
-//            append(traverser.getNextItem(), observers);
+//            final Iterator<? extends Item> iterator = items.iterator();
+//            append(iterator.getNextItem(), observers);
 //
 //            final ObservedReplaceAppendRemoveSequence<Item> delegateSequence = getDelegateSequence();
 //
-//            while (traverser.hasNextItem())
-//                delegateSequence.append(traverser.getNextItem(), observers);
+//            while (iterator.hasNext())
+//                delegateSequence.append(iterator.getNextItem(), observers);
 //        }
 //
 //        @SafeVarargs
@@ -122,7 +122,7 @@ public class FillupArraySequence<Item> {
 //            if (items.isEmpty())
 //                return;
 //
-//            append((Traversable<? extends Item>) items, observers);
+//            append((Iterable<? extends Item>) items, observers);
 //        }
 //
 //        @SafeVarargs
@@ -150,7 +150,7 @@ public class FillupArraySequence<Item> {
 //         *        attending the operations
 //         */
 //        @SuppressWarnings("unchecked")
-//        private void append(final Traversable<? extends Item> items, final ValueObserver<Item>... observers) {
+//        private void append(final Iterable<? extends Item> items, final ValueObserver<Item>... observers) {
 //            final Iterator<? extends Item> iterator = items.iterator();
 //            append(iterator.next(), observers);
 //

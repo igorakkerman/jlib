@@ -55,7 +55,7 @@ extends Sequence<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public void prepend(TraversableContainer<? extends Item> items)
+    public void prepend(IterableContainer<? extends Item> items)
     throws InvalidContainerArgumentException;
 
     /**

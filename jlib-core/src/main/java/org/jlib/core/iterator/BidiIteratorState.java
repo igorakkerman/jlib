@@ -22,7 +22,7 @@
 package org.jlib.core.iterator;
 
 /**
- * Traverser state.
+ * Iterator state.
  *
  * @param <Item>
  *        type of the items traversed by the {@link Iterator}.

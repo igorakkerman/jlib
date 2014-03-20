@@ -71,7 +71,7 @@ implements ObservedInsertIndexSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public void insert(final int index, final TraversableContainer<? extends Item> items) {
+//    public void insert(final int index, final IterableContainer<? extends Item> items) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().insert(index, items);
@@ -99,14 +99,14 @@ implements ObservedInsertIndexSequence<Item> */ {
 ////    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser() {
-//        return new DefaultReplaceInsertIndexSequenceTraverser<>(this);
+//    public IndexSequenceIterator<Item> iterator() {
+//        return new DefaultReplaceInsertIndexSequenceIterator<>(this);
 //    }
 //
 //    @Override
-//    public IndexSequenceTraverser<Item> createTraverser(final int startIndex)
+//    public IndexSequenceIterator<Item> iterator(final int startIndex)
 //    throws InvalidSequenceIndexException {
-//        return new DefaultReplaceInsertIndexSequenceTraverser<>(this, startIndex);
+//        return new DefaultReplaceInsertIndexSequenceIterator<>(this, startIndex);
 //    }
 //
 //    @Override
@@ -120,7 +120,7 @@ implements ObservedInsertIndexSequence<Item> */ {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public void insert(final int index, final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
+//    public void insert(final int index, final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers) {
 //        IndexSequenceUtility.ensureIndexValid(this, index);
 //
 ////        getBaseSequence().insert(index, items, observers);

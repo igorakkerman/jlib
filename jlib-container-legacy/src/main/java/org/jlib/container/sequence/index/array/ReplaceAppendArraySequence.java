@@ -123,9 +123,9 @@ implements ObservedAppendSequence<Item> */ {
 //     * {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceAppendArraySequence(final TraversableContainer<? extends Item> items) {
+//    public ReplaceAppendArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
 //    }
 //
@@ -137,9 +137,9 @@ implements ObservedAppendSequence<Item> */ {
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of Items to store
+//     *        {@link IterableContainer} of Items to store
 //     */
-//    public ReplaceAppendArraySequence(final int firstIndex, final TraversableContainer<? extends Item> items) {
+//    public ReplaceAppendArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);
 //    }
 //
@@ -150,7 +150,7 @@ implements ObservedAppendSequence<Item> */ {
 //    }
 //
 //    @Override
-//    public void append(final TraversableContainer<? extends Item> items) {
+//    public void append(final IterableContainer<? extends Item> items) {
 //        // intentionally not using SequenceUtility for efficiency
 //        append(items, items.getCount());
 //    }
@@ -177,7 +177,7 @@ implements ObservedAppendSequence<Item> */ {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public final void append(final TraversableContainer<? extends Item> items, final ValueObserver<Item>... observers)
+//    public final void append(final IterableContainer<? extends Item> items, final ValueObserver<Item>... observers)
 //    throws InvalidContainerArgumentException {
 //        append(items, items.getCount(), observers);
 //    }
@@ -197,11 +197,11 @@ implements ObservedAppendSequence<Item> */ {
 //    }
 //
 //    /**
-//     * Appends all Items contained by the specified {@link TraversableContainer} to this
+//     * Appends all Items contained by the specified {@link IterableContainer} to this
 //     * {@link ObservedAppendSequence}.
 //     *
 //     * @param items
-//     *        {@link Traversable} providing the Items to add
+//     *        {@link Iterable} providing the Items to add
 //     *
 //     * @param addedItemsCount
 //     *        integer specifying the number of added Items; {@code items} must
@@ -216,7 +216,7 @@ implements ObservedAppendSequence<Item> */ {
 //     *         {@link RuntimeException}
 //     */
 //    @SafeVarargs
-//    private final void append(final Traversable<? extends Item> items, final int addedItemsCount,
+//    private final void append(final Iterable<? extends Item> items, final int addedItemsCount,
 //                              final ValueObserver<Item>... observers) {
 //        getCapacityStrategy().ensureTailCapacity(addedItemsCount);
 //

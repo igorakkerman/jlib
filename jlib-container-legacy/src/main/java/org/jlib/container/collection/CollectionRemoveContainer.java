@@ -25,12 +25,12 @@ import java.util.Collection;
 
 /**
  * Adapter allowing the {@link Collection} specified at initialization to be
- * used as a {@link RetainItemsByTraversable}. A {@link CollectionRemoveContainer} is not
- * an {@link ObservedRetainItemsByTraversable} as internal {@link Collection} operations
+ * used as a {@link RetainItemsByIterable}. A {@link CollectionRemoveContainer} is not
+ * an {@link ObservedRetainItemsByIterable} as internal {@link Collection} operations
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
- *        type of the items held in the {@link TraversableContainer}
+ *        type of the items held in the {@link IterableContainer}
  *
  * @author Igor Akkerman
  */
@@ -113,7 +113,7 @@ implements RemoveItemByItem<Item>,
 //     * {@link Collection}.
 //     *
 //     * @param items
-//     *        {@link TraversableContainer} of added Items
+//     *        {@link IterableContainer} of added Items
 //     *
 //     * @throws InvalidContainerDelegateArgumentException
 //     *         if an Item in {@code items} caused an error during the operation
@@ -123,7 +123,7 @@ implements RemoveItemByItem<Item>,
 //     *         if an error occured during the operation of the delegate
 //     *         {@link Collection}
 //     */
-//    public void add(final TraversableContainer<? extends Item> items)
+//    public void add(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        for (final Item item : items)
 //            getDelegateCollection().add(item);
@@ -203,7 +203,7 @@ implements RemoveItemByItem<Item>,
 //    }
 //
 //    @Override
-//    public void retain(final TraversableContainer<? extends Item> items)
+//    public void retain(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        CollectionUtility.removeAll(getDelegateCollection(), items);
 //    }
@@ -216,7 +216,7 @@ implements RemoveItemByItem<Item>,
 //    }
 //
 //    @Override
-//    public void retain(final Traversable<? extends Item> items)
+//    public void retain(final Iterable<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        ContainerUtility.retain(this, items);
 //    }
@@ -228,13 +228,13 @@ implements RemoveItemByItem<Item>,
 //    }
 //
 //    @Override
-//    public void remove(final Traversable<? extends Item> items)
+//    public void remove(final Iterable<? extends Item> items)
 //    throws InvalidContainerArgumentException, InvalidContainerStateException {
 //        ContainerUtility.remove(this, iterable(items));
 //    }
 //
 //    @Override
-//    public void remove(final TraversableContainer<? extends Item> items)
+//    public void remove(final IterableContainer<? extends Item> items)
 //    throws InvalidContainerDelegateArgumentException, InvalidContainerDelegateStateException {
 //        ContainerUtility.remove(this, items);
 //    }
@@ -247,8 +247,8 @@ implements RemoveItemByItem<Item>,
 //    }
 //
 //    @Override
-//    public RemoveTraverser<Item> createTraverser()
+//    public RemoveIterator<Item> iterator()
 //    throws InvalidContainerDelegateStateException {
-//        return new RemoveTraversableTraverser<>(getDelegateCollection());
+//        return new RemoveIterableIterator<>(getDelegateCollection());
 //    }
 }

@@ -22,13 +22,13 @@
 package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.traverser.Traverser;
+import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.sequence.Sequence;
-import org.jlib.container.operation.sequence.SequenceTraverser;
+import org.jlib.container.operation.sequence.SequenceIterator;
 
 /**
- * AbstractIndexMatrixTraverser traversing the items of a
+ * AbstractIndexMatrixIterator traversing the items of a
  * {@link RandomTraversalMatrix} entity-wise. An entity can be defined by the
  * concrete implementation, examples would be columns, rows or other
  * submatrixes.
@@ -38,20 +38,20 @@ import org.jlib.container.operation.sequence.SequenceTraverser;
  *
  * @author Igor Akkerman
  */
-public class EntityMatrixTraverser<Entry>
-extends AbstractMatrixTraverser<Entry> {
+public class EntityMatrixIterator<Entry>
+extends AbstractMatrixIterator<Entry> {
 
     /**
-     * {@link Traverser} traversing the {@link Sequence} of all {@link Matrix}
+     * {@link Iterator} traversing the {@link Sequence} of all {@link Matrix}
      * entities
      */
-    private final SequenceTraverser<? extends Sequence<Entry>> entitiesTraverser;
+    private final SequenceIterator<? extends Sequence<Entry>> entitiesIterator;
 
-    /** {@link Traverser} of a {@link Matrix} entity */
-    private SequenceTraverser<Entry> entityTraverser;
+    /** {@link Iterator} of a {@link Matrix} entity */
+    private SequenceIterator<Entry> entityIterator;
 
     /**
-     * Creates a new {@link EntityMatrixTraverser} for the specified
+     * Creates a new {@link EntityMatrixIterator} for the specified
      * {@link RandomTraversalMatrix}.
      *
      * @param matrix
@@ -61,35 +61,35 @@ extends AbstractMatrixTraverser<Entry> {
      *        {@link Sequence} of all entities, each specified as a
      *        {@link Sequence} of entries of the {@link Matrix}
      */
-    public EntityMatrixTraverser(final RandomTraversalMatrix<Entry> matrix,
+    public EntityMatrixIterator(final RandomTraversalMatrix<Entry> matrix,
                                  final Sequence<? extends Sequence<Entry>> entities) {
         super(matrix);
 
-        entitiesTraverser = entities.createTraverser();
+        entitiesIterator = entities.iterator();
         gotoNextEntity();
     }
 
     @Override
     public boolean hasNextEntity() {
-        return entitiesTraverser.hasNextItem();
+        return entitiesIterator.hasNext();
     }
 
     @Override
     public void gotoNextEntity()
     throws InvalidStateException {
-        entityTraverser = entitiesTraverser.getNextItem().createTraverser();
+        entityIterator = entitiesIterator.getNextItem().iterator();
     }
 
     @Override
-    public boolean hasNextItem() {
-        return entityTraverser.hasNextItem() || hasNextEntity();
+    public boolean hasNext() {
+        return entityIterator.hasNext() || hasNextEntity();
     }
 
     @Override
     public Entry getNextItem() {
-        if (! entityTraverser.hasNextItem())
+        if (! entityIterator.hasNext())
             gotoNextEntity();
 
-        return entityTraverser.getNextItem();
+        return entityIterator.next();
     }
 }

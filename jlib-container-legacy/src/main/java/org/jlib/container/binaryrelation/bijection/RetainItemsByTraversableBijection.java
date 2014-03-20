@@ -22,7 +22,7 @@
 package org.jlib.container.operation.binaryrelation.bijection;
 
 import org.jlib.container.operation.binaryrelation.NoSuchPairException;
-import org.jlib.container.operation.binaryrelation.RetainItemsByTraversableBinaryRelation;
+import org.jlib.container.operation.binaryrelation.RetainItemsByIterableBinaryRelation;
 
 /**
  * Bijection allowing to add new pairs.
@@ -35,9 +35,9 @@ import org.jlib.container.operation.binaryrelation.RetainItemsByTraversableBinar
  *
  * @author Igor Akkerman
  */
-public interface RetainItemsByTraversableBijection<LeftValue, RightValue>
+public interface RetainItemsByIterableBijection<LeftValue, RightValue>
 extends Bijection<LeftValue, RightValue>,
-        RetainItemsByTraversableBinaryRelation<LeftValue, RightValue> {
+        RetainItemsByIterableBinaryRelation<LeftValue, RightValue> {
 
     @Override
     public void remove(LeftValue leftValue, RightValue rightValue)

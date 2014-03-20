@@ -35,12 +35,12 @@ implements Iterable<Item>,
         this.items = items;
     }
 
-    protected final org.jlib.core.traverser.Iterable<Item> getItems() {
+    protected final org.jlib.core.iterator.Iterable<Item> getItems() {
         return items;
     }
 
     @Override
-    public final Iterator<Item> createTraverser() {
-        return items.createTraverser();
+    public final Iterator<Item> iterator() {
+        return items.iterator();
     }
 }

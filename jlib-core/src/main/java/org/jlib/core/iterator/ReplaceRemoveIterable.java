@@ -39,5 +39,5 @@ extends ReplaceIterable<Item>,
      * @return newly created {@link ReplaceRemoveIterator}
      */
     @Override
-    public ReplaceRemoveIterator<Item> createTraverser();
+    public ReplaceRemoveIterator<Item> iterator();
 }

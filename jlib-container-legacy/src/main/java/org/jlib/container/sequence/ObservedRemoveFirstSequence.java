@@ -26,7 +26,7 @@ import org.jlib.core.observer.ValueObserverException;
 
 /**
  * {@link Sequence} allowing its Items to be traversed using a
- * {@link RemoveSequenceTraverser}.
+ * {@link RemoveSequenceIterator}.
  *
  * @param <Item>
  *        type of the items held in the {@link Sequence}

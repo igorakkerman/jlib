@@ -22,35 +22,35 @@
 package org.jlib.container.operation.matrix;
 
 /**
- * Skeletal implementation of a {@link MatrixTraverser}.
+ * Skeletal implementation of a {@link MatrixIterator}.
  *
  * @param <Entry>
  *        type of the entries of the {@link Matrix}
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractMatrixTraverser<Entry>
-implements MatrixTraverser<Entry> {
+public abstract class AbstractMatrixIterator<Entry>
+implements MatrixIterator<Entry> {
 
-    /** {@link Matrix} traversed by this {@link AbstractMatrixTraverser} */
+    /** {@link Matrix} traversed by this {@link AbstractMatrixIterator} */
     private final Matrix<Entry> matrix;
 
     /**
-     * Creates a new AbstractMatrixTraverser traversing the specified
+     * Creates a new AbstractMatrixIterator traversing the specified
      * {@link Matrix}.
      *
      * @param matrix
      *        {@link Matrix} to traverse
      */
-    protected AbstractMatrixTraverser(final Matrix<Entry> matrix) {
+    protected AbstractMatrixIterator(final Matrix<Entry> matrix) {
         this.matrix = matrix;
     }
 
     /**
      * Returns the {@link Matrix} traversed by this
-     * {@link AbstractMatrixTraverser}.
+     * {@link AbstractMatrixIterator}.
      *
-     * @return {@link Matrix} traversed by this {@link AbstractMatrixTraverser}
+     * @return {@link Matrix} traversed by this {@link AbstractMatrixIterator}
      */
     protected Matrix<Entry> getMatrix() {
         return matrix;
