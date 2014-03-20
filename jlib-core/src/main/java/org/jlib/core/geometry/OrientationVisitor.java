@@ -25,15 +25,15 @@ package org.jlib.core.geometry;
  *
  * @author Igor Akkerman
  */
-public interface OrientationVisitor {
+public interface OrientationVisitor<Argument, ReturnValue> {
 
     /**
      * Operation to perform for horizontal orientation.
      */
-    public void visitHorizontal();
+    public ReturnValue visitHorizontal(Argument argument);
 
     /**
      * Operation to perform for vertical orientation.
      */
-    public void visitVertical();
+    public ReturnValue visitVertical(Argument argument);
 }

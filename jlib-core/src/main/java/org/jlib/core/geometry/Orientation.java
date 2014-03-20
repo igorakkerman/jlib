@@ -31,16 +31,20 @@ public enum Orientation {
     /** Horizontal orientation */
     HORIZONTAL {
         @Override
-        public void visit(final OrientationVisitor orientationVisitor) {
-            orientationVisitor.visitHorizontal();
+        public <Argument, ReturnValue> /*
+            */ ReturnValue accept(final OrientationVisitor<Argument, ReturnValue> orientationVisitor,
+                                  final Argument argument) {
+            return orientationVisitor.visitHorizontal(argument);
         }
     },
 
     /** Vertical orientation */
     VERTICAL {
         @Override
-        public void visit(final OrientationVisitor orientationVisitor) {
-            orientationVisitor.visitVertical();
+        public <Argument, ReturnValue> /*
+            */ ReturnValue accept(final OrientationVisitor<Argument, ReturnValue> orientationVisitor,
+                                  final Argument argument) {
+            return orientationVisitor.visitVertical(argument);
         }
     };
 
@@ -48,7 +52,9 @@ public enum Orientation {
      * Visits the specified {@link OrientationVisitor} corresponding to this {@link Orientation} value.
      *
      * @param orientationVisitor
-     *        {@link OrientationVisitor} to visit
+     *        {@link OrientationVisitor} to accept
      */
-    public abstract void visit(OrientationVisitor orientationVisitor);
+    public abstract <Argument, ReturnValue> /*
+                 */ ReturnValue accept(OrientationVisitor<Argument, ReturnValue> orientationVisitor,
+                                       final Argument argument);
 }
