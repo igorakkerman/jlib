@@ -47,6 +47,6 @@ extends TwoWayIterator<Item> {
      *         if there is no next Item
      */
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextSequenceItemException;
 }

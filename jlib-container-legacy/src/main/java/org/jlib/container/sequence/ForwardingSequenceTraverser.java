@@ -66,7 +66,7 @@ implements SequenceIterator<Item> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextSequenceItemException {
         return delegateIterator.next();
     }

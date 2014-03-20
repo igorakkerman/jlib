@@ -129,7 +129,7 @@ implements IndexSequenceIterator<Item> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextSequenceItemException {
         try {
             final Item sequenceItem = getSequenceItem(potentialNextItemIndex);
@@ -176,7 +176,7 @@ implements IndexSequenceIterator<Item> {
     }
 
     @Override
-    public int getNextItemIndex() {
+    public int nextIndex() {
         if (! hasNext())
             throw new NoPreviousSequenceItemException(getSequence());
 

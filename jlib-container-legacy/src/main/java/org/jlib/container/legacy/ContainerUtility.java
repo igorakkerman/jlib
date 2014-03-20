@@ -532,7 +532,7 @@ public final class ContainerUtility {
 
     }
 
-    private void getNextItem() {
+    private void next() {
 
     }
 }

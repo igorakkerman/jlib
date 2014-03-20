@@ -271,30 +271,6 @@ public final class IterableUtility {
         }
     }
 
-    public static <Item> java.lang.Iterable iterable(final Iterable<Item> iterable) {
-        return new IterableIterable<>(iterable);
-    }
-
-    public static <Item> java.lang.Iterable iterable(final RemoveIterable<Item> iterable) {
-        return new RemoveIterableIterable<>(iterable);
-    }
-
-    public static <Item> Iterable<Item> iterable(final java.lang.Iterable iterable) {
-        return new IterableIterable<>(iterable);
-    }
-
-    public static <Item> RemoveIterable<Item> removeIterable(final java.lang.Iterable iterable) {
-        return new RemoveIterableIterable<>(iterable);
-    }
-
-    public static <Item> boolean contains(final Iterable<Item> items, final Item item) {
-        for (final Item containedItem : iterable(items))
-            if (containedItem.equals(item))
-                return true;
-
-        return false;
-    }
-
     public static <Item> BidiIterable<Item> singletonIterable(final Item item) {
         return new SingletonIterable<>(item);
     }

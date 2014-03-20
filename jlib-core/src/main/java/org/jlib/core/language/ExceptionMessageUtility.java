@@ -21,10 +21,13 @@
 
 package org.jlib.core.language;
 
+import java.util.Optional;
+
 import org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine;
 import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
 import org.jlib.core.text.templateengine.PrintfTemplateEngine;
 
+import static java.util.Optional.empty;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
@@ -74,5 +77,13 @@ public final class ExceptionMessageUtility {
 
     private ExceptionMessageUtility() {
         // no visible constructor
+    }
+
+    public static Optional<Throwable> noCause() {
+        return empty();
+    }
+
+    public static Optional<ExceptionMessage> noMessage() {
+        return empty();
     }
 }

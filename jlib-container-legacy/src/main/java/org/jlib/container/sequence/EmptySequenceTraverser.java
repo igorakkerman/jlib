@@ -86,7 +86,7 @@ implements ObservedRemoveIterator<Item>,
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextSequenceItemException {
         throw new NoNextSequenceItemException(getSequence());
     }

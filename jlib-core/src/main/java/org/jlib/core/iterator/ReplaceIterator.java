@@ -21,6 +21,8 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 /**
  * {@link Iterator} over replaceable Items.
  *

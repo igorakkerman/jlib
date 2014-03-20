@@ -65,7 +65,7 @@ implements MatrixIterator<Entry>, ReplaceIterator<Entry> {
     }
 
     @Override
-    public Entry getNextItem() {
+    public Entry next() {
         throw new NoNextItemException(EmptyMatrix.getInstance());
     }
 

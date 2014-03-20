@@ -80,7 +80,7 @@ implements TwoWayIterator<Item> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextItemException {
         throw new NoNextItemException(Empty.getInstance());
     }

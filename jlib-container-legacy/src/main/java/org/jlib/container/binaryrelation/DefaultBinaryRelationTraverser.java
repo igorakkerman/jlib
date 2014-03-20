@@ -114,7 +114,7 @@ implements Iterator<Pair<LeftValue, RightValue>> {
     }
 
     @Override
-    public Pair<LeftValue, RightValue> getNextItem()
+    public Pair<LeftValue, RightValue> next()
     throws NoNextItemException {
         try {
             if (! rightValuesIterator.hasNext())

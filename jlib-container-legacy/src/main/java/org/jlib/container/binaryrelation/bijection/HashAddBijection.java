@@ -132,7 +132,7 @@ implements AddBijection<LeftValue, RightValue> */ {
 //    // raising visibility from protected to public
 //    public void addPair(final LeftValue leftValue, final RightValue rightValue)
 //    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
-//        super.associate(leftValue, rightValue);
+//        super.relate(leftValue, rightValue);
 //    }
 //
 //    @Override

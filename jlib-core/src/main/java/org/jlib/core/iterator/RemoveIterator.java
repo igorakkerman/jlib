@@ -21,6 +21,8 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 /**
  * {@link Iterator} allowing returned Items to be removed.
  *
@@ -36,7 +38,7 @@ extends Iterator<Item> {
      * Removes the last Item returned by this {@link RemoveIterator}.
      *
      * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link Iterator#getNextItem()}
+     *         if not called immediately after a call to {@link Iterator#next()}
      *         or a similar method
      *
      * @throws InvalidIterableStateException

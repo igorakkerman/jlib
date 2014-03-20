@@ -21,9 +21,11 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 import org.jlib.core.language.AbstractObject;
 
-public class IterableIterable<Item>
+public class terableIterable<Item>
 extends AbstractObject
 implements Iterable<Item> {
 

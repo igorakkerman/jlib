@@ -107,12 +107,12 @@ public class FillupArraySequence<Item> {
 //                return;
 //
 //            final Iterator<? extends Item> iterator = items.iterator();
-//            append(iterator.getNextItem(), observers);
+//            append(iterator.next(), observers);
 //
 //            final ObservedReplaceAppendRemoveSequence<Item> delegateSequence = getDelegateSequence();
 //
 //            while (iterator.hasNext())
-//                delegateSequence.append(iterator.getNextItem(), observers);
+//                delegateSequence.append(iterator.next(), observers);
 //        }
 //
 //        @SafeVarargs

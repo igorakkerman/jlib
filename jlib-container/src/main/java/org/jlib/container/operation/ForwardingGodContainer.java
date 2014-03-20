@@ -21,6 +21,7 @@
 
 package org.jlib.container.operation;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -46,8 +47,8 @@ implements GodContainer<Item> {
     private final GodContainer<Item> disabledGodContainer = new GodContainer<Item>() {
 
         @Override
-        public <ContainsIterable extends org.jlib.core.iterator.Iterable<Item> & ContainsSingle<Item>> /*
-            */ boolean contains(ContainsIterable items)
+        public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+            */ boolean contains(final ContainsIterable items)
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -65,7 +66,7 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public java.util.Iterator iterator() {
+        public Iterator<Item> iterator() {
             throw new ForbiddenCastException(this);
         }
 
@@ -138,11 +139,6 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public Iterator<Item> iterator() {
-            throw new ForbiddenCastException(this);
-        }
-
-        @Override
         public boolean contains(final Item item)
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
@@ -184,8 +180,6 @@ implements GodContainer<Item> {
     private ContainsSingle<Item> delegateContainsSingle = disabledGodContainer;
 
     private ContainsMany<Item> delegateContainsMany = disabledGodContainer;
-
-    private java.lang.Iterable delegateIterable = disabledGodContainer;
 
     private Iterable<Item> delegateIterable = disabledGodContainer;
 
@@ -294,11 +288,6 @@ implements GodContainer<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return delegateIterable.iterator();
-    }
-
-    @Override
-    public java.util.Iterator iterator() {
         return delegateIterable.iterator();
     }
 

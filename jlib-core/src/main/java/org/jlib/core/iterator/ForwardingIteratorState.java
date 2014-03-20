@@ -53,9 +53,9 @@ implements BidiIteratorState<Item, State> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextItemException {
-        return delegateIteratorState.getNext();
+        return delegateIteratorState.next();
     }
 
     @Override

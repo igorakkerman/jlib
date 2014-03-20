@@ -77,7 +77,7 @@ extends AbstractMatrixIterator<Entry> {
     @Override
     public void gotoNextEntity()
     throws InvalidStateException {
-        entityIterator = entitiesIterator.getNextItem().iterator();
+        entityIterator = entitiesIterator.next().iterator();
     }
 
     @Override
@@ -86,7 +86,7 @@ extends AbstractMatrixIterator<Entry> {
     }
 
     @Override
-    public Entry getNextItem() {
+    public Entry next() {
         if (! entityIterator.hasNext())
             gotoNextEntity();
 

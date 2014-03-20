@@ -63,7 +63,7 @@ public class ConcatenatedSequenceIterator<Item, Sequenze extends ConcatenatedSeq
 ////        iterablesIterator = ArrayUtility.iterator(concatenatedSequence.getIterables());
 //
 ////        currentIterableIterator = iterablesIterator.hasNext()
-////                                      ? iterablesIterator.getNextItem().iterator()
+////                                      ? iterablesIterator.next().iterator()
 ////                                      : EmptySequenceIterator.<Item>getInstance();
 //    }
 //
@@ -77,7 +77,7 @@ public class ConcatenatedSequenceIterator<Item, Sequenze extends ConcatenatedSeq
 //
 //            // navigate to the tail of the previous Sequence
 //            while (currentIterableIterator.hasNext())
-//                currentIterableIterator.getNextItem();
+//                currentIterableIterator.next();
 //        }
 //
 //        return true;
@@ -98,14 +98,14 @@ public class ConcatenatedSequenceIterator<Item, Sequenze extends ConcatenatedSeq
 //            if (! iterablesIterator.hasNext())
 //                return false;
 //
-//            currentIterableIterator = iterablesIterator.getNextItem().iterator();
+//            currentIterableIterator = iterablesIterator.next().iterator();
 //        }
 //
 //        return true;
 //    }
 //
 //    @Override
-//    public Item getNextItem()
+//    public Item next()
 //    throws NoNextSequenceItemException {
 //        if (! hasNext())
 //            throw new NoPreviousSequenceItemException(getSequence());

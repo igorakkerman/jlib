@@ -148,11 +148,11 @@ implements IndexSequence<Item> {
 
         stringBuilder.append('[');
 
-        getNextItemString(stringBuilder, itemsIterator);
+        nextString(stringBuilder, itemsIterator);
 
         while (itemsIterator.hasNext()) {
             stringBuilder.append(", ");
-            getNextItemString(stringBuilder, itemsIterator);
+            nextString(stringBuilder, itemsIterator);
         }
 
         stringBuilder.append(']');
@@ -181,9 +181,9 @@ implements IndexSequence<Item> {
      * @param itemsIterator
      *        {@link IndexSequenceIterator} providing the Item
      */
-    private void getNextItemString(final StringBuilder stringBuilder,
+    private void nextString(final StringBuilder stringBuilder,
                                    final IndexSequenceIterator<Item> itemsIterator) {
-        stringBuilder.append(itemsIterator.getNextItemIndex());
+        stringBuilder.append(itemsIterator.nextIndex());
         stringBuilder.append(": ");
         stringBuilder.append(itemsIterator.next());
     }

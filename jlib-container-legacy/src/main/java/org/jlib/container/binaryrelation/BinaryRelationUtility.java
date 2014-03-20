@@ -68,8 +68,8 @@ public class BinaryRelationUtility {
      *         added to {@code binaryRelation}
      */
     public static <LeftValue, RightValue> /*
-               */ void associate(final AddBinaryRelation<LeftValue, RightValue> binaryRelation,
-                                 final Pair<LeftValue, RightValue> pair)
+               */ void relate(final AddBinaryRelation<LeftValue, RightValue> binaryRelation,
+                              final Pair<LeftValue, RightValue> pair)
     throws PairAlreadyContainedException, InvalidContainerArgumentException {
 
 //        if (binaryRelation.containsItem(pair))
@@ -270,7 +270,7 @@ public class BinaryRelationUtility {
 //        final RemoveIterator<Pair<LeftValue, RightValue>> binaryRelationIterator = binaryRelation.iterator();
 //
 //        while (binaryRelationIterator.hasNext())
-//            if (! retainedPairsSet.containsItem(binaryRelationIterator.getNextItem()))
+//            if (! retainedPairsSet.containsItem(binaryRelationIterator.next()))
 //                binaryRelationIterator.retain();
     }
 
@@ -297,7 +297,7 @@ public class BinaryRelationUtility {
 //        final RemoveIterator<Pair<LeftValue, RightValue>> pairsIterator = binaryRelation.iterator();
 
 //        while (pairsIterator.hasNext())
-//            if (! pairs.containsItem(pairsIterator.getNextItem()))
+//            if (! pairs.containsItem(pairsIterator.next()))
 //                pairsIterator.retain();
     }
 

@@ -21,6 +21,8 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 public class StatefulIterator<Item, Travble extends Iterable<Item>, State extends IteratorState<Item, State>>
 extends IterableAware<Item, Travble>
 implements Iterator<Item> {
@@ -39,7 +41,7 @@ implements Iterator<Item> {
     }
 
     @Override
-    public final Item getNextItem()
+    public final Item next()
     throws NoNextItemException {
         final Item nextItem = currentState.next();
 

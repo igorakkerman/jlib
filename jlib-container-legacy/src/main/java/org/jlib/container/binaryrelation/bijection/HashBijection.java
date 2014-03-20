@@ -87,7 +87,7 @@ implements Bijection<LeftValue, RightValue> */{
 //        super();
 //
 //        for (final Pair<LeftValue, RightValue> pair : pairs)
-//            associate(pair.getLeftValue(), pair.getRightValue());
+//            relate(pair.getLeftValue(), pair.getRightValue());
 //    }
 //
 //    */
@@ -120,7 +120,7 @@ implements Bijection<LeftValue, RightValue> */{
 //        super();
 //
 //        for (final Pair<LeftValue, RightValue> pair : pairs)
-//            associate(pair.getLeftValue(), pair.getRightValue());
+//            relate(pair.getLeftValue(), pair.getRightValue());
 //    }
 //
 //    */
@@ -154,11 +154,11 @@ implements Bijection<LeftValue, RightValue> */{
 //        super();
 //
 //        for (final Pair<LeftValue, RightValue> pair : pairs)
-//            associate(pair.getLeftValue(), pair.getRightValue());
+//            relate(pair.getLeftValue(), pair.getRightValue());
 //    }
 //
 //    @Override
-//    protected void associate(final LeftValue leftValue, final RightValue rightValue)
+//    protected void relate(final LeftValue leftValue, final RightValue rightValue)
 //    throws PairAlreadyContainedException, LeftValueAlreadyRelatedException, RightValueAlreadyRelatedException, InvalidPairException {
 //        if (containsItem(leftValue, rightValue))
 //            throw new PairAlreadyContainedException(this, leftValue, rightValue);
@@ -172,7 +172,7 @@ implements Bijection<LeftValue, RightValue> */{
 //        if (containsItem(leftValue, rightValue))
 //            return;
 //
-//        associate(leftValue, rightValue);
+//        relate(leftValue, rightValue);
 //    }
 //
 //    */

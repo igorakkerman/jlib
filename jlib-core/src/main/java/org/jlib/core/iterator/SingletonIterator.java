@@ -57,7 +57,7 @@ implements BidiIterator<Item> {
         }
 
         @Override
-        public Item getNextItem()
+        public Item next()
         throws NoNextItemException {
             return item;
         }
@@ -109,7 +109,7 @@ implements BidiIterator<Item> {
     }
 
     @Override
-    public Item getNextItem()
+    public Item next()
     throws NoNextItemException {
         return delegateIterator.next();
     }

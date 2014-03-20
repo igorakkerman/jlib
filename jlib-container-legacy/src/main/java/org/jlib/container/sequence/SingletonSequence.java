@@ -59,7 +59,7 @@ class SingletonSequence<Item>
 //        }
 //
 //        @Override
-//        public Item getNextItem() {
+//        public Item next() {
 //            currentIteratorState = tailIteratorState;
 //
 //            return item;
@@ -89,7 +89,7 @@ class SingletonSequence<Item>
 //        }
 //
 //        @Override
-//        public Item getNextItem() {
+//        public Item next() {
 //            throw new NoPreviousSequenceItemException(getSequence());
 //        }
 //    };
@@ -125,9 +125,9 @@ class SingletonSequence<Item>
 //            }
 //
 //            @Override
-//            public Item getNextItem()
+//            public Item next()
 //            throws NoNextSequenceItemException {
-//                return currentIteratorState.getNextItem();
+//                return currentIteratorState.next();
 //            }
 //        };
 //    }

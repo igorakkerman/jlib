@@ -57,6 +57,6 @@ extends SequenceIterator<Item> {
      * @throws NoNextSequenceItemException
      *         sif there is no next Item
      */
-    public int getNextItemIndex()
+    public int nextIndex()
     throws NoNextSequenceItemException;
 }
