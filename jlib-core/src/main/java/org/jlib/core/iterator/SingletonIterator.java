@@ -21,8 +21,8 @@
 
 package org.jlib.core.iterator;
 
-public class SingletonIterator<Item, Travble extends SingletonIterable<Item>>
-extends IterableAware<Item, Travble>
+public class SingletonIterator<Item, Itble extends SingletonIterable<Item>>
+extends IterableAware<Item, Itble>
 implements BidiIterator<Item> {
 
     private final Item item;
@@ -33,12 +33,12 @@ implements BidiIterator<Item> {
      */ new StuckIteratorState<>(getIterable());
 
     private class SingletonIteratorState
-    extends ForwardingIteratorState<Item, Travble, SingletonIteratorState> {
+    extends ForwardingIteratorState<Item, Itble, SingletonIteratorState> {
 
-        private SingletonIteratorState(final Travble iterable) {
+        private SingletonIteratorState(final Itble iterable) {
             super(iterable, stuck);
 
-            new StuckIteratorState<Item, Travble, SingletonIteratorState>(iterable);
+            new StuckIteratorState<Item, Itble, SingletonIteratorState>(iterable);
         }
     }
 
@@ -84,7 +84,7 @@ implements BidiIterator<Item> {
         }
     };
 
-    public SingletonIterator(final Travble iterable) {
+    public SingletonIterator(final Itble iterable) {
         super(iterable);
 
         item = iterable.getItem();

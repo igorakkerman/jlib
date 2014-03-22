@@ -3,7 +3,7 @@ package org.jlib.container.operation;
 public interface GodContainer<Item>
 extends ContainsSingle<Item>,
         ContainsMany<Item>,
-        GetCount<Item>,
+        Count<Item>,
         IsEmpty<Item>,
         ObservedRemoveMany<Item>,
         ObservedRemoveAll<Item>,

@@ -58,15 +58,16 @@ package org.jlib.core.language;
  * @author Igor Akkerman
  */
 public interface TypedCloneable<Self extends TypedCloneable<? extends Self>>
-extends Cloneable {
+extends MyCloneable<Self> {
 
     @SuppressWarnings("unchecked")
     default public Self clone() {
-        try {
-            return (Self) Cloneable.super.clone();
-        }
-        catch (final CloneNotSupportedException exception) {
-            throw new UnexpectedStateException(exception);
-        }
+        return null;
+//        try {
+//            return (Self) myclone();
+//        }
+//        catch (final CloneNotSupportedException exception) {
+//            throw new UnexpectedStateException(exception);
+//        }
     }
 }

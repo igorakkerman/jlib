@@ -23,13 +23,13 @@ package org.jlib.container.operation;
 
 import org.jlib.core.language.AbstractObject;
 
-public final class SizeIterableToArray<Item, DelegateContainer extends GetCount<Item> & Iterable<Item>>
+public final class CountIterableToArray<Item, DelegateContainer extends Count<Item> & Iterable<Item>>
 extends AbstractObject
 implements ToArray<Item> {
 
     private final DelegateContainer delegateIterable;
 
-    public SizeIterableToArray(final DelegateContainer delegateIterable) {
+    public CountIterableToArray(final DelegateContainer delegateIterable) {
         super();
 
         this.delegateIterable = delegateIterable;
@@ -39,7 +39,7 @@ implements ToArray<Item> {
     public Item[] toArray() {
 
         @SuppressWarnings("unchecked")
-        final Item[] targetArray = (Item[]) new Object[];
+        final Item[] targetArray = (Item[]) new Object[delegateIterable.count()];
 
         int index = 0;
 

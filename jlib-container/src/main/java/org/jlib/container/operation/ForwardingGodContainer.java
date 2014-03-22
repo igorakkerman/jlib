@@ -54,7 +54,7 @@ implements GodContainer<Item> {
         }
 
         @Override
-        public int getCount()
+        public int count()
         throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -169,7 +169,7 @@ implements GodContainer<Item> {
 
     private ToRandomAccessList<Item> delegateToRandomAccessList = disabledGodContainer;
 
-    private GetCount<Item> delegateGetCount = disabledGodContainer;
+    private Count<Item> delegateCount = disabledGodContainer;
 
     private RemoveSingleByItem<Item> delegateRemoveSingleByItem = disabledGodContainer;
 
@@ -240,9 +240,9 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public int getCount()
+    public int count()
     throws InvalidContainerStateException {
-        return delegateGetCount.getCount();
+        return delegateCount.count();
     }
 
     @Override
@@ -327,8 +327,8 @@ implements GodContainer<Item> {
         this.delegateToRandomAccessList = delegateToRandomAccessList;
     }
 
-    public void setDelegateGetCount(final GetCount<Item> delegateGetCount) {
-        this.delegateGetCount = delegateGetCount;
+    public void setDelegateCount(final Count<Item> delegateCount) {
+        this.delegateCount = delegateCount;
     }
 
     public void setDelegateRemoveManyByItem(final RemoveManyByItem<Item> delegateRemoveManyByItem) {

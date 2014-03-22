@@ -23,7 +23,7 @@ package org.jlib.container;
 
 import org.jlib.container.operation.ContainsMany;
 import org.jlib.container.operation.ContainsSingle;
-import org.jlib.container.operation.GetCount;
+import org.jlib.container.operation.Count;
 import org.jlib.container.operation.IsEmpty;
 import org.jlib.container.operation.ToArray;
 import org.jlib.container.operation.ToRandomAccessList;
@@ -34,7 +34,7 @@ public interface Container<Item>
 extends Iterable<Item>,
         ContainsSingle<Item>,
         ContainsMany<Item>,
-        GetCount<Item>,
+        Count<Item>,
         IsEmpty<Item>,
         ToArray<Item>,
         ToRandomAccessList<Item>,

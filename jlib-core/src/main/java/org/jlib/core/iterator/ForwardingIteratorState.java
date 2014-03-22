@@ -21,13 +21,13 @@
 
 package org.jlib.core.iterator;
 
-public abstract class ForwardingIteratorState<Item, Travble extends BidiIterable<Item>, State extends ForwardingIteratorState<Item, Travble, State>>
-extends IterableAware<Item, Travble>
+public abstract class ForwardingIteratorState<Item, Itble extends BidiIterable<Item>, State extends ForwardingIteratorState<Item, Itble, State>>
+extends IterableAware<Item, Itble>
 implements BidiIteratorState<Item, State> {
 
     private final BidiIteratorState<Item, State> delegateIteratorState;
 
-    ForwardingIteratorState(final Travble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
+    ForwardingIteratorState(final Itble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
         super(iterable);
 
         this.delegateIteratorState = delegateIteratorState;

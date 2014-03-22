@@ -23,11 +23,11 @@ package org.jlib.core.iterator;
 
 import org.jlib.core.language.ExceptionMessageUtility;
 
-public final class StuckIteratorState<Item, Travble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
-extends IterableAware<Item, Travble>
+public final class StuckIteratorState<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
+extends IterableAware<Item, Itble>
 implements BidiIteratorState<Item, State> {
 
-    public StuckIteratorState(final Travble iterable) {
+    public StuckIteratorState(final Itble iterable) {
         super(iterable);
     }
 

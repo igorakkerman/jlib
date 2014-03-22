@@ -21,11 +21,11 @@
 
 package org.jlib.core.iterator;
 
-public final class StatefulBidiIterator<Item, Travble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
-extends StatefulIterator<Item, Travble, State>
+public final class StatefulBidiIterator<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
+extends StatefulIterator<Item, Itble, State>
 implements BidiIterator<Item> {
 
-    public StatefulBidiIterator(final Travble iterable, final State initialState) {
+    public StatefulBidiIterator(final Itble iterable, final State initialState) {
         super(iterable, initialState);
     }
 

@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2014 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,22 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation;
+package org.jlib.core.language;
 
-public class IsEmptyFromItemsCount<Item>
-implements IsEmpty<Item> {
+public interface MyCloneable<Self extends MyCloneable<? extends Self>>
+extends Cloneable {
 
-    private final Count<Item> delegateContainer;
+//    default public Object myclone()
+//    throws CloneNotSupportedException {
+//        return clone();
+//    }
 
-    public IsEmptyFromItemsCount(final Count<Item> count) {
-        super();
-
-        this.delegateContainer = count;
-    }
-
-    @Override
-    public boolean isEmpty()
-    throws InvalidContainerStateException {
-        return delegateContainer.count() == 0;
+    default public String mytoString() {
+        return toString();
     }
 }

@@ -23,13 +23,13 @@ package org.jlib.core.iterator;
 
 import java.util.Iterator;
 
-public class StatefulIterator<Item, Travble extends Iterable<Item>, State extends IteratorState<Item, State>>
-extends IterableAware<Item, Travble>
+public class StatefulIterator<Item, Itble extends Iterable<Item>, State extends IteratorState<Item, State>>
+extends IterableAware<Item, Itble>
 implements Iterator<Item> {
 
     private State currentState;
 
-    public StatefulIterator(final Travble iterable, final State initialState) {
+    public StatefulIterator(final Itble iterable, final State initialState) {
         super(iterable);
 
         currentState = initialState;

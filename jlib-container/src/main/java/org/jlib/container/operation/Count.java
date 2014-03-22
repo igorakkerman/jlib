@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.jlib.core.language.ItemOperation;
 
-public interface GetCount<Item>
+public interface Count<Item>
 extends ItemOperation<Item> {
 
     /**
@@ -34,6 +34,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public int getCount()
+    public int count()
     throws InvalidContainerStateException;
 }
