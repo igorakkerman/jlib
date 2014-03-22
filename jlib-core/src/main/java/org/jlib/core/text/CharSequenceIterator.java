@@ -21,10 +21,10 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.iterator.AbstractIterator;
+import java.util.Iterator;
 
 final class CharSequenceIterator
-extends AbstractIterator<Character> {
+implements Iterator<Character> {
 
     private final CharSequence characterSequence;
 
