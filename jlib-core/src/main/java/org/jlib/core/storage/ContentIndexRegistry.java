@@ -21,10 +21,15 @@
 
 package org.jlib.core.storage;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.io.Serializable;
 
-import org.jlib.core.language.AutoCloneable;
+import org.jlib.core.language.TypedCloneable;
+import org.jlib.core.language.UnexpectedStateException;
+import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
+import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.math.MathUtility.count;
 
 /**
@@ -36,8 +41,8 @@ import static org.jlib.core.math.MathUtility.count;
  * @author Igor Akkerman
  */
 public class ContentIndexRegistry
-extends AutoCloneable
-implements Serializable {
+implements TypedCloneable<ContentIndexRegistry>,
+           Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
@@ -127,5 +132,20 @@ implements Serializable {
      */
     public int getItemsCount() {
         return count(firstItemIndex, lastItemIndex);
+    }
+
+    @Override
+    public ContentIndexRegistry clone() {
+        // TODO: replace by more general strategy
+        try {
+            final ContentIndexRegistry cloneTarget = TypedCloneable.super.clone();
+
+            BeanUtils.copyProperties(cloneTarget, this);
+
+            return cloneTarget;
+        }
+        catch (IllegalAccessException | InvocationTargetException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 }

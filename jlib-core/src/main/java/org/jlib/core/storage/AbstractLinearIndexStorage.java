@@ -21,17 +21,21 @@
 
 package org.jlib.core.storage;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import java.lang.reflect.InvocationTargetException;
 
-import org.jlib.core.language.AutoCloneable;
+import org.jlib.core.language.TypedCloneable;
+import org.jlib.core.language.UnexpectedStateException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
+import org.apache.commons.beanutils.BeanUtils;
+import static org.jlib.core.language.ExceptionMessageUtility.message;
+
 public abstract class AbstractLinearIndexStorage<Item>
-extends AutoCloneable
-implements LinearIndexStorage<Item> {
+implements TypedCloneable<AbstractLinearIndexStorage<Item>>,
+           LinearIndexStorage<Item> {
 
     /**
-     * Creates a new {@link ArrayStorage} with the specified initial capacity.
+     * Creates a new {@link AbstractLinearIndexStorage} with the specified initial capacity.
      *
      * @param initialCapacity
      *        integer specifying the initial capacity
@@ -122,5 +126,20 @@ implements LinearIndexStorage<Item> {
                               copyDescriptor.getSourceEndIndex());
 
         ensureIndexValid("targetIndex", copyDescriptor.getTargetIndex());
+    }
+
+    @Override
+    public AbstractLinearIndexStorage<Item> clone() {
+        // TODO: replace by more general strategy
+        try {
+            final AbstractLinearIndexStorage<Item> cloneTarget = TypedCloneable.super.clone();
+
+            BeanUtils.copyProperties(cloneTarget, this);
+
+            return cloneTarget;
+        }
+        catch (IllegalAccessException | InvocationTargetException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 }

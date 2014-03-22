@@ -21,9 +21,14 @@
 
 package org.jlib.core.storage.indexrangeoperation;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.io.Serializable;
 
-import org.jlib.core.language.AutoCloneable;
+import org.jlib.core.language.TypedCloneable;
+import org.jlib.core.language.UnexpectedStateException;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * Descriptor of an operation on indexed objects specifying a source index range and a target index.
@@ -31,8 +36,8 @@ import org.jlib.core.language.AutoCloneable;
  * @author Igor Akkerman
  */
 public class IndexRangeOperationDescriptor
-extends AutoCloneable
-implements Serializable {
+implements TypedCloneable<IndexRangeOperationDescriptor>,
+           Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2349186633834250865L;
@@ -91,5 +96,21 @@ implements Serializable {
      */
     public int getTargetIndex() {
         return targetIndex;
+    }
+
+    @Override
+    public IndexRangeOperationDescriptor clone() {
+
+        // TODO: replace by more general strategy
+        try {
+            final IndexRangeOperationDescriptor cloneTarget = TypedCloneable.super.clone();
+
+            BeanUtils.copyProperties(cloneTarget, this);
+
+            return cloneTarget;
+        }
+        catch (IllegalAccessException | InvocationTargetException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 }
