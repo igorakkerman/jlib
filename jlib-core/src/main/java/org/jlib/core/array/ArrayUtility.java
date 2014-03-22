@@ -51,22 +51,6 @@ public final class ArrayUtility {
     }
 
     /**
-     * Returns a new {@link Iterable} adapter for the specified Items.
-     *
-     * @param <Item>
-     *        type of the items held in the array
-     *
-     * @param items
-     *        comma separated sequence of Items to traverse
-     *
-     * @return {@link Iterable} adapter for {@code items}
-     */
-    @SafeVarargs
-    public static <Item> Iterable<Item> iterable(final Item... items) {
-        return new ArrayIterable<>(items);
-    }
-
-    /**
      * Returns a new {@link BidiIterable} adapter for the specified Items.
      *
      * @param <Item>
@@ -79,7 +63,7 @@ public final class ArrayUtility {
      */
     @SafeVarargs
     public static <Item> BidiIterable<Item> iterable(final Item... items) {
-        return new ArrayIterable<Item>(items);
+        return new ArrayIterable<>(items);
     }
 
     /**
