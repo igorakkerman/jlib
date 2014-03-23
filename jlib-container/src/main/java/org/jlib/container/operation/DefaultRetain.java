@@ -21,8 +21,6 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.iterator.IterableUtility.iterable;
-
 public class DefaultRetain<Item>
 implements Retain<Item> {
 
@@ -45,7 +43,7 @@ implements Retain<Item> {
         */ void retain(final ContainsIterable retainedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item containedItem : iterable(containedItems))
+        for (final Item containedItem : containedItems)
             if (! retainedItems.contains(containedItem))
                 removableContainedItems.remove(containedItem);
     }

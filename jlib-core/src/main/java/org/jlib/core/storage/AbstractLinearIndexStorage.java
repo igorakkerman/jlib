@@ -31,8 +31,8 @@ import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 public abstract class AbstractLinearIndexStorage<Item>
-implements TypedCloneable<AbstractLinearIndexStorage<Item>>,
-           LinearIndexStorage<Item> {
+extends TypedCloneable<AbstractLinearIndexStorage<Item>>
+implements LinearIndexStorage<Item> {
 
     /**
      * Creates a new {@link AbstractLinearIndexStorage} with the specified initial capacity.
@@ -132,7 +132,7 @@ implements TypedCloneable<AbstractLinearIndexStorage<Item>>,
     public AbstractLinearIndexStorage<Item> clone() {
         // TODO: replace by more general strategy
         try {
-            final AbstractLinearIndexStorage<Item> cloneTarget = TypedCloneable.super.clone();
+            final AbstractLinearIndexStorage<Item> cloneTarget = super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 

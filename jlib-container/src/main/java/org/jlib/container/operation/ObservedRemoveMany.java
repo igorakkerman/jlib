@@ -38,7 +38,7 @@ public interface ObservedRemoveMany<Item>
 extends ItemOperation<Item> {
 
     @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
 
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,

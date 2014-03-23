@@ -38,5 +38,5 @@ extends ReplaceIterable<Item> {
      * @return newly created {@link ObservedReplaceIterator}
      */
     @Override
-    public ObservedReplaceIterator<Item> iterator();
+    ObservedReplaceIterator<Item> iterator();
 }

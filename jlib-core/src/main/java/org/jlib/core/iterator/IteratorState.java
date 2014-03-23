@@ -37,5 +37,5 @@ extends Iterator<Item> {
      *
      * @return next {@link IteratorState}
      */
-    public State nextState();
+    State nextState();
 }

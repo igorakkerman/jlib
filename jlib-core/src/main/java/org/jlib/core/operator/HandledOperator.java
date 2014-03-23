@@ -40,6 +40,6 @@ public interface HandledOperator {
      *         <em>not</em> be handled consequently
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    public void operate()
+    void operate()
     throws OperatorException, RuntimeException;
 }

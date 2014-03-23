@@ -21,8 +21,6 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.iterator.IterableUtility.iterable;
-
 public class DefaultRemoveManyByItem<Item>
 implements RemoveManyByItem<Item> {
 
@@ -30,7 +28,7 @@ implements RemoveManyByItem<Item> {
 
     private final RemoveSingleByItem<Item> removableContainedItems;
 
-    public <RemoveSingleIterable extends org.jlib.core.iterator.Iterable<Item> & RemoveSingleByItem<Item>> /*
+    public <RemoveSingleIterable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
         */ DefaultRemoveManyByItem(final RemoveSingleIterable containedItems) {
 
         super();
@@ -44,7 +42,7 @@ implements RemoveManyByItem<Item> {
         */ void remove(final ContainsIterable removedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item containedItem : iterable(containedItems))
+        for (final Item containedItem : containedItems)
             if (removedItems.contains(containedItem))
                 removableContainedItems.remove(containedItem);
     }

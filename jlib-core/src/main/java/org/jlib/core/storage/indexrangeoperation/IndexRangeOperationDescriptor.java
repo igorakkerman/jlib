@@ -36,8 +36,8 @@ import org.apache.commons.beanutils.BeanUtils;
  * @author Igor Akkerman
  */
 public class IndexRangeOperationDescriptor
-implements TypedCloneable<IndexRangeOperationDescriptor>,
-           Serializable {
+extends TypedCloneable<IndexRangeOperationDescriptor>
+implements Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2349186633834250865L;
@@ -103,7 +103,7 @@ implements TypedCloneable<IndexRangeOperationDescriptor>,
 
         // TODO: replace by more general strategy
         try {
-            final IndexRangeOperationDescriptor cloneTarget = TypedCloneable.super.clone();
+            final IndexRangeOperationDescriptor cloneTarget = super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 

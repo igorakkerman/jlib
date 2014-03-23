@@ -44,5 +44,5 @@ extends Accessor<Vallue> {
      *
      * @author Igor Akkerman
      */
-    public void operate(OptionalValueOperator<Vallue> operator);
+    void operate(OptionalValueOperator<Vallue> operator);
 }

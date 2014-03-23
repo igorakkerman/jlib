@@ -9,7 +9,6 @@ import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
 import static org.jlib.core.iterator.IterableUtility.singletonIterable;
-import static org.jlib.core.iterator.IterableUtility.iterable;
 
 public final class ContainsAdapterUtility {
 
@@ -45,7 +44,7 @@ public final class ContainsAdapterUtility {
 
     public static <Item> ContainsAdapter<Item> allOf(final Collection<Item> items) {
 
-        return new ContainsAdapter<Item>(iterable(items)) {
+        return new ContainsAdapter<Item>(items) {
 
             @Override
             public boolean contains(final Item item)

@@ -49,7 +49,7 @@ public interface TemplateEngine<Argument> {
      * @return {@link String} specifying the formatted text
      */
     @SuppressWarnings("unchecked")
-    public String applyArguments(CharSequence template, Argument... arguments);
+    String applyArguments(CharSequence template, Argument... arguments);
 
-    public String applyArguments(ParametrizedText<Argument> parametrizedText);
+    String applyArguments(ParametrizedText<Argument> parametrizedText);
 }

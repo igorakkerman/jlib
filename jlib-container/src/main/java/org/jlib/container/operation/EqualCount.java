@@ -23,8 +23,6 @@ package org.jlib.container.operation;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.Equals;
-
 public class EqualCount<Item> {
 
     /** sole {@link EqualCount} instance */
@@ -50,8 +48,7 @@ public class EqualCount<Item> {
         super();
     }
 
-    @Override
-    public boolean areEqual(final Count<Item> thisObject, @Nullable final Object otherObject) {
+    public boolean haveEqualCount(final Count<Item> thisObject, @Nullable final Object otherObject) {
         return otherObject instanceof Count<?> && //
                thisObject.count() == ((Count<?>) otherObject).count();
     }

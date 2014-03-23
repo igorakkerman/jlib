@@ -61,7 +61,7 @@ extends ItemOperation<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void retain(ContainsIterable containsIterable, ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
 }

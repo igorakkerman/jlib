@@ -29,5 +29,5 @@ extends ItemOperation<Item> {
      *
      * @return integer specifying the hash code
      */
-    public int getHashCode(Item item);
+    int getHashCode(Item item);
 }

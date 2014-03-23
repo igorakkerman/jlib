@@ -41,8 +41,8 @@ import static org.jlib.core.math.MathUtility.count;
  * @author Igor Akkerman
  */
 public class ContentIndexRegistry
-implements TypedCloneable<ContentIndexRegistry>,
-           Serializable {
+extends TypedCloneable<ContentIndexRegistry>
+implements Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
@@ -138,7 +138,7 @@ implements TypedCloneable<ContentIndexRegistry>,
     public ContentIndexRegistry clone() {
         // TODO: replace by more general strategy
         try {
-            final ContentIndexRegistry cloneTarget = TypedCloneable.super.clone();
+            final ContentIndexRegistry cloneTarget = super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 

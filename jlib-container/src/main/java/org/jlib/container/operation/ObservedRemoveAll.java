@@ -47,6 +47,6 @@ extends ItemOperation<Item> {
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    public void removeAll(ValueObserver<Item>... observers)
+    void removeAll(ValueObserver<Item>... observers)
     throws InvalidContainerStateException;
 }

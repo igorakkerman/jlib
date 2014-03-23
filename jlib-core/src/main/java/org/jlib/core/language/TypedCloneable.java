@@ -23,51 +23,65 @@ package org.jlib.core.language;
 
 /**
  * <p>
- * {@link Cloneable} of which the {@link #clone()} method has the return type of the implementing class.
+ * {@link Cloneable} providing a public {@link #clone()} method with the return type of the extending class.
  * </p>
  * <p>
- * Implementing this interface makes cloning easier in the following ways:
+ * Extending this abstract class reduces boilerplate code in overridden {@link #clone()} methods:
  * </p>
  * <ul>
  *     <li>
- *         It is ensured that the own type of the implemented class, if specified as type parameter, is returned.
+ *         It is ensured that the own type of the implemented class is returned, if specified as type parameter.
  *     </li>
  *     <li>
  *         It is ensured that the {@link #clone()} method is public.
  *     </li>
  *     <li>
- *         Implementing classes do not need to catch {@link CloneNotSupportedException} if referring to the default
- *         implementation of this interface. The class {@code MyClass} can implement {@code TypedCloneable<Self>} and
- *         instead of
+ *         Extending classes do not need to catch {@link CloneNotSupportedException} if referring to the default
+ *         implementation of this interface.
+ *         <p>
+ *         Example:
  * <pre>{@code
- * try {
- *     final MyClass clonedInstance = (MyClass) super.clone();
- * }
- * catch(CloneNotSupportedException exception) {
- *     throw new UnexpectedStateException(exception);
+ * class MyClass {
+ *     public Object clone() {
+ *         try {
+ *             final MyClass clonedInstance = (MyClass) super.clone();
+ *             ...
+ *             return clonedInstance;
+ *         }
+ *         catch(CloneNotSupportedException exception) {
+ *             throw new UnexpectedStateException(exception);
+ *         }
+ *     }
  * }}</pre>
- *          simply call
- * <pre>{@code MyClass clonedInstance = TypedCloneable.super.clone();}</pre>
+ *
+ * Extending {@link TypedCloneable}, the code can be reduced to:
+ * <pre>{@code
+ * class MyClass
+ * extends TypedCloneable<MyClass> {
+ *     public MyClass clone() {
+ *         final MyClass clonedInstance = TypedCloneable.super.clone();
+ *         ...
+ *         return clonedInstance;
+ *     }
+ * }}</pre>
  *      </li>
  * </ul>
- * using  a call to its {@link #clone()} method instead of
  *
  * @param <Self>
- *        own type of the implementing class
+ *        own type of the extending class
  *
  * @author Igor Akkerman
  */
-public interface TypedCloneable<Self extends TypedCloneable<? extends Self>>
-extends MyCloneable<Self> {
+public abstract class TypedCloneable<Self extends TypedCloneable<? extends Self>>
+implements Cloneable {
 
     @SuppressWarnings("unchecked")
-    default public Self clone() {
-        return null;
-//        try {
-//            return (Self) myclone();
-//        }
-//        catch (final CloneNotSupportedException exception) {
-//            throw new UnexpectedStateException(exception);
-//        }
+    public Self clone() {
+        try {
+            return (Self) super.clone();
+        }
+        catch (final CloneNotSupportedException exception) {
+            throw new UnexpectedStateException(exception);
+        }
     }
 }

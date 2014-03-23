@@ -21,6 +21,8 @@
 
 package org.jlib.container.operation.containsadapter;
 
+import java.util.Iterator;
+
 import org.jlib.container.operation.ContainsSingle;
 
 public abstract class ContainsAdapter<Item>
@@ -35,7 +37,7 @@ implements Iterable<Item>,
         this.items = items;
     }
 
-    protected final org.jlib.core.iterator.Iterable<Item> getItems() {
+    protected final Iterable<Item> getItems() {
         return items;
     }
 

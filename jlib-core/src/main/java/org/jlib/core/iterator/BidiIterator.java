@@ -40,7 +40,7 @@ extends Iterator<Item> {
      * @return {@code true} if this {@link BidiIterator} has a previous Item;
      *         {@code false} otherwise
      */
-    public boolean hasPrevious();
+    boolean hasPrevious();
 
     /**
      * Returns the previous Item of this {@link BidiIterator}.
@@ -50,6 +50,6 @@ extends Iterator<Item> {
      * @throws NoPreviousItemException
      *         if there is no previous Item
      */
-    public Item previous()
+    Item previous()
     throws NoPreviousItemException;
 }

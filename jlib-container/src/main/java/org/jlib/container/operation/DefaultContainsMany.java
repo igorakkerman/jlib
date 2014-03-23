@@ -21,8 +21,6 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.iterator.IterableUtility.iterable;
-
 public class DefaultContainsMany<Item>
 implements ContainsMany<Item> {
 
@@ -39,7 +37,7 @@ implements ContainsMany<Item> {
         */ boolean contains(final ContainsIterable lookupItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
-        for (final Item lookupItem : iterable(lookupItems))
+        for (final Item lookupItem : lookupItems)
             if (! containedItems.contains(lookupItem))
                 return false;
 

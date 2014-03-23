@@ -55,7 +55,7 @@ extends Cloneable {
      *
      * @return integer specifying the capacity
      */
-    public int getCapacity();
+    int getCapacity();
 
     /**
      * Returns the {@link Item} stored at the specified index.
@@ -68,7 +68,7 @@ extends Cloneable {
      * @throws IndexOutOfBoundsException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
-    public Item getItem(int index)
+    Item getItem(int index)
     throws InvalidIndexException;
 
     /**
@@ -83,7 +83,7 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
-    public void replaceItem(int index, Item newItem)
+    void replaceItem(int index, Item newItem)
     throws InvalidIndexException;
 
     /**
@@ -113,7 +113,7 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
-    public void addCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
+    void addCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
     throws InvalidCapacityException, InvalidIndexException;
 
     /**
@@ -126,6 +126,6 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies an index outside the valid bounds
      */
-    public void shiftItems(IndexRangeOperationDescriptor... shiftDescriptors)
+    void shiftItems(IndexRangeOperationDescriptor... shiftDescriptors)
     throws InvalidIndexException;
 }

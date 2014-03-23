@@ -52,7 +52,7 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public <ContainsIterable extends org.jlib.core.iterator.Iterable<Item> & ContainsSingle<Item>> /*
+    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void retain(ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

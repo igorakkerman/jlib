@@ -37,10 +37,10 @@ public interface OptionalValueOperator<Value> {
      * @param value
      *        Accessor to operate on
      */
-    public void operate(Value value);
+    void operate(Value value);
 
     /**
      * Performs the operation if no Accessor is registered.
      */
-    public void operateUnset();
+    void operateUnset();
 }

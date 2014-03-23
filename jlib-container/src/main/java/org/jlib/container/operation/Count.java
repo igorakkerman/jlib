@@ -34,6 +34,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public int count()
+    int count()
     throws InvalidContainerStateException;
 }

@@ -38,5 +38,5 @@ extends RemoveIterable<Item> {
      * @return newly created {@link ObservedRemoveIterator}
      */
     @Override
-    public ObservedRemoveIterator<Item> iterator();
+    ObservedRemoveIterator<Item> iterator();
 }

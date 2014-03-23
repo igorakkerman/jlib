@@ -44,5 +44,5 @@ public interface Equals<Obj> {
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
-    public boolean areEqual(Obj thisObject, @Nullable Object otherObject);
+    boolean areEqual(Obj thisObject, @Nullable Object otherObject);
 }

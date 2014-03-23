@@ -48,6 +48,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public void remove(Item item)
+    void remove(Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

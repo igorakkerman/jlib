@@ -16,7 +16,6 @@ extends ContainsSingle<Item>,
         ToRandomAccessList<Item>,
         ToSequentialList<Item>,
         ToSet<Item>,
-        Iterable<Item>,
-        java.lang.Iterable {
+        Iterable<Item> {
     // unifying
 }

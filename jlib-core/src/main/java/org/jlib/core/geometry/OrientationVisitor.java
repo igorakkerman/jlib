@@ -30,10 +30,10 @@ public interface OrientationVisitor<Argument, ReturnValue> {
     /**
      * Operation to perform for horizontal orientation.
      */
-    public ReturnValue visitHorizontal(Argument argument);
+    ReturnValue visitHorizontal(Argument argument);
 
     /**
      * Operation to perform for vertical orientation.
      */
-    public ReturnValue visitVertical(Argument argument);
+    ReturnValue visitVertical(Argument argument);
 }

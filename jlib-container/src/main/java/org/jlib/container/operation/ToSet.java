@@ -4,6 +4,6 @@ import java.util.Set;
 
 public interface ToSet<Item> {
 
-    public Set<Item> toSet()
+    Set<Item> toSet()
     throws InvalidContainerStateException;
 }

@@ -52,7 +52,7 @@ public interface CapacityStrategy {
      *                   lastItemIndex < firstItemIndex ||
      *                   lastItemIndex > storage.getCapacity() - 1}
      */
-    public void initialize()
+    void initialize()
     throws InvalidIndexException;
 
     /**
@@ -65,7 +65,7 @@ public interface CapacityStrategy {
      * @throws InvalidPartialCapacityException
      *         if {@code headCapacity < 0}
      */
-    public void ensureHeadCapacity(int headCapacity)
+    void ensureHeadCapacity(int headCapacity)
     throws InvalidPartialCapacityException;
 
     /**
@@ -85,7 +85,7 @@ public interface CapacityStrategy {
      *         if {@code middleIndex < linearIndexStorage.getFirstItemIndex() ||
      *                   middleIndex > linearIndexStorage.getLastItemIndex()}
      */
-    public void ensureSplitCapacity(int splitIndex, int splitCapacity)
+    void ensureSplitCapacity(int splitIndex, int splitCapacity)
     throws LinearIndexStorageException;
 
     /**
@@ -98,6 +98,6 @@ public interface CapacityStrategy {
      * @throws InvalidPartialCapacityException
      *         if {@code tailCapacity < 0}
      */
-    public void ensureTailCapacity(int tailCapacity)
+    void ensureTailCapacity(int tailCapacity)
     throws InvalidPartialCapacityException;
 }

@@ -41,5 +41,5 @@ extends Iterable<Item> {
      * @return newly iterator}
      */
     @Override
-    public BidiIterator<Item> iterator();
+    BidiIterator<Item> iterator();
 }

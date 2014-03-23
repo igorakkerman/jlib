@@ -43,6 +43,6 @@ extends Iterator<Item> {
      * @throws InvalidIteratorStateException
      *         if no Item has been traversed by this {@link ReplaceIterator}
      */
-    public void replace(Item newItem)
+    void replace(Item newItem)
     throws InvalidIteratorStateException;
 }

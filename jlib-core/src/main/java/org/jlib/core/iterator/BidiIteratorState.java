@@ -36,5 +36,5 @@ extends IteratorState<Item, State>,
      *
      * @return previous {@link BidiIteratorState}
      */
-    public State previousState();
+    State previousState();
 }

@@ -89,7 +89,7 @@ public final class ArrayUtility {
      * @param items
      *        comma separated sequence of {@link Object} items
      *
-     * @return integer specifying the total number of items
+     * @return integer specifying the total number of itemsnew
      */
     public static int getFlattenedItemsCount(final Object... items) {
         int itemsCount = 0;

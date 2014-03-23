@@ -347,10 +347,6 @@ implements GodContainer<Item> {
         this.delegateIterable = delegateIterable;
     }
 
-    public void setDelegateIterable(final java.lang.Iterable delegateIterable) {
-        this.delegateIterable = delegateIterable;
-    }
-
     public void setDelegateRemoveSingleByItem(final RemoveSingleByItem<Item> delegateRemoveSingleByItem) {
         this.delegateRemoveSingleByItem = delegateRemoveSingleByItem;
     }

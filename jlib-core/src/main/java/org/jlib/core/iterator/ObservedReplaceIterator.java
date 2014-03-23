@@ -53,7 +53,7 @@ extends ReplaceIterator<Item> {
      *         if an error occurs during the {@link ValueObserver} operation
      */
     @SuppressWarnings("unchecked")
-    public void replace(Item newItem, ValueObserver<Item>... observers)
+    void replace(Item newItem, ValueObserver<Item>... observers)
     throws NoItemToReplaceException, ValueObserverException;
 
     /**
@@ -63,5 +63,5 @@ extends ReplaceIterator<Item> {
      * @param replaceObserver
      *        additional replace {@link ValueObserver}
      */
-    public void addReplaceObserver(ValueObserver<Item> replaceObserver);
+    void addReplaceObserver(ValueObserver<Item> replaceObserver);
 }

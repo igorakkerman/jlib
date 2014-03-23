@@ -48,6 +48,6 @@ public interface SplitCapacityStrategy {
      * @throws InvalidPartialCapacityException
      *         if {@code capacity < 0}
      */
-    public void ensureCapacity(int splitIndex, int splitCapacity)
+    void ensureCapacity(int splitIndex, int splitCapacity)
     throws InvalidIndexException, InvalidPartialCapacityException;
 }

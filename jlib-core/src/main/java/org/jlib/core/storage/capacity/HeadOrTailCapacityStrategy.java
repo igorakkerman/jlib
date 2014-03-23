@@ -40,6 +40,6 @@ public interface HeadOrTailCapacityStrategy {
      * @throws InvalidPartialCapacityException
      *         if {@code headOrTailCapacity < 0}
      */
-    public void ensureCapacity(int headOrTailCapacity)
+    void ensureCapacity(int headOrTailCapacity)
     throws InvalidPartialCapacityException;
 }

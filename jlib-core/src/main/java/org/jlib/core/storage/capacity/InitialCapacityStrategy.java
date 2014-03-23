@@ -33,5 +33,5 @@ public interface InitialCapacityStrategy {
     /**
      * Ensures that the referenced {@link LinearIndexStorage} fits the initial number of Items.
      */
-    public void ensureCapacity();
+    void ensureCapacity();
 }

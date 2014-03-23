@@ -43,6 +43,6 @@ extends Accessor<Value> {
      * @throws InvalidArgumentException
      *         if {@code value} is invalid
      */
-    public void set(Value value)
+    void set(Value value)
     throws InvalidArgumentException;
 }

@@ -35,6 +35,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    public boolean isEmpty()
+    boolean isEmpty()
     throws InvalidContainerStateException;
 }

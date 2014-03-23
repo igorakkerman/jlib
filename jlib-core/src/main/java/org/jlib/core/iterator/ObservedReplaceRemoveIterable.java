@@ -34,5 +34,5 @@ extends ReplaceRemoveIterator<Item>,
         ObservedReplaceIterator<Item>,
         ObservedRemoveIterator<Item> {
 
-    public ObservedReplaceRemoveIterator<Item> iterator();
+    ObservedReplaceRemoveIterator<Item> iterator();
 }

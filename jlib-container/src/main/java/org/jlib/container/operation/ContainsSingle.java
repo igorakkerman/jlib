@@ -23,6 +23,6 @@ package org.jlib.container.operation;
 
 public interface ContainsSingle<Item> {
 
-    public boolean contains(Item item)
+    boolean contains(Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }
