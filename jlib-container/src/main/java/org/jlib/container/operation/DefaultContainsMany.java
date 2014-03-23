@@ -27,7 +27,6 @@ implements ContainsMany<Item> {
     private final ContainsSingle<Item> containedItems;
 
     public DefaultContainsMany(final ContainsSingle<Item> containedItems) {
-        super();
 
         this.containedItems = containedItems;
     }

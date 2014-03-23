@@ -49,7 +49,6 @@ public abstract class AbstractObject {
      * Creates a new {@link AbstractObject}.
      */
     protected AbstractObject() {
-        super();
     }
 
     /**

@@ -40,7 +40,6 @@ extends AbstractTemplateEngine<Object> {
      * Creates a new {@link IgnoreArgumentsTemplateEngine}.
      */
     private IgnoreArgumentsTemplateEngine() {
-        super();
     }
 
     @Override

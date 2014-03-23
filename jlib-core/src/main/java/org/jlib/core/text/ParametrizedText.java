@@ -50,7 +50,6 @@ extends AbstractObject {
     @SafeVarargs
     public ParametrizedText(final TemplateEngine<Argument> templateEngine, final int bufferSize,
                             final CharSequence template, final Argument... arguments) {
-        super();
 
         this.templateEngine = templateEngine;
 

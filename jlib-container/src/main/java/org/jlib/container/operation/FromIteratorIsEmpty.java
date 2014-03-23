@@ -29,7 +29,6 @@ implements IsEmpty<Item> {
     private final Iterable<Item> iterable;
 
     public FromIteratorIsEmpty(final Iterable<Item> iterable) {
-        super();
 
         this.iterable = iterable;
     }

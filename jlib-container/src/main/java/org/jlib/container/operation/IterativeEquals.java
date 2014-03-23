@@ -50,7 +50,6 @@ implements Equals<Iterable<Item>> {
      * Creates a new {@link IterativeEquals}.
      */
     private IterativeEquals() {
-        super();
     }
 
     @Override

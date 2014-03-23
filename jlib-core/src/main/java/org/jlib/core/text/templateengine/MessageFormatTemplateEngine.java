@@ -53,7 +53,6 @@ implements TemplateEngine {
      * Creates a new {@link MessageFormatTemplateEngine}.
      */
     private MessageFormatTemplateEngine() {
-        super();
     }
 
     @Override

@@ -29,7 +29,6 @@ extends AbstractObject
 implements TemplateEngine<Argument> {
 
     protected AbstractTemplateEngine() {
-        super();
     }
 
     @Override

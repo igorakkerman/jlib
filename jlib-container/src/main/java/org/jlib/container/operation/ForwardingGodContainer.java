@@ -184,7 +184,6 @@ implements GodContainer<Item> {
     private Iterable<Item> delegateIterable = disabledGodContainer;
 
     public ForwardingGodContainer() {
-        super();
     }
 
     @Override

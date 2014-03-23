@@ -39,7 +39,6 @@ extends AbstractObject {
 
     protected AbstractCapacityStrategy(final LinearIndexStorage<Item> storage,
                                        final ContentIndexRegistry contentIndexRegistry) {
-        super();
 
         this.storage = storage;
         this.contentIndexRegistry = contentIndexRegistry;

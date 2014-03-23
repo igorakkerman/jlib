@@ -48,7 +48,6 @@ extends Accessible<Value> {
      */
     public Initialized(final Value initialValue)
     throws InvalidArgumentException {
-        super();
 
         value = initialValue;
 

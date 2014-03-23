@@ -30,7 +30,8 @@ package org.jlib.core.system;
 public final class SystemUtility {
 
     /** no visible constructor */
-    private SystemUtility() {}
+    private SystemUtility() {
+    }
 
     /**
      * Returns the value of the system property indicated by the specified key.

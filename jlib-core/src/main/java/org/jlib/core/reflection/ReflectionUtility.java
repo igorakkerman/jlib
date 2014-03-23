@@ -57,7 +57,8 @@ import org.jlib.core.system.SystemUtility;
 public final class ReflectionUtility {
 
     /** no visible constructor */
-    private ReflectionUtility() {}
+    private ReflectionUtility() {
+    }
 
     /**
      * <p>

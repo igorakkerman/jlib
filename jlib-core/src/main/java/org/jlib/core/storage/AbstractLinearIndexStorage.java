@@ -42,7 +42,6 @@ implements LinearIndexStorage<Item> {
      */
     protected AbstractLinearIndexStorage(final int initialCapacity)
     throws InvalidCapacityException {
-        super();
 
         ensureCapacityValid("initialCapacity", initialCapacity);
     }

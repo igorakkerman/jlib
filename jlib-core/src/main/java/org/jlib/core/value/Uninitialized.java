@@ -39,7 +39,6 @@ implements Modifiable<Value> {
      * Creates a new {@link Uninitialized}.
      */
     protected Uninitialized() {
-        super();
     }
 
     /**

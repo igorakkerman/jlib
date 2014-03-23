@@ -27,7 +27,6 @@ implements BidiIterable<Item> {
     private final Item item;
 
     public SingletonIterable(final Item item) {
-        super();
 
         this.item = item;
     }

@@ -38,7 +38,6 @@ extends NotAccessibleException {
      * Creates a new {@link NotInitializedException}.
      */
     public NotInitializedException() {
-        super();
     }
 
     /**

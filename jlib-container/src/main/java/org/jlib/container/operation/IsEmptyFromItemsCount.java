@@ -27,7 +27,6 @@ implements IsEmpty<Item> {
     private final Count<Item> delegateContainer;
 
     public IsEmptyFromItemsCount(final Count<Item> count) {
-        super();
 
         this.delegateContainer = count;
     }

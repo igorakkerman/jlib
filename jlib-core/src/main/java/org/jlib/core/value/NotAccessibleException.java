@@ -40,7 +40,6 @@ extends ApplicationException {
     private final Optional<String> valueName;
 
     protected NotAccessibleException() {
-        super();
 
         valueName = Optional.absent();
     }

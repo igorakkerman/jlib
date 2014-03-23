@@ -26,7 +26,6 @@ public abstract class IterableAware<Item, Itble extends Iterable<Item>> {
     private final Itble iterable;
 
     public IterableAware(final Itble iterable) {
-        super();
 
         this.iterable = iterable;
     }

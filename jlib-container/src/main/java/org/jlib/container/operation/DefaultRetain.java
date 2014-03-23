@@ -31,8 +31,6 @@ implements Retain<Item> {
     public <RemoveIterable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
         */ DefaultRetain(final RemoveIterable containedItems) {
 
-        super();
-
         this.containedItems = containedItems;
         removableContainedItems = containedItems;
     }

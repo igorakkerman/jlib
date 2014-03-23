@@ -40,7 +40,6 @@ implements OperatedValue<Value> {
      * Creates a new {@link UninitializedOperated}.
      */
     protected UninitializedOperated() {
-        super();
     }
 
     @Override

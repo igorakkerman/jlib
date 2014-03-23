@@ -32,7 +32,6 @@ implements Iterable<Item>,
     private final Iterable<Item> items;
 
     protected ContainsAdapter(final Iterable<Item> items) {
-        super();
 
         this.items = items;
     }

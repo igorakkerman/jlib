@@ -61,7 +61,6 @@ implements Serializable {
      */
     public ContentIndexRegistry(final int firstItemIndex, final int lastItemIndex)
     throws LinearIndexStorageException {
-        super();
 
         this.firstItemIndex = firstItemIndex;
         this.lastItemIndex = lastItemIndex;

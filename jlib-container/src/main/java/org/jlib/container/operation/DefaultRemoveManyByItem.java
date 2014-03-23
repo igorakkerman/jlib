@@ -31,8 +31,6 @@ implements RemoveManyByItem<Item> {
     public <RemoveSingleIterable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
         */ DefaultRemoveManyByItem(final RemoveSingleIterable containedItems) {
 
-        super();
-
         this.containedItems = containedItems;
         removableContainedItems = containedItems;
     }

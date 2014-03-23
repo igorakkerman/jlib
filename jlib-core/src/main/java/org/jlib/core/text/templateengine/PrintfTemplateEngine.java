@@ -53,7 +53,6 @@ implements TemplateEngine<Object> {
      * Creates a new {@link PrintfTemplateEngine}.
      */
     private PrintfTemplateEngine() {
-        super();
     }
 
     @Override

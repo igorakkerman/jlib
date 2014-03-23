@@ -64,7 +64,6 @@ implements Serializable {
      *        integer specifying the target index
      */
     public IndexRangeOperationDescriptor(final int sourceBeginIndex, final int sourceEndIndex, final int targetIndex) {
-        super();
 
         this.sourceBeginIndex = sourceBeginIndex;
         this.sourceEndIndex = sourceEndIndex;

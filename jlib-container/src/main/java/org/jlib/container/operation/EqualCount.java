@@ -45,7 +45,6 @@ public class EqualCount<Item> {
      * Creates a new {@link EqualCount}.
      */
     private EqualCount() {
-        super();
     }
 
     public boolean haveEqualCount(final Count<Item> thisObject, @Nullable final Object otherObject) {

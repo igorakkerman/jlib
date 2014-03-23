@@ -48,7 +48,6 @@ implements HashCode<Iterable<Item>> {
      * Creates a new {@link ApacheCommonsIterableHashCode}.
      */
     private ApacheCommonsIterableHashCode() {
-        super();
     }
 
     @Override

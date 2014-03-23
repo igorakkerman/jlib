@@ -35,6 +35,5 @@ public final class VoidObject {
      * Creates a new {@link VoidObject}.
      */
     private VoidObject() {
-        super();
     }
 }

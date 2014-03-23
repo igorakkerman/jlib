@@ -41,7 +41,6 @@ implements ToRandomAccessList<Item> {
     }
 
     public IterableToRandomAccessList(final Iterable<Item> iterable, final int expectedItemsCount) {
-        super();
 
         this.iterable = iterable;
         this.expectedItemsCount = expectedItemsCount;

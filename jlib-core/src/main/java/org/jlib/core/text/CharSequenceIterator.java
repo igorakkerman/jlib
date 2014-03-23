@@ -42,7 +42,6 @@ implements Iterator<Character> {
 
     CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex,
                          final int lastCharacterIndex) {
-        super();
 
         this.characterSequence = characterSequence;
 

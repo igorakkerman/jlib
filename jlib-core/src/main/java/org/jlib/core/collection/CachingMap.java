@@ -97,7 +97,6 @@ extends ForwardingMap<Key, Value> {
      *        delegate {@link Map} to which all calls are delegated
      */
     public CachingMap(final Map<Key, Value> delegateMap) {
-        super();
 
         this.delegateMap = delegateMap;
     }

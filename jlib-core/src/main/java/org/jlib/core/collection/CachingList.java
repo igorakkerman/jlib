@@ -94,7 +94,6 @@ extends ForwardingList<Item> {
      *        delegate {@link List} to which all calls are delegated
      */
     public CachingList(final List<Item> delegateList) {
-        super();
 
         this.delegateList = delegateList;
     }
@@ -136,6 +135,6 @@ extends ForwardingList<Item> {
     @SuppressWarnings("AssignmentToNull")
     private void clearLastLookedUpIndex() {
         lastLookedUpItem = null;
-        lastLookedUpItemIndex = -1;
+        lastLookedUpItemIndex = - 1;
     }
 }

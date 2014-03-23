@@ -30,7 +30,6 @@ implements ToArray<Item> {
     private final DelegateContainer delegateIterable;
 
     public CountIterableToArray(final DelegateContainer delegateIterable) {
-        super();
 
         this.delegateIterable = delegateIterable;
     }
