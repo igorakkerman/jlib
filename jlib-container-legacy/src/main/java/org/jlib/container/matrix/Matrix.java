@@ -118,7 +118,7 @@ import org.jlib.core.iterator.Iterator;
 public interface Matrix<Entry>
 extends MatrixIterable<Entry>,
         ItemOperationStrategy<Entry>,
-        org.jlib.core.iterator.Iterable<Entry>,
+        Iterable<Entry>,
         Iterable<Entry> {
 
     /**

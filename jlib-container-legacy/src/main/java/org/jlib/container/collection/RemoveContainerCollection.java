@@ -54,7 +54,7 @@ extends ContainerCollection<Item> {
      *        {@link RetainItemsByIterable} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperation<Item> & org.jlib.core.iterator.Iterable<Item> & Iterable<Item>> //
+    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperation<Item> & Iterable<Item> & Iterable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

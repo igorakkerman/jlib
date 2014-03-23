@@ -40,7 +40,7 @@ extends AbstractObject
 implements ToRandomAccessList<Item>,
            ContainsItemsByContainsIterable<Item>,
            ItemOperationStrategy<Item>,
-           org.jlib.core.iterator.Iterable<Item>,
+           Iterable<Item>,
            Iterable<Item> {
 
     protected AbstractEmpty() {

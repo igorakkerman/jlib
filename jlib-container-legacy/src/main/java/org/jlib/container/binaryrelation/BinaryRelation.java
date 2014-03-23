@@ -40,7 +40,7 @@ import org.jlib.core.iterator.Iterator;
  */
 public interface BinaryRelation<LeftValue, RightValue>
 extends ItemOperationStrategy<Pair<LeftValue, RightValue>>,
-        org.jlib.core.iterator.Iterable<Pair<LeftValue, RightValue>>,
+        Iterable<Pair<LeftValue, RightValue>>,
         Iterable<Pair<LeftValue, RightValue>> {
 
     /**

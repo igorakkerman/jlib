@@ -22,7 +22,7 @@
 package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.iterator.Iterable;
+import Iterable;
 import org.jlib.core.iterator.TwoWayIterable;
 
 /**
@@ -36,7 +36,7 @@ import org.jlib.core.iterator.TwoWayIterable;
 public interface Sequence<Item>
 extends TwoWayIterable<Item>,
         ItemOperationStrategy<Item>,
-        org.jlib.core.iterator.Iterable<Item>,
+        Iterable<Item>,
         Iterable<Item> {
 
     /**

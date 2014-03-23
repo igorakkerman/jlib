@@ -22,7 +22,7 @@
 package org.jlib.container.operation.legacy;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.iterator.Iterable;
+import Iterable;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;

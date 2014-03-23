@@ -28,7 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.jlib.core.iterator.IterableIterator;
+import IterableIterator;
 import org.jlib.core.iterator.Iterator;
 
 import org.jlib.container.operation.Container;
