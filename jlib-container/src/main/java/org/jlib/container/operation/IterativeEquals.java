@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import javax.annotation.Nullable;
 
-import org.jlib.core.language.Equals;
+import org.jlib.core.language.operation.Equals;
 
 import static org.jlib.core.iterator.IterableUtility.provideEqualItems;
 

@@ -23,6 +23,10 @@ package org.jlib.core.language;
 
 import javax.annotation.Nullable;
 
+import org.jlib.core.language.operation.Equals;
+import org.jlib.core.language.operation.EqualsHashCode;
+import org.jlib.core.language.operation.HashCode;
+
 public class ForwardingEqualsHashCode<Obj>
 implements EqualsHashCode<Obj> {
 
@@ -41,7 +45,7 @@ implements EqualsHashCode<Obj> {
     }
 
     @Override
-    public int getHashCode(final Obj object) {
-        return hashCodeStrategy.getHashCode(object);
+    public int hashCode(final Obj object) {
+        return hashCodeStrategy.hashCode(object);
     }
 }

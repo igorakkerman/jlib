@@ -19,13 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.operation;
 
-/**
- * Tagging interface for all operation operation strategy on {@link Item}s.
- *
- * @author Igor Akkerman
- */
-public interface ItemOperation<Item> {
-    // intentionally empty
+import org.jlib.core.language.operation.ItemOperation;
+
+public interface HashCode<Item>
+extends ItemOperation<Item> {
+
+    /**
+     * Returns the hash code of this {@link IterableContainer} confirming to {@link #equals(Object)}.
+     *
+     * @return integer specifying the hash code
+     */
+    int hashCode(Item item);
 }

@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import org.jlib.core.language.HashCode;
+import org.jlib.core.language.operation.HashCode;
 
 public class ApacheCommonsIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
@@ -51,7 +51,7 @@ implements HashCode<Iterable<Item>> {
     }
 
     @Override
-    public int getHashCode(final Iterable<Item> items) {
+    public int hashCode(final Iterable<Item> items) {
         final HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
 
         for (final Item item : items)

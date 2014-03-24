@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.ItemOperation;
+import org.jlib.core.language.operation.ItemOperation;
 
 /**
  * {@link RetainItemsByIterable} allowing its Items to be removed by random access to

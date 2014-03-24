@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.ItemOperation;
+import org.jlib.core.language.operation.ItemOperation;
 
 public interface Count<Item>
 extends ItemOperation<Item> {

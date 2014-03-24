@@ -24,7 +24,7 @@ package org.jlib.container.operation;
 import java.util.List;
 import java.util.RandomAccess;
 
-import org.jlib.core.language.ItemOperation;
+import org.jlib.core.language.operation.ItemOperation;
 
 public interface ToRandomAccessList<Item>
 extends ItemOperation<Item> {

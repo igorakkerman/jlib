@@ -24,7 +24,7 @@ package org.jlib.container.operation;
 import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.language.ItemOperation;
+import org.jlib.core.language.operation.ItemOperation;
 import org.jlib.core.iterator.InvalidIteratorStateException;
 
 import static org.jlib.core.language.ExceptionMessageUtility.message;

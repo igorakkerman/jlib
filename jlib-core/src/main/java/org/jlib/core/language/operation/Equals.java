@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.operation;
 
 import javax.annotation.Nullable;
 

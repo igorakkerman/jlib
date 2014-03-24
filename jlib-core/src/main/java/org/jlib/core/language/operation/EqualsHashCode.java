@@ -19,7 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.operation;
+
+import org.jlib.core.language.operation.Equals;
+import org.jlib.core.language.operation.HashCode;
 
 public interface EqualsHashCode<Obj>
 extends Equals<Obj>,

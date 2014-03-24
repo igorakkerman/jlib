@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import java.util.List;
 
-import org.jlib.core.language.ItemOperation;
+import org.jlib.core.language.operation.ItemOperation;
 
 public interface ToSequentialList<Item>
 extends ItemOperation<Item> {
