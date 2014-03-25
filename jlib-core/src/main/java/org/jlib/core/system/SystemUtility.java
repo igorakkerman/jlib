@@ -86,7 +86,7 @@ public final class SystemUtility {
      *         access to the specified system property
      *
      * @throws IllegalArgumentException
-     *         if {@code key} is an empty String
+     *         if {@code propertyName} is an empty String
      *
      * @throws ApplicationPropertyNotSetException
      *         if the specified system property is not set
