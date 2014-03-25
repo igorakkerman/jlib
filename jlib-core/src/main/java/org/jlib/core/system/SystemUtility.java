@@ -29,10 +29,6 @@ package org.jlib.core.system;
 // TODO: review thrown exceptions
 public final class SystemUtility {
 
-    /** no visible constructor */
-    private SystemUtility() {
-    }
-
     /**
      * Returns the value of the system property indicated by the specified key.
      * The difference to the {@link System#getProperty(String)} method is that
@@ -124,5 +120,9 @@ public final class SystemUtility {
                 return false;
 
         return true;
+    }
+
+    /** no visible constructor */
+    private SystemUtility() {
     }
 }
