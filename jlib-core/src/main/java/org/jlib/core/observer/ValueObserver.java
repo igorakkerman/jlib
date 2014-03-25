@@ -65,7 +65,7 @@ public interface ValueObserver<Value> {
     }
 
     /**
-     * Performs actions before the targeted operation.
+     * Performs actions after the targeted operation has failed throwing an {@link OperatorException}.
      *
      * @param value
      *        Value operated on
