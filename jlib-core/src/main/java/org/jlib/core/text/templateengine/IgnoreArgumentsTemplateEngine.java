@@ -21,18 +21,18 @@
 
 package org.jlib.core.text.templateengine;
 
-public final class IgnoreArgumentsTemplateEngine
-extends AbstractTemplateEngine<Object> {
+public final class IgnoreArgumentsTemplateEngine<Argument>
+implements TemplateEngine<Argument> {
 
     /** sole {@link IgnoreArgumentsTemplateEngine} instance */
-    private static final IgnoreArgumentsTemplateEngine INSTANCE = new IgnoreArgumentsTemplateEngine();
+    private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
 
     /**
      * Returns the sole {@link IgnoreArgumentsTemplateEngine} instance.
      *
      * @return sole {@link IgnoreArgumentsTemplateEngine} instance
      */
-    public static IgnoreArgumentsTemplateEngine getInstance() {
+    public static IgnoreArgumentsTemplateEngine<?> getInstance() {
         return INSTANCE;
     }
 
@@ -43,7 +43,8 @@ extends AbstractTemplateEngine<Object> {
     }
 
     @Override
-    public String applyArguments(final CharSequence template, final Object... arguments) {
+    @SafeVarargs
+    public final String applyArguments(final CharSequence template, final Argument... arguments) {
         return template.toString();
     }
 }

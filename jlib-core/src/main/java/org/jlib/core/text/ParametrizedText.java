@@ -27,7 +27,7 @@ import org.jlib.core.text.templateengine.TemplateEngine;
 public class ParametrizedText<Argument>
 extends AbstractObject {
 
-    public static final int EXPECTED_ARGUMENT_LENGTH = 30;
+    public static final int EXPECTED_ARGUMENT_LENGTH = 50;
 
     public static final int EXPECTED_ADDITIONAL_LENGTH = 50;
 

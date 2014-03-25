@@ -51,5 +51,7 @@ public interface TemplateEngine<Argument> {
     @SuppressWarnings("unchecked")
     String applyArguments(CharSequence template, Argument... arguments);
 
-    String applyArguments(ParametrizedText<Argument> parametrizedText);
+    default String applyArguments(final ParametrizedText<Argument> parametrizedText) {
+        return applyArguments(parametrizedText.toString(), parametrizedText.getArguments());
+    }
 }

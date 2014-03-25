@@ -31,13 +31,11 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-// TODO: unit unittest
-public final class MessageFormatTemplateEngine
-extends AbstractTemplateEngine
-implements TemplateEngine {
+public final class MessageFormatTemplateEngine<Argument>
+implements TemplateEngine<Argument> {
 
     /** sole {@link MessageFormatTemplateEngine} instance */
-    public static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
+    private static final MessageFormatTemplateEngine<?> INSTANCE = new MessageFormatTemplateEngine<>();
 
     /**
      * Returns the sole {@link MessageFormatTemplateEngine} instance.
@@ -56,7 +54,8 @@ implements TemplateEngine {
     }
 
     @Override
-    public String applyArguments(final CharSequence template, final Object... arguments) {
+    @SafeVarargs
+    public final String applyArguments(final CharSequence template, final Argument... arguments) {
         return MessageFormat.format(template.toString(), arguments);
     }
 }

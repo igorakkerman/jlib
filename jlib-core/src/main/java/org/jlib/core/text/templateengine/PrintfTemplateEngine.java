@@ -31,13 +31,11 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-// TODO: unit unittest
-public final class PrintfTemplateEngine
-extends AbstractTemplateEngine<Object>
-implements TemplateEngine<Object> {
+public final class PrintfTemplateEngine<Argument>
+implements TemplateEngine<Argument> {
 
     /** sole {@link PrintfTemplateEngine} instance */
-    public static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();
+    private static final PrintfTemplateEngine<?> INSTANCE = new PrintfTemplateEngine<>();
 
     /**
      * Returns the sole {@link PrintfTemplateEngine} instance.
