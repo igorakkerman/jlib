@@ -104,7 +104,8 @@ public final class SystemUtility {
 
     /**
      * Compares the specified {@link Object}s for mutual equality. Two {@link Object}s {@code object1}, {@code object2}
-     * are considered equal if {@code object1.equals(object2)}.
+     * are considered equal if {@code object1.equals(object2)}. Returns {@code true} for an empty sequence of
+     * {@link Object}s.
      *
      * @param objects
      *        comma separated sequence of {@link Object}s to compare
@@ -113,6 +114,9 @@ public final class SystemUtility {
      *         is empty; {@code false} otherwise
      */
     public static boolean equal(final Object... objects) {
+        if (objects.length == 0)
+            return true;
+
         final Object firstObject = objects[0];
 
         for (int index = 1; index < objects.length; index++)
