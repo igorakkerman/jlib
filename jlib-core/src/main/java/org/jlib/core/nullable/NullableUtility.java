@@ -21,9 +21,9 @@
 
 package org.jlib.core.nullable;
 
-import org.jlib.core.system.SystemUtility;
-
 import javax.annotation.Nullable;
+
+import org.jlib.core.system.SystemUtility;
 
 /**
  * Utility class providing static methods for {@link Nullable} {@link Object} operations.
@@ -80,7 +80,7 @@ public final class NullableUtility {
      * @return integer specifying the hash code of {@code object}; {@code 0} if
      *         {@code object} is {@code null}
      */
-    public static int getHashCodeOrZero(final @Nullable Object object) {
+    public static int hashCodeOrZero(final @Nullable Object object) {
         return object != null ?
                object.hashCode() :
                0;
