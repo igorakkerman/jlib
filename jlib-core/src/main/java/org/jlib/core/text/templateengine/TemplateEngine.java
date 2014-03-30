@@ -21,8 +21,6 @@
 
 package org.jlib.core.text.templateengine;
 
-import org.jlib.core.text.ParametrizedText;
-
 /**
  * Routine applying {@link Argument}s to a textual template, usually substituting placeholders.
  * Each {@link TemplateEngine} implementation defines the individual format of the template and the algorithm applying
@@ -50,8 +48,4 @@ public interface TemplateEngine<Argument> {
      */
     @SuppressWarnings("unchecked")
     String applyArguments(CharSequence template, Argument... arguments);
-
-    default String applyArguments(final ParametrizedText<Argument> parametrizedText) {
-        return applyArguments(parametrizedText.toString(), parametrizedText.getArguments());
-    }
 }

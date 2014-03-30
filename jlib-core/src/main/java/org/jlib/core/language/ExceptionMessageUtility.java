@@ -31,6 +31,7 @@ import static java.util.Optional.empty;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
+import static org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine.*;
 
 public final class ExceptionMessageUtility {
 
@@ -52,7 +53,7 @@ public final class ExceptionMessageUtility {
     }
 
     public static ExceptionMessage message(final Object object) {
-        return new ExceptionMessage(IgnoreArgumentsTemplateEngine.getInstance(), object.toString());
+        return new ExceptionMessage(getInstance(), object.toString());
     }
 
     public static ExceptionMessage message(final CharSequence messageTemplate, final Object... messageArguments) {

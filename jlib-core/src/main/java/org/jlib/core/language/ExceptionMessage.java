@@ -21,13 +21,13 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.text.ParametrizedText;
+import org.jlib.core.text.ParametrizedTextUtility;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
 import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 
 public class ExceptionMessage
-extends ParametrizedText<Object> {
+extends ParametrizedTextUtility<Object> {
 
     public ExceptionMessage(final TemplateEngine<Object> templateEngine, final CharSequence template,
                             final Object... arguments) {
@@ -48,23 +48,50 @@ extends ParametrizedText<Object> {
         return this;
     }
 
-    @Override
     public ExceptionMessage append(final Object object) {
         super.append(object);
 
         return this;
     }
 
-    @Override
     public ExceptionMessage append(final char character) {
         super.append(character);
 
         return this;
     }
 
-    @Override
-    public ExceptionMessage append(final int integer) {
-        super.append(integer);
+    public ExceptionMessage append(final boolean bool) {
+        super.append(bool);
+
+        return this;
+    }
+
+    public ExceptionMessage append(final byte number) {
+        super.append(number);
+
+        return this;
+    }
+
+    public ExceptionMessage append(final int number) {
+        super.append(number);
+
+        return this;
+    }
+
+    public ExceptionMessage append(final long number) {
+        super.append(number);
+
+        return this;
+    }
+
+    public ExceptionMessage append(final float number) {
+        super.append(number);
+
+        return this;
+    }
+
+    public ExceptionMessage append(final double number) {
+        super.append(number);
 
         return this;
     }
