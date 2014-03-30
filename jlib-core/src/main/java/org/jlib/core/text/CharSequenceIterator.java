@@ -23,7 +23,7 @@ package org.jlib.core.text;
 
 import java.util.Iterator;
 
-final class CharSequenceIterator
+public final class CharSequenceIterator
 implements Iterator<Character> {
 
     private final CharSequence characterSequence;
@@ -32,15 +32,15 @@ implements Iterator<Character> {
 
     private final int lastCharacterIndex;
 
-    CharSequenceIterator(final CharSequence characterSequence) {
+    public CharSequenceIterator(final CharSequence characterSequence) {
         this(characterSequence, 0);
     }
 
-    CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex) {
+    public CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex) {
         this(characterSequence, firstCharacterIndex, characterSequence.length() - 1);
     }
 
-    CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex,
+    public CharSequenceIterator(final CharSequence characterSequence, final int firstCharacterIndex,
                          final int lastCharacterIndex) {
 
         this.characterSequence = characterSequence;
