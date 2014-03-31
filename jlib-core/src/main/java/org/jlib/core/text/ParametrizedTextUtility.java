@@ -35,35 +35,36 @@ public final class ParametrizedTextUtility {
 
     @SafeVarargs
     public static <Argument> /*
-               */ String toString(final TemplateEngine<Argument> templateEngine, final CharSequence template,
-                                  final Argument... arguments) {
-        return buildString(templateEngine, template, arguments).toString();
+               */ String stringFrom(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+                                    final Argument... arguments) {
+        return buildStringFrom(templateEngine, template, arguments).toString();
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String toString(final TemplateEngine<Argument> templateEngine, final int bufferSize,
-                                  final CharSequence template, final Argument... arguments) {
+               */ String stringFrom(final TemplateEngine<Argument> templateEngine, final int bufferSize,
+                                    final CharSequence template, final Argument... arguments) {
 
-        return buildString(templateEngine, bufferSize, template, arguments).toString();
+        return buildStringFrom(templateEngine, bufferSize, template, arguments).toString();
+    }
+
+    private static <Argument> StringBuilder buildStringFrom(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+                                                            final Argument[] arguments) {
+        return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template, arguments);
+    }
+
+    private static <Argument> StringBuilder buildStringFrom(final TemplateEngine<Argument> templateEngine,
+                                                            final int bufferSize, final CharSequence template,
+                                                            final Argument[] arguments) {
+        return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ StringBuilder buildString(final TemplateEngine<Argument> templateEngine, final CharSequence template,
-                                            final Argument... arguments) {
+               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Argument> templateEngine,
+                                       final CharSequence template, final Argument... arguments) {
 
-        return buildString(templateEngine, computeExpectedBufferSize(template, arguments), template, arguments);
-    }
-
-    @SafeVarargs
-    public static <Argument> /*
-               */ StringBuilder buildString(final TemplateEngine<Argument> templateEngine, final int bufferSize,
-                                            final CharSequence template, final Argument... arguments) {
-
-        final String createdText = templateEngine.applyArguments(template, arguments);
-
-        return new StringBuilder(bufferSize).append(createdText);
+        return stringBuilder.append(templateEngine.applyArguments(template, arguments));
     }
 
     private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {

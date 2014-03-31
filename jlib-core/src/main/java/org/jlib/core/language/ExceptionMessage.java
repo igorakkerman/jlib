@@ -26,8 +26,7 @@ import org.jlib.core.text.templateengine.TemplateEngine;
 
 import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 
-public class ExceptionMessage
-extends ParametrizedTextUtility<Object> {
+public class ExceptionMessage {
 
     public ExceptionMessage(final TemplateEngine<Object> templateEngine, final CharSequence template,
                             final Object... arguments) {
