@@ -21,13 +21,12 @@
 
 package org.jlib.core.language;
 
-import static org.jlib.core.language.ExceptionMessageUtility.autoMessage;
-
-import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.text.IsEmptyString.isEmptyString;
+import static org.jlib.core.language.ExceptionMessageUtility.autoMessage;
 import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 public class ExceptionMessageUtilityUnitTest {
 
@@ -38,7 +37,13 @@ public class ExceptionMessageUtilityUnitTest {
     }
 
     @Test
-    public void testCreateMessageFromExceptionName()
+    public void createMessageFromRootException()
+    throws Exception {
+        assertThat(autoMessage(new Exception()), isEmptyString());
+    }
+
+    @Test
+    public void createMessageFromExceptionName()
     throws Exception {
         assertThat(autoMessage(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
     }
