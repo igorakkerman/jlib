@@ -27,6 +27,12 @@ public class ExceptionMessageTest {
 
     @Test
     public void expectation() {
-        throw new InvalidArgumentException(printf("message %s", "value"), 1);
+        throw new InvalidArgumentException(printf("message %s", "value").with("currentObject", this));
+    }
+
+    private static class ExceptionA extends InvalidStateException {
+
+        private ExceptionA() {
+        }
     }
 }
