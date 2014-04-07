@@ -26,6 +26,7 @@ package org.jlib.core.operator;
  *
  * @author Igor Akkerman
  */
+@FunctionalInterface
 public interface HandledOperator {
 
     /**
