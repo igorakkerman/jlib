@@ -27,13 +27,13 @@ import org.jlib.core.value.Accessor;
  * {@link Accessor} operating on the held Vallue using an
  * {@link OptionalValueOperator}.
  *
- * @param <Vallue>
+ * @param <Value>
  *        type of the held value
  *
  * @author Igor Akkerman
  */
-interface OperatedValue<Vallue>
-extends Accessor<Vallue> {
+interface OperatedValue<Value>
+extends Accessor<Value> {
 
     /**
      * Operates on the held Vallue using the specified
@@ -44,5 +44,5 @@ extends Accessor<Vallue> {
      *
      * @author Igor Akkerman
      */
-    void operate(OptionalValueOperator<Vallue> operator);
+    void operate(OptionalValueOperator<Value> operator);
 }
