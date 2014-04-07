@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2014 Igor Akkerman
+ *     Copyright 2005-2013 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,28 +21,11 @@
 
 package org.jlib.core.value;
 
-import java.util.function.Supplier;
+import org.jlib.core.language.AbstractObject;
 
-/**
- * {@link Accessor} of a {@link Value} that is guaranteed to be accessible.
- *
- * @param <Value>
- *        type of the value
- *
- * @author Igor Akkerman
- */
-public interface Accessible<Value>
-extends Accessor<Value>,
-        Supplier<Value> {
-
-    /**
-     * Returns the {@link Value}. Since the {@link Value} is guaranteed to be accessible, <em>no</em>
-     * {@link NotAccessibleException} will be thrown.
-     *
-     * @return registered {@link Value}
-     */
-    @Override
-    Value get();
+public abstract class AbstractAccessible<Value>
+extends AbstractObject
+implements Accessible<Value> {
 
     /**
      * <p>
@@ -56,7 +39,12 @@ extends Accessor<Value>,
      * @return {@code true} always
      */
     @Override
-    default boolean canGet() {
-        return true;
+    public final boolean canGet() {
+        return Accessible.super.canGet();
+    }
+
+    @Override
+    public final String toString() {
+        return get().toString();
     }
 }

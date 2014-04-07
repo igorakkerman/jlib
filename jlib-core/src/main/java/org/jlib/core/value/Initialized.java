@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link Accessible} initialized by the constructor.
+ * {@link AbstractAccessible} initialized by the constructor.
  *
  * @param <Value>
  *        type of the value
@@ -32,7 +32,7 @@ import org.jlib.core.language.InvalidArgumentException;
  * @author Igor Akkerman
  */
 public class Initialized<Value>
-extends Accessible<Value> {
+extends AbstractAccessible<Value> {
 
     /** registered {@link Value} */
     private Value value;
@@ -70,6 +70,7 @@ extends Accessible<Value> {
      */
     protected void set(final Value value)
     throws InvalidArgumentException {
+        // TODO: is it correct to validate here, not with the new value as an argument afterwards?
         ensureValid();
 
         this.value = value;
