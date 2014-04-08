@@ -26,7 +26,7 @@ import org.jlib.core.operator.OperatorException;
 
 /**
  * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#handleAfterFailure(Object, OperatorException)}
+ * {@link ValueObserver#afterFailure(Object, OperatorException)}
  * operation.
  *
  * @author Igor Akkerman

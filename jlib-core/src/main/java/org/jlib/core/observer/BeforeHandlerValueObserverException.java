@@ -25,7 +25,7 @@ import org.jlib.core.language.ExceptionMessage;
 
 /**
  * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#handleAfterSuccess(Object)} operation.
+ * {@link ValueObserver#afterSuccess(Object)} operation.
  *
  * @author Igor Akkerman
  */

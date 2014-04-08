@@ -35,6 +35,10 @@ public final class ObserverUtility {
     private ObserverUtility() {
     }
 
+    public static <Value> BuiltValueObserver<Value> observe() {
+        return new BuiltValueObserver<>();
+    }
+
     /**
      * Operates on the specified Value using the specified {@link HandledOperator} .
      *
@@ -66,20 +70,28 @@ public final class ObserverUtility {
                                        final ValueObserver<Value>... observers)
     throws RuntimeException {
         try {
-            for (final ValueObserver<Value> observer : observers)
-                observer.handleBefore(value);
+            for (final ValueObserver<Value> observer : observers) {
+                observer.before(value);
+            }
 
             handledOperator.operate();
 
-            for (final ValueObserver<Value> observer : observers)
-                observer.handleAfterSuccess(value);
+            for (final ValueObserver<Value> observer : observers) {
+                observer.afterSuccess(value);
+            }
         }
         catch (final OperatorException exception) {
             // if "legal" exception is thrown
-            for (final ValueObserver<Value> observer : observers)
-                observer.handleAfterFailure(value, exception);
+            for (final ValueObserver<Value> observer : observers) {
+                observer.afterFailure(value, exception);
+            }
 
             throw exception.getCause();
         }
+    }
+
+    public static void main(final String... commandLineArguments) {
+        operate(null, null, observe().beforeDo(value -> System.out.println("Success: " + value))
+                                     .afterFailure(value -> System.out.println("Failure: " + value)));
     }
 }

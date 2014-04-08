@@ -43,7 +43,7 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    default void handleBefore(final Value value)
+    default void before(final Value value)
     throws RuntimeException {
         // intentionally without functionality
     }
@@ -59,7 +59,7 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    default void handleAfterSuccess(final Value value)
+    default void afterSuccess(final Value value)
     throws RuntimeException {
         // intentionally without functionality
     }
@@ -77,7 +77,7 @@ public interface ValueObserver<Value> {
      *         if the operation cannot be completed normally
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
-    default void handleAfterFailure(final Value value, final OperatorException operatorException)
+    default void afterFailure(final Value value, final OperatorException operatorException)
     throws RuntimeException {
         // intentionally without functionality
     }
