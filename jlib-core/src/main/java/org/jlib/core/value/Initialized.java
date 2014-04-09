@@ -51,7 +51,7 @@ extends AbstractAccessible<Value> {
 
         value = initialValue;
 
-        ensureValid();
+        assertValid(value);
     }
 
     @Override
@@ -70,14 +70,13 @@ extends AbstractAccessible<Value> {
      */
     protected void set(final Value value)
     throws InvalidArgumentException {
-        // TODO: is it correct to validate here, not with the new value as an argument afterwards?
-        ensureValid();
+        assertValid(value);
 
         this.value = value;
     }
 
     @SuppressWarnings("EmptyMethod")
-    protected void ensureValid() {
+    protected void assertValid(final Value value) {
         // perform optional validation in subclasses
     }
 }
