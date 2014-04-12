@@ -24,8 +24,8 @@ package org.jlib.core.array;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.core.iterator.BidiIterator;
 import org.jlib.core.iterator.BidiIterable;
+import org.jlib.core.iterator.BidiIterator;
 
 /**
  * Utility for arrays.
@@ -47,6 +47,22 @@ public final class ArrayUtility {
      */
     @SuppressWarnings("unchecked")
     public static <Item> Item[] emptyArray() {
+        return (Item[]) EMPTY_ARRAY;
+    }
+
+    /**
+     * Returns a typesafe empty array of {@link Item}s of the specified type.
+     *
+     * @param <Item>
+     *        type of potential {@link Item}s in the array
+     *
+     * @param clazz
+     *        {@link Class} of {@link Item}s
+     *
+     * @return empty array of {@link Item}s
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] emptyArray(final Class<Item> clazz) {
         return (Item[]) EMPTY_ARRAY;
     }
 
