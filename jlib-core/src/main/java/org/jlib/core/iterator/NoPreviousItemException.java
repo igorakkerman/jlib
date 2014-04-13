@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to
@@ -71,7 +71,7 @@ extends InvalidIteratorStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Iterable<?> iterable, final ExceptionMessage message) {
+    public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
         super(iterable, message);
     }
 
@@ -91,7 +91,7 @@ extends InvalidIteratorStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public NoPreviousItemException(final Iterable<?> iterable, final ExceptionMessage message,
+    public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message,
                                    final Exception cause) {
         super(iterable, message, cause);
     }

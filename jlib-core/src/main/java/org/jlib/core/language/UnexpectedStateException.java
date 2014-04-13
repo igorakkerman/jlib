@@ -40,7 +40,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final ExceptionMessage message) {
+    public UnexpectedStateException(final ParametrizedMessage message) {
         super(message);
     }
 
@@ -66,7 +66,7 @@ extends InvalidStateException {
      * @param messageArguments
      *        comma separated sequence of error message arguments
      */
-    public UnexpectedStateException(final Exception cause, final ExceptionMessage message) {
+    public UnexpectedStateException(final Exception cause, final ParametrizedMessage message) {
         super(message, cause);
     }
 }

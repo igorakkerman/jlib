@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to
@@ -41,7 +41,7 @@ extends NoSuchElementException {
 
     private final Iterable<?> iterable;
 
-    private final Optional<ExceptionMessage> message;
+    private final Optional<ParametrizedMessage> message;
 
     /**
      * Creates a new {@link NoNextItemException}.
@@ -49,7 +49,7 @@ extends NoSuchElementException {
      * @param iterable
      *        traversed {@link Iterable}
      */
-    public NoNextItemException(final Iterable<?> iterable, final Optional<ExceptionMessage> message,
+    public NoNextItemException(final Iterable<?> iterable, final Optional<ParametrizedMessage> message,
                                final Optional<Throwable> cause) {
         super(message.toString());
 

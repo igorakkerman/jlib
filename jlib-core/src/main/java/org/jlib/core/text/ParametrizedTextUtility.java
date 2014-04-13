@@ -29,46 +29,23 @@ public final class ParametrizedTextUtility {
 
     public static final int EXPECTED_ADDITIONAL_LENGTH = 50;
 
-    public static <Value> NamedValue arg(final CharSequence name, final Value value) {
+    public static <Value> NamedValue<Value> arg(final CharSequence name, final Value value) {
         return new NamedValue<>(name, value);
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String stringFrom(final TemplateEngine<Argument> templateEngine, final CharSequence template,
-                                    final Argument... arguments) {
-        return buildStringFrom(templateEngine, template, arguments).toString();
+               */ String text(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+                              final Argument... arguments) {
+        return textBuilder(templateEngine, template, arguments).toString();
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String stringFrom(final TemplateEngine<Argument> templateEngine, final int bufferSize,
-                                    final CharSequence template, final Argument... arguments) {
+               */ String text(final TemplateEngine<Argument> templateEngine, final int bufferSize,
+                              final CharSequence template, final Argument... arguments) {
 
-        return buildStringFrom(templateEngine, bufferSize, template, arguments).toString();
-    }
-
-    private static <Argument> StringBuilder buildStringFrom(final TemplateEngine<Argument> templateEngine, final CharSequence template,
-                                                            final Argument[] arguments) {
-        return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template, arguments);
-    }
-
-    private static <Argument> StringBuilder buildStringFrom(final TemplateEngine<Argument> templateEngine,
-                                                            final int bufferSize, final CharSequence template,
-                                                            final Argument[] arguments) {
-        return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
-    }
-
-    @SafeVarargs
-    public static <Argument> /*
-               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Argument> templateEngine,
-                                       final CharSequence template, final Argument... arguments) {
-
-        return stringBuilder.append(templateEngine.applyArguments(template, arguments));
-    }
-
-    private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {
-        return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
+        return textBuilder(templateEngine, bufferSize, template, arguments).toString();
     }
 
     // no visible default constructor

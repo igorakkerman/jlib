@@ -21,7 +21,7 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ValueObserverException} thrown during a
@@ -52,7 +52,7 @@ extends ValueObserverException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected AfterSuccessHandlerValueObserverException(final Object value, final ExceptionMessage message,
+    protected AfterSuccessHandlerValueObserverException(final Object value, final ParametrizedMessage message,
                                                         final Exception cause) {
         super(value, message, cause);
     }

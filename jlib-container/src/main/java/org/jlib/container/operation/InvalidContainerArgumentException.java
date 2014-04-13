@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.language.operation.ItemOperation;
@@ -76,7 +76,7 @@ extends InvalidArgumentException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message) {
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ParametrizedMessage message) {
         super(message.with(container));
     }
 
@@ -96,7 +96,7 @@ extends InvalidArgumentException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidContainerArgumentException(final ItemOperation<?> container, final ExceptionMessage message,
+    public InvalidContainerArgumentException(final ItemOperation<?> container, final ParametrizedMessage message,
                                              final Exception cause) {
         super(message.with(container), cause);
     }

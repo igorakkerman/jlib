@@ -28,7 +28,7 @@ import static org.jlib.core.language.ExceptionMessageUtility.autoMessage;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
-public class ExceptionMessageUtilityUnitTest {
+public class ParametrizedMessageUtilityUnitTest {
 
     private static class IBliBlaBlubException
     extends Exception {

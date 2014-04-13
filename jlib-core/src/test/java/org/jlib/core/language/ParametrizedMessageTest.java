@@ -23,7 +23,7 @@ package org.jlib.core.language;
 
 import org.junit.Test;
 
-public class ExceptionMessageTest {
+public class ParametrizedMessageTest {
 
     @Test
     public void expectation() {
