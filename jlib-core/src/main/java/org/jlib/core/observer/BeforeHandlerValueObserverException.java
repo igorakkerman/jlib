@@ -21,11 +21,11 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 
 /**
  * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#handleAfterSuccess(Object)} operation.
+ * {@link ValueObserver#afterSuccess(Object)} operation.
  *
  * @author Igor Akkerman
  */
@@ -44,7 +44,7 @@ extends ValueObserverException {
      * @param cause
      *        {@link Exception} that caused this {@link BeforeHandlerValueObserverException}
      */
-    protected BeforeHandlerValueObserverException(final Object value, final ExceptionMessage message,
+    protected BeforeHandlerValueObserverException(final Object value, final ParametrizedMessage message,
                                                   final Exception cause) {
         super(value, message, cause);
     }

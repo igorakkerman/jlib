@@ -19,30 +19,32 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.operator;
+package org.jlib.core.value;
 
-import org.jlib.core.value.Accessor;
+import org.jlib.core.language.AbstractObject;
 
-/**
- * {@link Accessor} operating on the held Vallue using an
- * {@link OptionalValueOperator}.
- *
- * @param <Value>
- *        type of the held value
- *
- * @author Igor Akkerman
- */
-interface OperatedValue<Value>
-extends Accessor<Value> {
+public abstract class AbstractAccessible<Value>
+extends AbstractObject
+implements Accessible<Value> {
 
     /**
-     * Operates on the held Vallue using the specified
-     * {@link OptionalValueOperator}.
+     * <p>
+     * {@inheritDoc}
+     * </p>
+     * <p>
+     * All instances of {@link AbstractAccessible} guarantee the {@link Value} to be accessible, hence always returns
+     * {@code true}.
+     * </p>
      *
-     * @param operator
-     *        {@link OptionalValueOperator} operating on the held Vallue
-     *
-     * @author Igor Akkerman
+     * @return {@code true} always
      */
-    void operate(OptionalValueOperator<Value> operator);
+    @Override
+    public final boolean canGet() {
+        return Accessible.super.canGet();
+    }
+
+    @Override
+    public final String toString() {
+        return get().toString();
+    }
 }

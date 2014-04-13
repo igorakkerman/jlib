@@ -22,7 +22,7 @@
 package org.jlib.core.observer;
 
 import org.jlib.core.language.ApplicationException;
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 import org.jlib.core.language.InvalidStateException;
 
 /**
@@ -42,7 +42,7 @@ extends InvalidStateException {
      * @param cause
      *        {@link Exception} that caused this {@link ObserverException}
      */
-    protected ObserverException(final ExceptionMessage message, final Exception cause) {
+    protected ObserverException(final ParametrizedMessage message, final Exception cause) {
         super(message, cause);
     }
 }

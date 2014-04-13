@@ -21,16 +21,9 @@
 
 package org.jlib.core.text.templateengine;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.jlib.core.text.NamedValue;
 
-public class ColonNamedTemplateEngine<Value>
+public class ColonNamedParameterTemplateEngine<Value>
 implements TemplateEngine<NamedValue<Value>>{
 
     @Override

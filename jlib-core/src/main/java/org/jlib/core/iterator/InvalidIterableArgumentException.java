@@ -21,10 +21,10 @@
 
 package org.jlib.core.iterator;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-
-import org.jlib.core.language.ExceptionMessage;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.ParametrizedMessage;
+
+import static org.jlib.core.language.ExceptionMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterable} claims a state error.
@@ -73,7 +73,7 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidIterableArgumentException(final Iterable<?> iterable, final ExceptionMessage message) {
+    public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message) {
         super(message.with(iterable));
     }
 
@@ -93,7 +93,7 @@ extends InvalidStateException {
      *        comma separated sequence of {@link Object} instances specifying
      *        the message arguments
      */
-    public InvalidIterableArgumentException(final Iterable<?> iterable, final ExceptionMessage message,
+    public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message,
                                             final Exception cause) {
         super(message.with(iterable), cause);
     }

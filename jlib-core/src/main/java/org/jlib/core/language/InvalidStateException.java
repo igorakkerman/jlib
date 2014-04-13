@@ -37,9 +37,7 @@ extends IllegalStateException {
     /**
      * Creates a new {@link InvalidStateException}.
      */
-    protected InvalidStateException() {
-        super(EMPTY);
-    }
+    protected InvalidStateException() {}
 
     /**
      * Creates a new {@link InvalidStateException}.
@@ -50,7 +48,7 @@ extends IllegalStateException {
      * @param messageArguments
      *        comma separated sequence of {@link Object} message arguments
      */
-    protected InvalidStateException(final ExceptionMessage message) {
+    protected InvalidStateException(final ParametrizedMessage message) {
         super(message.toString());
     }
 
@@ -72,7 +70,7 @@ extends IllegalStateException {
      *
      *
      */
-    protected InvalidStateException(final ExceptionMessage message, final Exception cause) {
+    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
         super(message.toString(), cause);
     }
 }
