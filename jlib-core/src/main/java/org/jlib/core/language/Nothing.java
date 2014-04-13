@@ -22,18 +22,18 @@
 package org.jlib.core.language;
 
 /**
- * Singleton return type for paremetrized methods.
+ * Singleton dummy return type for paremetrized methods.
  *
  * @author Igor Akkerman
  */
-public final class VoidObject {
+public final class Nothing {
 
-    /** sole {@link VoidObject} instance */
-    public static final VoidObject VOID = new VoidObject();
+    /** sole {@link Nothing} instance */
+    public static final Nothing NOTHING = new Nothing();
 
     /**
-     * Creates a new {@link VoidObject}.
+     * Creates a new {@link Nothing}.
      */
-    private VoidObject() {
+    private Nothing() {
     }
 }
