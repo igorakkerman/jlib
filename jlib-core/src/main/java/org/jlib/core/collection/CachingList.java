@@ -23,8 +23,6 @@ package org.jlib.core.collection;
 
 import java.util.List;
 
-import com.google.common.collect.ForwardingList;
-
 /**
  * <p>
  * {@link ForwardingList} caching the index of the last {@link Item} looked up using {@link #indexOf(Object)} and
