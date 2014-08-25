@@ -113,7 +113,7 @@
             </dependency>
 
             <dependency>
-            <groupId>com.google.guava</groupId>
+                <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
@@ -155,6 +155,184 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <repositories>
+
+<!--
+        <repository>
+            <id>dynamite-public-releases</id>
+            <name>DynaMITe Public Releases</name>
+            <url>http://192.168.188.1:8081/content/repositories/dynamite-public-releases</url>
+        </repository>
+-->
+
+        <repository>
+            <id>dynamite-public-repositories</id>
+            <name>DynaMITe Public Repositories</name>
+            <url>http://192.168.188.1:8081/content/groups/public</url>
+        </repository>
+
+<!--
+        <repository>
+            <id>dynamite-public-snapshots</id>
+            <name>DynaMITe Public Snapshots</name>
+            <url>http://igor.homeftp.net:6868/content/repositories/dynamite-public-snapshots</url>
+            <snapshots />
+        </repository>
+
+        <repository>
+            <id>dynamite-third-party-releases</id>
+            <name>Third Party Releases</name>
+            <url>http://igor.homeftp.net:6868/content/repositories/third-party-releases</url>
+        </repository>
+
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>jboss-releases</id>
+            <name>JBoss Releases</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+        </repository>
+
+        <repository>
+            <id>jboss-thirdparty-releases</id>
+            <name>JBoss Thirdparty Releases</name>
+            <url>http://repository.jboss.org/nexus/content/repositories/thirdparty-releases</url>
+        </repository>
+
+        <repository>
+            <id>Nuxeo</id>
+            <name>Nuxeo</name>
+            <url>https://maven-us.nuxeo.org/nexus/content/repositories/public/</url>
+        </repository>
+
+        <repository>
+            <id>java.net</id>
+            <name>java.net</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+
+        <repository>
+            <id>java.net2</id>
+            <name>Java.net</name>
+            <url>https://oss.sonatype.org/content/repositories/java.net2</url>
+        </repository>
+
+        <repository>
+            <id>google</id>
+            <name>Google</name>
+            <url>https://oss.sonatype.org/content/repositories/google</url>
+        </repository>
+
+        <repository>
+            <id>googlereleases</id>
+            <name>Google</name>
+            <url>https://oss.sonatype.org/content/repositories/google-</url>
+        </repository>
+
+        <repository>
+            <id>sonatype-jboss-snapshots</id>
+            <name>JBoss (Nexus) Snapshots Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/jboss-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>jboss-community</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
+        </repository>
+
+        <repository>
+            <id>springsource-bundles-release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+
+        <repository>
+            <id>springsource-bundles-release-external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+
+        <repository>
+            <id>springsource-libraries-release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
+            <url>http://repository.springsource.com/maven/libraries/release</url>
+        </repository>
+
+        <repository>
+            <id>springsource-libraries-release-external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
+            <url>http://repository.springsource.com/maven/libraries/external</url>
+        </repository>
+-->
+    </repositories>
+
+    <pluginRepositories>
+<!--
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Plugin Repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>java.net Plugins</id>
+            <url>http://download.java.net/maven/2/</url>
+        </pluginRepository>
+-->
+    </pluginRepositories>
 
 </project>
 
