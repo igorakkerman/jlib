@@ -52,7 +52,7 @@
     </option>
   </component>
   <component name="ProjectKey">
-    <option name="state" value="ssh://root@git.dynamite-services.de/root/Projekte/jlib/Git" />
+    <option name="state" value="ssh://igor.akkerman@git.dynamite-services.de/jlib/Git" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" assert-keyword="true" jdk-15="true" project-jdk-name="JDK 8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
