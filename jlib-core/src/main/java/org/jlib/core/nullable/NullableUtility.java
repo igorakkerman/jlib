@@ -21,7 +21,6 @@
 
 package org.jlib.core.nullable;
 
-import javax.annotation.Nullable;
 
 import org.jlib.core.system.SystemUtility;
 
