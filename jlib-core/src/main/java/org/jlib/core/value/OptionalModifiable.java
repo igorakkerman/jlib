@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import javax.annotation.Nullable;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 import org.jlib.core.language.AbstractObject;
 

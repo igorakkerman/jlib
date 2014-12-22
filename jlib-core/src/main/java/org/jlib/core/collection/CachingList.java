@@ -23,6 +23,9 @@ package org.jlib.core.collection;
 
 import java.util.List;
 
+import com.google.common.collect.ForwardingList;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * <p>
  * {@link ForwardingList} caching the index of the last {@link Item} looked up using {@link #indexOf(Object)} and
@@ -35,6 +38,7 @@ import java.util.List;
  * call. This also happens when the {@link Item} is removed from the delegate {@link List}.
  * </p>
  * <p>
+ * TODO: document: indexOf(null)
  * As in all <em>jlib</em> classes, {@code null} {@link Item}s are <em>not</em> permitted and cause undefined behaviour,
  * such as {@link RuntimeException}s or invalid results. Hence, a {@link CachingList} may not be used on delegate
  * {@link List}s containing {@code null} {@link Item}s.
@@ -64,9 +68,6 @@ import java.util.List;
  * else {
  *     // commands with no index
  * }</pre>
- *
- * @param <Key>
- *        type of the items
  *
  * @param <Item>
  *        type of the values
@@ -102,8 +103,10 @@ extends ForwardingList<Item> {
     }
 
     @Override
-    @SuppressWarnings("SuspiciousMethodCalls")
-    public int indexOf(final Object item) {
+    public int indexOf(@Nullable final Object item) {
+        if (item == null)
+            return -1;
+
         final int itemIndex = super.indexOf(item);
 
         lastLookedUpItem = item;

@@ -21,7 +21,7 @@
 
 package org.jlib.core.language;
 
-import javax.annotation.Nullable;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 import org.jlib.core.language.operation.Equals;
 import org.jlib.core.language.operation.EqualsHashCode;

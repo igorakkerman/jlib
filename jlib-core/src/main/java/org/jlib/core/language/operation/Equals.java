@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.operation;
 
-import javax.annotation.Nullable;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 public interface Equals<Obj> {
 

@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import javax.annotation.Nullable;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class EqualCount<Item> {
 

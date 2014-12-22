@@ -38,6 +38,7 @@
 
     <modules>
         <module>jlib-core</module>
+        <module>jlib-container</module>
     </modules>
 
     <properties>
