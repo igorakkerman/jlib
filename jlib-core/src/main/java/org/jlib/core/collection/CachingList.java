@@ -80,11 +80,11 @@ extends ForwardingList<Item> {
     /** delegate {@link List} */
     private final List<Item> delegateList;
 
-    /** last looked up index */
+    /** last looked up index; -1 if unset (for performance reasons) */
     private int lastLookedUpItemIndex;
 
-    /** last looked up {@link Item} */
-    private Object lastLookedUpItem;
+    /** last looked up {@link Item}; {@code null} if unset (for performance reasons) */
+    private @Nullable Object lastLookedUpItem;
 
     /**
      * Creates a new {@link CachingList}.
@@ -104,9 +104,10 @@ extends ForwardingList<Item> {
 
     @Override
     public int indexOf(@Nullable final Object item) {
-        if (item == null)
-            return -1;
+        if (item == lastLookedUpItem)
+            return lastLookedUpItemIndex;
 
+        @SuppressWarnings("ConstantConditions")
         final int itemIndex = super.indexOf(item);
 
         lastLookedUpItem = item;
