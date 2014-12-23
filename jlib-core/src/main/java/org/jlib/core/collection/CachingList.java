@@ -38,7 +38,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * call. This also happens when the {@link Item} is removed from the delegate {@link List}.
  * </p>
  * <p>
- * TODO: document: indexOf(null)
  * As in all <em>jlib</em> classes, {@code null} {@link Item}s are <em>not</em> permitted and cause undefined behaviour,
  * such as {@link RuntimeException}s or invalid results. Hence, a {@link CachingList} may not be used on delegate
  * {@link List}s containing {@code null} {@link Item}s.
@@ -93,7 +92,6 @@ extends ForwardingList<Item> {
      *        delegate {@link List} to which all calls are delegated
      */
     public CachingList(final List<Item> delegateList) {
-
         this.delegateList = delegateList;
     }
 
@@ -103,7 +101,12 @@ extends ForwardingList<Item> {
     }
 
     @Override
-    public int indexOf(@Nullable final Object item) {
+    public boolean contains(final @Nullable Object item) {
+        return indexOf(item) != -1;
+    }
+
+    @Override
+    public int indexOf(final @Nullable Object item) {
         if (item == lastLookedUpItem)
             return lastLookedUpItemIndex;
 
