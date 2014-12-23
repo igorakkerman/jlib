@@ -28,16 +28,11 @@ import static org.jlib.core.text.TextUtility.removeOnce;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.junit.Assert.assertThat;
-
 public class TextUtilityTest {
 
     @Test
     public void testRemoveOnceEmptyFromEmpty() {
-        assertThat(removeOnce(EMPTY, EMPTY), isEmptyString());
+        assertThat(removeOnce(EMPTY, EMPTY)); isEmptyString());
     }
 
     @Test

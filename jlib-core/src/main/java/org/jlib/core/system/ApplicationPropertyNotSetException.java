@@ -21,7 +21,7 @@
 
 package org.jlib.core.system;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 import org.jlib.core.language.InvalidStateException;
 

@@ -24,7 +24,7 @@ package org.jlib.core.iterator;
 import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.language.ParametrizedMessage;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterable} claims a state error.

@@ -23,7 +23,7 @@ package org.jlib.core.language;
 
 import org.jlib.core.text.templateengine.TemplateEngine;
 
-import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
+import static org.jlib.core.language.ParametrizedMessageUtility.appendNamedObject;
 
 public class ParametrizedMessage {
 

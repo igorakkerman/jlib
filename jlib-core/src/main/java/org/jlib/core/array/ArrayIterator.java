@@ -29,8 +29,8 @@ import org.jlib.core.iterator.NoPreviousItemException;
 import org.jlib.core.language.AbstractObject;
 
 import static java.util.Optional.of;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-import static org.jlib.core.language.ExceptionMessageUtility.noCause;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.noCause;
 
 /**
  * {@link BidiIterator} over the items of an array.
