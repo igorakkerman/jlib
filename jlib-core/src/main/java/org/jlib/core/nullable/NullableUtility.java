@@ -21,8 +21,9 @@
 
 package org.jlib.core.nullable;
 
-
 import org.jlib.core.system.SystemUtility;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Utility class providing static methods for {@link Nullable} {@link Object} operations.
