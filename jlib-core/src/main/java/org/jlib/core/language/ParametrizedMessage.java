@@ -21,16 +21,14 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.text.templateengine.TemplateEngine;
-
 import static org.jlib.core.language.ParametrizedMessageUtility.appendNamedObject;
+import org.jlib.core.text.templateengine.TemplateEngine;
 
 public class ParametrizedMessage {
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 32;
-    private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
-    private final StringBuilder textBuilder;
+    private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
     private static StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
                                              final Object[] arguments) {
@@ -52,6 +50,8 @@ public class ParametrizedMessage {
     private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {
         return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
     }
+
+    private final StringBuilder textBuilder;
 
     public ParametrizedMessage with(final Object object) {
 
