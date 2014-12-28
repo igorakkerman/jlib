@@ -24,8 +24,8 @@ package org.jlib.core.text.templateengine;
 import org.jlib.core.text.InitializedNamedValue;
 
 @Deprecated // not yet implemented
-public class ColonNamedParameterTemplateEngine<Value>
-implements TemplateEngine<InitializedNamedValue<Value>> {
+public class ColonNamedParameterTemplateEngine
+implements TemplateEngine {
 
     @Override
     @SafeVarargs

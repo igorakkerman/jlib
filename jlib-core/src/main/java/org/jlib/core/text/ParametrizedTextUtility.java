@@ -35,14 +35,14 @@ public final class ParametrizedTextUtility {
 
     @SafeVarargs
     public static <Argument> /*
-               */ String text(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+               */ String text(final TemplateEngine templateEngine, final CharSequence template,
                               final Argument... arguments) {
         return textBuilder(templateEngine, template, arguments).toString();
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String text(final TemplateEngine<Argument> templateEngine, final int bufferSize,
+               */ String text(final TemplateEngine templateEngine, final int bufferSize,
                               final CharSequence template, final Argument... arguments) {
 
         return textBuilder(templateEngine, bufferSize, template, arguments).toString();

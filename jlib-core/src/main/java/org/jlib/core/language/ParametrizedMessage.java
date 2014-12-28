@@ -30,21 +30,21 @@ public class ParametrizedMessage {
     private final StringBuilder textBuilder;
 
     private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+                */ StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
                                              final Argument[] arguments) {
         return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,
                       arguments);
     }
 
     private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine<Argument> templateEngine, final int bufferSize,
+                */ StringBuilder textBuilder(final TemplateEngine templateEngine, final int bufferSize,
                                              final CharSequence template, final Argument[] arguments) {
         return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Argument> templateEngine,
+               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine templateEngine,
                                        final CharSequence template, final Argument... arguments) {
 
         return stringBuilder.append(templateEngine.applyArguments(template, arguments));

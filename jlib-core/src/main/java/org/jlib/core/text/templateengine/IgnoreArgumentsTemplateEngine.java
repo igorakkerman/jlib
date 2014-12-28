@@ -26,18 +26,18 @@ package org.jlib.core.text.templateengine;
  *
  * @param <Argument>
  */
-public final class IgnoreArgumentsTemplateEngine<Argument>
-implements TemplateEngine<Argument> {
+public final class IgnoreArgumentsTemplateEngine
+implements TemplateEngine {
 
     /** sole {@link IgnoreArgumentsTemplateEngine} instance */
-    private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
+    private static final IgnoreArgumentsTemplateEngine();
 
     /**
      * Returns the sole {@link IgnoreArgumentsTemplateEngine} instance.
      *
      * @return sole {@link IgnoreArgumentsTemplateEngine} instance
      */
-    public static IgnoreArgumentsTemplateEngine<?> getInstance() {
+    public static IgnoreArgumentsTemplateEngine getInstance() {
         return INSTANCE;
     }
 

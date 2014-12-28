@@ -31,11 +31,11 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
-public final class PrintfTemplateEngine<Argument>
-implements TemplateEngine<Argument> {
+public final class PrintfTemplateEngine
+implements TemplateEngine {
 
     /** sole {@link PrintfTemplateEngine} instance */
-    private static final PrintfTemplateEngine<?> INSTANCE = new PrintfTemplateEngine<>();
+    private static final PrintfTemplateEngine();
 
     /**
      * Returns the sole {@link PrintfTemplateEngine} instance.
