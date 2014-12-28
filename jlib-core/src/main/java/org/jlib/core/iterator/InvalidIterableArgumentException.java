@@ -37,62 +37,18 @@ extends InvalidStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
-    /*
-     * Creates a new {@link InvalidIterableArgumentException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     */
     public InvalidIterableArgumentException(final Iterable<?> iterable) {
         super(message().with(iterable));
     }
 
-    /**
-     * Creates a new {@link InvalidIterableArgumentException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     */
     public InvalidIterableArgumentException(final Iterable<?> iterable, final Exception cause) {
         super(message().with(iterable), cause);
     }
 
-    /**
-     * Creates a new {@link InvalidIterableArgumentException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param errorMessageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message) {
         super(message.with(iterable));
     }
 
-    /**
-     * Creates a new {@link InvalidIterableArgumentException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message,
                                             final Exception cause) {
         super(message.with(iterable), cause);
