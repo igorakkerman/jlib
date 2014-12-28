@@ -22,8 +22,7 @@
 package org.jlib.core.language.operation;
 
 @FunctionalInterface
-public interface HashCode<Obj>
-extends ItemOperation<Obj> {
+public interface HashCode<Obj> {
 
     /**
      * Computes a hash code of the specified {@link Obj}.
