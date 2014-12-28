@@ -34,47 +34,18 @@ extends Exception {
     /** serialVersionUID */
     private static final long serialVersionUID = - 7508635402610527176L;
 
-    /**
-     * Creates a new {@link ApplicationException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link ApplicationException}
-     */
     protected ApplicationException() {
         super(EMPTY);
     }
 
-    /**
-     * Creates a new {@link ApplicationException}.
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
     protected ApplicationException(final ParametrizedMessage message) {
         super(message.toString());
     }
 
-    /**
-     * Creates a new {@link ApplicationException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link ApplicationException}
-     */
     protected ApplicationException(final Exception cause) {
         super(EMPTY, cause);
     }
 
-    /**
-     * Creates a new {@link ApplicationException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link ApplicationException}
-     *
-     *
-     */
     protected ApplicationException(final ParametrizedMessage message, final Exception cause) {
         super(message.toString(), cause);
     }
