@@ -48,14 +48,24 @@ public final class MathUtility {
         return maximum - minimum + 1;
     }
 
-    // Returns a representation of ths specified number to the specified base;
-    // such that sum(result[index]^index) == number
-    // TODO: Javadoc
+    /**
+     * Returns a representation of ths specified number to the specified base,
+     * such that <code>sum(result[index]^index) == number</code>.
+     *
+     * @param number
+     *        integer value to represent
+     *
+     *  @param base
+     *        integer specifying the base of the representation
+     *
+     * @throws InvalidExponentBaseValueException
+     *         if {@code base < 1}
+     */
     public static int[] toBase(int number, final int base)
-    throws InvalidBaseValueException {
+    throws InvalidExponentBaseValueException {
 
         if (base < 1)
-            throw new InvalidBaseValueException(base);
+            throw new InvalidExponentBaseValueException(base);
 
         int maximumValueForCurrentDigitsCount;
         int digitsCount = 0;
