@@ -40,8 +40,8 @@ implements EqualsHashCode<Obj> {
     }
 
     @Override
-    public boolean areEqual(final Obj thisObject, @Nullable final Object otherObject) {
-        return equals.areEqual(thisObject, otherObject);
+    public boolean areEqual(final Obj first, @Nullable final Object second) {
+        return equals.areEqual(first, second);
     }
 
     @Override

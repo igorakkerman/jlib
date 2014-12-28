@@ -26,23 +26,17 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public interface Equals<Obj> {
 
     /**
-     * <p>
-     * Verifies whether this {@link IterableContainer} is equal to the specified {@link Object}. This is true if all of the
-     * following conditions are satisfied:
-     * </p>
-     * <ul>
-     * <li>this {@link IterableContainer} and the specified {@link Object} are instances of the same class</li>
-     * <li>this {@link IterableContainer} and the specified {@link ItemOperationStrategy} contain equal {@link Obj}s, as verified by
-     * {@link #containsEqualItems(IterableContainer)}</li>
-     * <li>this {@link IterableContainer} and the specified {@link ItemOperationStrategy} contain equal metadata, as verified by
-     * {@link #containsEqualItems(IterableContainer)}</li>
-     * </ul>
+     * Verifies whether the specified first {@link Obj} is equal to the specified second {@link Object}.
+     * When two values are called equal is defined by the concrete implementation of this interface.
      *
-     * @param otherObject
-     *        Object to compare to this IterableContainer
+     * @param first
+     *        first {@link Obj}
+     *
+     * @param second
+     *        second {@link Object}
      *
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
-    boolean areEqual(Obj thisObject, @Nullable Object otherObject);
+    boolean areEqual(Obj first, @Nullable Object second);
 }
