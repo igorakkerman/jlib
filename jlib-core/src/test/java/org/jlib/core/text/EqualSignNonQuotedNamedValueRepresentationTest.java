@@ -21,9 +21,13 @@
 
 package org.jlib.core.text;
 
-public interface NamedValue<Value> {
+import org.junit.Test;
 
-    String getName();
+@Deprecated // not yet implemented
+public class EqualSignNonQuotedNamedValueRepresentationTest {
 
-    Value getValue();
+    @Test
+    public void regularString() {
+        throw new UnsupportedOperationException("NOT YET IMPLEMENTED");
+    }
 }

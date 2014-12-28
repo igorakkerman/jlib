@@ -21,9 +21,28 @@
 
 package org.jlib.core.text;
 
-public interface NamedValue<Value> {
+import org.jlib.core.language.AbstractObject;
 
-    String getName();
+public class InitializedNamedValue<Value>
+extends AbstractObject
+implements NamedValue<Value> {
 
-    Value getValue();
+    private final CharSequence name;
+
+    private final Value value;
+
+    public InitializedNamedValue(final CharSequence name, final Value value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    @Override
+    public String getName() {
+        return name.toString();
+    }
+
+    @Override
+    public Value getValue() {
+        return value;
+    }
 }

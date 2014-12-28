@@ -21,9 +21,11 @@
 
 package org.jlib.core.text;
 
-public interface NamedValue<Value> {
+public class EqualSignNonQuotedNamedValueRepresentation
+implements NamedValueRepresentation {
 
-    String getName();
-
-    Value getValue();
+    @Override
+    public <Value> String toString(final InitializedNamedValue<Value> namedValue) {
+        return namedValue.getName() + "=" + namedValue.getValue();
+    }
 }

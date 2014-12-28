@@ -23,5 +23,5 @@ package org.jlib.core.text;
 
 @FunctionalInterface
 public interface NamedValueRepresentation {
-    <Value> String toString(NamedValue<Value> namedValue);
+    <Value> String toString(InitializedNamedValue<Value> namedValue);
 }

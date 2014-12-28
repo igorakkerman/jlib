@@ -29,8 +29,8 @@ public final class ParametrizedTextUtility {
 
     public static final int EXPECTED_ADDITIONAL_LENGTH = 50;
 
-    public static <Value> NamedValue<Value> arg(final CharSequence name, final Value value) {
-        return new NamedValue<>(name, value);
+    public static <Value> InitializedNamedValue<Value> arg(final CharSequence name, final Value value) {
+        return new InitializedNamedValue<>(name, value);
     }
 
     @SafeVarargs
