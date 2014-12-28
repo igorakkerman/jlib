@@ -24,7 +24,7 @@ package org.jlib.container.operation.sequence.index;
 import org.jlib.container.operation.sequence.AbstractNonEmptySequence;
 
 import static org.jlib.container.operation.sequence.index.IndexSequenceUtility.ensureIndexValid;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * Skeletal implementation of an {@link IndexSequence}.
