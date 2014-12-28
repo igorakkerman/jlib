@@ -21,15 +21,18 @@
 
 package org.jlib.core.language.operation;
 
-import org.jlib.core.language.operation.ItemOperation;
-
-public interface HashCode<Item>
-extends ItemOperation<Item> {
+@FunctionalInterface
+public interface HashCode<Obj>
+extends ItemOperation<Obj> {
 
     /**
-     * Returns the hash code of this {@link IterableContainer} confirming to {@link #equals(Object)}.
+     * Computes a hash code of the specified {@link Obj}.
+     * The algorithm used for the computation is specified by the concrete implementation.
+     *
+     * @param object
+     *        {@link Obj} of which the hash code should be computed
      *
      * @return integer specifying the hash code
      */
-    int hashCode(Item item);
+    int hashCode(Obj object);
 }

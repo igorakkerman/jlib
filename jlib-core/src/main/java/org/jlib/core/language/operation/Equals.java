@@ -23,6 +23,7 @@ package org.jlib.core.language.operation;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 
+@FunctionalInterface
 public interface Equals<Obj> {
 
     /**
