@@ -27,7 +27,7 @@ public class ParametrizedMessageTest {
 
     @Test
     public void expectation() {
-        throw new InvalidArgumentException(printf("message %s", "value").with("currentObject", this));
+        throw new InvalidArgumentException(message("Something went wrong.").with("currentObject", this));
     }
 
     private static class ExceptionA extends InvalidStateException {
