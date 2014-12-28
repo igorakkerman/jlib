@@ -19,11 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.value;
 
-public interface NamedValue<Value> {
+import java.util.function.Supplier;
 
+public interface Named<Value>
+extends Supplier<Value> {
+
+    /**
+     * Returns the name of the value.
+     *
+     * @return {@link String} specifying the name
+     */
     String getName();
-
-    Value getValue();
 }

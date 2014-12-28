@@ -19,30 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.value;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.core.language.InvalidArgumentException;
 
-public class InitializedNamedValue<Value>
-extends AbstractObject
-implements NamedValue<Value> {
+public class InitializedNamed<Value>
+extends Initialized<Value>
+implements Named<Value> {
 
     private final CharSequence name;
 
-    private final Value value;
+    public InitializedNamed(final CharSequence name, final Value value)
+    throws InvalidArgumentException {
 
-    public InitializedNamedValue(final CharSequence name, final Value value) {
+        super(value);
+
         this.name = name;
-        this.value = value;
     }
 
     @Override
     public String getName() {
         return name.toString();
-    }
-
-    @Override
-    public Value getValue() {
-        return value;
     }
 }

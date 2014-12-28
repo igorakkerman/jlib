@@ -21,7 +21,9 @@
 
 package org.jlib.core.text;
 
+import org.jlib.core.value.Named;
+
 @FunctionalInterface
 public interface NamedValueFormatter {
-    <Value> StringBuilder format(StringBuilder textBuilder, NamedValue<Value> namedValue);
+    <Value> StringBuilder format(StringBuilder textBuilder, Named<Value> namedValue);
 }

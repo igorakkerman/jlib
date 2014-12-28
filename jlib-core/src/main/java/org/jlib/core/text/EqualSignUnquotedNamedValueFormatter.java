@@ -21,13 +21,15 @@
 
 package org.jlib.core.text;
 
+import org.jlib.core.value.Named;
+
 public class EqualSignUnquotedNamedValueFormatter
 implements NamedValueFormatter {
 
     @Override
     public <Value> StringBuilder format(final StringBuilder textBuilder,
-                                        final NamedValue<Value> namedValue) {
+                                        final Named<Value> namedValue) {
 
-        return textBuilder.append(namedValue.getName()).append("=").append(namedValue.getValue());
+        return textBuilder.append(namedValue.getName()).append("=").append(namedValue.get());
     }
 }
