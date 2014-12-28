@@ -23,7 +23,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="jlib" />
-        <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-unittest" />
       </profile>
@@ -35,4 +34,3 @@
     </bytecodeTargetLevel>
   </component>
 </project>
-
