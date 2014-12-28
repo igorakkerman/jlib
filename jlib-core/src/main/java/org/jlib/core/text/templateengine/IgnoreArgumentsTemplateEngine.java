@@ -21,6 +21,11 @@
 
 package org.jlib.core.text.templateengine;
 
+/**
+ * {@link TemplateEngine} that always returns the plain template text ignoring the arguments.
+ *
+ * @param <Argument>
+ */
 public final class IgnoreArgumentsTemplateEngine<Argument>
 implements TemplateEngine<Argument> {
 
