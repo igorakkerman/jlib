@@ -21,13 +21,13 @@
 
 package org.jlib.core.text;
 
-import org.junit.Test;
+public class EqualSignUnquotedNamedValueFormatter
+implements NamedValueFormatter {
 
-@Deprecated // not yet implemented
-public class EqualSignNonQuotedNamedValueRepresentationTest {
+    @Override
+    public <Value> StringBuilder format(final StringBuilder textBuilder,
+                                        final NamedValue<Value> namedValue) {
 
-    @Test
-    public void regularString() {
-        throw new UnsupportedOperationException("NOT YET IMPLEMENTED");
+        return textBuilder.append(namedValue.getName()).append("=").append(namedValue.getValue());
     }
 }

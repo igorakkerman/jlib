@@ -27,25 +27,24 @@ import static org.jlib.core.language.ParametrizedMessageUtility.appendNamedObjec
 
 public class ParametrizedMessage {
 
+    private static final int EXPECTED_ARGUMENT_LENGTH = 32;
+    private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
+
     private final StringBuilder textBuilder;
 
-    private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
-                                             final Argument[] arguments) {
+    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
+                                             final Object[] arguments) {
         return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,
                       arguments);
     }
 
-    private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine templateEngine, final int bufferSize,
-                                             final CharSequence template, final Argument[] arguments) {
+    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final int bufferSize,
+                                             final CharSequence template, final Object[] arguments) {
         return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
     }
 
-    @SafeVarargs
-    public static <Argument> /*
-               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine templateEngine,
-                                       final CharSequence template, final Argument... arguments) {
+    public static StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine templateEngine,
+                                       final CharSequence template, final Object... arguments) {
 
         return stringBuilder.append(templateEngine.applyArguments(template, arguments));
     }

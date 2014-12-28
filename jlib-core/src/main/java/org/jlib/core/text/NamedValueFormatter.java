@@ -22,6 +22,6 @@
 package org.jlib.core.text;
 
 @FunctionalInterface
-public interface NamedValueRepresentation {
-    <Value> String toString(InitializedNamedValue<Value> namedValue);
+public interface NamedValueFormatter {
+    <Value> StringBuilder format(StringBuilder textBuilder, NamedValue<Value> namedValue);
 }
