@@ -27,7 +27,7 @@ import org.jlib.core.language.InvalidStateException;
 import org.jlib.core.language.operation.ItemOperation;
 import org.jlib.core.iterator.InvalidIteratorStateException;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link ItemOperation} claims a state error.

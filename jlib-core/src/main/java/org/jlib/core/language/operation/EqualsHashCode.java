@@ -21,9 +21,13 @@
 
 package org.jlib.core.language.operation;
 
-import org.jlib.core.language.operation.Equals;
-import org.jlib.core.language.operation.HashCode;
-
+/**
+ * Unification of interfaces {@link Equals} and {@link HashCode}.
+ * An implementation of this interface must ensure that the algorithms are compatible,
+ * such that if {@code areEqual(object1, object2) == true} then {@code hashCode(object1) == hashCode(object2)}.
+ *
+ * @param <Obj>
+ */
 public interface EqualsHashCode<Obj>
 extends Equals<Obj>,
         HashCode<Obj> {

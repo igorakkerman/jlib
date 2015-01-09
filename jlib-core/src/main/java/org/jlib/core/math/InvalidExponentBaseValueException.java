@@ -21,22 +21,22 @@
 
 package org.jlib.core.math;
 
-import org.jlib.core.language.InvalidArgumentException;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import org.jlib.core.language.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid value has been specified
- * as a base in an exponentiation.
+ * as a base.
  */
-public class InvalidExponentBaseValueException
+public class InvalidBaseValueException
 extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 1111631415238248975L;
 
     private final int baseValue;
 
-    public InvalidExponentBaseValueException(final int baseValue) {
+    public InvalidBaseValueException(final int baseValue) {
 
         super(message("{0} < 1", baseValue));
 

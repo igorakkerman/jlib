@@ -22,16 +22,13 @@
 package org.jlib.core.text.templateengine;
 
 /**
- * Routine applying {@link Argument}s to a textual template, usually substituting placeholders.
+ * Routine applying arguments to a textual template, usually substituting placeholders.
  * Each {@link TemplateEngine} implementation defines the individual format of the template and the algorithm applying
- * the {@link Argument}s to this template, for example, substituting its placeholders.
- *
- * @param <Argument>
- *        type of the arguments
+ * the arguments to this template, for example, substituting its placeholders.
  *
  * @author Igor Akkerman
  */
-public interface TemplateEngine<Argument> {
+public interface TemplateEngine {
 
     /**
      * Applies the specified arguments to the specified template containing placeholders.
@@ -40,12 +37,12 @@ public interface TemplateEngine<Argument> {
      *        {@link CharSequence} template containing the placeholders
      *
      * @param arguments
-     *        array of {@link Argument}s applied on {@code template};
+     *        array of {@link Object}s applied on {@code template};
      *        the arguments are passed to the replacing routine in the correct
      *        order without any transformation
      *
      * @return {@link String} specifying the formatted text
      */
     @SuppressWarnings("unchecked")
-    String applyArguments(CharSequence template, Argument... arguments);
+    String applyArguments(CharSequence template, Object... arguments);
 }

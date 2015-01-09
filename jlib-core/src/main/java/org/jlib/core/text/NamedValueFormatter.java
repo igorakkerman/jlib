@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2014 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.operation;
+package org.jlib.core.text;
 
-/**
- * Tagging interface for all operation operation strategy on {@link Item}s.
- *
- * @author Igor Akkerman
- */
-public interface ItemOperation<Item> {
-    // intentionally empty
+import org.jlib.core.value.Named;
+
+@FunctionalInterface
+public interface NamedValueFormatter {
+    <Value> StringBuilder format(StringBuilder textBuilder, Named<Value> namedValue);
 }

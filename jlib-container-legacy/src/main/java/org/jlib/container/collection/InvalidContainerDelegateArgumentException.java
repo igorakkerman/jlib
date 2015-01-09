@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.collection;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 
@@ -60,7 +60,7 @@ extends InvalidContainerArgumentException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerDelegateArgumentException(final IterableContainer<?> container, final Object delegate,
-                                                     ExceptionMessage message, final Exception cause) {
+                                                     ParametrizedMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }
 }

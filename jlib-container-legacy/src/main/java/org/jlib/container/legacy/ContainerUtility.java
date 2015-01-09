@@ -43,7 +43,7 @@ import org.jlib.container.operation.ObservedRemoveMany;
 
 import static java.util.Arrays.asList;
 import static org.jlib.container.operation.collection.CollectionUtility.toSet;
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * Utility class providing methods operating on {@link IterableContainer} instances.

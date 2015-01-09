@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.collection;
 
-import org.jlib.core.language.ExceptionMessage;
+import org.jlib.core.language.ParametrizedMessage;
 import org.jlib.core.iterator.InvalidIteratorStateException;
 
 /**
@@ -56,7 +56,7 @@ extends InvalidIteratorStateException {
      *        comma separated sequence of {@link Object} message arguments
      */
     public InvalidContainerDelegateStateException(final IterableContainer<?> container, final Object delegate,
-                                                  final ExceptionMessage message, final Exception cause) {
+                                                  final ParametrizedMessage message, final Exception cause) {
         super(container, message.with(delegate), cause);
     }
 }

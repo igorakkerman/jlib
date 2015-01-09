@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link RemoveItemByItem} does not contain the

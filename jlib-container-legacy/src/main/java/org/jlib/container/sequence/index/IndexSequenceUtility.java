@@ -29,7 +29,7 @@ import org.jlib.core.operator.OperatorException;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * {@link IndexSequence} utility.

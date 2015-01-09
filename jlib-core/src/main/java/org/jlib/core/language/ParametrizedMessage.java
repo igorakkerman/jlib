@@ -21,31 +21,28 @@
 
 package org.jlib.core.language;
 
+import static org.jlib.core.language.ParametrizedMessageUtility.appendNamedObject;
 import org.jlib.core.text.templateengine.TemplateEngine;
-
-import static org.jlib.core.language.ExceptionMessageUtility.appendNamedObject;
 
 public class ParametrizedMessage {
 
-    private final StringBuilder textBuilder;
+    private static final int EXPECTED_ARGUMENT_LENGTH = 32;
 
-    private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine<Argument> templateEngine, final CharSequence template,
-                                             final Argument[] arguments) {
+    private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
+
+    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
+                                             final Object[] arguments) {
         return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,
                       arguments);
     }
 
-    private static <Argument> /*
-                */ StringBuilder textBuilder(final TemplateEngine<Argument> templateEngine, final int bufferSize,
-                                             final CharSequence template, final Argument[] arguments) {
+    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final int bufferSize,
+                                             final CharSequence template, final Object[] arguments) {
         return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
     }
 
-    @SafeVarargs
-    public static <Argument> /*
-               */ StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Argument> templateEngine,
-                                       final CharSequence template, final Argument... arguments) {
+    public static StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine templateEngine,
+                                       final CharSequence template, final Object... arguments) {
 
         return stringBuilder.append(templateEngine.applyArguments(template, arguments));
     }
@@ -53,6 +50,8 @@ public class ParametrizedMessage {
     private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {
         return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
     }
+
+    private final StringBuilder textBuilder;
 
     public ParametrizedMessage with(final Object object) {
 

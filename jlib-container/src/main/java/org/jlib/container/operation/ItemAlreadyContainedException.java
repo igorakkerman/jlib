@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.jlib.core.language.operation.ItemOperation;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add

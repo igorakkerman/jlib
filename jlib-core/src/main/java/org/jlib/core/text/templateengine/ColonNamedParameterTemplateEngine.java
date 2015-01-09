@@ -21,19 +21,19 @@
 
 package org.jlib.core.text.templateengine;
 
-import org.jlib.core.text.NamedValue;
+import org.jlib.core.value.InitializedNamed;
 
-public class ColonNamedParameterTemplateEngine<Value>
-implements TemplateEngine<NamedValue<Value>>{
+@Deprecated // not yet implemented
+public class ColonNamedParameterTemplateEngine
+implements TemplateEngine {
 
     @Override
-    public String applyArguments(final CharSequence template,
-                                 final NamedValue<Value>... namedValues) {
+    @SafeVarargs
+    public final String applyArguments(final CharSequence template, final InitializedNamed<Value>... namedValues) {
         // FIXME: implement
         return null;
     }
 }
-
 
 ///*
 // * Copyright 2002-2008 the original author or authors.

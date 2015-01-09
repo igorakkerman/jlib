@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2014 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,18 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.matrix;
+package org.jlib.core.value;
 
-import org.jlib.core.language.InvalidArgumentException;
+import java.util.function.Supplier;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+public interface Named<Value>
+extends Supplier<Value> {
 
-public class InvalidMatrixHeightException
-extends InvalidArgumentException {
-
-    private static final long serialVersionUID = - 7801198256811055948L;
-
-    public InvalidMatrixHeightException(final int height) {
-        super(message(height));
-    }
+    /**
+     * Returns the name of the value.
+     *
+     * @return {@link String} specifying the name
+     */
+    String getName();
 }

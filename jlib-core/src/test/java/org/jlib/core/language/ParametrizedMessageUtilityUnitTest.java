@@ -24,7 +24,7 @@ package org.jlib.core.language;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.jlib.core.language.ExceptionMessageUtility.autoMessage;
+import static org.jlib.core.language.ParametrizedMessageUtility.autoMessage;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 

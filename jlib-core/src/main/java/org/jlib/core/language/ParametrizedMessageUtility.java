@@ -32,7 +32,7 @@ import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
 import static org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine.*;
 
-public final class ExceptionMessageUtility {
+public final class ParametrizedMessageUtility {
 
     public static String autoMessage(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
@@ -75,7 +75,7 @@ public final class ExceptionMessageUtility {
         return printf(Integer.toString(value));
     }
 
-    private ExceptionMessageUtility() {
+    private ParametrizedMessageUtility() {
         // no visible constructor
     }
 

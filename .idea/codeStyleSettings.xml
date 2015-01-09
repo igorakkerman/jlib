@@ -107,11 +107,13 @@
           <option name="EXTENDS_KEYWORD_WRAP" value="2" />
           <option name="THROWS_KEYWORD_WRAP" value="2" />
           <option name="METHOD_CALL_CHAIN_WRAP" value="5" />
+          <option name="BINARY_OPERATION_WRAP" value="1" />
           <option name="TERNARY_OPERATION_WRAP" value="2" />
           <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
           <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
           <option name="FOR_STATEMENT_WRAP" value="5" />
           <option name="ARRAY_INITIALIZER_WRAP" value="1" />
+          <option name="WRAP_LONG_LINES" value="true" />
           <option name="PARAMETER_ANNOTATION_WRAP" value="1" />
           <option name="VARIABLE_ANNOTATION_WRAP" value="2" />
           <option name="ENUM_CONSTANTS_WRAP" value="2" />
@@ -130,7 +132,6 @@
         </codeStyleSettings>
       </value>
     </option>
-    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="DynaMITe" />
   </component>
 </project>
-

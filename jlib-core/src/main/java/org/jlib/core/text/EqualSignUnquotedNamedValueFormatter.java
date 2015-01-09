@@ -21,25 +21,15 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.core.value.Named;
 
-public class NamedValue<Value>
-extends AbstractObject {
+public class EqualSignUnquotedNamedValueFormatter
+implements NamedValueFormatter {
 
-    private final CharSequence name;
+    @Override
+    public <Value> StringBuilder format(final StringBuilder textBuilder,
+                                        final Named<Value> namedValue) {
 
-    private final Value value;
-
-    public NamedValue(final CharSequence name, final Value value) {
-        this.name = name;
-        this.value = value;
-    }
-
-    public CharSequence getName() {
-        return name;
-    }
-
-    public Value getValue() {
-        return value;
+        return textBuilder.append(namedValue.getName()).append("=").append(namedValue.get());
     }
 }

@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.jlib.core.language.InvalidStateException;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
 
 public class ForbiddenCastException
 extends InvalidStateException {

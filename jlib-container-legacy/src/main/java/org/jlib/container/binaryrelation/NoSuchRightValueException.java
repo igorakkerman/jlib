@@ -23,8 +23,8 @@ package org.jlib.container.operation.binaryrelation;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 
-import static org.jlib.core.language.ExceptionMessageUtility.message;
-import static org.jlib.core.language.ExceptionMessageUtility.namedObject;
+import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.ParametrizedMessageUtility.namedObject;
 
 /**
  * Exception thrown when a {@link BinaryRelation} does not contain an

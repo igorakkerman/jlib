@@ -22,6 +22,7 @@
 package org.jlib.core.text;
 
 import org.jlib.core.text.templateengine.TemplateEngine;
+import org.jlib.core.value.InitializedNamed;
 
 public final class ParametrizedTextUtility {
 
@@ -29,20 +30,20 @@ public final class ParametrizedTextUtility {
 
     public static final int EXPECTED_ADDITIONAL_LENGTH = 50;
 
-    public static <Value> NamedValue<Value> arg(final CharSequence name, final Value value) {
-        return new NamedValue<>(name, value);
+    public static <Value> InitializedNamed<Value> arg(final CharSequence name, final Value value) {
+        return new InitializedNamed<>(name, value);
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String text(final TemplateEngine<Argument> templateEngine, final CharSequence template,
+               */ String text(final TemplateEngine templateEngine, final CharSequence template,
                               final Argument... arguments) {
         return textBuilder(templateEngine, template, arguments).toString();
     }
 
     @SafeVarargs
     public static <Argument> /*
-               */ String text(final TemplateEngine<Argument> templateEngine, final int bufferSize,
+               */ String text(final TemplateEngine templateEngine, final int bufferSize,
                               final CharSequence template, final Argument... arguments) {
 
         return textBuilder(templateEngine, bufferSize, template, arguments).toString();

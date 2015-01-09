@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2014 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,18 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.matrix;
+package org.jlib.core.value;
 
 import org.jlib.core.language.InvalidArgumentException;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+public class InitializedNamed<Value>
+extends Initialized<Value>
+implements Named<Value> {
 
-public class InvalidMatrixHeightException
-extends InvalidArgumentException {
+    private final CharSequence name;
 
-    private static final long serialVersionUID = - 7801198256811055948L;
+    public InitializedNamed(final CharSequence name, final Value value)
+    throws InvalidArgumentException {
 
-    public InvalidMatrixHeightException(final int height) {
-        super(message(height));
+        super(value);
+
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name.toString();
     }
 }
