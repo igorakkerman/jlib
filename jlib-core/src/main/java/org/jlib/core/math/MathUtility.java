@@ -50,7 +50,7 @@ public final class MathUtility {
 
     /**
      * Returns a representation of ths specified number to the specified base,
-     * such that <code>sum(result[index]^index) == number</code>.
+     * such that {@code sum(result[index]^index) == number}.
      *
      * @param number
      *        integer value to represent
