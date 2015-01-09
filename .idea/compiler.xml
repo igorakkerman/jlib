@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="jlib" />
         <module name="jlib-core" />
-        <module name="jlib-unittest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

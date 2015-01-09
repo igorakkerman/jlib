@@ -54,7 +54,6 @@ implements TemplateEngine<Object> {
     }
 
     @Override
-    @SuppressWarnings("UnnecessaryToStringCall") // wrong inspection warning!
     public String applyArguments(final CharSequence template, final Object... arguments) {
         return String.format(template.toString(), arguments);
     }

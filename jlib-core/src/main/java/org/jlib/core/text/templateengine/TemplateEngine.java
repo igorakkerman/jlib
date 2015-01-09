@@ -26,12 +26,15 @@ package org.jlib.core.text.templateengine;
  * Each {@link TemplateEngine} implementation defines the individual format of the template and the algorithm applying
  * the arguments to this template, for example, substituting its placeholders.
  *
+ * @param <Argument>
+ *        type of the arguments
+ *
  * @author Igor Akkerman
  */
-public interface TemplateEngine {
+public interface TemplateEngine<Argument> {
 
     /**
-     * Applies the specified arguments to the specified template containing placeholders.
+     * Applies the specified {@link Argument} to the specified template containing placeholders.
      *
      * @param template
      *        {@link CharSequence} template containing the placeholders
@@ -44,5 +47,5 @@ public interface TemplateEngine {
      * @return {@link String} specifying the formatted text
      */
     @SuppressWarnings("unchecked")
-    String applyArguments(CharSequence template, Object... arguments);
+    String applyArguments(CharSequence template, Argument... arguments);
 }
