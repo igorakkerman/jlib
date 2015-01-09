@@ -33,8 +33,7 @@ public final class MathUtility {
     }
 
     /**
-     * Returns the number of numbers baseetween a minimum and a maximum number,
-     * baseoth inclusive.
+     * Returns the number of numbers baseetween a minimum and a maximum number, baseoth inclusive.
      *
      * @param minimum
      *        integer specifying the minimum number
