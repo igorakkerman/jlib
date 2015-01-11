@@ -26,26 +26,32 @@ package org.jlib.core.text.templateengine;
  *
  * @param <Argument>
  */
-public final class IgnoreArgumentsTemplateEngine
-implements TemplateEngine {
+public final class IgnoreArgumentsTemplateEngine<Argument>
+implements TemplateEngine<Argument> {
 
     /** sole {@link IgnoreArgumentsTemplateEngine} instance */
-    private static final IgnoreArgumentsTemplateEngine();
+    private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
 
     /**
      * Returns the sole {@link IgnoreArgumentsTemplateEngine} instance.
      *
      * @return sole {@link IgnoreArgumentsTemplateEngine} instance
      */
-    public static IgnoreArgumentsTemplateEngine getInstance() {
-        return INSTANCE;
+    @SuppressWarnings("unchecked")
+    public static <Argument> IgnoreArgumentsTemplateEngine<Argument> getInstance() {
+        return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
+    }
+
+    @SuppressWarnings({ "unchecked", "UnusedDeclaration" })
+    public static <Argument> /*
+               */ IgnoreArgumentsTemplateEngine<Argument> getInstance(final Class<? extends Argument> argumentClass) {
+        return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
 
     /**
      * Creates a new {@link IgnoreArgumentsTemplateEngine}.
      */
-    private IgnoreArgumentsTemplateEngine() {
-    }
+    private IgnoreArgumentsTemplateEngine() {}
 
     @Override
     @SafeVarargs
