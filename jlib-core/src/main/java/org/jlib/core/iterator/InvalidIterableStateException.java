@@ -21,9 +21,9 @@
 
 package org.jlib.core.iterator;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.text.ParametrizedMessage;
 import org.jlib.core.language.InvalidStateException;
 
 /**

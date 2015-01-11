@@ -21,6 +21,8 @@
 
 package org.jlib.core.language;
 
+import org.jlib.core.text.ParametrizedMessage;
+
 /**
  * {@link InvalidStateException} thrown in an uexpected state.
  *

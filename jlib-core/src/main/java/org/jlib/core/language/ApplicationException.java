@@ -21,6 +21,8 @@
 
 package org.jlib.core.language;
 
+import org.jlib.core.text.ParametrizedMessage;
+
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 /**

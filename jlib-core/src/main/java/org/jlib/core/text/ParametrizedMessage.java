@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.text;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.appendNamedObject;
+import static org.jlib.core.text.ParametrizedMessageUtility.appendNamedObject;
 import org.jlib.core.text.templateengine.TemplateEngine;
 
 public class ParametrizedMessage {
@@ -52,6 +52,8 @@ public class ParametrizedMessage {
     }
 
     private final StringBuilder textBuilder;
+
+    private final
 
     public ParametrizedMessage with(final Object object) {
 

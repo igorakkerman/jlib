@@ -22,7 +22,7 @@
 package org.jlib.core.operator;
 
 import org.jlib.core.language.ApplicationException;
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.text.ParametrizedMessage;
 
 /**
  * {@link ApplicationException} thrown during the operation of an operator.

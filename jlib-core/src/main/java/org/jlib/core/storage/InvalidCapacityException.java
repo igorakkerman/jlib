@@ -21,8 +21,8 @@
 
 package org.jlib.core.storage;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
-import static org.jlib.core.language.ParametrizedMessageUtility.namedObject;
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.ParametrizedMessageUtility.namedObject;
 
 import org.jlib.core.language.InvalidArgumentException;
 

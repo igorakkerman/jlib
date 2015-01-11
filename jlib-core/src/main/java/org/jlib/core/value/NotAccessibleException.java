@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.ApplicationException;
 
 import com.google.common.base.Optional;
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
 /**
  * {@link ApplicationException} thrown when a requested value is not accessible.

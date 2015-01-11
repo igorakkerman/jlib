@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.language.ParametrizedMessageUtility;
+import org.jlib.core.text.ParametrizedMessageUtility;
 
 public final class StuckIteratorState<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
 extends IterableAware<Item, Itble>

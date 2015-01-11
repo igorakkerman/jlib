@@ -19,10 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.text;
 
 import java.util.Optional;
 
+import org.jlib.core.text.ParametrizedMessage;
 import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
 import org.jlib.core.text.templateengine.PrintfTemplateEngine;
 

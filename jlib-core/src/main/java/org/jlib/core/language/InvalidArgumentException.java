@@ -21,6 +21,8 @@
 
 package org.jlib.core.language;
 
+import org.jlib.core.text.ParametrizedMessage;
+
 /**
  * {@link IllegalArgumentException} using a parametrized message.
  *
