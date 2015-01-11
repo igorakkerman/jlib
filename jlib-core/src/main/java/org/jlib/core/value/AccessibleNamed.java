@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,30 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.AbstractObject;
-
-public abstract class AbstractAccessible<Value>
-extends AbstractObject
-implements Accessible<Value> {
-
-    /**
-     * <p>
-     * {@inheritDoc}
-     * </p>
-     * <p>
-     * All instances of {@link AbstractAccessible} guarantee the {@link Value} to be accessible, hence always returns
-     * {@code true}.
-     * </p>
-     *
-     * @return {@code true} always
-     */
-    @Override
-    public final boolean canGet() {
-        return Accessible.super.canGet();
-    }
-
-    @Override
-    public final String toString() {
-        return get().toString();
-    }
+public interface AccessibleNamed<Value>
+extends Accessible<Value>, Named<Value> {
+    // unifying
 }
