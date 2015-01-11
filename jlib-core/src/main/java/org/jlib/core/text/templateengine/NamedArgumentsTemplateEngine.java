@@ -21,8 +21,8 @@
 
 package org.jlib.core.text.templateengine;
 
-import org.jlib.core.value.Named;
+import org.jlib.core.value.AccessibleNamed;
 
 public interface NamedArgumentsTemplateEngine
-extends TemplateEngine<Named<Object>> {
+extends TemplateEngine<AccessibleNamed<Object>> {
 }
