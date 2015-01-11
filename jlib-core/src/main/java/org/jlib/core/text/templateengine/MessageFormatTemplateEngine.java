@@ -32,10 +32,10 @@ import java.text.MessageFormat;
  * @author Igor Akkerman
  */
 public final class MessageFormatTemplateEngine
-implements TemplateEngine {
+implements TemplateEngine<Object> {
 
     /** sole {@link MessageFormatTemplateEngine} instance */
-    private static final MessageFormatTemplateEngine();
+    private static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
 
     /**
      * Returns the sole {@link MessageFormatTemplateEngine} instance.
@@ -54,8 +54,7 @@ implements TemplateEngine {
     }
 
     @Override
-    @SafeVarargs
-    public final String applyArguments(final CharSequence template, final Argument... arguments) {
+    public final String applyArguments(final CharSequence template, final Object... arguments) {
         return MessageFormat.format(template.toString(), arguments);
     }
 }
