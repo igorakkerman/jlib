@@ -23,6 +23,6 @@ package org.jlib.core.text.templateengine;
 
 import org.jlib.core.value.Named;
 
-public interface NamedArgumentsTemplateEngine<Argument>
-extends TemplateEngine<Named<Argument>> {
+public interface NamedArgumentsTemplateEngine
+extends TemplateEngine<Named<Object>> {
 }
