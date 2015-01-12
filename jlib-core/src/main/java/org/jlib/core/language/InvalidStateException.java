@@ -41,15 +41,6 @@ extends IllegalStateException {
      */
     protected InvalidStateException() {}
 
-    /**
-     * Creates a new {@link InvalidStateException}.
-     *
-     * @param messageTemplate
-     *        {@link CharSequence} specifying the message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
     protected InvalidStateException(final ParametrizedMessage message) {
         super(message.toString());
     }
@@ -69,8 +60,6 @@ extends IllegalStateException {
      *
      * @param cause
      *        {@link Exception} that caused this {@link InvalidStateException}
-     *
-     *
      */
     protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
         super(message.toString(), cause);
