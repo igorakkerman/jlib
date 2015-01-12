@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2014 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,15 +21,24 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.value.Named;
+import org.jlib.core.value.AccessibleNamed;
 
-public class EqualSignUnquotedNamedValueFormatter
+public abstract class EqualSignNamedValueFormatter
 implements NamedValueFormatter {
 
-    @Override
-    public <Value> StringBuilder format(final StringBuilder textBuilder,
-                                        final Named<Value> namedValue) {
+    private final ValueFormatter valueFormatter;
 
-        return textBuilder.append(namedValue.getName()).append("=").append(namedValue.get());
+    public EqualSignNamedValueFormatter(final ValueFormatter valueFormatter) {
+        this.valueFormatter = valueFormatter;
+    }
+
+    @Override
+    public final <Value> StringBuilder append(final StringBuilder textBuilder,
+                                              final AccessibleNamed<Value> namedValue) {
+
+        textBuilder.append(namedValue.getName()).append("=");
+        valueFormatter.append(textBuilder, namedValue);
+
+        return textBuilder;
     }
 }
