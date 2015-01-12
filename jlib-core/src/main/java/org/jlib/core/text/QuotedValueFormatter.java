@@ -28,6 +28,11 @@ public class QuotedValueFormatter<Value> implements ValueFormatter<Value> {
     private final char openQuoteCharacter;
     private final char closeQuoteCharacter;
 
+    public QuotedValueFormatter(final char quoteCharacter) {
+        openQuoteCharacter = quoteCharacter;
+        closeQuoteCharacter = quoteCharacter;
+    }
+
     public QuotedValueFormatter(final char openQuoteCharacter, final char closeQuoteCharacter) {
         this.openQuoteCharacter = openQuoteCharacter;
         this.closeQuoteCharacter = closeQuoteCharacter;
