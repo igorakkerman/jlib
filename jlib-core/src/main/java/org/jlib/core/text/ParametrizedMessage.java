@@ -30,6 +30,8 @@ public class ParametrizedMessage {
 
     private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
+    private StringBuilder templateBuilder = new StringBuilder();
+
     private static StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
                                              final Object[] arguments) {
         return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,

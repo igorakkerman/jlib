@@ -21,18 +21,21 @@
 
 package org.jlib.core.language;
 
+import org.jlib.core.text.ParametrizedMessage;
+
 import org.junit.Test;
 
 public class ParametrizedMessageTest {
 
     @Test
     public void expectation() {
-        throw new InvalidArgumentException(message("Something went wrong.").with("currentObject", this));
+        throw new ExceptionA(message("Something went wrong.").with("currentObject", this));
     }
 
     private static class ExceptionA extends InvalidStateException {
 
-        private ExceptionA() {
+        private ExceptionA(final ParametrizedMessage message) {
+            super(message);
         }
     }
 }

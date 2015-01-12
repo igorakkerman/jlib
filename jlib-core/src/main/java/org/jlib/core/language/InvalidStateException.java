@@ -21,9 +21,9 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.text.ParametrizedMessage;
+import java.util.Optional;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
+import org.jlib.core.text.ParametrizedMessage;
 
 /**
  * {@link IllegalStateException} using a formatted message.
@@ -36,32 +36,14 @@ extends IllegalStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
-    /**
-     * Creates a new {@link InvalidStateException}.
-     */
-    protected InvalidStateException() {}
+    private final Optional<ParametrizedMessage> message;
 
-    protected InvalidStateException(final ParametrizedMessage message) {
-        super(message.toString());
-    }
+    protected InvalidStateException(final Optional<ParametrizedMessage> message, final Optional<Exception> cause) {
+        super();
 
-    /**
-     * Creates a new {@link InvalidStateException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     */
-    protected InvalidStateException(final Exception cause) {
-        super(EMPTY, cause);
-    }
+        this.message = message;
 
-    /**
-     * Creates a new {@link InvalidStateException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     */
-    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
-        super(message.toString(), cause);
+        if (cause.isPresent())
+            initCause(cause.get());
     }
 }
