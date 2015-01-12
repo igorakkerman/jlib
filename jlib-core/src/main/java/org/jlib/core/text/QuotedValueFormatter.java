@@ -25,21 +25,29 @@ import java.util.function.Supplier;
 
 public class QuotedValueFormatter<Value> implements ValueFormatter<Value> {
 
-    private final char openQuoteCharacter;
-    private final char closeQuoteCharacter;
+    private final String openQuote;
+    private final String closeQuote;
 
     public QuotedValueFormatter(final char quoteCharacter) {
-        openQuoteCharacter = quoteCharacter;
-        closeQuoteCharacter = quoteCharacter;
+        this(quoteCharacter, quoteCharacter);
     }
 
     public QuotedValueFormatter(final char openQuoteCharacter, final char closeQuoteCharacter) {
-        this.openQuoteCharacter = openQuoteCharacter;
-        this.closeQuoteCharacter = closeQuoteCharacter;
+        openQuote = String.valueOf(openQuoteCharacter);
+        closeQuote = String.valueOf(closeQuoteCharacter);
+    }
+
+    public QuotedValueFormatter(final String quote) {
+        this(quote, quote);
+    }
+
+    public QuotedValueFormatter(final String openQuote, final String closeQuote) {
+        this.openQuote = String.valueOf(openQuote);
+        this.closeQuote = String.valueOf(closeQuote);
     }
 
     @Override
     public StringBuilder append(final StringBuilder textBuilder, final Supplier<Value> value) {
-        return textBuilder.append(openQuoteCharacter).append(value.get()).append(closeQuoteCharacter);
+        return textBuilder.append(openQuote).append(value.get()).append(closeQuote);
     }
 }
