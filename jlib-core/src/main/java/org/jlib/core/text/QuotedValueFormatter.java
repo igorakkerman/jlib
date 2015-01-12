@@ -25,23 +25,14 @@ import java.util.function.Supplier;
 
 public class QuotedValueFormatter<Value> implements ValueFormatter<Value> {
 
-    private final CharSequence openQuote;
-    private final CharSequence closeQuote;
+    private final Object openQuote;
+    private final Object closeQuote;
 
-    public QuotedValueFormatter(final Character quoteCharacter) {
-        this(quoteCharacter, quoteCharacter);
-    }
-
-    public QuotedValueFormatter(final Character openQuoteCharacter, final Character closeQuoteCharacter) {
-        openQuote = openQuoteCharacter.toString();
-        closeQuote = closeQuoteCharacter.toString();
-    }
-
-    public QuotedValueFormatter(final CharSequence quote) {
+    public QuotedValueFormatter(final Object quote) {
         this(quote, quote);
     }
 
-    public QuotedValueFormatter(final CharSequence openQuote, final CharSequence closeQuote) {
+    public QuotedValueFormatter(final Object openQuote, final Object closeQuote) {
         this.openQuote = openQuote;
         this.closeQuote = closeQuote;
     }
