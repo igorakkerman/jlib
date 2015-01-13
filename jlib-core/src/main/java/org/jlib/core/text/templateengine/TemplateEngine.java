@@ -21,6 +21,8 @@
 
 package org.jlib.core.text.templateengine;
 
+import java.util.List;
+
 /**
  * Routine applying arguments to a textual template, usually substituting placeholders.
  * Each {@link TemplateEngine} implementation defines the individual format of the template and the algorithm applying
@@ -48,4 +50,9 @@ public interface TemplateEngine<Argument> {
      */
     @SuppressWarnings("unchecked")
     String applyArguments(CharSequence template, Argument... arguments);
+
+    @SuppressWarnings("unchecked")
+    default String applyArguments(final CharSequence template, final List<Argument> arguments) {
+        return applyArguments(template, (Argument[]) arguments.toArray());
+    }
 }
