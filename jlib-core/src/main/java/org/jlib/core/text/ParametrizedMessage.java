@@ -21,8 +21,12 @@
 
 package org.jlib.core.text;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.appendNamedObject;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jlib.core.text.templateengine.TemplateEngine;
+import org.jlib.core.value.InitializedNamed;
+import org.jlib.core.value.Named;
 
 public class ParametrizedMessage {
 
@@ -30,92 +34,73 @@ public class ParametrizedMessage {
 
     private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
-    private StringBuilder templateBuilder = new StringBuilder();
-
-    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final CharSequence template,
-                                             final Object[] arguments) {
+    @Deprecated
+    private static StringBuilder textBuilder(final TemplateEngine<Object> templateEngine, final CharSequence template,
+                                             final List<Object> arguments) {
         return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,
                       arguments);
     }
 
-    private static StringBuilder textBuilder(final TemplateEngine templateEngine, final int bufferSize,
-                                             final CharSequence template, final Object[] arguments) {
+    @Deprecated
+    private static StringBuilder textBuilder(final TemplateEngine<Object> templateEngine, final int bufferSize,
+                                             final CharSequence template, final List<Object> arguments) {
         return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
     }
 
-    public static StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine templateEngine,
+    @Deprecated
+    public static StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Object> templateEngine,
                                        final CharSequence template, final Object... arguments) {
 
         return stringBuilder.append(templateEngine.applyArguments(template, arguments));
     }
 
-    private static int computeExpectedBufferSize(final CharSequence template, final Object[] arguments) {
-        return template.length() + arguments.length * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
+    @Deprecated
+    private static int computeExpectedBufferSize(final CharSequence template, final List<Object> arguments) {
+        return template.length() + arguments.size() * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
     }
 
-    private final StringBuilder textBuilder;
+    private final TemplateEngine<Object> templateEngine;
 
-    private final
+    private final CharSequence rawTemplate;
 
-    public ParametrizedMessage with(final Object object) {
+    private final List<Object> arguments = new ArrayList<>();
 
-        getTemplateBuilder().append(';').append(' ').append(object);
+    private final List<Named<Object>> namedArguments = new ArrayList<>();
+
+    public ParametrizedMessage(final TemplateEngine<Object> templateEngine, final CharSequence rawTemplate) {
+        this.templateEngine = templateEngine;
+        this.rawTemplate = rawTemplate;
+    }
+
+    public ParametrizedMessage with(final Object argument) {
+        arguments.add(argument);
 
         return this;
     }
 
-    public ParametrizedMessage with(final CharSequence objectName, final Object object) {
-
-        appendNamedObject(getTemplateBuilder().append(';').append(' '), objectName, object);
-
-        return this;
-    }
-
-    public ParametrizedMessage append(final Object object) {
-        super.append(object);
+    public ParametrizedMessage with(final CharSequence argumentName, final Object argument) {
+        namedArguments.add(new InitializedNamed<>(argumentName, argument));
 
         return this;
     }
 
-    public ParametrizedMessage append(final char character) {
-        super.append(character);
+    @Override
+    public String toString() {
+        final StringBuilder templateBuilder = new StringBuilder(rawTemplate);
 
-        return this;
-    }
+        if (! namedArguments.isEmpty()) {
+            templateBuilder.append(' ');
 
-    public ParametrizedMessage append(final boolean bool) {
-        super.append(bool);
+            for (final Named<Object> namedArgument : namedArguments) {
+                templateBuilder.append(namedArgument.getName());
+                templateBuilder.append(": ");
+                templateBuilder.append(namedArgument.get());
+                templateBuilder.append("; ");
+            }
+        }
 
-        return this;
-    }
+        templateEngine.applyArguments(templateBuilder, arguments);
 
-    public ParametrizedMessage append(final byte number) {
-        super.append(number);
-
-        return this;
-    }
-
-    public ParametrizedMessage append(final int number) {
-        super.append(number);
-
-        return this;
-    }
-
-    public ParametrizedMessage append(final long number) {
-        super.append(number);
-
-        return this;
-    }
-
-    public ParametrizedMessage append(final float number) {
-        super.append(number);
-
-        return this;
-    }
-
-    public ParametrizedMessage append(final double number) {
-        super.append(number);
-
-        return this;
+        return templateBuilder.toString();
     }
 }
