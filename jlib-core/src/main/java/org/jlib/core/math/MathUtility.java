@@ -57,14 +57,14 @@ public final class MathUtility {
      *  @param base
      *        integer specifying the base of the representation
      *
-     * @throws InvalidExponentBaseValueException
+     * @throws InvalidNumeralBaseException
      *         if {@code base < 1}
      */
     public static int[] toBase(int number, final int base)
-    throws InvalidExponentBaseValueException {
+    throws InvalidNumeralBaseException {
 
         if (base < 1)
-            throw new InvalidExponentBaseValueException(base);
+            throw new InvalidNumeralBaseException(base);
 
         int maximumValueForCurrentDigitsCount;
         int digitsCount = 0;
