@@ -41,9 +41,9 @@ extends IllegalStateException {
     }
 
     protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
-        this(message);
+        super(cause);
 
-        initCause(cause);
+        this.message = message;
     }
 
     @Override
