@@ -24,7 +24,7 @@ package org.jlib.core.value;
 import org.jlib.core.language.InvalidArgumentException;
 
 /**
- * {@link AbstractAccessible} initialized by the constructor.
+ * {@link Accessible} initialized by the constructor.
  *
  * @param <Value>
  *        type of the value
@@ -32,7 +32,7 @@ import org.jlib.core.language.InvalidArgumentException;
  * @author Igor Akkerman
  */
 public class Initialized<Value>
-extends AbstractAccessible<Value> {
+implements Accessible<Value> {
 
     /** registered {@link Value} */
     private Value value;
@@ -76,7 +76,7 @@ extends AbstractAccessible<Value> {
     }
 
     @SuppressWarnings("EmptyMethod")
-    protected void assertValid(final Value value) {
+    protected void assertValid(@SuppressWarnings("UnusedParameters") final Value value) {
         // perform optional validation in subclasses
     }
 }
