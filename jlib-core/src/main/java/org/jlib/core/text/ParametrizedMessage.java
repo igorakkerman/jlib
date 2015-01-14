@@ -24,11 +24,20 @@ package org.jlib.core.text;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.Serializable;
+
+import org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine;
 import org.jlib.core.text.templateengine.TemplateEngine;
 import org.jlib.core.value.InitializedNamed;
 import org.jlib.core.value.Named;
 
-public class ParametrizedMessage {
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
+public class ParametrizedMessage
+implements Serializable {
+
+    public static final ParametrizedMessage NO_MESSAGE = /*
+     */ new ParametrizedMessage(IgnoreArgumentsTemplateEngine.getInstance(), EMPTY);
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 32;
 
