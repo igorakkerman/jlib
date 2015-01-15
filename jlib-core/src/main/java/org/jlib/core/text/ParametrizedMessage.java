@@ -52,9 +52,9 @@ implements Serializable {
         this(text, DEFAULT_ARGUMENT_TEMPLATE);
     }
 
-    public ParametrizedMessage(final CharSequence text, final CharSequence argumentFormat) {
+    public ParametrizedMessage(final CharSequence text, final CharSequence argumentTemplate) {
         textBuilder.append(text);
-        argumentFormatter = new PrintfNamedValueFormatter(argumentFormat);
+        argumentFormatter = new PrintfNamedValueFormatter(argumentTemplate);
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {

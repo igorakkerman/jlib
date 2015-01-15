@@ -28,14 +28,14 @@ import org.jlib.core.value.Named;
 public class PrintfNamedValueFormatter
 implements ValueFormatter<Object, Named<?>> {
 
-    private final String format;
+    private final String template;
 
-    public PrintfNamedValueFormatter(final CharSequence format) {
-        this.format = format.toString();
+    public PrintfNamedValueFormatter(final CharSequence template) {
+        this.template = template.toString();
     }
 
     @Override
     public void append(final Appendable appendable, final Named<?> value) {
-        new Formatter(appendable).format(format, value.getName(), value.get());
+        new Formatter(appendable).format(template, value.getName(), value.get());
     }
 }
