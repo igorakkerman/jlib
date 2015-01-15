@@ -22,6 +22,7 @@
 package org.jlib.core.text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import java.io.Serializable;
@@ -47,34 +48,11 @@ implements Serializable {
             }
         };
 
-    private static final int EXPECTED_ARGUMENT_LENGTH = 32;
+    private static final int EXPECTED_ARGUMENT_LENGTH = 48;
+
+    private static final int EXPECTED_NAMED_ARGUMENT_LENGTH = 64;
 
     private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
-
-    @Deprecated
-    private static StringBuilder textBuilder(final TemplateEngine<Object> templateEngine, final CharSequence template,
-                                             final List<Object> arguments) {
-        return append(new StringBuilder(computeExpectedBufferSize(template, arguments)), templateEngine, template,
-                      arguments);
-    }
-
-    @Deprecated
-    private static StringBuilder textBuilder(final TemplateEngine<Object> templateEngine, final int bufferSize,
-                                             final CharSequence template, final List<Object> arguments) {
-        return append(new StringBuilder(bufferSize), templateEngine, template, arguments);
-    }
-
-    @Deprecated
-    public static StringBuilder append(final StringBuilder stringBuilder, final TemplateEngine<Object> templateEngine,
-                                       final CharSequence template, final Object... arguments) {
-
-        return stringBuilder.append(templateEngine.applyArguments(template, arguments));
-    }
-
-    @Deprecated
-    private static int computeExpectedBufferSize(final CharSequence template, final List<Object> arguments) {
-        return template.length() + arguments.size() * EXPECTED_ARGUMENT_LENGTH + EXPECTED_ADDITIONAL_LENGTH;
-    }
 
     private final TemplateEngine<Object> templateEngine;
 
@@ -82,21 +60,27 @@ implements Serializable {
 
     private final List<Object> arguments = new ArrayList<>();
 
-    private final List<Named<Object>> namedArguments = new ArrayList<>();
+    private final List<Named<?>> namedArguments = new ArrayList<>();
 
     public ParametrizedMessage(final TemplateEngine<Object> templateEngine, final CharSequence rawTemplate) {
         this.templateEngine = templateEngine;
         this.rawTemplate = rawTemplate;
     }
 
-    public ParametrizedMessage with(final Object argument) {
-        arguments.add(argument);
+    public ParametrizedMessage with(final Object... arguments) {
+        Collections.addAll(this.arguments, arguments);
 
         return this;
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argument) {
         namedArguments.add(new InitializedNamed<>(argumentName, argument));
+
+        return this;
+    }
+
+    public ParametrizedMessage with(final Named<?>... namedArguments) {
+        Collections.addAll(this.namedArguments, namedArguments);
 
         return this;
     }
@@ -108,12 +92,14 @@ implements Serializable {
      */
     @Override
     public String toString() {
-        final StringBuilder templateBuilder = new StringBuilder(rawTemplate);
+        final StringBuilder templateBuilder = new StringBuilder(computeExpectedBufferSize());
+
+        templateBuilder.append(rawTemplate);
 
         if (! namedArguments.isEmpty()) {
             templateBuilder.append(' ');
 
-            for (final Named<Object> namedArgument : namedArguments) {
+            for (final Named<?> namedArgument : namedArguments) {
                 templateBuilder.append(namedArgument.getName());
                 templateBuilder.append(": ");
                 templateBuilder.append(namedArgument.get());
@@ -128,5 +114,12 @@ implements Serializable {
 
     public String toStringOr(@Nullable final String noMessageValue) {
         return toString();
+    }
+
+    private int computeExpectedBufferSize() {
+        return rawTemplate.length() +
+               arguments.size() * EXPECTED_ARGUMENT_LENGTH +
+               namedArguments.size() * EXPECTED_NAMED_ARGUMENT_LENGTH +
+               EXPECTED_ADDITIONAL_LENGTH;
     }
 }
