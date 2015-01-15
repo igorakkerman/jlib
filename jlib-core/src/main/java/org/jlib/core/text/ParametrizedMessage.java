@@ -23,6 +23,7 @@ package org.jlib.core.text;
 
 import java.io.Serializable;
 
+import org.jlib.core.value.InitializedNamed;
 import org.jlib.core.value.Named;
 
 public class ParametrizedMessage
@@ -34,7 +35,7 @@ implements Serializable {
 
     private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
-    private static final NamedValueFormatter formatter = new PrintfNamedValueFormatter<>();
+    private static final ValueFormatter<Object, Named<?>> argumentFormatter = new PrintfNamedValueFormatter("%s='%s'");
 
     private final StringBuilder textBuilder = new StringBuilder(EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH +
                                                                 EXPECTED_ADDITIONAL_LENGTH);
@@ -44,17 +45,12 @@ implements Serializable {
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
-        textBuilder.append(argumentName);
-        textBuilder.append(": ");
-        textBuilder.append(argumentValue);
-        textBuilder.append(". ");
-
-        return this;
+        return with(new InitializedNamed<>(argumentName, argumentValue));
     }
 
     public ParametrizedMessage with(final Named<?>... arguments) {
         for (final Named<?> argument : arguments)
-            with(argument.getName(), argument.get());
+            argumentFormatter.append(textBuilder, argument);
 
         return this;
     }
