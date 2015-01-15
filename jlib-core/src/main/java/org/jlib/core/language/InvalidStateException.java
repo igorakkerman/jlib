@@ -48,8 +48,6 @@ extends IllegalStateException {
 
     @Override
     public String getMessage() {
-        return message != ParametrizedMessage.NO_MESSAGE ?
-               message.toString() :
-               null;
+        return message.toStringOr(null);
     }
 }

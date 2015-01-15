@@ -32,12 +32,20 @@ import org.jlib.core.value.InitializedNamed;
 import org.jlib.core.value.Named;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class ParametrizedMessage
 implements Serializable {
 
-    public static final ParametrizedMessage NO_MESSAGE = /*
-     */ new ParametrizedMessage(IgnoreArgumentsTemplateEngine.getInstance(), EMPTY);
+    // @formatter:off
+    public static final ParametrizedMessage NO_MESSAGE =
+        new ParametrizedMessage(IgnoreArgumentsTemplateEngine.getInstance(), EMPTY) {
+            // @formatter:on
+            @Override
+            public String toStringOr(@Nullable final String noMessageValue) {
+                return noMessageValue;
+            }
+        };
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 32;
 
@@ -93,6 +101,11 @@ implements Serializable {
         return this;
     }
 
+    /**
+     * Returns the message after applying the arguments to its template.
+     *
+     * @return {@link String} containing the formatted message
+     */
     @Override
     public String toString() {
         final StringBuilder templateBuilder = new StringBuilder(rawTemplate);
@@ -111,5 +124,9 @@ implements Serializable {
         templateEngine.applyArguments(templateBuilder, arguments);
 
         return templateBuilder.toString();
+    }
+
+    public String toStringOr(@Nullable final String noMessageValue) {
+        return toString();
     }
 }
