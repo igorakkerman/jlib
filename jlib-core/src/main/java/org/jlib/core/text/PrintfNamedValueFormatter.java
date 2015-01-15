@@ -21,12 +21,23 @@
 
 package org.jlib.core.text;
 
-import java.util.function.Supplier;
+import java.util.Formatter;
 
-public class PlainValueFormatter<Value> implements ValueFormatter<Value> {
+import org.jlib.core.value.Named;
+
+public class PrintfNamedValueFormatter
+implements NamedValueFormatter<Object> {
+
+    private final String format;
+
+    public PrintfNamedValueFormatter(final CharSequence format) {
+        this.format = format.toString();
+    }
 
     @Override
-    public StringBuilder append(final StringBuilder textBuilder, final Supplier<Value> value) {
-        return textBuilder.append(value.get());
+    public <Appable extends Appendable> Appable append(final Appable appendable, final Named<Object> value) {
+        new Formatter(appendable).format(format, value);
+
+        return appendable;
     }
 }

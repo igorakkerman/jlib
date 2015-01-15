@@ -21,105 +21,46 @@
 
 package org.jlib.core.text;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import java.io.Serializable;
 
-import org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine;
-import org.jlib.core.text.templateengine.TemplateEngine;
-import org.jlib.core.value.InitializedNamed;
 import org.jlib.core.value.Named;
-
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class ParametrizedMessage
 implements Serializable {
 
-    // @formatter:off
-    public static final ParametrizedMessage NO_MESSAGE =
-        new ParametrizedMessage(IgnoreArgumentsTemplateEngine.getInstance(), EMPTY) {
-            // @formatter:on
-            @Override
-            public String toStringOr(@Nullable final String noMessageValue) {
-                return noMessageValue;
-            }
-        };
+    private static final int EXPECTED_ARGUMENTS_COUNT = 5;
 
-    private static final int EXPECTED_ARGUMENT_LENGTH = 48;
-
-    private static final int EXPECTED_NAMED_ARGUMENT_LENGTH = 64;
+    private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
     private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
 
-    private final TemplateEngine<Object> templateEngine;
+    private static final NamedValueFormatter formatter = new PrintfNamedValueFormatter<>();
 
-    private final CharSequence rawTemplate;
+    private final StringBuilder textBuilder = new StringBuilder(EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH +
+                                                                EXPECTED_ADDITIONAL_LENGTH);
 
-    private final List<Object> arguments = new ArrayList<>();
-
-    private final List<Named<?>> namedArguments = new ArrayList<>();
-
-    public ParametrizedMessage(final TemplateEngine<Object> templateEngine, final CharSequence rawTemplate) {
-        this.templateEngine = templateEngine;
-        this.rawTemplate = rawTemplate;
+    public ParametrizedMessage(final CharSequence text) {
+        textBuilder.append(text);
     }
 
-    public ParametrizedMessage with(final Object... arguments) {
-        Collections.addAll(this.arguments, arguments);
+    public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
+        textBuilder.append(argumentName);
+        textBuilder.append(": ");
+        textBuilder.append(argumentValue);
+        textBuilder.append(". ");
 
         return this;
     }
 
-    public ParametrizedMessage with(final CharSequence argumentName, final Object argument) {
-        namedArguments.add(new InitializedNamed<>(argumentName, argument));
+    public ParametrizedMessage with(final Named<?>... arguments) {
+        for (final Named<?> argument : arguments)
+            with(argument.getName(), argument.get());
 
         return this;
     }
 
-    public ParametrizedMessage with(final Named<?>... namedArguments) {
-        Collections.addAll(this.namedArguments, namedArguments);
-
-        return this;
-    }
-
-    /**
-     * Returns the message after applying the arguments to its template.
-     *
-     * @return {@link String} containing the formatted message
-     */
     @Override
     public String toString() {
-        final StringBuilder templateBuilder = new StringBuilder(computeExpectedBufferSize());
-
-        templateBuilder.append(rawTemplate);
-
-        if (! namedArguments.isEmpty()) {
-            templateBuilder.append(' ');
-
-            for (final Named<?> namedArgument : namedArguments) {
-                templateBuilder.append(namedArgument.getName());
-                templateBuilder.append(": ");
-                templateBuilder.append(namedArgument.get());
-                templateBuilder.append("; ");
-            }
-        }
-
-        templateEngine.applyArguments(templateBuilder, arguments);
-
-        return templateBuilder.toString();
-    }
-
-    public String toStringOr(@Nullable final String noMessageValue) {
-        return toString();
-    }
-
-    private int computeExpectedBufferSize() {
-        return rawTemplate.length() +
-               arguments.size() * EXPECTED_ARGUMENT_LENGTH +
-               namedArguments.size() * EXPECTED_NAMED_ARGUMENT_LENGTH +
-               EXPECTED_ADDITIONAL_LENGTH;
+        return textBuilder.toString();
     }
 }

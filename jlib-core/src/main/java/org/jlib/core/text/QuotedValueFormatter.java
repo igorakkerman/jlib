@@ -38,7 +38,7 @@ public class QuotedValueFormatter<Value> implements ValueFormatter<Value> {
     }
 
     @Override
-    public StringBuilder append(final StringBuilder textBuilder, final Supplier<Value> value) {
-        return textBuilder.append(openQuote).append(value.get()).append(closeQuote);
+    public StringBuilder append(final Appendable appendable, final Supplier<Value> value) {
+        return appendable.append(openQuote).append(value.get()).append(closeQuote);
     }
 }

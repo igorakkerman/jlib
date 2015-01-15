@@ -33,41 +33,14 @@ extends InvalidStateException {
 
     private static final long serialVersionUID = 4388525477338778336L;
 
-    /**
-     * Creates a new {@link UnexpectedStateException}.
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of error message arguments
-     */
     public UnexpectedStateException(final ParametrizedMessage message) {
         super(message);
     }
 
-    /**
-     * Creates a new {@link UnexpectedStateException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link UnexpectedStateException}
-     */
     public UnexpectedStateException(final Exception cause) {
         super(cause);
     }
 
-    /**
-     * Creates a new {@link UnexpectedStateException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link UnexpectedStateException}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of error message arguments
-     */
     public UnexpectedStateException(final Exception cause, final ParametrizedMessage message) {
         super(message, cause);
     }

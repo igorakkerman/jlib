@@ -23,7 +23,8 @@ package org.jlib.core.text;
 
 import java.util.function.Supplier;
 
-public interface ValueFormatter<Value> {
+@FunctionalInterface
+public interface ValueFormatter<Value, Supp extends Supplier<? extends Value>> {
 
-    StringBuilder append(final StringBuilder textBuilder, final Supplier<Value> value);
+    <Appable extends Appendable> Appable append(Appable appendable, Supp value);
 }

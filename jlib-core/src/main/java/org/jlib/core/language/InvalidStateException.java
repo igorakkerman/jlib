@@ -21,6 +21,8 @@
 
 package org.jlib.core.language;
 
+import java.util.Optional;
+
 import org.jlib.core.text.ParametrizedMessage;
 
 /**
@@ -34,16 +36,8 @@ extends IllegalStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
-    private final ParametrizedMessage message;
-
-    protected InvalidStateException(final ParametrizedMessage message) {
-        this.message = message;
-    }
-
-    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
+    protected InvalidStateException(final Optional<ParametrizedMessage> message, final Optional<Exception> cause) {
         super(cause);
-
-        this.message = message;
     }
 
     @Override

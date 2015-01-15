@@ -38,6 +38,7 @@ public final class ParametrizedTextUtility {
     public static <Argument> /*
                */ String text(final TemplateEngine templateEngine, final CharSequence template,
                               final Argument... arguments) {
+
         return textBuilder(templateEngine, template, arguments).toString();
     }
 
