@@ -33,19 +33,10 @@ extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
 
-    /**
-     * Creates a new {@link InvalidArgumentException}.
-     */
     protected InvalidArgumentException(final ParametrizedMessage message) {
         super(message.toString());
     }
 
-    /**
-     * Creates a new {@link InvalidArgumentException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidArgumentException}
-     */
     protected InvalidArgumentException(final ParametrizedMessage message, final Exception cause) {
         super(message.toString(), cause);
     }
