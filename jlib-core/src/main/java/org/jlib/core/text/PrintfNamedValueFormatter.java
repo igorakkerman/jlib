@@ -26,7 +26,7 @@ import java.util.Formatter;
 import org.jlib.core.value.Named;
 
 public class PrintfNamedValueFormatter
-implements NamedValueFormatter<Object> {
+implements ValueFormatter<Object, Named<Object>> {
 
     private final String format;
 
@@ -35,9 +35,7 @@ implements NamedValueFormatter<Object> {
     }
 
     @Override
-    public <Appable extends Appendable> Appable append(final Appable appendable, final Named<Object> value) {
-        new Formatter(appendable).format(format, value);
-
-        return appendable;
+    public void append(final Appendable appendable, final Named<Object> value) {
+        new Formatter(appendable).format(format, value.getName(), value.get());
     }
 }
