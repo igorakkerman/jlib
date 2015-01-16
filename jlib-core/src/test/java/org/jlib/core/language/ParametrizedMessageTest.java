@@ -23,6 +23,7 @@ package org.jlib.core.language;
 
 import org.jlib.core.text.ParametrizedMessage;
 
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 import org.junit.Test;
 
 public class ParametrizedMessageTest {

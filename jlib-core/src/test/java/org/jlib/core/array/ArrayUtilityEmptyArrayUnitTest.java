@@ -21,7 +21,7 @@
 
 package org.jlib.core.array;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.array.ArrayUtility.emptyArray;
 import org.junit.Test;
 
