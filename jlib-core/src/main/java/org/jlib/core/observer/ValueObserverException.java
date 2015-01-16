@@ -45,6 +45,6 @@ extends ObserverException {
      */
     protected ValueObserverException(final Object value, final ParametrizedMessage message, final Exception cause) {
 
-        super(message.with(value), cause);
+        super(message.with("value", value), cause);
     }
 }
