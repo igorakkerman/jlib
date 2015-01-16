@@ -21,8 +21,6 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.text.ParametrizedMessageUtility;
-
 public final class StuckIteratorState<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
 extends IterableAware<Item, Itble>
 implements BidiIteratorState<Item, State> {
@@ -55,13 +53,11 @@ implements BidiIteratorState<Item, State> {
     @Override
     public Item next()
     throws NoNextItemException {
-        throw new NoNextItemException(getIterable(), ParametrizedMessageUtility.noMessage(),
-                                      ParametrizedMessageUtility.noCause());
+        throw new NoNextItemException(getIterable());
     }
 
     @Override
     public State nextState() {
-        throw new NoNextItemException(getIterable(), ParametrizedMessageUtility.noMessage(),
-                                      ParametrizedMessageUtility.noCause());
+        throw new NoNextItemException(getIterable());
     }
 }
