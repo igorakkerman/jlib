@@ -53,19 +53,15 @@ extends NoSuchElementException {
     }
 
     public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
-        super(buildMessage(iterable, message).toString());
+        super(message.with("iterable", iterable).toString());
 
         this.iterable = iterable;
     }
 
     public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message, final Exception cause) {
-        super(buildMessage(iterable, message).with("cause", cause).toString());
+        this(iterable, message);
 
-        this.iterable = iterable;
-    }
-
-    private static ParametrizedMessage buildMessage(final Iterable<?> iterable, final ParametrizedMessage message) {
-        return message.with("iterable", iterable);
+        initCause(cause);
     }
 
     public Iterable<?> getIterable() {
