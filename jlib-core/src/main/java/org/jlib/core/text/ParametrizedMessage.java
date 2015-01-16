@@ -41,8 +41,7 @@ implements Serializable {
 
     private final ValueFormatter<Object, Named<?>> argumentFormatter;
 
-    private final StringBuilder textBuilder = new StringBuilder(EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH +
-                                                                EXPECTED_ADDITIONAL_LENGTH);
+    private final StringBuilder builder;
 
     public ParametrizedMessage() {
         this(EMPTY, DEFAULT_ARGUMENT_TEMPLATE);
@@ -53,7 +52,14 @@ implements Serializable {
     }
 
     public ParametrizedMessage(final CharSequence text, final CharSequence argumentTemplate) {
-        textBuilder.append(text);
+        builder = new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH +
+                                    EXPECTED_ADDITIONAL_LENGTH);
+        builder.append(text);
+        argumentFormatter = new PrintfNamedValueFormatter(argumentTemplate);
+    }
+
+    public ParametrizedMessage(final StringBuilder builder, final CharSequence argumentTemplate) {
+        this.builder = builder;
         argumentFormatter = new PrintfNamedValueFormatter(argumentTemplate);
     }
 
@@ -63,13 +69,13 @@ implements Serializable {
 
     public ParametrizedMessage with(final Named<?>... arguments) {
         for (final Named<?> argument : arguments)
-            argumentFormatter.append(textBuilder, argument);
+            argumentFormatter.append(builder, argument);
 
         return this;
     }
 
     @Override
     public String toString() {
-        return textBuilder.toString();
+        return builder.toString();
     }
 }

@@ -35,7 +35,7 @@ implements ValueFormatter<Object, Named<?>> {
     }
 
     @Override
-    public void append(final Appendable appendable, final Named<?> value) {
-        new Formatter(appendable).format(template, value.getName(), value.get());
+    public void append(final StringBuilder builder, final Named<?> value) {
+        new Formatter(builder).format(template, value.getName(), value.get());
     }
 }

@@ -26,5 +26,5 @@ import java.util.function.Supplier;
 @FunctionalInterface
 public interface ValueFormatter<Value, Supp extends Supplier<? extends Value>> {
 
-    void append(Appendable appendable, Supp value);
+    void append(StringBuilder builder, Supp value);
 }
