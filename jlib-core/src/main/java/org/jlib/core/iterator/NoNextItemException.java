@@ -23,9 +23,10 @@ package org.jlib.core.iterator;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.jlib.core.text.ParametrizedMessage;
+
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to
@@ -41,30 +42,30 @@ extends NoSuchElementException {
 
     private final Iterable<?> iterable;
 
-    private final Optional<ParametrizedMessage> message;
-
     /**
      * Creates a new {@link NoNextItemException}.
      *
      * @param iterable
      *        traversed {@link Iterable}
      */
-    public NoNextItemException(final Iterable<?> iterable, final Optional<ParametrizedMessage> message,
-                               final Optional<Throwable> cause) {
-        super(message.toString());
-
-        this.iterable = iterable;
-        this.message = message;
-
-        if (cause.isPresent())
-            initCause(cause.get());
+    public NoNextItemException(final Iterable<?> iterable) {
+        this(iterable, message());
     }
 
-    @Override
-    public String getMessage() {
-        return message.isPresent() ?
-               message.get().toString() :
-               super.getMessage();
+    public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
+        super(buildMessage(iterable, message).toString());
+
+        this.iterable = iterable;
+    }
+
+    public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message, final Exception cause) {
+        super(buildMessage(iterable, message).with("cause", cause).toString());
+
+        this.iterable = iterable;
+    }
+
+    private static ParametrizedMessage buildMessage(final Iterable<?> iterable, final ParametrizedMessage message) {
+        return message.with("iterable", iterable);
     }
 
     public Iterable<?> getIterable() {

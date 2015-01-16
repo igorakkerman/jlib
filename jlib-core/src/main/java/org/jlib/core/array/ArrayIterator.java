@@ -28,9 +28,7 @@ import org.jlib.core.iterator.NoNextItemException;
 import org.jlib.core.iterator.NoPreviousItemException;
 import org.jlib.core.language.AbstractObject;
 
-import static java.util.Optional.of;
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
-import static org.jlib.core.text.ParametrizedMessageUtility.noCause;
 
 /**
  * {@link BidiIterator} over the items of an array.
@@ -93,7 +91,7 @@ implements BidiIterator<Item> {
     @Override
     public Item next() {
         if (! hasNext())
-            throw new NoNextItemException(iterable, of(message(Arrays.toString(array))), noCause());
+            throw new NoNextItemException(iterable, message(Arrays.toString(array)));
 
         return array[currentIndex++];
     }
