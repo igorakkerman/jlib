@@ -21,17 +21,12 @@
 
 package org.jlib.core.text;
 
-import java.util.Optional;
+import java.util.Formatter;
 
-import org.jlib.core.text.ParametrizedMessage;
-import org.jlib.core.text.templateengine.MessageFormatTemplateEngine;
-import org.jlib.core.text.templateengine.PrintfTemplateEngine;
+import java.text.MessageFormat;
 
-import static java.util.Optional.empty;
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
-import static org.jlib.core.text.templateengine.IgnoreArgumentsTemplateEngine.*;
 
 public final class ParametrizedMessageUtility {
 
@@ -49,42 +44,28 @@ public final class ParametrizedMessageUtility {
     }
 
     public static ParametrizedMessage message() {
-        return message(EMPTY);
+        return new ParametrizedMessage();
     }
 
     public static ParametrizedMessage message(final Object object) {
-        return new ParametrizedMessage(getInstance(), object.toString());
-    }
-
-    public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(MessageFormatTemplateEngine.getInstance(), messageTemplate, messageArguments);
+        return new ParametrizedMessage(object.toString());
     }
 
     public static ParametrizedMessage message(final int value) {
         return message(Integer.toString(value));
     }
 
-    public static ParametrizedMessage printf() {
-        return printf(EMPTY);
+    public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new ParametrizedMessage(MessageFormat.format(messageTemplate.toString(), messageArguments));
     }
 
-    public static ParametrizedMessage printf(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(PrintfTemplateEngine.getInstance(), messageTemplate, messageArguments);
-    }
-
-    public static ParametrizedMessage printf(final int value) {
-        return printf(Integer.toString(value));
+    public static ParametrizedMessage messagef(final CharSequence messageTemplate, final Object... messageArguments) {
+        final StringBuilder messageBuilder = new StringBuilder(messageTemplate.length() + messageArguments.length * 50 + 100);
+        new Formatter(messageBuilder).format(messageTemplate.toString(), messageArguments);
+        return new ParametrizedMessage(messageBuilder);
     }
 
     private ParametrizedMessageUtility() {
         // no visible constructor
-    }
-
-    public static Optional<Throwable> noCause() {
-        return empty();
-    }
-
-    public static Optional<ParametrizedMessage> noMessage() {
-        return empty();
     }
 }
