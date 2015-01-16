@@ -31,112 +31,112 @@ public class NumberUtilityTest {
 
     @Test
     public void testParseHexDigit0() {
-        assertThat((byte) 0).isEqualTo(parseHexDigit('0'));
+        assertThat(parseHexDigit('0')).isEqualTo((byte) 0);
     }
 
     @Test
     public void testParseHexDigit1() {
-        assertThat((byte) 1).isEqualTo(parseHexDigit('1'));
+        assertThat(parseHexDigit('1')).isEqualTo((byte) 1);
     }
 
     @Test
     public void testParseHexDigit2() {
-        assertThat((byte) 2).isEqualTo(parseHexDigit('2'));
+        assertThat(parseHexDigit('2')).isEqualTo((byte) 2);
     }
 
     @Test
     public void testParseHexDigit3() {
-        assertThat((byte) 3).isEqualTo(parseHexDigit('3'));
+        assertThat(parseHexDigit('3')).isEqualTo((byte) 3);
     }
 
     @Test
     public void testParseHexDigit4() {
-        assertThat((byte) 4).isEqualTo(parseHexDigit('4'));
+        assertThat(parseHexDigit('4')).isEqualTo((byte) 4);
     }
 
     @Test
     public void testParseHexDigit5() {
-        assertThat((byte) 5).isEqualTo(parseHexDigit('5'));
+        assertThat(parseHexDigit('5')).isEqualTo((byte) 5);
     }
 
     @Test
     public void testParseHexDigit6() {
-        assertThat((byte) 6).isEqualTo(parseHexDigit('6'));
+        assertThat(parseHexDigit('6')).isEqualTo((byte) 6);
     }
 
     @Test
     public void testParseHexDigit7() {
-        assertThat((byte) 7).isEqualTo(parseHexDigit('7'));
+        assertThat(parseHexDigit('7')).isEqualTo((byte) 7);
     }
 
     @Test
     public void testParseHexDigit8() {
-        assertThat((byte) 8).isEqualTo(parseHexDigit('8'));
+        assertThat(parseHexDigit('8')).isEqualTo((byte) 8);
     }
 
     @Test
     public void testParseHexDigit9() {
-        assertThat((byte) 9).isEqualTo(parseHexDigit('9'));
+        assertThat(parseHexDigit('9')).isEqualTo((byte) 9);
     }
 
     @Test
     public void testParseHexDigitA() {
-        assertThat((byte) 10).isEqualTo(parseHexDigit('A'));
+        assertThat(parseHexDigit('A')).isEqualTo((byte) 10);
     }
 
     @Test
     public void testParseHexDigitB() {
-        assertThat((byte) 11).isEqualTo(parseHexDigit('B'));
+        assertThat(parseHexDigit('B')).isEqualTo((byte) 11);
     }
 
     @Test
     public void testParseHexDigitC() {
-        assertThat((byte) 12).isEqualTo(parseHexDigit('C'));
+        assertThat(parseHexDigit('C')).isEqualTo((byte) 12);
     }
 
     @Test
     public void testParseHexDigitD() {
-        assertThat((byte) 13).isEqualTo(parseHexDigit('D'));
+        assertThat(parseHexDigit('D')).isEqualTo((byte) 13);
     }
 
     @Test
     public void testParseHexDigitE() {
-        assertThat((byte) 14).isEqualTo(parseHexDigit('E'));
+        assertThat(parseHexDigit('E')).isEqualTo((byte) 14);
     }
 
     @Test
     public void testParseHexDigitF() {
-        assertThat((byte) 15).isEqualTo(parseHexDigit('F'));
+        assertThat(parseHexDigit('F')).isEqualTo((byte) 15);
     }
 
     @Test
     public void testParseHexDigitSmallA() {
-        assertThat((byte) 10).isEqualTo(parseHexDigit('a'));
+        assertThat(parseHexDigit('a')).isEqualTo((byte) 10);
     }
 
     @Test
     public void testParseHexDigitSmallB() {
-        assertThat((byte) 11).isEqualTo(parseHexDigit('b'));
+        assertThat(parseHexDigit('b')).isEqualTo((byte) 11);
     }
 
     @Test
     public void testParseHexDigitSmallC() {
-        assertThat((byte) 12).isEqualTo(parseHexDigit('c'));
+        assertThat(parseHexDigit('c')).isEqualTo((byte) 12);
     }
 
     @Test
     public void testParseHexDigitSmallD() {
-        assertThat((byte) 13).isEqualTo(parseHexDigit('d'));
+        assertThat(parseHexDigit('d')).isEqualTo((byte) 13);
     }
 
     @Test
     public void testParseHexDigitSmallE() {
-        assertThat((byte) 14).isEqualTo(parseHexDigit('e'));
+        assertThat(parseHexDigit('e')).isEqualTo((byte) 14);
     }
 
     @Test
     public void testParseHexDigitSmallF() {
-        assertThat((byte) 15).isEqualTo(parseHexDigit('f'));
+        assertThat(parseHexDigit('f')).isEqualTo((byte) 15);
     }
 
     @Test(expected = NumberFormatException.class)
