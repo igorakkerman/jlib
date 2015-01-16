@@ -43,16 +43,6 @@ extends InvalidIterableStateException {
         super(iterable, message);
     }
 
-    /**
-     * Creates a new {@link InvalidIteratorStateException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param cause
-     *        {@link Exception} that caused this
-     *        {@link InvalidIterableStateException}
-     */
     protected InvalidIteratorStateException(final Iterable<?> iterable, final Exception cause) {
         super(iterable, cause);
     }
