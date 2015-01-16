@@ -23,6 +23,7 @@ package org.jlib.core.text;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
 
@@ -32,60 +33,60 @@ public class TextUtilityTest {
 
     @Test
     public void testRemoveOnceEmptyFromEmpty() {
-        assertThat(removeOnce(EMPTY, EMPTY)); isEmptyString());
+        assertThat(removeOnce(EMPTY, EMPTY)).isEmpty();
     }
 
     @Test
     public void testRemoveOnceEmptyFromFull() {
-        assertThat(removeOnce("Blubber", EMPTY), is(equalTo("Blubber")));
+        assertThat(removeOnce("Blubber", EMPTY)).isEqualTo("Blubber");
     }
 
     @Test
     public void testRemoveOnceAll() {
-        assertThat(removeOnce("Blub", "Blub"), isEmptyString());
+        assertThat(removeOnce("Blub", "Blub").isEmpty());
     }
 
     @Test
     public void testRemoveOnceBeginning() {
-        assertThat(removeOnce("Blubber", "Blub"), is(equalTo("ber")));
+        assertThat(removeOnce("Blubber", "Blub")).isEqualTo("ber");
     }
 
     @Test
     public void testRemoveOnceEnd() {
-        assertThat(removeOnce("Blubber", "ber"), is(equalTo("Blub")));
+        assertThat(removeOnce("Blubber", "ber")).isEqualTo("Blub");
     }
 
     @Test
     public void testRemoveOnceBeginningFromDouble() {
-        assertThat(removeOnce("BlaBlubBla", "Bla"), is(equalTo("BlubBla")));
+        assertThat(removeOnce("BlaBlubBla", "Bla")).isEqualTo("BlubBla");
     }
 
     @Test
     public void testRemoveOnceMiddleFromDouble() {
-        assertThat(removeOnce("BlaBlubBlub", "Blub"), is(equalTo("BlaBlub")));
+        assertThat(removeOnce("BlaBlubBlub", "Blub")).isEqualTo("BlaBlub");
     }
 
     public void unCamelCaseAllLowerCase() {
-        assertThat(camelCaseToLowerCaseWords("abcdefgeh"), is(equalTo("abcdefgeh")));
+        assertThat(camelCaseToLowerCaseWords("abcdefgeh")).isEqualTo("abcdefgeh");
     }
 
     public void unCamelCaseEmptyString() {
-        assertThat(camelCaseToLowerCaseWords(EMPTY), is(equalTo(EMPTY)));
+        assertThat(camelCaseToLowerCaseWords(EMPTY)).isEqualTo(EMPTY);
     }
 
     public void unCamelCaseLowerCaseStart() {
-        assertThat(camelCaseToLowerCaseWords("aBcdEfg"), is(equalTo("a bcd efg")));
+        assertThat(camelCaseToLowerCaseWords("aBcdEfg")).isEqualTo("a bcd efg");
     }
 
     public void unCamelCaseUpperCaseStart() {
-        assertThat(camelCaseToLowerCaseWords("AbcdEfg"), is(equalTo("abcd efg")));
+        assertThat(camelCaseToLowerCaseWords("AbcdEfg")).isEqualTo("abcd efg");
     }
 
     public void unCamelCaseDoubleUpperCase() {
-        assertThat(camelCaseToLowerCaseWords("ABcdEfg"), is(equalTo("a bcd efg")));
+        assertThat(camelCaseToLowerCaseWords("ABcdEfg")).isEqualTo("a bcd efg");
     }
 
     public void unCamelCaseAllUpperCase() {
-        assertThat(camelCaseToLowerCaseWords("ABCDEFG"), is(equalTo("a b c d e f g")));
+        assertThat(camelCaseToLowerCaseWords("ABCDEFG")).isEqualTo("a b c d e f g");
     }
 }
