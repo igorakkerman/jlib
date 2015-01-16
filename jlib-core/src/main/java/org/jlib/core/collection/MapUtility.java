@@ -45,8 +45,8 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createCachingHashMap() {
-        return new CachingMap<>(new HashMap<Key, Value>());
+    public static <Key, Value> Map<Key, Value> cachingHashMap() {
+        return new CachingMap<>(new HashMap<>());
     }
 
     /**
@@ -68,8 +68,8 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createCachingHashMap(final int initialCapacity) {
-        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity));
+    public static <Key, Value> Map<Key, Value> cachingHashMap(final int initialCapacity) {
+        return new CachingMap<>(new HashMap<>(initialCapacity));
     }
 
     /**
@@ -94,8 +94,8 @@ extends AbstractObject {
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createCachingHashMap(final int initialCapacity, final int loadFactor) {
-        return new CachingMap<>(new HashMap<Key, Value>(initialCapacity, loadFactor));
+    public static <Key, Value> Map<Key, Value> cachingHashMap(final int initialCapacity, final int loadFactor) {
+        return new CachingMap<>(new HashMap<>(initialCapacity, loadFactor));
     }
 
     /**
@@ -113,11 +113,11 @@ extends AbstractObject {
      *        type of the values
      *
      * @param sourceMap
-     *        {@link Map} containing the {@link Entry}s copied to the delegate {@link Map}
+     *        {@link Map} containing the entries copied to the delegate {@link Map}
      *
      * @return {@link CachingMap} proxying the new {@link HashMap}
      */
-    public static <Key, Value> Map<Key, Value> createCachingHashMap(final Map<Key, Value> sourceMap) {
+    public static <Key, Value> Map<Key, Value> cachingHashMap(final Map<Key, Value> sourceMap) {
         return new CachingMap<>(new HashMap<>(sourceMap));
     }
 
