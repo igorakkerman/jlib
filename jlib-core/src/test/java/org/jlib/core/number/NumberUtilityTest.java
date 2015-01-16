@@ -21,124 +21,122 @@
 
 package org.jlib.core.number;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.number.NumberUtility.isEven;
 import static org.jlib.core.number.NumberUtility.isOdd;
 import static org.jlib.core.number.NumberUtility.parseHexDigit;
-import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class NumberUtilityTest {
 
     @Test
     public void testParseHexDigit0() {
-        assertThat((byte) 0, is(equalTo(parseHexDigit('0'))));
+        assertThat((byte) 0).isEqualTo(parseHexDigit('0'));
     }
 
     @Test
     public void testParseHexDigit1() {
-        assertThat((byte) 1, is(equalTo(parseHexDigit('1'))));
+        assertThat((byte) 1).isEqualTo(parseHexDigit('1'));
     }
 
     @Test
     public void testParseHexDigit2() {
-        assertThat((byte) 2, is(equalTo(parseHexDigit('2'))));
+        assertThat((byte) 2).isEqualTo(parseHexDigit('2'));
     }
 
     @Test
     public void testParseHexDigit3() {
-        assertThat((byte) 3, is(equalTo(parseHexDigit('3'))));
+        assertThat((byte) 3).isEqualTo(parseHexDigit('3'));
     }
 
     @Test
     public void testParseHexDigit4() {
-        assertThat((byte) 4, is(equalTo(parseHexDigit('4'))));
+        assertThat((byte) 4).isEqualTo(parseHexDigit('4'));
     }
 
     @Test
     public void testParseHexDigit5() {
-        assertThat((byte) 5, is(equalTo(parseHexDigit('5'))));
+        assertThat((byte) 5).isEqualTo(parseHexDigit('5'));
     }
 
     @Test
     public void testParseHexDigit6() {
-        assertThat((byte) 6, is(equalTo(parseHexDigit('6'))));
+        assertThat((byte) 6).isEqualTo(parseHexDigit('6'));
     }
 
     @Test
     public void testParseHexDigit7() {
-        assertThat((byte) 7, is(equalTo(parseHexDigit('7'))));
+        assertThat((byte) 7).isEqualTo(parseHexDigit('7'));
     }
 
     @Test
     public void testParseHexDigit8() {
-        assertThat((byte) 8, is(equalTo(parseHexDigit('8'))));
+        assertThat((byte) 8).isEqualTo(parseHexDigit('8'));
     }
 
     @Test
     public void testParseHexDigit9() {
-        assertThat((byte) 9, is(equalTo(parseHexDigit('9'))));
+        assertThat((byte) 9).isEqualTo(parseHexDigit('9'));
     }
 
     @Test
     public void testParseHexDigitA() {
-        assertThat((byte) 10, is(equalTo(parseHexDigit('A'))));
+        assertThat((byte) 10).isEqualTo(parseHexDigit('A'));
     }
 
     @Test
     public void testParseHexDigitB() {
-        assertThat((byte) 11, is(equalTo(parseHexDigit('B'))));
+        assertThat((byte) 11).isEqualTo(parseHexDigit('B'));
     }
 
     @Test
     public void testParseHexDigitC() {
-        assertThat((byte) 12, is(equalTo(parseHexDigit('C'))));
+        assertThat((byte) 12).isEqualTo(parseHexDigit('C'));
     }
 
     @Test
     public void testParseHexDigitD() {
-        assertThat((byte) 13, is(equalTo(parseHexDigit('D'))));
+        assertThat((byte) 13).isEqualTo(parseHexDigit('D'));
     }
 
     @Test
     public void testParseHexDigitE() {
-        assertThat((byte) 14, is(equalTo(parseHexDigit('E'))));
+        assertThat((byte) 14).isEqualTo(parseHexDigit('E'));
     }
 
     @Test
     public void testParseHexDigitF() {
-        assertThat((byte) 15, is(equalTo(parseHexDigit('F'))));
+        assertThat((byte) 15).isEqualTo(parseHexDigit('F'));
     }
 
     @Test
     public void testParseHexDigitSmallA() {
-        assertThat((byte) 10, is(equalTo(parseHexDigit('a'))));
+        assertThat((byte) 10).isEqualTo(parseHexDigit('a'));
     }
 
     @Test
     public void testParseHexDigitSmallB() {
-        assertThat((byte) 11, is(equalTo(parseHexDigit('b'))));
+        assertThat((byte) 11).isEqualTo(parseHexDigit('b'));
     }
 
     @Test
     public void testParseHexDigitSmallC() {
-        assertThat((byte) 12, is(equalTo(parseHexDigit('c'))));
+        assertThat((byte) 12).isEqualTo(parseHexDigit('c'));
     }
 
     @Test
     public void testParseHexDigitSmallD() {
-        assertThat((byte) 13, is(equalTo(parseHexDigit('d'))));
+        assertThat((byte) 13).isEqualTo(parseHexDigit('d'));
     }
 
     @Test
     public void testParseHexDigitSmallE() {
-        assertThat((byte) 14, is(equalTo(parseHexDigit('e'))));
+        assertThat((byte) 14).isEqualTo(parseHexDigit('e'));
     }
 
     @Test
     public void testParseHexDigitSmallF() {
-        assertThat((byte) 15, is(equalTo(parseHexDigit('f'))));
+        assertThat((byte) 15).isEqualTo(parseHexDigit('f'));
     }
 
     @Test(expected = NumberFormatException.class)
@@ -163,51 +161,51 @@ public class NumberUtilityTest {
 
     @Test
     public final void testIsEven0() {
-        assertThat(isEven(0), is(true));
+        assertThat(isEven(0)).isTrue();
     }
 
     @Test
     public final void testIsEven1() {
-        assertThat(isEven(1), is(false));
+        assertThat(isEven(1)).isFalse();
     }
 
     @Test
     public final void testIsEven2() {
-        assertThat(isEven(2), is(true));
+        assertThat(isEven(2)).isTrue();
     }
 
     @Test
     public final void testIsEvenMinus1() {
-        assertThat(isEven(- 1), is(false));
+        assertThat(isEven(- 1)).isFalse();
     }
 
     @Test
     public final void testIsEvenMinus2() {
-        assertThat(isEven(- 2), is(true));
+        assertThat(isEven(- 2)).isTrue();
     }
 
     @Test
     public final void testIsOdd() {
-        assertThat(isOdd(0), is(false));
+        assertThat(isOdd(0)).isFalse();
     }
 
     @Test
     public final void testIsOdd1() {
-        assertThat(isOdd(1), is(true));
+        assertThat(isOdd(1)).isTrue();
     }
 
     @Test
     public final void testIsOdd2() {
-        assertThat(isOdd(2), is(false));
+        assertThat(isOdd(2)).isFalse();
     }
 
     @Test
     public final void testIsOddMinus1() {
-        assertThat(isOdd(- 1), is(true));
+        assertThat(isOdd(- 1)).isTrue();
     }
 
     @Test
     public final void testIsOddMinus2() {
-        assertThat(isOdd(- 2), is(false));
+        assertThat(isOdd(- 2)).isFalse();
     }
 }
