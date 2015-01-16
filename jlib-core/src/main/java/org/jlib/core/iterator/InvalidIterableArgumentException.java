@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.text.ParametrizedMessage;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
@@ -32,25 +32,29 @@ import static org.jlib.core.text.ParametrizedMessageUtility.message;
  * @author Igor Akkerman
  */
 public class InvalidIterableArgumentException
-extends InvalidStateException {
+extends InvalidArgumentException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
     public InvalidIterableArgumentException(final Iterable<?> iterable) {
-        super(message().with(iterable));
+        super(buildMessage(message(), iterable));
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final Exception cause) {
-        super(message().with(iterable), cause);
+        super(buildMessage(message(), iterable), cause);
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message) {
-        super(message.with(iterable));
+        super(buildMessage(message, iterable));
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message,
                                             final Exception cause) {
-        super(message.with(iterable), cause);
+        super(buildMessage(message, iterable), cause);
+    }
+
+    private static ParametrizedMessage buildMessage(final ParametrizedMessage message, final Iterable<?> iterable) {
+        return message.with("iterable", iterable);
     }
 }
