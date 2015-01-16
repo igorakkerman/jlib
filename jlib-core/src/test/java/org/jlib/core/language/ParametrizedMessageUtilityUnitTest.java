@@ -21,11 +21,8 @@
 
 package org.jlib.core.language;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.text.IsEmptyString.isEmptyString;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.text.ParametrizedMessageUtility.autoMessage;
-import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class ParametrizedMessageUtilityUnitTest {
@@ -39,12 +36,12 @@ public class ParametrizedMessageUtilityUnitTest {
     @Test
     public void createMessageFromRootException()
     throws Exception {
-        assertThat(autoMessage(new Exception()), isEmptyString());
+        assertThat(autoMessage(new Exception())).isEmpty();
     }
 
     @Test
     public void createMessageFromExceptionName()
     throws Exception {
-        assertThat(autoMessage(new IBliBlaBlubException()), is(equalTo("i bli bla blub")));
+        assertThat(autoMessage(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
     }
 }
