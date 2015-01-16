@@ -21,10 +21,10 @@
 
 package org.jlib.core.iterator;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
-
-import org.jlib.core.text.ParametrizedMessage;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.text.ParametrizedMessage;
+
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterable} claims a state error.
@@ -37,64 +37,24 @@ extends InvalidStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
-    /*
-     * Creates a new {@link InvalidIterableStateException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     */
     public InvalidIterableStateException(final Iterable<?> iterable) {
-        super(message().with(iterable));
+        super(buildMessage(message(), iterable));
     }
 
-    /**
-     * Creates a new {@link InvalidIterableStateException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     */
     public InvalidIterableStateException(final Iterable<?> iterable, final Exception cause) {
-        super(message().with(iterable), cause);
+        super(buildMessage(message(), iterable), cause);
     }
 
-    /**
-     * Creates a new {@link InvalidIterableStateException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param errorMessageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public InvalidIterableStateException(final Iterable<?> iterable, final ParametrizedMessage message) {
-        super(message.with(iterable));
+        super(buildMessage(message, iterable));
     }
 
-    /**
-     * Creates a new {@link InvalidIterableStateException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public InvalidIterableStateException(final Iterable<?> iterable, final ParametrizedMessage message,
                                          final Exception cause) {
-        super(message.with(iterable), cause);
+        super(buildMessage(message, iterable), cause);
+    }
+
+    private static ParametrizedMessage buildMessage(final ParametrizedMessage message, final Iterable<?> iterable) {
+        return message.with("iterable", iterable);
     }
 }
