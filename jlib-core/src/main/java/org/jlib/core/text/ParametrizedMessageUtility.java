@@ -46,10 +46,8 @@ public final class ParametrizedMessageUtility {
         return new ParametrizedMessage(object.toString());
     }
 
-    public static ParametrizedMessage message(final Object object, final CharSequence argumentTemplate,
-                                              final CharSequence textArgumentSeparator,
-                                              final CharSequence argumentSeparator) {
-        return new ParametrizedMessage(object.toString(), argumentTemplate, textArgumentSeparator, argumentSeparator);
+    public static ParametrizedMessage message(final Object object, final ParametrizedMessageConfiguration configuration) {
+        return new ParametrizedMessage(object.toString(), configuration);
     }
 
     public static ParametrizedMessage messageMf(final CharSequence messageTemplate, final Object... messageArguments) {

@@ -31,12 +31,6 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 public class ParametrizedMessage
 implements Serializable {
 
-    public static final String DEFAULT_ARGUMENT_TEMPLATE = "%s='%s'";
-
-    public static final String DEFAULT_TEXT_ARGUMENT_SEPARATOR = " ";
-
-    public static final String DEFAULT_ARGUMENT_SEPARATOR = " ";
-
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
@@ -48,11 +42,11 @@ implements Serializable {
                                  EXPECTED_ADDITIONAL_LENGTH);
     }
 
+    private static final ParametrizedMessageFactory FACTORY = ParametrizedMessageFactory.getInstance();
+
     private final ValueFormatter<Object, Named<?>> argumentFormatter;
 
-    private final String textArgumentSeparator;
-
-    private final String argumentSeparator;
+    private final ParametrizedMessageConfiguration configuration;
 
     private final StringBuilder builder;
 
@@ -63,22 +57,19 @@ implements Serializable {
     }
 
     public ParametrizedMessage(final CharSequence text) {
-        this(text, DEFAULT_ARGUMENT_TEMPLATE, DEFAULT_TEXT_ARGUMENT_SEPARATOR, DEFAULT_ARGUMENT_SEPARATOR);
+        this(text, FACTORY.getDefaultConfiguration());
     }
 
-    public ParametrizedMessage(final CharSequence text, final CharSequence argumentTemplate,
-                               final CharSequence textArgumentSeparator, final CharSequence argumentSeparator) {
-        this(createBuilder(text), argumentTemplate, textArgumentSeparator, argumentSeparator);
+    public ParametrizedMessage(final CharSequence text, final ParametrizedMessageConfiguration configuration) {
+        this(createBuilder(text), configuration);
 
         builder.append(text);
     }
 
-    public ParametrizedMessage(final StringBuilder builder, final CharSequence argumentTemplate,
-                               final CharSequence textArgumentSeparator, final CharSequence argumentSeparator) {
+    public ParametrizedMessage(final StringBuilder builder, final ParametrizedMessageConfiguration configuration) {
         this.builder = builder;
-        argumentFormatter = new PrintfNamedValueFormatter(argumentTemplate);
-        this.textArgumentSeparator = textArgumentSeparator.toString();
-        this.argumentSeparator = argumentSeparator.toString();
+        this.configuration = configuration;
+        argumentFormatter = new PrintfNamedValueFormatter(configuration.getArgumentTemplate());
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
@@ -103,8 +94,8 @@ implements Serializable {
             return;
 
         builder.append(argumentsCount == 0 ?
-                       textArgumentSeparator :
-                       argumentSeparator);
+                       configuration.getTextArgumentsSeparator() :
+                       configuration.getArgumentsSeparator());
     }
 
     @Override
