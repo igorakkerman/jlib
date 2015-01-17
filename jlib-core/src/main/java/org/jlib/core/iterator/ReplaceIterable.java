@@ -33,8 +33,7 @@ public interface ReplaceIterable<Item>
 extends Iterable<Item> {
 
     /**
-     * Returns a new {@link ReplaceIterator} over the Items of this {@link ReplaceIterable}
-     * .
+     * Returns a new {@link ReplaceIterator} over the Items of this {@link ReplaceIterable}.
      *
      * @return newly created {@link ReplaceIterator}
      */
