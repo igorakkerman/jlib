@@ -24,17 +24,27 @@ package org.jlib.core.language;
 import org.jlib.core.text.ParametrizedMessage;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ParametrizedMessageTest {
 
+    private static final String DUMMY = "Dummy";
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     @Test
-    public void expectation() {
-        throw new ExceptionA(message("Something went wrong.").with("currentObject", this));
+    public void thrownExceptionShouldHaveCorrectClassAndMessage() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage("Something went wrong. dummy='Dummy'");
+
+        throw new ExceptionA(message("Something went wrong.").with("dummy", DUMMY));
     }
 
     private static class ExceptionA extends InvalidStateException {
-
         private ExceptionA(final ParametrizedMessage message) {
             super(message);
         }
