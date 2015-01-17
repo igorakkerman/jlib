@@ -43,8 +43,6 @@ import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToStrin
  */
 public abstract class AbstractObject {
 
-    private ToStringStyle toStringStyle;
-
     /**
      * Creates a new {@link AbstractObject}.
      */
