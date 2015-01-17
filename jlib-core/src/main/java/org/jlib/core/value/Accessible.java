@@ -49,7 +49,7 @@ extends Accessor<Value>,
      * {@inheritDoc}
      * </p>
      * <p>
-     * All instances of {@link AbstractAccessible} guarantee the {@link Value} to be accessible, hence always returns
+     * All instances of {@link Accessible} guarantee the {@link Value} to be accessible, hence always returns
      * {@code true}.
      * </p>
      *

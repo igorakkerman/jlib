@@ -21,8 +21,11 @@
 
 package org.jlib.core.value;
 
+import java.util.function.Supplier;
+
 /**
- * Accessor of a {@link Value}.
+ * Accessor of a {@link Value}. {@link Accessor#get()} differs from {@link Supplier#get()} by declaring the checked
+ * {@link NotAccessibleException}.
  *
  * @param <Value>
  *        type of the value
