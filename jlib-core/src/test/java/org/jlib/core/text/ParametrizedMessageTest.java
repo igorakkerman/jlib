@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.text;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.language.InvalidStateException;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
 import org.junit.Rule;
@@ -46,7 +46,7 @@ public class ParametrizedMessageTest {
     public void thrownExceptionShouldHaveCorrectClassAndMessageWithArguments() {
 
         expectedException.expect(ExceptionA.class);
-        expectedException.expectMessage(" dummyName='Dummy Value'");
+        expectedException.expectMessage("dummyName='Dummy Value'");
 
         throw new ExceptionA(message().with("dummyName", "Dummy Value"));
     }
@@ -55,12 +55,25 @@ public class ParametrizedMessageTest {
     public void thrownExceptionShouldHaveCorrectClassAndTextMessageWithArguments() {
 
         expectedException.expect(ExceptionA.class);
-        expectedException.expectMessage("Something went wrong. dummyName='Dummy Value'");
+        expectedException.expectMessage("Something went wrong. dummyName='1' dummerName='Dummer Value'");
 
-        throw new ExceptionA(message("Something went wrong.").with("dummyName", "Dummy Value"));
+        throw new ExceptionA(message("Something went wrong.").with("dummyName", 1)
+                                                             .with("dummerName", "Dummer Value"));
     }
 
-    private static class ExceptionA extends InvalidStateException {
+    @Test
+    public void thrownExceptionShouldHaveCorrectClassAndTextMessageWithArgumentsInSpecifiedFormat() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+
+        throw new ExceptionA(message("Something went wrong.", "%s: %s", " ", "; ").with("dummyName", 1)
+                                                             .with("dummerName", "Dummer Value"));
+    }
+
+    private static class ExceptionA
+    extends InvalidStateException {
+
         private ExceptionA(final ParametrizedMessage message) {
             super(message);
         }

@@ -19,10 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.text;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.ParametrizedMessageUtility.autoMessage;
+import static org.jlib.core.text.ParametrizedMessageUtility.autoMessageText;
 import org.junit.Test;
 
 public class ParametrizedMessageUtilityUnitTest {
@@ -36,12 +36,12 @@ public class ParametrizedMessageUtilityUnitTest {
     @Test
     public void createMessageFromRootException()
     throws Exception {
-        assertThat(autoMessage(new Exception())).isEmpty();
+        assertThat(autoMessageText(new Exception())).isEmpty();
     }
 
     @Test
     public void createMessageFromExceptionName()
     throws Exception {
-        assertThat(autoMessage(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
+        assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
     }
 }

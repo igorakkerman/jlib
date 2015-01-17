@@ -30,7 +30,11 @@ import static org.jlib.core.text.TextUtility.removeOnce;
 
 public final class ParametrizedMessageUtility {
 
-    public static String autoMessage(final Exception exception) {
+    public static ParametrizedMessage autoMessage(final Exception exception) {
+        return message(autoMessageText(exception));
+    }
+
+    public static String autoMessageText(final Exception exception) {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
@@ -51,16 +55,19 @@ public final class ParametrizedMessageUtility {
         return new ParametrizedMessage(object.toString());
     }
 
-    public static ParametrizedMessage message(final int value) {
-        return message(Integer.toString(value));
+    public static ParametrizedMessage message(final Object object, final CharSequence argumentTemplate,
+                                              final CharSequence textArgumentSeparator,
+                                              final CharSequence argumentSeparator) {
+        return new ParametrizedMessage(object.toString(), argumentTemplate, textArgumentSeparator, argumentSeparator);
     }
 
-    public static ParametrizedMessage message(final CharSequence messageTemplate, final Object... messageArguments) {
+    public static ParametrizedMessage messageMf(final CharSequence messageTemplate, final Object... messageArguments) {
         return new ParametrizedMessage(MessageFormat.format(messageTemplate.toString(), messageArguments));
     }
 
-    public static ParametrizedMessage messagef(final CharSequence messageTemplate, final Object... messageArguments) {
-        final StringBuilder messageBuilder = new StringBuilder(messageTemplate.length() + messageArguments.length * 50 + 100);
+    public static ParametrizedMessage messagePf(final CharSequence messageTemplate, final Object... messageArguments) {
+        final StringBuilder messageBuilder = new StringBuilder(messageTemplate.length() + messageArguments.length * 50 +
+                                                               100);
         new Formatter(messageBuilder).format(messageTemplate.toString(), messageArguments);
         return new ParametrizedMessage(messageBuilder);
     }

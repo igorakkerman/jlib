@@ -21,14 +21,14 @@
 
 package org.jlib.core.storage.capacity;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
-
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.storage.ContentIndexRegistry;
 import org.jlib.core.storage.InvalidIndexException;
 import org.jlib.core.storage.LinearIndexStorage;
 import org.jlib.core.storage.LinearIndexStorageException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+
+import static org.jlib.core.text.ParametrizedMessageUtility.messageMf;
 
 public abstract class AbstractCapacityStrategy<Item>
 extends AbstractObject {
@@ -82,12 +82,12 @@ extends AbstractObject {
 
     protected void ensureIndexValid(final int index) {
         if (index < contentIndexRegistry.getFirstItemIndex())
-            throw new InvalidIndexException(storage, message("index = {0} > {1} = firstItemIndex", index,
-                                                             contentIndexRegistry.getFirstItemIndex()));
+            throw new InvalidIndexException(storage, messageMf("index = {0} > {1} = " + "firstItemIndex", index,
+                                                               contentIndexRegistry.getFirstItemIndex()));
 
         if (index > contentIndexRegistry.getLastItemIndex()) {
-            throw new InvalidIndexException(storage, message("index = {0} < {1} = lastItemIndex", index,
-                                                             contentIndexRegistry.getLastItemIndex()));
+            throw new InvalidIndexException(storage, messageMf("index = {0} < {1} = lastItemIndex", index,
+                                                               contentIndexRegistry.getLastItemIndex()));
         }
     }
 }
