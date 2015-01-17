@@ -24,6 +24,7 @@ package org.jlib.core.text;
 import org.jlib.core.language.InvalidStateException;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import static org.jlib.core.value.ValueUtility.named;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -43,7 +44,7 @@ public class ParametrizedMessageTest {
     }
 
     @Test
-    public void thrownExceptionShouldHaveCorrectClassAndMessageWithArguments() {
+    public void thrownExceptionShouldHaveCorrectClassAndMessageWithArgument() {
 
         expectedException.expect(ExceptionA.class);
         expectedException.expectMessage("dummyName='Dummy Value'");
@@ -59,6 +60,25 @@ public class ParametrizedMessageTest {
 
         throw new ExceptionA(message("Something went wrong.").with("dummyName", 1)
                                                              .with("dummerName", "Dummer Value"));
+    }
+
+    @Test
+    public void thrownExceptionShouldHaveCorrectClassAndTextMessageWithNamedArgument() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage("Something went wrong. dummyName='1'");
+
+        throw new ExceptionA(message("Something went wrong.").with(named("dummyName", 1)));
+    }
+
+    @Test
+    public void thrownExceptionShouldHaveCorrectClassAndTextMessageWithNamedArguments() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+
+        throw new ExceptionA(message("Something went wrong.").with(named("dummyName", 1),
+                                                                   named("dummerName", "Dummer Value")));
     }
 
     @Test
