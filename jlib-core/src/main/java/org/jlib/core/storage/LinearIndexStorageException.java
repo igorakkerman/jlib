@@ -36,18 +36,6 @@ extends InvalidArgumentException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 1514836335986845986L;
 
-    /**
-     * Creates a new {@link LinearIndexStorageException}.
-     *
-     * @param linearIndexStorage
-     *        referenced {@link LinearIndexStorage}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param messageArguments
-     *        array of {@link Object} message arguments
-     */
     protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,
                                           final ParametrizedMessage message) {
         super(message.with("storage", linearIndexStorage));
