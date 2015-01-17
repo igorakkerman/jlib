@@ -38,10 +38,6 @@ public final class ParametrizedMessageUtility {
         return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
-    public static String namedObject(final CharSequence objectName, final Object object) {
-        return appendNamedObject(new StringBuilder(objectName.length() + 50), objectName, object).toString();
-    }
-
     public static StringBuilder appendNamedObject(final StringBuilder namedObjectBuilder, final CharSequence objectName,
                                                   final Object object) {
         return namedObjectBuilder.append(objectName).append('=').append(object);

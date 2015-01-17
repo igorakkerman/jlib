@@ -24,7 +24,6 @@ package org.jlib.core.storage;
 import org.jlib.core.language.InvalidArgumentException;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
-import static org.jlib.core.text.ParametrizedMessageUtility.namedObject;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
@@ -49,6 +48,6 @@ extends LinearIndexStorageException {
     InvalidCapacityException(final LinearIndexStorage<?> storage, final CharSequence capacityName,
                              final int invalidCapacity) {
 
-        super(storage, message(namedObject(capacityName, invalidCapacity)));
+        super(storage, message().with(capacityName, invalidCapacity));
     }
 }
