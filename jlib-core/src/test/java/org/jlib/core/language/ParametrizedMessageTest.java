@@ -30,8 +30,6 @@ import org.junit.rules.ExpectedException;
 
 public class ParametrizedMessageTest {
 
-    private static final String DUMMY = "Dummy";
-
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
@@ -39,9 +37,9 @@ public class ParametrizedMessageTest {
     public void thrownExceptionShouldHaveCorrectClassAndMessage() {
 
         expectedException.expect(ExceptionA.class);
-        expectedException.expectMessage("Something went wrong. dummy='Dummy'");
+        expectedException.expectMessage("Something went wrong. dummyName='Dummy Value'");
 
-        throw new ExceptionA(message("Something went wrong.").with("dummy", DUMMY));
+        throw new ExceptionA(message("Something went wrong.").with("dummyName", "Dummy Value"));
     }
 
     private static class ExceptionA extends InvalidStateException {
