@@ -31,9 +31,5 @@ public final class Nothing {
     /** sole {@link Nothing} instance */
     public static final Nothing NOTHING = new Nothing();
 
-    /**
-     * Creates a new {@link Nothing}.
-     */
-    private Nothing() {
-    }
+    private Nothing() {}
 }
