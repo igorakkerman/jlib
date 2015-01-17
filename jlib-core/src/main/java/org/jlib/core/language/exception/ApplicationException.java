@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.exception;
 
 import org.jlib.core.text.ParametrizedMessage;
 

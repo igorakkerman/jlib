@@ -24,7 +24,7 @@ package org.jlib.core.storage;
 import java.lang.reflect.InvocationTargetException;
 
 import org.jlib.core.language.TypedCloneable;
-import org.jlib.core.language.UnexpectedStateException;
+import org.jlib.core.language.exception.UnexpectedStateException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 import org.apache.commons.beanutils.BeanUtils;

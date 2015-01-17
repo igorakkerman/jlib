@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2014 Igor Akkerman
+ *     Copyright 2005-2013 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,26 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.value;
+package org.jlib.core.language.exception;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.text.ParametrizedMessage;
 
-public class InitializedNamed<Value>
-extends Initialized<Value>
-implements Named<Value> {
+/**
+ * {@link InvalidStateException} thrown in an uexpected state.
+ *
+ * @author Igor Akkerman
+ */
+public class UnexpectedStateException
+extends InvalidStateException {
 
-    private final CharSequence name;
+    private static final long serialVersionUID = 4388525477338778336L;
 
-    public InitializedNamed(final CharSequence name, final Value value)
-    throws InvalidArgumentException {
-
-        super(value);
-
-        this.name = name;
+    public UnexpectedStateException(final ParametrizedMessage message) {
+        super(message);
     }
 
-    @Override
-    public String getName() {
-        return name.toString();
+    public UnexpectedStateException(final Exception cause) {
+        super(cause);
+    }
+
+    public UnexpectedStateException(final Exception cause, final ParametrizedMessage message) {
+        super(message, cause);
     }
 }

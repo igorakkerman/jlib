@@ -21,7 +21,7 @@
 
 package org.jlib.core.operator;
 
-import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.exception.ApplicationException;
 import org.jlib.core.text.ParametrizedMessage;
 
 /**

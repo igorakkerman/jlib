@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2014 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,26 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.value;
+package org.jlib.core.language.exception;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.text.ParametrizedMessage;
 
-public class InitializedNamed<Value>
-extends Initialized<Value>
-implements Named<Value> {
+public class InvalidArgumentExceptionMessageTest
+extends ExceptionMessageTestBase {
 
-    private final CharSequence name;
+    private static class AnException
+    extends InvalidArgumentException {
 
-    public InitializedNamed(final CharSequence name, final Value value)
-    throws InvalidArgumentException {
-
-        super(value);
-
-        this.name = name;
+        private AnException(final ParametrizedMessage message) {
+            super(message);
+        }
     }
 
     @Override
-    public String getName() {
-        return name.toString();
+    protected void throwException()
+    throws Exception {
+        throw new AnException(getMessage());
     }
 }

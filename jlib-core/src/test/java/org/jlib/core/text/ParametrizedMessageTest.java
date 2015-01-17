@@ -21,14 +21,11 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.language.InvalidStateException;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
 import static org.jlib.core.value.ValueUtility.named;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class ParametrizedMessageTest {
 
@@ -55,77 +52,59 @@ public class ParametrizedMessageTest {
         ParametrizedMessageFactory.getInstance().setDefaultConfiguration(EQUALS_SINGLE_QUOTE_CONFIGURATION);
     }
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
-    @Test
-    public void thrownExceptionShouldHaveCorrectClass() {
-        expectedException.expect(ExceptionA.class);
-
-        throw new ExceptionA(message("Something went wrong."));
-    }
-
     @Test
     public void thrownExceptionShouldHaveTextMessage() {
-        expectedException.expectMessage("Something went wrong.");
+        final String message = message("Something went wrong.").toString();
 
-        throw new ExceptionA(message("Something went wrong."));
+        assertThat(message).isEqualTo("Something went wrong.");
     }
 
     @Test
     public void thrownExceptionShouldHaveMessageWithArgument() {
-        expectedException.expectMessage("dummyName='Dummy Value'");
+        final String message = message().with("dummyName", "Dummy Value").toString();
 
-        throw new ExceptionA(message().with("dummyName", "Dummy Value"));
+        assertThat(message).isEqualTo("dummyName='Dummy Value'");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithArguments() {
-        expectedException.expectMessage("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+        final ParametrizedMessage message = message("Something went wrong.").with("dummyName", 1)
+                                                                            .with("dummerName", "Dummer Value");
 
-        throw new ExceptionA(message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value"));
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' " + "dummerName='Dummer Value'");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithNamedArgument() {
-        expectedException.expectMessage("Something went wrong. dummyName='1'");
+        final ParametrizedMessage message = message("Something went wrong.").with(named("dummyName", 1));
 
-        throw new ExceptionA(message("Something went wrong.").with(named("dummyName", 1)));
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1'");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithNamedArgumentsInSpecifiedDefaultFormat() {
         ParametrizedMessageFactory.getInstance().setDefaultConfiguration(COLON_CONFIGURATION);
 
-        expectedException.expectMessage("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        final ParametrizedMessage message = message("Something went wrong.").with(named("dummyName", 1),
+                                                                                  named("dummerName", "Dummer Value"));
 
-        throw new ExceptionA(message("Something went wrong.").with(named("dummyName", 1),
-                                                                   named("dummerName", "Dummer Value")));
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithNamedArguments() {
+        final ParametrizedMessage message = message("Something went wrong.").with(named("dummyName", 1),
+                                                                                  named("dummerName", "Dummer Value"));
 
-        expectedException.expectMessage("Something went wrong. dummyName='1' dummerName='Dummer Value'");
-
-        throw new ExceptionA(message("Something went wrong.").with(named("dummyName", 1),
-                                                                   named("dummerName", "Dummer Value")));
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithArgumentsInSpecifiedFormat() {
+        final ParametrizedMessage message = message("Something went wrong.", COLON_CONFIGURATION).with("dummyName", 1)
+                                                                                                 .with("dummerName",
+                                                                                                       "Dummer Value");
 
-        expectedException.expectMessage("Something went wrong. dummyName: 1; dummerName: Dummer Value");
-
-        throw new ExceptionA(message("Something went wrong.", COLON_CONFIGURATION).with("dummyName", 1)
-                                                                                  .with("dummerName", "Dummer Value"));
-    }
-
-    private static class ExceptionA
-    extends InvalidStateException {
-
-        private ExceptionA(final ParametrizedMessage message) {
-            super(message);
-        }
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 }

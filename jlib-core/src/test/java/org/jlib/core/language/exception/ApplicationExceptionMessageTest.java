@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,33 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.exception;
 
 import org.jlib.core.text.ParametrizedMessage;
 
-/**
- * {@link IllegalStateException} using a  ParametrizedMessage.
- *
- * @author Igor Akkerman
- */
-public abstract class InvalidStateException
-extends IllegalStateException {
+public class ApplicationExceptionMessageTest
+extends ExceptionMessageTestBase {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = 6535760982905205135L;
+    private static class AnException
+    extends ApplicationException {
 
-    protected InvalidStateException() {
+        private AnException(final ParametrizedMessage message) {
+            super(message);
+        }
     }
 
-    protected InvalidStateException(final ParametrizedMessage message) {
-        super(message.toString());
-    }
-
-    protected InvalidStateException(final Exception cause) {
-        super(cause);
-    }
-
-    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
-        super(message.toString(), cause);
+    @Override
+    protected void throwException()
+    throws Exception {
+        throw new AnException(getMessage());
     }
 }

@@ -21,9 +21,9 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.exception.ApplicationException;
 import org.jlib.core.text.ParametrizedMessage;
-import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.exception.InvalidStateException;
 
 /**
  * {@link ApplicationException} thrown during the operation of an observer.

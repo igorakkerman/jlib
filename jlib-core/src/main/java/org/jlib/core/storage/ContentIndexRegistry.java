@@ -26,17 +26,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.io.Serializable;
 
 import org.jlib.core.language.TypedCloneable;
-import org.jlib.core.language.UnexpectedStateException;
-import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.core.language.exception.UnexpectedStateException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.math.MathUtility.count;
 
 /**
  * Manager of the content of a {@link LinearIndexStorage}.
- *
- * @param <Item>
- *        type of the items stored in the {@link LinearIndexStorage}
  *
  * @author Igor Akkerman
  */
@@ -47,17 +43,14 @@ implements Serializable {
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
 
-    /** {@link LinearIndexStorage} index of the first {@link Item} */
+    /** {@link LinearIndexStorage} index of the first item */
     private Integer firstItemIndex;
 
-    /** {@link LinearIndexStorage} index of the last {@link Item} */
+    /** {@link LinearIndexStorage} index of the last item */
     private Integer lastItemIndex;
 
     /**
      * Creates a new {@link ContentIndexRegistry} for the specified {@link LinearIndexStorage}.
-     *
-     * @param storage
-     *        {@link LinearIndexStorage} on which this {@link ContentIndexRegistry} operates.
      */
     public ContentIndexRegistry(final int firstItemIndex, final int lastItemIndex)
     throws LinearIndexStorageException {
@@ -67,45 +60,45 @@ implements Serializable {
     }
 
     /**
-     * Returns the index of the first {@link Item}.
+     * Returns the index of the first item.
      *
-     * @return integer specifying the index of the first {@link Item}
+     * @return integer specifying the index of the first item
      */
     public int getFirstItemIndex() {
         return firstItemIndex;
     }
 
     /**
-     * Registers the index of the first {@link Item}.
+     * Registers the index of the first item.
      *
      * @param firstItemIndex
-     *        integer specifying the index of the first {@link Item}
+     *        integer specifying the index of the first item
      */
     public void setFirstItemIndex(final int firstItemIndex) {
         this.firstItemIndex = firstItemIndex;
     }
 
     /**
-     * Returns the index of the last {@link Item}.
+     * Returns the index of the last item.
      *
-     * @return integer specifying the index of the last {@link Item}
+     * @return integer specifying the index of the last item
      */
     public int getLastItemIndex() {
         return lastItemIndex;
     }
 
     /**
-     * Registers the index of the last {@link Item}.
+     * Registers the index of the last item.
      *
      * @param lastItemIndex
-     *        integer specifying the index of the last {@link Item}
+     *        integer specifying the index of the last item
      */
     public void setLastItemIndex(final int lastItemIndex) {
         this.lastItemIndex = lastItemIndex;
     }
 
     /**
-     * Increments the index of the first {@link Item} by the specified value.
+     * Increments the index of the first item by the specified value.
      *
      * @param increment
      *        positive or negative integer specifying the increment
@@ -115,7 +108,7 @@ implements Serializable {
     }
 
     /**
-     * Increments the index of the last {@link Item} by the specified value.
+     * Increments the index of the last item by the specified value.
      *
      * @param increment
      *        positive or negative integer specifying the increment
@@ -125,9 +118,9 @@ implements Serializable {
     }
 
     /**
-     * Returns the number of stored {@link Item}s.
+     * Returns the number of stored items.
      *
-     * @return integer spacifying the number of stored {@link Item}s
+     * @return integer spacifying the number of stored items
      */
     public int getItemsCount() {
         return count(firstItemIndex, lastItemIndex);

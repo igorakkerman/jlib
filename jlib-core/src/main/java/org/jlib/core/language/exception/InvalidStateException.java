@@ -19,25 +19,33 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.language.exception;
 
 import org.jlib.core.text.ParametrizedMessage;
 
 /**
- * {@link IllegalArgumentException} using a parametrized message.
+ * {@link IllegalStateException} using a  ParametrizedMessage.
  *
  * @author Igor Akkerman
  */
-public abstract class InvalidArgumentException
-extends IllegalArgumentException {
+public abstract class InvalidStateException
+extends IllegalStateException {
 
-    private static final long serialVersionUID = 5894034302749387338L;
+    /** serialVersionUID */
+    private static final long serialVersionUID = 6535760982905205135L;
 
-    protected InvalidArgumentException(final ParametrizedMessage message) {
+    protected InvalidStateException() {
+    }
+
+    protected InvalidStateException(final ParametrizedMessage message) {
         super(message.toString());
     }
 
-    protected InvalidArgumentException(final ParametrizedMessage message, final Exception cause) {
+    protected InvalidStateException(final Exception cause) {
+        super(cause);
+    }
+
+    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
         super(message.toString(), cause);
     }
 }

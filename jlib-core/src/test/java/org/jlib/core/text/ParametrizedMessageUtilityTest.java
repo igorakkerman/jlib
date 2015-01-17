@@ -25,22 +25,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.text.ParametrizedMessageUtility.autoMessageText;
 import org.junit.Test;
 
-public class ParametrizedMessageUtilityUnitTest {
+public class ParametrizedMessageUtilityTest {
 
     private static class IBliBlaBlubException
     extends Exception {
 
-        private static final long serialVersionUID = 4507996594865173187L;
+        private static final long serialVersionUID = 0;
+    }
+
+    private static class E
+    extends Exception {
+
+        private static final long serialVersionUID = 0;
     }
 
     @Test
-    public void createMessageFromRootException()
+    public void rootExceptionShouldHaveEmptyCamel()
     throws Exception {
         assertThat(autoMessageText(new Exception())).isEmpty();
     }
 
     @Test
-    public void createMessageFromExceptionName()
+    public void OneLetterNamedExceptionShouldHaveOneLetterCamel()
+    throws Exception {
+        assertThat(autoMessageText(new E())).isEqualTo("e");
+    }
+
+    @Test
+    public void MultipleWordsExceptionShouldHaveMultipleWordsCamel()
     throws Exception {
         assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
     }

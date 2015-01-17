@@ -22,7 +22,7 @@
 package org.jlib.core.storage;
 
 import org.jlib.core.text.ParametrizedMessage;
-import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.exception.InvalidArgumentException;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid

@@ -23,7 +23,7 @@ package org.jlib.core.system;
 
 import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
-import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.exception.ApplicationException;
 
 /**
  * Exception thrown when trying to retrieve the value of a property that is not set.

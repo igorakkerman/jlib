@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2014 Igor Akkerman
+ *     Copyright 2005-2013 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,26 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.value;
+package org.jlib.core.language.exception;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.text.ParametrizedMessage;
 
-public class InitializedNamed<Value>
-extends Initialized<Value>
-implements Named<Value> {
+/**
+ * {@link IllegalArgumentException} using a parametrized message.
+ *
+ * @author Igor Akkerman
+ */
+public abstract class InvalidArgumentException
+extends IllegalArgumentException {
 
-    private final CharSequence name;
+    private static final long serialVersionUID = 5894034302749387338L;
 
-    public InitializedNamed(final CharSequence name, final Value value)
-    throws InvalidArgumentException {
-
-        super(value);
-
-        this.name = name;
+    protected InvalidArgumentException(final ParametrizedMessage message) {
+        super(message.toString());
     }
 
-    @Override
-    public String getName() {
-        return name.toString();
+    protected InvalidArgumentException(final ParametrizedMessage message, final Exception cause) {
+        super(message.toString(), cause);
     }
 }

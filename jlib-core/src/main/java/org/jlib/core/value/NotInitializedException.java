@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.ApplicationException;
+import org.jlib.core.language.exception.ApplicationException;
 
 /**
  * {@link ApplicationException} thrown when a requested {@link Accessor} value is not set.

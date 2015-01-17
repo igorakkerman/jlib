@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.InvalidArgumentException;
+import org.jlib.core.language.exception.InvalidArgumentException;
 
 /**
  * {@link Accessor} of a modifiable {@link Value}.

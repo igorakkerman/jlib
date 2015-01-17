@@ -21,6 +21,8 @@
 
 package org.jlib.core.language;
 
+import org.jlib.core.language.exception.UnexpectedStateException;
+
 /**
  * <p>
  * {@link Cloneable} providing a public {@link #clone()} method with the return type of the extending class.
