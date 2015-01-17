@@ -34,7 +34,25 @@ public class ParametrizedMessageTest {
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void thrownExceptionShouldHaveCorrectClassAndMessage() {
+    public void thrownExceptionShouldHaveCorrectClassAndTextMessage() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage("Something went wrong.");
+
+        throw new ExceptionA(message("Something went wrong."));
+    }
+
+    @Test
+    public void thrownExceptionShouldHaveCorrectClassAndMessageWithArguments() {
+
+        expectedException.expect(ExceptionA.class);
+        expectedException.expectMessage(" dummyName='Dummy Value'");
+
+        throw new ExceptionA(message().with("dummyName", "Dummy Value"));
+    }
+
+    @Test
+    public void thrownExceptionShouldHaveCorrectClassAndTextMessageWithArguments() {
 
         expectedException.expect(ExceptionA.class);
         expectedException.expectMessage("Something went wrong. dummyName='Dummy Value'");
