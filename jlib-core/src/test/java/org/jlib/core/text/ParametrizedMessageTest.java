@@ -62,25 +62,32 @@ public class ParametrizedMessageTest {
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessage() {
-        final String message = message("Something went wrong.").toString();
+    public void messageWithTextShouldProduceCorrectString() {
+        final ParametrizedMessage message = message("Something went wrong.");
 
-        assertThat(message).isEqualTo("Something went wrong.");
+        assertThat(message.toString()).isEqualTo("Something went wrong.");
     }
 
     @Test
-    public void thrownExceptionShouldHaveMessageWithArgument() {
-        final String message = message().with("dummyName", "Dummy Value").toString();
+    public void messageWithSingleArgumentShouldProduceCorrectString() {
+        final ParametrizedMessage message = message().with("dummyName", "Dummy Value");
 
-        assertThat(message).isEqualTo("dummyName='Dummy Value'");
+        assertThat(message.toString()).isEqualTo("dummyName='Dummy Value'");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithArguments() {
-        final ParametrizedMessage message = message("Something went wrong.").with("dummyName", 1)
-                                                                            .with("dummerName", "Dummer Value");
+    public void messageWithMultipleArgumentsShouldProduceCorrectString() {
+        final ParametrizedMessage message = message().with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' " + "dummerName='Dummer Value'");
+        assertThat(message.toString()).isEqualTo("dummyName='1' dummerName='Dummer Value'");
+    }
+
+    @Test
+    public void messageWithTextAndArgumentsShouldProduceCorrectString() {
+        final ParametrizedMessage message = /*
+         */ message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value");
+
+        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
     }
 
     @Test

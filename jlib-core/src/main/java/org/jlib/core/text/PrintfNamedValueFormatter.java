@@ -23,8 +23,8 @@ package org.jlib.core.text;
 
 import java.util.Formatter;
 
-public class PrintfNamedValueFormatter<Obj>
-implements NamedValueFormatter<Obj> {
+public class PrintfNamedValueFormatter
+implements NamedValueFormatter<Object> {
 
     private final String template;
 
@@ -33,7 +33,7 @@ implements NamedValueFormatter<Obj> {
     }
 
     @Override
-    public void append(final StringBuilder builder, final CharSequence name, final Obj value) {
+    public void append(final StringBuilder builder, final CharSequence name, final Object value) {
         new Formatter(builder).format(template, name, value);
     }
 }
