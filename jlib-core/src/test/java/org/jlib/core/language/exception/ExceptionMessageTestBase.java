@@ -35,7 +35,7 @@ public abstract class ExceptionMessageTestBase {
     public static final String MESSAGE_TEXT = "A funny text.";
 
     @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+    public final ExpectedException expectedException = ExpectedException.none();
 
     private ParametrizedMessage message;
 
