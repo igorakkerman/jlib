@@ -42,42 +42,48 @@ public class ArrayStorageTest {
     @Test(expected = InvalidCapacityException.class)
     public void negativeCapacity()
     throws Exception {
-        new ArrayStorage<Object>(-1);
+        new ArrayStorage<>(-1);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testEnsureCapacityAndShiftItems()
     throws Exception {
-
+        // TODO: implement
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testGetItem()
     throws Exception {
-
+        // TODO: implement
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testReplaceItem()
     throws Exception {
-
+        // TODO: implement
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testShiftItems()
     throws Exception {
-
+        // TODO: implement
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testCopyItems()
     throws Exception {
-
+        // TODO: implement
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test
     public void testGetCapacity()
     throws Exception {
-
+        // TODO: implement
     }
 }
