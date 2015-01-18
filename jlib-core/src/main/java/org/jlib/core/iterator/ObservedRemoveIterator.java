@@ -56,7 +56,7 @@ extends RemoveIterator<Item> {
      *         if a {@link ValueObserver} operation throws this
      *         {@link RuntimeException}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     void remove(ValueObserver<Item>... observers)
     throws NoItemToRemoveException, InvalidIterableStateException, ValueObserverException, RuntimeException;
 
