@@ -53,7 +53,7 @@ public class ParametrizedMessageFactory {
     private ParametrizedMessageConfiguration createInitialDefaultConfiguration() {
         final ParametrizedMessageConfiguration defaultConfiguration = new ParametrizedMessageConfiguration();
 
-        defaultConfiguration.setArgumentTemplate("%s='%s'");
+        defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
         defaultConfiguration.setTextArgumentsSeparator(" ");
         defaultConfiguration.setArgumentsSeparator(" ");
 

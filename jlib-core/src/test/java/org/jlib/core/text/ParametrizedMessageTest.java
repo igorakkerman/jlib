@@ -33,7 +33,7 @@ public class ParametrizedMessageTest {
 
     static {
         COLON_CONFIGURATION = new ParametrizedMessageConfiguration();
-        COLON_CONFIGURATION.setArgumentTemplate("%s: %s");
+        COLON_CONFIGURATION.setArgumentFormatter(new PrintfNamedValueFormatter("%s: %s"));
         COLON_CONFIGURATION.setTextArgumentsSeparator(" ");
         COLON_CONFIGURATION.setArgumentsSeparator("; ");
     }
@@ -42,7 +42,7 @@ public class ParametrizedMessageTest {
 
     static {
         EQUALS_SINGLE_QUOTE_CONFIGURATION = new ParametrizedMessageConfiguration();
-        EQUALS_SINGLE_QUOTE_CONFIGURATION.setArgumentTemplate("%s='%s'");
+        EQUALS_SINGLE_QUOTE_CONFIGURATION.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
         EQUALS_SINGLE_QUOTE_CONFIGURATION.setTextArgumentsSeparator(" ");
         EQUALS_SINGLE_QUOTE_CONFIGURATION.setArgumentsSeparator(" ");
     }

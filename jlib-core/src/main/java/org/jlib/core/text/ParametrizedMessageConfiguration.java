@@ -21,20 +21,26 @@
 
 package org.jlib.core.text;
 
+import org.jlib.core.value.Named;
+
 public class ParametrizedMessageConfiguration {
 
-    private String argumentTemplate;
+    private ValueFormatter<Object, Named<?>> argumentFormatter;
 
     private String textArgumentsSeparator;
 
     private String argumentsSeparator;
 
-    public String getArgumentTemplate() {
-        return argumentTemplate;
+    public ValueFormatter<Object, Named<?>> getArgumentFormatter() {
+        return argumentFormatter;
     }
 
-    public void setArgumentTemplate(final CharSequence argumentTemplate) {
-        this.argumentTemplate = argumentTemplate.toString();
+    public void setArgumentFormatter(final ValueFormatter<Object, Named<?>> argumentFormatter) {
+        this.argumentFormatter = argumentFormatter;
+    }
+
+    public void setTextArgumentsSeparator(final String textArgumentsSeparator) {
+        this.textArgumentsSeparator = textArgumentsSeparator;
     }
 
     public String getTextArgumentsSeparator() {
@@ -43,6 +49,10 @@ public class ParametrizedMessageConfiguration {
 
     public void setTextArgumentsSeparator(final CharSequence textArgumentsSeparator) {
         this.textArgumentsSeparator = textArgumentsSeparator.toString();
+    }
+
+    public void setArgumentsSeparator(final String argumentsSeparator) {
+        this.argumentsSeparator = argumentsSeparator;
     }
 
     public String getArgumentsSeparator() {

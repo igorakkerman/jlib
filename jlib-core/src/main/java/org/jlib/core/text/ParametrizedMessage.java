@@ -44,8 +44,6 @@ implements Serializable {
 
     private static final ParametrizedMessageFactory FACTORY = ParametrizedMessageFactory.getInstance();
 
-    private final ValueFormatter<Object, Named<?>> argumentFormatter;
-
     private final ParametrizedMessageConfiguration configuration;
 
     private final StringBuilder builder;
@@ -69,7 +67,6 @@ implements Serializable {
     public ParametrizedMessage(final StringBuilder builder, final ParametrizedMessageConfiguration configuration) {
         this.builder = builder;
         this.configuration = configuration;
-        argumentFormatter = new PrintfNamedValueFormatter(configuration.getArgumentTemplate());
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
@@ -81,7 +78,7 @@ implements Serializable {
 
             appendSeparator();
 
-            argumentFormatter.append(builder, argument);
+            configuration.getArgumentFormatter().append(builder, argument);
 
             argumentsCount++;
         }
