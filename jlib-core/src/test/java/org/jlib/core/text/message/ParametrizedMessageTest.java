@@ -19,10 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.text.message;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import org.jlib.core.text.valueformatter.MessageFormatNamedValueFormatter;
+import org.jlib.core.text.valueformatter.PrintfNamedValueFormatter;
+
+import org.assertj.core.api.Assertions;
+import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
 import static org.jlib.core.value.ValueUtility.named;
 import org.junit.Before;
 import org.junit.Test;
@@ -65,21 +68,21 @@ public class ParametrizedMessageTest {
     public void messageWithTextShouldProduceCorrectString() {
         final ParametrizedMessage message = message("Something went wrong.");
 
-        assertThat(message.toString()).isEqualTo("Something went wrong.");
+        Assertions.assertThat(message.toString()).isEqualTo("Something went wrong.");
     }
 
     @Test
     public void messageWithSingleArgumentShouldProduceCorrectString() {
         final ParametrizedMessage message = message().with("dummyName", "Dummy Value");
 
-        assertThat(message.toString()).isEqualTo("dummyName='Dummy Value'");
+        Assertions.assertThat(message.toString()).isEqualTo("dummyName='Dummy Value'");
     }
 
     @Test
     public void messageWithMultipleArgumentsShouldProduceCorrectString() {
         final ParametrizedMessage message = message().with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message.toString()).isEqualTo("dummyName='1' dummerName='Dummer Value'");
+        Assertions.assertThat(message.toString()).isEqualTo("dummyName='1' dummerName='Dummer Value'");
     }
 
     @Test
@@ -87,14 +90,15 @@ public class ParametrizedMessageTest {
         final ParametrizedMessage message = /*
          */ message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+        Assertions.assertThat(message.toString())
+                  .isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
     }
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithNamedArgument() {
         final ParametrizedMessage message = message("Something went wrong.").with(named("dummyName", 1));
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1'");
+        Assertions.assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1'");
     }
 
     @Test
@@ -104,7 +108,8 @@ public class ParametrizedMessageTest {
         final ParametrizedMessage message = /*
          */ message("Something went wrong.").with(named("dummyName", 1), named("dummerName", "Dummer Value"));
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        Assertions.assertThat(message.toString())
+                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 
     @Test
@@ -112,7 +117,8 @@ public class ParametrizedMessageTest {
         final ParametrizedMessage message = /*
          */ message("Something went wrong.").with(named("dummyName", 1), named("dummerName", "Dummer Value"));
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+        Assertions.assertThat(message.toString())
+                  .isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
     }
 
     @Test
@@ -121,7 +127,8 @@ public class ParametrizedMessageTest {
          */ message("Something went wrong.", COLON_PRINTF_CONFIG).with("dummyName", 1)
                                                                  .with("dummerName", "Dummer Value");
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        Assertions.assertThat(message.toString())
+                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 
     @Test
@@ -129,6 +136,7 @@ public class ParametrizedMessageTest {
         final ParametrizedMessage message = /*
           */ message("Something went wrong.", COLON_MF_CONFIG).with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message.toString()).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        Assertions.assertThat(message.toString())
+                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 }

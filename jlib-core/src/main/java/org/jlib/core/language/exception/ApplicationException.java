@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 

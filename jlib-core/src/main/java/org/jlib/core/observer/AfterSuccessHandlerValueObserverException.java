@@ -21,7 +21,7 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
 /**
  * {@link ValueObserverException} thrown during a

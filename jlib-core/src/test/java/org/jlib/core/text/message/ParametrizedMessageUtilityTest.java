@@ -19,10 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.text.message;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.ParametrizedMessageUtility.autoMessageText;
+import org.assertj.core.api.Assertions;
+import static org.jlib.core.text.message.ParametrizedMessageUtility.autoMessageText;
 import org.junit.Test;
 
 public class ParametrizedMessageUtilityTest {
@@ -42,18 +42,18 @@ public class ParametrizedMessageUtilityTest {
     @Test
     public void rootExceptionShouldHaveEmptyCamel()
     throws Exception {
-        assertThat(autoMessageText(new Exception())).isEmpty();
+        Assertions.assertThat(autoMessageText(new Exception())).isEmpty();
     }
 
     @Test
     public void OneLetterNamedExceptionShouldHaveOneLetterCamel()
     throws Exception {
-        assertThat(autoMessageText(new E())).isEqualTo("e");
+        Assertions.assertThat(autoMessageText(new E())).isEqualTo("e");
     }
 
     @Test
     public void MultipleWordsExceptionShouldHaveMultipleWordsCamel()
     throws Exception {
-        assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
+        Assertions.assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
     }
 }

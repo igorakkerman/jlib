@@ -22,7 +22,7 @@
 package org.jlib.core.observer;
 
 import org.jlib.core.language.exception.ApplicationException;
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 import org.jlib.core.language.exception.InvalidStateException;
 
 /**

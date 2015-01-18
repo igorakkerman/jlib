@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
 public class InvalidIndexException
 extends LinearIndexStorageException {

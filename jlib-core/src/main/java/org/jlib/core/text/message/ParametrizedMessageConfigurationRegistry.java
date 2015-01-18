@@ -19,7 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.text.message;
+
+import org.jlib.core.text.valueformatter.PrintfNamedValueFormatter;
 
 public class ParametrizedMessageConfigurationRegistry {
 

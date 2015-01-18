@@ -24,9 +24,9 @@ package org.jlib.core.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to

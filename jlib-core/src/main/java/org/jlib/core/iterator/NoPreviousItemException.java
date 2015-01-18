@@ -23,7 +23,7 @@ package org.jlib.core.iterator;
 
 import java.util.Iterator;
 
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to

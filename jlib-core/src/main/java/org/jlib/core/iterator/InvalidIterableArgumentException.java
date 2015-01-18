@@ -22,9 +22,9 @@
 package org.jlib.core.iterator;
 
 import org.jlib.core.language.exception.InvalidArgumentException;
-import org.jlib.core.text.ParametrizedMessage;
+import org.jlib.core.text.message.ParametrizedMessage;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterable} claims a state error.

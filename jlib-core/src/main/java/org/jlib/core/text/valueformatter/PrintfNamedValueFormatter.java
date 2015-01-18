@@ -19,16 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.text.valueformatter;
 
-import org.jlib.core.value.Named;
+import java.util.Formatter;
 
-public interface NamedValueFormatter<Obj>
-extends ValueFormatter<Obj, Named<Obj>> {
+public class PrintfNamedValueFormatter
+implements NamedValueFormatter<Object> {
 
-    default void append(final StringBuilder builder, final Named<Obj> value) {
-        append(builder, value.getName(), value.get());
+    private final String template;
+
+    public PrintfNamedValueFormatter(final CharSequence template) {
+        this.template = template.toString();
     }
 
-    void append(final StringBuilder builder, final CharSequence name, final Obj value);
+    @Override
+    public void append(final StringBuilder builder, final CharSequence name, final Object value) {
+        new Formatter(builder).format(template, name, value);
+    }
 }

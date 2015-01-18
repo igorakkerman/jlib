@@ -28,7 +28,7 @@ import org.jlib.core.language.exception.UnexpectedStateException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 import org.apache.commons.beanutils.BeanUtils;
-import static org.jlib.core.text.ParametrizedMessageUtility.messageMf;
+import static org.jlib.core.text.message.ParametrizedMessageUtility.messageMf;
 
 public abstract class AbstractLinearIndexStorage<Item>
 extends TypedCloneable<AbstractLinearIndexStorage<Item>>

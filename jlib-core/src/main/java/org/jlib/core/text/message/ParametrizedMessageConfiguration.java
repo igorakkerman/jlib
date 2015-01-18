@@ -19,9 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.text.message;
 
 import java.io.Serializable;
+
+import org.jlib.core.text.valueformatter.NamedValueFormatter;
 
 public class ParametrizedMessageConfiguration
 implements Serializable {
