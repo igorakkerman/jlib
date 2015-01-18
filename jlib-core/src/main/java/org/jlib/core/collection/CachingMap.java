@@ -23,6 +23,7 @@ package org.jlib.core.collection;
 
 import java.util.Map;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import com.google.common.collect.ForwardingMap;
@@ -37,7 +38,7 @@ import com.google.common.collect.ForwardingMap;
  * <p>
  * Note that if the requested {@link Key} is mapped to another {@link Value} in the delegate {@link Map} between the
  * calls to {@link #containsKey(Object)} and {@link Map#get(Object)}, the <em>former, now wrong</em>, {@link Value} will
- * be returned by the latter call. This also happens, if the corresponding {@link Map.Entry} has been removed.
+ * be returned by the latter call. This also happens, if the corresponding {@link Entry} has been removed.
  * </p>
  * <p>
  * As in all <em>jlib</em> classes, neither {@code null} {@link Key}s nor {@code null} {@link Value}s are permitted and
@@ -130,7 +131,7 @@ extends ForwardingMap<Key, Value> {
 
     @Override
     @SuppressWarnings("ObjectEquality")
-    public Value put(final Key key, final Value value) {
+    public Value put(final @NonNull Key key, final @NonNull Value value) {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
@@ -139,7 +140,7 @@ extends ForwardingMap<Key, Value> {
 
     @Override
     @SuppressWarnings("ObjectEquality")
-    public Value remove(final Object key) {
+    public Value remove(final @NonNull Object key) {
         if (lastLookedUpKey == key)
             clearLastLookedUpItems();
 
