@@ -29,6 +29,7 @@ import org.jlib.core.storage.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 /**
+ * <p>
  * {@link HeadOrTailCapacityStrategy} providing just as much tail capacity as needed.
  * </p>
  * <p>
@@ -38,6 +39,7 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
  * available head capacity. The {@link Item}s are shifted "right" to have exactly the requested head capacity.
  * The {@link LinearIndexStorage} is always requested to provide an additional capacity even if its tail capacity would
  * be sufficient.
+ * </p>
  *
  * @param <Item>
  *        type of the items held in the {@link LinearIndexStorage}
