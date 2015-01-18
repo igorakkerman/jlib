@@ -36,7 +36,7 @@ import org.jlib.core.value.Named;
  * </p>
  */
 public class MessageFormatNamedValueFormatter
-implements ValueFormatter<Object, Named<?>> {
+implements NamedValueFormatter<Object> {
 
     private final String template;
 
@@ -45,7 +45,7 @@ implements ValueFormatter<Object, Named<?>> {
     }
 
     @Override
-    public void append(final StringBuilder builder, final Named<?> value) {
-        builder.append(MessageFormat.format(template, value.getName(), value.get()));
+    public void append(final StringBuilder builder, final CharSequence name, final Object value) {
+        builder.append(MessageFormat.format(template, name, value));
     }
 }

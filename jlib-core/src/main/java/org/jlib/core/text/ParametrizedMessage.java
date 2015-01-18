@@ -23,7 +23,6 @@ package org.jlib.core.text;
 
 import java.io.Serializable;
 
-import org.jlib.core.value.InitializedNamed;
 import org.jlib.core.value.Named;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
@@ -70,18 +69,16 @@ implements Serializable {
     }
 
     public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
-        return with(new InitializedNamed<>(argumentName, argumentValue));
+        appendSeparator();
+        configuration.getArgumentFormatter().append(builder, argumentName, argumentValue);
+        argumentsCount++;
+
+        return this;
     }
 
     public ParametrizedMessage with(final Named<?>... arguments) {
-        for (final Named<?> argument : arguments) {
-
-            appendSeparator();
-
-            configuration.getArgumentFormatter().append(builder, argument);
-
-            argumentsCount++;
-        }
+        for (final Named<?> argument : arguments)
+            with(argument.getName(), argument.get());
 
         return this;
     }

@@ -21,21 +21,19 @@
 
 package org.jlib.core.text;
 
-import org.jlib.core.value.Named;
-
 public class ParametrizedMessageConfiguration {
 
-    private ValueFormatter<Object, Named<?>> argumentFormatter;
+    private NamedValueFormatter<Object> argumentFormatter;
 
     private String textArgumentsSeparator;
 
     private String argumentsSeparator;
 
-    public ValueFormatter<Object, Named<?>> getArgumentFormatter() {
+    public NamedValueFormatter<Object> getArgumentFormatter() {
         return argumentFormatter;
     }
 
-    public void setArgumentFormatter(final ValueFormatter<Object, Named<?>> argumentFormatter) {
+    public void setArgumentFormatter(final NamedValueFormatter<Object> argumentFormatter) {
         this.argumentFormatter = argumentFormatter;
     }
 

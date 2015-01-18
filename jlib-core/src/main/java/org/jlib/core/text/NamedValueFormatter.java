@@ -21,19 +21,14 @@
 
 package org.jlib.core.text;
 
-import java.util.Formatter;
+import org.jlib.core.value.Named;
 
-public class PrintfNamedValueFormatter<Obj>
-implements NamedValueFormatter<Obj> {
+public interface NamedValueFormatter<Obj>
+extends ValueFormatter<Obj, Named<Obj>> {
 
-    private final String template;
-
-    public PrintfNamedValueFormatter(final CharSequence template) {
-        this.template = template.toString();
+    default void append(final StringBuilder builder, final Named<Obj> value) {
+        append(builder, value.getName(), value.get());
     }
 
-    @Override
-    public void append(final StringBuilder builder, final CharSequence name, final Obj value) {
-        new Formatter(builder).format(template, name, value);
-    }
+    void append(final StringBuilder builder, final CharSequence name, final Obj value);
 }
