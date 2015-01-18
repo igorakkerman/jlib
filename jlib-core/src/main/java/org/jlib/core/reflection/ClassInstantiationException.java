@@ -21,9 +21,9 @@
 
 package org.jlib.core.reflection;
 
-import static org.jlib.core.text.ParametrizedMessageUtility.message;
-
 import org.jlib.core.language.exception.ApplicationException;
+
+import static org.jlib.core.text.ParametrizedMessageUtility.message;
 
 /**
  * Exception thrown when a class cannot be instantiated. This Exception type may
@@ -51,7 +51,7 @@ extends ApplicationException {
      *        original {@link Exception} that caused this {@link ClassInstantiationException}
      */
     public ClassInstantiationException(final CharSequence className, final Exception cause) {
-        super(message(className), cause);
+        super(message().with("className", className), cause);
 
         this.className = className.toString();
     }
