@@ -56,10 +56,6 @@ import org.jlib.core.system.SystemUtility;
 //TODO: review thrown exceptions
 public final class ReflectionUtility {
 
-    /** no visible constructor */
-    private ReflectionUtility() {
-    }
-
     /**
      * <p>
      * Creates a new instance of the specified class.
@@ -185,5 +181,9 @@ public final class ReflectionUtility {
         final String className = SystemUtility.getProperty(propertyName);
         // the cast is necessary to the Sun compiler, not to the Eclipse compiler
         return newInstanceOf(className);
+    }
+
+    /** no visible constructor */
+    private ReflectionUtility() {
     }
 }
