@@ -21,9 +21,6 @@
 
 package org.jlib.core.array;
 
-import static org.jlib.core.array.ArrayUtility.createArray;
-import static org.jlib.core.math.MathUtility.count;
-
 import org.jlib.core.storage.AbstractLinearIndexStorage;
 import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
@@ -32,6 +29,8 @@ import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
+import static org.jlib.core.array.ArrayUtility.createArray;
+import static org.jlib.core.math.MathUtility.count;
 
 /**
  * {@link LinearIndexStorage} based on an array.
@@ -45,8 +44,7 @@ import static java.util.Arrays.copyOf;
 // TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the strategy!!!!
 // TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the exceptions for clarity?
 public class ArrayStorage<Item>
-extends AbstractLinearIndexStorage<Item>
-implements LinearIndexStorage<Item> {
+extends AbstractLinearIndexStorage<Item> {
 
     /** array holding the {@link Item}s */
     private Item[] delegateArray;
