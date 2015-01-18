@@ -110,7 +110,7 @@ public final class ReflectionUtility {
      *         if the instantiation of the specified class fails
      */
     @SuppressWarnings("unchecked")
-    public static <Obj> Obj newInstanceOf(final Obj object)
+    public static <Obj> Obj newInstanceOfClassOf(final Obj object)
     throws ClassInstantiationException {
         return newInstanceOf((Class<? extends Obj>) object.getClass());
     }
