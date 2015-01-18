@@ -28,18 +28,6 @@ extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 8571768940498236393L;
 
-    /**
-     * Creates a new {@link LinearIndexStorageException}.
-     *
-     * @param storage
-     *        referenced {@link LinearIndexStorage}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param messageArguments
-     *        array of {@link Object} message arguments
-     */
     public InvalidAdditionalCapacityException(final LinearIndexStorage<?> storage, final int additionalCapacity) {
         super(storage, message(additionalCapacity));
     }

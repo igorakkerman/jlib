@@ -21,15 +21,12 @@
 
 package org.jlib.core.text;
 
-import java.util.Iterator;
-
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.replaceOnce;
-
 import org.jlib.core.system.SystemUtility;
 
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.apache.commons.lang3.StringUtils.replaceOnce;
 
 /**
  * Utility class providing static methods for String operations and
@@ -50,34 +47,16 @@ public final class TextUtility {
     }
 
     public static Iterable<Character> asIterable(final CharSequence characterSequence) {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(characterSequence);
-            }
-        };
+        return () -> new CharSequenceIterator(characterSequence);
     }
 
     public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex) {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(characterSequence, firstCharacterIndex);
-            }
-        };
+        return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex);
     }
 
     public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex,
                                                  final int lastCharacterIndex) {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(characterSequence, firstCharacterIndex, lastCharacterIndex);
-            }
-        };
+        return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex, lastCharacterIndex);
     }
 
     /** no visible constructor */

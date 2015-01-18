@@ -43,12 +43,6 @@ implements CapacityStrategy {
 
     private final HeadOrTailCapacityStrategy tailCapacityStrategy;
 
-    /**
-     * Creates a new {@link MinimalSingleCapacityStrategy}.
-     *
-     * @param storage
-     *        referenced {@link LinearIndexStorage}
-     */
     public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
                                    final ContentIndexRegistry contentIndexRegistry) {
         super(storage, contentIndexRegistry);

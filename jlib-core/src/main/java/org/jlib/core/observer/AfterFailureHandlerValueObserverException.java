@@ -25,8 +25,7 @@ import org.jlib.core.text.ParametrizedMessage;
 import org.jlib.core.operator.OperatorException;
 
 /**
- * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#afterFailure(Object, OperatorException)}
+ * {@link ValueObserverException} thrown during a {@link ValueObserver#afterFailure(Object, OperatorException)}
  * operation.
  *
  * @author Igor Akkerman
@@ -34,26 +33,8 @@ import org.jlib.core.operator.OperatorException;
 public abstract class AfterFailureHandlerValueObserverException
 extends ValueObserverException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 2379268967139497379L;
+    private static final long serialVersionUID = - 7185258294557226420L;
 
-    /**
-     * Creates a new {@link AfterFailureHandlerValueObserverException}.
-     *
-     * @param item
-     *        Item removed from {@code operation}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the message template; {1} references
-     *        {@code item}
-     *
-     * @param cause
-     *        {@link Exception} that caused this
-     *        {@link AfterFailureHandlerValueObserverException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} message arguments
-     */
     protected AfterFailureHandlerValueObserverException(final Object value, final ParametrizedMessage message,
                                                         final Exception cause) {
         super(value, message, cause);

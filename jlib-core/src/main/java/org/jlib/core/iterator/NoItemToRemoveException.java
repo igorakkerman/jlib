@@ -21,6 +21,8 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 /**
  * {@link InvalidIteratorStateException} thrown when there is Item to remove by
  * a {@link Iterator}.

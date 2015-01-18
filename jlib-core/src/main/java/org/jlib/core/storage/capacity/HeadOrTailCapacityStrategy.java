@@ -35,7 +35,7 @@ public interface HeadOrTailCapacityStrategy {
      * position of the {@link LinearIndexStorage}. The indices of the stored Items are modified, if necessary.
      *
      * @param headOrTailCapacity
-     *        necessary {@link Capacity}
+     *        necessary capacity
      *
      * @throws InvalidPartialCapacityException
      *         if {@code headOrTailCapacity < 0}

@@ -21,6 +21,8 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
 import org.jlib.core.text.ParametrizedMessage;
 
 /**
@@ -58,39 +60,10 @@ extends InvalidIteratorStateException {
         super(iterable, cause);
     }
 
-    /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
         super(iterable, message);
     }
 
-    /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link NoPreviousItemException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
     public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message,
                                    final Exception cause) {
         super(iterable, message, cause);

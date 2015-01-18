@@ -41,8 +41,6 @@ extends Accessor<Value> {
      *
      * @param operator
      *        {@link OptionalValueOperator} operating on the held Vallue
-     *
-     * @author Igor Akkerman
      */
     void operate(OptionalValueOperator<Value> operator);
 }
