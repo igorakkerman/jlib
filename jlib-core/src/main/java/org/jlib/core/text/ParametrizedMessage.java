@@ -34,11 +34,8 @@ implements Serializable {
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
-    private static final int EXPECTED_ADDITIONAL_LENGTH = 64;
-
     private static StringBuilder createBuilder(final CharSequence text) {
-        return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH +
-                                 EXPECTED_ADDITIONAL_LENGTH);
+        return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
     private final ParametrizedMessageConfiguration configuration;
