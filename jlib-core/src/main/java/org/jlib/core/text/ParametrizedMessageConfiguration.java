@@ -21,7 +21,12 @@
 
 package org.jlib.core.text;
 
-public class ParametrizedMessageConfiguration {
+import java.io.Serializable;
+
+public class ParametrizedMessageConfiguration
+implements Serializable {
+
+    private static final long serialVersionUID = 4551938257105373490L;
 
     private NamedValueFormatter<Object> argumentFormatter;
 
