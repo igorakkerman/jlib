@@ -62,7 +62,7 @@ import com.google.common.collect.ForwardingMap;
  * discouraged code style and less readable:
  * </p>
  * <pre>
- * // dicouraged by clean coders
+ * // dicouraged code style
  * value = map.get(key);
  * if (value != null) {
  *     // commands with value
