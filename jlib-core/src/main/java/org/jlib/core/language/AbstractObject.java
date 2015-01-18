@@ -137,6 +137,7 @@ public abstract class AbstractObject {
      *
      * @return array of {@link String}s specifying the names of the excluded fields
      */
+    @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFields() {
         return EMPTY_STRING_ARRAY;
     }
