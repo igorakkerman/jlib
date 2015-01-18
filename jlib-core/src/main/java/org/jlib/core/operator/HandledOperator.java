@@ -40,7 +40,7 @@ public interface HandledOperator {
      *         if the operation cannot be completed normally and this should
      *         <em>not</em> be handled consequently
      */
-    @SuppressWarnings("ProhibitedExceptionDeclared")
+    @SuppressWarnings({ "ProhibitedExceptionDeclared", "RedundantThrows" })
     void operate()
     throws OperatorException, RuntimeException;
 }

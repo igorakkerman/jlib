@@ -43,8 +43,10 @@ implements TemplateEngine<Argument> {
     }
 
     @SuppressWarnings({ "unchecked", "UnusedDeclaration" })
-    public static <Argument> /*
-               */ IgnoreArgumentsTemplateEngine<Argument> getInstance(final Class<? extends Argument> argumentClass) {
+    // @formatter:off
+    public static <Argument>
+        IgnoreArgumentsTemplateEngine<Argument> getInstance
+            (@SuppressWarnings("UnusedParameters") final Class<? extends Argument> argumentClass) {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
 
