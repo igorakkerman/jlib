@@ -23,7 +23,7 @@ package org.jlib.core.text.message;
 
 import java.io.Serializable;
 
-import org.jlib.core.text.valueformatter.NamedValueFormatter;
+import org.jlib.core.value.formatter.NamedValueFormatter;
 
 public class ParametrizedMessageConfiguration
 implements Serializable {

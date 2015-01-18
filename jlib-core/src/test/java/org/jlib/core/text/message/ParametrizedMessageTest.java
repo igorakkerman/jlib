@@ -21,8 +21,8 @@
 
 package org.jlib.core.text.message;
 
-import org.jlib.core.text.valueformatter.MessageFormatNamedValueFormatter;
-import org.jlib.core.text.valueformatter.PrintfNamedValueFormatter;
+import org.jlib.core.value.formatter.MessageFormatNamedValueFormatter;
+import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 import org.assertj.core.api.Assertions;
 import static org.jlib.core.text.message.ParametrizedMessageUtility.message;

@@ -21,7 +21,7 @@
 
 package org.jlib.core.text.message;
 
-import org.jlib.core.text.valueformatter.PrintfNamedValueFormatter;
+import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 public class ParametrizedMessageConfigurationRegistry {
 

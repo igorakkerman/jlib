@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.valueformatter;
+package org.jlib.core.value.formatter;
 
 import java.util.Formatter;
 
