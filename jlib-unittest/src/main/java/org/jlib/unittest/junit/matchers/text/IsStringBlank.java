@@ -50,12 +50,12 @@ extends TypeSafeMatcher<String> {
     }
 
     @Override
-    public boolean matchesSafely(String string) {
+    public boolean matchesSafely(final String string) {
         return isBlank(string);
     }
 
     @Override
-    public void describeTo(Description description) {
+    public void describeTo(final Description description) {
         description.appendText("blank string");
     }
 }

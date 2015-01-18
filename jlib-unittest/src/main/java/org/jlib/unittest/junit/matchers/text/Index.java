@@ -26,7 +26,7 @@ import org.jlib.core.value.Initialized;
 public abstract class Index
 extends Initialized<Integer> {
 
-    protected Index(int value) {
+    protected Index(final int value) {
         super(value);
     }
 }

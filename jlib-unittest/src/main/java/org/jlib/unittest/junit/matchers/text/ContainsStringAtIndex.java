@@ -31,23 +31,23 @@ extends SubstringMatcher {
     private static class SubstringIndex
     extends Index {
 
-        public SubstringIndex(int index) {
+        public SubstringIndex(final int index) {
             super(index);
         }
     }
 
     @Factory
-    public static ContainsStringAtIndex containsString(String substring, SubstringIndex substringIndex) {
+    public static ContainsStringAtIndex containsString(final String substring, final SubstringIndex substringIndex) {
         return new ContainsStringAtIndex(substring, substringIndex.get());
     }
 
     @Factory
-    public static SubstringIndex at(int substringIndex) {
+    public static SubstringIndex at(final int substringIndex) {
         return new SubstringIndex(substringIndex);
     }
 
     @Factory
-    public static SubstringIndex atIndex(int substringIndex) {
+    public static SubstringIndex atIndex(final int substringIndex) {
         return new SubstringIndex(substringIndex);
     }
 
@@ -55,19 +55,19 @@ extends SubstringMatcher {
 
     private String actualSubstring;
 
-    public ContainsStringAtIndex(String substring, int substringIndex) {
+    public ContainsStringAtIndex(final String substring, final int substringIndex) {
         super(substring);
         this.substringIndex = substringIndex;
     }
 
     @Override
-    public boolean evalSubstringOf(String containingString) {
+    public boolean evalSubstringOf(final String containingString) {
         actualSubstring = containingString.substring(substringIndex, substringIndex + substring.length());
         return actualSubstring.equals(substring);
     }
 
     @Override
-    public void describeTo(Description description) {
+    public void describeTo(final Description description) {
         super.describeTo(description);
         description.appendText(" at index " + substringIndex);
 
