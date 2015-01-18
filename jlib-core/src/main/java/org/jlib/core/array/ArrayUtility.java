@@ -61,8 +61,8 @@ public final class ArrayUtility {
      *
      * @return empty array of {@link Item}s
      */
-    @SuppressWarnings("unchecked")
-    public static <Item> Item[] emptyArray(@SuppressWarnings("UnusedParameters") final Class<Item> clazz) {
+    @SuppressWarnings({ "unchecked", "UnusedParameters" })
+    public static <Item> Item[] emptyArray(final Class<Item> clazz) {
         return (Item[]) EMPTY_ARRAY;
     }
 

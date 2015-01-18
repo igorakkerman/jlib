@@ -29,6 +29,8 @@ extends ExceptionMessageTestBase {
     private static class AnException
     extends ApplicationException {
 
+        private static final long serialVersionUID = 7554398632151450030L;
+
         private AnException(final ParametrizedMessage message) {
             super(message);
         }

@@ -75,8 +75,8 @@ implements Accessible<Value> {
         this.value = value;
     }
 
-    @SuppressWarnings("EmptyMethod")
-    protected void assertValid(@SuppressWarnings("UnusedParameters") final Value value) {
+    @SuppressWarnings({ "EmptyMethod", "UnusedParameters" })
+    protected void assertValid(final Value value) {
         // perform optional validation in subclasses
     }
 }

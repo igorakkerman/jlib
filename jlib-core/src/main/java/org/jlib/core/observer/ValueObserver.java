@@ -76,8 +76,8 @@ public interface ValueObserver<Value> {
      * @throws RuntimeException
      *         if the operation cannot be completed normally
      */
-    @SuppressWarnings("ProhibitedExceptionDeclared")
-    default void afterFailure(final Value value, @SuppressWarnings("UnusedParameters") final OperatorException operatorException)
+    @SuppressWarnings({ "ProhibitedExceptionDeclared", "UnusedParameters" })
+    default void afterFailure(final Value value, final OperatorException operatorException)
     throws RuntimeException {
         // intentionally without functionality
     }

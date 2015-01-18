@@ -34,6 +34,8 @@ implements Serializable {
 
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
+    private static final long serialVersionUID = - 7441157699026452815L;
+
     private static StringBuilder createBuilder(final CharSequence text) {
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }

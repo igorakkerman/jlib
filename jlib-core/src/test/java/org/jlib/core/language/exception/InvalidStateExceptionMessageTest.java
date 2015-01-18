@@ -29,6 +29,8 @@ extends ExceptionMessageTestBase {
     private static class AnException
     extends InvalidStateException {
 
+        private static final long serialVersionUID = - 3505364602724687463L;
+
         private AnException(final ParametrizedMessage message) {
             super(message);
         }
