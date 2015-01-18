@@ -21,26 +21,26 @@
 
 package org.jlib.core.text;
 
-public class ParametrizedMessageFactory {
+public class ParametrizedMessageConfigurationRegistry {
 
-    /** sole {@link ParametrizedMessageFactory} instance */
-    private static final ParametrizedMessageFactory INSTANCE = new ParametrizedMessageFactory();
+    /** sole {@link ParametrizedMessageConfigurationRegistry} instance */
+    private static final ParametrizedMessageConfigurationRegistry INSTANCE = new ParametrizedMessageConfigurationRegistry();
 
     /**
-     * Returns the sole {@link ParametrizedMessageFactory} instance.
+     * Returns the sole {@link ParametrizedMessageConfigurationRegistry} instance.
      *
-     * @return sole {@link ParametrizedMessageFactory} instance
+     * @return sole {@link ParametrizedMessageConfigurationRegistry} instance
      */
-    public static ParametrizedMessageFactory getInstance() {
+    public static ParametrizedMessageConfigurationRegistry getInstance() {
         return INSTANCE;
     }
 
     private ParametrizedMessageConfiguration defaultConfiguration = createInitialDefaultConfiguration();
 
     /**
-     * Creates a new {@link ParametrizedMessageFactory}.
+     * Creates a new {@link ParametrizedMessageConfigurationRegistry}.
      */
-    private ParametrizedMessageFactory() {}
+    private ParametrizedMessageConfigurationRegistry() {}
 
     public ParametrizedMessageConfiguration getDefaultConfiguration() {
         return defaultConfiguration;

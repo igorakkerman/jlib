@@ -58,7 +58,7 @@ public class ParametrizedMessageTest {
 
     @Before
     public void initializeDefaultConfiguration() {
-        ParametrizedMessageFactory.getInstance().setDefaultConfiguration(EQUALS_QUOTE_PRINTF_CONFIG);
+        ParametrizedMessageConfigurationRegistry.getInstance().setDefaultConfiguration(EQUALS_QUOTE_PRINTF_CONFIG);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ParametrizedMessageTest {
 
     @Test
     public void thrownExceptionShouldHaveTextMessageWithNamedArgumentsInSpecifiedDefaultFormat() {
-        ParametrizedMessageFactory.getInstance().setDefaultConfiguration(COLON_PRINTF_CONFIG);
+        ParametrizedMessageConfigurationRegistry.getInstance().setDefaultConfiguration(COLON_PRINTF_CONFIG);
 
         final ParametrizedMessage message = /*
          */ message("Something went wrong.").with(named("dummyName", 1), named("dummerName", "Dummer Value"));

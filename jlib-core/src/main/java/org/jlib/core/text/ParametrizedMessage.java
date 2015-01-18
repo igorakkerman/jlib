@@ -41,8 +41,6 @@ implements Serializable {
                                  EXPECTED_ADDITIONAL_LENGTH);
     }
 
-    private static final ParametrizedMessageFactory FACTORY = ParametrizedMessageFactory.getInstance();
-
     private final ParametrizedMessageConfiguration configuration;
 
     private final StringBuilder builder;
@@ -54,7 +52,7 @@ implements Serializable {
     }
 
     public ParametrizedMessage(final CharSequence text) {
-        this(text, FACTORY.getDefaultConfiguration());
+        this(text, ParametrizedMessageConfigurationRegistry.getInstance().getDefaultConfiguration());
     }
 
     public ParametrizedMessage(final CharSequence text, final ParametrizedMessageConfiguration configuration) {
