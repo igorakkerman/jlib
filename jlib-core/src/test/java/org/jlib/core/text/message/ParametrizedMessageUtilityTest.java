@@ -27,16 +27,16 @@ import org.junit.Test;
 
 public class ParametrizedMessageUtilityTest {
 
+    // Exception name important for test
     private static class IBliBlaBlubException
     extends Exception {
-
         private static final long serialVersionUID = 0;
     }
 
+    // Exception name important for test
     private static class E
     extends Exception {
-
-        private static final long serialVersionUID = 0;
+        private static final long serialVersionUID = - 5922532337673635627L;
     }
 
     @Test
