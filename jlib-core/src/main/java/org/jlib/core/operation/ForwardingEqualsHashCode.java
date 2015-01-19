@@ -19,24 +19,19 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.core.operation;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
-
-import org.jlib.core.operation.Equals;
-import org.jlib.core.operation.EqualsHashCode;
-import org.jlib.core.operation.HashCode;
 
 public class ForwardingEqualsHashCode<Obj>
 implements EqualsHashCode<Obj> {
 
     private final Equals<Obj> equals;
+    private final HashCode<Obj> hashCode;
 
-    private final HashCode<Obj> hashCodeStrategy;
-
-    public ForwardingEqualsHashCode(final Equals<Obj> equals, final HashCode<Obj> hashCodeStrategy) {
+    public ForwardingEqualsHashCode(final Equals<Obj> equals, final HashCode<Obj> hashCode) {
         this.equals = equals;
-        this.hashCodeStrategy = hashCodeStrategy;
+        this.hashCode = hashCode;
     }
 
     @Override
@@ -46,6 +41,6 @@ implements EqualsHashCode<Obj> {
 
     @Override
     public int hashCode(final Obj object) {
-        return hashCodeStrategy.hashCode(object);
+        return hashCode.hashCode(object);
     }
 }
