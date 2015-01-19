@@ -25,18 +25,7 @@ import java.util.Formatter;
 
 import java.text.MessageFormat;
 
-import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
-import static org.jlib.core.text.TextUtility.removeOnce;
-
 public final class MessageUtility {
-
-    public static ParametrizedMessage autoMessage(final Exception exception) {
-        return message(autoMessageText(exception));
-    }
-
-    public static String autoMessageText(final Exception exception) {
-        return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
-    }
 
     public static ParametrizedMessage message() {
         return new ParametrizedMessage();
@@ -61,7 +50,5 @@ public final class MessageUtility {
         return new ParametrizedMessage(messageBuilder);
     }
 
-    private MessageUtility() {
-        // no visible constructor
-    }
+    private MessageUtility() {}
 }
