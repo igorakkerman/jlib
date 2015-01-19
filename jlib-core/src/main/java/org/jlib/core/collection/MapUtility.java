@@ -121,7 +121,5 @@ extends AbstractObject {
         return new CachingMap<>(new HashMap<>(sourceMap));
     }
 
-    private MapUtility() {
-        // no visible constructor
-    }
+    private MapUtility() {}
 }
