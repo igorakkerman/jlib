@@ -23,26 +23,42 @@ package org.jlib.core.array;
 
 import org.jlib.core.storage.InvalidCapacityException;
 import org.jlib.core.storage.InvalidIndexException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 public class ArrayStorageTest {
 
+    public void zeroCapacityStorageShouldReturnCorrectCapacity()
+    throws Exception {
+        final ArrayStorage<Integer> storage = new ArrayStorage<>(0);
+
+        assertThat(storage.getCapacity()).isEqualTo(0);
+    }
+
+    public void positiveCapacityStorageShouldReturnCorrectCapacity()
+    throws Exception {
+        final ArrayStorage<Integer> storage = new ArrayStorage<>(1);
+
+        assertThat(storage.getCapacity()).isEqualTo(1);
+    }
+
+    @Test(expected = InvalidCapacityException.class)
+    public void negativeCapacityStorageReadShouldThrowException()
+    throws Exception {
+        new ArrayStorage<>(- 1);
+    }
+
     @Test(expected = InvalidIndexException.class)
-    public void zeroCapacityReadAccess()
+    public void zeroCapacityStorageReadShouldThrowException()
     throws Exception {
         new ArrayStorage<Integer>(0).getItem(0);
     }
 
     @Test(expected = InvalidIndexException.class)
-    public void negativeIndexAccess()
+    public void readNegativeIndexShouldThrowException()
     throws Exception {
-        new ArrayStorage<Integer>(5).getItem(-1);
-    }
-
-    @Test(expected = InvalidCapacityException.class)
-    public void negativeCapacity()
-    throws Exception {
-        new ArrayStorage<>(-1);
+        new ArrayStorage<Integer>(5).getItem(- 1);
     }
 
     @SuppressWarnings("EmptyMethod")
