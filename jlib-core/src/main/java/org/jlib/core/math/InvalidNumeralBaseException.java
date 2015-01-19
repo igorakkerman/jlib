@@ -23,7 +23,7 @@ package org.jlib.core.math;
 
 import org.jlib.core.language.exception.InvalidArgumentException;
 
-import static org.jlib.core.text.message.ParametrizedMessageUtility.messageMf;
+import static org.jlib.core.text.message.MessageUtility.messageMf;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid value has been specified as a

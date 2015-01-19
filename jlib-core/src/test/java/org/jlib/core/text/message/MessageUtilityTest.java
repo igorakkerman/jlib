@@ -22,10 +22,10 @@
 package org.jlib.core.text.message;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.message.ParametrizedMessageUtility.autoMessageText;
+import static org.jlib.core.text.message.MessageUtility.autoMessageText;
 import org.junit.Test;
 
-public class ParametrizedMessageUtilityTest {
+public class MessageUtilityTest {
 
     // Exception name important for test
     private static class IBliBlaBlubException

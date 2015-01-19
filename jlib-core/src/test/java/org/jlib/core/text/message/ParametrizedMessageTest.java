@@ -25,7 +25,7 @@ import org.jlib.core.value.formatter.MessageFormatNamedValueFormatter;
 import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 import org.assertj.core.api.Assertions;
-import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 import static org.jlib.core.value.ValueUtility.named;
 import org.junit.Before;
 import org.junit.Test;

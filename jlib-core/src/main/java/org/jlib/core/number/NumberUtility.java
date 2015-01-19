@@ -85,7 +85,7 @@ public final class NumberUtility {
     /**
      * Creates a binary 32-bit String representation of the specified integer
      * padded with zeroes. The bit order is big-endian, that is, the most
-     * significant bit first.
+     * significant bit first. The
      *
      * @param value
      *        integer to represent as a binary String

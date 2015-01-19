@@ -28,7 +28,7 @@ import org.jlib.core.iterator.NoNextItemException;
 import org.jlib.core.iterator.NoPreviousItemException;
 import org.jlib.core.language.AbstractObject;
 
-import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link BidiIterator} over the items of an array.

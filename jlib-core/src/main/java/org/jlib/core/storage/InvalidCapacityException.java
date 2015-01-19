@@ -23,7 +23,7 @@ package org.jlib.core.storage;
 
 import org.jlib.core.language.exception.InvalidArgumentException;
 
-import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.

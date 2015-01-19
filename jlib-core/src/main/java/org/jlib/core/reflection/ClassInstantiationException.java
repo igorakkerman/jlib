@@ -23,7 +23,7 @@ package org.jlib.core.reflection;
 
 import org.jlib.core.language.exception.ApplicationException;
 
-import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * Exception thrown when a class cannot be instantiated. This Exception type may

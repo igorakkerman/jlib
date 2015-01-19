@@ -26,7 +26,7 @@ import java.util.NoSuchElementException;
 
 import org.jlib.core.text.message.ParametrizedMessage;
 
-import static org.jlib.core.text.message.ParametrizedMessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to
