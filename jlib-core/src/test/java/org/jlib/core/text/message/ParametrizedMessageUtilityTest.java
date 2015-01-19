@@ -21,7 +21,7 @@
 
 package org.jlib.core.text.message;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.text.message.ParametrizedMessageUtility.autoMessageText;
 import org.junit.Test;
 
@@ -42,18 +42,18 @@ public class ParametrizedMessageUtilityTest {
     @Test
     public void rootExceptionShouldHaveEmptyCamel()
     throws Exception {
-        Assertions.assertThat(autoMessageText(new Exception())).isEmpty();
+        assertThat(autoMessageText(new Exception())).isEmpty();
     }
 
     @Test
     public void OneLetterNamedExceptionShouldHaveOneLetterCamel()
     throws Exception {
-        Assertions.assertThat(autoMessageText(new E())).isEqualTo("e");
+        assertThat(autoMessageText(new E())).isEqualTo("e");
     }
 
     @Test
     public void MultipleWordsExceptionShouldHaveMultipleWordsCamel()
     throws Exception {
-        Assertions.assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
+        assertThat(autoMessageText(new IBliBlaBlubException())).isEqualTo("i bli bla blub");
     }
 }
