@@ -1,15 +1,22 @@
 /*
- * jlib - The Free Java Library
- * 
- *    http://www.jlib.org
- *    
- * Copyright (c) 2006-2008 Igor Akkerman
- * 
- * jlib is distributed under the
+ * jlib - Open Source Java Library
  *
- *    COMMON PUBLIC LICENSE VERSION 1.0
+ *     www.jlib.org
  *
- *    http://www.opensource.org/licenses/cpl1.0.php
+ *
+ *     Copyright 2005-2015 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
  */
 
 package org.jlib.codec.base64;
@@ -22,7 +29,7 @@ import static org.jlib.codec.base64.Base64Utility.mapBase64Character;
 
 /**
  * FilterInputStream performing a base64 decoding of a source InputStream.
- * 
+ *
  * @author Igor Akkerman
  */
 
@@ -46,7 +53,7 @@ extends FilterInputStream {
 
     /**
      * Creates a new filter input stream decoding the specified base64 input stream.
-     * 
+     *
      * @param sourceInputStream
      *        input stream to be decoded
      */
@@ -91,7 +98,7 @@ extends FilterInputStream {
 
     /**
      * Reads a block of four base64 characters writing their values into the input buffer.
-     * 
+     *
      * @throws EndOfBase64StreamException
      *         if the end of the base64 stream was reached before the next block;
      *         this exception does not signal an error
@@ -133,7 +140,7 @@ extends FilterInputStream {
 
     /**
      * Decodes the currently read base64 block into the output buffer.
-     * 
+     *
      * @throws IllegalBase64BlockPadException
      *         if the read base64 block contains illegal padding characters
      */
@@ -153,7 +160,7 @@ extends FilterInputStream {
 
     /**
      * Returns the number of padding characters in the currently read base64 block.
-     * 
+     *
      * @return integer specifying the number of padding characters
      * @throws IllegalBase64BlockPadException
      *         if the read base64 block contains illegal padding characters

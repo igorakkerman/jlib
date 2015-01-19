@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -17,11 +17,6 @@
  *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *     See the License for the specific language governing permissions and
  *     limitations under the License.
- */
-
-/*
- * Igor Akkerman jlib is distributed under the COMMON PUBLIC LICENSE VERSION 1.0
- * http://www.opensource.org/licenses/cpl1.0.php
  */
 
 package org.jlib.core.reflection;
