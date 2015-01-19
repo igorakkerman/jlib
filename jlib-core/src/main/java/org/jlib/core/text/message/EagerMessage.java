@@ -31,20 +31,17 @@ public class EagerMessage
 implements Message,
            Serializable {
 
-    private static final int EXPECTED_ARGUMENTS_COUNT = 5;
-
-    private static final int EXPECTED_ARGUMENT_LENGTH = 64;
-
     private static final long serialVersionUID = - 7441157699026452815L;
+
+    private static final int EXPECTED_ARGUMENTS_COUNT = 5;
+    private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
     private static StringBuilder createBuilder(final CharSequence text) {
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
     private final MessageConfiguration configuration;
-
     private final StringBuilder builder;
-
     private int argumentsCount = 0;
 
     public EagerMessage() {
