@@ -23,7 +23,7 @@ package org.jlib.core.iterator;
 
 import java.util.Iterator;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next Item to
@@ -60,11 +60,11 @@ extends InvalidIteratorStateException {
         super(iterable, cause);
     }
 
-    public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
+    public NoPreviousItemException(final Iterable<?> iterable, final Message message) {
         super(iterable, message);
     }
 
-    public NoPreviousItemException(final Iterable<?> iterable, final ParametrizedMessage message,
+    public NoPreviousItemException(final Iterable<?> iterable, final Message message,
                                    final Exception cause) {
         super(iterable, message, cause);
     }

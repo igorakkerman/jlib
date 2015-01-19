@@ -21,7 +21,7 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 import org.jlib.core.language.exception.InvalidArgumentException;
 
 /**
@@ -37,7 +37,7 @@ extends InvalidArgumentException {
     private static final long serialVersionUID = - 1514836335986845986L;
 
     protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,
-                                          final ParametrizedMessage message) {
+                                          final Message message) {
         super(message.with("storage", linearIndexStorage));
     }
 }

@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
@@ -40,7 +40,7 @@ extends Exception {
         super(EMPTY);
     }
 
-    protected ApplicationException(final ParametrizedMessage message) {
+    protected ApplicationException(final Message message) {
         super(message.toString());
     }
 
@@ -48,7 +48,7 @@ extends Exception {
         super(EMPTY, cause);
     }
 
-    protected ApplicationException(final ParametrizedMessage message, final Exception cause) {
+    protected ApplicationException(final Message message, final Exception cause) {
         super(message.toString(), cause);
     }
 }

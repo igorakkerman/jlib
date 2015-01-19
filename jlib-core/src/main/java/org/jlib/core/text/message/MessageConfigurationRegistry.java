@@ -23,37 +23,37 @@ package org.jlib.core.text.message;
 
 import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
-public class ParametrizedMessageConfigurationRegistry {
+public class MessageConfigurationRegistry {
 
-    /** sole {@link ParametrizedMessageConfigurationRegistry} instance */
-    private static final ParametrizedMessageConfigurationRegistry INSTANCE = new ParametrizedMessageConfigurationRegistry();
+    /** sole {@link MessageConfigurationRegistry} instance */
+    private static final MessageConfigurationRegistry INSTANCE = new MessageConfigurationRegistry();
 
     /**
-     * Returns the sole {@link ParametrizedMessageConfigurationRegistry} instance.
+     * Returns the sole {@link MessageConfigurationRegistry} instance.
      *
-     * @return sole {@link ParametrizedMessageConfigurationRegistry} instance
+     * @return sole {@link MessageConfigurationRegistry} instance
      */
-    public static ParametrizedMessageConfigurationRegistry getInstance() {
+    public static MessageConfigurationRegistry getInstance() {
         return INSTANCE;
     }
 
-    private ParametrizedMessageConfiguration defaultConfiguration = createInitialDefaultConfiguration();
+    private MessageConfiguration defaultConfiguration = createInitialDefaultConfiguration();
 
     /**
-     * Creates a new {@link ParametrizedMessageConfigurationRegistry}.
+     * Creates a new {@link MessageConfigurationRegistry}.
      */
-    private ParametrizedMessageConfigurationRegistry() {}
+    private MessageConfigurationRegistry() {}
 
-    public ParametrizedMessageConfiguration getDefaultConfiguration() {
+    public MessageConfiguration getDefaultConfiguration() {
         return defaultConfiguration;
     }
 
-    public void setDefaultConfiguration(final ParametrizedMessageConfiguration defaultConfiguration) {
+    public void setDefaultConfiguration(final MessageConfiguration defaultConfiguration) {
         this.defaultConfiguration = defaultConfiguration;
     }
 
-    private ParametrizedMessageConfiguration createInitialDefaultConfiguration() {
-        final ParametrizedMessageConfiguration defaultConfiguration = new ParametrizedMessageConfiguration();
+    private MessageConfiguration createInitialDefaultConfiguration() {
+        final MessageConfiguration defaultConfiguration = new MessageConfiguration();
 
         defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
         defaultConfiguration.setTextArgumentsSeparator(" ");

@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 /**
  * {@link InvalidStateException} thrown in an uexpected state.
@@ -33,7 +33,7 @@ extends InvalidStateException {
 
     private static final long serialVersionUID = 4388525477338778336L;
 
-    public UnexpectedStateException(final ParametrizedMessage message) {
+    public UnexpectedStateException(final Message message) {
         super(message);
     }
 
@@ -41,7 +41,7 @@ extends InvalidStateException {
         super(cause);
     }
 
-    public UnexpectedStateException(final Exception cause, final ParametrizedMessage message) {
+    public UnexpectedStateException(final Exception cause, final Message message) {
         super(message, cause);
     }
 }

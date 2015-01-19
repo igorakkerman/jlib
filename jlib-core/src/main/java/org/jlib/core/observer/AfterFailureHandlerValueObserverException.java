@@ -21,7 +21,7 @@
 
 package org.jlib.core.observer;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 import org.jlib.core.operator.OperatorException;
 
 /**
@@ -35,7 +35,7 @@ extends ValueObserverException {
 
     private static final long serialVersionUID = - 7185258294557226420L;
 
-    protected AfterFailureHandlerValueObserverException(final Object value, final ParametrizedMessage message,
+    protected AfterFailureHandlerValueObserverException(final Object value, final Message message,
                                                         final Exception cause) {
         super(value, message, cause);
     }

@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed
@@ -39,7 +39,7 @@ extends InvalidIterableStateException {
         super(iterable);
     }
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable, final ParametrizedMessage message) {
+    protected InvalidIteratorStateException(final Iterable<?> iterable, final Message message) {
         super(iterable, message);
     }
 
@@ -47,7 +47,7 @@ extends InvalidIterableStateException {
         super(iterable, cause);
     }
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable, final ParametrizedMessage message,
+    protected InvalidIteratorStateException(final Iterable<?> iterable, final Message message,
                                             final Exception cause) {
         super(iterable, message, cause);
     }

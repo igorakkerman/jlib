@@ -27,27 +27,27 @@ import java.text.MessageFormat;
 
 public final class MessageUtility {
 
-    public static ParametrizedMessage message() {
-        return new ParametrizedMessage();
+    public static Message message() {
+        return new EagerMessage();
     }
 
-    public static ParametrizedMessage message(final Object object) {
-        return new ParametrizedMessage(object.toString());
+    public static Message message(final Object object) {
+        return new EagerMessage(object.toString());
     }
 
-    public static ParametrizedMessage message(final Object object, final ParametrizedMessageConfiguration configuration) {
-        return new ParametrizedMessage(object.toString(), configuration);
+    public static Message message(final Object object, final MessageConfiguration configuration) {
+        return new EagerMessage(object.toString(), configuration);
     }
 
-    public static ParametrizedMessage messageMf(final CharSequence messageTemplate, final Object... messageArguments) {
-        return new ParametrizedMessage(MessageFormat.format(messageTemplate.toString(), messageArguments));
+    public static Message messageMf(final CharSequence messageTemplate, final Object... messageArguments) {
+        return new EagerMessage(MessageFormat.format(messageTemplate.toString(), messageArguments));
     }
 
-    public static ParametrizedMessage messagePf(final CharSequence messageTemplate, final Object... messageArguments) {
+    public static Message messagePf(final CharSequence messageTemplate, final Object... messageArguments) {
         final StringBuilder messageBuilder = new StringBuilder(messageTemplate.length() + messageArguments.length * 50 +
                                                                100);
         new Formatter(messageBuilder).format(messageTemplate.toString(), messageArguments);
-        return new ParametrizedMessage(messageBuilder);
+        return new EagerMessage(messageBuilder);
     }
 
     private MessageUtility() {}

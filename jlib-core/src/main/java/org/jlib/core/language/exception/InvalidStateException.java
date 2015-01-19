@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 /**
  * {@link IllegalStateException} using a  ParametrizedMessage.
@@ -37,7 +37,7 @@ extends IllegalStateException {
     protected InvalidStateException() {
     }
 
-    protected InvalidStateException(final ParametrizedMessage message) {
+    protected InvalidStateException(final Message message) {
         super(message.toString());
     }
 
@@ -45,7 +45,7 @@ extends IllegalStateException {
         super(cause);
     }
 
-    protected InvalidStateException(final ParametrizedMessage message, final Exception cause) {
+    protected InvalidStateException(final Message message, final Exception cause) {
         super(message.toString(), cause);
     }
 }

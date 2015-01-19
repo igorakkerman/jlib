@@ -21,8 +21,8 @@
 
 package org.jlib.core.language.exception;
 
+import org.jlib.core.text.message.Message;
 import org.jlib.core.text.message.MessageUtility;
-import org.jlib.core.text.message.ParametrizedMessage;
 
 import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
 import static org.jlib.core.text.TextUtility.removeOnce;
@@ -35,7 +35,7 @@ public final class ExceptionUtility {
 
     private ExceptionUtility() {}
 
-    public static ParametrizedMessage autoMessage(final Exception exception) {
+    public static Message autoMessage(final Exception exception) {
         return MessageUtility.message(autoMessageText(exception));
     }
 }

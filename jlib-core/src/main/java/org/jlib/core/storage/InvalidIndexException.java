@@ -21,14 +21,14 @@
 
 package org.jlib.core.storage;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 public class InvalidIndexException
 extends LinearIndexStorageException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
-    public InvalidIndexException(final LinearIndexStorage<?> linearIndexStorage, final ParametrizedMessage message) {
+    public InvalidIndexException(final LinearIndexStorage<?> linearIndexStorage, final Message message) {
 
         super(linearIndexStorage, message);
     }

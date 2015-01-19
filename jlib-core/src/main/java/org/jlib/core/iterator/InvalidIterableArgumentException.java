@@ -22,7 +22,7 @@
 package org.jlib.core.iterator;
 
 import org.jlib.core.language.exception.InvalidArgumentException;
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 import static org.jlib.core.text.message.MessageUtility.message;
 
@@ -45,16 +45,16 @@ extends InvalidArgumentException {
         super(buildMessage(message(), iterable), cause);
     }
 
-    public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message) {
+    public InvalidIterableArgumentException(final Iterable<?> iterable, final Message message) {
         super(buildMessage(message, iterable));
     }
 
-    public InvalidIterableArgumentException(final Iterable<?> iterable, final ParametrizedMessage message,
+    public InvalidIterableArgumentException(final Iterable<?> iterable, final Message message,
                                             final Exception cause) {
         super(buildMessage(message, iterable), cause);
     }
 
-    private static ParametrizedMessage buildMessage(final ParametrizedMessage message, final Iterable<?> iterable) {
+    private static Message buildMessage(final Message message, final Iterable<?> iterable) {
         return message.with("iterable", iterable);
     }
 }

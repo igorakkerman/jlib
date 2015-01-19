@@ -27,8 +27,9 @@ import org.jlib.core.value.Named;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-public class ParametrizedMessage
-implements Serializable {
+public class EagerMessage
+implements Message,
+           Serializable {
 
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
 
@@ -40,32 +41,33 @@ implements Serializable {
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
-    private final ParametrizedMessageConfiguration configuration;
+    private final MessageConfiguration configuration;
 
     private final StringBuilder builder;
 
     private int argumentsCount = 0;
 
-    public ParametrizedMessage() {
+    public EagerMessage() {
         this(EMPTY);
     }
 
-    public ParametrizedMessage(final CharSequence text) {
-        this(text, ParametrizedMessageConfigurationRegistry.getInstance().getDefaultConfiguration());
+    public EagerMessage(final CharSequence text) {
+        this(text, MessageConfigurationRegistry.getInstance().getDefaultConfiguration());
     }
 
-    public ParametrizedMessage(final CharSequence text, final ParametrizedMessageConfiguration configuration) {
+    public EagerMessage(final CharSequence text, final MessageConfiguration configuration) {
         this(createBuilder(text), configuration);
 
         builder.append(text);
     }
 
-    public ParametrizedMessage(final StringBuilder builder, final ParametrizedMessageConfiguration configuration) {
+    public EagerMessage(final StringBuilder builder, final MessageConfiguration configuration) {
         this.builder = builder;
         this.configuration = configuration;
     }
 
-    public ParametrizedMessage with(final CharSequence argumentName, final Object argumentValue) {
+    @Override
+    public Message with(final CharSequence argumentName, final Object argumentValue) {
         appendSeparator();
         configuration.getArgumentFormatter().append(builder, argumentName, argumentValue);
         argumentsCount++;
@@ -73,7 +75,8 @@ implements Serializable {
         return this;
     }
 
-    public ParametrizedMessage with(final Named<?>... arguments) {
+    @Override
+    public Message with(final Named<?>... arguments) {
         for (final Named<?> argument : arguments)
             with(argument.getName(), argument.get());
 

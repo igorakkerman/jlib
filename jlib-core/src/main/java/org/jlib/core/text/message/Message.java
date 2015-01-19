@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,25 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.text.message;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.value.Named;
 
-/**
- * {@link IllegalArgumentException} using a parametrized message.
- *
- * @author Igor Akkerman
- */
-public abstract class InvalidArgumentException
-extends IllegalArgumentException {
+public interface Message {
 
-    private static final long serialVersionUID = 5894034302749387338L;
+    Message with(CharSequence argumentName, Object argumentValue);
 
-    protected InvalidArgumentException(final Message message) {
-        super(message.toString());
-    }
+    Message with(Named<?>... arguments);
 
-    protected InvalidArgumentException(final Message message, final Exception cause) {
-        super(message.toString(), cause);
-    }
+    @Override
+    String toString();
 }

@@ -21,7 +21,8 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
+import org.jlib.core.text.message.EagerMessage;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -37,9 +38,9 @@ public abstract class ExceptionMessageTestBase {
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
 
-    private ParametrizedMessage message;
+    private Message message;
 
-    protected ParametrizedMessage getMessage() {
+    protected Message getMessage() {
         return message;
     }
 
@@ -49,7 +50,7 @@ public abstract class ExceptionMessageTestBase {
 
     @Before
     public void initializeMocks() {
-        message = mock(ParametrizedMessage.class);
+        message = mock(EagerMessage.class);
     }
 
     @Test

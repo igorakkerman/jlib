@@ -24,7 +24,7 @@ package org.jlib.core.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 import static org.jlib.core.text.message.MessageUtility.message;
 
@@ -52,13 +52,13 @@ extends NoSuchElementException {
         this(iterable, message());
     }
 
-    public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message) {
+    public NoNextItemException(final Iterable<?> iterable, final Message message) {
         super(message.with("iterable", iterable).toString());
 
         this.iterable = iterable;
     }
 
-    public NoNextItemException(final Iterable<?> iterable, final ParametrizedMessage message, final Exception cause) {
+    public NoNextItemException(final Iterable<?> iterable, final Message message, final Exception cause) {
         this(iterable, message);
 
         initCause(cause);

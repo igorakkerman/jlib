@@ -22,7 +22,7 @@
 package org.jlib.core.operator;
 
 import org.jlib.core.language.exception.ApplicationException;
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 /**
  * {@link ApplicationException} thrown during the operation of an operator.
@@ -44,7 +44,7 @@ extends ApplicationException {
      * @param cause
      *        {@link RuntimeException} that caused this {@link OperatorException}
      */
-    public OperatorException(final ParametrizedMessage message, final RuntimeException cause) {
+    public OperatorException(final Message message, final RuntimeException cause) {
 
         super(message, cause);
 

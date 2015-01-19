@@ -21,7 +21,7 @@
 
 package org.jlib.core.language.exception;
 
-import org.jlib.core.text.message.ParametrizedMessage;
+import org.jlib.core.text.message.Message;
 
 public class InvalidStateExceptionMessageTest
 extends ExceptionMessageTestBase {
@@ -31,7 +31,7 @@ extends ExceptionMessageTestBase {
 
         private static final long serialVersionUID = - 3505364602724687463L;
 
-        private AnException(final ParametrizedMessage message) {
+        private AnException(final Message message) {
             super(message);
         }
     }

@@ -25,7 +25,7 @@ import java.io.Serializable;
 
 import org.jlib.core.value.formatter.NamedValueFormatter;
 
-public class ParametrizedMessageConfiguration
+public class MessageConfiguration
 implements Serializable {
 
     private static final long serialVersionUID = 4551938257105373490L;
