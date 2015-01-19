@@ -82,7 +82,6 @@
           <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
           <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
           <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
-          <option name="BLANK_LINES_AROUND_FIELD" value="1" />
           <option name="BLANK_LINES_AROUND_FIELD_IN_INTERFACE" value="1" />
           <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1" />
           <option name="ELSE_ON_NEW_LINE" value="true" />
@@ -133,6 +132,5 @@
       </value>
     </option>
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="DynaMITe" />
   </component>
 </project>
