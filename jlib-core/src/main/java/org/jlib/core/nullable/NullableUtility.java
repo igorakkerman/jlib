@@ -32,10 +32,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public final class NullableUtility {
 
-    /** no visible constructor */
-    private NullableUtility() {
-    }
-
     /**
      * Compares the specified Objects for mutual equality. Two Objects {@code object1}, {@code object2} are considered
      * equal if {@code object1 == object2 == null} or {@code object1.equals(object2)}.
@@ -85,4 +81,6 @@ public final class NullableUtility {
                object.hashCode() :
                0;
     }
+
+    private NullableUtility() {}
 }
