@@ -34,7 +34,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter(EMPTY);
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter(EMPTY);
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -48,7 +48,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter("++ %s **");
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("++ %s **");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -62,7 +62,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter("%s: %s");
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -76,7 +76,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder("This is a text ... ");
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter("%s: %s");
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -90,7 +90,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter("%s: %s %s");
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s %s");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -104,7 +104,7 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final PrintfNamedValueFormatter formatter = new PrintfNamedValueFormatter("%s: %s {0}");
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s {0}");
 
         // when
         formatter.append(builder, "value", "Hallo");

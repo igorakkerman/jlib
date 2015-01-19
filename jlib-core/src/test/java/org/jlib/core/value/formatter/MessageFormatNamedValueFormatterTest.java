@@ -32,7 +32,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter(EMPTY);
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter(EMPTY);
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -46,7 +46,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("++ {0} **");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("++ {0} **");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -60,7 +60,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("... {1}");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("... {1}");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -74,7 +74,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -88,7 +88,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder("This is a text ... ");
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -102,7 +102,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("{0}: {1} {2}");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1} {2}");
 
         // when
         formatter.append(builder, "value", "Hallo");
@@ -116,7 +116,7 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final MessageFormatNamedValueFormatter formatter = new MessageFormatNamedValueFormatter("%s: %s {0}");
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("%s: %s {0}");
 
         // when
         formatter.append(builder, "value", "Hallo");
