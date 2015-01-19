@@ -275,7 +275,5 @@ public final class IterableUtility {
         return new SingletonIterable<>(item);
     }
 
-    /** no visible constructor */
-    private IterableUtility() {
-    }
+    private IterableUtility() {}
 }
