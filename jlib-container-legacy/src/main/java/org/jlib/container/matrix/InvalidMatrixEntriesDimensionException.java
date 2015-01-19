@@ -4,7 +4,7 @@ import org.jlib.core.language.InvalidArgumentException;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.MessageUtility.message;
 
 /**
  * {@link InvalidArgumentException} thrown when an array of {@link Matrix} Entries is specified with either the

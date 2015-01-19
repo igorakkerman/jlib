@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.operation.ItemOperation;
+import org.jlib.core.operation.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 
 /**

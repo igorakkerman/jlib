@@ -19,29 +19,33 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.exception;
 
 import org.jlib.core.text.message.Message;
 
 /**
- * {@link InvalidStateException} thrown in an uexpected state.
+ * {@link IllegalStateException} using a  Message.
  *
  * @author Igor Akkerman
  */
-public class UnexpectedStateException
-extends InvalidStateException {
+public abstract class InvalidStateException
+extends IllegalStateException {
 
-    private static final long serialVersionUID = 4388525477338778336L;
+    /** serialVersionUID */
+    private static final long serialVersionUID = 6535760982905205135L;
 
-    public UnexpectedStateException(final Message message) {
-        super(message);
+    protected InvalidStateException() {
     }
 
-    public UnexpectedStateException(final Exception cause) {
+    protected InvalidStateException(final Message message) {
+        super(message.toString());
+    }
+
+    protected InvalidStateException(final Exception cause) {
         super(cause);
     }
 
-    public UnexpectedStateException(final Exception cause, final Message message) {
-        super(message, cause);
+    protected InvalidStateException(final Message message, final Exception cause) {
+        super(message.toString(), cause);
     }
 }

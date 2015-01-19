@@ -21,7 +21,7 @@
 
 package org.jlib.core.reflection;
 
-import org.jlib.core.language.exception.ApplicationException;
+import org.jlib.core.exception.ApplicationException;
 
 import static org.jlib.core.text.message.MessageUtility.message;
 

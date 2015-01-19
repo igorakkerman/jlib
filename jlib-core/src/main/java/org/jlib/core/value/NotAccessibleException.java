@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.exception.ApplicationException;
+import org.jlib.core.exception.ApplicationException;
 
 import com.google.common.base.Optional;
 import static org.jlib.core.text.message.MessageUtility.message;

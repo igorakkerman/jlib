@@ -23,7 +23,7 @@ package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.InvalidArgumentException;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.MessageUtility.message;
 
 /**
  * {@link InvalidArgumentException} thrown when trying to create a

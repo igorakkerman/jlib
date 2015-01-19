@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.operation;
+package org.jlib.core.operation;
 
 /**
  * Unification of interfaces {@link Equals} and {@link HashCode}.

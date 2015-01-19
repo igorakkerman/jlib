@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.Message;
 
 import org.jlib.container.operation.InvalidContainerStateException;
 
@@ -56,7 +56,7 @@ extends InvalidContainerStateException {
      *        comma separated sequence of Object error message arguments
      */
     public InvalidStoredItemsCountException(final Sequence<?> sequence, final int invalidItemsCount,
-                                            ParametrizedMessage exceptionMessage) {
+                                            Message exceptionMessage) {
         super(sequence, exceptionMessage.append(invalidItemsCount));
 
         this.invalidItemsCount = invalidItemsCount;

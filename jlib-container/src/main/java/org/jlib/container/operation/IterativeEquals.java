@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import org.jlib.core.language.operation.Equals;
+import org.jlib.core.operation.Equals;
 
 import static org.jlib.core.iterator.IterableUtility.provideEqualItems;
 

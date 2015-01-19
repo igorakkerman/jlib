@@ -21,9 +21,9 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.operation.ItemOperation;
+import org.jlib.core.operation.ItemOperation;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.MessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add

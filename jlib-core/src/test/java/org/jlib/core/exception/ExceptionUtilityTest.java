@@ -19,10 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.exception;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.language.exception.ExceptionUtility.autoMessageText;
+import static org.jlib.core.exception.ExceptionUtility.autoMessageText;
 import org.junit.Test;
 
 public class ExceptionUtilityTest {

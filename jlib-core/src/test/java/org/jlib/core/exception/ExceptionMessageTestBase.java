@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.exception;
 
 import org.jlib.core.text.message.Message;
 import org.jlib.core.text.message.EagerMessage;

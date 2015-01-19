@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.io.Serializable;
 
 import org.jlib.core.language.TypedCloneable;
-import org.jlib.core.language.exception.UnexpectedStateException;
+import org.jlib.core.exception.UnexpectedStateException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.math.MathUtility.count;

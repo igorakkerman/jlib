@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.language.exception.InvalidStateException;
+import org.jlib.core.exception.InvalidStateException;
 import org.jlib.core.text.message.Message;
 
 import static org.jlib.core.text.message.MessageUtility.message;

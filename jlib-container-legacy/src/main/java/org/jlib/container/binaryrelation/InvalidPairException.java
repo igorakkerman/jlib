@@ -21,11 +21,11 @@
 
 package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.Message;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.MessageUtility.message;
 
 /**
  * {@link InvalidBinaryRelationArgumentException} thrown when an
@@ -61,7 +61,7 @@ extends InvalidContainerArgumentException {
     @SuppressWarnings("TypeMayBeWeakened")
     protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
-                                Pair<LeftValue, RightValue> pair, final ParametrizedMessage message) {
+                                Pair<LeftValue, RightValue> pair, final Message message) {
 
         super(binaryRelation, message.with(pair));
     }
@@ -79,7 +79,7 @@ extends InvalidContainerArgumentException {
     @SuppressWarnings("TypeMayBeWeakened")
     protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
-                                Pair<LeftValue, RightValue> pair, final ParametrizedMessage message,
+                                Pair<LeftValue, RightValue> pair, final Message message,
                                 final Exception cause) {
 
         super(binaryRelation, message.with(pair), cause);

@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.text.message.Message;
 
 import static org.jlib.core.text.message.MessageUtility.message;

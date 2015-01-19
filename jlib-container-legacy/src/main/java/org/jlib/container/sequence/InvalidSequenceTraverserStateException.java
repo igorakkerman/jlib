@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.Message;
 import org.jlib.core.iterator.InvalidIteratorStateException;
 
 /**
@@ -54,10 +54,10 @@ extends InvalidIteratorStateException {
      *        referenced {@link Sequence}
      *
      * @param message
-     *        the {@link ParametrizedMessage}
+     *        the {@link Message}
      */
     protected InvalidSequenceIteratorStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
-                                                     final ParametrizedMessage message) {
+                                                     final Message message) {
         super(sequence, message);
     }
 
@@ -88,7 +88,7 @@ extends InvalidIteratorStateException {
      *        {@link Exception} that caused this {@link InvalidSequenceIteratorStateException}
      */
     @SuppressWarnings("TypeMayBeWeakened")
-    protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final ParametrizedMessage message,
+    protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final Message message,
                                                      final Exception cause) {
         super(sequence, message, cause);
     }

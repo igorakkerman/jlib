@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence.index;
 
-import org.jlib.core.language.ParametrizedMessage;
+import org.jlib.core.language.Message;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 
@@ -52,7 +52,7 @@ extends InvalidContainerArgumentException {
      *        access
      */
     public InvalidSequenceIndexException(@SuppressWarnings("TypeMayBeWeakened") final IndexSequence<?> sequence,
-                                         final ParametrizedMessage message) {
+                                         final Message message) {
         super(sequence, message);
     }
 }

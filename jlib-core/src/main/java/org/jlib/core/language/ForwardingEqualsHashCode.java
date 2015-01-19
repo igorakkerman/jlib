@@ -23,9 +23,9 @@ package org.jlib.core.language;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import org.jlib.core.language.operation.Equals;
-import org.jlib.core.language.operation.EqualsHashCode;
-import org.jlib.core.language.operation.HashCode;
+import org.jlib.core.operation.Equals;
+import org.jlib.core.operation.EqualsHashCode;
+import org.jlib.core.operation.HashCode;
 
 public class ForwardingEqualsHashCode<Obj>
 implements EqualsHashCode<Obj> {

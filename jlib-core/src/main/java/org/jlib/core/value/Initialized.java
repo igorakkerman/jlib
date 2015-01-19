@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
  * {@link Accessible} initialized by the constructor.

@@ -24,7 +24,7 @@ package org.jlib.container.operation.sequence.index;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.sequence.Sequence;
 
-import static org.jlib.core.language.ParametrizedMessageUtility.message;
+import static org.jlib.core.language.MessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a requested Item is not found.

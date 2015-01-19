@@ -23,7 +23,7 @@ package org.jlib.core.system;
 
 import static org.jlib.core.text.message.MessageUtility.message;
 
-import org.jlib.core.language.exception.InvalidStateException;
+import org.jlib.core.exception.InvalidStateException;
 
 /**
  * {@link InvalidStateException} thrown when trying to retrieve the value of a

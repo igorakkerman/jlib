@@ -21,7 +21,7 @@
 
 package org.jlib.core.value;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 public class InitializedNamed<Value>
 extends Initialized<Value>

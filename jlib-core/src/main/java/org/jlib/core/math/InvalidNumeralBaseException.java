@@ -21,7 +21,7 @@
 
 package org.jlib.core.math;
 
-import org.jlib.core.language.exception.InvalidArgumentException;
+import org.jlib.core.exception.InvalidArgumentException;
 
 import static org.jlib.core.text.message.MessageUtility.messageMf;
 

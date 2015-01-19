@@ -21,7 +21,7 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.language.exception.UnexpectedStateException;
+import org.jlib.core.exception.UnexpectedStateException;
 
 /**
  * <p>

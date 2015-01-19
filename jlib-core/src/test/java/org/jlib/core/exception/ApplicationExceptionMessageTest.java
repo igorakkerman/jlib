@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,19 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.operation;
+package org.jlib.core.exception;
 
-@FunctionalInterface
-public interface HashCode<Obj> {
+import org.jlib.core.text.message.Message;
 
-    /**
-     * Computes a hash code of the specified {@link Obj}.
-     * The algorithm used for the computation is specified by the concrete implementation.
-     *
-     * @param object
-     *        {@link Obj} of which the hash code should be computed
-     *
-     * @return integer specifying the hash code
-     */
-    int hashCode(Obj object);
+public class ApplicationExceptionMessageTest
+extends ExceptionMessageTestBase {
+
+    private static class AnException
+    extends ApplicationException {
+
+        private static final long serialVersionUID = 7554398632151450030L;
+
+        private AnException(final Message message) {
+            super(message);
+        }
+    }
+
+    @Override
+    protected void throwException()
+    throws Exception {
+        throw new AnException(getMessage());
+    }
 }

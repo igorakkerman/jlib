@@ -19,24 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.exception;
 
 import org.jlib.core.text.message.Message;
-import org.jlib.core.text.message.MessageUtility;
 
-import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
-import static org.jlib.core.text.TextUtility.removeOnce;
+public class InvalidArgumentExceptionMessageTest
+extends ExceptionMessageTestBase {
 
-public final class ExceptionUtility {
+    private static class AnException
+    extends InvalidArgumentException {
 
-    public static String autoMessageText(final Exception exception) {
-        return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
+        private static final long serialVersionUID = - 120847363819994480L;
+
+        private AnException(final Message message) {
+            super(message);
+        }
     }
 
-    private ExceptionUtility() {}
-
-    public static Message autoMessage(final Exception exception) {
-        return MessageUtility.message(autoMessageText(exception));
+    @Override
+    protected void throwException()
+    throws Exception {
+        throw new AnException(getMessage());
     }
 }
-

@@ -19,26 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.exception;
+package org.jlib.core.exception;
 
 import org.jlib.core.text.message.Message;
+import org.jlib.core.text.message.MessageUtility;
 
-public class InvalidStateExceptionMessageTest
-extends ExceptionMessageTestBase {
+import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
+import static org.jlib.core.text.TextUtility.removeOnce;
 
-    private static class AnException
-    extends InvalidStateException {
+public final class ExceptionUtility {
 
-        private static final long serialVersionUID = - 3505364602724687463L;
-
-        private AnException(final Message message) {
-            super(message);
-        }
+    public static String autoMessageText(final Exception exception) {
+        return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
     }
 
-    @Override
-    protected void throwException()
-    throws Exception {
-        throw new AnException(getMessage());
+    private ExceptionUtility() {}
+
+    public static Message autoMessage(final Exception exception) {
+        return MessageUtility.message(autoMessageText(exception));
     }
 }
+
