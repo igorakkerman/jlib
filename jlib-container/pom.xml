@@ -31,10 +31,12 @@
     <name>jlib Container Framework</name>
 
     <parent>
-        <artifactId>jlib-base</artifactId>
         <groupId>org.jlib</groupId>
+        <artifactId>jlib-base</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
+    <packaging>jar</packaging>
 
     <dependencies>
 
