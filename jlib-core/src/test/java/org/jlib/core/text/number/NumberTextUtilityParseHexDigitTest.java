@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.number;
+package org.jlib.core.text.number;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.number.NumberUtility.parseHexDigit;
+import static org.jlib.core.text.number.NumberTextUtility.parseHexDigit;
 import org.junit.Test;
 
-public class NumberUtilityParseHexDigitTest {
+public class NumberTextUtilityParseHexDigitTest {
 
     @Test
     public void oarseHexDigit0() {

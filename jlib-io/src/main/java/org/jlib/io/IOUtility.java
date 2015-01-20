@@ -26,11 +26,11 @@ package org.jlib.io;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.jlib.core.number.NumberUtility.parseHexDigit;
+import static org.jlib.core.text.number.NumberUtility.parseHexDigit;
 
 /**
  * Utility class providing static methods for input/output operations.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class IOUtility {
@@ -48,7 +48,7 @@ public final class IOUtility {
      * require a byte to be specified by an integer. Using this method, an
      * unsigned byte can be converted into such an integer.
      * </p>
-     * 
+     *
      * @param signedByte
      *        the signed byte value (-128 to 127)
      * @return the unsigned integer value (0 to 255)
@@ -70,7 +70,7 @@ public final class IOUtility {
      * <p>
      * This method has the same functionality as a simple cast to a byte.
      * </p>
-     * 
+     *
      * @param unsignedInt
      *        the unsigned integer value of a signed byte (0 to 255). The 24
      *        higher-order bits of this integer are ignored.
@@ -87,7 +87,7 @@ public final class IOUtility {
      * containing the two hexadecimal digit characters as bytes. The character
      * order is assumed to be big-endian, that is, {@code hexCharacter[offset]}
      * holds the most significant hexadecimal character.
-     * 
+     *
      * @param hexCharacters
      *        array of bytes containing the hexadecimal digit characters
      * @return byte specifying the parsed value
@@ -106,7 +106,7 @@ public final class IOUtility {
      * specified array containing the two hexadecimal digit characters as bytes.
      * The character order is assumed to be big-endian, that is, {@code
      * hexCharacter[offset]} holds the most significant hexadecimal character.
-     * 
+     *
      * @param hexCharacters
      *        array of bytes containing the hexadecimal digit characters
      * @param offset

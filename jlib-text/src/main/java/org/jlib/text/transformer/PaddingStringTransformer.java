@@ -1,10 +1,10 @@
 package org.jlib.text.transformer;
 
-import static org.jlib.core.number.NumberUtility.isOdd;
+import static org.jlib.core.text.number.NumberUtility.isOdd;
 
 /**
  * Skeletal implementation of a {@link StringTransformer} padding a String.
- * 
+ *
  * @author Igor Akkerman
  */
 public abstract class PaddingStringTransformer
@@ -18,7 +18,7 @@ implements StringTransformer {
 
     /**
      * Creates a new PaddingStringTransformer.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by this
      *        PaddingStringTransformer
@@ -27,7 +27,7 @@ implements StringTransformer {
      */
     protected PaddingStringTransformer(int finalStringLength, char paddingCharacter) {
         super();
-        
+
         this.finalStringLength = finalStringLength;
         this.paddingCharacter = paddingCharacter;
     }
@@ -55,7 +55,7 @@ implements StringTransformer {
      * Performs the padding, assuming that the String contained by the specified
      * {@link StringBuilder} is shorter than the String to return and the
      * specified {@link StringBuilder} has a sufficient capacity.
-     * 
+     *
      * @param stringBuilder
      *        {@link StringBuilder} containing the String to transform
      * @param halfPadBuilder
@@ -69,7 +69,7 @@ implements StringTransformer {
 
     /**
      * Returns the padding character used by this PaddingStringTransformer.
-     * 
+     *
      * @return the padding character
      */
     protected char getPaddingCharacter() {
@@ -94,7 +94,7 @@ implements StringTransformer {
         return finalStringLength == otherPaddingStringTransformer.finalStringLength &&
                paddingCharacter == otherPaddingStringTransformer.paddingCharacter;
     }
-    
+
 
     @Override
     public int hashCode() {

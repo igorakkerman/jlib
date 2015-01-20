@@ -31,11 +31,11 @@ import java.io.OutputStream;
 
 import static org.jlib.io.IOUtility.parseHexNumberAsByte;
 import static org.jlib.io.IOUtility.toUnsignedInt;
-import static org.jlib.core.number.NumberUtility.HEX_DIGIT_CHARACTERS;
+import static org.jlib.core.text.number.NumberUtility.HEX_DIGIT_CHARACTERS;
 
 /**
  * Utility class for quoted-printable encoding operations.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class QuotedPrintableUtility {
@@ -45,7 +45,7 @@ public final class QuotedPrintableUtility {
 
     /**
      * Encodes the specified byte array using quoted printable encoding.
-     * 
+     *
      * @param inputBytes
      *        array of bytes containing the bytes to encode
      * @return String containing the quoted-printable encoded output of {@code inputBytes}
@@ -66,7 +66,7 @@ public final class QuotedPrintableUtility {
 
     /**
      * Decodes the specified String using quoted-printable decoding.
-     * 
+     *
      * @param qpString
      *        quoted-printable encoded String
      * @return array of decoded bytes from {@code qpString}
@@ -96,7 +96,7 @@ public final class QuotedPrintableUtility {
 
     /**
      * Creates an octet for the specified value.
-     * 
+     *
      * @param value
      *        byte holding the value of the octet to create
      * @return array of bytes containing the octet characters
@@ -114,7 +114,7 @@ public final class QuotedPrintableUtility {
 
     /**
      * Decodes an encoded octet from the specified array of bytes.
-     * 
+     *
      * @param octetBytes
      *        array of bytes containing an octet
      * @return byte containing the octet value

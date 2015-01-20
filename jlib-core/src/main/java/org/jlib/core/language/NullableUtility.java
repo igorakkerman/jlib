@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.nullable;
+package org.jlib.core.language;
 
 import org.jlib.core.system.SystemUtility;
 

@@ -19,14 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.number;
+package org.jlib.core.text.number;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.number.NumberUtility.isEven;
-import static org.jlib.core.number.NumberUtility.isOdd;
+import static org.jlib.core.text.number.NumberTextUtility.isEven;
+import static org.jlib.core.text.number.NumberTextUtility.isOdd;
 import org.junit.Test;
 
-public class NumberUtilityIsEvenOddTest {
+public class NumberTextUtilityIsEvenOddTest {
 
     @Test
     public final void isEven0() {
