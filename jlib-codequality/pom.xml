@@ -18,12 +18,14 @@
       See the License for the specific language governing permissions and
       limitations under the License.
   -->
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jlib-codequality</artifactId>
+    <name>jlib Code Quality Configuration</name>
 
     <parent>
         <groupId>org.jlib</groupId>
@@ -31,19 +33,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jlib-codequality</artifactId>
-    <name>jlib code quality configuration</name>
-
-    <packaging>pom</packaging>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <packaging>jar</packaging>
 
     <dependencies>
     </dependencies>

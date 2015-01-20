@@ -79,5 +79,10 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.jlib</groupId>
+            <artifactId>jlib-codequality</artifactId>
+        </dependency>
+
     </dependencies>
 </project>
