@@ -26,7 +26,6 @@ package org.jlib.core.system;
  *
  * @author Igor Akkerman
  */
-// TODO: review thrown exceptions
 public final class SystemUtility {
 
     /**
