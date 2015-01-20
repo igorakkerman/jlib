@@ -35,14 +35,20 @@ implements Message,
 
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
+    private static final int EXPECTED_ADDITIONAL_TEXT_LENGTH = 64;
+    private static final int EXPECTED_ARGUMENTS_LENGTH = EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH;
 
-    private static StringBuilder createBuilder(final CharSequence text) {
-        return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
+    private static StringBuilder createTextBuilder(final CharSequence text) {
+        return new StringBuilder(text.length() + EXPECTED_ADDITIONAL_TEXT_LENGTH + EXPECTED_ARGUMENTS_LENGTH);
+    }
+
+    private static StringBuilder createArgumentsBuilder() {
+        return new StringBuilder(EXPECTED_ARGUMENTS_LENGTH);
     }
 
     private final MessageConfiguration configuration;
     private final StringBuilder builder;
-    private int argumentsCount = 0;
+    private final StringBuilder argumentsBuilder;
 
     public EagerMessage() {
         this(EMPTY);
@@ -53,21 +59,21 @@ implements Message,
     }
 
     public EagerMessage(final CharSequence text, final MessageConfiguration configuration) {
-        this(createBuilder(text), configuration);
+        this(createTextBuilder(text), configuration);
 
         builder.append(text);
     }
 
     public EagerMessage(final StringBuilder builder, final MessageConfiguration configuration) {
         this.builder = builder;
+        argumentsBuilder = createArgumentsBuilder();
         this.configuration = configuration;
     }
 
     @Override
     public Message with(final CharSequence argumentName, final Object argumentValue) {
-        appendSeparator();
-        configuration.getArgumentFormatter().append(builder, argumentName, argumentValue);
-        argumentsCount++;
+        appendArgumentsSeparator();
+        configuration.getArgumentFormatter().append(argumentsBuilder, argumentName, argumentValue);
 
         return this;
     }
@@ -80,17 +86,20 @@ implements Message,
         return this;
     }
 
-    private void appendSeparator() {
-        if (builder.length() == 0)
+    private void appendArgumentsSeparator() {
+        if (argumentsBuilder.length() == 0)
             return;
 
-        builder.append(argumentsCount == 0 ?
-                       configuration.getTextArgumentsSeparator() :
-                       configuration.getArgumentsSeparator());
+        argumentsBuilder.append(configuration.getArgumentsSeparator());
     }
 
     @Override
     public String toString() {
+        if (builder.length() != 0 && argumentsBuilder.length() != 0)
+            builder.append(configuration.getTextArgumentsSeparator());
+
+        builder.append(argumentsBuilder);
+
         return builder.toString();
     }
 }
