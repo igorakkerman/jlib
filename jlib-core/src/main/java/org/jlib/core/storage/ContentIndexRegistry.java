@@ -25,7 +25,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.io.Serializable;
 
-import org.jlib.core.language.TypedCloneable;
 import org.jlib.core.exception.UnexpectedStateException;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -37,8 +36,8 @@ import static org.jlib.core.math.MathUtility.count;
  * @author Igor Akkerman
  */
 public class ContentIndexRegistry
-extends TypedCloneable<ContentIndexRegistry>
-implements Serializable {
+implements Cloneable,
+           Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
@@ -130,13 +129,13 @@ implements Serializable {
     public ContentIndexRegistry clone() {
         // TODO: replace by more general strategy
         try {
-            final ContentIndexRegistry cloneTarget = super.clone();
+            final ContentIndexRegistry cloneTarget = (ContentIndexRegistry) super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 
             return cloneTarget;
         }
-        catch (IllegalAccessException | InvocationTargetException exception) {
+        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }

@@ -25,7 +25,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.io.Serializable;
 
-import org.jlib.core.language.TypedCloneable;
 import org.jlib.core.exception.UnexpectedStateException;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -36,8 +35,8 @@ import org.apache.commons.beanutils.BeanUtils;
  * @author Igor Akkerman
  */
 public class IndexRangeOperationDescriptor
-extends TypedCloneable<IndexRangeOperationDescriptor>
-implements Serializable {
+implements Cloneable,
+           Serializable {
 
     /** serialVersionUID */
     private static final long serialVersionUID = - 2349186633834250865L;
@@ -102,13 +101,13 @@ implements Serializable {
 
         // TODO: replace by more general strategy
         try {
-            final IndexRangeOperationDescriptor cloneTarget = super.clone();
+            final IndexRangeOperationDescriptor cloneTarget = (IndexRangeOperationDescriptor) super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 
             return cloneTarget;
         }
-        catch (IllegalAccessException | InvocationTargetException exception) {
+        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }

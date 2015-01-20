@@ -23,7 +23,6 @@ package org.jlib.core.storage;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.jlib.core.language.TypedCloneable;
 import org.jlib.core.exception.UnexpectedStateException;
 import org.jlib.core.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
@@ -31,7 +30,6 @@ import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.text.message.MessageUtility.messageMf;
 
 public abstract class AbstractLinearIndexStorage<Item>
-extends TypedCloneable<AbstractLinearIndexStorage<Item>>
 implements LinearIndexStorage<Item> {
 
     /**
@@ -131,13 +129,14 @@ implements LinearIndexStorage<Item> {
     public AbstractLinearIndexStorage<Item> clone() {
         // TODO: replace by more general strategy
         try {
-            final AbstractLinearIndexStorage<Item> cloneTarget = super.clone();
+            @SuppressWarnings("unchecked")
+            final AbstractLinearIndexStorage<Item> cloneTarget = (AbstractLinearIndexStorage<Item>) super.clone();
 
             BeanUtils.copyProperties(cloneTarget, this);
 
             return cloneTarget;
         }
-        catch (IllegalAccessException | InvocationTargetException exception) {
+        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }
