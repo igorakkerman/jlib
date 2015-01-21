@@ -54,7 +54,7 @@ extends NoNextItemException {
      * @param cause
      *        {@link Exception} that caused this {@link Exception}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     public NoNextSequenceItemException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
     }

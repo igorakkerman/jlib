@@ -21,22 +21,32 @@
 
 package org.jlib.container.operation;
 
-import java.util.List;
-
-public interface ToSequentialList<Item>
+/**
+ * {@link Object} allowing Items to be removed.
+ *
+ * @param <Item>
+ *        type of items held in the {@link Object}
+ *
+ * @author Igor Akkerman
+ */
+public interface RemoveManyByValue<Item>
  {
 
     /**
-     * Returns a sequentially iterable {@link List} containing all of the
-     * Items of this {@link Object} in the proper order as returned by this
-     * {@link Object}'s Iterator.
+     * Removes all Items from this object for which the specified {@link ContainsSingle}'s
+     * {@link ContainsSingle#contains(Object)} method returns {@code true}.
      *
-     * @return sequentially iterable {@link List} containing all of the Items
-     *         of this {@link Object}
+     * @param items
+     *        {@link Object} containing the Items to remove
+     *
+     * @throws InvalidContainerArgumentException
+     *         if the operation cannot be completed due to some property of one
+     *         Item in {@code items}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    List<Item> toSequentialList()
-    throws InvalidContainerStateException;
+    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
+        */ void remove(ContainsIterable items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

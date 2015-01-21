@@ -125,7 +125,7 @@ implements ObservedReplaceIndexSequence<Item> */ {
 //     * of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplaceInsertRemoveArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);

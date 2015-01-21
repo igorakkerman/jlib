@@ -21,11 +21,11 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.language.MessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
- * {@link InvalidContainerArgumentException} thrown when a {@link RemoveItemByItem} does not contain the
- * specified {@link Item} to retain.
+ * {@link InvalidContainerArgumentException} thrown when a {@link RemoveSingleByValue} does not contain
+ * the specified item to retain.
  *
  * @author Igor Akkerman
  */
@@ -39,18 +39,18 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link ItemToRemoveNotContainedException}.
      *
      * @param container
-     *        referenced {@link IterableContainer}
+     *        referenced {@link Object}
      *
      * @param item
      *        Item to retain
      */
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveManyByItem<?> container, final Object item) {
+    public ItemToRemoveNotContainedException(
+                                             final RemoveManyByValue<?> container, final Object item) {
         super(container, message(item));
     }
 
-    public ItemToRemoveNotContainedException(@SuppressWarnings("TypeMayBeWeakened")
-                                             final RemoveManyByItem<?> container, final Object item,
+    public ItemToRemoveNotContainedException(
+                                             final RemoveManyByValue<?> container, final Object item,
                                              final Exception cause) {
         super(container, message(item), cause);
     }

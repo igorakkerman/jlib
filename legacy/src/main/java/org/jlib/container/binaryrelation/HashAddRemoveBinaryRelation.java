@@ -47,7 +47,7 @@ implements RetainItemsByIterableBinaryRelation<LeftValue, RightValue> */ {
 //
 //    /**
 //     * Creates a new {@link HashAddRemoveBinaryRelation} containing the
-//     * {@link Pair} items contained by the specified {@link IterableContainer}.
+//     * {@link Pair} items contained by the specified {@link Object}.
 //     *
 //     * @param pairs
 //     *        IterableContainer of the Pairs to add

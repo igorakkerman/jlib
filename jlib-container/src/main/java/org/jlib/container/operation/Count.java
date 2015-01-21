@@ -21,15 +21,13 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
 public interface Count<Item>
-extends ItemOperation<Item> {
+ {
 
     /**
-     * Returns the number of Items in this {@link IterableContainer}.
+     * Returns the number of Items in this {@link Object}.
      *
-     * @return integer specifying the number of Items in this {@link IterableContainer}
+     * @return integer specifying the number of Items in this {@link Object}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

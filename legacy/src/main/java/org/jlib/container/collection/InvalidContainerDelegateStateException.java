@@ -40,7 +40,7 @@ extends InvalidIteratorStateException {
      * Creates a new {@link InvalidContainerDelegateStateException}.
      *
      * @param container
-     *        referenced {@link IterableContainer}
+     *        referenced {@link Object}
      *
      * @param delegate
      *        delegate Object

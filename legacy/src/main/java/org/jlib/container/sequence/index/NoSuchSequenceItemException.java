@@ -49,7 +49,7 @@ extends InvalidContainerArgumentException {
      * @param item
      *        Item that could not be found
      */
-    public <Item> NoSuchSequenceItemException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<Item> sequence,
+    public <Item> NoSuchSequenceItemException( final Sequence<Item> sequence,
                                               final Item item) {
         super(sequence, message(item));
     }

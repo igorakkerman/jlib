@@ -52,11 +52,11 @@ extends PrependSequence<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException;
 
     /**
-     * Prepends all Items contained by the specified {@link IterableContainer} to this
+     * Prepends all Items contained by the specified {@link Object} to this
      * {@link ObservedPrependSequence}.
      *
      * @param items
-     *        {@link IterableContainer} containing the Items to prepend
+     *        {@link Object} containing the Items to prepend
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

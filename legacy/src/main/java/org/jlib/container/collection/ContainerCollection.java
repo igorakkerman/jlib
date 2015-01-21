@@ -30,27 +30,27 @@ import org.jlib.container.operation.Container;
 import static org.jlib.container.operation.containsadapter.ContainsAdapterUtility.allOf;
 
 /**
- * Adapter allowing a {@link IterableContainer} to be used as a {@link Collection}. A
- * {@link ContainerCollection} is backed by a {@link IterableContainer} specified at
+ * Adapter allowing a {@link Object} to be used as a {@link Collection}. A
+ * {@link ContainerCollection} is backed by a {@link Object} specified at
  * initialization.
  *
  * @param <Item>
- *        type of the items held in the {@link IterableContainer}
+ *        type of the items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
 public class ContainerCollection<Item>
 extends AbstractCollection<Item> {
 
-    /** adapted and backed {@link IterableContainer} */
+    /** adapted and backed {@link Object} */
     private final Container<Item> delegateContainer;
 
     /**
      * Creates a new {@link ContainerCollection} backed by the specified
-     * {@link IterableContainer}.
+     * {@link Object}.
      *
      * @param delegateContainer
-     *        {@link IterableContainer} backing this {@link ContainerCollection}
+     *        {@link Object} backing this {@link ContainerCollection}
      */
     public ContainerCollection(final Container<Item> delegateContainer) {
         super();

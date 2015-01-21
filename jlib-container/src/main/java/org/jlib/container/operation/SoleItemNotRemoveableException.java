@@ -21,11 +21,9 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
 /**
  * {@link InvalidContainerStateException} thrown when trying to retain the sole
- * Item of a {@link IterableContainer} that may not be empty.
+ * Item of a {@link Object} that may not be empty.
  *
  * @author Igor Akkerman
  */
@@ -35,13 +33,7 @@ extends InvalidContainerStateException {
     /** serialVersionUID */
     private static final long serialVersionUID = - 7467942886021869121L;
 
-    /**
-     * Creates a new {@link SoleItemNotRemoveableException}.
-     *
-     * @param itemOp
-     *        targeted {@link Sequence}
-     */
-    public SoleItemNotRemoveableException(final ItemOperation<?> itemOperation) {
+    public SoleItemNotRemoveableException(final Object itemOperation) {
         super(itemOperation);
     }
 }

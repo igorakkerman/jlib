@@ -24,18 +24,15 @@ package org.jlib.container.operation;
 import java.util.List;
 import java.util.RandomAccess;
 
-import org.jlib.core.operation.ItemOperation;
-
-public interface ToRandomAccessList<Item>
-extends ItemOperation<Item> {
+public interface ToRandomAccessList<Item> {
 
     /**
      * Returns a {@link RandomAccess} {@link List} containing all of the Items
-     * of this {@link IterableContainer} in the proper order as returned by this
-     * {@link IterableContainer}'s Iterator.
+     * of this {@link Object} in the proper order as returned by this
+     * {@link Object}'s Iterator.
      *
      * @return {@link RandomAccess} {@link List} containing all of the Items of
-     *         this {@link IterableContainer}
+     *         this {@link Object}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

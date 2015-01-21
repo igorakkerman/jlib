@@ -46,7 +46,7 @@ import static org.jlib.container.operation.collection.CollectionUtility.toSet;
 import static org.jlib.core.language.MessageUtility.message;
 
 /**
- * Utility class providing methods operating on {@link IterableContainer} instances.
+ * Utility class providing methods operating on {@link Object} instances.
  *
  * @author Igor Akkerman
  */
@@ -56,7 +56,7 @@ public final class ContainerUtility {
      * Removes the specified Item of this {@link RetainItemsByIterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Item
@@ -112,7 +112,7 @@ public final class ContainerUtility {
      * specified {@link RetainItemsByIterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Items
@@ -138,7 +138,7 @@ public final class ContainerUtility {
      * specified {@link RetainItemsByIterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link RetainItemsByIterable} containing the Items
@@ -169,7 +169,7 @@ public final class ContainerUtility {
      * specified {@link ObservedRetainItemsByIterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Items
@@ -206,7 +206,7 @@ public final class ContainerUtility {
      * specified {@link RetainItemsByIterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link RetainItemsByIterable} containing the Items
@@ -240,7 +240,7 @@ public final class ContainerUtility {
      * specified {@link Iterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param iterable
      *        {@link RetainItemsByIterable} containing the Items to retain
@@ -270,10 +270,10 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param <RetainedItem>
-     *        type of the items retained in the {@link IterableContainer}
+     *        type of the items retained in the {@link Object}
      *
      * @param container
      *        {@link RetainItemsByIterable} containing the Items to retain
@@ -301,7 +301,7 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link RetainItemsByIterable} containing the Items to retain
@@ -330,7 +330,7 @@ public final class ContainerUtility {
      * <em>except</em> the Items provided by the specified {@link Iterable}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Items to retain
@@ -375,10 +375,10 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param <RetainedItem>
-     *        type of the items retained in the {@link IterableContainer}
+     *        type of the items retained in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Items to retain
@@ -417,7 +417,7 @@ public final class ContainerUtility {
      * {@link Collection} .
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param container
      *        {@link ObservedRetainItemsByIterable} containing the Items to retain
@@ -465,7 +465,7 @@ public final class ContainerUtility {
      *        {@link RetainItemsByIterable} containing the Items
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
@@ -485,7 +485,7 @@ public final class ContainerUtility {
      *        {@link ObservedRetainItemsByIterable} containing the Items
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
@@ -507,7 +507,7 @@ public final class ContainerUtility {
 
     /**
      * Returns the sum of number of Items in all of the specified
-     * {@link IterableContainer} instances.
+     * {@link Object} instances.
      *
      * @param containers
      *        array of {@link Iterable} instances providing the Items

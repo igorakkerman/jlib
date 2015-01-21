@@ -21,14 +21,16 @@
 
 package org.jlib.container.operation;
 
+import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
+
 public class DefaultRetain<Item>
 implements Retain<Item> {
 
-    private final RemoveSingleByItem<Item> removableContainedItems;
+    private final RemoveSingleByValue<Item> removableContainedItems;
 
     private final Iterable<Item> containedItems;
 
-    public <RemoveIterable extends Iterable<Item> & RemoveSingleByItem<Item>> /*
+    public <RemoveIterable extends Iterable<Item> & RemoveSingleByValue<Item>> /*
         */ DefaultRetain(final RemoveIterable containedItems) {
 
         this.containedItems = containedItems;
@@ -37,8 +39,7 @@ implements Retain<Item> {
 
     @Override
     @SuppressWarnings("TypeMayBeWeakened")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable retainedItems)
+    public void retain(final IterativeContainsAdapter<Item> retainedItems)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item containedItem : containedItems)

@@ -108,7 +108,7 @@ public final class IndexSequenceUtility {
      * Removes the specified Item from the specified {@link RemoveIndexSequence}.
      *
      * @param <Item>
-     *        type of the items held in the {@link IterableContainer}
+     *        type of the items held in the {@link Object}
      *
      * @param sequence
      *        {@link ObservedRetainItemsByIterable} containing the Item

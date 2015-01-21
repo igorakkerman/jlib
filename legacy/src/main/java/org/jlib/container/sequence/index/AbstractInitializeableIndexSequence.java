@@ -130,7 +130,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     * index of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    protected AbstractInitializeableIndexSequence(final IterableContainer<? extends Item> items) {
 //        this(0, items);
@@ -144,7 +144,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    protected AbstractInitializeableIndexSequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        this(firstIndex, firstIndex + items.getCount() - 1);
@@ -173,7 +173,7 @@ public abstract class AbstractInitializeableIndexSequence<Item>
 //     * {@link AbstractInitializeableIndexSequence}.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     *
 //     * @throws InvalidStoredItemsCountException
 //     *         if {@code items.getCount() != getCount()}

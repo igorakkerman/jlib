@@ -29,22 +29,24 @@ import org.jlib.core.language.AbstractObject;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
+import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
+
 /**
- * Skeletal implementation of a {@link IterableContainer}. A concrete IterableContainer
+ * Skeletal implementation of a container. A concrete IterableContainer
  * implementation needs only to extend this class and implement the
- * {@link IterableContainer#iterator()} method. Other methods may be overridden for
+ * {@link Iterable#iterator()} method. Other methods may be overridden for
  * efficiency reasons.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
-public class ForwardingGodContainer<Item>
+public class ForwardingAlmightyContainer<Item>
 extends AbstractObject
-implements GodContainer<Item> {
+implements AlmightyContainer<Item> {
 
-    private final GodContainer<Item> disabledGodContainer = new GodContainer<Item>() {
+    private final AlmightyContainer<Item> disabledAlmightyContainer = new AlmightyContainer<Item>() {
 
         @Override
         public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
@@ -70,6 +72,7 @@ implements GodContainer<Item> {
             throw new ForbiddenCastException(this);
         }
 
+        @SuppressWarnings("DuplicateThrows")
         @SafeVarargs
         @Override
         public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
@@ -86,14 +89,6 @@ implements GodContainer<Item> {
             throw new ForbiddenCastException(this);
         }
 
-        @SafeVarargs
-        @Override
-        public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable items, final ValueObserver<Item>... observers)
-        throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-            throw new ForbiddenCastException(this);
-        }
-
         @Override
         public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items)
@@ -104,13 +99,6 @@ implements GodContainer<Item> {
         @Override
         public void removeAll()
         throws InvalidContainerStateException {
-            throw new ForbiddenCastException(this);
-        }
-
-        @Override
-        public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable items)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
@@ -149,42 +137,52 @@ implements GodContainer<Item> {
         throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
+
+        @Override
+        public void retain(final IterativeContainsAdapter<Item> items)
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throw new ForbiddenCastException(this);
+        }
+
+        @SafeVarargs
+        @Override
+        public final void retain(final Iterable<Item> items, final ValueObserver<Item>... observers)
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
+            throw new ForbiddenCastException(this);
+        }
     };
 
-    private ToArray<Item> delegateToArray = disabledGodContainer;
+    private ToArray<Item> delegateToArray = disabledAlmightyContainer;
 
-    private ToSequentialList<Item> delegateToSequentialList = disabledGodContainer;
+    private ToSequentialList<Item> delegateToSequentialList = disabledAlmightyContainer;
 
-    private ObservedRetain<Item> delegateObservedRetain = disabledGodContainer;
+    private ObservedRetain<Item> delegateObservedRetain = disabledAlmightyContainer;
 
-    private ToSet<Item> delegateToSet = disabledGodContainer;
+    private ToSet<Item> delegateToSet = disabledAlmightyContainer;
 
-    private IsEmpty<Item> delegateIsEmpty = disabledGodContainer;
+    private IsEmpty<Item> delegateIsEmpty = disabledAlmightyContainer;
 
-    private Retain<Item> delegateRetain = disabledGodContainer;
+    private Retain<Item> delegateRetain = disabledAlmightyContainer;
 
-    private ObservedRemoveAll<Item> delegateObservedRemoveAll = disabledGodContainer;
+    private ObservedRemoveAll<Item> delegateObservedRemoveAll = disabledAlmightyContainer;
 
-    private RemoveAll<Item> delegateRemoveAll = disabledGodContainer;
+    private RemoveAll<Item> delegateRemoveAll = disabledAlmightyContainer;
 
-    private ToRandomAccessList<Item> delegateToRandomAccessList = disabledGodContainer;
+    private ToRandomAccessList<Item> delegateToRandomAccessList = disabledAlmightyContainer;
 
-    private Count<Item> delegateCount = disabledGodContainer;
+    private Count<Item> delegateCount = disabledAlmightyContainer;
 
-    private RemoveSingleByItem<Item> delegateRemoveSingleByItem = disabledGodContainer;
+    private RemoveSingleByValue<Item> delegateRemoveSingleByValue = disabledAlmightyContainer;
 
-    private RemoveManyByItem<Item> delegateRemoveManyByItem = disabledGodContainer;
+    private RemoveManyByValue<Item> delegateRemoveManyByValue = disabledAlmightyContainer;
 
-    private ObservedRemoveMany<Item> delegateObservedRemoveMany = disabledGodContainer;
+    private ObservedRemoveMany<Item> delegateObservedRemoveMany = disabledAlmightyContainer;
 
-    private ContainsSingle<Item> delegateContainsSingle = disabledGodContainer;
+    private ContainsSingle<Item> delegateContainsSingle = disabledAlmightyContainer;
 
-    private ContainsMany<Item> delegateContainsMany = disabledGodContainer;
+    private ContainsMany<Item> delegateContainsMany = disabledAlmightyContainer;
 
-    private Iterable<Item> delegateIterable = disabledGodContainer;
-
-    public ForwardingGodContainer() {
-    }
+    private Iterable<Item> delegateIterable = disabledAlmightyContainer;
 
     @Override
     public void removeAll()
@@ -200,13 +198,6 @@ implements GodContainer<Item> {
     }
 
     @Override
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateRetain.retain(items);
-    }
-
-    @Override
     public boolean isEmpty()
     throws InvalidContainerStateException {
         return delegateIsEmpty.isEmpty();
@@ -218,15 +209,6 @@ implements GodContainer<Item> {
         return delegateToSet.toSet();
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(final ContainsIterable items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
-        delegateObservedRetain.retain(items, observers);
-    }
-
-    @Override
     public List<Item> toSequentialList()
     throws InvalidContainerStateException {
         return delegateToSequentialList.toSequentialList();
@@ -270,13 +252,13 @@ implements GodContainer<Item> {
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateRemoveManyByItem.remove(items);
+        delegateRemoveManyByValue.remove(items);
     }
 
     @Override
     public void remove(final Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateRemoveSingleByItem.remove(item);
+        delegateRemoveSingleByValue.remove(item);
     }
 
     @Override
@@ -330,8 +312,8 @@ implements GodContainer<Item> {
         this.delegateCount = delegateCount;
     }
 
-    public void setDelegateRemoveManyByItem(final RemoveManyByItem<Item> delegateRemoveManyByItem) {
-        this.delegateRemoveManyByItem = delegateRemoveManyByItem;
+    public void setDelegateRemoveManyByValue(final RemoveManyByValue<Item> delegateRemoveManyByValue) {
+        this.delegateRemoveManyByValue = delegateRemoveManyByValue;
     }
 
     public void setDelegateObservedRemoveMany(final ObservedRemoveMany<Item> delegateObservedRemoveMany) {
@@ -346,11 +328,25 @@ implements GodContainer<Item> {
         this.delegateIterable = delegateIterable;
     }
 
-    public void setDelegateRemoveSingleByItem(final RemoveSingleByItem<Item> delegateRemoveSingleByItem) {
-        this.delegateRemoveSingleByItem = delegateRemoveSingleByItem;
+    public void setDelegateRemoveSingleByValue(final RemoveSingleByValue<Item> delegateRemoveSingleByValue) {
+        this.delegateRemoveSingleByValue = delegateRemoveSingleByValue;
     }
 
     public void setDelegateContainsSingle(final ContainsSingle<Item> delegateContainsSingle) {
         this.delegateContainsSingle = delegateContainsSingle;
     }
+
+    @Override
+    public void retain(final IterativeContainsAdapter<Item> items)
+    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        delegateRetain.retain(items);
+    }
+
+    @SafeVarargs
+    @Override
+    public final void retain(final Iterable<Item> items, final ValueObserver<Item>... observers)
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
+        delegateObservedRetain.retain(items, observers);
+    }
+
 }

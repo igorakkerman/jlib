@@ -21,16 +21,13 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
-public interface ToArray<Item>
-extends ItemOperation<Item> {
+public interface ToArray<Item> {
 
     /**
-     * Returns an array containing all of the Items of this {@link IterableContainer} in
-     * the proper order as returned by this {@link IterableContainer}'s Iterator.
+     * Returns an array containing all of the Items of this {@link Object} in
+     * the proper order as returned by this {@link Object}'s Iterator.
      *
-     * @return array containing all of the Items of this {@link IterableContainer}
+     * @return array containing all of the Items of this {@link Object}
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation

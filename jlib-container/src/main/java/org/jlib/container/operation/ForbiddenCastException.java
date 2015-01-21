@@ -21,9 +21,9 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.exception.InvalidStateException;
 
-import static org.jlib.core.language.MessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 public class ForbiddenCastException
 extends InvalidStateException {

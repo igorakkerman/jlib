@@ -31,13 +31,13 @@ public interface ContainsItemsByIterable<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
+     * Verifies whether this {@link Object} containsItem all of the Items in the
      * specified ReadContainer.
      *
      * @param items
      *        ReadContainer containing the Items to verify
      *
-     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
+     * @return {@code true} if this {@link Object} containsItem all of the Items
      *         contained by {@code otherContainer}; {@code false} otherwise
      *
      * @throws InvalidContainerArgumentException

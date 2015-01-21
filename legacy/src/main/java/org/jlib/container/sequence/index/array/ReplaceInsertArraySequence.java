@@ -125,7 +125,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     * {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplaceInsertArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
@@ -139,7 +139,7 @@ implements ObservedReplaceInsertIndexSequence<Item> */ {
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplaceInsertArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);

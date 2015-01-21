@@ -21,14 +21,6 @@
 
 package org.jlib.container.operation;
 
-/**
- * {@link RetainItemsByIterable} allowing all Items to be removed.
- *
- * @param <Item>
- *        type of items held in the {@link RemoveAll}
- *
- * @author Igor Akkerman
- */
 public interface RemoveAll<Item> {
 
     /**

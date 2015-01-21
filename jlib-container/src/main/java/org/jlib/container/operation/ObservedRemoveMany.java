@@ -21,23 +21,19 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 
 /**
- * {@link RetainItemsByIterable} allowing its retain operations to be attended by
- * {@link ValueObserver} instances.
- *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the container
  *
  * @author Igor Akkerman
  */
 public interface ObservedRemoveMany<Item>
-extends ItemOperation<Item> {
+ {
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
 

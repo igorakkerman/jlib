@@ -21,7 +21,6 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -29,15 +28,14 @@ import org.jlib.core.observer.ValueObserver;
  * the retain operations can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveAll<Item>
-extends ItemOperation<Item> {
+public interface ObservedRemoveAll<Item> {
 
     /**
-     * Removes all Items from this {@link IterableContainer}.
+     * Removes all Items from this {@link Object}.
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances
