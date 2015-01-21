@@ -46,7 +46,7 @@
         <module>jlib-text</module>
         <module>jlib-codec</module>
         <module>jlib-io</module>
-        <!--<module>jlib-container</module>-->
+        <module>jlib-container</module>
     </modules>
 
     <properties>
@@ -168,13 +168,11 @@
                 <version>${jlib.version}</version>
             </dependency>
 
-            <!--
-                <dependency>
-                    <groupId>org.jlib</groupId>
-                    <artifactId>jlib-container</artifactId>
-                    <version>${jlib.version}</version>
-                </dependency>
-            -->
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-container</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.commons</groupId>

@@ -21,13 +21,12 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
 
-import static org.jlib.core.language.MessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add
- * an Item to a {@link IterableContainer} that already exists.
+ * an Item to a Container that already exists.
  *
  * @author Igor Akkerman
  */

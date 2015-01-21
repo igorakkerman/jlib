@@ -21,13 +21,13 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.Message;
+import org.jlib.core.iterator.InvalidIteratorStateException;
 import org.jlib.core.language.InvalidArgumentException;
 import org.jlib.core.language.InvalidStateException;
+import org.jlib.core.language.Message;
 import org.jlib.core.operation.ItemOperation;
-import org.jlib.core.iterator.InvalidIteratorStateException;
 
-import static org.jlib.core.language.MessageUtility.message;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link ItemOperation} claims a state error.
@@ -60,7 +60,7 @@ extends InvalidArgumentException {
      *        {@link Exception} that caused this {@link InvalidStateException}
      */
     public InvalidContainerArgumentException(final ItemOperation<?> container, final Exception cause) {
-        super(message().with(container), cause);
+        super(message().with("container", container), cause);
     }
 
     /**
@@ -77,7 +77,7 @@ extends InvalidArgumentException {
      *        the message arguments
      */
     public InvalidContainerArgumentException(final ItemOperation<?> container, final Message message) {
-        super(message.with(container));
+        super(message.with("container", container));
     }
 
     /**
