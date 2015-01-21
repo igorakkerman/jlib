@@ -36,11 +36,4 @@ extends IOException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -4902609529538183922L;
-
-    /**
-     * Creates a new EndOfQuotedPrintableStreamException.
-     */
-    public EndOfQuotedPrintableStreamException() {
-        super();
-    }
 }

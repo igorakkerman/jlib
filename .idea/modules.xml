@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jlib-aspect/jlib-aspect.iml" filepath="$PROJECT_DIR$/jlib-aspect/jlib-aspect.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-base.iml" filepath="$PROJECT_DIR$/jlib-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-codec/jlib-codec.iml" filepath="$PROJECT_DIR$/jlib-codec/jlib-codec.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-io/jlib-io.iml" filepath="$PROJECT_DIR$/jlib-io/jlib-io.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" filepath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" />
     </modules>

@@ -27,7 +27,7 @@ package org.jlib.codec.base64;
 /**
  * Exception thrown if a base64 block contains more than two padding characters or a padding
  * character at a position other than at the end of the block.
- * 
+ *
  * @author Igor Akkerman
  */
 
@@ -36,25 +36,24 @@ extends InvalidBase64StreamException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = 1023903911620993818L;
-    
+
     /** base64 block containing a wrong padding character */
-    private int[] base64Block;
+    private final int[] base64Block;
 
     /**
      * Creates a new IllegalBase64BlockPadException for the specified base64 block.
-     * 
+     *
      * @param base64Block
      *        array of four integers containing the bad base64 block that contains a wrong padding
      *        character
      */
-    public IllegalBase64BlockPadException(int[] base64Block) {
-        super();
+    public IllegalBase64BlockPadException(final int[] base64Block) {
         this.base64Block = base64Block;
     }
 
     /**
      * Returns the bad base64 block that contains a wrong padding character.
-     * 
+     *
      * @return array of four integers containing the bad base64 block that contains a wrong padding
      *         character
      */

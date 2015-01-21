@@ -19,14 +19,12 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.io;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.jlib.core.text.number.NumberUtility.parseHexDigit;
+import static org.jlib.core.text.number.NumberTextUtility.parseHexDigit;
 
 /**
  * Utility class providing static methods for input/output operations.
@@ -53,8 +51,10 @@ public final class IOUtility {
      *        the signed byte value (-128 to 127)
      * @return the unsigned integer value (0 to 255)
      */
-    public static int toUnsignedInt(byte signedByte) {
-        return signedByte >= 0 ? signedByte : signedByte + 256;
+    public static int toUnsignedInt(final byte signedByte) {
+        return signedByte >= 0 ?
+               signedByte :
+               signedByte + 256;
     }
 
     /**
@@ -76,7 +76,7 @@ public final class IOUtility {
      *        higher-order bits of this integer are ignored.
      * @return the signed byte value (-128 to 127)
      */
-    public static byte toSignedByte(int unsignedInt) {
+    public static byte toSignedByte(final int unsignedInt) {
         return (byte) unsignedInt;
         // identical functionality to:
         // return (byte) (unsignedInt <= 127 ? unsignedInt : unsignedInt - 256);
@@ -96,7 +96,7 @@ public final class IOUtility {
      * @throws NumberFormatException
      *         if the array contains illegal characters
      */
-    public static byte parseHexNumberAsByte(byte[] hexCharacters)
+    public static byte parseHexNumberAsByte(final byte[] hexCharacters)
     throws ArrayIndexOutOfBoundsException, NumberFormatException {
         return parseHexNumberAsByte(hexCharacters, 0);
     }
@@ -117,8 +117,9 @@ public final class IOUtility {
      * @throws NumberFormatException
      *         if the array contains illegal characters at the parsed indices
      */
-    public static byte parseHexNumberAsByte(byte[] hexCharacters, int offset)
+    public static byte parseHexNumberAsByte(final byte[] hexCharacters, final int offset)
     throws ArrayIndexOutOfBoundsException, NumberFormatException {
-        return (byte) (parseHexDigit((char) hexCharacters[offset]) << 4 | parseHexDigit((char) hexCharacters[offset + 1]));
+        return (byte) (parseHexDigit((char) hexCharacters[offset]) << 4 |
+                       parseHexDigit((char) hexCharacters[offset + 1]));
     }
 }

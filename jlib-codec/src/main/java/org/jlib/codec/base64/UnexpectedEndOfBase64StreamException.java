@@ -25,7 +25,7 @@ package org.jlib.codec.base64;
 
 /**
  * Exception thrown if at least one character was expected in a base64 encoded stream.
- * 
+ *
  * @author Igor Akkerman
  */
 public class UnexpectedEndOfBase64StreamException
@@ -38,6 +38,5 @@ extends InvalidBase64StreamException {
      * Creates a new UnexpectedEndOfBase64StreamException.
      */
     protected UnexpectedEndOfBase64StreamException() {
-        super();
     }
 }

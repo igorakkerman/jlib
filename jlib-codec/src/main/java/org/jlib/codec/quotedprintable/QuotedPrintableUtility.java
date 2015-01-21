@@ -31,7 +31,7 @@ import java.io.OutputStream;
 
 import static org.jlib.io.IOUtility.parseHexNumberAsByte;
 import static org.jlib.io.IOUtility.toUnsignedInt;
-import static org.jlib.core.text.number.NumberUtility.HEX_DIGIT_CHARACTERS;
+import static org.jlib.core.text.number.NumberTextUtility.HEX_DIGIT_CHARACTERS;
 
 /**
  * Utility class for quoted-printable encoding operations.
@@ -52,10 +52,10 @@ public final class QuotedPrintableUtility {
      * @throws IOException
      *         if an i/o exception occurs
      */
-    public static String encodeQuotedPrintable(byte[] inputBytes)
+    public static String encodeQuotedPrintable(final byte[] inputBytes)
     throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        OutputStream qpOutputStream = new QuotedPrintableOutputStream(outputStream);
+        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        final OutputStream qpOutputStream = new QuotedPrintableOutputStream(outputStream);
 
         qpOutputStream.write(inputBytes);
         qpOutputStream.flush();
@@ -73,23 +73,21 @@ public final class QuotedPrintableUtility {
      * @throws IOException
      *         if an i/o exception occurs
      */
-    public static byte[] decodeQuotedPrintable(String qpString)
+    public static byte[] decodeQuotedPrintable(final String qpString)
     throws IOException {
-        InputStream inputStream = new ByteArrayInputStream(qpString.getBytes());
-        InputStream qpInputStream = new QuotedPrintableInputStream(inputStream);
+        final InputStream inputStream = new ByteArrayInputStream(qpString.getBytes());
+        final InputStream qpInputStream = new QuotedPrintableInputStream(inputStream);
 
-        byte[] readBytes = new byte[1024];
+        final byte[] readBytes = new byte[1024];
 
         int length = qpInputStream.read(readBytes);
-        if (length == -1) {
+        if (length == -1)
             length = 0;
-        }
+
         qpInputStream.close();
 
-        byte[] outputBytes = new byte[length];
-        for (int i = 0; i < length; i ++) {
-            outputBytes[i] = readBytes[i];
-        }
+        final byte[] outputBytes = new byte[length];
+        System.arraycopy(readBytes, 0, outputBytes, 0, length);
 
         return outputBytes;
     }
@@ -101,10 +99,10 @@ public final class QuotedPrintableUtility {
      *        byte holding the value of the octet to create
      * @return array of bytes containing the octet characters
      */
-    public static byte[] createOctet(byte value) {
-        int intValue = toUnsignedInt(value);
+    public static byte[] createOctet(final byte value) {
+        final int intValue = toUnsignedInt(value);
 
-        byte[] octet = new byte[3];
+        final byte[] octet = new byte[3];
         octet[0] = '=';
         octet[1] = (byte) HEX_DIGIT_CHARACTERS[(intValue & 0xF0) >> 4];
         octet[2] = (byte) HEX_DIGIT_CHARACTERS[intValue & 0x0F];
@@ -121,12 +119,12 @@ public final class QuotedPrintableUtility {
      * @throws IllegalQuotedPrintableOctetException
      *         if illegal characters follow the encoding prefix
      */
-    public static byte decodeOctet(byte[] octetBytes)
+    public static byte decodeOctet(final byte[] octetBytes)
     throws IllegalQuotedPrintableOctetException {
         try {
             return parseHexNumberAsByte(octetBytes, 1);
         }
-        catch (NumberFormatException nfe) {
+        catch (final NumberFormatException nfe) {
             throw new IllegalQuotedPrintableOctetException(octetBytes[1], octetBytes[2]);
         }
     }

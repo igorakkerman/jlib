@@ -40,6 +40,5 @@ extends IOException {
      * Creates a new InvalidBase64StreamException.
      */
     protected InvalidBase64StreamException() {
-        super();
     }
 }

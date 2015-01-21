@@ -27,7 +27,7 @@ import java.io.IOException;
 
 /**
  * Exception thrown if a stream is an invalid quoted-printable stream.
- * 
+ *
  * @author Igor Akkerman
  */
 abstract class InvalidQuotedPrintableStreamException
@@ -40,6 +40,5 @@ extends IOException {
      * Creates a new InvalidQuotedPrintableStreamException.
      */
     protected InvalidQuotedPrintableStreamException() {
-        super();
     }
 }

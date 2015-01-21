@@ -31,7 +31,7 @@ import static org.jlib.codec.base64.Base64Utility.BASE64_ALPHABET;
 import static org.jlib.codec.base64.Base64Utility.PAD;
 /**
  * FilterOutputStream performing a base64 encoding for a target OutputStream.
- * 
+ *
  * @author Igor Akkerman
  */
 public class Base64OutputStream
@@ -41,29 +41,29 @@ extends FilterOutputStream {
     private static final int MAXOUTPUTLINELENGTH = 76;
 
     /** input buffer */
-    private int[] inputBuffer = {0, 0, 0};
+    private final int[] inputBuffer = {0, 0, 0};
 
     /** size of the input buffer */
     private int inputBufferSize = 0;
 
     /** output buffer */
-    private byte[] outputBuffer = new byte[4];
+    private final byte[] outputBuffer = new byte[4];
 
     /** length of the current output line */
     private int outputLineLength = 0;
 
     /**
      * Creates a new filter output stream performing a base64 encoding to the specified output stream.
-     * 
+     *
      * @param targetOutputStream
      *        output stream to write encoded output to
      */
-    public Base64OutputStream(OutputStream targetOutputStream) {
+    public Base64OutputStream(final OutputStream targetOutputStream) {
         super(targetOutputStream);
     }
 
     @Override
-    public void write(int b)
+    public void write(final int b)
     throws IOException {
         inputBuffer[inputBufferSize ++] = b;
         if (inputBufferSize == 3) {
@@ -73,7 +73,7 @@ extends FilterOutputStream {
 
     /**
      * Encodes the input block and writes the output to the target output stream.
-     * 
+     *
      * @throws IOException
      *         if an I/O exception occurs
      */

@@ -44,6 +44,8 @@
         <module>jlib-codequality</module>
         <module>jlib-core</module>
         <module>jlib-text</module>
+        <module>jlib-codec</module>
+        <module>jlib-io</module>
         <!--<module>jlib-container</module>-->
     </modules>
 
@@ -151,6 +153,18 @@
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-text</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-codec</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-io</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 

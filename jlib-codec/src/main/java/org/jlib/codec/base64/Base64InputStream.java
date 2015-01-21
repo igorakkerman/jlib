@@ -25,6 +25,7 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import static org.jlib.codec.base64.Base64Utility.mapBase64Character;
 
 /**
@@ -40,10 +41,10 @@ extends FilterInputStream {
     private static final byte PAD = -1;
 
     /** input buffer */
-    private int[] inputBuffer = new int[4];
+    private final int[] inputBuffer = new int[4];
 
     /** output buffer */
-    private int[] outputBuffer = new int[3];
+    private final int[] outputBuffer = new int[3];
 
     /** size of the output buffer */
     private int outputBufferSize = 0;
@@ -57,7 +58,7 @@ extends FilterInputStream {
      * @param sourceInputStream
      *        input stream to be decoded
      */
-    public Base64InputStream(InputStream sourceInputStream) {
+    public Base64InputStream(final InputStream sourceInputStream) {
         super(sourceInputStream);
     }
 
@@ -74,10 +75,10 @@ extends FilterInputStream {
 
                 return outputBuffer[outputBufferPosition ++];
             }
-            catch (EndOfBase64StreamException eob64se) {
+            catch (final EndOfBase64StreamException eob64se) {
                 return -1;
             }
-            catch (IllegalBase64BlockPadException ib64bpe) {
+            catch (final IllegalBase64BlockPadException ib64bpe) {
                 // illegal block is ignored
             }
         }
@@ -85,7 +86,7 @@ extends FilterInputStream {
     }
 
     @Override
-    public int read(byte[] buffer, int offset, int length)
+    public int read(@NonNull final byte[] buffer, final int offset, final int length)
     throws IOException {
         for (int i = 0; i < length; i ++) {
             buffer[i] = (byte) read();
@@ -107,6 +108,7 @@ extends FilterInputStream {
      * @throws IOException
      *         if an I/O error occurs
      */
+    @SuppressWarnings("DuplicateThrows")
     private void readBase64Block()
     throws EndOfBase64StreamException, UnexpectedEndOfBase64StreamException, IOException {
 
@@ -114,7 +116,7 @@ extends FilterInputStream {
             boolean illegalCharacterRead;
             do {
                 try {
-                    int readCharacter = in.read();
+                    final int readCharacter = in.read();
 
                     // end of stream handling
                     if (readCharacter == -1) {
@@ -126,11 +128,11 @@ extends FilterInputStream {
                         }
                     }
 
-                    int characterValue = mapBase64Character(readCharacter);
+                    final int characterValue = mapBase64Character(readCharacter);
                     inputBuffer[characterIndex] = characterValue;
                     illegalCharacterRead = false;
                 }
-                catch (IllegalBase64CharacterException exception) {
+                catch (final IllegalBase64CharacterException exception) {
                     illegalCharacterRead = true;
                 }
             }
@@ -148,7 +150,7 @@ extends FilterInputStream {
     throws IllegalBase64BlockPadException {
 
         // get number of padding characters and clear them in the input buffer
-        int paddingCharactersCount = getPaddingCharactersCount();
+        final int paddingCharactersCount = getPaddingCharactersCount();
         clearPaddingCharacters();
 
         outputBuffer[0] = inputBuffer[0] << 2 | (inputBuffer[1] & 0x30) >> 4;
@@ -167,13 +169,13 @@ extends FilterInputStream {
      */
     private int getPaddingCharactersCount()
     throws IllegalBase64BlockPadException {
-        boolean[] pad = new boolean[4];
+        final boolean[] pad = new boolean[4];
         for (int i = 0; i <= 3; i ++)
-            pad[i] = (inputBuffer[i] == PAD);
+            pad[i] = inputBuffer[i] == PAD;
 
         if (!pad[0] && !pad[1] && !pad[2] && !pad[3])
             return 0;
-        else if (!pad[0] && !pad[1] && !pad[2] && pad[3] && (inputBuffer[2] & 0x03) == 0)
+        else if (!pad[0] && !pad[1] && !pad[2] /* && pad[3] */ && (inputBuffer[2] & 0x03) == 0)
             return 1;
         else if (!pad[0] && !pad[1] && pad[2] && pad[3] && (inputBuffer[1] & 0x0F) == 0)
             return 2;

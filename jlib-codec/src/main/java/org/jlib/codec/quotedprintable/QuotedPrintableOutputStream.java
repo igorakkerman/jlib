@@ -19,19 +19,19 @@
  *     limitations under the License.
  */
 
-
 package org.jlib.codec.quotedprintable;
 
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import static org.jlib.io.IOUtility.toSignedByte;
 import static org.jlib.io.IOUtility.toUnsignedInt;
 
 /**
  * FilterOutputStream performing a quoted-printable encoding for a target OutputStream.
- * 
+ *
  * @author Igor Akkerman
  */
 public class QuotedPrintableOutputStream
@@ -49,83 +49,82 @@ extends FilterOutputStream {
     /**
      * Creates a new QuotedPrintableOutputStream performing a quoted-printable encoding to the
      * specified output stream.
-     * 
+     *
      * @param targetOutputStream
      *        output stream to write encoded output to
      */
-    public QuotedPrintableOutputStream(OutputStream targetOutputStream) {
+    public QuotedPrintableOutputStream(final OutputStream targetOutputStream) {
         super(targetOutputStream);
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public void write(int b)
+    public void write(final int b)
     throws IOException {
-        byte value = toSignedByte(b);
+        final byte value = toSignedByte(b);
 
         // if the character may be represented as a literal
         if (value >= 33 && value <= 60 || value >= 62 && value <= 126 || value == 9 || value == 32) {
-            if (outputLineLength >= MAXOUTPUTLINELENGTH - 1) {
+            if (outputLineLength >= MAXOUTPUTLINELENGTH - 1)
                 writeSoftLineBreak();
-            }
+
             writeCharacter(value);
         }
 
         // if a CR is to be represented
-        else if (value == '\r') {
-            // intentionally left blank
-        }
+
+        else if (value == '\r') {/* intentionally left blank */ }
         else if (value == '\n') {
-            if (lastWrittenCharacter == 9 || lastWrittenCharacter == 32) {
+            if (lastWrittenCharacter == 9 || lastWrittenCharacter == 32)
                 writeSoftLineBreak();
-            }
+
             writeCRLF();
         }
 
         // if the character is to be represented as an octet
         else {
-            if (outputLineLength >= MAXOUTPUTLINELENGTH - 3) {
+            if (outputLineLength >= MAXOUTPUTLINELENGTH - 3)
                 writeSoftLineBreak();
-            }
+
             writeCharacters(QuotedPrintableUtility.createOctet(value));
         }
     }
 
     @Override
-    public void write(byte[] buffer, int offset, int length)
+    public void write(@NonNull final byte[] buffer, final int offset, final int length)
     throws IOException {
-        for (int i = offset, j = 0; j < length; i ++, j ++) {
+        for (int i = offset, j = 0; j < length; i++, j++)
             write(toUnsignedInt(buffer[i]));
-        }
     }
 
     /**
      * Writes the specified character to the target output stream.
-     * 
+     *
      * @param character
      *        byte specifying the character to write
      * @throws IOException
      *         if an I/O error occurs
      */
-    private void writeCharacter(byte character)
+    private void writeCharacter(final byte character)
     throws IOException {
         out.write(toUnsignedInt(character));
         lastWrittenCharacter = character;
-        outputLineLength ++;
+        outputLineLength++;
     }
 
     /**
      * Writes the specified characters to the target output stream.
-     * 
+     *
      * @param characters
      *        byte array containing the characters to write
      * @throws IOException
      *         if an I/O error occurs
      */
-    private void writeCharacters(byte[] characters)
+    private void writeCharacters(final byte[] characters)
     throws IOException {
-        for (int i = 0; i < characters.length; i ++) {
-            out.write(toUnsignedInt(characters[i]));
-        }
+        for (final byte character : characters)
+            out.write(toUnsignedInt(character));
+
         lastWrittenCharacter = characters[characters.length - 1];
         outputLineLength += characters.length;
     }
@@ -147,7 +146,7 @@ extends FilterOutputStream {
 
     /**
      * Writes a soft line break to the target output stream.
-     * 
+     *
      * @throws IOException
      *         if an I/O exception occurs
      */
@@ -159,7 +158,7 @@ extends FilterOutputStream {
 
     /**
      * Writes a carriage return and line feed to the target output stream.
-     * 
+     *
      * @throws IOException
      *         if an I/O exception occurs
      */

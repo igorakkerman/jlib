@@ -27,13 +27,14 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import static org.jlib.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
 import static org.jlib.io.IOUtility.toSignedByte;
 import static org.jlib.io.IOUtility.toUnsignedInt;
 
 /**
  * FilterInputStream performing a quoted-printable decoding of a source InputStream.
- * 
+ *
  * @author Igor Akkerman
  */
 public class QuotedPrintableInputStream
@@ -43,7 +44,7 @@ extends FilterInputStream {
     private static final byte[] LINE_SEPARATOR = System.getProperty("line.separator").getBytes();
 
     /** input buffer */
-    byte[] inputBuffer = new byte[3];
+    final byte[] inputBuffer = new byte[3];
 
     /** size of the input buffer */
     int inputBufferSize = 0;
@@ -56,11 +57,11 @@ extends FilterInputStream {
 
     /**
      * Creates a new QuotedPrintableInputStream decoding the specified quoted-printable InputStream.
-     * 
+     *
      * @param sourceInputStream
      *        input stream to be decoded
      */
-    public QuotedPrintableInputStream(InputStream sourceInputStream) {
+    public QuotedPrintableInputStream(final InputStream sourceInputStream) {
         super(sourceInputStream);
     }
 
@@ -70,19 +71,19 @@ extends FilterInputStream {
         try {
             return toUnsignedInt(getNextByte());
         }
-        catch (EndOfQuotedPrintableStreamException eoqpse) {
+        catch (final EndOfQuotedPrintableStreamException eoqpse) {
             return -1;
         }
     }
 
     @Override
-    public int read(byte[] buffer, int offset, int length)
+    public int read(@NonNull final byte[] buffer, final int offset, final int length)
     throws IOException {
         for (int i = offset, j = 0; j < length; i ++, j ++) {
             try {
                 buffer[i] = getNextByte();
             }
-            catch (EndOfQuotedPrintableStreamException eoqpse) {
+            catch (final EndOfQuotedPrintableStreamException eoqpse) {
                 return i != 0 ? i : -1;
             }
         }
@@ -91,7 +92,7 @@ extends FilterInputStream {
 
     /**
      * Returns the next byte to be returned from this Stream.
-     * 
+     *
      * @throws IllegalQuotedPrintableOctetException
      *         if illegal characters follow the octet encoding prefix in the stream
      * @throws IOException
@@ -100,6 +101,7 @@ extends FilterInputStream {
      *         if no more bytes are available from this stream
      * @return the next byte to be returned from this stream
      */
+    @SuppressWarnings("DuplicateThrows")
     private byte getNextByte()
     throws IllegalQuotedPrintableOctetException, IOException, EndOfQuotedPrintableStreamException {
         do {
@@ -146,7 +148,7 @@ extends FilterInputStream {
 
     /**
      * Refill the input buffer so that it contains the next three characters.
-     * 
+     *
      * @throws IOException
      *         if an I/O error occurs
      */

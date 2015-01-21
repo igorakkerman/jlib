@@ -34,7 +34,7 @@ extends InvalidBase64StreamException {
 
     /** serialVersionUID */
     private static final long serialVersionUID = -8389442743931398913L;
-    
+
     /** illegal character */
     private final int illegalCharacter;
 
@@ -46,8 +46,7 @@ extends InvalidBase64StreamException {
      *        -1 if the end of the base64 encoded stream has been reached with
      *        missing characters
      */
-    public IllegalBase64CharacterException(int illegalCharacter) {
-        super();
+    public IllegalBase64CharacterException(final int illegalCharacter) {
         this.illegalCharacter = illegalCharacter;
     }
 
