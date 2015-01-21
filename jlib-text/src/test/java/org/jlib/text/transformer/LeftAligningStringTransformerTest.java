@@ -1,6 +1,6 @@
 package org.jlib.text.transformer;
 
-import org.junit.Assert;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
@@ -16,16 +16,16 @@ public class LeftAligningStringTransformerTest {
 
     private static class Data {
 
-        public String id;
+        public final String id;
 
-        public int finalStringLength;
+        public final int finalStringLength;
 
-        public String inputString;
+        public final String inputString;
 
-        public String expectedTransformedString;
+        public final String expectedTransformedString;
 
-        public Data(String id, int finalStringLength, String inputString, String expectedTransformedString) {
-            super();
+        public Data(final String id, final int finalStringLength, final String inputString,
+                    final String expectedTransformedString) {
             this.id = id;
             this.finalStringLength = finalStringLength;
             this.inputString = inputString;
@@ -41,18 +41,18 @@ public class LeftAligningStringTransformerTest {
 
     @DataPoints
     public static Data[] data = { new Data("empty, zero", 0, "", ""), new Data("empty, even", 10, "", "xxxxxxxxxx"),
-                                 new Data("empty, odd", 9, "", "xxxxxxxxx"),
-                                 new Data("even, less, even", 4, "abcdef", "abcdef"),
-                                 new Data("even, less, odd", 3, "abcdef", "abcdef"),
-                                 new Data("odd, less, even", 4, "abcdefg", "abcdefg"),
-                                 new Data("odd, less, odd", 3, "abcdefg", "abcdefg"),
-                                 new Data("even, more, even", 10, "abcdef", "abcdefxxxx"), };
+                                  new Data("empty, odd", 9, "", "xxxxxxxxx"),
+                                  new Data("even, less, even", 4, "abcdef", "abcdef"),
+                                  new Data("even, less, odd", 3, "abcdef", "abcdef"),
+                                  new Data("odd, less, even", 4, "abcdefg", "abcdefg"),
+                                  new Data("odd, less, odd", 3, "abcdefg", "abcdefg"),
+                                  new Data("even, more, even", 10, "abcdef", "abcdefxxxx"), };
 
     @Theory
-    public void testTransform(@SuppressWarnings("hiding") Data data) {
-        StringTransformer stringTransformer = new LeftAligningStringTransformer(data.finalStringLength, 'x');
-        StringBuilder stringBuilder = new StringBuilder(data.inputString);
+    public void testTransform(@SuppressWarnings("hiding") final Data data) {
+        final StringTransformer stringTransformer = new LeftAligningStringTransformer(data.finalStringLength, 'x');
+        final StringBuilder stringBuilder = new StringBuilder(data.inputString);
         stringTransformer.transform(stringBuilder);
-        Ensure.assertThat(data.toString(), stringBuilder.toString(), is(equalTo(data.expectedTransformedString)));
+        assertThat(stringBuilder.toString()).isEqualTo(data.expectedTransformedString).describedAs(data.toString());
     }
 }

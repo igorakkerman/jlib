@@ -15,13 +15,13 @@ extends CharSequenceIndexOutOfBoundsException {
     /**
      * Creates a new CharSequenceBeginIndexAboveBoundException for the specified
      * {@link CharSequence}.
-     * 
+     *
      * @param charSequence
      *        {@link CharSequence} for which the index is above the upper bound
      * @param beginIndex
      *        integer specifying the invalid begin index
      */
-    public CharSequenceBeginIndexAboveBoundException(CharSequence charSequence, int beginIndex) {
+    public CharSequenceBeginIndexAboveBoundException(final CharSequence charSequence, final int beginIndex) {
         super(charSequence, beginIndex);
     }
 }

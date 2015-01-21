@@ -1,9 +1,10 @@
 package org.jlib.text;
 
+import java.util.Iterator;
 
-import java.util.NoSuchItemException;
+import org.jlib.core.iterator.NoNextItemException;
 
-import org.jlib.core.iterator.AbstractIterator;
+import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * <p>
@@ -24,7 +25,7 @@ import org.jlib.core.iterator.AbstractIterator;
  * @author Igor Akkerman
  */
 public class CharSequenceIterator
-extends AbstractIterator<Character> {
+implements Iterator<Character> {
 
     /**
      * Returns an {@link Iterable} creating CharSequenceIterators over the
@@ -36,13 +37,7 @@ extends AbstractIterator<Character> {
      *         {@link Character Characters} of {@code iterableCharSequence}
      */
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence) {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(iterableCharSequence);
-            }
-        };
+        return () -> new CharSequenceIterator(iterableCharSequence);
     }
 
     /**
@@ -65,13 +60,7 @@ extends AbstractIterator<Character> {
      */
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceBeginIndexAboveBoundException {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(iterableCharSequence, firstCharacterIndex);
-            }
-        };
+        return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex);
     }
 
     /**
@@ -100,14 +89,8 @@ extends AbstractIterator<Character> {
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
-    CharSequenceEndIndexAboveBoundException {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
-            }
-        };
+           CharSequenceEndIndexAboveBoundException {
+        return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
     }
 
     /** {@link CharSequence} iterated by this CharSequenceIterator */
@@ -130,8 +113,9 @@ extends AbstractIterator<Character> {
         // a call to another constructor would throw an Exception for an empty iteratedCharSequence
         // also, the indices checks are skipped here
         this.iteratedCharSequence = iteratedCharSequence;
-        this.nextCharacterIndex = 0;
-        this.lastCharacterIndex = iteratedCharSequence.length() - 1;
+
+        nextCharacterIndex = 0;
+        lastCharacterIndex = iteratedCharSequence.length() - 1;
     }
 
     /**
@@ -157,8 +141,9 @@ extends AbstractIterator<Character> {
             throw new CharSequenceBeginIndexAboveBoundException(iteratedCharSequence, firstCharacterIndex);
 
         this.iteratedCharSequence = iteratedCharSequence;
-        this.nextCharacterIndex = firstCharacterIndex;
-        this.lastCharacterIndex = iteratedCharSequence.length() - 1;
+
+        nextCharacterIndex = firstCharacterIndex;
+        lastCharacterIndex = iteratedCharSequence.length() - 1;
     }
 
     /**
@@ -184,7 +169,7 @@ extends AbstractIterator<Character> {
     public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
                                 final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
-    CharSequenceEndIndexAboveBoundException {
+           CharSequenceEndIndexAboveBoundException {
         if (firstCharacterIndex < 0)
             throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
 
@@ -196,7 +181,8 @@ extends AbstractIterator<Character> {
             throw new CharSequenceEndIndexAboveBoundException(iteratedCharSequence, lastCharacterIndex);
 
         this.iteratedCharSequence = iteratedCharSequence;
-        this.nextCharacterIndex = firstCharacterIndex;
+
+        nextCharacterIndex = firstCharacterIndex;
         this.lastCharacterIndex = lastCharacterIndex;
     }
 
@@ -207,8 +193,9 @@ extends AbstractIterator<Character> {
 
     @Override
     public Character next() {
-        if (!hasNext())
-            throw new NoSuchItemException("['" + iteratedCharSequence + "', " + nextCharacterIndex + "]");
-        return iteratedCharSequence.charAt(nextCharacterIndex ++);
+        if (! hasNext())
+            throw new NoNextItemException(iterable(iteratedCharSequence),
+                                          message().with("nextCharacterIndex", nextCharacterIndex));
+        return iteratedCharSequence.charAt(nextCharacterIndex++);
     }
 }

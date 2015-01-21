@@ -26,7 +26,7 @@ package org.jlib.text.transformer;
  * this interface. The actual transformation is performed within a
  * {@link StringBuilder}, which is passed as an argument to the
  * {@link #transform} method.
- * 
+ *
  * @author Igor Akkerman
  */
 public interface StringTransformer {
@@ -34,9 +34,9 @@ public interface StringTransformer {
     /**
      * Transforms the String contained by the specified {@link StringBuilder}
      * using the strategy of this {@link StringTransformer}.
-     * 
+     *
      * @param stringBuilder
      *        {@link StringBuilder} containing the String to transform
      */
-    public void transform(StringBuilder stringBuilder);
+    void transform(StringBuilder stringBuilder);
 }

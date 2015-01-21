@@ -3,7 +3,7 @@ package org.jlib.text;
 /**
  * Exception thrown when a {@link CharSequence} character index is out of
  * bounds.
- * 
+ *
  * @author Igor Akkerman
  */
 public class CharSequenceIndexOutOfBoundsException
@@ -24,14 +24,14 @@ extends IndexOutOfBoundsException {
     /**
      * Creates a new CharSequenceIndexOutOfBoundsException for the specified
      * {@link CharSequence}.
-     * 
+     *
      * @param charSequence
      *        {@link CharSequence} for which the character index is out of
      *        bounds
      * @param invalidCharacterIndex
      *        integer specifying the invalid character index
      */
-    public CharSequenceIndexOutOfBoundsException(CharSequence charSequence, int invalidCharacterIndex) {
+    public CharSequenceIndexOutOfBoundsException(final CharSequence charSequence, final int invalidCharacterIndex) {
         this.charSequence = charSequence;
         this.invalidCharacterIndex = invalidCharacterIndex;
     }
@@ -39,7 +39,7 @@ extends IndexOutOfBoundsException {
     /**
      * Returns the {@link CharSequence} for which the character index is
      * out of bounds.
-     * 
+     *
      * @return {@link CharSequence} for which the character index is out
      *         of bounds
      */
@@ -50,7 +50,7 @@ extends IndexOutOfBoundsException {
     /**
      * Returns the invalid character index that caused this
      * CharSequenceIndexOutOfBoundsException.
-     * 
+     *
      * @return integer specifying the invalid character index
      */
     public int getInvalidCharacterIndex() {

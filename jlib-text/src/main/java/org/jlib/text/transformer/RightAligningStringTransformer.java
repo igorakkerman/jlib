@@ -25,7 +25,7 @@ package org.jlib.text.transformer;
  * {@link StringTransformer} right-aligning a substring in a String of the
  * specified length. The String is padded using a specified padding character
  * after the substring.
- * 
+ *
  * @author Igor Akkerman
  */
 public class RightAligningStringTransformer
@@ -33,25 +33,24 @@ extends PaddingStringTransformer {
 
     /**
      * Creates a new RightAligningStringTransformer.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by this
      *        CenteringStringTransformer
      * @param paddingCharacter
      *        character used for padding
      */
-    public RightAligningStringTransformer(int finalStringLength, char paddingCharacter) {
+    public RightAligningStringTransformer(final int finalStringLength, final char paddingCharacter) {
         super(finalStringLength, paddingCharacter);
     }
 
 
     @Override
-    public void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired) {
-        StringBuilder padBuilder = halfPadBuilder;
-        padBuilder.append(halfPadBuilder);
+    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder, final boolean additionalPaddingCharacterRequired) {
+        halfPadBuilder.append(halfPadBuilder);
         if (additionalPaddingCharacterRequired)
-            padBuilder.append(getPaddingCharacter());
+            halfPadBuilder.append(getPaddingCharacter());
 
-        stringBuilder.insert(0, padBuilder);
+        stringBuilder.insert(0, halfPadBuilder);
     }
 }

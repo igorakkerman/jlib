@@ -1,7 +1,9 @@
 package org.jlib.text.transformer;
 
-import org.jlib.container.operation.sequence.AppendSequence;
-import org.jlib.container.operation.sequence.Sequence;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Collections.addAll;
 
 /**
  * {@link StringTransformer} transforming Strings using a sequence of specified
@@ -13,31 +15,29 @@ public class CompositeStringTransformer
 implements StringTransformer {
 
     /**
-     * {@link Sequence} of {@link StringTransformer StringTransformers}
+     * {@link List} of {@link StringTransformer StringTransformers}
      * composing this CompositeStringTransformer
      */
-    private final AppendSequence<StringTransformer> stringTransformers;
+    private final List<StringTransformer> stringTransformers;
 
     /**
      * Creates a new CompositeStringTransformer initially composed by the
      * specified {@link StringTransformer StringTransformers}.
      */
     public CompositeStringTransformer() {
-        super();
-
-        stringTransformers = new AddArraySequence<StringTransformer>();
+        stringTransformers = new ArrayList<>();
     }
 
     /**
      * Creates a new CompositeStringTransformer initially composed by the
      * {@link StringTransformer StringTransformers} specified in a
-     * {@link Sequence}.
+     * {@link List}.
      *
      * @param stringTransformers
-     *        {@link Sequence} of {@link StringTransformer StringTransformers}
+     *        {@link List} of {@link StringTransformer StringTransformers}
      *        initially composing this CompositeStringTransformer
      */
-    public CompositeStringTransformer(final Sequence<? extends StringTransformer> stringTransformers) {
+    public CompositeStringTransformer(final List<? extends StringTransformer> stringTransformers) {
         this();
         addStringTransformers(stringTransformers);
     }
@@ -78,7 +78,7 @@ implements StringTransformer {
      *        additionally composing this CompositeStringTransformer
      */
     public void addStringTransformers(final StringTransformer... additionalStringTransformers) {
-        stringTransformers.add(additionalStringTransformers);
+        addAll(stringTransformers, additionalStringTransformers);
     }
 
     /**
@@ -87,11 +87,11 @@ implements StringTransformer {
      * CompositeStringTransformer.
      *
      * @param additionalStringTransformers
-     *        {@link Sequence} of {@link StringTransformer StringTransformers}
+     *        {@link List} of {@link StringTransformer StringTransformers}
      *        additionally composing this CompositeStringTransformer
      */
-    public void addStringTransformers(final Sequence<? extends StringTransformer> additionalStringTransformers) {
-        stringTransformers.add(additionalStringTransformers);
+    public void addStringTransformers(final List<? extends StringTransformer> additionalStringTransformers) {
+        stringTransformers.addAll(additionalStringTransformers);
     }
 
     @Override

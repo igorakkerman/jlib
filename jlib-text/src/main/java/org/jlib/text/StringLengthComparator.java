@@ -41,7 +41,7 @@ public class StringLengthComparator<ComparisonObject>
 implements Comparator<ComparisonObject> {
 
     /** sole StringLengthComparator instance */
-    private static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<Object>();
+    private static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<>();
 
     /**
      * Returns the sole StringLengthComparator instance.
@@ -59,17 +59,16 @@ implements Comparator<ComparisonObject> {
      * Creates a new StringLengthComparator.
      */
     private StringLengthComparator() {
-        super();
     }
 
     @Override
-    public int compare(ComparisonObject object1, ComparisonObject object2) {
-        String string1 = object1.toString();
-        String string2 = object2.toString();
-        int string1Length = string1 != null ?
+    public int compare(final ComparisonObject object1, final ComparisonObject object2) {
+        final String string1 = object1.toString();
+        final String string2 = object2.toString();
+        final int string1Length = string1 != null ?
                             string1.length() :
                             - 1;
-        int string2Length = string2 != null ?
+        final int string2Length = string2 != null ?
                             string2.length() :
                             - 1;
 

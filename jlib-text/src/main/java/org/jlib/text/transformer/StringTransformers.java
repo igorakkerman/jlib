@@ -6,7 +6,7 @@ import java.util.Locale;
 /**
  * Package facade providing access to various {@link StringTransformer
  * StringTransformers}.
- * 
+ *
  * @author Igor Akkerman
  */
 public final class StringTransformers {
@@ -19,13 +19,13 @@ public final class StringTransformers {
      * of the specified length. The String is padded using blanks before and
      * after the substring. If the number of characters to pad is odd, the back
      * will be padded with one character more than the front.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer center(int finalStringLength) {
+    public static StringTransformer center(final int finalStringLength) {
         return center(finalStringLength, ' ');
     }
 
@@ -35,7 +35,7 @@ public final class StringTransformers {
      * character before and after the substring. If the number of characters to
      * pad is odd, the back will be padded with one character more than the
      * front.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
@@ -43,7 +43,7 @@ public final class StringTransformers {
      *        character used for padding
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer center(int finalStringLength, char paddingCharacter) {
+    public static StringTransformer center(final int finalStringLength, final char paddingCharacter) {
         return new CenteringStringTransformer(finalStringLength, paddingCharacter);
     }
 
@@ -52,13 +52,13 @@ public final class StringTransformers {
      * of the specified length. The String is padded using blanks before and
      * after the substring. If the number of characters to pad is odd, the front
      * will be padded with one character more than the back.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer centerRight(int finalStringLength) {
+    public static StringTransformer centerRight(final int finalStringLength) {
         return centerRight(finalStringLength, ' ');
     }
 
@@ -68,7 +68,7 @@ public final class StringTransformers {
      * character before and after the substring. If the number of characters to
      * pad is odd, the front will be padded with one character more than the
      * back.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
@@ -76,7 +76,7 @@ public final class StringTransformers {
      *        character used for padding
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer centerRight(int finalStringLength, char paddingCharacter) {
+    public static StringTransformer centerRight(final int finalStringLength, final char paddingCharacter) {
         return new RightCenteringStringTransformer(finalStringLength, paddingCharacter);
     }
 
@@ -84,14 +84,14 @@ public final class StringTransformers {
      * Returns a new {@link StringTransformer} left-aligning a substring in a
      * String of the specified length. The String is padded using blanks after
      * the substring.
-     * 
-     * 
+     *
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer leftAlign(int finalStringLength) {
+    public static StringTransformer leftAlign(final int finalStringLength) {
         return leftAlign(finalStringLength, ' ');
     }
 
@@ -99,8 +99,8 @@ public final class StringTransformers {
      * Returns a new {@link StringTransformer} left-aligning a substring in a
      * String of the specified length. The String is padded using a specified
      * padding character after the substring.
-     * 
-     * 
+     *
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
@@ -108,7 +108,7 @@ public final class StringTransformers {
      *        character used for padding
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer leftAlign(int finalStringLength, char paddingCharacter) {
+    public static StringTransformer leftAlign(final int finalStringLength, final char paddingCharacter) {
         return new LeftAligningStringTransformer(finalStringLength, paddingCharacter);
     }
 
@@ -116,13 +116,13 @@ public final class StringTransformers {
      * Returns a new {@link StringTransformer} right-aligning a substring in a
      * String of the specified length. The String is padded using blanks before
      * the substring.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer rightAlign(int finalStringLength) {
+    public static StringTransformer rightAlign(final int finalStringLength) {
         return rightAlign(finalStringLength, ' ');
     }
 
@@ -130,7 +130,7 @@ public final class StringTransformers {
      * Returns a new {@link StringTransformer} right-aligning a substring in a
      * String of the specified length. The String is padded using a specified
      * padding character before the substring.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
@@ -138,7 +138,7 @@ public final class StringTransformers {
      *        character used for padding
      * @return the newly created {@link StringTransformer}
      */
-    public static StringTransformer rightAlign(int finalStringLength, char paddingCharacter) {
+    public static StringTransformer rightAlign(final int finalStringLength, final char paddingCharacter) {
         return new RightAligningStringTransformer(finalStringLength, paddingCharacter);
     }
 
@@ -146,12 +146,12 @@ public final class StringTransformers {
      * Returns a new {@link StringTransformer} using the specified format (as
      * defined by {@link Formatter}) to transform the String. The content of the
      * used {@link StringBuilder} will be used as sole formatted value.
-     * 
+     *
      * @param format
      *        {@link String} specifying the format
      * @return the newly created {@link StringTransformer}
      */
-    public StringTransformer format(String format) {
+    public StringTransformer format(final String format) {
         return new FormattingStringTransformer(format);
     }
 
@@ -160,7 +160,7 @@ public final class StringTransformers {
      * defined by {@link Formatter}) to transform the String applying the
      * current {@link Locale}. The original String will be used as the value
      * with the specified index.
-     * 
+     *
      * @param format
      *        {@link String} specifying the format
      * @param originalStringValueIndex
@@ -174,7 +174,7 @@ public final class StringTransformers {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public StringTransformer format(String format, int originalStringValueIndex, Object... values) {
+    public StringTransformer format(final String format, final int originalStringValueIndex, final Object... values) {
         return new FormattingStringTransformer(format, originalStringValueIndex, values);
     }
 
@@ -183,7 +183,7 @@ public final class StringTransformers {
      * defined by {@link Formatter}) to transform the String applying the
      * specified {@link Locale}. The original String will be used as the value
      * with the specified index.
-     * 
+     *
      * @param locale
      *        {@link Locale} to apply; {@code null} if no {@link Locale} should
      *        be applied
@@ -200,7 +200,8 @@ public final class StringTransformers {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public StringTransformer format(Locale locale, String format, int originalStringValueIndex, Object... values) {
+    public StringTransformer format(
+                                   final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
         return new FormattingStringTransformer(locale, format, originalStringValueIndex, values);
     }
 }

@@ -1,7 +1,5 @@
 package org.jlib.text;
 
-
-
 /**
  * Iterator over the {@link Character Characters} of a {@link StringBuilder}.
  *
@@ -20,13 +18,7 @@ extends CharSequenceIterator {
      *         {@link Character Characters} of {@code iterableStringBuilder}
      */
     public static Iterable<Character> iterable(final StringBuilder iterableStringBuilder) {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new StringBuilderIterator(iterableStringBuilder);
-            }
-        };
+        return () -> new StringBuilderIterator(iterableStringBuilder);
     }
 
     /**
@@ -49,13 +41,7 @@ extends CharSequenceIterator {
      */
     public static Iterable<Character> iterable(final StringBuilder iterableStringBuilder, final int firstCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceBeginIndexAboveBoundException {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new StringBuilderIterator(iterableStringBuilder, firstCharacterIndex);
-            }
-        };
+        return () -> new StringBuilderIterator(iterableStringBuilder, firstCharacterIndex);
     }
 
     /**
@@ -85,13 +71,7 @@ extends CharSequenceIterator {
                                                final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
     CharSequenceEndIndexAboveBoundException {
-        return new Iterable<Character>() {
-
-            @Override
-            public Iterator<Character> iterator() {
-                return new StringBuilderIterator(iterableStringBuilder, firstCharacterIndex, lastCharacterIndex);
-            }
-        };
+        return () -> new StringBuilderIterator(iterableStringBuilder, firstCharacterIndex, lastCharacterIndex);
     }
 
     /** {@link StringBuilder} iterated by this StringBuilderIterator */
@@ -107,7 +87,7 @@ extends CharSequenceIterator {
      * @param iteratedStringBuilder
      *        {@link StringBuilder} to iterate
      */
-    public StringBuilderIterator(StringBuilder iteratedStringBuilder) {
+    public StringBuilderIterator(final StringBuilder iteratedStringBuilder) {
         super(iteratedStringBuilder);
         this.iteratedStringBuilder = iteratedStringBuilder;
     }
@@ -127,7 +107,7 @@ extends CharSequenceIterator {
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedStringBuilder.length()}
      */
-    public StringBuilderIterator(StringBuilder iteratedStringBuilder, int firstCharacterIndex) {
+    public StringBuilderIterator(final StringBuilder iteratedStringBuilder, final int firstCharacterIndex) {
         super(iteratedStringBuilder, firstCharacterIndex);
         this.iteratedStringBuilder = iteratedStringBuilder;
     }
@@ -152,7 +132,7 @@ extends CharSequenceIterator {
      * @throws CharSequenceEndIndexAboveBoundException
      *         if {@code lastCharacterIndex >= iteratedStringBuilder.length()}
      */
-    public StringBuilderIterator(StringBuilder iteratedStringBuilder, int firstCharacterIndex, int lastCharacterIndex)
+    public StringBuilderIterator(final StringBuilder iteratedStringBuilder, final int firstCharacterIndex, final int lastCharacterIndex)
     throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
     CharSequenceEndIndexAboveBoundException {
         super(iteratedStringBuilder, firstCharacterIndex, lastCharacterIndex);

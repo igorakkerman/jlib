@@ -26,7 +26,7 @@ package org.jlib.text.transformer;
  * length. The String is padded using a specified padding character before and
  * after the substring. If the number of characters to pad is odd, the front will
  * be padded with one character more than the back.
- * 
+ *
  * @author Igor Akkerman
  */
 public class RightCenteringStringTransformer
@@ -34,20 +34,20 @@ extends PaddingStringTransformer {
 
     /**
      * Creates a new RightCenteringStringTransformer.
-     * 
+     *
      * @param finalStringLength
      *        integer specifying the length of the String to return by this
      *        RightCenteringStringTransformer
      * @param paddingCharacter
      *        character used for padding
      */
-    public RightCenteringStringTransformer(int finalStringLength, char paddingCharacter) {
+    public RightCenteringStringTransformer(final int finalStringLength, final char paddingCharacter) {
         super(finalStringLength, paddingCharacter);
     }
 
 
     @Override
-    public void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder, boolean additionalPaddingCharacterRequired) {
+    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder, final boolean additionalPaddingCharacterRequired) {
         if (additionalPaddingCharacterRequired)
             halfPadBuilder.append(getPaddingCharacter());
 

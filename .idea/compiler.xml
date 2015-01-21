@@ -25,12 +25,16 @@
         <module name="jlib" />
         <module name="jlib-codequality" />
         <module name="jlib-core" />
+        <module name="jlib-core (1)" />
+        <module name="jlib-text" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jlib-codequality" target="1.8" />
       <module name="jlib-container" target="1.8" />
       <module name="jlib-core" target="1.8" />
+      <module name="jlib-core (1)" target="1.8" />
+      <module name="jlib-text" target="1.8" />
       <module name="jlib-unittest" target="1.8" />
     </bytecodeTargetLevel>
   </component>

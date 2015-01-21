@@ -3,10 +3,12 @@ package org.jlib.text.transformer;
 import java.util.Formatter;
 import java.util.Locale;
 
+import static java.lang.System.arraycopy;
+
 /**
  * {@link StringTransformer} using the specified format (as defined by
  * {@link Formatter}) to transform the String.
- * 
+ *
  * @author Igor Akkerman
  */
 public class FormattingStringTransformer
@@ -28,12 +30,12 @@ implements StringTransformer {
      * Creates a new FormattingStringTransformer for the specified format (as
      * defined by {@link Formatter}). The content of the used
      * {@link StringBuilder} will be used as sole formatted value.
-     * 
+     *
      * @param format
      *        {@link String} specifying the format
      */
-    public FormattingStringTransformer(String format) {
-        this(null, format, 0, new Object[0]);
+    public FormattingStringTransformer(final String format) {
+        this(null, format, 0);
     }
 
     /**
@@ -41,7 +43,7 @@ implements StringTransformer {
      * defined by {@link Formatter}) and the specified values to be formatted
      * applying the current {@link Locale}. The original String will be used as
      * the value with the specified index.
-     * 
+     *
      * @param format
      *        {@link String} specifying the format
      * @param originalStringValueIndex
@@ -54,7 +56,7 @@ implements StringTransformer {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public FormattingStringTransformer(String format, int originalStringValueIndex, Object... values) {
+    public FormattingStringTransformer(final String format, final int originalStringValueIndex, final Object... values) {
         this(null, format, originalStringValueIndex, values);
     }
 
@@ -63,7 +65,7 @@ implements StringTransformer {
      * defined by {@link Formatter}) and the specified values to be formatted
      * applying the specified {@link Locale}. The original String will be used
      * as the value with the specified index.
-     * 
+     *
      * @param locale
      *        {@link Locale} to apply; {@code null} if no {@link Locale} should
      *        be applied
@@ -79,9 +81,9 @@ implements StringTransformer {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public FormattingStringTransformer(Locale locale, String format, int originalStringValueIndex, Object... values) {
-        int valuesCount = values.length;
-        
+    public FormattingStringTransformer(final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
+        final int valuesCount = values.length;
+
         if (originalStringValueIndex < 0 || originalStringValueIndex > valuesCount)
             throw new IndexOutOfBoundsException(Integer.toString(originalStringValueIndex));
 
@@ -90,15 +92,14 @@ implements StringTransformer {
         this.originalStringValueIndex = originalStringValueIndex;
 
         this.values = new Object[valuesCount + 1];
-        for (int valueIndex = 0; valueIndex < originalStringValueIndex; valueIndex ++)
-            this.values[valueIndex] = values[valueIndex];
-        for (int valueIndex = originalStringValueIndex; valueIndex < valuesCount; valueIndex ++)
-            this.values[valueIndex + 1] = values[valueIndex];
+        arraycopy(values, 0, this.values, 0, originalStringValueIndex);
+        arraycopy(values, originalStringValueIndex, this.values, originalStringValueIndex + 1,
+                  valuesCount - originalStringValueIndex);
     }
 
 
     @Override
-    public void transform(StringBuilder stringBuilder) {
+    public void transform(final StringBuilder stringBuilder) {
         values[originalStringValueIndex] = stringBuilder.toString();
         stringBuilder.setLength(0);
         new Formatter(stringBuilder).format(locale, format, values);

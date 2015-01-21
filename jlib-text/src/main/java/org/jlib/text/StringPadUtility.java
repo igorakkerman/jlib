@@ -41,7 +41,7 @@ public final class StringPadUtility {
      *        integer specifying the desired length of the String
      * @return padded String. If {@code string.length() >= length} then {@code string} is returned.
      */
-    public static String pad(String string, int length) {
+    public static String pad(final String string, final int length) {
         return pad(string, length, ' ', PaddingType.BACK);
     }
 
@@ -57,7 +57,7 @@ public final class StringPadUtility {
      *        PaddingType specifying how the string should be padded
      * @return padded String. If {@code string.length() >= length} then {@code string} is returned.
      */
-    public static String pad(String string, int length, PaddingType paddingType) {
+    public static String pad(final String string, final int length, final PaddingType paddingType) {
         return pad(string, length, ' ', paddingType);
     }
 
@@ -75,15 +75,15 @@ public final class StringPadUtility {
      *        PaddingType specifying how the string should be padded
      * @return padded String. If {@code string.length() >= length} then {@code string} is returned.
      */
-    public static String pad(String string, int length, char paddingCharacter, PaddingType paddingType) {
-        int halfLength;
+    public static String pad(final String string, final int length, final char paddingCharacter, final PaddingType paddingType) {
+        final int halfLength;
 
         int currentLength = string.length();
 
         if (currentLength >= length)
             return string;
 
-        StringBuilder stringBuilder = new StringBuilder(length);
+        final StringBuilder stringBuilder = new StringBuilder(length);
 
         // TODO: use StringFormatter strategy instead
         switch (paddingType) {

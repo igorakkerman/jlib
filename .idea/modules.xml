@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/jlib-base.iml" filepath="$PROJECT_DIR$/jlib-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" filepath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" />
     </modules>
   </component>

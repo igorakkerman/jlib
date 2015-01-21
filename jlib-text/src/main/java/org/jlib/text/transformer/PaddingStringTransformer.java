@@ -1,6 +1,6 @@
 package org.jlib.text.transformer;
 
-import static org.jlib.core.text.number.NumberUtility.isOdd;
+import static org.jlib.core.text.number.NumberTextUtility.isOdd;
 
 /**
  * Skeletal implementation of a {@link StringTransformer} padding a String.
@@ -25,26 +25,24 @@ implements StringTransformer {
      * @param paddingCharacter
      *        character used for padding
      */
-    protected PaddingStringTransformer(int finalStringLength, char paddingCharacter) {
-        super();
-
+    protected PaddingStringTransformer(final int finalStringLength, final char paddingCharacter) {
         this.finalStringLength = finalStringLength;
         this.paddingCharacter = paddingCharacter;
     }
 
 
     @Override
-    public void transform(StringBuilder stringBuilder) {
+    public void transform(final StringBuilder stringBuilder) {
         if (stringBuilder.length() >= finalStringLength)
             return;
 
         stringBuilder.ensureCapacity(finalStringLength);
 
-        int originalLength = stringBuilder.length();
-        int padLength = finalStringLength - originalLength;
-        int halfPadLength = padLength / 2;
+        final int originalLength = stringBuilder.length();
+        final int padLength = finalStringLength - originalLength;
+        final int halfPadLength = padLength / 2;
 
-        StringBuilder halfPadBuilder = new StringBuilder(halfPadLength);
+        final StringBuilder halfPadBuilder = new StringBuilder(halfPadLength);
         for (int halfPadIndex = 0; halfPadIndex < halfPadLength; halfPadIndex ++)
             halfPadBuilder.append(paddingCharacter);
 
@@ -85,11 +83,11 @@ implements StringTransformer {
 
 
     @Override
-    public boolean equals(Object otherObject) {
+    public boolean equals(final Object otherObject) {
         if (otherObject == null || !getClass().equals(otherObject.getClass()))
             return false;
 
-        PaddingStringTransformer otherPaddingStringTransformer = (PaddingStringTransformer) otherObject;
+        final PaddingStringTransformer otherPaddingStringTransformer = (PaddingStringTransformer) otherObject;
 
         return finalStringLength == otherPaddingStringTransformer.finalStringLength &&
                paddingCharacter == otherPaddingStringTransformer.paddingCharacter;
