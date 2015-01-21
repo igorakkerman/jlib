@@ -68,7 +68,6 @@
                             <encoding>UTF-8</encoding>
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
-                            <!--<linkXRef>false</linkXRef>-->
                         </configuration>
                         <goals>
                             <goal>check</goal>
@@ -146,6 +145,12 @@
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-core</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-text</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 
