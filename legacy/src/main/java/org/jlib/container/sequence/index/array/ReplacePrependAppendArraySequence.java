@@ -126,7 +126,7 @@ implements ObservedPrependSequence<Item> */ {
 //     * index of {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplacePrependAppendArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
@@ -140,7 +140,7 @@ implements ObservedPrependSequence<Item> */ {
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplacePrependAppendArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);
@@ -212,7 +212,7 @@ implements ObservedPrependSequence<Item> */ {
 //    }
 //
 //    /**
-//     * Prepends all Items contained by the specified {@link IterableContainer} to this
+//     * Prepends all Items contained by the specified {@link Object} to this
 //     * {@link ObservedPrependSequence}.
 //     *
 //     * @param items

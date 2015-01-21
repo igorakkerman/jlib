@@ -21,25 +21,21 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
 /**
- * {@link IterableContainer} allowing Items to be removed.
+ * {@link Object} allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
-public interface RemoveManyByItem<Item>
-extends ItemOperation<Item> {
+public interface RemoveSingleByValue<Item> {
 
     /**
-     * Removes all Items from this object for which the specified {@link ContainsSingle}'s
-     * {@link ContainsSingle#containsItem(Object)} method returns {@code true}.
+     * Removes the specified {@link Item} from this container.
      *
-     * @param items
-     *        {@link IterableContainer} containing the Items to remove
+     * @param item
+     *        {@link Item} to remove
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one
@@ -48,7 +44,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsIterable items)
+    void remove(Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

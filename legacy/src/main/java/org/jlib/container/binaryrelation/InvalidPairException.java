@@ -46,7 +46,7 @@ extends InvalidContainerArgumentException {
      *        referenced {@link BinaryRelation}
      */
     protected <LeftValue, RightValue> /*
-        */ InvalidPairException(@SuppressWarnings("TypeMayBeWeakened")  /*
+        */ InvalidPairException(  /*
                              */ final BinaryRelation<LeftValue, RightValue> binaryRelation,
                                 final Pair<LeftValue, RightValue> pair) {
         super(binaryRelation, message(pair));
@@ -58,7 +58,7 @@ extends InvalidContainerArgumentException {
      * @param binaryRelation
      *        referenced {@link BinaryRelation}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
                                 Pair<LeftValue, RightValue> pair, final Message message) {
@@ -76,7 +76,7 @@ extends InvalidContainerArgumentException {
      *        {@link Exception} that caused this
      *        {@link InvalidBinaryRelationArgumentException}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     protected <LeftValue, RightValue> /*
         */ InvalidPairException(final BinaryRelation<LeftValue, RightValue> binaryRelation,
                                 Pair<LeftValue, RightValue> pair, final Message message,

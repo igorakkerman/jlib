@@ -21,29 +21,21 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
+import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
 /**
- * {@link RetainItemsByIterable} allowing its Items to be removed by random access to
- * each specified Item.
- *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
-public interface Retain<Item>
-extends ItemOperation<Item> {
+public interface Retain<Item> {
 
     /**
-     * Removes all {@link Item}s from this object <em>except</em> for the specified {@link Item}.
+     * Removes all {@link Item}s from this container <em>except</em> for the specified {@link Item}.
      *
-     * @param item
-     *        {@link Item} to retain
-     *
-     * @throws ItemToRemoveNotContainedException
-     *         if this {@link Retain} does not contain
-     *         {@code Item}
+     * @param items
+     *         {@link Item}s to retain
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of
@@ -52,7 +44,6 @@ extends ItemOperation<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
-    <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void retain(ContainsIterable items)
+    void retain(IterativeContainsAdapter<Item> items)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

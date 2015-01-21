@@ -88,11 +88,11 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
     throws InvalidPairException;
 
     /**
-     * Associates all Items contained by the specified {@link IterableContainer} to this
+     * Associates all Items contained by the specified {@link Object} to this
      * {@link AddBinaryRelation}.
      *
      * @param pairs
-     *        {@link IterableContainer} containing the {@link Pair}s to add
+     *        {@link Object} containing the {@link Pair}s to add
      *
      * @throws InvalidPairException
      *         if {@code pairs}
@@ -150,12 +150,12 @@ public interface AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Ensures that the specified {@link AddBinaryRelation} containsItem all
-     * Items contained by the specified {@link IterableContainer} to this
+     * Items contained by the specified {@link Object} to this
      * {@link AddBinaryRelation}. If the {@link AddBinaryRelation}
      * does not contain the Item, it is added.
      *
      * @param pairs
-     *        {@link IterableContainer} containing the Items to add
+     *        {@link Object} containing the Items to add
      *
      * @throws InvalidPairException
      *         if some property of an Item in {@code pairs} prevents it

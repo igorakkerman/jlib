@@ -76,7 +76,7 @@ extends InsertIndexSequence<Item> {
      *        integer specifying the index
      *
      * @param items
-     *        {@link IterableContainer} holding the Items to insert
+     *        {@link Object} holding the Items to insert
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

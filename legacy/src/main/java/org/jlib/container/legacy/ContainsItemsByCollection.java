@@ -32,13 +32,13 @@ public interface ContainsItemsByCollection<Item>
 extends ItemOperationStrategy<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem all of the Items in the
+     * Verifies whether this {@link Object} containsItem all of the Items in the
      * specified Collection.
      *
      * @param items
      *        {@link Collection} containing the Items to verify
      *
-     * @return {@code true} if this {@link ReadContainer} containsItem all of the Items
+     * @return {@code true} if this {@link Object} containsItem all of the Items
      *         contained by {@code collection}; {@code false} otherwise
      *
      * @throws InvalidContainerArgumentException

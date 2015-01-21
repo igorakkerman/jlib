@@ -40,13 +40,12 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link ItemAlreadyContainedException}.
      *
      * @param container
-     *        referenced {@link IterableContainer}
+     *        referenced {@link Object}
      *
      * @param item
      *        already contained Item
      */
-    @SuppressWarnings("TypeMayBeWeakened")
-    public ItemAlreadyContainedException(final ItemOperation<?> container, final Object item) {
+    public ItemAlreadyContainedException(final Object container, final Object item) {
 
         super(container, message(item.toString()));
     }

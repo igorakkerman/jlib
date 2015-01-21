@@ -61,11 +61,11 @@ extends AppendSequence<Item> {
     throws InvalidContainerArgumentException;
 
     /**
-     * Appends all Items contained by the specified {@link IterableContainer} to this
+     * Appends all Items contained by the specified {@link Object} to this
      * {@link ObservedAppendSequence}.
      *
      * @param items
-     *        {@link IterableContainer} containing the Items to append
+     *        {@link Object} containing the Items to append
      *
      * @param observers
      *        comma separated sequence of {@link ValueObserver} instances

@@ -48,7 +48,7 @@ extends ContainerCollection<Item> {
      * {@link RetainItemsByIterable}.
      *
      * @param <DelegateContainer>
-     *        type of the delegate {@link IterableContainer}
+     *        type of the delegate {@link Object}
      *
      * @param delegateContainer
      *        {@link RetainItemsByIterable} backing this

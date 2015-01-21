@@ -48,7 +48,7 @@ extends InvalidContainerArgumentException {
      *        LeftValue of the {@link Pair}
      */
     public <LeftValue> /*
-        */ NoSuchLeftValueException(@SuppressWarnings("TypeMayBeWeakened") /*
+        */ NoSuchLeftValueException( /*
                                  */ final BinaryRelation<LeftValue, ?> binaryRelation, final LeftValue leftValue) {
 
         super(binaryRelation, message(namedObject("leftValue", leftValue)));

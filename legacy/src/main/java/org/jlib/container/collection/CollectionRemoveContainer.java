@@ -30,7 +30,7 @@ import java.util.Collection;
  * may be used for modification and these cannot be observed.
  *
  * @param <Item>
- *        type of the items held in the {@link IterableContainer}
+ *        type of the items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
@@ -113,7 +113,7 @@ implements RemoveItemByItem<Item>,
 //     * {@link Collection}.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of added Items
+//     *        {@link Object} of added Items
 //     *
 //     * @throws InvalidContainerDelegateArgumentException
 //     *         if an Item in {@code items} caused an error during the operation

@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,25 +21,24 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
 /**
- * {@link IterableContainer} allowing Items to be removed.
+ * {@link Object} allowing Items to be removed.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  *
  * @author Igor Akkerman
  */
-public interface RemoveSingleByItem<Item>
-extends ItemOperation<Item> {
+public interface RemoveSingleFromContainsItemByValue<Item>
+extends RemoveSingleByValue<Item>,
+        ContainsSingle<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s
-     * {@link ContainsSingle#containsItem(Object)} method returns {@code true}.
+     * {@link ContainsSingle#contains(Item)} method returns {@code true}.
      *
-     * @param items
-     *        {@link IterableContainer} containing the Items to remove
+     * @param item
+     *        {@link Item} to remove
      *
      * @throws InvalidContainerArgumentException
      *         if the operation cannot be completed due to some property of one

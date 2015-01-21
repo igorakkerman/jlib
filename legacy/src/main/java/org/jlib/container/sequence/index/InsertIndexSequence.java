@@ -57,7 +57,7 @@ extends IndexSequence<Item> {
      *        integer specifying the index
      *
      * @param items
-     *        {@link IterableContainer} holding the Items to insert
+     *        {@link Object} holding the Items to insert
      */
     public void insert(int index, IterableContainer<? extends Item> items);
 

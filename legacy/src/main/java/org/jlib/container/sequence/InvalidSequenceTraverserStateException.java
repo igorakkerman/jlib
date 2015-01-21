@@ -41,7 +41,7 @@ extends InvalidIteratorStateException {
      * @param sequence
      *        referenced {@link Sequence}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     protected InvalidSequenceIteratorStateException(final Sequence<?> sequence) {
         super(sequence);
     }
@@ -56,7 +56,7 @@ extends InvalidIteratorStateException {
      * @param message
      *        the {@link Message}
      */
-    protected InvalidSequenceIteratorStateException(@SuppressWarnings("TypeMayBeWeakened") final Sequence<?> sequence,
+    protected InvalidSequenceIteratorStateException( final Sequence<?> sequence,
                                                      final Message message) {
         super(sequence, message);
     }
@@ -70,7 +70,7 @@ extends InvalidIteratorStateException {
      * @param cause
      *        {@link Exception} that caused this {@link InvalidSequenceIteratorStateException}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final Exception cause) {
         super(sequence, cause);
     }
@@ -87,7 +87,7 @@ extends InvalidIteratorStateException {
      * @param cause
      *        {@link Exception} that caused this {@link InvalidSequenceIteratorStateException}
      */
-    @SuppressWarnings("TypeMayBeWeakened")
+
     protected InvalidSequenceIteratorStateException(final Sequence<?> sequence, final Message message,
                                                      final Exception cause) {
         super(sequence, message, cause);

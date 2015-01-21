@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -22,80 +22,32 @@
 package org.jlib.container.operation;
 
 import org.jlib.core.exception.InvalidStateException;
-import org.jlib.core.iterator.InvalidIteratorStateException;
 import org.jlib.core.text.message.Message;
 
 import static org.jlib.core.text.message.MessageUtility.message;
 
-/**
- * {@link InvalidIteratorStateException} thrown when the traversed {@link ItemOperation} claims a state error.
- *
- * @author Igor Akkerman
- */
-public class InvalidContainerStateException
+public abstract class InvalidContainerStateException
 extends InvalidStateException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 5070211173782251202L;
+    private static final long serialVersionUID = - 6765111335075525788L;
 
-    /*
-     * Creates a new {@link InvalidContainerArgumentException}.
-     *
-     * @param operation
-     *        traversed {@link ItemOperation}
-     */
-    public InvalidContainerStateException(final ItemOperation<?> container) {
-        super(message().with("container", container));
+    public InvalidContainerStateException(final Object container) {
+        super(buildMessage(container, message()));
     }
 
-    /**
-     * Creates a new {@link InvalidContainerStateException}.
-     *
-     * @param container
-     *        traversed {@link ItemOperation}
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     */
-    public InvalidContainerStateException(final ItemOperation<?> container, final Exception cause) {
-        super(message().with(container), cause);
+    public InvalidContainerStateException(final Object container, final Exception cause) {
+        super(buildMessage(container, message()), cause);
     }
 
-    /**
-     * Creates a new {@link InvalidContainerStateException}.
-     *
-     * @param container
-     *        traversed {@link ItemOperation}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param errorMessageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
-    public InvalidContainerStateException(final ItemOperation<?> container, final Message message) {
-        super(message.with(container));
+    public InvalidContainerStateException(final Object container, final Message message) {
+        super(buildMessage(container, message));
     }
 
-    /**
-     * Creates a new {@link InvalidContainerStateException}.
-     *
-     * @param container
-     *        traversed {@link ItemOperation}
-     *
-     * @param messageTemplate
-     *        {@link String} specifying the error message template
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link InvalidStateException}
-     *
-     * @param messageArguments
-     *        comma separated sequence of {@link Object} instances specifying
-     *        the message arguments
-     */
-    public InvalidContainerStateException(final ItemOperation<?> container, final Message message,
-                                          final Exception cause) {
-        super(message.with(container), cause);
+    public InvalidContainerStateException(final Object container, final Message message, final Exception cause) {
+        this(buildMessage(container, message), cause);
+    }
+
+    private static Message buildMessage(final Object container, final Message message) {
+        return message.with("container", container);
     }
 }

@@ -34,27 +34,26 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class InvalidIterableArgumentException
 extends InvalidArgumentException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = - 5070211173782251202L;
+    private static final long serialVersionUID = - 1098504358095886664L;
 
     public InvalidIterableArgumentException(final Iterable<?> iterable) {
-        super(buildMessage(message(), iterable));
+        super(buildMessage(iterable, message()));
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final Exception cause) {
-        super(buildMessage(message(), iterable), cause);
+        super(buildMessage(iterable, message()), cause);
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final Message message) {
-        super(buildMessage(message, iterable));
+        super(buildMessage(iterable, message));
     }
 
     public InvalidIterableArgumentException(final Iterable<?> iterable, final Message message,
                                             final Exception cause) {
-        super(buildMessage(message, iterable), cause);
+        super(buildMessage(iterable, message), cause);
     }
 
-    private static Message buildMessage(final Message message, final Iterable<?> iterable) {
+    private static Message buildMessage(final Iterable<?> iterable, final Message message) {
         return message.with("iterable", iterable);
     }
 }

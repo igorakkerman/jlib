@@ -21,15 +21,12 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
-public interface IsEmpty<Item>
-extends ItemOperation<Item> {
+public interface IsEmpty<Item> {
 
     /**
-     * Verifies whether this {@link IterableContainer} containsItem no Items.
+     * Verifies whether this {@link Object} containsItem no Items.
      *
-     * @return {@code true} if this {@link IterableContainer} containsItem no Items;
+     * @return {@code true} if this {@link Object} containsItem no Items;
      *         {@code false} otherwise
      *
      * @throws InvalidContainerStateException

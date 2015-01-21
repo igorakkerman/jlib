@@ -51,7 +51,7 @@ extends InvalidContainerArgumentException {
      *        {@link String} specifying the message explaining the invalid
      *        access
      */
-    public InvalidSequenceIndexException(@SuppressWarnings("TypeMayBeWeakened") final IndexSequence<?> sequence,
+    public InvalidSequenceIndexException( final IndexSequence<?> sequence,
                                          final Message message) {
         super(sequence, message);
     }

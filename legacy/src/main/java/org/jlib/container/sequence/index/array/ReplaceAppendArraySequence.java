@@ -123,7 +123,7 @@ implements ObservedAppendSequence<Item> */ {
 //     * {@code 0} containing the specified Items.
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplaceAppendArraySequence(final IterableContainer<? extends Item> items) {
 //        super(items);
@@ -137,7 +137,7 @@ implements ObservedAppendSequence<Item> */ {
 //     *        integer specifying the first index
 //     *
 //     * @param items
-//     *        {@link IterableContainer} of Items to store
+//     *        {@link Object} of Items to store
 //     */
 //    public ReplaceAppendArraySequence(final int firstIndex, final IterableContainer<? extends Item> items) {
 //        super(firstIndex, items);
@@ -197,7 +197,7 @@ implements ObservedAppendSequence<Item> */ {
 //    }
 //
 //    /**
-//     * Appends all Items contained by the specified {@link IterableContainer} to this
+//     * Appends all Items contained by the specified {@link Object} to this
 //     * {@link ObservedAppendSequence}.
 //     *
 //     * @param items

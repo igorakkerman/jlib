@@ -50,7 +50,7 @@ implements AddBinaryRelation<LeftValue, RightValue> {
 
     /**
      * Creates a new {@link HashAddBinaryRelation} containing the
-     * {@link Pair} items contained by the specified {@link IterableContainer}.
+     * {@link Pair} items contained by the specified {@link Object}.
      *
      * @param pairs
      *        IterableContainer of the Pairs to add

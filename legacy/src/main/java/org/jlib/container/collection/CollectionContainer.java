@@ -36,12 +36,12 @@ import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
 /**
- * Adapter allowing a {@link Collection} to be used as a {@link IterableContainer}. A
+ * Adapter allowing a {@link Collection} to be used as a {@link Object}. A
  * {@link CollectionContainer} is backed by a {@link Collection} specified at
  * initialization.
  *
  * @param <Item>
- *        type of items held in the {@link IterableContainer}
+ *        type of items held in the {@link Object}
  * @author Igor Akkerman
  */
 public class CollectionContainer<Item>

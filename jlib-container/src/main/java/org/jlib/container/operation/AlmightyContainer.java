@@ -1,6 +1,6 @@
 package org.jlib.container.operation;
 
-public interface GodContainer<Item>
+public interface AlmightyContainer<Item>
 extends ContainsSingle<Item>,
         ContainsMany<Item>,
         Count<Item>,
@@ -8,8 +8,8 @@ extends ContainsSingle<Item>,
         ObservedRemoveMany<Item>,
         ObservedRemoveAll<Item>,
         ObservedRetain<Item>,
-        RemoveSingleByItem<Item>,
-        RemoveManyByItem<Item>,
+        RemoveSingleByValue<Item>,
+        RemoveManyByValue<Item>,
         RemoveAll<Item>,
         Retain<Item>,
         ToArray<Item>,

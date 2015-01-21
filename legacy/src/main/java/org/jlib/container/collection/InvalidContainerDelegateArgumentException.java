@@ -41,7 +41,7 @@ extends InvalidContainerArgumentException {
      * Creates a new {@link InvalidContainerDelegateArgumentException}.
      *
      * @param container
-     *        referenced {@link IterableContainer}
+     *        referenced {@link Object}
      *
      * @param delegate
      *        delegate {@link Object}

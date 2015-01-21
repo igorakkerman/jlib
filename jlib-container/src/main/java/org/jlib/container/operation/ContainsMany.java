@@ -21,18 +21,15 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.operation.ItemOperation;
-
-public interface ContainsMany<Item>
-extends ItemOperation<Item> {
+public interface ContainsMany<Item> {
 
     /**
-     * Verifies whether this {@link ReadContainer} containsItem the specified Object.
+     * Verifies whether this {@link Object} containsItem all of the specified {@link Item}s.
      *
-     * @param item
-     *        Item to verify
+     * @param items
+     *        {@link Item}s to verify
      *
-     * @return {@code true} if this {@link ReadContainer} containsItem {@code object};
+     * @return {@code true} if this {@link Object} containsItem {@code object};
      *         {@code false} otherwise
      *
      * @throws InvalidContainerArgumentException
