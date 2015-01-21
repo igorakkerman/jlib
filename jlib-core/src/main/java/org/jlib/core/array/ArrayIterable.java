@@ -42,13 +42,12 @@ implements BidiIterable<Item> {
      * Creates a new {@link ArrayIterable} for the specified array.
      *
      * @param array
-     *        array of Items to traverse
+     *        array of {@link Item}s to traverse
      */
     public ArrayIterable(final Item[] array) {
         this.array = array;
     }
 
-    // @see java.lang.Iterable#iterator()
     @Override
     public BidiIterator<Item> iterator() {
         return new ArrayIterator<>(array);
