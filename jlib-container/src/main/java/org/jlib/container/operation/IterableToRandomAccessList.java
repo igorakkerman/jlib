@@ -52,8 +52,7 @@ implements ToRandomAccessList<Item> {
     }
 
     /**
-     * Appends the Items of this {@link Object} to the specified {@link List}
-     * .
+     * Appends the Items of this {@link Object} to the specified {@link List}.
      *
      * @param <Lizt>
      *        type of the used {@link List}
