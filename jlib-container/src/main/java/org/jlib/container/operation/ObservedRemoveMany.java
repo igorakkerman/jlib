@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 
 /**
  * @param <Item>

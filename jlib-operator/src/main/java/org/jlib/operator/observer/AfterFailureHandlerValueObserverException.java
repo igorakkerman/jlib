@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,28 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.sequence;
+package org.jlib.operator.observer;
 
-import org.jlib.operator.observer.ValueObserver;
+import org.jlib.core.text.message.Message;
+import org.jlib.operator.OperatorException;
 
 /**
- * {@link InsertSequence} allowing its insert operations to be attended by
- * {@link ValueObserver} instances.
- *
- * @param <Item>
- *        type of items held in the {@link Sequence}
+ * {@link ValueObserverException} thrown during a {@link ValueObserver#afterFailure(Object, OperatorException)}
+ * operation.
  *
  * @author Igor Akkerman
  */
-public interface ObservedInsertSequence<Item>
-extends InsertSequence<Item> {
+public abstract class AfterFailureHandlerValueObserverException
+extends ValueObserverException {
 
-    /**
-     * Returns the {@link ObservedInsertSequenceIterator}
-     *
-     * @return {@link ObservedInsertSequenceIterator} traversing the Items of
-     *         this {@link ObservedInsertSequence}
-     */
-    @Override
-    public ObservedInsertSequenceIterator<Item> iterator();
+    private static final long serialVersionUID = - 7185258294557226420L;
+
+    protected AfterFailureHandlerValueObserverException(final Object value, final Message message,
+                                                        final Exception cause) {
+        super(value, message, cause);
+    }
 }

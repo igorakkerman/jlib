@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,28 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.sequence;
+package org.jlib.operator.observer;
 
-import org.jlib.operator.observer.ValueObserver;
+import org.jlib.core.exception.ApplicationException;
+import org.jlib.core.text.message.Message;
+import org.jlib.core.exception.InvalidStateException;
 
 /**
- * {@link InsertSequence} allowing its insert operations to be attended by
- * {@link ValueObserver} instances.
- *
- * @param <Item>
- *        type of items held in the {@link Sequence}
+ * {@link ApplicationException} thrown during the operation of an observer.
  *
  * @author Igor Akkerman
  */
-public interface ObservedInsertSequence<Item>
-extends InsertSequence<Item> {
+public abstract class ObserverException
+extends InvalidStateException {
+
+    private static final long serialVersionUID = - 7621231395096897078L;
 
     /**
-     * Returns the {@link ObservedInsertSequenceIterator}
+     * Creates a new {@link ObserverException}.
      *
-     * @return {@link ObservedInsertSequenceIterator} traversing the Items of
-     *         this {@link ObservedInsertSequence}
+     * @param cause
+     *        {@link Exception} that caused this {@link ObserverException}
      */
-    @Override
-    public ObservedInsertSequenceIterator<Item> iterator();
+    protected ObserverException(final Message message, final Exception cause) {
+        super(message, cause);
+    }
 }

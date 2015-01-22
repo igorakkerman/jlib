@@ -23,8 +23,8 @@ package org.jlib.container.operation;
 
 import java.util.Collection;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 
 /**
  * Ability to retain Items; the retain operations can be attended by {@link ValueObserver}

@@ -24,7 +24,7 @@ package org.jlib.container.operation.sequence;
 import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserver;
 import org.jlib.container.iterator.iterator.Iterator;
 import org.jlib.container.iterator.iterator.TwoWayIterable;
 

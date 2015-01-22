@@ -23,8 +23,6 @@ package org.jlib.core.iterator;
 
 import java.util.Iterator;
 
-import org.jlib.core.observer.ValueObserver;
-
 /**
  * {@link Iterator} utility.
  *

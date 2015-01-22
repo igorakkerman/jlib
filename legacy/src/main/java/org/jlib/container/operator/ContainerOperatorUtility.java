@@ -28,8 +28,8 @@ import java.util.Set;
 import org.jlib.container.operation.Container;
 import org.jlib.container.operation.sequence.ArraySequenceCreator;
 import org.jlib.container.operation.sequence.IndexSequence;
-import org.jlib.core.operator.BinaryOperator;
-import org.jlib.core.operator.IdentityItemBinaryOperator;
+import org.jlib.operator.BinaryOperator;
+import org.jlib.operator.IdentityItemBinaryOperator;
 
 /**
  * Utility class providing methods applying {@link BinaryOperator

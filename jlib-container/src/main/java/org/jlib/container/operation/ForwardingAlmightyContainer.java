@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.jlib.core.language.AbstractObject;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 
 import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 

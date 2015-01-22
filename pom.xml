@@ -36,15 +36,12 @@
 
     <packaging>pom</packaging>
 
-    <profiles>
-
-    </profiles>
-
     <modules>
         <module>jlib-codequality</module>
         <module>jlib-core</module>
         <module>jlib-text</module>
         <module>jlib-codec</module>
+        <module>jlib-operator</module>
         <module>jlib-container</module>
     </modules>
 
@@ -163,7 +160,7 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-io</artifactId>
+                <artifactId>jlib-operator</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 

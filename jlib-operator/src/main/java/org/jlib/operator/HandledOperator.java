@@ -19,34 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.operator;
-
-import org.jlib.core.value.Initialized;
+package org.jlib.operator;
 
 /**
- * {@link Initialized} and {@link OperatedValue}.
- *
- * @param <Value>
- *        type of the value used by the {@link OptionalValueOperator}
+ * Performs an operation specified by the concrete implementation.
  *
  * @author Igor Akkerman
  */
-class InitializedOperated<Value>
-extends Initialized<Value>
-implements OperatedValue<Value> {
+@FunctionalInterface
+public interface HandledOperator {
 
     /**
-     * Creates a new {@link InitializedOperated}.
+     * Performes the operation.
      *
-     * @param initialValue
-     *        initial Accessor
+     * @throws OperatorException
+     *         if the operation cannot be completed normally and this should be
+     *         handled consequently
+     *
+     * @throws RuntimeException
+     *         if the operation cannot be completed normally and this should
+     *         <em>not</em> be handled consequently
      */
-    public InitializedOperated(final Value initialValue) {
-        super(initialValue);
-    }
-
-    @Override
-    public final void operate(final OptionalValueOperator<Value> operator) {
-        operator.operate(get());
-    }
+    @SuppressWarnings({ "ProhibitedExceptionDeclared", "RedundantThrows" })
+    void operate()
+    throws OperatorException, RuntimeException;
 }

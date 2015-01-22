@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,28 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.sequence;
-
-import org.jlib.operator.observer.ValueObserver;
+package org.jlib.operator;
 
 /**
- * {@link InsertSequence} allowing its insert operations to be attended by
- * {@link ValueObserver} instances.
+ * Operator operating on an optional Accessor.
  *
- * @param <Item>
- *        type of items held in the {@link Sequence}
+ * @param <Value>
+ *        type of the value to operate on
  *
  * @author Igor Akkerman
  */
-public interface ObservedInsertSequence<Item>
-extends InsertSequence<Item> {
+public interface OptionalValueOperator<Value> {
 
     /**
-     * Returns the {@link ObservedInsertSequenceIterator}
+     * Performs the operation on the specified Accessor.
      *
-     * @return {@link ObservedInsertSequenceIterator} traversing the Items of
-     *         this {@link ObservedInsertSequence}
+     * @param value
+     *        Accessor to operate on
      */
-    @Override
-    public ObservedInsertSequenceIterator<Item> iterator();
+    void operate(Value value);
+
+    /**
+     * Performs the operation if no Accessor is registered.
+     */
+    void operateUnset();
 }

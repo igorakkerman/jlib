@@ -25,11 +25,11 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.jlib.core.array.ArrayUtility;
-import org.jlib.core.observer.ObserverUtility;
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.operator.HandledOperator;
-import org.jlib.core.operator.OperatorException;
+import org.jlib.operator.observer.ObserverUtility;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.HandledOperator;
+import org.jlib.operator.OperatorException;
 import org.jlib.container.iterator.iterator.NoItemToRemoveException;
 import org.jlib.container.iterator.iterator.NoNextItemException;
 import org.jlib.container.iterator.iterator.ObservedRemoveIterator;

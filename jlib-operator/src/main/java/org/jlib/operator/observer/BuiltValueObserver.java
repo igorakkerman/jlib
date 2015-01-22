@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.observer;
+package org.jlib.operator.observer;
 
 import java.util.function.Consumer;
 
-import org.jlib.core.operator.OperatorException;
+import org.jlib.operator.OperatorException;
 
 public class BuiltValueObserver<Value>
 implements ValueObserver<Value> {

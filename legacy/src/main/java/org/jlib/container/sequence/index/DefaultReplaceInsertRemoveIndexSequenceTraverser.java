@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation.sequence.index;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 import org.jlib.container.iterator.iterator.NoItemToRemoveException;
 
 import org.jlib.container.operation.sequence.ObservedInsertSequenceIterator;

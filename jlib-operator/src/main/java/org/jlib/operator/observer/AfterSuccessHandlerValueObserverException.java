@@ -19,31 +19,23 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.operator;
+package org.jlib.operator.observer;
 
-import org.jlib.core.value.Uninitialized;
+import org.jlib.core.text.message.Message;
 
 /**
- * {@link Uninitialized} calling the {@link OptionalValueOperator#operateUnset()} method from
- * {@link #operate(OptionalValueOperator)}.
- *
- * @param <Value>
- *        type of the held value
+ * {@link ValueObserverException} thrown during a
+ * {@link ValueObserver#before(Object)} operation.
  *
  * @author Igor Akkerman
  */
-abstract class UninitializedOperated<Value>
-extends Uninitialized<Value>
-implements OperatedValue<Value> {
+public abstract class AfterSuccessHandlerValueObserverException
+extends ValueObserverException {
 
-    /**
-     * Creates a new {@link UninitializedOperated}.
-     */
-    protected UninitializedOperated() {
-    }
+    private static final long serialVersionUID = 3230285545341500553L;
 
-    @Override
-    public final void operate(final OptionalValueOperator<Value> operator) {
-        operator.operateUnset();
+    protected AfterSuccessHandlerValueObserverException(final Object value, final Message message,
+                                                        final Exception cause) {
+        super(value, message, cause);
     }
 }

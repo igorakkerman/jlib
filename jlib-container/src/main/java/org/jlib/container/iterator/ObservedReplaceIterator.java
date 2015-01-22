@@ -21,8 +21,8 @@
 
 package org.jlib.container.iterator;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 
 /**
  * {@link ReplaceIterator} allowing its remove operation to be attended by

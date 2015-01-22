@@ -52,15 +52,6 @@ implements Comparator<ComparisonObject> {
 
     @Override
     public int compare(final ComparisonObject object1, final ComparisonObject object2) {
-        final String string1 = object1.toString();
-        final String string2 = object2.toString();
-        final int string1Length = string1 != null ?
-                                  string1.length() :
-                                  - 1;
-        final int string2Length = string2 != null ?
-                                  string2.length() :
-                                  - 1;
-
-        return string1Length - string2Length;
+        return object1.toString().length() - object2.toString().length();
     }
 }

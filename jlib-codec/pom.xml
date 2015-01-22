@@ -89,10 +89,5 @@
             <artifactId>jlib-core</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-io</artifactId>
-        </dependency>
-
     </dependencies>
 </project>

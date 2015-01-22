@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.observer.ValueObserverException;
+import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserverException;
 
 /**
  * {@link Sequence} allowing its Items to be traversed using a

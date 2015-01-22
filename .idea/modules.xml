@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-container/jlib-container.iml" filepath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-operator/jlib-operator.iml" filepath="$PROJECT_DIR$/jlib-operator/jlib-operator.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
     </modules>
   </component>

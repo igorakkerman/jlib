@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,28 +19,31 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation.sequence;
+package org.jlib.operator;
 
-import org.jlib.operator.observer.ValueObserver;
+import org.jlib.core.value.Uninitialized;
 
 /**
- * {@link InsertSequence} allowing its insert operations to be attended by
- * {@link ValueObserver} instances.
+ * {@link Uninitialized} calling the {@link OptionalValueOperator#operateUnset()} method from
+ * {@link #operate(OptionalValueOperator)}.
  *
- * @param <Item>
- *        type of items held in the {@link Sequence}
+ * @param <Value>
+ *        type of the held value
  *
  * @author Igor Akkerman
  */
-public interface ObservedInsertSequence<Item>
-extends InsertSequence<Item> {
+abstract class UninitializedOperated<Value>
+extends Uninitialized<Value>
+implements OperatedValue<Value> {
 
     /**
-     * Returns the {@link ObservedInsertSequenceIterator}
-     *
-     * @return {@link ObservedInsertSequenceIterator} traversing the Items of
-     *         this {@link ObservedInsertSequence}
+     * Creates a new {@link UninitializedOperated}.
      */
+    protected UninitializedOperated() {
+    }
+
     @Override
-    public ObservedInsertSequenceIterator<Item> iterator();
+    public final void operate(final OptionalValueOperator<Value> operator) {
+        operator.operateUnset();
+    }
 }

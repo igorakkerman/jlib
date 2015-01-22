@@ -19,28 +19,34 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.operator;
+package org.jlib.operator;
 
-import org.jlib.core.value.Accessor;
+import org.jlib.core.value.Initialized;
 
 /**
- * {@link Accessor} operating on the held Vallue using an
- * {@link OptionalValueOperator}.
+ * {@link Initialized} and {@link OperatedValue}.
  *
  * @param <Value>
- *        type of the held value
+ *        type of the value used by the {@link OptionalValueOperator}
  *
  * @author Igor Akkerman
  */
-interface OperatedValue<Value>
-extends Accessor<Value> {
+class InitializedOperated<Value>
+extends Initialized<Value>
+implements OperatedValue<Value> {
 
     /**
-     * Operates on the held Vallue using the specified
-     * {@link OptionalValueOperator}.
+     * Creates a new {@link InitializedOperated}.
      *
-     * @param operator
-     *        {@link OptionalValueOperator} operating on the held Vallue
+     * @param initialValue
+     *        initial Accessor
      */
-    void operate(OptionalValueOperator<Value> operator);
+    public InitializedOperated(final Value initialValue) {
+        super(initialValue);
+    }
+
+    @Override
+    public final void operate(final OptionalValueOperator<Value> operator) {
+        operator.operate(get());
+    }
 }

@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.observer.ValueObserver;
+import org.jlib.operator.observer.ValueObserver;
 
 /**
  * Ability to retain <em>all</em> Items;
