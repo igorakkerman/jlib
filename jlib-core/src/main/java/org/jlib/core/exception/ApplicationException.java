@@ -23,8 +23,6 @@ package org.jlib.core.exception;
 
 import org.jlib.core.text.message.Message;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-
 /**
  * Skeletal implementation of an {@link Exception} using a formatted message.
  *
@@ -35,16 +33,14 @@ extends Exception {
 
     private static final long serialVersionUID = - 7508635402610527176L;
 
-    protected ApplicationException() {
-        super(EMPTY);
-    }
+    protected ApplicationException() {}
 
     protected ApplicationException(final Message message) {
         super(message.toString());
     }
 
     protected ApplicationException(final Exception cause) {
-        super(EMPTY, cause);
+        super(cause);
     }
 
     protected ApplicationException(final Message message, final Exception cause) {
