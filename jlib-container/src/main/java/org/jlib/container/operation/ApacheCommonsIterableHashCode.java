@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import org.jlib.core.operation.HashCode;
+import org.jlib.core.language.HashCode;
 
 public class ApacheCommonsIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
