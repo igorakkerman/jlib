@@ -28,7 +28,7 @@ package org.jlib.text;
  */
 public interface StringFormatter {
 
-    // TODO: replace by format(Appendable)
+    // TODO: replace by format(StringBuilder)
     //       create static methods in StringPadUtility class formatting a String or Appendable
     //       using the strategy defined by an implementation of this interface
 

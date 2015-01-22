@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.templateengine;
+package org.jlib.text.templateengine;
 
 import java.util.List;
 

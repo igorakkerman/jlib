@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.templateengine;
+package org.jlib.text.templateengine;
 
 /**
  * {@link TemplateEngine} that always returns the plain template text ignoring the arguments.
