@@ -19,11 +19,9 @@
  *     limitations under the License.
  */
 
-
-
 /**
  * jlib filter streams and utilities for handling encoded entities.
- * 
+ *
  * @author Igor Akkerman
  */
 package org.jlib.codec;

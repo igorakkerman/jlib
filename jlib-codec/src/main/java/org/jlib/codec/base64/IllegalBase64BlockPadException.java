@@ -60,7 +60,7 @@ extends InvalidBase64StreamException {
     // documented in super class
     @Override
     public String toString() {
-        return super.toString() + "[" + base64Block[0] + "," + base64Block[1] + "," + base64Block[2] + ","
-               + base64Block[3] + "]";
+        return super.toString() + "[" + base64Block[0] + "," + base64Block[1] + "," + base64Block[2] + "," +
+               base64Block[3] + "]";
     }
 }

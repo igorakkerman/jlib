@@ -35,10 +35,11 @@ import java.io.OutputStream;
 public final class Base64Utility {
 
     /** base64 alphabet */
-    public static final byte[] BASE64_ALPHABET =
-        {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-         'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-         's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
+    public static final byte[] BASE64_ALPHABET = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                                                   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b',
+                                                   'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                                                   'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3',
+                                                   '4', '5', '6', '7', '8', '9', '+', '/' };
 
     /** base64 padding character */
     public static final byte PAD = '=';
@@ -84,7 +85,7 @@ public final class Base64Utility {
         final byte[] readBytes = new byte[1024];
 
         int len = base64InputStream.read(readBytes);
-        if (len == -1) {
+        if (len == - 1) {
             len = 0;
         }
         base64InputStream.close();
@@ -126,7 +127,7 @@ public final class Base64Utility {
             case '/':
                 return 63;
             case '=':
-                return -1;
+                return - 1;
         }
 
         throw new IllegalBase64CharacterException(base64Character);

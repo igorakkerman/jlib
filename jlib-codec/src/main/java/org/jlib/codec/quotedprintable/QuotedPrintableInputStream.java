@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.quotedprintable;
 
 import java.io.FilterInputStream;
@@ -72,19 +70,21 @@ extends FilterInputStream {
             return toUnsignedInt(getNextByte());
         }
         catch (final EndOfQuotedPrintableStreamException eoqpse) {
-            return -1;
+            return - 1;
         }
     }
 
     @Override
     public int read(@NonNull final byte[] buffer, final int offset, final int length)
     throws IOException {
-        for (int i = offset, j = 0; j < length; i ++, j ++) {
+        for (int i = offset, j = 0; j < length; i++, j++) {
             try {
                 buffer[i] = getNextByte();
             }
             catch (final EndOfQuotedPrintableStreamException eoqpse) {
-                return i != 0 ? i : -1;
+                return i != 0 ?
+                       i :
+                       - 1;
             }
         }
         return length;
@@ -107,20 +107,20 @@ extends FilterInputStream {
         do {
             // if there are characters left in the output buffer, return the first one
             if (outputBufferPosition < outputBuffer.length)
-                return outputBuffer[outputBufferPosition ++];
+                return outputBuffer[outputBufferPosition++];
 
             // refill the input buffer
             refillInputBuffer();
 
             // if the end of the stream has been reached, throw exception
-            if (inputBuffer[0] == -1)
+            if (inputBuffer[0] == - 1)
                 throw new EndOfQuotedPrintableStreamException();
 
-            // if a soft line break occurs, simply ignore it
+                // if a soft line break occurs, simply ignore it
             else if (inputBuffer[0] == '=' && inputBuffer[1] == '\r' && inputBuffer[2] == '\n')
                 inputBufferSize = 0;
 
-            // if the buffered characters represent an encoded octet, return the (decoded) octet
+                // if the buffered characters represent an encoded octet, return the (decoded) octet
             else if (inputBuffer[0] == '=') {
                 inputBufferSize = 0;
                 return decodeOctet(inputBuffer);
@@ -143,7 +143,6 @@ extends FilterInputStream {
             }
         }
         while (true);
-
     }
 
     /**
@@ -154,10 +153,10 @@ extends FilterInputStream {
      */
     private void refillInputBuffer()
     throws IOException {
-        for (int i = 3 - inputBufferSize, j = 0; j < inputBufferSize; i ++, j ++) {
+        for (int i = 3 - inputBufferSize, j = 0; j < inputBufferSize; i++, j++) {
             inputBuffer[j] = inputBuffer[i];
         }
-        for (int i = inputBufferSize; i <= 2; i ++) {
+        for (int i = inputBufferSize; i <= 2; i++) {
             inputBuffer[i] = toSignedByte(in.read());
         }
     }

@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
 
 /**
@@ -32,7 +30,7 @@ package org.jlib.codec.base64;
 public class IllegalBase64CharacterException
 extends InvalidBase64StreamException {
 
-    private static final long serialVersionUID = -8389442743931398913L;
+    private static final long serialVersionUID = - 8389442743931398913L;
 
     /** illegal character */
     private final int illegalCharacter;

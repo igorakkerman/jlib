@@ -19,12 +19,10 @@
  *     limitations under the License.
  */
 
-
-
 /**
  * jlib filter streams and utilities for handling quoted-printable encoded
  * entities.
- * 
+ *
  * @author Igor Akkerman
  */
 package org.jlib.codec.quotedprintable;

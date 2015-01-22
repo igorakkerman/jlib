@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.quotedprintable;
 
 import java.io.ByteArrayInputStream;
@@ -81,7 +79,7 @@ public final class QuotedPrintableUtility {
         final byte[] readBytes = new byte[1024];
 
         int length = qpInputStream.read(readBytes);
-        if (length == -1)
+        if (length == - 1)
             length = 0;
 
         qpInputStream.close();
@@ -128,5 +126,4 @@ public final class QuotedPrintableUtility {
             throw new IllegalQuotedPrintableOctetException(octetBytes[1], octetBytes[2]);
         }
     }
-
 }

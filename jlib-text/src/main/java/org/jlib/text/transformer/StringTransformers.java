@@ -200,8 +200,8 @@ public final class StringTransformers {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public StringTransformer format(
-                                   final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
+    public StringTransformer format(final Locale locale, final String format, final int originalStringValueIndex,
+                                    final Object... values) {
         return new FormattingStringTransformer(locale, format, originalStringValueIndex, values);
     }
 }

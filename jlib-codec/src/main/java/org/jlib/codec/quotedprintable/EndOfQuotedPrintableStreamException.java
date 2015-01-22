@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.quotedprintable;
 
 import java.io.IOException;
@@ -34,5 +32,5 @@ import java.io.IOException;
 public class EndOfQuotedPrintableStreamException
 extends IOException {
 
-    private static final long serialVersionUID = -4902609529538183922L;
+    private static final long serialVersionUID = - 4902609529538183922L;
 }

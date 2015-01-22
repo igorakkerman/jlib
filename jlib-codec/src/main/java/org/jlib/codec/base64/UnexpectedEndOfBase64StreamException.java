@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
 
 /**
@@ -31,7 +29,7 @@ package org.jlib.codec.base64;
 public class UnexpectedEndOfBase64StreamException
 extends InvalidBase64StreamException {
 
-    private static final long serialVersionUID = -569144262427735939L;
+    private static final long serialVersionUID = - 569144262427735939L;
 
     /**
      * Creates a new UnexpectedEndOfBase64StreamException.

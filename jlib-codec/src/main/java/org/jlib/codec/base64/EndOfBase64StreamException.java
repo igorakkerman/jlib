@@ -30,5 +30,6 @@ import org.jlib.core.exception.ApplicationException;
  */
 public class EndOfBase64StreamException
 extends ApplicationException {
+
     private static final long serialVersionUID = - 4336342109627286232L;
 }

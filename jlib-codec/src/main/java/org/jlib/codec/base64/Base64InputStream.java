@@ -38,7 +38,7 @@ public class Base64InputStream
 extends FilterInputStream {
 
     /** padding byte */
-    private static final byte PAD = -1;
+    private static final byte PAD = - 1;
 
     /** input buffer */
     private final int[] inputBuffer = new int[4];
@@ -73,10 +73,10 @@ extends FilterInputStream {
                     outputBufferPosition = 0;
                 }
 
-                return outputBuffer[outputBufferPosition ++];
+                return outputBuffer[outputBufferPosition++];
             }
             catch (final EndOfBase64StreamException eob64se) {
-                return -1;
+                return - 1;
             }
             catch (final IllegalBase64BlockPadException ib64bpe) {
                 // illegal block is ignored
@@ -88,10 +88,12 @@ extends FilterInputStream {
     @Override
     public int read(@NonNull final byte[] buffer, final int offset, final int length)
     throws IOException {
-        for (int i = 0; i < length; i ++) {
+        for (int i = 0; i < length; i++) {
             buffer[i] = (byte) read();
-            if (buffer[i] == -1) {
-                return i != 0 ? i : -1;
+            if (buffer[i] == - 1) {
+                return i != 0 ?
+                       i :
+                       - 1;
             }
         }
         return length;
@@ -112,14 +114,14 @@ extends FilterInputStream {
     private void readBase64Block()
     throws EndOfBase64StreamException, UnexpectedEndOfBase64StreamException, IOException {
 
-        for (int characterIndex = 0; characterIndex <= 3; characterIndex ++) {
+        for (int characterIndex = 0; characterIndex <= 3; characterIndex++) {
             boolean illegalCharacterRead;
             do {
                 try {
                     final int readCharacter = in.read();
 
                     // end of stream handling
-                    if (readCharacter == -1) {
+                    if (readCharacter == - 1) {
                         if (characterIndex == 0) {
                             throw new EndOfBase64StreamException();
                         }
@@ -170,14 +172,14 @@ extends FilterInputStream {
     private int getPaddingCharactersCount()
     throws IllegalBase64BlockPadException {
         final boolean[] pad = new boolean[4];
-        for (int i = 0; i <= 3; i ++)
+        for (int i = 0; i <= 3; i++)
             pad[i] = inputBuffer[i] == PAD;
 
-        if (!pad[0] && !pad[1] && !pad[2] && !pad[3])
+        if (! pad[0] && ! pad[1] && ! pad[2] && ! pad[3])
             return 0;
-        else if (!pad[0] && !pad[1] && !pad[2] /* && pad[3] */ && (inputBuffer[2] & 0x03) == 0)
+        else if (! pad[0] && ! pad[1] && ! pad[2] /* && pad[3] */ && (inputBuffer[2] & 0x03) == 0)
             return 1;
-        else if (!pad[0] && !pad[1] && pad[2] && pad[3] && (inputBuffer[1] & 0x0F) == 0)
+        else if (! pad[0] && ! pad[1] && pad[2] && pad[3] && (inputBuffer[1] & 0x0F) == 0)
             return 2;
         else
             throw new IllegalBase64BlockPadException(inputBuffer);
