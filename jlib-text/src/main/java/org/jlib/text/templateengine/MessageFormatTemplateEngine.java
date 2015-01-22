@@ -34,24 +34,14 @@ import java.text.MessageFormat;
 public final class MessageFormatTemplateEngine
 implements TemplateEngine<Object> {
 
-    /** sole {@link MessageFormatTemplateEngine} instance */
     private static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
 
-    /**
-     * Returns the sole {@link MessageFormatTemplateEngine} instance.
-     *
-     * @return sole {@link MessageFormatTemplateEngine} instance
-     */
     @SuppressWarnings("TypeMayBeWeakened")
     public static MessageFormatTemplateEngine getInstance() {
         return INSTANCE;
     }
 
-    /**
-     * Creates a new {@link MessageFormatTemplateEngine}.
-     */
-    private MessageFormatTemplateEngine() {
-    }
+    private MessageFormatTemplateEngine() {}
 
     @Override
     public final String applyArguments(final CharSequence template, final Object... arguments) {

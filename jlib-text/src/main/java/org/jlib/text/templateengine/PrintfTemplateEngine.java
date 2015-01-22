@@ -34,24 +34,14 @@ import java.text.MessageFormat;
 public final class PrintfTemplateEngine
 implements TemplateEngine<Object> {
 
-    /** sole {@link PrintfTemplateEngine} instance */
     private static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();
 
-    /**
-     * Returns the sole {@link PrintfTemplateEngine} instance.
-     *
-     * @return sole {@link PrintfTemplateEngine} instance
-     */
     @SuppressWarnings("TypeMayBeWeakened")
     public static PrintfTemplateEngine getInstance() {
         return INSTANCE;
     }
 
-    /**
-     * Creates a new {@link PrintfTemplateEngine}.
-     */
-    private PrintfTemplateEngine() {
-    }
+    private PrintfTemplateEngine() {}
 
     @Override
     public String applyArguments(final CharSequence template, final Object... arguments) {

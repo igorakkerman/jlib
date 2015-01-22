@@ -29,14 +29,8 @@ package org.jlib.text.templateengine;
 public final class IgnoreArgumentsTemplateEngine<Argument>
 implements TemplateEngine<Argument> {
 
-    /** sole {@link IgnoreArgumentsTemplateEngine} instance */
     private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
 
-    /**
-     * Returns the sole {@link IgnoreArgumentsTemplateEngine} instance.
-     *
-     * @return sole {@link IgnoreArgumentsTemplateEngine} instance
-     */
     @SuppressWarnings("unchecked")
     public static <Argument> IgnoreArgumentsTemplateEngine<Argument> getInstance() {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
@@ -48,9 +42,6 @@ implements TemplateEngine<Argument> {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
 
-    /**
-     * Creates a new {@link IgnoreArgumentsTemplateEngine}.
-     */
     private IgnoreArgumentsTemplateEngine() {}
 
     @Override
