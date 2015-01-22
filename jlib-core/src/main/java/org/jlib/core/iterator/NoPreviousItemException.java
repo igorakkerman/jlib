@@ -22,50 +22,34 @@
 package org.jlib.core.iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jlib.core.text.message.Message;
 
+import static org.jlib.core.text.message.MessageUtility.message;
+
 /**
- * {@link InvalidIteratorStateException} thrown when there is no next Item to
- * return by a {@link Iterator}.
+ * {@link InvalidIteratorStateException} thrown when there is no previous item to return by an {@link Iterator}.
  *
  * @author Igor Akkerman
  */
 public class NoPreviousItemException
-extends InvalidIteratorStateException {
+extends NoSuchElementException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = 1747026481047589428L;
+    private static final long serialVersionUID = 314294681315664677L;
 
-    /**
-     * Creates a new {@link NoPreviousItemException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     */
-    public NoPreviousItemException(final Iterable<?> iterable) {
-        super(iterable);
+    public NoPreviousItemException(final CharSequence iteratedName, final Object iterated) {
+        this(iteratedName, iterated, message());
     }
 
-    /**
-     * Creates a new {@link NoPreviousItemException} with the specified cause.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link NoPreviousItemException}
-     */
-    public NoPreviousItemException(final Iterable<?> iterable, final Exception cause) {
-        super(iterable, cause);
+    public NoPreviousItemException(final CharSequence iteratedName, final Object iterated, final Message message) {
+        super(message.with(iteratedName, iterated).toString());
     }
 
-    public NoPreviousItemException(final Iterable<?> iterable, final Message message) {
-        super(iterable, message);
-    }
-
-    public NoPreviousItemException(final Iterable<?> iterable, final Message message,
+    public NoPreviousItemException(final CharSequence iteratedName, final Object iterated, final Message message,
                                    final Exception cause) {
-        super(iterable, message, cause);
+        this(iteratedName, iterated, message);
+
+        initCause(cause);
     }
 }

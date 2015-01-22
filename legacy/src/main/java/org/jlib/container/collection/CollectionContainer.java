@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Set;
 
 import IterableIterator;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 import org.jlib.container.operation.Container;
 import org.jlib.container.operation.InvalidContainerArgumentException;

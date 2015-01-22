@@ -23,7 +23,7 @@ package org.jlib.container.operation.sequence;
 
 import org.jlib.core.language.ItemOperationStrategy;
 import Iterable;
-import org.jlib.core.iterator.TwoWayIterable;
+import org.jlib.container.iterator.iterator.TwoWayIterable;
 
 /**
  * Ordered sequence of Items.

@@ -8,7 +8,7 @@ import org.jlib.container.operation.ContainsSingle;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
-import static org.jlib.core.iterator.IterableUtility.singletonIterable;
+import static org.jlib.container.iterator.IterableUtility.singletonIterable;
 
 public final class ContainsAdapterUtility {
 

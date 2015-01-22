@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.iterator.NoPreviousItemException;
+import org.jlib.container.iterator.iterator.NoPreviousItemException;
 
 /**
  * {@link NoPreviousItemException} thrown when there is no previous Item to

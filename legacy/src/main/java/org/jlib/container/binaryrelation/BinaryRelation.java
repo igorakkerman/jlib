@@ -24,7 +24,7 @@ package org.jlib.container.operation.binaryrelation;
 import java.util.Set;
 
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 /**
  * Binary pair between various Objects. Each Object on either of the two

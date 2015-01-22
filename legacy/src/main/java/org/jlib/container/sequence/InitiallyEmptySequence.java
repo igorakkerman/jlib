@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
-import org.jlib.core.iterator.ObservedReplaceIterable;
+import org.jlib.container.iterator.iterator.ObservedReplaceIterable;
 import Iterable;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;

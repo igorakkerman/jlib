@@ -27,7 +27,7 @@ import java.util.List;
 
 import org.jlib.core.language.AbstractObject;
 import org.jlib.core.language.ItemOperationStrategy;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 import org.jlib.container.operation.ToRandomAccessList;
 

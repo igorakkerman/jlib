@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.containsadapter;
 
-import org.jlib.core.iterator.IterableUtility;
+import org.jlib.container.iterator.IterableUtility;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;

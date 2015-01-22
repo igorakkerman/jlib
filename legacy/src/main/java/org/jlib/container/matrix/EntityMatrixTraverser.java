@@ -22,7 +22,7 @@
 package org.jlib.container.operation.matrix;
 
 import org.jlib.core.language.InvalidStateException;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 import org.jlib.container.operation.sequence.Sequence;
 import org.jlib.container.operation.sequence.SequenceIterator;

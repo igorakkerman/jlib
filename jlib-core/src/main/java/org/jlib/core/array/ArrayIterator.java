@@ -21,14 +21,10 @@
 
 package org.jlib.core.array;
 
-import java.util.Arrays;
-
 import org.jlib.core.iterator.BidiIterator;
 import org.jlib.core.iterator.NoNextItemException;
 import org.jlib.core.iterator.NoPreviousItemException;
 import org.jlib.core.language.AbstractObject;
-
-import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
  * {@link BidiIterator} over the items of an array.
@@ -47,9 +43,6 @@ implements BidiIterator<Item> {
 
     /** length of the array */
     private final int arrayLength;
-
-    /** corresponding {@link ArrayIterable} */
-    private final ArrayIterable<Item> iterable;
 
     /** current index */
     private int currentIndex = 0;
@@ -77,8 +70,6 @@ implements BidiIterator<Item> {
     public ArrayIterator(final Item[] array, final int initialIndex) {
         this.array = array;
 
-        iterable = new ArrayIterable<>(array);
-
         arrayLength = array.length;
         currentIndex = initialIndex;
     }
@@ -91,7 +82,7 @@ implements BidiIterator<Item> {
     @Override
     public Item next() {
         if (! hasNext())
-            throw new NoNextItemException(iterable, message(Arrays.toString(array)));
+            throw new NoNextItemException("array", array);
 
         return array[currentIndex++];
     }
@@ -105,7 +96,7 @@ implements BidiIterator<Item> {
     public Item previous()
     throws NoPreviousItemException {
         if (! hasPrevious())
-            throw new NoPreviousItemException(iterable, message(Arrays.toString(array)));
+            throw new NoPreviousItemException("array", array);
 
         return array[-- currentIndex];
     }

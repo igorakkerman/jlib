@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.iterator.ReplaceIterable;
+import org.jlib.container.iterator.iterator.ReplaceIterable;
 
 public class ForwardingReplaceSequence<Item>
 extends ForwardingSequence<Item> {

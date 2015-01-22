@@ -21,9 +21,9 @@
 
 package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.core.iterator.NoItemToRemoveException;
-import org.jlib.core.iterator.RemoveIterator;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.NoItemToRemoveException;
+import org.jlib.container.iterator.iterator.RemoveIterator;
+import org.jlib.container.iterator.iterator.Iterator;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 /**

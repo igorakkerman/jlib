@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.binaryrelation;
 
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 /**
  * Skeletal implementation of a {@link BinaryRelation}.

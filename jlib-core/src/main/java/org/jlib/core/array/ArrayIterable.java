@@ -38,12 +38,6 @@ implements BidiIterable<Item> {
     /** array to traverse */
     private final Item[] array;
 
-    /**
-     * Creates a new {@link ArrayIterable} for the specified array.
-     *
-     * @param array
-     *        array of {@link Item}s to traverse
-     */
     public ArrayIterable(final Item[] array) {
         this.array = array;
     }

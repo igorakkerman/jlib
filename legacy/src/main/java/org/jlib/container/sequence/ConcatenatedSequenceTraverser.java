@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.iterator.TwoWayIterator;
+import org.jlib.container.iterator.iterator.TwoWayIterator;
 
 /**
  * {@link TwoWayIterator} over the Items of a

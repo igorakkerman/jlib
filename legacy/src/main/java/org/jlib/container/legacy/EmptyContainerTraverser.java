@@ -21,10 +21,10 @@
 
 package org.jlib.container.operation.legacy;
 
-import org.jlib.core.iterator.NoNextItemException;
-import org.jlib.core.iterator.NoPreviousItemException;
-import org.jlib.core.iterator.Iterator;
-import org.jlib.core.iterator.TwoWayIterator;
+import org.jlib.container.iterator.iterator.NoNextItemException;
+import org.jlib.container.iterator.iterator.NoPreviousItemException;
+import org.jlib.container.iterator.iterator.Iterator;
+import org.jlib.container.iterator.iterator.TwoWayIterator;
 
 import org.jlib.container.operation.sequence.InitiallyEmptySequence;
 

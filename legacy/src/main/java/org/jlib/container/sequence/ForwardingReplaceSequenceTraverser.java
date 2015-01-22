@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation.sequence;
 
-import org.jlib.core.iterator.InvalidIteratorStateException;
-import org.jlib.core.iterator.ReplaceIterator;
+import org.jlib.container.iterator.iterator.InvalidIteratorStateException;
+import org.jlib.container.iterator.iterator.ReplaceIterator;
 
 /**
  * {@link SequenceIterator} delegating its calls to another {@link SequenceIterator}.

@@ -25,8 +25,8 @@ import java.util.Iterator;
 
 import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.iterator.Iterator;
-import org.jlib.core.iterator.TwoWayIterable;
+import org.jlib.container.iterator.iterator.Iterator;
+import org.jlib.container.iterator.iterator.TwoWayIterable;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 

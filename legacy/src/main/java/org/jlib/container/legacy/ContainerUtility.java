@@ -30,11 +30,11 @@ import org.jlib.core.observer.ValueObserver;
 import org.jlib.core.observer.ValueObserverException;
 import org.jlib.core.operator.HandledOperator;
 import org.jlib.core.operator.OperatorException;
-import org.jlib.core.iterator.NoItemToRemoveException;
-import org.jlib.core.iterator.NoNextItemException;
-import org.jlib.core.iterator.ObservedRemoveIterator;
-import org.jlib.core.iterator.RemoveIterable;
-import org.jlib.core.iterator.RemoveIterator;
+import org.jlib.container.iterator.iterator.NoItemToRemoveException;
+import org.jlib.container.iterator.iterator.NoNextItemException;
+import org.jlib.container.iterator.iterator.ObservedRemoveIterator;
+import org.jlib.container.iterator.iterator.RemoveIterable;
+import org.jlib.container.iterator.iterator.RemoveIterator;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;

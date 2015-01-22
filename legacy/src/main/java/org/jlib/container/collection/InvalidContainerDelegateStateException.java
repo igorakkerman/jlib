@@ -22,7 +22,7 @@
 package org.jlib.container.operation.collection;
 
 import org.jlib.core.language.Message;
-import org.jlib.core.iterator.InvalidIteratorStateException;
+import org.jlib.container.iterator.iterator.InvalidIteratorStateException;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a delegate object

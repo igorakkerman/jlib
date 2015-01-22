@@ -23,14 +23,15 @@ package org.jlib.core.text;
 
 import java.util.Iterator;
 
+import org.jlib.core.iterator.NoNextItemException;
+
 public final class CharSequenceIterator
 implements Iterator<Character> {
 
     private final CharSequence characterSequence;
+    private final int lastCharacterIndex;
 
     private int nextCharacterIndex;
-
-    private final int lastCharacterIndex;
 
     public CharSequenceIterator(final CharSequence characterSequence) {
         this(characterSequence, 0);
@@ -57,7 +58,7 @@ implements Iterator<Character> {
     @Override
     public Character next() {
         if (! hasNext())
-            throw new NoNextCharacterException(characterSequence);
+            throw new NoNextItemException("characterSequence", characterSequence);
 
         return characterSequence.charAt(nextCharacterIndex++);
     }

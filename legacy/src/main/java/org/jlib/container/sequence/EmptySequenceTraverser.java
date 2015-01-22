@@ -22,12 +22,12 @@
 package org.jlib.container.operation.sequence;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.iterator.NoItemToRemoveException;
-import org.jlib.core.iterator.NoItemToReplaceException;
-import org.jlib.core.iterator.ObservedRemoveIterator;
-import org.jlib.core.iterator.ObservedReplaceIterator;
-import org.jlib.core.iterator.RemoveIterator;
-import org.jlib.core.iterator.ReplaceIterator;
+import org.jlib.container.iterator.iterator.NoItemToRemoveException;
+import org.jlib.container.iterator.iterator.NoItemToReplaceException;
+import org.jlib.container.iterator.iterator.ObservedRemoveIterator;
+import org.jlib.container.iterator.iterator.ObservedReplaceIterator;
+import org.jlib.container.iterator.iterator.RemoveIterator;
+import org.jlib.container.iterator.iterator.ReplaceIterator;
 
 import org.jlib.container.operation.sequence.index.IndexSequenceIterator;
 

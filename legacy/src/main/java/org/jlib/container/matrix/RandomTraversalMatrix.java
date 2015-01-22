@@ -24,7 +24,7 @@ package org.jlib.container.operation.matrix;
 import java.util.Iterator;
 import java.util.RandomAccess;
 
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.Iterator;
 
 import org.jlib.container.operation.sequence.Sequence;
 

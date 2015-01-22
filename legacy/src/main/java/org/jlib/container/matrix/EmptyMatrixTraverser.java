@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation.matrix;
 
-import org.jlib.core.iterator.NoNextItemException;
-import org.jlib.core.iterator.ReplaceIterator;
+import org.jlib.container.iterator.iterator.NoNextItemException;
+import org.jlib.container.iterator.iterator.ReplaceIterator;
 
 /**
  * {@link MatrixIterator} of an {@link EmptyMatrix}. Implemented as a

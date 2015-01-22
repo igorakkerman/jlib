@@ -29,42 +29,27 @@ import org.jlib.core.text.message.Message;
 import static org.jlib.core.text.message.MessageUtility.message;
 
 /**
- * {@link InvalidIteratorStateException} thrown when there is no next Item to
- * return by a {@link Iterator}.
+ * {@link InvalidIteratorStateException} thrown when there is no next item to return by an {@link Iterator}.
  *
  * @author Igor Akkerman
  */
 public class NoNextItemException
 extends NoSuchElementException {
 
-    /** serialVersionUID */
-    private static final long serialVersionUID = 328216916169684024L;
+    private static final long serialVersionUID = - 3423814953147474341L;
 
-    private final Iterable<?> iterable;
-
-    /**
-     * Creates a new {@link NoNextItemException}.
-     *
-     * @param iterable
-     *        traversed {@link Iterable}
-     */
-    public NoNextItemException(final Iterable<?> iterable) {
-        this(iterable, message());
+    public NoNextItemException(final CharSequence iteratedName, final Object iterated) {
+        this(iteratedName, iterated, message());
     }
 
-    public NoNextItemException(final Iterable<?> iterable, final Message message) {
-        super(message.with("iterable", iterable).toString());
-
-        this.iterable = iterable;
+    public NoNextItemException(final CharSequence iteratedName, final Object iterated, final Message message) {
+        super(message.with(iteratedName, iterated).toString());
     }
 
-    public NoNextItemException(final Iterable<?> iterable, final Message message, final Exception cause) {
-        this(iterable, message);
+    public NoNextItemException(final CharSequence iteratedName, final Object iterated, final Message message,
+                               final Exception cause) {
+        this(iteratedName, iterated, message);
 
         initCause(cause);
-    }
-
-    public Iterable<?> getIterable() {
-        return iterable;
     }
 }

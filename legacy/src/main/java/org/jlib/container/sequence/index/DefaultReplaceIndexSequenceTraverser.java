@@ -22,9 +22,9 @@
 package org.jlib.container.operation.sequence.index;
 
 import org.jlib.core.observer.ValueObserver;
-import org.jlib.core.iterator.NoItemToReplaceException;
-import org.jlib.core.iterator.ObservedReplaceIterator;
-import org.jlib.core.iterator.ReplaceIterator;
+import org.jlib.container.iterator.iterator.NoItemToReplaceException;
+import org.jlib.container.iterator.iterator.ObservedReplaceIterator;
+import org.jlib.container.iterator.iterator.ReplaceIterator;
 import org.jlib.core.value.ValueNotAccessibleException;
 
 import org.jlib.container.operation.InvalidContainerArgumentException;

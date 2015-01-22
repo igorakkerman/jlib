@@ -27,7 +27,7 @@ implements BidiIteratorState<Item, State> {
 
     private final BidiIteratorState<Item, State> delegateIteratorState;
 
-    ForwardingIteratorState(final Itble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
+    protected ForwardingIteratorState(final Itble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
         super(iterable);
 
         this.delegateIteratorState = delegateIteratorState;

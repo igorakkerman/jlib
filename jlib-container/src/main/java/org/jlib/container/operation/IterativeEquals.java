@@ -25,7 +25,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 import org.jlib.core.operation.Equals;
 
-import static org.jlib.core.iterator.IterableUtility.provideEqualItems;
+import static org.jlib.container.iterator.IterableUtility.provideEqualItems;
 
 public final class IterativeEquals<Item>
 implements Equals<Iterable<Item>> {

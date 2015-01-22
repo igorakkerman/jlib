@@ -25,8 +25,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.jlib.core.iterator.NoNextItemException;
-import org.jlib.core.iterator.Iterator;
+import org.jlib.container.iterator.iterator.NoNextItemException;
+import org.jlib.container.iterator.iterator.Iterator;
 import org.jlib.core.value.InitializedModifiable;
 import org.jlib.core.value.Modifiable;
 import org.jlib.core.value.Uninitialized;

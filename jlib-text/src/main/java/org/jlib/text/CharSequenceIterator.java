@@ -194,7 +194,7 @@ implements Iterator<Character> {
     @Override
     public Character next() {
         if (! hasNext())
-            throw new NoNextItemException(iterable(iteratedCharSequence),
+            throw new NoNextItemException("characterSequence", iteratedCharSequence,
                                           message().with("nextCharacterIndex", nextCharacterIndex));
         return iteratedCharSequence.charAt(nextCharacterIndex++);
     }

@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation.sequence.index.linearindexstorage;
 
-import org.jlib.core.storage.LinearIndexStorage;
-import org.jlib.core.storage.capacity.CapacityStrategy;
+import org.jlib.container.storage.LinearIndexStorage;
+import org.jlib.container.capacity.CapacityStrategy;
 
 public final class LinearIndexStorageSequence<Item>
 //extends AbstractSequence<Item>
