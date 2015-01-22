@@ -19,14 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
 
 import java.util.Iterator;
 
-import org.jlib.core.iterator.BidiIterable;
-import org.jlib.core.iterator.BidiIterator;
-import org.jlib.core.iterator.InvalidIterableStateException;
-import org.jlib.core.iterator.SingletonIterable;
 import org.jlib.core.observer.ValueObserver;
 
 /**
@@ -223,56 +219,6 @@ public final class IterableUtility {
             itemsCount += getItemsCount(iterable);
 
         return itemsCount;
-    }
-
-    /**
-     * Removes all Items of the specified {@link RemoveIterable}.
-     *
-     * @param iterable
-     *        {@link RemoveIterable} providing the Items
-     *
-     * @param <Item>
-     *        type of the items of {@code iterable}
-     *
-     * @throws InvalidIterableStateException
-     *         if an error occurs during one of the remove operations
-     */
-    // TODO: check declared exceptions
-    @SuppressWarnings("OverlyBroadThrowsClause")
-    public static <Item> void removeAll(final RemoveIterable<Item> iterable)
-    throws InvalidIterableStateException {
-        for (final RemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
-            iterator.next();
-            iterator.remove();
-        }
-    }
-
-    /**
-     * Removes all Items of the specified {@link RemoveIterable}.
-     *
-     * @param iterable
-     *        {@link RemoveIterable} providing the Items
-     *
-     * @param <Item>
-     *        type of the items of {@code iterable}
-     *
-     * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
-     *        attending the removal
-     *
-     * @throws InvalidIterableStateException
-     *         if an error occurs during one of the remove operations
-     */
-    @SafeVarargs
-    // TODO: check declared exceptions
-    @SuppressWarnings("OverlyBroadThrowsClause")
-    public static <Item> void removeAll(final ObservedRemoveIterable<Item> iterable,
-                                        final ValueObserver<Item>... observers)
-    throws InvalidIterableStateException {
-        for (final ObservedRemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
-            iterator.next();
-            iterator.remove(observers);
-        }
     }
 
     public static <Item> BidiIterable<Item> singletonIterable(final Item item) {

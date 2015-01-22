@@ -19,12 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
-
-import org.jlib.core.iterator.BidiIteratorState;
-import org.jlib.core.iterator.IterableAware;
-import org.jlib.core.iterator.NoNextItemException;
-import org.jlib.core.iterator.NoPreviousItemException;
+package org.jlib.core.iterator;
 
 public final class StuckIteratorState<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
 extends IterableAware<Item, Itble>
