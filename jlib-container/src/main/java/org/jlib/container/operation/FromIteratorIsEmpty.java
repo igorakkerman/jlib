@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.container.iterator.IterableUtility;
+import org.jlib.core.iterator.IterableUtility;
 
 public class FromIteratorIsEmpty<Item>
 implements IsEmpty<Item> {
