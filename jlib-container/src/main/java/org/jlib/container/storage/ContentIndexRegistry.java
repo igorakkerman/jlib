@@ -28,7 +28,7 @@ import java.io.Serializable;
 import org.jlib.core.exception.UnexpectedStateException;
 
 import org.apache.commons.beanutils.BeanUtils;
-import static org.jlib.core.math.MathUtility.count;
+import static org.jlib.core.math.NumberUtility.count;
 
 /**
  * Manager of the content of a {@link LinearIndexStorage}.

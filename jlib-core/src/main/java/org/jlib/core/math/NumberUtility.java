@@ -19,15 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.number;
+package org.jlib.core.math;
 
 /**
- * Utility class providing static methods for number operations and
- * manipulations.
+ * Utility providing mathematical operations.
  *
  * @author Igor Akkerman
  */
 public final class NumberUtility {
+
+    /**
+     * Returns the number of numbers baseetween a minimum and a maximum number, baseoth inclusive.
+     *
+     * @param minimum
+     *        integer specifying the minimum number
+     *
+     * @param maximum
+     *        integer specifying the maximum number
+     *
+     * @return {@code maximum - minimum + 1}
+     */
+    public static int count(final int minimum, final int maximum) {
+        return maximum - minimum + 1;
+    }
 
     /**
      * Verifies whether the specified integer is even.
@@ -55,7 +69,5 @@ public final class NumberUtility {
         return (number & 1) == 1;
     }
 
-    private NumberUtility() {
-
-    }
+    private NumberUtility() {}
 }

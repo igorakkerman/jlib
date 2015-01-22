@@ -30,7 +30,7 @@ import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescrip
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
 import static org.jlib.core.array.ArrayUtility.createArray;
-import static org.jlib.core.math.MathUtility.count;
+import static org.jlib.core.math.NumberUtility.count;
 
 /**
  * {@link LinearIndexStorage} based on an array.

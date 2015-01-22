@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.number;
+package org.jlib.core.math;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.number.NumberUtility.isEven;
-import static org.jlib.core.text.number.NumberUtility.isOdd;
+import static org.jlib.core.math.NumberUtility.isEven;
+import static org.jlib.core.math.NumberUtility.isOdd;
 import org.junit.Test;
 
 public class NumberUtilityIsEvenOddTest {
