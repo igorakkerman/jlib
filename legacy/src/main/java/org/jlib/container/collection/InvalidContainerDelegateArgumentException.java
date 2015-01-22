@@ -34,7 +34,6 @@ import org.jlib.container.operation.InvalidContainerArgumentException;
 public class InvalidContainerDelegateArgumentException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 8427879807874812907L;
 
     /**

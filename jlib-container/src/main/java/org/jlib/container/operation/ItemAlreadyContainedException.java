@@ -33,7 +33,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class ItemAlreadyContainedException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 1090527595338576596L;
 
     /**

@@ -32,7 +32,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class ItemToRemoveNotContainedException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 2921569537644842654L;
 
     /**

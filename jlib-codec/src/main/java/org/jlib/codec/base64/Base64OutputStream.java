@@ -19,8 +19,6 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
 
 import java.io.FilterOutputStream;

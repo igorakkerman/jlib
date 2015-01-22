@@ -34,7 +34,6 @@ import static org.jlib.core.language.MessageUtility.message;
 public class InvalidSequenceItemsCountException
 extends InvalidArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 23142560184875814L;
 
     /**

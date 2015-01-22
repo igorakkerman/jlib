@@ -34,7 +34,6 @@ import org.jlib.core.exception.InvalidStateException;
 public class ApplicationPropertyNotSetException
 extends InvalidStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 8781400138384560958L;
 
     /**

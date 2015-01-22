@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
+
+import org.jlib.core.exception.ApplicationException;
 
 /**
  * Exception thrown if the end of a base64 coded stream was reached. This Exception does not signal an error.
@@ -29,8 +29,6 @@ package org.jlib.codec.base64;
  * @author Igor Akkerman
  */
 public class EndOfBase64StreamException
-extends Exception {
-
-    /** serialVersionUID */
-    private static final long serialVersionUID = -4336342109627286232L;
+extends ApplicationException {
+    private static final long serialVersionUID = - 4336342109627286232L;
 }

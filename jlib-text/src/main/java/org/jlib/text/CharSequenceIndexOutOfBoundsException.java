@@ -9,7 +9,6 @@ package org.jlib.text;
 public class CharSequenceIndexOutOfBoundsException
 extends IndexOutOfBoundsException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = -4883064375950444974L;
 
     /** {@link CharSequence} for which the character index is out of bounds */

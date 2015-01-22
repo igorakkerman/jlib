@@ -39,7 +39,6 @@ public class ContentIndexRegistry
 implements Cloneable,
            Serializable {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 7766547798864277487L;
 
     /** {@link LinearIndexStorage} index of the first item */

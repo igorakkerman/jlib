@@ -34,7 +34,6 @@ import org.jlib.core.iterator.InvalidIteratorStateException;
 public class NoItemToReplaceException
 extends InvalidIteratorStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 1299720624484946758L;
 
     /**

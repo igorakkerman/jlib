@@ -38,7 +38,6 @@ public class IndexRangeOperationDescriptor
 implements Cloneable,
            Serializable {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 2349186633834250865L;
 
     /** begin index of the source range */

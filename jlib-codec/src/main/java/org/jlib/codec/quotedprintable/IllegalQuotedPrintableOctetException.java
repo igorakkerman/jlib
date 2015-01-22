@@ -32,7 +32,6 @@ package org.jlib.codec.quotedprintable;
 public class IllegalQuotedPrintableOctetException
 extends InvalidQuotedPrintableStreamException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = -7132279152781768023L;
 
     /** the illegal characters */

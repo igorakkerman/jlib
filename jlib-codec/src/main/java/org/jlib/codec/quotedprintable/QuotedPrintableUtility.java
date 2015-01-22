@@ -29,8 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.jlib.io.IOUtility.parseHexNumberAsByte;
-import static org.jlib.io.IOUtility.toUnsignedInt;
+import static org.jlib.io.IOxUtility.parseHexNumberAsByte;
+import static org.jlib.io.IOxUtility.toUnsignedInt;
 import static org.jlib.core.text.number.NumberTextUtility.HEX_DIGIT_CHARACTERS;
 
 /**

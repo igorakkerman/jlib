@@ -33,7 +33,6 @@ import org.jlib.core.exception.ApplicationException;
 public class PropertyNotSetException
 extends ApplicationException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 902825184458130007L;
 
     /** name of the property that is not set */

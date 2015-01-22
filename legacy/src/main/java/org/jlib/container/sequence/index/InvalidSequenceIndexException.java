@@ -34,7 +34,6 @@ import org.jlib.container.operation.InvalidContainerArgumentException;
 public class InvalidSequenceIndexException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 1501618255867836784L;
 
     /**

@@ -34,7 +34,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public abstract class NotAccessibleException
 extends ApplicationException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 813625306823615853L;
 
     private final Optional<String> valueName;

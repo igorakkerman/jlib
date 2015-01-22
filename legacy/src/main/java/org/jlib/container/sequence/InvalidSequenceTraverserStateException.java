@@ -32,7 +32,6 @@ import org.jlib.container.iterator.iterator.InvalidIteratorStateException;
 public abstract class InvalidSequenceIteratorStateException
 extends InvalidIteratorStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 7078599807599575854L;
 
     /**

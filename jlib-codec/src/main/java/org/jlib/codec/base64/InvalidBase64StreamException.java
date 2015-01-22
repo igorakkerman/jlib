@@ -19,11 +19,9 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
 
-import java.io.IOException;
+import org.jlib.io.IoException;
 
 /**
  * Exception thrown if a stream is an invalid base64 stream.
@@ -31,14 +29,9 @@ import java.io.IOException;
  * @author Igor Akkerman
  */
 public abstract class InvalidBase64StreamException
-extends IOException {
+extends IoException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 1102863875982144028L;
 
-    /**
-     * Creates a new InvalidBase64StreamException.
-     */
-    protected InvalidBase64StreamException() {
-    }
+    protected InvalidBase64StreamException() {}
 }

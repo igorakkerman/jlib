@@ -34,7 +34,6 @@ import org.jlib.container.operation.binaryrelation.Pair;
 public class PairAlreadyContainedException
 extends InvalidPairException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 1416174523765702421L;
 
     /**

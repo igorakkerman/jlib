@@ -30,7 +30,6 @@ package org.jlib.container.operation.matrix;
 public class MatrixIndexOutOfBoundsException
 extends IndexOutOfBoundsException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 1022358594354919533L;
 
     /** {@link IndexMatrix} */

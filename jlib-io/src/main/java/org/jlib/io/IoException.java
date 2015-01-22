@@ -19,35 +19,29 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.io;
+
+import java.io.IOException;
 
 import org.jlib.core.text.message.Message;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
+public class IoException
+extends IOException{
 
-/**
- * Skeletal implementation of an {@link Exception} using a formatted message.
- *
- * @author Igor Akkerman
- */
-public abstract class ApplicationException
-extends Exception {
+    private static final long serialVersionUID = 5456967638609113128L;
 
-    private static final long serialVersionUID = - 7508635402610527176L;
-
-    protected ApplicationException() {
-        super(EMPTY);
+    public IoException() {
     }
 
-    protected ApplicationException(final Message message) {
+    public IoException(final Message message) {
         super(message.toString());
     }
 
-    protected ApplicationException(final Exception cause) {
-        super(EMPTY, cause);
+    public IoException(final Message message, final Throwable cause) {
+        super(message.toString(), cause);
     }
 
-    protected ApplicationException(final Message message, final Exception cause) {
-        super(message.toString(), cause);
+    public IoException(final Throwable cause) {
+        super(cause);
     }
 }

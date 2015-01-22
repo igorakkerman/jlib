@@ -32,7 +32,6 @@ package org.jlib.codec.base64;
 public class IllegalBase64CharacterException
 extends InvalidBase64StreamException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = -8389442743931398913L;
 
     /** illegal character */

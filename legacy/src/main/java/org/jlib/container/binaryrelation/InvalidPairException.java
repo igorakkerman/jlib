@@ -36,7 +36,6 @@ import static org.jlib.core.language.MessageUtility.message;
 public abstract class InvalidPairException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 6498242933289941100L;
 
     /**

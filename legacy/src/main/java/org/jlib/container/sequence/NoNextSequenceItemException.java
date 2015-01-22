@@ -32,7 +32,6 @@ import org.jlib.container.iterator.iterator.NoNextItemException;
 public class NoNextSequenceItemException
 extends NoNextItemException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 3286617731417853890L;
 
     /**

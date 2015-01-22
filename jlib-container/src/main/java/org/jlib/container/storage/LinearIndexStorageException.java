@@ -33,7 +33,6 @@ import org.jlib.core.exception.InvalidArgumentException;
 public abstract class LinearIndexStorageException
 extends InvalidArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 1514836335986845986L;
 
     protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,

@@ -9,7 +9,6 @@ package org.jlib.text;
 public class CharSequenceBeginIndexAboveBoundException
 extends CharSequenceIndexOutOfBoundsException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 9062236461443912116L;
 
     /**

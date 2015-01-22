@@ -33,7 +33,6 @@ import org.jlib.core.exception.InvalidStateException;
 public abstract class ObserverException
 extends InvalidStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 7621231395096897078L;
 
     /**

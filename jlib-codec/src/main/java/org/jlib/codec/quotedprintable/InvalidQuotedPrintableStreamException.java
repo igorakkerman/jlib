@@ -33,12 +33,8 @@ import java.io.IOException;
 abstract class InvalidQuotedPrintableStreamException
 extends IOException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = -5768046195260521187L;
 
-    /**
-     * Creates a new InvalidQuotedPrintableStreamException.
-     */
     protected InvalidQuotedPrintableStreamException() {
     }
 }

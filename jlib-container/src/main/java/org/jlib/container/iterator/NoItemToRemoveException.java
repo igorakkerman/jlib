@@ -34,7 +34,6 @@ import org.jlib.core.iterator.InvalidIteratorStateException;
 public class NoItemToRemoveException
 extends InvalidIteratorStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 5330769541839992129L;
 
     /**

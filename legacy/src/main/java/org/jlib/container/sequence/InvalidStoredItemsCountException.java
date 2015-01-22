@@ -34,7 +34,6 @@ import org.jlib.container.operation.InvalidContainerStateException;
 public class InvalidStoredItemsCountException
 extends InvalidContainerStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 5400803962181030353L;
 
     /** invalid number of Items */

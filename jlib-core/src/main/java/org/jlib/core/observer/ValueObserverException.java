@@ -31,7 +31,6 @@ import org.jlib.core.text.message.Message;
 public abstract class ValueObserverException
 extends ObserverException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 2860634081042322384L;
 
     /**

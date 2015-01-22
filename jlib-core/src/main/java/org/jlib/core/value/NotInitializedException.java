@@ -31,7 +31,6 @@ import org.jlib.core.exception.ApplicationException;
 public class NotInitializedException
 extends NotAccessibleException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 4844161228178575622L;
 
     /**

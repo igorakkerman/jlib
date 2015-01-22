@@ -31,7 +31,6 @@ import org.jlib.core.text.message.Message;
 public abstract class InvalidStateException
 extends IllegalStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 6535760982905205135L;
 
     protected InvalidStateException() {

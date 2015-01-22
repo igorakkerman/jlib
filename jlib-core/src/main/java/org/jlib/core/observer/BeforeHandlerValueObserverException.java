@@ -32,7 +32,6 @@ import org.jlib.core.text.message.Message;
 public abstract class BeforeHandlerValueObserverException
 extends ValueObserverException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 3157732253924917254L;
 
     /**

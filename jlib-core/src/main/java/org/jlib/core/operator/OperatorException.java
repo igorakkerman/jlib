@@ -32,7 +32,6 @@ import org.jlib.core.text.message.Message;
 public class OperatorException
 extends ApplicationException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 9075612246404744163L;
 
     /** {@link RuntimeException} that caused this {@link OperatorException} */

@@ -19,10 +19,7 @@
  *     limitations under the License.
  */
 
-
-
 package org.jlib.codec.base64;
-
 
 /**
  * Exception thrown if a base64 block contains more than two padding characters or a padding
@@ -34,7 +31,6 @@ package org.jlib.codec.base64;
 public class IllegalBase64BlockPadException
 extends InvalidBase64StreamException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 1023903911620993818L;
 
     /** base64 block containing a wrong padding character */

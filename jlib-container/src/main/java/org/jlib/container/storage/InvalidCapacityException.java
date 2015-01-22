@@ -33,7 +33,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class InvalidCapacityException
 extends LinearIndexStorageException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 701812048814999842L;
 
     /**

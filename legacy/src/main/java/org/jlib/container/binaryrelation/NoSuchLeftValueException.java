@@ -35,7 +35,6 @@ import static org.jlib.core.language.MessageUtility.namedObject;
 public class NoSuchLeftValueException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 723559454379105926L;
 
     /**

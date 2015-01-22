@@ -32,7 +32,6 @@ import org.jlib.core.text.message.Message;
 public abstract class InvalidIteratorStateException
 extends InvalidIterableStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 1706750148627927636L;
 
     protected InvalidIteratorStateException(final Iterable<?> iterable) {

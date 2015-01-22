@@ -30,7 +30,6 @@ package org.jlib.container.operation.binaryrelation;
 public class NoSuchPairException
 extends InvalidPairException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 5774667231932174427L;
 
     /**

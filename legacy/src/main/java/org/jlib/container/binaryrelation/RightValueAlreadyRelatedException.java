@@ -29,7 +29,6 @@ package org.jlib.container.operation.binaryrelation;
 public class RightValueAlreadyRelatedException
 extends InvalidPairException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 2805417022226046022L;
 
     /**

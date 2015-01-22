@@ -35,7 +35,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class ClassInstantiationException
 extends ApplicationException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 324704714378755280L;
 
     /** class name */

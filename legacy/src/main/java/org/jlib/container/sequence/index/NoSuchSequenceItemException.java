@@ -34,7 +34,6 @@ import static org.jlib.core.language.MessageUtility.message;
 public class NoSuchSequenceItemException
 extends InvalidContainerArgumentException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 8162511917404174346L;
 
     /**

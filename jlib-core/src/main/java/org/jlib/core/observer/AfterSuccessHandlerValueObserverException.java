@@ -32,7 +32,6 @@ import org.jlib.core.text.message.Message;
 public abstract class AfterSuccessHandlerValueObserverException
 extends ValueObserverException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = 3230285545341500553L;
 
     protected AfterSuccessHandlerValueObserverException(final Object value, final Message message,

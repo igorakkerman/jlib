@@ -34,7 +34,6 @@ import static org.jlib.core.text.message.MessageUtility.message;
 public class InvalidIterableStateException
 extends InvalidStateException {
 
-    /** serialVersionUID */
     private static final long serialVersionUID = - 5070211173782251202L;
 
     public InvalidIterableStateException(final Iterable<?> iterable) {
