@@ -27,17 +27,17 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public interface Equals<Obj> {
 
     /**
-     * Verifies whether the specified first {@link Obj} is equal to the specified second {@link Object}.
+     * Verifies whether the specified object1 {@link Obj} is equal to the specified object2 {@link Object}.
      * When two values are called equal is defined by the concrete implementation of this interface.
      *
-     * @param first
-     *        first {@link Obj}
+     * @param object1
+     *        object1 {@link Obj}
      *
-     * @param second
-     *        second {@link Object}
+     * @param object2
+     *        object2 {@link Object}
      *
      * @return {@code true} if all of the conditions stated above are satisfied;
      *         {@code false} otherwise
      */
-    boolean areEqual(Obj first, @Nullable Object second);
+    boolean areEqual(Obj object1, @Nullable Object object2);
 }

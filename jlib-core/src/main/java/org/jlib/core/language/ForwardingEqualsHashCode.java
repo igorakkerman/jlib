@@ -35,8 +35,8 @@ implements EqualsHashCode<Obj> {
     }
 
     @Override
-    public boolean areEqual(final Obj first, @Nullable final Object second) {
-        return equals.areEqual(first, second);
+    public boolean areEqual(final Obj object1, @Nullable final Object object2) {
+        return equals.areEqual(object1, object2);
     }
 
     @Override

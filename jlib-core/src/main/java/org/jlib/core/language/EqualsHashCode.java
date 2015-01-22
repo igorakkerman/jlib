@@ -31,5 +31,5 @@ package org.jlib.core.language;
 public interface EqualsHashCode<Obj>
 extends Equals<Obj>,
         HashCode<Obj> {
-    // unifying to provide uniform provideEqualItems/hashCode
+    // unifying to provide matching equals/hashCode implementation
 }
