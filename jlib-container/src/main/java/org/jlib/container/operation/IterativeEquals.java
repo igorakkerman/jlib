@@ -29,32 +29,19 @@ import static org.jlib.core.iterator.IterableUtility.provideEqualItems;
 public final class IterativeEquals<Item>
 implements Equals<Iterable<Item>> {
 
-    /** sole {@link IterativeEquals} instance */
     private static final IterativeEquals<?> INSTANCE = new IterativeEquals<>();
 
-    /**
-     * Returns the sole {@link IterativeEquals} instance.
-     *
-     * @param <Item>
-     *        type of the Item
-     *
-     * @return sole {@link IterativeEquals} instance
-     */
     @SuppressWarnings("unchecked")
     public static <Item> IterativeEquals<Item> getInstance() {
         return (IterativeEquals<Item>) INSTANCE;
     }
 
-    /**
-     * Creates a new {@link IterativeEquals}.
-     */
-    private IterativeEquals() {
-    }
+    private IterativeEquals() {}
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean areEqual(final Iterable<Item> thisIterable, @Nullable final Object otherObject) {
-        return otherObject instanceof Iterable<?> && //
-               provideEqualItems(thisIterable, (Iterable<Item>) otherObject);
+    public boolean areEqual(final Iterable<Item> iterable1, @Nullable final Object iterable2) {
+        return iterable2 instanceof Iterable<?> && //
+               provideEqualItems(iterable1, (Iterable<Item>) iterable2);
     }
 }
