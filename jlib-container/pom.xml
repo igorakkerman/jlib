@@ -39,7 +39,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
         <dependency>
             <groupId>org.jlib</groupId>
             <artifactId>jlib-core</artifactId>
