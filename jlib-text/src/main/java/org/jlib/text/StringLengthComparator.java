@@ -40,37 +40,26 @@ import java.util.Comparator;
 public class StringLengthComparator<ComparisonObject>
 implements Comparator<ComparisonObject> {
 
-    /** sole StringLengthComparator instance */
     private static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<>();
 
-    /**
-     * Returns the sole StringLengthComparator instance.
-     * @param <ComparisonObject>
-     *        type of the objects to compare
-     *
-     * @return sole StringLengthComparator instance
-     */
     @SuppressWarnings("unchecked")
-    public static <ComparisonObject> StringLengthComparator<ComparisonObject> getInstance() {
+    public static <ComparisonObject> /*
+               */ StringLengthComparator<ComparisonObject> getInstance() {
         return (StringLengthComparator<ComparisonObject>) INSTANCE;
     }
 
-    /**
-     * Creates a new StringLengthComparator.
-     */
-    private StringLengthComparator() {
-    }
+    private StringLengthComparator() {}
 
     @Override
     public int compare(final ComparisonObject object1, final ComparisonObject object2) {
         final String string1 = object1.toString();
         final String string2 = object2.toString();
         final int string1Length = string1 != null ?
-                            string1.length() :
-                            - 1;
+                                  string1.length() :
+                                  - 1;
         final int string2Length = string2 != null ?
-                            string2.length() :
-                            - 1;
+                                  string2.length() :
+                                  - 1;
 
         return string1Length - string2Length;
     }
