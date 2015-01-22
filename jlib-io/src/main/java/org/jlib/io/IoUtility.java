@@ -31,10 +31,10 @@ import static org.jlib.core.text.number.NumberTextUtility.parseHexDigit;
  *
  * @author Igor Akkerman
  */
-public final class IOxUtility {
+public final class IoUtility {
 
     /** no visible constructor */
-    private IOxUtility() {}
+    private IoUtility() {}
 
     /**
      * <p>
