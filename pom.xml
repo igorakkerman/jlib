@@ -44,7 +44,6 @@
         <module>jlib-codequality</module>
         <module>jlib-core</module>
         <module>jlib-text</module>
-        <module>jlib-io</module>
         <module>jlib-codec</module>
         <module>jlib-container</module>
     </modules>

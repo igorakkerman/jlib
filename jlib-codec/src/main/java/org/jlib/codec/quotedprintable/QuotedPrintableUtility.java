@@ -29,9 +29,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.jlib.io.IoUtility.parseHexNumberAsByte;
-import static org.jlib.io.IoUtility.toUnsignedInt;
-import static org.jlib.core.text.number.NumberTextUtility.HEX_DIGIT_CHARACTERS;
+import static org.jlib.codec.number.HexadecimalUtility.HEX_DIGIT_CHARACTERS;
+import static org.jlib.codec.number.HexadecimalUtility.parseHexNumberAsByte;
+import static org.jlib.core.io.StreamUtility.toUnsignedInt;
 
 /**
  * Utility class for quoted-printable encoding operations.

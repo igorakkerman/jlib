@@ -21,7 +21,7 @@
 
 package org.jlib.codec.base64;
 
-import org.jlib.io.IoException;
+import org.jlib.core.io.IoException;
 
 /**
  * Exception thrown if a stream is an invalid base64 stream.

@@ -19,67 +19,37 @@
  *     limitations under the License.
  */
 
-package org.jlib.io;
+package org.jlib.codec.number;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+public class HexadecimalUtility {
 
-import static org.jlib.core.text.number.NumberTextUtility.parseHexDigit;
-
-/**
- * Utility class providing static methods for input/output operations.
- *
- * @author Igor Akkerman
- */
-public final class IoUtility {
-
-    /** no visible constructor */
-    private IoUtility() {}
+    /** hexadecimal digit characters */
+    public static final char[] HEX_DIGIT_CHARACTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',
+                                                        'D', 'E', 'F' };
 
     /**
-     * <p>
-     * Converts the specified signed byte value into an unsigned integer value
-     * taking in account the sign of the byte.
-     * </p>
-     * <p>
-     * Many stream operations like the {@link OutputStream#write(int)} method
-     * require a byte to be specified by an integer. Using this method, an
-     * unsigned byte can be converted into such an integer.
-     * </p>
+     * Parses a hexadecimal digit of the specified character.
      *
-     * @param signedByte
-     *        the signed byte value (-128 to 127)
-     * @return the unsigned integer value (0 to 255)
+     * @param hexDigitCharacter
+     *        character holding a hexadecimal digit
+     *
+     * @return byte holding the value of hexDigitCharacter
+     *
+     * @throws NumberFormatException
+     *         if {@code hexDigitCharacter} does not hold a hexadecimal digit
      */
-    public static int toUnsignedInt(final byte signedByte) {
-        return signedByte >= 0 ?
-               signedByte :
-               signedByte + 256;
-    }
+    public static byte parseHexDigit(final char hexDigitCharacter)
+    throws NumberFormatException {
+        if (hexDigitCharacter >= '0' && hexDigitCharacter <= '9')
+            return (byte) (hexDigitCharacter - '0');
 
-    /**
-     * <p>
-     * Converts the specified unsigned integer value into an signed byte value
-     * taking in account the sign of the byte.
-     * </p>
-     * <p>
-     * The {@link InputStream#read() read()} method of the {@link InputStream}
-     * class returns a byte as an integer. Using this method, such an integer
-     * can be converted into a signed byte.
-     * </p>
-     * <p>
-     * This method has the same functionality as a simple cast to a byte.
-     * </p>
-     *
-     * @param unsignedInt
-     *        the unsigned integer value of a signed byte (0 to 255). The 24
-     *        higher-order bits of this integer are ignored.
-     * @return the signed byte value (-128 to 127)
-     */
-    public static byte toSignedByte(final int unsignedInt) {
-        return (byte) unsignedInt;
-        // identical functionality to:
-        // return (byte) (unsignedInt <= 127 ? unsignedInt : unsignedInt - 256);
+        if (hexDigitCharacter >= 'A' && hexDigitCharacter <= 'F')
+            return (byte) (hexDigitCharacter - 'A' + 10);
+
+        if (hexDigitCharacter >= 'a' && hexDigitCharacter <= 'f')
+            return (byte) (hexDigitCharacter - 'a' + 10);
+
+        throw new NumberFormatException(Character.toString(hexDigitCharacter));
     }
 
     /**
@@ -122,4 +92,6 @@ public final class IoUtility {
         return (byte) (parseHexDigit((char) hexCharacters[offset]) << 4 |
                        parseHexDigit((char) hexCharacters[offset + 1]));
     }
+
+    private HexadecimalUtility() {}
 }

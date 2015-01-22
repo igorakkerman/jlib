@@ -28,7 +28,6 @@
         <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-core (1)" />
-        <module name="jlib-io" />
         <module name="jlib-text" />
       </profile>
     </annotationProcessing>

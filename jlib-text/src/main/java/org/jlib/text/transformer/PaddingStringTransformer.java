@@ -1,6 +1,6 @@
 package org.jlib.text.transformer;
 
-import static org.jlib.core.text.number.NumberTextUtility.isOdd;
+import static org.jlib.core.text.number.NumberUtility.isOdd;
 
 /**
  * Skeletal implementation of a {@link StringTransformer} padding a String.

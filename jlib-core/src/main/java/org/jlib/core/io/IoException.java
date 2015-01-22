@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.io;
+package org.jlib.core.io;
 
 import java.io.IOException;
 

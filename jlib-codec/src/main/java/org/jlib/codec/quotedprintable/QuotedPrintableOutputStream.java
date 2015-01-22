@@ -26,8 +26,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import static org.jlib.io.IoUtility.toSignedByte;
-import static org.jlib.io.IoUtility.toUnsignedInt;
+import static org.jlib.core.io.StreamUtility.toSignedByte;
+import static org.jlib.core.io.StreamUtility.toUnsignedInt;
 
 /**
  * FilterOutputStream performing a quoted-printable encoding for a target OutputStream.

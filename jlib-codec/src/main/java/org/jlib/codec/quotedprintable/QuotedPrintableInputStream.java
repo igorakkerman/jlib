@@ -29,8 +29,8 @@ import java.io.InputStream;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import static org.jlib.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
-import static org.jlib.io.IoUtility.toSignedByte;
-import static org.jlib.io.IoUtility.toUnsignedInt;
+import static org.jlib.core.io.StreamUtility.toSignedByte;
+import static org.jlib.core.io.StreamUtility.toUnsignedInt;
 
 /**
  * FilterInputStream performing a quoted-printable decoding of a source InputStream.
