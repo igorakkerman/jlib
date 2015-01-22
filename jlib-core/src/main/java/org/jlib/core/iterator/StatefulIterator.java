@@ -19,13 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
 
 import java.util.Iterator;
-
-import org.jlib.core.iterator.IterableAware;
-import org.jlib.core.iterator.IteratorState;
-import org.jlib.core.iterator.NoNextItemException;
 
 public class StatefulIterator<Item, Itble extends Iterable<Item>, State extends IteratorState<Item, State>>
 extends IterableAware<Item, Itble>

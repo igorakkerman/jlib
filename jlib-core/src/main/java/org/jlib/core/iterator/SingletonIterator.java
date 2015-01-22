@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
 
 import org.jlib.core.iterator.BidiIterator;
 import org.jlib.core.iterator.BidiIteratorState;
