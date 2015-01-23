@@ -19,14 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.text.templateengine;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
-import static org.jlib.core.text.TextUtility.removeOnce;
-
+import static org.jlib.text.templateengine.TextUtility.removeOnce;
 import org.junit.Test;
 
 public class TextUtilityTest {
@@ -64,29 +62,5 @@ public class TextUtilityTest {
     @Test
     public void testRemoveOnceMiddleFromDouble() {
         assertThat(removeOnce("BlaBlubBlub", "Blub")).isEqualTo("BlaBlub");
-    }
-
-    public void unCamelCaseAllLowerCase() {
-        assertThat(camelCaseToLowerCaseWords("abcdefgeh")).isEqualTo("abcdefgeh");
-    }
-
-    public void unCamelCaseEmptyString() {
-        assertThat(camelCaseToLowerCaseWords(EMPTY)).isEqualTo(EMPTY);
-    }
-
-    public void unCamelCaseLowerCaseStart() {
-        assertThat(camelCaseToLowerCaseWords("aBcdEfg")).isEqualTo("a bcd efg");
-    }
-
-    public void unCamelCaseUpperCaseStart() {
-        assertThat(camelCaseToLowerCaseWords("AbcdEfg")).isEqualTo("abcd efg");
-    }
-
-    public void unCamelCaseDoubleUpperCase() {
-        assertThat(camelCaseToLowerCaseWords("ABcdEfg")).isEqualTo("a bcd efg");
-    }
-
-    public void unCamelCaseAllUpperCase() {
-        assertThat(camelCaseToLowerCaseWords("ABCDEFG")).isEqualTo("a b c d e f g");
     }
 }

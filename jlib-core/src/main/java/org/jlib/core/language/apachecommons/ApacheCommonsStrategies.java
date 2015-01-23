@@ -23,11 +23,13 @@ package org.jlib.core.language.apachecommons;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import org.jlib.core.language.Equals;
 import org.jlib.core.language.EqualsHashCode;
 import org.jlib.core.language.ForwardingEqualsHashCode;
 import org.jlib.core.language.HashCode;
+import org.jlib.core.language.ToString;
 
 public class ApacheCommonsStrategies {
 
@@ -53,6 +55,15 @@ public class ApacheCommonsStrategies {
 
     public static <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(final String... excludedFields) {
         return new ForwardingEqualsHashCode<>(reflectionEquals(excludedFields), reflectionHashCode(excludedFields));
+    }
+
+    public static <Obj> ToString<Obj> reflectionToString() {
+        return ToStringBuilder::reflectionToString;
+    }
+
+    @SuppressWarnings("Convert2MethodRef")
+    public static <Obj> ToString<Obj> reflectionToString(final ToStringStyle toStringStyle) {
+        return object -> ToStringBuilder.reflectionToString(object);
     }
 
     private ApacheCommonsStrategies() {}

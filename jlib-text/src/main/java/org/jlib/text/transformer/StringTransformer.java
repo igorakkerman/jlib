@@ -22,9 +22,8 @@
 package org.jlib.text.transformer;
 
 /**
- * Transformer of a String using the strategy defined by the implementation of
- * this interface. The actual transformation is performed within a
- * {@link StringBuilder}, which is passed as an argument to the
+ * Transformer of a String using the strategy defined by the implementation of this interface.
+ * The actual transformation is performed within a {@link StringBuilder}, which is passed as an argument to the
  * {@link #transform} method.
  *
  * @author Igor Akkerman

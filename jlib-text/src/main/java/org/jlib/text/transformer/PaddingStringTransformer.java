@@ -22,6 +22,7 @@ implements StringTransformer {
      * @param finalStringLength
      *        integer specifying the length of the String to return by this
      *        PaddingStringTransformer
+     *
      * @param paddingCharacter
      *        character used for padding
      */
@@ -29,7 +30,6 @@ implements StringTransformer {
         this.finalStringLength = finalStringLength;
         this.paddingCharacter = paddingCharacter;
     }
-
 
     @Override
     public void transform(final StringBuilder stringBuilder) {
@@ -43,7 +43,7 @@ implements StringTransformer {
         final int halfPadLength = padLength / 2;
 
         final StringBuilder halfPadBuilder = new StringBuilder(halfPadLength);
-        for (int halfPadIndex = 0; halfPadIndex < halfPadLength; halfPadIndex ++)
+        for (int halfPadIndex = 0; halfPadIndex < halfPadLength; halfPadIndex++)
             halfPadBuilder.append(paddingCharacter);
 
         pad(stringBuilder, halfPadBuilder, isOdd(padLength));
@@ -56,8 +56,10 @@ implements StringTransformer {
      *
      * @param stringBuilder
      *        {@link StringBuilder} containing the String to transform
+     *
      * @param halfPadBuilder
      *        {@link StringBuilder}
+     *
      * @param additionalPaddingCharacterRequired
      *        {@code true} if an additional padding character should be used;
      *        {@code false} otherwise
@@ -74,17 +76,15 @@ implements StringTransformer {
         return paddingCharacter;
     }
 
-
     @Override
     public String toString() {
         return getClass().getSimpleName() + "[finalStringLength=" + finalStringLength + ", paddingCharacter='" +
                paddingCharacter + "']";
     }
 
-
     @Override
     public boolean equals(final Object otherObject) {
-        if (otherObject == null || !getClass().equals(otherObject.getClass()))
+        if (otherObject == null || ! getClass().equals(otherObject.getClass()))
             return false;
 
         final PaddingStringTransformer otherPaddingStringTransformer = (PaddingStringTransformer) otherObject;
@@ -92,7 +92,6 @@ implements StringTransformer {
         return finalStringLength == otherPaddingStringTransformer.finalStringLength &&
                paddingCharacter == otherPaddingStringTransformer.paddingCharacter;
     }
-
 
     @Override
     public int hashCode() {

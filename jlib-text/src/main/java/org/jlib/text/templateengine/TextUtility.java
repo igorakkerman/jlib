@@ -19,28 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.text.templateengine;
 
 import org.jlib.core.system.SystemUtility;
 
-import static java.lang.Character.isUpperCase;
-import static java.lang.Character.toLowerCase;
-import static org.apache.commons.lang3.StringUtils.EMPTY;
+import org.jlib.core.text.CharSequenceIterator;
+
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
 
-/**
- * Utility class providing static methods for String operations and
- * manipulations.
- *
- * @author Igor Akkerman
- */
-public final class TextUtility {
+public class TextUtility {
+
+    public static final String EMPTY = "";
+    public static final String[] EMPTY_STRING_ARRAY = { };
 
     /** property name of the system's line separator */
     public static final String LINE_SEPARATOR_PROPERTY_NAME = "line.separator";
 
     /** the system's line separator */
     public static final String LINE_SEPARATOR = SystemUtility.getApplicationProperty(LINE_SEPARATOR_PROPERTY_NAME);
+
+    public static StringBuilder clear(final StringBuilder stringBuilder) {
+        stringBuilder.setLength(0);
+
+        return stringBuilder;
+    }
 
     public static String removeOnce(final String containingString, final String removedString) {
         return replaceOnce(containingString, removedString, EMPTY);
@@ -57,30 +59,5 @@ public final class TextUtility {
     public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex,
                                                  final int lastCharacterIndex) {
         return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex, lastCharacterIndex);
-    }
-
-    /** no visible constructor */
-    private TextUtility() {
-    }
-
-    // TODO: convert to StringTransformer
-    public static String camelCaseToLowerCaseWords(final CharSequence sequence) {
-
-        final int sequenceLength = sequence.length();
-
-        if (sequenceLength == 0)
-            return EMPTY;
-
-        final StringBuilder messageBuilder = new StringBuilder(sequenceLength * 2);
-
-        messageBuilder.append(toLowerCase(sequence.charAt(0)));
-
-        for (final char exceptionNameCharacter : asIterable(sequence, 1))
-            if (isUpperCase(exceptionNameCharacter))
-                messageBuilder.append(' ').append(toLowerCase(exceptionNameCharacter));
-            else
-                messageBuilder.append(exceptionNameCharacter);
-
-        return messageBuilder.toString();
     }
 }

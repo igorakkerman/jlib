@@ -11,8 +11,22 @@ import java.util.Locale;
  */
 public final class StringTransformers {
 
-    /** No visible default constructor. */
-    private StringTransformers() {}
+    /**
+     * Transforms the specified {@link CharSequence} using the specified {@link StringTransformer}.
+     *
+     * @param stringTransformer
+     *        {@link StringTransformer} to use
+     *
+     * @param charSequence
+     *        {@link CharSequence} to transform
+     *
+     * @return transformed {@link String}
+     */
+    public static String transform(final StringTransformer stringTransformer, final CharSequence charSequence) {
+        final StringBuilder stringBuilder = new StringBuilder(charSequence);
+        stringTransformer.transform(stringBuilder);
+        return stringBuilder.toString();
+    }
 
     /**
      * Returns a new {@link StringTransformer} centering a substring in a String
@@ -23,6 +37,7 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer center(final int finalStringLength) {
@@ -39,8 +54,10 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @param paddingCharacter
      *        character used for padding
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer center(final int finalStringLength, final char paddingCharacter) {
@@ -56,6 +73,7 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer centerRight(final int finalStringLength) {
@@ -72,8 +90,10 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @param paddingCharacter
      *        character used for padding
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer centerRight(final int finalStringLength, final char paddingCharacter) {
@@ -89,6 +109,7 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer leftAlign(final int finalStringLength) {
@@ -104,8 +125,10 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @param paddingCharacter
      *        character used for padding
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer leftAlign(final int finalStringLength, final char paddingCharacter) {
@@ -120,6 +143,7 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer rightAlign(final int finalStringLength) {
@@ -134,12 +158,18 @@ public final class StringTransformers {
      * @param finalStringLength
      *        integer specifying the length of the String to return by the
      *        {@link StringTransformer}
+     *
      * @param paddingCharacter
      *        character used for padding
+     *
      * @return the newly created {@link StringTransformer}
      */
     public static StringTransformer rightAlign(final int finalStringLength, final char paddingCharacter) {
         return new RightAligningStringTransformer(finalStringLength, paddingCharacter);
+    }
+
+    public static StringTransformer camelCaseToLowerCaseWords() {
+        return new CamelCaseToLowerCaseWordsTransformer();
     }
 
     /**
@@ -149,6 +179,7 @@ public final class StringTransformers {
      *
      * @param format
      *        {@link String} specifying the format
+     *
      * @return the newly created {@link StringTransformer}
      */
     public StringTransformer format(final String format) {
@@ -163,16 +194,19 @@ public final class StringTransformers {
      *
      * @param format
      *        {@link String} specifying the format
+     *
      * @param originalStringValueIndex
      *        integer specifying the index in the formatted values of the
      *        original String
+     *
      * @param values
      *        argument sequence of {@link Object Objects} specifying the values to
      *        format
+     *
      * @return the newly created {@link StringTransformer}
+     *
      * @throws IndexOutOfBoundsException
-     *         if {@code originalStringValueIndex < 0 ||
-     *         originalStringValueIndex > values.length}
+     *         if {@code originalStringValueIndex < 0 || originalStringValueIndex > values.length}
      */
     public StringTransformer format(final String format, final int originalStringValueIndex, final Object... values) {
         return new FormattingStringTransformer(format, originalStringValueIndex, values);
@@ -204,4 +238,6 @@ public final class StringTransformers {
                                     final Object... values) {
         return new FormattingStringTransformer(locale, format, originalStringValueIndex, values);
     }
+
+    private StringTransformers() {}
 }

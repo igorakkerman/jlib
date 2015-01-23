@@ -19,19 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.text;
+package org.jlib.core.text;
 
-import java.util.Comparator;
+/**
+ * Utility class providing static methods for String operations and
+ * manipulations.
+ *
+ * @author Igor Akkerman
+ */
+public final class StringUtility {
 
-public class TextUtility {
-
-    public static Comparator<?> STRING_LENGTH_COMPARATOR = /*
-     */ (compared1, compared2) -> compared1.toString().length() - compared2.toString().length();
-
-    @SuppressWarnings("unchecked")
-    public static <Compared> Comparator<Compared> stringLength() {
-        return (Comparator<Compared>) STRING_LENGTH_COMPARATOR;
-    }
-
-    private TextUtility() {}
+    private StringUtility() {}
 }

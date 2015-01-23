@@ -19,24 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.exception;
+package org.jlib.core.language;
 
-import org.jlib.core.text.message.Message;
-import org.jlib.core.text.message.MessageUtility;
-
-import static org.jlib.core.text.TextUtility.camelCaseToLowerCaseWords;
-import static org.jlib.core.text.TextUtility.removeOnce;
-
-public final class ExceptionUtility {
-
-    public static String autoMessageText(final Exception exception) {
-        return camelCaseToLowerCaseWords(removeOnce(exception.getClass().getSimpleName(), "Exception"));
-    }
-
-    private ExceptionUtility() {}
-
-    public static Message autoMessage(final Exception exception) {
-        return MessageUtility.message(autoMessageText(exception));
-    }
+public interface ToString<Obj> {
+    String toString(final Obj object);
 }
-
