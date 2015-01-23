@@ -28,8 +28,7 @@ import org.jlib.object_spi.apachecommons.ApacheCommonsStrategies;
 
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using
- * the correspondent reflective builders provided by
- * <a href="http://commons.apache.org/proper/commons-lang/">Apache Commons Lang</a>.
+ * the correspondent reflective builders provided by a jlib Object SPI implementation.
  *
  * @author Igor Akkerman
  */
