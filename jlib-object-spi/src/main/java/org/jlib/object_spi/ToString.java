@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.object_spi;
 
 public interface ToString<Obj> {
     String toString(final Obj object);

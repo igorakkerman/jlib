@@ -6,7 +6,8 @@
     <file url="file://$PROJECT_DIR$/jlib-codequality" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-container" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/jlib-io" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-object-spi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-object-spi-apachecommons" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-operator" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-text" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />

@@ -19,17 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.apachecommons;
+package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import org.jlib.core.language.Equals;
-import org.jlib.core.language.EqualsHashCode;
-import org.jlib.core.language.ForwardingEqualsHashCode;
-import org.jlib.core.language.HashCode;
-import org.jlib.core.language.ToString;
+import org.jlib.object_spi.Equals;
+import org.jlib.object_spi.EqualsHashCode;
+import org.jlib.object_spi.ForwardingEqualsHashCode;
+import org.jlib.object_spi.HashCode;
+import org.jlib.object_spi.ToString;
 
 public class ApacheCommonsStrategies {
 

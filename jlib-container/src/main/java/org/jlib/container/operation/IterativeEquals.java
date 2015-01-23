@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.Equals;
+import org.jlib.object_spi.Equals;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 import static org.jlib.core.iterator.IterableUtility.provideEqualItems;

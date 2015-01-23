@@ -21,7 +21,10 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.language.apachecommons.ApacheCommonsStrategies;
+import org.jlib.object_spi.Equals;
+import org.jlib.object_spi.HashCode;
+import org.jlib.object_spi.ToString;
+import org.jlib.object_spi.apachecommons.ApacheCommonsStrategies;
 
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using

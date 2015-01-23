@@ -38,6 +38,8 @@
 
     <modules>
         <module>jlib-codequality</module>
+        <module>jlib-object-spi</module>
+        <module>jlib-object-spi-apachecommons</module>
         <module>jlib-core</module>
         <module>jlib-text</module>
         <module>jlib-codec</module>
@@ -137,6 +139,18 @@
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-codequality</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-object-spi</artifactId>
+                <version>${jlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-object-spi-apachecommons</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 

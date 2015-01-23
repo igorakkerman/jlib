@@ -19,19 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.object_spi;
 
-@FunctionalInterface
-public interface HashCode<Obj> {
-
-    /**
-     * Computes a hash code of the specified {@link Obj}.
-     * The algorithm used for the computation is specified by the concrete implementation.
-     *
-     * @param object
-     *        {@link Obj} of which the hash code should be computed
-     *
-     * @return integer specifying the hash code
-     */
-    int hashCode(Obj object);
+/**
+ * Unification of interfaces {@link Equals} and {@link HashCode}.
+ * An implementation of this interface must ensure that the algorithms are compatible,
+ * such that if {@code areEqual(object1, object2) == true} then {@code hashCode(object1) == hashCode(object2)}.
+ *
+ * @param <Obj>
+ */
+public interface EqualsHashCode<Obj>
+extends Equals<Obj>,
+        HashCode<Obj> {
+    // unifying to provide matching equals/hashCode implementation
 }

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language.apachecommons;
+package org.jlib.object_spi.apachecommons;
 
 public interface ToStringStyle {
 

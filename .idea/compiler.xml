@@ -28,8 +28,11 @@
         <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-core (1)" />
+        <module name="jlib-object-spi" />
+        <module name="jlib-object-spi-apachecommons" />
         <module name="jlib-operation" />
         <module name="jlib-operator" />
+        <module name="jlib-spi-apachecommons" />
         <module name="jlib-text" />
       </profile>
     </annotationProcessing>
@@ -40,8 +43,11 @@
       <module name="jlib-core" target="1.8" />
       <module name="jlib-core (1)" target="1.8" />
       <module name="jlib-io" target="1.8" />
+      <module name="jlib-object-spi" target="1.8" />
+      <module name="jlib-object-spi-apachecommons" target="1.8" />
       <module name="jlib-operation" target="1.8" />
       <module name="jlib-operator" target="1.8" />
+      <module name="jlib-spi-apachecommons" target="1.8" />
       <module name="jlib-text" target="1.8" />
       <module name="jlib-unittest" target="1.8" />
     </bytecodeTargetLevel>
