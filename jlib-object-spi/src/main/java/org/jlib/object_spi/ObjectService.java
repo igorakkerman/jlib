@@ -37,7 +37,8 @@ public class ObjectService {
     private final ObjectMethodDelegator objectMethodDelegator;
 
     private ObjectService()
-    throws ServiceConfigurationError {
+    throws ServiceConfigurationError, ObjectMethodDelegatorMissingException,
+           OnlyOneObjectMethodDelegatorAllowedException {
         final ServiceLoader<ObjectMethodDelegator> loader = ServiceLoader.load(ObjectMethodDelegator.class);
 
         final List<ObjectMethodDelegator> objectMethodDelegators = new ArrayList<>();
@@ -45,11 +46,17 @@ public class ObjectService {
         for (final ObjectMethodDelegator objectMethodDelegator : loader)
             objectMethodDelegators.add(objectMethodDelegator);
 
-        if (objectMethodDelegators.size() != 1)
-            // TODO: replace by concrete exceptions
-            throw new IllegalStateException("Application must hold exactly one ObjectService. Found: " + objectMethodDelegators);
+        assertExactlyOneObjectMethodDelegator(objectMethodDelegators);
 
         objectMethodDelegator = objectMethodDelegators.get(0);
+    }
+
+    private void assertExactlyOneObjectMethodDelegator(final List<ObjectMethodDelegator> objectMethodDelegators) {
+        if (objectMethodDelegators.isEmpty())
+            throw new ObjectMethodDelegatorMissingException();
+
+        if (objectMethodDelegators.size() > 1)
+            throw new OnlyOneObjectMethodDelegatorAllowedException(objectMethodDelegators);
     }
 
     public ObjectMethodDelegator getObjectMethodDelegator() {
