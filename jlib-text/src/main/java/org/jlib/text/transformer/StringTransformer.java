@@ -21,6 +21,9 @@
 
 package org.jlib.text.transformer;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 /**
  * Transformer of a String using the strategy defined by the implementation of this interface.
  * The actual transformation is performed within a {@link StringBuilder}, which is passed as an argument to the
@@ -29,7 +32,9 @@ package org.jlib.text.transformer;
  * @author Igor Akkerman
  */
 @FunctionalInterface
-public interface StringTransformer {
+public interface StringTransformer
+extends Consumer<StringBuilder>,
+        Function<String, String> {
 
     /**
      * Transforms the String contained by the specified {@link StringBuilder}
@@ -39,4 +44,27 @@ public interface StringTransformer {
      *        {@link StringBuilder} containing the String to transform
      */
     void transform(StringBuilder stringBuilder);
+
+    /**
+     * Transforms the specified {@link CharSequence} using this´{@link StringTransformer}.
+     *
+     * @param charSequence
+     *        {@link CharSequence} to transform
+     *
+     * @return transformed {@link String}
+     */
+    default String transform(final CharSequence charSequence) {
+        final StringBuilder stringBuilder = new StringBuilder(charSequence);
+        transform(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    default void accept(final StringBuilder stringBuilder) {
+        transform(stringBuilder);
+    }
+
+    @Override
+    default String apply(final String string) {
+        return transform(string);
+    }
 }

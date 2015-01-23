@@ -21,9 +21,8 @@
 
 package org.jlib.core.language;
 
-import org.jlib.core.system.SystemUtility;
-
 import org.checkerframework.checker.nullness.qual.Nullable;
+import static org.jlib.core.array.ArrayUtility.allEqual;
 
 /**
  * Utility class providing static methods for {@link Nullable} {@link Object} operations.
@@ -42,10 +41,11 @@ public final class NullableUtility {
      * @return {@code true} if all specified Objects are equal or if the specified sequence of Objects is empty;
      *         {@code false} otherwise
      */
-    public static boolean equalOrNull(final Object... objects) {
-        return objects.length == 0 || (objects[0] != null ?
-                                       SystemUtility.equal(objects) :
-                                       allNull(objects));
+    public static boolean allEqualOrNull(final Object... objects) {
+        return objects.length == 0 || //
+               (objects[0] != null ?
+                allEqual(objects) :
+                allNull(objects));
     }
 
     /**

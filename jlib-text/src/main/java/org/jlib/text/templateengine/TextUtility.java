@@ -21,7 +21,7 @@
 
 package org.jlib.text.templateengine;
 
-import org.jlib.core.system.SystemUtility;
+import org.jlib.core.property.PropertyUtility;
 
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import org.jlib.text.CharSequenceIterator;
@@ -35,7 +35,7 @@ public class TextUtility {
     public static final String LINE_SEPARATOR_PROPERTY_NAME = "line.separator";
 
     /** the system's line separator */
-    public static final String LINE_SEPARATOR = SystemUtility.getApplicationProperty(LINE_SEPARATOR_PROPERTY_NAME);
+    public static final String LINE_SEPARATOR = PropertyUtility.getApplicationProperty(LINE_SEPARATOR_PROPERTY_NAME);
 
     public static StringBuilder clear(final StringBuilder stringBuilder) {
         stringBuilder.setLength(0);

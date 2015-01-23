@@ -21,8 +21,8 @@
 
 package org.jlib.core.reflection;
 
-import org.jlib.core.system.PropertyNotSetException;
-import org.jlib.core.system.SystemUtility;
+import org.jlib.core.property.PropertyNotSetException;
+import org.jlib.core.property.PropertyUtility;
 
 /**
  * <p>
@@ -173,7 +173,7 @@ public final class ReflectionUtility {
      */
     public static <Obj> Obj newInstanceByProperty(final String propertyName)
     throws SecurityException, PropertyNotSetException, ClassInstantiationException {
-        final String className = SystemUtility.getProperty(propertyName);
+        final String className = PropertyUtility.getProperty(propertyName);
         // the cast is necessary to the Sun compiler, not to the Eclipse compiler
         return newInstanceOf(className);
     }

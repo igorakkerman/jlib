@@ -12,23 +12,6 @@ import java.util.Locale;
 public final class StringTransformers {
 
     /**
-     * Transforms the specified {@link CharSequence} using the specified {@link StringTransformer}.
-     *
-     * @param stringTransformer
-     *        {@link StringTransformer} to use
-     *
-     * @param charSequence
-     *        {@link CharSequence} to transform
-     *
-     * @return transformed {@link String}
-     */
-    public static String transform(final StringTransformer stringTransformer, final CharSequence charSequence) {
-        final StringBuilder stringBuilder = new StringBuilder(charSequence);
-        stringTransformer.transform(stringBuilder);
-        return stringBuilder.toString();
-    }
-
-    /**
      * Returns a new {@link StringTransformer} centering a substring in a String
      * of the specified length. The String is padded using blanks before and
      * after the substring. If the number of characters to pad is odd, the back
