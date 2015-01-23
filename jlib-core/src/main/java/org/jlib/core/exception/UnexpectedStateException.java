@@ -21,7 +21,7 @@
 
 package org.jlib.core.exception;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.message.Message;
 
 /**
  * {@link InvalidStateException} thrown in an uexpected state.

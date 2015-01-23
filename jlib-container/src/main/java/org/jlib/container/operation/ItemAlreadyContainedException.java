@@ -22,7 +22,7 @@
 package org.jlib.container.operation;
 
 
-import static org.jlib.core.text.message.MessageUtility.message;
+import static org.jlib.core.message.MessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add

@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.message.Message;
 import org.jlib.core.exception.InvalidArgumentException;
 
 /**

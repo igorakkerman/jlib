@@ -23,9 +23,8 @@ package org.jlib.text.templateengine;
 
 import org.jlib.core.system.SystemUtility;
 
-import org.jlib.core.text.CharSequenceIterator;
-
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
+import org.jlib.text.CharSequenceIterator;
 
 public class TextUtility {
 

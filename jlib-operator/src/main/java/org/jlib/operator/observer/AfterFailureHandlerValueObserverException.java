@@ -21,7 +21,7 @@
 
 package org.jlib.operator.observer;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.message.Message;
 import org.jlib.operator.OperatorException;
 
 /**

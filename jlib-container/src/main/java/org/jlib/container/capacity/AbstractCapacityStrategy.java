@@ -28,7 +28,7 @@ import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.LinearIndexStorageException;
 import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
-import static org.jlib.core.text.message.MessageUtility.messageMf;
+import static org.jlib.core.message.MessageUtility.messageMf;
 
 public abstract class AbstractCapacityStrategy<Item>
 extends AbstractObject {

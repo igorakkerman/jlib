@@ -27,7 +27,7 @@ import org.jlib.core.exception.UnexpectedStateException;
 import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
 import org.apache.commons.beanutils.BeanUtils;
-import static org.jlib.core.text.message.MessageUtility.messageMf;
+import static org.jlib.core.message.MessageUtility.messageMf;
 
 public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {

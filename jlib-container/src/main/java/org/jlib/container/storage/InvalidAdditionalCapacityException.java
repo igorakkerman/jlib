@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage;
 
-import static org.jlib.core.text.message.MessageUtility.message;
+import static org.jlib.core.message.MessageUtility.message;
 
 public class InvalidAdditionalCapacityException
 extends LinearIndexStorageException {

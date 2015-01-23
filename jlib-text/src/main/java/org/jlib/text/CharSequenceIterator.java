@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import org.jlib.core.iterator.NoNextItemException;
 
-import static org.jlib.core.text.message.MessageUtility.message;
+import static org.jlib.core.message.MessageUtility.message;
 
 /**
  * <p>

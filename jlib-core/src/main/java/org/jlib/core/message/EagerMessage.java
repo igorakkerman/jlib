@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.message;
+package org.jlib.core.message;
 
 import java.io.Serializable;
 
 import org.jlib.core.value.Named;
-
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class EagerMessage
 implements Message,
@@ -45,7 +43,7 @@ implements Message,
     private int argumentsCount = 0;
 
     public EagerMessage() {
-        this(EMPTY);
+        this("");
     }
 
     public EagerMessage(final CharSequence text) {

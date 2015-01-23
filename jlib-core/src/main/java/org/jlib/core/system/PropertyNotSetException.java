@@ -21,7 +21,7 @@
 
 package org.jlib.core.system;
 
-import static org.jlib.core.text.message.MessageUtility.message;
+import static org.jlib.core.message.MessageUtility.message;
 
 import org.jlib.core.exception.ApplicationException;
 

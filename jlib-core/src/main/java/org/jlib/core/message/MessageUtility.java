@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text.message;
+package org.jlib.core.message;
 
 import java.util.Formatter;
 

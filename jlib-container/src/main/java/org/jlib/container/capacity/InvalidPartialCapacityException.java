@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity;
 
-import static org.jlib.core.text.message.MessageUtility.message;
+import static org.jlib.core.message.MessageUtility.message;
 
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.LinearIndexStorageException;

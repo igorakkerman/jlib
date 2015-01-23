@@ -21,8 +21,8 @@
 
 package org.jlib.core.exception;
 
-import org.jlib.core.text.message.Message;
-import org.jlib.core.text.message.EagerMessage;
+import org.jlib.core.message.Message;
+import org.jlib.core.message.EagerMessage;
 
 import org.junit.Before;
 import org.junit.Rule;

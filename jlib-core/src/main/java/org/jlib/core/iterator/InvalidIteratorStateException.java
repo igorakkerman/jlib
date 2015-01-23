@@ -21,7 +21,7 @@
 
 package org.jlib.core.iterator;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.message.Message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed

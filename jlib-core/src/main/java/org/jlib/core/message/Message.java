@@ -19,15 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.text;
+package org.jlib.core.message;
 
-/**
- * Utility class providing static methods for String operations and
- * manipulations.
- *
- * @author Igor Akkerman
- */
-public final class StringUtility {
+import org.jlib.core.value.Named;
 
-    private StringUtility() {}
+public interface Message {
+
+    Message with(CharSequence argumentName, Object argumentValue);
+
+    Message with(Named<?>... arguments);
+
+    @Override
+    String toString();
 }

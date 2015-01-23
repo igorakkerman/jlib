@@ -23,7 +23,7 @@ package org.jlib.core.io;
 
 import java.io.IOException;
 
-import org.jlib.core.text.message.Message;
+import org.jlib.core.message.Message;
 
 public class IoException
 extends IOException{
