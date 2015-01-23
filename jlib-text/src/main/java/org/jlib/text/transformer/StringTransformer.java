@@ -28,6 +28,7 @@ package org.jlib.text.transformer;
  *
  * @author Igor Akkerman
  */
+@FunctionalInterface
 public interface StringTransformer {
 
     /**
