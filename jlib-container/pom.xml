@@ -46,6 +46,11 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
+            <artifactId>jlib-object-spi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
             <artifactId>jlib-operator</artifactId>
         </dependency>
 

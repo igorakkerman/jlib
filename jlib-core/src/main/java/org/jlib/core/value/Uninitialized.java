@@ -21,8 +21,6 @@
 
 package org.jlib.core.value;
 
-import org.jlib.object_spi.AbstractObject;
-
 /**
  * Skeletal implementation of a not initialized {@link Modifiable}.
  *
@@ -32,7 +30,6 @@ import org.jlib.object_spi.AbstractObject;
  * @author Igor Akkerman
  */
 public abstract class Uninitialized<Value>
-extends AbstractObject
 implements Modifiable<Value> {
 
     /**

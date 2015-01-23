@@ -24,10 +24,7 @@ package org.jlib.core.collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jlib.object_spi.AbstractObject;
-
-public final class MapUtility
-extends AbstractObject {
+public final class MapUtility {
 
     /**
      * <p>

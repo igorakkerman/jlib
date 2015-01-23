@@ -23,10 +23,7 @@ package org.jlib.core.value;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import org.jlib.object_spi.AbstractObject;
-
 public class OptionalModifiable<Value>
-extends AbstractObject
 implements Modifiable<Value> {
 
     public static <Value> OptionalModifiable<Value> from(final Value value) {

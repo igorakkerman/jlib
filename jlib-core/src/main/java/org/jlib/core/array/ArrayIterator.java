@@ -24,7 +24,6 @@ package org.jlib.core.array;
 import org.jlib.core.iterator.BidiIterator;
 import org.jlib.core.iterator.NoNextItemException;
 import org.jlib.core.iterator.NoPreviousItemException;
-import org.jlib.object_spi.AbstractObject;
 
 /**
  * {@link BidiIterator} over the items of an array.
@@ -35,14 +34,10 @@ import org.jlib.object_spi.AbstractObject;
  * @author Igor Akkerman
  */
 public class ArrayIterator<Item>
-extends AbstractObject
 implements BidiIterator<Item> {
 
     /** array to traverse */
     private final Item[] array;
-
-    /** length of the array */
-    private final int arrayLength;
 
     /** current index */
     private int currentIndex = 0;
@@ -70,13 +65,12 @@ implements BidiIterator<Item> {
     public ArrayIterator(final Item[] array, final int initialIndex) {
         this.array = array;
 
-        arrayLength = array.length;
         currentIndex = initialIndex;
     }
 
     @Override
     public boolean hasNext() {
-        return currentIndex < arrayLength;
+        return currentIndex < array.length;
     }
 
     @Override
