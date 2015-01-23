@@ -97,7 +97,7 @@ implements Container<Item> {
     }
 
     // implemented for efficiency
-    public boolean contains(final Collection<? extends Item> collection) {
+    public boolean contains(final Collection<? extends Item> items) {
         return delegateCollection.containsAll(collection);
     }
 

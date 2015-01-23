@@ -32,20 +32,4 @@ public class NotInitializedException
 extends NotAccessibleException {
 
     private static final long serialVersionUID = 4844161228178575622L;
-
-    /**
-     * Creates a new {@link NotInitializedException}.
-     */
-    public NotInitializedException() {
-    }
-
-    /**
-     * Creates a new {@link NotInitializedException}.
-     *
-     * @param valueName
-     *        {@link CharSequence} specifying a descriptive name of the Accessor
-     */
-    public NotInitializedException(final CharSequence valueName) {
-        super(valueName);
-    }
 }

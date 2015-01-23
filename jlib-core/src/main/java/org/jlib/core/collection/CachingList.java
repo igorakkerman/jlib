@@ -21,14 +21,20 @@
 
 package org.jlib.core.collection;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Spliterator;
+import java.util.function.UnaryOperator;
 
-import com.google.common.collect.ForwardingList;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * <p>
- * {@link ForwardingList} caching the index of the last {@link Item} looked up using {@link #indexOf(Object)} and
+ * {@link List} caching the index of the last {@link Item} looked up using {@link #indexOf(Object)} and
  * returning it by a subsequent call to {@link #get(int)} for the same index. The other methods are delegated to the
  * {@link List} specified to the constructor.
  * </p>
@@ -74,10 +80,10 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @author Igor Akkerman
  */
 public final class CachingList<Item>
-extends ForwardingList<Item> {
+implements List<Item> {
 
     /** delegate {@link List} */
-    private final List<Item> delegateList;
+    private final List<Item> delegate;
 
     /** last looked up index; -1 if unset (for performance reasons) */
     private int lastLookedUpItemIndex;
@@ -88,21 +94,80 @@ extends ForwardingList<Item> {
     /**
      * Creates a new {@link CachingList}.
      *
-     * @param delegateList
+     * @param delegate
      *        delegate {@link List} to which all calls are delegated
      */
-    public CachingList(final List<Item> delegateList) {
-        this.delegateList = delegateList;
-    }
-
-    @Override
-    protected List<Item> delegate() {
-        return delegateList;
+    public CachingList(final List<Item> delegate) {
+        this.delegate = delegate;
     }
 
     @Override
     public boolean contains(final @Nullable Object item) {
-        return indexOf(item) != -1;
+        return indexOf(item) != - 1;
+    }
+
+    @Override
+    @NonNull
+    public Iterator<Item> iterator() {
+        return delegate.iterator();
+    }
+
+    @Override
+    @NonNull
+    public Object[] toArray() {
+        return delegate.toArray();
+    }
+
+    @Override
+    @NonNull
+    @SuppressWarnings("SuspiciousToArrayCall")
+    public <T> T[] toArray(@NonNull final T[] array) {
+        return delegate.toArray(array);
+    }
+
+    @Override
+    public boolean add(final Item item) {
+        return delegate.add(item);
+    }
+
+    @Override
+    public boolean remove(final Object item) {
+        return delegate.remove(item);
+    }
+
+    @Override
+    public boolean containsAll(@NonNull final Collection<?> items) {
+        return delegate.containsAll(items);
+    }
+
+    @Override
+    public boolean addAll(@NonNull final Collection<? extends Item> items) {
+        return delegate.addAll(items);
+    }
+
+    @Override
+    public boolean addAll(final int index, @NonNull final Collection<? extends Item> items) {
+        return delegate.addAll(index, items);
+    }
+
+    @Override
+    public boolean removeAll(@NonNull final Collection<?> items) {
+        return delegate.removeAll(items);
+    }
+
+    @Override
+    public boolean retainAll(@NonNull final Collection<?> items) {
+        return delegate.retainAll(items);
+    }
+
+    @Override
+    public void replaceAll(final UnaryOperator<Item> operator) {
+        delegate.replaceAll(operator);
+    }
+
+    @Override
+    public void sort(final Comparator<? super Item> items) {
+        delegate.sort(items);
     }
 
     @Override
@@ -111,7 +176,7 @@ extends ForwardingList<Item> {
             return lastLookedUpItemIndex;
 
         @SuppressWarnings("ConstantConditions")
-        final int itemIndex = super.indexOf(item);
+        final int itemIndex = delegate.indexOf(item);
 
         lastLookedUpItem = item;
         lastLookedUpItemIndex = itemIndex;
@@ -120,18 +185,72 @@ extends ForwardingList<Item> {
     }
 
     @Override
+    public int lastIndexOf(final Object o) {
+        return delegate.lastIndexOf(o);
+    }
+
+    @Override
+    @NonNull
+    public ListIterator<Item> listIterator() {
+        return delegate.listIterator();
+    }
+
+    @Override
+    @NonNull
+    public ListIterator<Item> listIterator(final int index) {
+        return delegate.listIterator(index);
+    }
+
+    @Override
+    @NonNull
+    public List<Item> subList(final int fromIndex, final int toIndex) {
+        return delegate.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public Spliterator<Item> spliterator() {
+        return delegate.spliterator();
+    }
+
+    @Override
     public Item remove(final int index) {
         if (index == lastLookedUpItemIndex)
             clearLastLookedUpIndex();
 
-        return super.remove(index);
+        return delegate.remove(index);
     }
 
     @Override
     public void clear() {
         clearLastLookedUpIndex();
 
-        super.clear();
+        delegate.clear();
+    }
+
+    @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+    public boolean equals(final Object object) {
+        return delegate.equals(object);
+    }
+
+    @Override
+    public int hashCode() {
+        return delegate.hashCode();
+    }
+
+    @Override
+    public Item get(final int index) {
+        return delegate.get(index);
+    }
+
+    @Override
+    public Item set(final int index, final Item element) {
+        return delegate.set(index, element);
+    }
+
+    @Override
+    public void add(final int index, final Item element) {
+        delegate.add(index, element);
     }
 
     /**
@@ -142,4 +261,12 @@ extends ForwardingList<Item> {
         lastLookedUpItem = null;
         lastLookedUpItemIndex = - 1;
     }
+
+    @Override
+    public int size() {
+        return delegate.size();}
+
+    @Override
+    public boolean isEmpty() {
+        return delegate.isEmpty();}
 }

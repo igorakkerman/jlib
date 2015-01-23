@@ -21,7 +21,6 @@
 
 package org.jlib.core.value.formatter;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
@@ -32,13 +31,13 @@ public class MessageFormatNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter(EMPTY);
+        final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("");
 
         // when
         formatter.append(builder, "value", "Hallo");
 
         // then
-        assertThat(builder.toString()).isEqualTo(EMPTY);
+        assertThat(builder.toString()).isEmpty();
     }
 
     @Test

@@ -23,9 +23,6 @@ package org.jlib.core.value;
 
 import org.jlib.core.exception.ApplicationException;
 
-import com.google.common.base.Optional;
-import static org.jlib.core.message.MessageUtility.message;
-
 /**
  * {@link ApplicationException} thrown when a requested value is not accessible.
  *
@@ -35,27 +32,4 @@ public abstract class NotAccessibleException
 extends ApplicationException {
 
     private static final long serialVersionUID = - 813625306823615853L;
-
-    private final Optional<String> valueName;
-
-    protected NotAccessibleException() {
-
-        valueName = Optional.absent();
-    }
-
-    /**
-     * Creates a new {@link NotAccessibleException}.
-     *
-     * @param valueName
-     *        {@link CharSequence} specifying a descriptive name of the Accessor
-     */
-    protected NotAccessibleException(final CharSequence valueName) {
-        super(message(valueName));
-
-        this.valueName = Optional.of(valueName.toString());
-    }
-
-    public Optional<String> getName() {
-        return valueName;
-    }
 }

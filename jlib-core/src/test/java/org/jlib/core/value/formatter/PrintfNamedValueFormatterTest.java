@@ -23,7 +23,6 @@ package org.jlib.core.value.formatter;
 
 import java.util.MissingFormatArgumentException;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
@@ -34,13 +33,13 @@ public class PrintfNamedValueFormatterTest {
     throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
-        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter(EMPTY);
+        final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("");
 
         // when
         formatter.append(builder, "value", "Hallo");
 
         // then
-        assertThat(builder.toString()).isEqualTo(EMPTY);
+        assertThat(builder.toString()).isEmpty();
     }
 
     @Test

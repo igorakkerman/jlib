@@ -21,16 +21,16 @@
 
 package org.jlib.core.collection;
 
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import com.google.common.collect.ForwardingMap;
-
 /**
  * <p>
- * {@link ForwardingMap} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by
+ * {@link Map} caching the last {@link Value} looked up using {@link #containsKey(Object)} and returning it by
  * a subsequent call to {@link #get(Object)} for the same {@link Key}. Note that the {@link Key} is <em>only</em> tested
  * for <em>identity</em>, <em>not</em> for <em>equality</em>. The other methods are delegated to the {@link Map}
  * specified to the constructor.
@@ -80,7 +80,7 @@ import com.google.common.collect.ForwardingMap;
  * @author Igor Akkerman
  */
 public final class CachingMap<Key, Value>
-extends ForwardingMap<Key, Value> {
+implements Map<Key, Value> {
 
     /** delegate {@link Map} */
     private final Map<Key, Value> delegateMap;
@@ -103,8 +103,13 @@ extends ForwardingMap<Key, Value> {
     }
 
     @Override
-    protected Map<Key, Value> delegate() {
-        return delegateMap;
+    public int size() {
+        return delegateMap.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return delegateMap.isEmpty();
     }
 
     @Override
@@ -116,6 +121,11 @@ extends ForwardingMap<Key, Value> {
         lastLookedUpValue = value;
 
         return value != null;
+    }
+
+    @Override
+    public boolean containsValue(final Object value) {
+        return false;
     }
 
     @Override
@@ -152,6 +162,24 @@ extends ForwardingMap<Key, Value> {
         clearLastLookedUpItems();
 
         delegateMap.clear();
+    }
+
+    @Override
+    @NonNull
+    public Set<Key> keySet() {
+        return delegateMap.keySet();
+    }
+
+    @Override
+    @NonNull
+    public Collection<Value> values() {
+        return delegateMap.values();
+    }
+
+    @Override
+    @NonNull
+    public Set<Entry<Key, Value>> entrySet() {
+        return delegateMap.entrySet();
     }
 
     /**
