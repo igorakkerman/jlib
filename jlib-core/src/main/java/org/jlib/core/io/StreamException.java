@@ -25,23 +25,23 @@ import java.io.IOException;
 
 import org.jlib.core.message.Message;
 
-public class IoException
-extends IOException{
+public class StreamException
+extends IOException {
 
-    private static final long serialVersionUID = 5456967638609113128L;
+    private static final long serialVersionUID = - 7676970362884758602L;
 
-    public IoException() {
+    public StreamException() {
     }
 
-    public IoException(final Message message) {
+    public StreamException(final Message message) {
         super(message.toString());
     }
 
-    public IoException(final Message message, final Throwable cause) {
+    public StreamException(final Message message, final Throwable cause) {
         super(message.toString(), cause);
     }
 
-    public IoException(final Throwable cause) {
+    public StreamException(final Throwable cause) {
         super(cause);
     }
 }
