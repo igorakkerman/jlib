@@ -27,15 +27,15 @@ package org.jlib.object_spi;
  *
  * @author Igor Akkerman
  */
-public abstract class AbstractObject {
+public abstract class AppObject {
 
     private static final ObjectMethodDelegator objectMethodDelegator = /*
      */ ObjectService.getInstance().getObjectMethodDelegator();
 
     /**
-     * Creates a new {@link AbstractObject}.
+     * Creates a new {@link AppObject}.
      */
-    protected AbstractObject() {}
+    protected AppObject() {}
 
     @Override
     public String toString() {
@@ -70,7 +70,7 @@ public abstract class AbstractObject {
      * Reuturns the names of the fields excluded from the operations in {@link #equals(Object)} and {@link #hashCode()}.
      * </p>
      * <p>
-     * The implementation in the class {@link AbstractObject} returns an empty array. It may be overridden to specify
+     * The implementation in the class {@link AppObject} returns an empty array. It may be overridden to specify
      * a set of excluded fields.
      * </p>
      *

@@ -21,10 +21,10 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.object_spi.AbstractObject;
+import org.jlib.object_spi.AppObject;
 
 public final class CountIterableToArray<Item, DelegateContainer extends Count<Item> & Iterable<Item>>
-extends AbstractObject
+extends AppObject
 implements ToArray<Item> {
 
     private final DelegateContainer delegateIterable;

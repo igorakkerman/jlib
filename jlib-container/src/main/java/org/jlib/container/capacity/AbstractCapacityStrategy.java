@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity;
 
-import org.jlib.object_spi.AbstractObject;
+import org.jlib.object_spi.AppObject;
 import org.jlib.container.storage.ContentIndexRegistry;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
@@ -31,7 +31,7 @@ import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescrip
 import static org.jlib.core.message.MessageUtility.messageMf;
 
 public abstract class AbstractCapacityStrategy<Item>
-extends AbstractObject {
+extends AppObject {
 
     private final LinearIndexStorage<Item> storage;
 
