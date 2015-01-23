@@ -49,6 +49,8 @@
             <artifactId>checker-qual</artifactId>
         </dependency>
 
+        <!-- unit test dependencies -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

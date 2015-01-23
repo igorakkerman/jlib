@@ -29,42 +29,51 @@ import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
 import org.jlib.object_spi.HashCode;
+import org.jlib.object_spi.ObjectMethodDelegator;
 import org.jlib.object_spi.ToString;
+import org.jlib.object_spi.ToStringStyle;
 
-public class ApacheCommonsStrategies {
+public class ApacheCommonsObjectMethodDelegator
+implements ObjectMethodDelegator {
 
-    public static <Obj> Equals<Obj> reflectionEquals() {
+    @Override
+    public <Obj> Equals<Obj> reflectionEquals() {
         return EqualsBuilder::reflectionEquals;
     }
 
-    public static <Obj> Equals<Obj> reflectionEquals(final String... excludedFields) {
+    @Override
+    public <Obj> Equals<Obj> reflectionEquals(final String... excludedFields) {
         return (object1, object2) -> EqualsBuilder.reflectionEquals(object1, object2, excludedFields);
     }
 
-    public static <Obj> HashCode<Obj> reflectionHashCode() {
+    @Override
+    public <Obj> HashCode<Obj> reflectionHashCode() {
         return HashCodeBuilder::reflectionHashCode;
     }
 
-    public static <Obj> HashCode<Obj> reflectionHashCode(final String... excludedFields) {
+    @Override
+    public <Obj> HashCode<Obj> reflectionHashCode(final String... excludedFields) {
         return object -> HashCodeBuilder.reflectionHashCode(object, excludedFields);
     }
 
-    public static <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode() {
+    @Override
+    public <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode() {
         return new ForwardingEqualsHashCode<>(reflectionEquals(), reflectionHashCode());
     }
 
-    public static <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(final String... excludedFields) {
+    @Override
+    public <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(final String... excludedFields) {
         return new ForwardingEqualsHashCode<>(reflectionEquals(excludedFields), reflectionHashCode(excludedFields));
     }
 
-    public static <Obj> ToString<Obj> reflectionToString() {
+    @Override
+    public <Obj> ToString<Obj> reflectionToString() {
         return ToStringBuilder::reflectionToString;
     }
 
+    @Override
     @SuppressWarnings("Convert2MethodRef")
-    public static <Obj> ToString<Obj> reflectionToString(final ToStringStyle toStringStyle) {
+    public <Obj> ToString<Obj> reflectionToString(final ToStringStyle toStringStyle) {
         return object -> ToStringBuilder.reflectionToString(object);
     }
-
-    private ApacheCommonsStrategies() {}
 }

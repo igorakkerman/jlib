@@ -23,8 +23,9 @@ package org.jlib.core.language;
 
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.HashCode;
+import org.jlib.object_spi.ObjectMethodDelegator;
+import org.jlib.object_spi.ObjectService;
 import org.jlib.object_spi.ToString;
-import org.jlib.object_spi.apachecommons.ApacheCommonsStrategies;
 
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using
@@ -33,6 +34,9 @@ import org.jlib.object_spi.apachecommons.ApacheCommonsStrategies;
  * @author Igor Akkerman
  */
 public abstract class AbstractObject {
+
+    private static final ObjectMethodDelegator objectMethodDelegator = /*
+     */ ObjectService.getInstance().getObjectMethodDelegator();
 
     /**
      * Creates a new {@link AbstractObject}.
@@ -56,15 +60,15 @@ public abstract class AbstractObject {
     }
 
     protected <Obj> Equals<Obj> getEqualsStrategy() {
-        return ApacheCommonsStrategies.reflectionEquals(getExcludedFieldNames());
+        return objectMethodDelegator.reflectionEquals(getExcludedFieldNames());
     }
 
     protected <Obj> HashCode<Obj> getHashCodeStrategy() {
-        return ApacheCommonsStrategies.reflectionHashCode(getExcludedFieldNames());
+        return objectMethodDelegator.reflectionHashCode(getExcludedFieldNames());
     }
 
     protected <Obj> ToString<Obj> getToStringStrategy() {
-        return ApacheCommonsStrategies.reflectionToString();
+        return objectMethodDelegator.reflectionToString();
     }
 
     /**

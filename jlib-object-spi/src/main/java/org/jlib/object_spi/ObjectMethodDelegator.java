@@ -19,8 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.object_spi.apachecommons;
+package org.jlib.object_spi;
 
-public interface ToStringStyle {
+public interface ObjectMethodDelegator {
 
+    <Obj> Equals<Obj> reflectionEquals();
+
+    <Obj> Equals<Obj> reflectionEquals(String... excludedFields);
+
+    <Obj> HashCode<Obj> reflectionHashCode();
+
+    <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
+
+    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode();
+
+    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(String... excludedFields);
+
+    <Obj> ToString<Obj> reflectionToString();
+
+    @SuppressWarnings("Convert2MethodRef")
+    <Obj> ToString<Obj> reflectionToString(ToStringStyle toStringStyle);
 }
