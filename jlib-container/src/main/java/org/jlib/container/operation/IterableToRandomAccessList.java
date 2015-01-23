@@ -24,7 +24,7 @@ package org.jlib.container.operation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.object_spi.AbstractObject;
 
 public class IterableToRandomAccessList<Item>
 extends AbstractObject

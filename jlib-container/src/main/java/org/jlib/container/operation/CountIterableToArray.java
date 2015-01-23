@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.object_spi.AbstractObject;
 
 public final class CountIterableToArray<Item, DelegateContainer extends Count<Item> & Iterable<Item>>
 extends AbstractObject

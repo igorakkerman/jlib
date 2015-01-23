@@ -24,7 +24,7 @@ package org.jlib.core.array;
 import org.jlib.core.iterator.BidiIterator;
 import org.jlib.core.iterator.NoNextItemException;
 import org.jlib.core.iterator.NoPreviousItemException;
-import org.jlib.core.language.AbstractObject;
+import org.jlib.object_spi.AbstractObject;
 
 /**
  * {@link BidiIterator} over the items of an array.

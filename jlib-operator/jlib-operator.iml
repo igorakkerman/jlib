@@ -25,6 +25,5 @@
     <orderEntry type="module" module-name="jlib-codequality" />
     <orderEntry type="module" module-name="jlib-core" />
     <orderEntry type="module" module-name="jlib-object-spi" />
-    <orderEntry type="module" module-name="jlib-object-spi-apachecommons" />
   </component>
 </module>

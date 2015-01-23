@@ -19,9 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
+package org.jlib.object_spi.apachecommons;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.jlib.object_spi.AbstractObject;
 import org.junit.Test;
 
 public class AbstractObjectTest {

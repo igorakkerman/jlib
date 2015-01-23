@@ -49,12 +49,6 @@
             <artifactId>jlib-object-spi</artifactId>
         </dependency>
 
-        <!-- TODO: remove after loading as SPI -->
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-object-spi-apachecommons</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

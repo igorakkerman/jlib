@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.jlib.core.language.AbstractObject;
+import org.jlib.object_spi.AbstractObject;
 import org.jlib.operator.observer.ValueObserver;
 import org.jlib.operator.observer.ValueObserverException;
 

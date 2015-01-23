@@ -19,13 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.language;
-
-import org.jlib.object_spi.Equals;
-import org.jlib.object_spi.HashCode;
-import org.jlib.object_spi.ObjectMethodDelegator;
-import org.jlib.object_spi.ObjectService;
-import org.jlib.object_spi.ToString;
+package org.jlib.object_spi;
 
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using
