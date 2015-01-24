@@ -96,7 +96,6 @@
           <option name="ALIGN_MULTILINE_METHOD_BRACKETS" value="true" />
           <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
           <option name="SPACE_AROUND_UNARY_OPERATOR" value="true" />
-          <option name="SPACE_AROUND_METHOD_REF_DBL_COLON" value="true" />
           <option name="SPACE_WITHIN_ARRAY_INITIALIZER_BRACES" value="true" />
           <option name="CALL_PARAMETERS_WRAP" value="1" />
           <option name="METHOD_PARAMETERS_WRAP" value="1" />
