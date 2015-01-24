@@ -39,17 +39,18 @@ public class ToStringStyleUtility {
 
     /**
      * <p>
-     * Property name of the {@link ToStringStyle} class name or short name. Permitted values are:
+     * Property name of the concrete {@link ToStringStyle} implementation class name or short name.
+     * Permitted values are:
      * </p>
      * <dl>
-     *     <dt>DEFAULT_STYLE</dt><dd>{{@link ToStringStyle#DEFAULT_STYLE}}</dd>
-     *     <dt>MULTI_LINE_STYLE</dt><dd>{{@link ToStringStyle#MULTI_LINE_STYLE}}</dd>
-     *     <dt>NO_FIELD_NAMES_STYLE</dt><dd>{{@link ToStringStyle#NO_FIELD_NAMES_STYLE}}</dd>
-     *     <dt>SHORT_PREFIX_STYLE</dt><dd>{{@link ToStringStyle#SHORT_PREFIX_STYLE}}</dd>
-     *     <dt>SIMPLE_STYLE</dt><dd>{{@link ToStringStyle#SIMPLE_STYLE}}</dd>
+     *     <dt>DEFAULT_STYLE</dt><dd>{@link ToStringStyle#DEFAULT_STYLE}</dd>
+     *     <dt>MULTI_LINE_STYLE</dt><dd>{@link ToStringStyle#MULTI_LINE_STYLE}</dd>
+     *     <dt>NO_FIELD_NAMES_STYLE</dt><dd>{@link ToStringStyle#NO_FIELD_NAMES_STYLE}</dd>
+     *     <dt>SHORT_PREFIX_STYLE</dt><dd>{@link ToStringStyle#SHORT_PREFIX_STYLE}</dd>
+     *     <dt>SIMPLE_STYLE</dt><dd>{@link ToStringStyle#SIMPLE_STYLE}</dd>
      *     <dt>a fully qualified class name</dt><dd>Class extending {@link ToStringStyle} providing a public default
      *     constructor</dd>
-     *     <dt>unset</dt><dd>{{@link ToStringStyle#DEFAULT_STYLE}}</dd>
+     *     <dt>unset</dt><dd>{@link ToStringStyle#DEFAULT_STYLE}</dd>
      * </dl>
      * <p>
      * The values are evaluated in the order specified above.
