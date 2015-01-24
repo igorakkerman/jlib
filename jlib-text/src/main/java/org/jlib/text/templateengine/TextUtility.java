@@ -35,7 +35,7 @@ public class TextUtility {
     public static final String LINE_SEPARATOR_PROPERTY_NAME = "line.separator";
 
     /** the system's line separator */
-    public static final String LINE_SEPARATOR = PropertyUtility.getApplicationProperty(LINE_SEPARATOR_PROPERTY_NAME);
+    public static final String LINE_SEPARATOR = PropertyUtility.getMandatoryProperty(LINE_SEPARATOR_PROPERTY_NAME);
 
     public static StringBuilder clear(final StringBuilder stringBuilder) {
         stringBuilder.setLength(0);

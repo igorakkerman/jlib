@@ -22,17 +22,15 @@
 package org.jlib.core.property;
 
 /**
- * Utility class providing static methods for system operations.
+ * Utility class providing static methods for system properties.
  *
  * @author Igor Akkerman
  */
 public final class PropertyUtility {
 
     /**
-     * Returns the value of the system property indicated by the specified key.
-     * The difference to the {@link System#getProperty(String)} method is that
-     * this method throws an {@link Exception} if the specified key is not set,
-     * whereas the other method would return {@code null}.
+     * Returns the value of the system property indicated by the specified key,
+     * throwing a <em>checked</em> {@link OptionalPropertyNotSetException} if the specified key is not set.
      *
      * @param propertyName
      *        String specifying the name of the system property
@@ -48,26 +46,23 @@ public final class PropertyUtility {
      * @throws IllegalArgumentException
      *         if {@code propertyName} is an empty String
      *
-     * @throws PropertyNotSetException
+     * @throws OptionalPropertyNotSetException
      *         if the specified system property is not set
      */
-    public static String getProperty(final String propertyName)
-    throws PropertyNotSetException {
+    public static String getOptionalProperty(final String propertyName)
+    throws OptionalPropertyNotSetException {
 
         final String propertyValue = System.getProperty(propertyName);
 
         if (propertyValue == null)
-            throw new PropertyNotSetException(propertyName);
+            throw new OptionalPropertyNotSetException(propertyName);
 
         return propertyValue;
     }
 
     /**
-     * Returns the value of the application system property indicated by the
-     * specified key. The difference to the {@link System#getProperty(String)}
-     * method is that this method throws a {@link RuntimeException} if the
-     * specified key is not set, whereas the JDK method would return
-     * {@code null}.
+     * Returns the value of the system property indicated by the specified key,
+     * throwing an <em>unchecked</em> {@link MandatoryPropertyNotSetException} if the specified key is not set.
      *
      * @param propertyName
      *        String specifying the name of the system property
@@ -83,16 +78,16 @@ public final class PropertyUtility {
      * @throws IllegalArgumentException
      *         if {@code propertyName} is an empty String
      *
-     * @throws ApplicationPropertyNotSetException
+     * @throws MandatoryPropertyNotSetException
      *         if the specified system property is not set
      */
-    public static String getApplicationProperty(final String propertyName)
-    throws ApplicationPropertyNotSetException {
+    public static String getMandatoryProperty(final String propertyName)
+    throws MandatoryPropertyNotSetException {
 
         final String propertyValue = System.getProperty(propertyName);
 
         if (propertyValue == null)
-            throw new ApplicationPropertyNotSetException(propertyName);
+            throw new MandatoryPropertyNotSetException(propertyName);
 
         return propertyValue;
     }

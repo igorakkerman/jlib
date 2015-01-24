@@ -21,16 +21,16 @@
 
 package org.jlib.core.property;
 
-import static org.jlib.core.message.MessageUtility.message;
-
 import org.jlib.core.exception.ApplicationException;
 
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
- * Exception thrown when trying to retrieve the value of a property that is not set.
+ * Exception thrown when trying to retrieve the value of an optional property that is not set.
  *
  * @author Igor Akkerman
  */
-public class PropertyNotSetException
+public class OptionalPropertyNotSetException
 extends ApplicationException {
 
     private static final long serialVersionUID = 902825184458130007L;
@@ -44,7 +44,7 @@ extends ApplicationException {
      * @param propertyName
      *        {@link String} specifying the name of the property that is not set
      */
-    public PropertyNotSetException(final String propertyName) {
+    public OptionalPropertyNotSetException(final String propertyName) {
         super(message(propertyName));
 
         this.propertyName = propertyName;

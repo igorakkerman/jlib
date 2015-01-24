@@ -21,7 +21,7 @@
 
 package org.jlib.core.reflection;
 
-import org.jlib.core.property.PropertyNotSetException;
+import org.jlib.core.property.OptionalPropertyNotSetException;
 import org.jlib.core.property.PropertyUtility;
 
 /**
@@ -156,13 +156,13 @@ public final class ReflectionUtility {
      * @throws IllegalArgumentException
      *         if (@code propertyName} is the empty {@link String}
      *
-     * @throws PropertyNotSetException
+     * @throws OptionalPropertyNotSetException
      *         if the specified system property is not set
      *
      * @throws ClassInstantiationException
      *         <ul>
      *         <li>if the specified system property is not set (cause is a
-     *         {@link PropertyNotSetException}) or</li>
+     *         {@link OptionalPropertyNotSetException}) or</li>
      *         <li>if the instantiation of the specified class fails (cause is
      *         one of the exceptions thrown by {@link Class#forName(String)}) or
      *         </li>
@@ -172,8 +172,8 @@ public final class ReflectionUtility {
      *         </ul>
      */
     public static <Obj> Obj newInstanceByProperty(final String propertyName)
-    throws SecurityException, PropertyNotSetException, ClassInstantiationException {
-        final String className = PropertyUtility.getProperty(propertyName);
+    throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException {
+        final String className = PropertyUtility.getOptionalProperty(propertyName);
         // the cast is necessary to the Sun compiler, not to the Eclipse compiler
         return newInstanceOf(className);
     }

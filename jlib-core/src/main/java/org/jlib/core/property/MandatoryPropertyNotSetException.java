@@ -21,17 +21,16 @@
 
 package org.jlib.core.property;
 
-import static org.jlib.core.message.MessageUtility.message;
-
 import org.jlib.core.exception.InvalidStateException;
 
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
- * {@link InvalidStateException} thrown when trying to retrieve the value of a
- * property that is not set.
+ * {@link InvalidStateException} thrown when trying to retrieve the value of a mandatory property that is not set.
  *
  * @author Igor Akkerman
  */
-public class ApplicationPropertyNotSetException
+public class MandatoryPropertyNotSetException
 extends InvalidStateException {
 
     private static final long serialVersionUID = 8781400138384560958L;
@@ -42,7 +41,7 @@ extends InvalidStateException {
      * @param propertyName
      *        {@link CharSequence} specifying the name of the property that is not set
      */
-    public ApplicationPropertyNotSetException(final CharSequence propertyName) {
+    public MandatoryPropertyNotSetException(final CharSequence propertyName) {
         super(message(propertyName));
     }
 }
