@@ -28,7 +28,7 @@ import org.junit.Test;
 public class ArrayUtilityEmptyArrayUnitTest {
 
     @Test
-    public void returnedArrayEmpty() {
+    public void emptyArrayMethodShouldReturnEmptyArray() {
         assertThat(emptyArray()).isEmpty();
     }
 }
