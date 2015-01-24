@@ -21,24 +21,8 @@
 
 package org.jlib.object_spi;
 
-public interface ObjectMethodForwarder {
+public interface HashCodeEngine {
+    HashCodeEngine append(final Object object);
 
-    <Obj> Equals<Obj> reflectionEquals();
-
-    <Obj> Equals<Obj> reflectionEquals(String... excludedFields);
-
-    <Obj> HashCode<Obj> reflectionHashCode();
-
-    <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
-
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode();
-
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(String... excludedFields);
-
-    <Obj> ToString<Obj> reflectionToString();
-
-    @SuppressWarnings("Convert2MethodRef")
-    <Obj> ToString<Obj> reflectionToString(ToStringStyle toStringStyle);
-
-    HashCodeEngine hashCodeEngine();
+    int toHashCode();
 }

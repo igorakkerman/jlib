@@ -21,42 +21,32 @@
 
 package org.jlib.container.operation;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import org.jlib.object_spi.HashCode;
+import org.jlib.object_spi.HashCodeEngine;
+import org.jlib.object_spi.ObjectService;
 
-public class ApacheCommonsIterableHashCode<Item>
+public class ObjectSpiIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
 
-    /** sole {@link ApacheCommonsIterableHashCode} instance */
-    private static final ApacheCommonsIterableHashCode<?> INSTANCE = new ApacheCommonsIterableHashCode<>();
+    private static final ObjectSpiIterableHashCode<?> INSTANCE = new ObjectSpiIterableHashCode<>();
 
-    /**
-     * Returns the sole {@link ApacheCommonsIterableHashCode} instance.
-     *
-     * @param <Item>
-     *        type of the Item
-     *
-     * @return sole {@link ApacheCommonsIterableHashCode} instance
-     */
     @SuppressWarnings("unchecked")
-    public static <Item> ApacheCommonsIterableHashCode<Item> getInstance() {
-        return (ApacheCommonsIterableHashCode<Item>) INSTANCE;
+    public static <Item> ObjectSpiIterableHashCode<Item> getInstance() {
+        return (ObjectSpiIterableHashCode<Item>) INSTANCE;
     }
 
     /**
-     * Creates a new {@link ApacheCommonsIterableHashCode}.
+     * Creates a new {@link ObjectSpiIterableHashCode}.
      */
-    private ApacheCommonsIterableHashCode() {
-    }
+    private ObjectSpiIterableHashCode() {}
 
     @Override
     public int hashCode(final Iterable<Item> items) {
-        final HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
+        final HashCodeEngine engine = ObjectService.getInstance().getObjectMethodForwarder().hashCodeEngine();
 
         for (final Item item : items)
-            hashCodeBuilder.append(item);
+            engine.append(item);
 
-        return hashCodeBuilder.toHashCode();
+        return engine.toHashCode();
     }
 }

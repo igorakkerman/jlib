@@ -19,26 +19,31 @@
  *     limitations under the License.
  */
 
-package org.jlib.object_spi;
+package org.jlib.object_spi.apachecommons;
 
-public interface ObjectMethodForwarder {
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-    <Obj> Equals<Obj> reflectionEquals();
+import org.jlib.object_spi.HashCodeEngine;
 
-    <Obj> Equals<Obj> reflectionEquals(String... excludedFields);
+public class ApacheCommonsHashCodeEngine
+implements HashCodeEngine {
 
-    <Obj> HashCode<Obj> reflectionHashCode();
+    private final HashCodeBuilder builder = new HashCodeBuilder();
 
-    <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
+    @Override
+    public ApacheCommonsHashCodeEngine append(final Object object) {
+        builder.append(object);
 
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode();
+        return this;
+    }
 
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(String... excludedFields);
+    @Override
+    public int toHashCode() {
+        return builder.toHashCode();
+    }
 
-    <Obj> ToString<Obj> reflectionToString();
-
-    @SuppressWarnings("Convert2MethodRef")
-    <Obj> ToString<Obj> reflectionToString(ToStringStyle toStringStyle);
-
-    HashCodeEngine hashCodeEngine();
+    @Override
+    public int hashCode() {
+        return toHashCode();
+    }
 }
