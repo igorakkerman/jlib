@@ -39,7 +39,7 @@ import org.jlib.container.iterator.iterator.RemoveIterator;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 import org.jlib.container.operation.ItemToRemoveNotContainedException;
-import org.jlib.container.operation.ObservedRemoveMany;
+import org.jlib.container.operation.ObservedRemoveMultiple;
 
 import static java.util.Arrays.asList;
 import static org.jlib.container.operation.collection.CollectionUtility.toSet;
@@ -194,7 +194,7 @@ public final class ContainerUtility {
      */
     @SafeVarargs
     @SuppressWarnings("DuplicateThrows")
-    public static <Item> void remove(final ObservedRemoveMany<Item> container, final Iterable<? extends Item> items,
+    public static <Item> void remove(final ObservedRemoveMultiple<Item> container, final Iterable<? extends Item> items,
                                      final ValueObserver<Item>... observers)
     throws InvalidContainerArgumentException, InvalidContainerStateException, RuntimeException {
         for (final Item item : items)
@@ -229,7 +229,7 @@ public final class ContainerUtility {
      */
 
     @SafeVarargs
-    public static <Item> void remove(final ObservedRemoveMany<Item> container, final ValueObserver<Item>[] observers,
+    public static <Item> void remove(final ObservedRemoveMultiple<Item> container, final ValueObserver<Item>[] observers,
                                      final Item... items)
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         remove(container, ArrayUtility.iterable(items), observers);

@@ -38,7 +38,7 @@ import org.jlib.operator.observer.ValueObserverException;
 public interface ObservedRetain<Item> {
 
     /**
-     * Removes all Items from this {@link ObservedRemoveMany}
+     * Removes all Items from this {@link ObservedRemoveMultiple}
      * <em>except</em> the Items contained by the specified {@link Collection}.
      *
      * @param items

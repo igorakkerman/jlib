@@ -32,7 +32,7 @@ import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 import org.jlib.container.operation.ItemToRemoveNotContainedException;
 import org.jlib.container.operation.ObservedRemoveAll;
-import org.jlib.container.operation.ObservedRemoveMany;
+import org.jlib.container.operation.ObservedRemoveMultiple;
 import org.jlib.container.operation.legacy.AbstractEmpty;
 
 /**
@@ -47,7 +47,7 @@ public abstract class InitiallyEmptySequence<Item>
 extends AbstractEmpty<Item>
 implements Sequence<Item>,
            ObservedReplaceIterable<Item>,
-           ObservedRemoveMany<Item>,
+           ObservedRemoveMultiple<Item>,
            ObservedRemoveAll<Item> {
 
     /**

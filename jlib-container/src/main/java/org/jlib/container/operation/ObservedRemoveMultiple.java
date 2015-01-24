@@ -30,7 +30,7 @@ import org.jlib.operator.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveMany<Item>
+public interface ObservedRemoveMultiple<Item>
  {
 
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })

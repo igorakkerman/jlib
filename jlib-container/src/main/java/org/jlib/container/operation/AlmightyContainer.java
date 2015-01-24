@@ -2,14 +2,14 @@ package org.jlib.container.operation;
 
 public interface AlmightyContainer<Item>
 extends ContainsSingle<Item>,
-        ContainsMany<Item>,
+        ContainsMultiple<Item>,
         Count<Item>,
         IsEmpty<Item>,
-        ObservedRemoveMany<Item>,
+        ObservedRemoveMultiple<Item>,
         ObservedRemoveAll<Item>,
         ObservedRetain<Item>,
         RemoveSingleByValue<Item>,
-        RemoveManyByValue<Item>,
+        RemoveMultipleByValue<Item>,
         RemoveAll<Item>,
         Retain<Item>,
         ToArray<Item>,

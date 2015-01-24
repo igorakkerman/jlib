@@ -44,12 +44,12 @@ extends InvalidContainerArgumentException {
      *        Item to retain
      */
     public ItemToRemoveNotContainedException(
-                                             final RemoveManyByValue<?> container, final Object item) {
+                                             final RemoveMultipleByValue<?> container, final Object item) {
         super(container, message(item));
     }
 
     public ItemToRemoveNotContainedException(
-                                             final RemoveManyByValue<?> container, final Object item,
+                                             final RemoveMultipleByValue<?> container, final Object item,
                                              final Exception cause) {
         super(container, message(item), cause);
     }

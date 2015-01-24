@@ -21,12 +21,12 @@
 
 package org.jlib.container.operation;
 
-public class DefaultContainsMany<Item>
-implements ContainsMany<Item> {
+public class DefaultContainsMultiple<Item>
+implements ContainsMultiple<Item> {
 
     private final ContainsSingle<Item> containedItems;
 
-    public DefaultContainsMany(final ContainsSingle<Item> containedItems) {
+    public DefaultContainsMultiple(final ContainsSingle<Item> containedItems) {
 
         this.containedItems = containedItems;
     }

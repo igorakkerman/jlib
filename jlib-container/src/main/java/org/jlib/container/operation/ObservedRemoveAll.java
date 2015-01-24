@@ -24,11 +24,11 @@ package org.jlib.container.operation;
 import org.jlib.operator.observer.ValueObserver;
 
 /**
- * Ability to retain <em>all</em> Items;
- * the retain operations can be attended by {@link ValueObserver} instances.
+ * Ability to remove <em>all</em> Items;
+ * the {@link #removeAll} operation can be attended by {@link ValueObserver} instances.
  *
  * @param <Item>
- *        type of items held in the {@link Object}
+ *        type of items held in the container
  *
  * @author Igor Akkerman
  */

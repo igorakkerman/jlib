@@ -21,15 +21,15 @@
 
 package org.jlib.container.operation;
 
-public class DefaultRemoveManyByValue<Item>
-implements RemoveManyByValue<Item> {
+public class DefaultRemoveMultipleByMultiple<Item>
+implements RemoveMultipleByValue<Item> {
 
     private final Iterable<Item> containedItems;
 
     private final RemoveSingleByValue<Item> removableContainedItems;
 
     public <RemoveSingleIterable extends Iterable<Item> & RemoveSingleByValue<Item>> /*
-        */ DefaultRemoveManyByValue(final RemoveSingleIterable containedItems) {
+        */ DefaultRemoveMultipleByMultiple(final RemoveSingleIterable containedItems) {
 
         this.containedItems = containedItems;
         removableContainedItems = containedItems;

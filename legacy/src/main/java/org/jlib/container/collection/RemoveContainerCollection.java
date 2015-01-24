@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.jlib.core.language.ItemOperation;
 
-import org.jlib.container.operation.ObservedRemoveMany;
+import org.jlib.container.operation.ObservedRemoveMultiple;
 
 /**
  * Adapter allowing a {@link RetainItemsByIterable} to be used as a {@link Collection}.
@@ -40,8 +40,8 @@ import org.jlib.container.operation.ObservedRemoveMany;
 public class RemoveContainerCollection<Item>
 extends ContainerCollection<Item> {
 
-    /** adapted and backed {@link ObservedRemoveMany} */
-    private final ObservedRemoveMany<Item> delegateContainer;
+    /** adapted and backed {@link ObservedRemoveMultiple} */
+    private final ObservedRemoveMultiple<Item> delegateContainer;
 
     /**
      * Creates a new {@link RemoveContainerCollection} backed by the specified
@@ -54,7 +54,7 @@ extends ContainerCollection<Item> {
      *        {@link RetainItemsByIterable} backing this
      *        {@link RemoveContainerCollection}
      */
-    public <DelegateContainer extends ObservedRemoveMany<Item> & ItemOperation<Item> & Iterable<Item> & Iterable<Item>> //
+    public <DelegateContainer extends ObservedRemoveMultiple<Item> & ItemOperation<Item> & Iterable<Item> & Iterable<Item>> //
     RemoveContainerCollection(final DelegateContainer delegateContainer) {
         super(delegateContainer);
 

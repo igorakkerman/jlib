@@ -25,11 +25,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
+
 import org.jlib.object_spi.AppObject;
 import org.jlib.operator.observer.ValueObserver;
 import org.jlib.operator.observer.ValueObserverException;
-
-import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
 /**
  * Skeletal implementation of a container. A concrete IterableContainer
@@ -174,13 +174,13 @@ implements AlmightyContainer<Item> {
 
     private RemoveSingleByValue<Item> delegateRemoveSingleByValue = disabledAlmightyContainer;
 
-    private RemoveManyByValue<Item> delegateRemoveManyByValue = disabledAlmightyContainer;
+    private RemoveMultipleByValue<Item> delegateRemoveMultipleByValue = disabledAlmightyContainer;
 
-    private ObservedRemoveMany<Item> delegateObservedRemoveMany = disabledAlmightyContainer;
+    private ObservedRemoveMultiple<Item> delegateObservedRemoveMultiple = disabledAlmightyContainer;
 
     private ContainsSingle<Item> delegateContainsSingle = disabledAlmightyContainer;
 
-    private ContainsMany<Item> delegateContainsMany = disabledAlmightyContainer;
+    private ContainsMultiple<Item> delegateContainsMultiple = disabledAlmightyContainer;
 
     private Iterable<Item> delegateIterable = disabledAlmightyContainer;
 
@@ -236,7 +236,7 @@ implements AlmightyContainer<Item> {
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ boolean contains(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        return delegateContainsMany.contains(items);
+        return delegateContainsMultiple.contains(items);
     }
 
     @Override
@@ -245,14 +245,14 @@ implements AlmightyContainer<Item> {
         */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
            ValueObserverException {
-        delegateObservedRemoveMany.remove(items, observers);
+        delegateObservedRemoveMultiple.remove(items, observers);
     }
 
     @Override
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items)
     throws InvalidContainerArgumentException, InvalidContainerStateException {
-        delegateRemoveManyByValue.remove(items);
+        delegateRemoveMultipleByValue.remove(items);
     }
 
     @Override
@@ -312,16 +312,16 @@ implements AlmightyContainer<Item> {
         this.delegateCount = delegateCount;
     }
 
-    public void setDelegateRemoveManyByValue(final RemoveManyByValue<Item> delegateRemoveManyByValue) {
-        this.delegateRemoveManyByValue = delegateRemoveManyByValue;
+    public void setDelegateRemoveMultipleByValue(final RemoveMultipleByValue<Item> delegateRemoveMultipleByValue) {
+        this.delegateRemoveMultipleByValue = delegateRemoveMultipleByValue;
     }
 
-    public void setDelegateObservedRemoveMany(final ObservedRemoveMany<Item> delegateObservedRemoveMany) {
-        this.delegateObservedRemoveMany = delegateObservedRemoveMany;
+    public void setDelegateObservedRemoveMultiple(final ObservedRemoveMultiple<Item> delegateObservedRemoveMultiple) {
+        this.delegateObservedRemoveMultiple = delegateObservedRemoveMultiple;
     }
 
-    public void setDelegateContainsMany(final ContainsMany<Item> delegateContainsMany) {
-        this.delegateContainsMany = delegateContainsMany;
+    public void setDelegateContainsMultiple(final ContainsMultiple<Item> delegateContainsMultiple) {
+        this.delegateContainsMultiple = delegateContainsMultiple;
     }
 
     public void setDelegateIterable(final Iterable<Item> delegateIterable) {

@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-public interface ContainsMany<Item> {
+public interface ContainsMultiple<Item> {
 
     /**
      * Verifies whether this {@link Object} containsItem all of the specified {@link Item}s.

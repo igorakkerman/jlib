@@ -40,7 +40,7 @@ public final class StreamUtility {
      * taking in account the sign of the byte.
      * </p>
      * <p>
-     * Many stream operations like the {@link OutputStream#write(int)} method
+     * Multiple stream operations like the {@link OutputStream#write(int)} method
      * require a byte to be specified by an integer. Using this method, an
      * unsigned byte can be converted into such an integer.
      * </p>

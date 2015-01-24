@@ -21,7 +21,7 @@
 
 package org.jlib.container;
 
-import org.jlib.container.operation.ContainsMany;
+import org.jlib.container.operation.ContainsMultiple;
 import org.jlib.container.operation.ContainsSingle;
 import org.jlib.container.operation.Count;
 import org.jlib.container.operation.IsEmpty;
@@ -33,7 +33,7 @@ import org.jlib.container.operation.ToSet;
 public interface Container<Item>
 extends Iterable<Item>,
         ContainsSingle<Item>,
-        ContainsMany<Item>,
+        ContainsMultiple<Item>,
         Count<Item>,
         IsEmpty<Item>,
         ToArray<Item>,

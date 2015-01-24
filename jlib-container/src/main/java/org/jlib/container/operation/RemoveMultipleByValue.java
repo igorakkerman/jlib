@@ -29,7 +29,7 @@ package org.jlib.container.operation;
  *
  * @author Igor Akkerman
  */
-public interface RemoveManyByValue<Item>
+public interface RemoveMultipleByValue<Item>
  {
 
     /**
