@@ -32,14 +32,13 @@ import org.jlib.object_spi.HashCode;
 import org.jlib.object_spi.HashCodeEngine;
 import org.jlib.object_spi.ObjectMethodForwarder;
 import org.jlib.object_spi.ToString;
-import org.jlib.object_spi.ToStringStyle;
 
 public class ApacheCommonsObjectMethodForwarder
 implements ObjectMethodForwarder {
 
     @Override
     public <Obj> Equals<Obj> reflectionEquals() {
-        return EqualsBuilder:: reflectionEquals;
+        return EqualsBuilder::reflectionEquals;
     }
 
     @Override
@@ -49,7 +48,7 @@ implements ObjectMethodForwarder {
 
     @Override
     public <Obj> HashCode<Obj> reflectionHashCode() {
-        return HashCodeBuilder:: reflectionHashCode;
+        return HashCodeBuilder::reflectionHashCode;
     }
 
     @Override
@@ -69,13 +68,7 @@ implements ObjectMethodForwarder {
 
     @Override
     public <Obj> ToString<Obj> reflectionToString() {
-        return ToStringBuilder:: reflectionToString;
-    }
-
-    @Override
-    @SuppressWarnings("Convert2MethodRef")
-    public <Obj> ToString<Obj> reflectionToString(final ToStringStyle toStringStyle) {
-        return object -> ToStringBuilder.reflectionToString(object);
+        return ToStringBuilder::reflectionToString;
     }
 
     @Override

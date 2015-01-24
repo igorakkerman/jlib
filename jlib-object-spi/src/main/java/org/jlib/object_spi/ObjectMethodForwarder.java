@@ -37,8 +37,5 @@ public interface ObjectMethodForwarder {
 
     <Obj> ToString<Obj> reflectionToString();
 
-    @SuppressWarnings("Convert2MethodRef")
-    <Obj> ToString<Obj> reflectionToString(ToStringStyle toStringStyle);
-
     HashCodeEngine hashCodeEngine();
 }
