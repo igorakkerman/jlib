@@ -35,9 +35,6 @@ implements HashCode<Iterable<Item>> {
         return (ObjectSpiIterableHashCode<Item>) INSTANCE;
     }
 
-    /**
-     * Creates a new {@link ObjectSpiIterableHashCode}.
-     */
     private ObjectSpiIterableHashCode() {}
 
     @Override
