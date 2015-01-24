@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="jlib-codequality" />
+    <orderEntry type="module" module-name="jlib-core" />
     <orderEntry type="module" module-name="jlib-object-spi" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:1.8.9" level="project" />
