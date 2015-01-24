@@ -31,6 +31,7 @@ import org.jlib.core.reflection.ReflectionUtility;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
+import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.jlib.core.message.MessageUtility.message;
 import org.jlib.object_spi.ObjectMethodForwarder;
@@ -72,6 +73,8 @@ public class ToStringStyleUtility {
                     return MULTI_LINE_STYLE;
                 case "NO_FIELD_NAMES_STYLE":
                     return NO_FIELD_NAMES_STYLE;
+                case "SHORT_PREFIX_STYLE":
+                    return SHORT_PREFIX_STYLE;
                 case "SIMPLE_STYLE":
                     return SIMPLE_STYLE;
                 default:
