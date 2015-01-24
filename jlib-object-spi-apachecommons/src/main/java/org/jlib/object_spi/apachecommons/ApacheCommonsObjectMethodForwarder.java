@@ -29,12 +29,12 @@ import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
 import org.jlib.object_spi.HashCode;
-import org.jlib.object_spi.ObjectMethodDelegator;
+import org.jlib.object_spi.ObjectMethodForwarder;
 import org.jlib.object_spi.ToString;
 import org.jlib.object_spi.ToStringStyle;
 
-public class ApacheCommonsObjectMethodDelegator
-implements ObjectMethodDelegator {
+public class ApacheCommonsObjectMethodForwarder
+implements ObjectMethodForwarder {
 
     @Override
     public <Obj> Equals<Obj> reflectionEquals() {

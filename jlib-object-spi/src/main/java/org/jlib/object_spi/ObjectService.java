@@ -34,32 +34,32 @@ public class ObjectService {
         return INSTANCE;
     }
 
-    private final ObjectMethodDelegator objectMethodDelegator;
+    private final ObjectMethodForwarder objectMethodForwarder;
 
     private ObjectService()
     throws ServiceConfigurationError, NoObjectSpiImplementationInClasspath,
            OnlyOneObjectSpiImplementationAllowedInClasspath {
-        final ServiceLoader<ObjectMethodDelegator> loader = ServiceLoader.load(ObjectMethodDelegator.class);
+        final ServiceLoader<ObjectMethodForwarder> loader = ServiceLoader.load(ObjectMethodForwarder.class);
 
-        final List<ObjectMethodDelegator> objectMethodDelegators = new ArrayList<>();
+        final List<ObjectMethodForwarder> objectMethodForwarders = new ArrayList<>();
 
-        for (final ObjectMethodDelegator objectMethodDelegator : loader)
-            objectMethodDelegators.add(objectMethodDelegator);
+        for (final ObjectMethodForwarder objectMethodForwarder : loader)
+            objectMethodForwarders.add(objectMethodForwarder);
 
-        assertExactlyOneObjectMethodDelegator(objectMethodDelegators);
+        assertExactlyOneServiceProviderInClassPath(objectMethodForwarders);
 
-        objectMethodDelegator = objectMethodDelegators.get(0);
+        objectMethodForwarder = objectMethodForwarders.get(0);
     }
 
-    private void assertExactlyOneObjectMethodDelegator(final List<ObjectMethodDelegator> objectMethodDelegators) {
-        if (objectMethodDelegators.isEmpty())
+    private void assertExactlyOneServiceProviderInClassPath(final List<ObjectMethodForwarder> objectMethodForwarders) {
+        if (objectMethodForwarders.isEmpty())
             throw new NoObjectSpiImplementationInClasspath();
 
-        if (objectMethodDelegators.size() > 1)
-            throw new OnlyOneObjectSpiImplementationAllowedInClasspath(objectMethodDelegators);
+        if (objectMethodForwarders.size() > 1)
+            throw new OnlyOneObjectSpiImplementationAllowedInClasspath(objectMethodForwarders);
     }
 
-    public ObjectMethodDelegator getObjectMethodDelegator() {
-        return objectMethodDelegator;
+    public ObjectMethodForwarder getObjectMethodForwarder() {
+        return objectMethodForwarder;
     }
 }

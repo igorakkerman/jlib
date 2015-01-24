@@ -21,7 +21,7 @@
 
 package org.jlib.object_spi;
 
-public interface ObjectMethodDelegator {
+public interface ObjectMethodForwarder {
 
     <Obj> Equals<Obj> reflectionEquals();
 

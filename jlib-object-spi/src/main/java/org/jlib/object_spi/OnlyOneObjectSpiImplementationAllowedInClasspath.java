@@ -29,7 +29,7 @@ extends IllegalStateException {
     private static final long serialVersionUID = - 6847000140310718989L;
 
     public OnlyOneObjectSpiImplementationAllowedInClasspath(/*
-     */ final Collection<ObjectMethodDelegator> objectMethodDelegators) {
-        super(objectMethodDelegators.toString());
+     */ final Collection<ObjectMethodForwarder> objectMethodForwarders) {
+        super(objectMethodForwarders.toString());
     }
 }

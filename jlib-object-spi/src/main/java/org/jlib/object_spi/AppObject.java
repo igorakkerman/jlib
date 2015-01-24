@@ -29,8 +29,8 @@ package org.jlib.object_spi;
  */
 public abstract class AppObject {
 
-    private static final ObjectMethodDelegator objectMethodDelegator = /*
-     */ ObjectService.getInstance().getObjectMethodDelegator();
+    private static final ObjectMethodForwarder OBJECT_METHOD_FORWARDER = /*
+     */ ObjectService.getInstance().getObjectMethodForwarder();
 
     /**
      * Creates a new {@link AppObject}.
@@ -54,15 +54,15 @@ public abstract class AppObject {
     }
 
     protected <Obj> Equals<Obj> getEqualsStrategy() {
-        return objectMethodDelegator.reflectionEquals(getExcludedFieldNames());
+        return OBJECT_METHOD_FORWARDER.reflectionEquals(getExcludedFieldNames());
     }
 
     protected <Obj> HashCode<Obj> getHashCodeStrategy() {
-        return objectMethodDelegator.reflectionHashCode(getExcludedFieldNames());
+        return OBJECT_METHOD_FORWARDER.reflectionHashCode(getExcludedFieldNames());
     }
 
     protected <Obj> ToString<Obj> getToStringStrategy() {
-        return objectMethodDelegator.reflectionToString();
+        return OBJECT_METHOD_FORWARDER.reflectionToString();
     }
 
     /**
