@@ -39,7 +39,7 @@ public class ToStringStyleUtility {
 
     /**
      * <p>
-     * Property name of the concrete {@link ToStringStyle} implementation class name or short name.
+     * Property name of the concrete {@link ToStringStyle} implementation's class name or short name.
      * Permitted values are:
      * </p>
      * <dl>
