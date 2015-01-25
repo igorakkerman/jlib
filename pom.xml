@@ -245,35 +245,13 @@
 
             <dependency>
                 <groupId>org.powermock</groupId>
-                <artifactId>powermock-modules-impl</artifactId>
+                <artifactId>powermock-module-junit4</artifactId>
                 <version>${powermock.version}</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.powermock</groupId>
-                <artifactId>powermock-modules-test-mockito</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-modules</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-modules-test</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.powermock.tests</groupId>
-                <artifactId>powermock-tests</artifactId>
+                <artifactId>powermock-api-mockito</artifactId>
                 <version>${powermock.version}</version>
                 <scope>test</scope>
             </dependency>
