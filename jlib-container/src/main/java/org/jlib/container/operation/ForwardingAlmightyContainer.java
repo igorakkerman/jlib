@@ -27,7 +27,7 @@ import java.util.Set;
 
 import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
-import org.jlib.object_spi.AppObject;
+import org.jlib.object_spi.ApplicationObject;
 import org.jlib.operator.observer.ValueObserver;
 import org.jlib.operator.observer.ValueObserverException;
 
@@ -43,7 +43,7 @@ import org.jlib.operator.observer.ValueObserverException;
  * @author Igor Akkerman
  */
 public class ForwardingAlmightyContainer<Item>
-extends AppObject
+extends ApplicationObject
 implements AlmightyContainer<Item> {
 
     private final AlmightyContainer<Item> disabledAlmightyContainer = new AlmightyContainer<Item>() {

@@ -27,15 +27,15 @@ package org.jlib.object_spi;
  *
  * @author Igor Akkerman
  */
-public abstract class AppObject {
+public abstract class ApplicationObject {
 
     private static final ObjectMethodForwarder OBJECT_METHOD_FORWARDER = /*
      */ ObjectService.getInstance().getObjectMethodForwarder();
 
     /**
-     * Creates a new {@link AppObject}.
+     * Creates a new {@link ApplicationObject}.
      */
-    protected AppObject() {}
+    protected ApplicationObject() {}
 
     @Override
     public String toString() {
@@ -70,7 +70,7 @@ public abstract class AppObject {
      * Reuturns the names of the fields excluded from the operations in {@link #equals(Object)} and {@link #hashCode()}.
      * </p>
      * <p>
-     * The implementation in the class {@link AppObject} returns an empty array. It may be overridden to specify
+     * The implementation in the class {@link ApplicationObject} returns an empty array. It may be overridden to specify
      * a set of excluded fields.
      * </p>
      *

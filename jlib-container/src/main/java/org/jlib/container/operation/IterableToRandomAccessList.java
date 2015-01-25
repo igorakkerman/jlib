@@ -24,10 +24,10 @@ package org.jlib.container.operation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.object_spi.AppObject;
+import org.jlib.object_spi.ApplicationObject;
 
 public class IterableToRandomAccessList<Item>
-extends AppObject
+extends ApplicationObject
 implements ToRandomAccessList<Item> {
 
     private static final int DEFAULT_EXPECTED_ITEMS_COUNT = 20;

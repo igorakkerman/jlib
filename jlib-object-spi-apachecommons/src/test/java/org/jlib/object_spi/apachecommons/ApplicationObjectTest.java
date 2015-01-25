@@ -22,13 +22,13 @@
 package org.jlib.object_spi.apachecommons;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.jlib.object_spi.AppObject;
+import org.jlib.object_spi.ApplicationObject;
 import org.junit.Test;
 
-public class AppObjectTest {
+public class ApplicationObjectTest {
 
     private static class A
-    extends AppObject {
+    extends ApplicationObject {
 
         private final int f = 42;
     }
