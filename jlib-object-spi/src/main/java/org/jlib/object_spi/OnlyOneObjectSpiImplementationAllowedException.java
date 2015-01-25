@@ -23,13 +23,18 @@ package org.jlib.object_spi;
 
 import java.util.Collection;
 
-public class OnlyOneObjectSpiImplementationAllowedInClasspathException
-extends IllegalStateException {
+import org.jlib.core.exception.InvalidStateException;
 
-    private static final long serialVersionUID = - 7306822724090030391L;
+import static org.jlib.core.message.MessageUtility.message;
 
-    public OnlyOneObjectSpiImplementationAllowedInClasspathException(/*
-     */ final Collection<ObjectMethodForwarder> objectMethodForwarders) {
-        super(objectMethodForwarders.toString());
+public class OnlyOneObjectSpiImplementationAllowedException
+extends InvalidStateException {
+
+    private static final long serialVersionUID = 8750597802769662034L;
+
+    public OnlyOneObjectSpiImplementationAllowedException /*
+     */(final Collection<ObjectMethodForwarder> objectMethodForwarders) {
+
+        super(message().with("objectMethodForwarders", objectMethodForwarders));
     }
 }
