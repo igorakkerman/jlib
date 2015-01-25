@@ -22,7 +22,8 @@
 package org.jlib.core.reflection;
 
 import org.jlib.core.property.OptionalPropertyNotSetException;
-import org.jlib.core.property.PropertyUtility;
+
+import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 
 /**
  * <p>
@@ -94,9 +95,12 @@ public final class ReflectionUtility {
      *
      * @param <Obj>
      *        type of the object to create
+     *
      * @param object
      *        Object instance of the class to instantiate
+     *
      * @return a new instance of the specified class
+     *
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails
      */
@@ -118,19 +122,32 @@ public final class ReflectionUtility {
      *
      * @param <Obj>
      *        type of the object to create
+     *
      * @param className
      *        String specifying the name of the class to instantiate
+     *
+     * @param expectedParentClass
+     *        expected parent {@link Class} of the instantiated {@link Class};
+     *
      * @return a new instance of the specified class
+     *
+     * @throws WrongTypedClassInstantiationException
+     *         if the instantiated {@link Object} is not an instance of {@code expectedParentClass} or a descendant
+     *         subclass
+     *
      * @throws ClassInstantiationException
-     *         if the instantiation of the specified class fails or the
-     *         instantiated object is not an instance of the class represented
-     *         by {@code Obj} or a subclass
+     *         if the instantiation of the specified class fails
      */
-    @SuppressWarnings("unchecked")
-    public static <Obj> Obj newInstanceOf(final String className)
-    throws ClassInstantiationException {
+    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
+    public static <Obj> Obj newInstanceOf(final String className, final Class<Obj> expectedParentClass)
+    throws WrongTypedClassInstantiationException, ClassInstantiationException {
         try {
-            return newInstanceOf((Class<? extends Obj>) Class.forName(className));
+            final Class<?> clazz = Class.forName(className);
+
+            if (! expectedParentClass.isAssignableFrom(clazz))
+                throw new WrongTypedClassInstantiationException(clazz, expectedParentClass);
+
+            return newInstanceOf((Class<? extends Obj>) clazz);
         }
         catch (final ClassNotFoundException exception) {
             throw new ClassInstantiationException(className, exception);
@@ -159,26 +176,24 @@ public final class ReflectionUtility {
      * @throws OptionalPropertyNotSetException
      *         if the specified system property is not set
      *
+     * @throws WrongTypedClassInstantiationException
+     *         if the instantiated {@link Object} is not an instance of {@code expectedParentClass} or a descendant
+     *         subclass
+     *
      * @throws ClassInstantiationException
+     *         if one of the following conditions is true:
      *         <ul>
      *         <li>if the specified system property is not set (cause is a
-     *         {@link OptionalPropertyNotSetException}) or</li>
+     *         {@link OptionalPropertyNotSetException})</li>
      *         <li>if the instantiation of the specified class fails (cause is
-     *         one of the exceptions thrown by {@link Class#forName(String)}) or
+     *         one of the exceptions thrown by {@link Class#forName(String)})
      *         </li>
-     *         <li>the instantiated object is not an instance of the class
-     *         represented by {@code Obj} or a subclass (cause is a
-     *         {@link ClassCastException}).</li>
      *         </ul>
      */
-    public static <Obj> Obj newInstanceByProperty(final String propertyName)
+    public static <Obj> Obj newInstanceByProperty(final String propertyName, final Class<Obj> expectedParentClass)
     throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException {
-        final String className = PropertyUtility.getOptionalProperty(propertyName);
-        // the cast is necessary to the Sun compiler, not to the Eclipse compiler
-        return newInstanceOf(className);
+        return newInstanceOf(getOptionalProperty(propertyName), expectedParentClass);
     }
 
-    /** no visible constructor */
-    private ReflectionUtility() {
-    }
+    private ReflectionUtility() {}
 }

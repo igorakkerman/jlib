@@ -22,6 +22,7 @@
 package org.jlib.core.reflection;
 
 import org.jlib.core.exception.ApplicationException;
+import org.jlib.core.message.Message;
 
 import static org.jlib.core.message.MessageUtility.message;
 
@@ -35,45 +36,38 @@ import static org.jlib.core.message.MessageUtility.message;
 public class ClassInstantiationException
 extends ApplicationException {
 
-    private static final long serialVersionUID = 324704714378755280L;
+    private static final long serialVersionUID = - 5553582053593591383L;
 
-    /** class name */
     private final String className;
 
-    /**
-     * Creates a new ClassInstantiationException.
-     *
-     * @param className
-     *        name of the class that cannot be instantiated
-     *
-     * @param cause
-     *        original {@link Exception} that caused this {@link ClassInstantiationException}
-     */
-    public ClassInstantiationException(final CharSequence className, final Exception cause) {
-        super(message().with("className", className), cause);
-
-        this.className = className.toString();
+    public ClassInstantiationException(final String className) {
+        this.className = className;
     }
 
-    /**
-     * Creates a new {@link ClassInstantiationException} if the specified class cannot be instantiated.
-     *
-     * @param clazz
-     *        {@link Class} that cannot be instantiated
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link ClassInstantiationException}
-     */
+    public ClassInstantiationException(final Class<?> clazz) {
+        this(clazz.getName());
+    }
+
+    public ClassInstantiationException(final String className, final Exception cause) {
+        this(className);
+
+        initCause(cause);
+    }
+
     public ClassInstantiationException(final Class<?> clazz, final Exception cause) {
         this(clazz.getName(), cause);
     }
 
-    /**
-     * Returns the name of the class that cannot be instantiated.
-     *
-     * @return {@link String} specifying the name of the class
-     */
     public String getClassName() {
         return className;
+    }
+
+    @Override
+    public String getMessage() {
+        return buildMessage().toString();
+    }
+
+    protected Message buildMessage() {
+        return message().with("className", className);
     }
 }
