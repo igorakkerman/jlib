@@ -21,7 +21,8 @@
 
 package org.jlib.object_spi;
 
-public class NoObjectSpiImplementationInClasspath
+public class NoObjectSpiImplementationException
 extends IllegalStateException {
-    private static final long serialVersionUID = - 3106675369448187608L;
+
+    private static final long serialVersionUID = 3905866349672226535L;
 }

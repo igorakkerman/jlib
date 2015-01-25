@@ -37,7 +37,7 @@ public class ObjectService {
     private final ObjectMethodForwarder objectMethodForwarder;
 
     private ObjectService()
-    throws ServiceConfigurationError, NoObjectSpiImplementationInClasspath,
+    throws ServiceConfigurationError, NoObjectSpiImplementationException,
            OnlyOneObjectSpiImplementationAllowedException {
         final ServiceLoader<ObjectMethodForwarder> loader = ServiceLoader.load(ObjectMethodForwarder.class);
 
@@ -53,7 +53,7 @@ public class ObjectService {
 
     private void assertExactlyOneServiceProviderInClassPath(final List<ObjectMethodForwarder> objectMethodForwarders) {
         if (objectMethodForwarders.isEmpty())
-            throw new NoObjectSpiImplementationInClasspath();
+            throw new NoObjectSpiImplementationException();
 
         if (objectMethodForwarders.size() > 1)
             throw new OnlyOneObjectSpiImplementationAllowedException(objectMethodForwarders);
