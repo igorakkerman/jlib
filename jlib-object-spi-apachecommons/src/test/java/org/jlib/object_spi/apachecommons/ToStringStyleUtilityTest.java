@@ -21,7 +21,6 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import static java.lang.System.setProperty;
@@ -46,12 +45,12 @@ public class ToStringStyleUtilityTest {
         private static final long serialVersionUID = - 1306981006542884518L;
     }
 
-    public static class NotMyStyle
-    extends ToStringBuilder {
+    public static class SomethingWithDefaultConstructor {}
 
-        public NotMyStyle(final Object object) {
-            super(object);
-        }
+    public static class SomethingWithoutDefaultConstructor {
+
+        @SuppressWarnings("UnusedParameters")
+        public SomethingWithoutDefaultConstructor(final Object object) {}
     }
 
     @Before
@@ -68,8 +67,13 @@ public class ToStringStyleUtilityTest {
     }
 
     @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
-    public void differentClassNameShouldThrowException() {
-        createToStringStyleInstance(NotMyStyle.class.getName());
+    public void withDefaultConstructorClassNameShouldThrowException() {
+        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
+    }
+
+    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
+    public void withoutDefaultConstructorClassNameShouldThrowException() {
+        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
     }
 
     @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
@@ -134,4 +138,9 @@ public class ToStringStyleUtilityTest {
 
         fetchToStringStyle();
     }
+
+//    public void classNamePropertyShouldCallCreateInstanceMethod() {
+//        PowerMockito.mockStatic(ToStringStyleUtility.class);
+//        BDDMockito.given(ToStringStyleUtility.createToStringStyleInstance("some.Class")).willReturn(new MyStyle());
+//    }
 }

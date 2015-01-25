@@ -28,7 +28,11 @@ import org.jlib.core.reflection.ClassInstantiationException;
 public class InvalidApacheCommonsToStringStyleClassException
 extends InvalidStateException {
 
-    private static final long serialVersionUID = - 2883771672269720453L;
+    private static final long serialVersionUID = 8556189295653913047L;
+
+    public InvalidApacheCommonsToStringStyleClassException(final Message message) {
+        super(message);
+    }
 
     public InvalidApacheCommonsToStringStyleClassException(final Message message,
                                                            final ClassInstantiationException exception) {

@@ -26,7 +26,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.jlib.core.property.OptionalPropertyNotSetException;
 import org.jlib.core.property.PropertyUtility;
 import org.jlib.core.reflection.ClassInstantiationException;
-import org.jlib.core.reflection.ReflectionUtility;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
@@ -34,6 +33,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYL
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 import org.jlib.object_spi.ObjectMethodForwarder;
 
 public class ToStringStyleUtility {
@@ -88,7 +88,7 @@ public class ToStringStyleUtility {
 
     static ToStringStyle createToStringStyleInstance(final String className) {
         try {
-            return ReflectionUtility.newInstanceOf(className);
+            return newInstanceOf(className, ToStringStyle.class);
         }
         catch (final ClassInstantiationException exception) {
             throw new InvalidApacheCommonsToStringStyleClassException(message().with("className", className),
