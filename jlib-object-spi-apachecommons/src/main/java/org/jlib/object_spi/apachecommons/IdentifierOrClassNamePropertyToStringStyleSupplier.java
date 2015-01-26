@@ -24,19 +24,14 @@ package org.jlib.object_spi.apachecommons;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.OptionalPropertyNotSetException;
-import org.jlib.core.property.PropertyUtility;
-import org.jlib.core.reflection.ClassInstantiationException;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.jlib.core.message.MessageUtility.message;
-import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
+import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 import org.jlib.object_spi.ObjectMethodForwarder;
 
-public class ToStringStyleUtility {
+public class IdentifierOrClassNamePropertyToStringStyleSupplier
+implements ToStringStyleSupplier {
 
     /**
      * <p>
@@ -60,41 +55,32 @@ public class ToStringStyleUtility {
      */
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
 
-    static ToStringStyle fetchToStringStyle()
-    throws InvalidApacheCommonsToStringStyleClassException {
+    @Override
+    public ToStringStyle getToStringStyle()
+    throws ToStringStyleNotFoundException {
         try {
-            final String toStringStyleIdentifier = /*
-             */ PropertyUtility.getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
-
-            switch (toStringStyleIdentifier) {
-                case "DEFAULT_STYLE":
-                    return DEFAULT_STYLE;
-                case "MULTI_LINE_STYLE":
-                    return MULTI_LINE_STYLE;
-                case "NO_FIELD_NAMES_STYLE":
-                    return NO_FIELD_NAMES_STYLE;
-                case "SHORT_PREFIX_STYLE":
-                    return SHORT_PREFIX_STYLE;
-                case "SIMPLE_STYLE":
-                    return SIMPLE_STYLE;
-                default:
-                    return createToStringStyleInstance(toStringStyleIdentifier);
-            }
+            return getFromSuppliers(getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME));
         }
         catch (final OptionalPropertyNotSetException exception) {
             return DEFAULT_STYLE;
         }
     }
 
-    static ToStringStyle createToStringStyleInstance(final String className) {
-        try {
-            return newInstanceOf(className, ToStringStyle.class);
-        }
-        catch (final ClassInstantiationException exception) {
-            throw new InvalidApacheCommonsToStringStyleClassException(message().with("className", className),
-                                                                      exception);
-        }
+    private ToStringStyle getFromSuppliers(final String propertyValue)
+    throws ToStringStyleNotFoundException {
+        for (final ToStringStyleSupplier supplier : suppliers(propertyValue))
+            try {
+                return supplier.getToStringStyle();
+            }
+            catch (final ToStringStyleNotFoundException exception) {
+                // continue
+            }
+
+        throw new ToStringStyleNotFoundException(message().with("propertyValue", propertyValue));
     }
 
-    private ToStringStyleUtility() {}
+    private ToStringStyleSupplier[] suppliers(final String propertyValue) {
+        return new ToStringStyleSupplier[]{ new IdentifierToStringStyleSupplier(propertyValue), //
+                                            new ClassNameToStringStyleSupplier(propertyValue) };
+    }
 }

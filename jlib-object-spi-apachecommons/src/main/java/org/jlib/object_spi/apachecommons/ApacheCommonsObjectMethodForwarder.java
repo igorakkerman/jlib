@@ -40,7 +40,7 @@ implements ObjectMethodForwarder {
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsObjectMethodForwarder() {
-        toStringStyle = ToStringStyleUtility.fetchToStringStyle();
+        toStringStyle = IdentifierOrClassNamePropertyToStringStyleSupplier.fetchToStringStyle();
     }
 
     @Override

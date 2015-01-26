@@ -21,21 +21,21 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
-import org.jlib.core.reflection.ClassInstantiationException;
 
-public class InvalidApacheCommonsToStringStyleClassException
-extends InvalidStateException {
+public class ToStringStyleNotFoundException
+extends ApplicationException {
 
-    private static final long serialVersionUID = 8556189295653913047L;
+    private static final long serialVersionUID = - 1373688725141046471L;
 
-    public InvalidApacheCommonsToStringStyleClassException(final Message message) {
+    protected ToStringStyleNotFoundException() {}
+
+    protected ToStringStyleNotFoundException(final Message message) {
         super(message);
     }
 
-    public InvalidApacheCommonsToStringStyleClassException(final Message message,
-                                                           final ClassInstantiationException exception) {
-        super(message, exception);
+    protected ToStringStyleNotFoundException(final Exception cause) {
+        super(cause);
     }
 }

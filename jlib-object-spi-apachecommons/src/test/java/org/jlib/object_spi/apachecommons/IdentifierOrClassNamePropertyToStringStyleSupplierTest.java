@@ -30,14 +30,23 @@ import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYL
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.object_spi.apachecommons.ToStringStyleUtility.TO_STRING_STYLE_NAME_PROPERTY_NAME;
-import static org.jlib.object_spi.apachecommons.ToStringStyleUtility.createToStringStyleInstance;
-import static org.jlib.object_spi.apachecommons.ToStringStyleUtility.fetchToStringStyle;
+import static org.jlib.object_spi.apachecommons.IdentifierOrClassNamePropertyToStringStyleSupplier.TO_STRING_STYLE_NAME_PROPERTY_NAME;
+import static org.jlib.object_spi.apachecommons.IdentifierOrClassNamePropertyToStringStyleSupplier.fetchToStringStyle;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.powermock.api.mockito.PowerMockito.doReturn;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.spy;
+import static org.powermock.api.mockito.PowerMockito.verifyStatic;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-public class ToStringStyleUtilityTest {
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(IdentifierOrClassNamePropertyToStringStyleSupplier.class)
+public class IdentifierOrClassNamePropertyToStringStyleSupplierTest {
 
     public static class MyStyle
     extends ToStringStyle {
@@ -45,7 +54,9 @@ public class ToStringStyleUtilityTest {
         private static final long serialVersionUID = - 1306981006542884518L;
     }
 
-    public static class SomethingWithDefaultConstructor {}
+    public static class SomethingWithDefaultConstructor {
+
+    }
 
     public static class SomethingWithoutDefaultConstructor {
 
@@ -61,25 +72,25 @@ public class ToStringStyleUtilityTest {
 
     // createToStringStyleInstance
 
-    @Test
-    public void styleClassNameShouldCreateStyleClass() {
-        assertThat(createToStringStyleInstance(MyStyle.class.getName())).hasSameClassAs(new MyStyle());
-    }
-
-    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
-    public void withDefaultConstructorClassNameShouldThrowException() {
-        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
-    }
-
-    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
-    public void withoutDefaultConstructorClassNameShouldThrowException() {
-        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
-    }
-
-    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
-    public void notExistingClassNameShouldThrowException() {
-        createToStringStyleInstance("org.jlib.i.do.not.Exist");
-    }
+//    @Test
+//    public void styleClassNameShouldCreateStyleClass() {
+//        assertThat(createToStringStyleInstance(MyStyle.class.getName())).hasSameClassAs(new MyStyle());
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void withDefaultConstructorClassNameShouldThrowException() {
+//        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void withoutDefaultConstructorClassNameShouldThrowException() {
+//        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void notExistingClassNameShouldThrowException() {
+//        createToStringStyleInstance("org.jlib.i.do.not.Exist");
+//    }
 
     // ---
 
@@ -125,22 +136,42 @@ public class ToStringStyleUtilityTest {
         assertThat(fetchToStringStyle()).isSameAs(SIMPLE_STYLE);
     }
 
-    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
+    @Test(expected = InvalidToStringStyleClassException.class)
     public void emptyPropertyShouldThrowException() {
         setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "");
 
         fetchToStringStyle();
     }
 
-    @Test(expected = InvalidApacheCommonsToStringStyleClassException.class)
+    @Test(expected = InvalidToStringStyleClassException.class)
     public void blankPropertyShouldThrowException() {
         setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, " ");
 
         fetchToStringStyle();
     }
 
-//    public void classNamePropertyShouldCallCreateInstanceMethod() {
-//        PowerMockito.mockStatic(ToStringStyleUtility.class);
-//        BDDMockito.given(ToStringStyleUtility.createToStringStyleInstance("some.Class")).willReturn(new MyStyle());
-//    }
+    @Test
+    public void classNamePropertyShouldCallCreateInstanceMethod()
+    throws Exception {
+        // given
+        mockStatic(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
+
+//        spy(ToStringStyleUtility.class);
+        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "some.Class");
+//        when(ToStringStyleUtility.class, "createToStringStyleInstance", "some.Class").thenReturn(new MyStyle());
+//        when(ToStringStyleUtility.class,
+//             method(ToStringStyleUtility.class, "createToStringStyleInstance", String.class)).withArguments(
+//                                                                                                           "some.Class")
+//                                                                                             .thenReturn(new MyStyle());
+
+        doReturn(new MyStyle()).when(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
+
+        // when
+        fetchToStringStyle();
+
+        // then
+        verify(IdentifierOrClassNamePropertyToStringStyleSupplier.class).invoke("createToStringStyleInstance", "some.Class");
+        verifyStatic();
+//        createToStringStyleInstance("some.Class");
+    }
 }
