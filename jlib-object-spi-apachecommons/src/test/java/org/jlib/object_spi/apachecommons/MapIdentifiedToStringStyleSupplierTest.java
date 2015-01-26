@@ -34,7 +34,7 @@ import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForward
 import static org.jlib.object_spi.apachecommons.ToStringStyleIdentifierAssert.assertThatIdentifier;
 import org.junit.Test;
 
-class MapIdentifiedToStringStyleSupplierTest {
+public class MapIdentifiedToStringStyleSupplierTest {
 
     private static final IdentifiedToStringStyleSupplier SUPPLIER = /*
      */ new MapIdentifiedToStringStyleSupplier(getToStringStyles());

@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.jlib.object_spi.ApplicationObject;
 import org.junit.Test;
 
-class ApplicationObjectIntegrationTest {
+public class ApplicationObjectIntegrationTest {
 
     private static class A
     extends ApplicationObject {

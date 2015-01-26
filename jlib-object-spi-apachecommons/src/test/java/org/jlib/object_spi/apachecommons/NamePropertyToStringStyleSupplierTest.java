@@ -23,11 +23,20 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.TO_STRING_STYLE_NAME_PROPERTY_NAME;
+import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
-class NamePropertyToStringStyleSupplierTest {
+@RunWith(MockitoJUnitRunner.class)
+public class NamePropertyToStringStyleSupplierTest {
 
     public static class MyStyle
     extends ToStringStyle {
@@ -45,10 +54,42 @@ class NamePropertyToStringStyleSupplierTest {
         public SomethingWithoutDefaultConstructor(final Object object) {}
     }
 
+    private static final ToStringStyle SAMPLE_MY_STYLE = new MyStyle();
+    private static final String SAMPLE_PROPERTY_NAME = "tss";
+
+    @Mock
+    private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
+
     @Before
     @After
     public void clearProperty() {
-        System.clearProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
+        System.clearProperty(SAMPLE_PROPERTY_NAME);
+    }
+
+    @Test
+    public void forUnsetPropertyShouldMapToDefaultStyleNotCallIdentifiedSupplier() {
+        final ToStringStyle style = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME,
+                                                                          identifiedToStringStyleSupplier,
+                                                                          SAMPLE_MY_STYLE).getToStringStyle();
+        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        assertThat(style).isSameAs(SAMPLE_MY_STYLE);
+    }
+
+    @Test
+    public void forSetPropertyShouldRequestIdentifiedSupplierAndUseMapping() {
+        final String MY_STYLE_NAME = "MY_STYLE";
+        System.setProperty(SAMPLE_PROPERTY_NAME, MY_STYLE_NAME);
+
+        when(identifiedToStringStyleSupplier.isValidIdentifier(MY_STYLE_NAME)).thenReturn(true);
+        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(MY_STYLE_NAME)).thenReturn(SAMPLE_MY_STYLE);
+
+        final ToStringStyle style = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME,
+                                                                          identifiedToStringStyleSupplier,
+                                                                          DEFAULT_STYLE).getToStringStyle();
+
+        verify(identifiedToStringStyleSupplier).isValidIdentifier(MY_STYLE_NAME);
+        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(MY_STYLE_NAME);
+        assertThat(style).isSameAs(SAMPLE_MY_STYLE);
     }
 
     // createToStringStyleInstance

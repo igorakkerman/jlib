@@ -24,7 +24,7 @@ package org.jlib.object_spi.apachecommons;
 import org.jlib.core.exception.InvalidStateException;
 import org.jlib.core.reflection.ClassInstantiationException;
 
-class ToStringStyleNotFoundException
+public class ToStringStyleNotFoundException
 extends InvalidStateException {
 
     private static final long serialVersionUID = - 1252112347696827474L;
