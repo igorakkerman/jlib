@@ -39,11 +39,17 @@ public class ApacheCommonsObjectMethodForwarder
 implements ObjectMethodForwarder {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
+
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
+
+    public static final ToStringStyleSupplier TO_STRING_STYLE_SUPPLIER = /*
+     */ new IdentifierOrClassNamePropertyToStringStyleSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME,
+                                                               DefaultIdentifiedToStringStyleSupplier.getInstance(),
+                                                               DEFAULT_TO_STRING_STYLE);
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsObjectMethodForwarder() {
-        toStringStyle = new IdentifierOrClassNamePropertyToStringStyleSupplier().getToStringStyle();
+        toStringStyle = TO_STRING_STYLE_SUPPLIER.getToStringStyle();
     }
 
     @Override

@@ -21,33 +21,50 @@
 
 package org.jlib.object_spi.apachecommons;
 
+import java.util.Optional;
+
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.property.OptionalPropertyNotSetException;
+import org.jlib.core.reflection.ClassInstantiationException;
 
 import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
-import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.DEFAULT_TO_STRING_STYLE;
-import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.TO_STRING_STYLE_NAME_PROPERTY_NAME;
-import static org.jlib.object_spi.apachecommons.ClassNameToStringStyleSupplier.getToStringStyleByClassName;
-import static org.jlib.object_spi.apachecommons.IdentifiedToStringStyleSupplier.getIdentifiedToStringStyle;
+import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-class IdentifierOrClassNamePropertyToStringStyleSupplier {
+class IdentifierOrClassNamePropertyToStringStyleSupplier
+implements ToStringStyleSupplier {
 
+    private final String propertyName;
+    private final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
+    private final ToStringStyle defaultToStringStyle;
+
+    public IdentifierOrClassNamePropertyToStringStyleSupplier /*
+     */(final String propertyName, //
+        final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier,
+        final ToStringStyle defaultToStringStyle) {
+
+        this.propertyName = propertyName;
+        this.identifiedToStringStyleSupplier = identifiedToStringStyleSupplier;
+        this.defaultToStringStyle = defaultToStringStyle;
+    }
+
+    @Override
     public ToStringStyle getToStringStyle()
-    throws ToStringStyleClassNotFoundException {
-
-        String propertyValue = null;
-
+    throws ToStringStyleNotFoundException {
         try {
-            propertyValue = getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
+            final Optional<String> optionalIdentifierOrClassName = getOptionalProperty(propertyName);
 
-            return getIdentifiedToStringStyle(propertyValue);
+            if (! optionalIdentifierOrClassName.isPresent())
+                return defaultToStringStyle;
+
+            final String identifierOrClassName = optionalIdentifierOrClassName.get();
+
+            if (identifiedToStringStyleSupplier.isValidIdentifier(identifierOrClassName))
+                return identifiedToStringStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName);
+
+            return newInstanceOf(identifierOrClassName, ToStringStyle.class);
         }
-        catch (final OptionalPropertyNotSetException exception) {
-            return DEFAULT_TO_STRING_STYLE;
-        }
-        catch (final IdentifiedToStringStyleNotFoundException exception) {
-            return getToStringStyleByClassName(propertyValue);
+        catch (final ClassInstantiationException exception) {
+            throw new ToStringStyleNotFoundException(exception);
         }
     }
 }

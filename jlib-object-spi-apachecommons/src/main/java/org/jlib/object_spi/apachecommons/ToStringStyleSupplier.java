@@ -21,10 +21,10 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.jlib.core.exception.ApplicationException;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-class IdentifiedToStringStyleNotFoundException
-extends ApplicationException {
+interface ToStringStyleSupplier {
 
-    private static final long serialVersionUID = - 3322146808917144348L;
+    ToStringStyle getToStringStyle()
+    throws ToStringStyleNotFoundException;
 }

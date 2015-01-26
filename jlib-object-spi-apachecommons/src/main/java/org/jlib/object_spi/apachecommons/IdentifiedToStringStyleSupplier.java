@@ -21,36 +21,13 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
+import org.jlib.core.language.Valid;
 
-final class IdentifiedToStringStyleSupplier {
+interface IdentifiedToStringStyleSupplier {
 
-    private static final Map<String, ToStringStyle> TO_STRING_STYLES;
+    boolean isValidIdentifier(String identifier);
 
-    static {
-        TO_STRING_STYLES = new HashMap<>();
-        TO_STRING_STYLES.put("DEFAULT_STYLE", DEFAULT_STYLE);
-        TO_STRING_STYLES.put("MULTI_LINE_STYLE", MULTI_LINE_STYLE);
-        TO_STRING_STYLES.put("NO_FIELD_NAMES_STYLE", NO_FIELD_NAMES_STYLE);
-        TO_STRING_STYLES.put("SHORT_PREFIX_STYLE", SHORT_PREFIX_STYLE);
-        TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
-    }
-
-    static ToStringStyle getIdentifiedToStringStyle(final String identifier)
-    throws IdentifiedToStringStyleNotFoundException {
-
-        if (! TO_STRING_STYLES.containsKey(identifier))
-            throw new IdentifiedToStringStyleNotFoundException();
-
-        return TO_STRING_STYLES.get(identifier);
-    }
+    ToStringStyle getIdentifiedToStringStyle(@Valid String identifier);
 }

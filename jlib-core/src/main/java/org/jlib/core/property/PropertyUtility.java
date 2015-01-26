@@ -21,6 +21,8 @@
 
 package org.jlib.core.property;
 
+import java.util.Optional;
+
 /**
  * Utility class providing static methods for system properties.
  *
@@ -29,14 +31,14 @@ package org.jlib.core.property;
 public final class PropertyUtility {
 
     /**
-     * Returns the value of the system property indicated by the specified key,
-     * throwing a <em>checked</em> {@link OptionalPropertyNotSetException} if the specified key is not set.
+     * Returns the {@link Optional} value of the system property indicated by the specified key.
      *
      * @param propertyName
      *        String specifying the name of the system property
      *
-     * @return String specifying the value of the system property with
-     *         {@code propertyName}
+     * @return {@link Optional} of {@link String} specifying the value of the system property with
+     *         {@code propertyName};
+     *         {@link Optional#empty()} if the system property is unset
      *
      * @throws SecurityException
      *         if a security manager exists and its
@@ -45,19 +47,9 @@ public final class PropertyUtility {
      *
      * @throws IllegalArgumentException
      *         if {@code propertyName} is an empty String
-     *
-     * @throws OptionalPropertyNotSetException
-     *         if the specified system property is not set
      */
-    public static String getOptionalProperty(final String propertyName)
-    throws OptionalPropertyNotSetException {
-
-        final String propertyValue = System.getProperty(propertyName);
-
-        if (propertyValue == null)
-            throw new OptionalPropertyNotSetException(propertyName);
-
-        return propertyValue;
+    public static Optional<String> getOptionalProperty(final String propertyName) {
+        return Optional.ofNullable(System.getProperty(propertyName));
     }
 
     /**

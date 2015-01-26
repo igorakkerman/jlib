@@ -21,23 +21,15 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
-
+import org.jlib.core.exception.InvalidStateException;
 import org.jlib.core.reflection.ClassInstantiationException;
 
-import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
+class ToStringStyleNotFoundException
+extends InvalidStateException {
 
-final class ClassNameToStringStyleSupplier {
+    private static final long serialVersionUID = - 1252112347696827474L;
 
-    static ToStringStyle getToStringStyleByClassName(final String className)
-    throws ToStringStyleClassNotFoundException {
-        try {
-            return newInstanceOf(className, ToStringStyle.class);
-        }
-        catch (final ClassInstantiationException exception) {
-            throw new ToStringStyleClassNotFoundException(exception);
-        }
+    ToStringStyleNotFoundException(final ClassInstantiationException cause) {
+        super(cause);
     }
-
-    private ClassNameToStringStyleSupplier() {}
 }
