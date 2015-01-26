@@ -52,6 +52,16 @@ public final class PropertyUtility {
         return Optional.ofNullable(System.getProperty(propertyName));
     }
 
+    public static String getOptionalPropertyOrFail(final String propertyName)
+    throws OptionalPropertyNotSetException {
+        final String value = System.getProperty(propertyName);
+
+        if (value == null)
+            throw new OptionalPropertyNotSetException(propertyName);
+
+        return value;
+    }
+
     /**
      * Returns the value of the system property indicated by the specified key,
      * throwing an <em>unchecked</em> {@link MandatoryPropertyNotSetException} if the specified key is not set.

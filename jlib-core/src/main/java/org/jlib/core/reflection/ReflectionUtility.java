@@ -23,7 +23,7 @@ package org.jlib.core.reflection;
 
 import org.jlib.core.property.OptionalPropertyNotSetException;
 
-import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
+import static org.jlib.core.property.PropertyUtility.getOptionalPropertyOrFail;
 
 /**
  * <p>
@@ -181,18 +181,13 @@ public final class ReflectionUtility {
      *         subclass
      *
      * @throws ClassInstantiationException
-     *         if one of the following conditions is true:
-     *         <ul>
-     *         <li>if the specified system property is not set (cause is a
-     *         {@link OptionalPropertyNotSetException})</li>
-     *         <li>if the instantiation of the specified class fails (cause is
-     *         one of the exceptions thrown by {@link Class#forName(String)})
-     *         </li>
-     *         </ul>
+     *         if the instantiation of the specified class fails;
+     *         its cause is one of the exceptions thrown by {@link Class#forName(String)})
      */
-    public static <Obj> Obj newInstanceByProperty(final String propertyName, final Class<Obj> expectedParentClass)
+    public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName,
+                                                          final Class<Obj> expectedParentClass)
     throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException {
-        return newInstanceOf(getOptionalProperty(propertyName), expectedParentClass);
+        return newInstanceOf(getOptionalPropertyOrFail(propertyName), expectedParentClass);
     }
 
     private ReflectionUtility() {}
