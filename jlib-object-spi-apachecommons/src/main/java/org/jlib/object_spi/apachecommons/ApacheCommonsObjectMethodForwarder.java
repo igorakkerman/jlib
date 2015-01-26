@@ -21,12 +21,20 @@
 
 package org.jlib.object_spi.apachecommons;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import static java.util.Collections.unmodifiableMap;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
+import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
+import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
+import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
+import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
@@ -40,12 +48,28 @@ implements ObjectMethodForwarder {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
 
+    private static final Map<String, ToStringStyle> TO_STRING_STYLES;
+
+    static {
+        TO_STRING_STYLES = new HashMap<>();
+        TO_STRING_STYLES.put("DEFAULT_STYLE", DEFAULT_STYLE);
+        TO_STRING_STYLES.put("MULTI_LINE_STYLE", MULTI_LINE_STYLE);
+        TO_STRING_STYLES.put("NO_FIELD_NAMES_STYLE", NO_FIELD_NAMES_STYLE);
+        TO_STRING_STYLES.put("SHORT_PREFIX_STYLE", SHORT_PREFIX_STYLE);
+        TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
+    }
+
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
     public static final ToStringStyleSupplier TO_STRING_STYLE_SUPPLIER = /*
      */ new IdentifierOrClassNamePropertyToStringStyleSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME,
-                                                               DefaultIdentifiedToStringStyleSupplier.getInstance(),
+                                                               new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES),
                                                                DEFAULT_TO_STRING_STYLE);
+
+    public static Map<String, ToStringStyle> getToStringStyles() {
+        return unmodifiableMap(TO_STRING_STYLES);
+    }
+
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsObjectMethodForwarder() {
