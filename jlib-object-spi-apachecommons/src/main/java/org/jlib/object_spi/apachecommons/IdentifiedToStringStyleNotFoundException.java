@@ -22,20 +22,9 @@
 package org.jlib.object_spi.apachecommons;
 
 import org.jlib.core.exception.ApplicationException;
-import org.jlib.core.message.Message;
 
-public class ToStringStyleNotFoundException
+class IdentifiedToStringStyleNotFoundException
 extends ApplicationException {
 
-    private static final long serialVersionUID = - 1373688725141046471L;
-
-    protected ToStringStyleNotFoundException() {}
-
-    protected ToStringStyleNotFoundException(final Message message) {
-        super(message);
-    }
-
-    protected ToStringStyleNotFoundException(final Exception cause) {
-        super(cause);
-    }
+    private static final long serialVersionUID = - 3322146808917144348L;
 }

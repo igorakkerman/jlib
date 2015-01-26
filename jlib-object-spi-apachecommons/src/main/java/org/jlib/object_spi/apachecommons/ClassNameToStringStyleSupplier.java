@@ -27,23 +27,17 @@ import org.jlib.core.reflection.ClassInstantiationException;
 
 import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-public class ClassNameToStringStyleSupplier
-implements ToStringStyleSupplier {
+final class ClassNameToStringStyleSupplier {
 
-    private final String className;
-
-    public ClassNameToStringStyleSupplier(final String className) {
-        this.className = className;
-    }
-
-    @Override
-    public ToStringStyle getToStringStyle()
-    throws ToStringStyleNotFoundException {
+    static ToStringStyle getToStringStyleByClassName(final String className)
+    throws ToStringStyleClassNotFoundException {
         try {
             return newInstanceOf(className, ToStringStyle.class);
         }
         catch (final ClassInstantiationException exception) {
-            throw new ToStringStyleNotFoundException(exception);
+            throw new ToStringStyleClassNotFoundException(exception);
         }
     }
+
+    private ClassNameToStringStyleSupplier() {}
 }

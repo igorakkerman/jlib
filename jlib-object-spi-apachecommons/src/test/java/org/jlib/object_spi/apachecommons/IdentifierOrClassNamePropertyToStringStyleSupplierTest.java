@@ -30,8 +30,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYL
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.object_spi.apachecommons.IdentifierOrClassNamePropertyToStringStyleSupplier.TO_STRING_STYLE_NAME_PROPERTY_NAME;
-import static org.jlib.object_spi.apachecommons.IdentifierOrClassNamePropertyToStringStyleSupplier.fetchToStringStyle;
+import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.TO_STRING_STYLE_NAME_PROPERTY_NAME;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,25 +71,25 @@ public class IdentifierOrClassNamePropertyToStringStyleSupplierTest {
 
     // createToStringStyleInstance
 
-//    @Test
-//    public void styleClassNameShouldCreateStyleClass() {
-//        assertThat(createToStringStyleInstance(MyStyle.class.getName())).hasSameClassAs(new MyStyle());
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void withDefaultConstructorClassNameShouldThrowException() {
-//        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void withoutDefaultConstructorClassNameShouldThrowException() {
-//        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void notExistingClassNameShouldThrowException() {
-//        createToStringStyleInstance("org.jlib.i.do.not.Exist");
-//    }
+    @Test
+    public void styleClassNameShouldCreateStyleClass() {
+        assertThat(createToStringStyleInstance(MyStyle.class.getName())).hasSameClassAs(new MyStyle());
+    }
+
+    @Test(expected = InvalidToStringStyleClassException.class)
+    public void withDefaultConstructorClassNameShouldThrowException() {
+        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
+    }
+
+    @Test(expected = InvalidToStringStyleClassException.class)
+    public void withoutDefaultConstructorClassNameShouldThrowException() {
+        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
+    }
+
+    @Test(expected = InvalidToStringStyleClassException.class)
+    public void notExistingClassNameShouldThrowException() {
+        createToStringStyleInstance("org.jlib.i.do.not.Exist");
+    }
 
     // ---
 

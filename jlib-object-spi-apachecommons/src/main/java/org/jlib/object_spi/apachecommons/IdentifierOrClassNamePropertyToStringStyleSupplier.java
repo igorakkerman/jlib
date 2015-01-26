@@ -25,62 +25,29 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.OptionalPropertyNotSetException;
 
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-import static org.jlib.core.message.MessageUtility.message;
 import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
-import org.jlib.object_spi.ObjectMethodForwarder;
+import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.DEFAULT_TO_STRING_STYLE;
+import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.TO_STRING_STYLE_NAME_PROPERTY_NAME;
+import static org.jlib.object_spi.apachecommons.ClassNameToStringStyleSupplier.getToStringStyleByClassName;
+import static org.jlib.object_spi.apachecommons.IdentifiedToStringStyleSupplier.getIdentifiedToStringStyle;
 
-public class IdentifierOrClassNamePropertyToStringStyleSupplier
-implements ToStringStyleSupplier {
+class IdentifierOrClassNamePropertyToStringStyleSupplier {
 
-    /**
-     * <p>
-     * Property name of the concrete {@link ToStringStyle} implementation's class name or short name.
-     * Permitted values are:
-     * </p>
-     * <dl>
-     *     <dt>DEFAULT_STYLE</dt><dd>{@link ToStringStyle#DEFAULT_STYLE}</dd>
-     *     <dt>MULTI_LINE_STYLE</dt><dd>{@link ToStringStyle#MULTI_LINE_STYLE}</dd>
-     *     <dt>NO_FIELD_NAMES_STYLE</dt><dd>{@link ToStringStyle#NO_FIELD_NAMES_STYLE}</dd>
-     *     <dt>SHORT_PREFIX_STYLE</dt><dd>{@link ToStringStyle#SHORT_PREFIX_STYLE}</dd>
-     *     <dt>SIMPLE_STYLE</dt><dd>{@link ToStringStyle#SIMPLE_STYLE}</dd>
-     *     <dt>a fully qualified class name</dt><dd>Class extending {@link ToStringStyle} providing a public default
-     *     constructor</dd>
-     *     <dt>unset</dt><dd>{@link ToStringStyle#DEFAULT_STYLE}</dd>
-     * </dl>
-     * <p>
-     * The values are evaluated in the order specified above.
-     * The property is evaluated only once, when the {@link ObjectMethodForwarder} is initialized.
-     * </p>
-     */
-    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
-
-    @Override
     public ToStringStyle getToStringStyle()
-    throws ToStringStyleNotFoundException {
+    throws ToStringStyleClassNotFoundException {
+
+        String propertyValue = null;
+
         try {
-            return getFromSuppliers(getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME));
+            propertyValue = getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
+
+            return getIdentifiedToStringStyle(propertyValue);
         }
         catch (final OptionalPropertyNotSetException exception) {
-            return DEFAULT_STYLE;
+            return DEFAULT_TO_STRING_STYLE;
         }
-    }
-
-    private ToStringStyle getFromSuppliers(final String propertyValue)
-    throws ToStringStyleNotFoundException {
-        for (final ToStringStyleSupplier supplier : suppliers(propertyValue))
-            try {
-                return supplier.getToStringStyle();
-            }
-            catch (final ToStringStyleNotFoundException exception) {
-                // continue
-            }
-
-        throw new ToStringStyleNotFoundException(message().with("propertyValue", propertyValue));
-    }
-
-    private ToStringStyleSupplier[] suppliers(final String propertyValue) {
-        return new ToStringStyleSupplier[]{ new IdentifierToStringStyleSupplier(propertyValue), //
-                                            new ClassNameToStringStyleSupplier(propertyValue) };
+        catch (final IdentifiedToStringStyleNotFoundException exception) {
+            return getToStringStyleByClassName(propertyValue);
+        }
     }
 }

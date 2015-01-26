@@ -21,10 +21,15 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
+import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.reflection.ClassInstantiationException;
 
-public interface ToStringStyleSupplier {
+class ToStringStyleClassNotFoundException
+extends InvalidStateException {
 
-    ToStringStyle getToStringStyle()
-    throws ToStringStyleNotFoundException;
+    private static final long serialVersionUID = - 9175388162184433586L;
+
+    ToStringStyleClassNotFoundException(final ClassInstantiationException cause) {
+        super(cause);
+    }
 }

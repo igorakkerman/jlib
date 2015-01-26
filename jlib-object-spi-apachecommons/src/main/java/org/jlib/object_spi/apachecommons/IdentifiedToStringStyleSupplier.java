@@ -32,8 +32,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYL
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 
-public class IdentifierToStringStyleSupplier
-implements ToStringStyleSupplier {
+final class IdentifiedToStringStyleSupplier {
 
     private static final Map<String, ToStringStyle> TO_STRING_STYLES;
 
@@ -46,17 +45,11 @@ implements ToStringStyleSupplier {
         TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
     }
 
-    private final String identifier;
+    static ToStringStyle getIdentifiedToStringStyle(final String identifier)
+    throws IdentifiedToStringStyleNotFoundException {
 
-    public IdentifierToStringStyleSupplier(final String identifier) {
-        this.identifier = identifier;
-    }
-
-    @Override
-    public ToStringStyle getToStringStyle()
-    throws ToStringStyleNotFoundException {
         if (! TO_STRING_STYLES.containsKey(identifier))
-            throw new ToStringStyleNotFoundException();
+            throw new IdentifiedToStringStyleNotFoundException();
 
         return TO_STRING_STYLES.get(identifier);
     }

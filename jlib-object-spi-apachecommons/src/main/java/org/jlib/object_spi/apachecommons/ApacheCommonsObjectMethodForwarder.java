@@ -26,6 +26,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
@@ -37,10 +38,12 @@ import org.jlib.object_spi.ToString;
 public class ApacheCommonsObjectMethodForwarder
 implements ObjectMethodForwarder {
 
+    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
+    public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsObjectMethodForwarder() {
-        toStringStyle = IdentifierOrClassNamePropertyToStringStyleSupplier.fetchToStringStyle();
+        toStringStyle = new IdentifierOrClassNamePropertyToStringStyleSupplier().getToStringStyle();
     }
 
     @Override
