@@ -21,11 +21,10 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.jlib.object_spi.apachecommons.ToStringStyleIdentifierAssert.Initializer;
-
 class Assertions {
 
-    static Initializer assertThatIdentifier(final String actual) {
-        return new Initializer(actual);
+    @SuppressWarnings("UnnecessarilyQualifiedInnerClassAccess")
+    static ToStringStyleIdentifierAssert.Initializer assertThatIdentifier(final String actual) {
+        return new ToStringStyleIdentifierAssert.Initializer(actual);
     }
 }

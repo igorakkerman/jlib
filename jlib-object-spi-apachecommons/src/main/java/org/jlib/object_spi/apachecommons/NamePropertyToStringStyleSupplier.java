@@ -30,14 +30,14 @@ import org.jlib.core.reflection.ClassInstantiationException;
 import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-class IdentifierOrClassNamePropertyToStringStyleSupplier
+class NamePropertyToStringStyleSupplier
 implements ToStringStyleSupplier {
 
     private final String propertyName;
     private final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
     private final ToStringStyle defaultToStringStyle;
 
-    public IdentifierOrClassNamePropertyToStringStyleSupplier /*
+    public NamePropertyToStringStyleSupplier /*
      */(final String propertyName, //
         final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier,
         final ToStringStyle defaultToStringStyle) {

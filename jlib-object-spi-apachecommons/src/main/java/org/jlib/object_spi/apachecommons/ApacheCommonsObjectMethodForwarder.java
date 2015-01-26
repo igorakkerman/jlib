@@ -62,7 +62,7 @@ implements ObjectMethodForwarder {
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
     public static final ToStringStyleSupplier TO_STRING_STYLE_SUPPLIER = /*
-     */ new IdentifierOrClassNamePropertyToStringStyleSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME,
+     */ new NamePropertyToStringStyleSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME,
                                                                new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES),
                                                                DEFAULT_TO_STRING_STYLE);
 
