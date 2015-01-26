@@ -21,6 +21,10 @@
 
 package org.jlib.object_spi.apachecommons;
 
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import org.jlib.core.language.Valid;
+
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
@@ -68,6 +72,21 @@ class MapIdentifiedToStringStyleSupplierTest {
     @Test
     public void blankIdentifierShouldBeInvalid() {
         assertThatIdentifier("").in(SUPPLIER).isInvalid();
+    }
+
+    @Test
+    public void anyIdentifierOnOwnSupplierShouldMapCorrectly() {
+        assertThatIdentifier("").in(new IdentifiedToStringStyleSupplier() {
+            @Override
+            public boolean isValidIdentifier(final String identifier) {
+                return true;
+            }
+
+            @Override
+            public ToStringStyle getIdentifiedToStringStyle(@Valid final String identifier) {
+                return DEFAULT_STYLE;
+            }
+        }).isValid().mapsTo(DEFAULT_STYLE);
     }
 }
 
