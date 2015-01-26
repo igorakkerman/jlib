@@ -54,11 +54,16 @@ public class NamePropertyToStringStyleSupplierTest {
         public SomethingWithoutDefaultConstructor(final Object object) {}
     }
 
-    private static final ToStringStyle SAMPLE_MY_STYLE = new MyStyle();
     private static final String SAMPLE_PROPERTY_NAME = "tss";
+    public static final String SAMPLE_STYLE_ID = "MY_STYLE";
+    private static final ToStringStyle SAMPLE_STYLE = new MyStyle();
+    private static final String SAMPLE_CLASS_NAME = MyStyle.class.getName();
+    private static final String FAKE_CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     @Mock
     private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
+
+    private ToStringStyleSupplier styleSupplier;
 
     @Before
     @After
@@ -66,39 +71,57 @@ public class NamePropertyToStringStyleSupplierTest {
         System.clearProperty(SAMPLE_PROPERTY_NAME);
     }
 
+    @Before
+    public void initializeStyleSupplier() {
+        styleSupplier = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME, identifiedToStringStyleSupplier,
+                                                              DEFAULT_STYLE);
+    }
+
     @Test
     public void forUnsetPropertyShouldMapToDefaultStyleNotCallIdentifiedSupplier() {
-        final ToStringStyle style = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME,
-                                                                          identifiedToStringStyleSupplier,
-                                                                          SAMPLE_MY_STYLE).getToStringStyle();
+        final ToStringStyle style = styleSupplier.getToStringStyle();
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
-        assertThat(style).isSameAs(SAMPLE_MY_STYLE);
+        assertThat(style).isSameAs(DEFAULT_STYLE);
     }
 
     @Test
-    public void forSetPropertyShouldRequestIdentifiedSupplierAndUseMapping() {
-        final String MY_STYLE_NAME = "MY_STYLE";
-        System.setProperty(SAMPLE_PROPERTY_NAME, MY_STYLE_NAME);
+    public void forDefinedPropertyIdentifiedSupplierShouldUseMapping() {
+        System.setProperty(SAMPLE_PROPERTY_NAME, SAMPLE_STYLE_ID);
 
-        when(identifiedToStringStyleSupplier.isValidIdentifier(MY_STYLE_NAME)).thenReturn(true);
-        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(MY_STYLE_NAME)).thenReturn(SAMPLE_MY_STYLE);
+        when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_STYLE_ID)).thenReturn(true);
+        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(SAMPLE_STYLE_ID)).thenReturn(SAMPLE_STYLE);
 
-        final ToStringStyle style = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME,
-                                                                          identifiedToStringStyleSupplier,
-                                                                          DEFAULT_STYLE).getToStringStyle();
+        final ToStringStyle style = styleSupplier.getToStringStyle();
 
-        verify(identifiedToStringStyleSupplier).isValidIdentifier(MY_STYLE_NAME);
-        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(MY_STYLE_NAME);
-        assertThat(style).isSameAs(SAMPLE_MY_STYLE);
+        verify(identifiedToStringStyleSupplier).isValidIdentifier(SAMPLE_STYLE_ID);
+        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(SAMPLE_STYLE_ID);
+        assertThat(style).isSameAs(SAMPLE_STYLE);
     }
 
-    // createToStringStyleInstance
+    @Test(expected = ToStringStyleNotFoundException.class)
+    public void notExistingClassNamePropertyShouldNotHaveMappingAndThrowException() {
+        System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME + "x");
+
+        when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
+
+        styleSupplier.getToStringStyle();
+//
+//        verify(identifiedToStringStyleSupplier).isValidIdentifier(SAMPLE_STYLE_ID);
+//        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        // expect ToStringStyleNotFoundException
+    }
 
 //    @Test
-//    public void styleClassNameShouldCreateStyleClass() {
-//        assertThat(createToStringStyleInstance(MyStyle.class.getName())).hasSameClassAs(new MyStyle());
-//    }
+//    public void classNamePropertyShouldNotHaveMappingCreateStyleClass() {
+//        System.setProperty(SAMPLE_PROPERTY_NAME, SAMPLE_CLASS_NAME);
 //
+//        when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_CLASS_NAME)).thenReturn(false);
+//
+//        final ToStringStyle style = styleSupplier.getToStringStyle();
+//
+//        assertThat(createToStringStyleInstance(SAMPLE)).hasSameClassAs(new MyStyle());
+//    }
+
 //    @Test(expected = InvalidToStringStyleClassException.class)
 //    public void withDefaultConstructorClassNameShouldThrowException() {
 //        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
@@ -111,7 +134,7 @@ public class NamePropertyToStringStyleSupplierTest {
 //
 //    @Test(expected = InvalidToStringStyleClassException.class)
 //    public void notExistingClassNameShouldThrowException() {
-//        createToStringStyleInstance("org.jlib.i.do.not.Exist");
+//        createToStringStyleInstance("");
 //    }
 //
 //    // ---
