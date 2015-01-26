@@ -25,11 +25,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.jlib.object_spi.ApplicationObject;
 import org.junit.Test;
 
-public class ApplicationObjectTest {
+class ApplicationObjectIntegrationTest {
 
     private static class A
     extends ApplicationObject {
 
+        @SuppressWarnings("UnusedDeclaration")
         private final int f = 42;
     }
 

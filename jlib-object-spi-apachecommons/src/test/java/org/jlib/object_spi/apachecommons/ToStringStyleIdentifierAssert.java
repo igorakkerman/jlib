@@ -28,6 +28,11 @@ import org.assertj.core.api.AbstractAssert;
 class ToStringStyleIdentifierAssert
 extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
 
+    @SuppressWarnings("UnnecessarilyQualifiedInnerClassAccess")
+    static Initializer assertThatIdentifier(final String actual) {
+        return new Initializer(actual);
+    }
+
     static class Initializer {
 
         private final String actual;

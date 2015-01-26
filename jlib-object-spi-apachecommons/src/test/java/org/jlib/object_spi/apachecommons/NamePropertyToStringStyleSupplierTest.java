@@ -27,7 +27,7 @@ import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForward
 import org.junit.After;
 import org.junit.Before;
 
-public class IdentifierOrClassNamePropertyToStringStyleSupplierTest {
+class NamePropertyToStringStyleSupplierTest {
 
     public static class MyStyle
     extends ToStringStyle {

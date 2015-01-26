@@ -27,10 +27,10 @@ import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYL
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.getToStringStyles;
-import static org.jlib.object_spi.apachecommons.Assertions.assertThatIdentifier;
+import static org.jlib.object_spi.apachecommons.ToStringStyleIdentifierAssert.assertThatIdentifier;
 import org.junit.Test;
 
-public class MapIdentifiedToStringStyleSupplierTest {
+class MapIdentifiedToStringStyleSupplierTest {
 
     private static final IdentifiedToStringStyleSupplier SUPPLIER = /*
      */ new MapIdentifiedToStringStyleSupplier(getToStringStyles());
