@@ -38,7 +38,7 @@ public final class PropertyUtility {
      *
      * @return {@link Optional} of {@link String} specifying the value of the system property with
      *         {@code propertyName};
-     *         {@link Optional#empty()} if the system property is unset
+     *         {@link Optional#empty()} if the system property is not set
      *
      * @throws SecurityException
      *         if a security manager exists and its
@@ -52,6 +52,27 @@ public final class PropertyUtility {
         return Optional.ofNullable(System.getProperty(propertyName));
     }
 
+    /**
+     * Returns the value of the optional system property indicated by the specified key or fails, throwing a
+     * <em>checked</em> {@link OptionalPropertyNotSetException}.
+     *
+     * @param propertyName
+     *        String specifying the name of the system property
+     *
+     * @return {@link Optional} of {@link String} specifying the value of the system property with
+     *         {@code propertyName}
+     *
+     * @throws OptionalPropertyNotSetException
+     *         if the system property is not set
+     *
+     * @throws SecurityException
+     *         if a security manager exists and its
+     *         {@link SecurityManager#checkPropertyAccess} method doesn't allow
+     *         access to the specified system property
+     *
+     * @throws IllegalArgumentException
+     *         if {@code propertyName} is an empty String
+     */
     public static String getOptionalPropertyOrFail(final String propertyName)
     throws OptionalPropertyNotSetException {
         final String value = System.getProperty(propertyName);
@@ -63,7 +84,7 @@ public final class PropertyUtility {
     }
 
     /**
-     * Returns the value of the system property indicated by the specified key,
+     * Returns the value of the system property indicated by the specified key or fails,
      * throwing an <em>unchecked</em> {@link MandatoryPropertyNotSetException} if the specified key is not set.
      *
      * @param propertyName
