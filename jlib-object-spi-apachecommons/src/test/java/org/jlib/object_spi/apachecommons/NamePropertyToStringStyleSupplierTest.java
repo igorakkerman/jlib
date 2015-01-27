@@ -88,6 +88,7 @@ public class NamePropertyToStringStyleSupplierTest {
 
     @Before
     public void spyOnReflectionUtility() {
+        // TODO: do it here
     }
 
     @Test
