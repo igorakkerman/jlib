@@ -23,6 +23,8 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import org.jlib.core.reflection.ReflectionUtility;
+
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.After;
@@ -33,9 +35,12 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
+@PrepareForTest(ReflectionUtility.class)
 public class NamePropertyToStringStyleSupplierTest {
 
     public static class MyStyle
@@ -57,7 +62,8 @@ public class NamePropertyToStringStyleSupplierTest {
     private static final String SAMPLE_PROPERTY_NAME = "tss";
     public static final String SAMPLE_STYLE_ID = "MY_STYLE";
     private static final ToStringStyle SAMPLE_STYLE = new MyStyle();
-    private static final String SAMPLE_CLASS_NAME = MyStyle.class.getName();
+    private static final Class<MyStyle> SAMPLE_CLASS = MyStyle.class;
+    private static final String SAMPLE_CLASS_NAME = SAMPLE_CLASS.getName();
     private static final String FAKE_CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     @Mock
@@ -75,6 +81,10 @@ public class NamePropertyToStringStyleSupplierTest {
     public void initializeStyleSupplier() {
         styleSupplier = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME, identifiedToStringStyleSupplier,
                                                               DEFAULT_STYLE);
+    }
+
+    @Before
+    public void spyOnReflectionUtility() {
     }
 
     @Test
@@ -98,13 +108,37 @@ public class NamePropertyToStringStyleSupplierTest {
         assertThat(style).isSameAs(SAMPLE_STYLE);
     }
 
-    @Test(expected = ToStringStyleNotFoundException.class)
-    public void notExistingClassNamePropertyShouldNotHaveMappingAndThrowException() {
-        System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME + "x");
+    //    @Test(expected = ToStringStyleNotFoundException.class)
+    @Test
+    public void notExistingClassNamePropertyShouldNotHaveMappingAndThrowException()
+    throws Exception {
 
-        when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
+        PowerMockito.spy(ReflectionUtility.class);
 
-        styleSupplier.getToStringStyle();
+        // given
+//        PowerMockito.doReturn(SAMPLE_STYLE).when(ReflectionUtility.class); // works, but only in order doReturn->when
+        PowerMockito.when(ReflectionUtility.class,
+                          PowerMockito.method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
+                    .withArguments(FAKE_CLASS_NAME, ToStringStyle.class)
+                    .thenReturn(SAMPLE_STYLE);
+        ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, SAMPLE_CLASS);
+
+        // when
+        final MyStyle style = ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, SAMPLE_CLASS);
+        assertThat(style).isSameAs(SAMPLE_STYLE);
+
+//        mockStatic(ReflectionUtility.class);
+
+//        ReflectionUtility.newInstanceOf("my.Name", ToStringStyle.class);
+//
+//        verifyStatic();
+//        ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class);
+
+//        System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME + "x");
+//
+//        when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
+//
+//        styleSupplier.getToStringStyle();
 //
 //        verify(identifiedToStringStyleSupplier).isValidIdentifier(SAMPLE_STYLE_ID);
 //        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
