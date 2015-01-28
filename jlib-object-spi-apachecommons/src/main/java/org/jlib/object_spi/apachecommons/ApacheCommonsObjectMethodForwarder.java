@@ -61,10 +61,10 @@ implements ObjectMethodForwarder {
 
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
-    public static final NamePropertyToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
+    public static final NamePropertyConfigurableToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
 
     static {
-        TO_STRING_STYLE_SUPPLIER = new NamePropertyToStringStyleSupplier();
+        TO_STRING_STYLE_SUPPLIER = new NamePropertyConfigurableToStringStyleSupplier();
         TO_STRING_STYLE_SUPPLIER.setPropertyName(TO_STRING_STYLE_NAME_PROPERTY_NAME);
         TO_STRING_STYLE_SUPPLIER.setIdentifiedStyleSupplier(new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES));
         TO_STRING_STYLE_SUPPLIER.setDefaultStyle(DEFAULT_TO_STRING_STYLE);
@@ -77,7 +77,7 @@ implements ObjectMethodForwarder {
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsObjectMethodForwarder() {
-        toStringStyle = TO_STRING_STYLE_SUPPLIER.getToStringStyle();
+        toStringStyle = TO_STRING_STYLE_SUPPLIER.get();
     }
 
     @Override

@@ -30,15 +30,15 @@ import org.jlib.core.reflection.ClassInstantiationException;
 import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-class NamePropertyToStringStyleSupplier
-implements ToStringStyleSupplier {
+class NamePropertyConfigurableToStringStyleSupplier
+implements ConfigurableToStringStyleSupplier {
 
     private String propertyName;
     private IdentifiedToStringStyleSupplier identifiedStyleSupplier;
     private ToStringStyle defaultStyle;
 
     @Override
-    public ToStringStyle getToStringStyle()
+    public ToStringStyle get()
     throws ToStringStyleNotFoundException {
         try {
             final Optional<String> optionalIdentifierOrClassName = getOptionalProperty(propertyName);
@@ -48,10 +48,8 @@ implements ToStringStyleSupplier {
 
             final String identifierOrClassName = optionalIdentifierOrClassName.get();
 
-            if (identifiedStyleSupplier.isValidIdentifier(identifierOrClassName))
-                return identifiedStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName);
-
-            return newInstanceOf(identifierOrClassName, ToStringStyle.class);
+            return identifiedStyleSupplier.get(identifierOrClassName)
+                                          .orElse(newInstanceOf(identifierOrClassName, ToStringStyle.class));
         }
         catch (final ClassInstantiationException exception) {
             throw new ToStringStyleNotFoundException(exception);
