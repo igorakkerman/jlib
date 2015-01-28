@@ -23,6 +23,7 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import org.jlib.core.property.PropertyUtility;
 import org.jlib.core.reflection.ReflectionUtility;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
@@ -43,7 +44,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(ReflectionUtility.class)
+@PrepareForTest({ PropertyUtility.class, ReflectionUtility.class })
 public class NamePropertyToStringStyleSupplierTest {
 
     public static class MyStyle
@@ -87,8 +88,13 @@ public class NamePropertyToStringStyleSupplierTest {
     }
 
     @Before
+    public void spyOnPropertyUtility() {
+        spy(PropertyUtility.class);
+    }
+
+    @Before
     public void spyOnReflectionUtility() {
-        // TODO: do it here
+        spy(ReflectionUtility.class);
     }
 
     @Test
@@ -113,20 +119,21 @@ public class NamePropertyToStringStyleSupplierTest {
     }
 
     @Test
-    public void existingClassNamePropertyShouldNotHaveMappingAndReturnInstance()
+    public void existingClassNamePropertyShouldFailMappingAndHaveInstanceCreated()
     throws Exception {
 
-        spy(ReflectionUtility.class);
-
+        // given
         when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
 
-        doReturn(SAMPLE_STYLE).when(ReflectionUtility.class,
-                                    method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
+        doReturn(SAMPLE_STYLE)./*
+     */ when(ReflectionUtility.class, method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
                               .withArguments(FAKE_CLASS_NAME, ToStringStyle.class);
 
+        // when
         System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME);
         final ToStringStyle style = styleSupplier.getToStringStyle();
 
+        // then
         verify(identifiedToStringStyleSupplier).isValidIdentifier(FAKE_CLASS_NAME);
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
 
@@ -134,7 +141,6 @@ public class NamePropertyToStringStyleSupplierTest {
         ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class);
 
         assertThat(style).isSameAs(SAMPLE_STYLE);
-
     }
 
     // expect ToStringStyleNotFoundException
