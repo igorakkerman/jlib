@@ -26,18 +26,21 @@ import java.util.Optional;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.PropertyUtility;
+import org.jlib.core.reflection.ClassInstantiationException;
 import org.jlib.core.reflection.ReflectionUtility;
 
+import static java.lang.String.format;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Fail.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.verifyNoMoreInteractions;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -46,24 +49,25 @@ import org.powermock.modules.junit4.PowerMockRunner;
 @PrepareForTest({ PropertyUtility.class, ReflectionUtility.class })
 public class NamePropertyToStringStyleSupplierTest {
 
-    private static final String SAMPLE_PROPERTY_NAME = "tss";
-    public static final String SAMPLE_STYLE_ID = "MY_STYLE";
+    private static final String PROPERTY_NAME = "tss";
+    public static final String STYLE_ID = "MY_STYLE";
     @SuppressWarnings("serial")
-    private static final ToStringStyle SAMPLE_STYLE = new ToStringStyle() {};
-    private static final String FAKE_CLASS_NAME = "org.jlib.i.do.not.Exist";
-
-    @Mock
-    private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
+    private static final ToStringStyle STYLE = new ToStringStyle() {
+    };
+    private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     private NamePropertyToStringStyleSupplier styleSupplier;
 
     @Before
     public void initializeStyleSupplier() {
         styleSupplier = new NamePropertyToStringStyleSupplier();
-        styleSupplier.setPropertyName(SAMPLE_PROPERTY_NAME);
+        styleSupplier.setPropertyName(PROPERTY_NAME);
         styleSupplier.setIdentifiedStyleSupplier(identifiedToStringStyleSupplier);
         styleSupplier.setDefaultStyle(DEFAULT_STYLE);
     }
+
+    @Mock
+    private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
 
     @Before
     public void mockPropertyUtility() {
@@ -76,154 +80,104 @@ public class NamePropertyToStringStyleSupplierTest {
     }
 
     @Test
-    public void forUnsetPropertyShouldMapToDefaultStyleNotCallIdentifiedSupplier() {
+    public void unsetPropertyShouldReturnDefaultStyleNotCallIdentifiedSupplier() {
+
         // given
-        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.empty());
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.empty());
 
         // when
         final ToStringStyle style = styleSupplier.getToStringStyle();
 
         // then
+        verifyStatic();
+        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
+        verifyNoMoreInteractions(PropertyUtility.class);
+
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
         assertThat(style).isSameAs(DEFAULT_STYLE);
+
+        verifyNoMoreInteractions(ReflectionUtility.class);
     }
 
     @Test
-    public void forDefinedPropertyIdentifiedSupplierShouldUseMapping() {
-        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.of(SAMPLE_STYLE_ID));
+    public void styleOfMappedIdentifierShouldBeReturned() {
 
-        when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_STYLE_ID)).thenReturn(true);
-        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(SAMPLE_STYLE_ID)).thenReturn(SAMPLE_STYLE);
+        // given
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(STYLE_ID));
 
+        when(identifiedToStringStyleSupplier.isValidIdentifier(STYLE_ID)).thenReturn(true);
+        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(STYLE_ID)).thenReturn(STYLE);
+
+        // when
         final ToStringStyle style = styleSupplier.getToStringStyle();
 
-        verify(identifiedToStringStyleSupplier).isValidIdentifier(SAMPLE_STYLE_ID);
-        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(SAMPLE_STYLE_ID);
-        assertThat(style).isSameAs(SAMPLE_STYLE);
+        // then
+        verify(identifiedToStringStyleSupplier).isValidIdentifier(STYLE_ID);
+        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(STYLE_ID);
+        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        assertThat(style).isSameAs(STYLE);
     }
 
     @Test
-    public void existingClassNamePropertyShouldFailMappingAndHaveInstanceCreated()
+    public void instantiatedStyleOfClassNameShouldBeRetrurned()
     throws Exception {
 
         // given
-        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.of(FAKE_CLASS_NAME));
-
-        when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
-
-        when(ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class)).thenReturn(SAMPLE_STYLE);
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(CLASS_NAME));
+        when(identifiedToStringStyleSupplier.isValidIdentifier(CLASS_NAME)).thenReturn(false);
+        when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
-        System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME);
         final ToStringStyle style = styleSupplier.getToStringStyle();
 
         // then
-        verify(identifiedToStringStyleSupplier).isValidIdentifier(FAKE_CLASS_NAME);
+        verifyStatic();
+        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
+        verifyNoMoreInteractions(PropertyUtility.class);
+
+        verify(identifiedToStringStyleSupplier).isValidIdentifier(CLASS_NAME);
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
 
         verifyStatic();
-        ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class);
+        ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
+        verifyNoMoreInteractions(ReflectionUtility.class);
 
-        assertThat(style).isSameAs(SAMPLE_STYLE);
+        assertThat(style).isSameAs(STYLE);
     }
 
-    // expect ToStringStyleNotFoundException
+    @Test
+    public void notInstantiatableClassNameShouldFailMappingAndThrowException()
+    throws Exception {
 
-//        // given
-//        PowerMockito.doReturn(SAMPLE_STYLE).when(ReflectionUtility.class, );
-//        ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class); // this is not the execution,just setup
-//        PowerMockito.when(ReflectionUtility.class,
-//                          PowerMockito.method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
-//                    .withArguments(FAKE_CLASS_NAME, SAMPLE_CLASS)
-//                    .thenReturn(SAMPLE_STYLE);
-//
-//        // when
-//        final MyStyle style = ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, SAMPLE_CLASS);
-//        assertThat(style).isSameAs(SAMPLE_STYLE);
+        try {
+            // given
+            when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(CLASS_NAME));
+            when(identifiedToStringStyleSupplier.isValidIdentifier(CLASS_NAME)).thenReturn(false);
+            when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class))./*
+              */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
-//        mockStatic(ReflectionUtility.class);
+            // when
+            styleSupplier.getToStringStyle();
 
-//        ReflectionUtility.newInstanceOf("my.Name", ToStringStyle.class);
-//
-//        verifyStatic();
-//        ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class);
-//        assertThat(ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, SAMPLE_CLASS)).isEqualTo(SAMPLE_STYLE);
+            // then (failure)
+            fail(format("Expected %a was not thrown." + ToStringStyleNotFoundException.class.getSimpleName()));
+        }
+        // expected
+        catch (final ToStringStyleNotFoundException expectedException) {
 
-//    @Test
-//    public void classNamePropertyShouldNotHaveMappingCreateStyleClass() {
-//        System.setProperty(SAMPLE_PROPERTY_NAME, SAMPLE_CLASS_NAME);
-//
-//        when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_CLASS_NAME)).thenReturn(false);
-//
-//        final ToStringStyle style = styleSupplier.getToStringStyle();
-//
-//        assertThat(createToStringStyleInstance(SAMPLE)).hasSameClassAs(new MyStyle());
-//    }
+            // then (success)
+            verifyStatic();
+            PropertyUtility.getOptionalProperty(PROPERTY_NAME);
+            verifyNoMoreInteractions(PropertyUtility.class);
 
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void withDefaultConstructorClassNameShouldThrowException() {
-//        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void withoutDefaultConstructorClassNameShouldThrowException() {
-//        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void notExistingClassNameShouldThrowException() {
-//        createToStringStyleInstance("");
-//    }
-//
-//    // ---
-//
-//    // fetchToStringStyle
-//
-//    @Test
-//    public void unsetPropertyShouldCreateDefaultStyleClass() {
-//        assertThat(fetchToStringStyle()).isSameAs(DEFAULT_STYLE);
-//    }
-//
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void emptyPropertyShouldThrowException() {
-//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "");
-//
-//        fetchToStringStyle();
-//    }
-//
-//    @Test(expected = InvalidToStringStyleClassException.class)
-//    public void blankPropertyShouldThrowException() {
-//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, " ");
-//
-//        fetchToStringStyle();
-//    }
-//
-//    @Test
-//    public void classNamePropertyShouldCallCreateInstanceMethod()
-//    throws Exception {
-//        // given
-//        mockStatic(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
-//
-////        spy(ToStringStyleUtility.class);
-//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "some.Class");
-////        when(ToStringStyleUtility.class, "createToStringStyleInstance", "some.Class").thenReturn(new MyStyle());
-////        when(ToStringStyleUtility.class,
-////             method(ToStringStyleUtility.class, "createToStringStyleInstance", String.class)).withArguments(
-////                                                                                                           "some
-//// .Class")
-////                                                                                             .thenReturn(new
-//// MyStyle());
-//
-//        doReturn(new MyStyle()).when(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
-//
-//        // when
-//        fetchToStringStyle();
-//
-//        // then
-//        verify(IdentifierOrClassNamePropertyToStringStyleSupplier.class).invoke("createToStringStyleInstance",
-//                                                                                "some.Class");
-//        verifyStatic();
-////        createToStringStyleInstance("some.Class");
-//    }
+            verify(identifiedToStringStyleSupplier).isValidIdentifier(CLASS_NAME);
+            verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+
+            verifyStatic();
+            ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
+            verifyNoMoreInteractions(ReflectionUtility.class);
+
+            assertThat(expectedException).hasCauseExactlyInstanceOf(ClassInstantiationException.class);
+        }
+    }
 }

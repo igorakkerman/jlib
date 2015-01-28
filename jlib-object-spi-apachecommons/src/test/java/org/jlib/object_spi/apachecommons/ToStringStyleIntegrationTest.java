@@ -44,10 +44,110 @@ public class ToStringStyleIntegrationTest {
     }
 
 //    private static final String SAMPLE_PROPERTY_NAME = "tss";
-//    public static final String SAMPLE_STYLE_ID = "MY_STYLE";
+//    public static final String STYLE_ID = "MY_STYLE";
 //    private static final ToStringStyle SAMPLE_STYLE = new MyStyle();
 //    private static final String FAKE_CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     @Test
     public void dummy() {}
+
+    // expect ToStringStyleNotFoundException
+
+//        // given
+//        PowerMockito.doReturn(STYLE).when(ReflectionUtility.class, );
+//        ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class); // this is not the execution,just setup
+//        PowerMockito.when(ReflectionUtility.class,
+//                          PowerMockito.method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
+//                    .withArguments(CLASS_NAME, SAMPLE_CLASS)
+//                    .thenReturn(STYLE);
+//
+//        // when
+//        final MyStyle style = ReflectionUtility.newInstanceOf(CLASS_NAME, SAMPLE_CLASS);
+//        assertThat(style).isSameAs(STYLE);
+
+//        mockStatic(ReflectionUtility.class);
+
+//        ReflectionUtility.newInstanceOf("my.Name", ToStringStyle.class);
+//
+//        verifyStatic();
+//        ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
+//        assertThat(ReflectionUtility.newInstanceOf(CLASS_NAME, SAMPLE_CLASS)).isEqualTo(STYLE);
+
+//    @Test
+//    public void classNamePropertyShouldNotHaveMappingCreateStyleClass() {
+//        System.setProperty(PROPERTY_NAME, SAMPLE_CLASS_NAME);
+//
+//        when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_CLASS_NAME)).thenReturn(false);
+//
+//        final ToStringStyle style = styleSupplier.getToStringStyle();
+//
+//        assertThat(createToStringStyleInstance(SAMPLE)).hasSameClassAs(new MyStyle());
+//    }
+
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void withDefaultConstructorClassNameShouldThrowException() {
+//        createToStringStyleInstance(SomethingWithDefaultConstructor.class.getName());
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void withoutDefaultConstructorClassNameShouldThrowException() {
+//        createToStringStyleInstance(SomethingWithoutDefaultConstructor.class.getName());
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void notExistingClassNameShouldThrowException() {
+//        createToStringStyleInstance("");
+//    }
+//
+//    // ---
+//
+//    // fetchToStringStyle
+//
+//    @Test
+//    public void unsetPropertyShouldCreateDefaultStyleClass() {
+//        assertThat(fetchToStringStyle()).isSameAs(DEFAULT_STYLE);
+//    }
+//
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void emptyPropertyShouldThrowException() {
+//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "");
+//
+//        fetchToStringStyle();
+//    }
+//
+//    @Test(expected = InvalidToStringStyleClassException.class)
+//    public void blankPropertyShouldThrowException() {
+//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, " ");
+//
+//        fetchToStringStyle();
+//    }
+//
+//    @Test
+//    public void classNamePropertyShouldCallCreateInstanceMethod()
+//    throws Exception {
+//        // given
+//        mockStatic(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
+//
+////        spy(ToStringStyleUtility.class);
+//        setProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME, "some.Class");
+////        when(ToStringStyleUtility.class, "createToStringStyleInstance", "some.Class").thenReturn(new MyStyle());
+////        when(ToStringStyleUtility.class,
+////             method(ToStringStyleUtility.class, "createToStringStyleInstance", String.class)).withArguments(
+////                                                                                                           "some
+//// .Class")
+////                                                                                             .thenReturn(new
+//// MyStyle());
+//
+//        doReturn(new MyStyle()).when(IdentifierOrClassNamePropertyToStringStyleSupplier.class);
+//
+//        // when
+//        fetchToStringStyle();
+//
+//        // then
+//        verify(IdentifierOrClassNamePropertyToStringStyleSupplier.class).invoke("createToStringStyleInstance",
+//                                                                                "some.Class");
+//        verifyStatic();
+////        createToStringStyleInstance("some.Class");
+//    }
 }
