@@ -21,7 +21,7 @@
 
 package org.jlib.object_spi;
 
-public interface ObjectMethodForwarder {
+public interface CoreFunctionDispatcher {
 
     <Obj> Equals<Obj> reflectionEquals();
 

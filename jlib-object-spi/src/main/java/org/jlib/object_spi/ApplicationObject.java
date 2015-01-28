@@ -29,8 +29,8 @@ package org.jlib.object_spi;
  */
 public abstract class ApplicationObject {
 
-    private static final ObjectMethodForwarder OBJECT_METHOD_FORWARDER = /*
-     */ ObjectService.getInstance().getObjectMethodForwarder();
+    private static final CoreFunctionDispatcher OBJECT_METHOD_FORWARDER = /*
+     */ ObjectService.getInstance().getCoreFunctionDispatcher();
 
     /**
      * Creates a new {@link ApplicationObject}.

@@ -21,14 +21,10 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import java.util.function.Supplier;
-
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-interface ConfigurableToStringStyleSupplier
-extends Supplier<ToStringStyle> {
+interface ConfigurableToStringStyleSupplier {
 
-    @Override
     ToStringStyle get()
     throws ToStringStyleNotFoundException;
 }

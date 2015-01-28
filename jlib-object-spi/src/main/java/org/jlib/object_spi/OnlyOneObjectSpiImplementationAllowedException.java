@@ -33,8 +33,8 @@ extends InvalidStateException {
     private static final long serialVersionUID = 8750597802769662034L;
 
     public OnlyOneObjectSpiImplementationAllowedException /*
-     */(final Collection<ObjectMethodForwarder> objectMethodForwarders) {
+     */(final Collection<CoreFunctionDispatcher> coreFunctionDispatchers) {
 
-        super(message().with("objectMethodForwarders", objectMethodForwarders));
+        super(message().with("objectMethodForwarders", coreFunctionDispatchers));
     }
 }

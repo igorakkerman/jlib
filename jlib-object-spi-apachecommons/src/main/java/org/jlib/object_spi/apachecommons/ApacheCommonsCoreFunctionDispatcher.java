@@ -40,11 +40,11 @@ import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
 import org.jlib.object_spi.HashCode;
 import org.jlib.object_spi.HashCodeEngine;
-import org.jlib.object_spi.ObjectMethodForwarder;
+import org.jlib.object_spi.CoreFunctionDispatcher;
 import org.jlib.object_spi.ToString;
 
-public class ApacheCommonsObjectMethodForwarder
-implements ObjectMethodForwarder {
+public class ApacheCommonsCoreFunctionDispatcher
+implements CoreFunctionDispatcher {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object_spi.apachecommons.toStringStyle";
 
@@ -76,7 +76,7 @@ implements ObjectMethodForwarder {
 
     private final ToStringStyle toStringStyle;
 
-    public ApacheCommonsObjectMethodForwarder() {
+    public ApacheCommonsCoreFunctionDispatcher() {
         toStringStyle = TO_STRING_STYLE_SUPPLIER.get();
     }
 
@@ -119,4 +119,4 @@ implements ObjectMethodForwarder {
     public HashCodeEngine hashCodeEngine() {
         return new ApacheCommonsHashCodeEngine();
     }
-}
+    }

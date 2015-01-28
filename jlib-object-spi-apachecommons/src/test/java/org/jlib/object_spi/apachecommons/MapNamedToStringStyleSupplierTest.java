@@ -27,7 +27,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
-import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForwarder.getToStringStyles;
+import static org.jlib.object_spi.apachecommons.ApacheCommonsCoreFunctionDispatcher.getToStringStyles;
 import static org.jlib.object_spi.apachecommons.ToStringStyleIdentifierAssert.assertThatIdentifier;
 import org.junit.Test;
 

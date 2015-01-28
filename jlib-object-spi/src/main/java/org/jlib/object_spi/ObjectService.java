@@ -34,32 +34,32 @@ public class ObjectService {
         return INSTANCE;
     }
 
-    private final ObjectMethodForwarder objectMethodForwarder;
+    private final CoreFunctionDispatcher coreFunctionDispatcher;
 
     private ObjectService()
     throws ServiceConfigurationError, NoObjectSpiImplementationException,
            OnlyOneObjectSpiImplementationAllowedException {
-        final ServiceLoader<ObjectMethodForwarder> loader = ServiceLoader.load(ObjectMethodForwarder.class);
+        final ServiceLoader<CoreFunctionDispatcher> loader = ServiceLoader.load(CoreFunctionDispatcher.class);
 
-        final List<ObjectMethodForwarder> objectMethodForwarders = new ArrayList<>();
+        final List<CoreFunctionDispatcher> coreFunctionDispatchers = new ArrayList<>();
 
-        for (final ObjectMethodForwarder objectMethodForwarder : loader)
-            objectMethodForwarders.add(objectMethodForwarder);
+        for (final CoreFunctionDispatcher coreFunctionDispatcher : loader)
+            coreFunctionDispatchers.add(coreFunctionDispatcher);
 
-        assertExactlyOneServiceProviderInClassPath(objectMethodForwarders);
+        assertExactlyOneServiceProviderInClassPath(coreFunctionDispatchers);
 
-        objectMethodForwarder = objectMethodForwarders.get(0);
+        coreFunctionDispatcher = coreFunctionDispatchers.get(0);
     }
 
-    private void assertExactlyOneServiceProviderInClassPath(final List<ObjectMethodForwarder> objectMethodForwarders) {
-        if (objectMethodForwarders.isEmpty())
+    private void assertExactlyOneServiceProviderInClassPath(final List<CoreFunctionDispatcher> coreFunctionDispatchers) {
+        if (coreFunctionDispatchers.isEmpty())
             throw new NoObjectSpiImplementationException();
 
-        if (objectMethodForwarders.size() > 1)
-            throw new OnlyOneObjectSpiImplementationAllowedException(objectMethodForwarders);
+        if (coreFunctionDispatchers.size() > 1)
+            throw new OnlyOneObjectSpiImplementationAllowedException(coreFunctionDispatchers);
     }
 
-    public ObjectMethodForwarder getObjectMethodForwarder() {
-        return objectMethodForwarder;
+    public CoreFunctionDispatcher getCoreFunctionDispatcher() {
+        return coreFunctionDispatcher;
     }
 }

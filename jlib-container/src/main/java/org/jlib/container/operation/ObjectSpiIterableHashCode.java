@@ -39,7 +39,7 @@ implements HashCode<Iterable<Item>> {
 
     @Override
     public int hashCode(final Iterable<Item> items) {
-        final HashCodeEngine engine = ObjectService.getInstance().getObjectMethodForwarder().hashCodeEngine();
+        final HashCodeEngine engine = ObjectService.getInstance().getCoreFunctionDispatcher().hashCodeEngine();
 
         for (final Item item : items)
             engine.append(item);
