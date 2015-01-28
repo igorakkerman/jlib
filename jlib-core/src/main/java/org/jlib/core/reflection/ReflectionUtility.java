@@ -126,26 +126,26 @@ public final class ReflectionUtility {
      * @param className
      *        String specifying the name of the class to instantiate
      *
-     * @param expectedParentClass
+     * @param expectedSuperType
      *        expected parent {@link Class} of the instantiated {@link Class};
      *
      * @return a new instance of the specified class
      *
      * @throws WrongTypedClassInstantiationException
-     *         if the instantiated {@link Object} is not an instance of {@code expectedParentClass} or a descendant
+     *         if the instantiated {@link Object} is not an instance of {@code expectedSuperType} or a descendant
      *         subclass
      *
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public static <Obj> Obj newInstanceOf(final String className, final Class<Obj> expectedParentClass)
+    public static <Obj> Obj newInstanceOf(final String className, final Class<Obj> expectedSuperType)
     throws WrongTypedClassInstantiationException, ClassInstantiationException {
         try {
             final Class<?> clazz = Class.forName(className);
 
-            if (! expectedParentClass.isAssignableFrom(clazz))
-                throw new WrongTypedClassInstantiationException(clazz, expectedParentClass);
+            if (! expectedSuperType.isAssignableFrom(clazz))
+                throw new WrongTypedClassInstantiationException(clazz, expectedSuperType);
 
             return newInstanceOf((Class<? extends Obj>) clazz);
         }
