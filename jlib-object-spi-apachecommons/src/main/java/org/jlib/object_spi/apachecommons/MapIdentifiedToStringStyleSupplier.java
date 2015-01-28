@@ -22,10 +22,13 @@
 package org.jlib.object_spi.apachecommons;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.language.Valid;
+
+import static org.jlib.core.language.OptionalUtility.optionalOf;
 
 class MapIdentifiedToStringStyleSupplier
 implements IdentifiedToStringStyleSupplier {
@@ -37,12 +40,7 @@ implements IdentifiedToStringStyleSupplier {
     }
 
     @Override
-    public boolean isValidIdentifier(final String identifier) {
-        return toStringStyles.containsKey(identifier);
-    }
-
-    @Override
-    public ToStringStyle getIdentifiedToStringStyle(@Valid final String identifier) {
-        return toStringStyles.get(identifier);
+    public Optional<ToStringStyle> getIdentifiedToStringStyle(@Valid final String identifier) {
+        return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
     }
 }

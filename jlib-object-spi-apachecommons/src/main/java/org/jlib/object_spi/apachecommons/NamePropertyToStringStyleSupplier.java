@@ -48,10 +48,8 @@ implements ToStringStyleSupplier {
 
             final String identifierOrClassName = optionalIdentifierOrClassName.get();
 
-            if (identifiedStyleSupplier.isValidIdentifier(identifierOrClassName))
-                return identifiedStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName);
-
-            return newInstanceOf(identifierOrClassName, ToStringStyle.class);
+            return identifiedStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName)
+                                          .orElse(newInstanceOf(identifierOrClassName, ToStringStyle.class));
         }
         catch (final ClassInstantiationException exception) {
             throw new ToStringStyleNotFoundException(exception);

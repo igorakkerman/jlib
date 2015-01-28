@@ -21,8 +21,6 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import java.util.Optional;
-
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.PropertyUtility;
@@ -30,6 +28,8 @@ import org.jlib.core.reflection.ClassInstantiationException;
 import org.jlib.core.reflection.ReflectionUtility;
 
 import static java.lang.String.format;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
@@ -83,7 +83,7 @@ public class NamePropertyToStringStyleSupplierTest {
     public void unsetPropertyShouldReturnDefaultStyleNotCallIdentifiedSupplier() {
 
         // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.empty());
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(empty());
 
         // when
         final ToStringStyle style = styleSupplier.getToStringStyle();
@@ -103,16 +103,14 @@ public class NamePropertyToStringStyleSupplierTest {
     public void styleOfMappedIdentifierShouldBeReturned() {
 
         // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(STYLE_ID));
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(STYLE_ID));
 
-        when(identifiedToStringStyleSupplier.isValidIdentifier(STYLE_ID)).thenReturn(true);
-        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(STYLE_ID)).thenReturn(STYLE);
+        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(STYLE_ID)).thenReturn(of(STYLE));
 
         // when
         final ToStringStyle style = styleSupplier.getToStringStyle();
 
         // then
-        verify(identifiedToStringStyleSupplier).isValidIdentifier(STYLE_ID);
         verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(STYLE_ID);
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
         assertThat(style).isSameAs(STYLE);
@@ -123,8 +121,8 @@ public class NamePropertyToStringStyleSupplierTest {
     throws Exception {
 
         // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(CLASS_NAME));
-        when(identifiedToStringStyleSupplier.isValidIdentifier(CLASS_NAME)).thenReturn(false);
+        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
+        when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(CLASS_NAME)).thenReturn(empty());
         when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
@@ -135,7 +133,7 @@ public class NamePropertyToStringStyleSupplierTest {
         PropertyUtility.getOptionalProperty(PROPERTY_NAME);
         verifyNoMoreInteractions(PropertyUtility.class);
 
-        verify(identifiedToStringStyleSupplier).isValidIdentifier(CLASS_NAME);
+        verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(CLASS_NAME);
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
 
         verifyStatic();
@@ -151,8 +149,8 @@ public class NamePropertyToStringStyleSupplierTest {
 
         try {
             // given
-            when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(Optional.of(CLASS_NAME));
-            when(identifiedToStringStyleSupplier.isValidIdentifier(CLASS_NAME)).thenReturn(false);
+            when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
+            when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(CLASS_NAME)).thenReturn(empty());
             when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class))./*
               */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
@@ -170,7 +168,7 @@ public class NamePropertyToStringStyleSupplierTest {
             PropertyUtility.getOptionalProperty(PROPERTY_NAME);
             verifyNoMoreInteractions(PropertyUtility.class);
 
-            verify(identifiedToStringStyleSupplier).isValidIdentifier(CLASS_NAME);
+            verify(identifiedToStringStyleSupplier).getIdentifiedToStringStyle(CLASS_NAME);
             verifyNoMoreInteractions(identifiedToStringStyleSupplier);
 
             verifyStatic();

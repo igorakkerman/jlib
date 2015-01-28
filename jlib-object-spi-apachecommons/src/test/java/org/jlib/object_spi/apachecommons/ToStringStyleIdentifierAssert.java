@@ -54,19 +54,10 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
         this.supplier = supplier;
     }
 
-    public ToStringStyleIdentifierAssert isValid() {
-        isNotNull();
-
-        if (! supplier.isValidIdentifier(actual))
-            failWithMessage("Expected valid identifier but <%s> is invalid", actual);
-
-        return this;
-    }
-
     public ToStringStyleIdentifierAssert isInvalid() {
         isNotNull();
 
-        if (supplier.isValidIdentifier(actual))
+        if (supplier.getIdentifiedToStringStyle(actual).isPresent())
             failWithMessage("Expected invalid identifier but <%s> is valid", actual);
 
         return this;
@@ -79,7 +70,7 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
     public ToStringStyleIdentifierAssert mapsTo(final ToStringStyle expectedToStringStyle) {
         isNotNull();
 
-        final ToStringStyle actualToStringStyle = supplier.getIdentifiedToStringStyle(actual);
+        final ToStringStyle actualToStringStyle = supplier.getIdentifiedToStringStyle(actual).get();
 
         if (actualToStringStyle != expectedToStringStyle)
             failWithMessage("Identifier <%s> expected to map to <%s> but maps to <%s>.", actual, expectedToStringStyle,

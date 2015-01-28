@@ -21,13 +21,11 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
+import java.util.Optional;
 
-import org.jlib.core.language.Valid;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 interface IdentifiedToStringStyleSupplier {
 
-    boolean isValidIdentifier(String identifier);
-
-    ToStringStyle getIdentifiedToStringStyle(@Valid String identifier);
+    Optional<ToStringStyle> getIdentifiedToStringStyle(String identifier);
 }

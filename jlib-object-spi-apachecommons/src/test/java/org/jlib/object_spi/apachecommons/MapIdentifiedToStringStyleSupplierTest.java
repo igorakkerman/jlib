@@ -21,10 +21,7 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
-
-import org.jlib.core.language.Valid;
-
+import static java.util.Optional.of;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
@@ -41,27 +38,27 @@ public class MapIdentifiedToStringStyleSupplierTest {
 
     @Test
     public void defaultStyleNameShouldBeValidAndMapCorrectly() {
-        assertThatIdentifier("DEFAULT_STYLE").in(SUPPLIER).isValid().mapsTo(DEFAULT_STYLE);
+        assertThatIdentifier("DEFAULT_STYLE").in(SUPPLIER).mapsTo(DEFAULT_STYLE);
     }
 
     @Test
     public void multiLineStyleNameShouldBeValidAndMapCorrectly() {
-        assertThatIdentifier("MULTI_LINE_STYLE").in(SUPPLIER).isValid().mapsTo(MULTI_LINE_STYLE);
+        assertThatIdentifier("MULTI_LINE_STYLE").in(SUPPLIER).mapsTo(MULTI_LINE_STYLE);
     }
 
     @Test
     public void noFieldNamesStyleNameShouldBeValidAndMapCorrectly() {
-        assertThatIdentifier("NO_FIELD_NAMES_STYLE").in(SUPPLIER).isValid().mapsTo(NO_FIELD_NAMES_STYLE);
+        assertThatIdentifier("NO_FIELD_NAMES_STYLE").in(SUPPLIER).mapsTo(NO_FIELD_NAMES_STYLE);
     }
 
     @Test
     public void shortPrefixStyleNameShouldBeValidAndMapCorrectly() {
-        assertThatIdentifier("SHORT_PREFIX_STYLE").in(SUPPLIER).isValid().mapsTo(SHORT_PREFIX_STYLE);
+        assertThatIdentifier("SHORT_PREFIX_STYLE").in(SUPPLIER).mapsTo(SHORT_PREFIX_STYLE);
     }
 
     @Test
     public void simpleStyleNameShouldBeValidAndMapCorrectly() {
-        assertThatIdentifier("SIMPLE_STYLE").in(SUPPLIER).isValid().mapsTo(SIMPLE_STYLE);
+        assertThatIdentifier("SIMPLE_STYLE").in(SUPPLIER).mapsTo(SIMPLE_STYLE);
     }
 
     @Test
@@ -76,17 +73,7 @@ public class MapIdentifiedToStringStyleSupplierTest {
 
     @Test
     public void anyIdentifierOnOwnSupplierShouldMapCorrectly() {
-        assertThatIdentifier("").in(new IdentifiedToStringStyleSupplier() {
-            @Override
-            public boolean isValidIdentifier(final String identifier) {
-                return true;
-            }
-
-            @Override
-            public ToStringStyle getIdentifiedToStringStyle(@Valid final String identifier) {
-                return DEFAULT_STYLE;
-            }
-        }).isValid().mapsTo(DEFAULT_STYLE);
+        assertThatIdentifier("").in(identifier -> of(DEFAULT_STYLE)).mapsTo(DEFAULT_STYLE);
     }
 }
 
