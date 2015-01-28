@@ -21,13 +21,9 @@
 
 package org.jlib.container.storage.indexrangeoperation;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.io.Serializable;
 
 import org.jlib.core.exception.UnexpectedStateException;
-
-import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * Descriptor of an operation on indexed objects specifying a source index range and a target index.
@@ -41,27 +37,27 @@ implements Cloneable,
     private static final long serialVersionUID = - 2349186633834250865L;
 
     /** begin index of the source range */
-    private final int sourceBeginIndex;
+    private final Integer sourceBeginIndex;
 
     /** end index of the source range */
-    private final int sourceEndIndex;
+    private final Integer sourceEndIndex;
 
     /** target index */
-    private final int targetIndex;
+    private final Integer targetIndex;
 
     /**
      * Creates a new {@link IndexRangeOperationDescriptor}.
      *
      * @param sourceBeginIndex
-     *        integer specifying the begin index of the source range
+     *        Integereger specifying the begin index of the source range
      *
      * @param sourceEndIndex
-     *        integer specifying the end index of the source range
+     *        Integereger specifying the end index of the source range
      *
      * @param targetIndex
-     *        integer specifying the target index
+     *        Integereger specifying the target index
      */
-    public IndexRangeOperationDescriptor(final int sourceBeginIndex, final int sourceEndIndex, final int targetIndex) {
+    public IndexRangeOperationDescriptor(final Integer sourceBeginIndex, final Integer sourceEndIndex, final Integer targetIndex) {
 
         this.sourceBeginIndex = sourceBeginIndex;
         this.sourceEndIndex = sourceEndIndex;
@@ -71,27 +67,27 @@ implements Cloneable,
     /**
      * Returns the begin index of the source range.
      *
-     * @return integer specifying the begin index of the source range
+     * @return Integereger specifying the begin index of the source range
      */
-    public int getSourceBeginIndex() {
+    public Integer getSourceBeginIndex() {
         return sourceBeginIndex;
     }
 
     /**
      * Returns the end index of the source range.
      *
-     * @return integer specifying the end index of the source range
+     * @return Integereger specifying the end index of the source range
      */
-    public int getSourceEndIndex() {
+    public Integer getSourceEndIndex() {
         return sourceEndIndex;
     }
 
     /**
      * Returns the target index.
      *
-     * @return integer specifying the target index
+     * @return Integereger specifying the target index
      */
-    public int getTargetIndex() {
+    public Integer getTargetIndex() {
         return targetIndex;
     }
 
@@ -100,13 +96,9 @@ implements Cloneable,
 
         // TODO: replace by more general strategy
         try {
-            final IndexRangeOperationDescriptor cloneTarget = (IndexRangeOperationDescriptor) super.clone();
-
-            BeanUtils.copyProperties(cloneTarget, this);
-
-            return cloneTarget;
+            return (IndexRangeOperationDescriptor) super.clone();
         }
-        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
+        catch (CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }

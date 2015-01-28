@@ -21,12 +21,10 @@
 
 package org.jlib.container.storage;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.jlib.core.exception.UnexpectedStateException;
+
 import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
-import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.message.MessageUtility.messageMf;
 
 public abstract class AbstractLinearIndexStorage<Item>
@@ -126,17 +124,12 @@ implements LinearIndexStorage<Item> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public AbstractLinearIndexStorage<Item> clone() {
-        // TODO: replace by more general strategy
         try {
-            @SuppressWarnings("unchecked")
-            final AbstractLinearIndexStorage<Item> cloneTarget = (AbstractLinearIndexStorage<Item>) super.clone();
-
-            BeanUtils.copyProperties(cloneTarget, this);
-
-            return cloneTarget;
+            return (AbstractLinearIndexStorage<Item>) super.clone();
         }
-        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
+        catch (final CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }

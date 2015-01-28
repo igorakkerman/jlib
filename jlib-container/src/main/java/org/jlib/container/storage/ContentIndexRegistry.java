@@ -21,13 +21,10 @@
 
 package org.jlib.container.storage;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.io.Serializable;
 
 import org.jlib.core.exception.UnexpectedStateException;
 
-import org.apache.commons.beanutils.BeanUtils;
 import static org.jlib.core.math.NumberUtility.count;
 
 /**
@@ -50,7 +47,7 @@ implements Cloneable,
     /**
      * Creates a new {@link ContentIndexRegistry} for the specified {@link LinearIndexStorage}.
      */
-    public ContentIndexRegistry(final int firstItemIndex, final int lastItemIndex)
+    public ContentIndexRegistry(final Integer firstItemIndex, final Integer lastItemIndex)
     throws LinearIndexStorageException {
 
         this.firstItemIndex = firstItemIndex;
@@ -60,9 +57,9 @@ implements Cloneable,
     /**
      * Returns the index of the first item.
      *
-     * @return integer specifying the index of the first item
+     * @return Integer specifying the index of the first item
      */
-    public int getFirstItemIndex() {
+    public Integer getFirstItemIndex() {
         return firstItemIndex;
     }
 
@@ -70,18 +67,18 @@ implements Cloneable,
      * Registers the index of the first item.
      *
      * @param firstItemIndex
-     *        integer specifying the index of the first item
+     *        Integer specifying the index of the first item
      */
-    public void setFirstItemIndex(final int firstItemIndex) {
+    public void setFirstItemIndex(final Integer firstItemIndex) {
         this.firstItemIndex = firstItemIndex;
     }
 
     /**
      * Returns the index of the last item.
      *
-     * @return integer specifying the index of the last item
+     * @return Integer specifying the index of the last item
      */
-    public int getLastItemIndex() {
+    public Integer getLastItemIndex() {
         return lastItemIndex;
     }
 
@@ -89,9 +86,9 @@ implements Cloneable,
      * Registers the index of the last item.
      *
      * @param lastItemIndex
-     *        integer specifying the index of the last item
+     *        Integer specifying the index of the last item
      */
-    public void setLastItemIndex(final int lastItemIndex) {
+    public void setLastItemIndex(final Integer lastItemIndex) {
         this.lastItemIndex = lastItemIndex;
     }
 
@@ -99,7 +96,7 @@ implements Cloneable,
      * Increments the index of the first item by the specified value.
      *
      * @param increment
-     *        positive or negative integer specifying the increment
+     *        positive or negative Integer specifying the increment
      */
     public void incrementFirstItemIndex(final int increment) {
         firstItemIndex += increment;
@@ -109,7 +106,7 @@ implements Cloneable,
      * Increments the index of the last item by the specified value.
      *
      * @param increment
-     *        positive or negative integer specifying the increment
+     *        positive or negative Integer specifying the increment
      */
     public void incrementLastItemIndex(final int increment) {
         lastItemIndex += increment;
@@ -126,15 +123,10 @@ implements Cloneable,
 
     @Override
     public ContentIndexRegistry clone() {
-        // TODO: replace by more general strategy
         try {
-            final ContentIndexRegistry cloneTarget = (ContentIndexRegistry) super.clone();
-
-            BeanUtils.copyProperties(cloneTarget, this);
-
-            return cloneTarget;
+            return (ContentIndexRegistry) super.clone();
         }
-        catch (IllegalAccessException | InvocationTargetException | CloneNotSupportedException exception) {
+        catch (final CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }
