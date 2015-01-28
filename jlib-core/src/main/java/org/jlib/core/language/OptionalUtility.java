@@ -23,6 +23,7 @@ package org.jlib.core.language;
 
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public final class OptionalUtility {
 
@@ -30,10 +31,19 @@ public final class OptionalUtility {
         return optionalOf(value, predicate.test(value));
     }
 
+    public static <Value> Optional<Value> optionalOf(final Supplier<Value> value,
+                                                     final Predicate<? super Value> predicate) {
+        return optionalOf(value.get(), predicate);
+    }
+
     public static <Value> Optional<Value> optionalOf(final Value value, final boolean condition) {
         return condition ?
                Optional.of(value) :
                Optional.<Value>empty();
+    }
+
+    public static <Value> Optional<Value> optionalOf(final Supplier<Value> value, final boolean condition) {
+        return optionalOf(value.get(), condition);
     }
 
     private OptionalUtility() {}
