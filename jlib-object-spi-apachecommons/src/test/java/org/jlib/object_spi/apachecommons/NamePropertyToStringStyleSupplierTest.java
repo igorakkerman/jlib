@@ -21,6 +21,8 @@
 
 package org.jlib.object_spi.apachecommons;
 
+import java.util.Optional;
+
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.PropertyUtility;
@@ -28,7 +30,6 @@ import org.jlib.core.reflection.ReflectionUtility;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,10 +37,8 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.doReturn;
-import static org.powermock.api.mockito.PowerMockito.spy;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
-import static org.powermock.api.support.membermodification.MemberMatcher.method;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -47,66 +46,51 @@ import org.powermock.modules.junit4.PowerMockRunner;
 @PrepareForTest({ PropertyUtility.class, ReflectionUtility.class })
 public class NamePropertyToStringStyleSupplierTest {
 
-    public static class MyStyle
-    extends ToStringStyle {
-
-        private static final long serialVersionUID = - 1306981006542884518L;
-    }
-
-    public static class SomethingWithDefaultConstructor {
-
-    }
-
-    public static class SomethingWithoutDefaultConstructor {
-
-        @SuppressWarnings("UnusedParameters")
-        public SomethingWithoutDefaultConstructor(final Object object) {}
-    }
-
     private static final String SAMPLE_PROPERTY_NAME = "tss";
     public static final String SAMPLE_STYLE_ID = "MY_STYLE";
-    private static final ToStringStyle SAMPLE_STYLE = new MyStyle();
-    private static final Class<MyStyle> SAMPLE_CLASS = MyStyle.class;
-    private static final String SAMPLE_CLASS_NAME = SAMPLE_CLASS.getName();
+    @SuppressWarnings("serial")
+    private static final ToStringStyle SAMPLE_STYLE = new ToStringStyle() {};
     private static final String FAKE_CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     @Mock
     private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
 
-    private ToStringStyleSupplier styleSupplier;
-
-    @Before
-    @After
-    public void clearProperty() {
-        System.clearProperty(SAMPLE_PROPERTY_NAME);
-    }
+    private NamePropertyToStringStyleSupplier styleSupplier;
 
     @Before
     public void initializeStyleSupplier() {
-        styleSupplier = new NamePropertyToStringStyleSupplier(SAMPLE_PROPERTY_NAME, identifiedToStringStyleSupplier,
-                                                              DEFAULT_STYLE);
+        styleSupplier = new NamePropertyToStringStyleSupplier();
+        styleSupplier.setPropertyName(SAMPLE_PROPERTY_NAME);
+        styleSupplier.setIdentifiedStyleSupplier(identifiedToStringStyleSupplier);
+        styleSupplier.setDefaultStyle(DEFAULT_STYLE);
     }
 
     @Before
-    public void spyOnPropertyUtility() {
-        spy(PropertyUtility.class);
+    public void mockPropertyUtility() {
+        mockStatic(PropertyUtility.class);
     }
 
     @Before
     public void spyOnReflectionUtility() {
-        spy(ReflectionUtility.class);
+        mockStatic(ReflectionUtility.class);
     }
 
     @Test
     public void forUnsetPropertyShouldMapToDefaultStyleNotCallIdentifiedSupplier() {
+        // given
+        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.empty());
+
+        // when
         final ToStringStyle style = styleSupplier.getToStringStyle();
+
+        // then
         verifyNoMoreInteractions(identifiedToStringStyleSupplier);
         assertThat(style).isSameAs(DEFAULT_STYLE);
     }
 
     @Test
     public void forDefinedPropertyIdentifiedSupplierShouldUseMapping() {
-        System.setProperty(SAMPLE_PROPERTY_NAME, SAMPLE_STYLE_ID);
+        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.of(SAMPLE_STYLE_ID));
 
         when(identifiedToStringStyleSupplier.isValidIdentifier(SAMPLE_STYLE_ID)).thenReturn(true);
         when(identifiedToStringStyleSupplier.getIdentifiedToStringStyle(SAMPLE_STYLE_ID)).thenReturn(SAMPLE_STYLE);
@@ -123,11 +107,11 @@ public class NamePropertyToStringStyleSupplierTest {
     throws Exception {
 
         // given
+        when(PropertyUtility.getOptionalProperty(SAMPLE_PROPERTY_NAME)).thenReturn(Optional.of(FAKE_CLASS_NAME));
+
         when(identifiedToStringStyleSupplier.isValidIdentifier(FAKE_CLASS_NAME)).thenReturn(false);
 
-        doReturn(SAMPLE_STYLE)./*
-     */ when(ReflectionUtility.class, method(ReflectionUtility.class, "newInstanceOf", String.class, Class.class))
-                              .withArguments(FAKE_CLASS_NAME, ToStringStyle.class);
+        when(ReflectionUtility.newInstanceOf(FAKE_CLASS_NAME, ToStringStyle.class)).thenReturn(SAMPLE_STYLE);
 
         // when
         System.setProperty(SAMPLE_PROPERTY_NAME, FAKE_CLASS_NAME);

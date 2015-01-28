@@ -33,19 +33,9 @@ import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 class NamePropertyToStringStyleSupplier
 implements ToStringStyleSupplier {
 
-    private final String propertyName;
-    private final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
-    private final ToStringStyle defaultToStringStyle;
-
-    public NamePropertyToStringStyleSupplier /*
-     */(final String propertyName, //
-        final IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier,
-        final ToStringStyle defaultToStringStyle) {
-
-        this.propertyName = propertyName;
-        this.identifiedToStringStyleSupplier = identifiedToStringStyleSupplier;
-        this.defaultToStringStyle = defaultToStringStyle;
-    }
+    private String propertyName;
+    private IdentifiedToStringStyleSupplier identifiedStyleSupplier;
+    private ToStringStyle defaultStyle;
 
     @Override
     public ToStringStyle getToStringStyle()
@@ -54,17 +44,29 @@ implements ToStringStyleSupplier {
             final Optional<String> optionalIdentifierOrClassName = getOptionalProperty(propertyName);
 
             if (! optionalIdentifierOrClassName.isPresent())
-                return defaultToStringStyle;
+                return defaultStyle;
 
             final String identifierOrClassName = optionalIdentifierOrClassName.get();
 
-            if (identifiedToStringStyleSupplier.isValidIdentifier(identifierOrClassName))
-                return identifiedToStringStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName);
+            if (identifiedStyleSupplier.isValidIdentifier(identifierOrClassName))
+                return identifiedStyleSupplier.getIdentifiedToStringStyle(identifierOrClassName);
 
             return newInstanceOf(identifierOrClassName, ToStringStyle.class);
         }
         catch (final ClassInstantiationException exception) {
             throw new ToStringStyleNotFoundException(exception);
         }
+    }
+
+    void setPropertyName(final String propertyName) {
+        this.propertyName = propertyName;
+    }
+
+    void setIdentifiedStyleSupplier(final IdentifiedToStringStyleSupplier identifiedStyleSupplier) {
+        this.identifiedStyleSupplier = identifiedStyleSupplier;
+    }
+
+    void setDefaultStyle(final ToStringStyle defaultStyle) {
+        this.defaultStyle = defaultStyle;
     }
 }

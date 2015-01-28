@@ -61,10 +61,14 @@ implements ObjectMethodForwarder {
 
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
-    public static final ToStringStyleSupplier TO_STRING_STYLE_SUPPLIER = /*
-     */ new NamePropertyToStringStyleSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME,
-                                                               new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES),
-                                                               DEFAULT_TO_STRING_STYLE);
+    public static final NamePropertyToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
+
+    static {
+        TO_STRING_STYLE_SUPPLIER = new NamePropertyToStringStyleSupplier();
+        TO_STRING_STYLE_SUPPLIER.setPropertyName(TO_STRING_STYLE_NAME_PROPERTY_NAME);
+        TO_STRING_STYLE_SUPPLIER.setIdentifiedStyleSupplier(new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES));
+        TO_STRING_STYLE_SUPPLIER.setDefaultStyle(DEFAULT_TO_STRING_STYLE);
+    }
 
     public static Map<String, ToStringStyle> getToStringStyles() {
         return unmodifiableMap(TO_STRING_STYLES);
