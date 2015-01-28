@@ -68,7 +68,7 @@ public class MapIdentifiedConfigurableToStringStyleSupplierTest {
 
     @Test
     public void blankIdentifierShouldBeInvalid() {
-        assertThatIdentifier("").in(SUPPLIER).isInvalid();
+        assertThatIdentifier(" ").in(SUPPLIER).isInvalid();
     }
 
     @Test
