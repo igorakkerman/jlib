@@ -26,8 +26,6 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.language.Valid;
-
 import static org.jlib.core.language.OptionalUtility.optionalOf;
 
 class MapIdentifiedToStringStyleSupplier
@@ -40,7 +38,7 @@ implements IdentifiedToStringStyleSupplier {
     }
 
     @Override
-    public Optional<ToStringStyle> get(@Valid final String identifier) {
+    public Optional<ToStringStyle> get(final String identifier) {
         return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
     }
 }
