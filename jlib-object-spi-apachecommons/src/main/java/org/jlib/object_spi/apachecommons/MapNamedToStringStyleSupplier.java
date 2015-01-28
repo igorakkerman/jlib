@@ -28,12 +28,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import static org.jlib.core.language.OptionalUtility.optionalOf;
 
-class MapIdentifiedToStringStyleSupplier
-implements IdentifiedToStringStyleSupplier {
+class MapNamedToStringStyleSupplier
+implements NamedToStringStyleSupplier {
 
     private final Map<String, ToStringStyle> toStringStyles;
 
-    MapIdentifiedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
+    MapNamedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
         this.toStringStyles = toStringStyles;
     }
 
@@ -41,4 +41,33 @@ implements IdentifiedToStringStyleSupplier {
     public Optional<ToStringStyle> get(final String identifier) {
         return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
     }
+//
+//    private static class TestX
+//    extends ApplicationObject {
+//
+//        private int i;
+//        private boolean b;
+//        private boolean bigB;
+//        private String s;
+//        private TestX next;
+//
+//        public TestX() {
+//            i = 42;
+//            b = false;
+//            bigB = TRUE;
+//            s = "abc";
+//        }
+//    }
+//
+//    public static void main(final String... commandLineArguments) {
+//        System.setProperty(ApacheCommonsObjectMethodForwarder.TO_STRING_STYLE_NAME_PROPERTY_NAME, "SIMPLE_STYLE");
+//
+//        final TestX x = new TestX();
+//        TestX n = new TestX();
+//        n.i = 11;
+//        n.b = true;
+//        n.bigB = TRUE;
+//        x.next = x;
+//        System.out.println(x);
+//    }
 }

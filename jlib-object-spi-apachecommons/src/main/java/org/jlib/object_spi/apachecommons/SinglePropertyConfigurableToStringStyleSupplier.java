@@ -30,11 +30,11 @@ import org.jlib.core.reflection.ClassInstantiationException;
 import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-class NamePropertyConfigurableToStringStyleSupplier
+class SinglePropertyConfigurableToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
     private String propertyName;
-    private IdentifiedToStringStyleSupplier identifiedStyleSupplier;
+    private NamedToStringStyleSupplier namedStyleSupplier;
     private ToStringStyle defaultStyle;
 
     @Override
@@ -48,8 +48,9 @@ implements ConfigurableToStringStyleSupplier {
 
             final String identifierOrClassName = optionalIdentifierOrClassName.get();
 
-            return identifiedStyleSupplier.get(identifierOrClassName)
-                                          .orElse(newInstanceOf(identifierOrClassName, ToStringStyle.class));
+            final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
+
+            return toStringStyle.isPresent() ? toStringStyle.get() : newInstanceOf(identifierOrClassName, ToStringStyle.class);
         }
         catch (final ClassInstantiationException exception) {
             throw new ToStringStyleNotFoundException(exception);
@@ -60,8 +61,8 @@ implements ConfigurableToStringStyleSupplier {
         this.propertyName = propertyName;
     }
 
-    void setIdentifiedStyleSupplier(final IdentifiedToStringStyleSupplier identifiedStyleSupplier) {
-        this.identifiedStyleSupplier = identifiedStyleSupplier;
+    void setNamedStyleSupplier(final NamedToStringStyleSupplier namedStyleSupplier) {
+        this.namedStyleSupplier = namedStyleSupplier;
     }
 
     void setDefaultStyle(final ToStringStyle defaultStyle) {

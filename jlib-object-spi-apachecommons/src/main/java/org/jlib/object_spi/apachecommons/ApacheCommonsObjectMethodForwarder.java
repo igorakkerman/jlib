@@ -46,7 +46,7 @@ import org.jlib.object_spi.ToString;
 public class ApacheCommonsObjectMethodForwarder
 implements ObjectMethodForwarder {
 
-    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object-spi-apachecommons.toStringStyle";
+    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object_spi.apachecommons.toStringStyle";
 
     private static final Map<String, ToStringStyle> TO_STRING_STYLES;
 
@@ -61,12 +61,12 @@ implements ObjectMethodForwarder {
 
     public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
-    public static final NamePropertyConfigurableToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
+    public static final SinglePropertyConfigurableToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
 
     static {
-        TO_STRING_STYLE_SUPPLIER = new NamePropertyConfigurableToStringStyleSupplier();
+        TO_STRING_STYLE_SUPPLIER = new SinglePropertyConfigurableToStringStyleSupplier();
         TO_STRING_STYLE_SUPPLIER.setPropertyName(TO_STRING_STYLE_NAME_PROPERTY_NAME);
-        TO_STRING_STYLE_SUPPLIER.setIdentifiedStyleSupplier(new MapIdentifiedToStringStyleSupplier(TO_STRING_STYLES));
+        TO_STRING_STYLE_SUPPLIER.setNamedStyleSupplier(new MapNamedToStringStyleSupplier(TO_STRING_STYLES));
         TO_STRING_STYLE_SUPPLIER.setDefaultStyle(DEFAULT_TO_STRING_STYLE);
     }
 

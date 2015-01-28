@@ -31,10 +31,10 @@ import static org.jlib.object_spi.apachecommons.ApacheCommonsObjectMethodForward
 import static org.jlib.object_spi.apachecommons.ToStringStyleIdentifierAssert.assertThatIdentifier;
 import org.junit.Test;
 
-public class MapIdentifiedConfigurableToStringStyleSupplierTest {
+public class MapNamedToStringStyleSupplierTest {
 
-    private static final IdentifiedToStringStyleSupplier SUPPLIER = /*
-     */ new MapIdentifiedToStringStyleSupplier(getToStringStyles());
+    private static final NamedToStringStyleSupplier SUPPLIER = /*
+     */ new MapNamedToStringStyleSupplier(getToStringStyles());
 
     @Test
     public void defaultStyleNameShouldBeValidAndMapCorrectly() {

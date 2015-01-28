@@ -41,14 +41,14 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
             this.actual = actual;
         }
 
-        public ToStringStyleIdentifierAssert in(final IdentifiedToStringStyleSupplier supplier) {
+        public ToStringStyleIdentifierAssert in(final NamedToStringStyleSupplier supplier) {
             return new ToStringStyleIdentifierAssert(actual, supplier);
         }
     }
 
-    private final IdentifiedToStringStyleSupplier supplier;
+    private final NamedToStringStyleSupplier supplier;
 
-    protected ToStringStyleIdentifierAssert(final String actual, final IdentifiedToStringStyleSupplier supplier) {
+    protected ToStringStyleIdentifierAssert(final String actual, final NamedToStringStyleSupplier supplier) {
         super(actual, ToStringStyleIdentifierAssert.class);
 
         this.supplier = supplier;

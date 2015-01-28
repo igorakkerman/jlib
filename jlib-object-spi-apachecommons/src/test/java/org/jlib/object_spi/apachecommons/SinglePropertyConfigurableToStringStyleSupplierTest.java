@@ -47,27 +47,26 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ PropertyUtility.class, ReflectionUtility.class })
-public class NamePropertyConfigurableToStringStyleSupplierTest {
+public class SinglePropertyConfigurableToStringStyleSupplierTest {
 
     private static final String PROPERTY_NAME = "tss";
     public static final String STYLE_ID = "MY_STYLE";
     @SuppressWarnings("serial")
-    private static final ToStringStyle STYLE = new ToStringStyle() {
-    };
+    private static final ToStringStyle STYLE = new ToStringStyle() {};
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
 
-    private NamePropertyConfigurableToStringStyleSupplier styleSupplier;
+    private SinglePropertyConfigurableToStringStyleSupplier styleSupplier;
 
     @Before
     public void initializeStyleSupplier() {
-        styleSupplier = new NamePropertyConfigurableToStringStyleSupplier();
+        styleSupplier = new SinglePropertyConfigurableToStringStyleSupplier();
         styleSupplier.setPropertyName(PROPERTY_NAME);
-        styleSupplier.setIdentifiedStyleSupplier(identifiedToStringStyleSupplier);
+        styleSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
         styleSupplier.setDefaultStyle(DEFAULT_STYLE);
     }
 
     @Mock
-    private IdentifiedToStringStyleSupplier identifiedToStringStyleSupplier;
+    private NamedToStringStyleSupplier namedToStringStyleSupplier;
 
     @Before
     public void mockPropertyUtility() {
@@ -93,7 +92,7 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
         PropertyUtility.getOptionalProperty(PROPERTY_NAME);
         verifyNoMoreInteractions(PropertyUtility.class);
 
-        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        verifyNoMoreInteractions(namedToStringStyleSupplier);
         assertThat(style).isSameAs(DEFAULT_STYLE);
 
         verifyNoMoreInteractions(ReflectionUtility.class);
@@ -105,14 +104,21 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
         // given
         when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(STYLE_ID));
 
-        when(identifiedToStringStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
+        when(namedToStringStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
 
         // when
         final ToStringStyle style = styleSupplier.get();
 
         // then
-        verify(identifiedToStringStyleSupplier).get(STYLE_ID);
-        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        verifyStatic();
+        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
+        verifyNoMoreInteractions(PropertyUtility.class);
+
+        verify(namedToStringStyleSupplier).get(STYLE_ID);
+        verifyNoMoreInteractions(namedToStringStyleSupplier);
+
+        verifyNoMoreInteractions(ReflectionUtility.class);
+
         assertThat(style).isSameAs(STYLE);
     }
 
@@ -122,7 +128,7 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
 
         // given
         when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
-        when(identifiedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
+        when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
         when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
@@ -133,8 +139,8 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
         PropertyUtility.getOptionalProperty(PROPERTY_NAME);
         verifyNoMoreInteractions(PropertyUtility.class);
 
-        verify(identifiedToStringStyleSupplier).get(CLASS_NAME);
-        verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+        verify(namedToStringStyleSupplier).get(CLASS_NAME);
+        verifyNoMoreInteractions(namedToStringStyleSupplier);
 
         verifyStatic();
         ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
@@ -150,7 +156,7 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
         try {
             // given
             when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
-            when(identifiedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
+            when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
             when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class))./*
               */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
@@ -168,8 +174,8 @@ public class NamePropertyConfigurableToStringStyleSupplierTest {
             PropertyUtility.getOptionalProperty(PROPERTY_NAME);
             verifyNoMoreInteractions(PropertyUtility.class);
 
-            verify(identifiedToStringStyleSupplier).get(CLASS_NAME);
-            verifyNoMoreInteractions(identifiedToStringStyleSupplier);
+            verify(namedToStringStyleSupplier).get(CLASS_NAME);
+            verifyNoMoreInteractions(namedToStringStyleSupplier);
 
             verifyStatic();
             ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
