@@ -25,7 +25,7 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-interface NamedToStringStyleSupplier {
+public interface NamedToStringStyleSupplier {
 
     Optional<ToStringStyle> get(String identifier);
 }

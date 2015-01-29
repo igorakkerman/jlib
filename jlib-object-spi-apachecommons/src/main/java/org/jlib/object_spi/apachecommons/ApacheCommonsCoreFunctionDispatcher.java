@@ -21,8 +21,6 @@
 
 package org.jlib.object_spi.apachecommons;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -30,15 +28,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.property.OptionalPropertyValueSupplier;
 import org.jlib.core.reflection.ReflectionService;
 
-import static java.util.Collections.unmodifiableMap;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
-import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 import org.jlib.object_spi.CoreFunctionDispatcher;
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
@@ -50,35 +42,10 @@ import org.jlib.object_spi.ToString;
 public class ApacheCommonsCoreFunctionDispatcher
 implements CoreFunctionDispatcher {
 
-    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object_spi.apachecommons.toStringStyle";
-    public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
-
-    private static final OptionalPropertyValueSupplier
-    /**/ TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER =
-    /*    */ new OptionalPropertyValueSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME);
-
-    private static final Map<String, ToStringStyle> TO_STRING_STYLES;
-
-    static {
-        TO_STRING_STYLES = new HashMap<>();
-        TO_STRING_STYLES.put("DEFAULT_STYLE", DEFAULT_STYLE);
-        TO_STRING_STYLES.put("MULTI_LINE_STYLE", MULTI_LINE_STYLE);
-        TO_STRING_STYLES.put("NO_FIELD_NAMES_STYLE", NO_FIELD_NAMES_STYLE);
-        TO_STRING_STYLES.put("SHORT_PREFIX_STYLE", SHORT_PREFIX_STYLE);
-        TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
-    }
-
-    public static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
-    /**/ new MapNamedToStringStyleSupplier(TO_STRING_STYLES);
-
-    public static Map<String, ToStringStyle> getToStringStyles() {
-        return unmodifiableMap(TO_STRING_STYLES);
-    }
-
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsCoreFunctionDispatcher() {
-        final Optional<String> optionalIdentifierOrClassName = TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
+        final Optional<String> optionalIdentifierOrClassName = DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
 
         if (! optionalIdentifierOrClassName.isPresent()) {
             toStringStyle = DEFAULT_STYLE;
@@ -87,7 +54,7 @@ implements CoreFunctionDispatcher {
 
         final IdentifierOrClassNameToStringStyleSupplier toStringStyleSupplier =
         /**/ new IdentifierOrClassNameToStringStyleSupplier();
-        toStringStyleSupplier.setNamedStyleSupplier(NAMED_STYLE_SUPPLIER);
+        toStringStyleSupplier.setNamedStyleSupplier(DefaultToStringStylesConfiguration.NAMED_STYLE_SUPPLIER);
         toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
         toStringStyleSupplier.setInstanceService(ReflectionService.getInstance());
 

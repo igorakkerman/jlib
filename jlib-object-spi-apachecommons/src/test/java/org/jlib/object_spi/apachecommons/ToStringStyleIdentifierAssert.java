@@ -25,7 +25,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.assertj.core.api.AbstractAssert;
 
-class ToStringStyleIdentifierAssert
+public class ToStringStyleIdentifierAssert
 extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
 
     @SuppressWarnings("UnnecessarilyQualifiedInnerClassAccess")

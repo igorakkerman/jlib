@@ -28,7 +28,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.jlib.core.classinstance.ClassInstanceException;
 import org.jlib.core.classinstance.ClassInstanceService;
 
-class IdentifierOrClassNameToStringStyleSupplier
+public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
     private String identifierOrClassName;

@@ -23,7 +23,7 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-interface ConfigurableToStringStyleSupplier {
+public interface ConfigurableToStringStyleSupplier {
 
     ToStringStyle get()
     throws ToStringStyleNotFoundException;
