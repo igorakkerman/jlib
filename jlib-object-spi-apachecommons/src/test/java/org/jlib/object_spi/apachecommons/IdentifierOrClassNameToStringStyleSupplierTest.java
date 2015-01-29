@@ -23,14 +23,12 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.property.PropertyUtility;
 import org.jlib.core.reflection.ClassInstantiationException;
 import org.jlib.core.reflection.ReflectionUtility;
 
 import static java.lang.String.format;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 import org.junit.Before;
@@ -46,32 +44,24 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ PropertyUtility.class, ReflectionUtility.class })
-public class SinglePropertyConfigurableToStringStyleSupplierTest {
+@PrepareForTest(ReflectionUtility.class)
+public class IdentifierOrClassNameToStringStyleSupplierTest {
 
-    private static final String PROPERTY_NAME = "tss";
     public static final String STYLE_ID = "MY_STYLE";
     @SuppressWarnings("serial")
     private static final ToStringStyle STYLE = new ToStringStyle() {};
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
 
-    private SinglePropertyConfigurableToStringStyleSupplier styleSupplier;
+    private IdentifierOrClassNameToStringStyleSupplier styleSupplier;
 
     @Before
     public void initializeStyleSupplier() {
-        styleSupplier = new SinglePropertyConfigurableToStringStyleSupplier();
-        styleSupplier.setPropertyName(PROPERTY_NAME);
+        styleSupplier = new IdentifierOrClassNameToStringStyleSupplier();
         styleSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
-        styleSupplier.setDefaultStyle(DEFAULT_STYLE);
     }
 
     @Mock
     private NamedToStringStyleSupplier namedToStringStyleSupplier;
-
-    @Before
-    public void mockPropertyUtility() {
-        mockStatic(PropertyUtility.class);
-    }
 
     @Before
     public void spyOnReflectionUtility() {
@@ -79,41 +69,16 @@ public class SinglePropertyConfigurableToStringStyleSupplierTest {
     }
 
     @Test
-    public void unsetPropertyShouldReturnDefaultStyleNotCallIdentifiedSupplier() {
-
-        // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(empty());
-
-        // when
-        final ToStringStyle style = styleSupplier.get();
-
-        // then
-        verifyStatic();
-        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
-        verifyNoMoreInteractions(PropertyUtility.class);
-
-        verifyNoMoreInteractions(namedToStringStyleSupplier);
-        assertThat(style).isSameAs(DEFAULT_STYLE);
-
-        verifyNoMoreInteractions(ReflectionUtility.class);
-    }
-
-    @Test
     public void styleOfMappedIdentifierShouldBeReturned() {
 
         // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(STYLE_ID));
-
         when(namedToStringStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
 
         // when
+        styleSupplier.setIdentifierOrClassName(STYLE_ID);
         final ToStringStyle style = styleSupplier.get();
 
         // then
-        verifyStatic();
-        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
-        verifyNoMoreInteractions(PropertyUtility.class);
-
         verify(namedToStringStyleSupplier).get(STYLE_ID);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
@@ -127,18 +92,14 @@ public class SinglePropertyConfigurableToStringStyleSupplierTest {
     throws Exception {
 
         // given
-        when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
         when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
         when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
+        styleSupplier.setIdentifierOrClassName(CLASS_NAME);
         final ToStringStyle style = styleSupplier.get();
 
         // then
-        verifyStatic();
-        PropertyUtility.getOptionalProperty(PROPERTY_NAME);
-        verifyNoMoreInteractions(PropertyUtility.class);
-
         verify(namedToStringStyleSupplier).get(CLASS_NAME);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
@@ -155,12 +116,12 @@ public class SinglePropertyConfigurableToStringStyleSupplierTest {
 
         try {
             // given
-            when(PropertyUtility.getOptionalProperty(PROPERTY_NAME)).thenReturn(of(CLASS_NAME));
             when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
             when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class))./*
               */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
             // when
+            styleSupplier.setIdentifierOrClassName(CLASS_NAME);
             styleSupplier.get();
 
             // then (failure)
@@ -170,10 +131,6 @@ public class SinglePropertyConfigurableToStringStyleSupplierTest {
         catch (final ToStringStyleNotFoundException expectedException) {
 
             // then (success)
-            verifyStatic();
-            PropertyUtility.getOptionalProperty(PROPERTY_NAME);
-            verifyNoMoreInteractions(PropertyUtility.class);
-
             verify(namedToStringStyleSupplier).get(CLASS_NAME);
             verifyNoMoreInteractions(namedToStringStyleSupplier);
 

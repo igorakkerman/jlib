@@ -49,7 +49,7 @@ public final class PropertyUtility {
      *         if {@code propertyName} is an empty String
      */
     public static Optional<String> getOptionalProperty(final String propertyName) {
-        return Optional.ofNullable(System.getProperty(propertyName));
+        return new OptionalPropertyValueSupplier(propertyName).get();
     }
 
     /**

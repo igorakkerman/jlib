@@ -23,11 +23,14 @@ package org.jlib.object_spi.apachecommons;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import org.jlib.core.property.OptionalPropertyValueSupplier;
 
 import static java.util.Collections.unmodifiableMap;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
@@ -35,18 +38,23 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
+import org.jlib.object_spi.CoreFunctionDispatcher;
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
 import org.jlib.object_spi.HashCode;
 import org.jlib.object_spi.HashCodeEngine;
-import org.jlib.object_spi.CoreFunctionDispatcher;
 import org.jlib.object_spi.ToString;
 
 public class ApacheCommonsCoreFunctionDispatcher
 implements CoreFunctionDispatcher {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.object_spi.apachecommons.toStringStyle";
+    public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
+
+    private static final OptionalPropertyValueSupplier
+    /**/ TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER =
+    /*    */ new OptionalPropertyValueSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME);
 
     private static final Map<String, ToStringStyle> TO_STRING_STYLES;
 
@@ -59,16 +67,8 @@ implements CoreFunctionDispatcher {
         TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
     }
 
-    public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
-
-    public static final SinglePropertyConfigurableToStringStyleSupplier TO_STRING_STYLE_SUPPLIER;
-
-    static {
-        TO_STRING_STYLE_SUPPLIER = new SinglePropertyConfigurableToStringStyleSupplier();
-        TO_STRING_STYLE_SUPPLIER.setPropertyName(TO_STRING_STYLE_NAME_PROPERTY_NAME);
-        TO_STRING_STYLE_SUPPLIER.setNamedStyleSupplier(new MapNamedToStringStyleSupplier(TO_STRING_STYLES));
-        TO_STRING_STYLE_SUPPLIER.setDefaultStyle(DEFAULT_TO_STRING_STYLE);
-    }
+    public static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
+    /**/ new MapNamedToStringStyleSupplier(TO_STRING_STYLES);
 
     public static Map<String, ToStringStyle> getToStringStyles() {
         return unmodifiableMap(TO_STRING_STYLES);
@@ -77,7 +77,19 @@ implements CoreFunctionDispatcher {
     private final ToStringStyle toStringStyle;
 
     public ApacheCommonsCoreFunctionDispatcher() {
-        toStringStyle = TO_STRING_STYLE_SUPPLIER.get();
+        final Optional<String> optionalIdentifierOrClassName = TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
+
+        if (! optionalIdentifierOrClassName.isPresent()) {
+            toStringStyle = DEFAULT_STYLE;
+            return;
+        }
+
+        final IdentifierOrClassNameToStringStyleSupplier toStringStyleSupplier =
+        /**/ new IdentifierOrClassNameToStringStyleSupplier();
+        toStringStyleSupplier.setNamedStyleSupplier(NAMED_STYLE_SUPPLIER);
+        toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
+
+        toStringStyle = toStringStyleSupplier.get();
     }
 
     @Override
@@ -119,4 +131,4 @@ implements CoreFunctionDispatcher {
     public HashCodeEngine hashCodeEngine() {
         return new ApacheCommonsHashCodeEngine();
     }
-    }
+}

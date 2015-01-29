@@ -27,27 +27,18 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.reflection.ClassInstantiationException;
 
-import static org.jlib.core.property.PropertyUtility.getOptionalProperty;
 import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
 
-class SinglePropertyConfigurableToStringStyleSupplier
+class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
-    private String propertyName;
+    private String identifierOrClassName;
     private NamedToStringStyleSupplier namedStyleSupplier;
-    private ToStringStyle defaultStyle;
 
     @Override
     public ToStringStyle get()
     throws ToStringStyleNotFoundException {
         try {
-            final Optional<String> optionalIdentifierOrClassName = getOptionalProperty(propertyName);
-
-            if (! optionalIdentifierOrClassName.isPresent())
-                return defaultStyle;
-
-            final String identifierOrClassName = optionalIdentifierOrClassName.get();
-
             final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
 
             return toStringStyle.isPresent() ? toStringStyle.get() : newInstanceOf(identifierOrClassName, ToStringStyle.class);
@@ -57,15 +48,11 @@ implements ConfigurableToStringStyleSupplier {
         }
     }
 
-    void setPropertyName(final String propertyName) {
-        this.propertyName = propertyName;
-    }
-
     void setNamedStyleSupplier(final NamedToStringStyleSupplier namedStyleSupplier) {
         this.namedStyleSupplier = namedStyleSupplier;
     }
 
-    void setDefaultStyle(final ToStringStyle defaultStyle) {
-        this.defaultStyle = defaultStyle;
+    public void setIdentifierOrClassName(final String identifierOrClassName) {
+        this.identifierOrClassName = identifierOrClassName;
     }
 }

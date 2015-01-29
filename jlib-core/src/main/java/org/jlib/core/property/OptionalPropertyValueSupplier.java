@@ -19,26 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.object_spi.apachecommons;
+package org.jlib.core.property;
 
-import java.util.Map;
 import java.util.Optional;
+import java.util.function.Supplier;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
+public class OptionalPropertyValueSupplier
+implements Supplier<Optional<String>> {
 
-import static org.jlib.core.language.OptionalUtility.optionalOf;
+    private final String propertyName;
 
-class MapNamedToStringStyleSupplier
-implements NamedToStringStyleSupplier {
-
-    private final Map<String, ToStringStyle> toStringStyles;
-
-    MapNamedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
-        this.toStringStyles = toStringStyles;
+    public OptionalPropertyValueSupplier(final String propertyName) {
+        this.propertyName = propertyName;
     }
 
     @Override
-    public Optional<ToStringStyle> get(final String identifier) {
-        return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
+    public Optional<String> get() {
+        return Optional.ofNullable(System.getProperty(propertyName));
     }
 }
