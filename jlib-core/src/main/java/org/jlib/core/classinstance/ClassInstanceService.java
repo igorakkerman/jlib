@@ -19,17 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.object_spi.apachecommons;
+package org.jlib.core.classinstance;
 
-import org.jlib.core.exception.InvalidStateException;
-import org.jlib.core.classinstance.ClassInstanceException;
+public interface ClassInstanceService {
 
-public class ToStringStyleNotFoundException
-extends InvalidStateException {
+    <Obj> Obj instanceOf(Class<? extends Obj> clazz)
+    throws ClassInstantiationException;
 
-    private static final long serialVersionUID = 3897146043064767340L;
+    @SuppressWarnings("unchecked")
+    <Obj> Obj instanceOfClassOf(Obj object)
+    throws ClassInstanceException;
 
-    ToStringStyleNotFoundException(final ClassInstanceException cause) {
-        super(cause);
-    }
+    @SuppressWarnings({ "unchecked", "DuplicateThrows" })
+    <Obj> Obj instanceOf(String className, Class<Obj> expectedSuperType)
+    throws ClassInstanceException;
 }

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection;
+package org.jlib.core.classinstance;
 
 import org.jlib.core.message.Message;
 

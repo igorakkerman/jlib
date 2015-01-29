@@ -25,15 +25,15 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.reflection.ClassInstantiationException;
-
-import static org.jlib.core.reflection.ReflectionUtility.newInstanceOf;
+import org.jlib.core.classinstance.ClassInstanceException;
+import org.jlib.core.classinstance.ClassInstanceService;
 
 class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
     private String identifierOrClassName;
     private NamedToStringStyleSupplier namedStyleSupplier;
+    private ClassInstanceService instanceService;
 
     @Override
     public ToStringStyle get()
@@ -41,9 +41,11 @@ implements ConfigurableToStringStyleSupplier {
         try {
             final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
 
-            return toStringStyle.isPresent() ? toStringStyle.get() : newInstanceOf(identifierOrClassName, ToStringStyle.class);
+            return toStringStyle.isPresent() ?
+                   toStringStyle.get() :
+                   instanceService.instanceOf(identifierOrClassName, ToStringStyle.class);
         }
-        catch (final ClassInstantiationException exception) {
+        catch (final ClassInstanceException exception) {
             throw new ToStringStyleNotFoundException(exception);
         }
     }
@@ -54,5 +56,9 @@ implements ConfigurableToStringStyleSupplier {
 
     public void setIdentifierOrClassName(final String identifierOrClassName) {
         this.identifierOrClassName = identifierOrClassName;
+    }
+
+    public void setInstanceService(final ClassInstanceService instanceService) {
+        this.instanceService = instanceService;
     }
 }

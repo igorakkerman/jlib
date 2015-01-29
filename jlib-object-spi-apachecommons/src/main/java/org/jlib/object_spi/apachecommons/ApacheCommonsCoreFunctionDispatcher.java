@@ -31,6 +31,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.property.OptionalPropertyValueSupplier;
+import org.jlib.core.reflection.ReflectionService;
 
 import static java.util.Collections.unmodifiableMap;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
@@ -88,6 +89,7 @@ implements CoreFunctionDispatcher {
         /**/ new IdentifierOrClassNameToStringStyleSupplier();
         toStringStyleSupplier.setNamedStyleSupplier(NAMED_STYLE_SUPPLIER);
         toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
+        toStringStyleSupplier.setInstanceService(ReflectionService.getInstance());
 
         toStringStyle = toStringStyleSupplier.get();
     }

@@ -21,6 +21,8 @@
 
 package org.jlib.core.reflection;
 
+import org.jlib.core.classinstance.ClassInstantiationException;
+import org.jlib.core.classinstance.WrongTypedClassInstantiationException;
 import org.jlib.core.property.OptionalPropertyNotSetException;
 
 import static org.jlib.core.property.PropertyUtility.getOptionalPropertyOrFail;
@@ -75,12 +77,7 @@ public final class ReflectionUtility {
      */
     public static <Obj> Obj newInstanceOf(final Class<? extends Obj> clazz)
     throws ClassInstantiationException {
-        try {
-            return clazz.newInstance();
-        }
-        catch (final InstantiationException | IllegalAccessException exception) {
-            throw new ClassInstantiationException(clazz, exception);
-        }
+        return ReflectionService.getInstance().instanceOf(clazz);
     }
 
     /**
@@ -107,7 +104,7 @@ public final class ReflectionUtility {
     @SuppressWarnings("unchecked")
     public static <Obj> Obj newInstanceOfClassOf(final Obj object)
     throws ClassInstantiationException {
-        return newInstanceOf((Class<? extends Obj>) object.getClass());
+        return ReflectionService.getInstance().instanceOfClassOf(object);
     }
 
     /**
@@ -141,17 +138,7 @@ public final class ReflectionUtility {
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public static <Obj> Obj newInstanceOf(final String className, final Class<Obj> expectedSuperType)
     throws WrongTypedClassInstantiationException, ClassInstantiationException {
-        try {
-            final Class<?> clazz = Class.forName(className);
-
-            if (! expectedSuperType.isAssignableFrom(clazz))
-                throw new WrongTypedClassInstantiationException(clazz, expectedSuperType);
-
-            return newInstanceOf((Class<? extends Obj>) clazz);
-        }
-        catch (final ClassNotFoundException exception) {
-            throw new ClassInstantiationException(className, exception);
-        }
+        return ReflectionService.getInstance().instanceOf(className, expectedSuperType);
     }
 
     /**
@@ -177,17 +164,16 @@ public final class ReflectionUtility {
      *         if the specified system property is not set
      *
      * @throws WrongTypedClassInstantiationException
-     *         if the instantiated {@link Object} is not an instance of {@code expectedParentClass} or a descendant
+     *         if the instantiated {@link Object} is not an instance of {@code expectedSuperType} or a descendant
      *         subclass
      *
      * @throws ClassInstantiationException
      *         if the instantiation of the specified class fails;
      *         its cause is one of the exceptions thrown by {@link Class#forName(String)})
      */
-    public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName,
-                                                          final Class<Obj> expectedParentClass)
+    public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName, final Class<Obj> expectedSuperType)
     throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException {
-        return newInstanceOf(getOptionalPropertyOrFail(propertyName), expectedParentClass);
+        return newInstanceOf(getOptionalPropertyOrFail(propertyName), expectedSuperType);
     }
 
     private ReflectionUtility() {}

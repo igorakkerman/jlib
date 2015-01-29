@@ -23,8 +23,8 @@ package org.jlib.object_spi.apachecommons;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.reflection.ClassInstantiationException;
-import org.jlib.core.reflection.ReflectionUtility;
+import org.jlib.core.classinstance.ClassInstanceService;
+import org.jlib.core.classinstance.ClassInstantiationException;
 
 import static java.lang.String.format;
 import static java.util.Optional.empty;
@@ -36,15 +36,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.powermock.api.mockito.PowerMockito.verifyNoMoreInteractions;
-import static org.powermock.api.mockito.PowerMockito.verifyStatic;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(ReflectionUtility.class)
+@RunWith(MockitoJUnitRunner.class)
 public class IdentifierOrClassNameToStringStyleSupplierTest {
 
     public static final String STYLE_ID = "MY_STYLE";
@@ -52,20 +48,19 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     private static final ToStringStyle STYLE = new ToStringStyle() {};
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
 
-    private IdentifierOrClassNameToStringStyleSupplier styleSupplier;
-
-    @Before
-    public void initializeStyleSupplier() {
-        styleSupplier = new IdentifierOrClassNameToStringStyleSupplier();
-        styleSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
-    }
+    private IdentifierOrClassNameToStringStyleSupplier configurableSupplier;
 
     @Mock
     private NamedToStringStyleSupplier namedToStringStyleSupplier;
 
+    @Mock
+    private ClassInstanceService instanceService;
+
     @Before
-    public void spyOnReflectionUtility() {
-        mockStatic(ReflectionUtility.class);
+    public void initializeStyleSupplier() {
+        configurableSupplier = new IdentifierOrClassNameToStringStyleSupplier();
+        configurableSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
+        configurableSupplier.setInstanceService(instanceService);
     }
 
     @Test
@@ -75,14 +70,14 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         when(namedToStringStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
 
         // when
-        styleSupplier.setIdentifierOrClassName(STYLE_ID);
-        final ToStringStyle style = styleSupplier.get();
+        configurableSupplier.setIdentifierOrClassName(STYLE_ID);
+        final ToStringStyle style = configurableSupplier.get();
 
         // then
         verify(namedToStringStyleSupplier).get(STYLE_ID);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-        verifyNoMoreInteractions(ReflectionUtility.class);
+        verifyNoMoreInteractions(instanceService);
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -93,19 +88,18 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
 
         // given
         when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-        when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
+        when(instanceService.instanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
-        styleSupplier.setIdentifierOrClassName(CLASS_NAME);
-        final ToStringStyle style = styleSupplier.get();
+        configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
+        final ToStringStyle style = configurableSupplier.get();
 
         // then
         verify(namedToStringStyleSupplier).get(CLASS_NAME);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-        verifyStatic();
-        ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
-        verifyNoMoreInteractions(ReflectionUtility.class);
+        verify(instanceService).instanceOf(CLASS_NAME, ToStringStyle.class);
+        verifyNoMoreInteractions(instanceService);
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -117,12 +111,12 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         try {
             // given
             when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-            when(ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class))./*
+            when(instanceService.instanceOf(CLASS_NAME, ToStringStyle.class))./*
               */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
             // when
-            styleSupplier.setIdentifierOrClassName(CLASS_NAME);
-            styleSupplier.get();
+            configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
+            configurableSupplier.get();
 
             // then (failure)
             fail(format("Expected %a was not thrown." + ToStringStyleNotFoundException.class.getSimpleName()));
@@ -134,9 +128,8 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             verify(namedToStringStyleSupplier).get(CLASS_NAME);
             verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-            verifyStatic();
-            ReflectionUtility.newInstanceOf(CLASS_NAME, ToStringStyle.class);
-            verifyNoMoreInteractions(ReflectionUtility.class);
+            verify(instanceService).instanceOf(CLASS_NAME, ToStringStyle.class);
+            verifyNoMoreInteractions(instanceService);
 
             assertThat(expectedException).hasCauseExactlyInstanceOf(ClassInstantiationException.class);
         }
