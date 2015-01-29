@@ -31,7 +31,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.jlib.core.reflection.ReflectionService;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
-import org.jlib.object_spi.CoreFunctionDispatcher;
+import org.jlib.object_spi.CoreFunctionsDispatcher;
 import org.jlib.object_spi.Equals;
 import org.jlib.object_spi.EqualsHashCode;
 import org.jlib.object_spi.ForwardingEqualsHashCode;
@@ -39,12 +39,12 @@ import org.jlib.object_spi.HashCode;
 import org.jlib.object_spi.HashCodeEngine;
 import org.jlib.object_spi.ToString;
 
-public class ApacheCommonsCoreFunctionDispatcher
-implements CoreFunctionDispatcher {
+public class ApacheCommonsCoreFunctionsDispatcher
+implements CoreFunctionsDispatcher {
 
     private final ToStringStyle toStringStyle;
 
-    public ApacheCommonsCoreFunctionDispatcher() {
+    public ApacheCommonsCoreFunctionsDispatcher() {
         final Optional<String> optionalIdentifierOrClassName = DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
 
         if (! optionalIdentifierOrClassName.isPresent()) {

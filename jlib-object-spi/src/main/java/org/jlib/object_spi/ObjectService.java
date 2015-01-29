@@ -34,33 +34,33 @@ public class ObjectService {
         return INSTANCE;
     }
 
-    private final CoreFunctionDispatcher coreFunctionDispatcher;
+    private final CoreFunctionsDispatcher coreFunctionsDispatcher;
 
     private ObjectService()
     throws ServiceConfigurationError, NoObjectSpiImplementationException,
            OnlyOneObjectSpiImplementationAllowedException {
-        final ServiceLoader<CoreFunctionDispatcher> loader = ServiceLoader.load(CoreFunctionDispatcher.class);
+        final ServiceLoader<CoreFunctionsDispatcher> loader = ServiceLoader.load(CoreFunctionsDispatcher.class);
 
-        final List<CoreFunctionDispatcher> coreFunctionDispatchers = new ArrayList<>();
+        final List<CoreFunctionsDispatcher> coreFunctionsDispatchers = new ArrayList<>();
 
-        for (final CoreFunctionDispatcher coreFunctionDispatcher : loader)
-            coreFunctionDispatchers.add(coreFunctionDispatcher);
+        for (final CoreFunctionsDispatcher coreFunctionsDispatcher : loader)
+            coreFunctionsDispatchers.add(coreFunctionsDispatcher);
 
-        assertExactlyOneServiceProviderInClassPath(coreFunctionDispatchers);
+        assertExactlyOneServiceProviderInClassPath(coreFunctionsDispatchers);
 
-        coreFunctionDispatcher = coreFunctionDispatchers.get(0);
+        coreFunctionsDispatcher = coreFunctionsDispatchers.get(0);
     }
 
-    private void assertExactlyOneServiceProviderInClassPath(final List<CoreFunctionDispatcher> coreFunctionDispatchers)
+    private void assertExactlyOneServiceProviderInClassPath(final List<CoreFunctionsDispatcher> coreFunctionsDispatchers)
     throws OnlyOneObjectSpiImplementationAllowedException {
-        if (coreFunctionDispatchers.isEmpty())
+        if (coreFunctionsDispatchers.isEmpty())
             throw new NoObjectSpiImplementationException();
 
-        if (coreFunctionDispatchers.size() > 1)
-            throw new OnlyOneObjectSpiImplementationAllowedException(coreFunctionDispatchers);
+        if (coreFunctionsDispatchers.size() > 1)
+            throw new OnlyOneObjectSpiImplementationAllowedException(coreFunctionsDispatchers);
     }
 
-    public CoreFunctionDispatcher getCoreFunctionDispatcher() {
-        return coreFunctionDispatcher;
+    public CoreFunctionsDispatcher getCoreFunctionsDispatcher() {
+        return coreFunctionsDispatcher;
     }
 }
