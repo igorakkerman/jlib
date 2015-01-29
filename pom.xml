@@ -74,6 +74,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.13</version>
                     <executions>
                         <execution>
                             <id>checkstyle</id>
@@ -233,7 +234,8 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <!-- 2015-01-28 currently last Mockito version compatible with PowerMock -->
-                <version>1.10.8</version>
+                <!--<version>1.10.8</version>-->
+                <version>1.10.19</version>
                 <scope>test</scope>
             </dependency>
 
