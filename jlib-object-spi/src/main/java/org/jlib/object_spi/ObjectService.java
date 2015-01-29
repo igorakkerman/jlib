@@ -51,7 +51,8 @@ public class ObjectService {
         coreFunctionDispatcher = coreFunctionDispatchers.get(0);
     }
 
-    private void assertExactlyOneServiceProviderInClassPath(final List<CoreFunctionDispatcher> coreFunctionDispatchers) {
+    private void assertExactlyOneServiceProviderInClassPath(final List<CoreFunctionDispatcher> coreFunctionDispatchers)
+    throws OnlyOneObjectSpiImplementationAllowedException {
         if (coreFunctionDispatchers.isEmpty())
             throw new NoObjectSpiImplementationException();
 
