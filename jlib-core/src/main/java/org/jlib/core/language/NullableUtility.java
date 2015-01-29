@@ -43,9 +43,7 @@ public final class NullableUtility {
      */
     public static boolean allEqualOrNull(final Object... objects) {
         return objects.length == 0 || //
-               (objects[0] != null ?
-                allEqual(objects) :
-                allNull(objects));
+               (objects[0] != null ? allEqual(objects) : allNull(objects));
     }
 
     /**
