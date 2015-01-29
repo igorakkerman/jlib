@@ -29,7 +29,7 @@ import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescrip
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
-import static org.jlib.core.array.ArrayUtility.createArray;
+import static org.jlib.core.array.ArrayUtility.array;
 import static org.jlib.core.math.NumberUtility.count;
 
 /**
@@ -53,7 +53,7 @@ extends AbstractLinearIndexStorage<Item> {
     throws InvalidCapacityException {
         super(initialCapacity);
 
-        delegateArray = createArray(initialCapacity);
+        delegateArray = array(initialCapacity);
     }
 
     @Override
@@ -74,7 +74,7 @@ extends AbstractLinearIndexStorage<Item> {
     @Override
     protected void safeAddCapacityAndShiftItems(final int capacity,
                                                 final IndexRangeOperationDescriptor... copyDescriptors) {
-        final Item[] newDelegateArray = createArray(delegateArray.length + capacity);
+        final Item[] newDelegateArray = array(delegateArray.length + capacity);
 
         copyItemsTo(newDelegateArray, copyDescriptors);
 

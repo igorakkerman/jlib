@@ -99,6 +99,26 @@ public final class ArrayUtility {
     }
 
     /**
+     * Crates an array of Items in a typesafe manner.
+     *
+     * @param <Item>
+     *        type of the items held in the array
+     *
+     * @param length
+     *        integer specifying the array length
+     *
+     * @return newly created array
+     *
+     * @throws NegativeArraySizeException
+     *         if {@code length < 0}
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] array(final int length)
+    throws NegativeArraySizeException {
+        return (Item[]) new Object[length];
+    }
+
+    /**
      * Returns the total number of non array items held in the specified array,
      * recursively descending in every array item.
      *
@@ -153,26 +173,6 @@ public final class ArrayUtility {
         final List<Object> allItems = new ArrayList<>(getFlattenedItemsCount(items));
         flatten(allItems, items);
         return (Item[]) allItems.toArray();
-    }
-
-    /**
-     * Crates an array of Items in a typesafe manner.
-     *
-     * @param <Item>
-     *        type of the items held in the array
-     *
-     * @param length
-     *        integer specifying the array length
-     *
-     * @return newly created array
-     *
-     * @throws NegativeArraySizeException
-     *         if {@code length < 0}
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> Item[] createArray(final int length)
-    throws NegativeArraySizeException {
-        return (Item[]) new Object[length];
     }
 
     /**
