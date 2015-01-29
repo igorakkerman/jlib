@@ -39,8 +39,8 @@
     <modules>
         <module>jlib-codequality</module>
         <module>jlib-core</module>
-        <module>jlib-object-spi</module>
-        <module>jlib-object-spi-apachecommons</module>
+        <module>jlib-corefunctions</module>
+        <module>jlib-corefunctions-apachecommons</module>
         <module>jlib-text</module>
         <module>jlib-codec</module>
         <module>jlib-operator</module>
@@ -54,9 +54,6 @@
     </properties>
 
     <build>
-        <plugins>
-        </plugins>
-
         <pluginManagement>
             <plugins>
 
@@ -151,13 +148,13 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-object-spi</artifactId>
+                <artifactId>jlib-corefunctions</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-object-spi-apachecommons</artifactId>
+                <artifactId>jlib-corefunctions-apachecommons</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 

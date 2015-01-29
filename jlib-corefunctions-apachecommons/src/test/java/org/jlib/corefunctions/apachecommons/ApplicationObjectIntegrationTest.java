@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,32 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation;
+package org.jlib.corefunctions.apachecommons;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import org.jlib.corefunctions.ApplicationObject;
+import org.junit.Test;
 
-public final class CountIterableToArray<Item, DelegateContainer extends Count<Item> & Iterable<Item>>
-extends ApplicationObject
-implements ToArray<Item> {
+public class ApplicationObjectIntegrationTest {
 
-    private final DelegateContainer delegateIterable;
+    private static class A
+    extends ApplicationObject {
 
-    public CountIterableToArray(final DelegateContainer delegateIterable) {
-
-        this.delegateIterable = delegateIterable;
+        @SuppressWarnings("UnusedDeclaration")
+        private final int f = 42;
     }
 
-    @Override
-    public Item[] toArray() {
-
-        @SuppressWarnings("unchecked")
-        final Item[] targetArray = (Item[]) new Object[delegateIterable.count()];
-
-        int index = 0;
-
-        for (final Item item : delegateIterable)
-            targetArray[index++] = item;
-
-        return targetArray;
+    @Test
+    public void toStringShouldContainClassNameFieldNameAndValue()
+    throws Exception {
+        assertThat(new A().toString()).contains(A.class.getName()).contains("f").contains("42");
     }
 }

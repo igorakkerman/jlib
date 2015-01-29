@@ -28,6 +28,8 @@
         <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-core (1)" />
+        <module name="jlib-corefunctions" />
+        <module name="jlib-corefunctions-apachecommons" />
         <module name="jlib-object-spi" />
         <module name="jlib-object-spi-apachecommons" />
         <module name="jlib-operation" />
@@ -42,6 +44,8 @@
       <module name="jlib-container" target="1.8" />
       <module name="jlib-core" target="1.8" />
       <module name="jlib-core (1)" target="1.8" />
+      <module name="jlib-corefunctions" target="1.8" />
+      <module name="jlib-corefunctions-apachecommons" target="1.8" />
       <module name="jlib-io" target="1.8" />
       <module name="jlib-object-spi" target="1.8" />
       <module name="jlib-object-spi-apachecommons" target="1.8" />

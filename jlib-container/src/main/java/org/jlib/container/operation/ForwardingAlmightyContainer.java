@@ -27,7 +27,7 @@ import java.util.Set;
 
 import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
-import org.jlib.object_spi.ApplicationObject;
+import org.jlib.corefunctions.ApplicationObject;
 import org.jlib.operator.observer.ValueObserver;
 import org.jlib.operator.observer.ValueObserverException;
 

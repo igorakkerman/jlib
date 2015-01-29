@@ -21,9 +21,9 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.object_spi.HashCode;
-import org.jlib.object_spi.HashCodeEngine;
-import org.jlib.object_spi.ObjectService;
+import org.jlib.corefunctions.HashCode;
+import org.jlib.corefunctions.HashCodeEngine;
+import org.jlib.corefunctions.ObjectService;
 
 public class ObjectSpiIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
