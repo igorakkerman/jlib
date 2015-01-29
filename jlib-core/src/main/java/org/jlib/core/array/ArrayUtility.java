@@ -51,6 +51,26 @@ public final class ArrayUtility {
     }
 
     /**
+     * Crates an array of Items in a typesafe manner.
+     *
+     * @param <Item>
+     *        type of the items held in the array
+     *
+     * @param length
+     *        integer specifying the array length
+     *
+     * @return newly created array
+     *
+     * @throws NegativeArraySizeException
+     *         if {@code length < 0}
+     */
+    @SuppressWarnings("unchecked")
+    public static <Item> Item[] array(final int length)
+    throws NegativeArraySizeException {
+        return (Item[]) new Object[length];
+    }
+
+    /**
      * Returns a typesafe empty array of {@link Item}s of the specified type.
      *
      * @param <Item>
@@ -96,26 +116,6 @@ public final class ArrayUtility {
     @SafeVarargs
     public static <Item> BidiIterator<Item> iterator(final Item... items) {
         return new ArrayIterator<>(items);
-    }
-
-    /**
-     * Crates an array of Items in a typesafe manner.
-     *
-     * @param <Item>
-     *        type of the items held in the array
-     *
-     * @param length
-     *        integer specifying the array length
-     *
-     * @return newly created array
-     *
-     * @throws NegativeArraySizeException
-     *         if {@code length < 0}
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> Item[] array(final int length)
-    throws NegativeArraySizeException {
-        return (Item[]) new Object[length];
     }
 
     /**
