@@ -26,6 +26,7 @@ import org.jlib.core.value.Named;
 public interface NamedValueFormatter<Obj>
 extends ValueFormatter<Obj, Named<Obj>> {
 
+    @Override
     default void append(final StringBuilder builder, final Named<Obj> value) {
         append(builder, value.getName(), value.get());
     }

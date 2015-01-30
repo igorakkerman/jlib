@@ -98,7 +98,7 @@ implements Cloneable,
         try {
             return (IndexRangeOperationDescriptor) super.clone();
         }
-        catch (CloneNotSupportedException exception) {
+        catch (final CloneNotSupportedException exception) {
             throw new UnexpectedStateException(exception);
         }
     }

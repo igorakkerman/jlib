@@ -25,7 +25,7 @@ import java.util.Comparator;
 
 public class TextComparators {
 
-    public static Comparator<?> STRING_LENGTH_COMPARATOR = /*
+    public static final Comparator<?> STRING_LENGTH_COMPARATOR = /*
      */ (compared1, compared2) -> compared1.toString().length() - compared2.toString().length();
 
     @SuppressWarnings("unchecked")

@@ -47,6 +47,7 @@ extends RemoveSingleByValue<Item>,
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
+    @Override
     void remove(Item item)
     throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

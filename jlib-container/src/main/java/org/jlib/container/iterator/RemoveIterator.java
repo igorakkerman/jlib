@@ -46,6 +46,7 @@ extends Iterator<Item> {
      * @throws InvalidIterableStateException
      *         if an error was caused by a delegate used to remove the item
      */
+    @Override
     @SuppressWarnings("DuplicateThrows")
     void remove()
     throws NoItemToRemoveException, InvalidIterableStateException;
