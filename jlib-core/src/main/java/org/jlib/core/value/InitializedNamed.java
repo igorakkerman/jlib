@@ -27,9 +27,9 @@ public class InitializedNamed<Value>
 extends Initialized<Value>
 implements Named<Value> {
 
-    private final CharSequence name;
+    private final String name;
 
-    public InitializedNamed(final CharSequence name, final Value value)
+    public InitializedNamed(final String name, final Value value)
     throws InvalidArgumentException {
 
         super(value);
@@ -39,6 +39,6 @@ implements Named<Value> {
 
     @Override
     public String getName() {
-        return name.toString();
+        return name;
     }
 }

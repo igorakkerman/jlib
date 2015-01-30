@@ -25,7 +25,7 @@ import org.jlib.core.value.Named;
 
 public interface Message {
 
-    Message with(CharSequence argumentName, Object argumentValue);
+    Message with(String argumentName, Object argumentValue);
 
     Message with(Named<?>... arguments);
 

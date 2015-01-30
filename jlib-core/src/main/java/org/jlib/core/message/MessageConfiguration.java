@@ -52,19 +52,11 @@ implements Serializable {
         return textArgumentsSeparator;
     }
 
-    public void setTextArgumentsSeparator(final CharSequence textArgumentsSeparator) {
-        this.textArgumentsSeparator = textArgumentsSeparator.toString();
-    }
-
     public void setArgumentsSeparator(final String argumentsSeparator) {
         this.argumentsSeparator = argumentsSeparator;
     }
 
     public String getArgumentsSeparator() {
         return argumentsSeparator;
-    }
-
-    public void setArgumentsSeparator(final CharSequence argumentsSeparator) {
-        this.argumentsSeparator = argumentsSeparator.toString();
     }
 }

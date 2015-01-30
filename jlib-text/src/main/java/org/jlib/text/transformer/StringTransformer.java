@@ -59,6 +59,7 @@ extends Consumer<StringBuilder>,
         return stringBuilder.toString();
     }
 
+    @Override
     default void accept(final StringBuilder stringBuilder) {
         transform(stringBuilder);
     }

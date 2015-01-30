@@ -38,15 +38,15 @@ extends NoSuchElementException {
 
     private static final long serialVersionUID = - 3423814953147474341L;
 
-    public NoNextItemException(final CharSequence iteratedName, final Object iterated) {
+    public NoNextItemException(final String iteratedName, final Object iterated) {
         this(iteratedName, iterated, message());
     }
 
-    public NoNextItemException(final CharSequence iteratedName, final Object iterated, final Message message) {
+    public NoNextItemException(final String iteratedName, final Object iterated, final Message message) {
         super(message.with(iteratedName, iterated).toString());
     }
 
-    public NoNextItemException(final CharSequence iteratedName, final Object iterated, final Message message,
+    public NoNextItemException(final String iteratedName, final Object iterated, final Message message,
                                final Exception cause) {
         this(iteratedName, iterated, message);
 

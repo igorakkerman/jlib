@@ -34,7 +34,7 @@ implements Message,
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
-    private static StringBuilder createBuilder(final CharSequence text) {
+    private static StringBuilder createBuilder(final String text) {
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
@@ -46,14 +46,18 @@ implements Message,
         this("");
     }
 
-    public EagerMessage(final CharSequence text) {
+    public EagerMessage(final String text) {
         this(text, MessageConfigurationRegistry.getInstance().getDefaultConfiguration());
     }
 
-    public EagerMessage(final CharSequence text, final MessageConfiguration configuration) {
+    public EagerMessage(final String text, final MessageConfiguration configuration) {
         this(createBuilder(text), configuration);
 
         builder.append(text);
+    }
+
+    public EagerMessage(final StringBuilder builder) {
+        this(builder, MessageConfigurationRegistry.getInstance().getDefaultConfiguration());
     }
 
     public EagerMessage(final StringBuilder builder, final MessageConfiguration configuration) {
@@ -62,7 +66,7 @@ implements Message,
     }
 
     @Override
-    public Message with(final CharSequence argumentName, final Object argumentValue) {
+    public Message with(final String argumentName, final Object argumentValue) {
         appendSeparator();
         configuration.getArgumentFormatter().append(builder, argumentName, argumentValue);
         argumentsCount++;

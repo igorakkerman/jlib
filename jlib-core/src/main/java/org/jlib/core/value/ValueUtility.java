@@ -23,7 +23,7 @@ package org.jlib.core.value;
 
 public final class ValueUtility {
 
-    public static <Val> Named<Val> named(final CharSequence name, final Val value) {
+    public static <Val> Named<Val> named(final String name, final Val value) {
         return new InitializedNamed<>(name, value);
     }
 

@@ -28,12 +28,12 @@ implements NamedValueFormatter<Object> {
 
     private final String template;
 
-    public PrintfNamedValueFormatter(final CharSequence template) {
-        this.template = template.toString();
+    public PrintfNamedValueFormatter(final String template) {
+        this.template = template;
     }
 
     @Override
-    public void append(final StringBuilder builder, final CharSequence name, final Object value) {
+    public void append(final StringBuilder builder, final String name, final Object value) {
         new Formatter(builder).format(template, name, value);
     }
 }

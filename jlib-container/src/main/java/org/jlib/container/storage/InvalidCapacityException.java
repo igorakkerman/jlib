@@ -44,7 +44,7 @@ extends LinearIndexStorageException {
      * @param invalidCapacity
      *        integer specifying the invalid capacity value
      */
-    InvalidCapacityException(final LinearIndexStorage<?> storage, final CharSequence capacityName,
+    InvalidCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
                              final int invalidCapacity) {
 
         super(storage, message().with(capacityName, invalidCapacity));

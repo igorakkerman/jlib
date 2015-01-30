@@ -40,12 +40,12 @@ implements NamedValueFormatter<Object> {
 
     private final String template;
 
-    public MessageFormatNamedValueFormatter(final CharSequence template) {
-        this.template = template.toString();
+    public MessageFormatNamedValueFormatter(final String template) {
+        this.template = template;
     }
 
     @Override
-    public void append(final StringBuilder builder, final CharSequence name, final Object value) {
+    public void append(final StringBuilder builder, final String name, final Object value) {
         builder.append(MessageFormat.format(template, name, value));
     }
 }

@@ -39,9 +39,9 @@ extends InvalidStateException {
      * Creates a new ApplicationPropertyNotSetException.
      *
      * @param propertyName
-     *        {@link CharSequence} specifying the name of the property that is not set
+     *        {@link String} specifying the name of the property that is not set
      */
-    public MandatoryPropertyNotSetException(final CharSequence propertyName) {
+    public MandatoryPropertyNotSetException(final String propertyName) {
         super(message(propertyName));
     }
 }

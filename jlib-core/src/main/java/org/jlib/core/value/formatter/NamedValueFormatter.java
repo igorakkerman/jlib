@@ -30,5 +30,5 @@ extends ValueFormatter<Obj, Named<Obj>> {
         append(builder, value.getName(), value.get());
     }
 
-    void append(final StringBuilder builder, final CharSequence name, final Obj value);
+    void append(final StringBuilder builder, final String name, final Obj value);
 }
