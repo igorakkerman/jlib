@@ -30,7 +30,7 @@ package org.jlib.corefunctions;
 public abstract class ApplicationObject {
 
     private static final CoreFunctionsDispatcher OBJECT_METHOD_FORWARDER =
-    /**/ ObjectService.getInstance().getCoreFunctionsDispatcher();
+    /**/ CoreFunctionsService.getInstance().getCoreFunctionsDispatcher();
 
     protected ApplicationObject() {}
 

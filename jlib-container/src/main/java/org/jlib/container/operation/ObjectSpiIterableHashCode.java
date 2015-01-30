@@ -23,7 +23,7 @@ package org.jlib.container.operation;
 
 import org.jlib.corefunctions.HashCode;
 import org.jlib.corefunctions.HashCodeEngine;
-import org.jlib.corefunctions.ObjectService;
+import org.jlib.corefunctions.CoreFunctionsService;
 
 public class ObjectSpiIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
@@ -39,7 +39,7 @@ implements HashCode<Iterable<Item>> {
 
     @Override
     public int hashCode(final Iterable<Item> items) {
-        final HashCodeEngine engine = ObjectService.getInstance().getCoreFunctionsDispatcher().hashCodeEngine();
+        final HashCodeEngine engine = CoreFunctionsService.getInstance().getCoreFunctionsDispatcher().hashCodeEngine();
 
         for (final Item item : items)
             engine.append(item);

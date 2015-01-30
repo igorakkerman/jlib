@@ -26,17 +26,17 @@ import java.util.List;
 import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 
-public class ObjectService {
+public class CoreFunctionsService {
 
-    private static final ObjectService INSTANCE = new ObjectService();
+    private static final CoreFunctionsService INSTANCE = new CoreFunctionsService();
 
-    public static ObjectService getInstance() {
+    public static CoreFunctionsService getInstance() {
         return INSTANCE;
     }
 
     private final CoreFunctionsDispatcher coreFunctionsDispatcher;
 
-    private ObjectService()
+    private CoreFunctionsService()
     throws ServiceConfigurationError, NoObjectSpiImplementationException,
            OnlyOneObjectSpiImplementationAllowedException {
 
