@@ -90,16 +90,19 @@ implements Message,
     }
 
     protected void appendSeparator() {
-        if (builder.length() == 0)
-            return;
-
-        builder.append(argumentsCount == 0 ?
-                       configuration.getTextArgumentsSeparator() :
-                       configuration.getArgumentsSeparator());
+        if (builder.length() == 0 && argumentsCount == 0)
+            builder.append(configuration.getBeforeArguments());
+        else if (builder.length() != 0 && argumentsCount == 0)
+            builder.append(configuration.getBetweenTextAndArguments()).append(configuration.getBeforeArguments());
+        else if (builder.length() != 0)
+            builder.append(configuration.getBetweenArguments());
     }
 
     @Override
     public String toString() {
+        if (argumentsCount != 0)
+            builder.append(configuration.getAfterArguments());
+
         return builder.toString();
     }
 }

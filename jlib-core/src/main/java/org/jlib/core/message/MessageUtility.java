@@ -56,8 +56,8 @@ public final class MessageUtility {
         final MessageConfiguration defaultConfiguration = new MessageConfiguration();
 
         defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
-        defaultConfiguration.setTextArgumentsSeparator(" ");
-        defaultConfiguration.setArgumentsSeparator(" ");
+        defaultConfiguration.setBetweenTextAndArguments(" ");
+        defaultConfiguration.setBetweenArguments(" ");
 
         return defaultConfiguration;
     }

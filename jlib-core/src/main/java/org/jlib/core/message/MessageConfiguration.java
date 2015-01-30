@@ -31,10 +31,10 @@ implements Serializable {
     private static final long serialVersionUID = 4551938257105373490L;
 
     private NamedValueFormatter<Object> argumentFormatter;
-
-    private String textArgumentsSeparator;
-
-    private String argumentsSeparator;
+    private String betweenTextAndArguments = "";
+    private String beforeArguments = "";
+    private String betweenArguments = "";
+    private String afterArguments = "";
 
     public NamedValueFormatter<Object> getArgumentFormatter() {
         return argumentFormatter;
@@ -44,19 +44,35 @@ implements Serializable {
         this.argumentFormatter = argumentFormatter;
     }
 
-    public void setTextArgumentsSeparator(final String textArgumentsSeparator) {
-        this.textArgumentsSeparator = textArgumentsSeparator;
+    public void setBetweenTextAndArguments(final String betweenTextAndArguments) {
+        this.betweenTextAndArguments = betweenTextAndArguments;
     }
 
-    public String getTextArgumentsSeparator() {
-        return textArgumentsSeparator;
+    public String getBetweenTextAndArguments() {
+        return betweenTextAndArguments;
     }
 
-    public void setArgumentsSeparator(final String argumentsSeparator) {
-        this.argumentsSeparator = argumentsSeparator;
+    public void setBetweenArguments(final String betweenArguments) {
+        this.betweenArguments = betweenArguments;
     }
 
-    public String getArgumentsSeparator() {
-        return argumentsSeparator;
+    public String getBeforeArguments() {
+        return beforeArguments;
+    }
+
+    public void setBeforeArguments(final String beforeArguments) {
+        this.beforeArguments = beforeArguments;
+    }
+
+    public String getBetweenArguments() {
+        return betweenArguments;
+    }
+
+    public String getAfterArguments() {
+        return afterArguments;
+    }
+
+    public void setAfterArguments(final String afterArguments) {
+        this.afterArguments = afterArguments;
     }
 }

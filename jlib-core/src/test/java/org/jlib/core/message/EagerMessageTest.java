@@ -24,7 +24,7 @@ package org.jlib.core.message;
 import org.jlib.core.value.formatter.MessageFormatNamedValueFormatter;
 import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
-import org.assertj.core.api.Assertions;
+import static org.jlib.core.message.MessageAssert.assertThat;
 import static org.jlib.core.message.MessageUtility.message;
 import static org.jlib.core.value.ValueUtility.named;
 import org.junit.Before;
@@ -37,8 +37,10 @@ public class EagerMessageTest {
     static {
         COLON_PRINTF_CONFIG = new MessageConfiguration();
         COLON_PRINTF_CONFIG.setArgumentFormatter(new PrintfNamedValueFormatter("%s: %s"));
-        COLON_PRINTF_CONFIG.setTextArgumentsSeparator(" ");
-        COLON_PRINTF_CONFIG.setArgumentsSeparator("; ");
+        COLON_PRINTF_CONFIG.setBetweenTextAndArguments(" ");
+        COLON_PRINTF_CONFIG.setBeforeArguments("(");
+        COLON_PRINTF_CONFIG.setBetweenArguments("; ");
+        COLON_PRINTF_CONFIG.setAfterArguments(")");
     }
 
     private static final MessageConfiguration EQUALS_QUOTE_PRINTF_CONFIG;
@@ -46,8 +48,10 @@ public class EagerMessageTest {
     static {
         EQUALS_QUOTE_PRINTF_CONFIG = new MessageConfiguration();
         EQUALS_QUOTE_PRINTF_CONFIG.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
-        EQUALS_QUOTE_PRINTF_CONFIG.setTextArgumentsSeparator(" ");
-        EQUALS_QUOTE_PRINTF_CONFIG.setArgumentsSeparator(" ");
+        EQUALS_QUOTE_PRINTF_CONFIG.setBetweenTextAndArguments(" ");
+        EQUALS_QUOTE_PRINTF_CONFIG.setBeforeArguments("[");
+        EQUALS_QUOTE_PRINTF_CONFIG.setBetweenArguments(" ");
+        EQUALS_QUOTE_PRINTF_CONFIG.setAfterArguments("]");
     }
 
     private static final MessageConfiguration COLON_MF_CONFIG;
@@ -55,8 +59,8 @@ public class EagerMessageTest {
     static {
         COLON_MF_CONFIG = new MessageConfiguration();
         COLON_MF_CONFIG.setArgumentFormatter(new MessageFormatNamedValueFormatter("{0}: {1}"));
-        COLON_MF_CONFIG.setTextArgumentsSeparator(" ");
-        COLON_MF_CONFIG.setArgumentsSeparator("; ");
+        COLON_MF_CONFIG.setBetweenTextAndArguments(" ");
+        COLON_MF_CONFIG.setBetweenArguments("; ");
     }
 
     @Before
@@ -68,21 +72,21 @@ public class EagerMessageTest {
     public void messageWithTextShouldProduceCorrectString() {
         final Message message = message("Something went wrong.");
 
-        Assertions.assertThat(message.toString()).isEqualTo("Something went wrong.");
+        assertThat(message).isEqualTo("Something went wrong.");
     }
 
     @Test
     public void messageWithSingleArgumentShouldProduceCorrectString() {
         final Message message = message().with("dummyName", "Dummy Value");
 
-        Assertions.assertThat(message.toString()).isEqualTo("dummyName='Dummy Value'");
+        assertThat(message).isEqualTo("[dummyName='Dummy Value']");
     }
 
     @Test
     public void messageWithMultipleArgumentsShouldProduceCorrectString() {
         final Message message = message().with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        Assertions.assertThat(message.toString()).isEqualTo("dummyName='1' dummerName='Dummer Value'");
+        assertThat(message).isEqualTo("[dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
@@ -90,53 +94,52 @@ public class EagerMessageTest {
         final Message message = /*
          */ message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        Assertions.assertThat(message.toString())
-                  .isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+        assertThat(message).isEqualTo("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithNamedArgument() {
+    public void messageWithTextAndNamedArgumentShouldProduceCorrectString() {
         final Message message = message("Something went wrong.").with(named("dummyName", 1));
 
-        Assertions.assertThat(message.toString()).isEqualTo("Something went wrong. dummyName='1'");
+        assertThat(message).isEqualTo("Something went wrong. [dummyName='1']");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithNamedArgumentsInSpecifiedDefaultFormat() {
+    public void messageWithTextAndNamedArgumentsInSpecifiedDefaultFormatShouldProduceCorrectString() {
+
         MessageConfigurationRegistry.getInstance().setDefaultConfiguration(COLON_PRINTF_CONFIG);
 
         final Message message = /*
-         */ message("Something went wrong.").with(named("dummyName", 1), named("dummerName", "Dummer Value"));
+         */ message("Something went wrong.").with(named("dummyName", 1),
+                                                  named("dummerName", "Dummer Value"));
 
-        Assertions.assertThat(message.toString())
-                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        assertThat(message).isEqualTo("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithNamedArguments() {
+    public void messageWithTextAndNamedArgumentsShouldProduceCorrectString() {
         final Message message = /*
-         */ message("Something went wrong.").with(named("dummyName", 1), named("dummerName", "Dummer Value"));
+         */ message("Something went wrong.").with(named("dummyName", 1),
+                                                  named("dummerName", "Dummer Value"));
 
-        Assertions.assertThat(message.toString())
-                  .isEqualTo("Something went wrong. dummyName='1' dummerName='Dummer Value'");
+        assertThat(message).isEqualTo("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithArgumentsInSpecifiedPrintfFormat() {
+    public void messageWithTextArgumentsInSpecifiedPrintfFormatShouldProduceCorrectString() {
         final Message message = /*
          */ message("Something went wrong.", COLON_PRINTF_CONFIG).with("dummyName", 1)
                                                                  .with("dummerName", "Dummer Value");
 
-        Assertions.assertThat(message.toString())
-                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        assertThat(message).isEqualTo("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
     }
 
     @Test
-    public void thrownExceptionShouldHaveTextMessageWithArgumentsInSpecifiedMfFormat() {
+    public void messageWithTextAndArgumentsInSpecifiedMfFormatShouldProduceCorrectString() {
         final Message message = /*
-          */ message("Something went wrong.", COLON_MF_CONFIG).with("dummyName", 1).with("dummerName", "Dummer Value");
+          */ message("Something went wrong.", COLON_MF_CONFIG).with("dummyName", 1)
+                                                              .with("dummerName", "Dummer Value");
 
-        Assertions.assertThat(message.toString())
-                  .isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        assertThat(message).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 }
