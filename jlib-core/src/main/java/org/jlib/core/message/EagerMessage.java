@@ -34,7 +34,7 @@ implements Message,
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
 
-    private static StringBuilder createBuilder(final String text) {
+    protected static StringBuilder createBuilder(final String text) {
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
@@ -82,7 +82,7 @@ implements Message,
         return this;
     }
 
-    private void appendSeparator() {
+    protected void appendSeparator() {
         if (builder.length() == 0)
             return;
 
