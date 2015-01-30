@@ -21,9 +21,9 @@
 
 package org.jlib.core.message;
 
-import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
+import static org.jlib.core.message.MessageUtility.createInitialDefaultConfiguration;
 
-public class MessageConfigurationRegistry {
+public final class MessageConfigurationRegistry {
 
     private static final MessageConfigurationRegistry INSTANCE = new MessageConfigurationRegistry();
 
@@ -41,15 +41,5 @@ public class MessageConfigurationRegistry {
 
     public void setDefaultConfiguration(final MessageConfiguration defaultConfiguration) {
         this.defaultConfiguration = defaultConfiguration;
-    }
-
-    private MessageConfiguration createInitialDefaultConfiguration() {
-        final MessageConfiguration defaultConfiguration = new MessageConfiguration();
-
-        defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
-        defaultConfiguration.setTextArgumentsSeparator(" ");
-        defaultConfiguration.setArgumentsSeparator(" ");
-
-        return defaultConfiguration;
     }
 }

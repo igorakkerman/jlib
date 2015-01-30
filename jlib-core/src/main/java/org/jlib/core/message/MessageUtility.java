@@ -25,6 +25,8 @@ import java.util.Formatter;
 
 import java.text.MessageFormat;
 
+import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
+
 public final class MessageUtility {
 
     public static Message message() {
@@ -48,6 +50,16 @@ public final class MessageUtility {
                                                                100);
         new Formatter(messageBuilder).format(messageTemplate, messageArguments);
         return new EagerMessage(messageBuilder);
+    }
+
+    public static MessageConfiguration createInitialDefaultConfiguration() {
+        final MessageConfiguration defaultConfiguration = new MessageConfiguration();
+
+        defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
+        defaultConfiguration.setTextArgumentsSeparator(" ");
+        defaultConfiguration.setArgumentsSeparator(" ");
+
+        return defaultConfiguration;
     }
 
     private MessageUtility() {}
