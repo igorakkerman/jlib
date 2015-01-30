@@ -21,13 +21,15 @@
 
 package org.jlib.codec.quotedprintable;
 
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
  * Exception thrown if illegal characters follow the octet encoding prefix in a quoted-printable
  * stream.
  *
  * @author Igor Akkerman
  */
-public class IllegalQuotedPrintableOctetException
+public class InvalidQuotedPrintableOctetException
 extends InvalidQuotedPrintableStreamException {
 
     private static final long serialVersionUID = - 7132279152781768023L;
@@ -40,10 +42,13 @@ extends InvalidQuotedPrintableStreamException {
      *
      * @param illegalCharacter1
      *        byte specifying the first illegal character
+     *
      * @param illegalCharacter2
      *        byte specifying the second illegal character
      */
-    public IllegalQuotedPrintableOctetException(final byte illegalCharacter1, final byte illegalCharacter2) {
+    public InvalidQuotedPrintableOctetException(final byte illegalCharacter1, final byte illegalCharacter2) {
+        super(message("Illegal characters.").with("char1", illegalCharacter1).with("char2", illegalCharacter2));
+
         illegalCharacters[0] = illegalCharacter1;
         illegalCharacters[1] = illegalCharacter2;
     }
@@ -55,10 +60,5 @@ extends InvalidQuotedPrintableStreamException {
      */
     public byte[] getIllegalCharacters() {
         return illegalCharacters;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "[" + illegalCharacters[0] + ", " + illegalCharacters[1] + "]";
     }
 }

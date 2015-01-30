@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
+import static org.jlib.codec.quotedprintable.QuotedPrintableUtility.createOctet;
 import static org.jlib.core.io.StreamUtility.toSignedByte;
 import static org.jlib.core.io.StreamUtility.toUnsignedInt;
 
@@ -73,12 +74,14 @@ extends FilterOutputStream {
 
         // if a CR is to be represented
 
-        else if (value == '\r') {/* intentionally left blank */ }
+        else if (value == '\r') {
+            // intentionally blank
+        }
         else if (value == '\n') {
             if (lastWrittenCharacter == 9 || lastWrittenCharacter == 32)
                 writeSoftLineBreak();
 
-            writeCRLF();
+            writeCrlf();
         }
 
         // if the character is to be represented as an octet
@@ -86,7 +89,7 @@ extends FilterOutputStream {
             if (outputLineLength >= MAXOUTPUTLINELENGTH - 3)
                 writeSoftLineBreak();
 
-            writeCharacters(QuotedPrintableUtility.createOctet(value));
+            writeCharacters(createOctet(value));
         }
     }
 
@@ -153,7 +156,7 @@ extends FilterOutputStream {
     private void writeSoftLineBreak()
     throws IOException {
         out.write('=');
-        writeCRLF();
+        writeCrlf();
     }
 
     /**
@@ -162,7 +165,7 @@ extends FilterOutputStream {
      * @throws IOException
      *         if an I/O exception occurs
      */
-    private void writeCRLF()
+    private void writeCrlf()
     throws IOException {
         out.write('\r');
         out.write('\n');

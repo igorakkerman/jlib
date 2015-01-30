@@ -134,7 +134,7 @@ extends FilterInputStream {
                     inputBuffer[characterIndex] = characterValue;
                     illegalCharacterRead = false;
                 }
-                catch (final IllegalBase64CharacterException exception) {
+                catch (final InvalidBase64CharacterException exception) {
                     illegalCharacterRead = true;
                 }
             }

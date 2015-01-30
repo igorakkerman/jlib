@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jlib.core.io.StreamException;
 import static org.jlib.codec.quotedprintable.QuotedPrintableUtility.decodeOctet;
 import static org.jlib.core.io.StreamUtility.toSignedByte;
 import static org.jlib.core.io.StreamUtility.toUnsignedInt;
@@ -65,7 +66,7 @@ extends FilterInputStream {
 
     @Override
     public int read()
-    throws IOException {
+    throws StreamException {
         try {
             return toUnsignedInt(getNextByte());
         }
@@ -76,7 +77,7 @@ extends FilterInputStream {
 
     @Override
     public int read(@NonNull final byte[] buffer, final int offset, final int length)
-    throws IOException {
+    throws StreamException {
         for (int i = offset, j = 0; j < length; i++, j++) {
             try {
                 buffer[i] = getNextByte();
@@ -93,17 +94,20 @@ extends FilterInputStream {
     /**
      * Returns the next byte to be returned from this Stream.
      *
-     * @throws IllegalQuotedPrintableOctetException
+     * @throws InvalidQuotedPrintableOctetException
      *         if illegal characters follow the octet encoding prefix in the stream
-     * @throws IOException
+     *
+     * @throws StreamException
      *         if an I/O error occurs
+     *
      * @throws EndOfQuotedPrintableStreamException
      *         if no more bytes are available from this stream
+     *
      * @return the next byte to be returned from this stream
      */
     @SuppressWarnings("DuplicateThrows")
     private byte getNextByte()
-    throws IllegalQuotedPrintableOctetException, IOException, EndOfQuotedPrintableStreamException {
+    throws InvalidQuotedPrintableOctetException, EndOfQuotedPrintableStreamException, StreamException {
         do {
             // if there are characters left in the output buffer, return the first one
             if (outputBufferPosition < outputBuffer.length)
@@ -148,16 +152,20 @@ extends FilterInputStream {
     /**
      * Refill the input buffer so that it contains the next three characters.
      *
-     * @throws IOException
+     * @throws StreamException
      *         if an I/O error occurs
      */
     private void refillInputBuffer()
-    throws IOException {
-        for (int i = 3 - inputBufferSize, j = 0; j < inputBufferSize; i++, j++) {
-            inputBuffer[j] = inputBuffer[i];
+    throws StreamException {
+        try {
+            for (int i = 3 - inputBufferSize, j = 0; j < inputBufferSize; i++, j++)
+                inputBuffer[j] = inputBuffer[i];
+
+            for (int i = inputBufferSize; i <= 2; i++)
+                inputBuffer[i] = toSignedByte(in.read());
         }
-        for (int i = inputBufferSize; i <= 2; i++) {
-            inputBuffer[i] = toSignedByte(in.read());
+        catch (final IOException exception) {
+            throw new StreamException(exception);
         }
     }
 }

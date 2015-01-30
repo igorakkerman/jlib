@@ -19,18 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.codec.quotedprintable;
+package org.jlib.codec;
 
 import org.jlib.core.io.StreamException;
 
-/**
- * Exception thrown if the end of a quoted-printable coded stream was reached.
- * This exception does not signal an error.
- *
- * @author Igor Akkerman
- */
-public class EndOfQuotedPrintableStreamException
-extends StreamException {
+public interface CodecService {
 
-    private static final long serialVersionUID = - 4902609529538183922L;
+    String encode(byte[] inputBytes)
+    throws StreamException;
+
+    byte[] decode(String encodedString)
+    throws StreamException;
 }

@@ -31,9 +31,5 @@ extends InvalidBase64StreamException {
 
     private static final long serialVersionUID = - 569144262427735939L;
 
-    /**
-     * Creates a new UnexpectedEndOfBase64StreamException.
-     */
-    protected UnexpectedEndOfBase64StreamException() {
-    }
+    protected UnexpectedEndOfBase64StreamException() {}
 }

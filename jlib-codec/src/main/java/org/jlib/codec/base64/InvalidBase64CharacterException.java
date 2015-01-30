@@ -27,7 +27,7 @@ package org.jlib.codec.base64;
  * @author Igor Akkerman
  */
 
-public class IllegalBase64CharacterException
+public class InvalidBase64CharacterException
 extends InvalidBase64StreamException {
 
     private static final long serialVersionUID = - 8389442743931398913L;
@@ -43,7 +43,7 @@ extends InvalidBase64StreamException {
      *        -1 if the end of the base64 encoded stream has been reached with
      *        missing characters
      */
-    public IllegalBase64CharacterException(final int illegalCharacter) {
+    public InvalidBase64CharacterException(final int illegalCharacter) {
         this.illegalCharacter = illegalCharacter;
     }
 

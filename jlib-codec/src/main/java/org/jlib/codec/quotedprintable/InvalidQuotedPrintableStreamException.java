@@ -21,7 +21,9 @@
 
 package org.jlib.codec.quotedprintable;
 
-import java.io.IOException;
+import org.jlib.core.message.Message;
+
+import org.jlib.core.io.StreamException;
 
 /**
  * Exception thrown if a stream is an invalid quoted-printable stream.
@@ -29,10 +31,11 @@ import java.io.IOException;
  * @author Igor Akkerman
  */
 abstract class InvalidQuotedPrintableStreamException
-extends IOException {
+extends StreamException {
 
     private static final long serialVersionUID = - 5768046195260521187L;
 
-    protected InvalidQuotedPrintableStreamException() {
+    protected InvalidQuotedPrintableStreamException(final Message message) {
+        super(message);
     }
 }

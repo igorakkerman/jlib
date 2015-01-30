@@ -21,80 +21,18 @@
 
 package org.jlib.codec.quotedprintable;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import static org.jlib.codec.number.HexadecimalUtility.HEX_DIGIT_CHARACTERS;
 import static org.jlib.codec.number.HexadecimalUtility.parseHexNumberAsByte;
 import static org.jlib.core.io.StreamUtility.toUnsignedInt;
 
-/**
- * Utility class for quoted-printable encoding operations.
- *
- * @author Igor Akkerman
- */
 public final class QuotedPrintableUtility {
-
-    /** no visible constructor */
-    private QuotedPrintableUtility() {}
-
-    /**
-     * Encodes the specified byte array using quoted printable encoding.
-     *
-     * @param inputBytes
-     *        array of bytes containing the bytes to encode
-     * @return String containing the quoted-printable encoded output of {@code inputBytes}
-     * @throws IOException
-     *         if an i/o exception occurs
-     */
-    public static String encodeQuotedPrintable(final byte[] inputBytes)
-    throws IOException {
-        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        final OutputStream qpOutputStream = new QuotedPrintableOutputStream(outputStream);
-
-        qpOutputStream.write(inputBytes);
-        qpOutputStream.flush();
-        qpOutputStream.close();
-
-        return outputStream.toString();
-    }
-
-    /**
-     * Decodes the specified String using quoted-printable decoding.
-     *
-     * @param qpString
-     *        quoted-printable encoded String
-     * @return array of decoded bytes from {@code qpString}
-     * @throws IOException
-     *         if an i/o exception occurs
-     */
-    public static byte[] decodeQuotedPrintable(final String qpString)
-    throws IOException {
-        final InputStream inputStream = new ByteArrayInputStream(qpString.getBytes());
-        final InputStream qpInputStream = new QuotedPrintableInputStream(inputStream);
-
-        final byte[] readBytes = new byte[1024];
-
-        int length = qpInputStream.read(readBytes);
-        if (length == - 1)
-            length = 0;
-
-        qpInputStream.close();
-
-        final byte[] outputBytes = new byte[length];
-        System.arraycopy(readBytes, 0, outputBytes, 0, length);
-
-        return outputBytes;
-    }
 
     /**
      * Creates an octet for the specified value.
      *
      * @param value
      *        byte holding the value of the octet to create
+     *
      * @return array of bytes containing the octet characters
      */
     public static byte[] createOctet(final byte value) {
@@ -113,17 +51,21 @@ public final class QuotedPrintableUtility {
      *
      * @param octetBytes
      *        array of bytes containing an octet
+     *
      * @return byte containing the octet value
-     * @throws IllegalQuotedPrintableOctetException
+     *
+     * @throws InvalidQuotedPrintableOctetException
      *         if illegal characters follow the encoding prefix
      */
     public static byte decodeOctet(final byte[] octetBytes)
-    throws IllegalQuotedPrintableOctetException {
+    throws InvalidQuotedPrintableOctetException {
         try {
             return parseHexNumberAsByte(octetBytes, 1);
         }
         catch (final NumberFormatException nfe) {
-            throw new IllegalQuotedPrintableOctetException(octetBytes[1], octetBytes[2]);
+            throw new InvalidQuotedPrintableOctetException(octetBytes[1], octetBytes[2]);
         }
     }
+
+    private QuotedPrintableUtility() {}
 }
