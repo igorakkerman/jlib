@@ -28,7 +28,7 @@ import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.LinearIndexStorageException;
 import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
-import static org.jlib.core.message.MessageUtility.messageMf;
+import static org.jlib.core.message.MessageUtility.mfmessage;
 
 public abstract class AbstractCapacityStrategy<Item>
 extends ApplicationObject {
@@ -81,11 +81,11 @@ extends ApplicationObject {
 
     protected void ensureIndexValid(final int index) {
         if (index < contentIndexRegistry.getFirstItemIndex())
-            throw new InvalidIndexException(storage, messageMf("index = {0} > {1} = " + "firstItemIndex", index,
+            throw new InvalidIndexException(storage, mfmessage("index = {0} > {1} = " + "firstItemIndex", index,
                                                                contentIndexRegistry.getFirstItemIndex()));
 
         if (index > contentIndexRegistry.getLastItemIndex()) {
-            throw new InvalidIndexException(storage, messageMf("index = {0} < {1} = lastItemIndex", index,
+            throw new InvalidIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
                                                                contentIndexRegistry.getLastItemIndex()));
         }
     }

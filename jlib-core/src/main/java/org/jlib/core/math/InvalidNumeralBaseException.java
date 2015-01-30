@@ -23,7 +23,7 @@ package org.jlib.core.math;
 
 import org.jlib.core.exception.InvalidArgumentException;
 
-import static org.jlib.core.message.MessageUtility.messageMf;
+import static org.jlib.core.message.MessageUtility.mfmessage;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid value has been specified as a
@@ -38,7 +38,7 @@ extends InvalidArgumentException {
 
     public InvalidNumeralBaseException(final int baseValue) {
 
-        super(messageMf("{0} < 1", baseValue));
+        super(mfmessage("{0} < 1", baseValue));
 
         this.baseValue = baseValue;
     }

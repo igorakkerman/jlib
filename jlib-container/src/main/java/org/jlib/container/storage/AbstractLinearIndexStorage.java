@@ -25,7 +25,7 @@ import org.jlib.core.exception.UnexpectedStateException;
 
 import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
 
-import static org.jlib.core.message.MessageUtility.messageMf;
+import static org.jlib.core.message.MessageUtility.mfmessage;
 
 public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
@@ -99,10 +99,10 @@ implements LinearIndexStorage<Item> {
 
     protected void ensureIndexValid(final String indexName, final int index) {
         if (index < 0)
-            throw new InvalidIndexException(this, messageMf("{0} = {1} < 0", indexName, index));
+            throw new InvalidIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));
 
         if (index > getCapacity() - 1)
-            throw new InvalidIndexException(this, messageMf("{0} = {1} > {2} = capacity - 1", indexName, index,
+            throw new InvalidIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
                                                             getCapacity()));
     }
 
@@ -112,7 +112,7 @@ implements LinearIndexStorage<Item> {
         ensureIndexValid(endIndexName, endIndex);
 
         if (endIndex < beginIndex)
-            throw new InvalidIndexException(this, messageMf("{0} = {1} < {2} = {3}", endIndexName, endIndex, beginIndex,
+            throw new InvalidIndexException(this, mfmessage("{0} = {1} < {2} = {3}", endIndexName, endIndex, beginIndex,
                                                             beginIndexName));
     }
 
