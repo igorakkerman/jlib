@@ -21,8 +21,6 @@
 
 package org.jlib.core.message;
 
-import java.io.Serializable;
-
 import org.jlib.core.value.Named;
 
 /**
@@ -33,8 +31,7 @@ import org.jlib.core.value.Named;
  * @author Igor Akkerman
  */
 public class EagerMessage
-implements Message,
-           Serializable {
+extends ConfiguredMessage {
 
     private static final long serialVersionUID = - 1625043299945178724L;
 
@@ -45,7 +42,6 @@ implements Message,
         return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
     }
 
-    private final MessageConfiguration configuration;
     private final StringBuilder builder;
     private int argumentsCount = 0;
 
@@ -68,14 +64,15 @@ implements Message,
     }
 
     public EagerMessage(final StringBuilder builder, final MessageConfiguration configuration) {
+        super(configuration);
+
         this.builder = builder;
-        this.configuration = configuration;
     }
 
     @Override
     public Message with(final String argumentName, final Object argumentValue) {
         appendSeparator();
-        configuration.getArgumentFormatter().append(builder, argumentName, argumentValue);
+        getConfiguration().getArgumentFormatter().append(builder, argumentName, argumentValue);
         argumentsCount++;
 
         return this;
@@ -91,17 +88,17 @@ implements Message,
 
     protected void appendSeparator() {
         if (builder.length() == 0 && argumentsCount == 0)
-            builder.append(configuration.getBeforeArguments());
+            builder.append(getConfiguration().getBeforeArguments());
         else if (builder.length() != 0 && argumentsCount == 0)
-            builder.append(configuration.getBetweenTextAndArguments()).append(configuration.getBeforeArguments());
+            builder.append(getConfiguration().getBetweenTextAndArguments()).append(getConfiguration().getBeforeArguments());
         else if (builder.length() != 0)
-            builder.append(configuration.getBetweenArguments());
+            builder.append(getConfiguration().getBetweenArguments());
     }
 
     @Override
     public String toString() {
         if (argumentsCount != 0)
-            builder.append(configuration.getAfterArguments());
+            builder.append(getConfiguration().getAfterArguments());
 
         return builder.toString();
     }
