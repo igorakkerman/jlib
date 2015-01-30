@@ -31,10 +31,6 @@ public interface CoreFunctionsDispatcher {
 
     <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
 
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode();
-
-    <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(String... excludedFields);
-
     <Obj> ToString<Obj> reflectionToString();
 
     HashCodeEngine hashCodeEngine();

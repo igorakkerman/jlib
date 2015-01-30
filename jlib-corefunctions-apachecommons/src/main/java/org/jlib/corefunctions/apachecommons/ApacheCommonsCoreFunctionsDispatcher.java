@@ -33,8 +33,6 @@ import org.jlib.core.reflection.ReflectionService;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import org.jlib.corefunctions.CoreFunctionsDispatcher;
 import org.jlib.corefunctions.Equals;
-import org.jlib.corefunctions.EqualsHashCode;
-import org.jlib.corefunctions.ForwardingEqualsHashCode;
 import org.jlib.corefunctions.HashCode;
 import org.jlib.corefunctions.HashCodeEngine;
 import org.jlib.corefunctions.ToString;
@@ -79,16 +77,6 @@ implements CoreFunctionsDispatcher {
     @Override
     public <Obj> HashCode<Obj> reflectionHashCode(final String... excludedFields) {
         return object -> HashCodeBuilder.reflectionHashCode(object, excludedFields);
-    }
-
-    @Override
-    public <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode() {
-        return new ForwardingEqualsHashCode<>(reflectionEquals(), reflectionHashCode());
-    }
-
-    @Override
-    public <Obj> EqualsHashCode<Obj> reflectionEqualsHashCode(final String... excludedFields) {
-        return new ForwardingEqualsHashCode<>(reflectionEquals(excludedFields), reflectionHashCode(excludedFields));
     }
 
     @Override
