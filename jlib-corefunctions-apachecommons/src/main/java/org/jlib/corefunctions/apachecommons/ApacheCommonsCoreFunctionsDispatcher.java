@@ -42,7 +42,7 @@ import org.jlib.corefunctions.ToString;
 public class ApacheCommonsCoreFunctionsDispatcher
 implements CoreFunctionsDispatcher {
 
-    private final ToStringStyle toStringStyle;
+    private ToStringStyle toStringStyle;
 
     public ApacheCommonsCoreFunctionsDispatcher() {
         final Optional<String> optionalIdentifierOrClassName = DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
@@ -99,5 +99,9 @@ implements CoreFunctionsDispatcher {
     @Override
     public HashCodeEngine hashCodeEngine() {
         return new ApacheCommonsHashCodeEngine();
+    }
+
+    public void setToStringStyle(final ToStringStyle toStringStyle) {
+        this.toStringStyle = toStringStyle;
     }
 }
