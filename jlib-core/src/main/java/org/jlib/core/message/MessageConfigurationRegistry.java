@@ -25,23 +25,14 @@ import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 public class MessageConfigurationRegistry {
 
-    /** sole {@link MessageConfigurationRegistry} instance */
     private static final MessageConfigurationRegistry INSTANCE = new MessageConfigurationRegistry();
 
-    /**
-     * Returns the sole {@link MessageConfigurationRegistry} instance.
-     *
-     * @return sole {@link MessageConfigurationRegistry} instance
-     */
     public static MessageConfigurationRegistry getInstance() {
         return INSTANCE;
     }
 
     private MessageConfiguration defaultConfiguration = createInitialDefaultConfiguration();
 
-    /**
-     * Creates a new {@link MessageConfigurationRegistry}.
-     */
     private MessageConfigurationRegistry() {}
 
     public MessageConfiguration getDefaultConfiguration() {
