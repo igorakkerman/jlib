@@ -29,7 +29,7 @@ package org.jlib.corefunctions;
  */
 public abstract class ApplicationObject {
 
-    private static final CoreFunctionsDispatcher OBJECT_METHOD_FORWARDER =
+    private static final CoreFunctionsDispatcher CORE_FUNCTIONS_DISPATCHER =
     /**/ CoreFunctionsService.getInstance().getCoreFunctionsDispatcher();
 
     protected ApplicationObject() {}
@@ -51,15 +51,15 @@ public abstract class ApplicationObject {
     }
 
     protected <Obj> Equals<Obj> getEqualsStrategy() {
-        return OBJECT_METHOD_FORWARDER.reflectionEquals(getExcludedFieldNames());
+        return CORE_FUNCTIONS_DISPATCHER.reflectionEquals(getExcludedFieldNames());
     }
 
     protected <Obj> HashCode<Obj> getHashCodeStrategy() {
-        return OBJECT_METHOD_FORWARDER.reflectionHashCode(getExcludedFieldNames());
+        return CORE_FUNCTIONS_DISPATCHER.reflectionHashCode(getExcludedFieldNames());
     }
 
     protected <Obj> ToString<Obj> getToStringStrategy() {
-        return OBJECT_METHOD_FORWARDER.reflectionToString();
+        return CORE_FUNCTIONS_DISPATCHER.reflectionToString();
     }
 
     /**
