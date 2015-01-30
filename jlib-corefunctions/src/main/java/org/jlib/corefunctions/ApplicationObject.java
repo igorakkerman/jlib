@@ -71,7 +71,6 @@ public abstract class ApplicationObject {
      * a set of excluded fields.
      * </p>
      *
-     *
      * @return array of {@link String}s specifying the names of the excluded fields
      */
     @SuppressWarnings("SameReturnValue")
