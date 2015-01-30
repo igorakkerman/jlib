@@ -25,11 +25,18 @@ import java.io.Serializable;
 
 import org.jlib.core.value.Named;
 
+/**
+ * {@link Message} building the final text by concatenating the specified text and the named arguments, using the
+ * parameters set in a {@link MessageConfiguration} instance. If no such instance is specified, the parameters returned
+ * by {@link MessageConfigurationRegistry#getDefaultConfiguration()} are used.
+ *
+ * @author Igor Akkerman
+ */
 public class EagerMessage
 implements Message,
            Serializable {
 
-    private static final long serialVersionUID = - 7441157699026452815L;
+    private static final long serialVersionUID = - 1625043299945178724L;
 
     private static final int EXPECTED_ARGUMENTS_COUNT = 5;
     private static final int EXPECTED_ARGUMENT_LENGTH = 64;
