@@ -30,12 +30,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.core.reflection.ReflectionService;
 
-import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import org.jlib.corefunctions.CoreFunctionsDispatcher;
 import org.jlib.corefunctions.Equals;
+import org.jlib.corefunctions.EqualsEngine;
 import org.jlib.corefunctions.HashCode;
 import org.jlib.corefunctions.HashCodeEngine;
+import org.jlib.corefunctions.SuperEquals;
 import org.jlib.corefunctions.ToString;
+import org.jlib.corefunctions.ToStringEngine;
 
 public class ApacheCommonsCoreFunctionsDispatcher
 implements CoreFunctionsDispatcher {
@@ -43,10 +45,11 @@ implements CoreFunctionsDispatcher {
     private ToStringStyle toStringStyle;
 
     public ApacheCommonsCoreFunctionsDispatcher() {
-        final Optional<String> optionalIdentifierOrClassName = DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
+        final Optional<String> optionalIdentifierOrClassName =
+        /**/ DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
 
         if (! optionalIdentifierOrClassName.isPresent()) {
-            toStringStyle = DEFAULT_STYLE;
+            toStringStyle = DefaultToStringStylesConfiguration.DEFAULT_TO_STRING_STYLE;
             return;
         }
 
@@ -70,6 +73,11 @@ implements CoreFunctionsDispatcher {
     }
 
     @Override
+    public <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(final Obj object) {
+        return new ApacheCommonsEqualsEngine<>(object);
+    }
+
+    @Override
     public <Obj> HashCode<Obj> reflectionHashCode() {
         return HashCodeBuilder::reflectionHashCode;
     }
@@ -80,13 +88,18 @@ implements CoreFunctionsDispatcher {
     }
 
     @Override
+    public <Obj> HashCodeEngine<Obj> hashCodeEngine(final Obj object) {
+        return new ApacheCommonsHashCodeEngine<>();
+    }
+
+    @Override
     public <Obj> ToString<Obj> reflectionToString() {
         return object -> ToStringBuilder.reflectionToString(object, toStringStyle);
     }
 
     @Override
-    public HashCodeEngine hashCodeEngine() {
-        return new ApacheCommonsHashCodeEngine();
+    public <Obj> ToStringEngine<Obj> toStringEngine(final Obj object) {
+        return new ApacheCommonsToStringEngine<>(object, toStringStyle);
     }
 
     public void setToStringStyle(final ToStringStyle toStringStyle) {

@@ -25,21 +25,21 @@ import org.jlib.corefunctions.HashCode;
 import org.jlib.corefunctions.HashCodeEngine;
 import org.jlib.corefunctions.CoreFunctionsService;
 
-public class ObjectSpiIterableHashCode<Item>
+public class CoreFunctionsSpiIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
 
-    private static final ObjectSpiIterableHashCode<?> INSTANCE = new ObjectSpiIterableHashCode<>();
+    private static final CoreFunctionsSpiIterableHashCode<?> INSTANCE = new CoreFunctionsSpiIterableHashCode<>();
 
     @SuppressWarnings("unchecked")
-    public static <Item> ObjectSpiIterableHashCode<Item> getInstance() {
-        return (ObjectSpiIterableHashCode<Item>) INSTANCE;
+    public static <Item> CoreFunctionsSpiIterableHashCode<Item> getInstance() {
+        return (CoreFunctionsSpiIterableHashCode<Item>) INSTANCE;
     }
 
-    private ObjectSpiIterableHashCode() {}
+    private CoreFunctionsSpiIterableHashCode() {}
 
     @Override
     public int hashCode(final Iterable<Item> items) {
-        final HashCodeEngine engine = CoreFunctionsService.getInstance().getCoreFunctionsDispatcher().hashCodeEngine();
+        final HashCodeEngine<Iterable<Item>> engine = CoreFunctionsService.getInstance().getCoreFunctionsDispatcher().hashCodeEngine(items);
 
         for (final Item item : items)
             engine.append(item);

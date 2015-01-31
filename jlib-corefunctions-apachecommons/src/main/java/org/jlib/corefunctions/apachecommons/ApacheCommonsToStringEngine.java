@@ -21,29 +21,33 @@
 
 package org.jlib.corefunctions.apachecommons;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.corefunctions.HashCodeEngine;
+import org.jlib.corefunctions.ToStringEngine;
 
-public class ApacheCommonsHashCodeEngine<Obj>
-implements HashCodeEngine<Obj> {
+public class ApacheCommonsToStringEngine<Obj>
+implements ToStringEngine<Obj> {
 
-    private final HashCodeBuilder builder = new HashCodeBuilder();
+    private final ToStringBuilder builder;
+
+    public ApacheCommonsToStringEngine(final Obj object) {
+        builder = new ToStringBuilder(object);
+    }
+
+    public ApacheCommonsToStringEngine(final Obj object, final ToStringStyle toStringStyle) {
+        builder = new ToStringBuilder(object, toStringStyle);
+    }
 
     @Override
-    public <Value> ApacheCommonsHashCodeEngine<Obj> append(final Value value) {
-        builder.append(value);
+    public ApacheCommonsToStringEngine<Obj> append(final String valueName, final Object value) {
+        builder.append(valueName, value);
 
         return this;
     }
 
     @Override
-    public int toHashCode() {
-        return builder.toHashCode();
-    }
-
-    @Override
-    public int hashCode() {
-        return toHashCode();
+    public String toString() {
+        return builder.toString();
     }
 }

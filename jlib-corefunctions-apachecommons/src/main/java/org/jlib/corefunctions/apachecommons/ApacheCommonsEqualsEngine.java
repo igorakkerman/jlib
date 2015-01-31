@@ -21,29 +21,29 @@
 
 package org.jlib.corefunctions.apachecommons;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
-import org.jlib.corefunctions.HashCodeEngine;
+import org.jlib.corefunctions.EqualsEngine;
+import org.jlib.corefunctions.SuperEquals;
 
-public class ApacheCommonsHashCodeEngine<Obj>
-implements HashCodeEngine<Obj> {
+public class ApacheCommonsEqualsEngine<Obj extends SuperEquals>
+implements EqualsEngine<Obj> {
 
-    private final HashCodeBuilder builder = new HashCodeBuilder();
+    private final EqualsBuilder builder;
+
+    public ApacheCommonsEqualsEngine(final Obj object) {
+        builder = new EqualsBuilder().appendSuper(object.superEquals().test(object));
+    }
 
     @Override
-    public <Value> ApacheCommonsHashCodeEngine<Obj> append(final Value value) {
-        builder.append(value);
+    public <Value> ApacheCommonsEqualsEngine<Obj> append(final Value thisValue, final Value otherValue) {
+        builder.append(thisValue, otherValue);
 
         return this;
     }
 
     @Override
-    public int toHashCode() {
-        return builder.toHashCode();
-    }
-
-    @Override
-    public int hashCode() {
-        return toHashCode();
+    public boolean areEqual() {
+        return builder.isEquals();
     }
 }

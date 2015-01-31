@@ -21,13 +21,16 @@
 
 package org.jlib.corefunctions;
 
+import java.util.function.Predicate;
+
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using the
  * correspondent reflective builders provided by a jlib Core Functions SPI implementation.
  *
  * @author Igor Akkerman
  */
-public abstract class ApplicationObject {
+public abstract class ApplicationObject
+implements SuperEquals {
 
     private static final CoreFunctionsDispatcher CORE_FUNCTIONS_DISPATCHER =
     /**/ CoreFunctionsService.getInstance().getCoreFunctionsDispatcher();
@@ -76,5 +79,10 @@ public abstract class ApplicationObject {
     @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
         return new String[0];
+    }
+
+    @Override
+    public Predicate<SuperEquals> superEquals() {
+        return super::equals;
     }
 }

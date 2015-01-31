@@ -21,8 +21,9 @@
 
 package org.jlib.corefunctions;
 
-public interface HashCodeEngine {
-    HashCodeEngine append(final Object object);
+public interface HashCodeEngine<Obj> {
+
+    <Value> HashCodeEngine<Obj> append(final Value value);
 
     int toHashCode();
 }

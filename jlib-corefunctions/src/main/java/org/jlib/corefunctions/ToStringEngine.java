@@ -21,21 +21,9 @@
 
 package org.jlib.corefunctions;
 
-public interface CoreFunctionsDispatcher {
+public interface ToStringEngine<Obj> {
 
-    <Obj> Equals<Obj> reflectionEquals();
+    ToStringEngine<Obj> append(String valueName, Object value);
 
-    <Obj> Equals<Obj> reflectionEquals(String... excludedFields);
-
-    <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(Obj object);
-
-    <Obj> HashCode<Obj> reflectionHashCode();
-
-    <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
-
-    <Obj> HashCodeEngine<Obj> hashCodeEngine(Obj object);
-
-    <Obj> ToString<Obj> reflectionToString();
-
-    <Obj> ToStringEngine<Obj> toStringEngine(Obj object);
+    String toString();
 }

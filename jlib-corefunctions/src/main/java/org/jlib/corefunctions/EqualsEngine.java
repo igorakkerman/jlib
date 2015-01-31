@@ -21,15 +21,9 @@
 
 package org.jlib.corefunctions;
 
-/**
- * Unification of interfaces {@link Equals} and {@link HashCode}.
- * An implementation of this interface must ensure that the algorithms are compatible,
- * such that if {@code areEqual(object1, object2) == true} then {@code hashCode(object1) == hashCode(object2)}.
- *
- * @param <Obj>
- */
-public interface EqualsHashCode<Obj>
-extends Equals<Obj>,
-        HashCode<Obj> {
-    // unifying to provide matching equals/hashCode implementation
+public interface EqualsEngine<Obj> {
+
+    <Value> EqualsEngine<Obj> append(Value thisValue, Value otherValue);
+
+    boolean areEqual();
 }
