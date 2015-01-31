@@ -32,10 +32,10 @@ import org.junit.Test;
 
 public class EagerMessageTest {
 
-    private static final MessageConfiguration COLON_PRINTF_CONFIG;
+    private static final MessageStyle COLON_PRINTF_CONFIG;
 
     static {
-        COLON_PRINTF_CONFIG = new MessageConfiguration();
+        COLON_PRINTF_CONFIG = new MessageStyle();
         COLON_PRINTF_CONFIG.setArgumentFormatter(new PrintfNamedValueFormatter("%s: %s"));
         COLON_PRINTF_CONFIG.setBetweenTextAndArguments(" ");
         COLON_PRINTF_CONFIG.setBeforeArguments("(");
@@ -43,10 +43,10 @@ public class EagerMessageTest {
         COLON_PRINTF_CONFIG.setAfterArguments(")");
     }
 
-    private static final MessageConfiguration EQUALS_QUOTE_PRINTF_CONFIG;
+    private static final MessageStyle EQUALS_QUOTE_PRINTF_CONFIG;
 
     static {
-        EQUALS_QUOTE_PRINTF_CONFIG = new MessageConfiguration();
+        EQUALS_QUOTE_PRINTF_CONFIG = new MessageStyle();
         EQUALS_QUOTE_PRINTF_CONFIG.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
         EQUALS_QUOTE_PRINTF_CONFIG.setBetweenTextAndArguments(" ");
         EQUALS_QUOTE_PRINTF_CONFIG.setBeforeArguments("[");
@@ -54,18 +54,18 @@ public class EagerMessageTest {
         EQUALS_QUOTE_PRINTF_CONFIG.setAfterArguments("]");
     }
 
-    private static final MessageConfiguration COLON_MF_CONFIG;
+    private static final MessageStyle COLON_MF_CONFIG;
 
     static {
-        COLON_MF_CONFIG = new MessageConfiguration();
+        COLON_MF_CONFIG = new MessageStyle();
         COLON_MF_CONFIG.setArgumentFormatter(new MessageFormatNamedValueFormatter("{0}: {1}"));
         COLON_MF_CONFIG.setBetweenTextAndArguments(" ");
         COLON_MF_CONFIG.setBetweenArguments("; ");
     }
 
     @Before
-    public void initializeDefaultConfiguration() {
-        MessageConfigurationRegistry.getInstance().setDefaultConfiguration(EQUALS_QUOTE_PRINTF_CONFIG);
+    public void initializeDefaultMessageStyle() {
+        MessageStyleRegistry.getInstance().setDefaultMessageStyle(EQUALS_QUOTE_PRINTF_CONFIG);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class EagerMessageTest {
     @Test
     public void messageWithTextAndNamedArgumentsInSpecifiedDefaultFormatShouldProduceCorrectString() {
 
-        MessageConfigurationRegistry.getInstance().setDefaultConfiguration(COLON_PRINTF_CONFIG);
+        MessageStyleRegistry.getInstance().setDefaultMessageStyle(COLON_PRINTF_CONFIG);
 
         final Message message = /*
          */ message("Something went wrong.").with(named("dummyName", 1),

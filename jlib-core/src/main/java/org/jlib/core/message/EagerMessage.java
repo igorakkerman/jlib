@@ -25,13 +25,13 @@ import org.jlib.core.value.Named;
 
 /**
  * {@link Message} building the final text by concatenating the specified text and the named arguments, using the
- * parameters set in a {@link MessageConfiguration} instance. If no such instance is specified, the parameters returned
- * by {@link MessageConfigurationRegistry#getDefaultConfiguration()} are used.
+ * parameters set in a {@link MessageStyle} instance. If no such instance is specified, the parameters returned
+ * by {@link MessageStyleRegistry#getDefaultMessageStyle()} are used.
  *
  * @author Igor Akkerman
  */
 public class EagerMessage
-extends ConfiguredMessage {
+extends StyledMessage {
 
     private static final long serialVersionUID = - 1625043299945178724L;
 
@@ -50,21 +50,21 @@ extends ConfiguredMessage {
     }
 
     public EagerMessage(final String text) {
-        this(text, MessageConfigurationRegistry.getInstance().getDefaultConfiguration());
+        this(text, MessageStyleRegistry.getInstance().getDefaultMessageStyle());
     }
 
-    public EagerMessage(final String text, final MessageConfiguration configuration) {
-        this(createBuilder(text), configuration);
+    public EagerMessage(final String text, final MessageStyle messageStyle) {
+        this(createBuilder(text), messageStyle);
 
         builder.append(text);
     }
 
     public EagerMessage(final StringBuilder builder) {
-        this(builder, MessageConfigurationRegistry.getInstance().getDefaultConfiguration());
+        this(builder, MessageStyleRegistry.getInstance().getDefaultMessageStyle());
     }
 
-    public EagerMessage(final StringBuilder builder, final MessageConfiguration configuration) {
-        super(configuration);
+    public EagerMessage(final StringBuilder builder, final MessageStyle style) {
+        super(style);
 
         this.builder = builder;
     }
@@ -72,7 +72,7 @@ extends ConfiguredMessage {
     @Override
     public Message with(final String argumentName, final Object argumentValue) {
         appendSeparator();
-        getConfiguration().getArgumentFormatter().append(builder, argumentName, argumentValue);
+        getMessageStyle().getArgumentFormatter().append(builder, argumentName, argumentValue);
         argumentsCount++;
 
         return this;
@@ -88,17 +88,17 @@ extends ConfiguredMessage {
 
     protected void appendSeparator() {
         if (builder.length() == 0 && argumentsCount == 0)
-            builder.append(getConfiguration().getBeforeArguments());
+            builder.append(getMessageStyle().getBeforeArguments());
         else if (builder.length() != 0 && argumentsCount == 0)
-            builder.append(getConfiguration().getBetweenTextAndArguments()).append(getConfiguration().getBeforeArguments());
+            builder.append(getMessageStyle().getBetweenTextAndArguments()).append(getMessageStyle().getBeforeArguments());
         else if (builder.length() != 0)
-            builder.append(getConfiguration().getBetweenArguments());
+            builder.append(getMessageStyle().getBetweenArguments());
     }
 
     @Override
     public String toString() {
         if (argumentsCount != 0)
-            builder.append(getConfiguration().getAfterArguments());
+            builder.append(getMessageStyle().getAfterArguments());
 
         return builder.toString();
     }

@@ -23,19 +23,19 @@ package org.jlib.core.message;
 
 import java.io.Serializable;
 
-public abstract class ConfiguredMessage
+public abstract class StyledMessage
 implements Message,
            Serializable {
 
     private static final long serialVersionUID = - 8370150125520790054L;
 
-    private final MessageConfiguration configuration;
+    private final MessageStyle messageStyle;
 
-    protected ConfiguredMessage(final MessageConfiguration configuration) {
-        this.configuration = configuration;
+    protected StyledMessage(final MessageStyle messageStyle) {
+        this.messageStyle = messageStyle;
     }
 
-    public MessageConfiguration getConfiguration() {
-        return configuration;
+    public MessageStyle getMessageStyle() {
+        return messageStyle;
     }
 }

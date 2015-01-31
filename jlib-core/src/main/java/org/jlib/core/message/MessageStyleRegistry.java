@@ -21,25 +21,25 @@
 
 package org.jlib.core.message;
 
-import static org.jlib.core.message.MessageUtility.createInitialDefaultConfiguration;
+import static org.jlib.core.message.MessageUtility.createInitialDefaultMessageStyle;
 
-public final class MessageConfigurationRegistry {
+public final class MessageStyleRegistry {
 
-    private static final MessageConfigurationRegistry INSTANCE = new MessageConfigurationRegistry();
+    private static final MessageStyleRegistry INSTANCE = new MessageStyleRegistry();
 
-    public static MessageConfigurationRegistry getInstance() {
+    public static MessageStyleRegistry getInstance() {
         return INSTANCE;
     }
 
-    private MessageConfiguration defaultConfiguration = createInitialDefaultConfiguration();
+    private MessageStyle defaultMessageStyle = createInitialDefaultMessageStyle();
 
-    private MessageConfigurationRegistry() {}
+    private MessageStyleRegistry() {}
 
-    public MessageConfiguration getDefaultConfiguration() {
-        return defaultConfiguration;
+    public MessageStyle getDefaultMessageStyle() {
+        return defaultMessageStyle;
     }
 
-    public void setDefaultConfiguration(final MessageConfiguration defaultConfiguration) {
-        this.defaultConfiguration = defaultConfiguration;
+    public void setDefaultMessageStyle(final MessageStyle defaultMessageStyle) {
+        this.defaultMessageStyle = defaultMessageStyle;
     }
 }

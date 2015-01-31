@@ -37,8 +37,8 @@ public final class MessageUtility {
         return new EagerMessage(object.toString());
     }
 
-    public static Message message(final Object object, final MessageConfiguration configuration) {
-        return new EagerMessage(object.toString(), configuration);
+    public static Message message(final Object object, final MessageStyle messageStyle) {
+        return new EagerMessage(object.toString(), messageStyle);
     }
 
     public static Message mfmessage(final String messageTemplate, final Object... messageArguments) {
@@ -52,14 +52,14 @@ public final class MessageUtility {
         return new EagerMessage(messageBuilder);
     }
 
-    public static MessageConfiguration createInitialDefaultConfiguration() {
-        final MessageConfiguration defaultConfiguration = new MessageConfiguration();
+    public static MessageStyle createInitialDefaultMessageStyle() {
+        final MessageStyle defaultMessageStyle = new MessageStyle();
 
-        defaultConfiguration.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
-        defaultConfiguration.setBetweenTextAndArguments(" ");
-        defaultConfiguration.setBetweenArguments(" ");
+        defaultMessageStyle.setArgumentFormatter(new PrintfNamedValueFormatter("%s='%s'"));
+        defaultMessageStyle.setBetweenTextAndArguments(" ");
+        defaultMessageStyle.setBetweenArguments(" ");
 
-        return defaultConfiguration;
+        return defaultMessageStyle;
     }
 
     private MessageUtility() {}
