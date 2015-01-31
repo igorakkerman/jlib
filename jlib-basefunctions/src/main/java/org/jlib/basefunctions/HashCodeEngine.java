@@ -23,7 +23,7 @@ package org.jlib.basefunctions;
 
 public interface HashCodeEngine<Obj> {
 
-    <Value> HashCodeEngine<Obj> append(final Value value);
+    <Value> HashCodeEngine<Obj> add(final Value value);
 
     int toHashCode();
 }

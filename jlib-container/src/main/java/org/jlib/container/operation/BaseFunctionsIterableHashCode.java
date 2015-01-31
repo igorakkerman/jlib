@@ -42,7 +42,7 @@ implements HashCode<Iterable<Item>> {
         final HashCodeEngine<Iterable<Item>> engine = BaseFunctionsService.getInstance().getBaseFunctionsDispatcher().hashCodeEngine(items);
 
         for (final Item item : items)
-            engine.append(item);
+            engine.add(item);
 
         return engine.toHashCode();
     }

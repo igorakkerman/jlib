@@ -40,7 +40,7 @@ implements ToStringEngine<Obj> {
     }
 
     @Override
-    public ApacheCommonsToStringEngine<Obj> append(final String valueName, final Object value) {
+    public ApacheCommonsToStringEngine<Obj> add(final String valueName, final Object value) {
         builder.append(valueName, value);
 
         return this;

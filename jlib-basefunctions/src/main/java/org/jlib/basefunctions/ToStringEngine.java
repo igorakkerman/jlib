@@ -23,7 +23,7 @@ package org.jlib.basefunctions;
 
 public interface ToStringEngine<Obj> {
 
-    ToStringEngine<Obj> append(String valueName, Object value);
+    ToStringEngine<Obj> add(String valueName, Object value);
 
     String toString();
 }

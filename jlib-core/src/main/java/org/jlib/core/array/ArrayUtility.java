@@ -34,21 +34,8 @@ import org.jlib.core.iterator.BidiIterator;
  */
 public final class ArrayUtility {
 
-    /** empty array of Objects */
-    public static final Object[] EMPTY_ARRAY = new Object[0];
-
-    /**
-     * Returns a typesafe empty array of {@link Item}s.
-     *
-     * @param <Item>
-     *        type of potential {@link Item}s in the array
-     *
-     * @return empty array of {@link Item}s
-     */
-    @SuppressWarnings("unchecked")
-    public static <Item> Item[] emptyArray() {
-        return (Item[]) EMPTY_ARRAY;
-    }
+    public static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
+    public static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     /**
      * Crates an array of Items in a typesafe manner.
@@ -68,22 +55,6 @@ public final class ArrayUtility {
     public static <Item> Item[] array(final int length)
     throws NegativeArraySizeException {
         return (Item[]) new Object[length];
-    }
-
-    /**
-     * Returns a typesafe empty array of {@link Item}s of the specified type.
-     *
-     * @param <Item>
-     *        type of potential {@link Item}s in the array
-     *
-     * @param clazz
-     *        {@link Class} of {@link Item}s
-     *
-     * @return empty array of {@link Item}s
-     */
-    @SuppressWarnings({ "unchecked", "UnusedParameters" })
-    public static <Item> Item[] emptyArray(final Class<Item> clazz) {
-        return (Item[]) EMPTY_ARRAY;
     }
 
     /**

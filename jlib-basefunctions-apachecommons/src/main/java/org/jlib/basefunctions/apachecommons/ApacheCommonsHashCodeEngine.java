@@ -31,7 +31,7 @@ implements HashCodeEngine<Obj> {
     private final HashCodeBuilder builder = new HashCodeBuilder();
 
     @Override
-    public <Value> ApacheCommonsHashCodeEngine<Obj> append(final Value value) {
+    public <Value> ApacheCommonsHashCodeEngine<Obj> add(final Value value) {
         builder.append(value);
 
         return this;

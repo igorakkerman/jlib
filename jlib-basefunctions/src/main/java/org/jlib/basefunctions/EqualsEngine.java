@@ -23,7 +23,7 @@ package org.jlib.basefunctions;
 
 public interface EqualsEngine<Obj> {
 
-    <Value> EqualsEngine<Obj> append(Value thisValue, Value otherValue);
+    <Value> EqualsEngine<Obj> add(Value thisValue, Value otherValue);
 
     boolean areEqual();
 }

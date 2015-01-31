@@ -39,9 +39,4 @@ public class MessageAssert extends AbstractAssert<MessageAssert, Message> {
         Objects.instance().assertEqual(info, actual.toString(), expected);
         return this;
     }
-
-    @Override
-    public MessageAssert isEqualTo(final Object expected) {
-        return super.isEqualTo(expected);
-    }
 }

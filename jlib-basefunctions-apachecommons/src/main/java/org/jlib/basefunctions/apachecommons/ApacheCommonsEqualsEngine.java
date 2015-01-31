@@ -36,7 +36,7 @@ implements EqualsEngine<Obj> {
     }
 
     @Override
-    public <Value> ApacheCommonsEqualsEngine<Obj> append(final Value thisValue, final Value otherValue) {
+    public <Value> ApacheCommonsEqualsEngine<Obj> add(final Value thisValue, final Value otherValue) {
         builder.append(thisValue, otherValue);
 
         return this;

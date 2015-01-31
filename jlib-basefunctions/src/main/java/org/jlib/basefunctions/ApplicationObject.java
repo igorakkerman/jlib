@@ -23,7 +23,7 @@ package org.jlib.basefunctions;
 
 import java.util.function.Predicate;
 
-import static org.jlib.core.array.ArrayUtility.emptyArray;
+import static org.jlib.core.array.ArrayUtility.EMPTY_STRING_ARRAY;
 
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using the
@@ -90,8 +90,9 @@ implements SuperEquals {
      *
      * @return array of {@link String}s specifying the names of the excluded fields
      */
+    @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
-        return emptyArray();
+        return EMPTY_STRING_ARRAY;
     }
 
     @Override
