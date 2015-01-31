@@ -63,12 +63,12 @@ implements CoreFunctionsDispatcher {
     }
 
     @Override
-    public <Obj> Equals<Obj> reflectionEquals() {
+    public <Obj> Equals<Obj> genericEquals() {
         return EqualsBuilder::reflectionEquals;
     }
 
     @Override
-    public <Obj> Equals<Obj> reflectionEquals(final String... excludedFields) {
+    public <Obj> Equals<Obj> genericEquals(final String... excludedFields) {
         return (object1, object2) -> EqualsBuilder.reflectionEquals(object1, object2, excludedFields);
     }
 
@@ -78,12 +78,12 @@ implements CoreFunctionsDispatcher {
     }
 
     @Override
-    public <Obj> HashCode<Obj> reflectionHashCode() {
+    public <Obj> HashCode<Obj> genericHashCode() {
         return HashCodeBuilder::reflectionHashCode;
     }
 
     @Override
-    public <Obj> HashCode<Obj> reflectionHashCode(final String... excludedFields) {
+    public <Obj> HashCode<Obj> genericHashCode(final String... excludedFields) {
         return object -> HashCodeBuilder.reflectionHashCode(object, excludedFields);
     }
 
@@ -93,7 +93,7 @@ implements CoreFunctionsDispatcher {
     }
 
     @Override
-    public <Obj> ToString<Obj> reflectionToString() {
+    public <Obj> ToString<Obj> genericToString() {
         return object -> ToStringBuilder.reflectionToString(object, toStringStyle);
     }
 

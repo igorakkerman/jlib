@@ -23,19 +23,19 @@ package org.jlib.corefunctions;
 
 public interface CoreFunctionsDispatcher {
 
-    <Obj> Equals<Obj> reflectionEquals();
+    <Obj> Equals<Obj> genericEquals();
 
-    <Obj> Equals<Obj> reflectionEquals(String... excludedFields);
+    <Obj> Equals<Obj> genericEquals(String... excludedFields);
 
     <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(Obj object);
 
-    <Obj> HashCode<Obj> reflectionHashCode();
+    <Obj> HashCode<Obj> genericHashCode();
 
-    <Obj> HashCode<Obj> reflectionHashCode(String... excludedFields);
+    <Obj> HashCode<Obj> genericHashCode(String... excludedFields);
 
     <Obj> HashCodeEngine<Obj> hashCodeEngine(Obj object);
 
-    <Obj> ToString<Obj> reflectionToString();
+    <Obj> ToString<Obj> genericToString();
 
     <Obj> ToStringEngine<Obj> toStringEngine(Obj object);
 }

@@ -54,15 +54,15 @@ implements SuperEquals {
     }
 
     protected <Obj> Equals<Obj> getEqualsStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.reflectionEquals(getExcludedFieldNames());
+        return CORE_FUNCTIONS_DISPATCHER.genericEquals(getExcludedFieldNames());
     }
 
     protected <Obj> HashCode<Obj> getHashCodeStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.reflectionHashCode(getExcludedFieldNames());
+        return CORE_FUNCTIONS_DISPATCHER.genericHashCode(getExcludedFieldNames());
     }
 
     protected <Obj> ToString<Obj> getToStringStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.reflectionToString();
+        return CORE_FUNCTIONS_DISPATCHER.genericToString();
     }
 
     /**
