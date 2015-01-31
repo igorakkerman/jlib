@@ -27,8 +27,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jlib-container</artifactId>
-    <name>jlib Container Framework</name>
+    <artifactId>jlib-basefunctions-apachecommons</artifactId>
+    <name>jlib Core Functions SPI Apache Commons</name>
 
     <parent>
         <groupId>org.jlib</groupId>
@@ -49,6 +49,11 @@
     <dependencies>
         <dependency>
             <groupId>org.jlib</groupId>
+            <artifactId>jlib-codequality</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
             <artifactId>jlib-core</artifactId>
         </dependency>
 
@@ -58,33 +63,18 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-operator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker-qual</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <dependency>
@@ -95,11 +85,6 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-codequality</artifactId>
         </dependency>
     </dependencies>
 </project>

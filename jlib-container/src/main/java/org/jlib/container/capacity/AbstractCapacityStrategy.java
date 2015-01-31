@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity;
 
-import org.jlib.corefunctions.ApplicationObject;
+import org.jlib.basefunctions.ApplicationObject;
 import org.jlib.container.storage.ContentIndexRegistry;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;

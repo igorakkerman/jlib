@@ -23,6 +23,8 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="jlib" />
+        <module name="jlib-basefunctions" />
+        <module name="jlib-basefunctions-apachecommons" />
         <module name="jlib-codec" />
         <module name="jlib-codequality" />
         <module name="jlib-container" />
@@ -39,6 +41,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jlib-basefunctions" target="1.8" />
+      <module name="jlib-basefunctions-apachecommons" target="1.8" />
       <module name="jlib-codec" target="1.8" />
       <module name="jlib-codequality" target="1.8" />
       <module name="jlib-container" target="1.8" />

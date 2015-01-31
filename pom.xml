@@ -39,8 +39,8 @@
     <modules>
         <module>jlib-codequality</module>
         <module>jlib-core</module>
-        <module>jlib-corefunctions</module>
-        <module>jlib-corefunctions-apachecommons</module>
+        <module>jlib-basefunctions</module>
+        <module>jlib-basefunctions-apachecommons</module>
         <module>jlib-text</module>
         <module>jlib-codec</module>
         <module>jlib-operator</module>
@@ -148,13 +148,13 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-corefunctions</artifactId>
+                <artifactId>jlib-basefunctions</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-corefunctions-apachecommons</artifactId>
+                <artifactId>jlib-basefunctions-apachecommons</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 

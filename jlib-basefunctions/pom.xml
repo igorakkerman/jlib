@@ -27,8 +27,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jlib-container</artifactId>
-    <name>jlib Container Framework</name>
+    <artifactId>jlib-basefunctions</artifactId>
+    <name>jlib Core Functions SPI</name>
 
     <parent>
         <groupId>org.jlib</groupId>
@@ -49,47 +49,7 @@
     <dependencies>
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-basefunctions</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-operator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>checker-qual</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
+            <artifactId>jlib-codequality</artifactId>
         </dependency>
 
         <dependency>
@@ -98,8 +58,26 @@
         </dependency>
 
         <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+        </dependency>
+
+        <!-- unit test dependencies -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-codequality</artifactId>
+
+            <artifactId>jlib-core</artifactId>
         </dependency>
     </dependencies>
 </project>

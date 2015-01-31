@@ -24,7 +24,7 @@ package org.jlib.container.operation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.corefunctions.ApplicationObject;
+import org.jlib.basefunctions.ApplicationObject;
 
 public class IterableToRandomAccessList<Item>
 extends ApplicationObject

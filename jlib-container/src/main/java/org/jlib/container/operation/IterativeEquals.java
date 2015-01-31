@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.corefunctions.Equals;
+import org.jlib.basefunctions.Equals;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 import static org.jlib.core.iterator.IterableUtility.provideEqualItems;
