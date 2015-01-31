@@ -23,6 +23,8 @@ package org.jlib.basefunctions;
 
 import java.util.function.Predicate;
 
+import static org.jlib.core.array.ArrayUtility.emptyArray;
+
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using the
  * correspondent reflective builders provided by a jlib Core Functions SPI implementation.
@@ -88,9 +90,8 @@ implements SuperEquals {
      *
      * @return array of {@link String}s specifying the names of the excluded fields
      */
-    @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
-        return new String[0];
+        return emptyArray();
     }
 
     @Override
