@@ -38,31 +38,43 @@ implements SuperEquals {
     protected ApplicationObject() {}
 
     @Override
-    public String toString() {
-        return getToStringStrategy().toString(this);
-    }
-
-    @Override
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object otherObject) {
-        return getEqualsStrategy().areEqual(this, otherObject);
+        return equalsStrategy().areEqual(this, otherObject);
     }
 
     @Override
     public int hashCode() {
-        return getHashCodeStrategy().hashCode(this);
+        return hashCodeStrategy().hashCode(this);
     }
 
-    protected <Obj> Equals<Obj> getEqualsStrategy() {
+    @Override
+    public String toString() {
+        return toStringStrategy().toString(this);
+    }
+
+    protected <Obj> Equals<Obj> equalsStrategy() {
         return CORE_FUNCTIONS_DISPATCHER.genericEquals(getExcludedFieldNames());
     }
 
-    protected <Obj> HashCode<Obj> getHashCodeStrategy() {
+    protected <Obj> HashCode<Obj> hashCodeStrategy() {
         return CORE_FUNCTIONS_DISPATCHER.genericHashCode(getExcludedFieldNames());
     }
 
-    protected <Obj> ToString<Obj> getToStringStrategy() {
+    protected <Obj> ToString<Obj> toStringStrategy() {
         return CORE_FUNCTIONS_DISPATCHER.genericToString();
+    }
+
+    protected EqualsEngine<ApplicationObject> equalsEngine() {
+        return CORE_FUNCTIONS_DISPATCHER.equalsEngine(this);
+    }
+
+    protected HashCodeEngine<ApplicationObject> hashCodeEngine() {
+        return CORE_FUNCTIONS_DISPATCHER.hashCodeEngine(this);
+    }
+
+    protected ToStringEngine<ApplicationObject> toStringEngine() {
+        return CORE_FUNCTIONS_DISPATCHER.toStringEngine(this);
     }
 
     /**
