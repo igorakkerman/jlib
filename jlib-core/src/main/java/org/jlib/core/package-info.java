@@ -20,7 +20,6 @@
  */
 
 /*
- TODO: change Javadoc references from @code to @link
  TODO: create NullArgumentException extends IllegalArgumentException (like Apache Commons)
  TODO: create aspect/annotation disallowing null arguments ANYWHERE(!)
  TODO: remove checks for null arguments
