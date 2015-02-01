@@ -26,6 +26,16 @@ public class LeftAligningStringTransformerTest {
     }
 
     @Test
+    public void evenLengthStringToZeroLengthString() {
+        assertThat(new LeftAligningStringTransformer(0, 'x').transform("abcdef")).isEqualTo("abcdef");
+    }
+
+    @Test
+    public void oddLengthStringToZeroLengthString() {
+        assertThat(new LeftAligningStringTransformer(0, 'x').transform("abcde")).isEqualTo("abcde");
+    }
+
+    @Test
     public void evenLengthStringToShorterEvenLengthString() {
         assertThat(new LeftAligningStringTransformer(4, 'x').transform("abcdef")).isEqualTo("abcdef");
     }
