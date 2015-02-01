@@ -32,7 +32,9 @@ import org.jlib.core.message.Message;
 public abstract class InvalidBase64StreamException
 extends StreamException {
 
-    private static final long serialVersionUID = 5192572614899655207L;
+    private static final long serialVersionUID = 8258478222354315822L;
+
+    protected InvalidBase64StreamException() {}
 
     protected InvalidBase64StreamException(final Message message) {
         super(message);
