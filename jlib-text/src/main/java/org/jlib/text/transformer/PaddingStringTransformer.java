@@ -1,5 +1,6 @@
 package org.jlib.text.transformer;
 
+import org.jlib.basefunctions.ApplicationObject;
 import static org.jlib.core.math.NumberUtility.isOdd;
 
 /**
@@ -8,6 +9,7 @@ import static org.jlib.core.math.NumberUtility.isOdd;
  * @author Igor Akkerman
  */
 public abstract class PaddingStringTransformer
+extends ApplicationObject
 implements StringTransformer {
 
     /** length of the String to return by this PaddingStringTransformer */
@@ -74,27 +76,5 @@ implements StringTransformer {
      */
     protected char getPaddingCharacter() {
         return paddingCharacter;
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "[finalStringLength=" + finalStringLength + ", paddingCharacter='" +
-               paddingCharacter + "']";
-    }
-
-    @Override
-    public boolean equals(final Object otherObject) {
-        if (otherObject == null || ! getClass().equals(otherObject.getClass()))
-            return false;
-
-        final PaddingStringTransformer otherPaddingStringTransformer = (PaddingStringTransformer) otherObject;
-
-        return finalStringLength == otherPaddingStringTransformer.finalStringLength &&
-               paddingCharacter == otherPaddingStringTransformer.paddingCharacter;
-    }
-
-    @Override
-    public int hashCode() {
-        return finalStringLength << 16 + paddingCharacter;
     }
 }

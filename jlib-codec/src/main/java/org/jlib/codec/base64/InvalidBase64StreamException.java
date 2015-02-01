@@ -22,6 +22,7 @@
 package org.jlib.codec.base64;
 
 import org.jlib.core.io.StreamException;
+import org.jlib.core.message.Message;
 
 /**
  * Exception thrown if a stream is an invalid base64 stream.
@@ -31,7 +32,9 @@ import org.jlib.core.io.StreamException;
 public abstract class InvalidBase64StreamException
 extends StreamException {
 
-    private static final long serialVersionUID = 1102863875982144028L;
+    private static final long serialVersionUID = 5192572614899655207L;
 
-    protected InvalidBase64StreamException() {}
+    protected InvalidBase64StreamException(final Message message) {
+        super(message);
+    }
 }

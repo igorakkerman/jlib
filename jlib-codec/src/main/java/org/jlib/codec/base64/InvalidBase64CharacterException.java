@@ -21,8 +21,10 @@
 
 package org.jlib.codec.base64;
 
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
- * Exception thrown if an illegal base64 character is read in a base64 input.
+ * Exception thrown if an invalid base64 character is read in a base64 input.
  *
  * @author Igor Akkerman
  */
@@ -32,34 +34,28 @@ extends InvalidBase64StreamException {
 
     private static final long serialVersionUID = - 8389442743931398913L;
 
-    /** illegal character */
-    private final int illegalCharacter;
+    private final int invalidCharacter;
 
     /**
      * Creates a new IllegalBase64CharacterException.
      *
-     * @param illegalCharacter
-     *        integer specifying the illegal character;
-     *        -1 if the end of the base64 encoded stream has been reached with
-     *        missing characters
+     * @param invalidCharacter
+     *        integer specifying the invalid character;
+     *        -1 if the end of the base64 encoded stream has been reached with missing characters
      */
-    public InvalidBase64CharacterException(final int illegalCharacter) {
-        this.illegalCharacter = illegalCharacter;
+    public InvalidBase64CharacterException(final int invalidCharacter) {
+        super(message().with("invalidCharacter", invalidCharacter));
+
+        this.invalidCharacter = invalidCharacter;
     }
 
     /**
-     * Returns the illegal character.
+     * Returns the invalid character.
      *
-     * @return integer specifying the illegal character;
-     *         -1 if the end of the base64 encoded stream has been reached with
-     *         missing characters
+     * @return integer specifying the invalid character;
+     *         -1 if the end of the base64 encoded stream has been reached with missing characters
      */
     public int getIllegalCharacter() {
-        return illegalCharacter;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "[" + illegalCharacter + "]";
+        return invalidCharacter;
     }
 }

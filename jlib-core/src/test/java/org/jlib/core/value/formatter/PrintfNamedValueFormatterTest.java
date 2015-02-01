@@ -24,15 +24,22 @@ package org.jlib.core.value.formatter;
 import java.util.MissingFormatArgumentException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PrintfNamedValueFormatterTest {
+
+    private StringBuilder builder;
+
+    @Before
+    public void initializeBuilder() {
+        builder = new StringBuilder();
+    }
 
     @Test
     public void emptyTemplateShouldProduceEmptyString()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("");
 
         // when
@@ -46,7 +53,6 @@ public class PrintfNamedValueFormatterTest {
     public void namePlaceholderShouldOnlyProduceName()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("++ %s **");
 
         // when
@@ -60,7 +66,6 @@ public class PrintfNamedValueFormatterTest {
     public void nameValuePlaceholderShouldProduceNameValue()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
 
         // when
@@ -74,7 +79,7 @@ public class PrintfNamedValueFormatterTest {
     public void textNameValuePlaceholderShouldProduceTextNameValue()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder("This is a text ... ");
+        builder = new StringBuilder("This is a text ... ");
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
 
         // when
@@ -88,7 +93,6 @@ public class PrintfNamedValueFormatterTest {
     public void nameValueExtraPlaceholderShouldProduceException()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s %s");
 
         // when
@@ -102,7 +106,6 @@ public class PrintfNamedValueFormatterTest {
     public void wrongPlaceholderShouldProduceWrongString()
     throws Exception {
         // given
-        final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s {0}");
 
         // when

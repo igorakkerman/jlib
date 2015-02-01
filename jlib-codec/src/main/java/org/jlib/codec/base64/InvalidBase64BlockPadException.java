@@ -21,6 +21,10 @@
 
 package org.jlib.codec.base64;
 
+import java.util.Arrays;
+
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
  * Exception thrown if a base64 block contains more than two padding characters or a padding
  * character at a position other than at the end of the block.
@@ -28,7 +32,7 @@ package org.jlib.codec.base64;
  * @author Igor Akkerman
  */
 
-public class IllegalBase64BlockPadException
+public class InvalidBase64BlockPadException
 extends InvalidBase64StreamException {
 
     private static final long serialVersionUID = 1023903911620993818L;
@@ -40,27 +44,20 @@ extends InvalidBase64StreamException {
      * Creates a new IllegalBase64BlockPadException for the specified base64 block.
      *
      * @param base64Block
-     *        array of four integers containing the bad base64 block that contains a wrong padding
-     *        character
+     *        array of four integers containing the bad base64 block that contains a wrong padding character
      */
-    public IllegalBase64BlockPadException(final int[] base64Block) {
+    public InvalidBase64BlockPadException(final int[] base64Block) {
+        super(message().with("base64Block", Arrays.toString(base64Block)));
+
         this.base64Block = base64Block;
     }
 
     /**
      * Returns the bad base64 block that contains a wrong padding character.
      *
-     * @return array of four integers containing the bad base64 block that contains a wrong padding
-     *         character
+     * @return array of four integers containing the bad base64 block that contains a wrong padding character
      */
     public int[] getBase64Block() {
         return base64Block;
-    }
-
-    // documented in super class
-    @Override
-    public String toString() {
-        return super.toString() + "[" + base64Block[0] + "," + base64Block[1] + "," + base64Block[2] + "," +
-               base64Block[3] + "]";
     }
 }

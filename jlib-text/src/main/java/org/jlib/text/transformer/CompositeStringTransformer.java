@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Collections.addAll;
+import org.jlib.basefunctions.ApplicationObject;
 
 /**
  * {@link StringTransformer} transforming Strings using a sequence of specified
@@ -12,6 +13,7 @@ import static java.util.Collections.addAll;
  * @author Igor Akkerman
  */
 public class CompositeStringTransformer
+extends ApplicationObject
 implements StringTransformer {
 
     /**
@@ -98,33 +100,5 @@ implements StringTransformer {
     public void transform(final StringBuilder stringBuilder) {
         for (final StringTransformer stringTransformer : stringTransformers)
             stringTransformer.transform(stringBuilder);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + stringTransformers;
-    }
-
-    /**
-     * Verifies whether the specified {@link Object} is a
-     * CompositeStringTransformer composed by {@link StringTransformer
-     * StringTransformers} equal to those of this CompositeStringTransformer.
-     *
-     * @param otherObject
-     *        {@link Object} to compare to this CompositeStringTransformer
-     */
-    @Override
-    public boolean equals(final Object otherObject) {
-        if (!(otherObject instanceof CompositeStringTransformer))
-            return false;
-
-        final CompositeStringTransformer otherCompositeStringTransformer = (CompositeStringTransformer) otherObject;
-
-        return stringTransformers.equals(otherCompositeStringTransformer.stringTransformers);
-    }
-
-    @Override
-    public int hashCode() {
-        return stringTransformers.hashCode();
     }
 }

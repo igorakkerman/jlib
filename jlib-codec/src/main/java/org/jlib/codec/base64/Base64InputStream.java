@@ -78,7 +78,7 @@ extends FilterInputStream {
             catch (final EndOfBase64StreamException eob64se) {
                 return - 1;
             }
-            catch (final IllegalBase64BlockPadException ib64bpe) {
+            catch (final InvalidBase64BlockPadException ib64bpe) {
                 // illegal block is ignored
             }
         }
@@ -145,11 +145,11 @@ extends FilterInputStream {
     /**
      * Decodes the currently read base64 block into the output buffer.
      *
-     * @throws IllegalBase64BlockPadException
+     * @throws InvalidBase64BlockPadException
      *         if the read base64 block contains illegal padding characters
      */
     private void decodeBase64Block()
-    throws IllegalBase64BlockPadException {
+    throws InvalidBase64BlockPadException {
 
         // get number of padding characters and clear them in the input buffer
         final int paddingCharactersCount = getPaddingCharactersCount();
@@ -166,11 +166,11 @@ extends FilterInputStream {
      * Returns the number of padding characters in the currently read base64 block.
      *
      * @return integer specifying the number of padding characters
-     * @throws IllegalBase64BlockPadException
+     * @throws InvalidBase64BlockPadException
      *         if the read base64 block contains illegal padding characters
      */
     private int getPaddingCharactersCount()
-    throws IllegalBase64BlockPadException {
+    throws InvalidBase64BlockPadException {
         final boolean[] pad = new boolean[4];
         for (int i = 0; i <= 3; i++)
             pad[i] = inputBuffer[i] == PAD;
@@ -182,7 +182,7 @@ extends FilterInputStream {
         else if (! pad[0] && ! pad[1] && pad[2] && pad[3] && (inputBuffer[1] & 0x0F) == 0)
             return 2;
         else
-            throw new IllegalBase64BlockPadException(inputBuffer);
+            throw new InvalidBase64BlockPadException(inputBuffer);
     }
 
     /**
