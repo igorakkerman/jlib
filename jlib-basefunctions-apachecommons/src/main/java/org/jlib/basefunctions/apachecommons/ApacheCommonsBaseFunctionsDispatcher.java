@@ -35,7 +35,6 @@ import org.jlib.basefunctions.Equals;
 import org.jlib.basefunctions.EqualsEngine;
 import org.jlib.basefunctions.HashCode;
 import org.jlib.basefunctions.HashCodeEngine;
-import org.jlib.basefunctions.SuperEquals;
 import org.jlib.basefunctions.ToString;
 import org.jlib.basefunctions.ToStringEngine;
 
@@ -73,8 +72,8 @@ implements BaseFunctionsDispatcher {
     }
 
     @Override
-    public <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(final Obj thiz, final Obj other) {
-        return new ApacheCommonsEqualsEngine<>(thiz, other);
+    public <Obj> EqualsEngine<Obj> equalsEngine(final Obj thiz, final Object other) {
+        return new ApacheCommonsEqualsEngine<>(other);
     }
 
     @Override

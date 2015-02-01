@@ -21,20 +21,31 @@
 
 package org.jlib.basefunctions.apachecommons;
 
-import java.util.function.Predicate;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import org.jlib.basefunctions.ApplicationObject;
-import org.jlib.basefunctions.SuperEquals;
 import org.junit.Test;
 
+// Test with class A and B for
 public class ApacheCommonsEqualsEngineTest {
 
+    private static class O {
+
+        @Override
+        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+        public boolean equals(final Object obj) {
+            return super.equals(obj);
+        }
+    }
+
+    // root level of inheritance
     private static class A
-    implements SuperEquals {
+    extends O {
 
         final int ai;
         final String as;
+
+        public boolean eq(final Object obj) {
+            return super.equals(obj);
+        }
 
         public A(final int ai, final String as) {
             this.ai = ai;
@@ -42,18 +53,17 @@ public class ApacheCommonsEqualsEngineTest {
         }
 
         @Override
-        public Predicate<SuperEquals> superEquals() {
-            return super::equals;
-        }
-
-        @Override
         @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
         public boolean equals(final Object otherObject) {
             final A otherA = (A) otherObject;
-            return new ApacheCommonsEqualsEngine<>(this, otherA).add(ai, otherA.ai).add(as, otherA.as).areEqual();
+            // only add addSuper if super class actually checks fields, not only this for identity like Object
+            return new ApacheCommonsEqualsEngine<>(otherA).add(ai, otherA.ai)
+                                                          .add(as, otherA.as)
+                                                          .areEqual();
         }
     }
 
+    // first level of ineheritance
     private static class B
     extends A {
 
@@ -70,57 +80,36 @@ public class ApacheCommonsEqualsEngineTest {
         @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
         public boolean equals(final Object otherObject) {
             final B otherB = (B) otherObject;
-            return new ApacheCommonsEqualsEngine<>(this, otherB).add(bf, otherB.bf).add(bb, otherB.bb).areEqual();
+            return new ApacheCommonsEqualsEngine<>(otherB).addSuper(super::equals)
+                                                          .add(bf, otherB.bf)
+                                                          .add(bb, otherB.bb)
+                                                          .areEqual();
         }
     }
 
-    private static class OA
-    extends ApplicationObject {
+    // second level of inheritance
+    private static class C
+    extends B {
 
-        final int ai;
-        final String as;
-
-        public OA(final int ai, final String as) {
-            this.ai = ai;
-            this.as = as;
-        }
-
-        @Override
-        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
-        public boolean equals(final Object otherObject) {
-            final OA otherOA = (OA) otherObject;
-            return new ApacheCommonsEqualsEngine<>(this, otherOA).add(ai, otherOA.ai).add(as, otherOA.as).areEqual();
-        }
-    }
-
-    private static class OB
-    extends OA {
-
-        final float bf;
-        final boolean bb;
-
-        public OB(final int ai, final String as, final float bf, final boolean bb) {
-            super(ai, as);
-            this.bf = bf;
-            this.bb = bb;
-        }
-
-        @Override
-        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
-        public boolean equals(final Object otherObject) {
-            final OB otherOB = (OB) otherObject;
-            return new ApacheCommonsEqualsEngine<>(this, otherOB).add(bf, otherOB.bf).add(bb, otherOB.bb).areEqual();
+        public C(final int ai, final String as, final float bf, final boolean bb) {
+            super(ai, as, bf, bb);
         }
     }
 
     private static final A A1 = new A(1, "Hallo");
+    private static final A A1P = new A(1, "Hallo");
     private static final A A2 = new A(1, "Huhu");
     private static final B B1 = new B(1, "Hallo", 42.0815f, true);
+    private static final B B1P = new B(1, "Hallo", 42.0815f, true);
     private static final B B2 = new B(1, "Huhu", 42.0815f, true);
+    private static final C C1 = new C(1, "Hallo", 42.0815f, true);
+    private static final C C1P = new C(1, "Hallo", 42.0815f, true);
+    private static final C C2 = new C(1, "Huhu", 42.0815f, true);
 
     @Test
+    @SuppressWarnings("EqualsWithItself")
     public void a1a1ShouldBeEqual() {
-        assertThat(A1).isEqualTo(A1);
+        assertThat(A1).isEqualTo(A1P);
     }
 
     @Test
@@ -129,8 +118,9 @@ public class ApacheCommonsEqualsEngineTest {
     }
 
     @Test
+    @SuppressWarnings("EqualsWithItself")
     public void b1b1ShouldBeEqual() {
-        assertThat(B1).isEqualTo(B1);
+        assertThat(B1).isEqualTo(B1P);
     }
 
     @Test
@@ -138,28 +128,14 @@ public class ApacheCommonsEqualsEngineTest {
         assertThat(B1).isNotEqualTo(B2);
     }
 
-    private static final OA OA1 = new OA(1, "Hallo");
-    private static final OA OA2 = new OA(1, "Huhu");
-    private static final OB OB1 = new OB(1, "Hallo", 42.0815f, true);
-    private static final OB OB2 = new OB(1, "Huhu", 42.0815f, true);
-
     @Test
-    public void oa1oa1ShouldBeEqual() {
-        assertThat(OA1).isEqualTo(OA1);
+    @SuppressWarnings("EqualsWithItself")
+    public void c1c1ShouldBeEqual() {
+        assertThat(C1).isEqualTo(C1P);
     }
 
     @Test
-    public void oa1oa2ShouldNotBeEqual() {
-        assertThat(OA1).isNotEqualTo(OA2);
-    }
-
-    @Test
-    public void ob1ob1ShouldBeEqual() {
-        assertThat(OB1).isEqualTo(OB1);
-    }
-
-    @Test
-    public void ob1ob2ShouldNotBeEqual() {
-        assertThat(OB1).isNotEqualTo(OB2);
+    public void c1c2ShouldNotBeEqual() {
+        assertThat(C1).isNotEqualTo(C2);
     }
 }

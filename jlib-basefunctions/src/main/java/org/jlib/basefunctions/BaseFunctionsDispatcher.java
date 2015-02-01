@@ -27,7 +27,7 @@ public interface BaseFunctionsDispatcher {
 
     <Obj> Equals<Obj> genericEquals(String... excludedFields);
 
-    <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(Obj thiz, Obj other);
+    <Obj> EqualsEngine<Obj> equalsEngine(Obj thiz, Object other);
 
     <Obj> HashCode<Obj> genericHashCode();
 

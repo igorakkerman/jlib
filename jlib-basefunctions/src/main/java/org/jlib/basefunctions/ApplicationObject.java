@@ -21,8 +21,6 @@
 
 package org.jlib.basefunctions;
 
-import java.util.function.Predicate;
-
 import static org.jlib.core.array.ArrayUtility.EMPTY_STRING_ARRAY;
 
 /**
@@ -31,8 +29,7 @@ import static org.jlib.core.array.ArrayUtility.EMPTY_STRING_ARRAY;
  *
  * @author Igor Akkerman
  */
-public abstract class ApplicationObject
-implements SuperEquals {
+public abstract class ApplicationObject {
 
     private static final BaseFunctionsDispatcher BASE_FUNCTIONS_DISPATCHER =
     /**/ BaseFunctionsService.getInstance().getBaseFunctionsDispatcher();
@@ -67,8 +64,7 @@ implements SuperEquals {
         return BASE_FUNCTIONS_DISPATCHER.genericToString();
     }
 
-    protected <Obj extends ApplicationObject & SuperEquals> /*
-           */ EqualsEngine<ApplicationObject> equalsEngine(final Obj other) {
+    protected <Obj extends ApplicationObject> EqualsEngine<ApplicationObject> equalsEngine(final Obj other) {
         return BASE_FUNCTIONS_DISPATCHER.equalsEngine(this, other);
     }
 
@@ -94,10 +90,5 @@ implements SuperEquals {
     @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
         return EMPTY_STRING_ARRAY;
-    }
-
-    @Override
-    public Predicate<SuperEquals> superEquals() {
-        return super::equals;
     }
 }

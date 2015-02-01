@@ -21,23 +21,33 @@
 
 package org.jlib.basefunctions.apachecommons;
 
+import java.util.function.Predicate;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import org.jlib.basefunctions.EqualsEngine;
-import org.jlib.basefunctions.SuperEquals;
 
-public class ApacheCommonsEqualsEngine<Obj extends SuperEquals>
+public class ApacheCommonsEqualsEngine<Obj>
 implements EqualsEngine<Obj> {
 
     private final EqualsBuilder builder;
+    private final Object other;
 
-    public ApacheCommonsEqualsEngine(final Obj thiz, final Obj other) {
-        builder = new EqualsBuilder().appendSuper(thiz.superEquals().test(other));
+    public ApacheCommonsEqualsEngine(final Object other) {
+        this.other = other;
+        builder = new EqualsBuilder();
     }
 
     @Override
     public <Value> ApacheCommonsEqualsEngine<Obj> add(final Value thisValue, final Value otherValue) {
         builder.append(thisValue, otherValue);
+
+        return this;
+    }
+
+    @Override
+    public EqualsEngine<Obj> addSuper(final Predicate<Object> superEquals) {
+        builder.appendSuper(superEquals.test(other));
 
         return this;
     }

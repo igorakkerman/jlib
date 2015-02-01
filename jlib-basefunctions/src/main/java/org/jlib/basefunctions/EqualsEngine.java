@@ -21,9 +21,13 @@
 
 package org.jlib.basefunctions;
 
+import java.util.function.Predicate;
+
 public interface EqualsEngine<Obj> {
 
     <Value> EqualsEngine<Obj> add(Value thisValue, Value otherValue);
+
+    EqualsEngine<Obj> addSuper(Predicate<Object> superEquals);
 
     boolean areEqual();
 }
