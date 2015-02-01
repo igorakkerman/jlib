@@ -73,8 +73,8 @@ implements BaseFunctionsDispatcher {
     }
 
     @Override
-    public <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(final Obj object) {
-        return new ApacheCommonsEqualsEngine<>(object);
+    public <Obj extends SuperEquals> EqualsEngine<Obj> equalsEngine(final Obj thiz, final Obj other) {
+        return new ApacheCommonsEqualsEngine<>(thiz, other);
     }
 
     @Override

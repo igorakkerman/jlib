@@ -31,8 +31,8 @@ implements EqualsEngine<Obj> {
 
     private final EqualsBuilder builder;
 
-    public ApacheCommonsEqualsEngine(final Obj object) {
-        builder = new EqualsBuilder().appendSuper(object.superEquals().test(object));
+    public ApacheCommonsEqualsEngine(final Obj thiz, final Obj other) {
+        builder = new EqualsBuilder().appendSuper(thiz.superEquals().test(other));
     }
 
     @Override

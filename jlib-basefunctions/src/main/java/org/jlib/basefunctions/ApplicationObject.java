@@ -34,7 +34,7 @@ import static org.jlib.core.array.ArrayUtility.EMPTY_STRING_ARRAY;
 public abstract class ApplicationObject
 implements SuperEquals {
 
-    private static final BaseFunctionsDispatcher CORE_FUNCTIONS_DISPATCHER =
+    private static final BaseFunctionsDispatcher BASE_FUNCTIONS_DISPATCHER =
     /**/ BaseFunctionsService.getInstance().getBaseFunctionsDispatcher();
 
     protected ApplicationObject() {}
@@ -56,27 +56,28 @@ implements SuperEquals {
     }
 
     protected <Obj> Equals<Obj> equalsStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.genericEquals(getExcludedFieldNames());
+        return BASE_FUNCTIONS_DISPATCHER.genericEquals(getExcludedFieldNames());
     }
 
     protected <Obj> HashCode<Obj> hashCodeStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.genericHashCode(getExcludedFieldNames());
+        return BASE_FUNCTIONS_DISPATCHER.genericHashCode(getExcludedFieldNames());
     }
 
     protected <Obj> ToString<Obj> toStringStrategy() {
-        return CORE_FUNCTIONS_DISPATCHER.genericToString();
+        return BASE_FUNCTIONS_DISPATCHER.genericToString();
     }
 
-    protected EqualsEngine<ApplicationObject> equalsEngine() {
-        return CORE_FUNCTIONS_DISPATCHER.equalsEngine(this);
+    protected <Obj extends ApplicationObject & SuperEquals> /*
+           */ EqualsEngine<ApplicationObject> equalsEngine(final Obj other) {
+        return BASE_FUNCTIONS_DISPATCHER.equalsEngine(this, other);
     }
 
     protected HashCodeEngine<ApplicationObject> hashCodeEngine() {
-        return CORE_FUNCTIONS_DISPATCHER.hashCodeEngine(this);
+        return BASE_FUNCTIONS_DISPATCHER.hashCodeEngine(this);
     }
 
     protected ToStringEngine<ApplicationObject> toStringEngine() {
-        return CORE_FUNCTIONS_DISPATCHER.toStringEngine(this);
+        return BASE_FUNCTIONS_DISPATCHER.toStringEngine(this);
     }
 
     /**
