@@ -51,7 +51,6 @@ import static org.jlib.core.property.PropertyUtility.getOptionalPropertyOrFail;
  *
  * @author Igor Akkerman
  */
-//TODO: review thrown exceptions
 public final class ReflectionUtility {
 
     /**
