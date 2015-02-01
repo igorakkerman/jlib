@@ -19,12 +19,31 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.hashcode;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public interface ConfigurableToStringStyleSupplier {
+import org.jlib.basefunctions.HashCodeEngine;
 
-    ToStringStyle get()
-    throws ToStringStyleNotFoundException;
+public class ApacheCommonsHashCodeEngine<Obj>
+implements HashCodeEngine<Obj> {
+
+    private final HashCodeBuilder builder = new HashCodeBuilder();
+
+    @Override
+    public <Value> ApacheCommonsHashCodeEngine<Obj> add(final Value value) {
+        builder.append(value);
+
+        return this;
+    }
+
+    @Override
+    public int toHashCode() {
+        return builder.toHashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return toHashCode();
+    }
 }

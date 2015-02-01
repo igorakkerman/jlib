@@ -19,13 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public interface NamedToStringStyleSupplier {
+import static org.jlib.core.language.OptionalUtility.optionalOf;
 
-    Optional<ToStringStyle> get(String identifier);
+class MapNamedToStringStyleSupplier
+implements NamedToStringStyleSupplier {
+
+    private final Map<String, ToStringStyle> toStringStyles;
+
+    MapNamedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
+        this.toStringStyles = toStringStyles;
+    }
+
+    @Override
+    public Optional<ToStringStyle> get(final String identifier) {
+        return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
+    }
 }

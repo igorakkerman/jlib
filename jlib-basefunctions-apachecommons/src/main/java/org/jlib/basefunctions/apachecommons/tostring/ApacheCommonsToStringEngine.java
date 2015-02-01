@@ -19,26 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
-import java.util.Map;
-import java.util.Optional;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import static org.jlib.core.language.OptionalUtility.optionalOf;
+import org.jlib.basefunctions.ToStringEngine;
 
-class MapNamedToStringStyleSupplier
-implements NamedToStringStyleSupplier {
+public class ApacheCommonsToStringEngine<Obj>
+implements ToStringEngine<Obj> {
 
-    private final Map<String, ToStringStyle> toStringStyles;
+    private final ToStringBuilder builder;
 
-    MapNamedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
-        this.toStringStyles = toStringStyles;
+    public ApacheCommonsToStringEngine(final Obj object) {
+        builder = new ToStringBuilder(object);
+    }
+
+    public ApacheCommonsToStringEngine(final Obj object, final ToStringStyle toStringStyle) {
+        builder = new ToStringBuilder(object, toStringStyle);
     }
 
     @Override
-    public Optional<ToStringStyle> get(final String identifier) {
-        return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
+    public ApacheCommonsToStringEngine<Obj> add(final String valueName, final Object value) {
+        builder.append(valueName, value);
+
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return builder.toString();
     }
 }

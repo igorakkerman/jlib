@@ -37,6 +37,11 @@ import org.jlib.basefunctions.HashCode;
 import org.jlib.basefunctions.HashCodeEngine;
 import org.jlib.basefunctions.ToString;
 import org.jlib.basefunctions.ToStringEngine;
+import org.jlib.basefunctions.apachecommons.equals.ApacheCommonsEqualsEngine;
+import org.jlib.basefunctions.apachecommons.hashcode.ApacheCommonsHashCodeEngine;
+import org.jlib.basefunctions.apachecommons.tostring.ApacheCommonsToStringEngine;
+import org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration;
+import org.jlib.basefunctions.apachecommons.tostring.IdentifierOrClassNameToStringStyleSupplier;
 
 public class ApacheCommonsBaseFunctionsDispatcher
 implements BaseFunctionsDispatcher {

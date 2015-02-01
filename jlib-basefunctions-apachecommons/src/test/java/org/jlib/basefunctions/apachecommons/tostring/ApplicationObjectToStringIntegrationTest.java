@@ -19,31 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import static org.assertj.core.api.Assertions.assertThat;
+import org.jlib.basefunctions.ApplicationObject;
+import org.junit.Test;
 
-import org.jlib.basefunctions.HashCodeEngine;
+public class ApplicationObjectToStringIntegrationTest {
 
-public class ApacheCommonsHashCodeEngine<Obj>
-implements HashCodeEngine<Obj> {
+    private static class A
+    extends ApplicationObject {
 
-    private final HashCodeBuilder builder = new HashCodeBuilder();
-
-    @Override
-    public <Value> ApacheCommonsHashCodeEngine<Obj> add(final Value value) {
-        builder.append(value);
-
-        return this;
+        @SuppressWarnings("UnusedDeclaration")
+        private final int f = 42;
     }
 
-    @Override
-    public int toHashCode() {
-        return builder.toHashCode();
-    }
-
-    @Override
-    public int hashCode() {
-        return toHashCode();
+    @Test
+    public void toStringShouldContainClassNameFieldNameAndValue()
+    throws Exception {
+        assertThat(new A().toString()).contains(A.class.getName()).contains("f").contains("42");
     }
 }

@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
 import java.util.Optional;
 
@@ -50,7 +50,7 @@ implements ConfigurableToStringStyleSupplier {
         }
     }
 
-    void setNamedStyleSupplier(final NamedToStringStyleSupplier namedStyleSupplier) {
+    public void setNamedStyleSupplier(final NamedToStringStyleSupplier namedStyleSupplier) {
         this.namedStyleSupplier = namedStyleSupplier;
     }
 

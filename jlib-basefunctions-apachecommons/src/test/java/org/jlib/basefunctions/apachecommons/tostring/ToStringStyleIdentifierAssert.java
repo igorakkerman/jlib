@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 

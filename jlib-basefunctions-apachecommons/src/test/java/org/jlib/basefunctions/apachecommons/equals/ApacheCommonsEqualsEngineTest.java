@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.equals;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;

@@ -19,24 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import org.jlib.basefunctions.ApplicationObject;
-import org.junit.Test;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class ApplicationObjectIntegrationTest {
+public interface ConfigurableToStringStyleSupplier {
 
-    private static class A
-    extends ApplicationObject {
-
-        @SuppressWarnings("UnusedDeclaration")
-        private final int f = 42;
-    }
-
-    @Test
-    public void toStringShouldContainClassNameFieldNameAndValue()
-    throws Exception {
-        assertThat(new A().toString()).contains(A.class.getName()).contains("f").contains("42");
-    }
+    ToStringStyle get()
+    throws ToStringStyleNotFoundException;
 }

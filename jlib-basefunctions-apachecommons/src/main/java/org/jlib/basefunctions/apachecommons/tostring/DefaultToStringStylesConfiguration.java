@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,11 +38,11 @@ public final class DefaultToStringStylesConfiguration {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.basefunctions.apachecommons.toStringStyle";
 
-    static final OptionalPropertyValueSupplier
+    public static final OptionalPropertyValueSupplier
     /**/ TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER =
     /*    */ new OptionalPropertyValueSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME);
 
-    static final Map<String, ToStringStyle> TO_STRING_STYLES;
+    public static final Map<String, ToStringStyle> TO_STRING_STYLES;
 
     static {
         TO_STRING_STYLES = new HashMap<>();
@@ -53,9 +53,9 @@ public final class DefaultToStringStylesConfiguration {
         TO_STRING_STYLES.put("SIMPLE_STYLE", SIMPLE_STYLE);
     }
 
-    static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
+    public static final ToStringStyle DEFAULT_TO_STRING_STYLE = DEFAULT_STYLE;
 
-    static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
+    public static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
     /**/ new MapNamedToStringStyleSupplier(TO_STRING_STYLES);
 
     private DefaultToStringStylesConfiguration() {}

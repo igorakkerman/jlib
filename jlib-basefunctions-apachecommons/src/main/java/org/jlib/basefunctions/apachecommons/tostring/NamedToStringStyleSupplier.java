@@ -19,17 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
-import org.jlib.core.exception.InvalidStateException;
-import org.jlib.core.classinstance.ClassInstanceException;
+import java.util.Optional;
 
-public class ToStringStyleNotFoundException
-extends InvalidStateException {
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-    private static final long serialVersionUID = 3897146043064767340L;
+public interface NamedToStringStyleSupplier {
 
-    ToStringStyleNotFoundException(final ClassInstanceException cause) {
-        super(cause);
-    }
+    Optional<ToStringStyle> get(String identifier);
 }

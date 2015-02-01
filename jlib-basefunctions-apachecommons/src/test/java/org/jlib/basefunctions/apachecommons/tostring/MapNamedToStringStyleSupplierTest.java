@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons;
+package org.jlib.basefunctions.apachecommons.tostring;
 
 import static java.util.Optional.of;
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
@@ -27,7 +27,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
-import static org.jlib.basefunctions.apachecommons.ToStringStyleIdentifierAssert.assertThatIdentifier;
+import static org.jlib.basefunctions.apachecommons.tostring.ToStringStyleIdentifierAssert.assertThatIdentifier;
 import org.junit.Test;
 
 public class MapNamedToStringStyleSupplierTest {
