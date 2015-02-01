@@ -78,14 +78,4 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
 
         return this;
     }
-
-    @Override
-    public ToStringStyleIdentifierAssert isNotNull() {
-        super.isNotNull();
-
-        if (supplier == null)
-            failWithMessage("IdentifiedToStringStyleSupplier not set.");
-
-        return this;
-    }
 }
