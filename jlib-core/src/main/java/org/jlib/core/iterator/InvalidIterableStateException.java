@@ -40,16 +40,15 @@ extends InvalidStateException {
         super(buildMessage(message(), iterable));
     }
 
-    public InvalidIterableStateException(final Iterable<?> iterable, final Exception cause) {
-        super(buildMessage(message(), iterable), cause);
-    }
-
     public InvalidIterableStateException(final Iterable<?> iterable, final Message message) {
         super(buildMessage(message, iterable));
     }
 
-    public InvalidIterableStateException(final Iterable<?> iterable, final Message message,
-                                         final Exception cause) {
+    public InvalidIterableStateException(final Iterable<?> iterable, final Exception cause) {
+        super(buildMessage(message(), iterable), cause);
+    }
+
+    public InvalidIterableStateException(final Iterable<?> iterable, final Message message, final Exception cause) {
         super(buildMessage(message, iterable), cause);
     }
 

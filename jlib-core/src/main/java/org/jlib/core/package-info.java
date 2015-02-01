@@ -20,7 +20,6 @@
  */
 
 /*
- TODO: create NullArgumentException extends IllegalArgumentException (like Apache Commons)
  TODO: create aspect/annotation disallowing null arguments ANYWHERE(!)
  TODO: remove checks for null arguments
  TODO: aspect: replace super.toString() calls from jlib classes by something intelligent

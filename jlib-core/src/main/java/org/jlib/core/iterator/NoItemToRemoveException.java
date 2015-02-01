@@ -19,24 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
+
+import java.util.Iterator;
 
 /**
- * {@link Iterable} providing  allowing Items to be removed.
- *
- * @param <Item>
- *        type of the traversed items
+ * {@link InvalidIteratorStateException} thrown when there is Item to remove by a {@link Iterator}.
  *
  * @author Igor Akkerman
  */
-public interface RemoveIterable<Item>
-extends Iterable<Item> {
+public class NoItemToRemoveException
+extends InvalidIteratorStateException {
 
-    /**
-     * Returns a new {@link RemoveIterator} over the Items of this {@link RemoveIterable}.
-     *
-     * @return newly iterator}
-     */
-    @Override
-    RemoveIterator<Item> iterator();
+    private static final long serialVersionUID = 3354621909113836210L;
+
+    public NoItemToRemoveException(final Object iterated) {
+        super(iterated);
+    }
+
+    public NoItemToRemoveException(final Object iterated, final Exception cause) {
+        super(iterated, cause);
+    }
 }

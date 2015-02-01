@@ -19,10 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
 
 import org.jlib.core.exception.InvalidArgumentException;
-import org.jlib.core.iterator.InvalidIteratorStateException;
 import org.jlib.core.message.Message;
 
 import static org.jlib.core.message.MessageUtility.message;

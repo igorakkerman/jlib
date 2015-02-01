@@ -19,27 +19,33 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
+package org.jlib.core.iterator;
 
-import org.jlib.core.iterator.RemoveIterable;
+import java.util.Iterator;
 
 /**
- * Object providing  allowing Items to be removed.
+ * {@link Iterator} allowing returned Items to be removed.
  *
  * @param <Item>
  *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface ReplaceRemoveIterable<Item>
-extends ReplaceIterable<Item>,
-        RemoveIterable<Item> {
+public interface RemoveIterator<Item>
+extends Iterator<Item> {
 
     /**
-     * Returns a new {@link ReplaceRemoveIterator} over the Items of this {@link ReplaceRemoveIterable}.
+     * Removes the last Item returned by this {@link RemoveIterator}.
      *
-     * @return newly created {@link ReplaceRemoveIterator}
+     * @throws NoItemToRemoveException
+     *         if not called immediately after a call to {@link Iterator#next()}
+     *         or a similar method
+     *
+     * @throws InvalidIterableStateException
+     *         if an error was caused by a delegate used to remove the item
      */
     @Override
-    ReplaceRemoveIterator<Item> iterator();
+    @SuppressWarnings("DuplicateThrows")
+    void remove()
+    throws NoItemToRemoveException, InvalidIterableStateException;
 }

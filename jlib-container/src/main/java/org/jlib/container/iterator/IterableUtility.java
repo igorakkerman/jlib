@@ -25,6 +25,8 @@ import java.util.Iterator;
 
 import org.jlib.core.iterator.BidiIterable;
 import org.jlib.core.iterator.InvalidIterableStateException;
+import org.jlib.core.iterator.RemoveIterable;
+import org.jlib.core.iterator.RemoveIterator;
 import org.jlib.core.iterator.SingletonIterable;
 
 import org.jlib.operator.observer.ValueObserver;

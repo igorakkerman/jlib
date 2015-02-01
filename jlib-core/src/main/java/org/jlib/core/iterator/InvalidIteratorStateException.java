@@ -21,33 +21,40 @@
 
 package org.jlib.core.iterator;
 
+import java.util.Iterator;
+
+import org.jlib.core.exception.InvalidStateException;
 import org.jlib.core.message.Message;
 
+import static org.jlib.core.message.MessageUtility.message;
+
 /**
- * {@link InvalidIteratorStateException} thrown when the traversed
- * {@link Iterable} claims a state error.
+ * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterator} claims a state error.
  *
  * @author Igor Akkerman
  */
 public abstract class InvalidIteratorStateException
-extends InvalidIterableStateException {
+extends InvalidStateException {
 
     private static final long serialVersionUID = 1706750148627927636L;
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable) {
-        super(iterable);
+    protected InvalidIteratorStateException(final Object iterated) {
+        super(buildMessage(message(), iterated));
     }
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable, final Message message) {
-        super(iterable, message);
+    protected InvalidIteratorStateException(final Object iterated, final Message message) {
+        super(buildMessage(message, iterated));
     }
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable, final Exception cause) {
-        super(iterable, cause);
+    protected InvalidIteratorStateException(final Object iterated, final Exception cause) {
+        super(buildMessage(message(), iterated), cause);
     }
 
-    protected InvalidIteratorStateException(final Iterable<?> iterable, final Message message,
-                                            final Exception cause) {
-        super(iterable, message, cause);
+    protected InvalidIteratorStateException(final Object iterated, final Message message, final Exception cause) {
+        super(buildMessage(message, iterated), cause);
+    }
+
+    private static Message buildMessage(final Message message, final Object iterated) {
+        return message.with("iterated", iterated);
     }
 }

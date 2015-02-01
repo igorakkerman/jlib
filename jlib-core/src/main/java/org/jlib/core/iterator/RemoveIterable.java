@@ -19,35 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.iterator;
-
-import java.util.Iterator;
-
-import org.jlib.core.iterator.InvalidIterableStateException;
+package org.jlib.core.iterator;
 
 /**
- * {@link Iterator} allowing returned Items to be removed.
+ * {@link Iterable} providing  allowing Items to be removed.
  *
  * @param <Item>
  *        type of the traversed items
  *
  * @author Igor Akkerman
  */
-public interface RemoveIterator<Item>
-extends Iterator<Item> {
+public interface RemoveIterable<Item>
+extends Iterable<Item> {
 
     /**
-     * Removes the last Item returned by this {@link RemoveIterator}.
+     * Returns a new {@link RemoveIterator} over the Items of this {@link RemoveIterable}.
      *
-     * @throws NoItemToRemoveException
-     *         if not called immediately after a call to {@link Iterator#next()}
-     *         or a similar method
-     *
-     * @throws InvalidIterableStateException
-     *         if an error was caused by a delegate used to remove the item
+     * @return newly created iterator}
      */
     @Override
-    @SuppressWarnings("DuplicateThrows")
-    void remove()
-    throws NoItemToRemoveException, InvalidIterableStateException;
+    RemoveIterator<Item> iterator();
 }
