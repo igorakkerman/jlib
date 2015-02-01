@@ -21,9 +21,9 @@
 
 package org.jlib.container.operation;
 
+import org.jlib.basefunctions.BaseFunctionsService;
 import org.jlib.basefunctions.HashCode;
 import org.jlib.basefunctions.HashCodeEngine;
-import org.jlib.basefunctions.BaseFunctionsService;
 
 public class BaseFunctionsIterableHashCode<Item>
 implements HashCode<Iterable<Item>> {
@@ -39,11 +39,12 @@ implements HashCode<Iterable<Item>> {
 
     @Override
     public int hashCode(final Iterable<Item> items) {
-        final HashCodeEngine<Iterable<Item>> engine = BaseFunctionsService.getInstance().getBaseFunctionsDispatcher().hashCodeEngine(items);
+        final HashCodeEngine<Iterable<Item>> hashCodeEngine = /*
+         */ BaseFunctionsService.getInstance().getBaseFunctionsDispatcher().hashCodeEngine(items);
 
         for (final Item item : items)
-            engine.add(item);
+            hashCodeEngine.add(item);
 
-        return engine.toHashCode();
+        return hashCodeEngine.toHashCode();
     }
 }
