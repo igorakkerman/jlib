@@ -156,6 +156,7 @@
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-basefunctions-apachecommons</artifactId>
                 <version>${jlib.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
