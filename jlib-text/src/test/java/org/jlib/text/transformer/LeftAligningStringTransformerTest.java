@@ -1,58 +1,67 @@
 package org.jlib.text.transformer;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
+import org.junit.Test;
 
 /**
- * Test case for LeftAligningStringTransformer.
+ * Test case for {@link LeftAligningStringTransformer}.
  *
  * @author Igor Akkerman
  */
-@RunWith(Theories.class)
 public class LeftAligningStringTransformerTest {
 
-    private static class Data {
-
-        public final String id;
-
-        public final int finalStringLength;
-
-        public final String inputString;
-
-        public final String expectedTransformedString;
-
-        public Data(final String id, final int finalStringLength, final String inputString,
-                    final String expectedTransformedString) {
-            this.id = id;
-            this.finalStringLength = finalStringLength;
-            this.inputString = inputString;
-            this.expectedTransformedString = expectedTransformedString;
-        }
-
-        @Override
-        public String toString() {
-            return "(" + id + ": " + finalStringLength + ", \"" + inputString + "\", \"" + expectedTransformedString +
-                   "\")";
-        }
+    @Test
+    public void emptyStringToZeroLengthString() {
+        assertThat(new LeftAligningStringTransformer(0, 'x').transform("")).isEmpty();
     }
 
-    @DataPoints
-    public static Data[] data = { new Data("empty, zero", 0, "", ""), new Data("empty, even", 10, "", "xxxxxxxxxx"),
-                                  new Data("empty, odd", 9, "", "xxxxxxxxx"),
-                                  new Data("even, less, even", 4, "abcdef", "abcdef"),
-                                  new Data("even, less, odd", 3, "abcdef", "abcdef"),
-                                  new Data("odd, less, even", 4, "abcdefg", "abcdefg"),
-                                  new Data("odd, less, odd", 3, "abcdefg", "abcdefg"),
-                                  new Data("even, more, even", 10, "abcdef", "abcdefxxxx"), };
+    @Test
+    public void emptyStringToEvenLengthString() {
+        assertThat(new LeftAligningStringTransformer(10, 'x').transform("")).isEqualTo("xxxxxxxxxx");
+    }
 
-    @Theory
-    public void testTransform(@SuppressWarnings("hiding") final Data data) {
-        final StringTransformer stringTransformer = new LeftAligningStringTransformer(data.finalStringLength, 'x');
-        final StringBuilder stringBuilder = new StringBuilder(data.inputString);
-        stringTransformer.transform(stringBuilder);
-        assertThat(stringBuilder.toString()).isEqualTo(data.expectedTransformedString).describedAs(data.toString());
+    @Test
+    public void emptyStringToOddLengthString() {
+        assertThat(new LeftAligningStringTransformer(9, 'x').transform("")).isEqualTo("xxxxxxxxx");
+    }
+
+    @Test
+    public void evenLengthStringToShorterEvenLengthString() {
+        assertThat(new LeftAligningStringTransformer(4, 'x').transform("abcdef")).isEqualTo("abcdef");
+    }
+
+    @Test
+    public void evenLengthStringToShorterOddLengthString() {
+        assertThat(new LeftAligningStringTransformer(3, 'x').transform("abcdef")).isEqualTo("abcdef");
+    }
+
+    @Test
+    public void oddLengthStringToShorterEvenLengthString() {
+        assertThat(new LeftAligningStringTransformer(4, 'x').transform("abcde")).isEqualTo("abcde");
+    }
+
+    @Test
+    public void oddLengthStringToShorterOddLengthString() {
+        assertThat(new LeftAligningStringTransformer(3, 'x').transform("abcde")).isEqualTo("abcde");
+    }
+
+    @Test
+    public void evenLengthStringToLongerEvenLengthString() {
+        assertThat(new LeftAligningStringTransformer(10, 'x').transform("abcdef")).isEqualTo("abcdefxxxx");
+    }
+
+    @Test
+    public void evenLengthStringToLongerOddLengthString() {
+        assertThat(new LeftAligningStringTransformer(9, 'x').transform("abcdef")).isEqualTo("abcdefxxx");
+    }
+
+    @Test
+    public void oddLengthStringToLongerEvenLengthString() {
+        assertThat(new LeftAligningStringTransformer(10, 'x').transform("abcde")).isEqualTo("abcdexxxxx");
+    }
+
+    @Test
+    public void oddLengthStringToLongerOddLengthString() {
+        assertThat(new LeftAligningStringTransformer(9, 'x').transform("abcde")).isEqualTo("abcdexxxx");
     }
 }
