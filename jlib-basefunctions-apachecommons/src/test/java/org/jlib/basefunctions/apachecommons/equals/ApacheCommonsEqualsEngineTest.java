@@ -27,16 +27,10 @@ import org.junit.Test;
 // Test with class A and B for
 public class ApacheCommonsEqualsEngineTest {
 
-    private static class O {
-
-        @Override
-        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
-        public boolean equals(final Object obj) {
-            return super.equals(obj);
-        }
-    }
-
     // root level of inheritance
+    private static class O {}
+
+    // first level of ineheritance
     private static class A
     extends O {
 
@@ -63,7 +57,7 @@ public class ApacheCommonsEqualsEngineTest {
         }
     }
 
-    // first level of ineheritance
+    // second level of ineheritance
     private static class B
     extends A {
 
@@ -87,7 +81,7 @@ public class ApacheCommonsEqualsEngineTest {
         }
     }
 
-    // second level of inheritance
+    // third level of inheritance
     private static class C
     extends B {
 
