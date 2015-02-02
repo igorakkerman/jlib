@@ -42,9 +42,7 @@
         <module>jlib-basefunctions</module>
         <module>jlib-basefunctions-apachecommons</module>
         <module>jlib-text</module>
-        <module>jlib-codec</module>
         <module>jlib-operator</module>
-        <module>jlib-container</module>
     </modules>
 
     <properties>
@@ -167,19 +165,7 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-codec</artifactId>
-                <version>${jlib.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jlib</groupId>
                 <artifactId>jlib-operator</artifactId>
-                <version>${jlib.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jlib</groupId>
-                <artifactId>jlib-container</artifactId>
                 <version>${jlib.version}</version>
             </dependency>
 
