@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jlib-base.iml" filepath="$PROJECT_DIR$/jlib-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-basefunctions/jlib-basefunctions.iml" filepath="$PROJECT_DIR$/jlib-basefunctions/jlib-basefunctions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-basefunctions-apachecommons/jlib-basefunctions-apachecommons.iml" filepath="$PROJECT_DIR$/jlib-basefunctions-apachecommons/jlib-basefunctions-apachecommons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-operator/jlib-operator.iml" filepath="$PROJECT_DIR$/jlib-operator/jlib-operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
+    </modules>
+  </component>
+</project>
