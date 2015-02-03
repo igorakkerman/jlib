@@ -28,7 +28,7 @@
 
     <groupId>org.jlib</groupId>
     <artifactId>jlib-base</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>jlib</name>
     <description>jlib Open Source Java Library</description>
@@ -48,7 +48,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <jlib.version>${project.version}</jlib.version>
+        <jlib-codequality.version>0.1.0-SNAPSHOT</jlib-codequality.version>
+        <jlib-core.version>1.0.0-SNAPSHOT</jlib-core.version>
+        <jlib-basefunctions.version>1.0.0-SNAPSHOT</jlib-basefunctions.version>
+        <jlib-basefunctions-apachecommons.version>1.0.0-SNAPSHOT</jlib-basefunctions-apachecommons.version>
+        <jlib-text.version>0.1.0-SNAPSHOT</jlib-text.version>
+        <jlib-operator.version>0.1.0-SNAPSHOT</jlib-operator.version>
     </properties>
 
     <build>
@@ -89,7 +94,7 @@
                         <dependency>
                             <groupId>org.jlib</groupId>
                             <artifactId>jlib-codequality</artifactId>
-                            <version>${jlib.version}</version>
+                            <version>${jlib-codequality.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -135,38 +140,38 @@
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-codequality</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-codequality.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-core</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-core.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-basefunctions</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-basefunctions.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-basefunctions-apachecommons</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-basefunctions-apachecommons.version}</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-text</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-text.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.jlib</groupId>
                 <artifactId>jlib-operator</artifactId>
-                <version>${jlib.version}</version>
+                <version>${jlib-operator.version}</version>
             </dependency>
 
             <dependency>

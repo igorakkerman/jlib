@@ -27,13 +27,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jlib-operator</artifactId>
     <name>jlib Operator Framework</name>
+    <artifactId>jlib-operator</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.jlib</groupId>
         <artifactId>jlib-base</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
@@ -91,7 +92,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-
 
     </dependencies>
 </project>

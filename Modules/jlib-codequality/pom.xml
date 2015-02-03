@@ -24,13 +24,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jlib-codequality</artifactId>
     <name>jlib Code Quality Configuration</name>
+    <artifactId>jlib-codequality</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.jlib</groupId>
         <artifactId>jlib-base</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
