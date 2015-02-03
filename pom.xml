@@ -210,7 +210,7 @@
             <dependency>
                 <groupId>org.checkerframework</groupId>
                 <artifactId>checker-qual</artifactId>
-                <version>1.8.9</version>
+                <version>1.8.10</version>
             </dependency>
 
             <dependency>
@@ -231,7 +231,7 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <!-- 2015-01-28 currently last Mockito version compatible with PowerMock --><!--<version>1.10.8</version>-->
-                <version>1.10.19</version>
+                <version>2.0.3-beta</version>
                 <scope>test</scope>
             </dependency>
 
