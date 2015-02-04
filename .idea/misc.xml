@@ -36,6 +36,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../Nonpublic/jlib-container/pom.xml" />
       </list>
     </option>
   </component>
