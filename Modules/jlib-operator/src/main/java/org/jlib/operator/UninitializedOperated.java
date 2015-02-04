@@ -36,11 +36,7 @@ abstract class UninitializedOperated<Value>
 extends Uninitialized<Value>
 implements OperatedValue<Value> {
 
-    /**
-     * Creates a new {@link UninitializedOperated}.
-     */
-    protected UninitializedOperated() {
-    }
+    protected UninitializedOperated() {}
 
     @Override
     public final void operate(final OptionalValueOperator<Value> operator) {
