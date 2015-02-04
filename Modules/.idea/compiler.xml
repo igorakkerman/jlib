@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="jlib" />
+        <module name="jlib-basefunctions" />
+        <module name="jlib-basefunctions-apachecommons" />
+        <module name="jlib-codequality" />
+        <module name="jlib-container" />
+        <module name="jlib-core" />
+        <module name="jlib-core (1)" />
+        <module name="jlib-corefunctions" />
+        <module name="jlib-corefunctions-apachecommons" />
+        <module name="jlib-object-spi" />
+        <module name="jlib-object-spi-apachecommons" />
+        <module name="jlib-operation" />
+        <module name="jlib-operator" />
+        <module name="jlib-spi-apachecommons" />
+        <module name="jlib-text" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jlib-basefunctions" target="1.8" />
+      <module name="jlib-basefunctions-apachecommons" target="1.8" />
+      <module name="jlib-codec" target="1.8" />
+      <module name="jlib-codequality" target="1.8" />
+      <module name="jlib-container" target="1.8" />
+      <module name="jlib-core" target="1.8" />
+      <module name="jlib-core (1)" target="1.8" />
+      <module name="jlib-corefunctions" target="1.8" />
+      <module name="jlib-corefunctions-apachecommons" target="1.8" />
+      <module name="jlib-io" target="1.8" />
+      <module name="jlib-object-spi" target="1.8" />
+      <module name="jlib-object-spi-apachecommons" target="1.8" />
+      <module name="jlib-operation" target="1.8" />
+      <module name="jlib-operator" target="1.8" />
+      <module name="jlib-spi-apachecommons" target="1.8" />
+      <module name="jlib-text" target="1.8" />
+      <module name="jlib-unittest" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
