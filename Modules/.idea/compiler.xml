@@ -26,6 +26,7 @@
         <module name="jlib-basefunctions" />
         <module name="jlib-basefunctions-apachecommons" />
         <module name="jlib-codequality" />
+        <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-core (1)" />
         <module name="jlib-corefunctions" />
