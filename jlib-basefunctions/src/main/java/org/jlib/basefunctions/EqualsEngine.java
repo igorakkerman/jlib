@@ -27,7 +27,7 @@ public interface EqualsEngine<Obj> {
 
     <Value> EqualsEngine<Obj> add(Value thisValue, Value otherValue);
 
-    EqualsEngine<Obj> addSuper(Predicate<Object> superEquals);
+    EqualsEngine<Obj> add(Predicate<Object> superEquals);
 
-    boolean areEqual();
+    boolean equal();
 }

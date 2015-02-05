@@ -46,14 +46,14 @@ implements EqualsEngine<Obj> {
     }
 
     @Override
-    public EqualsEngine<Obj> addSuper(final Predicate<Object> superEquals) {
+    public EqualsEngine<Obj> add(final Predicate<Object> superEquals) {
         builder.appendSuper(superEquals.test(other));
 
         return this;
     }
 
     @Override
-    public boolean areEqual() {
+    public boolean equal() {
         return builder.isEquals();
     }
 }
