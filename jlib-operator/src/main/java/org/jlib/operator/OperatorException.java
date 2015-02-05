@@ -34,23 +34,9 @@ extends ApplicationException {
 
     private static final long serialVersionUID = - 9075612246404744163L;
 
-<<<<<<< HEAD
     private final RuntimeException cause;
 
     public OperatorException(final Message message, final RuntimeException cause) {
-=======
-    /** {@link RuntimeException} that caused this {@link OperatorException} */
-    private final RuntimeException cause;
-
-    /**
-     * Creates a new {@link OperatorException}.
-     *
-     * @param cause
-     *        {@link RuntimeException} that caused this {@link OperatorException}
-     */
-    public OperatorException(final Message message, final RuntimeException cause) {
-
->>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
         super(message, cause);
 
         this.cause = cause;

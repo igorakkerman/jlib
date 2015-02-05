@@ -64,14 +64,6 @@ implements Modifiable<Value> {
     }
 
     @Override
-<<<<<<< HEAD
-=======
-    public boolean canGet() {
-        return delegateAccessor.canGet();
-    }
-
-    @Override
->>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
     public Value get()
     throws NotAccessibleException {
         return delegateAccessor.get();
