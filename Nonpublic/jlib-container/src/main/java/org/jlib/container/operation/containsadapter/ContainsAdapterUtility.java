@@ -56,12 +56,8 @@ public final class ContainsAdapterUtility {
 
     @SafeVarargs
     public static <Item> ContainsAdapter<Item> allOf(final Item... items) {
-
         return new IterativeContainsAdapter<>(ArrayUtility.iterable(items));
     }
 
-    /** no visible constructor */
-    private ContainsAdapterUtility() {
-        // no visible constructor
-    }
+    private ContainsAdapterUtility() {}
 }
