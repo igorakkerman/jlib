@@ -50,7 +50,7 @@ public class ApacheCommonsEqualsEngineTest {
         @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
         public boolean equals(final Object otherObject) {
             final A otherA = (A) otherObject;
-            // only add addSuper if super class actually checks fields, not only this for identity like Object
+            // only use add(super::equals) if super class actually checks fields, not only this for identity like Object
             return new ApacheCommonsEqualsEngine<>(otherA).add(ai, otherA.ai)
                                                           .add(as, otherA.as)
                                                           .equal();
