@@ -45,7 +45,6 @@ extends InvalidContainerArgumentException {
      *        already contained Item
      */
     public ItemAlreadyContainedException(final Object container, final Object item) {
-
         super(container, message(item.toString()));
     }
 }
