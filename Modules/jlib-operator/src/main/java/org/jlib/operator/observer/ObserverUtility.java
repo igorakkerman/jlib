@@ -31,8 +31,17 @@ import org.jlib.operator.OperatorException;
  */
 public final class ObserverUtility {
 
+<<<<<<< HEAD
     public static <Value> ConsumersValueObserver<Value> observe() {
         return new ConsumersValueObserver<>();
+=======
+    /** no visible constructor */
+    private ObserverUtility() {
+    }
+
+    public static <Value> BuiltValueObserver<Value> observe() {
+        return new BuiltValueObserver<>();
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
     }
 
     /**
@@ -66,6 +75,7 @@ public final class ObserverUtility {
                                        final ValueObserver<Value>... observers)
     throws RuntimeException {
         try {
+<<<<<<< HEAD
             for (final ValueObserver<Value> observer : observers)
                 observer.before(value);
 
@@ -78,10 +88,34 @@ public final class ObserverUtility {
             // if "legal" exception is thrown
             for (final ValueObserver<Value> observer : observers)
                 observer.afterFailure(value, exception);
+=======
+            for (final ValueObserver<Value> observer : observers) {
+                observer.before(value);
+            }
+
+            handledOperator.operate();
+
+            for (final ValueObserver<Value> observer : observers) {
+                observer.afterSuccess(value);
+            }
+        }
+        catch (final OperatorException exception) {
+            // if "legal" exception is thrown
+            for (final ValueObserver<Value> observer : observers) {
+                observer.afterFailure(value, exception);
+            }
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
 
             throw exception.getCause();
         }
     }
 
+<<<<<<< HEAD
     private ObserverUtility() {}
+=======
+    public static void main(final String... commandLineArguments) {
+        operate(null, null, observe().beforeDo(value -> System.out.println("Success: " + value))
+                                     .afterFailure(value -> System.out.println("Failure: " + value)));
+    }
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
 }

@@ -24,32 +24,39 @@ package org.jlib.core.value;
 import java.util.function.Supplier;
 
 /**
- * Accessor of a {@link Value}. {@link Accessor#get()} differs from {@link Supplier#get()} by declaring the checked
- * {@link NotAccessibleException}.
+ * {@link Accessor} of a {@link Value} that is guaranteed to be accessible.
  *
  * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Accessor<Value> {
+public interface Accessible<Value>
+extends Accessor<Value>,
+        Supplier<Value> {
 
     /**
-     * Returns the accessed {@link Value}.
+     * Returns the {@link Value}. Since the {@link Value} is guaranteed to be accessible, <em>no</em>
+     * {@link NotAccessibleException} will be thrown.
      *
-     * @return accessed {@link Value}
-     *
-     * @throws NotAccessibleException
-     *         if no {@link Value} can be accessed
+     * @return registered {@link Value}
      */
-    Value get()
-    throws NotAccessibleException;
+    @Override
+    Value get();
 
     /**
-     * Returns whether a {@link Value} can be accessed.
+     * <p>
+     * {@inheritDoc}
+     * </p>
+     * <p>
+     * All instances of {@link Accessible} guarantee the {@link Value} to be accessible, hence always returns
+     * {@code true}.
+     * </p>
      *
-     * @return {@code true} if a {@link Value} can be accessed;
-     *         {@code false} otherwise
+     * @return {@code true} always
      */
-    boolean canGet();
+    @Override
+    default boolean canGet() {
+        return true;
+    }
 }

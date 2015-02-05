@@ -19,37 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.value;
+package org.jlib.operator;
 
-import java.util.function.Supplier;
+import org.jlib.core.value.Uninitialized;
 
 /**
- * Accessor of a {@link Value}. {@link Accessor#get()} differs from {@link Supplier#get()} by declaring the checked
- * {@link NotAccessibleException}.
+ * {@link Uninitialized} calling the {@link OptionalValueOperator#operateUnset()} method from
+ * {@link #operate(OptionalValueOperator)}.
  *
  * @param <Value>
- *        type of the value
+ *        type of the held value
  *
  * @author Igor Akkerman
  */
-public interface Accessor<Value> {
+abstract class UninitializedOperated<Value>
+extends Uninitialized<Value>
+implements OperatedValue<Value> {
 
-    /**
-     * Returns the accessed {@link Value}.
-     *
-     * @return accessed {@link Value}
-     *
-     * @throws NotAccessibleException
-     *         if no {@link Value} can be accessed
-     */
-    Value get()
-    throws NotAccessibleException;
+    protected UninitializedOperated() {}
 
-    /**
-     * Returns whether a {@link Value} can be accessed.
-     *
-     * @return {@code true} if a {@link Value} can be accessed;
-     *         {@code false} otherwise
-     */
-    boolean canGet();
+    @Override
+    public final void operate(final OptionalValueOperator<Value> operator) {
+        operator.operateUnset();
+    }
 }

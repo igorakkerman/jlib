@@ -22,6 +22,19 @@
     <option name="OPEN_IN_BROWSER" value="true" />
     <option name="OPTION_INCLUDE_LIBS" value="false" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="MavenCompilerTasksManager">
+    <option name="afterCompileTasks">
+      <set>
+        <MavenCompilerTask>
+          <option name="goal" value="verify" />
+          <option name="projectPath" value="$PROJECT_DIR$/pom.xml" />
+        </MavenCompilerTask>
+      </set>
+    </option>
+  </component>
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
