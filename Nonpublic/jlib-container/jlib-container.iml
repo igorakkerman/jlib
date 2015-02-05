@@ -10,5 +10,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="jlib-basefunctions" />
+    <orderEntry type="module" module-name="jlib-basefunctions-apachecommons" />
+    <orderEntry type="module" module-name="jlib-core" />
+    <orderEntry type="module" module-name="jlib-operator" />
+    <orderEntry type="module" module-name="jlib-codequality" />
   </component>
 </module>
