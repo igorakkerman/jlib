@@ -27,6 +27,5 @@ public final class ValueUtility {
         return new InitializedNamed<>(name, value);
     }
 
-    // no visible default constructor
     private ValueUtility() {}
 }

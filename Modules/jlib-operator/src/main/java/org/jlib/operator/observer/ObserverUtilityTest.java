@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,23 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.operation;
+package org.jlib.operator.observer;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import static org.jlib.operator.observer.ObserverUtility.observe;
+import static org.jlib.operator.observer.ObserverUtility.operate;
 
-public class EqualCount<Item> {
+public class ObserverUtilityTest {
 
-    private static final EqualCount<?> INSTANCE = new EqualCount<>();
-
-    @SuppressWarnings("unchecked")
-    public static <Item> EqualCount<Item> getInstance() {
-        return (EqualCount<Item>) INSTANCE;
-    }
-
-    private EqualCount() {}
-
-    public boolean haveEqualCount(final Count<Item> thisObject, @Nullable final Object otherObject) {
-        return otherObject instanceof Count<?> && //
-               thisObject.count() == ((Count<?>) otherObject).count();
+    // @Test
+    public void test()
+    throws Exception {
+        operate(null, null, observe().beforeDo(value -> System.out.println("Operating on " + value))
+                                     .afterSuccessDo(value -> System.out.println("Success: " + value))
+                                     .afterFailureDo(value -> System.out.println("Failure: " + value)));
     }
 }

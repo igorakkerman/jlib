@@ -31,12 +31,8 @@ import org.jlib.operator.OperatorException;
  */
 public final class ObserverUtility {
 
-    /** no visible constructor */
-    private ObserverUtility() {
-    }
-
-    public static <Value> BuiltValueObserver<Value> observe() {
-        return new BuiltValueObserver<>();
+    public static <Value> ConsumersValueObserver<Value> observe() {
+        return new ConsumersValueObserver<>();
     }
 
     /**
@@ -70,28 +66,22 @@ public final class ObserverUtility {
                                        final ValueObserver<Value>... observers)
     throws RuntimeException {
         try {
-            for (final ValueObserver<Value> observer : observers) {
+            for (final ValueObserver<Value> observer : observers)
                 observer.before(value);
-            }
 
             handledOperator.operate();
 
-            for (final ValueObserver<Value> observer : observers) {
+            for (final ValueObserver<Value> observer : observers)
                 observer.afterSuccess(value);
-            }
         }
         catch (final OperatorException exception) {
             // if "legal" exception is thrown
-            for (final ValueObserver<Value> observer : observers) {
+            for (final ValueObserver<Value> observer : observers)
                 observer.afterFailure(value, exception);
-            }
 
             throw exception.getCause();
         }
     }
 
-    public static void main(final String... commandLineArguments) {
-        operate(null, null, observe().beforeDo(value -> System.out.println("Success: " + value))
-                                     .afterFailure(value -> System.out.println("Failure: " + value)));
-    }
+    private ObserverUtility() {}
 }

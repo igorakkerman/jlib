@@ -22,7 +22,7 @@
 package org.jlib.operator;
 
 /**
- * Performs an operation specified by the concrete implementation.
+ * Performs the operation specified by the concrete implementation.
  *
  * @author Igor Akkerman
  */
