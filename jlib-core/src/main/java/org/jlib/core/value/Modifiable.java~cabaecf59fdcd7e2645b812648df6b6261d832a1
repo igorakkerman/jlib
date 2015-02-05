@@ -21,35 +21,28 @@
 
 package org.jlib.core.value;
 
-import java.util.function.Supplier;
+import org.jlib.core.exception.InvalidArgumentException;
 
 /**
- * Accessor of a {@link Value}. {@link Accessor#get()} differs from {@link Supplier#get()} by declaring the checked
- * {@link NotAccessibleException}.
+ * {@link Accessor} of a modifiable {@link Value}.
  *
  * @param <Value>
  *        type of the value
  *
  * @author Igor Akkerman
  */
-public interface Accessor<Value> {
+public interface Modifiable<Value>
+extends Accessor<Value> {
 
     /**
-     * Returns the accessed {@link Value}.
+     * Registers the new {@link Value}.
      *
-     * @return accessed {@link Value}
+     * @param value
+     *        new {@link Value}
      *
-     * @throws NotAccessibleException
-     *         if no {@link Value} can be accessed
+     * @throws InvalidArgumentException
+     *         if {@code value} is invalid
      */
-    Value get()
-    throws NotAccessibleException;
-
-    /**
-     * Returns whether a {@link Value} can be accessed.
-     *
-     * @return {@code true} if a {@link Value} can be accessed;
-     *         {@code false} otherwise
-     */
-    boolean canGet();
+    void set(Value value)
+    throws InvalidArgumentException;
 }

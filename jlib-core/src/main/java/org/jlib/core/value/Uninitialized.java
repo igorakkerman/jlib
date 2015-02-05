@@ -52,6 +52,21 @@ implements Modifiable<Value> {
         throw new NotInitializedException();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritDoc}
+     *
+     * This implementation always returns {@code false}.
+     *
+     * @return {@code false}
+     */
+    @Override
+    public final boolean canGet() {
+        return false;
+    }
+
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
     @Override
     public final String toString() {
         return "<unitialized>";

@@ -35,6 +35,15 @@ class InitializedOperated<Value>
 extends Initialized<Value>
 implements OperatedValue<Value> {
 
+<<<<<<< HEAD
+=======
+    /**
+     * Creates a new {@link InitializedOperated}.
+     *
+     * @param initialValue
+     *        initial Accessor
+     */
+>>>>>>> cabaecf59fdcd7e2645b812648df6b6261d832a1
     public InitializedOperated(final Value initialValue) {
         super(initialValue);
     }
