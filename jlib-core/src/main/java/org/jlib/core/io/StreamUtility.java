@@ -31,9 +31,6 @@ import java.io.OutputStream;
  */
 public final class StreamUtility {
 
-    /** no visible constructor */
-    private StreamUtility() {}
-
     /**
      * <p>
      * Converts the specified signed byte value into an unsigned integer value
@@ -79,4 +76,6 @@ public final class StreamUtility {
         // identical functionality to:
         // return (byte) (unsignedInt <= 127 ? unsignedInt : unsignedInt - 256);
     }
+
+    private StreamUtility() {}
 }
