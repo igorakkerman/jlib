@@ -43,20 +43,4 @@ extends Accessor<Value>,
      */
     @Override
     Value get();
-
-    /**
-     * <p>
-     * {@inheritDoc}
-     * </p>
-     * <p>
-     * All instances of {@link Accessible} guarantee the {@link Value} to be accessible, hence always returns
-     * {@code true}.
-     * </p>
-     *
-     * @return {@code true} always
-     */
-    @Override
-    default boolean canGet() {
-        return true;
-    }
 }
