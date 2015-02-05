@@ -25,27 +25,14 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class EqualCount<Item> {
 
-    /** sole {@link EqualCount} instance */
     private static final EqualCount<?> INSTANCE = new EqualCount<>();
 
-    /**
-     * Returns the sole {@link EqualCount} instance.
-     *
-     * @param <Item>
-     *        type of the Item
-     *
-     * @return sole {@link EqualCount} instance
-     */
     @SuppressWarnings("unchecked")
     public static <Item> EqualCount<Item> getInstance() {
         return (EqualCount<Item>) INSTANCE;
     }
 
-    /**
-     * Creates a new {@link EqualCount}.
-     */
-    private EqualCount() {
-    }
+    private EqualCount() {}
 
     public boolean haveEqualCount(final Count<Item> thisObject, @Nullable final Object otherObject) {
         return otherObject instanceof Count<?> && //
