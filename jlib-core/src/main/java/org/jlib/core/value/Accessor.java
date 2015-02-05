@@ -44,12 +44,4 @@ public interface Accessor<Value> {
      */
     Value get()
     throws NotAccessibleException;
-
-    /**
-     * Returns whether a {@link Value} can be accessed.
-     *
-     * @return {@code true} if a {@link Value} can be accessed;
-     *         {@code false} otherwise
-     */
-    boolean canGet();
 }
