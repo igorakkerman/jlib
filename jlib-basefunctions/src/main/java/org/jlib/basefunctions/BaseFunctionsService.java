@@ -37,7 +37,7 @@ public class BaseFunctionsService {
     private final BaseFunctionsDispatcher baseFunctionsDispatcher;
 
     private BaseFunctionsService()
-    throws ServiceConfigurationError, NoBaseFunctionsImplementationException,
+    throws ServiceConfigurationError, NoBaseFunctionsImplementationFoundException,
            OnlyOneBaseFunctionsImplementationAllowedException {
 
         final ServiceLoader<BaseFunctionsDispatcher> loader = ServiceLoader.load(BaseFunctionsDispatcher.class);
@@ -55,7 +55,7 @@ public class BaseFunctionsService {
     private void assertExactlyOneSpiInClassPath(final List<BaseFunctionsDispatcher> baseFunctionsDispatchers)
     throws OnlyOneBaseFunctionsImplementationAllowedException {
         if (baseFunctionsDispatchers.isEmpty())
-            throw new NoBaseFunctionsImplementationException();
+            throw new NoBaseFunctionsImplementationFoundException();
 
         if (baseFunctionsDispatchers.size() > 1)
             throw new OnlyOneBaseFunctionsImplementationAllowedException(baseFunctionsDispatchers);

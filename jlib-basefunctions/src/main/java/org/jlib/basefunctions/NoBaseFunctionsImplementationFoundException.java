@@ -21,8 +21,7 @@
 
 package org.jlib.basefunctions;
 
-public class NoBaseFunctionsImplementationException
+public class NoBaseFunctionsImplementationFoundException
 extends IllegalStateException {
-
-    private static final long serialVersionUID = 3905866349672226535L;
+    private static final long serialVersionUID = 5042186857599497554L;
 }
