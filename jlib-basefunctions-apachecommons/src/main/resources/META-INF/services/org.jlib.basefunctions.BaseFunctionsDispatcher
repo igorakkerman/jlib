@@ -19,4 +19,4 @@
 #     limitations under the License.
 #
 
-org.jlib.basefunctions.apachecommons.ApacheCommonsBaseFunctionsDispatcher
+org.jlib.basefunctions.apachecommons.service.ApacheCommonsBaseFunctionsDispatcher
