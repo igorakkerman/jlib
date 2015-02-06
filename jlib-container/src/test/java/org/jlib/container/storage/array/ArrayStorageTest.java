@@ -52,13 +52,13 @@ public class ArrayStorageTest {
     @Test(expected = InvalidIndexException.class)
     public void zeroCapacityStorageReadShouldThrowException()
     throws Exception {
-        new ArrayStorage<Integer>(0).getItem(0);
+        new ArrayStorage<Integer>(0).get(0);
     }
 
     @Test(expected = InvalidIndexException.class)
     public void readNegativeIndexShouldThrowException()
     throws Exception {
-        new ArrayStorage<Integer>(5).getItem(- 1);
+        new ArrayStorage<Integer>(5).get(- 1);
     }
 
     @SuppressWarnings("EmptyMethod")

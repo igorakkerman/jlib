@@ -68,7 +68,7 @@ extends Cloneable {
      * @throws IndexOutOfBoundsException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
-    Item getItem(int index)
+    Item get(int index)
     throws InvalidIndexException;
 
     /**
@@ -83,7 +83,7 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
-    void replaceItem(int index, Item newItem)
+    void replace(int index, Item newItem)
     throws InvalidIndexException;
 
     /**
