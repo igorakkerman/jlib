@@ -32,10 +32,8 @@ import org.jlib.operator.observer.ValueObserver;
 import org.jlib.operator.observer.ValueObserverException;
 
 /**
- * Skeletal implementation of a container. A concrete IterableContainer
- * implementation needs only to extend this class and implement the
- * {@link Iterable#iterator()} method. Other methods may be overridden for
- * efficiency reasons.
+ * Skeletal implementation of a container. A concrete IterableContainer implementation needs only to extend this class
+ * and implement the {@link Iterable#iterator()} method. Other methods may be overridden for efficiency reasons.
  *
  * @param <Item>
  *        type of items held in the {@link Object}
@@ -72,13 +70,11 @@ implements AlmightyContainer<Item> {
             throw new ForbiddenCastException(this);
         }
 
-        @SuppressWarnings("DuplicateThrows")
         @SafeVarargs
         @Override
         public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
-        throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
-               ValueObserverException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
             throw new ForbiddenCastException(this);
         }
 
@@ -349,5 +345,4 @@ implements AlmightyContainer<Item> {
     throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
         delegateObservedRetain.retain(items, observers);
     }
-
 }
