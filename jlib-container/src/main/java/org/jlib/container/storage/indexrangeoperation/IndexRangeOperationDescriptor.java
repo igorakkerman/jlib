@@ -93,8 +93,6 @@ implements Cloneable,
 
     @Override
     public IndexRangeOperationDescriptor clone() {
-
-        // TODO: replace by more general strategy
         try {
             return (IndexRangeOperationDescriptor) super.clone();
         }
