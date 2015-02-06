@@ -23,8 +23,7 @@ package org.jlib.container.operation;
 
 import java.util.List;
 
-public interface ToSequentialList<Item>
- {
+public interface ToSequentialList<Item> {
 
     /**
      * Returns a sequentially iterable {@link List} containing all of the
