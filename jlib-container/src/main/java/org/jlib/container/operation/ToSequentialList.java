@@ -21,17 +21,16 @@
 
 package org.jlib.container.operation;
 
+import java.util.Iterator;
 import java.util.List;
 
 public interface ToSequentialList<Item> {
 
     /**
-     * Returns a sequentially iterable {@link List} containing all of the
-     * Items of this {@link Object} in the proper order as returned by this
-     * {@link Object}'s Iterator.
+     * Returns a sequentially iterable {@link List} containing all {@link Item}s of this object in the proper order as
+     * returned by this object's {@link Iterator}.
      *
-     * @return sequentially iterable {@link List} containing all of the Items
-     *         of this {@link Object}
+     * @return sequentially iterable {@link List} of this object's {@link Item}s
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
