@@ -24,7 +24,7 @@ package org.jlib.container.capacity.minimal;
 import org.jlib.container.storage.ContentIndexRegistry;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractSplitCapacityStrategy;
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 public class MinimalSplitCapacityStrategy<Item>
 extends AbstractSplitCapacityStrategy<Item> {

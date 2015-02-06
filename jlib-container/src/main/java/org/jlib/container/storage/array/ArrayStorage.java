@@ -25,7 +25,7 @@ import org.jlib.container.storage.AbstractLinearIndexStorage;
 import org.jlib.container.storage.InvalidCapacityException;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;

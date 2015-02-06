@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.storage.indexrangeoperation;
+package org.jlib.container.storage;
 
 import java.io.Serializable;
 
