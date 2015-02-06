@@ -26,7 +26,7 @@ import org.jlib.container.storage.ContentIndexRegistry;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.LinearIndexStorageException;
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 import static org.jlib.core.message.MessageUtility.mfmessage;
 

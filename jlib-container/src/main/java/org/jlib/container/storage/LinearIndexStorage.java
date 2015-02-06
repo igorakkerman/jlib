@@ -21,8 +21,6 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
-
 /**
  * <p>
  * Storage providing <em>n</em> slots for {@link Item}s indexed from <em>0</em> to <em>n-1</em>.

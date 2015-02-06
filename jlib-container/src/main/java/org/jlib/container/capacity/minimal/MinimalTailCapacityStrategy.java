@@ -26,7 +26,7 @@ import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
 import org.jlib.container.capacity.CapacityStrategy;
 import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 /**
  * <p>

@@ -23,8 +23,6 @@ package org.jlib.container.storage;
 
 import org.jlib.core.exception.UnexpectedStateException;
 
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
-
 import static org.jlib.core.message.MessageUtility.mfmessage;
 
 public abstract class AbstractLinearIndexStorage<Item>

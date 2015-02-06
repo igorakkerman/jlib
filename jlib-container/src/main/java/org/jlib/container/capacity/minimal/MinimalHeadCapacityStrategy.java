@@ -25,7 +25,7 @@ import org.jlib.container.storage.ContentIndexRegistry;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
 import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
-import org.jlib.container.storage.indexrangeoperation.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 /**
  * {@link HeadOrTailCapacityStrategy} providing just as much head capacity as needed.
