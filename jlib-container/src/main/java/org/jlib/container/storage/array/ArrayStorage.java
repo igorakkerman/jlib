@@ -21,11 +21,13 @@
 
 package org.jlib.container.storage.array;
 
+import org.jlib.core.language.Valid;
+
 import org.jlib.container.storage.AbstractLinearIndexStorage;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.InvalidCapacityException;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.IndexRangeOperationDescriptor;
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
@@ -41,8 +43,6 @@ import static org.jlib.core.math.NumberUtility.count;
  * @author Igor Akkerman
  */
 
-// TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the strategy!!!!
-// TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the exceptions for clarity?
 public class ArrayStorage<Item>
 extends AbstractLinearIndexStorage<Item> {
 
@@ -62,18 +62,18 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    protected Item safeGetItem(final int index) {
+    protected Item safeGet(@Valid final int index) {
         return delegateArray[index];
     }
 
     @Override
-    protected void safeReplaceItem(final int index, final Item item) {
+    protected void safeReplace(@Valid final int index, final Item item) {
         delegateArray[index] = item;
     }
 
     @Override
-    protected void safeAddCapacityAndShiftItems(final int capacity,
-                                                final IndexRangeOperationDescriptor... copyDescriptors) {
+    protected void safeAddCapacityAndShiftItems(@Valid final int capacity,
+                                                @Valid final IndexRangeOperationDescriptor... copyDescriptors) {
         final Item[] newDelegateArray = array(delegateArray.length + capacity);
 
         copyItemsTo(newDelegateArray, copyDescriptors);

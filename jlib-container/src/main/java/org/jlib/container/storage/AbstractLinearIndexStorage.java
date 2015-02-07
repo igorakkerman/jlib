@@ -46,10 +46,10 @@ implements LinearIndexStorage<Item> {
 
         ensureIndexValid("index", index);
 
-        return safeGetItem(index);
+        return safeGet(index);
     }
 
-    protected abstract Item safeGetItem(int index);
+    protected abstract Item safeGet(int index);
 
     @Override
     public void replace(final int index, final Item item)
@@ -57,10 +57,10 @@ implements LinearIndexStorage<Item> {
 
         ensureIndexValid("index", index);
 
-        safeReplaceItem(index, item);
+        safeReplace(index, item);
     }
 
-    protected abstract void safeReplaceItem(int index, Item item);
+    protected abstract void safeReplace(int index, Item item);
 
     @Override
     public void addCapacityAndShiftItems(final int additionalCapacity,
@@ -95,6 +95,10 @@ implements LinearIndexStorage<Item> {
             throw new InvalidCapacityException(this, capacityName, capacity);
     }
 
+    // TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the
+    // strategy!!!!
+    // TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the
+    // exceptions for clarity?
     protected void ensureIndexValid(final String indexName, final int index) {
         if (index < 0)
             throw new InvalidIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));

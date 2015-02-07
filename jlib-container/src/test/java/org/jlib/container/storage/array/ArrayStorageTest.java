@@ -38,9 +38,9 @@ public class ArrayStorageTest {
 
     public void positiveCapacityStorageShouldReturnCorrectCapacity()
     throws Exception {
-        final ArrayStorage<Integer> storage = new ArrayStorage<>(1);
+        final ArrayStorage<Integer> storage = new ArrayStorage<>(5);
 
-        assertThat(storage.getCapacity()).isEqualTo(1);
+        assertThat(storage.getCapacity()).isEqualTo(5);
     }
 
     @Test(expected = InvalidCapacityException.class)
@@ -61,25 +61,23 @@ public class ArrayStorageTest {
         new ArrayStorage<Integer>(5).get(- 1);
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Test
-    public void testEnsureCapacityAndShiftItems()
+    public void getPreviouslySetItemShouldReturnCorrectItem()
     throws Exception {
-        // TODO: implement
+        final ArrayStorage<String> storage = new ArrayStorage<>(5);
+        storage.replace(3, "Test");
+
+        assertThat(storage.get(3)).isEqualTo("Test");
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Test
-    public void testGetItem()
+    public void getReplacedItemShouldReturnCorrectItem()
     throws Exception {
-        // TODO: implement
-    }
+        final ArrayStorage<String> storage = new ArrayStorage<>(5);
+        storage.replace(3, "Test");
+        storage.replace(3, "new");
 
-    @SuppressWarnings("EmptyMethod")
-    @Test
-    public void testReplaceItem()
-    throws Exception {
-        // TODO: implement
+        assertThat(storage.get(3)).isEqualTo("new");
     }
 
     @SuppressWarnings("EmptyMethod")
@@ -99,6 +97,13 @@ public class ArrayStorageTest {
     @SuppressWarnings("EmptyMethod")
     @Test
     public void testGetCapacity()
+    throws Exception {
+        // TODO: implement
+    }
+
+    @SuppressWarnings("EmptyMethod")
+    @Test
+    public void testEnsureCapacityAndShiftItems()
     throws Exception {
         // TODO: implement
     }
