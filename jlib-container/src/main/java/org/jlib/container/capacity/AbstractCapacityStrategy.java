@@ -84,9 +84,8 @@ extends ApplicationObject {
             throw new InvalidIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
                                                                contentIndexRegistry.getFirstItemIndex()));
 
-        if (index > contentIndexRegistry.getLastItemIndex()) {
+        if (index > contentIndexRegistry.getLastItemIndex())
             throw new InvalidIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
                                                                contentIndexRegistry.getLastItemIndex()));
-        }
     }
 }
