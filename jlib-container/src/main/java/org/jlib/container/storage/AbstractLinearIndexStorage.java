@@ -52,15 +52,15 @@ implements LinearIndexStorage<Item> {
     protected abstract Item safeGet(int index);
 
     @Override
-    public void replace(final int index, final Item item)
+    public void set(final int index, final Item item)
     throws InvalidIndexException {
 
         ensureIndexValid("index", index);
 
-        safeReplace(index, item);
+        safeSet(index, item);
     }
 
-    protected abstract void safeReplace(int index, Item item);
+    protected abstract void safeSet(int index, Item item);
 
     @Override
     public void addCapacityAndShiftItems(final int additionalCapacity,
@@ -103,9 +103,9 @@ implements LinearIndexStorage<Item> {
         if (index < 0)
             throw new InvalidIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));
 
-        if (index > getCapacity() - 1)
+        if (index > capacity() - 1)
             throw new InvalidIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
-                                                            getCapacity()));
+                                                            capacity()));
     }
 
     protected void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
