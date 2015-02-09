@@ -36,14 +36,12 @@ implements LinearIndexStorage<Item> {
      */
     protected AbstractLinearIndexStorage(final int initialCapacity)
     throws InvalidCapacityException {
-
         ensureCapacityValid("initialCapacity", initialCapacity);
     }
 
     @Override
     public Item get(final int index)
     throws InvalidIndexException {
-
         ensureIndexValid("index", index);
 
         return safeGet(index);
@@ -54,7 +52,6 @@ implements LinearIndexStorage<Item> {
     @Override
     public void set(final int index, final Item item)
     throws InvalidIndexException {
-
         ensureIndexValid("index", index);
 
         safeSet(index, item);
@@ -65,7 +62,6 @@ implements LinearIndexStorage<Item> {
     @Override
     public void addCapacityAndShiftItems(final int additionalCapacity,
                                          final IndexRangeOperationDescriptor... copyDescriptors) {
-
         ensureAdditionalCapacityValid(additionalCapacity);
 
         safeAddCapacityAndShiftItems(additionalCapacity, copyDescriptors);
