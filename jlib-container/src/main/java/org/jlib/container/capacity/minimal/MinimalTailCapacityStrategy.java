@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
 import org.jlib.container.capacity.CapacityStrategy;
@@ -50,7 +50,7 @@ public class MinimalTailCapacityStrategy<Item>
 extends AbstractHeadOrTailCapacityStrategy<Item> {
 
     public MinimalTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final ContentIndexRange contentIndexRange) {
+                                       final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
@@ -62,7 +62,7 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
             return;
 
         final IndexRangeOperationDescriptor keepAllItems = /*
-         */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getFirstItemIndex());
+         */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getMinimumIndex());
 
         getStorage().addCapacityAndShiftItems(missingTailCapacity, keepAllItems);
     }

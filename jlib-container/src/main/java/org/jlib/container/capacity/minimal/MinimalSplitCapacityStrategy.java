@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractSplitCapacityStrategy;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
@@ -30,14 +30,14 @@ public class MinimalSplitCapacityStrategy<Item>
 extends AbstractSplitCapacityStrategy<Item> {
 
     public MinimalSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                        final ContentIndexRange contentIndexRange) {
+                                        final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
     @Override
     protected void safeEnsureCapacity(final int splitIndex, final int splitCapacity) {
         final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightBySplitCapacity = /*
-         */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRange().getLastItemIndex(),
+         */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRange().getMaximumIndex(),
                                               splitIndex + splitCapacity);
 
         final int missingTailCapacity = splitCapacity - getTailCapacity();
@@ -51,11 +51,11 @@ extends AbstractSplitCapacityStrategy<Item> {
 
         // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
         final IndexRangeOperationDescriptor leftCopyDescriptor = /*
-         */ new IndexRangeOperationDescriptor(getContentIndexRange().getFirstItemIndex(), splitIndex - 1,
+         */ new IndexRangeOperationDescriptor(getContentIndexRange().getMinimumIndex(), splitIndex - 1,
                                               splitIndex);
 
         final IndexRangeOperationDescriptor[] copyDescriptors = /*
-         */ splitIndex > getContentIndexRange().getFirstItemIndex() ?
+         */ splitIndex > getContentIndexRange().getMinimumIndex() ?
             new IndexRangeOperationDescriptor[]{ leftCopyDescriptor,
                                                  shiftRightPartFromSplitIndexRightBySplitCapacity } :
             new IndexRangeOperationDescriptor[]{ shiftRightPartFromSplitIndexRightBySplitCapacity };

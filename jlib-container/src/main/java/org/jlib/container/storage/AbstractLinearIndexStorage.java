@@ -76,15 +76,6 @@ implements LinearIndexStorage<Item> {
     protected abstract void safeAddCapacityAndShiftItems(int capacity,
                                                          IndexRangeOperationDescriptor... copyDescriptors);
 
-    /**
-     * Ensures the specified capacity is valid.
-     *
-     * @param capacity
-     *        integer specifying a capacity
-     *
-     * @throws InvalidCapacityException
-     *         if {@code capacity < 0}
-     */
     protected void ensureCapacityValid(final String capacityName, final int capacity)
     throws InvalidCapacityException {
         if (capacity < 0)

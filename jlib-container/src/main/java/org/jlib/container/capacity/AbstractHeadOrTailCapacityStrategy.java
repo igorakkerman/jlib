@@ -23,7 +23,7 @@ package org.jlib.container.capacity;
 
 import org.jlib.core.language.Valid;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 
 public abstract class AbstractHeadOrTailCapacityStrategy<Item>
@@ -31,7 +31,7 @@ extends AbstractCapacityStrategy<Item>
 implements HeadOrTailCapacityStrategy {
 
     protected AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                                 final ContentIndexRange contentIndexRange) {
+                                                 final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 

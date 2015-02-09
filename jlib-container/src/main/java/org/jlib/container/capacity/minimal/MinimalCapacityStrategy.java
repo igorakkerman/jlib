@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractCapacityStrategy;
@@ -44,7 +44,7 @@ implements CapacityStrategy {
     private final HeadOrTailCapacityStrategy tailCapacityStrategy;
 
     public MinimalCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                   final ContentIndexRange contentIndexRange) {
+                                   final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
 
         initialCapacityStrategy = new MinimalInitialCapacityStrategy<>(storage, contentIndexRange);
