@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity;
 
-import org.jlib.container.storage.ContentIndexRegistry;
+import org.jlib.container.storage.ContentIndexRange;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
@@ -30,8 +30,8 @@ extends AbstractCapacityStrategy<Item>
 implements SplitCapacityStrategy {
 
     protected AbstractSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                            final ContentIndexRegistry contentIndexRegistry) {
-        super(storage, contentIndexRegistry);
+                                            final ContentIndexRange contentIndexRange) {
+        super(storage, contentIndexRange);
     }
 
     @Override
@@ -46,7 +46,7 @@ implements SplitCapacityStrategy {
 
         safeEnsureCapacity(splitIndex, splitCapacity);
 
-        getContentIndexRegistry().incrementLastItemIndex(splitCapacity);
+        getContentIndexRange().incrementLastItemIndex(splitCapacity);
     }
 
     protected abstract void safeEnsureCapacity(int splitIndex, int splitCapacity);
