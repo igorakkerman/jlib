@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
 import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
@@ -47,13 +47,13 @@ public class MinimalHeadCapacityStrategy<Item>
 extends AbstractHeadOrTailCapacityStrategy<Item> {
 
     public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final ContentIndexRange contentIndexRange) {
+                                       final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
     @Override
     protected void safeEnsureCapacity(final int headCapacity) {
-        final int missingHeadCapacity = headCapacity - getContentIndexRange().getFirstItemIndex();
+        final int missingHeadCapacity = headCapacity - getContentIndexRange().getMinimumIndex();
 
         if (missingHeadCapacity <= 0)
             return;

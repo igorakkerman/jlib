@@ -22,7 +22,7 @@
 package org.jlib.container.capacity.minimal;
 
 import org.jlib.container.capacity.AbstractCapacityStrategy;
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.CapacityStrategy;
 import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
@@ -50,7 +50,7 @@ extends AbstractCapacityStrategy<Item>
 implements InitialCapacityStrategy {
 
     public MinimalInitialCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                          final ContentIndexRange contentIndexRange) {
+                                          final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 

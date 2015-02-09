@@ -21,7 +21,7 @@
 
 package org.jlib.container.capacity;
 
-import org.jlib.container.storage.ContentIndexRange;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
@@ -35,10 +35,10 @@ extends ApplicationObject {
 
     private final LinearIndexStorage<Item> storage;
 
-    private final ContentIndexRange contentIndexRange;
+    private final IndexRange contentIndexRange;
 
     protected AbstractCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final ContentIndexRange contentIndexRange) {
+                                       final IndexRange contentIndexRange) {
         this.storage = storage;
         this.contentIndexRange = contentIndexRange;
     }
@@ -47,7 +47,7 @@ extends ApplicationObject {
         return storage;
     }
 
-    protected ContentIndexRange getContentIndexRange() {
+    protected IndexRange getContentIndexRange() {
         return contentIndexRange;
     }
 
@@ -57,12 +57,12 @@ extends ApplicationObject {
      * @return integer specifying the tail capacity
      */
     protected int getTailCapacity() {
-        return storage.capacity() - contentIndexRange.getLastItemIndex();
+        return storage.capacity() - contentIndexRange.getMaximumIndex();
     }
 
     protected IndexRangeOperationDescriptor getDescriptorCopyAllItemsToIndex(final int targetIndex) {
-        return new IndexRangeOperationDescriptor(contentIndexRange.getFirstItemIndex(),
-                                                 contentIndexRange.getLastItemIndex(), targetIndex);
+        return new IndexRangeOperationDescriptor(contentIndexRange.getMinimumIndex(),
+                                                 contentIndexRange.getMaximumIndex(), targetIndex);
     }
 
     /**
@@ -80,12 +80,12 @@ extends ApplicationObject {
     }
 
     protected void ensureIndexValid(final int index) {
-        if (index < contentIndexRange.getFirstItemIndex())
+        if (index < contentIndexRange.getMinimumIndex())
             throw new InvalidIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
-                                                               contentIndexRange.getFirstItemIndex()));
+                                                               contentIndexRange.getMinimumIndex()));
 
-        if (index > contentIndexRange.getLastItemIndex())
+        if (index > contentIndexRange.getMaximumIndex())
             throw new InvalidIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
-                                                               contentIndexRange.getLastItemIndex()));
+                                                               contentIndexRange.getMaximumIndex()));
     }
 }
