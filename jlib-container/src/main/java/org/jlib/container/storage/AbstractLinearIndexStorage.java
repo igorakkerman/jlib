@@ -105,7 +105,7 @@ implements LinearIndexStorage<Item> {
 
         if (index > capacity() - 1)
             throw new InvalidIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
-                                                            capacity()));
+                                                            capacity() - 1));
     }
 
     protected void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
