@@ -53,7 +53,7 @@ extends Cloneable {
      *
      * @return integer specifying the capacity
      */
-    int getCapacity();
+    int capacity();
 
     /**
      * Returns the {@link Item} stored at the specified index.
@@ -81,7 +81,7 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if {@code index} is out of the valid bounds of this {@link LinearIndexStorage}
      */
-    void replace(int index, Item newItem)
+    void set(int index, Item newItem)
     throws InvalidIndexException;
 
     /**

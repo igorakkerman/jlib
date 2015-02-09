@@ -33,14 +33,14 @@ public class ArrayStorageTest {
     throws Exception {
         final ArrayStorage<Integer> storage = new ArrayStorage<>(0);
 
-        assertThat(storage.getCapacity()).isEqualTo(0);
+        assertThat(storage.capacity()).isEqualTo(0);
     }
 
     public void positiveCapacityStorageShouldReturnCorrectCapacity()
     throws Exception {
         final ArrayStorage<Integer> storage = new ArrayStorage<>(5);
 
-        assertThat(storage.getCapacity()).isEqualTo(5);
+        assertThat(storage.capacity()).isEqualTo(5);
     }
 
     @Test(expected = InvalidCapacityException.class)
@@ -65,7 +65,7 @@ public class ArrayStorageTest {
     public void getPreviouslySetItemShouldReturnCorrectItem()
     throws Exception {
         final ArrayStorage<String> storage = new ArrayStorage<>(5);
-        storage.replace(3, "Test");
+        storage.set(3, "Test");
 
         assertThat(storage.get(3)).isEqualTo("Test");
     }
@@ -74,8 +74,8 @@ public class ArrayStorageTest {
     public void getReplacedItemShouldReturnCorrectItem()
     throws Exception {
         final ArrayStorage<String> storage = new ArrayStorage<>(5);
-        storage.replace(3, "Test");
-        storage.replace(3, "new");
+        storage.set(3, "Test");
+        storage.set(3, "new");
 
         assertThat(storage.get(3)).isEqualTo("new");
     }

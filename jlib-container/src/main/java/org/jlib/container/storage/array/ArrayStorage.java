@@ -57,7 +57,7 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    public int getCapacity() {
+    public int capacity() {
         return delegateArray.length;
     }
 
@@ -67,7 +67,7 @@ extends AbstractLinearIndexStorage<Item> {
     }
 
     @Override
-    protected void safeReplace(@Valid final int index, final Item item) {
+    protected void safeSet(@Valid final int index, final Item item) {
         delegateArray[index] = item;
     }
 

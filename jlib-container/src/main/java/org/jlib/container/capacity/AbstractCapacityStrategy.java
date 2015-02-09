@@ -57,7 +57,7 @@ extends ApplicationObject {
      * @return integer specifying the tail capacity
      */
     protected int getTailCapacity() {
-        return storage.getCapacity() - contentIndexRegistry.getLastItemIndex();
+        return storage.capacity() - contentIndexRegistry.getLastItemIndex();
     }
 
     protected IndexRangeOperationDescriptor getDescriptorCopyAllItemsToIndex(final int targetIndex) {
