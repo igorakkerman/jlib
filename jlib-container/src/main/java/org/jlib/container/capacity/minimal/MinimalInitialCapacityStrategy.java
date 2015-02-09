@@ -22,7 +22,7 @@
 package org.jlib.container.capacity.minimal;
 
 import org.jlib.container.capacity.AbstractCapacityStrategy;
-import org.jlib.container.storage.ContentIndexRegistry;
+import org.jlib.container.storage.ContentIndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.CapacityStrategy;
 import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
@@ -50,12 +50,12 @@ extends AbstractCapacityStrategy<Item>
 implements InitialCapacityStrategy {
 
     public MinimalInitialCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                          final ContentIndexRegistry contentIndexRegistry) {
-        super(storage, contentIndexRegistry);
+                                          final ContentIndexRange contentIndexRange) {
+        super(storage, contentIndexRange);
     }
 
     @Override
     public void ensureCapacity() {
-        getStorage().addCapacityAndShiftItems(getContentIndexRegistry().getItemsCount());
+        getStorage().addCapacityAndShiftItems(getContentIndexRange().itemsCount());
     }
 }
