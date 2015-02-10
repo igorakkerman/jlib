@@ -33,17 +33,7 @@ extends ObserverException {
 
     private static final long serialVersionUID = 3157732253924917254L;
 
-    /**
-     * Creates a new {@link BeforeHandlerValueObserverException}.
-     *
-     * @param value
-     *        Value removed from {@code operation}
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link BeforeHandlerValueObserverException}
-     */
-    protected BeforeHandlerValueObserverException(final Object value, final Message message,
-                                                  final Exception cause) {
+    protected BeforeHandlerValueObserverException(final Object value, final Message message, final Exception cause) {
         super(value, message, cause);
     }
 }
