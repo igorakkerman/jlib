@@ -21,17 +21,25 @@
 
 package org.jlib.container.capacity;
 
-import static org.jlib.core.message.MessageUtility.message;
-
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.LinearIndexStorageException;
 
-public class InvalidPartialCapacityException
-extends LinearIndexStorageException {
+/**
+ * Strategy of the head capacity provision in a {@link LinearIndexStorage}.
+ *
+ * @author Igor Akkerman
+ */
+public interface HeadCapacityStrategy {
 
-    private static final long serialVersionUID = 2379753107475444861L;
-
-    InvalidPartialCapacityException(final LinearIndexStorage<?> storage, final int partialCapacity) {
-        super(storage, message(partialCapacity));
-    }
+    /**
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at its head.
+     * The indices of the stored items are incremented, if necessary.
+     *
+     * @param headCapacity
+     *        integer specifying the head capacity
+     *
+     * @throws InvalidCapacityException
+     *         if {@code headCapacity < 0}
+     */
+    void ensureHeadCapacity(int headCapacity)
+    throws InvalidCapacityException;
 }

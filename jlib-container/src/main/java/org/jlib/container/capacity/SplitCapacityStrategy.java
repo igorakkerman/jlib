@@ -32,9 +32,9 @@ import org.jlib.container.storage.LinearIndexStorage;
 public interface SplitCapacityStrategy {
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items at the
-     * specified position within the {@link LinearIndexStorage}. The indices of the stored Items are modified,
-     * if necessary.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at the specified
+     * position betweeen the existing stored items. The indices of the items stored after the specified split index are
+     * incremented, if necessary.
      *
      * @param splitIndex
      *        integer specifying the index at which the capacity should be provided
@@ -43,11 +43,11 @@ public interface SplitCapacityStrategy {
      *        integer specifying the capacity for the split
      *
      * @throws InvalidIndexException
-     *         if {@code splitIndex} is not within the range of stored Items
+     *         if {@code splitIndex} is not within the range of stored items
      *
-     * @throws InvalidPartialCapacityException
+     * @throws InvalidCapacityException
      *         if {@code capacity < 0}
      */
-    void ensureCapacity(int splitIndex, int splitCapacity)
-    throws InvalidIndexException, InvalidPartialCapacityException;
+    void ensureSplitCapacity(int splitIndex, int splitCapacity)
+    throws InvalidCapacityException, InvalidIndexException;
 }

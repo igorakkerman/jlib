@@ -35,19 +35,19 @@ implements SplitCapacityStrategy {
     }
 
     @Override
-    public void ensureCapacity(final int splitIndex, final int splitCapacity)
+    public void ensureSplitCapacity(final int splitIndex, final int splitCapacity)
     throws InvalidIndexException {
         ensureIndexValid(splitIndex);
 
-        ensurePartialCapacityValid(splitCapacity);
+        ensureCapacityValid(splitCapacity);
 
         if (splitCapacity == 0)
             return;
 
-        safeEnsureCapacity(splitIndex, splitCapacity);
+        safeEnsureSplitCapacity(splitIndex, splitCapacity);
 
         getContentIndexRange().incrementMaximum(splitCapacity);
     }
 
-    protected abstract void safeEnsureCapacity(int splitIndex, int splitCapacity);
+    protected abstract void safeEnsureSplitCapacity(int splitIndex, int splitCapacity);
 }

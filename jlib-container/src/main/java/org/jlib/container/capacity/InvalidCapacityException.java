@@ -22,24 +22,16 @@
 package org.jlib.container.capacity;
 
 import org.jlib.container.storage.LinearIndexStorage;
+import org.jlib.container.storage.LinearIndexStorageException;
 
-/**
- * Strategy of the head or tail capacity provision in a {@link LinearIndexStorage}.
- *
- * @author Igor Akkerman
- */
-public interface HeadOrTailCapacityStrategy {
+import static org.jlib.core.message.MessageUtility.message;
 
-    /**
-     * Ensures that the specified {@link LinearIndexStorage} fits the specified number of Items at the corresponding
-     * position of the {@link LinearIndexStorage}. The indices of the stored Items are modified, if necessary.
-     *
-     * @param headOrTailCapacity
-     *        necessary capacity
-     *
-     * @throws InvalidPartialCapacityException
-     *         if {@code headOrTailCapacity < 0}
-     */
-    void ensureCapacity(int headOrTailCapacity)
-    throws InvalidPartialCapacityException;
+public class InvalidCapacityException
+extends LinearIndexStorageException {
+
+    private static final long serialVersionUID = 2379753107475444861L;
+
+    InvalidCapacityException(final LinearIndexStorage<?> storage, final int capacity) {
+        super(storage, message(capacity));
+    }
 }

@@ -62,8 +62,8 @@ implements LinearIndexStorage<Item> {
     protected abstract void safeSet(int index, Item item);
 
     @Override
-    public void addCapacityAndShiftItems(final int additionalCapacity,
-                                         final IndexRangeOperationDescriptor... copyDescriptors) {
+    public void ensureCapacityAndShiftItems(final int additionalCapacity,
+                                            final IndexRangeOperationDescriptor... copyDescriptors) {
         ensureAdditionalCapacityValid(additionalCapacity);
 
         safeAddCapacityAndShiftItems(additionalCapacity, copyDescriptors);

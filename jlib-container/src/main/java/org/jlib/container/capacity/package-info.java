@@ -19,12 +19,21 @@
  *     limitations under the License.
  */
 
+
+/**
+ * <p>
+ * Interfaces for strategies of capacity provision in a
+ * {@link org.jlib.container.storage.LinearIndexStorage LinearIndexStorage}.
+ * The following terms are used:
+ * </p>
+ * <dl>
+ * <dt>initial capacity</dt> <dd>initial capacity</dd>
+ * <dt>head capacity</dt>    <dd>capacity in front of the first item</dd>
+ * <dt>split capacity</dt>   <dd>capacity provided between two sections when splitting one big section into two</dd>
+ * <dt>tail capacity</dt>    <dd>capacity behind the last item</dd>
+ * </dl>
+ *
+ * @author Igor Akkerman
+ */
 package org.jlib.container.capacity;
 
-// Unifying interface
-public interface CapacityStrategy
-extends InitialCapacityStrategy,
-        HeadCapacityStrategy,
-        TailCapacityStrategy,
-        SplitCapacityStrategy {
-}

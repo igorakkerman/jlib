@@ -21,14 +21,14 @@
 
 package org.jlib.container.capacity.minimal;
 
+import org.jlib.container.capacity.AbstractCapacityStrategy;
+import org.jlib.container.capacity.HeadCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
-import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
-import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.LinearIndexStorage;
 
 /**
- * {@link HeadOrTailCapacityStrategy} providing just as much head capacity as needed.
+ * {@link HeadCapacityStrategy} providing just as much head capacity as needed.
  * </p>
  * <p>
  * The {@link MinimalHeadCapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
@@ -44,7 +44,8 @@ import org.jlib.container.storage.IndexRangeOperationDescriptor;
  * @author Igor Akkerman
  */
 public class MinimalHeadCapacityStrategy<Item>
-extends AbstractHeadOrTailCapacityStrategy<Item> {
+extends AbstractCapacityStrategy<Item>
+implements HeadCapacityStrategy {
 
     public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
                                        final IndexRange contentIndexRange) {
@@ -52,7 +53,9 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
     }
 
     @Override
-    protected void safeEnsureCapacity(final int headCapacity) {
+    public void ensureHeadCapacity(final int headCapacity) {
+        ensureCapacityValid(headCapacity);
+
         final int missingHeadCapacity = headCapacity - getContentIndexRange().getMinimum();
 
         if (missingHeadCapacity <= 0)
@@ -61,7 +64,7 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
         final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
          */ getDescriptorCopyAllItemsToIndex(/* new first Item index */ headCapacity);
 
-        getStorage().addCapacityAndShiftItems(headCapacity, shiftAllItemsToAllowHeadCapacity);
+        getStorage().ensureCapacityAndShiftItems(headCapacity, shiftAllItemsToAllowHeadCapacity);
 
         getContentIndexRange().incrementMinimum(missingHeadCapacity);
     }
