@@ -88,7 +88,7 @@ implements Iterator<Character> {
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
      *
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
      *
      * @throws CharSequenceEndIndexAboveBoundException
@@ -96,7 +96,7 @@ implements Iterator<Character> {
      */
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
     }
@@ -173,7 +173,7 @@ implements Iterator<Character> {
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
      *
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
      *
      * @throws CharSequenceEndIndexAboveBoundException
@@ -181,13 +181,13 @@ implements Iterator<Character> {
      */
     public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
                                 final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         if (firstCharacterIndex < 0)
             throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
 
         if (lastCharacterIndex < firstCharacterIndex)
-            throw new CharSequenceEndIndexBelowStartIndexException(iteratedCharSequence, firstCharacterIndex,
+            throw new CharSequenceEndIndexBelowBeginIndexException(iteratedCharSequence, firstCharacterIndex,
                                                                    lastCharacterIndex);
 
         if (lastCharacterIndex >= iteratedCharSequence.length())

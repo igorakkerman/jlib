@@ -76,7 +76,7 @@ extends CharSequenceIterator {
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
      *
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
      *
      * @throws CharSequenceEndIndexAboveBoundException
@@ -84,7 +84,7 @@ extends CharSequenceIterator {
      */
     public static Iterable<Character> iterable(final StringBuilder iterableStringBuilder, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         return () -> new StringBuilderIterator(iterableStringBuilder, firstCharacterIndex, lastCharacterIndex);
     }
@@ -145,7 +145,7 @@ extends CharSequenceIterator {
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
      *
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
      *
      * @throws CharSequenceEndIndexAboveBoundException
@@ -153,7 +153,7 @@ extends CharSequenceIterator {
      */
     public StringBuilderIterator(final StringBuilder iteratedStringBuilder, final int firstCharacterIndex,
                                  final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         super(iteratedStringBuilder, firstCharacterIndex, lastCharacterIndex);
         this.iteratedStringBuilder = iteratedStringBuilder;
