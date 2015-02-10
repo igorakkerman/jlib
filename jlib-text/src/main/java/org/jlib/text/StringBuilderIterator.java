@@ -8,7 +8,7 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 /**
- * Iterator over the {@link Character Characters} of a {@link StringBuilder}.
+ * Iterator over the {@link Character}s of a {@link StringBuilder}.
  *
  * @author Igor Akkerman
  */
@@ -17,33 +17,32 @@ extends CharSequenceIterator {
 
     /**
      * Returns an {@link Iterable} creating StringBuilderIterators over the
-     * {@link Character Characters} of a {@link StringBuilder}.
+     * {@link Character}s of a {@link StringBuilder}.
      *
      * @param iterableStringBuilder
      *        {@link StringBuilder} to iterate
      *
      * @return {@link Iterable} creating StringBuilderIterators over the
-     *         {@link Character Characters} of {@code iterableStringBuilder}
+     *         {@link Character}s of {@code iterableStringBuilder}
      */
     public static Iterable<Character> iterable(final StringBuilder iterableStringBuilder) {
         return () -> new StringBuilderIterator(iterableStringBuilder);
     }
 
     /**
-     * Returns an {@link Iterable} creating StringBuilderIterators over the
-     * {@link Character Characters} of the subsequence specified by the index of
-     * its first character (inclusive) contained by the specified
+     * Returns an {@link Iterable} creating {@link StringBuilderIterator}s over the {@link Character}s of the
+     * subsequence specified by the index of its first {@link Character} (inclusive) contained by the specified
      * {@link StringBuilder}.
      *
      * @param iterableStringBuilder
      *        {@link StringBuilder} to iterate
      *
      * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
+     *        integer specifying the index of the first {@link Character} of the
      *        subsequence
      *
      * @return {@link Iterable} creating StringBuilderIterators over the
-     *         {@link Character Characters} of the subsequence
+     *         {@link Character}s of the subsequence
      *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
@@ -57,24 +56,22 @@ extends CharSequenceIterator {
     }
 
     /**
-     * Returns an {@link Iterable} creating StringBuilderIterators over the
-     * {@link Character Characters} of the subsequence specified by the indices
-     * of its first and last characters (inclusive) contained by the specified
-     * {@link StringBuilder}.
+     * Returns an {@link Iterable} creating {@link StringBuilderIterator}s over the {@link Character}s of the
+     * subsequence specified by the indices of its first and last {@link Character}s (inclusive) contained by the
+     * specified {@link StringBuilder}.
      *
      * @param iterableStringBuilder
      *        {@link StringBuilder} to iterate
      *
      * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
-     *        subsequence
+     *        integer specifying the index of the first {@link Character} of the subsequence
      *
      * @param lastCharacterIndex
-     *        integer specifying the index of the last character of the
+     *        integer specifying the index of the last {@link Character} of the
      *        subsequence
      *
      * @return {@link Iterable} creating StringBuilderIterators over the
-     *         {@link Character Characters} of the subsequence
+     *         {@link Character}s of the subsequence
      *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
@@ -99,8 +96,7 @@ extends CharSequenceIterator {
     private Optional<Character> lastReturnedCharacter = empty();
 
     /**
-     * Creates a new StringBuilderIterator over the {@link Character Characters}
-     * of the specified {@link StringBuilder}.
+     * Creates a new {@link StringBuilderIterator} over the {@link Character}s of the specified {@link StringBuilder}.
      *
      * @param iteratedStringBuilder
      *        {@link StringBuilder} to iterate
@@ -111,17 +107,18 @@ extends CharSequenceIterator {
     }
 
     /**
-     * Creates a new StringBuilderIterator over the {@link Character Characters}
-     * of the subsequence specified by the index of its first character
-     * (inclusive) contained by the specified {@link StringBuilder}.
+     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the index of its
+     * first {@link Character} (inclusive) contained by the specified {@link StringBuilder}.
      *
      * @param iteratedStringBuilder
      *        {@link StringBuilder} to iterate
+     *
      * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
-     *        subsequence
+     *        integer specifying the index of the first {@link Character} of the  subsequence
+     *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
+     *
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedStringBuilder.length()}
      */
@@ -131,19 +128,18 @@ extends CharSequenceIterator {
     }
 
     /**
-     * Creates a new StringBuilderIterator over the {@link Character Characters}
-     * of the subsequence specified by the indices of its first and last
-     * characters (inclusive) contained by the specified {@link StringBuilder}.
+     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the indices of
+     * its first and last {@link Character}s (inclusive) contained by the specified {@link StringBuilder}.
      *
      * @param iteratedStringBuilder
      *        {@link StringBuilder} to iterate
      *
      * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
+     *        integer specifying the index of the first {@link Character} of the
      *        subsequence
      *
      * @param lastCharacterIndex
-     *        integer specifying the index of the last character of the
+     *        integer specifying the index of the last {@link Character} of the
      *        subsequence
      *
      * @throws CharSequenceBeginIndexNegativeException
@@ -171,8 +167,7 @@ extends CharSequenceIterator {
     }
 
     /**
-     * Deletes the last {@link Character} returned by this StringBuilderIterator
-     * from the {@link StringBuilder}.
+     * Deletes the last {@link Character} returned by this {@link StringBuilderIterator} from the {@link StringBuilder}.
      *
      * @throws IllegalStateException
      *         if no {@link Character} has been returned yet

@@ -14,20 +14,10 @@ extends CharSequenceIndexOutOfBoundsException {
     /** valid begin index */
     private final int beginIndex;
 
-    /**
-     * Creates a new CharSequenceEndIndexBelowStartIndexException for the
-     * specified {@link CharSequence}.
-     *
-     * @param charSequence
-     *        {@link CharSequence} for which the end index is below the start
-     *        index
-     * @param beginIndex
-     *        integer specifying the valid begin index
-     * @param endIndex
-     *        integer specifying the invalid end index
-     */
-    public CharSequenceEndIndexBelowStartIndexException(final CharSequence charSequence, final int beginIndex, final int endIndex) {
+    public CharSequenceEndIndexBelowStartIndexException(final CharSequence charSequence, final int beginIndex,
+                                                        final int endIndex) {
         super(charSequence, endIndex);
+
         this.beginIndex = beginIndex;
     }
 
@@ -39,7 +29,6 @@ extends CharSequenceIndexOutOfBoundsException {
     public int getBeginIndex() {
         return beginIndex;
     }
-
 
     @Override
     public String getMessage() {
