@@ -28,8 +28,8 @@ import java.util.Set;
 import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
 import org.jlib.basefunctions.ApplicationObject;
-import org.jlib.operator.observer.ValueObserver;
-import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.observer.Observer;
+import org.jlib.operator.observer.ObserverException;
 
 /**
  * Skeletal implementation of a container. A concrete IterableContainer implementation needs only to extend this class
@@ -73,14 +73,14 @@ implements AlmightyContainer<Item> {
         @SafeVarargs
         @Override
         public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
-        throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
+        */ void remove(final ContainsIterable items, final Observer<Item>... observers)
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
             throw new ForbiddenCastException(this);
         }
 
         @SafeVarargs
         @Override
-        public final void removeAll(final ValueObserver<Item>... observers)
+        public final void removeAll(final Observer<Item>... observers)
         throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
@@ -142,8 +142,8 @@ implements AlmightyContainer<Item> {
 
         @SafeVarargs
         @Override
-        public final void retain(final Iterable<Item> items, final ValueObserver<Item>... observers)
-        throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
+        public final void retain(final Iterable<Item> items, final Observer<Item>... observers)
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
             throw new ForbiddenCastException(this);
         }
     };
@@ -188,7 +188,7 @@ implements AlmightyContainer<Item> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void removeAll(final ValueObserver<Item>... observers)
+    public void removeAll(final Observer<Item>... observers)
     throws InvalidContainerStateException {
         delegateObservedRemoveAll.removeAll(observers);
     }
@@ -239,9 +239,9 @@ implements AlmightyContainer<Item> {
     @Override
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(final ContainsIterable items, final ValueObserver<Item>... observers)
+        */ void remove(final ContainsIterable items, final Observer<Item>... observers)
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
-           ValueObserverException {
+           ObserverException {
         delegateObservedRemoveMultiple.remove(items, observers);
     }
 
@@ -341,8 +341,8 @@ implements AlmightyContainer<Item> {
 
     @SafeVarargs
     @Override
-    public final void retain(final Iterable<Item> items, final ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException {
+    public final void retain(final Iterable<Item> items, final Observer<Item>... observers)
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
         delegateObservedRetain.retain(items, observers);
     }
 }

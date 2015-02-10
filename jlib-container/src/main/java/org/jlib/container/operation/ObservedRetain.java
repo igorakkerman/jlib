@@ -23,11 +23,11 @@ package org.jlib.container.operation;
 
 import java.util.Collection;
 
-import org.jlib.operator.observer.ValueObserver;
-import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.observer.Observer;
+import org.jlib.operator.observer.ObserverException;
 
 /**
- * Ability to retain Items; the retain operations can be attended by {@link ValueObserver}
+ * Ability to retain Items; the retain operations can be attended by {@link Observer}
  * instances.
  *
  * @param <Item>
@@ -45,7 +45,7 @@ public interface ObservedRetain<Item> {
      *        {@link Collection} containing the Items to remove
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the removal
      *
      * @throws InvalidContainerArgumentException
@@ -55,10 +55,10 @@ public interface ObservedRetain<Item> {
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
+     * @throws ObserverException
+     *         if an error occurs during the {@link Observer} operation
      */
     @SuppressWarnings("unchecked")
-    void retain(Iterable<Item> items, ValueObserver<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ValueObserverException;
+    void retain(Iterable<Item> items, Observer<Item>... observers)
+    throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException;
 }

@@ -24,13 +24,12 @@ package org.jlib.operator.observer;
 import org.jlib.core.message.Message;
 
 /**
- * {@link ValueObserverException} thrown during a
- * {@link ValueObserver#before(Object)} operation.
+ * {@link ObserverException} thrown during a {@link Observer#before(Object)} operation.
  *
  * @author Igor Akkerman
  */
 public abstract class AfterSuccessHandlerValueObserverException
-extends ValueObserverException {
+extends ObserverException {
 
     private static final long serialVersionUID = 3230285545341500553L;
 

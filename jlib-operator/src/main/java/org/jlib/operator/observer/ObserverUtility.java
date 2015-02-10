@@ -31,8 +31,8 @@ import org.jlib.operator.OperatorException;
  */
 public final class ObserverUtility {
 
-    public static <Value> ConsumersValueObserver<Value> observe() {
-        return new ConsumersValueObserver<>();
+    public static <Value> ConsumersObserver<Value> observe() {
+        return new ConsumersObserver<>();
     }
 
     /**
@@ -48,7 +48,7 @@ public final class ObserverUtility {
      *        Value operated on
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the operation
      *
      * @throws RuntimeException
@@ -56,27 +56,27 @@ public final class ObserverUtility {
      *         <li>if {@code operator} throws an {@link OperatorException} with
      *         this {@link RuntimeException} as its cause</li>
      *         <li>if {@code operator} throws this {@link RuntimeException}</li>
-     *         <li>if a {@link ValueObserver} in {@code observers} throws this
+     *         <li>if a {@link Observer} in {@code observers} throws this
      *         {@link RuntimeException}</li>
      *         </ul>
      */
     @SafeVarargs
     @SuppressWarnings({ "ProhibitedExceptionDeclared", "ProhibitedExceptionThrown" })
     public static <Value> void operate(final HandledOperator handledOperator, final Value value,
-                                       final ValueObserver<Value>... observers)
+                                       final Observer<Value>... observers)
     throws RuntimeException {
         try {
-            for (final ValueObserver<Value> observer : observers)
+            for (final Observer<Value> observer : observers)
                 observer.before(value);
 
             handledOperator.operate();
 
-            for (final ValueObserver<Value> observer : observers)
+            for (final Observer<Value> observer : observers)
                 observer.afterSuccess(value);
         }
         catch (final OperatorException exception) {
             // if "legal" exception is thrown
-            for (final ValueObserver<Value> observer : observers)
+            for (final Observer<Value> observer : observers)
                 observer.afterFailure(value, exception);
 
             throw exception.getCause();

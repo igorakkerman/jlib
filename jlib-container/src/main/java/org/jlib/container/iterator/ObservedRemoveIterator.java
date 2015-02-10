@@ -25,12 +25,12 @@ import org.jlib.core.iterator.InvalidIterableStateException;
 import org.jlib.core.iterator.NoItemToRemoveException;
 import org.jlib.core.iterator.RemoveIterator;
 
-import org.jlib.operator.observer.ValueObserver;
-import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.observer.Observer;
+import org.jlib.operator.observer.ObserverException;
 
 /**
  * {@link RemoveIterator} allowing its remove operation to be attended by
- * {@link ValueObserver} instances.
+ * {@link Observer} instances.
  *
  * @param <Item>
  *        type of the traversed items
@@ -44,7 +44,7 @@ extends RemoveIterator<Item> {
      * Removes the last traversed Item.
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the operation
      *
      * @throws NoItemToRemoveException
@@ -53,23 +53,23 @@ extends RemoveIterator<Item> {
      * @throws InvalidIterableStateException
      *         if an error is caused by a delegate used to remove the Item
      *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
+     * @throws ObserverException
+     *         if an error occurs during the {@link Observer} operation
      *
      * @throws RuntimeException
-     *         if a {@link ValueObserver} operation throws this
+     *         if a {@link Observer} operation throws this
      *         {@link RuntimeException}
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    void remove(ValueObserver<Item>... observers)
-    throws NoItemToRemoveException, InvalidIterableStateException, ValueObserverException, RuntimeException;
+    void remove(Observer<Item>... observers)
+    throws NoItemToRemoveException, InvalidIterableStateException, ObserverException, RuntimeException;
 
     /**
-     * Registers the specified {@link ValueObserver} for the remove operations
+     * Registers the specified {@link Observer} for the remove operations
      * of this {@link ObservedRemoveIterator}.
      *
      * @param removeObserver
-     *        additional remove {@link ValueObserver}
+     *        additional remove {@link Observer}
      */
-    void addRemoveObserver(ValueObserver<Item> removeObserver);
+    void addRemoveObserver(Observer<Item> removeObserver);
 }
