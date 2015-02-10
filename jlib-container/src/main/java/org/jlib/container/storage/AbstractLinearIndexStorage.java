@@ -84,10 +84,6 @@ implements LinearIndexStorage<Item> {
             throw new InvalidCapacityException(this, capacityName, capacity);
     }
 
-    // TODO: add note: ensureIndexValid/ensurePartialCapacityValid methods here have a different meaning than in the
-    // strategy!!!!
-    // TODO: Here, they mean wrong access to the delegate, there, they may mean: wrong item index. maybe separate the
-    // exceptions for clarity?
     protected void ensureIndexValid(final String indexName, final int index) {
         if (index < 0)
             throw new InvalidIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));
