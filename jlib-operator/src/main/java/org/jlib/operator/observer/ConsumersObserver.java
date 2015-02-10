@@ -42,8 +42,6 @@ implements Observer<Value> {
 
     private Consumer<Value> afterFailureConsumer = value -> {};
 
-    ConsumersObserver() {}
-
     public ConsumersObserver<Value> beforeDo(final Consumer<Value> beforeConsumer) {
         this.beforeConsumer = beforeConsumer;
 
