@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.capacity;
+package org.jlib.container.storage.capacity;
 
 // Unifying interface
 public interface CapacityStrategy

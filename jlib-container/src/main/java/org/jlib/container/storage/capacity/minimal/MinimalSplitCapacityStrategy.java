@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.capacity.minimal;
+package org.jlib.container.storage.capacity.minimal;
 
-import org.jlib.container.capacity.AbstractSplitCapacityStrategy;
+import org.jlib.container.storage.capacity.AbstractSplitCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.LinearIndexStorage;

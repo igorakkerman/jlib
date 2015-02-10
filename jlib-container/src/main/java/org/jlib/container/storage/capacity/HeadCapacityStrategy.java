@@ -19,19 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.capacity;
+package org.jlib.container.storage.capacity;
 
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.LinearIndexStorageException;
 
-import static org.jlib.core.message.MessageUtility.message;
+/**
+ * Strategy of the head capacity provision in a {@link LinearIndexStorage}.
+ *
+ * @author Igor Akkerman
+ */
+public interface HeadCapacityStrategy {
 
-public class InvalidCapacityException
-extends LinearIndexStorageException {
-
-    private static final long serialVersionUID = 2379753107475444861L;
-
-    InvalidCapacityException(final LinearIndexStorage<?> storage, final int capacity) {
-        super(storage, message(capacity));
-    }
+    /**
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at its head.
+     * The indices of the stored items are incremented, if necessary.
+     *
+     * @param headCapacity
+     *        integer specifying the head capacity
+     *
+     * @throws InvalidCapacityException
+     *         if {@code headCapacity < 0}
+     */
+    void ensureHeadCapacity(int headCapacity)
+    throws InvalidCapacityException;
 }

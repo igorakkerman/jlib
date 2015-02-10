@@ -19,27 +19,20 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.capacity;
+package org.jlib.container.storage.capacity;
 
 import org.jlib.container.storage.LinearIndexStorage;
 
 /**
- * Strategy of the head capacity provision in a {@link LinearIndexStorage}.
+ * Strategy of initial capacity provision in a {@link LinearIndexStorage}.
  *
  * @author Igor Akkerman
  */
-public interface HeadCapacityStrategy {
+public interface InitialCapacityStrategy {
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at its head.
-     * The indices of the stored items are incremented, if necessary.
-     *
-     * @param headCapacity
-     *        integer specifying the head capacity
-     *
-     * @throws InvalidCapacityException
-     *         if {@code headCapacity < 0}
+     * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit items in the specified
+     * range. Registers the item indices.
      */
-    void ensureHeadCapacity(int headCapacity)
-    throws InvalidCapacityException;
+    void initializeCapacity();
 }
