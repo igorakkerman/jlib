@@ -24,7 +24,7 @@ package org.jlib.operator.observer;
 import org.jlib.operator.OperatorException;
 
 /**
- * Observer of an operation on a Value.
+ * Observer of an operation on a {@link Value}.
  *
  * @param <Value>
  *        type of removed value
