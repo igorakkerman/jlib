@@ -111,7 +111,7 @@ extends Cloneable {
      * @throws InvalidIndexException
      *         if an {@link IndexRangeOperationDescriptor} specifies a shift on an index outside the valid bounds
      */
-    void addCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
+    void ensureCapacityAndShiftItems(int capacity, IndexRangeOperationDescriptor... shiftDescriptors)
     throws InvalidCapacityException, InvalidIndexException;
 
     /**

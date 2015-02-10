@@ -35,7 +35,7 @@ extends AbstractSplitCapacityStrategy<Item> {
     }
 
     @Override
-    protected void safeEnsureCapacity(final int splitIndex, final int splitCapacity) {
+    protected void safeEnsureSplitCapacity(final int splitIndex, final int splitCapacity) {
         final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightBySplitCapacity = /*
          */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRange().getMaximum(),
                                               splitIndex + splitCapacity);
@@ -47,19 +47,17 @@ extends AbstractSplitCapacityStrategy<Item> {
             return;
         }
 
-        final int fullCapacity = getContentIndexRange().itemsCount() + splitCapacity;
+        final int finalItemsCount = getContentIndexRange().itemsCount() + splitCapacity;
 
-        // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
-        final IndexRangeOperationDescriptor leftCopyDescriptor = /*
+        final IndexRangeOperationDescriptor headCopyDescriptor = /*
          */ new IndexRangeOperationDescriptor(getContentIndexRange().getMinimum(), splitIndex - 1, splitIndex);
 
         final IndexRangeOperationDescriptor[] copyDescriptors = /*
          */ splitIndex > getContentIndexRange().getMinimum() ?
-            new IndexRangeOperationDescriptor[]{ leftCopyDescriptor,
+            new IndexRangeOperationDescriptor[]{ headCopyDescriptor,
                                                  shiftRightPartFromSplitIndexRightBySplitCapacity } :
             new IndexRangeOperationDescriptor[]{ shiftRightPartFromSplitIndexRightBySplitCapacity };
 
-        // FIXME: not fullCapacity
-        getStorage().addCapacityAndShiftItems(fullCapacity, copyDescriptors);
+        getStorage().ensureCapacityAndShiftItems(finalItemsCount, copyDescriptors);
     }
 }

@@ -21,27 +21,25 @@
 
 package org.jlib.container.capacity;
 
-import org.jlib.core.language.Valid;
-
-import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 
-public abstract class AbstractHeadOrTailCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item>
-implements HeadOrTailCapacityStrategy {
+/**
+ * Strategy of the head or tail capacity provision in a {@link LinearIndexStorage}.
+ *
+ * @author Igor Akkerman
+ */
+public interface TailCapacityStrategy {
 
-    protected AbstractHeadOrTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                                 final IndexRange contentIndexRange) {
-        super(storage, contentIndexRange);
-    }
-
-    @Override
-    public final void ensureCapacity(final int headOrTailCapacity)
-    throws InvalidPartialCapacityException {
-        ensurePartialCapacityValid(headOrTailCapacity);
-
-        safeEnsureCapacity(headOrTailCapacity);
-    }
-
-    protected abstract void safeEnsureCapacity(@Valid int headOrTailCapacity);
+    /**
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at its tail. The
+     * indices of the stored items are modified, if necessary.
+     *
+     * @param tailCapacity
+     *        required tail capacity
+     *
+     * @throws InvalidCapacityException
+     *         if {@code headOrTailCapacity < 0}
+     */
+    void ensureTailCapacity(int tailCapacity)
+    throws InvalidCapacityException;
 }

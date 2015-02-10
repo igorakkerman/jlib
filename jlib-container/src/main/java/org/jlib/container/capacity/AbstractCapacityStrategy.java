@@ -25,7 +25,6 @@ import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.LinearIndexStorageException;
 
 import org.jlib.basefunctions.ApplicationObject;
 import static org.jlib.core.message.MessageUtility.mfmessage;
@@ -70,12 +69,12 @@ extends ApplicationObject {
      * @param capacity
      *        integer specifying the capacity
      *
-     * @throws LinearIndexStorageException
+     * @throws InvalidCapacityException
      *         if {@code capacity < 0}
      */
-    public void ensurePartialCapacityValid(final int capacity) {
+    public void ensureCapacityValid(final int capacity) {
         if (capacity < 0)
-            throw new InvalidPartialCapacityException(storage, capacity);
+            throw new InvalidCapacityException(storage, capacity);
     }
 
     protected void ensureIndexValid(final int index) {

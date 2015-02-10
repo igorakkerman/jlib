@@ -25,11 +25,11 @@ import org.jlib.container.capacity.AbstractCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.CapacityStrategy;
-import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
+import org.jlib.container.capacity.HeadCapacityStrategy;
 import org.jlib.container.capacity.InitialCapacityStrategy;
 
 /**
- * {@link HeadOrTailCapacityStrategy} providing just as much head capacity as needed.
+ * {@link HeadCapacityStrategy} providing just as much head capacity as needed.
  * </p>
  * <p>
  * Head capacity:
@@ -55,7 +55,7 @@ implements InitialCapacityStrategy {
     }
 
     @Override
-    public void ensureCapacity() {
-        getStorage().addCapacityAndShiftItems(getContentIndexRange().itemsCount());
+    public void initializeCapacity() {
+        getStorage().ensureCapacityAndShiftItems(getContentIndexRange().itemsCount());
     }
 }

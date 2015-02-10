@@ -21,16 +21,17 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.IndexRange;
-import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.capacity.AbstractHeadOrTailCapacityStrategy;
+import org.jlib.container.capacity.AbstractCapacityStrategy;
 import org.jlib.container.capacity.CapacityStrategy;
-import org.jlib.container.capacity.HeadOrTailCapacityStrategy;
+import org.jlib.container.capacity.HeadCapacityStrategy;
+import org.jlib.container.capacity.TailCapacityStrategy;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.LinearIndexStorage;
 
 /**
  * <p>
- * {@link HeadOrTailCapacityStrategy} providing just as much tail capacity as needed.
+ * {@link HeadCapacityStrategy} providing just as much tail capacity as needed.
  * </p>
  * <p>
  * This {@link CapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
@@ -47,7 +48,8 @@ import org.jlib.container.storage.IndexRangeOperationDescriptor;
  * @author Igor Akkerman
  */
 public class MinimalTailCapacityStrategy<Item>
-extends AbstractHeadOrTailCapacityStrategy<Item> {
+extends AbstractCapacityStrategy<Item>
+implements TailCapacityStrategy {
 
     public MinimalTailCapacityStrategy(final LinearIndexStorage<Item> storage,
                                        final IndexRange contentIndexRange) {
@@ -55,7 +57,9 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
     }
 
     @Override
-    protected void safeEnsureCapacity(final int tailCapacity) {
+    public void ensureTailCapacity(final int tailCapacity) {
+        ensureCapacityValid(tailCapacity);
+
         final int missingTailCapacity = tailCapacity - getTailCapacity();
 
         if (missingTailCapacity <= 0)
@@ -64,6 +68,6 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
         final IndexRangeOperationDescriptor keepAllItems = /*
          */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getMinimum());
 
-        getStorage().addCapacityAndShiftItems(missingTailCapacity, keepAllItems);
+        getStorage().ensureCapacityAndShiftItems(missingTailCapacity, keepAllItems);
     }
 }
