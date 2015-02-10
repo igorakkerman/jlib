@@ -31,7 +31,7 @@ import org.jlib.container.storage.LinearIndexStorage;
 public interface InitialCapacityStrategy {
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the initial number of Items.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the initial number of items.
      */
     void ensureCapacity();
 }
