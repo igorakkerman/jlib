@@ -35,15 +35,6 @@ extends LinearIndexStorageException {
 
     private static final long serialVersionUID = - 701812048814999842L;
 
-    /**
-     * Creates a new {@link InvalidCapacityException}.
-     *
-     * @param storage
-     *        targeted {@link LinearIndexStorage}
-     *
-     * @param invalidCapacity
-     *        integer specifying the invalid capacity value
-     */
     InvalidCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
                              final int invalidCapacity) {
 
