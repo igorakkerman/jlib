@@ -42,7 +42,6 @@ implements LinearIndexStorage<Item> {
     @Override
     public Item get(final int index)
     throws InvalidIndexException {
-
         ensureIndexValid("index", index);
 
         return safeGet(index);
@@ -53,7 +52,6 @@ implements LinearIndexStorage<Item> {
     @Override
     public void set(final int index, final Item item)
     throws InvalidIndexException {
-
         ensureIndexValid("index", index);
 
         safeSet(index, item);
