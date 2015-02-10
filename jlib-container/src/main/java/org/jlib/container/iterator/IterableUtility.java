@@ -50,8 +50,6 @@ public final class IterableUtility {
      * @throws InvalidIterableStateException
      *         if an error occurs during one of the remove operations
      */
-    // TODO: check declared exceptions
-    @SuppressWarnings("OverlyBroadThrowsClause")
     public static <Item> void removeAll(final RemoveIterable<Item> iterable)
     throws InvalidIterableStateException {
         for (final RemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
@@ -77,8 +75,6 @@ public final class IterableUtility {
      *         if an error occurs during one of the remove operations
      */
     @SafeVarargs
-    // TODO: check declared exceptions
-    @SuppressWarnings("OverlyBroadThrowsClause")
     public static <Item> void removeAll(final ObservedRemoveIterable<Item> iterable,
                                         final ValueObserver<Item>... observers)
     throws InvalidIterableStateException {
