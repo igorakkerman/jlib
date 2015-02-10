@@ -27,8 +27,7 @@ import static org.jlib.operator.observer.ObserverUtility.operate;
 public class ObserverUtilityTest {
 
     // @Test
-    public void test()
-    throws Exception {
+    public void test() {
         operate(null, null, observe().beforeDo(value -> System.out.println("Operating on " + value))
                                      .afterSuccessDo(value -> System.out.println("Success: " + value))
                                      .afterFailureDo(value -> System.out.println("Failure: " + value)));

@@ -228,7 +228,7 @@ implements List<Item> {
     }
 
     @Override
-    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+    @SuppressWarnings({ "EqualsWhichDoesntCheckParameterClass", "EqualsBetweenInconvertibleTypes" })
     public boolean equals(final Object object) {
         return delegate.equals(object);
     }
