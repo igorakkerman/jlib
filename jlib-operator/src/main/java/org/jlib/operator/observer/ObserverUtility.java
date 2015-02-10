@@ -45,19 +45,17 @@ public final class ObserverUtility {
      *        {@link HandledOperator} performing the operation
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @param observers
-     *        comma separated sequence of {@link Observer} instances
-     *        attending the operation
+     *        comma separated sequence of {@link Observer} instances attending the operation
      *
      * @throws RuntimeException
      *         <ul>
-     *         <li>if {@code operator} throws an {@link OperatorException} with
-     *         this {@link RuntimeException} as its cause</li>
+     *         <li>if {@code operator} throws an {@link OperatorException} with this {@link RuntimeException} as its
+     *         cause</li>
      *         <li>if {@code operator} throws this {@link RuntimeException}</li>
-     *         <li>if a {@link Observer} in {@code observers} throws this
-     *         {@link RuntimeException}</li>
+     *         <li>if an {@link Observer} in {@code observers} throws this {@link RuntimeException}</li>
      *         </ul>
      */
     @SafeVarargs
