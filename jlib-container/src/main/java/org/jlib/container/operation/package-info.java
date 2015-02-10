@@ -29,10 +29,6 @@
 //         int counting listener returning the number of modified items
 //         List<Item> listener returning the modified/removed items
 
-// TODO: have a look at Guava
-// TODO: add/correct package-info.java for all packages
-
-// TODO: update javadoc for all classes to reflect refactorings
 
 package org.jlib.container.operation;
 

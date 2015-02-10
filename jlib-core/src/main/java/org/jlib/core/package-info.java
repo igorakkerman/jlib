@@ -19,12 +19,6 @@
  *     limitations under the License.
  */
 
-/*
- TODO: aspect: replace super.toString() calls from jlib classes by something intelligent
- (e.g. Apache Commons toStringBuilder) - execution(String Object.toString) && cflow(call(* jlib.*(..))) )
-
- */
-
 /**
  * jlib core functionality.
  *
