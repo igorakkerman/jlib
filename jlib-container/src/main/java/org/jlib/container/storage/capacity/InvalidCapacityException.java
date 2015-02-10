@@ -19,21 +19,19 @@
  *     limitations under the License.
  */
 
+package org.jlib.container.storage.capacity;
 
-/**
- * <p>
- * Interfaces for strategies of capacity provision in a
- * {@link org.jlib.container.storage.LinearIndexStorage LinearIndexStorage}.
- * The following terms are used:
- * </p>
- * <dl>
- * <dt>initial capacity</dt> <dd>initial capacity</dd>
- * <dt>head capacity</dt>    <dd>capacity in front of the first item</dd>
- * <dt>split capacity</dt>   <dd>capacity provided between two sections when splitting one big section into two</dd>
- * <dt>tail capacity</dt>    <dd>capacity behind the last item</dd>
- * </dl>
- *
- * @author Igor Akkerman
- */
-package org.jlib.container.capacity;
+import org.jlib.container.storage.LinearIndexStorage;
+import org.jlib.container.storage.LinearIndexStorageException;
 
+import static org.jlib.core.message.MessageUtility.message;
+
+public class InvalidCapacityException
+extends LinearIndexStorageException {
+
+    private static final long serialVersionUID = 2379753107475444861L;
+
+    InvalidCapacityException(final LinearIndexStorage<?> storage, final int capacity) {
+        super(storage, message(capacity));
+    }
+}

@@ -19,53 +19,55 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.capacity.minimal;
+package org.jlib.container.storage.capacity.minimal;
 
-import org.jlib.container.capacity.AbstractCapacityStrategy;
-import org.jlib.container.capacity.HeadCapacityStrategy;
+import org.jlib.container.storage.capacity.AbstractCapacityStrategy;
+import org.jlib.container.storage.capacity.CapacityStrategy;
+import org.jlib.container.storage.capacity.HeadCapacityStrategy;
+import org.jlib.container.storage.capacity.TailCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.LinearIndexStorage;
 
 /**
- * {@link HeadCapacityStrategy} providing just as much head capacity as needed.
+ * <p>
+ * {@link HeadCapacityStrategy} providing just as much tail capacity as needed.
  * </p>
  * <p>
- * The {@link MinimalHeadCapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
+ * This {@link CapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
  * If the requested head capacity is above the available head capacity,
  * the {@link LinearIndexStorage} is requested to re-allocate a capacity higher by the difference between requested and
  * available head capacity. The {@link Item}s are shifted "right" to have exactly the requested head capacity.
  * The {@link LinearIndexStorage} is always requested to provide an additional capacity even if its tail capacity would
  * be sufficient.
+ * </p>
  *
  * @param <Item>
  *        type of the items held in the {@link LinearIndexStorage}
  *
  * @author Igor Akkerman
  */
-public class MinimalHeadCapacityStrategy<Item>
+public class MinimalTailCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
-implements HeadCapacityStrategy {
+implements TailCapacityStrategy {
 
-    public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
+    public MinimalTailCapacityStrategy(final LinearIndexStorage<Item> storage,
                                        final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
     @Override
-    public void ensureHeadCapacity(final int headCapacity) {
-        ensureCapacityValid(headCapacity);
+    public void ensureTailCapacity(final int tailCapacity) {
+        ensureCapacityValid(tailCapacity);
 
-        final int missingHeadCapacity = headCapacity - getContentIndexRange().getMinimum();
+        final int missingTailCapacity = tailCapacity - getTailCapacity();
 
-        if (missingHeadCapacity <= 0)
+        if (missingTailCapacity <= 0)
             return;
 
-        final IndexRangeOperationDescriptor shiftAllItemsToAllowHeadCapacity = /*
-         */ getDescriptorCopyAllItemsToIndex(/* new first Item index */ headCapacity);
+        final IndexRangeOperationDescriptor keepAllItems = /*
+         */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getMinimum());
 
-        getStorage().ensureCapacityAndShiftItems(headCapacity, shiftAllItemsToAllowHeadCapacity);
-
-        getContentIndexRange().incrementMinimum(missingHeadCapacity);
+        getStorage().ensureCapacityAndShiftItems(missingTailCapacity, keepAllItems);
     }
 }
