@@ -25,38 +25,35 @@ import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 /**
- * Strategy of capacity provision in a {@link LinearIndexStorage}.
- *
  * <p>
- * This class defines:
+ * Strategy of capacity provision in a {@link LinearIndexStorage}.
+ * The following terms are used:
  * </p>
  * <dl>
- * <dt>the <em>head capacity</em></dt>
- * <dd>as the capacity in front of the first Item
- * <dt>the <em>tail capacity</em></dt>
- * <dd>as the capacity behind the last Item</dd>
+ * <dt>head capacity</dt> <dd>capacity in front of the first item</dd>
+ * <dt>split capacity</dt><dd>capacity provided between two sections when splitting one big section into two</dd>
+ * <dt>tail capacity</dt> <dd>capacity behind the last item</dd>
  * </dl>
- * <p>
  *
  * @author Igor Akkerman
  */
 public interface CapacityStrategy {
 
     /**
-     * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit Items in the specified
-     * range. Registers the Item indices.
+     * Initializes the referenced {@link LinearIndexStorage} with a sufficient capacity to fit items in the specified
+     * range. Registers the item indices.
      *
      * @throws InvalidIndexException
-     *         if {@code firstItemIndex < 0 ||
-     *                   lastItemIndex < firstItemIndex ||
-     *                   lastItemIndex > storage.getCapacity() - 1}
+     *         if {@code firstitemIndex < 0 ||
+     *                   lastitemIndex < firstitemIndex ||
+     *                   lastitemIndex > storage.getCapacity() - 1}
      */
     void initialize()
     throws InvalidIndexException;
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items at the head of the
-     * {@link LinearIndexStorage}. The indices of the stored Items are incremented, if necessary.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items at the head of the
+     * {@link LinearIndexStorage}. The indices of the stored items are incremented, if necessary.
      *
      * @param headCapacity
      *        integer specifying the head capacity
@@ -68,8 +65,8 @@ public interface CapacityStrategy {
     throws InvalidPartialCapacityException;
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items betweeen the existing
-     * stored Items. The indices of the Items stored after the specified split index are incremented.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items betweeen the existing
+     * stored items. The indices of the items stored after the specified split index are incremented.
      *
      * @param splitIndex
      *        integer specifying the split index
@@ -81,15 +78,15 @@ public interface CapacityStrategy {
      *         if {@code splitCapacity < 0}
      *
      * @throws InvalidIndexException
-     *         if {@code middleIndex < linearIndexStorage.getFirstItemIndex() ||
+     *         if {@code middleIndex < linearIndexStorage.getFirstitemIndex() ||
      *                   middleIndex > linearIndexStorage.getMaximum()}
      */
     void ensureSplitCapacity(int splitIndex, int splitCapacity)
     throws InvalidPartialCapacityException, InvalidIndexException;
 
     /**
-     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of Items behind the existing
-     * stored Items. The indices of all stored Items are left unchanged.
+     * Ensures that the referenced {@link LinearIndexStorage} fits the specified number of items behind the existing
+     * stored items. The indices of all stored items are left unchanged.
      *
      * @param tailCapacity
      *        integer specifying the tail capacity
