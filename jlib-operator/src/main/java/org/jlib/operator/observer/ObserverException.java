@@ -21,12 +21,11 @@
 
 package org.jlib.operator.observer;
 
-import org.jlib.core.exception.ApplicationException;
-import org.jlib.core.message.Message;
 import org.jlib.core.exception.InvalidStateException;
+import org.jlib.core.message.Message;
 
 /**
- * {@link ApplicationException} thrown during the operation of an observer.
+ * {@link InvalidStateException} thrown during the operation of an observer.
  *
  * @author Igor Akkerman
  */
@@ -35,13 +34,11 @@ extends InvalidStateException {
 
     private static final long serialVersionUID = - 7621231395096897078L;
 
-    /**
-     * Creates a new {@link ObserverException}.
-     *
-     * @param cause
-     *        {@link Exception} that caused this {@link ObserverException}
-     */
     protected ObserverException(final Message message, final Exception cause) {
         super(message, cause);
+    }
+
+    protected ObserverException(final Object value, final Message message, final Exception cause) {
+        this(message.with("value", value), cause);
     }
 }

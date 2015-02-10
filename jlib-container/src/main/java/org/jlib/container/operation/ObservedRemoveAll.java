@@ -21,11 +21,11 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.Observer;
 
 /**
  * Ability to remove <em>all</em> Items;
- * the {@link #removeAll} operation can be attended by {@link ValueObserver} instances.
+ * the {@link #removeAll} operation can be attended by {@link Observer} instances.
  *
  * @param <Item>
  *        type of items held in the container
@@ -38,13 +38,13 @@ public interface ObservedRemoveAll<Item> {
      * Removes all Items from this {@link Object}.
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the removal
      *
      * @throws InvalidContainerStateException
      *         if an error occurs during the operation
      */
     @SuppressWarnings("unchecked")
-    void removeAll(ValueObserver<Item>... observers)
+    void removeAll(Observer<Item>... observers)
     throws InvalidContainerStateException;
 }

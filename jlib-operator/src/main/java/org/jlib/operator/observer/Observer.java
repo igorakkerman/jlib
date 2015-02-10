@@ -31,7 +31,7 @@ import org.jlib.operator.OperatorException;
  *
  * @author Igor Akkerman
  */
-public interface ValueObserver<Value> {
+public interface Observer<Value> {
 
     /**
      * Performs actions before the targeted operation.
