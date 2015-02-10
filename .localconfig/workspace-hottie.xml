@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress XmlUnboundNsPrefix -->
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="CUSTOM_SCOPE_NAME" value="Open Files" />
