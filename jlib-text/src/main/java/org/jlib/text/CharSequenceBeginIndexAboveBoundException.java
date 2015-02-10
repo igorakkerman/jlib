@@ -21,7 +21,6 @@
 
 package org.jlib.text;
 
-import static org.jlib.core.message.MessageUtility.message;
 import static org.jlib.core.message.MessageUtility.pfmessage;
 
 /**
@@ -34,8 +33,7 @@ extends CharSequenceIndexOutOfBoundsException {
 
     private static final long serialVersionUID = - 9061531835812524492L;
 
-    public CharSequenceBeginIndexAboveBoundException(final CharSequence charSequence, final int beginIndex,
-                                                     final int maximumIndex) {
-        super(pfmessage().with("beginIndex", beginIndex));
+    public CharSequenceBeginIndexAboveBoundException(final CharSequence charSequence, final int beginIndex) {
+        super(pfmessage(CS_FORMAT + "beginIndex = %d >= %d = length", charSequence, beginIndex, charSequence.length()));
     }
 }
