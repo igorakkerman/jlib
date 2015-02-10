@@ -62,7 +62,7 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
             return;
 
         final IndexRangeOperationDescriptor keepAllItems = /*
-         */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getMinimumIndex());
+         */ getDescriptorCopyAllItemsToIndex(getContentIndexRange().getMinimum());
 
         getStorage().addCapacityAndShiftItems(missingTailCapacity, keepAllItems);
     }

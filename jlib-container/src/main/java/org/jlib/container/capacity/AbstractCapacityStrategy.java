@@ -57,12 +57,11 @@ extends ApplicationObject {
      * @return integer specifying the tail capacity
      */
     protected int getTailCapacity() {
-        return storage.capacity() - contentIndexRange.getMaximumIndex();
+        return storage.capacity() - contentIndexRange.getMaximum();
     }
 
     protected IndexRangeOperationDescriptor getDescriptorCopyAllItemsToIndex(final int targetIndex) {
-        return new IndexRangeOperationDescriptor(contentIndexRange.getMinimumIndex(),
-                                                 contentIndexRange.getMaximumIndex(), targetIndex);
+        return new IndexRangeOperationDescriptor(contentIndexRange, targetIndex);
     }
 
     /**
@@ -80,12 +79,12 @@ extends ApplicationObject {
     }
 
     protected void ensureIndexValid(final int index) {
-        if (index < contentIndexRange.getMinimumIndex())
+        if (index < contentIndexRange.getMinimum())
             throw new InvalidIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
-                                                               contentIndexRange.getMinimumIndex()));
+                                                               contentIndexRange.getMinimum()));
 
-        if (index > contentIndexRange.getMaximumIndex())
+        if (index > contentIndexRange.getMaximum())
             throw new InvalidIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
-                                                               contentIndexRange.getMaximumIndex()));
+                                                               contentIndexRange.getMaximum()));
     }
 }

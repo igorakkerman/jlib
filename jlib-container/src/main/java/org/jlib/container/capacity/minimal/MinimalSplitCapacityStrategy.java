@@ -21,10 +21,10 @@
 
 package org.jlib.container.capacity.minimal;
 
-import org.jlib.container.storage.IndexRange;
-import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.capacity.AbstractSplitCapacityStrategy;
+import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.LinearIndexStorage;
 
 public class MinimalSplitCapacityStrategy<Item>
 extends AbstractSplitCapacityStrategy<Item> {
@@ -37,7 +37,7 @@ extends AbstractSplitCapacityStrategy<Item> {
     @Override
     protected void safeEnsureCapacity(final int splitIndex, final int splitCapacity) {
         final IndexRangeOperationDescriptor shiftRightPartFromSplitIndexRightBySplitCapacity = /*
-         */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRange().getMaximumIndex(),
+         */ new IndexRangeOperationDescriptor(splitIndex, getContentIndexRange().getMaximum(),
                                               splitIndex + splitCapacity);
 
         final int missingTailCapacity = splitCapacity - getTailCapacity();
@@ -51,11 +51,10 @@ extends AbstractSplitCapacityStrategy<Item> {
 
         // TODO: is leftCopyDescriptor an adequate name? tried to find a name without analyzing
         final IndexRangeOperationDescriptor leftCopyDescriptor = /*
-         */ new IndexRangeOperationDescriptor(getContentIndexRange().getMinimumIndex(), splitIndex - 1,
-                                              splitIndex);
+         */ new IndexRangeOperationDescriptor(getContentIndexRange().getMinimum(), splitIndex - 1, splitIndex);
 
         final IndexRangeOperationDescriptor[] copyDescriptors = /*
-         */ splitIndex > getContentIndexRange().getMinimumIndex() ?
+         */ splitIndex > getContentIndexRange().getMinimum() ?
             new IndexRangeOperationDescriptor[]{ leftCopyDescriptor,
                                                  shiftRightPartFromSplitIndexRightBySplitCapacity } :
             new IndexRangeOperationDescriptor[]{ shiftRightPartFromSplitIndexRightBySplitCapacity };

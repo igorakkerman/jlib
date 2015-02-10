@@ -46,7 +46,7 @@ implements SplitCapacityStrategy {
 
         safeEnsureCapacity(splitIndex, splitCapacity);
 
-        getContentIndexRange().incrementLastItemIndex(splitCapacity);
+        getContentIndexRange().incrementMaximum(splitCapacity);
     }
 
     protected abstract void safeEnsureCapacity(int splitIndex, int splitCapacity);

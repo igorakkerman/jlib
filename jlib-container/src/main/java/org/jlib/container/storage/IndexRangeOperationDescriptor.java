@@ -34,59 +34,25 @@ public class IndexRangeOperationDescriptor
 implements Cloneable,
            Serializable {
 
-    private static final long serialVersionUID = - 2349186633834250865L;
+    private static final long serialVersionUID = - 750513726974596434L;
 
-    /** begin index of the source range */
-    private final Integer sourceBeginIndex;
-
-    /** end index of the source range */
-    private final Integer sourceEndIndex;
-
-    /** target index */
+    private final IndexRange sourceRange;
     private final Integer targetIndex;
 
-    /**
-     * Creates a new {@link IndexRangeOperationDescriptor}.
-     *
-     * @param sourceBeginIndex
-     *        Integereger specifying the begin index of the source range
-     *
-     * @param sourceEndIndex
-     *        Integereger specifying the end index of the source range
-     *
-     * @param targetIndex
-     *        Integereger specifying the target index
-     */
-    public IndexRangeOperationDescriptor(final Integer sourceBeginIndex, final Integer sourceEndIndex, final Integer targetIndex) {
+    public IndexRangeOperationDescriptor(final Integer sourceMinimumIndex, final Integer sourceMaximumIndex,
+                                         final Integer targetIndex) {
+        this(new IndexRange(sourceMinimumIndex, sourceMaximumIndex), targetIndex);
+    }
 
-        this.sourceBeginIndex = sourceBeginIndex;
-        this.sourceEndIndex = sourceEndIndex;
+    public IndexRangeOperationDescriptor(final IndexRange sourceRange, final Integer targetIndex) {
+        this.sourceRange = sourceRange;
         this.targetIndex = targetIndex;
     }
 
-    /**
-     * Returns the begin index of the source range.
-     *
-     * @return Integereger specifying the begin index of the source range
-     */
-    public Integer getSourceBeginIndex() {
-        return sourceBeginIndex;
+    public IndexRange getSourceRange() {
+        return sourceRange;
     }
 
-    /**
-     * Returns the end index of the source range.
-     *
-     * @return Integereger specifying the end index of the source range
-     */
-    public Integer getSourceEndIndex() {
-        return sourceEndIndex;
-    }
-
-    /**
-     * Returns the target index.
-     *
-     * @return Integereger specifying the target index
-     */
     public Integer getTargetIndex() {
         return targetIndex;
     }
