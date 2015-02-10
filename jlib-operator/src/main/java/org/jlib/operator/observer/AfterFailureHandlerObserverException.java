@@ -24,17 +24,16 @@ package org.jlib.operator.observer;
 import org.jlib.core.message.Message;
 
 /**
- * {@link ObserverException} thrown during a {@link Observer#before(Object)} operation.
+ * {@link ObserverException} thrown during a {@link Observer#afterFailure)} operation.
  *
  * @author Igor Akkerman
  */
-public abstract class AfterSuccessHandlerValueObserverException
+public abstract class AfterFailureHandlerObserverException
 extends ObserverException {
 
-    private static final long serialVersionUID = 3230285545341500553L;
+    private static final long serialVersionUID = - 752311177821410591L;
 
-    protected AfterSuccessHandlerValueObserverException(final Object value, final Message message,
-                                                        final Exception cause) {
+    protected AfterFailureHandlerObserverException(final Object value, final Message message, final Exception cause) {
         super(value, message, cause);
     }
 }
