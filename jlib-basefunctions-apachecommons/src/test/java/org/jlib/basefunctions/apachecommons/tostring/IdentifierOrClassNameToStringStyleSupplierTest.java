@@ -119,7 +119,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             configurableSupplier.get();
 
             // then (failure)
-            fail(format("Expected %a was not thrown." + ToStringStyleNotFoundException.class.getSimpleName()));
+            fail(format("Expected %s was not thrown.", ToStringStyleNotFoundException.class.getSimpleName()));
         }
         // expected
         catch (final ToStringStyleNotFoundException expectedException) {
