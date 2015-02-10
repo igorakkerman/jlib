@@ -111,8 +111,9 @@ extends AbstractLinearIndexStorage<Item> {
 
         validateOperationDescriptor(copyDescriptor);
 
-        arraycopy(sourceArray, copyDescriptor.getSourceBeginIndex(), targetArray, copyDescriptor.getTargetIndex(),
-                  count(copyDescriptor.getSourceBeginIndex(), copyDescriptor.getSourceEndIndex()));
+        arraycopy(sourceArray, copyDescriptor.getSourceRange().getMinimum(), targetArray,
+                  copyDescriptor.getTargetIndex(),
+                  count(copyDescriptor.getSourceRange().getMinimum(), copyDescriptor.getSourceRange().getMaximum()));
     }
 
     @Override

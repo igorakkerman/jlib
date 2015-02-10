@@ -42,6 +42,7 @@ implements LinearIndexStorage<Item> {
     @Override
     public Item get(final int index)
     throws InvalidIndexException {
+
         ensureIndexValid("index", index);
 
         return safeGet(index);
@@ -52,6 +53,7 @@ implements LinearIndexStorage<Item> {
     @Override
     public void set(final int index, final Item item)
     throws InvalidIndexException {
+
         ensureIndexValid("index", index);
 
         safeSet(index, item);
@@ -106,8 +108,8 @@ implements LinearIndexStorage<Item> {
     }
 
     protected void validateOperationDescriptor(final IndexRangeOperationDescriptor copyDescriptor) {
-        ensureIndexRangeValid("sourceBeginIndex", copyDescriptor.getSourceBeginIndex(), "sourceEndIndex",
-                              copyDescriptor.getSourceEndIndex());
+        ensureIndexRangeValid("sourceBeginIndex", copyDescriptor.getSourceRange().getMinimum(),
+                              "sourceEndIndex", copyDescriptor.getSourceRange().getMaximum());
 
         ensureIndexValid("targetIndex", copyDescriptor.getTargetIndex());
     }

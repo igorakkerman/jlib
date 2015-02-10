@@ -82,7 +82,7 @@ public interface CapacityStrategy {
      *
      * @throws InvalidIndexException
      *         if {@code middleIndex < linearIndexStorage.getFirstItemIndex() ||
-     *                   middleIndex > linearIndexStorage.getMaximumIndex()}
+     *                   middleIndex > linearIndexStorage.getMaximum()}
      */
     void ensureSplitCapacity(int splitIndex, int splitCapacity)
     throws InvalidPartialCapacityException, InvalidIndexException;

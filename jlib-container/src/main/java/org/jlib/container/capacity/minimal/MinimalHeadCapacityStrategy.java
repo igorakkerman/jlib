@@ -53,7 +53,7 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
 
     @Override
     protected void safeEnsureCapacity(final int headCapacity) {
-        final int missingHeadCapacity = headCapacity - getContentIndexRange().getMinimumIndex();
+        final int missingHeadCapacity = headCapacity - getContentIndexRange().getMinimum();
 
         if (missingHeadCapacity <= 0)
             return;
@@ -63,6 +63,6 @@ extends AbstractHeadOrTailCapacityStrategy<Item> {
 
         getStorage().addCapacityAndShiftItems(headCapacity, shiftAllItemsToAllowHeadCapacity);
 
-        getContentIndexRange().incrementFirstItemIndex(missingHeadCapacity);
+        getContentIndexRange().incrementMinimum(missingHeadCapacity);
     }
 }
