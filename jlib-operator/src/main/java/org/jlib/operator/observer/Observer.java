@@ -37,7 +37,7 @@ public interface Observer<Value> {
      * Performs actions before the targeted operation.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @throws RuntimeException
      *         if the operation cannot be completed normally
@@ -53,7 +53,7 @@ public interface Observer<Value> {
      * executed.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @throws RuntimeException
      *         if the operation cannot be completed normally
@@ -68,7 +68,7 @@ public interface Observer<Value> {
      * Performs actions after the targeted operation has failed throwing an {@link OperatorException}.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @param operatorException
      *        {@link OperatorException} that caused the operation to fail
