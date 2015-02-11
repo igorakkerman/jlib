@@ -49,8 +49,7 @@ public class MinimalInitialCapacityStrategy<Item>
 extends AbstractCapacityStrategy<Item>
 implements InitialCapacityStrategy {
 
-    public MinimalInitialCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                          final IndexRange contentIndexRange) {
+    public MinimalInitialCapacityStrategy(final LinearIndexStorage<Item> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
