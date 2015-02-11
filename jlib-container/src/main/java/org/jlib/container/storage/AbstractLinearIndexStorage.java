@@ -28,12 +28,6 @@ import static org.jlib.core.message.MessageUtility.mfmessage;
 public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
 
-    /**
-     * Creates a new {@link AbstractLinearIndexStorage} with the specified initial capacity.
-     *
-     * @param initialCapacity
-     *        integer specifying the initial capacity
-     */
     protected AbstractLinearIndexStorage(final int initialCapacity)
     throws InvalidCapacityException {
         ensureCapacityValid("initialCapacity", initialCapacity);
