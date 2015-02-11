@@ -19,24 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.operator.observer;
+package org.jlib.text;
 
-import org.jlib.core.message.Message;
-import org.jlib.operator.OperatorException;
+import static org.jlib.core.message.MessageUtility.pfmessage;
 
 /**
- * {@link ValueObserverException} thrown during a {@link ValueObserver#afterFailure(Object, OperatorException)}
- * operation.
+ * Exception thrown when a {@link CharSequence} end index is below the start index.
  *
  * @author Igor Akkerman
  */
-public abstract class AfterFailureHandlerValueObserverException
-extends ValueObserverException {
+public class CharSequenceEndIndexBelowBeginIndexException
+extends CharSequenceIndexOutOfBoundsException {
 
-    private static final long serialVersionUID = - 7185258294557226420L;
+    private static final long serialVersionUID = 3126851142091723143L;
 
-    protected AfterFailureHandlerValueObserverException(final Object value, final Message message,
-                                                        final Exception cause) {
-        super(value, message, cause);
+    public CharSequenceEndIndexBelowBeginIndexException(final CharSequence charSequence, final int beginIndex,
+                                                        final int endIndex) {
+        super(pfmessage(CS_FORMAT + "endIndex = %d < %d = beginIndex", charSequence, endIndex, beginIndex));
     }
 }

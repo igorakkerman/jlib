@@ -1,3 +1,24 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2015 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.text;
 
 import java.util.Iterator;
@@ -8,18 +29,15 @@ import static org.jlib.core.message.MessageUtility.message;
 
 /**
  * <p>
- * Iterator over the {@link Character Characters} of a {@link CharSequence}.
- * </p>
- *
- * <p>
- * This implementation's {@link #remove()} method throws an
- * {@link UnsupportedOperationException} as a general {@link CharSequence} does
- * not support deletion of {@link Character Characters}.
+ * Iterator over the {@link Character}s of a {@link CharSequence}.
  * </p>
  * <p>
- * Subclasses may use covariance and imeplement this method for
- * {@link CharSequence CharSequences} supporting deletion of {@link Character
- * Characters}.
+ * This implementation's {@link #remove()} method throws an {@link UnsupportedOperationException} as in general a
+ * {@link CharSequence} does not necessarily support removal of {@link Character}s.
+ * </p>
+ * <p>
+ * Subclasses may use covariance and imeplement {@link #remove()} for {@link CharSequence}s supporting removal of
+ * {@link Character}s.
  * </p>
  *
  * @author Igor Akkerman
@@ -33,6 +51,7 @@ implements Iterator<Character> {
      *
      * @param iterableCharSequence
      *        {@link CharSequence} to iterate
+     *
      * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of {@code iterableCharSequence}
      */
@@ -47,14 +66,18 @@ implements Iterator<Character> {
      * {@link CharSequence}.
      *
      * @param iterableCharSequence
-     *        {@link CharSequence} to iterate
+     *        {@link CharSequence} to traverse
+     *
      * @param firstCharacterIndex
      *        integer specifying the index of the first character of the
      *        subsequence
+     *
      * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
+     *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
+     *
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
      */
@@ -70,25 +93,31 @@ implements Iterator<Character> {
      * {@link CharSequence}.
      *
      * @param iterableCharSequence
-     *        {@link CharSequence} to iterate
+     *        {@link CharSequence} to traverse
+     *
      * @param firstCharacterIndex
      *        integer specifying the index of the first character of the
      *        subsequence
+     *
      * @param lastCharacterIndex
      *        integer specifying the index of the last character of the
      *        subsequence
+     *
      * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
+     *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     *
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
+     *
      * @throws CharSequenceEndIndexAboveBoundException
      *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
      */
     public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
     }
@@ -119,17 +148,18 @@ implements Iterator<Character> {
     }
 
     /**
-     * Creates a new CharSequenceIterator over the {@link Character Characters}
-     * of the subsequence specified by the index of its first character
-     * (inclusive) contained by the specified {@link CharSequence}.
+     * Creates a new CharSequenceIterator over the {@link Character Characters} of the subsequence specified by the
+     * index of its first character (inclusive) contained by the specified {@link CharSequence}.
      *
      * @param iteratedCharSequence
-     *        {@link CharSequence} to iterate
+     *        {@link CharSequence} to traverse
+     *
      * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
-     *        subsequence
+     *        integer specifying the index of the first character of the subsequence
+     *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
+     *
      * @throws CharSequenceBeginIndexAboveBoundException
      *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
      */
@@ -147,34 +177,38 @@ implements Iterator<Character> {
     }
 
     /**
-     * Creates a new CharSequenceIterator over the {@link Character Characters}
-     * of the subsequence specified by the indices of its first and last
-     * characters (inclusive) contained by the specified {@link CharSequence}.
+     * Creates a new {@link CharSequenceIterator} over the {@link Character}s of the subsequence specified by the
+     * indices of its first and last {@link Character}s (inclusive) of the specified {@link CharSequence}.
      *
      * @param iteratedCharSequence
-     *        {@link CharSequence} to iterate
+     *        {@link CharSequence} to traverse
+     *
      * @param firstCharacterIndex
      *        integer specifying the index of the first character of the
      *        subsequence
+     *
      * @param lastCharacterIndex
      *        integer specifying the index of the last character of the
      *        subsequence
+     *
      * @throws CharSequenceBeginIndexNegativeException
      *         if {@code firstCharacterIndex < 0}
-     * @throws CharSequenceEndIndexBelowStartIndexException
+     *
+     * @throws CharSequenceEndIndexBelowBeginIndexException
      *         if {@code lastCharacterIndex < firstCharacterIndex}
+     *
      * @throws CharSequenceEndIndexAboveBoundException
      *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
      */
     public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
                                 final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowStartIndexException,
+    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
            CharSequenceEndIndexAboveBoundException {
         if (firstCharacterIndex < 0)
             throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
 
         if (lastCharacterIndex < firstCharacterIndex)
-            throw new CharSequenceEndIndexBelowStartIndexException(iteratedCharSequence, firstCharacterIndex,
+            throw new CharSequenceEndIndexBelowBeginIndexException(iteratedCharSequence, firstCharacterIndex,
                                                                    lastCharacterIndex);
 
         if (lastCharacterIndex >= iteratedCharSequence.length())
@@ -196,6 +230,7 @@ implements Iterator<Character> {
         if (! hasNext())
             throw new NoNextItemException("characterSequence", iteratedCharSequence,
                                           message().with("nextCharacterIndex", nextCharacterIndex));
+
         return iteratedCharSequence.charAt(nextCharacterIndex++);
     }
 }

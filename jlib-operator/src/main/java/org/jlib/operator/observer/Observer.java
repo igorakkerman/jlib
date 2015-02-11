@@ -24,20 +24,20 @@ package org.jlib.operator.observer;
 import org.jlib.operator.OperatorException;
 
 /**
- * Observer of an operation on a Value.
+ * Observer of an operation on a {@link Value}.
  *
  * @param <Value>
  *        type of removed value
  *
  * @author Igor Akkerman
  */
-public interface ValueObserver<Value> {
+public interface Observer<Value> {
 
     /**
      * Performs actions before the targeted operation.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @throws RuntimeException
      *         if the operation cannot be completed normally
@@ -53,7 +53,7 @@ public interface ValueObserver<Value> {
      * executed.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @throws RuntimeException
      *         if the operation cannot be completed normally
@@ -68,7 +68,7 @@ public interface ValueObserver<Value> {
      * Performs actions after the targeted operation has failed throwing an {@link OperatorException}.
      *
      * @param value
-     *        Value operated on
+     *        {@link Value} operated on
      *
      * @param operatorException
      *        {@link OperatorException} that caused the operation to fail

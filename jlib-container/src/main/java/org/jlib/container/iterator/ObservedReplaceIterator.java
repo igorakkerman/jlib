@@ -21,12 +21,12 @@
 
 package org.jlib.container.iterator;
 
-import org.jlib.operator.observer.ValueObserver;
-import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.observer.Observer;
+import org.jlib.operator.observer.ObserverException;
 
 /**
  * {@link ReplaceIterator} allowing its remove operation to be attended by
- * {@link ValueObserver} instances.
+ * {@link Observer} instances.
  *
  * @param <Item>
  *        type of the traversed items
@@ -43,25 +43,25 @@ extends ReplaceIterator<Item> {
      *        Item by which the former Item is replaced
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the replacement
      *
      * @throws NoItemToReplaceException
      *         if not called immediately after traversing an Item
      *
-     * @throws ValueObserverException
-     *         if an error occurs during the {@link ValueObserver} operation
+     * @throws ObserverException
+     *         if an error occurs during the {@link Observer} operation
      */
     @SuppressWarnings("unchecked")
-    void replace(Item newItem, ValueObserver<Item>... observers)
-    throws NoItemToReplaceException, ValueObserverException;
+    void replace(Item newItem, Observer<Item>... observers)
+    throws NoItemToReplaceException, ObserverException;
 
     /**
-     * Registers the specified {@link ValueObserver} for the replace operations
+     * Registers the specified {@link Observer} for the replace operations
      * of this {@link ObservedReplaceIterator}.
      *
      * @param replaceObserver
-     *        additional replace {@link ValueObserver}
+     *        additional replace {@link Observer}
      */
-    void addReplaceObserver(ValueObserver<Item> replaceObserver);
+    void addReplaceObserver(Observer<Item> replaceObserver);
 }

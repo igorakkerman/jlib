@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2013 Igor Akkerman
+ *     Copyright 2005-2015 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.operator.observer.ValueObserver;
-import org.jlib.operator.observer.ValueObserverException;
+import org.jlib.operator.observer.Observer;
+import org.jlib.operator.observer.ObserverException;
 
 /**
  * @param <Item>
@@ -30,13 +30,13 @@ import org.jlib.operator.observer.ValueObserverException;
  *
  * @author Igor Akkerman
  */
-public interface ObservedRemoveMultiple<Item>
- {
+public interface ObservedRemoveMultiple<Item> {
 
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
-        */ void remove(ContainsIterable items, ValueObserver<Item>... observers)
+        */ void remove(ContainsIterable items, Observer<Item>... observers)
 
     throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
-           ValueObserverException;
+           ObserverException;
 }
+
