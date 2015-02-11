@@ -29,7 +29,7 @@ import org.jlib.core.iterator.RemoveIterable;
 import org.jlib.core.iterator.RemoveIterator;
 import org.jlib.core.iterator.SingletonIterable;
 
-import org.jlib.operator.observer.ValueObserver;
+import org.jlib.operator.observer.Observer;
 
 /**
  * {@link Iterator} utility.
@@ -68,7 +68,7 @@ public final class IterableUtility {
      *        type of the items of {@code iterable}
      *
      * @param observers
-     *        comma separated sequence of {@link ValueObserver} instances
+     *        comma separated sequence of {@link Observer} instances
      *        attending the removal
      *
      * @throws InvalidIterableStateException
@@ -76,7 +76,7 @@ public final class IterableUtility {
      */
     @SafeVarargs
     public static <Item> void removeAll(final ObservedRemoveIterable<Item> iterable,
-                                        final ValueObserver<Item>... observers)
+                                        final Observer<Item>... observers)
     throws InvalidIterableStateException {
         for (final ObservedRemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
             iterator.next();

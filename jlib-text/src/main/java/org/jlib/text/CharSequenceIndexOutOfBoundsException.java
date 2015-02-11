@@ -1,64 +1,41 @@
+/*
+ * jlib - Open Source Java Library
+ *
+ *     www.jlib.org
+ *
+ *
+ *     Copyright 2005-2015 Igor Akkerman
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
 package org.jlib.text;
 
+import org.jlib.core.message.Message;
+
 /**
- * Exception thrown when a {@link CharSequence} character index is out of
- * bounds.
+ * Exception thrown when a {@link CharSequence} character index is out of bounds.
  *
  * @author Igor Akkerman
  */
-public class CharSequenceIndexOutOfBoundsException
+public abstract class CharSequenceIndexOutOfBoundsException
 extends IndexOutOfBoundsException {
 
     private static final long serialVersionUID = -4883064375950444974L;
 
-    /** {@link CharSequence} for which the character index is out of bounds */
-    private final CharSequence charSequence;
+    protected static final String CS_FORMAT = "'%s' ";
 
-    /**
-     * integer specifying the invalid character index that caused this
-     * CharSequenceIndexOutOfBoundsException
-     */
-    private final int invalidCharacterIndex;
-
-    /**
-     * Creates a new CharSequenceIndexOutOfBoundsException for the specified
-     * {@link CharSequence}.
-     *
-     * @param charSequence
-     *        {@link CharSequence} for which the character index is out of
-     *        bounds
-     * @param invalidCharacterIndex
-     *        integer specifying the invalid character index
-     */
-    public CharSequenceIndexOutOfBoundsException(final CharSequence charSequence, final int invalidCharacterIndex) {
-        this.charSequence = charSequence;
-        this.invalidCharacterIndex = invalidCharacterIndex;
-    }
-
-    /**
-     * Returns the {@link CharSequence} for which the character index is
-     * out of bounds.
-     *
-     * @return {@link CharSequence} for which the character index is out
-     *         of bounds
-     */
-    public CharSequence getCharSequence() {
-        return charSequence;
-    }
-
-    /**
-     * Returns the invalid character index that caused this
-     * CharSequenceIndexOutOfBoundsException.
-     *
-     * @return integer specifying the invalid character index
-     */
-    public int getInvalidCharacterIndex() {
-        return invalidCharacterIndex;
-    }
-
-
-    @Override
-    public String getMessage() {
-        return "[\'" + charSequence + "\', " + invalidCharacterIndex + "]";
+    public CharSequenceIndexOutOfBoundsException(final Message message)  {
+        super(message.toString());
     }
 }

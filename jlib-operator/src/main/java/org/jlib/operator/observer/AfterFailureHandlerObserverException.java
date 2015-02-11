@@ -19,12 +19,21 @@
  *     limitations under the License.
  */
 
+package org.jlib.operator.observer;
 
+import org.jlib.core.message.Message;
 
 /**
- * jlib utilities for Strings.
- * 
+ * {@link ObserverException} thrown during a {@link Observer#afterFailure)} operation.
+ *
  * @author Igor Akkerman
  */
-package org.jlib.text;
+public abstract class AfterFailureHandlerObserverException
+extends ObserverException {
 
+    private static final long serialVersionUID = - 752311177821410591L;
+
+    protected AfterFailureHandlerObserverException(final Object value, final Message message, final Exception cause) {
+        super(value, message, cause);
+    }
+}

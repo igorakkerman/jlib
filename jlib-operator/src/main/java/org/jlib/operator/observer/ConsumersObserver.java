@@ -25,8 +25,16 @@ import java.util.function.Consumer;
 
 import org.jlib.operator.OperatorException;
 
-public class BuiltValueObserver<Value>
-implements ValueObserver<Value> {
+/**
+ * {@link Observer} built from specified {@link Value} {@link Consumer}s.
+ * That is, its methods {@link #before}, {@link #afterSuccess} and {@link #afterFailure} use previously specified
+ * {@link Value} {@link Consumer}s.
+ *
+ * @param <Value>
+ *        type of observed value
+ */
+public class ConsumersObserver<Value>
+implements Observer<Value> {
 
     private Consumer<Value> beforeConsumer = value -> {};
 
@@ -34,23 +42,19 @@ implements ValueObserver<Value> {
 
     private Consumer<Value> afterFailureConsumer = value -> {};
 
-    BuiltValueObserver() {
-        // no visible constructor
-    }
-
-    public BuiltValueObserver<Value> beforeDo(final Consumer<Value> beforeConsumer) {
+    public ConsumersObserver<Value> beforeDo(final Consumer<Value> beforeConsumer) {
         this.beforeConsumer = beforeConsumer;
 
         return this;
     }
 
-    public BuiltValueObserver<Value> afterSuccess(final Consumer<Value> afterSuccessConsumer) {
+    public ConsumersObserver<Value> afterSuccessDo(final Consumer<Value> afterSuccessConsumer) {
         this.afterSuccessConsumer = afterSuccessConsumer;
 
         return this;
     }
 
-    public BuiltValueObserver<Value> afterFailure(final Consumer<Value> afterFailureConsumer) {
+    public ConsumersObserver<Value> afterFailureDo(final Consumer<Value> afterFailureConsumer) {
         this.afterFailureConsumer = afterFailureConsumer;
 
         return this;
