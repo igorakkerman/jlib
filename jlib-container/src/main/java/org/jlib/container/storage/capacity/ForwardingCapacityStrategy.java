@@ -19,14 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.container.storage.capacity.minimal;
+package org.jlib.container.storage.capacity;
 
-import org.jlib.container.storage.capacity.CapacityStrategy;
-import org.jlib.container.storage.capacity.HeadCapacityStrategy;
-import org.jlib.container.storage.capacity.InitialCapacityStrategy;
-import org.jlib.container.storage.capacity.InvalidCapacityException;
-import org.jlib.container.storage.capacity.SplitCapacityStrategy;
-import org.jlib.container.storage.capacity.TailCapacityStrategy;
 import org.jlib.container.storage.InvalidIndexException;
 
 public class ForwardingCapacityStrategy
