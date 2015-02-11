@@ -19,7 +19,6 @@
  *     limitations under the License.
  */
 
-
 /**
  * <p>
  * Interfaces for strategies of capacity provision in a

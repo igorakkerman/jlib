@@ -29,20 +29,19 @@ import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.basefunctions.ApplicationObject;
 import static org.jlib.core.message.MessageUtility.mfmessage;
 
-public abstract class AbstractCapacityStrategy<Item>
+public abstract class AbstractCapacityStrategy
 extends ApplicationObject {
 
-    private final LinearIndexStorage<Item> storage;
+    private final LinearIndexStorage<?> storage;
 
     private final IndexRange contentIndexRange;
 
-    protected AbstractCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final IndexRange contentIndexRange) {
+    protected AbstractCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         this.storage = storage;
         this.contentIndexRange = contentIndexRange;
     }
 
-    protected LinearIndexStorage<Item> getStorage() {
+    protected LinearIndexStorage<?> getStorage() {
         return storage;
     }
 
@@ -51,7 +50,7 @@ extends ApplicationObject {
     }
 
     /**
-     * Returns the tail capacity, that is, the number of storable {@link Item}s behind the last {@link Item}.
+     * Returns the tail capacity, that is, the number of storable items behind the last itme.
      *
      * @return integer specifying the tail capacity
      */

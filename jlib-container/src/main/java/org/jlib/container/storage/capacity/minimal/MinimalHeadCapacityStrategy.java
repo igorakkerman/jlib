@@ -44,11 +44,10 @@ import org.jlib.container.storage.LinearIndexStorage;
  * @author Igor Akkerman
  */
 public class MinimalHeadCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item>
+extends AbstractCapacityStrategy
 implements HeadCapacityStrategy {
 
-    public MinimalHeadCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final IndexRange contentIndexRange) {
+    public MinimalHeadCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 

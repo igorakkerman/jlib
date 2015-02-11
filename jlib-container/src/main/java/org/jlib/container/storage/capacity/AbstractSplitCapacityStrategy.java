@@ -25,12 +25,11 @@ import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.InvalidIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
-public abstract class AbstractSplitCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item>
+public abstract class AbstractSplitCapacityStrategy
+extends AbstractCapacityStrategy
 implements SplitCapacityStrategy {
 
-    protected AbstractSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                            final IndexRange contentIndexRange) {
+    protected AbstractSplitCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 

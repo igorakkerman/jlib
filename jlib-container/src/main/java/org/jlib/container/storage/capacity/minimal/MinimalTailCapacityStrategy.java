@@ -37,22 +37,18 @@ import org.jlib.container.storage.LinearIndexStorage;
  * This {@link CapacityStrategy} analyzes the current head capacity to verify for the requested capacity.
  * If the requested head capacity is above the available head capacity,
  * the {@link LinearIndexStorage} is requested to re-allocate a capacity higher by the difference between requested and
- * available head capacity. The {@link Item}s are shifted "right" to have exactly the requested head capacity.
+ * available head capacity. The items are shifted "right" to have exactly the requested head capacity.
  * The {@link LinearIndexStorage} is always requested to provide an additional capacity even if its tail capacity would
  * be sufficient.
  * </p>
  *
- * @param <Item>
- *        type of the items held in the {@link LinearIndexStorage}
- *
  * @author Igor Akkerman
  */
-public class MinimalTailCapacityStrategy<Item>
-extends AbstractCapacityStrategy<Item>
+public class MinimalTailCapacityStrategy
+extends AbstractCapacityStrategy
 implements TailCapacityStrategy {
 
-    public MinimalTailCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                       final IndexRange contentIndexRange) {
+    public MinimalTailCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 

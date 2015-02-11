@@ -21,8 +21,8 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.message.Message;
 import org.jlib.core.exception.InvalidArgumentException;
+import org.jlib.core.message.Message;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid
@@ -35,8 +35,7 @@ extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 1514836335986845986L;
 
-    protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage,
-                                          final Message message) {
+    protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final Message message) {
         super(message.with("storage", linearIndexStorage));
     }
 }
