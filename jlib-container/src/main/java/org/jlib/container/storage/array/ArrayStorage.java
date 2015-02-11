@@ -109,7 +109,7 @@ extends AbstractLinearIndexStorage<Item> {
                              final IndexRangeOperationDescriptor copyDescriptor)
     throws InvalidIndexException {
 
-        validateOperationDescriptor(copyDescriptor);
+        ensureOperationDescriptorValid(copyDescriptor);
 
         arraycopy(sourceArray, copyDescriptor.getSourceRange().getMinimum(), targetArray,
                   copyDescriptor.getTargetIndex(),
