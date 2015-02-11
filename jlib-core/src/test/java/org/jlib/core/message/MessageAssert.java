@@ -23,6 +23,7 @@ package org.jlib.core.message;
 
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.internal.Objects;
+import org.assertj.core.internal.Strings;
 
 public class MessageAssert extends AbstractAssert<MessageAssert, Message> {
 
@@ -37,6 +38,12 @@ public class MessageAssert extends AbstractAssert<MessageAssert, Message> {
     public MessageAssert isEqualTo(final String expected) {
         isNotNull();
         Objects.instance().assertEqual(info, actual.toString(), expected);
+        return this;
+    }
+
+    public MessageAssert isEmpty() {
+        isNotNull();
+        Strings.instance().assertEmpty(info, actual.toString());
         return this;
     }
 }

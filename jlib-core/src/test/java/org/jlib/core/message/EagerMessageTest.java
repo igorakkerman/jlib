@@ -69,28 +69,42 @@ public class EagerMessageTest {
     }
 
     @Test
-    public void messageWithTextShouldProduceCorrectString() {
-        final Message message = message("Something went wrong.");
+    public void messageWithNoTextAndEmptyArgumentsList() {
+        final Message message = message().with();
 
-        assertThat(message).isEqualTo("Something went wrong.");
+        assertThat(message).isEmpty();
     }
 
     @Test
-    public void messageWithSingleArgumentShouldProduceCorrectString() {
+    public void messageWithNoTextAndSingleArgument() {
         final Message message = message().with("dummyName", "Dummy Value");
 
         assertThat(message).isEqualTo("[dummyName='Dummy Value']");
     }
 
     @Test
-    public void messageWithMultipleArgumentsShouldProduceCorrectString() {
+    public void messageWithNoTextAndMultipleArguments() {
         final Message message = message().with("dummyName", 1).with("dummerName", "Dummer Value");
 
         assertThat(message).isEqualTo("[dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
-    public void messageWithTextAndArgumentsShouldProduceCorrectString() {
+    public void messageWithTextAndNoArguments() {
+        final Message message = message("Something went wrong.");
+
+        assertThat(message).isEqualTo("Something went wrong.");
+    }
+
+    @Test
+    public void messageWithTextAndEmptyArgumentsList() {
+        final Message message = message("Something went wrong.").with();
+
+        assertThat(message).isEqualTo("Something went wrong.");
+    }
+
+    @Test
+    public void messageWithTextAndArguments() {
         final Message message = /*
          */ message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value");
 
@@ -98,14 +112,14 @@ public class EagerMessageTest {
     }
 
     @Test
-    public void messageWithTextAndNamedArgumentShouldProduceCorrectString() {
+    public void messageWithTextAndNamedArgument() {
         final Message message = message("Something went wrong.").with(named("dummyName", 1));
 
         assertThat(message).isEqualTo("Something went wrong. [dummyName='1']");
     }
 
     @Test
-    public void messageWithTextAndNamedArgumentsInSpecifiedDefaultFormatShouldProduceCorrectString() {
+    public void messageWithTextAndNamedArgumentsInSpecifiedDefaultFormat() {
 
         MessageStyleRegistry.getInstance().setDefaultMessageStyle(COLON_PRINTF_CONFIG);
 
@@ -117,7 +131,7 @@ public class EagerMessageTest {
     }
 
     @Test
-    public void messageWithTextAndNamedArgumentsShouldProduceCorrectString() {
+    public void messageWithTextAndNamedArguments() {
         final Message message = /*
          */ message("Something went wrong.").with(named("dummyName", 1),
                                                   named("dummerName", "Dummer Value"));
@@ -126,7 +140,7 @@ public class EagerMessageTest {
     }
 
     @Test
-    public void messageWithTextArgumentsInSpecifiedPrintfFormatShouldProduceCorrectString() {
+    public void messageWithTextArgumentsInSpecifiedPrintfFormat() {
         final Message message = /*
          */ message("Something went wrong.", COLON_PRINTF_CONFIG).with("dummyName", 1)
                                                                  .with("dummerName", "Dummer Value");
@@ -135,7 +149,7 @@ public class EagerMessageTest {
     }
 
     @Test
-    public void messageWithTextAndArgumentsInSpecifiedMfFormatShouldProduceCorrectString() {
+    public void messageWithTextAndArgumentsInSpecifiedMfFormat() {
         final Message message = /*
           */ message("Something went wrong.", COLON_MF_CONFIG).with("dummyName", 1)
                                                               .with("dummerName", "Dummer Value");
