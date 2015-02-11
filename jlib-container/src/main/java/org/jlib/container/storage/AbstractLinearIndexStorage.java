@@ -95,7 +95,7 @@ implements LinearIndexStorage<Item> {
                                                             beginIndexName));
     }
 
-    protected void validateOperationDescriptor(final IndexRangeOperationDescriptor copyDescriptor) {
+    protected void ensureOperationDescriptorValid(final IndexRangeOperationDescriptor copyDescriptor) {
         ensureIndexRangeValid("sourceBeginIndex", copyDescriptor.getSourceRange().getMinimum(),
                               "sourceEndIndex", copyDescriptor.getSourceRange().getMaximum());
 
