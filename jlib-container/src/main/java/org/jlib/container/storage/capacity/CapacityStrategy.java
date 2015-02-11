@@ -21,10 +21,10 @@
 
 package org.jlib.container.storage.capacity;
 
-// Unifying interface
 public interface CapacityStrategy
 extends InitialCapacityStrategy,
         HeadCapacityStrategy,
         TailCapacityStrategy,
         SplitCapacityStrategy {
+    // Unifying interface
 }
