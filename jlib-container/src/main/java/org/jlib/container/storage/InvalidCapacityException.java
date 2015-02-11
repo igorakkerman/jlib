@@ -37,7 +37,6 @@ extends LinearIndexStorageException {
 
     InvalidCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
                              final int invalidCapacity) {
-
         super(storage, message().with(capacityName, invalidCapacity));
     }
 }

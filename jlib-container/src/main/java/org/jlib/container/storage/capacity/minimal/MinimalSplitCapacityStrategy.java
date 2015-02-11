@@ -26,11 +26,10 @@ import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.LinearIndexStorage;
 
-public class MinimalSplitCapacityStrategy<Item>
-extends AbstractSplitCapacityStrategy<Item> {
+public class MinimalSplitCapacityStrategy
+extends AbstractSplitCapacityStrategy {
 
-    public MinimalSplitCapacityStrategy(final LinearIndexStorage<Item> storage,
-                                        final IndexRange contentIndexRange) {
+    public MinimalSplitCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
     }
 
