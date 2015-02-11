@@ -38,11 +38,10 @@ implements SplitCapacityStrategy {
     public void ensureSplitCapacity(final int splitIndex, final int splitCapacity)
     throws InvalidIndexException {
         ensureIndexValid(splitIndex);
+        ensureCapacityValid(splitCapacity);
 
         if (splitCapacity == 0)
             return;
-
-        ensureCapacityValid(splitCapacity);
 
         safeEnsureSplitCapacity(splitIndex, splitCapacity);
 
