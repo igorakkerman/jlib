@@ -39,10 +39,10 @@ implements SplitCapacityStrategy {
     throws InvalidIndexException {
         ensureIndexValid(splitIndex);
 
-        ensureCapacityValid(splitCapacity);
-
         if (splitCapacity == 0)
             return;
+
+        ensureCapacityValid(splitCapacity);
 
         safeEnsureSplitCapacity(splitIndex, splitCapacity);
 
