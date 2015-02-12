@@ -22,12 +22,12 @@
 package org.jlib.container.storage.capacity;
 
 import org.jlib.container.storage.LinearIndexStorage;
-import org.jlib.container.storage.LinearIndexStorageException;
+import org.jlib.container.storage.InvalidStorageArgumentException;
 
 import static org.jlib.core.message.MessageUtility.message;
 
 public class InvalidCapacityException
-extends LinearIndexStorageException {
+extends InvalidStorageArgumentException {
 
     private static final long serialVersionUID = 2379753107475444861L;
 

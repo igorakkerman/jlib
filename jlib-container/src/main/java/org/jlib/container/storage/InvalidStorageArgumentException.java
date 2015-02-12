@@ -30,12 +30,12 @@ import org.jlib.core.message.Message;
  *
  * @author Igor Akkerman
  */
-public abstract class LinearIndexStorageException
+public abstract class InvalidStorageArgumentException
 extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 1514836335986845986L;
 
-    protected LinearIndexStorageException(final LinearIndexStorage<?> linearIndexStorage, final Message message) {
+    protected InvalidStorageArgumentException(final LinearIndexStorage<?> linearIndexStorage, final Message message) {
         super(message.with("storage", linearIndexStorage));
     }
 }

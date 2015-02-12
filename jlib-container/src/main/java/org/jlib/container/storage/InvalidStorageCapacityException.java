@@ -21,17 +21,16 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.exception.InvalidArgumentException;
-
 import static org.jlib.core.message.MessageUtility.message;
 
 /**
- * {@link InvalidArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is specified.
+ * {@link InvalidStorageArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is
+ * specified.
  *
  * @author Igor Akkerman
  */
 public class InvalidStorageCapacityException
-extends LinearIndexStorageException {
+extends InvalidStorageArgumentException {
 
     private static final long serialVersionUID = - 701812048814999842L;
 
