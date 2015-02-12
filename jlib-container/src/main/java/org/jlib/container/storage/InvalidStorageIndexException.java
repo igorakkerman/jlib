@@ -24,7 +24,7 @@ package org.jlib.container.storage;
 import org.jlib.core.message.Message;
 
 public class InvalidStorageIndexException
-extends LinearIndexStorageException {
+extends InvalidStorageArgumentException {
 
     private static final long serialVersionUID = 2164701656211361191L;
 
