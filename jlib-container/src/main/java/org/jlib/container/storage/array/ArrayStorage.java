@@ -25,7 +25,7 @@ import org.jlib.core.language.Valid;
 
 import org.jlib.container.storage.AbstractLinearIndexStorage;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
-import org.jlib.container.storage.InvalidCapacityException;
+import org.jlib.container.storage.InvalidStorageCapacityException;
 import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
@@ -50,7 +50,7 @@ extends AbstractLinearIndexStorage<Item> {
     private Item[] delegateArray;
 
     public ArrayStorage(final int initialCapacity)
-    throws InvalidCapacityException {
+    throws InvalidStorageCapacityException {
         super(initialCapacity);
 
         delegateArray = array(initialCapacity);

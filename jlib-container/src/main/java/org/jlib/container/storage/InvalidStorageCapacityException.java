@@ -30,13 +30,13 @@ import static org.jlib.core.message.MessageUtility.message;
  *
  * @author Igor Akkerman
  */
-public class InvalidCapacityException
+public class InvalidStorageCapacityException
 extends LinearIndexStorageException {
 
     private static final long serialVersionUID = - 701812048814999842L;
 
-    InvalidCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
-                             final int invalidCapacity) {
+    InvalidStorageCapacityException(final LinearIndexStorage<?> storage, final String capacityName,
+                                    final int invalidCapacity) {
         super(storage, message().with(capacityName, invalidCapacity));
     }
 }

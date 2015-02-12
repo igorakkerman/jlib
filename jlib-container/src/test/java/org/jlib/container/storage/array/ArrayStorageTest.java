@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage.array;
 
-import org.jlib.container.storage.InvalidCapacityException;
+import org.jlib.container.storage.InvalidStorageCapacityException;
 import org.jlib.container.storage.InvalidStorageIndexException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,7 +43,7 @@ public class ArrayStorageTest {
         assertThat(storage.capacity()).isEqualTo(5);
     }
 
-    @Test(expected = InvalidCapacityException.class)
+    @Test(expected = InvalidStorageCapacityException.class)
     public void negativeCapacityStorageReadShouldThrowException()
     throws Exception {
         new ArrayStorage<>(- 1);
