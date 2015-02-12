@@ -28,14 +28,12 @@ import org.jlib.core.message.Message;
  *
  * @author Igor Akkerman
  */
-public abstract class CharSequenceIndexOutOfBoundsException
+public class CharSequenceIndexOutOfBoundsException
 extends IndexOutOfBoundsException {
 
     private static final long serialVersionUID = -4883064375950444974L;
 
-    protected static final String CS_FORMAT = "'%s' ";
-
-    public CharSequenceIndexOutOfBoundsException(final Message message)  {
-        super(message.toString());
+    public CharSequenceIndexOutOfBoundsException(final CharSequence charSequence, final Message message)  {
+        super(message.with("text", charSequence).toString());
     }
 }
