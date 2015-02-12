@@ -49,14 +49,14 @@ implements Iterator<Character> {
      * Returns an {@link Iterable} creating CharSequenceIterators over the
      * {@link Character Characters} of a {@link CharSequence}.
      *
-     * @param iterableCharSequence
+     * @param charSequence
      *        {@link CharSequence} to iterate
      *
      * @return {@link Iterable} creating CharSequenceIterators over the
-     *         {@link Character Characters} of {@code iterableCharSequence}
+     *         {@link Character Characters} of {@code charSequence}
      */
-    public static Iterable<Character> iterable(final CharSequence iterableCharSequence) {
-        return () -> new CharSequenceIterator(iterableCharSequence);
+    public static Iterable<Character> iterable(final CharSequence charSequence) {
+        return () -> new CharSequenceIterator(charSequence);
     }
 
     /**
@@ -65,7 +65,7 @@ implements Iterator<Character> {
      * its first character (inclusive) contained by the specified
      * {@link CharSequence}.
      *
-     * @param iterableCharSequence
+     * @param charSequence
      *        {@link CharSequence} to traverse
      *
      * @param firstCharacterIndex
@@ -75,15 +75,16 @@ implements Iterator<Character> {
      * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
      *
-     * @throws CharSequenceBeginIndexNegativeException
-     *         if {@code firstCharacterIndex < 0}
-     *
-     * @throws CharSequenceBeginIndexAboveBoundException
-     *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code firstCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
      */
-    public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceBeginIndexAboveBoundException {
-        return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex);
+    public static Iterable<Character> iterable(final CharSequence charSequence, final int firstCharacterIndex)
+    throws CharSequenceIndexOutOfBoundsException {
+        return () -> new CharSequenceIterator(charSequence, firstCharacterIndex);
     }
 
     /**
@@ -92,7 +93,7 @@ implements Iterator<Character> {
      * of its first and last characters (inclusive) contained by the specified
      * {@link CharSequence}.
      *
-     * @param iterableCharSequence
+     * @param charSequence
      *        {@link CharSequence} to traverse
      *
      * @param firstCharacterIndex
@@ -106,24 +107,22 @@ implements Iterator<Character> {
      * @return {@link Iterable} creating CharSequenceIterators over the
      *         {@link Character Characters} of the subsequence
      *
-     * @throws CharSequenceBeginIndexNegativeException
-     *         if {@code firstCharacterIndex < 0}
-     *
-     * @throws CharSequenceEndIndexBelowBeginIndexException
-     *         if {@code lastCharacterIndex < firstCharacterIndex}
-     *
-     * @throws CharSequenceEndIndexAboveBoundException
-     *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
+     *             <li>{@code lastCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
      */
-    public static Iterable<Character> iterable(final CharSequence iterableCharSequence, final int firstCharacterIndex,
+    public static Iterable<Character> iterable(final CharSequence charSequence, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
-           CharSequenceEndIndexAboveBoundException {
-        return () -> new CharSequenceIterator(iterableCharSequence, firstCharacterIndex, lastCharacterIndex);
+    throws CharSequenceIndexOutOfBoundsException {
+        return () -> new CharSequenceIterator(charSequence, firstCharacterIndex, lastCharacterIndex);
     }
 
     /** {@link CharSequence} iterated by this CharSequenceIterator */
-    private final CharSequence iteratedCharSequence;
+    private final CharSequence charSequence;
 
     /** index of next iterated character */
     protected int nextCharacterIndex;
@@ -135,52 +134,64 @@ implements Iterator<Character> {
      * Creates a new CharSequenceIterator over the {@link Character Characters}
      * of the specified {@link CharSequence}.
      *
-     * @param iteratedCharSequence
+     * @param charSequence
      *        {@link CharSequence} to iterate
      */
-    public CharSequenceIterator(final CharSequence iteratedCharSequence) {
-        // a call to another constructor would throw an Exception for an empty iteratedCharSequence
+    public CharSequenceIterator(final CharSequence charSequence) {
+        // a call to another constructor would throw an Exception for an empty charSequence
         // also, the indices checks are skipped here
-        this.iteratedCharSequence = iteratedCharSequence;
+        this.charSequence = charSequence;
 
         nextCharacterIndex = 0;
-        lastCharacterIndex = iteratedCharSequence.length() - 1;
+        lastCharacterIndex = charSequence.length() - 1;
     }
 
     /**
      * Creates a new CharSequenceIterator over the {@link Character Characters} of the subsequence specified by the
      * index of its first character (inclusive) contained by the specified {@link CharSequence}.
      *
-     * @param iteratedCharSequence
+     * @param charSequence
      *        {@link CharSequence} to traverse
      *
      * @param firstCharacterIndex
      *        integer specifying the index of the first character of the subsequence
      *
-     * @throws CharSequenceBeginIndexNegativeException
-     *         if {@code firstCharacterIndex < 0}
-     *
-     * @throws CharSequenceBeginIndexAboveBoundException
-     *         if {@code firstCharacterIndex >= iteratedCharSequence.length()}
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code firstCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
      */
-    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex) {
-        if (firstCharacterIndex < 0)
-            throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
+    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex)
+    throws CharSequenceIndexOutOfBoundsException {
 
-        if (firstCharacterIndex >= iteratedCharSequence.length())
-            throw new CharSequenceBeginIndexAboveBoundException(iteratedCharSequence, firstCharacterIndex);
+        ensureCharacterIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
 
-        this.iteratedCharSequence = iteratedCharSequence;
-
+        this.charSequence = charSequence;
         nextCharacterIndex = firstCharacterIndex;
-        lastCharacterIndex = iteratedCharSequence.length() - 1;
+        lastCharacterIndex = charSequence.length() - 1;
+    }
+
+    protected void ensureCharacterIndicesValid(final CharSequence charSequence, final int firstCharacterIndex,
+                                             final int lastCharacterIndex)
+    throws CharSequenceIndexOutOfBoundsException {
+
+        if (firstCharacterIndex < 0)
+            throw new CharSequenceIndexOutOfBoundsException(charSequence,
+                                                            message().with("firstCharacterIndex", firstCharacterIndex));
+
+        if (firstCharacterIndex > lastCharacterIndex)
+            throw new CharSequenceIndexOutOfBoundsException(charSequence,
+                                                            message().with("firstCharacterIndex", firstCharacterIndex)
+                                                                     .with("lastCharacterIndex", lastCharacterIndex));
     }
 
     /**
      * Creates a new {@link CharSequenceIterator} over the {@link Character}s of the subsequence specified by the
      * indices of its first and last {@link Character}s (inclusive) of the specified {@link CharSequence}.
      *
-     * @param iteratedCharSequence
+     * @param charSequence
      *        {@link CharSequence} to traverse
      *
      * @param firstCharacterIndex
@@ -191,46 +202,36 @@ implements Iterator<Character> {
      *        integer specifying the index of the last character of the
      *        subsequence
      *
-     * @throws CharSequenceBeginIndexNegativeException
-     *         if {@code firstCharacterIndex < 0}
-     *
-     * @throws CharSequenceEndIndexBelowBeginIndexException
-     *         if {@code lastCharacterIndex < firstCharacterIndex}
-     *
-     * @throws CharSequenceEndIndexAboveBoundException
-     *         if {@code lastCharacterIndex >= iteratedCharSequence.length()}
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
+     *             <li>{@code lastCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
      */
-    public CharSequenceIterator(final CharSequence iteratedCharSequence, final int firstCharacterIndex,
+    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex,
                                 final int lastCharacterIndex)
-    throws CharSequenceBeginIndexNegativeException, CharSequenceEndIndexBelowBeginIndexException,
-           CharSequenceEndIndexAboveBoundException {
-        if (firstCharacterIndex < 0)
-            throw new CharSequenceBeginIndexNegativeException(iteratedCharSequence, firstCharacterIndex);
+    throws CharSequenceIndexOutOfBoundsException {
 
-        if (lastCharacterIndex < firstCharacterIndex)
-            throw new CharSequenceEndIndexBelowBeginIndexException(iteratedCharSequence, firstCharacterIndex,
-                                                                   lastCharacterIndex);
+        ensureCharacterIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
 
-        if (lastCharacterIndex >= iteratedCharSequence.length())
-            throw new CharSequenceEndIndexAboveBoundException(iteratedCharSequence, lastCharacterIndex);
-
-        this.iteratedCharSequence = iteratedCharSequence;
-
+        this.charSequence = charSequence;
         nextCharacterIndex = firstCharacterIndex;
         this.lastCharacterIndex = lastCharacterIndex;
     }
 
     @Override
     public boolean hasNext() {
-        return nextCharacterIndex <= lastCharacterIndex && nextCharacterIndex < iteratedCharSequence.length();
+        return nextCharacterIndex <= lastCharacterIndex && nextCharacterIndex < charSequence.length();
     }
 
     @Override
     public Character next() {
         if (! hasNext())
-            throw new NoNextItemException("characterSequence", iteratedCharSequence,
+            throw new NoNextItemException("characterSequence", charSequence,
                                           message().with("nextCharacterIndex", nextCharacterIndex));
 
-        return iteratedCharSequence.charAt(nextCharacterIndex++);
+        return charSequence.charAt(nextCharacterIndex++);
     }
 }
