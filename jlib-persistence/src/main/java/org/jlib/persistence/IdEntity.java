@@ -23,6 +23,6 @@ package org.jlib.persistence;
 
 import java.io.Serializable;
 
-public interface GenericEntity<Id extends Serializable> {
+public interface IdEntity<Id extends Serializable> {
     Id getId();
 }
