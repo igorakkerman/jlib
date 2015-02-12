@@ -166,25 +166,11 @@ implements Iterator<Character> {
     public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex)
     throws CharSequenceIndexOutOfBoundsException {
 
-        ensureCharacterIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
+        TextUtility.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
 
         this.charSequence = charSequence;
         nextCharacterIndex = firstCharacterIndex;
         lastCharacterIndex = charSequence.length() - 1;
-    }
-
-    protected void ensureCharacterIndicesValid(final CharSequence charSequence, final int firstCharacterIndex,
-                                             final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
-
-        if (firstCharacterIndex < 0)
-            throw new CharSequenceIndexOutOfBoundsException(charSequence,
-                                                            message().with("firstCharacterIndex", firstCharacterIndex));
-
-        if (firstCharacterIndex > lastCharacterIndex)
-            throw new CharSequenceIndexOutOfBoundsException(charSequence,
-                                                            message().with("firstCharacterIndex", firstCharacterIndex)
-                                                                     .with("lastCharacterIndex", lastCharacterIndex));
     }
 
     /**
@@ -214,7 +200,7 @@ implements Iterator<Character> {
                                 final int lastCharacterIndex)
     throws CharSequenceIndexOutOfBoundsException {
 
-        ensureCharacterIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
+        TextUtility.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
 
         this.charSequence = charSequence;
         nextCharacterIndex = firstCharacterIndex;
