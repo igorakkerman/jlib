@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.text.templateengine;
+package org.jlib.text;
 
 import org.jlib.core.property.PropertyUtility;
 
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
-import org.jlib.text.CharSequenceIterator;
+import static org.jlib.core.message.MessageUtility.message;
 
 public class TextUtility {
 
@@ -58,5 +58,19 @@ public class TextUtility {
     public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex,
                                                  final int lastCharacterIndex) {
         return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex, lastCharacterIndex);
+    }
+
+    public static void ensureIndicesValid(final CharSequence charSequence, final int firstCharacterIndex,
+                                          final int lastCharacterIndex)
+    throws CharSequenceIndexOutOfBoundsException {
+
+        if (firstCharacterIndex < 0)
+            throw new CharSequenceIndexOutOfBoundsException(charSequence,
+                                                            message().with("firstCharacterIndex", firstCharacterIndex));
+
+        if (firstCharacterIndex > lastCharacterIndex)
+            throw new CharSequenceIndexOutOfBoundsException(charSequence,
+                                                            message().with("firstCharacterIndex", firstCharacterIndex)
+                                                                     .with("lastCharacterIndex", lastCharacterIndex));
     }
 }
