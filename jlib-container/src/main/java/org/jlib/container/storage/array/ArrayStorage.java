@@ -26,7 +26,7 @@ import org.jlib.core.language.Valid;
 import org.jlib.container.storage.AbstractLinearIndexStorage;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.InvalidCapacityException;
-import org.jlib.container.storage.InvalidIndexException;
+import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 import static java.lang.System.arraycopy;
@@ -107,7 +107,7 @@ extends AbstractLinearIndexStorage<Item> {
      */
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
                              final IndexRangeOperationDescriptor copyDescriptor)
-    throws InvalidIndexException {
+    throws InvalidStorageIndexException {
 
         ensureOperationDescriptorValid(copyDescriptor);
 
