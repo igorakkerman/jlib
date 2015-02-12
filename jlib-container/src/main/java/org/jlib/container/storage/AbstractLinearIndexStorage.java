@@ -35,7 +35,7 @@ implements LinearIndexStorage<Item> {
 
     @Override
     public Item get(final int index)
-    throws InvalidIndexException {
+    throws InvalidStorageIndexException {
         ensureIndexValid("index", index);
 
         return safeGet(index);
@@ -45,7 +45,7 @@ implements LinearIndexStorage<Item> {
 
     @Override
     public void set(final int index, final Item item)
-    throws InvalidIndexException {
+    throws InvalidStorageIndexException {
         ensureIndexValid("index", index);
 
         safeSet(index, item);
@@ -78,26 +78,25 @@ implements LinearIndexStorage<Item> {
 
     protected void ensureIndexValid(final String indexName, final int index) {
         if (index < 0)
-            throw new InvalidIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));
+            throw new InvalidStorageIndexException(this, mfmessage("{0} = {1} < 0", indexName, index));
 
         if (index > capacity() - 1)
-            throw new InvalidIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
+            throw new InvalidStorageIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
                                                             capacity() - 1));
     }
 
-    protected void ensureIndexRangeValid(final String beginIndexName, final int beginIndex, final String endIndexName,
-                                         final int endIndex) {
-        ensureIndexValid(beginIndexName, beginIndex);
-        ensureIndexValid(endIndexName, endIndex);
+    protected void ensureSourceIndexRangeValid(final int beginIndex, final int endIndex) {
+        ensureIndexValid("sourceBeginIndex", beginIndex);
+        ensureIndexValid("sourceEndIndex", endIndex);
 
         if (endIndex < beginIndex)
-            throw new InvalidIndexException(this, mfmessage("{0} = {1} < {2} = {3}", endIndexName, endIndex, beginIndex,
-                                                            beginIndexName));
+            throw new InvalidStorageIndexException(this, mfmessage("sourceEndIndex = {0} < {1} = sourceBeginIndex", endIndex,
+                                                            beginIndex));
     }
 
     protected void ensureOperationDescriptorValid(final IndexRangeOperationDescriptor copyDescriptor) {
-        ensureIndexRangeValid("sourceBeginIndex", copyDescriptor.getSourceRange().getMinimum(),
-                              "sourceEndIndex", copyDescriptor.getSourceRange().getMaximum());
+        ensureSourceIndexRangeValid(copyDescriptor.getSourceRange().getMinimum(),
+                                    copyDescriptor.getSourceRange().getMaximum());
 
         ensureIndexValid("targetIndex", copyDescriptor.getTargetIndex());
     }

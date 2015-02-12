@@ -22,7 +22,7 @@
 package org.jlib.container.storage.array;
 
 import org.jlib.container.storage.InvalidCapacityException;
-import org.jlib.container.storage.InvalidIndexException;
+import org.jlib.container.storage.InvalidStorageIndexException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
@@ -49,13 +49,13 @@ public class ArrayStorageTest {
         new ArrayStorage<>(- 1);
     }
 
-    @Test(expected = InvalidIndexException.class)
+    @Test(expected = InvalidStorageIndexException.class)
     public void zeroCapacityStorageReadShouldThrowException()
     throws Exception {
         new ArrayStorage<Integer>(0).get(0);
     }
 
-    @Test(expected = InvalidIndexException.class)
+    @Test(expected = InvalidStorageIndexException.class)
     public void readNegativeIndexShouldThrowException()
     throws Exception {
         new ArrayStorage<Integer>(5).get(- 1);

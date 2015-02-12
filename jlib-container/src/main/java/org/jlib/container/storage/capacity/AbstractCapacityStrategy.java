@@ -23,7 +23,7 @@ package org.jlib.container.storage.capacity;
 
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
-import org.jlib.container.storage.InvalidIndexException;
+import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 import org.jlib.basefunctions.ApplicationObject;
@@ -78,11 +78,11 @@ extends ApplicationObject {
 
     protected void ensureIndexValid(final int index) {
         if (index < contentIndexRange.getMinimum())
-            throw new InvalidIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
+            throw new InvalidStorageIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
                                                                contentIndexRange.getMinimum()));
 
         if (index > contentIndexRange.getMaximum())
-            throw new InvalidIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
+            throw new InvalidStorageIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
                                                                contentIndexRange.getMaximum()));
     }
 }
