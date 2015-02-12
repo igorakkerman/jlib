@@ -35,6 +35,9 @@
         <module name="jlib-object-spi-apachecommons" />
         <module name="jlib-operation" />
         <module name="jlib-operator" />
+        <module name="jlib-persistence" />
+        <module name="jlib-persistence-hibernate" />
+        <module name="jlib-persistence-jpa" />
         <module name="jlib-spi-apachecommons" />
         <module name="jlib-text" />
       </profile>
@@ -54,6 +57,9 @@
       <module name="jlib-object-spi-apachecommons" target="1.8" />
       <module name="jlib-operation" target="1.8" />
       <module name="jlib-operator" target="1.8" />
+      <module name="jlib-persistence" target="1.8" />
+      <module name="jlib-persistence-hibernate" target="1.8" />
+      <module name="jlib-persistence-jpa" target="1.8" />
       <module name="jlib-spi-apachecommons" target="1.8" />
       <module name="jlib-text" target="1.8" />
       <module name="jlib-unittest" target="1.8" />
