@@ -29,7 +29,7 @@ public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
 
     protected AbstractLinearIndexStorage(final int initialCapacity)
-    throws InvalidCapacityException {
+    throws InvalidStorageCapacityException {
         ensureCapacityValid("initialCapacity", initialCapacity);
     }
 
@@ -71,9 +71,9 @@ implements LinearIndexStorage<Item> {
                                                          IndexRangeOperationDescriptor... copyDescriptors);
 
     protected void ensureCapacityValid(final String capacityName, final int capacity)
-    throws InvalidCapacityException {
+    throws InvalidStorageCapacityException {
         if (capacity < 0)
-            throw new InvalidCapacityException(this, capacityName, capacity);
+            throw new InvalidStorageCapacityException(this, capacityName, capacity);
     }
 
     protected void ensureIndexValid(final String indexName, final int index) {
