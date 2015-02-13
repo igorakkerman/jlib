@@ -87,6 +87,7 @@ public abstract class ApplicationObject {
      *
      * @return array of {@link String}s specifying the names of the excluded fields
      */
+    // TODO: implement annotated fields
     @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
         return EMPTY_STRING_ARRAY;
