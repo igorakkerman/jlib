@@ -3,10 +3,10 @@ package org.jlib.persistence.jpa;
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import static javax.persistence.GenerationType.AUTO;
 import static org.apache.commons.lang3.ArrayUtils.add;
 
 /**
@@ -23,13 +23,14 @@ import static org.apache.commons.lang3.ArrayUtils.add;
  */
 @MappedSuperclass
 // FIXME: fina a good name
-public abstract class AutoSequencedIdApplicationJpaEntity<Self extends AutoSequencedIdApplicationJpaEntity<Self, ID>, ID extends Serializable>
+public abstract class AutoSequencedIdApplicationJpaEntity<Self extends AutoSequencedIdApplicationJpaEntity<Self, ID>,
+                                                         ID extends Serializable>
 extends ApplicationJpaEntity<Self, ID> {
 
     public static final String FIELD_NAME_ID = "id";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     private ID id;
 
     @Override
