@@ -21,9 +21,6 @@
 
 package org.jlib.core.message;
 
-import static org.jlib.core.message.MessageUtility.EXPECTED_ARGUMENTS_COUNT;
-import static org.jlib.core.message.MessageUtility.createBuilder;
-
 public class EagerMessageFactory
 implements MessageFactory {
 
@@ -34,26 +31,6 @@ implements MessageFactory {
     }
 
     private EagerMessageFactory() {}
-
-    @Override
-    public Message newMessage() {
-        return newMessage("");
-    }
-
-    @Override
-    public Message newMessage(final String text) {
-        return newMessage(text, DefaultMessageSetup.getInstance().getDefaultMessageStyle());
-    }
-
-    @Override
-    public Message newMessage(final String text, final MessageStyle messageStyle) {
-        return newMessage(createBuilder(text.length(), EXPECTED_ARGUMENTS_COUNT).append(text), messageStyle);
-    }
-
-    @Override
-    public Message newMessage(final StringBuilder builder) {
-        return newMessage(builder, DefaultMessageSetup.getInstance().getDefaultMessageStyle());
-    }
 
     @Override
     public Message newMessage(final StringBuilder builder, final MessageStyle style) {
