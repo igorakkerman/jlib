@@ -29,27 +29,31 @@ import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 public final class MessageUtility {
 
+    public static final EagerMessageFactory INITIAL_DEFAULT_MESSAGE_FACTORY = EagerMessageFactory.getInstance();
+
+    public static final int EXPECTED_ARGUMENTS_COUNT = 5;
+    public static final int EXPECTED_ARGUMENT_LENGTH = 64;
+
     public static Message message() {
-        return new EagerMessage();
+        return getFactory().newMessage();
     }
 
     public static Message message(final Object object) {
-        return new EagerMessage(object.toString());
+        return getFactory().newMessage(object.toString());
     }
 
     public static Message message(final Object object, final MessageStyle messageStyle) {
-        return new EagerMessage(object.toString(), messageStyle);
+        return getFactory().newMessage(object.toString(), messageStyle);
     }
 
     public static Message mfmessage(final String messageTemplate, final Object... messageArguments) {
-        return new EagerMessage(MessageFormat.format(messageTemplate, messageArguments));
+        return getFactory().newMessage(MessageFormat.format(messageTemplate, messageArguments));
     }
 
     public static Message pfmessage(final String messageTemplate, final Object... messageArguments) {
-        final StringBuilder messageBuilder = new StringBuilder(messageTemplate.length() + messageArguments.length * 50 +
-                                                               100);
+        final StringBuilder messageBuilder = createBuilder(messageTemplate.length(), messageArguments.length);
         new Formatter(messageBuilder).format(messageTemplate, messageArguments);
-        return new EagerMessage(messageBuilder);
+        return getFactory().newMessage(messageBuilder);
     }
 
     public static MessageStyle createInitialDefaultMessageStyle() {
@@ -60,6 +64,14 @@ public final class MessageUtility {
         defaultMessageStyle.setBetweenArguments(" ");
 
         return defaultMessageStyle;
+    }
+
+    public static MessageFactory getFactory() {
+        return DefaultMessageSetup.getInstance().getDefaultMessageFactory();
+    }
+
+    public static StringBuilder createBuilder(final int textLength, final int argumentsCount) {
+        return new StringBuilder(textLength + argumentsCount * EXPECTED_ARGUMENT_LENGTH);
     }
 
     private MessageUtility() {}
