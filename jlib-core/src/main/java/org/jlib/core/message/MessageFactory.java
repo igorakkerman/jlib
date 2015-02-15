@@ -21,14 +21,26 @@
 
 package org.jlib.core.message;
 
+import static org.jlib.core.message.MessageUtility.EXPECTED_ARGUMENTS_COUNT;
+import static org.jlib.core.message.MessageUtility.createBuilder;
+
 public interface MessageFactory {
-    Message newMessage();
 
-    Message newMessage(String text);
+    default Message newMessage() {
+        return newMessage("");
+    }
 
-    Message newMessage(String text, MessageStyle messageStyle);
+    default Message newMessage(final String text) {
+        return newMessage(text, DefaultMessageSetup.getInstance().getDefaultMessageStyle());
+    }
 
-    Message newMessage(StringBuilder builder);
+    default Message newMessage(final String text, final MessageStyle messageStyle) {
+        return newMessage(createBuilder(text.length(), EXPECTED_ARGUMENTS_COUNT).append(text), messageStyle);
+    }
+
+    default Message newMessage(final StringBuilder builder) {
+        return newMessage(builder, DefaultMessageSetup.getInstance().getDefaultMessageStyle());
+    }
 
     Message newMessage(StringBuilder builder, MessageStyle style);
 }
