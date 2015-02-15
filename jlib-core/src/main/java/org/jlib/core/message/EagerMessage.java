@@ -26,7 +26,7 @@ import org.jlib.core.value.Named;
 /**
  * {@link Message} building the final text by concatenating the specified text and the named arguments, using the
  * parameters set in a {@link MessageStyle} instance. If no such instance is specified, the parameters returned
- * by {@link MessageStyleRegistry#getDefaultMessageStyle()} are used.
+ * by {@link DefaultMessageSetup#getDefaultMessageStyle()} are used.
  *
  * @author Igor Akkerman
  */
@@ -35,33 +35,8 @@ extends StyledMessage {
 
     private static final long serialVersionUID = - 1625043299945178724L;
 
-    private static final int EXPECTED_ARGUMENTS_COUNT = 5;
-    private static final int EXPECTED_ARGUMENT_LENGTH = 64;
-
-    protected static StringBuilder createBuilder(final String text) {
-        return new StringBuilder(text.length() + EXPECTED_ARGUMENTS_COUNT * EXPECTED_ARGUMENT_LENGTH);
-    }
-
     private final StringBuilder builder;
     private int argumentsCount = 0;
-
-    public EagerMessage() {
-        this("");
-    }
-
-    public EagerMessage(final String text) {
-        this(text, MessageStyleRegistry.getInstance().getDefaultMessageStyle());
-    }
-
-    public EagerMessage(final String text, final MessageStyle messageStyle) {
-        this(createBuilder(text), messageStyle);
-
-        builder.append(text);
-    }
-
-    public EagerMessage(final StringBuilder builder) {
-        this(builder, MessageStyleRegistry.getInstance().getDefaultMessageStyle());
-    }
 
     public EagerMessage(final StringBuilder builder, final MessageStyle style) {
         super(style);

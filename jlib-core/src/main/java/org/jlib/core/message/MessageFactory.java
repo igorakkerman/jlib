@@ -21,25 +21,14 @@
 
 package org.jlib.core.message;
 
-import static org.jlib.core.message.MessageUtility.createInitialDefaultMessageStyle;
+public interface MessageFactory {
+    Message newMessage();
 
-public final class MessageStyleRegistry {
+    Message newMessage(String text);
 
-    private static final MessageStyleRegistry INSTANCE = new MessageStyleRegistry();
+    Message newMessage(String text, MessageStyle messageStyle);
 
-    public static MessageStyleRegistry getInstance() {
-        return INSTANCE;
-    }
+    Message newMessage(StringBuilder builder);
 
-    private MessageStyle defaultMessageStyle = createInitialDefaultMessageStyle();
-
-    private MessageStyleRegistry() {}
-
-    public MessageStyle getDefaultMessageStyle() {
-        return defaultMessageStyle;
-    }
-
-    public void setDefaultMessageStyle(final MessageStyle defaultMessageStyle) {
-        this.defaultMessageStyle = defaultMessageStyle;
-    }
+    Message newMessage(StringBuilder builder, MessageStyle style);
 }

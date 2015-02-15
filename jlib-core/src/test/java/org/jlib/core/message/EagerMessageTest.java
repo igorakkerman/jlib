@@ -65,7 +65,7 @@ public class EagerMessageTest {
 
     @Before
     public void initializeDefaultMessageStyle() {
-        MessageStyleRegistry.getInstance().setDefaultMessageStyle(EQUALS_QUOTE_PRINTF_CONFIG);
+        DefaultMessageSetup.getInstance().setDefaultMessageStyle(EQUALS_QUOTE_PRINTF_CONFIG);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class EagerMessageTest {
     @Test
     public void messageWithTextAndNamedArgumentsInSpecifiedDefaultFormat() {
 
-        MessageStyleRegistry.getInstance().setDefaultMessageStyle(COLON_PRINTF_CONFIG);
+        DefaultMessageSetup.getInstance().setDefaultMessageStyle(COLON_PRINTF_CONFIG);
 
         final Message message = /*
          */ message("Something went wrong.").with(named("dummyName", 1),
