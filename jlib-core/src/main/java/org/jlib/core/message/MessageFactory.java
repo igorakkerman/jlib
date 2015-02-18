@@ -24,6 +24,7 @@ package org.jlib.core.message;
 import static org.jlib.core.message.MessageUtility.EXPECTED_ARGUMENTS_COUNT;
 import static org.jlib.core.message.MessageUtility.createBuilder;
 
+@FunctionalInterface
 public interface MessageFactory {
 
     default Message newMessage() {

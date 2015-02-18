@@ -29,7 +29,7 @@ import org.jlib.core.value.formatter.PrintfNamedValueFormatter;
 
 public final class MessageUtility {
 
-    public static final EagerMessageFactory INITIAL_DEFAULT_MESSAGE_FACTORY = EagerMessageFactory.getInstance();
+    public static final MessageFactory INITIAL_DEFAULT_MESSAGE_FACTORY = EagerMessage::new;
 
     public static final int EXPECTED_ARGUMENTS_COUNT = 5;
     public static final int EXPECTED_ARGUMENT_LENGTH = 64;
