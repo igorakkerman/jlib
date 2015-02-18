@@ -58,6 +58,22 @@ public final class ArrayUtility {
     }
 
     /**
+     * Returns the array implicitely created of the specified {@link Item}s in a typesafe manner.
+     *
+     * @param <Item>
+     *        type of the items held in the array
+     *
+     * @param items
+     *        comma separated sequence of {@link Item}s
+     *
+     * @return the specified array {@code items} itself
+     */
+    @SafeVarargs
+    public static <Item> Item[] asArray(final Item... items) {
+        return items;
+    }
+
+    /**
      * Returns a new {@link BidiIterable} adapter for the specified Items.
      *
      * @param <Item>
