@@ -27,7 +27,12 @@ public interface Message {
 
     Message with(String argumentName, Object argumentValue);
 
-    Message with(Named<?>... arguments);
+    default Message with(final Named<?>... arguments) {
+        for (final Named<?> argument : arguments)
+            with(argument.getName(), argument.get());
+
+        return this;
+    }
 
     @Override
     String toString();

@@ -21,8 +21,6 @@
 
 package org.jlib.core.message;
 
-import org.jlib.core.value.Named;
-
 /**
  * {@link Message} building the final text by concatenating the specified text and the named arguments, using the
  * parameters set in a {@link MessageStyle} instance. If no such instance is specified, the parameters returned
@@ -49,14 +47,6 @@ extends StyledMessage {
         appendSeparator();
         getMessageStyle().getArgumentFormatter().append(builder, argumentName, argumentValue);
         argumentsCount++;
-
-        return this;
-    }
-
-    @Override
-    public Message with(final Named<?>... arguments) {
-        for (final Named<?> argument : arguments)
-            with(argument.getName(), argument.get());
 
         return this;
     }
