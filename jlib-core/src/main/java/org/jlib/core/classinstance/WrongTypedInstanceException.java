@@ -21,27 +21,22 @@
 
 package org.jlib.core.classinstance;
 
-import org.jlib.core.message.Message;
+import static org.jlib.core.message.MessageUtility.message;
 
-public class WrongTypedClassInstantiationException
-extends ClassInstantiationException {
+public class WrongTypedInstanceException
+extends ClassInstanceException {
 
-    private static final long serialVersionUID = - 8364015911134861790L;
+    private static final long serialVersionUID = - 7474100445702869755L;
 
-    private final Class<?> expectedParentClass;
+    private final String expectedParentTypeClassName;
 
-    public WrongTypedClassInstantiationException(final Class<?> clazz, final Class<?> expectedParentClass) {
-        super(clazz);
+    public WrongTypedInstanceException(final Class<?> clazz, final Class<?> expectedParentType) {
+        super(message().with("expectedParentType", expectedParentType.getName()), clazz.getName());
 
-        this.expectedParentClass = expectedParentClass;
+        expectedParentTypeClassName = expectedParentType.getName();
     }
 
-    public Class<?> getExpectedParentClass() {
-        return expectedParentClass;
-    }
-
-    @Override
-    protected Message buildMessage() {
-        return super.buildMessage().with("expectedParentClass", expectedParentClass);
+    public String getExpectedParentTypeClassName() {
+        return expectedParentTypeClassName;
     }
 }

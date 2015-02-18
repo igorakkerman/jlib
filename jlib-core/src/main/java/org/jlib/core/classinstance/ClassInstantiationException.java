@@ -21,30 +21,28 @@
 
 package org.jlib.core.classinstance;
 
-/**
- * {@link ClassInstanceException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper
- * for any kind of Exceptions occurring when trying to instantiate a class.
- *
- * @author Igor Akkerman
- */
+import org.jlib.core.message.Message;
+
+import static org.jlib.core.message.MessageUtility.message;
+
 public class ClassInstantiationException
 extends ClassInstanceException {
 
-    private static final long serialVersionUID = 160064034539803335L;
+    private static final long serialVersionUID = - 8652252161776673093L;
 
-    public ClassInstantiationException(final String className) {
-        super(className);
+    public ClassInstantiationException(final Message message, final String className) {
+        super(message, className);
     }
 
-    public ClassInstantiationException(final Class<?> clazz) {
-        super(clazz);
+    public ClassInstantiationException(final Message message, final String className, final Exception cause) {
+        super(message, className, cause);
+    }
+
+    public ClassInstantiationException(final String className) {
+        super(message(), className);
     }
 
     public ClassInstantiationException(final String className, final Exception cause) {
-        super(className, cause);
-    }
-
-    public ClassInstantiationException(final Class<?> clazz, final Exception cause) {
-        super(clazz, cause);
+        super(message(), className, cause);
     }
 }
