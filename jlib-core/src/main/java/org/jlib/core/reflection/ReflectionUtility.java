@@ -172,7 +172,8 @@ public final class ReflectionUtility {
     @SafeVarargs
     public static <Obj> Class<Obj> findClass(final String className, final Class<? super Obj>... expectedSuperTypes)
     throws ClassInstanceException {
-        return ReflectionService.getInstance().findClass(className, expectedSuperTypes);
+        return ReflectionService.getInstance()
+                                .findClass(className, expectedSuperTypes);
     }
 
     @SuppressWarnings("unchecked")
@@ -231,12 +232,14 @@ public final class ReflectionUtility {
 
     public static void ensureSubtype(final Class<?> actualType, final Class<?>... expectedSuperTypes)
     throws WrongTypedInstanceException {
-        ReflectionService.getInstance().ensureSubtype(actualType, expectedSuperTypes);
+        ReflectionService.getInstance()
+                         .ensureSubtype(actualType, expectedSuperTypes);
     }
 
     public static void ensureSubtype(final Class<?> actualType, final Class<?> expectedSuperType)
     throws WrongTypedInstanceException {
-        ReflectionService.getInstance().ensureSubtype(actualType, expectedSuperType);
+        ReflectionService.getInstance()
+                         .ensureSubtype(actualType, expectedSuperType);
     }
 
     private ReflectionUtility() {}
