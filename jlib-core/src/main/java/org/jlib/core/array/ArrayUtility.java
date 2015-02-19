@@ -22,7 +22,10 @@
 package org.jlib.core.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 import org.jlib.core.iterator.BidiIterable;
 import org.jlib.core.iterator.BidiIterator;
@@ -184,6 +187,11 @@ public final class ArrayUtility {
                 return false;
 
         return true;
+    }
+
+    public static <Value, Result> Result[] map(final Value[] values, final Function<Value, Result> mapFunction,
+                                               final IntFunction<Result[]> generator) {
+        return Arrays.stream(values).map(mapFunction).toArray(generator);
     }
 
     private ArrayUtility() {}
