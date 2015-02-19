@@ -21,48 +21,59 @@
 
 package org.jlib.core.classinstance;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.jlib.core.language.Valid;
+
+import static org.jlib.core.array.ArrayUtility.asArray;
 
 public interface ClassInstanceService {
 
     <Obj> Obj instanceOf(Class<? extends Obj> clazz)
     throws ClassInstanceException;
 
-    <Obj> Obj instanceOf(String className, Class<Obj> expectedSuperType)
-    throws ClassInstanceException;
-
     @SuppressWarnings("unchecked")
-    <Obj> Obj instanceOf(String className, Class<Obj>... expectedSuperTypes)
-    throws ClassInstanceException;
-
-    <Obj> Class<Obj> findClass(String className, Class<? super Obj> expectedSuperType)
-    throws ClassInstanceException;
+    default <Obj> Obj instanceOf(final String className, final Class<? super Obj>... expectedSuperTypes)
+    throws ClassInstanceException {
+        return instanceOf((Class<? extends Obj>) findClass(className, expectedSuperTypes));
+    }
 
     @SuppressWarnings("unchecked")
     <Obj> Class<Obj> findClass(String className, Class<? super Obj>... expectedSuperTypes)
     throws ClassInstanceException;
 
     @SuppressWarnings("unchecked")
-    <ReturnValue, Argument>/*
-         */ ReturnValue invokeStaticMethod(Class<?> methodClass, String methodName, Argument argument,
-                                           Class<ReturnValue> expectedReturnValueSuperType)
+    default Method findMethod(final Class<?> methodClass, final String methodName,
+                              final Class<?> expectedReturnValueSuperType, final Class<?>... argumentTypes)
+    throws InvalidMethodException, WrongTypedInstanceException {
+        return findMethod(methodClass, methodName, asArray(expectedReturnValueSuperType), argumentTypes);
+    }
+
+    @SuppressWarnings("unchecked")
+    Method findMethod(final Class<?> methodClass, final String methodName,
+                      final Class<?>[] expectedReturnValueSuperTypes, final Class<?>... argumentTypes)
+    throws InvalidMethodException, WrongTypedInstanceException;
+
+    @SuppressWarnings("unchecked")
+    <ReturnValue> /*
+ */ ReturnValue invokeStaticMethod(Class<?> methodClass, String methodName,
+                                   Class<? super ReturnValue>[] expectedReturnValueSuperType, Object... arguments)
     throws InvalidMethodException, WrongTypedInstanceException;
 
     // precondition method types match
     @SuppressWarnings("unchecked")
-    <ReturnValue, Argument> /*
-         */ ReturnValue invokeStaticMethod(@Valid Method method, Argument argument,
-                                           Class<ReturnValue> expectedReturnValueSuperType)
-    throws IllegalAccessException,
-           InvocationTargetException,
-           WrongTypedInstanceException;
+    <ReturnValue> /*
+ */ ReturnValue invokeStaticMethod(@Valid Method method, Class<? super ReturnValue>[] expectedReturnValueSuperTypes,
+                                   Object... arguments)
+    throws InvalidMethodException, WrongTypedInstanceException;
 
-    void ensureSubtype(Class<?> actualType, Class<?> expectedSuperType)
-    throws WrongTypedInstanceException;
+    default void ensureSubtype(final Class<?> actualType, final Class<?> expectedSuperType)
+    throws WrongTypedInstanceException {
+        ensureSubtype(actualType, asArray(expectedSuperType));
+    }
 
     void ensureSubtype(Class<?> actualType, Class<?>... expectedSuperTypes)
     throws WrongTypedInstanceException;
+
+    Class<?>[] typesOf(Object... arguments);
 }
