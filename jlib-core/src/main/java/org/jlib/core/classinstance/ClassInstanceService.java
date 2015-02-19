@@ -54,10 +54,18 @@ public interface ClassInstanceService {
                       final Class<?>[] expectedReturnValueSuperTypes, final Class<?>... argumentTypes)
     throws InvalidMethodException, WrongTypedInstanceException;
 
+    default <ReturnValue>
+    /*   */ ReturnValue invokeStaticMethod(final Class<?> methodClass, final String methodName,
+                                           final Class<? super ReturnValue> expectedReturnValueSuperType,
+                                           final Object... arguments)
+    throws InvalidMethodException, WrongTypedInstanceException {
+        return invokeStaticMethod(methodClass, methodName, asArray(expectedReturnValueSuperType), arguments);
+    }
+
     @SuppressWarnings("unchecked")
     <ReturnValue> /*
  */ ReturnValue invokeStaticMethod(Class<?> methodClass, String methodName,
-                                   Class<? super ReturnValue>[] expectedReturnValueSuperType, Object... arguments)
+                                   Class<? super ReturnValue>[] expectedReturnValueSuperTypes, Object... arguments)
     throws InvalidMethodException, WrongTypedInstanceException;
 
     // precondition method types match

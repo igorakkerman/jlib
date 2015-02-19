@@ -164,7 +164,7 @@ public final class ReflectionUtility {
      */
     @SafeVarargs
     public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName,
-                                                          final Class<Obj>... expectedSuperTypes)
+                                                          final Class<? super Obj>... expectedSuperTypes)
     throws OptionalPropertyNotSetException, ClassInstanceException {
         return newInstanceOf(getOptionalPropertyOrFail(propertyName), expectedSuperTypes);
     }
@@ -185,11 +185,21 @@ public final class ReflectionUtility {
     @SuppressWarnings("unchecked")
     public static <ReturnValue, Argument>/*
                */ ReturnValue invokeStaticMethod(final Class<?> methodClass, final String methodName,
-                                                 final Class<ReturnValue>[] expectedReturnValueSuperTypes,
+                                                 final Class<? super ReturnValue> expectedReturnValueSuperType,
                                                  final Argument... arguments)
     throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
-                                .invokeStaticMethod(methodClass, methodName, expectedReturnValueSuperTypes);
+                                .invokeStaticMethod(methodClass, methodName, expectedReturnValueSuperType, arguments);
+    }
+
+    @SafeVarargs
+    public static <ReturnValue, Argument>/*
+               */ ReturnValue invokeStaticMethod(final Class<?> methodClass, final String methodName,
+                                                 final Class<? super ReturnValue>[] expectedReturnValueSuperTypes,
+                                                 final Argument... arguments)
+    throws InvalidMethodException, WrongTypedInstanceException {
+        return ReflectionService.getInstance()
+                                .invokeStaticMethod(methodClass, methodName, expectedReturnValueSuperTypes, arguments);
     }
 
     // precondition method types match
@@ -205,8 +215,7 @@ public final class ReflectionUtility {
 
     public static <Argument> /*
                */ Method findMethod(final Class<?> methodClass, final String methodName,
-                                    final Class<Argument> argumentType,
-                                    final Class<?> expectedReturnValueSuperType)
+                                    final Class<?> expectedReturnValueSuperType, final Class<Argument> argumentType)
     throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
                                 .findMethod(methodClass, methodName, expectedReturnValueSuperType, argumentType);
@@ -214,8 +223,7 @@ public final class ReflectionUtility {
 
     public static <Argument> /*
                */ Method findMethod(final Class<?> methodClass, final String methodName,
-                                    final Class<Argument> argumentType,
-                                    final Class<?>... expectedReturnValueSuperTypes)
+                                    final Class<?>[] expectedReturnValueSuperTypes, final Class<Argument> argumentType)
     throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
                                 .findMethod(methodClass, methodName, expectedReturnValueSuperTypes, argumentType);
