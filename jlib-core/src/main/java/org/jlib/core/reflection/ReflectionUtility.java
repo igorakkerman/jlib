@@ -242,5 +242,10 @@ public final class ReflectionUtility {
                          .ensureSubtype(actualType, expectedSuperType);
     }
 
+    public static Class<?>[] typesOf(final Object... values) {
+        return ReflectionService.getInstance()
+                                .typesOf(values);
+    }
+
     private ReflectionUtility() {}
 }
