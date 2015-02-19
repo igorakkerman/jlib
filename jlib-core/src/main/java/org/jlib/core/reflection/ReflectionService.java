@@ -24,13 +24,13 @@ package org.jlib.core.reflection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.jlib.core.array.ArrayUtility;
 import org.jlib.core.classinstance.ClassInstanceService;
 import org.jlib.core.classinstance.ClassInstantiationException;
 import org.jlib.core.classinstance.InvalidMethodException;
 import org.jlib.core.classinstance.WrongTypedInstanceException;
 import org.jlib.core.language.Valid;
 
+import static org.jlib.core.array.ArrayUtility.map;
 import static org.jlib.core.message.MessageUtility.message;
 
 public class ReflectionService
@@ -110,10 +110,12 @@ implements ClassInstanceService {
                              final Class<?>[] expectedReturnValueSuperTypes, final Class<?>... argumentTypes)
     throws InvalidMethodException, WrongTypedInstanceException {
         try {
-            ensureSubtype(methodClass.getMethod(methodName, argumentTypes).getReturnType(),
+            final Method method = methodClass.getMethod(methodName, argumentTypes);
+
+            ensureSubtype(method.getReturnType(),
                           expectedReturnValueSuperTypes);
 
-            return methodClass.getMethod(methodName, argumentTypes);
+            return method;
         }
         catch (final NoSuchMethodException exception) {
             throw new InvalidMethodException(message(), methodClass.getName(), methodName, exception);
@@ -130,6 +132,6 @@ implements ClassInstanceService {
 
     @Override
     public Class<?>[] typesOf(final Object... arguments) {
-        return ArrayUtility.map(arguments, Object::getClass, Class<?>[]::new);
+        return map(arguments, Object::getClass, Class<?>[]::new);
     }
 }
