@@ -36,6 +36,7 @@ implements ConfigurableToStringStyleSupplier {
     private ClassInstanceService instanceService;
 
     @Override
+    @SuppressWarnings("unchecked")
     public ToStringStyle get()
     throws ToStringStyleNotFoundException {
         try {
