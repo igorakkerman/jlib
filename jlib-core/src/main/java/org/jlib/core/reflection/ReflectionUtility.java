@@ -21,16 +21,15 @@
 
 package org.jlib.core.reflection;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.jlib.core.classinstance.ClassInstanceException;
 import org.jlib.core.classinstance.ClassInstantiationException;
 import org.jlib.core.classinstance.InvalidMethodException;
 import org.jlib.core.classinstance.WrongTypedInstanceException;
 import org.jlib.core.language.Valid;
 import org.jlib.core.property.OptionalPropertyNotSetException;
 
-import static org.jlib.core.array.ArrayUtility.asArray;
 import static org.jlib.core.property.PropertyUtility.getOptionalPropertyOrFail;
 
 /**
@@ -77,12 +76,13 @@ public final class ReflectionUtility {
      *
      * @return a new instance of {@code clazz}
      *
-     * @throws ClassInstantiationException
+     * @throws ClassInstanceException
      *         if the instantiation of the specified class fails
      */
     public static <Obj> Obj newInstanceOf(final Class<? extends Obj> clazz)
-    throws ClassInstantiationException {
-        return ReflectionService.getInstance().instanceOf(clazz);
+    throws ClassInstanceException {
+        return ReflectionService.getInstance()
+                                .instanceOf(clazz);
     }
 
     /**
@@ -115,14 +115,15 @@ public final class ReflectionUtility {
      *         if the instantiation of the specified class fails
      */
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
-    public static <Obj> Obj newInstanceOf(final String className, final Class<Obj>... expectedSuperTypes)
-    throws WrongTypedInstanceException, ClassInstantiationException {
+    public static <Obj> Obj newInstanceOf(final String className, final Class<? super Obj>... expectedSuperTypes)
+    throws ClassInstanceException {
         return ReflectionService.getInstance()
                                 .instanceOf(className, expectedSuperTypes);
     }
 
-    public static <Obj> Obj newInstanceOf(final String className, final Class<Obj> expectedSuperType)
-    throws WrongTypedInstanceException, ClassInstantiationException {
+    @SuppressWarnings("unchecked")
+    public static <Obj> Obj newInstanceOf(final String className, final Class<? super Obj> expectedSuperType)
+    throws ClassInstanceException {
         return ReflectionService.getInstance()
                                 .instanceOf(className, expectedSuperType);
     }
@@ -164,72 +165,60 @@ public final class ReflectionUtility {
     @SafeVarargs
     public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName,
                                                           final Class<Obj>... expectedSuperTypes)
-    throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException,
-           WrongTypedInstanceException {
-
+    throws OptionalPropertyNotSetException, ClassInstanceException {
         return newInstanceOf(getOptionalPropertyOrFail(propertyName), expectedSuperTypes);
-    }
-
-    public static <Obj> Obj newInstanceByOptionalProperty(final String propertyName, final Class<Obj> expectedSuperType)
-    throws SecurityException, OptionalPropertyNotSetException, ClassInstantiationException,
-           WrongTypedInstanceException {
-
-        return newInstanceByOptionalProperty(propertyName, asArray(expectedSuperType));
     }
 
     @SafeVarargs
     public static <Obj> Class<Obj> findClass(final String className, final Class<? super Obj>... expectedSuperTypes)
-    throws WrongTypedInstanceException, ClassInstantiationException {
+    throws ClassInstanceException {
         return ReflectionService.getInstance().findClass(className, expectedSuperTypes);
     }
 
+    @SuppressWarnings("unchecked")
     public static <Obj> Class<Obj> findClass(final String className, final Class<? super Obj> expectedSuperType)
-    throws WrongTypedInstanceException, ClassInstantiationException {
-        return ReflectionService.getInstance().findClass(className, expectedSuperType);
+    throws ClassInstanceException {
+        return ReflectionService.getInstance()
+                                .findClass(className, expectedSuperType);
     }
 
     @SuppressWarnings("unchecked")
     public static <ReturnValue, Argument>/*
                */ ReturnValue invokeStaticMethod(final Class<?> methodClass, final String methodName,
-                                                 final Argument argument,
-                                                 final Class<ReturnValue> expectedReturnValueSuperType)
+                                                 final Class<ReturnValue>[] expectedReturnValueSuperTypes,
+                                                 final Argument... arguments)
     throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
-                                .invokeStaticMethod(methodClass, methodName, argument, expectedReturnValueSuperType);
+                                .invokeStaticMethod(methodClass, methodName, expectedReturnValueSuperTypes);
     }
 
     // precondition method types match
     @SuppressWarnings("unchecked")
     public static <ReturnValue, Argument> /*
-               */ ReturnValue invokeStaticMethod(@Valid final Method method, final Argument argument,
-                                                 final Class<ReturnValue> expectedReturnValueSuperType)
-    throws IllegalAccessException,
-           InvocationTargetException,
-           WrongTypedInstanceException {
+               */ ReturnValue invokeStaticMethod(@Valid final Method method,
+                                                 final Class<ReturnValue>[] expectedReturnValueSuperTypes,
+                                                 final Argument... arguments)
+    throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
-                                .invokeStaticMethod(method, argument, expectedReturnValueSuperType);
+                                .invokeStaticMethod(method, expectedReturnValueSuperTypes, arguments);
     }
 
     public static <Argument> /*
                */ Method findMethod(final Class<?> methodClass, final String methodName,
                                     final Class<Argument> argumentType,
                                     final Class<?> expectedReturnValueSuperType)
-    throws NoSuchMethodException,
-           WrongTypedInstanceException {
-
+    throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
-                                .findMethod(methodClass, methodName, argumentType, expectedReturnValueSuperType);
+                                .findMethod(methodClass, methodName, expectedReturnValueSuperType, argumentType);
     }
 
     public static <Argument> /*
                */ Method findMethod(final Class<?> methodClass, final String methodName,
                                     final Class<Argument> argumentType,
                                     final Class<?>... expectedReturnValueSuperTypes)
-    throws NoSuchMethodException,
-           WrongTypedInstanceException {
-
+    throws InvalidMethodException, WrongTypedInstanceException {
         return ReflectionService.getInstance()
-                                .findMethod(methodClass, methodName, argumentType, expectedReturnValueSuperTypes);
+                                .findMethod(methodClass, methodName, expectedReturnValueSuperTypes, argumentType);
     }
 
     public static void ensureSubtype(final Class<?> actualType, final Class<?>... expectedSuperTypes)
