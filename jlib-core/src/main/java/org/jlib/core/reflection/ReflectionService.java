@@ -112,8 +112,7 @@ implements ClassInstanceService {
         try {
             final Method method = methodClass.getMethod(methodName, argumentTypes);
 
-            ensureSubtype(method.getReturnType(),
-                          expectedReturnValueSuperTypes);
+            ensureSubtype(method.getReturnType(), expectedReturnValueSuperTypes);
 
             return method;
         }
