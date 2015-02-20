@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.reflection.ReflectionTestItems.c1;
 import org.junit.Test;
 
-public class ReflectionServiceInstanceOfTest
+public class ReflectionServiceGetInstanceOfTest
 extends ReflectionServiceTestBase {
 
     @Test
