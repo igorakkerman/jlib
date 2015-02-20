@@ -83,6 +83,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void instantiatedStyleOfClassNameShouldBeRetrurned()
     throws Exception {
 
@@ -105,6 +106,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void notInstantiatableClassNameShouldFailMappingAndThrowException()
     throws Exception {
 
