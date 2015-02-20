@@ -35,6 +35,7 @@ extends ReflectionServiceTestBase {
         assertThat(typesOf()).isEmpty();
     }
 
+    @Test
     public void typesOfC3C1instancesRecognized()
     throws Exception {
         assertThat(typesOf(new C3(), new C1())).isEqualTo(asArray(C3.class, C1.class));
