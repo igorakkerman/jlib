@@ -42,7 +42,7 @@ implements ClassInstanceService {
         return INSTANCE;
     }
 
-    protected ReflectionService() {}
+    private ReflectionService() {}
 
     @Override
     public <Obj> Obj getInstanceOf(final Class<? extends Obj> clazz)
