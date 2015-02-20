@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 public interface Dao<Entity extends IdEntity<Id>, Id extends Serializable> {
 
+    long count();
+
     Entity find(Id id);
 
     Entity find(Id id, Consumer<Entity> postFind);
@@ -24,6 +26,4 @@ public interface Dao<Entity extends IdEntity<Id>, Id extends Serializable> {
     void remove(Id id);
 
     void remove(Entity entity);
-
-    long count();
 }
