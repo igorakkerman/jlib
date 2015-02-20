@@ -30,8 +30,6 @@ extends PersistenceException {
 
     private static final long serialVersionUID = - 4066897986319383761L;
 
-    public JpaPersistenceException() {}
-
     public JpaPersistenceException(final Message message) {
         super(message.toString());
     }
