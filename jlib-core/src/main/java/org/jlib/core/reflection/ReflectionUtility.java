@@ -82,7 +82,7 @@ public final class ReflectionUtility {
     public static <Obj> Obj newInstanceOf(final Class<? extends Obj> clazz)
     throws ClassInstanceException {
         return ReflectionService.getInstance()
-                                .instanceOf(clazz);
+                                .getInstanceOf(clazz);
     }
 
     /**
@@ -118,14 +118,14 @@ public final class ReflectionUtility {
     public static <Obj> Obj newInstanceOf(final String className, final Class<? super Obj>... expectedSuperTypes)
     throws ClassInstanceException {
         return ReflectionService.getInstance()
-                                .instanceOf(className, expectedSuperTypes);
+                                .getInstanceOf(className, expectedSuperTypes);
     }
 
     @SuppressWarnings("unchecked")
     public static <Obj> Obj newInstanceOf(final String className, final Class<? super Obj> expectedSuperType)
     throws ClassInstanceException {
         return ReflectionService.getInstance()
-                                .instanceOf(className, expectedSuperType);
+                                .getInstanceOf(className, expectedSuperType);
     }
 
     /**
