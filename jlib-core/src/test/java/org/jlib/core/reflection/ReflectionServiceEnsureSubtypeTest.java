@@ -24,8 +24,11 @@ package org.jlib.core.reflection;
 import java.io.Serializable;
 
 import org.jlib.core.classinstance.WrongTypedInstanceException;
+import org.jlib.core.reflection.ReflectionTestItems.C1;
+import org.jlib.core.reflection.ReflectionTestItems.C2;
+import org.jlib.core.reflection.ReflectionTestItems.C3;
+import org.jlib.core.reflection.ReflectionTestItems.I1;
 
-import static org.jlib.core.reflection.ReflectionUtility.ensureSubtype;
 import org.junit.Test;
 
 public class ReflectionServiceEnsureSubtypeTest
@@ -34,24 +37,24 @@ extends ReflectionServiceTestBase {
     @Test
     public void c1ShouldBeSubtypeOfI1Serializable()
     throws Exception {
-        ensureSubtype(C1.class, I1.class, Serializable.class);
+        service.ensureSubtype(C1.class, I1.class, Serializable.class);
     }
 
     @Test
     public void c2ShouldBeSubtypeOfC1I1Serializable()
     throws Exception {
-        ensureSubtype(C2.class, C1.class, I1.class, Serializable.class);
+        service.ensureSubtype(C2.class, C1.class, I1.class, Serializable.class);
     }
 
     @Test(expected = WrongTypedInstanceException.class)
     public void c3ShouldNotBeSubtypeOfC1()
     throws Exception {
-        ensureSubtype(C3.class, C1.class);
+        service.ensureSubtype(C3.class, C1.class);
     }
 
     @Test(expected = WrongTypedInstanceException.class)
     public void c3ShouldNotBeSubtypeOfSerializable()
     throws Exception {
-        ensureSubtype(C3.class, Serializable.class);
+        service.ensureSubtype(C3.class, Serializable.class);
     }
 }

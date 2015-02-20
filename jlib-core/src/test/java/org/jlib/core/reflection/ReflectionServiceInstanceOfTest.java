@@ -22,32 +22,31 @@
 package org.jlib.core.reflection;
 
 import org.jlib.core.reflection.ReflectionTestItems.C1;
-import org.jlib.core.reflection.ReflectionTestItems.C3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.array.ArrayUtility.asArray;
 import static org.jlib.core.reflection.ReflectionTestItems.c1;
-import static org.jlib.core.reflection.ReflectionTestItems.c3;
 import org.junit.Test;
 
-public class ReflectionServiceTypesOfTest
+public class ReflectionServiceInstanceOfTest
 extends ReflectionServiceTestBase {
 
     @Test
-    public void typesInEmptyArrayShouldBeEmpty()
+    public void instanceOfClassObjectWorks()
     throws Exception {
-        assertThat(service.typesOf()).isEmpty();
+        assertThat(service.getInstanceOf(C1.class)).hasSameClassAs(c1);
     }
 
     @Test
-    public void typeOfSinlgeClassShouldBeRecognized()
+    @SuppressWarnings("unchecked")
+    public void instanceOfClassNameWorks()
     throws Exception {
-        assertThat(service.typesOf(c1)).isEqualTo(asArray(C1.class));
+        assertThat((Object) service.getInstanceOf(C1.class.getName())).hasSameClassAs(c1);
     }
 
     @Test
-    public void typesOfTwoClassesShouldBeRecognized()
+    @SuppressWarnings("unchecked")
+    public void instanceOfClassNameWithEnsuredSameTypeWorks()
     throws Exception {
-        assertThat(service.typesOf(c3, c1)).isEqualTo(asArray(C3.class, C1.class));
+        assertThat((Object) service.getInstanceOf(C1.class.getName(), C1.class)).hasSameClassAs(c1);
     }
 }

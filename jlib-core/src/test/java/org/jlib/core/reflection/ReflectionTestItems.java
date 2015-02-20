@@ -21,7 +21,24 @@
 
 package org.jlib.core.reflection;
 
-public class ReflectionServiceTestBase {
+import java.io.Serializable;
 
-    protected ReflectionService service = ReflectionService.getInstance();
+public final class ReflectionTestItems {
+
+    protected interface I1 {}
+
+    @SuppressWarnings("serial")
+    static class C1
+    implements I1, Serializable {}
+
+    @SuppressWarnings("serial")
+    static class C2
+    extends C1 {}
+
+    static class C3 {}
+
+
+    static final C1 c1 = new C1();
+    static final C2 c2 = new C2();
+    static final C3 c3 = new C3();
 }
