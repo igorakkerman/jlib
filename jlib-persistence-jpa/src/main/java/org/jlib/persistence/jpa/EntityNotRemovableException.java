@@ -7,7 +7,7 @@ extends JpaPersistenceException {
 
     private static final long serialVersionUID = - 1447346532598234746L;
 
-    public EntityNotRemovableException(final JpaEntity<?> entity) {
+    public EntityNotRemovableException(final SimpleJpaEntity<?> entity) {
         super(message().with("entity", entity));
     }
 }
