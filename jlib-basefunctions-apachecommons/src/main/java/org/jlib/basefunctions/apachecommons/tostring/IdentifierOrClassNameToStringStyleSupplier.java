@@ -44,7 +44,7 @@ implements ConfigurableToStringStyleSupplier {
 
             return toStringStyle.isPresent() ?
                    toStringStyle.get() :
-                   instanceService.instanceOf(identifierOrClassName, ToStringStyle.class);
+                   instanceService.getInstanceOf(identifierOrClassName, ToStringStyle.class);
         }
         catch (final ClassInstanceException exception) {
             throw new ToStringStyleNotFoundException(exception);

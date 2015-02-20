@@ -29,13 +29,13 @@ import static org.jlib.core.array.ArrayUtility.asArray;
 
 public interface ClassInstanceService {
 
-    <Obj> Obj instanceOf(Class<? extends Obj> clazz)
+    <Obj> Obj getInstanceOf(Class<? extends Obj> clazz)
     throws ClassInstanceException;
 
     @SuppressWarnings("unchecked")
-    default <Obj> Obj instanceOf(final String className, final Class<? super Obj>... expectedSuperTypes)
+    default <Obj> Obj getInstanceOf(final String className, final Class<? super Obj>... expectedSuperTypes)
     throws ClassInstanceException {
-        return instanceOf((Class<? extends Obj>) findClass(className, expectedSuperTypes));
+        return getInstanceOf((Class<? extends Obj>) findClass(className, expectedSuperTypes));
     }
 
     @SuppressWarnings("unchecked")
