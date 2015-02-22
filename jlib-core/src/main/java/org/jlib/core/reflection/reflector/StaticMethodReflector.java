@@ -21,6 +21,6 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface ClassObjectReflector<Instance>
-extends ObjectReflector<Class<Instance>> {
+public interface StaticMethodReflector<ReturnType>
+extends MethodReflector<ReturnType> {
 }

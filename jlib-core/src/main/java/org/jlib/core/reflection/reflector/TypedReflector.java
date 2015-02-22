@@ -21,8 +21,6 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+public interface TypedReflector<Type> {
+    ClassReflector<Type> named(String className);
 }

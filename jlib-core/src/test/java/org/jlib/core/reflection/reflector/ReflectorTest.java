@@ -21,8 +21,22 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+
+public class ReflectorTest {
+
+    @Test
+    public void staticRun()
+    throws Exception {
+        assertThat(Reflectors.typed(Number.class)
+                             .named("java.lang.Integer")
+                             .ensureType(Integer.class)
+                             .staticMethod("valueOf")
+                             .appliedTo(int.class)
+                             .ensureReturnType(Integer.class)
+                             .invokedOn(42)
+                             .get())
+        .isEqualTo(Integer.valueOf(42));
+    }
 }

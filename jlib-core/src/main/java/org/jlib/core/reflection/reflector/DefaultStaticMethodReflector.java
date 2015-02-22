@@ -21,8 +21,28 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+public class DefaultStaticMethodReflector<ReturnType>
+implements StaticMethodReflector<ReturnType> {
+
+    private final String methodName;
+
+    private ReturnType returnValue = null;
+
+    public DefaultStaticMethodReflector(final String methodName) {
+        this.methodName = methodName;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    @Override
+    public MethodResultReflector<ReturnType> invoke() {
+        return new DefaultMethodResultReflector<>(this);
+    }
+
+    @Override
+    public void appliedTo(final Class<?> argumentClass) {
+
+    }
 }

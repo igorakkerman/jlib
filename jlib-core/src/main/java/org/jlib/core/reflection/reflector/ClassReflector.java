@@ -21,8 +21,22 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+import java.util.List;
+
+import org.jlib.core.classinstance.ClassInstanceException;
+import org.jlib.core.classinstance.WrongTypedInstanceException;
+
+public interface ClassReflector<Type> {
+
+    public Class<Type> get()
+    throws ClassInstanceException;
+
+    ClassReflector<Type> ensureType(Class<?> expectedSuperType)
+    throws WrongTypedInstanceException;
+
+    ConstructorReflector<Type> constructor();
+
+    StaticMethodReflector<Type> staticMethod(String methodName);
+
+    List<Class<?>> getExpectedSuperTypes();
 }

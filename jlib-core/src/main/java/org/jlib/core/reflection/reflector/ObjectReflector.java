@@ -21,14 +21,9 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface ObjectReflector<Super> {
-    <Obj extends Super> ObjectReflector<Obj> instance();
+import org.jlib.core.classinstance.ClassInstanceException;
 
-    ConstructorReflector<Super> init(Object... constructorArguments);
-
-    <Result> MethodReflector<Result> method(String methodName);
-
-    <Result, Arg1> Method1Reflector<Result, Arg1> method1(String methodName);
-
-    Super get();
+public interface ObjectReflector<Obj> {
+    Obj get()
+    throws ClassInstanceException;
 }

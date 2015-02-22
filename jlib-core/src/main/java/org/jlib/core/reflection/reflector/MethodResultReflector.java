@@ -21,8 +21,13 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
+public interface MethodResultReflector<ReturnType> {
+
+    MethodResultReflector<ReturnType> ensure(ResultValidator<ReturnType> resultValidator)
     throws InvalidResultException;
+
+    default <ExpectedReturnSuperType> void ensureReturnType(final ExpectedReturnSuperType expectedReturnSuperType)
+    throws InvalidResultException {
+        ensure(new ResultSuperTypeValidator<ReturnType, ExpectedReturnSuperType>(expectedReturnSuperType));
+    }
 }

@@ -21,8 +21,16 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+public class ClassReflectorAwareConstructorReflector<Type>
+implements ConstructorReflector<Type> {
+
+    private final ClassReflector<Type> classReflector;
+
+    public ClassReflectorAwareConstructorReflector(final ClassReflector<Type> classReflector) {
+        this.classReflector = classReflector;
+    }
+
+    protected ClassReflector<Type> getClassReflector() {
+        return classReflector;
+    }
 }

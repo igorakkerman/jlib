@@ -21,23 +21,24 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class ResultSuperTypeValidator<Super, Value extends Super>
-implements ResultValidator<Value>{
+public class ResultSuperTypeValidator<Value, ExpectedSuperType>
+implements ResultValidator<Value> {
 
-    public static <Super, Value extends Super> ResultValidator<Value> hasSuperType(final Class<Super> superType) {
-        return new ResultSuperTypeValidator<Super, Value>(superType);
+    public static <Value, ExpectedSuperType> /*
+               */ ResultValidator<Value> hasSuperType(final Class<ExpectedSuperType> superType) {
+        return new ResultSuperTypeValidator<Value, ExpectedSuperType>(superType);
     }
 
-    private final Class<Super> superType;
+    private final Class<ExpectedSuperType> superType;
 
-    protected ResultSuperTypeValidator(final Class<Super> superType) {
+    protected ResultSuperTypeValidator(final Class<ExpectedSuperType> superType) {
         this.superType = superType;
     }
 
     @Override
     public void ensureValid(final Value value)
     throws InvalidResultException {
-        if (!superType.isAssignableFrom(value.getClass()))
+        if (! superType.isAssignableFrom(value.getClass()))
             throw new InvalidResultException();
     }
 }

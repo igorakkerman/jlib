@@ -21,11 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface MethodReflector<Result> {
+public interface MethodReflector<ReturnType> {
 
-    MethodReflector<Result> invoke();
+    MethodResultReflector<ReturnType> invoke();
 
-    void ensure(ResultValidator<Result> resultValidator);
+    ReturnType get();
 
-    Result get();
+    MethodReflector<ReturnType> appliedTo(Class<?> argumentClass);
 }
