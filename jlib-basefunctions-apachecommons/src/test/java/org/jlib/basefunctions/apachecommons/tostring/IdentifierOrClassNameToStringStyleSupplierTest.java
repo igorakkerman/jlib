@@ -83,12 +83,13 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void instantiatedStyleOfClassNameShouldBeRetrurned()
     throws Exception {
 
         // given
         when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-        when(instanceService.instanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
+        when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
 
         // when
         configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -98,20 +99,21 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         verify(namedToStringStyleSupplier).get(CLASS_NAME);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-        verify(instanceService).instanceOf(CLASS_NAME, ToStringStyle.class);
+        verify(instanceService).getInstanceOf(CLASS_NAME, ToStringStyle.class);
         verifyNoMoreInteractions(instanceService);
 
         assertThat(style).isSameAs(STYLE);
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void notInstantiatableClassNameShouldFailMappingAndThrowException()
     throws Exception {
 
         try {
             // given
             when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-            when(instanceService.instanceOf(CLASS_NAME, ToStringStyle.class))./*
+            when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class))./*
               */ thenThrow(new ClassInstantiationException(CLASS_NAME));
 
             // when
@@ -128,7 +130,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             verify(namedToStringStyleSupplier).get(CLASS_NAME);
             verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-            verify(instanceService).instanceOf(CLASS_NAME, ToStringStyle.class);
+            verify(instanceService).getInstanceOf(CLASS_NAME, ToStringStyle.class);
             verifyNoMoreInteractions(instanceService);
 
             assertThat(expectedException).hasCauseExactlyInstanceOf(ClassInstantiationException.class);

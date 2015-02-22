@@ -19,26 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.persistence.jpa;
+package org.jlib.core.reflection;
 
-import javax.persistence.PersistenceException;
+import java.io.Serializable;
 
-import org.jlib.core.message.Message;
+public final class ReflectionTestItems {
 
-public class JpaPersistenceException
-extends PersistenceException {
+    protected interface I1 {}
 
-    private static final long serialVersionUID = - 4066897986319383761L;
+    @SuppressWarnings("serial")
+    static class C1
+    implements I1, Serializable {}
 
-    public JpaPersistenceException(final Message message) {
-        super(message.toString());
-    }
+    @SuppressWarnings("serial")
+    static class C2
+    extends C1 {}
 
-    public JpaPersistenceException(final Throwable cause) {
-        super(cause);
-    }
+    static class C3 {}
 
-    public JpaPersistenceException(final Message message, final Throwable cause) {
-        super(message.toString(), cause);
-    }
+
+    static final C1 c1 = new C1();
+    static final C2 c2 = new C2();
+    static final C3 c3 = new C3();
 }

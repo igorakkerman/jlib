@@ -21,24 +21,37 @@
 
 package org.jlib.persistence.jpa;
 
-import javax.persistence.PersistenceException;
+import java.io.Serializable;
 
-import org.jlib.core.message.Message;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-public class JpaPersistenceException
-extends PersistenceException {
+import static javax.persistence.GenerationType.AUTO;
+import org.jlib.persistence.IdEntity;
 
-    private static final long serialVersionUID = - 4066897986319383761L;
+/**
+ * <p>
+ * Basic {@link IdEntity}.
+ * </p>
+ * <p>
+ * Annotate the entity class with
+ * {@code @AttributeOverride(name = JpaEntity.FIELD_NAME_ID, column = @Column(name = "myentity_id"))}
+ * </p>
 
-    public JpaPersistenceException(final Message message) {
-        super(message.toString());
-    }
+ * @param <ID>
+ *        type of the id
+ */
+@MappedSuperclass
+public abstract class SimpleJpaEntity<ID extends Serializable>
+implements IdEntity<ID> {
 
-    public JpaPersistenceException(final Throwable cause) {
-        super(cause);
-    }
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    private ID id;
 
-    public JpaPersistenceException(final Message message, final Throwable cause) {
-        super(message.toString(), cause);
+    @Override
+    public ID getId() {
+        return id;
     }
 }

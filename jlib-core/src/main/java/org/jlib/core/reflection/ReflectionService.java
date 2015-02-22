@@ -45,7 +45,7 @@ implements ClassInstanceService {
     private ReflectionService() {}
 
     @Override
-    public <Obj> Obj instanceOf(final Class<? extends Obj> clazz)
+    public <Obj> Obj getInstanceOf(final Class<? extends Obj> clazz)
     throws ClassInstantiationException {
         try {
             return clazz.newInstance();

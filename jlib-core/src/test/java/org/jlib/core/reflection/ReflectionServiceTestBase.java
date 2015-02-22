@@ -19,7 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.core.reflection;
 
-public class ConstructorReflector<Super> {
+public class ReflectionServiceTestBase {
+
+    protected ReflectionService service = ReflectionService.getInstance();
 }
