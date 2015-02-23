@@ -21,8 +21,6 @@
 
 package org.jlib.core.reflection.reflector;
 
-import java.util.List;
-
 import org.jlib.core.classinstance.ClassInstanceException;
 import org.jlib.core.classinstance.WrongTypedInstanceException;
 
@@ -31,12 +29,10 @@ public interface ClassReflector<Type> {
     public Class<Type> get()
     throws ClassInstanceException;
 
-    ClassReflector<Type> ensureType(Class<?> expectedSuperType)
+    ClassReflector<Type> alsoTyped(Class<?> expectedSuperType)
     throws WrongTypedInstanceException;
 
     ConstructorReflector<Type> constructor();
 
-    StaticMethodReflector<Type> staticMethod(String methodName);
-
-    List<Class<?>> getExpectedSuperTypes();
+    StaticMethodReflector<Type> withStaticMethod(String methodName);
 }

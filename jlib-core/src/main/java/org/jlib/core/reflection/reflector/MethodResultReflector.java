@@ -21,13 +21,23 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface MethodResultReflector<ReturnType> {
+import static org.jlib.core.reflection.reflector.ValueEqualsResultValidator.valueEqualTo;
 
-    MethodResultReflector<ReturnType> ensure(ResultValidator<ReturnType> resultValidator)
+public interface MethodResultReflector<ReturnValue> {
+
+    MethodResultReflector<ReturnValue> returns(ResultValidator<ReturnValue> resultValidator)
     throws InvalidResultException;
 
-    default <ExpectedReturnSuperType> void ensureReturnType(final ExpectedReturnSuperType expectedReturnSuperType)
+    default MethodResultReflector<ReturnValue> returns(final ReturnValue returnValue)
     throws InvalidResultException {
-        ensure(new ResultSuperTypeValidator<ReturnType, ExpectedReturnSuperType>(expectedReturnSuperType));
+        return returns(valueEqualTo(returnValue));
     }
+
+    default <ExpectedReturnSuperType> /*
+         */ MethodResultReflector<ReturnValue> returnsInstanceOf(final Class<ExpectedReturnSuperType> expectedReturnSuperType)
+    throws InvalidResultException {
+        return returns(new ResultSuperTypeValidator<ReturnValue, ExpectedReturnSuperType>(expectedReturnSuperType));
+    }
+
+    ReturnValue get();
 }

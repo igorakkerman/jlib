@@ -25,6 +25,10 @@ public final class Reflectors {
 
     private Reflectors() {}
 
+    public static DefaultNamedClassReflector classNamed(final String className) {
+        return new DefaultNamedClassReflector(className);
+    }
+
     public static <Type> TypedReflector<Type> typed(final Class<Type> staticType) {
         return new DefaultTypedReflector<Type>(staticType);
     }

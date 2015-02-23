@@ -27,16 +27,18 @@ import org.junit.Test;
 public class ReflectorTest {
 
     @Test
+    @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        assertThat(Reflectors.typed(Number.class)
-                             .named("java.lang.Integer")
-                             .ensureType(Integer.class)
-                             .staticMethod("valueOf")
-                             .appliedTo(int.class)
-                             .ensureReturnType(Integer.class)
+        assertThat(Reflectors.classNamed("java.lang.Integer")
+                             .staticTyped(Number.class)
+                             .alsoTyped(Integer.class)
+                             .withStaticMethod("valueOf")
+                             .appliableTo(int.class)
+                             .returningSubtypeOf(Integer.class)
                              .invokedOn(42)
-                             .get())
-        .isEqualTo(Integer.valueOf(42));
+                             .returnsInstanceOf(Integer.class)
+                             .returns(Integer.valueOf(42))
+                             .get()).isEqualTo(Integer.valueOf(42));
     }
 }

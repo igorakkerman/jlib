@@ -21,18 +21,23 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class DefaultStaticMethodReflector<ReturnType>
-implements StaticMethodReflector<ReturnType> {
+public class ValueEqualsResultValidator<Value>
+implements ResultValidator<Value> {
 
-    private final String methodName;
-
-    private ReturnType returnValue = null;
-
-    public DefaultStaticMethodReflector(final String methodName) {
-        this.methodName = methodName;
+    public static <Value> ResultValidator<Value> valueEqualTo(final Value expectedValue) {
+        return new ValueEqualsResultValidator<>(expectedValue);
     }
 
-    public String getMethodName() {
-        return methodName;
+    private final Value expectedValue;
+
+    public ValueEqualsResultValidator(final Value expectedValue) {
+        this.expectedValue = expectedValue;
+    }
+
+    @Override
+    public void ensureValid(final Value value)
+    throws InvalidResultException {
+        if (!value.equals(expectedValue))
+            throw new InvalidResultException();
     }
 }

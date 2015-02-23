@@ -23,35 +23,42 @@ package org.jlib.core.reflection.reflector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.jlib.core.classinstance.ClassInstanceException;
-import org.jlib.core.classinstance.ClassInstantiationException;
 import org.jlib.core.classinstance.WrongTypedInstanceException;
 
 public class ConcreteClassReflector<Type>
 implements ClassReflector<Type> {
 
-    private final String className;
+    private final NamedClassReflector namedClassReflector;
+    private final Class<Type> staticType;
     private final List<Class<?>> expectedSuperTypes = new ArrayList<>();
 
-    public ConcreteClassReflector(final String className) {
-        this.className = className;
+    public ConcreteClassReflector(final NamedClassReflector namedClassReflector,
+                                  final Class<Type> staticType) {
+        this.namedClassReflector = namedClassReflector;
+        this.staticType = staticType;
+        expectedSuperTypes.add(staticType);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Class<Type> get()
     throws ClassInstanceException {
-        try {
-            return (Class<Type>) Class.forName(className);
-        }
-        catch (final ClassNotFoundException exception) {
-            throw new ClassInstantiationException(className, exception);
-        }
+        final Class<?> actualClass = namedClassReflector.get();
+
+        if (expectedSuperTypes.stream()
+                              .filter(superType -> ! superType.isAssignableFrom(actualClass))
+                              .findFirst()
+                          .isPresent())
+            throw new WrongTypedInstanceException(actualClass, superType);
+
+        return (Class<Type>) actualClass;
     }
 
     @Override
-    public ClassReflector<Type> ensureType(final Class<?> expectedSuperType)
+    public ClassReflector<Type> alsoTyped(final Class<?> expectedSuperType)
     throws WrongTypedInstanceException {
         expectedSuperTypes.add(expectedSuperType);
         return this;
@@ -63,12 +70,19 @@ implements ClassReflector<Type> {
     }
 
     @Override
-    public StaticMethodReflector<Type> staticMethod(final String methodName) {
-        return new DefaultStaticMethodReflector<Type>(methodName);
+    public StaticMethodReflector<Type> withStaticMethod(final String methodName) {
+        return new DefaultStaticMethodReflector<>(methodName);
     }
 
-    @Override
-    public List<Class<?>> getExpectedSuperTypes() {
+    protected NamedClassReflector getNamedClassReflector() {
+        return namedClassReflector;
+    }
+
+    protected Class<Type> getStaticType() {
+        return staticType;
+    }
+
+    protected List<Class<?>> getExpectedSuperTypes() {
         return expectedSuperTypes;
     }
 }

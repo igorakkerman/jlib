@@ -21,24 +21,33 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class ResultSuperTypeValidator<Value, ExpectedSuperType>
-implements ResultValidator<Value> {
+import org.jlib.core.classinstance.ClassInstantiationException;
 
-    public static <Value, ExpectedSuperType> /*
-               */ ResultValidator<Value> hasSuperType(final Class<ExpectedSuperType> expectedSuperType) {
-        return new ResultSuperTypeValidator<>(expectedSuperType);
-    }
+public class DefaultNamedClassReflector
+implements NamedClassReflector {
 
-    private final Class<ExpectedSuperType> superType;
+    private final String className;
 
-    protected ResultSuperTypeValidator(final Class<ExpectedSuperType> expectedSuperType) {
-        this.superType = expectedSuperType;
+    public DefaultNamedClassReflector(final String className) {
+        this.className = className;
     }
 
     @Override
-    public void ensureValid(final Value value)
-    throws InvalidResultException {
-        if (! superType.isAssignableFrom(value.getClass()))
-            throw new InvalidResultException();
+    public Class<?> get()
+    throws ClassInstantiationException {
+        try {
+            return Class.forName(className);
+        }
+        catch (final ClassNotFoundException exception) {
+            throw new ClassInstantiationException(className, exception);
+        }
+    }
+
+    protected String getClassName() {
+        return className;
+    }
+
+    public <Type> ConcreteClassReflector<Type> staticTyped(final Class<Type> staticType) {
+        return new ConcreteClassReflector<>(this, staticType);
     }
 }
