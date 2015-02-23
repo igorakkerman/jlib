@@ -21,18 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-import org.jlib.core.classinstance.ClassInstanceException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
+import org.jlib.core.classinstance.InvalidMethodException;
 
-public interface ClassReflector<Type> {
+public interface StaticMethod2Reflector<ReturnType, Argument1, Argument2>
+extends MethodReflector<ReturnType, StaticMethod2Reflector<ReturnType, Argument1, Argument2>> {
 
-    public Class<Type> get()
-    throws ClassInstanceException;
-
-    ClassReflector<Type> alsoTyped(Class<?> expectedSuperType)
-    throws WrongTypedInstanceException;
-
-    ConstructorReflector<Type> constructor();
-
-    StaticMethodReflector<Type> withStaticMethod(String methodName);
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    throws InvalidMethodException;
 }

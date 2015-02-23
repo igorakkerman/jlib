@@ -21,6 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface StaticMethodReflector<ReturnType>
-extends MethodReflector<ReturnType> {
+import org.jlib.core.classinstance.InvalidMethodException;
+
+public interface StaticMethod0Reflector<ReturnType>
+extends MethodReflector<ReturnType, StaticMethod0Reflector<ReturnType>> {
+
+    MethodResultReflector<ReturnType> invoke()
+    throws InvalidMethodException;
 }

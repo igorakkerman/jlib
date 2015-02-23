@@ -21,6 +21,5 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface TypedReflector<Type> {
-    ClassReflector<Type> named(String className);
+public interface Constructor1Reflector<Value, Argument1> {
 }

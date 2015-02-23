@@ -21,7 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface Method1Reflector<Result, Arg1>
-extends MethodReflector<Result> {
-    Method1Reflector<Result, Arg1> arg1(Arg1 arg1);
+import org.jlib.core.classinstance.InvalidMethodException;
+
+public interface StaticMethod1Reflector<ReturnType, Argument1>
+extends MethodReflector<ReturnType, StaticMethod1Reflector<ReturnType, Argument1>> {
+
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
+    throws InvalidMethodException;
 }

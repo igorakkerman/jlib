@@ -21,15 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-public final class Reflectors {
+import org.jlib.core.classinstance.InvalidMethodException;
 
-    private Reflectors() {}
+public interface StaticMethod3Reflector<ReturnType, Argument1, Argument2, Argument3>
+extends MethodReflector<ReturnType, StaticMethod3Reflector<ReturnType, Argument1, Argument2, Argument3>> {
 
-    public static UntypedClassReflector useClassNamed(final String className) {
-        return new NamedClassReflector(className);
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return new DefaultTypedClassReflector<>(clazz);
-    }
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
+    throws InvalidMethodException;
 }

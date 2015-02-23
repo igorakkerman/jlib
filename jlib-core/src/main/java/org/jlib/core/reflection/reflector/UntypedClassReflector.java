@@ -21,15 +21,12 @@
 
 package org.jlib.core.reflection.reflector;
 
-public final class Reflectors {
+import org.jlib.core.classinstance.ClassInstanceException;
 
-    private Reflectors() {}
+public interface UntypedClassReflector {
 
-    public static UntypedClassReflector useClassNamed(final String className) {
-        return new NamedClassReflector(className);
-    }
+    Class<?> get()
+    throws ClassInstanceException;
 
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return new DefaultTypedClassReflector<>(clazz);
-    }
+    <Type> ConcreteTypedClassReflector<Type> withStaticType(Class<Type> staticType);
 }

@@ -21,14 +21,16 @@
 
 package org.jlib.core.reflection.reflector;
 
+import java.lang.reflect.Method;
+
+import org.jlib.core.classinstance.InvalidMethodException;
 import org.jlib.core.classinstance.WrongTypedInstanceException;
 
-public interface MethodReflector<ReturnType> {
+public interface MethodReflector<ReturnType, Self extends MethodReflector<ReturnType, Self>> {
 
-    MethodResultReflector<ReturnType> invokedOn(Object... arguments);
-
-    MethodReflector<ReturnType> appliableTo(Class<?>... argumentClass);
-
-    MethodReflector<ReturnType> returningSubtypeOf(Class<?> staticReturnSuperType)
+    Self ensureStaticReturnType(Class<ReturnType> staticReturnSuperType)
     throws WrongTypedInstanceException;
+
+    Method get()
+    throws InvalidMethodException;
 }

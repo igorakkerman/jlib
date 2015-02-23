@@ -21,20 +21,25 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class DefaultMethodResultReflector<ReturnValue>
+import java.lang.reflect.Method;
+
+import org.jlib.core.classinstance.InvalidMethodException;
+
+public class DefaultMethodResultReflector<ReturnValue, MethRef extends MethodReflector<ReturnValue, MethRef>>
 implements MethodResultReflector<ReturnValue> {
 
-    private final MethodReflector<ReturnValue> methodReflector;
+    private final MethRef methodReflector;
 
-    public DefaultMethodResultReflector(final MethodReflector<ReturnValue> methodReflector) {
+    public DefaultMethodResultReflector(final MethRef methodReflector) {
         this.methodReflector = methodReflector;
     }
 
     @Override
     public <ExpectedReturnSuperType> /*
-        */ MethodResultReflector<ReturnValue> ensure(final ResultValidator<ReturnValue, ExpectedReturnSuperType> resultValidator)
-    throws InvalidResultException {
-        resultValidator.ensureValid(getMethodReflector().get());
+        */ MethodResultReflector<ReturnValue> ensure(final ResultValidator<ReturnValue> resultValidator)
+    throws InvalidResultException, InvalidMethodException {
+        final Method method = getMethodReflector().get();
+        resultValidator.ensureValid(method);
         return this;
     }
 

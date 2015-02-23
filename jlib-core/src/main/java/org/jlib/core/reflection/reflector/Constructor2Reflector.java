@@ -21,18 +21,5 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class DefaultStaticMethodReflector<ReturnType>
-implements StaticMethodReflector<ReturnType> {
-
-    private final String methodName;
-
-    private ReturnType returnValue = null;
-
-    public DefaultStaticMethodReflector(final String methodName) {
-        this.methodName = methodName;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
+public interface Constructor2Reflector<Value, Argument1, Argument2> {
 }

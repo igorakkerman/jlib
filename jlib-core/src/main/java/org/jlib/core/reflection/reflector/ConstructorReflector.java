@@ -21,5 +21,6 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface ConstructorReflector<Super> {
+public interface ConstructorReflector<Enclosing>
+extends MethodReflector<Enclosing, ConstructorReflector<Enclosing>> {
 }

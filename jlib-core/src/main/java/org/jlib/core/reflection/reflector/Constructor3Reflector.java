@@ -21,21 +21,5 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class DefaultTypedReflector<Type>
-implements TypedReflector<Type> {
-
-    private final Class<Type> staticType;
-
-    public DefaultTypedReflector(final Class<Type> staticType) {
-        this.staticType = staticType;
-    }
-
-    protected Class<Type> getStaticType() {
-        return staticType;
-    }
-
-    @Override
-    public ClassReflector<Type> named(final String className) {
-        return new ConcreteClassReflector<>(className);
-    }
+public interface Constructor3Reflector<Value, Argument1, Argument2, Argument3> {
 }

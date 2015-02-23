@@ -22,6 +22,8 @@
 package org.jlib.core.reflection.reflector;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.jlib.core.reflection.reflector.Reflectors.useClassNamed;
+import static org.jlib.core.reflection.reflector.ResultSuperTypeValidator.instanceOf;
 import org.junit.Test;
 
 public class ReflectorTest {
@@ -30,15 +32,17 @@ public class ReflectorTest {
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        assertThat(Reflectors.classNamed("java.lang.Integer")
-                             .staticTyped(Number.class)
-                             .alsoTyped(Integer.class)
-                             .withStaticMethod("valueOf")
-                             .appliableTo(int.class)
-                             .returningSubtypeOf(Integer.class)
-                             .invokedOn(42)
-                             .returnsInstanceOf(Integer.class)
-                             .returns(Integer.valueOf(42))
-                             .get()).isEqualTo(Integer.valueOf(42));
+        final Number value = useClassNamed("java.lang.Integer") /*
+          */.withStaticType(Number.class)
+            .ensureType(Integer.class)
+            .useStaticMethod("valueOf", int.class)
+            .ensureStaticReturnType(Number.class)
+            .invoke(42)
+            .returns(instanceOf(Integer.class))
+            .returns(Integer.valueOf(42))
+            .get();
+
+        assertThat(value).isEqualTo(Integer.valueOf(42));
     }
 }
+

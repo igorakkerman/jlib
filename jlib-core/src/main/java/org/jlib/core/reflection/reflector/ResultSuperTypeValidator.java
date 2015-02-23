@@ -25,7 +25,7 @@ public class ResultSuperTypeValidator<Value, ExpectedSuperType>
 implements ResultValidator<Value> {
 
     public static <Value, ExpectedSuperType> /*
-               */ ResultValidator<Value> hasSuperType(final Class<ExpectedSuperType> expectedSuperType) {
+               */ ResultValidator<Value> instanceOf(final Class<ExpectedSuperType> expectedSuperType) {
         return new ResultSuperTypeValidator<>(expectedSuperType);
     }
 

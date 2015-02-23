@@ -24,13 +24,13 @@ package org.jlib.core.reflection.reflector;
 public class ClassReflectorAwareConstructorReflector<Type>
 implements ConstructorReflector<Type> {
 
-    private final ClassReflector<Type> classReflector;
+    private final TypedClassReflector<Type> typedClassReflector;
 
-    public ClassReflectorAwareConstructorReflector(final ClassReflector<Type> classReflector) {
-        this.classReflector = classReflector;
+    public ClassReflectorAwareConstructorReflector(final TypedClassReflector<Type> typedClassReflector) {
+        this.typedClassReflector = typedClassReflector;
     }
 
-    protected ClassReflector<Type> getClassReflector() {
-        return classReflector;
+    protected TypedClassReflector<Type> getTypedClassReflector() {
+        return typedClassReflector;
     }
 }

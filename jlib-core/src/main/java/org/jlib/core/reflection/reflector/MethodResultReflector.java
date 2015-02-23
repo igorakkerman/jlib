@@ -33,11 +33,5 @@ public interface MethodResultReflector<ReturnValue> {
         return returns(valueEqualTo(returnValue));
     }
 
-    default <ExpectedReturnSuperType> /*
-         */ MethodResultReflector<ReturnValue> returnsInstanceOf(final Class<ExpectedReturnSuperType> expectedReturnSuperType)
-    throws InvalidResultException {
-        return returns(new ResultSuperTypeValidator<ReturnValue, ExpectedReturnSuperType>(expectedReturnSuperType));
-    }
-
     ReturnValue get();
 }
