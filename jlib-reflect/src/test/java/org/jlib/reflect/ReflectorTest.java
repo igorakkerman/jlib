@@ -22,7 +22,6 @@
 package org.jlib.reflect;
 
 import org.assertj.core.api.Assertions;
-import static org.jlib.reflect.Reflectors.useClassNamed;
 import static org.jlib.reflect.SuperTypeValidator.instanceOf;
 import org.junit.Test;
 
@@ -32,7 +31,7 @@ public class ReflectorTest {
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        final Number value = useClassNamed("java.lang.Integer") /*
+        final Number value = Reflectors.useClass("java.lang.Integer") /*
           */.assertType(Number.class)
             .assertSubtypeOf(Integer.class)
             .useStaticMethod("valueOf")

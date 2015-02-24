@@ -27,12 +27,12 @@ public final class Reflectors {
 
     private Reflectors() {}
 
-    public static UntypedClassReflector useClassNamed(final String className) {
+    public static UntypedClassReflector useClass(final String className) {
         return new NamedClassReflector(className);
     }
 
-    public static UntypedClassReflector useClassNamed(final Supplier<String> className) {
-        return new NamedClassReflector(className);
+    public static UntypedClassReflector useClass(final Supplier<String> className) {
+        return new NamedClassReflector(className.get());
     }
 
     public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
