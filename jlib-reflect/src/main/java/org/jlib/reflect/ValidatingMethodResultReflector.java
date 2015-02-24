@@ -37,7 +37,7 @@ implements MethodResultReflector<ReturnValue> {
     @Override
     public final ReturnValue get()
     throws InvalidValueException, InvalidMethodException {
-        final ReturnValue returnValue = invoker.invoke();
+        final ReturnValue returnValue = invoker.invokeStatic();
 
         assertValid(returnValue);
 

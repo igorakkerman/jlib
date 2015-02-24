@@ -21,8 +21,8 @@
 
 package org.jlib.reflect;
 
-public interface MethodUncheckedReflector<ReturnType>
-extends MethodReflector<ReturnType, MethodUncheckedReflector<ReturnType>> {
+public interface UncheckedMethodReflector<ReturnType>
+extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
 
     MethodResultReflector<ReturnType> invoke(Object... arguments)
     throws InvalidMethodException;

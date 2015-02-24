@@ -25,23 +25,30 @@ import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
 
-public class ReflectionInvoker<ReturnValue> implements Invoker<ReturnValue> {
+public class ReflectionInvoker<ReturnValue>
+implements Invoker<ReturnValue> {
 
     private final Method method;
 
-    public ReflectionInvoker(final Method  method) {
+    public ReflectionInvoker(final Method method) {
         this.method = method;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public ReturnValue invoke(final Object... arguments)
+    public ReturnValue invoke(final Object object, final Object... arguments)
     throws InvalidMethodException {
         try {
-            return (ReturnValue) method.invoke(method, arguments);
+            return (ReturnValue) method.invoke(object, arguments);
         }
         catch (final ReflectiveOperationException exception) {
             throw new InvalidMethodException(message(), method.getClass().getName(), method.toString());
         }
+    }
+
+    @Override
+    public ReturnValue invokeStatic(final Object... arguments)
+    throws InvalidMethodException {
+        return invoke(/* static */ null, arguments);
     }
 }

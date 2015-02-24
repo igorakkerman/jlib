@@ -21,10 +21,7 @@
 
 package org.jlib.reflect;
 
-public interface UntypedClassReflector {
-
-    Class<?> get()
-    throws ClassInstanceException;
-
+public interface UntypedClassReflector
+extends UntypedClassSupplier {
     <Value> TypedClassReflector<Value> withType(Class<Value> staticType);
 }

@@ -29,22 +29,26 @@ import static java.util.stream.Collectors.toList;
 public class ConcreteTypedClassReflector<Type>
 /*implements TypedClassReflector<Type>*/ {
 
-    private final UntypedClassReflector untypedClassReflector;
     private final Class<Type> staticType;
+    private final UntypedClassSupplier untypedClassSupplier;
     private final List<Class<?>> expectedSuperTypes = new ArrayList<>();
 
-    public ConcreteTypedClassReflector(final UntypedClassReflector untypedClassReflector,
-                                       final Class<Type> staticType) {
-        this.untypedClassReflector = untypedClassReflector;
+    public ConcreteTypedClassReflector(final Class<Type> staticType,
+                                       final UntypedClassSupplier untypedClassSupplier) {
         this.staticType = staticType;
+        this.untypedClassSupplier = untypedClassSupplier;
         expectedSuperTypes.add(staticType);
     }
 
-//    @Override
+    public ConcreteTypedClassReflector(final Class<Type> staticType) {
+        this(staticType, () -> staticType);
+    }
+
+    //    @Override
     @SuppressWarnings("unchecked")
     public Class<Type> get()
     throws ClassInstanceException {
-        final Class<?> actualClass = untypedClassReflector.get();
+        final Class<?> actualClass = untypedClassSupplier.get();
 
         final List<Class<?>> invalidSuperTypes = /*
          */ expectedSuperTypes.stream()
@@ -65,4 +69,16 @@ public class ConcreteTypedClassReflector<Type>
         return this;
     }
 */
+
+    protected Class<Type> getStaticType() {
+        return staticType;
+    }
+
+    protected UntypedClassSupplier getUntypedClassSupplier() {
+        return untypedClassSupplier;
+    }
+
+    protected List<Class<?>> getExpectedSuperTypes() {
+        return expectedSuperTypes;
+    }
 }

@@ -38,6 +38,5 @@ public interface MethodOverloadReflector<Value> {
      */ withArgumentTypes(Class<Argument1> argument1Type, Class<Argument2> argument2Type,
                           Class<Argument3> argument3Type);
 
-   <MethRef extends MethodReflector<Value, MethRef>> /*
-*/ MethRef withUncheckedArgumentTypes();
+   UncheckedMethodReflector<Value> withUncheckedArgumentTypes();
 }
