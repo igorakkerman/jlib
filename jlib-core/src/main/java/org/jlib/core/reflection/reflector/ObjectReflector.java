@@ -24,6 +24,9 @@ package org.jlib.core.reflection.reflector;
 import org.jlib.core.classinstance.ClassInstanceException;
 
 public interface ObjectReflector<Obj> {
+
+    UntypedMethodReflector useMethod(String methodName);
+
     Obj get()
     throws ClassInstanceException;
 }

@@ -41,29 +41,29 @@ implements TypedClassReflector<Value> {
     }
 
     @Override
-    public TypedClassReflector<Value> ensureType(final Class<?> expectedSuperType)
+    public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
     throws WrongTypedInstanceException {
         return null;
     }
 
     @Override
-    public ConstructorReflector<Value> withConstructor(final Class<?> argumentTypes) {
+    public MethodOverloadReflector<Value> withConstructor(final Class<?> argumentTypes) {
         return null;
     }
 
     @Override
-    public StaticMethod0Reflector<Value> useStaticMethod(final String methodName) {
+    public Method0Reflector<Value> useStaticMethod(final String methodName) {
         return null;
     }
 
     @Override
-    public <Argument1> StaticMethod1Reflector<Value, Argument1> useStaticMethod(final String methodName,
+    public <Argument1> Method1Reflector<Value, Argument1> useStaticMethod(final String methodName,
                                                                                 final Class<Argument1> argument1Type) {
         return null;
     }
 
     @Override
-    public <Argument1, Argument2> StaticMethod2Reflector<Value, Argument1, Argument2> useStaticMethod(
+    public <Argument1, Argument2> Method2Reflector<Value, Argument1, Argument2> useStaticMethod(
                                                                                                      final String
                                                                                                      methodName,
                                                                                                      final
@@ -76,7 +76,7 @@ implements TypedClassReflector<Value> {
     }
 
     @Override
-    public <Argument1, Argument2, Argument3> StaticMethod3Reflector<Value, Argument1, Argument2, Argument3>
+    public <Argument1, Argument2, Argument3> Method3Reflector<Value, Argument1, Argument2, Argument3>
     useStaticMethod(
                                                                                                                            final String methodName,
                                                                                                                            final Class<Argument1> argument1Type,

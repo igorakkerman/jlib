@@ -21,5 +21,11 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface Constructor2Reflector<Value, Argument1, Argument2> {
+import org.jlib.core.classinstance.InvalidMethodException;
+
+public interface MethodUncheckedReflector<ReturnType>
+extends MethodReflector<ReturnType, MethodUncheckedReflector<ReturnType>> {
+
+    MethodResultReflector<ReturnType> invoke(Object... arguments)
+    throws InvalidMethodException;
 }

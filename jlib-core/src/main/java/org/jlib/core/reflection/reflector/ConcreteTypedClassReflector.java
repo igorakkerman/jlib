@@ -60,14 +60,14 @@ implements TypedClassReflector<Type> {
     }
 
     @Override
-    public TypedClassReflector<Type> ensureType(final Class<?> expectedSuperType)
+    public TypedClassReflector<Type> assertSubtypeOf(final Class<?> expectedSuperType)
     throws WrongTypedInstanceException {
         expectedSuperTypes.add(expectedSuperType);
         return this;
     }
 
     @Override
-    public ConstructorReflector<Type> useConstructor() {
+    public MethodOverloadReflector<Type> useConstructor() {
         return new ClassReflectorAwareConstructorReflector<Type>(this);
     }
 
@@ -99,18 +99,18 @@ implements TypedClassReflector<Type> {
     }
 
     @Override
-    public StaticMethod0Reflector<Type> useStaticMethod(final String methodName) {
+    public Method0Reflector<Type> useStaticMethod(final String methodName) {
         return null;
     }
 
     @Override
-    public <Argument1> StaticMethod1Reflector<Type, Argument1> useStaticMethod(final String methodName,
+    public <Argument1> Method1Reflector<Type, Argument1> useStaticMethod(final String methodName,
                                                                                final Class<Argument1> argument1Type) {
         return null;
     }
 
     @Override
-    public <Argument1, Argument2> StaticMethod2Reflector<Type, Argument1, Argument2> useStaticMethod(
+    public <Argument1, Argument2> Method2Reflector<Type, Argument1, Argument2> useStaticMethod(
                                                                                                     final String
                                                                                                     methodName,
                                                                                                     final
@@ -122,7 +122,7 @@ implements TypedClassReflector<Type> {
     }
 
     @Override
-    public <Argument1, Argument2, Argument3> StaticMethod3Reflector<Type, Argument1, Argument2, Argument3> useStaticMethod(
+    public <Argument1, Argument2, Argument3> Method3Reflector<Type, Argument1, Argument2, Argument3> useStaticMethod(
                                                                                                                           final String methodName,
                                                                                                                           final Class<Argument1> argument1Type,
                                                                                                                           final Class<Argument2> argument2Type,

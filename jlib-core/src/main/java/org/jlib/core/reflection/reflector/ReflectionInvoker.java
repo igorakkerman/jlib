@@ -21,23 +21,29 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class ValueEqualsResultValidator<Value>
-implements ResultValidator<Value> {
+import java.lang.reflect.Method;
 
-    public static <Value> ResultValidator<Value> valueEqualTo(final Value expectedValue) {
-        return new ValueEqualsResultValidator<>(expectedValue);
-    }
+import org.jlib.core.classinstance.InvalidMethodException;
 
-    private final Value expectedValue;
+import static org.jlib.core.message.MessageUtility.message;
 
-    public ValueEqualsResultValidator(final Value expectedValue) {
-        this.expectedValue = expectedValue;
+public class ReflectionInvoker<ReturnValue> implements Invoker<ReturnValue> {
+
+    private final Method method;
+
+    public ReflectionInvoker(final Method  method) {
+        this.method = method;
     }
 
     @Override
-    public void ensureValid(final Value value)
-    throws InvalidResultException {
-        if (!value.equals(expectedValue))
-            throw new InvalidResultException();
+    @SuppressWarnings("unchecked")
+    public ReturnValue invoke(final Object... arguments)
+    throws InvalidMethodException {
+        try {
+            return (ReturnValue) method.invoke(method, arguments);
+        }
+        catch (final ReflectiveOperationException exception) {
+            throw new InvalidMethodException(message(), method.getClass().getName(), method.toString());
+        }
     }
 }

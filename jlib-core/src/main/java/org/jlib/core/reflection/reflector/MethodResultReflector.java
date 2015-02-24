@@ -21,17 +21,20 @@
 
 package org.jlib.core.reflection.reflector;
 
-import static org.jlib.core.reflection.reflector.ValueEqualsResultValidator.valueEqualTo;
+import org.jlib.core.classinstance.InvalidMethodException;
+
+import static org.jlib.core.reflection.reflector.ValueEqualsValidator.valueEqualTo;
 
 public interface MethodResultReflector<ReturnValue> {
 
-    MethodResultReflector<ReturnValue> returns(ResultValidator<ReturnValue> resultValidator)
-    throws InvalidResultException;
+    MethodResultReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)
+    throws InvalidValueException;
 
-    default MethodResultReflector<ReturnValue> returns(final ReturnValue returnValue)
-    throws InvalidResultException {
-        return returns(valueEqualTo(returnValue));
+    default MethodResultReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
+    throws InvalidValueException {
+        return assertReturned(valueEqualTo(returnValue));
     }
 
-    ReturnValue get();
+    ReturnValue get()
+    throws InvalidValueException, InvalidMethodException;
 }

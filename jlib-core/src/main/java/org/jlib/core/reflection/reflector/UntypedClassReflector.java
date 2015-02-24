@@ -28,5 +28,5 @@ public interface UntypedClassReflector {
     Class<?> get()
     throws ClassInstanceException;
 
-    <Type> ConcreteTypedClassReflector<Type> withStaticType(Class<Type> staticType);
+    <Type> TypedClassReflector<Type> assertType(Class<Type> staticType);
 }

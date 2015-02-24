@@ -23,9 +23,9 @@ package org.jlib.core.reflection.reflector;
 
 import org.jlib.core.classinstance.InvalidMethodException;
 
-public interface StaticMethod2Reflector<ReturnType, Argument1, Argument2>
-extends MethodReflector<ReturnType, StaticMethod2Reflector<ReturnType, Argument1, Argument2>> {
+public interface Method1Reflector<ReturnType, Argument1>
+extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
 
-    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
     throws InvalidMethodException;
 }

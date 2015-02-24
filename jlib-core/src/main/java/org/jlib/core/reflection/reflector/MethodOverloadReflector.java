@@ -21,11 +21,23 @@
 
 package org.jlib.core.reflection.reflector;
 
-import org.jlib.core.classinstance.InvalidMethodException;
+public interface MethodOverloadReflector<Value> {
 
-public interface StaticMethod0Reflector<ReturnType>
-extends MethodReflector<ReturnType, StaticMethod0Reflector<ReturnType>> {
+    Method0Reflector<Value> withoutArguments();
 
-    MethodResultReflector<ReturnType> invoke()
-    throws InvalidMethodException;
+    <Argument1> /*
+ */ Method1Reflector<Value, Argument1> /*
+     */ withArgumentTypes(Class<Argument1> argument1Type);
+
+    <Argument1, Argument2> /*
+ */ Method2Reflector<Value, Argument1, Argument2> /*
+     */ withArgumentTypes(Class<Argument1> argument1Type, Class<Argument2> argument2Type);
+
+    <Argument1, Argument2, Argument3> /*
+ */ Method3Reflector<Value, Argument1, Argument2, Argument3> /*
+     */ withArgumentTypes(Class<Argument1> argument1Type, Class<Argument2> argument2Type,
+                          Class<Argument3> argument3Type);
+
+   <MethRef extends MethodReflector<Value, MethRef>> /*
+*/ MethRef withUncheckedArgumentTypes();
 }

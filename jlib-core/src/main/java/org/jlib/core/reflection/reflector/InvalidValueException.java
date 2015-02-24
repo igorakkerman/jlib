@@ -21,16 +21,10 @@
 
 package org.jlib.core.reflection.reflector;
 
-import java.lang.reflect.Method;
+import org.jlib.core.exception.ApplicationException;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
+public class InvalidValueException
+extends ApplicationException {
 
-public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
-
-    Self assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws WrongTypedInstanceException;
-
-    Method get()
-    throws InvalidMethodException;
+    private static final long serialVersionUID = - 7160983597918363904L;
 }

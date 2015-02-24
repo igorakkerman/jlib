@@ -21,8 +21,24 @@
 
 package org.jlib.core.reflection.reflector;
 
-@FunctionalInterface
-public interface ResultValidator<Result> {
-    void ensureValid(Result result)
-    throws InvalidResultException;
+public class SuperTypeValidator<Value, ExpectedSuperType>
+implements Validator<Value> {
+
+    public static <Value, ExpectedSuperType> /*
+               */ Validator<Value> instanceOf(final Class<ExpectedSuperType> expectedSuperType) {
+        return new SuperTypeValidator<>(expectedSuperType);
+    }
+
+    private final Class<ExpectedSuperType> superType;
+
+    protected SuperTypeValidator(final Class<ExpectedSuperType> expectedSuperType) {
+        this.superType = expectedSuperType;
+    }
+
+    @Override
+    public void assertValid(final Value value)
+    throws InvalidValueException {
+        if (! superType.isAssignableFrom(value.getClass()))
+            throw new InvalidValueException();
+    }
 }

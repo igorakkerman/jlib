@@ -21,5 +21,8 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface Constructor3Reflector<Value, Argument1, Argument2, Argument3> {
+@FunctionalInterface
+public interface Validator<Value> {
+    void assertValid(Value value)
+    throws InvalidValueException;
 }

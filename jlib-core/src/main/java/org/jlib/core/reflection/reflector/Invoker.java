@@ -21,24 +21,10 @@
 
 package org.jlib.core.reflection.reflector;
 
-public class ResultSuperTypeValidator<Value, ExpectedSuperType>
-implements ResultValidator<Value> {
+import org.jlib.core.classinstance.InvalidMethodException;
 
-    public static <Value, ExpectedSuperType> /*
-               */ ResultValidator<Value> instanceOf(final Class<ExpectedSuperType> expectedSuperType) {
-        return new ResultSuperTypeValidator<>(expectedSuperType);
-    }
+public interface Invoker<ReturnValue> {
 
-    private final Class<ExpectedSuperType> superType;
-
-    protected ResultSuperTypeValidator(final Class<ExpectedSuperType> expectedSuperType) {
-        this.superType = expectedSuperType;
-    }
-
-    @Override
-    public void ensureValid(final Value value)
-    throws InvalidResultException {
-        if (! superType.isAssignableFrom(value.getClass()))
-            throw new InvalidResultException();
-    }
+    ReturnValue invoke(Object... arguments)
+    throws InvalidMethodException;
 }

@@ -21,5 +21,6 @@
 
 package org.jlib.core.reflection.reflector;
 
-public interface Constructor1Reflector<Value, Argument1> {
+public interface UntypedMethodReflector {
+  <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass);
 }

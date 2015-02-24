@@ -21,10 +21,23 @@
 
 package org.jlib.core.reflection.reflector;
 
-import org.jlib.core.exception.ApplicationException;
+public class ValueEqualsValidator<Value>
+implements Validator<Value> {
 
-public class InvalidResultException
-extends ApplicationException {
+    public static <Value> Validator<Value> valueEqualTo(final Value expectedValue) {
+        return new ValueEqualsValidator<>(expectedValue);
+    }
 
-    private static final long serialVersionUID = - 7160983597918363904L;
+    private final Value expectedValue;
+
+    public ValueEqualsValidator(final Value expectedValue) {
+        this.expectedValue = expectedValue;
+    }
+
+    @Override
+    public void assertValid(final Value value)
+    throws InvalidValueException {
+        if (!value.equals(expectedValue))
+            throw new InvalidValueException();
+    }
 }

@@ -22,7 +22,7 @@
 package org.jlib.core.reflection.reflector;
 
 public class ClassReflectorAwareConstructorReflector<Type>
-implements ConstructorReflector<Type> {
+implements MethodReflector<Type,MethodOverloadReflector<Type>> {
 
     private final TypedClassReflector<Type> typedClassReflector;
 

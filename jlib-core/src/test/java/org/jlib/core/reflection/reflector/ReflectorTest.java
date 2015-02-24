@@ -23,7 +23,7 @@ package org.jlib.core.reflection.reflector;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.core.reflection.reflector.Reflectors.useClassNamed;
-import static org.jlib.core.reflection.reflector.ResultSuperTypeValidator.instanceOf;
+import static org.jlib.core.reflection.reflector.SuperTypeValidator.instanceOf;
 import org.junit.Test;
 
 public class ReflectorTest {
@@ -33,13 +33,14 @@ public class ReflectorTest {
     public void staticRun()
     throws Exception {
         final Number value = useClassNamed("java.lang.Integer") /*
-          */.withStaticType(Number.class)
-            .ensureType(Integer.class)
-            .useStaticMethod("valueOf", int.class)
-            .ensureStaticReturnType(Number.class)
+          */.assertType(Number.class)
+            .assertSubtypeOf(Integer.class)
+            .useStaticMethod("valueOf")
+            .withReturnType(Number.class)
+            .withArgumentTypes(int.class)
             .invoke(42)
-            .returns(instanceOf(Integer.class))
-            .returns(Integer.valueOf(42))
+            .assertReturned(instanceOf(Integer.class))
+            .assertReturned(Integer.valueOf(42))
             .get();
 
         assertThat(value).isEqualTo(Integer.valueOf(42));
