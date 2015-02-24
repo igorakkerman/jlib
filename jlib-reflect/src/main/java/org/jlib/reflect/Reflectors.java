@@ -21,11 +21,17 @@
 
 package org.jlib.reflect;
 
+import java.util.function.Supplier;
+
 public final class Reflectors {
 
     private Reflectors() {}
 
     public static UntypedClassReflector useClassNamed(final String className) {
+        return new NamedClassReflector(className);
+    }
+
+    public static UntypedClassReflector useClassNamed(final Supplier<String> className) {
         return new NamedClassReflector(className);
     }
 

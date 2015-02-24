@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import java.util.function.Supplier;
+
 import org.jlib.core.classinstance.ClassInstantiationException;
 
 public class NamedClassReflector
@@ -30,6 +32,10 @@ implements UntypedClassReflector {
 
     public NamedClassReflector(final String className) {
         this.className = className;
+    }
+
+    public NamedClassReflector(final Supplier<String> className) {
+        this.className = className.get();
     }
 
     @Override
