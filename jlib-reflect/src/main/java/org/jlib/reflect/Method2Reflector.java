@@ -19,10 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-@FunctionalInterface
-public interface Validator<Value> {
-    void assertValid(Value value)
-    throws InvalidValueException;
+import org.jlib.core.classinstance.InvalidMethodException;
+
+public interface Method2Reflector<ReturnType, Argument1, Argument2>
+extends MethodReflector<ReturnType, Method2Reflector<ReturnType, Argument1, Argument2>> {
+
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    throws InvalidMethodException;
 }

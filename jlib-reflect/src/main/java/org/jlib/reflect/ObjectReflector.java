@@ -19,18 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import java.lang.reflect.Method;
+import org.jlib.core.classinstance.ClassInstanceException;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
+public interface ObjectReflector<Obj> {
 
-public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
+    UntypedMethodReflector useMethod(String methodName);
 
-    Self assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws WrongTypedInstanceException;
-
-    Method get()
-    throws InvalidMethodException;
+    Obj get()
+    throws ClassInstanceException;
 }

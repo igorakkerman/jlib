@@ -19,25 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-public class ValueEqualsValidator<Value>
-implements Validator<Value> {
+import org.jlib.core.classinstance.InvalidMethodException;
 
-    public static <Value> Validator<Value> valueEqualTo(final Value expectedValue) {
-        return new ValueEqualsValidator<>(expectedValue);
-    }
+public interface MethodUncheckedReflector<ReturnType>
+extends MethodReflector<ReturnType, MethodUncheckedReflector<ReturnType>> {
 
-    private final Value expectedValue;
-
-    public ValueEqualsValidator(final Value expectedValue) {
-        this.expectedValue = expectedValue;
-    }
-
-    @Override
-    public void assertValid(final Value value)
-    throws InvalidValueException {
-        if (!value.equals(expectedValue))
-            throw new InvalidValueException();
-    }
+    MethodResultReflector<ReturnType> invoke(Object... arguments)
+    throws InvalidMethodException;
 }

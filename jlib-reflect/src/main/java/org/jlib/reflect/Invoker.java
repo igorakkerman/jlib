@@ -19,13 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
 import org.jlib.core.classinstance.InvalidMethodException;
 
-public interface Method2Reflector<ReturnType, Argument1, Argument2>
-extends MethodReflector<ReturnType, Method2Reflector<ReturnType, Argument1, Argument2>> {
+public interface Invoker<ReturnValue> {
 
-    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    ReturnValue invoke(Object... arguments)
     throws InvalidMethodException;
 }

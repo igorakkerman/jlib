@@ -19,8 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-public interface UntypedMethodReflector {
-  <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass);
+public final class Reflectors {
+
+    private Reflectors() {}
+
+    public static UntypedClassReflector useClassNamed(final String className) {
+        return new NamedClassReflector(className);
+    }
+
+    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
+        return new DefaultTypedClassReflector<>(clazz);
+    }
 }

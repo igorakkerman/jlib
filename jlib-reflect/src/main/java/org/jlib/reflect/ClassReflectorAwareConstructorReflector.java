@@ -19,13 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import org.jlib.core.classinstance.InvalidMethodException;
+public class ClassReflectorAwareConstructorReflector<Type>
+implements MethodReflector<Type,MethodOverloadReflector<Type>> {
 
-public interface Method1Reflector<ReturnType, Argument1>
-extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
+    private final TypedClassReflector<Type> typedClassReflector;
 
-    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
-    throws InvalidMethodException;
+    public ClassReflectorAwareConstructorReflector(final TypedClassReflector<Type> typedClassReflector) {
+        this.typedClassReflector = typedClassReflector;
+    }
+
+    protected TypedClassReflector<Type> getTypedClassReflector() {
+        return typedClassReflector;
+    }
 }

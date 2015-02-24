@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
 import org.jlib.core.classinstance.InvalidMethodException;
 
-public interface MethodUncheckedReflector<ReturnType>
-extends MethodReflector<ReturnType, MethodUncheckedReflector<ReturnType>> {
+public interface Method1Reflector<ReturnType, Argument1>
+extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
 
-    MethodResultReflector<ReturnType> invoke(Object... arguments)
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
     throws InvalidMethodException;
 }

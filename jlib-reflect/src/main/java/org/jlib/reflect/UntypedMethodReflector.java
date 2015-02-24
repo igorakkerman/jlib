@@ -19,20 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import org.jlib.core.classinstance.ClassInstanceException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
-
-public interface TypedClassReflector<Value> {
-
-    Class<Value> get()
-    throws ClassInstanceException;
-
-    TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
-    throws WrongTypedInstanceException;
-
-    MethodOverloadReflector<Value> constructor();
-
-    UntypedMethodReflector useStaticMethod(String methodName);
+public interface UntypedMethodReflector {
+  <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass);
 }

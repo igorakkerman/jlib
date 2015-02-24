@@ -38,6 +38,7 @@
         <module name="jlib-persistence" />
         <module name="jlib-persistence-hibernate" />
         <module name="jlib-persistence-jpa" />
+        <module name="jlib-reflect" />
         <module name="jlib-spi-apachecommons" />
         <module name="jlib-text" />
       </profile>
@@ -60,6 +61,7 @@
       <module name="jlib-persistence" target="1.8" />
       <module name="jlib-persistence-hibernate" target="1.8" />
       <module name="jlib-persistence-jpa" target="1.8" />
+      <module name="jlib-reflect" target="1.8" />
       <module name="jlib-spi-apachecommons" target="1.8" />
       <module name="jlib-text" target="1.8" />
       <module name="jlib-unittest" target="1.8" />

@@ -19,18 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-public class ClassReflectorAwareConstructorReflector<Type>
-implements MethodReflector<Type,MethodOverloadReflector<Type>> {
+public class ValueEqualsValidator<Value>
+implements Validator<Value> {
 
-    private final TypedClassReflector<Type> typedClassReflector;
-
-    public ClassReflectorAwareConstructorReflector(final TypedClassReflector<Type> typedClassReflector) {
-        this.typedClassReflector = typedClassReflector;
+    public static <Value> Validator<Value> valueEqualTo(final Value expectedValue) {
+        return new ValueEqualsValidator<>(expectedValue);
     }
 
-    protected TypedClassReflector<Type> getTypedClassReflector() {
-        return typedClassReflector;
+    private final Value expectedValue;
+
+    public ValueEqualsValidator(final Value expectedValue) {
+        this.expectedValue = expectedValue;
+    }
+
+    @Override
+    public void assertValid(final Value value)
+    throws InvalidValueException {
+        if (!value.equals(expectedValue))
+            throw new InvalidValueException();
     }
 }

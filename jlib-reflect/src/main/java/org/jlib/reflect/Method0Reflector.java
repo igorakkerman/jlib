@@ -19,14 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import org.jlib.core.classinstance.ClassInstanceException;
+import org.jlib.core.classinstance.InvalidMethodException;
 
-public interface ObjectReflector<Obj> {
+public interface Method0Reflector<ReturnType>
+extends MethodReflector<ReturnType, Method0Reflector<ReturnType>> {
 
-    UntypedMethodReflector useMethod(String methodName);
-
-    Obj get()
-    throws ClassInstanceException;
+    MethodResultReflector<ReturnType> invoke()
+    throws InvalidMethodException;
 }

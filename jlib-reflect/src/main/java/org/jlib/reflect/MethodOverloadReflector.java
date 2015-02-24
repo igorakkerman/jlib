@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
 public interface MethodOverloadReflector<Value> {
 

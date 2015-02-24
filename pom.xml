@@ -43,6 +43,7 @@
         <module>jlib-basefunctions-apachecommons</module>
         <module>jlib-text</module>
         <module>jlib-operator</module>
+        <module>jlib-reflect</module>
         <module>jlib-container</module>
         <module>jlib-persistence</module>
         <module>jlib-persistence-jpa</module>

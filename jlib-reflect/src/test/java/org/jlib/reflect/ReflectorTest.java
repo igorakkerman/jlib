@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.reflection.reflector.Reflectors.useClassNamed;
-import static org.jlib.core.reflection.reflector.SuperTypeValidator.instanceOf;
+import org.assertj.core.api.Assertions;
+import static org.jlib.reflect.Reflectors.useClassNamed;
+import static org.jlib.reflect.SuperTypeValidator.instanceOf;
 import org.junit.Test;
 
 public class ReflectorTest {
@@ -43,7 +43,7 @@ public class ReflectorTest {
             .assertReturned(Integer.valueOf(42))
             .get();
 
-        assertThat(value).isEqualTo(Integer.valueOf(42));
+        Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));
     }
 }
 

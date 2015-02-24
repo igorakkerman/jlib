@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
 public class SuperTypeValidator<Value, ExpectedSuperType>
 implements Validator<Value> {

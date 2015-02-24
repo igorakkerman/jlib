@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
 import java.util.ArrayList;
 import java.util.List;

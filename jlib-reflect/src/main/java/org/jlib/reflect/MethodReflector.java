@@ -19,22 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
+
+import java.lang.reflect.Method;
 
 import org.jlib.core.classinstance.InvalidMethodException;
+import org.jlib.core.classinstance.WrongTypedInstanceException;
 
-import static org.jlib.core.reflection.reflector.ValueEqualsValidator.valueEqualTo;
+public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
 
-public interface MethodResultReflector<ReturnValue> {
+    Self assertReturns(Class<ReturnValue> staticReturnSuperType)
+    throws WrongTypedInstanceException;
 
-    MethodResultReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)
-    throws InvalidValueException;
-
-    default MethodResultReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
-    throws InvalidValueException {
-        return assertReturned(valueEqualTo(returnValue));
-    }
-
-    ReturnValue get()
-    throws InvalidValueException, InvalidMethodException;
+    Method get()
+    throws InvalidMethodException;
 }

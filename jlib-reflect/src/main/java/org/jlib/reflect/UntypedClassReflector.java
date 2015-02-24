@@ -19,12 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-import org.jlib.core.exception.ApplicationException;
+import org.jlib.core.classinstance.ClassInstanceException;
 
-public class InvalidValueException
-extends ApplicationException {
+public interface UntypedClassReflector {
 
-    private static final long serialVersionUID = - 7160983597918363904L;
+    Class<?> get()
+    throws ClassInstanceException;
+
+    <Type> TypedClassReflector<Type> assertType(Class<Type> staticType);
 }

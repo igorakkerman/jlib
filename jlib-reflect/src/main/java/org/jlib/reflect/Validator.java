@@ -19,17 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.reflection.reflector;
+package org.jlib.reflect;
 
-public final class Reflectors {
-
-    private Reflectors() {}
-
-    public static UntypedClassReflector useClassNamed(final String className) {
-        return new NamedClassReflector(className);
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return new DefaultTypedClassReflector<>(clazz);
-    }
+@FunctionalInterface
+public interface Validator<Value> {
+    void assertValid(Value value)
+    throws InvalidValueException;
 }
