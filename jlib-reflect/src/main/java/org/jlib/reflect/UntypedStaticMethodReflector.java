@@ -21,10 +21,21 @@
 
 package org.jlib.reflect;
 
-public class UntypedStaticMethodReflector
+public class UntypedStaticMethodReflector<Enclosing>
 implements UntypedMethodReflector {
 
-    public <Value>
-    UntypedStaticMethodReflector(final String staticMethodName,
-                                 final TypedClassReflector<Value> valueDefaultTypedClassReflector) {}
+    private final String staticMethodName;
+    private final TypedClassReflector<Enclosing> valueDefaultTypedClassReflector;
+
+    public UntypedStaticMethodReflector(final String staticMethodName,
+                                        final TypedClassReflector<Enclosing> valueDefaultTypedClassReflector) {
+        this.staticMethodName = staticMethodName;
+        this.valueDefaultTypedClassReflector = valueDefaultTypedClassReflector;
+    }
+
+    @Override
+    public <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    throws WrongTypedInstanceException {
+        return new StaticMethodOverloadReflector<ReturnValue>(returnValueClass);
+    }
 }
