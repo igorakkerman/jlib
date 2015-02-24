@@ -19,36 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.classinstance;
+package org.jlib.reflect;
+
+import org.jlib.core.message.Message;
 
 import static org.jlib.core.message.MessageUtility.message;
 
-/**
- * Exception thrown when trying to select an {@link Enum} value using some identifier, like a discriminator character in
- * a database context, for example.
- *
- * @author Igor Akkerman
- */
-public class InvalidEnumIdException
+public class ClassInstantiationException
 extends ClassInstanceException {
 
-    private static final long serialVersionUID = 1248871337527197565L;
+    private static final long serialVersionUID = - 8652252161776673093L;
 
-    private final String idName;
-    private final Object id;
-
-    public InvalidEnumIdException(final Class<? extends Enum<?>> enumClass, final String idName, final Object id) {
-        super(message().with(idName, id), enumClass.getName());
-
-        this.idName = idName;
-        this.id = id;
+    public ClassInstantiationException(final Message message, final String className) {
+        super(message, className);
     }
 
-    public String getIdName() {
-        return idName;
+    public ClassInstantiationException(final Message message, final String className, final Exception cause) {
+        super(message, className, cause);
     }
 
-    public Object getId() {
-        return id;
+    public ClassInstantiationException(final String className) {
+        super(message(), className);
+    }
+
+    public ClassInstantiationException(final String className, final Exception cause) {
+        super(message(), className, cause);
     }
 }

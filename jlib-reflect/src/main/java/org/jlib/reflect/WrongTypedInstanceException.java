@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.classinstance;
+package org.jlib.reflect;
 
 import java.util.List;
 

@@ -28,8 +28,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.reflection.ReflectionService;
-
 import org.jlib.basefunctions.BaseFunctionsDispatcher;
 import org.jlib.basefunctions.Equals;
 import org.jlib.basefunctions.EqualsEngine;
@@ -61,7 +59,8 @@ implements BaseFunctionsDispatcher {
         /**/ new IdentifierOrClassNameToStringStyleSupplier();
         toStringStyleSupplier.setNamedStyleSupplier(DefaultToStringStylesConfiguration.NAMED_STYLE_SUPPLIER);
         toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
-        toStringStyleSupplier.setInstanceService(ReflectionService.getInstance());
+        // TODO: use service instead of static method when available
+//        toStringStyleSupplier.setInstanceService(ReflectionService.getInstance());
 
         toStringStyle = toStringStyleSupplier.get();
     }

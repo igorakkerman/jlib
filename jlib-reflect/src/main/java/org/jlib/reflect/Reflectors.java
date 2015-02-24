@@ -36,6 +36,30 @@ public final class Reflectors {
     }
 
     public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return new DefaultTypedClassReflector<>(clazz);
+//        return new DefaultTypedClassReflector<>(clazz);
+        // FIXME: implement
+        return new TypedClassReflector<Value>() {
+            @Override
+            public Class<Value> get()
+            throws ClassInstanceException {
+                return null;
+            }
+
+            @Override
+            public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
+            throws WrongTypedInstanceException {
+                return null;
+            }
+
+            @Override
+            public MethodOverloadReflector<Value> constructor() {
+                return null;
+            }
+
+            @Override
+            public UntypedMethodReflector useStaticMethod(final String methodName) {
+                return null;
+            }
+        };
     }
 }

@@ -24,8 +24,6 @@ package org.jlib.reflect;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-
 public class ValidatingMethodResultReflector<ReturnValue>
 implements MethodResultReflector<ReturnValue> {
 

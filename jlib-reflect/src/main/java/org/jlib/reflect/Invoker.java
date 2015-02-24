@@ -21,8 +21,6 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-
 public interface Invoker<ReturnValue> {
 
     ReturnValue invoke(Object... arguments)

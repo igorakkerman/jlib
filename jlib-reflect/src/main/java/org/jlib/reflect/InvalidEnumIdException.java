@@ -21,27 +21,34 @@
 
 package org.jlib.reflect;
 
-import java.lang.reflect.Method;
-
 import static org.jlib.core.message.MessageUtility.message;
 
-public class ReflectionInvoker<ReturnValue> implements Invoker<ReturnValue> {
+/**
+ * Exception thrown when trying to select an {@link Enum} value using some identifier, like a discriminator character in
+ * a database context, for example.
+ *
+ * @author Igor Akkerman
+ */
+public class InvalidEnumIdException
+extends ClassInstanceException {
 
-    private final Method method;
+    private static final long serialVersionUID = 1248871337527197565L;
 
-    public ReflectionInvoker(final Method  method) {
-        this.method = method;
+    private final String idName;
+    private final Object id;
+
+    public InvalidEnumIdException(final Class<? extends Enum<?>> enumClass, final String idName, final Object id) {
+        super(message().with(idName, id), enumClass.getName());
+
+        this.idName = idName;
+        this.id = id;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public ReturnValue invoke(final Object... arguments)
-    throws InvalidMethodException {
-        try {
-            return (ReturnValue) method.invoke(method, arguments);
-        }
-        catch (final ReflectiveOperationException exception) {
-            throw new InvalidMethodException(message(), method.getClass().getName(), method.toString());
-        }
+    public String getIdName() {
+        return idName;
+    }
+
+    public Object getId() {
+        return id;
     }
 }

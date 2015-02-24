@@ -21,8 +21,6 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-
 public interface MethodUncheckedReflector<ReturnType>
 extends MethodReflector<ReturnType, MethodUncheckedReflector<ReturnType>> {
 

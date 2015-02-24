@@ -21,8 +21,6 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-
 public interface Method1Reflector<ReturnType, Argument1>
 extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
 

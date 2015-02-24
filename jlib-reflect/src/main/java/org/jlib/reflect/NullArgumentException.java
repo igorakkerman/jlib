@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core.classinstance;
+package org.jlib.reflect;
 
 import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.message.Message;

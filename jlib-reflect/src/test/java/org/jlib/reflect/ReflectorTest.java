@@ -32,7 +32,7 @@ public class ReflectorTest {
     public void staticRun()
     throws Exception {
         final Number value = Reflectors.useClass("java.lang.Integer") /*
-          */.assertType(Number.class)
+          */.withType(Number.class)
             .assertSubtypeOf(Integer.class)
             .useStaticMethod("valueOf")
             .withReturnType(Number.class)

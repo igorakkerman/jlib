@@ -22,5 +22,6 @@
 package org.jlib.reflect;
 
 public interface UntypedMethodReflector {
-  <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass);
+  <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
+  throws WrongTypedInstanceException;
 }

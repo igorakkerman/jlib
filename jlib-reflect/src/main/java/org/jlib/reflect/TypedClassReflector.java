@@ -21,16 +21,25 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.ClassInstanceException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
-
 public interface TypedClassReflector<Value> {
 
     Class<Value> get()
     throws ClassInstanceException;
 
+    // downcast necessary for parametrized types although not fully typesafe
+    @SuppressWarnings("unchecked")
+    default <Val extends Value> Class<Val> getParametrized()
+    throws ClassInstanceException {
+        return (Class<Val>) get();
+    }
+
     TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
     throws WrongTypedInstanceException;
+
+    default Value getInstance()
+    throws InvalidMethodException, InvalidValueException {
+        return constructor().withoutArguments().invoke().get();
+    }
 
     MethodOverloadReflector<Value> constructor();
 

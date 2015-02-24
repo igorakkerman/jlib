@@ -21,8 +21,6 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.ClassInstantiationException;
-
 public class NamedClassReflector
 implements UntypedClassReflector {
 
@@ -48,7 +46,9 @@ implements UntypedClassReflector {
     }
 
     @Override
-    public <Type> ConcreteTypedClassReflector<Type> assertType(final Class<Type> staticType) {
-        return new ConcreteTypedClassReflector<>(this, staticType);
+    public <Type> TypedClassReflector<Type> withType(final Class<Type> staticType) {
+        return null;
+        // FIXME: implement
+//        return new ConcreteTypedClassReflector<>(this, staticType);
     }
 }

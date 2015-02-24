@@ -21,12 +21,10 @@
 
 package org.jlib.reflect;
 
-import org.jlib.core.classinstance.ClassInstanceException;
-
 public interface UntypedClassReflector {
 
     Class<?> get()
     throws ClassInstanceException;
 
-    <Type> TypedClassReflector<Type> assertType(Class<Type> staticType);
+    <Value> TypedClassReflector<Value> withType(Class<Value> staticType);
 }

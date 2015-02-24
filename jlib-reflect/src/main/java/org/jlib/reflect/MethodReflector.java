@@ -23,9 +23,6 @@ package org.jlib.reflect;
 
 import java.lang.reflect.Method;
 
-import org.jlib.core.classinstance.InvalidMethodException;
-import org.jlib.core.classinstance.WrongTypedInstanceException;
-
 public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
 
     Self assertReturns(Class<ReturnValue> staticReturnSuperType)
