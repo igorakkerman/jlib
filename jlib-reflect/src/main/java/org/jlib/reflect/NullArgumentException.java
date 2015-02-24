@@ -24,7 +24,8 @@ package org.jlib.reflect;
 import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.message.Message;
 
-public class NullArgumentException extends InvalidArgumentException {
+public class NullArgumentException
+extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 2292360979135018076L;
 

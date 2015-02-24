@@ -21,9 +21,10 @@
 
 package org.jlib.reflect;
 
-@FunctionalInterface
-public interface UntypedClassSupplier {
+public class UntypedStaticMethodReflector
+implements UntypedMethodReflector {
 
-    Class<?> get()
-    throws ClassInstanceException;
+    public <Value>
+    UntypedStaticMethodReflector(final String staticMethodName,
+                                 final TypedClassReflector<Value> valueDefaultTypedClassReflector) {}
 }

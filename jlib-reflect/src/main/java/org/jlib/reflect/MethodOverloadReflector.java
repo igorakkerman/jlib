@@ -25,18 +25,17 @@ public interface MethodOverloadReflector<Value> {
 
     Method0Reflector<Value> withoutArguments();
 
-    <Argument1> /*
- */ Method1Reflector<Value, Argument1> /*
-     */ withArgumentTypes(Class<Argument1> argument1Type);
+    <Argument1>
+    Method1Reflector<Value, Argument1> withArgumentTypes(Class<Argument1> argument1Type);
 
-    <Argument1, Argument2> /*
- */ Method2Reflector<Value, Argument1, Argument2> /*
-     */ withArgumentTypes(Class<Argument1> argument1Type, Class<Argument2> argument2Type);
+    <Argument1, Argument2>
+    Method2Reflector<Value, Argument1, Argument2> withArgumentTypes(Class<Argument1> argument1Type,
+                                                                    Class<Argument2> argument2Type);
 
-    <Argument1, Argument2, Argument3> /*
- */ Method3Reflector<Value, Argument1, Argument2, Argument3> /*
-     */ withArgumentTypes(Class<Argument1> argument1Type, Class<Argument2> argument2Type,
-                          Class<Argument3> argument3Type);
+    <Argument1, Argument2, Argument3>
+    Method3Reflector<Value, Argument1, Argument2, Argument3> withArgumentTypes(Class<Argument1> argument1Type,
+                                                                               Class<Argument2> argument2Type,
+                                                                               Class<Argument3> argument3Type);
 
-   UncheckedMethodReflector<Value> withUncheckedArgumentTypes();
+    UncheckedMethodReflector<Value> withUncheckedArgumentTypes();
 }

@@ -24,16 +24,26 @@ package org.jlib.reflect;
 class ReflectionInvokerTestService {
 
     public static void staticVoidEmpty() {}
+
     public static void staticVoidString(final String s) {}
+
     public static int staticIntEmpty() { return 42; }
+
     public static String staticStringInt(final int i) { return String.valueOf(i); }
+
     public static String staticStringString(final String s) { return s.toUpperCase(); }
+
     public static String staticStringString(final String s1, final String s2) { return s1 + s2; }
 
     public void voidEmpty() {}
+
     public void voidString(final String s) {}
+
     public int intEmpty() { return 42; }
+
     public String stringInt(final int i) { return String.valueOf(i); }
+
     public String stringString(final String s) { return s.toUpperCase(); }
+
     public String stringString(final String s1, final String s2) { return s1 + s2; }
 }

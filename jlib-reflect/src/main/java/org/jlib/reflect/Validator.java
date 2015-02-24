@@ -23,6 +23,7 @@ package org.jlib.reflect;
 
 @FunctionalInterface
 public interface Validator<Value> {
+
     void assertValid(Value value)
     throws InvalidValueException;
 }

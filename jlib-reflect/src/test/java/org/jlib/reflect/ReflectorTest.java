@@ -22,6 +22,7 @@
 package org.jlib.reflect;
 
 import org.assertj.core.api.Assertions;
+import static org.jlib.reflect.Reflectors.useClass;
 import static org.jlib.reflect.SuperTypeValidator.instanceOf;
 import org.junit.Test;
 
@@ -31,16 +32,16 @@ public class ReflectorTest {
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        final Number value = Reflectors.useClass("java.lang.Integer") /*
-          */.withType(Number.class)
-            .assertSubtypeOf(Integer.class)
-            .useStaticMethod("valueOf")
-            .withReturnType(Number.class)
-            .withArgumentTypes(int.class)
-            .invoke(42)
-            .assertReturned(instanceOf(Integer.class))
-            .assertReturned(Integer.valueOf(42))
-            .get();
+        final Number value = useClass("java.lang.Integer")
+                             .withType(Number.class)
+                             .assertSubtypeOf(Integer.class)
+                             .useStaticMethod("valueOf")
+                             .withReturnType(Number.class)
+                             .withArgumentTypes(int.class)
+                             .invoke(42)
+                             .assertReturned(instanceOf(Integer.class))
+                             .assertReturned(Integer.valueOf(42))
+                             .get();
 
         Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));
     }

@@ -24,8 +24,8 @@ package org.jlib.reflect;
 public class SuperTypeValidator<Value, ExpectedSuperType>
 implements Validator<Value> {
 
-    public static <Value, ExpectedSuperType> /*
-               */ Validator<Value> instanceOf(final Class<ExpectedSuperType> expectedSuperType) {
+    public static <Value, ExpectedSuperType>
+    Validator<Value> instanceOf(final Class<ExpectedSuperType> expectedSuperType) {
         return new SuperTypeValidator<>(expectedSuperType);
     }
 

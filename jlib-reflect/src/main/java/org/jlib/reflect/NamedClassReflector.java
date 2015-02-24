@@ -46,9 +46,7 @@ implements UntypedClassReflector {
     }
 
     @Override
-    public <Type> TypedClassReflector<Type> withType(final Class<Type> staticType) {
-        return null;
-        // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(this, staticType);
+    public <Value> TypedClassReflector<Value> withType(final Class<Value> staticType) {
+        return new DefaultTypedClassReflector<>(staticType, this);
     }
 }

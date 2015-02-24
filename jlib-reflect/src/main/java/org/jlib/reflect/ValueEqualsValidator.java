@@ -24,7 +24,8 @@ package org.jlib.reflect;
 public class ValueEqualsValidator<Value>
 implements Validator<Value> {
 
-    public static <Value> Validator<Value> valueEqualTo(final Value expectedValue) {
+    public static <Value>
+    Validator<Value> valueEqualTo(final Value expectedValue) {
         return new ValueEqualsValidator<>(expectedValue);
     }
 
@@ -37,7 +38,7 @@ implements Validator<Value> {
     @Override
     public void assertValid(final Value value)
     throws InvalidValueException {
-        if (!value.equals(expectedValue))
+        if (! value.equals(expectedValue))
             throw new InvalidValueException();
     }
 }

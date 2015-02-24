@@ -23,25 +23,26 @@ package org.jlib.reflect;
 
 public interface TypedClassReflector<Value> {
 
-    Class<Value> get()
+    Class<Value> type()
     throws ClassInstanceException;
 
     // downcast necessary for parametrized types although not fully typesafe
     @SuppressWarnings("unchecked")
-    default <Val extends Value> Class<Val> getParametrized()
+    default <Val extends Value>
+    Class<Val> parametrizedType()
     throws ClassInstanceException {
-        return (Class<Val>) get();
+        return (Class<Val>) type();
     }
 
     TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
     throws WrongTypedInstanceException;
 
-    default Value getInstance()
+    default Value instance()
     throws InvalidMethodException, InvalidValueException {
-        return constructor().withoutArguments().invoke().get();
+        return useConstructor().withoutArguments().invoke().get();
     }
 
-    MethodOverloadReflector<Value> constructor();
+    MethodOverloadReflector<Value> useConstructor();
 
-    UntypedMethodReflector useStaticMethod(String methodName);
+    UntypedMethodReflector useStaticMethod(String staticMethodName);
 }

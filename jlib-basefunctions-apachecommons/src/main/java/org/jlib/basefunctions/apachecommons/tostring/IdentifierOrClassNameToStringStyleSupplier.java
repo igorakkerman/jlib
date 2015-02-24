@@ -46,7 +46,7 @@ implements ConfigurableToStringStyleSupplier {
                    toStringStyle.get() :
                    // TODO: use service instead of static method when available
                    useClass(identifierOrClassName).withType(ToStringStyle.class)
-                                                  .getInstance();
+                                                  .instance();
         }
         catch (final InvalidMethodException | InvalidValueException exception) {
             throw new ToStringStyleNotFoundException(exception);

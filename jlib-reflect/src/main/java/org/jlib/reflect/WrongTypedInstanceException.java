@@ -36,7 +36,7 @@ extends ClassInstanceException {
     public WrongTypedInstanceException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
         super(message().with("expectedParentTypes", expectedParentTypes), clazz.getName());
 
-        this.expectedParentTypeClassNames = expectedParentTypes.stream().map(Class::getName).collect(toList());
+        expectedParentTypeClassNames = expectedParentTypes.stream().map(Class::getName).collect(toList());
     }
 
     public List<String> getExpectedParentTypeClassNames() {

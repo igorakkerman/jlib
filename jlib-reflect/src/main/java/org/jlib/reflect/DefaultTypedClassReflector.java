@@ -26,51 +26,59 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class ConcreteTypedClassReflector<Type>
-/*implements TypedClassReflector<Type>*/ {
+public class DefaultTypedClassReflector<Value>
+implements TypedClassReflector<Value> {
 
-    private final Class<Type> staticType;
+    private final Class<Value> staticType;
     private final UntypedClassSupplier untypedClassSupplier;
     private final List<Class<?>> expectedSuperTypes = new ArrayList<>();
 
-    public ConcreteTypedClassReflector(final Class<Type> staticType,
-                                       final UntypedClassSupplier untypedClassSupplier) {
+    public DefaultTypedClassReflector(final Class<Value> staticType, final UntypedClassSupplier untypedClassSupplier) {
         this.staticType = staticType;
         this.untypedClassSupplier = untypedClassSupplier;
         expectedSuperTypes.add(staticType);
     }
 
-    public ConcreteTypedClassReflector(final Class<Type> staticType) {
+    public DefaultTypedClassReflector(final Class<Value> staticType) {
         this(staticType, () -> staticType);
     }
 
-    //    @Override
+    @Override
     @SuppressWarnings("unchecked")
-    public Class<Type> get()
+    public Class<Value> type()
     throws ClassInstanceException {
-        final Class<?> actualClass = untypedClassSupplier.get();
+        final Class<?> actualType = untypedClassSupplier.get();
 
         final List<Class<?>> invalidSuperTypes = /*
          */ expectedSuperTypes.stream()
-                              .filter(superType -> ! superType.isAssignableFrom(actualClass))
+                              .filter(superType -> ! superType.isAssignableFrom(actualType))
                               .collect(toList());
 
         if (! invalidSuperTypes.isEmpty())
-            throw new WrongTypedInstanceException(actualClass, invalidSuperTypes);
+            throw new WrongTypedInstanceException(actualType, invalidSuperTypes);
 
-        return (Class<Type>) actualClass;
+        return (Class<Value>) actualType;
     }
 
-/*
     @Override
-    public TypedClassReflector<Type> assertSubtypeOf(final Class<?> expectedSuperType)
+    public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
     throws WrongTypedInstanceException {
         expectedSuperTypes.add(expectedSuperType);
         return this;
     }
-*/
 
-    protected Class<Type> getStaticType() {
+    @Override
+    public MethodOverloadReflector<Value> useConstructor() {
+        // FIXME: implement
+        return null;
+    }
+
+    @Override
+    public UntypedMethodReflector useStaticMethod(final String staticMethodName) {
+        return new UntypedStaticMethodReflector(staticMethodName, this);
+    }
+
+    protected Class<Value> getStaticType() {
         return staticType;
     }
 
