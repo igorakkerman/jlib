@@ -27,6 +27,7 @@ import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
 import org.jlib.reflect.reflector.ReflectorFactory;
+import org.jlib.reflect.reflector.StaticMethodOverloadReflector;
 
 public class ReflectionReflectorFactory
 implements ReflectorFactory {
@@ -44,5 +45,11 @@ implements ReflectorFactory {
     @Override
     public MethodInvoker methodInvoker(final Method method) {
         return new ReflectionMethodInvoker(method);
+    }
+
+    @Override
+    public <ReturnValue> StaticMethodOverloadReflector<ReturnValue>
+    staticMethodOverloadReflector(final Class<ReturnValue> returnValueClass) {
+        return new StaticMethodOverloadReflector<>(returnValueClass);
     }
 }

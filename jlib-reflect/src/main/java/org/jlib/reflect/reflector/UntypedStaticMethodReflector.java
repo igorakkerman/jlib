@@ -22,6 +22,7 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import static org.jlib.reflect.reflector.Reflectors.factory;
 
 public class UntypedStaticMethodReflector<Enclosing>
 implements UntypedMethodReflector {
@@ -36,8 +37,9 @@ implements UntypedMethodReflector {
     }
 
     @Override
-    public <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    public <ReturnValue>
+    MethodOverloadReflector<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
-        return new StaticMethodOverloadReflector<ReturnValue>(returnValueClass);
+        return factory().staticMethodOverloadReflector(returnValueClass);
     }
 }

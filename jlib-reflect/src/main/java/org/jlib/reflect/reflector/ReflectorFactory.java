@@ -33,4 +33,7 @@ public interface ReflectorFactory {
     MethodLookup methodLookup(Class<?> clazz, String methodName, Class<?>... parameterTypes);
 
     MethodInvoker methodInvoker(Method method);
+
+    <ReturnValue> StaticMethodOverloadReflector<ReturnValue>
+    staticMethodOverloadReflector(Class<ReturnValue> returnValueClass);
 }
