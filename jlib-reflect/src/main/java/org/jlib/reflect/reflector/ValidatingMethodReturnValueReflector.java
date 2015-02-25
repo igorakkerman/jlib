@@ -27,13 +27,13 @@ import java.util.List;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.MethodReturnValueSupplier;
 import org.jlib.reflect.programtarget.ProgramTargetException;
-import org.jlib.reflect.validator.Validator;
+import org.jlib.reflect.validator.MethodReturnValueValidator;
 
 public class ValidatingMethodReturnValueReflector<ReturnValue>
 implements MethodReturnValueReflector<ReturnValue> {
 
     private final MethodReturnValueSupplier<ReturnValue> returnValueSupplier;
-    private final List<Validator<ReturnValue>> validators = new ArrayList<>();
+    private final List<MethodReturnValueValidator<ReturnValue>> validators = new ArrayList<>();
 
     public ValidatingMethodReturnValueReflector(final MethodReturnValueSupplier<ReturnValue> returnValueSupplier) {
         this.returnValueSupplier = returnValueSupplier;
@@ -50,7 +50,7 @@ implements MethodReturnValueReflector<ReturnValue> {
     }
 
     @Override
-    public MethodReturnValueReflector<ReturnValue> assertReturned(final Validator<ReturnValue> validator)
+    public MethodReturnValueReflector<ReturnValue> assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
     throws InvalidMethodReturnValueException {
         validators.add(validator);
 
@@ -59,7 +59,7 @@ implements MethodReturnValueReflector<ReturnValue> {
 
     private void assertValid(final ReturnValue returnValue)
     throws ProgramTargetException {
-        for (final Validator<ReturnValue> validator : validators)
+        for (final MethodReturnValueValidator<ReturnValue> validator : validators)
             validator.assertValid(returnValue);
     }
 }

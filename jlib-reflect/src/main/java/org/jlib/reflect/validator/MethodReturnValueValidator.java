@@ -21,11 +21,12 @@
 
 package org.jlib.reflect.validator;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 
 @FunctionalInterface
-public interface Validator<Value> {
+public interface MethodReturnValueValidator<Value> {
 
-    void assertValid(Value value)
+    void assertValid(@Nullable Value value, String className, String methodName)
     throws ProgramTargetException;
 }
