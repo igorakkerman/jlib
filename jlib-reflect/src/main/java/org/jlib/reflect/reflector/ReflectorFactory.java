@@ -40,4 +40,7 @@ public interface ReflectorFactory {
 
     <Value> TypedClassReflector<Value>
     typedClassReflector(Class<Value> staticType, final UntypedClassReflector untypedClassReflector);
+
+    <Value> UntypedMethodReflector untypedStaticMethodReflector(String staticMethodName,
+                                                                TypedClassReflector<Value> typedClassReflector);
 }

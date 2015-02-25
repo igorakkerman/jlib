@@ -27,6 +27,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import static org.jlib.reflect.reflector.Reflectors.factory;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
@@ -77,7 +78,7 @@ implements TypedClassReflector<Value> {
 
     @Override
     public UntypedMethodReflector useStaticMethod(final String staticMethodName) {
-        return new UntypedStaticMethodReflector(staticMethodName, this);
+        return factory().untypedStaticMethodReflector(staticMethodName, this);
     }
 
     protected Class<Value> getStaticType() {
