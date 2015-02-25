@@ -22,9 +22,8 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.ClassException;
-import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
-import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.ProgramTargetException;
 
 public interface TypedClassReflector<Value> {
 
@@ -43,7 +42,7 @@ public interface TypedClassReflector<Value> {
     throws NoSubtypeException;
 
     default Value instance()
-    throws MethodException, InvalidMethodReturnValueException {
+    throws ProgramTargetException {
         return useConstructor().withoutArguments().invoke().get();
     }
 
