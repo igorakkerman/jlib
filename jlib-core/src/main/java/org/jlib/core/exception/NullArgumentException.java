@@ -19,9 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.core.exception;
 
-import org.jlib.core.exception.InvalidArgumentException;
 import org.jlib.core.message.Message;
 
 public class NullArgumentException
