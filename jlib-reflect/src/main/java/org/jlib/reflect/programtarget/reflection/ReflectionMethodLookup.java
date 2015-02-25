@@ -24,9 +24,10 @@ package org.jlib.reflect.programtarget.reflection;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.MethodLookup;
 
-public class ReflectionMethodLookup {
+public class ReflectionMethodLookup
+implements MethodLookup {
 
     private final Class<?> clazz;
     private final String methodName;
@@ -39,8 +40,9 @@ public class ReflectionMethodLookup {
         this.parameterTypes = parameterTypes;
     }
 
+    @Override
     public Method get()
-    throws MethodException {
+    throws InvalidMethodSignatureException {
         try {
             return clazz.getMethod(methodName, parameterTypes);
         }
