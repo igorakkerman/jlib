@@ -22,9 +22,9 @@
 package org.jlib.reflect.programtarget;
 
 public interface MethodReturnValueSupplier<ReturnValue>
-extends ProgramTargetValueSupplier<ReturnValue>{
-
-    String getMethodName();
+extends ProgramTargetValueSupplier<ReturnValue> {
 
     String getClassName();
+
+    String getMethodName();
 }
