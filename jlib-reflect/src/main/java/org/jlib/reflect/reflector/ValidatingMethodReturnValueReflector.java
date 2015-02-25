@@ -28,13 +28,13 @@ import java.util.function.Supplier;
 import org.jlib.reflect.programtarget.InvalidValueException;
 import org.jlib.reflect.programtarget.MethodException;
 
-public class ValidatingMethodReturnReflector<ReturnValue>
-implements MethodResultReflector<ReturnValue> {
+public class ValidatingMethodReturnValueReflector<ReturnValue>
+implements MethodReturnValueReflector<ReturnValue> {
 
     private final ReturnValue returnValue;
     private final List<Validator<ReturnValue>> validators = new ArrayList<>();
 
-    public ValidatingMethodReturnReflector(final Supplier<ReturnValue> returnValue) {
+    public ValidatingMethodReturnValueReflector(final Supplier<ReturnValue> returnValue) {
         this.invoker = invoker;
     }
 
@@ -49,7 +49,7 @@ implements MethodResultReflector<ReturnValue> {
     }
 
     @Override
-    public MethodResultReflector<ReturnValue> assertReturned(final Validator<ReturnValue> validator)
+    public MethodReturnValueReflector<ReturnValue> assertReturned(final Validator<ReturnValue> validator)
     throws InvalidValueException {
         validators.add(validator);
 

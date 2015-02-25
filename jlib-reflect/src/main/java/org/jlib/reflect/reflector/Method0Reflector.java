@@ -26,6 +26,6 @@ import org.jlib.reflect.programtarget.MethodException;
 public interface Method0Reflector<ReturnType>
 extends MethodReflector<ReturnType, Method0Reflector<ReturnType>> {
 
-    MethodResultReflector<ReturnType> invoke()
+    MethodReturnValueReflector<ReturnType> invoke()
     throws MethodException;
 }

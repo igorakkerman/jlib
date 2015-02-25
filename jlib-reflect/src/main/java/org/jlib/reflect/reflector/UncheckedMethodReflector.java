@@ -26,6 +26,6 @@ import org.jlib.reflect.programtarget.MethodException;
 public interface UncheckedMethodReflector<ReturnType>
 extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
 
-    MethodResultReflector<ReturnType> invoke(Object... arguments)
+    MethodReturnValueReflector<ReturnType> invoke(Object... arguments)
     throws MethodException;
 }
