@@ -19,11 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflection;
 
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
+import org.jlib.reflect.InvalidMethodException;
+import org.jlib.reflect.Invoker;
 
 public class ReflectionInvoker<ReturnValue>
 implements Invoker<ReturnValue> {

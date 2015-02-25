@@ -28,11 +28,11 @@ public final class Reflectors {
     private Reflectors() {}
 
     public static UntypedClassReflector useClass(final String className) {
-        return new NamedClassReflector(className);
+        return new ReflectionNamedClassReflector(className);
     }
 
     public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new NamedClassReflector(className.get());
+        return new ReflectionNamedClassReflector(className.get());
     }
 
     public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {

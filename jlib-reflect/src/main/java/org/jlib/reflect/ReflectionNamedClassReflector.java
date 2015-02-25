@@ -21,12 +21,12 @@
 
 package org.jlib.reflect;
 
-public class NamedClassReflector
+public class ReflectionNamedClassReflector
 implements UntypedClassReflector {
 
     private final String className;
 
-    public NamedClassReflector(final String className) {
+    public ReflectionNamedClassReflector(final String className) {
         this.className = className;
     }
 
