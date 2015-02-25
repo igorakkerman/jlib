@@ -29,12 +29,12 @@ extends MethodException {
     private static final long serialVersionUID = - 3511658773401667177L;
 
     public InvalidMethodReturnValueException(final Message message, final String className,
-                                             final String methodName) {
-        super(message, className, methodName);
+                                             final String methodName, final Class<?>... parameterTypes) {
+        super(message, className, methodName, parameterTypes);
     }
 
     public InvalidMethodReturnValueException(final Message message, final String className, final String methodName,
-                                             final Exception cause) {
-        super(message, className, methodName, cause);
+                                             final Class<?>[] parameterTypes, final Exception cause) {
+        super(message, className, methodName, parameterTypes, cause);
     }
 }
