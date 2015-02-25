@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.validator;
 
-import org.jlib.reflect.programtarget.InvalidValueException;
+import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 
 public class SuperTypeValidator<Value, ExpectedSuperType>
 implements Validator<Value> {
@@ -39,8 +39,8 @@ implements Validator<Value> {
 
     @Override
     public void assertValid(final Value value)
-    throws InvalidValueException {
+    throws InvalidMethodReturnValueException {
         if (! superType.isAssignableFrom(value.getClass()))
-            throw new InvalidValueException();
+            throw new InvalidMethodReturnValueException();
     }
 }

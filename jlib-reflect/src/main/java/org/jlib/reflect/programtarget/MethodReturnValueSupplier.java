@@ -21,10 +21,10 @@
 
 package org.jlib.reflect.programtarget;
 
-import org.jlib.core.exception.ApplicationException;
+public interface MethodReturnValueSupplier<ReturnValue>
+extends ProgramTargetValueSupplier<ReturnValue>{
 
-public class InvalidValueException
-extends ApplicationException {
+    String getMethodName();
 
-    private static final long serialVersionUID = - 7160983597918363904L;
+    String getClassName();
 }

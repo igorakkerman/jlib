@@ -21,21 +21,21 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.InvalidValueException;
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
+import org.jlib.reflect.programtarget.ProgramTargetException;
 import org.jlib.reflect.validator.Validator;
 import org.jlib.reflect.validator.ValueEqualsValidator;
 
 public interface MethodReturnValueReflector<ReturnValue> {
 
     MethodReturnValueReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)
-    throws InvalidValueException;
+    throws InvalidMethodReturnValueException;
 
     default MethodReturnValueReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
-    throws InvalidValueException {
+    throws InvalidMethodReturnValueException {
         return assertReturned(ValueEqualsValidator.valueEqualTo(returnValue));
     }
 
     ReturnValue get()
-    throws InvalidValueException, MethodException;
+    throws InvalidMethodReturnValueException, ProgramTargetException;
 }

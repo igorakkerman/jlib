@@ -23,42 +23,42 @@ package org.jlib.reflect.reflector;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
-import org.jlib.reflect.programtarget.InvalidValueException;
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
+import org.jlib.reflect.programtarget.MethodReturnValueSupplier;
+import org.jlib.reflect.programtarget.ProgramTargetException;
 import org.jlib.reflect.validator.Validator;
 
 public class ValidatingMethodReturnValueReflector<ReturnValue>
 implements MethodReturnValueReflector<ReturnValue> {
 
-    private final ReturnValue returnValue;
+    private final MethodReturnValueSupplier<ReturnValue> returnValueSupplier;
     private final List<Validator<ReturnValue>> validators = new ArrayList<>();
 
-    public ValidatingMethodReturnValueReflector(final Supplier<ReturnValue> returnValue) {
-        this.invoker = invoker;
+    public ValidatingMethodReturnValueReflector(final MethodReturnValueSupplier<ReturnValue> returnValueSupplier) {
+        this.returnValueSupplier = returnValueSupplier;
     }
 
     @Override
     public final ReturnValue get()
-    throws InvalidValueException, MethodException {
-        final Object returnValue = invoker.invokeStatic(/* FIXME: add arguments */);
+    throws ProgramTargetException {
+        final ReturnValue returnValue = returnValueSupplier.get();
 
         assertValid(returnValue);
 
-        return (ReturnValue) returnValue;
+        return returnValue;
     }
 
     @Override
     public MethodReturnValueReflector<ReturnValue> assertReturned(final Validator<ReturnValue> validator)
-    throws InvalidValueException {
+    throws InvalidMethodReturnValueException {
         validators.add(validator);
 
         return this;
     }
 
     private void assertValid(final ReturnValue returnValue)
-    throws InvalidValueException {
+    throws ProgramTargetException {
         for (final Validator<ReturnValue> validator : validators)
             validator.assertValid(returnValue);
     }

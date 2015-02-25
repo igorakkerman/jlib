@@ -26,7 +26,7 @@ import java.util.Optional;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.programtarget.InvalidValueException;
+import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import static org.jlib.reflect.reflector.Reflectors.useClass;
 
 public class IdentifierOrClassNameToStringStyleSupplier
@@ -48,7 +48,7 @@ implements ConfigurableToStringStyleSupplier {
                    useClass(identifierOrClassName).withType(ToStringStyle.class)
                                                   .instance();
         }
-        catch (final MethodException | InvalidValueException exception) {
+        catch (final MethodException | InvalidMethodReturnValueException exception) {
             throw new ToStringStyleNotFoundException(exception);
         }
     }

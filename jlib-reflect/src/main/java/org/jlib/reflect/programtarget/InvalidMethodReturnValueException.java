@@ -19,13 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.validator;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.core.message.Message;
 
-@FunctionalInterface
-public interface Validator<Value> {
+public class InvalidMethodReturnValueException
+extends MethodException {
 
-    void assertValid(Value value)
-    throws ProgramTargetException;
+    private static final long serialVersionUID = - 3511658773401667177L;
+
+    public InvalidMethodReturnValueException(final Message message, final String className,
+                                             final String methodName) {
+        super(message, className, methodName);
+    }
+
+    public InvalidMethodReturnValueException(final Message message, final String className, final String methodName,
+                                             final Exception cause) {
+        super(message, className, methodName, cause);
+    }
 }
