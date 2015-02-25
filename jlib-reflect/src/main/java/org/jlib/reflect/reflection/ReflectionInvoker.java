@@ -24,8 +24,9 @@ package org.jlib.reflect.reflection;
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
+import org.jlib.reflect.invocation.Invoker;
 import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.reflector.Invoker;
+import org.jlib.reflect.programtarget.MethodInvocationException;
 
 public class ReflectionInvoker
 implements Invoker {
@@ -44,7 +45,7 @@ implements Invoker {
             return method.invoke(object, arguments);
         }
         catch (final ReflectiveOperationException exception) {
-            throw new MethodException(message(), method.getClass().getName(), method.toString());
+            throw new MethodInvocationException(message(), method.getClass().getName(), method.toString());
         }
     }
 

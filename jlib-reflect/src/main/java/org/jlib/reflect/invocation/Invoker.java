@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.invocation;
 
 import org.jlib.reflect.programtarget.MethodException;
 
