@@ -21,15 +21,8 @@
 
 package org.jlib.reflect.programtarget;
 
-import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
-/**
- * {@link ApplicationException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for
- * any kind of Exceptions occurring when trying to instantiate a class.
- *
- * @author Igor Akkerman
- */
 public abstract class ClassException
 extends ProgramTargetException {
 

@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.WrongTypedException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public class UntypedStaticMethodReflector<Enclosing>
 implements UntypedMethodReflector {
@@ -37,7 +37,7 @@ implements UntypedMethodReflector {
 
     @Override
     public <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
-    throws WrongTypedException {
+    throws NoSubtypeException {
         return new StaticMethodOverloadReflector<ReturnValue>(returnValueClass);
     }
 }

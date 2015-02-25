@@ -25,6 +25,12 @@ import org.jlib.core.message.Message;
 
 import static org.jlib.core.message.MessageUtility.message;
 
+/**
+ * {@link ClassException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for any
+ * kind of exceptions occurring when trying to instantiate a class.
+ *
+ * @author Igor Akkerman
+ */
 public class ClassInstantiationException
 extends ClassException {
 

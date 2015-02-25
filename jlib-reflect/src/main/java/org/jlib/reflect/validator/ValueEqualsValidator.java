@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.validator;
 
 import org.jlib.reflect.programtarget.InvalidValueException;
 

@@ -21,11 +21,11 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.WrongTypedException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface UntypedMethodReflector {
 
     <ReturnValue>
     MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
-    throws WrongTypedException;
+    throws NoSubtypeException;
 }

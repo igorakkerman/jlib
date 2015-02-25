@@ -26,7 +26,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 import org.jlib.reflect.programtarget.ClassException;
-import org.jlib.reflect.programtarget.WrongTypedException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
@@ -57,14 +57,14 @@ implements TypedClassReflector<Value> {
                               .collect(toList());
 
         if (! invalidSuperTypes.isEmpty())
-            throw new WrongTypedException(actualType, invalidSuperTypes);
+            throw new NoSubtypeException(actualType, invalidSuperTypes);
 
         return (Class<Value>) actualType;
     }
 
     @Override
     public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
-    throws WrongTypedException {
+    throws NoSubtypeException {
         expectedSuperTypes.add(expectedSuperType);
         return this;
     }

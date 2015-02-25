@@ -24,12 +24,12 @@ package org.jlib.reflect.reflector;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.programtarget.WrongTypedException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
 
     Self assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws WrongTypedException;
+    throws NoSubtypeException;
 
     Method get()
     throws MethodException;

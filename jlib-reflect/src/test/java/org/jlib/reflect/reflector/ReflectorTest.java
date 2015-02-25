@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector;
 
 import org.assertj.core.api.Assertions;
 import static org.jlib.reflect.reflector.Reflectors.useClass;
-import static org.jlib.reflect.reflector.SuperTypeValidator.instanceOf;
+import static org.jlib.reflect.validator.SuperTypeValidator.instanceOf;
 import org.junit.Test;
 
 public class ReflectorTest {
