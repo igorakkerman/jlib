@@ -23,20 +23,28 @@ package org.jlib.reflect.reflector;
 
 import java.util.function.Supplier;
 
+import org.jlib.reflect.programtarget.reflection.ReflectionReflectorFactory;
+
 public final class Reflectors {
 
     private Reflectors() {}
 
     public static UntypedClassReflector useClass(final String className) {
-        return new ClassReflector(className);
+        return new ClassReflector(factory().classLookup(className));
     }
 
-    public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new ClassReflector(className.get());
+    public static UntypedClassReflector useClass(final Supplier<String> classNameSupplier) {
+        return useClass(classNameSupplier.get());
     }
 
     public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
         return null; // FIXME: implement
 //        return new ConcreteTypedClassReflector<>(clazz);
     }
+
+    static ReflectorFactory factory() {
+        // TODO: change this to use DI or some property lookup mechanism
+        return new ReflectionReflectorFactory();
+    }
 }
+

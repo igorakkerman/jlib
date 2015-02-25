@@ -21,21 +21,16 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
-import org.jlib.reflect.programtarget.ProgramTargetException;
-import org.jlib.reflect.validator.MethodReturnValueValidator;
-import static org.jlib.reflect.validator.Validators.isEqualTo;
+import java.lang.reflect.Method;
 
-public interface MethodReturnValueReflector<ReturnValue> {
+import org.jlib.reflect.programtarget.ClassLookup;
+import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.programtarget.MethodLookup;
 
-    MethodReturnValueReflector<ReturnValue> assertReturned(MethodReturnValueValidator<ReturnValue> validator)
-    throws InvalidMethodReturnValueException;
+public interface ReflectorFactory {
+    ClassLookup classLookup(String className);
 
-    default MethodReturnValueReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
-    throws InvalidMethodReturnValueException {
-        return assertReturned(isEqualTo(returnValue));
-    }
+    MethodLookup methodLookup(Class<?> clazz, String methodName, Class<?>... parameterTypes);
 
-    ReturnValue get()
-    throws ProgramTargetException;
+    MethodInvoker methodInvoker(Method method);
 }
