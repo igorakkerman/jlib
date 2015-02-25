@@ -21,13 +21,6 @@
 
 package org.jlib.reflect;
 
-import java.lang.reflect.Method;
+public interface ReturnValueSupplier<ReturnValue> {
 
-public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
-
-    Self assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws WrongTypedException;
-
-    Method get()
-    throws MethodException;
 }

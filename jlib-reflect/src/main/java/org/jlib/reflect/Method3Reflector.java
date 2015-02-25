@@ -25,5 +25,5 @@ public interface Method3Reflector<ReturnType, Argument1, Argument2, Argument3>
 extends MethodReflector<ReturnType, Method3Reflector<ReturnType, Argument1, Argument2, Argument3>> {
 
     MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
-    throws InvalidMethodException;
+    throws MethodException;
 }

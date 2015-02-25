@@ -25,5 +25,5 @@ public interface UntypedMethodReflector {
 
     <ReturnValue>
     MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
-    throws WrongTypedInstanceException;
+    throws WrongTypedException;
 }

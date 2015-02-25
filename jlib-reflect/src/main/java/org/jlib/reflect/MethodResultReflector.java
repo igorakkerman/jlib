@@ -32,5 +32,5 @@ public interface MethodResultReflector<ReturnValue> {
     }
 
     ReturnValue get()
-    throws InvalidValueException, InvalidMethodException;
+    throws InvalidValueException, MethodException;
 }

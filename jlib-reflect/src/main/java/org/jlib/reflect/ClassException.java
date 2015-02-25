@@ -25,38 +25,31 @@ import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
 /**
- * {@link ApplicationException} thrown when a method cannot be identified by its name in a reflective process.
+ * {@link ApplicationException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for
+ * any kind of Exceptions occurring when trying to instantiate a class.
  *
  * @author Igor Akkerman
  */
-public class InvalidMethodException
-extends ApplicationException {
+public abstract class ClassException
+extends ProgramTargetException {
 
-    private static final long serialVersionUID = - 3809968471293132878L;
+    private static final long serialVersionUID = - 8652252161776673093L;
 
     private final String className;
-    private final String methodName;
 
-    public InvalidMethodException(final Message message, final String className, final String methodName) {
-        super(message.with("class", className)
-                     .with("method", methodName));
+    public ClassException(final Message message, final String className) {
+        super(message.with("class", className));
 
         this.className = className;
-        this.methodName = methodName;
     }
 
-    public InvalidMethodException(final Message message, final String className, final String methodName,
-                                  final Exception cause) {
-        this(message, className, methodName);
+    public ClassException(final Message message, final String className, final Exception cause) {
+        this(message, className);
 
         initCause(cause);
     }
 
     public String getClassName() {
         return className;
-    }
-
-    public String getMethodName() {
-        return methodName;
     }
 }

@@ -24,32 +24,22 @@ package org.jlib.reflect;
 import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
-/**
- * {@link ApplicationException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for
- * any kind of Exceptions occurring when trying to instantiate a class.
- *
- * @author Igor Akkerman
- */
-public abstract class ClassInstanceException
+public abstract class ProgramTargetException
 extends ApplicationException {
 
-    private static final long serialVersionUID = - 8652252161776673093L;
+    private static final long serialVersionUID = 2276530860062232111L;
 
-    private final String className;
+    protected ProgramTargetException() {}
 
-    public ClassInstanceException(final Message message, final String className) {
-        super(message.with("class", className));
-
-        this.className = className;
+    protected ProgramTargetException(final Message message) {
+        super(message);
     }
 
-    public ClassInstanceException(final Message message, final String className, final Exception cause) {
-        this(message, className);
-
-        initCause(cause);
+    protected ProgramTargetException(final Exception cause) {
+        super(cause);
     }
 
-    public String getClassName() {
-        return className;
+    protected ProgramTargetException(final Message message, final Exception cause) {
+        super(message, cause);
     }
 }

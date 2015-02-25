@@ -24,21 +24,21 @@ package org.jlib.reflect;
 public interface TypedClassReflector<Value> {
 
     Class<Value> type()
-    throws ClassInstanceException;
+    throws ClassException;
 
     // downcast necessary for parametrized types although not fully typesafe
     @SuppressWarnings("unchecked")
     default <Val extends Value>
     Class<Val> parametrizedType()
-    throws ClassInstanceException {
+    throws ClassException {
         return (Class<Val>) type();
     }
 
     TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
-    throws WrongTypedInstanceException;
+    throws WrongTypedException;
 
     default Value instance()
-    throws InvalidMethodException, InvalidValueException {
+    throws MethodException, InvalidValueException {
         return useConstructor().withoutArguments().invoke().get();
     }
 

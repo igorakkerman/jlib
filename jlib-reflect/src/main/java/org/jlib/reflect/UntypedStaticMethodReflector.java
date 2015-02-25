@@ -35,7 +35,7 @@ implements UntypedMethodReflector {
 
     @Override
     public <ReturnValue> MethodOverloadReflector<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
-    throws WrongTypedInstanceException {
+    throws WrongTypedException {
         return new StaticMethodOverloadReflector<ReturnValue>(returnValueClass);
     }
 }

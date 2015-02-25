@@ -25,5 +25,5 @@ public interface UncheckedMethodReflector<ReturnType>
 extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
 
     MethodResultReflector<ReturnType> invoke(Object... arguments)
-    throws InvalidMethodException;
+    throws MethodException;
 }

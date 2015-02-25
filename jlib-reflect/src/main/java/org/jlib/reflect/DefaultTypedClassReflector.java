@@ -46,7 +46,7 @@ implements TypedClassReflector<Value> {
     @Override
     @SuppressWarnings("unchecked")
     public Class<Value> type()
-    throws ClassInstanceException {
+    throws ClassException {
         final Class<?> actualType = untypedClassSupplier.get();
 
         final List<Class<?>> invalidSuperTypes = /*
@@ -55,14 +55,14 @@ implements TypedClassReflector<Value> {
                               .collect(toList());
 
         if (! invalidSuperTypes.isEmpty())
-            throw new WrongTypedInstanceException(actualType, invalidSuperTypes);
+            throw new WrongTypedException(actualType, invalidSuperTypes);
 
         return (Class<Value>) actualType;
     }
 
     @Override
     public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
-    throws WrongTypedInstanceException {
+    throws WrongTypedException {
         expectedSuperTypes.add(expectedSuperType);
         return this;
     }

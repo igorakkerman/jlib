@@ -25,5 +25,5 @@ package org.jlib.reflect;
 public interface UntypedClassSupplier {
 
     Class<?> get()
-    throws ClassInstanceException;
+    throws ClassException;
 }

@@ -21,11 +21,11 @@
 
 package org.jlib.reflect;
 
-public interface Invoker<ReturnValue> {
+public interface Invoker {
 
-    ReturnValue invoke(Object object, Object... arguments)
-    throws InvalidMethodException;
+    Object invoke(Object object, Object... arguments)
+    throws MethodException;
 
-    ReturnValue invokeStatic(Object... arguments)
-    throws InvalidMethodException;
+    Object invokeStatic(Object... arguments)
+    throws MethodException;
 }

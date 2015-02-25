@@ -26,5 +26,5 @@ public interface ObjectReflector<Obj> {
     UntypedMethodReflector useMethod(String methodName);
 
     Obj get()
-    throws ClassInstanceException;
+    throws ClassException;
 }

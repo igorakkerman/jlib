@@ -26,7 +26,7 @@ import org.jlib.core.message.Message;
 import static org.jlib.core.message.MessageUtility.message;
 
 public class ClassInstantiationException
-extends ClassInstanceException {
+extends ClassException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 

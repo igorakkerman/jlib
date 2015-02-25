@@ -26,14 +26,14 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 import static org.jlib.core.message.MessageUtility.message;
 
-public class WrongTypedInstanceException
-extends ClassInstanceException {
+public class WrongTypedException
+extends ClassException {
 
     private static final long serialVersionUID = - 7474100445702869755L;
 
     private final List<String> expectedParentTypeClassNames;
 
-    public WrongTypedInstanceException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
+    public WrongTypedException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
         super(message().with("expectedParentTypes", expectedParentTypes), clazz.getName());
 
         expectedParentTypeClassNames = expectedParentTypes.stream().map(Class::getName).collect(toList());

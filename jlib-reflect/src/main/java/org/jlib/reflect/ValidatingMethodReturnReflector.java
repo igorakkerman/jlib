@@ -23,25 +23,26 @@ package org.jlib.reflect;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
-public class ValidatingMethodResultReflector<ReturnValue>
+public class ValidatingMethodReturnReflector<ReturnValue>
 implements MethodResultReflector<ReturnValue> {
 
+    private final ReturnValue returnValue;
     private final List<Validator<ReturnValue>> validators = new ArrayList<>();
-    private final Invoker<ReturnValue> invoker;
 
-    public ValidatingMethodResultReflector(final Invoker<ReturnValue> invoker) {
+    public ValidatingMethodReturnReflector(final Supplier<ReturnValue> returnValue) {
         this.invoker = invoker;
     }
 
     @Override
     public final ReturnValue get()
-    throws InvalidValueException, InvalidMethodException {
-        final ReturnValue returnValue = invoker.invokeStatic();
+    throws InvalidValueException, MethodException {
+        final Object returnValue = invoker.invokeStatic(/* FIXME: add arguments */);
 
         assertValid(returnValue);
 
-        return returnValue;
+        return (ReturnValue) returnValue;
     }
 
     @Override
