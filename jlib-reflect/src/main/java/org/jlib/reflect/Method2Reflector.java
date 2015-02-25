@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.MethodException;
+
 public interface Method2Reflector<ReturnType, Argument1, Argument2>
 extends MethodReflector<ReturnType, Method2Reflector<ReturnType, Argument1, Argument2>> {
 

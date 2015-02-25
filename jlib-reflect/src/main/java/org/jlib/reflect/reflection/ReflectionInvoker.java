@@ -24,7 +24,7 @@ package org.jlib.reflect.reflection;
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
-import org.jlib.reflect.MethodException;
+import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.Invoker;
 
 public class ReflectionInvoker

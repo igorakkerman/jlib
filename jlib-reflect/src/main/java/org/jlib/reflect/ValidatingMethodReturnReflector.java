@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
+import org.jlib.reflect.programtarget.InvalidValueException;
+import org.jlib.reflect.programtarget.MethodException;
+
 public class ValidatingMethodReturnReflector<ReturnValue>
 implements MethodResultReflector<ReturnValue> {
 

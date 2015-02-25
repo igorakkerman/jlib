@@ -25,8 +25,8 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.reflect.MethodException;
-import org.jlib.reflect.InvalidValueException;
+import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.InvalidValueException;
 import static org.jlib.reflect.Reflectors.useClass;
 
 public class IdentifierOrClassNameToStringStyleSupplier

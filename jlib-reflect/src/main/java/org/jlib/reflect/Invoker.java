@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.MethodException;
+
 public interface Invoker {
 
     Object invoke(Object object, Object... arguments)

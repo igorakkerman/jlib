@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.WrongTypedException;
+
 public class UntypedStaticMethodReflector<Enclosing>
 implements UntypedMethodReflector {
 

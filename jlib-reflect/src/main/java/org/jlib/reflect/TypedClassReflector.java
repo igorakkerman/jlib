@@ -21,6 +21,11 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.InvalidValueException;
+import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.WrongTypedException;
+
 public interface TypedClassReflector<Value> {
 
     Class<Value> type()

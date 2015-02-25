@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.programtarget;
 
 import static org.jlib.core.message.MessageUtility.message;
 

@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.InvalidValueException;
+
 public class ValueEqualsValidator<Value>
 implements Validator<Value> {
 

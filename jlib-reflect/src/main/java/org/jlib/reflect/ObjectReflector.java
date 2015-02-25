@@ -21,6 +21,8 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.ClassException;
+
 public interface ObjectReflector<Obj> {
 
     UntypedMethodReflector useMethod(String methodName);

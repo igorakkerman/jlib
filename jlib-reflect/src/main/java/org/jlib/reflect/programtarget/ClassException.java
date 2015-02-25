@@ -19,30 +19,37 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.programtarget;
 
+import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
-import static org.jlib.core.message.MessageUtility.message;
-
-public class ClassInstantiationException
-extends ClassException {
+/**
+ * {@link ApplicationException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for
+ * any kind of Exceptions occurring when trying to instantiate a class.
+ *
+ * @author Igor Akkerman
+ */
+public abstract class ClassException
+extends ProgramTargetException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 
-    public ClassInstantiationException(final Message message, final String className) {
-        super(message, className);
+    private final String className;
+
+    public ClassException(final Message message, final String className) {
+        super(message.with("class", className));
+
+        this.className = className;
     }
 
-    public ClassInstantiationException(final Message message, final String className, final Exception cause) {
-        super(message, className, cause);
+    public ClassException(final Message message, final String className, final Exception cause) {
+        this(message, className);
+
+        initCause(cause);
     }
 
-    public ClassInstantiationException(final String className) {
-        super(message(), className);
-    }
-
-    public ClassInstantiationException(final String className, final Exception cause) {
-        super(message(), className, cause);
+    public String getClassName() {
+        return className;
     }
 }

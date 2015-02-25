@@ -21,6 +21,9 @@
 
 package org.jlib.reflect;
 
+import org.jlib.reflect.programtarget.InvalidValueException;
+import org.jlib.reflect.programtarget.MethodException;
+
 public interface MethodResultReflector<ReturnValue> {
 
     MethodResultReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)

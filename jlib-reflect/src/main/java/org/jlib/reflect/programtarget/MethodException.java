@@ -19,37 +19,44 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.programtarget;
 
 import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
 /**
- * {@link ApplicationException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for
- * any kind of Exceptions occurring when trying to instantiate a class.
+ * {@link ApplicationException} thrown when a method cannot be identified by its name in a reflective process.
  *
  * @author Igor Akkerman
  */
-public abstract class ClassException
+public abstract class MethodException
 extends ProgramTargetException {
 
-    private static final long serialVersionUID = - 8652252161776673093L;
+    private static final long serialVersionUID = - 3809968471293132878L;
 
     private final String className;
+    private final String methodName;
 
-    public ClassException(final Message message, final String className) {
-        super(message.with("class", className));
+    public MethodException(final Message message, final String className, final String methodName) {
+        super(message.with("class", className)
+                     .with("method", methodName));
 
         this.className = className;
+        this.methodName = methodName;
     }
 
-    public ClassException(final Message message, final String className, final Exception cause) {
-        this(message, className);
+    public MethodException(final Message message, final String className, final String methodName,
+                           final Exception cause) {
+        this(message, className, methodName);
 
         initCause(cause);
     }
 
     public String getClassName() {
         return className;
+    }
+
+    public String getMethodName() {
+        return methodName;
     }
 }

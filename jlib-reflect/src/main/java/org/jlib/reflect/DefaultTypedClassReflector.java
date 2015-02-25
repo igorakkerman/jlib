@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.WrongTypedException;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
