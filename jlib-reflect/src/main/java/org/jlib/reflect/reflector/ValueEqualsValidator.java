@@ -19,14 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.InvalidValueException;
 
-public interface ObjectReflector<Obj> {
+public class ValueEqualsValidator<Value>
+implements Validator<Value> {
 
-    UntypedMethodReflector useMethod(String methodName);
+    public static <Value>
+    Validator<Value> valueEqualTo(final Value expectedValue) {
+        return new ValueEqualsValidator<>(expectedValue);
+    }
 
-    Obj get()
-    throws ClassException;
+    private final Value expectedValue;
+
+    public ValueEqualsValidator(final Value expectedValue) {
+        this.expectedValue = expectedValue;
+    }
+
+    @Override
+    public void assertValid(final Value value)
+    throws InvalidValueException {
+        if (! value.equals(expectedValue))
+            throw new InvalidValueException();
+    }
 }

@@ -19,15 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
+import org.jlib.reflect.programtarget.InvalidValueException;
 import org.jlib.reflect.programtarget.MethodException;
 
-public interface Invoker {
+public interface MethodResultReflector<ReturnValue> {
 
-    Object invoke(Object object, Object... arguments)
-    throws MethodException;
+    MethodResultReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)
+    throws InvalidValueException;
 
-    Object invokeStatic(Object... arguments)
-    throws MethodException;
+    default MethodResultReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
+    throws InvalidValueException {
+        return assertReturned(ValueEqualsValidator.valueEqualTo(returnValue));
+    }
+
+    ReturnValue get()
+    throws InvalidValueException, MethodException;
 }

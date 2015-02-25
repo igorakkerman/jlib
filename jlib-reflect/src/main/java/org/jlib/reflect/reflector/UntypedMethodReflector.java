@@ -19,24 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
-import java.util.function.Supplier;
+import org.jlib.reflect.programtarget.WrongTypedException;
 
-public final class Reflectors {
+public interface UntypedMethodReflector {
 
-    private Reflectors() {}
-
-    public static UntypedClassReflector useClass(final String className) {
-        return new ReflectionNamedClassReflector(className);
-    }
-
-    public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new ReflectionNamedClassReflector(className.get());
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return null; // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(clazz);
-    }
+    <ReturnValue>
+    MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
+    throws WrongTypedException;
 }

@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.InvalidValueException;
-import static org.jlib.reflect.Reflectors.useClass;
+import static org.jlib.reflect.reflector.Reflectors.useClass;
 
 public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {

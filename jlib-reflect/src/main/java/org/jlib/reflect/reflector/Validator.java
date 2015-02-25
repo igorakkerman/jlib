@@ -19,21 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidValueException;
-import org.jlib.reflect.programtarget.MethodException;
 
-public interface MethodResultReflector<ReturnValue> {
+@FunctionalInterface
+public interface Validator<Value> {
 
-    MethodResultReflector<ReturnValue> assertReturned(Validator<ReturnValue> validator)
+    void assertValid(Value value)
     throws InvalidValueException;
-
-    default MethodResultReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
-    throws InvalidValueException {
-        return assertReturned(ValueEqualsValidator.valueEqualTo(returnValue));
-    }
-
-    ReturnValue get()
-    throws InvalidValueException, MethodException;
 }

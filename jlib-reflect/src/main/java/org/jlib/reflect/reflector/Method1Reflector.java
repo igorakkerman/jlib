@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.MethodException;
 
-public interface UncheckedMethodReflector<ReturnType>
-extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
+public interface Method1Reflector<ReturnType, Argument1>
+extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
 
-    MethodResultReflector<ReturnType> invoke(Object... arguments)
+    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
     throws MethodException;
 }

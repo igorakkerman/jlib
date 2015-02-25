@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
 public class StaticMethodOverloadReflector<ReturnValue>
 implements MethodOverloadReflector<ReturnValue> {

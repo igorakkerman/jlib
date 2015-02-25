@@ -19,18 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
-
-import java.lang.reflect.Method;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.programtarget.WrongTypedException;
 
-public interface MethodReflector<ReturnValue, Self extends MethodReflector<ReturnValue, Self>> {
+public interface UncheckedMethodReflector<ReturnType>
+extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
 
-    Self assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws WrongTypedException;
-
-    Method get()
+    MethodResultReflector<ReturnType> invoke(Object... arguments)
     throws MethodException;
 }

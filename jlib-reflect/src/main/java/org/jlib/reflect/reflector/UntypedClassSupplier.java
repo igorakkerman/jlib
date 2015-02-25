@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.WrongTypedException;
+import org.jlib.reflect.programtarget.ClassException;
 
-public interface UntypedMethodReflector {
+@FunctionalInterface
+public interface UntypedClassSupplier {
 
-    <ReturnValue>
-    MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
-    throws WrongTypedException;
+    Class<?> get()
+    throws ClassException;
 }

@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.MethodException;
+public interface UntypedClassReflector
+extends UntypedClassSupplier {
 
-public interface Method1Reflector<ReturnType, Argument1>
-extends MethodReflector<ReturnType, Method1Reflector<ReturnType, Argument1>> {
-
-    MethodResultReflector<ReturnType> invoke(Argument1 argument1)
-    throws MethodException;
+    <Value>
+    TypedClassReflector<Value> withType(Class<Value> staticType);
 }

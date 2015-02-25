@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.ClassInstantiationException;
 

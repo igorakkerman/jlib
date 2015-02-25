@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.MethodException;
 
-public interface Method3Reflector<ReturnType, Argument1, Argument2, Argument3>
-extends MethodReflector<ReturnType, Method3Reflector<ReturnType, Argument1, Argument2, Argument3>> {
+public interface Method0Reflector<ReturnType>
+extends MethodReflector<ReturnType, Method0Reflector<ReturnType>> {
 
-    MethodResultReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
+    MethodResultReflector<ReturnType> invoke()
     throws MethodException;
 }

@@ -19,13 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.MethodException;
 
-@FunctionalInterface
-public interface UntypedClassSupplier {
+public interface Invoker {
 
-    Class<?> get()
-    throws ClassException;
+    Object invoke(Object object, Object... arguments)
+    throws MethodException;
+
+    Object invokeStatic(Object... arguments)
+    throws MethodException;
 }
