@@ -24,12 +24,12 @@ package org.jlib.reflect.programtarget.reflection;
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
-import org.jlib.reflect.programtarget.Invoker;
+import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.MethodInvocationException;
 
 public class ReflectionMethodInvoker
-implements Invoker {
+implements MethodInvoker {
 
     private final Method method;
 

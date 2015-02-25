@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programtarget;
 
-public interface Invoker {
+public interface MethodInvoker {
 
     Object invoke(Object object, Object... arguments)
     throws MethodException;
