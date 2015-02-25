@@ -19,24 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget;
 
-import java.util.function.Supplier;
+import static org.jlib.core.message.MessageUtility.message;
 
-public final class Reflectors {
+public class ClassLookupException
+extends ClassException {
 
-    private Reflectors() {}
+    private static final long serialVersionUID = 5664326787354744995L;
 
-    public static UntypedClassReflector useClass(final String className) {
-        return new ClassReflector(className);
-    }
-
-    public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new ClassReflector(className.get());
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return null; // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(clazz);
+    public ClassLookupException(final String className, final Exception cause) {
+        super(message(), className, cause);
     }
 }

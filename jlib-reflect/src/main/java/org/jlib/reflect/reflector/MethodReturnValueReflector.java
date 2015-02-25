@@ -24,7 +24,7 @@ package org.jlib.reflect.reflector;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
-import org.jlib.reflect.validator.ValueEqualsValidator;
+import static org.jlib.reflect.validator.Validators.valueEquals;
 
 public interface MethodReturnValueReflector<ReturnValue> {
 
@@ -33,9 +33,9 @@ public interface MethodReturnValueReflector<ReturnValue> {
 
     default MethodReturnValueReflector<ReturnValue> assertReturned(final ReturnValue returnValue)
     throws InvalidMethodReturnValueException {
-        return assertReturned(ValueEqualsValidator.valueEqualTo(returnValue));
+        return assertReturned(valueEquals(returnValue));
     }
 
     ReturnValue get()
-    throws InvalidMethodReturnValueException, ProgramTargetException;
+    throws ProgramTargetException;
 }

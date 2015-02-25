@@ -27,7 +27,7 @@ import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 public final class Validators {
 
     public static <ReturnValue>
-    MethodReturnValueValidator<ReturnValue> returnValueEquals(final ReturnValue expectedReturnValue) {
+    MethodReturnValueValidator<ReturnValue> valueEquals(final ReturnValue expectedReturnValue) {
         return (returnValue, className, methodName) -> {
             if (! expectedReturnValue.equals(returnValue))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
@@ -37,7 +37,7 @@ public final class Validators {
     }
 
     public static <ReturnValue>
-    MethodReturnValueValidator<ReturnValue> returnValueInstanceOf(final Class<? extends ReturnValue> expectedType) {
+    MethodReturnValueValidator<ReturnValue> valueInstanceOf(final Class<? extends ReturnValue> expectedType) {
         return (returnValue, className, methodName) -> {
             if (returnValue == null || ! expectedType.isAssignableFrom(returnValue.getClass()))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)

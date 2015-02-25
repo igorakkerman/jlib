@@ -44,7 +44,7 @@ implements MethodReturnValueReflector<ReturnValue> {
     throws ProgramTargetException {
         final ReturnValue returnValue = returnValueSupplier.get();
 
-        assertValid(returnValue);
+        assertValid(returnValue, returnValueSupplier.getClass(), returnValueSupplier.getMethodName());
 
         return returnValue;
     }
@@ -57,7 +57,7 @@ implements MethodReturnValueReflector<ReturnValue> {
         return this;
     }
 
-    private void assertValid(final ReturnValue returnValue)
+    private void assertValid(final ReturnValue returnValue, final String )
     throws ProgramTargetException {
         for (final MethodReturnValueValidator<ReturnValue> validator : validators)
             validator.assertValid(returnValue);

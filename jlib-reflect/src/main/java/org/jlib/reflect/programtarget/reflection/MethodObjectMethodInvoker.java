@@ -19,21 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflection;
+package org.jlib.reflect.programtarget.reflection;
 
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
-import org.jlib.reflect.invocation.Invoker;
+import org.jlib.reflect.programtarget.Invoker;
 import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.MethodInvocationException;
 
-public class ReflectionInvoker
+public class MethodObjectMethodInvoker
 implements Invoker {
 
     private final Method method;
 
-    public ReflectionInvoker(final Method method) {
+    public MethodObjectMethodInvoker(final Method method) {
         this.method = method;
     }
 

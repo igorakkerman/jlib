@@ -19,15 +19,28 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.invocation;
+package org.jlib.reflect.programtarget.reflection;
 
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.ClassLookup;
+import org.jlib.reflect.programtarget.ClassLookupException;
 
-public interface Invoker {
+public class ClassNameClassLookup
+implements ClassLookup {
 
-    Object invoke(Object object, Object... arguments)
-    throws MethodException;
+    private final String className;
 
-    Object invokeStatic(Object... arguments)
-    throws MethodException;
+    public ClassNameClassLookup(final String className) {
+        this.className = className;
+    }
+
+    @Override
+    public Class<?> get()
+    throws ClassLookupException {
+        try {
+            return Class.forName(className);
+        }
+        catch (final ClassNotFoundException exception) {
+            throw new ClassLookupException(className, exception);
+        }
+    }
 }

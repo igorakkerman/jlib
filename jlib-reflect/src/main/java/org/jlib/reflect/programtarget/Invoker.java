@@ -19,24 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget;
 
-import java.util.function.Supplier;
+public interface Invoker {
 
-public final class Reflectors {
+    Object invoke(Object object, Object... arguments)
+    throws MethodException;
 
-    private Reflectors() {}
-
-    public static UntypedClassReflector useClass(final String className) {
-        return new ClassReflector(className);
-    }
-
-    public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new ClassReflector(className.get());
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return null; // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(clazz);
-    }
+    Object invokeStatic(Object... arguments)
+    throws MethodException;
 }

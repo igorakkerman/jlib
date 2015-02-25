@@ -21,30 +21,22 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.ClassInstantiationException;
+import org.jlib.reflect.programtarget.ClassLookup;
+import org.jlib.reflect.programtarget.ClassLookupException;
 
-public class ReflectionNamedClassReflector
+public class ClassReflector
 implements UntypedClassReflector {
 
-    private final String className;
+    private final ClassLookup classLookup;
 
-    public ReflectionNamedClassReflector(final String className) {
-        this.className = className;
+    public ClassReflector(final ClassLookup classLookup) {
+        this.classLookup = classLookup;
     }
 
     @Override
     public Class<?> get()
-    throws ClassInstantiationException {
-        try {
-            return Class.forName(className);
-        }
-        catch (final ClassNotFoundException exception) {
-            throw new ClassInstantiationException(className, exception);
-        }
-    }
-
-    protected String getClassName() {
-        return className;
+    throws ClassLookupException {
+        return classLookup.get();
     }
 
     @Override

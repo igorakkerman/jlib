@@ -19,24 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget;
 
-import java.util.function.Supplier;
+public interface ClassLookup {
 
-public final class Reflectors {
-
-    private Reflectors() {}
-
-    public static UntypedClassReflector useClass(final String className) {
-        return new ClassReflector(className);
-    }
-
-    public static UntypedClassReflector useClass(final Supplier<String> className) {
-        return new ClassReflector(className.get());
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return null; // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(clazz);
-    }
+    Class<?> get()
+    throws ClassLookupException;
 }

@@ -19,9 +19,9 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflection;
+package org.jlib.reflect.programtarget.reflection;
 
-class ReflectionInvokerTestService {
+class TestMethods {
 
     public static void staticVoidEmpty() {}
 
