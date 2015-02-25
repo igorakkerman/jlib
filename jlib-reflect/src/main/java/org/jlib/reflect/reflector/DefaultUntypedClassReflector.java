@@ -23,13 +23,14 @@ package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
+import static org.jlib.reflect.reflector.Reflectors.factory;
 
-public class ClassReflector
+public class DefaultUntypedClassReflector
 implements UntypedClassReflector {
 
     private final ClassLookup classLookup;
 
-    public ClassReflector(final ClassLookup classLookup) {
+    public DefaultUntypedClassReflector(final ClassLookup classLookup) {
         this.classLookup = classLookup;
     }
 
@@ -41,6 +42,6 @@ implements UntypedClassReflector {
 
     @Override
     public <Value> TypedClassReflector<Value> withType(final Class<Value> staticType) {
-        return new DefaultTypedClassReflector<>(staticType, this);
+        return factory().typedClassReflector(staticType, this);
     }
 }

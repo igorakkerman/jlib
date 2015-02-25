@@ -26,8 +26,11 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
+import org.jlib.reflect.reflector.DefaultTypedClassReflector;
 import org.jlib.reflect.reflector.ReflectorFactory;
 import org.jlib.reflect.reflector.StaticMethodOverloadReflector;
+import org.jlib.reflect.reflector.TypedClassReflector;
+import org.jlib.reflect.reflector.UntypedClassReflector;
 
 public class ReflectionReflectorFactory
 implements ReflectorFactory {
@@ -51,5 +54,12 @@ implements ReflectorFactory {
     public <ReturnValue> StaticMethodOverloadReflector<ReturnValue>
     staticMethodOverloadReflector(final Class<ReturnValue> returnValueClass) {
         return new StaticMethodOverloadReflector<>(returnValueClass);
+    }
+
+    @Override
+    public <Value>
+    TypedClassReflector<Value> typedClassReflector(final Class<Value> staticType,
+                                                   final UntypedClassReflector untypedClassReflector) {
+        return new DefaultTypedClassReflector<>(staticType, untypedClassReflector);
     }
 }

@@ -30,7 +30,7 @@ public final class Reflectors {
     private Reflectors() {}
 
     public static UntypedClassReflector useClass(final String className) {
-        return new ClassReflector(factory().classLookup(className));
+        return new DefaultUntypedClassReflector(factory().classLookup(className));
     }
 
     public static UntypedClassReflector useClass(final Supplier<String> classNameSupplier) {

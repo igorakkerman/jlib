@@ -28,6 +28,7 @@ import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
 
 public interface ReflectorFactory {
+
     ClassLookup classLookup(String className);
 
     MethodLookup methodLookup(Class<?> clazz, String methodName, Class<?>... parameterTypes);
@@ -36,4 +37,7 @@ public interface ReflectorFactory {
 
     <ReturnValue> StaticMethodOverloadReflector<ReturnValue>
     staticMethodOverloadReflector(Class<ReturnValue> returnValueClass);
+
+    <Value> TypedClassReflector<Value>
+    typedClassReflector(Class<Value> staticType, final UntypedClassReflector untypedClassReflector);
 }
