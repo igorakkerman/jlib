@@ -24,12 +24,12 @@ package org.jlib.reflect.programtarget.reflection;
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
 
-public class ClassNameClassLookup
+public class ReflectionClassLookup
 implements ClassLookup {
 
     private final String className;
 
-    public ClassNameClassLookup(final String className) {
+    public ReflectionClassLookup(final String className) {
         this.className = className;
     }
 

@@ -23,35 +23,29 @@ package org.jlib.reflect.programtarget.reflection;
 
 import java.lang.reflect.Method;
 
-import static org.jlib.core.message.MessageUtility.message;
-import org.jlib.reflect.programtarget.Invoker;
+import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.programtarget.MethodInvocationException;
 
-public class MethodObjectMethodInvoker
-implements Invoker {
+public class ReflectionMethodLookup {
 
-    private final Method method;
+    private final Class<?> clazz;
+    private final String methodName;
+    private final Class<?>[] parameterTypes;
 
-    public MethodObjectMethodInvoker(final Method method) {
-        this.method = method;
+    public ReflectionMethodLookup(final Class<?> clazz, final String methodName,
+                                  final Class<?>... parameterTypes) {
+        this.clazz = clazz;
+        this.methodName = methodName;
+        this.parameterTypes = parameterTypes;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public Object invoke(final Object object, final Object... arguments)
+    public Method get()
     throws MethodException {
         try {
-            return method.invoke(object, arguments);
+            return clazz.getMethod(methodName, parameterTypes);
         }
-        catch (final ReflectiveOperationException exception) {
-            throw new MethodInvocationException(message(), method.getClass().getName(), method.toString());
+        catch (final NoSuchMethodException exception) {
+            throw new InvalidMethodSignatureException(clazz.getName(), methodName, parameterTypes, exception);
         }
-    }
-
-    @Override
-    public Object invokeStatic(final Object... arguments)
-    throws MethodException {
-        return invoke(/* static */ null, arguments);
     }
 }

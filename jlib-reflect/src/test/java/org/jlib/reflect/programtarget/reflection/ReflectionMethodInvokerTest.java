@@ -30,20 +30,20 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-public class MethodObjectMethodInvokerTest {
+public class ReflectionMethodInvokerTest {
 
     // TODO: add negative tests (method not found, wrong arguments etc.
 
-    private static final Class<?> CLASS = TestMethods.class;
+    private static final Class<?> CLASS = ReflectionTestMethods.class;
 
-    private final TestMethods service = mock(TestMethods.class);
+    private final ReflectionTestMethods service = mock(ReflectionTestMethods.class);
 
     @Test
     public void invokeStaticVoidEmpty()
     throws Exception {
         // only testing for no thrown exception
         final Method method = CLASS.getMethod("staticVoidEmpty");
-        new MethodObjectMethodInvoker(method).invokeStatic();
+        new ReflectionMethodInvoker(method).invokeStatic();
     }
 
     @Test
@@ -51,42 +51,42 @@ public class MethodObjectMethodInvokerTest {
     throws Exception {
         // only testing for no thrown exception
         final Method method = CLASS.getMethod("staticVoidString", String.class);
-        new MethodObjectMethodInvoker(method).invokeStatic("bla");
+        new ReflectionMethodInvoker(method).invokeStatic("bla");
     }
 
     @Test
     public void invokeStaticIntEmpty()
     throws Exception {
         final Method method = CLASS.getMethod("staticIntEmpty");
-        assertThat(new MethodObjectMethodInvoker(method).invokeStatic()).isEqualTo(42);
+        assertThat(new ReflectionMethodInvoker(method).invokeStatic()).isEqualTo(42);
     }
 
     @Test
     public void invokeStaticStringInt()
     throws Exception {
         final Method method = CLASS.getMethod("staticStringInt", int.class);
-        assertThat(new MethodObjectMethodInvoker(method).invokeStatic(42)).isEqualTo("42");
+        assertThat(new ReflectionMethodInvoker(method).invokeStatic(42)).isEqualTo("42");
     }
 
     @Test
     public void invokeStaticStringString()
     throws Exception {
         final Method method = CLASS.getMethod("staticStringString", String.class);
-        assertThat(new MethodObjectMethodInvoker(method).invokeStatic("HalliHallo!")).isEqualTo("HALLIHALLO!");
+        assertThat(new ReflectionMethodInvoker(method).invokeStatic("HalliHallo!")).isEqualTo("HALLIHALLO!");
     }
 
     @Test
     public void invokeStaticStringStringOverload()
     throws Exception {
         final Method method = CLASS.getMethod("staticStringString", String.class, String.class);
-        assertThat(new MethodObjectMethodInvoker(method).invokeStatic("bla ", "blub")).isEqualTo("bla blub");
+        assertThat(new ReflectionMethodInvoker(method).invokeStatic("bla ", "blub")).isEqualTo("bla blub");
     }
 
     @Test
     public void invokeVoidEmpty()
     throws Exception {
         final Method method = CLASS.getMethod("voidEmpty");
-        new MethodObjectMethodInvoker(method).invoke(service);
+        new ReflectionMethodInvoker(method).invoke(service);
         verify(service).voidEmpty();
         verifyNoMoreInteractions(service);
     }
@@ -95,7 +95,7 @@ public class MethodObjectMethodInvokerTest {
     public void invokeVoidString()
     throws Exception {
         final Method method = CLASS.getMethod("voidString", String.class);
-        new MethodObjectMethodInvoker(method).invoke(service, "boo");
+        new ReflectionMethodInvoker(method).invoke(service, "boo");
         verify(service).voidString("boo");
         verifyNoMoreInteractions(service);
     }
@@ -105,7 +105,7 @@ public class MethodObjectMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("intEmpty");
         when(service.intEmpty()).thenReturn(4711);
-        assertThat(new MethodObjectMethodInvoker(method).invoke(service)).isEqualTo(4711);
+        assertThat(new ReflectionMethodInvoker(method).invoke(service)).isEqualTo(4711);
         verify(service).intEmpty();
         verifyNoMoreInteractions(service);
     }
@@ -115,7 +115,7 @@ public class MethodObjectMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringInt", int.class);
         when(service.stringInt(4711)).thenReturn("boo");
-        assertThat(new MethodObjectMethodInvoker(method).invoke(service, 4711)).isEqualTo("boo");
+        assertThat(new ReflectionMethodInvoker(method).invoke(service, 4711)).isEqualTo("boo");
         verify(service).stringInt(4711);
         verifyNoMoreInteractions(service);
     }
@@ -125,7 +125,7 @@ public class MethodObjectMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringString", String.class);
         when(service.stringString("boofar")).thenReturn("raboof");
-        assertThat(new MethodObjectMethodInvoker(method).invoke(service, "boofar")).isEqualTo("raboof");
+        assertThat(new ReflectionMethodInvoker(method).invoke(service, "boofar")).isEqualTo("raboof");
         verify(service).stringString("boofar");
         verifyNoMoreInteractions(service);
     }
@@ -135,7 +135,7 @@ public class MethodObjectMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringString", String.class, String.class);
         when(service.stringString("boofar", "abracadabra")).thenReturn("raboof");
-        assertThat(new MethodObjectMethodInvoker(method).invoke(service, "boofar", "abracadabra")).isEqualTo("raboof");
+        assertThat(new ReflectionMethodInvoker(method).invoke(service, "boofar", "abracadabra")).isEqualTo("raboof");
         verify(service).stringString("boofar", "abracadabra");
         verifyNoMoreInteractions(service);
     }

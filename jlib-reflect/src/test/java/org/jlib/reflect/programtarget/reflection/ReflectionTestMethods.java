@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programtarget.reflection;
 
-class TestMethods {
+class ReflectionTestMethods {
 
     public static void staticVoidEmpty() {}
 
