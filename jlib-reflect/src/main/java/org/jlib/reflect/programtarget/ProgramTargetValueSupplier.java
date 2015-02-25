@@ -19,8 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect;
+package org.jlib.reflect.programtarget;
 
-public interface ReturnValueSupplier<ReturnValue> {
+public interface ProgramTargetValueSupplier<Value> {
 
+    Value get()
+    throws ProgramTargetException;
 }
