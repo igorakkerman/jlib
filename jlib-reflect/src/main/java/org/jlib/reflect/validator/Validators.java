@@ -37,11 +37,29 @@ public final class Validators {
     }
 
     public static <ReturnValue>
-    MethodReturnValueValidator<ReturnValue> instanceOf(final Class<? extends ReturnValue> expectedType) {
+    MethodReturnValueValidator<ReturnValue> isInstanceOf(final Class<? extends ReturnValue> expectedType) {
         return (returnValue, className, methodName) -> {
             if (returnValue == null || ! expectedType.isAssignableFrom(returnValue.getClass()))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("expectedType", expectedType),
+                                                            className, methodName);
+        };
+    }
+
+    public static MethodReturnValueValidator<Integer> isLessThan(final Integer upperBound) {
+        return (returnValue, className, methodName) -> {
+            if (returnValue >= upperBound)
+                throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
+                                                                     .with("upperBound", upperBound),
+                                                            className, methodName);
+        };
+    }
+
+    public static MethodReturnValueValidator<Integer> isGreaterThan(final Integer lowerBound) {
+        return (returnValue, className, methodName) -> {
+            if (returnValue <= lowerBound)
+                throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
+                                                                     .with("lowerBound", lowerBound),
                                                             className, methodName);
         };
     }
