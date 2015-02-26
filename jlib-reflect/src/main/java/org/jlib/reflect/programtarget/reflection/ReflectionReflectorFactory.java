@@ -26,14 +26,17 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
+import org.jlib.reflect.programtarget.MethodReturnValueSupplier;
 import org.jlib.reflect.reflector.DefaultTypedClassReflector;
 import org.jlib.reflect.reflector.DefaultUntypedClassReflector;
+import org.jlib.reflect.reflector.MethodReturnValueReflector;
 import org.jlib.reflect.reflector.ReflectorFactory;
 import org.jlib.reflect.reflector.StaticMethodOverloadReflector;
 import org.jlib.reflect.reflector.TypedClassReflector;
 import org.jlib.reflect.reflector.UntypedClassReflector;
 import org.jlib.reflect.reflector.UntypedMethodReflector;
 import org.jlib.reflect.reflector.UntypedStaticMethodReflector;
+import org.jlib.reflect.reflector.ValidatingMethodReturnValueReflector;
 
 public class ReflectionReflectorFactory
 implements ReflectorFactory {
@@ -76,5 +79,12 @@ implements ReflectorFactory {
     @Override
     public UntypedClassReflector untypedClassReflector(final ClassLookup classLookup) {
         return new DefaultUntypedClassReflector(classLookup);
+    }
+
+    @Override
+    public <ReturnValue>
+    MethodReturnValueReflector<ReturnValue> methodReturnValueReflector
+    /*                                      */(final MethodReturnValueSupplier<ReturnValue> methodReturnValueSupplier) {
+        return new ValidatingMethodReturnValueReflector<>(methodReturnValueSupplier);
     }
 }

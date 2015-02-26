@@ -21,46 +21,31 @@
 
 package org.jlib.reflect.reflector;
 
-import java.lang.reflect.Method;
-
-import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.reflector.Reflectors.factory;
 
-public class DefaultMethod0Reflector<ReturnValue>
-implements Method0Reflector<ReturnValue> {
+public abstract class AbstractMethodReflector<ReturnType>
+implements MethodReflector<ReturnType> {
 
     private final MethodInvoker methodInvoker;
     private final MethodTypeValidator methodTypeValidator;
     private final Object methodEnclosingObject;
 
-    public DefaultMethod0Reflector(final MethodInvoker methodInvoker, final MethodTypeValidator methodTypeValidator,
-                                   final Object methodEnclosingObject) {
+    protected AbstractMethodReflector(final MethodInvoker methodInvoker, final MethodTypeValidator methodTypeValidator,
+                                      final Object methodEnclosingObject) {
         this.methodInvoker = methodInvoker;
         this.methodTypeValidator = methodTypeValidator;
         this.methodEnclosingObject = methodEnclosingObject;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public MethodReturnValueReflector<ReturnValue> invoke()
-    throws MethodException {
-        return factory().methodReturnValueReflector(this);
+    protected MethodInvoker getMethodInvoker() {
+        return methodInvoker;
     }
 
-    @Override
-    public Method0Reflector<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
-    throws NoSubtypeException {
-        methodTypeValidator.assertReturns(staticReturnSuperType);
-
-        return this;
+    protected MethodTypeValidator getMethodTypeValidator() {
+        return methodTypeValidator;
     }
 
-    @Override
-    public Method get()
-    throws MethodException {
-        // FIXME: implement
-        return null;
+    protected Object getMethodEnclosingObject() {
+        return methodEnclosingObject;
     }
 }

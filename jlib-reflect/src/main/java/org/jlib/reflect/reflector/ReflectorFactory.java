@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
+import org.jlib.reflect.programtarget.MethodReturnValueSupplier;
 
 public interface ReflectorFactory {
 
@@ -41,8 +42,11 @@ public interface ReflectorFactory {
     <Value> TypedClassReflector<Value>
     typedClassReflector(Class<Value> staticType, final UntypedClassReflector untypedClassReflector);
 
-    <Value> UntypedMethodReflector untypedStaticMethodReflector(String staticMethodName,
-                                                                TypedClassReflector<Value> typedClassReflector);
+    <Value> UntypedMethodReflector
+    untypedStaticMethodReflector(String staticMethodName, TypedClassReflector<Value> typedClassReflector);
 
     UntypedClassReflector untypedClassReflector(ClassLookup classLookup);
+
+    <ReturnValue> MethodReturnValueReflector<ReturnValue>
+    methodReturnValueReflector(final MethodReturnValueSupplier<ReturnValue> methodReturnValueSupplier);
 }

@@ -19,18 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflection;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.MethodTypeValidator;
 
-public interface MethodReflector<ReturnValue> {
+public class ReflectionMethodTypeValidator
+implements MethodTypeValidator {
 
-    MethodReflector<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws NoSubtypeException;
+    private final Method method;
 
-    Method get()
-    throws MethodException;
+    public ReflectionMethodTypeValidator(final Method method) {
+        this.method = method;
+    }
+
+    @Override
+    public MethodTypeValidator assertReturns(final Class<?> expectedStaticReturnSuperType)
+    throws NoSubtypeException {
+        final Class<?> staticMethodReturnType = method.getReturnType();
+
+        if (!expectedStaticReturnSuperType.isAssignableFrom(staticMethodReturnType))
+            throw new NoSubtypeException(staticMethodReturnType, expectedStaticReturnSuperType);
+
+        return this;
+    }
 }

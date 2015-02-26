@@ -23,6 +23,7 @@ package org.jlib.reflect.programtarget;
 
 import java.util.List;
 
+import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 import static org.jlib.core.message.MessageUtility.message;
 
@@ -32,6 +33,10 @@ extends ClassException {
     private static final long serialVersionUID = - 7474100445702869755L;
 
     private final List<String> expectedParentTypeClassNames;
+
+    public NoSubtypeException(final Class<?> clazz, final Class<?> expectedParentType) {
+        this(clazz, singletonList(expectedParentType));
+    }
 
     public NoSubtypeException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
         super(message().with("expectedParentTypes", expectedParentTypes), clazz.getName());

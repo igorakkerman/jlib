@@ -21,11 +21,10 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface Method0Reflector<ReturnType>
-extends MethodReflector<ReturnType> {
+public interface MethodTypeValidator {
 
-    MethodReturnValueReflector<ReturnType> invoke()
-    throws MethodException;
+    MethodTypeValidator assertReturns(final Class<?> staticReturnSuperType)
+    throws NoSubtypeException;
 }
