@@ -22,18 +22,19 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public abstract class AbstractMethodReflector<ReturnType>
 implements MethodReflector<ReturnType> {
 
     private final MethodInvoker methodInvoker;
-    private final MethodTypeValidator methodTypeValidator;
+    private final MethodReturnTypeValidator methodReturnTypeValidator;
     private final Object methodEnclosingObject;
 
-    protected AbstractMethodReflector(final MethodInvoker methodInvoker, final MethodTypeValidator methodTypeValidator,
+    protected AbstractMethodReflector(final MethodInvoker methodInvoker, final MethodReturnTypeValidator methodReturnTypeValidator,
                                       final Object methodEnclosingObject) {
         this.methodInvoker = methodInvoker;
-        this.methodTypeValidator = methodTypeValidator;
+        this.methodReturnTypeValidator = methodReturnTypeValidator;
         this.methodEnclosingObject = methodEnclosingObject;
     }
 
@@ -41,8 +42,8 @@ implements MethodReflector<ReturnType> {
         return methodInvoker;
     }
 
-    protected MethodTypeValidator getMethodTypeValidator() {
-        return methodTypeValidator;
+    protected MethodReturnTypeValidator getMethodReturnTypeValidator() {
+        return methodReturnTypeValidator;
     }
 
     protected Object getMethodEnclosingObject() {

@@ -19,29 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
-import static org.jlib.reflect.reflector.Reflectors.factory;
+import org.jlib.reflect.reflector.TypedClassReflector;
 
-public class DefaultUntypedClassReflector
-implements UntypedClassReflector {
+public interface UntypedClassReflector {
 
-    private final ClassLookup classLookup;
+    Class<?> get()
+    throws ClassLookupException;
 
-    public DefaultUntypedClassReflector(final ClassLookup classLookup) {
-        this.classLookup = classLookup;
-    }
-
-    @Override
-    public Class<?> get()
-    throws ClassLookupException {
-        return classLookup.get();
-    }
-
-    @Override
-    public <Value> TypedClassReflector<Value> withType(final Class<Value> staticType) {
-        return factory().typedClassReflector(staticType, this);
-    }
+    <Value> TypedClassReflector<Value> withType(Class<Value> staticType)
+    throws ClassLookupException;
 }

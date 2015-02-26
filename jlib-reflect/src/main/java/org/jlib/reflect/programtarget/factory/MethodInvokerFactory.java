@@ -19,12 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import java.lang.reflect.Method;
 
-public interface MethodTypeValidator {
+import org.jlib.reflect.programtarget.MethodInvoker;
 
-    MethodTypeValidator assertReturns(final Class<?> staticReturnSuperType)
-    throws NoSubtypeException;
+public interface MethodInvokerFactory {
+
+    MethodInvoker methodInvoker(Method method);
 }

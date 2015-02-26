@@ -27,18 +27,19 @@ import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.reflector.Reflectors.factory;
+import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public class DefaultMethod0Reflector<ReturnValue>
 implements Method0Reflector<ReturnValue> {
 
     private final MethodInvoker methodInvoker;
-    private final MethodTypeValidator methodTypeValidator;
+    private final MethodReturnTypeValidator methodReturnTypeValidator;
     private final Object methodEnclosingObject;
 
-    public DefaultMethod0Reflector(final MethodInvoker methodInvoker, final MethodTypeValidator methodTypeValidator,
+    public DefaultMethod0Reflector(final MethodInvoker methodInvoker, final MethodReturnTypeValidator methodReturnTypeValidator,
                                    final Object methodEnclosingObject) {
         this.methodInvoker = methodInvoker;
-        this.methodTypeValidator = methodTypeValidator;
+        this.methodReturnTypeValidator = methodReturnTypeValidator;
         this.methodEnclosingObject = methodEnclosingObject;
     }
 
@@ -52,7 +53,7 @@ implements Method0Reflector<ReturnValue> {
     @Override
     public Method0Reflector<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException {
-        methodTypeValidator.assertReturns(staticReturnSuperType);
+        methodReturnTypeValidator.assertReturns(staticReturnSuperType);
 
         return this;
     }

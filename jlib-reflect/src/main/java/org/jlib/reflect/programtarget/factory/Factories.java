@@ -19,10 +19,20 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget;
+package org.jlib.reflect.programtarget.factory;
 
-public interface ProgramTargetValueSupplier<Value> {
+import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClassReflector;
+import org.jlib.reflect.reflector.DefaultTypedClassReflector;
 
-    Value get()
-    throws ProgramTargetException;
+public final class Factories {
+
+    public static UntypedClassFactory untypedClassFactory() {
+        return DefaultUntypedClassReflector::new;
+    }
+
+    public static TypedClassFactory typedClassFactory() {
+        return DefaultTypedClassReflector::new;
+    }
+
+    private Factories() {}
 }

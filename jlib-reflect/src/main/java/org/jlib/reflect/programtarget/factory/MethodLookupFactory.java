@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.MethodLookup;
 
-@FunctionalInterface
-public interface UntypedClassSupplier {
+public interface MethodLookupFactory {
 
-    Class<?> get()
-    throws ClassException;
+    MethodLookup methodLookup(Class<?> clazz, String methodName, Class<?>... parameterTypes);
 }

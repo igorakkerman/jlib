@@ -21,45 +21,33 @@
 
 package org.jlib.reflect.reflector;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
-import org.jlib.reflect.programtarget.MethodReturnValueSupplier;
+import org.jlib.reflect.programtarget.MethodReturnValueHolder;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
+import static org.jlib.reflect.validator.Validators.assertValid;
 
 public class ValidatingMethodReturnValueReflector<ReturnValue>
 implements MethodReturnValueReflector<ReturnValue> {
 
-    private final MethodReturnValueSupplier<ReturnValue> returnValueSupplier;
-    private final List<MethodReturnValueValidator<ReturnValue>> validators = new ArrayList<>();
+    private final ReturnValue returnValue;
 
-    public ValidatingMethodReturnValueReflector(final MethodReturnValueSupplier<ReturnValue> returnValueSupplier) {
+    public ValidatingMethodReturnValueReflector(final MethodReturnValueHolder<ReturnValue> returnValueSupplier) {
         this.returnValueSupplier = returnValueSupplier;
     }
 
     @Override
     public final ReturnValue get()
     throws ProgramTargetException {
-        final ReturnValue returnValue = returnValueSupplier.get();
-
-        assertValid(returnValue, returnValueSupplier.getClass(), returnValueSupplier.getMethodName());
-
-        return returnValue;
+        return returnValueSupplier.get();
     }
 
     @Override
-    public MethodReturnValueReflector<ReturnValue> assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
+    public MethodReturnValueReflector<ReturnValue>
+    assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
     throws InvalidMethodReturnValueException {
-        validators.add(validator);
+        assertValid(validator, returnValueSupplier.get(), returnValueSupplier.getClass(), returnValueSupplier.getMethodName());
 
         return this;
-    }
-
-    private void assertValid(final ReturnValue returnValue, final String )
-    throws ProgramTargetException {
-        for (final MethodReturnValueValidator<ReturnValue> validator : validators)
-            validator.assertValid(returnValue);
     }
 }

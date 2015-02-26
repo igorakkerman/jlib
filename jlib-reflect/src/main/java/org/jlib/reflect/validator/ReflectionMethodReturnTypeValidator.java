@@ -19,24 +19,23 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflection;
+package org.jlib.reflect.validator;
 
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.MethodTypeValidator;
 
-public class ReflectionMethodTypeValidator
-implements MethodTypeValidator {
+public class ReflectionMethodReturnTypeValidator
+implements MethodReturnTypeValidator {
 
     private final Method method;
 
-    public ReflectionMethodTypeValidator(final Method method) {
+    public ReflectionMethodReturnTypeValidator(final Method method) {
         this.method = method;
     }
 
     @Override
-    public MethodTypeValidator assertReturns(final Class<?> expectedStaticReturnSuperType)
+    public MethodReturnTypeValidator assertReturns(final Class<?> expectedStaticReturnSuperType)
     throws NoSubtypeException {
         final Class<?> staticMethodReturnType = method.getReturnType();
 

@@ -19,11 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-public interface UntypedClassReflector
-extends UntypedClassSupplier {
+import org.jlib.reflect.reflector.TypedClassReflector;
 
-    <Value>
-    TypedClassReflector<Value> withType(Class<Value> staticType);
+public interface TypedClassFactory {
+
+    <Value> TypedClassReflector<Value>
+    typedClassReflector(Class<Value> staticType, final Class<?> actualClass);
 }

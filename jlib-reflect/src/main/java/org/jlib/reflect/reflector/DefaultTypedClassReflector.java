@@ -21,27 +21,19 @@
 
 package org.jlib.reflect.reflector;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.reflector.Reflectors.factory;
-import org.jlib.reflect.validator.Validators;
 import static org.jlib.reflect.validator.Validators.hasSupertypes;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
 
-    private final UntypedClassSupplier untypedClassSupplier;
-    private final List<Class<?>> expectedSuperTypes = new ArrayList<>();
+    public DefaultTypedClassReflector(final Class<Value> staticType, final Class<?> clazz) {
 
-    public DefaultTypedClassReflector(final Class<Value> staticType, final UntypedClassSupplier untypedClassSupplier) {
-        this.untypedClassSupplier = untypedClassSupplier;
-        expectedSuperTypes.add(staticType);
     }
 
-    // actualClass may be concrete or abstract/an interface to simply lookup a method
     public DefaultTypedClassReflector(final Class<Value> actualClass) {
         this(actualClass, () -> actualClass);
     }

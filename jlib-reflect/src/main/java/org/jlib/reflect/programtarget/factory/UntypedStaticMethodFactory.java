@@ -19,12 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget;
+package org.jlib.reflect.programtarget.factory;
 
-public interface MethodReturnValueSupplier<ReturnValue>
-extends ProgramTargetValueSupplier<ReturnValue> {
+import org.jlib.reflect.reflector.TypedClassReflector;
+import org.jlib.reflect.reflector.UntypedMethodReflector;
 
-    String getClassName();
+public interface UntypedStaticMethodFactory {
 
-    String getMethodName();
+    <Value> UntypedMethodReflector
+    untypedStaticMethodReflector(String staticMethodName, TypedClassReflector<Value> typedClassReflector);
 }

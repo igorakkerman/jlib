@@ -19,28 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-import java.util.function.Supplier;
-
-import org.jlib.reflect.programtarget.factory.ReflectorFactory;
+import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.reflect_new.UntypedClassReflector;
-import org.jlib.reflect.programtarget.reflection.ReflectionReflectorFactory;
 
-public final class Reflectors {
+public interface UntypedClassFactory {
 
-    private Reflectors() {}
-
-    public static UntypedClassReflector useClass(final String className) {
-        return untypedClasFactory().untypedClassReflector(factory().classLookup(className));
-    }
-
-    public static UntypedClassReflector useClass(final Supplier<String> classNameSupplier) {
-        return useClass(classNameSupplier.get());
-    }
-
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClassReflector<Value>(concreteClass);
-    }
+    UntypedClassReflector untypedClassReflector(ClassLookup classLookup);
 }
-

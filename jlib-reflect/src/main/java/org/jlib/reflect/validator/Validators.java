@@ -28,6 +28,7 @@ import static java.util.stream.Collectors.toList;
 import static org.jlib.core.message.MessageUtility.message;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.ProgramTargetException;
 
 public final class Validators {
 
@@ -81,6 +82,13 @@ public final class Validators {
             if (! invalidSuperTypes.isEmpty())
                 throw new NoSubtypeException(actualClass, invalidSuperTypes);
         };
+    }
+
+    public static <ReturnValue> void assertValid(final MethodReturnValueValidator<? super ReturnValue> validator,
+                                                 final ReturnValue returnValue, final Class<?> clazz,
+                                                 final String methodName)
+    throws ProgramTargetException {
+        validator.assertValid(returnValue, clazz.getName(), methodName);
     }
 
     private Validators() {}
