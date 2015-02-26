@@ -27,6 +27,7 @@ import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
 import org.jlib.reflect.reflector.DefaultTypedClassReflector;
+import org.jlib.reflect.reflector.DefaultUntypedClassReflector;
 import org.jlib.reflect.reflector.ReflectorFactory;
 import org.jlib.reflect.reflector.StaticMethodOverloadReflector;
 import org.jlib.reflect.reflector.TypedClassReflector;
@@ -70,5 +71,10 @@ implements ReflectorFactory {
     UntypedMethodReflector untypedStaticMethodReflector(final String staticMethodName,
                                                         final TypedClassReflector<Value> typedClassReflector) {
         return new UntypedStaticMethodReflector<>(staticMethodName, typedClassReflector);
+    }
+
+    @Override
+    public UntypedClassReflector untypedClassReflector(final ClassLookup classLookup) {
+        return new DefaultUntypedClassReflector(classLookup);
     }
 }

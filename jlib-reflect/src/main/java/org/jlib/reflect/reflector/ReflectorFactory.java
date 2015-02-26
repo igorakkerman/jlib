@@ -43,4 +43,6 @@ public interface ReflectorFactory {
 
     <Value> UntypedMethodReflector untypedStaticMethodReflector(String staticMethodName,
                                                                 TypedClassReflector<Value> typedClassReflector);
+
+    UntypedClassReflector untypedClassReflector(ClassLookup classLookup);
 }
