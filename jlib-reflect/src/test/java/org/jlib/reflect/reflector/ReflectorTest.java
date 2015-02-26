@@ -23,8 +23,9 @@ package org.jlib.reflect.reflector;
 
 import org.assertj.core.api.Assertions;
 import static org.jlib.reflect.reflector.Reflectors.useClass;
-import static org.jlib.reflect.validator.Validators.instanceOf;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
+import static org.jlib.reflect.validator.Validators.isInstanceOf;
+import static org.jlib.reflect.validator.Validators.isLessThan;
 import org.junit.Test;
 
 public class ReflectorTest {
@@ -40,8 +41,31 @@ public class ReflectorTest {
                              .withReturnType(Number.class)                   // MethodOverloadReflector
                              .withArgumentTypes(int.class)                   // Nethod1Reflector
                              .invoke(42)                                     // MethodReturnValueReflector
-                             .assertReturned(instanceOf(Integer.class))      // MethodReturnValueReflector
+                             .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isEqualTo(Integer.valueOf(42))) // MethodReturnValueReflector
+                             .get();                                         // ReturnValue
+
+        Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));
+    }
+
+    @Test
+    @SuppressWarnings("UnnecessaryBoxing")
+    public void nonstaticRun()
+    throws Exception {
+        final Number value = useClass("java.lang.Integer")                   // UntypedClassReflector
+                             .withType(Number.class)                         // TypedClassReflector
+                             .assertSubtypeOf(Integer.class)                 // TypedClassReflector
+                             .useConstructor()                               // MethodOverloadReflector
+                             .withArgumentTypes(int.class)                   // Nethod1Reflector
+                             .invoke(42)
+                             .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
+                             .assertReturned(isEqualTo(Integer.valueOf(42))) // MethodReturnValueReflector
+                             .useMethod("compareTo")                         // UntypedMethodReflector
+                             .withReturnType(int.class)                      // MethodOverloadReflector
+                             .withArgumentTypes(Integer.class)               // Nethod1Reflector
+                             .invoke(3)                                      // MethodReturnValueReflector
+                             .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
+                             .assertReturned(isLessThan(0))                  // MethodReturnValueReflector
                              .get();                                         // ReturnValue
 
         Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));

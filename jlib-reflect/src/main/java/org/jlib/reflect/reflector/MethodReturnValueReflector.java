@@ -36,6 +36,8 @@ public interface MethodReturnValueReflector<ReturnValue> {
         return assertReturned(isEqualTo(returnValue));
     }
 
+    UntypedMethodReflector useMethod(String methodName);
+
     ReturnValue get()
     throws ProgramTargetException;
 }
