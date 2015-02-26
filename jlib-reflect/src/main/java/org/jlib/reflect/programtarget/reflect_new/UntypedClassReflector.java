@@ -22,6 +22,7 @@
 package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedClassReflector;
 
 public interface UntypedClassReflector {
@@ -30,5 +31,5 @@ public interface UntypedClassReflector {
     throws ClassLookupException;
 
     <Value> TypedClassReflector<Value> withType(Class<Value> staticType)
-    throws ClassLookupException;
+    throws ClassLookupException, NoSubtypeException;
 }

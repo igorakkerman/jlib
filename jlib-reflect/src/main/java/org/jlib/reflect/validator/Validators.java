@@ -84,12 +84,5 @@ public final class Validators {
         };
     }
 
-    public static <ReturnValue> void assertValid(final MethodReturnValueValidator<? super ReturnValue> validator,
-                                                 final ReturnValue returnValue, final Class<?> clazz,
-                                                 final String methodName)
-    throws ProgramTargetException {
-        validator.assertValid(returnValue, clazz.getName(), methodName);
-    }
-
     private Validators() {}
 }

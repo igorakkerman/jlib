@@ -19,61 +19,62 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
-
-import java.util.List;
+package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.validator.Validators.hasSupertypes;
+import org.jlib.reflect.reflector.MethodOverloadReflector;
+import org.jlib.reflect.reflector.TypedClassReflector;
+import org.jlib.reflect.reflector.UntypedMethodReflector;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
 
-    public DefaultTypedClassReflector(final Class<Value> staticType, final Class<?> clazz) {
+    private final Class<?> actualClass;
 
+    public DefaultTypedClassReflector(final Class<Value> staticType, final Class<?> actualClass)
+    throws NoSubtypeException {
+        this.actualClass = actualClass;
+
+        assertSubtypeOf(staticType);
     }
 
     public DefaultTypedClassReflector(final Class<Value> actualClass) {
-        this(actualClass, () -> actualClass);
+        this.actualClass = actualClass;
+    }
+
+    private void assertValid(final Class<Value> actualClass, final Class<?> expectedParentType)
+    throws NoSubtypeException {
+        if (expectedParentType.isAssignableFrom(actualClass))
+            throw new NoSubtypeException(actualClass, expectedParentType);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Class<Value> get()
     throws ClassException {
-        final Class<?> actualClass = untypedClassSupplier.get();
-        hasSupertypes(expectedSuperTypes).assertHasExpectedSupertypes(actualClass);
         return (Class<Value>) actualClass;
     }
 
     @Override
-    public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedSuperType)
+    public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedParentType)
     throws NoSubtypeException {
-        expectedSuperTypes.add(expectedSuperType);
+        if (!expectedParentType.isAssignableFrom(actualClass))
+            throw new NoSubtypeException(actualClass, expectedParentType);
+
         return this;
+    }
+
+    @Override
+    public UntypedMethodReflector useStaticMethod(final String staticMethodName) {
+//        return factory().untypedStaticMethodReflector(staticMethodName, this);
+        // FIXME: implement
+        return null;
     }
 
     @Override
     public MethodOverloadReflector<Value> useConstructor() {
         // FIXME: implement
         return null;
-    }
-
-    @Override
-    public UntypedMethodReflector useStaticMethod(final String staticMethodName) {
-        return factory().untypedStaticMethodReflector(staticMethodName, this);
-    }
-
-    protected Class<Value> getStaticType() {
-        return staticType;
-    }
-
-    protected UntypedClassSupplier getUntypedClassSupplier() {
-        return untypedClassSupplier;
-    }
-
-    protected List<Class<?>> getExpectedSuperTypes() {
-        return expectedSuperTypes;
     }
 }

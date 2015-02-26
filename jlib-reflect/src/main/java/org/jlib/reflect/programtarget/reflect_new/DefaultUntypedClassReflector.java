@@ -23,6 +23,7 @@ package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtarget.factory.Factories.typedClassFactory;
 import org.jlib.reflect.reflector.TypedClassReflector;
 
@@ -48,7 +49,7 @@ implements UntypedClassReflector {
 
     @Override
     public <Value> TypedClassReflector<Value> withType(final Class<Value> staticType)
-    throws ClassLookupException {
+    throws ClassLookupException, NoSubtypeException {
         return typedClassFactory().typedClassReflector(staticType, get());
     }
 }

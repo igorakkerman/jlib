@@ -24,6 +24,7 @@ package org.jlib.reflect.reflector;
 import java.util.function.Supplier;
 
 import org.jlib.reflect.programtarget.factory.ReflectorFactory;
+import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClassReflector;
 import org.jlib.reflect.programtarget.reflect_new.UntypedClassReflector;
 import org.jlib.reflect.programtarget.reflection.ReflectionReflectorFactory;
 

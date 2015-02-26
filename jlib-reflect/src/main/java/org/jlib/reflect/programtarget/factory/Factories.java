@@ -21,8 +21,9 @@
 
 package org.jlib.reflect.programtarget.factory;
 
+import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClassReflector;
 import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClassReflector;
-import org.jlib.reflect.reflector.DefaultTypedClassReflector;
 
 public final class Factories {
 
@@ -30,7 +31,8 @@ public final class Factories {
         return DefaultUntypedClassReflector::new;
     }
 
-    public static TypedClassFactory typedClassFactory() {
+    public static TypedClassFactory typedClassFactory()
+    throws NoSubtypeException {
         return DefaultTypedClassReflector::new;
     }
 

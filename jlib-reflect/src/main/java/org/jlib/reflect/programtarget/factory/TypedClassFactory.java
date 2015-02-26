@@ -21,10 +21,12 @@
 
 package org.jlib.reflect.programtarget.factory;
 
+import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedClassReflector;
 
 public interface TypedClassFactory {
 
     <Value> TypedClassReflector<Value>
-    typedClassReflector(Class<Value> staticType, final Class<?> actualClass);
+    typedClassReflector(Class<Value> staticType, final Class<?> actualClass)
+    throws NoSubtypeException;
 }
