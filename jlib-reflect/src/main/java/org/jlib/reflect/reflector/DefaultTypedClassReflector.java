@@ -24,43 +24,35 @@ package org.jlib.reflect.reflector;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.reflector.Reflectors.factory;
+import org.jlib.reflect.validator.Validators;
+import static org.jlib.reflect.validator.Validators.hasSupertypes;
 
 public class DefaultTypedClassReflector<Value>
 implements TypedClassReflector<Value> {
 
-    private final Class<Value> staticType;
     private final UntypedClassSupplier untypedClassSupplier;
     private final List<Class<?>> expectedSuperTypes = new ArrayList<>();
 
     public DefaultTypedClassReflector(final Class<Value> staticType, final UntypedClassSupplier untypedClassSupplier) {
-        this.staticType = staticType;
         this.untypedClassSupplier = untypedClassSupplier;
         expectedSuperTypes.add(staticType);
     }
 
-    public DefaultTypedClassReflector(final Class<Value> staticType) {
-        this(staticType, () -> staticType);
+    // actualClass may be concrete or abstract/an interface to simply lookup a method
+    public DefaultTypedClassReflector(final Class<Value> actualClass) {
+        this(actualClass, () -> actualClass);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Class<Value> type()
+    public Class<Value> get()
     throws ClassException {
-        final Class<?> actualType = untypedClassSupplier.get();
-
-        final List<Class<?>> invalidSuperTypes = /*
-         */ expectedSuperTypes.stream()
-                              .filter(superType -> ! superType.isAssignableFrom(actualType))
-                              .collect(toList());
-
-        if (! invalidSuperTypes.isEmpty())
-            throw new NoSubtypeException(actualType, invalidSuperTypes);
-
-        return (Class<Value>) actualType;
+        final Class<?> actualClass = untypedClassSupplier.get();
+        hasSupertypes(expectedSuperTypes).assertHasExpectedSupertypes(actualClass);
+        return (Class<Value>) actualClass;
     }
 
     @Override

@@ -34,6 +34,7 @@ import org.jlib.reflect.reflector.ReflectorFactory;
 import org.jlib.reflect.reflector.StaticMethodOverloadReflector;
 import org.jlib.reflect.reflector.TypedClassReflector;
 import org.jlib.reflect.reflector.UntypedClassReflector;
+import org.jlib.reflect.reflector.UntypedClassSupplier;
 import org.jlib.reflect.reflector.UntypedMethodReflector;
 import org.jlib.reflect.reflector.UntypedStaticMethodReflector;
 import org.jlib.reflect.reflector.ValidatingMethodReturnValueReflector;
@@ -65,8 +66,8 @@ implements ReflectorFactory {
     @Override
     public <Value>
     TypedClassReflector<Value> typedClassReflector(final Class<Value> staticType,
-                                                   final UntypedClassReflector untypedClassReflector) {
-        return new DefaultTypedClassReflector<>(staticType, untypedClassReflector);
+                                                   final UntypedClassSupplier untypedClassSupplier) {
+        return new DefaultTypedClassReflector<>(staticType, untypedClassSupplier);
     }
 
     @Override

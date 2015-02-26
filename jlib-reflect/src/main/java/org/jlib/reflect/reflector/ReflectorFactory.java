@@ -40,7 +40,7 @@ public interface ReflectorFactory {
     staticMethodOverloadReflector(Class<ReturnValue> returnValueClass);
 
     <Value> TypedClassReflector<Value>
-    typedClassReflector(Class<Value> staticType, final UntypedClassReflector untypedClassReflector);
+    typedClassReflector(Class<Value> staticType, final UntypedClassSupplier untypedClassSupplier);
 
     <Value> UntypedMethodReflector
     untypedStaticMethodReflector(String staticMethodName, TypedClassReflector<Value> typedClassReflector);

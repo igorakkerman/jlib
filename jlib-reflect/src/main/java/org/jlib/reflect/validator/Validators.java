@@ -21,8 +21,13 @@
 
 package org.jlib.reflect.validator;
 
+import java.util.Collection;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 import static org.jlib.core.message.MessageUtility.message;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public final class Validators {
 
@@ -61,6 +66,20 @@ public final class Validators {
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("lowerBound", lowerBound),
                                                             className, methodName);
+        };
+    }
+
+    public static <ExpectedStaticType>
+    TypeValidator hasSupertypes(final Collection<Class<?>> expectedSuperTypes)
+    throws NoSubtypeException {
+        return actualClass -> {
+            final List<Class<?>> invalidSuperTypes =
+            expectedSuperTypes.stream()
+                              .filter(superType -> ! superType.isAssignableFrom(actualClass))
+                              .collect(toList());
+
+            if (! invalidSuperTypes.isEmpty())
+                throw new NoSubtypeException(actualClass, invalidSuperTypes);
         };
     }
 

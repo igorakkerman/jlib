@@ -37,13 +37,12 @@ public final class Reflectors {
         return useClass(classNameSupplier.get());
     }
 
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> clazz) {
-        return null; // FIXME: implement
-//        return new ConcreteTypedClassReflector<>(clazz);
+    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> concreteClass) {
+        return new DefaultTypedClassReflector<Value>(concreteClass);
     }
 
     static ReflectorFactory factory() {
-        // TODO: change this to use DI or some property lookup mechanism
+        // TODO: change this to use DI
         return new ReflectionReflectorFactory();
     }
 }

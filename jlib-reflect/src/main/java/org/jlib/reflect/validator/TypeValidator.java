@@ -19,34 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.validator;
 
-import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.ProgramTargetException;
 
-public interface TypedClassReflector<Value> {
+@FunctionalInterface
+public interface TypeValidator {
 
-    Class<Value> get()
-    throws ClassException;
-
-    // downcast necessary for parametrized types although not fully typesafe
     @SuppressWarnings("unchecked")
-    default <Val extends Value>
-    Class<Val> parametrizedType()
-    throws ClassException {
-        return (Class<Val>) get();
-    }
-
-    TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
+    void assertHasExpectedSupertypes(Class<?> actualClass)
     throws NoSubtypeException;
-
-    default Value instance()
-    throws ProgramTargetException {
-        return useConstructor().withoutArguments().invoke().get();
-    }
-
-    MethodOverloadReflector<Value> useConstructor();
-
-    UntypedMethodReflector useStaticMethod(String staticMethodName);
 }
