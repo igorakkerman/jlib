@@ -21,32 +21,37 @@
 
 package org.jlib.reflect.reflector;
 
+import java.lang.reflect.Method;
+
+import java.util.function.Supplier;
+
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
-import org.jlib.reflect.programtarget.MethodReturnValueHolder;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
 import static org.jlib.reflect.validator.Validators.assertValid;
 
-public class ValidatingMethodReturnValueReflector<ReturnValue>
+public class ValidatingMethodReturnValue<ReturnValue>
 implements MethodReturnValueReflector<ReturnValue> {
 
     private final ReturnValue returnValue;
+    private final Method method;
 
-    public ValidatingMethodReturnValueReflector(final MethodReturnValueHolder<ReturnValue> returnValueSupplier) {
-        this.returnValueSupplier = returnValueSupplier;
+    public ValidatingMethodReturnValue(final ReturnValue returnValue, final Method method) {
+        this.returnValue = returnValue;
+        this.method = method;
     }
 
     @Override
     public final ReturnValue get()
     throws ProgramTargetException {
-        return returnValueSupplier.get();
+        return returnValue;
     }
 
     @Override
     public MethodReturnValueReflector<ReturnValue>
     assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
     throws InvalidMethodReturnValueException {
-        assertValid(validator, returnValueSupplier.get(), returnValueSupplier.getClass(), returnValueSupplier.getMethodName());
+        assertValid(validator, returnValue, method);
 
         return this;
     }

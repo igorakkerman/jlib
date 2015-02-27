@@ -21,11 +21,12 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.MethodReturnValueHolder;
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.reflector.MethodReturnValueReflector;
 
 public interface MethodReturnValueFactory {
 
     <ReturnValue> MethodReturnValueReflector<ReturnValue>
-    methodReturnValueReflector(final MethodReturnValueHolder<ReturnValue> methodReturnValueHolder);
+    methodReturnValue(final ReturnValue returnValue, final Method method);
 }

@@ -22,6 +22,7 @@
 package org.jlib.reflect.programtarget.factory;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.reflect_new.DefaultMethod0;
 import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
 import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClass;
 import org.jlib.reflect.programtarget.reflect_new.Method0;
@@ -31,7 +32,7 @@ import org.jlib.reflect.programtarget.reflect_new.Method3;
 import org.jlib.reflect.programtarget.reflect_new.NonstaticMethod;
 import org.jlib.reflect.programtarget.reflect_new.StaticMethod;
 import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
-import org.jlib.reflect.programtarget.reflect_new.DefaultMethod0;
+import org.jlib.reflect.reflector.ValidatingMethodReturnValue;
 
 public final class Factories {
 
@@ -54,6 +55,10 @@ public final class Factories {
 
     public static StaticMethodOverloadFactory staticMethodOverloadFactory() {
         return StaticMethodOverload::new;
+    }
+
+    public static MethodReturnValueFactory methodReturnValueFactory() {
+        return ValidatingMethodReturnValue::new;
     }
 
     public static MethodFactory methodFactory() {

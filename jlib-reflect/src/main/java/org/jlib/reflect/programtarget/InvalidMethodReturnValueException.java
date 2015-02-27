@@ -21,20 +21,20 @@
 
 package org.jlib.reflect.programtarget;
 
+import java.lang.reflect.Method;
+
 import org.jlib.core.message.Message;
 
 public class InvalidMethodReturnValueException
-extends MethodLookupException {
+extends MethodInvocationException {
 
     private static final long serialVersionUID = - 3511658773401667177L;
 
-    public InvalidMethodReturnValueException(final Message message, final String className,
-                                             final String methodName, final Class<?>... parameterTypes) {
-        super(message, className, methodName, parameterTypes);
+    public InvalidMethodReturnValueException(final Message message, final Method method) {
+        super(message, method);
     }
 
-    public InvalidMethodReturnValueException(final Message message, final String className, final String methodName,
-                                             final Class<?>[] parameterTypes, final Exception cause) {
-        super(message, className, methodName, parameterTypes, cause);
+    public InvalidMethodReturnValueException(final Message message, final Method method, final Exception cause) {
+        super(message, method, cause);
     }
 }

@@ -34,7 +34,7 @@ public final class Validators {
 
     public static <ReturnValue>
     MethodReturnValueValidator<ReturnValue> isEqualTo(final ReturnValue expectedReturnValue) {
-        return (returnValue, className, methodName) -> {
+        return (returnValue, method) -> {
             if (! expectedReturnValue.equals(returnValue))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("expectedReturnValue", expectedReturnValue),
