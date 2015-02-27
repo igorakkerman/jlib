@@ -24,24 +24,25 @@ package org.jlib.reflect.reflector;
 import java.util.function.Supplier;
 
 import org.jlib.reflect.programtarget.factory.ReflectorFactory;
-import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClassReflector;
-import org.jlib.reflect.programtarget.reflect_new.UntypedClassReflector;
+import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
+import org.jlib.reflect.programtarget.reflect_new.TypedClass;
+import org.jlib.reflect.programtarget.reflect_new.UntypedClass;
 import org.jlib.reflect.programtarget.reflection.ReflectionReflectorFactory;
 
 public final class Reflectors {
 
     private Reflectors() {}
 
-    public static UntypedClassReflector useClass(final String className) {
+    public static UntypedClass useClass(final String className) {
         return untypedClasFactory().untypedClassReflector(factory().classLookup(className));
     }
 
-    public static UntypedClassReflector useClass(final Supplier<String> classNameSupplier) {
+    public static UntypedClass useClass(final Supplier<String> classNameSupplier) {
         return useClass(classNameSupplier.get());
     }
 
-    public static <Value> TypedClassReflector<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClassReflector<Value>(concreteClass);
+    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
+        return new DefaultTypedClass<Value>(concreteClass);
     }
 }
 

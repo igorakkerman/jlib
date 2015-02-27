@@ -22,20 +22,20 @@
 package org.jlib.reflect.programtarget.factory;
 
 import org.jlib.reflect.programtarget.reflection.ReflectionClassLookup;
-import org.jlib.reflect.programtarget.reflection.ReflectionMethodInvoker;
+import org.jlib.reflect.programtarget.reflection.ReflectionStaticMethodInvoker;
 import org.jlib.reflect.programtarget.reflection.ReflectionMethodLookup;
 
 public final class ReflectionFactories {
 
-    public static ClassLookupFactory classLookup() {
+    public static ClassLookupFactory classLookupFactory() {
         return ReflectionClassLookup::new;
     }
 
-    public static MethodInvokerFactory methodInvoker() {
-        return ReflectionMethodInvoker::new;
+    public static MethodInvokerFactory methodInvokerFactory() {
+        return ReflectionStaticMethodInvoker::new;
     }
 
-    public static MethodLookupFactory methodLookup() {
+    public static MethodLookupFactory methodLookupFactory() {
         return ReflectionMethodLookup::new;
     }
 

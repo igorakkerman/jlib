@@ -19,13 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
+import org.jlib.core.message.Message;
 
-public interface StaticMethodOverloadFactory {
+public class InstanceMethodInvocationException
+extends MethodInvocationException {
 
-    <EnclosingClassObject, ReturnValue> StaticMethodOverload<EnclosingClassObject, ReturnValue>
-    staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                         Class<ReturnValue> returnValueClass);
+    private static final long serialVersionUID = - 7447459566502520725L;
+    private final Object enclosingObject;
+
+    public InstanceMethodInvocationException(final Message message, final Object enclosingObject,
+                                             final String methodName) {
+        super(message.with("enclosingObject", enclosingObject), enclosingObject.getClass().getName(), methodName);
+
+        this.enclosingObject = enclosingObject;
+    }
+
+    public Object getEnclosingObject() {
+        return enclosingObject;
+    }
 }

@@ -19,23 +19,20 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.MethodInvoker;
+import static org.jlib.reflect.programtarget.factory.ReflectionFactories.methodInvokerFactory;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public abstract class AbstractMethodReflector<ReturnType>
-implements MethodReflector<ReturnType> {
+public abstract class AbstractMethod<ReturnType>
+implements MethodX<ReturnType> {
 
-    private final MethodInvoker methodInvoker;
+    private final MethodInvoker methodInvoker = methodInvokerFactory().methodInvoker();
     private final MethodReturnTypeValidator methodReturnTypeValidator;
-    private final Object methodEnclosingObject;
 
-    protected AbstractMethodReflector(final MethodInvoker methodInvoker, final MethodReturnTypeValidator methodReturnTypeValidator,
-                                      final Object methodEnclosingObject) {
-        this.methodInvoker = methodInvoker;
+    protected AbstractMethod(final MethodReturnTypeValidator methodReturnTypeValidator) {
         this.methodReturnTypeValidator = methodReturnTypeValidator;
-        this.methodEnclosingObject = methodEnclosingObject;
     }
 
     protected MethodInvoker getMethodInvoker() {
@@ -44,9 +41,5 @@ implements MethodReflector<ReturnType> {
 
     protected MethodReturnTypeValidator getMethodReturnTypeValidator() {
         return methodReturnTypeValidator;
-    }
-
-    protected Object getMethodEnclosingObject() {
-        return methodEnclosingObject;
     }
 }

@@ -24,7 +24,7 @@ package org.jlib.reflect.programtarget;
 import static org.jlib.core.message.MessageUtility.message;
 
 public class InvalidMethodSignatureException
-extends MethodException {
+extends MethodLookupException {
 
     private static final long serialVersionUID = - 4942289385749320071L;
 

@@ -29,7 +29,7 @@ import org.jlib.core.message.Message;
  *
  * @author Igor Akkerman
  */
-public abstract class MethodException
+public abstract class MethodLookupException
 extends ProgramTargetException {
 
     private static final long serialVersionUID = - 3809968471293132878L;
@@ -37,8 +37,8 @@ extends ProgramTargetException {
     private final String className;
     private final String methodName;
 
-    public MethodException(final Message message, final String className, final String methodName,
-                           final Class<?>... parameterTypes) {
+    public MethodLookupException(final Message message, final String className, final String methodName,
+                                 final Class<?>... parameterTypes) {
         super(message.with("class", className)
                      .with("method", methodName)
                      .with("parameterTypes", parameterTypes));
@@ -47,8 +47,8 @@ extends ProgramTargetException {
         this.methodName = methodName;
     }
 
-    public MethodException(final Message message, final String className, final String methodName,
-                           final Class<?>[] parameterTypes, final Exception cause) {
+    public MethodLookupException(final Message message, final String className, final String methodName,
+                                 final Class<?>[] parameterTypes, final Exception cause) {
         this(message, className, methodName, parameterTypes);
 
         initCause(cause);

@@ -24,7 +24,7 @@ package org.jlib.reflect.programtarget;
 import org.jlib.core.message.Message;
 
 public class InvalidMethodReturnValueException
-extends MethodException {
+extends MethodLookupException {
 
     private static final long serialVersionUID = - 3511658773401667177L;
 

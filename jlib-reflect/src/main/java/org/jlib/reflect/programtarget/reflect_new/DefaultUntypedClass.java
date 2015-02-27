@@ -25,16 +25,15 @@ import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtarget.factory.Factories.typedClassFactory;
-import org.jlib.reflect.reflector.TypedClassReflector;
 
-public class DefaultUntypedClassReflector
-implements UntypedClassReflector {
+public class DefaultUntypedClass
+implements UntypedClass {
 
     private final ClassLookup classLookup;
 
     private Class<?> clazz;
 
-    public DefaultUntypedClassReflector(final ClassLookup classLookup) {
+    public DefaultUntypedClass(final ClassLookup classLookup) {
         this.classLookup = classLookup;
     }
 
@@ -48,7 +47,7 @@ implements UntypedClassReflector {
     }
 
     @Override
-    public <Value> TypedClassReflector<Value> withType(final Class<Value> staticType)
+    public <Obj> TypedClass<Obj> withType(final Class<Obj> staticType)
     throws ClassLookupException, NoSubtypeException {
         return typedClassFactory().typedClassReflector(staticType, get());
     }

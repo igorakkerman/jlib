@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.reflector.TypedClassReflector;
-import org.jlib.reflect.reflector.UntypedMethodReflector;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface UntypedStaticMethodFactory {
+public interface UntypedMethod {
 
-    <Value> UntypedMethodReflector
-    untypedStaticMethodReflector(String staticMethodName, TypedClassReflector<Value> typedClassReflector);
+    <ReturnValue>
+    Overload<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
+    throws NoSubtypeException;
 }

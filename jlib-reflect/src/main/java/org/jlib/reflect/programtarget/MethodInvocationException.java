@@ -24,7 +24,7 @@ package org.jlib.reflect.programtarget;
 import org.jlib.core.message.Message;
 
 public class MethodInvocationException
-extends MethodException {
+extends MethodLookupException {
 
     private static final long serialVersionUID = 4654719015582472812L;
 

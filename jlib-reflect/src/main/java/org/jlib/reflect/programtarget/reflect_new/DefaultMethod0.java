@@ -19,39 +19,35 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.MethodException;
-import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.MethodReturnValueReflector;
 import static org.jlib.reflect.reflector.Reflectors.factory;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public class DefaultMethod0Reflector<ReturnValue>
-implements Method0Reflector<ReturnValue> {
+public class DefaultMethod0<ReturnValue>
+extends AbstractMethod<ReturnValue>
+implements Method0<ReturnValue> {
 
-    private final MethodInvoker methodInvoker;
     private final MethodReturnTypeValidator methodReturnTypeValidator;
-    private final Object methodEnclosingObject;
 
-    public DefaultMethod0Reflector(final MethodInvoker methodInvoker, final MethodReturnTypeValidator methodReturnTypeValidator,
-                                   final Object methodEnclosingObject) {
-        this.methodInvoker = methodInvoker;
-        this.methodReturnTypeValidator = methodReturnTypeValidator;
-        this.methodEnclosingObject = methodEnclosingObject;
+    public DefaultMethod0(final MethodReturnTypeValidator methodReturnTypeValidator) {
+        super(methodReturnTypeValidator);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public MethodReturnValueReflector<ReturnValue> invoke()
-    throws MethodException {
-        return factory().methodReturnValueReflector(this);
+    public MethodReturnValueReflector<ReturnValue> invoke(final Method method)
+    throws MethodLookupException {
+        return getMethodInvoker().invoke();
     }
 
     @Override
-    public Method0Reflector<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
+    public Method0<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException {
         methodReturnTypeValidator.assertReturns(staticReturnSuperType);
 
@@ -60,7 +56,7 @@ implements Method0Reflector<ReturnValue> {
 
     @Override
     public Method get()
-    throws MethodException {
+    throws MethodLookupException {
         // FIXME: implement
         return null;
     }

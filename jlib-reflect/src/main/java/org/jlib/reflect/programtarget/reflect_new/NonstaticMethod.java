@@ -19,18 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import java.lang.reflect.Method;
-
-import org.jlib.reflect.programtarget.MethodException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface MethodReflector<ReturnValue> {
+public class NonstaticMethod<EnclosingObject>
+implements UntypedMethod {
 
-    MethodReflector<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
-    throws NoSubtypeException;
+    private final EnclosingObject enclosingObject;
+    private final String methodName;
 
-    Method get()
-    throws MethodException;
+    public NonstaticMethod(final EnclosingObject enclosingObject, final String methodName) {
+        this.enclosingObject = enclosingObject;
+        this.methodName = methodName;
+    }
+
+    @Override
+    public <ReturnValue> Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    throws NoSubtypeException {
+        // FIXME: implement
+        return null;
+    }
 }

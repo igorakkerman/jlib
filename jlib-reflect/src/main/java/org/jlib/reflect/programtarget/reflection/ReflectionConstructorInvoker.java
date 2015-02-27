@@ -21,37 +21,35 @@
 
 package org.jlib.reflect.programtarget.reflection;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
 
 import static org.jlib.core.message.MessageUtility.message;
-import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.ConstructorInvocationException;
 import org.jlib.reflect.programtarget.MethodInvocationException;
+import org.jlib.reflect.programtarget.MethodInvoker;
 
-public class ReflectionMethodInvoker
+public class ReflectionConstructorInvoker<Obj>
 implements MethodInvoker {
 
-    private final Method method;
+    private final Constructor<Obj> constructor;
 
-    public ReflectionMethodInvoker(final Method method) {
-        this.method = method;
+    public ReflectionConstructorInvoker(final Constructor<Obj> constructor) {
+        this.constructor = constructor;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public Object invoke(final Object object, final Object... arguments)
-    throws MethodException {
+    public Object invoke(final Object... arguments)
+    throws MethodInvocationException {
         try {
-            return method.invoke(object, arguments);
+            return constructor.newInstance(arguments);
         }
         catch (final ReflectiveOperationException exception) {
-            throw new MethodInvocationException(message(), method.getClass().getName(), method.toString());
+            throw new ConstructorInvocationException(message(), constructor,
+                                                constructor.toString());
         }
     }
 
-    @Override
-    public Object invokeStatic(final Object... arguments)
-    throws MethodException {
-        return invoke(/* static */ null, arguments);
+    public Constructor<Obj> getConstructor() {
+        return constructor;
     }
 }

@@ -38,8 +38,8 @@ public class ReflectorTest {
                              .withType(Number.class)                         // TypedClassReflector
                              .assertSubtypeOf(Integer.class)                 // TypedClassReflector
                              .useStaticMethod("valueOf")                     // UntypedMethodReflector
-                             .withReturnType(Number.class)                   // MethodOverloadReflector
                              .withArgumentTypes(int.class)                   // Nethod1Reflector
+                             .withReturnType(Number.class)                   // MethodOverloadReflector
                              .invoke(42)                                     // MethodReturnValueReflector
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isEqualTo(Integer.valueOf(42))) // MethodReturnValueReflector
@@ -56,13 +56,13 @@ public class ReflectorTest {
                              .withType(Number.class)                         // TypedClassReflector
                              .assertSubtypeOf(Integer.class)                 // TypedClassReflector
                              .useConstructor()                               // MethodOverloadReflector
-                             .withArgumentTypes(int.class)                   // Nethod1Reflector
+                             .withParameterTypes(int.class)                   // Nethod1Reflector
                              .invoke(42)
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isEqualTo(Integer.valueOf(42))) // MethodReturnValueReflector
                              .useMethod("compareTo")                         // UntypedMethodReflector
                              .withReturnType(int.class)                      // MethodOverloadReflector
-                             .withArgumentTypes(Integer.class)               // Nethod1Reflector
+                             .withParameterTypes(Integer.class)               // Nethod1Reflector
                              .invoke(3)                                      // MethodReturnValueReflector
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isLessThan(0))                  // MethodReturnValueReflector

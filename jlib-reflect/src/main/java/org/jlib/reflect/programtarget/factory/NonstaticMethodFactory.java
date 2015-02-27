@@ -19,13 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.reflect_new.UntypedMethod;
 
-public interface UntypedMethodReflector {
-
-    <ReturnValue>
-    MethodOverloadReflector<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
-    throws NoSubtypeException;
+public interface NonstaticMethodFactory {
+    <EnclosingObject> UntypedMethod method(EnclosingObject enclosingObject, String methodName);
 }

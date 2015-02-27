@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 
-public interface TypedClassReflector<Value> {
+public interface TypedClass<Value> {
 
     Class<Value> get()
     throws ClassException;
@@ -33,20 +33,21 @@ public interface TypedClassReflector<Value> {
     // downcast necessary for parametrized types although not fully typesafe
     @SuppressWarnings("unchecked")
     default <Val extends Value>
-    Class<Val> parametrizedType()
+    Class<Val> downcast()
     throws ClassException {
         return (Class<Val>) get();
     }
 
-    TypedClassReflector<Value> assertSubtypeOf(Class<?> expectedSuperType)
+    TypedClass<Value> assertSubtypeOf(Class<?> expectedSuperType)
     throws NoSubtypeException;
 
     default Value instance()
     throws ProgramTargetException {
-        return useConstructor().withoutArguments().invoke().get();
+        return useConstructor().withoutParameters().invoke().get();
     }
 
-    MethodOverloadReflector<Value> useConstructor();
+    Overload<Value> useConstructor();
 
-    UntypedMethodReflector useStaticMethod(String staticMethodName);
+    UntypedMethod useStaticMethod(String staticMethodName)
+    throws ClassException;
 }

@@ -19,13 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
+import org.jlib.reflect.programtarget.MethodLookupException;
+import org.jlib.reflect.programtarget.reflect_new.MethodX;
 
-public interface StaticMethodOverloadFactory {
+public interface UncheckedMethodX<ReturnType>
+extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
 
-    <EnclosingClassObject, ReturnValue> StaticMethodOverload<EnclosingClassObject, ReturnValue>
-    staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                         Class<ReturnValue> returnValueClass);
+    MethodReturnValueReflector<ReturnType> invoke(Object... arguments)
+    throws MethodLookupException;
 }

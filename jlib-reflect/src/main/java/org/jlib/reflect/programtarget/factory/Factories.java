@@ -22,19 +22,64 @@
 package org.jlib.reflect.programtarget.factory;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClassReflector;
-import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClassReflector;
+import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
+import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClass;
+import org.jlib.reflect.programtarget.reflect_new.Method0;
+import org.jlib.reflect.programtarget.reflect_new.Method1;
+import org.jlib.reflect.programtarget.reflect_new.Method2;
+import org.jlib.reflect.programtarget.reflect_new.Method3;
+import org.jlib.reflect.programtarget.reflect_new.NonstaticMethod;
+import org.jlib.reflect.programtarget.reflect_new.StaticMethod;
+import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
+import org.jlib.reflect.programtarget.reflect_new.DefaultMethod0;
 
 public final class Factories {
 
     public static UntypedClassFactory untypedClassFactory() {
-        return DefaultUntypedClassReflector::new;
+        return DefaultUntypedClass::new;
     }
 
     public static TypedClassFactory typedClassFactory()
     throws NoSubtypeException {
-        return DefaultTypedClassReflector::new;
+        return DefaultTypedClass::new;
     }
+
+    public static StaticMethodFactory staticMethodFactory() {
+        return StaticMethod::new;
+    }
+
+    public static NonstaticMethodFactory nonstaticMethodFactory() {
+        return NonstaticMethod::new;
+    }
+
+    public static StaticMethodOverloadFactory staticMethodOverloadFactory() {
+        return StaticMethodOverload::new;
+    }
+
+    public static MethodFactory methodFactory() {
+        return new MethodFactory() {
+            @Override
+            public <ReturnValue> Method0<ReturnValue> method0() {
+                return new DefaultMethod0<>();
+            }
+
+            @Override
+            public <ReturnValue, Parameter1> Method1<ReturnValue, Parameter1> method1() {
+                return null;
+            }
+
+            @Override
+            public <ReturnValue, Parameter1, Parameter2> Method2<ReturnValue, Parameter1, Parameter2> method2() {
+                return null;
+            }
+
+            @Override
+            public <ReturnValue, Parameter1, Parameter2, Parameter3> Method3<ReturnValue, Parameter1, Parameter2, Parameter3> method3() {
+                return null;
+            }
+        }
+    }
+
 
     private Factories() {}
 }

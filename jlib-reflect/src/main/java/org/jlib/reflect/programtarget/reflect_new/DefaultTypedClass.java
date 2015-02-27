@@ -23,27 +23,25 @@ package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.MethodOverloadReflector;
-import org.jlib.reflect.reflector.TypedClassReflector;
-import org.jlib.reflect.reflector.UntypedMethodReflector;
+import static org.jlib.reflect.programtarget.factory.Factories.staticMethodFactory;
 
-public class DefaultTypedClassReflector<Value>
-implements TypedClassReflector<Value> {
+public class DefaultTypedClass<Obj>
+implements TypedClass<Obj> {
 
     private final Class<?> actualClass;
 
-    public DefaultTypedClassReflector(final Class<Value> staticType, final Class<?> actualClass)
+    public DefaultTypedClass(final Class<Obj> staticType, final Class<?> actualClass)
     throws NoSubtypeException {
         this.actualClass = actualClass;
 
         assertSubtypeOf(staticType);
     }
 
-    public DefaultTypedClassReflector(final Class<Value> actualClass) {
+    public DefaultTypedClass(final Class<Obj> actualClass) {
         this.actualClass = actualClass;
     }
 
-    private void assertValid(final Class<Value> actualClass, final Class<?> expectedParentType)
+    private void assertValid(final Class<Obj> actualClass, final Class<?> expectedParentType)
     throws NoSubtypeException {
         if (expectedParentType.isAssignableFrom(actualClass))
             throw new NoSubtypeException(actualClass, expectedParentType);
@@ -51,13 +49,13 @@ implements TypedClassReflector<Value> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Class<Value> get()
+    public Class<Obj> get()
     throws ClassException {
-        return (Class<Value>) actualClass;
+        return (Class<Obj>) actualClass;
     }
 
     @Override
-    public TypedClassReflector<Value> assertSubtypeOf(final Class<?> expectedParentType)
+    public TypedClass<Obj> assertSubtypeOf(final Class<?> expectedParentType)
     throws NoSubtypeException {
         if (!expectedParentType.isAssignableFrom(actualClass))
             throw new NoSubtypeException(actualClass, expectedParentType);
@@ -66,14 +64,13 @@ implements TypedClassReflector<Value> {
     }
 
     @Override
-    public UntypedMethodReflector useStaticMethod(final String staticMethodName) {
-//        return factory().untypedStaticMethodReflector(staticMethodName, this);
-        // FIXME: implement
-        return null;
+    public StaticMethod<Obj> useStaticMethod(final String staticMethodName)
+    throws ClassException {
+        return staticMethodFactory().staticMethod(get(), staticMethodName);
     }
 
     @Override
-    public MethodOverloadReflector<Value> useConstructor() {
+    public Overload<Obj> useConstructor() {
         // FIXME: implement
         return null;
     }

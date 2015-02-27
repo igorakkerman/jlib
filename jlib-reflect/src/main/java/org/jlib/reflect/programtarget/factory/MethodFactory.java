@@ -19,13 +19,24 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.reflect_new.Method0;
+import org.jlib.reflect.programtarget.reflect_new.Method1;
+import org.jlib.reflect.programtarget.reflect_new.Method2;
+import org.jlib.reflect.programtarget.reflect_new.Method3;
 
-public interface Method2Reflector<ReturnType, Argument1, Argument2>
-extends MethodReflector<ReturnType, Method2Reflector<ReturnType, Argument1, Argument2>> {
+public interface MethodFactory {
 
-    MethodReturnValueReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
-    throws MethodException;
+    <ReturnValue>
+    Method0<ReturnValue> method0();
+
+    <ReturnValue, Parameter1>
+    Method1<ReturnValue, Parameter1> method1();
+
+    <ReturnValue, Parameter1, Parameter2>
+    Method2<ReturnValue, Parameter1, Parameter2> method2();
+
+    <ReturnValue, Parameter1, Parameter2, Parameter3>
+    Method3<ReturnValue, Parameter1, Parameter2, Parameter3> method3();
 }

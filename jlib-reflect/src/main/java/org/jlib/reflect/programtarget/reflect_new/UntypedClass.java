@@ -19,13 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface UncheckedMethodReflector<ReturnType>
-extends MethodReflector<ReturnType, UncheckedMethodReflector<ReturnType>> {
+public interface UntypedClass {
 
-    MethodReturnValueReflector<ReturnType> invoke(Object... arguments)
-    throws MethodException;
+    Class<?> get()
+    throws ClassLookupException;
+
+    <Obj> TypedClass<Obj> withType(Class<Obj> staticType)
+    throws ClassLookupException, NoSubtypeException;
 }

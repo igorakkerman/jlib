@@ -19,13 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.MethodException;
+import org.jlib.reflect.programtarget.MethodLookupException;
+import org.jlib.reflect.reflector.MethodReturnValueReflector;
 
-public interface Method0Reflector<ReturnType>
-extends MethodReflector<ReturnType> {
+public interface Method2<ReturnType, Argument1, Argument2>
+extends MethodX<ReturnType> {
 
-    MethodReturnValueReflector<ReturnType> invoke()
-    throws MethodException;
+    MethodReturnValueReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    throws MethodLookupException;
 }

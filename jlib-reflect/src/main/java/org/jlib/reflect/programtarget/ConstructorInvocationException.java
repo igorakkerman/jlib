@@ -19,17 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.ClassLookupException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.TypedClassReflector;
+import java.lang.reflect.Constructor;
 
-public interface UntypedClassReflector {
+import org.jlib.core.message.Message;
 
-    Class<?> get()
-    throws ClassLookupException;
+public class ConstructorInvocationException
+extends MethodInvocationException {
 
-    <Value> TypedClassReflector<Value> withType(Class<Value> staticType)
-    throws ClassLookupException, NoSubtypeException;
+    public ConstructorInvocationException(final Message message, final Constructor<?> constructor) {
+        super(message, constructor.getDeclaringClass().getName(), constructor.);}
 }

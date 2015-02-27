@@ -23,6 +23,7 @@ package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.programtarget.reflect_new.UntypedMethod;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
 
@@ -36,7 +37,7 @@ public interface MethodReturnValueReflector<ReturnValue> {
         return assertReturned(isEqualTo(returnValue));
     }
 
-    UntypedMethodReflector useMethod(String methodName);
+    UntypedMethod useMethod(String methodName);
 
     ReturnValue get()
     throws ProgramTargetException;

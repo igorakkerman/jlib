@@ -23,9 +23,6 @@ package org.jlib.reflect.programtarget;
 
 public interface MethodInvoker {
 
-    Object invoke(Object object, Object... arguments)
-    throws MethodException;
-
-    Object invokeStatic(Object... arguments)
-    throws MethodException;
+    Object invoke(Object... arguments)
+    throws MethodLookupException;
 }
