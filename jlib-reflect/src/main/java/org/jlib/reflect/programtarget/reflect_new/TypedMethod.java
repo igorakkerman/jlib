@@ -21,12 +21,16 @@
 
 package org.jlib.reflect.programtarget.reflect_new;
 
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturnValueReflector;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface Method1<ReturnType, Argument1>
-extends MethodX<ReturnType> {
+public interface TypedMethod<ReturnValue> {
 
-    MethodReturnValueReflector<ReturnType> invoke(Argument1 argument1)
+    TypedMethod<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
+    throws NoSubtypeException;
+
+    Method get()
     throws MethodLookupException;
 }

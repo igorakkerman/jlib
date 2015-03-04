@@ -19,14 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflect_new;
+
+import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.programtarget.reflect_new.MethodX;
 
-public interface UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
+public interface TypedMethod0<ReturnType>
+extends TypedMethod<ReturnType> {
 
-    MethodReturnValueReflector<ReturnType> invoke(Object... arguments)
+    MethodReturn<ReturnType> invoke(final Method method)
     throws MethodLookupException;
 }

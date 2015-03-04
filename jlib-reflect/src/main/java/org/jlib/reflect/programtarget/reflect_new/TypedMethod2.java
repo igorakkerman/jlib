@@ -22,11 +22,10 @@
 package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturnValueReflector;
 
-public interface Method2<ReturnType, Argument1, Argument2>
-extends MethodX<ReturnType> {
+public interface TypedMethod2<ReturnType, Argument1, Argument2>
+extends TypedMethod<ReturnType> {
 
-    MethodReturnValueReflector<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
+    MethodReturn<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
     throws MethodLookupException;
 }

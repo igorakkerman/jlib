@@ -23,10 +23,10 @@ package org.jlib.reflect.programtarget.factory;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.reflector.MethodReturnValueReflector;
+import org.jlib.reflect.programtarget.reflect_new.MethodReturn;
 
 public interface MethodReturnValueFactory {
 
-    <ReturnValue> MethodReturnValueReflector<ReturnValue>
+    <ReturnValue> MethodReturn<ReturnValue>
     methodReturnValue(final ReturnValue returnValue, final Method method);
 }

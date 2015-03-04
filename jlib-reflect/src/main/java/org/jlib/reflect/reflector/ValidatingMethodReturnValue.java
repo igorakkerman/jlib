@@ -23,15 +23,14 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Method;
 
-import java.util.function.Supplier;
-
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.programtarget.reflect_new.MethodReturn;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
 import static org.jlib.reflect.validator.Validators.assertValid;
 
 public class ValidatingMethodReturnValue<ReturnValue>
-implements MethodReturnValueReflector<ReturnValue> {
+implements MethodReturn<ReturnValue> {
 
     private final ReturnValue returnValue;
     private final Method method;
@@ -48,7 +47,7 @@ implements MethodReturnValueReflector<ReturnValue> {
     }
 
     @Override
-    public MethodReturnValueReflector<ReturnValue>
+    public MethodReturn<ReturnValue>
     assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
     throws InvalidMethodReturnValueException {
         assertValid(validator, returnValue, method);

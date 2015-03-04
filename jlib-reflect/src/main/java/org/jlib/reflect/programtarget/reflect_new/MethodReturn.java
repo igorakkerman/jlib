@@ -21,14 +21,23 @@
 
 package org.jlib.reflect.programtarget.reflect_new;
 
-import java.lang.reflect.Method;
+import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
+import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.validator.MethodReturnValueValidator;
+import static org.jlib.reflect.validator.Validators.isEqualTo;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturnValueReflector;
+public interface MethodReturn<ReturnValue> {
 
-public interface Method0<ReturnType>
-extends MethodX<ReturnType> {
+    MethodReturn<ReturnValue> assertReturned(MethodReturnValueValidator<ReturnValue> validator)
+    throws InvalidMethodReturnValueException;
 
-    MethodReturnValueReflector<ReturnType> invoke(final Method method)
-    throws MethodLookupException;
+    default MethodReturn<ReturnValue> assertReturned(final ReturnValue returnValue)
+    throws InvalidMethodReturnValueException {
+        return assertReturned(isEqualTo(returnValue));
+    }
+
+    Overload<Object> useMethod(String methodName);
+
+    ReturnValue get()
+    throws ProgramTargetException;
 }

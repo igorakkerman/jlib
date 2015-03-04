@@ -21,22 +21,22 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.reflect_new.Method0;
-import org.jlib.reflect.programtarget.reflect_new.Method1;
-import org.jlib.reflect.programtarget.reflect_new.Method2;
-import org.jlib.reflect.programtarget.reflect_new.Method3;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
 
 public interface MethodFactory {
 
     <ReturnValue>
-    Method0<ReturnValue> method0();
+    TypedMethod0<ReturnValue> method0();
 
     <ReturnValue, Parameter1>
-    Method1<ReturnValue, Parameter1> method1();
+    TypedMethod1<ReturnValue, Parameter1> method1();
 
     <ReturnValue, Parameter1, Parameter2>
-    Method2<ReturnValue, Parameter1, Parameter2> method2();
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2();
 
     <ReturnValue, Parameter1, Parameter2, Parameter3>
-    Method3<ReturnValue, Parameter1, Parameter2, Parameter3> method3();
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3();
 }

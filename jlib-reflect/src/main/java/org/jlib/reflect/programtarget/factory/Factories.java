@@ -22,13 +22,13 @@
 package org.jlib.reflect.programtarget.factory;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.reflect_new.DefaultMethod0;
+import org.jlib.reflect.programtarget.reflect_new.DefaultTypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
 import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClass;
-import org.jlib.reflect.programtarget.reflect_new.Method0;
-import org.jlib.reflect.programtarget.reflect_new.Method1;
-import org.jlib.reflect.programtarget.reflect_new.Method2;
-import org.jlib.reflect.programtarget.reflect_new.Method3;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
 import org.jlib.reflect.programtarget.reflect_new.NonstaticMethod;
 import org.jlib.reflect.programtarget.reflect_new.StaticMethod;
 import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
@@ -64,22 +64,22 @@ public final class Factories {
     public static MethodFactory methodFactory() {
         return new MethodFactory() {
             @Override
-            public <ReturnValue> Method0<ReturnValue> method0() {
-                return new DefaultMethod0<>();
+            public <ReturnValue> TypedMethod0<ReturnValue> method0() {
+                return new DefaultTypedMethod0<>();
             }
 
             @Override
-            public <ReturnValue, Parameter1> Method1<ReturnValue, Parameter1> method1() {
+            public <ReturnValue, Parameter1> TypedMethod1<ReturnValue, Parameter1> method1() {
                 return null;
             }
 
             @Override
-            public <ReturnValue, Parameter1, Parameter2> Method2<ReturnValue, Parameter1, Parameter2> method2() {
+            public <ReturnValue, Parameter1, Parameter2> TypedMethod2<ReturnValue, Parameter1, Parameter2> method2() {
                 return null;
             }
 
             @Override
-            public <ReturnValue, Parameter1, Parameter2, Parameter3> Method3<ReturnValue, Parameter1, Parameter2, Parameter3> method3() {
+            public <ReturnValue, Parameter1, Parameter2, Parameter3> TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3() {
                 return null;
             }
         }

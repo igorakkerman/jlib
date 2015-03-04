@@ -21,11 +21,11 @@
 
 package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.MethodLookupException;
 
-public interface UntypedMethod {
+public interface UncheckedTypedMethod<ReturnType>
+extends TypedMethod<ReturnType> {
 
-    <ReturnValue>
-    Overload<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
-    throws NoSubtypeException;
+    MethodReturn<ReturnType> invoke(Object... arguments)
+    throws MethodLookupException;
 }

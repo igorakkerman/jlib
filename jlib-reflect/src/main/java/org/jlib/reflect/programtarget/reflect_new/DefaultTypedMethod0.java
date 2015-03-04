@@ -24,23 +24,21 @@ package org.jlib.reflect.programtarget.reflect_new;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.programtarget.MethodReturnValueHolder;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtarget.factory.Factories.methodReturnValueFactory;
-import org.jlib.reflect.reflector.MethodReturnValueReflector;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public class DefaultMethod0<ReturnValue>
-extends AbstractMethod<ReturnValue>
-implements Method0<ReturnValue> {
+public class DefaultTypedMethod0<ReturnValue>
+extends AbstractTypedMethod<ReturnValue>
+implements TypedMethod0<ReturnValue> {
 
-    public DefaultMethod0(final MethodReturnTypeValidator methodReturnTypeValidator) {
+    public DefaultTypedMethod0(final MethodReturnTypeValidator methodReturnTypeValidator) {
         super(methodReturnTypeValidator);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public MethodReturnValueReflector<ReturnValue> invoke(final Method method)
+    public MethodReturn<ReturnValue> invoke(final Method method)
     throws MethodLookupException {
         final Object returnValue = getMethodInvoker().invoke();
 
@@ -48,7 +46,7 @@ implements Method0<ReturnValue> {
     }
 
     @Override
-    public Method0<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
+    public TypedMethod0<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException {
         methodReturnTypeValidator.assertReturns(staticReturnSuperType);
 
