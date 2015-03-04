@@ -19,10 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.MethodInvoker;
 import static org.jlib.reflect.programtarget.factory.ReflectionFactories.methodInvokerFactory;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public abstract class AbstractTypedMethod<ReturnType>

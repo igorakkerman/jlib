@@ -19,16 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
-public interface UntypedClass {
+public class NonstaticMethod<EnclosingObject>
+implements UntypedMethod {
 
-    Class<?> get()
-    throws ClassLookupException;
+    private final EnclosingObject enclosingObject;
+    private final String methodName;
 
-    <Obj> TypedClass<Obj> withType(Class<Obj> staticType)
-    throws ClassLookupException, NoSubtypeException;
+    public NonstaticMethod(final EnclosingObject enclosingObject, final String methodName) {
+        this.enclosingObject = enclosingObject;
+        this.methodName = methodName;
+    }
+
+    @Override
+    public <ReturnValue> Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    throws NoSubtypeException {
+        // FIXME: implement
+        return null;
+    }
 }

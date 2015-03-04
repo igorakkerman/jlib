@@ -21,23 +21,32 @@
 
 package org.jlib.reflect.programtarget.factory;
 
+import org.jlib.core.exception.UnexpectedStateException;
+
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.reflect_new.DefaultTypedMethod0;
+import org.jlib.reflect.programtarget.DefaultTypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
-import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClass;
+import org.jlib.reflect.programtarget.DefaultUntypedClass;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
-import org.jlib.reflect.programtarget.reflect_new.NonstaticMethod;
-import org.jlib.reflect.programtarget.reflect_new.StaticMethod;
-import org.jlib.reflect.programtarget.reflect_new.StaticMethodOverload;
+import org.jlib.reflect.programtarget.NonstaticMethod;
+import org.jlib.reflect.programtarget.StaticMethod;
+import org.jlib.reflect.programtarget.StaticMethodOverload;
 import org.jlib.reflect.reflector.ValidatingMethodReturnValue;
 
 public final class Factories {
 
     public static UntypedClassFactory untypedClassFactory() {
-        return DefaultUntypedClass::new;
+        return classLookup -> {
+            try {
+                return new DefaultTypedClass<>(classLookup, Object.class);
+            }
+            catch (NoSubtypeException exception) {
+                throw new UnexpectedStateException(exception);
+            }
+        };
     }
 
     public static TypedClassFactory typedClassFactory()

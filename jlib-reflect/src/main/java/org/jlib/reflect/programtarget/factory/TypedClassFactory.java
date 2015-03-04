@@ -27,6 +27,6 @@ import org.jlib.reflect.programtarget.reflect_new.TypedClass;
 public interface TypedClassFactory {
 
     <Value> TypedClass<Value>
-    typedClassReflector(Class<Value> staticType, final Class<?> actualClass)
+    typedClass(final Class<?> clazz, final Class<Value> staticType)
     throws NoSubtypeException;
 }

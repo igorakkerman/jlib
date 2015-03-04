@@ -19,25 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import static org.jlib.reflect.programtarget.factory.Factories.staticMethodOverloadFactory;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
-public class NonstaticMethod<EnclosingObject>
+public class StaticMethod<EnclosingClassObject>
 implements UntypedMethod {
 
-    private final EnclosingObject enclosingObject;
-    private final String methodName;
+    private final Class<EnclosingClassObject> enclosingClass;
+    private final String staticMethodName;
 
-    public NonstaticMethod(final EnclosingObject enclosingObject, final String methodName) {
-        this.enclosingObject = enclosingObject;
-        this.methodName = methodName;
+    public StaticMethod(final Class<EnclosingClassObject> enclosingClass, final String staticMethodName) {
+        this.enclosingClass = enclosingClass;
+        this.staticMethodName = staticMethodName;
     }
 
     @Override
-    public <ReturnValue> Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    public <ReturnValue>
+    Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
-        // FIXME: implement
-        return null;
+        return staticMethodOverloadFactory().staticMethodOverload(enclosingClass, staticMethodName, returnValueClass);
     }
 }

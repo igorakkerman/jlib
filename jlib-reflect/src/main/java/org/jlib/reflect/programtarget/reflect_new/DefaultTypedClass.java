@@ -24,21 +24,36 @@ package org.jlib.reflect.programtarget.reflect_new;
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtarget.factory.Factories.staticMethodFactory;
+import static org.jlib.reflect.programtarget.factory.Factories.typedClassFactory;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {
 
-    private final Class<?> actualClass;
+    private final Class<?> clazz;
 
-    public DefaultTypedClass(final Class<Obj> staticType, final Class<?> actualClass)
+    public DefaultTypedClass(final Class<?> clazz)
     throws NoSubtypeException {
-        this.actualClass = actualClass;
+        this.clazz = clazz;
+    }
+
+    public DefaultTypedClass(final Class<?> clazz, final Class<Obj> staticType)
+    throws NoSubtypeException {
+        this(clazz);
 
         assertSubtypeOf(staticType);
     }
 
-    public DefaultTypedClass(final Class<Obj> actualClass) {
-        this.actualClass = actualClass;
+    @Override
+    @SuppressWarnings("unchecked")
+    public Class<Obj> get() {
+        return (Class<Obj>) clazz;
+    }
+
+    @Override
+    public <SubtypeObject extends Obj>
+    TypedClass<SubtypeObject> withType(final Class<SubtypeObject> staticType)
+    throws NoSubtypeException {
+        return typedClassFactory().typedClass(get(), staticType);
     }
 
     private void assertValid(final Class<Obj> actualClass, final Class<?> expectedParentType)
@@ -48,25 +63,18 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public Class<Obj> get()
-    throws ClassException {
-        return (Class<Obj>) actualClass;
-    }
-
-    @Override
     public TypedClass<Obj> assertSubtypeOf(final Class<?> expectedParentType)
     throws NoSubtypeException {
-        if (!expectedParentType.isAssignableFrom(actualClass))
-            throw new NoSubtypeException(actualClass, expectedParentType);
+        if (! expectedParentType.isAssignableFrom(clazz))
+            throw new NoSubtypeException(clazz, expectedParentType);
 
         return this;
     }
 
     @Override
-    public StaticMethod<Obj> useStaticMethod(final String staticMethodName)
+    public Overload<Object> useStaticMethod(final String staticMethodName)
     throws ClassException {
-        return staticMethodFactory().staticMethod(get(), staticMethodName);
+        return staticMethodFactory().staticMethod(clazz, staticMethodName);
     }
 
     @Override

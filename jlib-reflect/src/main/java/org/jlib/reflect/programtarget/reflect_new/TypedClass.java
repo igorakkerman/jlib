@@ -22,6 +22,7 @@
 package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.ClassException;
+import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface TypedClass<Obj> {
@@ -37,6 +38,9 @@ public interface TypedClass<Obj> {
         return (Class<Val>) get();
     }
 
+    <SubtypeObject extends Obj> TypedClass<SubtypeObject> withType(Class<SubtypeObject> staticType)
+    throws ClassLookupException, NoSubtypeException;
+
     TypedClass<Obj> assertSubtypeOf(Class<?> expectedSuperType)
     throws NoSubtypeException;
 
@@ -47,7 +51,7 @@ public interface TypedClass<Obj> {
     }
 */
 
-    Overload<Object> useConstructor();
+    Overload<Obj> useConstructor();
 
     Overload<Object> useStaticMethod(String staticMethodName)
     throws ClassException;

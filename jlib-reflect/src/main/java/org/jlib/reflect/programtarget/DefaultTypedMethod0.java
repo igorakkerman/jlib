@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtarget.factory.Factories.methodReturnValueFactory;
+import org.jlib.reflect.programtarget.reflect_new.MethodReturn;
+import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public class DefaultTypedMethod0<ReturnValue>
