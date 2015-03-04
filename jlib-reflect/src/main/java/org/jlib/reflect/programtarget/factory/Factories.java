@@ -21,32 +21,20 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.core.exception.UnexpectedStateException;
-
-import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.DefaultTypedMethod0;
+import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.reflect_new.DefaultStaticMethodOverload;
 import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
-import org.jlib.reflect.programtarget.DefaultUntypedClass;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
-import org.jlib.reflect.programtarget.NonstaticMethod;
-import org.jlib.reflect.programtarget.StaticMethod;
-import org.jlib.reflect.programtarget.StaticMethodOverload;
 import org.jlib.reflect.reflector.ValidatingMethodReturnValue;
 
 public final class Factories {
 
     public static UntypedClassFactory untypedClassFactory() {
-        return classLookup -> {
-            try {
-                return new DefaultTypedClass<>(classLookup, Object.class);
-            }
-            catch (NoSubtypeException exception) {
-                throw new UnexpectedStateException(exception);
-            }
-        };
+        return DefaultTypedClass::new;
     }
 
     public static TypedClassFactory typedClassFactory()
@@ -54,16 +42,16 @@ public final class Factories {
         return DefaultTypedClass::new;
     }
 
-    public static StaticMethodFactory staticMethodFactory() {
-        return StaticMethod::new;
-    }
-
-    public static NonstaticMethodFactory nonstaticMethodFactory() {
-        return NonstaticMethod::new;
+    public static ConstructorOverloadFactory constructorOverloadFactory() {
+        return DefaultConstructorOverload::new;
     }
 
     public static StaticMethodOverloadFactory staticMethodOverloadFactory() {
-        return StaticMethodOverload::new;
+        return DefaultStaticMethodOverload::new;
+    }
+
+    public static NonstaticMethodOverloadFactory nonstaticMethodOverloadFactory() {
+        return NonstaticMethodOverload::new;
     }
 
     public static MethodReturnValueFactory methodReturnValueFactory() {
@@ -88,12 +76,12 @@ public final class Factories {
             }
 
             @Override
-            public <ReturnValue, Parameter1, Parameter2, Parameter3> TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3() {
+            public <ReturnValue, Parameter1, Parameter2, Parameter3> TypedMethod3<ReturnValue, Parameter1,
+                                                                                 Parameter2, Parameter3> method3() {
                 return null;
             }
         }
     }
-
 
     private Factories() {}
 }

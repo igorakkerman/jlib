@@ -22,7 +22,7 @@
 package org.jlib.reflect.reflector;
 
 import org.assertj.core.api.Assertions;
-import static org.jlib.reflect.reflector.Reflectors.useClass;
+import static org.jlib.reflect.programtarget.reflect_new.Reflectors.useClass;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
 import static org.jlib.reflect.validator.Validators.isInstanceOf;
 import static org.jlib.reflect.validator.Validators.isLessThan;
@@ -38,7 +38,7 @@ public class ReflectorTest {
                              .withType(Number.class)                         // TypedClassReflector
                              .assertSubtypeOf(Integer.class)                 // TypedClassReflector
                              .useStaticMethod("valueOf")                     // UntypedMethodReflector
-                             .withArgumentTypes(int.class)                   // Nethod1Reflector
+                             .withParameterTypes(int.class)                   // Nethod1Reflector
                              .withReturnType(Number.class)                   // MethodOverloadReflector
                              .invoke(42)                                     // MethodReturnValueReflector
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector

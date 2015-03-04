@@ -19,16 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.reflect_new;
+package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
-public interface TypedMethod1<ReturnValue, Argument1>
-extends TypedMethod<ReturnValue> {
+public interface ConstructorOverloadFactory {
 
-    <SubtypedReturnValue extends ReturnValue>
-    TypedMethod1<SubtypedReturnValue, Argument1> withReturnType(Class<SubtypedReturnValue> type);
-
-    MethodReturn<ReturnValue> invoke(Argument1 argument1)
-    throws MethodLookupException;
+    <EnclosingClass> Overload<EnclosingClass> constructor(Class<EnclosingClass> enclosingClass);
 }

@@ -23,6 +23,6 @@ package org.jlib.reflect.programtarget.factory;
 
 import org.jlib.reflect.programtarget.reflect_new.UntypedMethod;
 
-public interface NonstaticMethodFactory {
+public interface NonstaticMethodOverloadFactory {
     <EnclosingObject> UntypedMethod method(EnclosingObject enclosingObject, String methodName);
 }

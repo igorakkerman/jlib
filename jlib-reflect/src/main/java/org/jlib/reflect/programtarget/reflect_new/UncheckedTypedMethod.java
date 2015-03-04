@@ -23,9 +23,12 @@ package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 
-public interface UncheckedTypedMethod<ReturnType>
-extends TypedMethod<ReturnType> {
+public interface UncheckedTypedMethod<ReturnValue>
+extends TypedMethod<ReturnValue> {
 
-    MethodReturn<ReturnType> invoke(Object... arguments)
+    <SubtypedReturnValue extends ReturnValue>
+    UncheckedTypedMethod<SubtypedReturnValue> withReturnType(Class<SubtypedReturnValue> type);
+
+    MethodReturn<ReturnValue> invoke(Object... arguments)
     throws MethodLookupException;
 }

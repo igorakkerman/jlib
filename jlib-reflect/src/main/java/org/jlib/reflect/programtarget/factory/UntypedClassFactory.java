@@ -21,12 +21,9 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.ClassLookup;
-import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.reflect_new.TypedClass;
 
 public interface UntypedClassFactory {
 
-    TypedClass<Object> untypedClass(ClassLookup classLookup)
-    throws ClassLookupException;
+    TypedClass<Object> untypedClass(Class<?> clazz);
 }

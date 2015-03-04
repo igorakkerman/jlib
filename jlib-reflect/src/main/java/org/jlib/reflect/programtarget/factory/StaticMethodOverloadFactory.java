@@ -21,11 +21,10 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.StaticMethodOverload;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
 public interface StaticMethodOverloadFactory {
 
-    <EnclosingClassObject, ReturnValue> StaticMethodOverload<EnclosingClassObject, ReturnValue>
-    staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                         Class<ReturnValue> returnValueClass);
+    <EnclosingClassObject>
+    Overload<Object> staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName);
 }

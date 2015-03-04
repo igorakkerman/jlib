@@ -23,9 +23,12 @@ package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 
-public interface TypedMethod3<ReturnType, Argument1, Argument2, Argument3>
-extends TypedMethod<ReturnType> {
+public interface TypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
+extends TypedMethod<ReturnValue> {
 
-    MethodReturn<ReturnType> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
+    <SubtypedReturnValue extends ReturnValue>
+    TypedMethod3<SubtypedReturnValue, Argument1, Argument2, Argument3> withReturnType(Class<SubtypedReturnValue> type);
+
+    MethodReturn<ReturnValue> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
     throws MethodLookupException;
 }

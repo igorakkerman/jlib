@@ -19,9 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget;
+package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
+import static org.jlib.reflect.programtarget.factory.Factories.methodFactory;
 import static org.jlib.reflect.programtarget.factory.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.programtarget.reflect_new.Overload;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
@@ -30,15 +31,15 @@ import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
 import org.jlib.reflect.programtarget.reflect_new.UncheckedTypedMethod;
 
-public class StaticMethodOverload<ReturnValue>
+public class DefaultStaticMethodOverload<ReturnValue>
 implements Overload<ReturnValue> {
 
     private final Class<?> enclosingClass;
     private final String methodName;
     private final Class<ReturnValue> returnValueClass;
 
-    public StaticMethodOverload(final Class<?> enclosingClass, final String methodName,
-                                final Class<ReturnValue> returnValueClass) {
+    public DefaultStaticMethodOverload(final Class<?> enclosingClass, final String methodName,
+                                       final Class<ReturnValue> returnValueClass) {
         this.enclosingClass = enclosingClass;
         this.methodName = methodName;
         this.returnValueClass = returnValueClass;
