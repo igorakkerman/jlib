@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 
 import org.jlib.reflect.programtarget.ClassLookupException;
 import static org.jlib.reflect.programtarget.factory.Factories.untypedClassFactory;
-import static org.jlib.reflect.programtarget.factory.ReflectionFactories.classLookupFactory;
+import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.classLookupFactory;
 
 public final class Reflectors {
 

@@ -24,7 +24,7 @@ package org.jlib.reflect.programtarget.reflect_new;
 import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 import org.jlib.reflect.programtarget.MethodLookup;
 import static org.jlib.reflect.programtarget.factory.Factories.typedMethodFactory;
-import static org.jlib.reflect.programtarget.factory.ReflectionFactories.methodLookupFactory;
+import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodLookupFactory;
 
 public class DefaultStaticMethodOverload<ReturnValue>
 implements Overload<ReturnValue> {

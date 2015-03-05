@@ -24,6 +24,5 @@ package org.jlib.reflect.programtarget.factory;
 import org.jlib.reflect.programtarget.ClassLookup;
 
 public interface ClassLookupFactory {
-
     ClassLookup classLookup();
 }

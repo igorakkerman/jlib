@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget.reflection;
 
-import org.jlib.reflect.programtarget.reflection.ReflectionClassLookup;
-import org.jlib.reflect.programtarget.reflection.ReflectionStaticMethodInvoker;
-import org.jlib.reflect.programtarget.reflection.ReflectionMethodLookup;
+import org.jlib.reflect.programtarget.factory.ClassLookupFactory;
+import org.jlib.reflect.programtarget.factory.MethodInvokerFactory;
+import org.jlib.reflect.programtarget.factory.MethodLookupFactory;
 
 public final class ReflectionFactories {
 

@@ -25,6 +25,6 @@ import java.lang.reflect.Method;
 
 public interface MethodLookup {
 
-    Method get()
+    Method get(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
     throws InvalidMethodSignatureException;
 }

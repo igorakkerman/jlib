@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programtarget;
 
-import static org.jlib.reflect.programtarget.factory.ReflectionFactories.methodInvokerFactory;
+import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodInvokerFactory;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 

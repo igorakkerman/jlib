@@ -32,7 +32,7 @@ implements TypedClass<Obj> {
 
     private final Class<?> clazz;
 
-    public DefaultTypedClass(final Class<?> clazz) {
+    protected DefaultTypedClass(final Class<?> clazz) {
         this.clazz = clazz;
     }
 

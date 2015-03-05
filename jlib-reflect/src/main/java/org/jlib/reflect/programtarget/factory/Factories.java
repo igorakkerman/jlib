@@ -25,6 +25,7 @@ import org.jlib.reflect.programtarget.DefaultTypedMethod0;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.reflect_new.DefaultStaticMethodOverload;
 import org.jlib.reflect.programtarget.reflect_new.DefaultTypedClass;
+import org.jlib.reflect.programtarget.reflect_new.DefaultUntypedClass;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
@@ -34,7 +35,7 @@ import org.jlib.reflect.reflector.ValidatingMethodReturnValue;
 public final class Factories {
 
     public static UntypedClassFactory untypedClassFactory(final ClassLookupFactory classLookupFactory) {
-        return DefaultTypedClass::new;
+        return className -> new DefaultUntypedClass(classLookupFactory.classLookup().lookupClass(className));
     }
 
     public static TypedClassFactory typedClassFactory()

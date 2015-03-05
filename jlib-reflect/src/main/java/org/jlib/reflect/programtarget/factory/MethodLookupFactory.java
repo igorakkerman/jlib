@@ -24,6 +24,5 @@ package org.jlib.reflect.programtarget.factory;
 import org.jlib.reflect.programtarget.MethodLookup;
 
 public interface MethodLookupFactory {
-
-    MethodLookup methodLookup(Class<?> clazz, String methodName, Class<?>... parameterTypes);
+    MethodLookup methodLookup();
 }

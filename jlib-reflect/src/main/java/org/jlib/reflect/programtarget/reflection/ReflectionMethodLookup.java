@@ -29,25 +29,14 @@ import org.jlib.reflect.programtarget.MethodLookup;
 public class ReflectionMethodLookup
 implements MethodLookup {
 
-    private final Class<?> clazz;
-    private final String methodName;
-    private final Class<?>[] parameterTypes;
-
-    public ReflectionMethodLookup(final Class<?> clazz, final String methodName,
-                                  final Class<?>... parameterTypes) {
-        this.clazz = clazz;
-        this.methodName = methodName;
-        this.parameterTypes = parameterTypes;
-    }
-
     @Override
-    public Method get()
+    public Method get(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
     throws InvalidMethodSignatureException {
         try {
-            return clazz.getMethod(methodName, parameterTypes);
+            return enclosingClass.getMethod(methodName, parameterTypes);
         }
         catch (final NoSuchMethodException exception) {
-            throw new InvalidMethodSignatureException(clazz.getName(), methodName, parameterTypes, exception);
+            throw new InvalidMethodSignatureException(enclosingClass.getName(), methodName, parameterTypes, exception);
         }
     }
 }
