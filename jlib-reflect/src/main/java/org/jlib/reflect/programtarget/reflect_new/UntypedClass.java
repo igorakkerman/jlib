@@ -19,11 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.reflect_new.UntypedClass;
-
-public interface UntypedClassFactory {
-
-    UntypedClass untypedClass(String className);
-}
+public interface UntypedClass
+extends TypedClass<Object> {}

@@ -25,5 +25,5 @@ import org.jlib.reflect.programtarget.ClassLookup;
 
 public interface ClassLookupFactory {
 
-    ClassLookup classLookup(String className);
+    ClassLookup classLookup();
 }

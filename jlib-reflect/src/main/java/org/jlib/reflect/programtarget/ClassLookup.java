@@ -23,6 +23,6 @@ package org.jlib.reflect.programtarget;
 
 public interface ClassLookup {
 
-    Class<?> get()
+    Class<?> lookupClass(String className)
     throws ClassLookupException;
 }

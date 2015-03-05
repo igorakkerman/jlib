@@ -26,7 +26,7 @@ import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
 
-public interface MethodFactory {
+public interface TypedMethodFactory {
 
     <ReturnValue>
     TypedMethod0<ReturnValue> method0();

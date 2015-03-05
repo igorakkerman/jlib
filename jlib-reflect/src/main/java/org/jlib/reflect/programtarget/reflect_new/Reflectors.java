@@ -31,9 +31,7 @@ public final class Reflectors {
 
     public static TypedClass<Object> useClass(final String className)
     throws ClassLookupException {
-        final Class<?> clazz = classLookupFactory().classLookup(className).get();
-
-        return untypedClassFactory().untypedClass(clazz);
+        return untypedClassFactory(classLookupFactory()).untypedClass(className);
     }
 
     public static TypedClass<Object> useClass(final Supplier<String> classNameSupplier)
@@ -43,7 +41,7 @@ public final class Reflectors {
 
     public static <Value>
     TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClass<Value>(concreteClass);
+        return new DefaultTypedClass<>(concreteClass);
     }
 
     private Reflectors() {}

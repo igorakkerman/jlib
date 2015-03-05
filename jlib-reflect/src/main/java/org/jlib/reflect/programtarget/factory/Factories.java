@@ -33,7 +33,7 @@ import org.jlib.reflect.reflector.ValidatingMethodReturnValue;
 
 public final class Factories {
 
-    public static UntypedClassFactory untypedClassFactory() {
+    public static UntypedClassFactory untypedClassFactory(final ClassLookupFactory classLookupFactory) {
         return DefaultTypedClass::new;
     }
 
@@ -58,8 +58,8 @@ public final class Factories {
         return ValidatingMethodReturnValue::new;
     }
 
-    public static MethodFactory methodFactory() {
-        return new MethodFactory() {
+    public static TypedMethodFactory typedMethodFactory() {
+        return new TypedMethodFactory() {
             @Override
             public <ReturnValue> TypedMethod0<ReturnValue> method0() {
                 return new DefaultTypedMethod0<>();
