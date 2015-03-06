@@ -33,8 +33,8 @@ implements ClassLookup {
         try {
             return Class.forName(className);
         }
-        catch (final ClassNotFoundException exception) {
-            throw new ClassLookupException(className, exception);
+        catch (final ClassNotFoundException | LinkageError throwable) {
+            throw new ClassLookupException(className, throwable);
         }
     }
 }

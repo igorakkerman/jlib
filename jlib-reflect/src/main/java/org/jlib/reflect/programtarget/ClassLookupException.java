@@ -28,7 +28,7 @@ extends ClassException {
 
     private static final long serialVersionUID = 5664326787354744995L;
 
-    public ClassLookupException(final String className, final Exception cause) {
+    public ClassLookupException(final String className, final Throwable cause) {
         super(message(), className, cause);
     }
 }

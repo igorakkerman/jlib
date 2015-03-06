@@ -36,7 +36,7 @@ extends ProgramTargetException {
         this.className = className;
     }
 
-    public ClassException(final Message message, final String className, final Exception cause) {
+    public ClassException(final Message message, final String className, final Throwable cause) {
         this(message, className);
 
         initCause(cause);
