@@ -21,22 +21,28 @@
 
 package org.jlib.reflect.programtarget.factory;
 
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod0;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod1;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod2;
 import org.jlib.reflect.programtarget.reflect_new.TypedMethod3;
+import org.jlib.reflect.programtarget.reflect_new.UncheckedTypedMethod;
 
 public interface TypedMethodFactory {
 
     <ReturnValue>
-    TypedMethod0<ReturnValue> method0();
+    TypedMethod0<ReturnValue> method0(final Method method);
 
     <ReturnValue, Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> method1();
+    TypedMethod1<ReturnValue, Parameter1> method1(final Method method);
 
     <ReturnValue, Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2();
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(final Method method);
 
     <ReturnValue, Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3();
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3(final Method method);
+
+    <ReturnValue, Parameter1, Parameter2, Parameter3>
+    UncheckedTypedMethod<ReturnValue> uncheckedTypedMethod(final Method method);
 }

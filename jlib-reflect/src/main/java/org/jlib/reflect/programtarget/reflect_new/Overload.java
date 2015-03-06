@@ -21,32 +21,36 @@
 
 package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
+import org.jlib.reflect.programtarget.MethodLookupException;
 
 public interface Overload<ReturnValue> {
 
     TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodSignatureException;
+    throws MethodLookupException;
 
     // @formatter:off
 
     <Parameter1>
     TypedMethod1<ReturnValue, Parameter1>
-        withParameterTypes(Class<Parameter1> parameter1Type);
+        withParameterTypes(Class<Parameter1> parameter1Type)
+    throws MethodLookupException;
 
     <Parameter1, Parameter2>
     TypedMethod2<ReturnValue, Parameter1, Parameter2>
         withParameterTypes(Class<Parameter1> parameter1Type,
-                           Class<Parameter2> parameter2Type);
+                           Class<Parameter2> parameter2Type)
+    throws MethodLookupException;
 
     <Parameter1, Parameter2, Parameter3>
     TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
         withParameterTypes(Class<Parameter1> parameter1Type,
                            Class<Parameter2> parameter2Type,
-                           Class<Parameter3> parameter3Type);
+                           Class<Parameter3> parameter3Type)
+    throws MethodLookupException;
 
     UncheckedTypedMethod<ReturnValue>
-        withUncheckedParameterTypes(final Class<?>... parameterTypes);
+        withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    throws MethodLookupException;
 
     // @formatter:on
 

@@ -23,20 +23,20 @@ package org.jlib.reflect.programtarget.reflection;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
+import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programtarget.MethodLookup;
 
 public class ReflectionMethodLookup
 implements MethodLookup {
 
     @Override
-    public Method get(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
-    throws InvalidMethodSignatureException {
+    public Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException {
         try {
             return enclosingClass.getMethod(methodName, parameterTypes);
         }
         catch (final NoSuchMethodException exception) {
-            throw new InvalidMethodSignatureException(enclosingClass.getName(), methodName, parameterTypes, exception);
+            throw new InvalidMethodParameterTypesException(enclosingClass.getName(), methodName, parameterTypes, exception);
         }
     }
 }

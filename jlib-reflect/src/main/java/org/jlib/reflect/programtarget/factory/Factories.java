@@ -21,6 +21,8 @@
 
 package org.jlib.reflect.programtarget.factory;
 
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.programtarget.DefaultTypedMethod0;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.reflect_new.DefaultStaticMethodOverload;
@@ -62,23 +64,23 @@ public final class Factories {
     public static TypedMethodFactory typedMethodFactory() {
         return new TypedMethodFactory() {
             @Override
-            public <ReturnValue> TypedMethod0<ReturnValue> method0() {
+            public <ReturnValue> TypedMethod0<ReturnValue> method0(final Method method) {
                 return new DefaultTypedMethod0<>();
             }
 
             @Override
-            public <ReturnValue, Parameter1> TypedMethod1<ReturnValue, Parameter1> method1() {
+            public <ReturnValue, Parameter1> TypedMethod1<ReturnValue, Parameter1> method1(final Method method) {
                 return null;
             }
 
             @Override
-            public <ReturnValue, Parameter1, Parameter2> TypedMethod2<ReturnValue, Parameter1, Parameter2> method2() {
+            public <ReturnValue, Parameter1, Parameter2> TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(final Method method) {
                 return null;
             }
 
             @Override
             public <ReturnValue, Parameter1, Parameter2, Parameter3> TypedMethod3<ReturnValue, Parameter1,
-                                                                                 Parameter2, Parameter3> method3() {
+                                                                                 Parameter2, Parameter3> method3(final Method method) {
                 return null;
             }
         }

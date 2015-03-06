@@ -23,8 +23,14 @@ package org.jlib.reflect.programtarget;
 
 import java.lang.reflect.Method;
 
-public interface MethodLookup {
+import static org.jlib.core.message.MessageUtility.message;
 
-    Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException;
+public class MethodNotStaticException
+extends MethodLookupException {
+
+    private static final long serialVersionUID = - 1272651454980058465L;
+
+    public MethodNotStaticException(final Method method) {
+        super(message(), method);
+    }
 }
