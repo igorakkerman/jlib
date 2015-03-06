@@ -118,8 +118,7 @@ implements Overload<ReturnValue> {
     @Override
     public <RefinedReturnValue extends ReturnValue>
     Overload<RefinedReturnValue> withReturnType(final Class<RefinedReturnValue> refinedReturnValueClass) {
-        //FIXME: implement
-        return null;
+        return new DefaultStaticMethodOverload<>(enclosingClass, methodName, refinedReturnValueClass);
     }
 
     private void assertMethodReturnsValidType(final Method method)
