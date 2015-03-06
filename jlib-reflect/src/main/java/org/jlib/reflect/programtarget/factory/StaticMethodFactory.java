@@ -21,9 +21,9 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.reflect_new.Overload;
+import org.jlib.reflect.programtarget.reflect_new.MethodOverload;
 
 public interface StaticMethodFactory {
 
-    Overload<Object> staticMethod(Class<?> enclosingClass, String methodName);
+    MethodOverload<Object> staticMethod(Class<?> enclosingClass, String methodName);
 }

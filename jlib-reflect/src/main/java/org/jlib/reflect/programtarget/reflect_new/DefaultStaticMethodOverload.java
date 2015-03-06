@@ -31,24 +31,18 @@ import static org.jlib.reflect.programtarget.factory.Factories.typedMethodFactor
 import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodLookupFactory;
 
 public class DefaultStaticMethodOverload<ReturnValue>
-implements Overload<ReturnValue> {
-
-    private final Class<?> enclosingClass;
-    private final String methodName;
-    private final Class<ReturnValue> returnValueClass;
+extends DefaultMethodOverload<ReturnValue> {
 
     public DefaultStaticMethodOverload(final Class<?> enclosingClass, final String methodName,
                                        final Class<ReturnValue> returnValueClass) {
-        this.enclosingClass = enclosingClass;
-        this.methodName = methodName;
-        this.returnValueClass = returnValueClass;
+        super(enclosingClass, methodName, returnValueClass);
     }
 
     @Override
     public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, MethodNotStaticException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
-                                                   .lookupMethod(enclosingClass, methodName);
+                                                   .lookupMethod(getEnclosingClass(), getMethodName());
 
         assertMethodIsStatic(method);
         assertMethodReturnsValidType(method);
@@ -61,7 +55,7 @@ implements Overload<ReturnValue> {
     TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type)
     throws InvalidMethodParameterTypesException, MethodNotStaticException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
-                                                   .lookupMethod(enclosingClass, methodName,
+                                                   .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type);
 
         assertMethodIsStatic(method);
@@ -76,7 +70,7 @@ implements Overload<ReturnValue> {
                                                                        final Class<Argument2> parameter2Type)
     throws InvalidMethodParameterTypesException, MethodNotStaticException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
-                                                   .lookupMethod(enclosingClass, methodName,
+                                                   .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type, parameter2Type);
 
         assertMethodIsStatic(method);
@@ -93,7 +87,7 @@ implements Overload<ReturnValue> {
                                                                              final Class<Argument3> parameter3Type)
     throws InvalidMethodParameterTypesException, MethodNotStaticException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
-                                                   .lookupMethod(enclosingClass, methodName,
+                                                   .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type, parameter2Type, parameter3Type);
 
         assertMethodIsStatic(method);
@@ -106,7 +100,7 @@ implements Overload<ReturnValue> {
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, MethodNotStaticException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
-                                                   .lookupMethod(enclosingClass, methodName,
+                                                   .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameterTypes);
 
         assertMethodIsStatic(method);
@@ -117,19 +111,8 @@ implements Overload<ReturnValue> {
 
     @Override
     public <RefinedReturnValue extends ReturnValue>
-    Overload<RefinedReturnValue> withReturnType(final Class<RefinedReturnValue> refinedReturnValueClass) {
-        return new DefaultStaticMethodOverload<>(enclosingClass, methodName, refinedReturnValueClass);
-    }
-
-    private void assertMethodReturnsValidType(final Method method)
-    throws InvalidMethodReturnTypeException {
-        assertMethodReturnsType(method, returnValueClass);
-    }
-
-    private void assertMethodReturnsType(final Method method, final Class<ReturnValue> expectedReturnValueType)
-    throws InvalidMethodReturnTypeException {
-        if (! expectedReturnValueType.isAssignableFrom(method.getReturnType()))
-            throw new InvalidMethodReturnTypeException(method);
+    MethodOverload<RefinedReturnValue> withReturnType(final Class<RefinedReturnValue> refinedReturnValueClass) {
+        return new DefaultStaticMethodOverload<>(getEnclosingClass(), getMethodName(), refinedReturnValueClass);
     }
 
     private static void assertMethodIsStatic(final Method method)
