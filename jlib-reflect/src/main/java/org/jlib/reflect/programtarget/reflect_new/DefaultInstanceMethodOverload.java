@@ -24,27 +24,29 @@ package org.jlib.reflect.programtarget.reflect_new;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+import org.jlib.reflect.programtarget.ConcreteMethodExpectedException;
+import org.jlib.reflect.programtarget.InstanceMethodExpectedException;
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programtarget.StaticMethodExpectedException;
 import static org.jlib.reflect.programtarget.factory.Factories.typedMethodFactory;
 import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodLookupFactory;
 
-public class DefaultStaticMethodOverload<ReturnValue>
+public class DefaultInstanceMethodOverload<ReturnValue>
 extends DefaultMethodOverload<ReturnValue> {
 
-    public DefaultStaticMethodOverload(final Class<?> enclosingClass, final String methodName,
-                                       final Class<ReturnValue> returnValueClass) {
+    public DefaultInstanceMethodOverload(final Class<?> enclosingClass, final String methodName,
+                                         final Class<ReturnValue> returnValueClass) {
         super(enclosingClass, methodName, returnValueClass);
     }
 
     @Override
     public TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodParameterTypesException, StaticMethodExpectedException, InvalidMethodReturnTypeException {
+    throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException,
+           ConcreteMethodExpectedException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName());
 
-        assertMethodIsStatic(method);
+        assertConcreteInstanceMethod(method);
         assertMethodReturnsValidType(method);
 
         return typedMethodFactory().method0(method);
@@ -53,12 +55,13 @@ extends DefaultMethodOverload<ReturnValue> {
     @Override
     public <Argument1>
     TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type)
-    throws InvalidMethodParameterTypesException, StaticMethodExpectedException, InvalidMethodReturnTypeException {
+    throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException,
+           ConcreteMethodExpectedException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type);
 
-        assertMethodIsStatic(method);
+        assertConcreteInstanceMethod(method);
         assertMethodReturnsValidType(method);
 
         return typedMethodFactory().method1(method);
@@ -68,12 +71,13 @@ extends DefaultMethodOverload<ReturnValue> {
     public <Argument1, Argument2>
     TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
                                                                        final Class<Argument2> parameter2Type)
-    throws InvalidMethodParameterTypesException, StaticMethodExpectedException, InvalidMethodReturnTypeException {
+    throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException,
+           ConcreteMethodExpectedException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type, parameter2Type);
 
-        assertMethodIsStatic(method);
+        assertConcreteInstanceMethod(method);
         assertMethodReturnsValidType(method);
 
         return typedMethodFactory().method2(method);
@@ -85,12 +89,13 @@ extends DefaultMethodOverload<ReturnValue> {
                                                      /**/ withParameterTypes(final Class<Argument1> parameter1Type,
                                                                              final Class<Argument2> parameter2Type,
                                                                              final Class<Argument3> parameter3Type)
-    throws InvalidMethodParameterTypesException, StaticMethodExpectedException, InvalidMethodReturnTypeException {
+    throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException,
+           ConcreteMethodExpectedException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameter1Type, parameter2Type, parameter3Type);
 
-        assertMethodIsStatic(method);
+        assertConcreteInstanceMethod(method);
         assertMethodReturnsValidType(method);
 
         return typedMethodFactory().method3(method);
@@ -98,12 +103,13 @@ extends DefaultMethodOverload<ReturnValue> {
 
     @Override
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException, StaticMethodExpectedException, InvalidMethodReturnTypeException {
+    throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException,
+           ConcreteMethodExpectedException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
                                                                  parameterTypes);
 
-        assertMethodIsStatic(method);
+        assertConcreteInstanceMethod(method);
         assertMethodReturnsValidType(method);
 
         return typedMethodFactory().uncheckedTypedMethod(method);
@@ -112,12 +118,17 @@ extends DefaultMethodOverload<ReturnValue> {
     @Override
     public <RefinedReturnValue extends ReturnValue>
     Overload<RefinedReturnValue> withReturnType(final Class<RefinedReturnValue> refinedReturnValueClass) {
-        return new DefaultStaticMethodOverload<>(getEnclosingClass(), getMethodName(), refinedReturnValueClass);
+        return new DefaultInstanceMethodOverload<>(getEnclosingClass(), getMethodName(), refinedReturnValueClass);
     }
 
-    private static void assertMethodIsStatic(final Method method)
-    throws StaticMethodExpectedException {
-        if (! Modifier.isStatic(method.getModifiers()))
-            throw new StaticMethodExpectedException(method);
+    private static void assertConcreteInstanceMethod(final Method method)
+    throws InstanceMethodExpectedException, ConcreteMethodExpectedException {
+        final int modifiers = method.getModifiers();
+
+        if (Modifier.isStatic(modifiers))
+            throw new InstanceMethodExpectedException(method);
+
+        if (Modifier.isAbstract(modifiers))
+            throw new ConcreteMethodExpectedException(method);
     }
 }

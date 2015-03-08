@@ -22,7 +22,7 @@
 package org.jlib.reflect.programtarget;
 
 import static org.jlib.reflect.programtarget.factory.Factories.staticMethodOverloadFactory;
-import org.jlib.reflect.programtarget.reflect_new.MethodOverload;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
 public class StaticMethod<EnclosingClassObject>
 implements UntypedMethod {
@@ -37,7 +37,7 @@ implements UntypedMethod {
 
     @Override
     public <ReturnValue>
-    MethodOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
         return staticMethodOverloadFactory().staticMethodOverload(enclosingClass, staticMethodName, returnValueClass);
     }

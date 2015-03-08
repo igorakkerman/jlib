@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.reflect_new.MethodOverload;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
 public class NonstaticMethod<EnclosingObject>
 implements UntypedMethod {
@@ -35,7 +35,7 @@ implements UntypedMethod {
     }
 
     @Override
-    public <ReturnValue> MethodOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    public <ReturnValue> Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
         // FIXME: implement
         return null;

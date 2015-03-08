@@ -26,15 +26,14 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
 
 public abstract class DefaultMethodOverload<ReturnValue>
-implements MethodOverload<ReturnValue> {
+extends DefaultOverload {
 
-    private final Class<?> enclosingClass;
     private final String methodName;
     private final Class<ReturnValue> returnValueType;
 
     protected DefaultMethodOverload(final Class<?> enclosingClass, final String methodName,
                                     final Class<ReturnValue> returnValueType) {
-        this.enclosingClass = enclosingClass;
+        super(enclosingClass);
         this.returnValueType = returnValueType;
         this.methodName = methodName;
     }
@@ -48,10 +47,6 @@ implements MethodOverload<ReturnValue> {
     throws InvalidMethodReturnTypeException {
         if (! expectedReturnValueType.isAssignableFrom(method.getReturnType()))
             throw new InvalidMethodReturnTypeException(method);
-    }
-
-    protected Class<?> getEnclosingClass() {
-        return enclosingClass;
     }
 
     protected String getMethodName() {

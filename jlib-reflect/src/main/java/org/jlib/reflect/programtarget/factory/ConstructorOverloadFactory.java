@@ -21,9 +21,10 @@
 
 package org.jlib.reflect.programtarget.factory;
 
-import org.jlib.reflect.programtarget.reflect_new.MethodOverload;
+import org.jlib.reflect.programtarget.reflect_new.Overload;
 
 public interface ConstructorOverloadFactory {
 
-    <EnclosingClass> MethodOverload<EnclosingClass> constructor(Class<EnclosingClass> enclosingClass);
+    <EnclosingClass>
+    Overload<EnclosingClass> constructor(Class<EnclosingClass> enclosingClass);
 }

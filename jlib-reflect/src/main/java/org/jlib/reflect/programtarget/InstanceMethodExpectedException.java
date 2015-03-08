@@ -19,11 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.reflect_new.Overload;
+import java.lang.reflect.Method;
 
-public interface StaticMethodFactory {
+import static org.jlib.core.message.MessageUtility.message;
 
-    Overload<Object> staticMethod(Class<?> enclosingClass, String methodName);
+public class InstanceMethodExpectedException
+extends MethodLookupException {
+
+    private static final long serialVersionUID = - 3453056833527415771L;
+
+    public InstanceMethodExpectedException(final Method method) {
+        super(message(), method);
+    }
 }

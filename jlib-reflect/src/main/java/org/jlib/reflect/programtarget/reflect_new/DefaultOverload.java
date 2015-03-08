@@ -19,11 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.factory;
+package org.jlib.reflect.programtarget.reflect_new;
 
-import org.jlib.reflect.programtarget.reflect_new.Overload;
+public abstract class DefaultOverload<ReturnValue>
+implements Overload<ReturnValue> {
 
-public interface StaticMethodFactory {
+    protected final Class<?> enclosingClass;
 
-    Overload<Object> staticMethod(Class<?> enclosingClass, String methodName);
+    public DefaultOverload(final Class<?> enclosingClass) {
+        this.enclosingClass = enclosingClass;
+    }
+
+    protected Class<?> getEnclosingClass() {
+        return enclosingClass;
+    }
 }

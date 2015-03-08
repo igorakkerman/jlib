@@ -72,13 +72,13 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    public MethodOverload<Object> useStaticMethod(final String staticMethodName)
+    public Overload<Object> useStaticMethod(final String staticMethodName)
     throws ClassException {
         return staticMethodOverloadFactory().staticMethodOverload(clazz, staticMethodName);
     }
 
     @Override
-    public MethodOverload<Obj> useConstructor() {
+    public Overload<Obj> useConstructor() {
         return constructorOverloadFactory().constructor(get());
     }
 }

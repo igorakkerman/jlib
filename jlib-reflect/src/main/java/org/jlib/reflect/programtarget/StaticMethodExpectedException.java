@@ -25,12 +25,12 @@ import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
 
-public class MethodNotStaticException
+public class StaticMethodExpectedException
 extends MethodLookupException {
 
     private static final long serialVersionUID = - 1272651454980058465L;
 
-    public MethodNotStaticException(final Method method) {
+    public StaticMethodExpectedException(final Method method) {
         super(message(), method);
     }
 }

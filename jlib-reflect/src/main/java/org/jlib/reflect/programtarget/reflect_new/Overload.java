@@ -23,7 +23,7 @@ package org.jlib.reflect.programtarget.reflect_new;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 
-public interface MethodOverload<ReturnValue> {
+public interface Overload<ReturnValue> {
 
     TypedMethod0<ReturnValue> withoutParameters()
     throws MethodLookupException;
@@ -55,5 +55,5 @@ public interface MethodOverload<ReturnValue> {
     // @formatter:on
 
     <RefinedReturnValue extends ReturnValue>
-    MethodOverload<RefinedReturnValue> withReturnType(Class<RefinedReturnValue> returnValueClass);
+    Overload<RefinedReturnValue> withReturnType(Class<RefinedReturnValue> returnValueClass);
 }
