@@ -24,6 +24,7 @@ package org.jlib.reflect.reflectordefaults;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UntypedOverload;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
 
 public class DefaultUntypedStaticMethodOverload<EnclosingClassObject>
 extends DefaultTypedStaticMethodOverload<EnclosingClassObject, Object>

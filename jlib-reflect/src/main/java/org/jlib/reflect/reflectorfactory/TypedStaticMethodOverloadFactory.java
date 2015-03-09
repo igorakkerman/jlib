@@ -27,6 +27,6 @@ public interface TypedStaticMethodOverloadFactory {
 
     <EnclosingClassObject, ReturnValue>
     TypedOverload<ReturnValue>
-    /**/ staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                              Class<ReturnValue> returnValueClass);
+    /**/ typedStaticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
+                                   Class<ReturnValue> returnValueClass);
 }
