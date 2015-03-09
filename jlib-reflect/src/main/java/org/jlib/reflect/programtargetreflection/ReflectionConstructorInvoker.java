@@ -44,8 +44,7 @@ implements MethodInvoker {
             return constructor.newInstance(arguments);
         }
         catch (final ReflectiveOperationException exception) {
-            throw new ConstructorInvocationException(message(), constructor,
-                                                constructor.toString());
+            throw new ConstructorInvocationException(message(), constructor);
         }
     }
 
