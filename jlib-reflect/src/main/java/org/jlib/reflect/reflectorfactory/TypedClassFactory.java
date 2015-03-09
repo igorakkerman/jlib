@@ -19,15 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.MethodX;
+import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.TypedClass;
 
-public interface    UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
+public interface TypedClassFactory {
 
-    MethodReturn<ReturnType> invoke(Object... arguments)
-    throws MethodLookupException;
+    <Value> TypedClass<Value>
+    typedClass(Class<Value> staticType, final Class<?> actualClass)
+    throws NoSubtypeException;
 }

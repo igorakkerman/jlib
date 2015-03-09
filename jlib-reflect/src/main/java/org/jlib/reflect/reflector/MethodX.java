@@ -19,15 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.reflector;
+
+import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.MethodX;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface    UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
+public interface MethodX<ReturnValue> {
 
-    MethodReturn<ReturnType> invoke(Object... arguments)
+    MethodX<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
+    throws NoSubtypeException;
+
+    Method get()
     throws MethodLookupException;
 }

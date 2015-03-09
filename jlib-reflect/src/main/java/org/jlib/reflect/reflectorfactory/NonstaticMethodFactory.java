@@ -19,15 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.MethodX;
+import org.jlib.reflect.reflector.UntypedMethod;
 
-public interface    UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
-
-    MethodReturn<ReturnType> invoke(Object... arguments)
-    throws MethodLookupException;
+public interface NonstaticMethodFactory {
+    <EnclosingObject> UntypedMethod method(EnclosingObject enclosingObject, String methodName);
 }

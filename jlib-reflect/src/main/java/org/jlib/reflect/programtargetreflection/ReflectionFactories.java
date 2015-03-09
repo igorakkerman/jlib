@@ -19,15 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.programtargetreflection;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.MethodX;
+import org.jlib.reflect.programtarget.ClassLookupFactory;
+import org.jlib.reflect.programtarget.MethodInvokerFactory;
+import org.jlib.reflect.programtarget.MethodLookupFactory;
 
-public interface    UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
+public final class ReflectionFactories {
 
-    MethodReturn<ReturnType> invoke(Object... arguments)
-    throws MethodLookupException;
+    public static ClassLookupFactory classLookupFactory() {
+        return ReflectionClassLookup::new;
+    }
+
+    public static MethodInvokerFactory methodInvokerFactory() {
+        return ReflectionStaticMethodInvoker::new;
+    }
+
+    public static MethodLookupFactory methodLookupFactory() {
+        return ReflectionMethodLookup::new;
+    }
+
+    private ReflectionFactories() {}
 }

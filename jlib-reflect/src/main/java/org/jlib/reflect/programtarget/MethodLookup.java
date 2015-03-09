@@ -19,15 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.MethodX;
+import java.lang.reflect.Method;
 
-public interface    UncheckedMethodX<ReturnType>
-extends MethodX<ReturnType, UncheckedMethodX<ReturnType>> {
+import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 
-    MethodReturn<ReturnType> invoke(Object... arguments)
-    throws MethodLookupException;
+public interface MethodLookup {
+
+    Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException;
 }

@@ -19,39 +19,25 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
-
-import java.lang.reflect.Method;
+package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
-import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.validator.MethodReturnValueValidator;
-import static org.jlib.reflect.validator.Validators.assertValid;
+import static org.jlib.reflect.validator.Validators.isEqualTo;
 
-public class ValidatingMethodReturnValue<ReturnValue>
-implements MethodReturn<ReturnValue> {
+public interface MethodReturn<ReturnValue> {
 
-    private final ReturnValue returnValue;
-    private final Method method;
+    MethodReturn<ReturnValue> assertReturned(MethodReturnValueValidator<ReturnValue> validator)
+    throws InvalidMethodReturnValueException;
 
-    public ValidatingMethodReturnValue(final ReturnValue returnValue, final Method method) {
-        this.returnValue = returnValue;
-        this.method = method;
-    }
-
-    @Override
-    public final ReturnValue get()
-    throws ProgramTargetException {
-        return returnValue;
-    }
-
-    @Override
-    public MethodReturn<ReturnValue>
-    assertReturned(final MethodReturnValueValidator<ReturnValue> validator)
+    default MethodReturn<ReturnValue> assertReturned(final ReturnValue returnValue)
     throws InvalidMethodReturnValueException {
-        assertValid(validator, returnValue, method);
-
-        return this;
+        return assertReturned(isEqualTo(returnValue));
     }
+
+    UntypedMethod useMethod(String methodName);
+
+    ReturnValue get()
+    throws ProgramTargetException;
 }

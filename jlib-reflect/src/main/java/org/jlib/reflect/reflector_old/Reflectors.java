@@ -23,10 +23,10 @@ package org.jlib.reflect.reflector_old;
 
 import java.util.function.Supplier;
 
-import org.jlib.reflect.programtarget.reflectorfactory.ReflectorFactory;
-import org.jlib.reflect.programtarget.reflectordefaults.DefaultTypedClass;
-import org.jlib.reflect.programtarget.reflector.TypedClass;
-import org.jlib.reflect.programtarget.reflector.UntypedClass;
+import org.jlib.reflect.reflectorfactory.ReflectorFactory;
+import org.jlib.reflect.reflectordefaults.DefaultTypedClass;
+import org.jlib.reflect.reflector.TypedClass;
+import org.jlib.reflect.reflector.UntypedClass;
 import org.jlib.reflect.programtarget.barereflection.ReflectionReflectorFactory;
 
 public final class Reflectors {
