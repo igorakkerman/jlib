@@ -25,13 +25,13 @@ import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UntypedOverload;
 
-public class DefaultNonstaticOverload<EnclosingObject>
+public class DefaultInstanceMethodOverload<EnclosingObject>
 implements UntypedOverload {
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
 
-    public DefaultNonstaticOverload(final EnclosingObject enclosingObject, final String methodName) {
+    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName) {
         this.enclosingObject = enclosingObject;
         this.methodName = methodName;
     }

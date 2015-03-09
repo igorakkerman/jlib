@@ -51,8 +51,9 @@ public final class DefaultReflectorFactories {
         return DefaultStaticMethodOverload::new;
     }
 
-    public static InstanceMethodOverloadFactory nonstaticMethodFactory() {
-        return DefaultNonstaticOverload::new;
+    public static InstanceMethodOverloadFactory instanceMethodFactory() {
+        return DefaultInstanceMethodOverload::new;
+    }
 
     public static MethodReturnValueFactory methodReturnValueFactory() {
         return ValidatingMethodReturnValue::new;
