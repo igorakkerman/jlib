@@ -21,7 +21,9 @@
 
 package org.jlib.reflect.programtarget;
 
+import java.lang.reflect.Method;
+
 public interface MethodInvokerFactory {
 
-    MethodInvoker methodInvoker();
+    MethodInvoker methodInvoker(Method method);
 }

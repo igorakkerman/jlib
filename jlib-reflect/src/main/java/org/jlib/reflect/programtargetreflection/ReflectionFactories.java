@@ -31,7 +31,7 @@ public final class ReflectionFactories {
         return ReflectionClassLookup::new;
     }
 
-    public static MethodInvokerFactory methodInvokerFactory() {
+    public static MethodInvokerFactory staticMethodInvokerFactory() {
         return ReflectionStaticMethodInvoker::new;
     }
 
