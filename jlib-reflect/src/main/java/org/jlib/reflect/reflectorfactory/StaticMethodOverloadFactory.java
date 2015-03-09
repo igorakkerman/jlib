@@ -25,7 +25,8 @@ import org.jlib.reflect.reflectordefaults.StaticMethodOverload;
 
 public interface StaticMethodOverloadFactory {
 
-    <EnclosingClassObject, ReturnValue> StaticMethodOverload<EnclosingClassObject, ReturnValue>
-    staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                         Class<ReturnValue> returnValueClass);
+    <EnclosingClassObject, ReturnValue>
+    StaticMethodOverload<EnclosingClassObject, ReturnValue>
+     /**/ staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
+                               Class<ReturnValue> returnValueClass);
 }
