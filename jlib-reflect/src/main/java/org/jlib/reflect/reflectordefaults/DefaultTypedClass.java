@@ -25,7 +25,7 @@ import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
-import static org.jlib.reflect.reflectordefaults.Factories.staticMethodFactory;
+import static org.jlib.reflect.reflectordefaults.ReflectorFactories.staticMethodFactory;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {

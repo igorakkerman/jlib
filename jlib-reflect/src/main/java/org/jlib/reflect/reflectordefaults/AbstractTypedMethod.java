@@ -23,16 +23,16 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.MethodInvoker;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodInvokerFactory;
-import org.jlib.reflect.reflector.MethodX;
+import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public abstract class AbstractMethod<ReturnType>
-implements MethodX<ReturnType> {
+public abstract class AbstractTypedMethod<ReturnType>
+implements TypedMethod<ReturnType> {
 
     private final MethodInvoker methodInvoker = methodInvokerFactory().methodInvoker();
     private final MethodReturnTypeValidator methodReturnTypeValidator;
 
-    protected AbstractMethod(final MethodReturnTypeValidator methodReturnTypeValidator) {
+    protected AbstractTypedMethod(final MethodReturnTypeValidator methodReturnTypeValidator) {
         this.methodReturnTypeValidator = methodReturnTypeValidator;
     }
 

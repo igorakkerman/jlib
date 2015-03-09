@@ -25,17 +25,20 @@ import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.Method0;
-import static org.jlib.reflect.reflectordefaults.Factories.methodReturnValueFactory;
+import org.jlib.reflect.reflector.TypedMethod0;
+import static org.jlib.reflect.reflectordefaults.ReflectorFactories.methodReturnValueFactory;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public class DefaultMethod0<ReturnValue>
-extends AbstractMethod<ReturnValue>
-implements Method0<ReturnValue> {
+public class DefaultTypedMethod0<ReturnValue>
+extends AbstractTypedMethod<ReturnValue>
+implements TypedMethod0<ReturnValue> {
 
-    public DefaultMethod0(final Method method, final MethodReturnTypeValidator methodReturnTypeValidator) {
-        super(methodReturnTypeValidator);
+    // FIXME: implement
+    private final MethodReturnTypeValidator methodReturnTypeValidator = null;
+
+    public DefaultTypedMethod0(final Method method) {
+        super(method);
     }
 
     @Override
@@ -48,7 +51,7 @@ implements Method0<ReturnValue> {
     }
 
     @Override
-    public Method0<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
+    public TypedMethod0<ReturnValue> assertReturns(final Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException {
         methodReturnTypeValidator.assertReturns(staticReturnSuperType);
 

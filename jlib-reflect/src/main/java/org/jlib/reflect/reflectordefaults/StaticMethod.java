@@ -24,7 +24,7 @@ package org.jlib.reflect.reflectordefaults;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.UntypedMethod;
-import static org.jlib.reflect.reflectordefaults.Factories.staticMethodOverloadFactory;
+import static org.jlib.reflect.reflectordefaults.ReflectorFactories.staticMethodOverloadFactory;
 
 public class StaticMethod<EnclosingClassObject>
 implements UntypedMethod {

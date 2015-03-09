@@ -22,25 +22,25 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
-import org.jlib.reflect.reflector_old.UncheckedMethodX;
+import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
 
 public interface Overload<ReturnValue> {
 
-    Method0<ReturnValue> withoutParameters()
+    TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodSignatureException;
 
     <Parameter1>
-    Method1<ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type);
+    TypedMethod1<ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type);
 
     <Parameter1, Parameter2>
-    Method2<ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
                                                                     Class<Parameter2> parameter2Type);
 
     <Parameter1, Parameter2, Parameter3>
-    Method3<ReturnValue, Parameter1, Parameter2, Parameter3>
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
                                                             /**/ withParameterTypes(Class<Parameter1> parameter1Type,
                                                                                     Class<Parameter2> parameter2Type,
                                                                                     Class<Parameter3> parameter3Type);
 
-    UncheckedMethodX<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes);
+    UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes);
 }

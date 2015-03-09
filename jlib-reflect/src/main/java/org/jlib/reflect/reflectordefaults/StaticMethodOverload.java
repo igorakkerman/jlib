@@ -23,12 +23,12 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
-import org.jlib.reflect.reflector.Method0;
-import org.jlib.reflect.reflector.Method1;
-import org.jlib.reflect.reflector.Method2;
-import org.jlib.reflect.reflector.Method3;
+import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.TypedMethod1;
+import org.jlib.reflect.reflector.TypedMethod2;
+import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.Overload;
-import org.jlib.reflect.reflector_old.UncheckedMethodX;
+import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
 
 public class StaticMethodOverload<EnclosingClassObject, ReturnValue>
 implements Overload<ReturnValue> {
@@ -45,21 +45,21 @@ implements Overload<ReturnValue> {
     }
 
     @Override
-    public Method0<ReturnValue> withoutParameters()
+    public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodSignatureException {
         return methodFactory().method0(methodLookupFactory().methodLookup(enclosingClass, methodName));
     }
 
     @Override
     public <Argument1>
-    Method1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type) {
+    TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type) {
         return methodFactory().method1(methodLookupFactory().methodLookup(enclosingClass, methodName,
                                                                    parameter1Type));
     }
 
     @Override
     public <Argument1, Argument2>
-    Method2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
+    TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
                                                                            final Class<Argument2> parameter2Type) {
         return methodFactory().method2(methodLookupFactory().methodLookup(enclosingClass, methodName,
                                                                    parameter1Type,
@@ -68,7 +68,7 @@ implements Overload<ReturnValue> {
 
     @Override
     public <Argument1, Argument2, Argument3>
-    Method3<ReturnValue, Argument1, Argument2, Argument3>
+    TypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
                                                      /**/ withParameterTypes(final Class<Argument1> parameter1Type,
                                                                              final Class<Argument2> parameter2Type,
                                                                              final Class<Argument3> parameter3Type) {
@@ -79,7 +79,7 @@ implements Overload<ReturnValue> {
     }
 
     @Override
-    public UncheckedMethodX<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
+    public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
         return methodFactory().methodUncheckedParameterTypes(methodLookupFactory().methodLookup(enclosingClass, methodName,
                                                                                          parameterTypes));
     }

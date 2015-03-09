@@ -23,8 +23,8 @@ package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 
-public interface Method3<ReturnType, Argument1, Argument2, Argument3>
-extends MethodX<ReturnType> {
+public interface TypedMethod3<ReturnType, Argument1, Argument2, Argument3>
+extends TypedMethod<ReturnType> {
 
     MethodReturn<ReturnType> invoke(Argument1 argument1, Argument2 argument2, Argument3 argument3)
     throws MethodLookupException;
