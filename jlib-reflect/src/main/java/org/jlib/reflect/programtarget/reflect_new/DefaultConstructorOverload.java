@@ -27,19 +27,18 @@ import java.lang.reflect.Modifier;
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
 import org.jlib.reflect.programtarget.InstanceMethodExpectedException;
-import static org.jlib.reflect.programtarget.factory.Factories.constructorOverloadFactory;
 import static org.jlib.reflect.programtarget.factory.Factories.typedMethodFactory;
 import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodLookupFactory;
 
-public class DefaultConstructorOverload<ReturnValue>
-extends DefaultOverload<ReturnValue> {
+public class DefaultConstructorOverload<Value>
+extends DefaultOverload<Value> {
 
     public DefaultConstructorOverload(final Class<?> enclosingClass) {
         super(enclosingClass);
     }
 
     @Override
-    public TypedMethod0<ReturnValue> withoutParameters()
+    public TypedMethod0<Value> withoutParameters()
     throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException {
         final Method method = constructorLookupFactory().constructor()
                                                    .lookupMethod(getEnclosingClass(), getMethodName());
@@ -49,7 +48,7 @@ extends DefaultOverload<ReturnValue> {
 
     @Override
     public <Argument1>
-    TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type)
+    TypedMethod1<Value, Argument1> withParameterTypes(final Class<Argument1> parameter1Type)
     throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
@@ -62,7 +61,7 @@ extends DefaultOverload<ReturnValue> {
 
     @Override
     public <Argument1, Argument2>
-    TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
+    TypedMethod2<Value, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
                                                                        final Class<Argument2> parameter2Type)
     throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
@@ -77,7 +76,7 @@ extends DefaultOverload<ReturnValue> {
 
     @Override
     public <Argument1, Argument2, Argument3>
-    TypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
+    TypedMethod3<Value, Argument1, Argument2, Argument3>
                                                      /**/ withParameterTypes(final Class<Argument1> parameter1Type,
                                                                              final Class<Argument2> parameter2Type,
                                                                              final Class<Argument3> parameter3Type)
@@ -93,7 +92,7 @@ extends DefaultOverload<ReturnValue> {
     }
 
     @Override
-    public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    public UncheckedTypedMethod<Value> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, InstanceMethodExpectedException, InvalidMethodReturnTypeException {
         final Method method = methodLookupFactory().methodLookup()
                                                    .lookupMethod(getEnclosingClass(), getMethodName(),
@@ -106,7 +105,7 @@ extends DefaultOverload<ReturnValue> {
     }
 
     @Override
-    public <RefinedReturnValue extends ReturnValue>
+    public <RefinedReturnValue extends Value>
     Overload<RefinedReturnValue> withReturnType(final Class<RefinedReturnValue> refinedReturnValueClass) {
         return new DefaultConstructorOverload<>(getEnclosingClass(), getMethodName(), refinedReturnValueClass);
     }
