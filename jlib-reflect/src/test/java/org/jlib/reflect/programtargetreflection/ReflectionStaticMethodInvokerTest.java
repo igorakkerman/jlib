@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 
 public class ReflectionStaticMethodInvokerTest {
 
-    // TODO: add negative tests (method not found, wrong arguments etc.
+    // TODO: add negative tests (method not found, wrong arguments etc.)
 
     private static final Class<?> CLASS = ReflectionTestMethods.class;
 
