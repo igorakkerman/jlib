@@ -19,27 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflectordefaults;
+package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
-import org.jlib.reflect.reflector.UntypedOverload;
 
-public class NonstaticOverload<EnclosingObject>
-implements UntypedOverload {
+public interface ConstructorOverloadFactory {
 
-    private final EnclosingObject enclosingObject;
-    private final String methodName;
-
-    public NonstaticOverload(final EnclosingObject enclosingObject, final String methodName) {
-        this.enclosingObject = enclosingObject;
-        this.methodName = methodName;
-    }
-
-    @Override
-    public <ReturnValue> TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
-    throws NoSubtypeException {
-        // FIXME: implement
-        return null;
-    }
+    <EnclosingClassObject>
+    TypedOverload<EnclosingClassObject>
+     /**/ constructorOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName);
 }

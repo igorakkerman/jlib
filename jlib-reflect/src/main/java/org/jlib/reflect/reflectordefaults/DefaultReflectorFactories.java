@@ -31,12 +31,12 @@ import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector_old.ValidatingMethodReturnValue;
 import org.jlib.reflect.reflectorfactory.MethodFactory;
 import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
-import org.jlib.reflect.reflectorfactory.NonstaticMethodFactory;
-import org.jlib.reflect.reflectorfactory.StaticMethodFactory;
+import org.jlib.reflect.reflectorfactory.InstanceMethodOverloadFactory;
+import org.jlib.reflect.reflectorfactory.StaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 import org.jlib.reflect.reflectorfactory.UntypedClassFactory;
 
-public final class ReflectorFactories {
+public final class DefaultReflectorFactories {
 
     public static UntypedClassFactory untypedClassFactory() {
         return DefaultUntypedClass::new;
@@ -47,17 +47,12 @@ public final class ReflectorFactories {
         return DefaultTypedClass::new;
     }
 
-    public static StaticMethodFactory staticMethodOverloadFactory() {
-        return StaticOverload::new;
-    }
-
-    public static NonstaticMethodFactory nonstaticMethodFactory() {
-        return NonstaticOverload::new;
-    }
-
     public static StaticMethodOverloadFactory staticMethodOverloadFactory() {
-        return StaticMethodOverload::new;
+        return DefaultStaticMethodOverload::new;
     }
+
+    public static InstanceMethodOverloadFactory nonstaticMethodFactory() {
+        return DefaultNonstaticOverload::new;
 
     public static MethodReturnValueFactory methodReturnValueFactory() {
         return ValidatingMethodReturnValue::new;
@@ -88,5 +83,5 @@ public final class ReflectorFactories {
     }
 
 
-    private ReflectorFactories() {}
+    private DefaultReflectorFactories() {}
 }

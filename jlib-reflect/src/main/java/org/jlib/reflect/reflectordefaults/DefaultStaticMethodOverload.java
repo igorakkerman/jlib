@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.reflectordefaults;
 
-import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -30,15 +29,15 @@ import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
 
-public class StaticMethodOverload<EnclosingClassObject, ReturnValue>
+public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
 implements TypedOverload<ReturnValue> {
 
     private final Class<EnclosingClassObject> enclosingClass;
     private final String methodName;
     private final Class<ReturnValue> returnValueClass;
 
-    public StaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
-                                final Class<ReturnValue> returnValueClass) {
+    public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
+                                       final Class<ReturnValue> returnValueClass) {
         this.enclosingClass = enclosingClass;
         this.methodName = methodName;
         this.returnValueClass = returnValueClass;

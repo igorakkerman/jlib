@@ -21,31 +21,25 @@
 
 package org.jlib.reflect.reflectordefaults;
 
-import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
-import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.UntypedClass;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedClassFactory;
+import org.jlib.reflect.reflector.TypedOverload;
+import org.jlib.reflect.reflector.UntypedOverload;
 
-public class DefaultUntypedClass
-implements UntypedClass {
+public class DefaultNonstaticOverload<EnclosingObject>
+implements UntypedOverload {
 
-    private final Class<?> clazz;
+    private final EnclosingObject enclosingObject;
+    private final String methodName;
 
-    public DefaultUntypedClass(final String className)
-    throws ClassLookupException {
-        clazz = classLookupFactory().classLookup().lookupClass(className);
+    public DefaultNonstaticOverload(final EnclosingObject enclosingObject, final String methodName) {
+        this.enclosingObject = enclosingObject;
+        this.methodName = methodName;
     }
 
     @Override
-    public Class<?> get() {
-        return clazz;
-    }
-
-    @Override
-    public <Obj> TypedClass<Obj> withType(final Class<Obj> staticType)
+    public <ReturnValue> TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
-        return typedClassFactory().typedClass(staticType, get());
+        // FIXME: implement
+        return null;
     }
 }

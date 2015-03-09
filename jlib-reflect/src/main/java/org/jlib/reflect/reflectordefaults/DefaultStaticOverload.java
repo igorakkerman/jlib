@@ -24,15 +24,15 @@ package org.jlib.reflect.reflectordefaults;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UntypedOverload;
-import static org.jlib.reflect.reflectordefaults.ReflectorFactories.staticMethodOverloadFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.staticMethodOverloadFactory;
 
-public class StaticOverload<EnclosingClassObject>
+public class DefaultStaticOverload<EnclosingClassObject>
 implements UntypedOverload {
 
     private final Class<EnclosingClassObject> enclosingClass;
     private final String staticMethodName;
 
-    public StaticOverload(final Class<EnclosingClassObject> enclosingClass, final String staticMethodName) {
+    public DefaultStaticOverload(final Class<EnclosingClassObject> enclosingClass, final String staticMethodName) {
         this.enclosingClass = enclosingClass;
         this.staticMethodName = staticMethodName;
     }
