@@ -21,25 +21,31 @@
 
 package org.jlib.reflect.reflectordefaults;
 
+import org.jlib.reflect.programtarget.ClassLookup;
 import org.jlib.reflect.programtarget.ClassLookupException;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.UntypedClass;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedClassFactory;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.untypedClassFactory;
+import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 
 public class DefaultReflectorService
 implements ReflectorService {
 
+    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
+    private ClassLookup classLookup = classLookupFactory().classLookup();
+
+    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
+    private TypedClassFactory typedClassFactory = typedClassFactory();
+
     @Override
-    public UntypedClass useClass(final String className)
+    public TypedClass<?> useClass(final String className)
     throws ClassLookupException {
-        return untypedClassFactory().untypedClass(classLookupFactory().classLookup().lookupClass(className));
+        return typedClassFactory.typedClass(classLookup.lookupClass(className));
     }
 
     @Override
     public <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return typedClassFactory().typedClass(concreteClass, concreteClass);
+        return typedClassFactory.typedClass(concreteClass);
     }
 }

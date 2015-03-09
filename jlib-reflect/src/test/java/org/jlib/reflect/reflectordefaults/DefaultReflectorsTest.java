@@ -22,6 +22,7 @@
 package org.jlib.reflect.reflectordefaults;
 
 import org.assertj.core.api.Assertions;
+import org.jlib.reflect.reflector.ReflectorService;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectors.useClass;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
 import static org.jlib.reflect.validator.Validators.isInstanceOf;
@@ -34,11 +35,14 @@ public class DefaultReflectorsTest {
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        final Number value = useClass("java.lang.Integer")                   // UntypedClassReflector
+        final ReflectorService service = new DefaultReflectorService();
+
+        final Number value = service
+                             .useClass("java.lang.Integer")                  // UntypedClassReflector
                              .withType(Number.class)                         // TypedClassReflector
                              .assertSubtypeOf(Integer.class)                 // TypedClassReflector
                              .useStaticMethod("valueOf")                     // UntypedMethodReflector
-                             .withArgumentTypes(int.class)                   // Nethod1Reflector
+                             .withParameterTypes(int.class)                  // Nethod1Reflector
                              .withReturnType(Number.class)                   // MethodOverloadReflector
                              .invoke(42)                                     // MethodReturnValueReflector
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
@@ -72,3 +76,21 @@ public class DefaultReflectorsTest {
     }
 }
 
+/*
+    public DefaultUntypedStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass,
+                                              final String methodName) {
+        super(enclosingClass, methodName, Object.class);
+    }
+
+    @Override
+    public <ReturnValue> TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    throws NoSubtypeException {
+        return typedStaticMethodOverloadFactory().typedStaticMethodOverload(getEnclosingClass(), getMethodName(),
+                                                                            returnValueClass);
+    }
+
+    <EnclosingClassObject>
+    UntypedOverload
+     /* staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName);
+
+*/

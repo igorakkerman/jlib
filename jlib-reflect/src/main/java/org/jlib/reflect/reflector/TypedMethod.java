@@ -33,4 +33,7 @@ public interface TypedMethod<ReturnValue> {
 
     Method get()
     throws MethodLookupException;
+
+    <StaticReturnValue>
+    TypedMethod<StaticReturnValue> withType(Class<StaticReturnValue> clazz);
 }

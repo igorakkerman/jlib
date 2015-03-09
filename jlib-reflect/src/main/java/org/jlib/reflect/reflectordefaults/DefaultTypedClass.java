@@ -23,13 +23,20 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.UntypedOverload;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.staticMethodOverloadFactory;
+import org.jlib.reflect.reflector.TypedOverload;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
+import org.jlib.reflect.reflectorfactory.ConstructorOverloadFactory;
+import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {
+
+    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
+    private TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory = typedStaticMethodOverloadFactory();
+
+    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
+    private ConstructorOverloadFactory constructorOverloadFactory = constructorOverloadFactory();
 
     private final Class<?> actualClass;
 
@@ -58,6 +65,13 @@ implements TypedClass<Obj> {
     }
 
     @Override
+    public <StaticReturnValue>
+    TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
+    throws NoSubtypeException {
+        return new DefaultTypedClass<>(staticType, actualClass);
+    }
+
+    @Override
     public TypedClass<Obj> assertSubtypeOf(final Class<?> expectedParentType)
     throws NoSubtypeException {
         if (!expectedParentType.isAssignableFrom(actualClass))
@@ -67,14 +81,14 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    public UntypedOverload useStaticMethod(final String staticMethodName)
+    public TypedOverload<Object> useStaticMethod(final String staticMethodName)
     throws ClassException {
-        return staticMethodOverloadFactory().staticMethodOverload(get(), staticMethodName, Object.class);
+        return typedStaticMethodOverloadFactory.typedStaticMethodOverload(get(), staticMethodName, Object.class);
     }
 
     @Override
     public TypedOverload<Obj> useConstructor() {
         // FIXME: implement
-        return constructorFactory().constructor(actualClass);
+        return constructorOverloadFactory.constructor(actualClass);
     }
 }

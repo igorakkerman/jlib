@@ -27,10 +27,10 @@ import org.jlib.reflect.programtarget.ClassLookupException;
 
 public interface ReflectorService {
 
-    UntypedClass useClass(final String className)
+    TypedClass<?> useClass(final String className)
     throws ClassLookupException;
 
-    default UntypedClass useClass(final Supplier<String> classNameSupplier)
+    default TypedClass<?> useClass(final Supplier<String> classNameSupplier)
     throws ClassLookupException {
         return useClass(classNameSupplier.get());
     }

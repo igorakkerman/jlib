@@ -28,17 +28,10 @@ import org.jlib.reflect.reflectorfactory.InstanceMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
-import org.jlib.reflect.reflectorfactory.UntypedClassFactory;
-import org.jlib.reflect.reflectorfactory.UntypedStaticMethodOverloadFactory;
 
 public final class DefaultReflectorFactories {
 
-    public static UntypedClassFactory untypedClassFactory() {
-        return DefaultUntypedClass::new;
-    }
-
-    public static TypedClassFactory typedClassFactory()
-    throws NoSubtypeException {
+    public static TypedClassFactory typedClassFactory() {
         return new TypedClassFactory() {
             @Override
             public <Value> TypedClass<Value> typedClass(final Class<Value> clazz) {
@@ -51,10 +44,6 @@ public final class DefaultReflectorFactories {
                 return new DefaultTypedClass<>(staticType, actualClass);
             }
         };
-    }
-
-    public static UntypedStaticMethodOverloadFactory untypedStaticMethodOverloadFactory() {
-        return DefaultUntypedStaticMethodOverload::new;
     }
 
     public static TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory() {
