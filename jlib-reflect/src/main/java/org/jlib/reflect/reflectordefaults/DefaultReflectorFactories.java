@@ -21,17 +21,10 @@
 
 package org.jlib.reflect.reflectordefaults;
 
-import java.lang.reflect.Method;
-
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.TypedMethod0;
-import org.jlib.reflect.reflector.TypedMethod1;
-import org.jlib.reflect.reflector.TypedMethod2;
-import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector_old.ValidatingMethodReturnValue;
-import org.jlib.reflect.reflectorfactory.MethodFactory;
-import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
 import org.jlib.reflect.reflectorfactory.InstanceMethodOverloadFactory;
+import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
 import org.jlib.reflect.reflectorfactory.StaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 import org.jlib.reflect.reflectorfactory.UntypedClassFactory;
@@ -58,31 +51,6 @@ public final class DefaultReflectorFactories {
     public static MethodReturnValueFactory methodReturnValueFactory() {
         return ValidatingMethodReturnValue::new;
     }
-
-    public static MethodFactory methodFactory() {
-        return new MethodFactory() {
-            @Override
-            public <ReturnValue> TypedMethod0<ReturnValue> method0(final Method method) {
-                return new DefaultTypedMethod0<>(method);
-            }
-
-            @Override
-            public <ReturnValue, Parameter1> TypedMethod1<ReturnValue, Parameter1> method1() {
-                return null;
-            }
-
-            @Override
-            public <ReturnValue, Parameter1, Parameter2> TypedMethod2<ReturnValue, Parameter1, Parameter2> method2() {
-                return null;
-            }
-
-            @Override
-            public <ReturnValue, Parameter1, Parameter2, Parameter3> TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3() {
-                return null;
-            }
-        };
-    }
-
 
     private DefaultReflectorFactories() {}
 }
