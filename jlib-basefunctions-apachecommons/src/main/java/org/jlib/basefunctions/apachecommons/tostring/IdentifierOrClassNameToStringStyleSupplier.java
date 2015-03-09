@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
-import static org.jlib.reflect.reflector_old.Reflectors.useClass;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectors.useClass;
 
 public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {

@@ -22,12 +22,14 @@
 package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector_old.ValidatingMethodReturnValue;
 import org.jlib.reflect.reflectorfactory.InstanceMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
-import org.jlib.reflect.reflectorfactory.StaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
+import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.UntypedClassFactory;
+import org.jlib.reflect.reflectorfactory.UntypedStaticMethodOverloadFactory;
 
 public final class DefaultReflectorFactories {
 
@@ -37,11 +39,26 @@ public final class DefaultReflectorFactories {
 
     public static TypedClassFactory typedClassFactory()
     throws NoSubtypeException {
-        return DefaultTypedClass::new;
+        return new TypedClassFactory() {
+            @Override
+            public <Value> TypedClass<Value> typedClass(final Class<Value> clazz) {
+                return new DefaultTypedClass<>(clazz);
+            }
+
+            @Override
+            public <Value> TypedClass<Value> typedClass(final Class<Value> staticType, final Class<?> actualClass)
+            throws NoSubtypeException {
+                return new DefaultTypedClass<>(staticType, actualClass);
+            }
+        };
     }
 
-    public static StaticMethodOverloadFactory staticMethodOverloadFactory() {
-        return DefaultStaticMethodOverload::new;
+    public static UntypedStaticMethodOverloadFactory untypedStaticMethodOverloadFactory() {
+        return DefaultUntypedStaticMethodOverload::new;
+    }
+
+    public static TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory() {
+        return DefaultTypedStaticMethodOverload::new;
     }
 
     public static InstanceMethodOverloadFactory instanceMethodFactory() {

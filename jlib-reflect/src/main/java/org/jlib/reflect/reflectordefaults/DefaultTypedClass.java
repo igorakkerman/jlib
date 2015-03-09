@@ -33,15 +33,15 @@ implements TypedClass<Obj> {
 
     private final Class<?> actualClass;
 
+    public DefaultTypedClass(final Class<Obj> actualClass) {
+        this.actualClass = actualClass;
+    }
+
     public DefaultTypedClass(final Class<Obj> staticType, final Class<?> actualClass)
     throws NoSubtypeException {
         this.actualClass = actualClass;
 
         assertSubtypeOf(staticType);
-    }
-
-    public DefaultTypedClass(final Class<Obj> actualClass) {
-        this.actualClass = actualClass;
     }
 
     private void assertValid(final Class<Obj> actualClass, final Class<?> expectedParentType)

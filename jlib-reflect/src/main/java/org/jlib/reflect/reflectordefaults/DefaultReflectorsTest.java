@@ -19,16 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.reflectordefaults;
 
 import org.assertj.core.api.Assertions;
-import static org.jlib.reflect.reflector_old.Reflectors.useClass;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectors.useClass;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
 import static org.jlib.reflect.validator.Validators.isInstanceOf;
 import static org.jlib.reflect.validator.Validators.isLessThan;
 import org.junit.Test;
 
-public class ReflectorTest {
+public class DefaultReflectorsTest {
 
     @Test
     @SuppressWarnings("UnnecessaryBoxing")

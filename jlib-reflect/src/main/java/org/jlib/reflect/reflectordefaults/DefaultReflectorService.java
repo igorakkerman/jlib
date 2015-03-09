@@ -19,30 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector_old;
+package org.jlib.reflect.reflectordefaults;
 
-import java.util.function.Supplier;
-
+import org.jlib.reflect.programtarget.ClassLookupException;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.untypedClassFactory;
-import org.jlib.reflect.reflectordefaults.DefaultTypedClass;
+import org.jlib.reflect.reflector.ReflectorService;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.UntypedClass;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedClassFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.untypedClassFactory;
 
-public final class Reflectors {
+public class DefaultReflectorService
+implements ReflectorService {
 
-    private Reflectors() {}
-
-    public static UntypedClass useClass(final String className) {
-        return untypedClassFactory().untypedClass(classLookupFactory().classLookup());
+    @Override
+    public UntypedClass useClass(final String className)
+    throws ClassLookupException {
+        return untypedClassFactory().untypedClass(classLookupFactory().classLookup().lookupClass(className));
     }
 
-    public static UntypedClass useClass(final Supplier<String> classNameSupplier) {
-        return useClass(classNameSupplier.get());
-    }
-
-    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClass<Value>(concreteClass);
+    @Override
+    public <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
+        return typedClassFactory().typedClass(concreteClass, concreteClass);
     }
 }
-

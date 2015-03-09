@@ -21,29 +21,29 @@
 
 package org.jlib.reflect.reflectordefaults;
 
+import java.util.function.Supplier;
+
 import org.jlib.reflect.programtarget.ClassLookupException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.untypedClassFactory;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.UntypedClass;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedClassFactory;
 
-public class DefaultUntypedClass
-implements UntypedClass {
+public final class DefaultReflectors {
 
-    private final Class<?> clazz;
+    private DefaultReflectors() {}
 
-    public DefaultUntypedClass(final Class<?> clazz) {
-        this.clazz = clazz;
+    public static UntypedClass useClass(final String className)
+    throws ClassLookupException {
+        return untypedClassFactory().untypedClass(classLookupFactory().classLookup().lookupClass(className));
     }
 
-    @Override
-    public Class<?> get() {
-        return clazz;
+    public static UntypedClass useClass(final Supplier<String> classNameSupplier) {
+        return useClass(classNameSupplier.get());
     }
 
-    @Override
-    public <Obj> TypedClass<Obj> withType(final Class<Obj> staticType)
-    throws NoSubtypeException {
-        return typedClassFactory().typedClass(staticType, get());
+    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
+        return new DefaultTypedClass<Value>(concreteClass);
     }
 }
+

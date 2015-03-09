@@ -24,23 +24,20 @@ package org.jlib.reflect.reflectordefaults;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UntypedOverload;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.staticMethodOverloadFactory;
 
-public class DefaultStaticOverload<EnclosingClassObject>
+public class DefaultUntypedStaticMethodOverload<EnclosingClassObject>
+extends DefaultTypedStaticMethodOverload<EnclosingClassObject, Object>
 implements UntypedOverload {
 
-    private final Class<EnclosingClassObject> enclosingClass;
-    private final String staticMethodName;
-
-    public DefaultStaticOverload(final Class<EnclosingClassObject> enclosingClass, final String staticMethodName) {
-        this.enclosingClass = enclosingClass;
-        this.staticMethodName = staticMethodName;
+    public DefaultUntypedStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass,
+                                              final String methodName) {
+        super(enclosingClass, methodName, Object.class);
     }
 
     @Override
-    public <ReturnValue>
-    TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    public <ReturnValue> TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
-        return staticMethodOverloadFactory().staticMethodOverload(enclosingClass, staticMethodName, returnValueClass);
+        return typedStaticMethodOverloadFactory().typedStaticMethodOverload(getEnclosingClass(), getMethodName(),
+                                                                            returnValueClass);
     }
 }

@@ -28,15 +28,15 @@ import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
-public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
+public class DefaultTypedStaticMethodOverload<EnclosingClassObject, ReturnValue>
 implements TypedOverload<ReturnValue> {
 
     private final Class<EnclosingClassObject> enclosingClass;
     private final String methodName;
     private final Class<ReturnValue> returnValueClass;
 
-    public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
-                                       final Class<ReturnValue> returnValueClass) {
+    public DefaultTypedStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
+                                            final Class<ReturnValue> returnValueClass) {
         this.enclosingClass = enclosingClass;
         this.methodName = methodName;
         this.returnValueClass = returnValueClass;
@@ -58,7 +58,7 @@ implements TypedOverload<ReturnValue> {
     @Override
     public <Argument1, Argument2>
     TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
-                                                                           final Class<Argument2> parameter2Type) {
+                                                                       final Class<Argument2> parameter2Type) {
         // FIXME: implement
         return null;
     }
@@ -77,5 +77,17 @@ implements TypedOverload<ReturnValue> {
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
         // FIXME: implement
         return null;
+    }
+
+    protected Class<EnclosingClassObject> getEnclosingClass() {
+        return enclosingClass;
+    }
+
+    protected String getMethodName() {
+        return methodName;
+    }
+
+    protected Class<ReturnValue> getReturnValueClass() {
+        return returnValueClass;
     }
 }

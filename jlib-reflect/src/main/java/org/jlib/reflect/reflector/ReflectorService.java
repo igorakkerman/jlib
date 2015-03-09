@@ -19,19 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflectorfactory;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.reflector.TypedOverload;
-import org.jlib.reflect.reflector.UntypedOverload;
+import java.util.function.Supplier;
 
-public interface StaticMethodOverloadFactory {
+import org.jlib.reflect.programtarget.ClassLookupException;
 
-    <EnclosingClassObject>
-    UntypedOverload
-     /**/ staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName);
+public interface ReflectorService {
 
-    <EnclosingClassObject, ReturnValue>
-    TypedOverload<ReturnValue>
-     /**/ staticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
-                               Class<ReturnValue> returnValueClass);
+    UntypedClass useClass(final String className)
+    throws ClassLookupException;
+
+    default UntypedClass useClass(final Supplier<String> classNameSupplier)
+    throws ClassLookupException {
+        return useClass(classNameSupplier.get());
+    }
+
+    <Value> TypedClass<Value> useClass(final Class<Value> concreteClass);
 }
