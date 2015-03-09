@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.reflectordefaults;
 
-import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
@@ -44,25 +43,24 @@ implements TypedOverload<ReturnValue> {
     }
 
     @Override
-    public TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodSignatureException {
-        return methodFactory().method0(methodLookupFactory().methodLookup(enclosingClass, methodName));
+    public TypedMethod0<ReturnValue> withoutParameters() {
+        // FIXME: implement
+        return null;
     }
 
     @Override
     public <Argument1>
     TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type) {
-        return methodFactory().method1(methodLookupFactory().methodLookup(enclosingClass, methodName,
-                                                                   parameter1Type));
+        // FIXME: implement
+        return null;
     }
 
     @Override
     public <Argument1, Argument2>
     TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
                                                                            final Class<Argument2> parameter2Type) {
-        return methodFactory().method2(methodLookupFactory().methodLookup(enclosingClass, methodName,
-                                                                   parameter1Type,
-                                                                   parameter2Type));
+        // FIXME: implement
+        return null;
     }
 
     @Override
@@ -71,15 +69,13 @@ implements TypedOverload<ReturnValue> {
                                                      /**/ withParameterTypes(final Class<Argument1> parameter1Type,
                                                                              final Class<Argument2> parameter2Type,
                                                                              final Class<Argument3> parameter3Type) {
-        return methodFactory().method3(methodLookupFactory().methodLookup(enclosingClass, methodName,
-                                                                   parameter1Type,
-                                                                   parameter2Type,
-                                                                   parameter3Type));
+        // FIXME: implement
+        return null;
     }
 
     @Override
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
-        return methodFactory().methodUncheckedParameterTypes(methodLookupFactory().methodLookup(enclosingClass, methodName,
-                                                                                         parameterTypes));
+        // FIXME: implement
+        return null;
     }
 }
