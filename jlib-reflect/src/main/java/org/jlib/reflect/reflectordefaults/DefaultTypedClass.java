@@ -69,7 +69,7 @@ implements TypedClass<Obj> {
     @Override
     public UntypedOverload useStaticMethod(final String staticMethodName)
     throws ClassException {
-        return staticMethodOverloadFactory().staticMethod(get(), staticMethodName);
+        return staticMethodOverloadFactory().staticMethodOverload(get(), staticMethodName, Object.class);
     }
 
     @Override
