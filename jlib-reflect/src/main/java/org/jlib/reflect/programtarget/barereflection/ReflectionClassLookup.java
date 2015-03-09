@@ -27,20 +27,14 @@ import org.jlib.reflect.programtarget.ClassLookupException;
 public class ReflectionClassLookup
 implements ClassLookup {
 
-    private final String className;
-
-    public ReflectionClassLookup(final String className) {
-        this.className = className;
-    }
-
     @Override
-    public Class<?> get()
+    public Class<?> lookupClass(final String className)
     throws ClassLookupException {
         try {
             return Class.forName(className);
         }
-        catch (final ClassNotFoundException exception) {
-            throw new ClassLookupException(className, exception);
+        catch (final ClassNotFoundException | LinkageError throwable) {
+            throw new ClassLookupException(className, throwable);
         }
     }
 }

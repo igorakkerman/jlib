@@ -27,6 +27,6 @@ import org.jlib.reflect.programtarget.InvalidMethodSignatureException;
 
 public interface MethodLookup {
 
-    Method get()
-    throws InvalidMethodSignatureException;
+    Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException;
 }

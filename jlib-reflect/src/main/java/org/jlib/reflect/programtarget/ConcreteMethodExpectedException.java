@@ -19,8 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programtarget.bare;
+package org.jlib.reflect.programtarget;
 
-public interface MethodLookupFactory {
-    MethodLookup methodLookup();
+import java.lang.reflect.Method;
+
+import static org.jlib.core.message.MessageUtility.message;
+
+public class ConcreteMethodExpectedException
+extends MethodLookupException {
+
+    private static final long serialVersionUID = - 5410080091550763771L;
+
+    public ConcreteMethodExpectedException(final Method method) {
+        super(message(), method);
+    }
 }

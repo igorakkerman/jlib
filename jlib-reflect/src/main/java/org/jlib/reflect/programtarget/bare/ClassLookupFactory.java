@@ -22,6 +22,5 @@
 package org.jlib.reflect.programtarget.bare;
 
 public interface ClassLookupFactory {
-
-    ClassLookup classLookup(String className);
+    ClassLookup classLookup();
 }

@@ -21,20 +21,16 @@
 
 package org.jlib.reflect.programtarget;
 
+import java.lang.reflect.Method;
+
 import static org.jlib.core.message.MessageUtility.message;
 
-public class InvalidMethodSignatureException
+public class StaticMethodExpectedException
 extends MethodLookupException {
 
-    private static final long serialVersionUID = - 4942289385749320071L;
+    private static final long serialVersionUID = - 1272651454980058465L;
 
-    public InvalidMethodSignatureException(final String className, final String methodName,
-                                           final Class<?>[] parameterTypes) {
-        super(message(), className, methodName, parameterTypes);
-    }
-
-    public InvalidMethodSignatureException(final String className, final String methodName,
-                                           final Class<?>[] parameterTypes, final Exception cause) {
-        super(message(), className, methodName, parameterTypes, cause);
+    public StaticMethodExpectedException(final Method method) {
+        super(message(), method);
     }
 }

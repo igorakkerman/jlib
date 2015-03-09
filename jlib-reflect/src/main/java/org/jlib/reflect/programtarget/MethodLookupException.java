@@ -21,6 +21,8 @@
 
 package org.jlib.reflect.programtarget;
 
+import java.lang.reflect.Method;
+
 import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
@@ -37,7 +39,7 @@ extends ProgramTargetException {
     private final String className;
     private final String methodName;
 
-    public MethodLookupException(final Message message, final String className, final String methodName,
+    protected MethodLookupException(final Message message, final String className, final String methodName,
                                  final Class<?>... parameterTypes) {
         super(message.with("class", className)
                      .with("method", methodName)
@@ -47,9 +49,19 @@ extends ProgramTargetException {
         this.methodName = methodName;
     }
 
-    public MethodLookupException(final Message message, final String className, final String methodName,
-                                 final Class<?>[] parameterTypes, final Exception cause) {
+    protected MethodLookupException(final Message message, final String className, final String methodName,
+                                 final Class<?>[] parameterTypes, final Throwable cause) {
         this(message, className, methodName, parameterTypes);
+
+        initCause(cause);
+    }
+
+    protected MethodLookupException(final Message message, final Method method) {
+        this(message, method.getDeclaringClass().getName(), method.getName(), method.getParameterTypes());
+    }
+
+    protected MethodLookupException(final Message message, final Method method, final Throwable cause) {
+        this(message, method);
 
         initCause(cause);
     }

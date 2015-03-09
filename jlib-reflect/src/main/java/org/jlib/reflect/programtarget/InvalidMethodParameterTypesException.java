@@ -23,12 +23,18 @@ package org.jlib.reflect.programtarget;
 
 import static org.jlib.core.message.MessageUtility.message;
 
-public class ClassLookupException
-extends ClassException {
+public class InvalidMethodParameterTypesException
+extends MethodLookupException {
 
-    private static final long serialVersionUID = 5664326787354744995L;
+    private static final long serialVersionUID = - 4942289385749320071L;
 
-    public ClassLookupException(final String className, final Throwable cause) {
-        super(message(), className, cause);
+    public InvalidMethodParameterTypesException(final String className, final String methodName,
+                                                final Class<?>[] parameterTypes) {
+        super(message(), className, methodName, parameterTypes);
+    }
+
+    public InvalidMethodParameterTypesException(final String className, final String methodName,
+                                                final Class<?>[] parameterTypes, final Exception cause) {
+        super(message(), className, methodName, parameterTypes, cause);
     }
 }

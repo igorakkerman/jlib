@@ -25,6 +25,6 @@ import org.jlib.reflect.programtarget.ClassLookupException;
 
 public interface ClassLookup {
 
-    Class<?> get()
+    Class<?> lookupClass(String className)
     throws ClassLookupException;
 }
