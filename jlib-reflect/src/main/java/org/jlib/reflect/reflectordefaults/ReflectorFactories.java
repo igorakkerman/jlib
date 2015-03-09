@@ -49,11 +49,11 @@ public final class ReflectorFactories {
     }
 
     public static StaticMethodFactory staticMethodFactory() {
-        return StaticMethod::new;
+        return StaticOverload::new;
     }
 
     public static NonstaticMethodFactory nonstaticMethodFactory() {
-        return NonstaticMethod::new;
+        return NonstaticOverload::new;
     }
 
     public static StaticMethodOverloadFactory staticMethodOverloadFactory() {

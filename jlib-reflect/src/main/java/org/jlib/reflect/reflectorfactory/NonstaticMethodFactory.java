@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.reflector.UntypedMethod;
+import org.jlib.reflect.reflector.UntypedOverload;
 
 public interface NonstaticMethodFactory {
-    <EnclosingObject> UntypedMethod method(EnclosingObject enclosingObject, String methodName);
+    <EnclosingObject> UntypedOverload method(EnclosingObject enclosingObject, String methodName);
 }

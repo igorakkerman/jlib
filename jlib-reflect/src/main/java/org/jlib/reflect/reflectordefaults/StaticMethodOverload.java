@@ -27,11 +27,11 @@ import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
-import org.jlib.reflect.reflector.Overload;
+import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
 
 public class StaticMethodOverload<EnclosingClassObject, ReturnValue>
-implements Overload<ReturnValue> {
+implements TypedOverload<ReturnValue> {
 
     private final Class<EnclosingClassObject> enclosingClass;
     private final String methodName;

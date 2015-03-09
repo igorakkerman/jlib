@@ -36,7 +36,7 @@ public interface MethodReturn<ReturnValue> {
         return assertReturned(isEqualTo(returnValue));
     }
 
-    UntypedMethod useMethod(String methodName);
+    UntypedOverload useMethod(String methodName);
 
     ReturnValue get()
     throws ProgramTargetException;

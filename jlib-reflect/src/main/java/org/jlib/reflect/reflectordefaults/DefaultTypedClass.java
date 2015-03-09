@@ -23,7 +23,7 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.Overload;
+import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.TypedClass;
 import static org.jlib.reflect.reflectordefaults.ReflectorFactories.staticMethodFactory;
 
@@ -66,13 +66,13 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    public StaticMethod<Obj> useStaticMethod(final String staticMethodName)
+    public TypedOverload<Obj> useStaticMethod(final String staticMethodName)
     throws ClassException {
         return staticMethodFactory().staticMethod(get(), staticMethodName);
     }
 
     @Override
-    public Overload<Obj> useConstructor() {
+    public TypedOverload<Obj> useConstructor() {
         // FIXME: implement
         return null;
     }

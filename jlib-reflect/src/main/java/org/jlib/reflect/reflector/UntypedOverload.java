@@ -23,9 +23,9 @@ package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface UntypedMethod {
+public interface UntypedOverload {
 
     <ReturnValue>
-    Overload<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
+    TypedOverload<ReturnValue> withReturnType(Class<ReturnValue> returnValueClass)
     throws NoSubtypeException;
 }
