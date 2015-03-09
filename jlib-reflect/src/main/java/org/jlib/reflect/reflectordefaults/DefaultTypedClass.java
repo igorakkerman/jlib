@@ -25,6 +25,7 @@ import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.TypedClass;
+import org.jlib.reflect.reflector.UntypedOverload;
 import static org.jlib.reflect.reflectordefaults.ReflectorFactories.staticMethodFactory;
 
 public class DefaultTypedClass<Obj>
@@ -66,7 +67,7 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    public TypedOverload<Obj> useStaticMethod(final String staticMethodName)
+    public UntypedOverload useStaticMethod(final String staticMethodName)
     throws ClassException {
         return staticMethodFactory().staticMethod(get(), staticMethodName);
     }

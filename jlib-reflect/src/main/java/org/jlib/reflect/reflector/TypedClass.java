@@ -48,6 +48,6 @@ public interface TypedClass<Obj> {
 
     TypedOverload<Obj> useConstructor();
 
-    TypedOverload<Object> useStaticMethod(String staticMethodName)
+    UntypedOverload useStaticMethod(String staticMethodName)
     throws ClassException;
 }
