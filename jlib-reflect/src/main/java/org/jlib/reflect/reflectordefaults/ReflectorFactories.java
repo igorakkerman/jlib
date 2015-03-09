@@ -33,7 +33,6 @@ import org.jlib.reflect.reflectorfactory.MethodFactory;
 import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
 import org.jlib.reflect.reflectorfactory.NonstaticMethodFactory;
 import org.jlib.reflect.reflectorfactory.StaticMethodFactory;
-import org.jlib.reflect.reflectorfactory.StaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 import org.jlib.reflect.reflectorfactory.UntypedClassFactory;
 
@@ -48,7 +47,7 @@ public final class ReflectorFactories {
         return DefaultTypedClass::new;
     }
 
-    public static StaticMethodFactory staticMethodFactory() {
+    public static StaticMethodFactory staticMethodOverloadFactory() {
         return StaticOverload::new;
     }
 
