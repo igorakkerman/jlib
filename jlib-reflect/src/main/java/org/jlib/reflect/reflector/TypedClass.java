@@ -22,7 +22,6 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.ClassException;
-import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 
@@ -38,10 +37,6 @@ public interface TypedClass<Obj> {
     throws ClassException {
         return (Class<Val>) get();
     }
-
-    <SubtypeObject extends Obj>
-    TypedClass<SubtypeObject> withType(Class<SubtypeObject> staticType)
-    throws ClassLookupException, NoSubtypeException;
 
     TypedClass<Obj> assertSubtypeOf(Class<?> expectedSuperType)
     throws NoSubtypeException;
