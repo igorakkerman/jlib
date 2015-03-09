@@ -26,14 +26,15 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public interface TypedMethod<ReturnValue> {
+public interface TypedMethod<ReturnValue, Self extends TypedMethod<ReturnValue, Self>> {
 
-    TypedMethod<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
+    TypedMethod<ReturnValue, Self> assertReturns(Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException;
 
     Method get()
     throws MethodLookupException;
 
-    <StaticReturnValue>
-    TypedMethod<StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
+    <StaticReturnValue, StaticTypedMethod extends TypedMethod<StaticReturnValue, StaticTypedMethod>>
+    TypedMethod<StaticReturnValue, StaticTypedMethod>
+    withReturnType(Class<StaticReturnValue> clazz);
 }

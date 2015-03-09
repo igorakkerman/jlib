@@ -25,14 +25,14 @@ import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.TypedMethod0;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodReturnValueFactory;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public class DefaultTypedMethod0<ReturnValue>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod0<ReturnValue> {
+extends AbstractTypedMethod<ReturnValue, DefaultTypedMethod0<ReturnValue>> {
 
     // FIXME: implement
     private final MethodReturnTypeValidator methodReturnTypeValidator = null;
@@ -63,5 +63,10 @@ implements TypedMethod0<ReturnValue> {
     throws MethodLookupException {
         // FIXME: implement
         return null;
+    }
+
+    @Override
+    public DefaultTypedMethod0<StaticReturnValue> withReturnType(
+        return new DefaultTypedMethod0<>());
     }
 }

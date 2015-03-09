@@ -24,8 +24,8 @@ package org.jlib.reflect.reflectordefaults;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public abstract class AbstractTypedMethod<ReturnType>
-implements TypedMethod<ReturnType> {
+public abstract class AbstractTypedMethod<ReturnType, Self extends AbstractTypedMethod<ReturnType, Self>>
+implements TypedMethod<ReturnType, Self> {
 
     private final MethodReturnTypeValidator methodReturnTypeValidator;
 
