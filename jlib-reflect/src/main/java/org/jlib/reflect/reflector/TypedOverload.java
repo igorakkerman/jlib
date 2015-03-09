@@ -22,7 +22,6 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
-import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
 
 public interface TypedOverload<ReturnValue> {
 

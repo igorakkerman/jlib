@@ -29,7 +29,7 @@ import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedOverload;
 import org.jlib.reflect.reflector.UntypedOverload;
-import org.jlib.reflect.reflector_old.UncheckedTypedMethod;
+import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
 public class DefaultInstanceMethodOverload<EnclosingObject>
 implements UntypedOverload {
