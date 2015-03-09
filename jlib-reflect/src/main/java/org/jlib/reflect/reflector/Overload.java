@@ -46,4 +46,7 @@ public interface Overload<ReturnValue> {
 
     UncheckedTypedMethod<?> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException;
+
+    <StaticTypeObject>
+    Overload<StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnType);
 }

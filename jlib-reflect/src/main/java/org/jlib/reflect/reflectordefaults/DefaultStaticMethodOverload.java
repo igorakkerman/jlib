@@ -21,11 +21,11 @@
 
 package org.jlib.reflect.reflectordefaults;
 
+import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
-import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
 public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
@@ -89,5 +89,11 @@ implements Overload<ReturnValue> {
 
     protected Class<ReturnValue> getReturnValueClass() {
         return returnValueClass;
+    }
+
+    @Override
+    public <StaticTypeReturnValue>
+    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
+        return new DefaultStaticMethodOverload<>(enclosingClass, methodName, staticReturnType);
     }
 }

@@ -22,31 +22,23 @@
 package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
-import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
-public class DefaultInstanceMethodOverload<EnclosingObject>
-implements Overload<Object> {
+public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
+implements Overload<ReturnValue> {
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
 
-    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName) {
+    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
+                                         final Class<ReturnValue> returnValueClass) {
         this.enclosingObject = enclosingObject;
         this.methodName = methodName;
-    }
-
-    @Override
-    public <ReturnValue>
-    Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
-    throws NoSubtypeException {
-        // FIXME: implement
-        return null;
     }
 
     @Override
@@ -64,13 +56,9 @@ implements Overload<Object> {
     }
 
     @Override
-    public <Parameter1, Parameter2> TypedMethod2<?, Parameter1, Parameter2> withParameterTypes(
-                                                                                                  final
-                                                                                                  Class<Parameter1>
-                                                                                                  parameter1Type,
-                                                                                                  final Class
-                                                                                                        <Parameter2>
-                                                                                                  parameter2Type)
+    public <Parameter1, Parameter2> TypedMethod2<?, Parameter1, Parameter2>
+    withParameterTypes(final Class<Parameter1> parameter1Type,
+                       final Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
@@ -92,5 +80,11 @@ implements Overload<Object> {
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
+    }
+
+    @Override
+    public <StaticTypeReturnValue>
+    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
+        return new DefaultInstanceMethodOverload<>(enclosingObject, methodName, staticReturnType);
     }
 }
