@@ -38,12 +38,13 @@ public final class DefaultReflectors {
         return untypedClassFactory().untypedClass(classLookupFactory().classLookup().lookupClass(className));
     }
 
-    public static UntypedClass useClass(final Supplier<String> classNameSupplier) {
+    public static UntypedClass useClass(final Supplier<String> classNameSupplier)
+    throws ClassLookupException {
         return useClass(classNameSupplier.get());
     }
 
     public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClass<Value>(concreteClass);
+        return new DefaultTypedClass<>(concreteClass);
     }
 }
 
