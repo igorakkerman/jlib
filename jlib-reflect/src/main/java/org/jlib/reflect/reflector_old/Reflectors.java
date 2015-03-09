@@ -23,18 +23,18 @@ package org.jlib.reflect.reflector_old;
 
 import java.util.function.Supplier;
 
-import org.jlib.reflect.reflectorfactory.ReflectorFactory;
+import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.untypedClassFactory;
 import org.jlib.reflect.reflectordefaults.DefaultTypedClass;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.UntypedClass;
-import org.jlib.reflect.programtarget.barereflection.ReflectionReflectorFactory;
 
 public final class Reflectors {
 
     private Reflectors() {}
 
     public static UntypedClass useClass(final String className) {
-        return untypedClasFactory().untypedClass(factory().classLookup(className));
+        return untypedClassFactory().untypedClass(classLookupFactory().classLookup());
     }
 
     public static UntypedClass useClass(final Supplier<String> classNameSupplier) {

@@ -23,7 +23,6 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.ClassLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.programtargetreflection.ReflectionFactories.classLookupFactory;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.UntypedClass;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedClassFactory;
@@ -33,9 +32,9 @@ implements UntypedClass {
 
     private final Class<?> clazz;
 
-    public DefaultUntypedClass(final String className)
+    public DefaultUntypedClass(final Class<?> clazz)
     throws ClassLookupException {
-        clazz = classLookupFactory().classLookup().lookupClass(className);
+        this.clazz = clazz;
     }
 
     @Override
