@@ -23,27 +23,27 @@ package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 
-public interface TypedOverload<ReturnValue> {
+public interface Overload<ReturnValue> {
 
-    TypedMethod0<ReturnValue> withoutParameters()
+    TypedMethod0<?> withoutParameters()
     throws InvalidMethodParameterTypesException;
 
     <Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
+    TypedMethod1<?, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException;
 
     <Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
-                                                                    Class<Parameter2> parameter2Type)
+    TypedMethod2<?, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
+                                                               Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException;
 
     <Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
-                                                            /**/ withParameterTypes(Class<Parameter1> parameter1Type,
-                                                                                    Class<Parameter2> parameter2Type,
-                                                                                    Class<Parameter3> parameter3Type)
+    TypedMethod3<?, Parameter1, Parameter2, Parameter3>
+                                                /**/ withParameterTypes(Class<Parameter1> parameter1Type,
+                                                                        Class<Parameter2> parameter2Type,
+                                                                        Class<Parameter3> parameter3Type)
     throws InvalidMethodParameterTypesException;
 
-    UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    UncheckedTypedMethod<?> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException;
 }

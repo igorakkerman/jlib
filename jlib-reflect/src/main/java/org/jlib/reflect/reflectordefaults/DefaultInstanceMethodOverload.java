@@ -27,12 +27,11 @@ import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
-import org.jlib.reflect.reflector.TypedOverload;
-import org.jlib.reflect.reflector.UntypedOverload;
+import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
 public class DefaultInstanceMethodOverload<EnclosingObject>
-implements UntypedOverload {
+implements Overload<Object> {
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
@@ -43,52 +42,53 @@ implements UntypedOverload {
     }
 
     @Override
-    public <ReturnValue> TypedOverload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
+    public <ReturnValue>
+    Overload<ReturnValue> withReturnType(final Class<ReturnValue> returnValueClass)
     throws NoSubtypeException {
         // FIXME: implement
         return null;
     }
 
     @Override
-    public TypedMethod0<Object> withoutParameters()
+    public TypedMethod0<?> withoutParameters()
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
     }
 
     @Override
-    public <Parameter1> TypedMethod1<Object, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
+    public <Parameter1> TypedMethod1<?, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
     }
 
     @Override
-    public <Parameter1, Parameter2> TypedMethod2<Object, Parameter1, Parameter2> withParameterTypes(
-                                                                                                   final
-                                                                                                   Class<Parameter1>
-                                                                                                   parameter1Type,
-                                                                                                   final Class
-                                                                                                         <Parameter2>
-                                                                                                   parameter2Type)
+    public <Parameter1, Parameter2> TypedMethod2<?, Parameter1, Parameter2> withParameterTypes(
+                                                                                                  final
+                                                                                                  Class<Parameter1>
+                                                                                                  parameter1Type,
+                                                                                                  final Class
+                                                                                                        <Parameter2>
+                                                                                                  parameter2Type)
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
     }
 
     @Override
-    public <Parameter1, Parameter2, Parameter3> TypedMethod3<Object, Parameter1, Parameter2, Parameter3>
+    public <Parameter1, Parameter2, Parameter3> TypedMethod3<?, Parameter1, Parameter2, Parameter3>
     withParameterTypes(
-                                                                                                                           final Class<Parameter1> parameter1Type,
-                                                                                                                           final Class<Parameter2> parameter2Type,
-                                                                                                                           final Class<Parameter3> parameter3Type)
+                      final Class<Parameter1> parameter1Type,
+                      final Class<Parameter2> parameter2Type,
+                      final Class<Parameter3> parameter3Type)
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;
     }
 
     @Override
-    public UncheckedTypedMethod<Object> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    public UncheckedTypedMethod<?> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException {
         // FIXME: implement
         return null;

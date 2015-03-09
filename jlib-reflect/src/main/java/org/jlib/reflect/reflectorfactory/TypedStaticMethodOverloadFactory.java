@@ -21,12 +21,12 @@
 
 package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.reflector.TypedOverload;
+import org.jlib.reflect.reflector.Overload;
 
 public interface TypedStaticMethodOverloadFactory {
 
     <EnclosingClassObject, ReturnValue>
-    TypedOverload<ReturnValue>
+    Overload<ReturnValue>
     /**/ typedStaticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
                                    Class<ReturnValue> returnValueClass);
 }

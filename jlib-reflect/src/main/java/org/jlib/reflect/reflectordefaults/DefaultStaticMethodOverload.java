@@ -25,47 +25,47 @@ import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
-import org.jlib.reflect.reflector.TypedOverload;
+import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
-public class DefaultTypedStaticMethodOverload<EnclosingClassObject, ReturnValue>
-implements TypedOverload<ReturnValue> {
+public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
+implements Overload<ReturnValue> {
 
     private final Class<EnclosingClassObject> enclosingClass;
     private final String methodName;
     private final Class<ReturnValue> returnValueClass;
 
-    public DefaultTypedStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
-                                            final Class<ReturnValue> returnValueClass) {
+    public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
+                                       final Class<ReturnValue> returnValueClass) {
         this.enclosingClass = enclosingClass;
         this.methodName = methodName;
         this.returnValueClass = returnValueClass;
     }
 
     @Override
-    public TypedMethod0<ReturnValue> withoutParameters() {
+    public TypedMethod0<?> withoutParameters() {
         // FIXME: implement
         return null;
     }
 
     @Override
     public <Argument1>
-    TypedMethod1<ReturnValue, Argument1> withParameterTypes(final Class<Argument1> parameter1Type) {
+    TypedMethod1<?, Argument1> withParameterTypes(final Class<Argument1> parameter1Type) {
         // FIXME: implement
         return null;
     }
 
     @Override
     public <Argument1, Argument2>
-    TypedMethod2<ReturnValue, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
-                                                                       final Class<Argument2> parameter2Type) {
+    TypedMethod2<?, Argument1, Argument2> withParameterTypes(final Class<Argument1> parameter1Type,
+                                                             final Class<Argument2> parameter2Type) {
         // FIXME: implement
         return null;
     }
 
     @Override
     public <Argument1, Argument2, Argument3>
-    TypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
+    TypedMethod3<?, Argument1, Argument2, Argument3>
                                                      /**/ withParameterTypes(final Class<Argument1> parameter1Type,
                                                                              final Class<Argument2> parameter2Type,
                                                                              final Class<Argument3> parameter3Type) {
@@ -74,7 +74,7 @@ implements TypedOverload<ReturnValue> {
     }
 
     @Override
-    public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
+    public UncheckedTypedMethod<?> withUncheckedParameterTypes(final Class<?>... parameterTypes) {
         // FIXME: implement
         return null;
     }

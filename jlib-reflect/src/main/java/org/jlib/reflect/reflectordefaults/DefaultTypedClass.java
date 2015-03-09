@@ -23,8 +23,8 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.TypedOverload;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
 import org.jlib.reflect.reflectorfactory.ConstructorOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
@@ -36,7 +36,7 @@ implements TypedClass<Obj> {
     private TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory = typedStaticMethodOverloadFactory();
 
     @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
-    private ConstructorOverloadFactory constructorOverloadFactory = constructorOverloadFactory();
+    private ConstructorOverloadFactory constructorOverloadFactory; // FIXME: initialize
 
     private final Class<?> actualClass;
 
@@ -58,10 +58,9 @@ implements TypedClass<Obj> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public Class<Obj> get()
     throws ClassException {
-        return (Class<Obj>) actualClass;
+        return getActualClass();
     }
 
     @Override
@@ -74,21 +73,25 @@ implements TypedClass<Obj> {
     @Override
     public TypedClass<Obj> assertSubtypeOf(final Class<?> expectedParentType)
     throws NoSubtypeException {
-        if (!expectedParentType.isAssignableFrom(actualClass))
+        if (! expectedParentType.isAssignableFrom(actualClass))
             throw new NoSubtypeException(actualClass, expectedParentType);
 
         return this;
     }
 
     @Override
-    public TypedOverload<Object> useStaticMethod(final String staticMethodName)
+    public Overload<Object> useStaticMethod(final String staticMethodName)
     throws ClassException {
         return typedStaticMethodOverloadFactory.typedStaticMethodOverload(get(), staticMethodName, Object.class);
     }
 
     @Override
-    public TypedOverload<Obj> useConstructor() {
-        // FIXME: implement
-        return constructorOverloadFactory.constructor(actualClass);
+    public Overload<Obj> useConstructor() {
+        return constructorOverloadFactory.constructorOverload(getActualClass());
+    }
+
+    @SuppressWarnings("unchecked")
+    protected Class<Obj> getActualClass() {
+        return (Class<Obj>) actualClass;
     }
 }

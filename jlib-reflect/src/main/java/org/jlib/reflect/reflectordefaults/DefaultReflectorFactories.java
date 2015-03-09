@@ -47,7 +47,7 @@ public final class DefaultReflectorFactories {
     }
 
     public static TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory() {
-        return DefaultTypedStaticMethodOverload::new;
+        return DefaultStaticMethodOverload::new;
     }
 
     public static InstanceMethodOverloadFactory instanceMethodFactory() {

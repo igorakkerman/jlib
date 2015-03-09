@@ -23,7 +23,6 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.assertj.core.api.Assertions;
 import org.jlib.reflect.reflector.ReflectorService;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectors.useClass;
 import static org.jlib.reflect.validator.Validators.isEqualTo;
 import static org.jlib.reflect.validator.Validators.isInstanceOf;
 import static org.jlib.reflect.validator.Validators.isLessThan;
@@ -31,11 +30,12 @@ import org.junit.Test;
 
 public class DefaultReflectorsTest {
 
+    private final ReflectorService service = new DefaultReflectorService();
+
     @Test
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
     throws Exception {
-        final ReflectorService service = new DefaultReflectorService();
 
         final Number value = service
                              .useClass("java.lang.Integer")                  // UntypedClassReflector
@@ -56,17 +56,18 @@ public class DefaultReflectorsTest {
     @SuppressWarnings("UnnecessaryBoxing")
     public void nonstaticRun()
     throws Exception {
-        final Number value = useClass("java.lang.Integer")                   // UntypedClassReflector
+        final Number value = service
+                             .useClass("java.lang.Integer")                  // UntypedClassReflector
                              .withType(Number.class)                         // TypedClassReflector
                              .assertSubtypeOf(Integer.class)                 // TypedClassReflector
                              .useConstructor()                               // MethodOverloadReflector
-                             .withParameterTypes(int.class)                   // Nethod1Reflector
+                             .withParameterTypes(int.class)                  // Nethod1Reflector
                              .invoke(42)
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isEqualTo(Integer.valueOf(42))) // MethodReturnValueReflector
                              .useMethod("compareTo")                         // UntypedMethodReflector
                              .withReturnType(int.class)                      // MethodOverloadReflector
-                             .withParameterTypes(Integer.class)               // Nethod1Reflector
+                             .withParameterTypes(Integer.class)              // Nethod1Reflector
                              .invoke(3)                                      // MethodReturnValueReflector
                              .assertReturned(isInstanceOf(Integer.class))    // MethodReturnValueReflector
                              .assertReturned(isLessThan(0))                  // MethodReturnValueReflector

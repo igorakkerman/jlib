@@ -21,11 +21,11 @@
 
 package org.jlib.reflect.reflectorfactory;
 
-import org.jlib.reflect.reflector.TypedOverload;
+import org.jlib.reflect.reflector.Overload;
 
 public interface ConstructorOverloadFactory {
 
     <EnclosingClassObject>
-    TypedOverload<EnclosingClassObject>
-     /**/ constructorOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName);
+    Overload<EnclosingClassObject>
+     /**/ constructorOverload(Class<EnclosingClassObject> enclosingClass);
 }

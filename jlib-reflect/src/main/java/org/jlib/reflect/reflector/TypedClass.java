@@ -46,9 +46,10 @@ public interface TypedClass<Obj> {
         return useConstructor().withoutParameters().invoke().get();
     }
 
-    TypedOverload<Obj> useConstructor();
+    Overload<Obj> useConstructor()
+    throws ClassException;
 
-    TypedOverload<Object> useStaticMethod(String staticMethodName)
+    Overload<Object> useStaticMethod(String staticMethodName)
     throws ClassException;
 
     <StaticTypedObject>
