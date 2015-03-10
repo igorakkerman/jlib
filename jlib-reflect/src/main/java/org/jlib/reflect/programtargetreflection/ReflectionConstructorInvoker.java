@@ -22,6 +22,7 @@
 package org.jlib.reflect.programtargetreflection;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
 
 import static org.jlib.core.message.MessageUtility.message;
 import org.jlib.reflect.programtarget.ConstructorInvocationException;
@@ -48,7 +49,14 @@ implements MethodInvoker {
         }
     }
 
-    public Constructor<Obj> getConstructor() {
+    protected Constructor<Obj> getConstructor() {
         return constructor;
     }
+
+    @Override
+    public Executable getMethod() {
+        return constructor;
+    }
+
+
 }

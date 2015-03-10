@@ -21,6 +21,7 @@
 
 package org.jlib.reflect.programtargetreflection;
 
+import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
 import static org.jlib.core.message.MessageUtility.message;
@@ -49,5 +50,14 @@ implements MethodInvoker {
         catch (final ReflectiveOperationException exception) {
             throw new InstanceMethodInvocationException(message(), enclosingObject, method.toString());
         }
+    }
+
+    @Override
+    public Executable getMethod() {
+        return method;
+    }
+
+    protected Object getEnclosingObject() {
+        return enclosingObject;
     }
 }

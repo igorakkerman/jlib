@@ -21,10 +21,12 @@
 
 package org.jlib.reflect.programtarget;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
+import java.lang.reflect.Executable;
 
 public interface MethodInvoker {
 
     Object invoke(Object... arguments)
     throws MethodLookupException;
+
+    Executable getMethod();
 }
