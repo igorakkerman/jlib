@@ -24,9 +24,12 @@ package org.jlib.reflect.reflectordefaults;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookup;
 import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programtarget.StaticMethodInvokerFactory;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
+import static org.jlib.reflect.programtargetreflection.ReflectionFactories.staticMethodInvokerFactory;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -40,6 +43,9 @@ implements Overload<ReturnValue> {
 
     // TODO: use DI
     private final MethodLookup methodLookup = methodLookupFactory().methodLookup();
+
+    // TODO: use DI
+    private final StaticMethodInvokerFactory methodInvokerFactory = staticMethodInvokerFactory();
 
     // TODO: use DI
     private final MethodFactory methodFactory = null; // FIXME: implement
@@ -59,11 +65,12 @@ implements Overload<ReturnValue> {
     public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(enclosingClass, methodName /* no parameter types */);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return methodFactory.method0(method);
+        return methodFactory.method0(methodInvoker);
     }
 
     @Override
@@ -71,11 +78,12 @@ implements Overload<ReturnValue> {
     TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return methodFactory.method1(method, parameter1Type);
+        return methodFactory.method1(methodInvoker, parameter1Type);
     }
 
     @Override
@@ -84,11 +92,12 @@ implements Overload<ReturnValue> {
                                                                          final Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type, parameter2Type);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return methodFactory.method2(method, parameter1Type, parameter2Type);
+        return methodFactory.method2(methodInvoker, parameter1Type, parameter2Type);
     }
 
     @Override
@@ -99,22 +108,24 @@ implements Overload<ReturnValue> {
                                                                              final Class<Parameter3> parameter3Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type, parameter2Type, parameter3Type);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return methodFactory.method3(method, parameter1Type, parameter2Type, parameter3Type);
+        return methodFactory.method3(methodInvoker, parameter1Type, parameter2Type, parameter3Type);
     }
 
     @Override
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(enclosingClass, methodName);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return methodFactory.uncheckedParameterTypesMethod(method);
+        return methodFactory.uncheckedParameterTypesMethod(methodInvoker);
     }
 
     protected Class<EnclosingClassObject> getEnclosingClass() {

@@ -21,8 +21,7 @@
 
 package org.jlib.reflect.reflectorfactory;
 
-import java.lang.reflect.Executable;
-
+import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
@@ -32,22 +31,22 @@ import org.jlib.reflect.reflector.UncheckedTypedMethod;
 public interface MethodFactory {
 
     <ReturnValue>
-    TypedMethod0<ReturnValue> method0(Executable method);
+    TypedMethod0<ReturnValue> method0(MethodInvoker methodInvoker);
 
     <ReturnValue, Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> method1(Executable method, Class<Parameter1> parameter1Type);
+    TypedMethod1<ReturnValue, Parameter1> method1(MethodInvoker methodInvoker, Class<Parameter1> parameter1Type);
 
     <ReturnValue, Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(Executable method,
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(MethodInvoker methodInvoker,
                                                               Class<Parameter1> parameter1Type,
                                                               Class<Parameter2> parameter2Type);
 
     <ReturnValue, Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3(Executable method,
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3(MethodInvoker methodInvoker,
                                                                           Class<Parameter1> parameter1Type,
                                                                           Class<Parameter2> parameter2Type,
                                                                           Class<Parameter3> parameter3Type);
 
     <ReturnValue>
-    UncheckedTypedMethod<ReturnValue> uncheckedParameterTypesMethod(Executable method);
+    UncheckedTypedMethod<ReturnValue> uncheckedParameterTypesMethod(MethodInvoker methodInvoker);
 }
