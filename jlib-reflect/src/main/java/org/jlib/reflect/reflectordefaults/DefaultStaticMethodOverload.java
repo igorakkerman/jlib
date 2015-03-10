@@ -25,10 +25,8 @@ import java.lang.reflect.Method;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.MethodLookup;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.StaticMethodInvokerFactory;
-import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.staticMethodInvokerFactory;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -36,35 +34,26 @@ import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
-import org.jlib.reflect.reflectorfactory.MethodFactory;
 
 public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
-implements Overload<ReturnValue> {
-
-    // TODO: use DI
-    private final MethodLookup methodLookup = methodLookupFactory().methodLookup();
+extends AbstractOverload<ReturnValue> {
 
     // TODO: use DI
     private final StaticMethodInvokerFactory methodInvokerFactory = staticMethodInvokerFactory();
 
-    // TODO: use DI
-    private final MethodFactory methodFactory = null; // FIXME: implement
-
-    private final Class<EnclosingClassObject> enclosingClass;
     private final String methodName;
-    private final Class<ReturnValue> returnValueType;
 
     public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
                                        final Class<ReturnValue> returnValueType) {
-        this.enclosingClass = enclosingClass;
+        super(enclosingClass, returnValueType);
+
         this.methodName = methodName;
-        this.returnValueType = returnValueType;
     }
 
     @Override
     public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(enclosingClass, methodName /* no parameter types */);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
@@ -77,7 +66,7 @@ implements Overload<ReturnValue> {
     public <Parameter1>
     TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
@@ -91,7 +80,7 @@ implements Overload<ReturnValue> {
     TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(final Class<Parameter1> parameter1Type,
                                                                          final Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type, parameter2Type);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type, parameter2Type);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
@@ -107,7 +96,8 @@ implements Overload<ReturnValue> {
                                                                              final Class<Parameter2> parameter2Type,
                                                                              final Class<Parameter3> parameter3Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(enclosingClass, methodName, parameter1Type, parameter2Type, parameter3Type);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type, parameter2Type,
+                                                        parameter3Type);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
@@ -119,7 +109,7 @@ implements Overload<ReturnValue> {
     @Override
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(enclosingClass, methodName);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
@@ -128,28 +118,13 @@ implements Overload<ReturnValue> {
         return methodFactory.uncheckedParameterTypesMethod(methodInvoker);
     }
 
-    protected Class<EnclosingClassObject> getEnclosingClass() {
-        return enclosingClass;
-    }
-
     protected String getMethodName() {
         return methodName;
-    }
-
-    protected Class<ReturnValue> getReturnValueType() {
-        return returnValueType;
     }
 
     @Override
     public <StaticTypeReturnValue>
     Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
-        return new DefaultStaticMethodOverload<>(enclosingClass, methodName, staticReturnType);
-    }
-
-    private void assertReturnValueTypeValid(final Method method)
-    throws NoSubtypeException {
-        final Class<?> actualReturnValueType = method.getReturnType();
-        if (! returnValueType.isAssignableFrom(actualReturnValueType))
-            throw new NoSubtypeException(actualReturnValueType, returnValueType);
+        return new DefaultStaticMethodOverload<>(getEnclosingClass(), methodName, staticReturnType);
     }
 }
