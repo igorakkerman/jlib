@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflectordefaults;
+package org.jlib.reflect.reflectordefaults.method;
 
 import java.lang.reflect.Executable;
 

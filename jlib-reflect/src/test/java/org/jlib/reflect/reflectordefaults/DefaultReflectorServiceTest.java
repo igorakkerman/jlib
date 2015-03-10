@@ -28,7 +28,7 @@ import static org.jlib.reflect.validator.Validators.isInstanceOf;
 import static org.jlib.reflect.validator.Validators.isLessThan;
 import org.junit.Test;
 
-public class DefaultReflectorsTest {
+public class DefaultReflectorServiceTest {
 
     private final ReflectorService service = new DefaultReflectorService();
 

@@ -19,15 +19,15 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflectordefaults;
+package org.jlib.reflect.reflectordefaults.overload;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.InstanceMethodInvokerFactory;
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.programtargetreflection.ReflectionFactories.instanceMethodInvokerFactory;
+import org.jlib.reflect.programtarget.StaticMethodInvokerFactory;
+import static org.jlib.reflect.programtargetreflection.ReflectionFactories.staticMethodInvokerFactory;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -35,20 +35,18 @@ import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
-public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    extends AbstractOverload<ReturnValue> {
+public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
+extends AbstractOverload<ReturnValue> {
 
     // TODO: use DI
-    private final InstanceMethodInvokerFactory methodInvokerFactory = instanceMethodInvokerFactory();
+    private final StaticMethodInvokerFactory methodInvokerFactory = staticMethodInvokerFactory();
 
-    private final EnclosingObject enclosingObject;
     private final String methodName;
 
-    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
-                                         final Class<ReturnValue> returnValueType) {
-        super(enclosingObject.getClass(), returnValueType);
+    public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
+                                       final Class<ReturnValue> returnValueType) {
+        super(enclosingClass, returnValueType);
 
-        this.enclosingObject = enclosingObject;
         this.methodName = methodName;
     }
 
@@ -56,7 +54,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
@@ -69,7 +67,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type);
-        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
@@ -83,7 +81,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
                                                                          final Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type, parameter2Type);
-        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
@@ -100,7 +98,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type, parameter2Type,
                                                         parameter3Type);
-        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
@@ -112,7 +110,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameterTypes);
-        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method);
 
         assertReturnValueTypeValid(method);
 
@@ -120,9 +118,13 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
         return methodFactory.uncheckedParameterTypesMethod(methodInvoker);
     }
 
+    protected String getMethodName() {
+        return methodName;
+    }
+
     @Override
     public <StaticTypeReturnValue>
     Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
-        return new DefaultInstanceMethodOverload<>(enclosingObject, methodName, staticReturnType);
+        return new DefaultStaticMethodOverload<>(getEnclosingClass(), methodName, staticReturnType);
     }
 }

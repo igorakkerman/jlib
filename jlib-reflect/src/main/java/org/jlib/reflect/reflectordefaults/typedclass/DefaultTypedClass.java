@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflectordefaults;
+package org.jlib.reflect.reflectordefaults.typedclass;
 
 import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
