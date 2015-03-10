@@ -26,15 +26,15 @@ import java.lang.reflect.Executable;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodReturnValueFactory;
-import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodReturnFactory;
+import org.jlib.reflect.reflectorfactory.MethodReturnFactory;
 
 public abstract class AbstractTypedMethod<ReturnValue>
 implements TypedMethod<ReturnValue> {
 
     private final MethodInvoker methodInvoker;
     // TODO: use DI
-    private final MethodReturnValueFactory methodReturnValueFactory = methodReturnValueFactory();
+    private final MethodReturnFactory methodReturnFactory = methodReturnFactory();
 
     protected AbstractTypedMethod(final MethodInvoker methodInvoker) {
         this.methodInvoker = methodInvoker;
@@ -50,6 +50,6 @@ implements TypedMethod<ReturnValue> {
     }
 
     public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return methodReturnValueFactory.methodReturnValue(returnValue, getMethodInvoker());
+        return methodReturnFactory.methodReturnValue(returnValue, getMethodInvoker());
     }
 }

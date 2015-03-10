@@ -24,6 +24,8 @@ package org.jlib.reflect.reflectorfactory;
 import org.jlib.reflect.reflector.Overload;
 
 public interface InstanceMethodOverloadFactory {
-    <EnclosingObject>
-    Overload<Object> instanceMethodOverload(EnclosingObject enclosingObject, String methodName);
+
+    <EnclosingObject, ReturnValue>
+    Overload<Object> instanceMethodOverload(EnclosingObject enclosingObject, String methodName,
+                                            Class<ReturnValue> returnValueType);
 }

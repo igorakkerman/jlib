@@ -24,7 +24,7 @@ package org.jlib.reflect.reflectorfactory;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 
-public interface MethodReturnValueFactory {
+public interface MethodReturnFactory {
 
     <ReturnValue> MethodReturn<ReturnValue>
     methodReturnValue(final ReturnValue returnValue, final MethodInvoker methodInvoker);

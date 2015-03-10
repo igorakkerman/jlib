@@ -23,12 +23,12 @@ package org.jlib.reflect.reflectordefaults;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector_old.ValidatingMethodReturnValue;
+import org.jlib.reflect.reflectordefaults.methodreturn.DefaultMethodReturn;
 import org.jlib.reflect.reflectordefaults.overload.DefaultInstanceMethodOverload;
 import org.jlib.reflect.reflectordefaults.overload.DefaultStaticMethodOverload;
 import org.jlib.reflect.reflectordefaults.typedclass.DefaultTypedClass;
 import org.jlib.reflect.reflectorfactory.InstanceMethodOverloadFactory;
-import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
+import org.jlib.reflect.reflectorfactory.MethodReturnFactory;
 import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
 
@@ -53,12 +53,12 @@ public final class DefaultReflectorFactories {
         return DefaultStaticMethodOverload::new;
     }
 
-    public static InstanceMethodOverloadFactory instanceMethodFactory() {
+    public static InstanceMethodOverloadFactory instanceMethodOverloadFactory() {
         return DefaultInstanceMethodOverload::new;
     }
 
-    public static MethodReturnValueFactory methodReturnValueFactory() {
-        return ValidatingMethodReturnValue::new;
+    public static MethodReturnFactory methodReturnFactory() {
+        return DefaultMethodReturn::new;
     }
 
     private DefaultReflectorFactories() {}
