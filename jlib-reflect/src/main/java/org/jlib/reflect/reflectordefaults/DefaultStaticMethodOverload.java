@@ -36,10 +36,10 @@ implements Overload<ReturnValue> {
     private final Class<ReturnValue> returnValueClass;
 
     public DefaultStaticMethodOverload(final Class<EnclosingClassObject> enclosingClass, final String methodName,
-                                       final Class<ReturnValue> returnValueClass) {
+                                       final Class<ReturnValue> returnValueType) {
         this.enclosingClass = enclosingClass;
         this.methodName = methodName;
-        this.returnValueClass = returnValueClass;
+        this.returnValueClass = returnValueType;
     }
 
     @Override

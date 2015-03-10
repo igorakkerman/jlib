@@ -30,18 +30,12 @@ public abstract class AbstractTypedMethod<ReturnType, Met extends Executable>
 implements TypedMethod<ReturnType> {
 
     private final Met method;
-    private final MethodReturnTypeValidator methodReturnTypeValidator;
 
     protected AbstractTypedMethod(final Met method, final MethodReturnTypeValidator methodReturnTypeValidator) {
         this.method = method;
-        this.methodReturnTypeValidator = methodReturnTypeValidator;
     }
 
     protected Met getMethod() {
         return method;
-    }
-
-    protected MethodReturnTypeValidator getMethodReturnTypeValidator() {
-        return methodReturnTypeValidator;
     }
 }
