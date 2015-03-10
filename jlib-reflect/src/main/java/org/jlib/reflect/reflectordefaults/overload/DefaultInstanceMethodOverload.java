@@ -36,7 +36,7 @@ import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    extends AbstractOverload<ReturnValue> {
+extends AbstractOverload<ReturnValue> {
 
     // TODO: use DI
     private final InstanceMethodInvokerFactory methodInvokerFactory = instanceMethodInvokerFactory();
@@ -82,7 +82,8 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(final Class<Parameter1> parameter1Type,
                                                                          final Class<Parameter2> parameter2Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type, parameter2Type);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameter1Type,
+                                                        parameter2Type);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
