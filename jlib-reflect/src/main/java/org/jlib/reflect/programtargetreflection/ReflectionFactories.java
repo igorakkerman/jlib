@@ -23,6 +23,7 @@ package org.jlib.reflect.programtargetreflection;
 
 import org.jlib.reflect.programtarget.ClassLookupFactory;
 import org.jlib.reflect.programtarget.ConstructorInvokerFactory;
+import org.jlib.reflect.programtarget.ConstructorLookupFactory;
 import org.jlib.reflect.programtarget.InstanceMethodInvokerFactory;
 import org.jlib.reflect.programtarget.MethodLookupFactory;
 import org.jlib.reflect.programtarget.StaticMethodInvokerFactory;
@@ -31,6 +32,14 @@ public final class ReflectionFactories {
 
     public static ClassLookupFactory classLookupFactory() {
         return ReflectionClassLookup::new;
+    }
+
+    public static MethodLookupFactory methodLookupFactory() {
+        return ReflectionMethodLookup::new;
+    }
+
+    public static ConstructorLookupFactory constructorLookupFactory(){
+        return ReflectionConstructorLookup::new;
     }
 
     public static StaticMethodInvokerFactory staticMethodInvokerFactory() {
@@ -43,10 +52,6 @@ public final class ReflectionFactories {
 
     public static ConstructorInvokerFactory constructorInvokerFactory() {
         return ReflectionConstructorInvoker::new;
-    }
-
-    public static MethodLookupFactory methodLookupFactory() {
-        return ReflectionMethodLookup::new;
     }
 
     private ReflectionFactories() {}

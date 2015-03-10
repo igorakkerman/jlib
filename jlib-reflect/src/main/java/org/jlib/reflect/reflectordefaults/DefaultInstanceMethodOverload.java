@@ -111,7 +111,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     @Override
     public UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName);
+        final Method method = methodLookup.lookupMethod(getEnclosingClass(), methodName, parameterTypes);
         final MethodInvoker methodInvoker = methodInvokerFactory.methodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);

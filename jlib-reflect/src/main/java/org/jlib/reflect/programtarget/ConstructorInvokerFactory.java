@@ -25,5 +25,5 @@ import java.lang.reflect.Constructor;
 
 public interface ConstructorInvokerFactory {
 
-    MethodInvoker methodInvoker(Constructor<?> constructor);
+    MethodInvoker constructorInvoker(Constructor<?> constructor);
 }

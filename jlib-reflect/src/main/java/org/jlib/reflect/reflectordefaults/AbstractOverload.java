@@ -30,7 +30,7 @@ import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflectorfactory.MethodFactory;
 
 public abstract class AbstractOverload<ReturnValue>
-implements Overload<ReturnValue>{
+implements Overload<ReturnValue> {
 
     // TODO: use DI
     protected final MethodLookup methodLookup = methodLookupFactory().methodLookup();
@@ -45,7 +45,8 @@ implements Overload<ReturnValue>{
         return enclosingClass;
     }
 
-    public AbstractOverload(final Class<?> enclosingClass, final Class<ReturnValue> returnValueType) {
+    public AbstractOverload(final Class<?> enclosingClass,
+                            final Class<ReturnValue> returnValueType) {
         this.enclosingClass = enclosingClass;
         this.returnValueType = returnValueType;
     }
