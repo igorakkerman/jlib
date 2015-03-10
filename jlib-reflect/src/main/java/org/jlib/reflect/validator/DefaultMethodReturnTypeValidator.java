@@ -21,27 +21,37 @@
 
 package org.jlib.reflect.validator;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Array;
+import java.lang.reflect.Executable;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.Type;
 
 import org.jlib.reflect.programtarget.NoSubtypeException;
 
-public class ReflectionMethodReturnTypeValidator
+public class DefaultMethodReturnTypeValidator
 implements MethodReturnTypeValidator {
 
-    private final Method method;
+    private final Executable method;
 
-    public ReflectionMethodReturnTypeValidator(final Method method) {
+    public DefaultMethodReturnTypeValidator(final Executable method) {
         this.method = method;
     }
 
     @Override
     public MethodReturnTypeValidator assertReturns(final Class<?> expectedStaticReturnSuperType)
     throws NoSubtypeException {
-        final Class<?> staticMethodReturnType = method.getReturnType();
+        final Class<?> staticMethodReturnType = toClass(method.getAnnotatedReturnType().getType());
 
-        if (!expectedStaticReturnSuperType.isAssignableFrom(staticMethodReturnType))
+        if (! expectedStaticReturnSuperType.isAssignableFrom(staticMethodReturnType))
             throw new NoSubtypeException(staticMethodReturnType, expectedStaticReturnSuperType);
 
         return this;
+    }
+
+    // using JDK algorithm to handle generic typed arrays
+    private static Class<?> toClass(final Type type) {
+        return type instanceof GenericArrayType ?
+               Array.newInstance(toClass(((GenericArrayType) type).getGenericComponentType()), 0).getClass() :
+               (Class<?>) type;
     }
 }

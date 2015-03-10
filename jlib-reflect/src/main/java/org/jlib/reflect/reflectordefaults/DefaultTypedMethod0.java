@@ -21,31 +21,35 @@
 
 package org.jlib.reflect.reflectordefaults;
 
+import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
+import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.reflector.TypedMethod;
+import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodReturnValueFactory;
-import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
 public class DefaultTypedMethod0<ReturnValue>
-extends AbstractTypedMethod<ReturnValue, DefaultTypedMethod0<ReturnValue>> {
+extends AbstractTypedMethod<ReturnValue> {
 
     // FIXME: implement
     private final MethodReturnTypeValidator methodReturnTypeValidator = null;
 
-    public DefaultTypedMethod0(final Method method) {
-        super(method);
+    // TODO: use DI
+    private final MethodInvoker methodInvoker = null;
+
+    public DefaultTypedMethod0(final Executable method) {
+        super(method, methodReturnTypeValidator);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke()
     throws MethodLookupException {
-        final Object returnValue = getMethodInvoker().invoke();
+        final Object returnValue = methodInvoker.invoke();
 
         return methodReturnValueFactory().methodReturnValue(returnValue, method);
     }

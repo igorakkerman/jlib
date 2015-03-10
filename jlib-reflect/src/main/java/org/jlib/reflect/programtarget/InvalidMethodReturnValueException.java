@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programtarget;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
 import org.jlib.core.message.Message;
 
@@ -30,11 +30,13 @@ extends MethodInvocationException {
 
     private static final long serialVersionUID = - 3511658773401667177L;
 
-    public InvalidMethodReturnValueException(final Message message, final Method method) {
-        super(message, method);
+    public InvalidMethodReturnValueException(final Message message, final Executable method) {
+        super(message, method.getDeclaringClass().getName(), method.getName());
     }
 
-    public InvalidMethodReturnValueException(final Message message, final Method method, final Exception cause) {
-        super(message, method, cause);
+    public InvalidMethodReturnValueException(final Message message, final Executable method, final Exception cause) {
+        this(message, method);
+
+        initCause(cause);
     }
 }

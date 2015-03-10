@@ -28,7 +28,6 @@ import static java.util.stream.Collectors.toList;
 import static org.jlib.core.message.MessageUtility.message;
 import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.ProgramTargetException;
 
 public final class Validators {
 
@@ -38,35 +37,35 @@ public final class Validators {
             if (! expectedReturnValue.equals(returnValue))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("expectedReturnValue", expectedReturnValue),
-                                                            className, methodName);
+                                                            method);
         };
     }
 
     public static <ReturnValue>
     MethodReturnValueValidator<ReturnValue> isInstanceOf(final Class<? extends ReturnValue> expectedType) {
-        return (returnValue, className, methodName) -> {
+        return (returnValue, method) -> {
             if (returnValue == null || ! expectedType.isAssignableFrom(returnValue.getClass()))
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("expectedType", expectedType),
-                                                            className, methodName);
+                                                            method);
         };
     }
 
     public static MethodReturnValueValidator<Integer> isLessThan(final Integer upperBound) {
-        return (returnValue, className, methodName) -> {
+        return (returnValue, method) -> {
             if (returnValue >= upperBound)
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("upperBound", upperBound),
-                                                            className, methodName);
+                                                            method);
         };
     }
 
     public static MethodReturnValueValidator<Integer> isGreaterThan(final Integer lowerBound) {
-        return (returnValue, className, methodName) -> {
+        return (returnValue, method) -> {
             if (returnValue <= lowerBound)
                 throw new InvalidMethodReturnValueException(message().with("returnValue", returnValue)
                                                                      .with("lowerBound", lowerBound),
-                                                            className, methodName);
+                                                            method);
         };
     }
 
