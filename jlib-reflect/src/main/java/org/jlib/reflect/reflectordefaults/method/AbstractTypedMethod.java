@@ -23,19 +23,33 @@ package org.jlib.reflect.reflectordefaults.method;
 
 import java.lang.reflect.Executable;
 
+import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
-import org.jlib.reflect.validator.MethodReturnTypeValidator;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodReturnValueFactory;
+import org.jlib.reflect.reflectorfactory.MethodReturnValueFactory;
 
-public abstract class AbstractTypedMethod<ReturnType, Met extends Executable>
-implements TypedMethod<ReturnType> {
+public abstract class AbstractTypedMethod<ReturnValue>
+implements TypedMethod<ReturnValue> {
 
-    private final Met method;
+    private final MethodInvoker methodInvoker;
+    // TODO: use DI
+    private final MethodReturnValueFactory methodReturnValueFactory = methodReturnValueFactory();
 
-    protected AbstractTypedMethod(final Met method, final MethodReturnTypeValidator methodReturnTypeValidator) {
-        this.method = method;
+    protected AbstractTypedMethod(final MethodInvoker methodInvoker) {
+        this.methodInvoker = methodInvoker;
     }
 
-    protected Met getMethod() {
-        return method;
+    public MethodInvoker getMethodInvoker() {
+        return methodInvoker;
+    }
+
+    @Override
+    public Executable get() {
+        return methodInvoker.getMethod();
+    }
+
+    public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
+        return methodReturnValueFactory.methodReturnValue(returnValue, getMethodInvoker());
     }
 }

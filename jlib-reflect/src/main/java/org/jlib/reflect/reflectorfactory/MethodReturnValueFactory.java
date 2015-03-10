@@ -21,12 +21,11 @@
 
 package org.jlib.reflect.reflectorfactory;
 
-import java.lang.reflect.Executable;
-
+import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 
 public interface MethodReturnValueFactory {
 
     <ReturnValue> MethodReturn<ReturnValue>
-    methodReturnValue(final ReturnValue returnValue, final Executable method);
+    methodReturnValue(final ReturnValue returnValue, final MethodInvoker methodInvoker);
 }

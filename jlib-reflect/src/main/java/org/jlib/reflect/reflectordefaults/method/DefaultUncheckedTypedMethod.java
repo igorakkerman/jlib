@@ -24,29 +24,29 @@ package org.jlib.reflect.reflectordefaults.method;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.UncheckedTypedMethod;
 
-public class DefaultTypedMethod0<ReturnValue>
+public class DefaultUncheckedTypedMethod<ReturnValue>
 extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod0<ReturnValue> {
+implements UncheckedTypedMethod<ReturnValue> {
 
-    public DefaultTypedMethod0(final MethodInvoker methodInvoker) {
+    public DefaultUncheckedTypedMethod(final MethodInvoker methodInvoker) {
         super(methodInvoker);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public MethodReturn<ReturnValue> invoke()
+    public MethodReturn<ReturnValue> invoke(final Object... arguments)
     throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke();
+        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(arguments);
 
         return methodReturnValue(returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod0<StaticReturnValue>
+    UncheckedTypedMethod<StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getMethodInvoker());
+        return new DefaultUncheckedTypedMethod<>(getMethodInvoker());
     }
 }

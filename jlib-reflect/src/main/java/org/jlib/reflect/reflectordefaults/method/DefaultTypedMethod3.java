@@ -24,29 +24,30 @@ package org.jlib.reflect.reflectordefaults.method;
 import org.jlib.reflect.programtarget.MethodInvoker;
 import org.jlib.reflect.programtarget.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.TypedMethod3;
 
-public class DefaultTypedMethod0<ReturnValue>
+public class DefaultTypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
 extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod0<ReturnValue> {
+implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
 
-    public DefaultTypedMethod0(final MethodInvoker methodInvoker) {
+    public DefaultTypedMethod3(final MethodInvoker methodInvoker) {
         super(methodInvoker);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public MethodReturn<ReturnValue> invoke()
+    public MethodReturn<ReturnValue> invoke(final Argument1 argument1, final Argument2 argument2,
+                                            final Argument3 argument3)
     throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke();
+        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(argument1, argument2);
 
         return methodReturnValue(returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod0<StaticReturnValue>
+    TypedMethod3<StaticReturnValue, Argument1, Argument2, Argument3>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getMethodInvoker());
+        return new DefaultTypedMethod3<>(getMethodInvoker());
     }
 }

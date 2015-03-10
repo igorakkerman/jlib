@@ -21,16 +21,12 @@
 
 package org.jlib.reflect.reflector;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
 import org.jlib.reflect.programtarget.MethodLookupException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface TypedMethod<ReturnValue> {
 
-    TypedMethod<ReturnValue> withReturnType(Class<ReturnValue> staticReturnSuperType)
-    throws NoSubtypeException;
-
-    Method get()
+    Executable get()
     throws MethodLookupException;
 }

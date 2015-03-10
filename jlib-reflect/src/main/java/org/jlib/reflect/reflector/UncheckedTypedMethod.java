@@ -28,4 +28,7 @@ extends TypedMethod<ReturnType> {
 
     MethodReturn<ReturnType> invoke(Object... arguments)
     throws MethodLookupException;
+
+    <StaticReturnValue>
+    UncheckedTypedMethod<StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
 }

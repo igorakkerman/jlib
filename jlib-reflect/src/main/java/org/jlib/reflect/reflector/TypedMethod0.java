@@ -30,5 +30,6 @@ extends TypedMethod<ReturnType> {
     throws MethodLookupException;
 
     <StaticReturnValue>
-    TypedMethod0<StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
+    TypedMethod0<StaticReturnValue>
+    /**/ withReturnType(Class<StaticReturnValue> staticReturnSuperType);
 }
