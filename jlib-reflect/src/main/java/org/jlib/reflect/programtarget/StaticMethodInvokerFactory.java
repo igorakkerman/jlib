@@ -23,7 +23,7 @@ package org.jlib.reflect.programtarget;
 
 import java.lang.reflect.Method;
 
-public interface MethodInvokerFactory {
+public interface StaticMethodInvokerFactory {
 
     MethodInvoker methodInvoker(Method method);
 }
