@@ -26,18 +26,18 @@ import java.lang.reflect.Executable;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.validator.MethodReturnTypeValidator;
 
-public abstract class AbstractTypedMethod<ReturnType>
+public abstract class AbstractTypedMethod<ReturnType, Met extends Executable>
 implements TypedMethod<ReturnType> {
 
-    private final Executable method;
+    private final Met method;
     private final MethodReturnTypeValidator methodReturnTypeValidator;
 
-    protected AbstractTypedMethod(final Executable method, final MethodReturnTypeValidator methodReturnTypeValidator) {
+    protected AbstractTypedMethod(final Met method, final MethodReturnTypeValidator methodReturnTypeValidator) {
         this.method = method;
         this.methodReturnTypeValidator = methodReturnTypeValidator;
     }
 
-    protected Executable getMethod() {
+    protected Met getMethod() {
         return method;
     }
 
