@@ -51,7 +51,7 @@ extends AbstractTypedMethod<ReturnValue> {
     throws MethodLookupException {
         final Object returnValue = methodInvoker.invoke();
 
-        return methodReturnValueFactory().methodReturnValue(returnValue, method);
+        return methodReturnValueFactory().methodReturnValue(returnValue, getMethod());
     }
 
     @Override
