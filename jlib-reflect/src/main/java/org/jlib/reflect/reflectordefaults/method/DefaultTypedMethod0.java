@@ -35,9 +35,6 @@ import org.jlib.reflect.validator.MethodReturnTypeValidator;
 public class DefaultTypedMethod0<ReturnValue>
 extends AbstractTypedMethod<ReturnValue> {
 
-    // FIXME: implement
-    private final MethodReturnTypeValidator methodReturnTypeValidator = null;
-
     // TODO: use DI
     private final MethodInvoker methodInvoker = null;
 

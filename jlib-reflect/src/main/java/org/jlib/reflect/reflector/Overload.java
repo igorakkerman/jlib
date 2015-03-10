@@ -49,5 +49,5 @@ public interface Overload<ReturnValue> {
     throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <StaticTypeObject>
-    Overload<StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnType);
+    Overload<StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnSuperType);
 }

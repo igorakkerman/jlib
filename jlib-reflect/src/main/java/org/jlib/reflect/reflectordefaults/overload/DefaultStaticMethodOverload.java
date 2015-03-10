@@ -124,7 +124,7 @@ extends AbstractOverload<ReturnValue> {
 
     @Override
     public <StaticTypeReturnValue>
-    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
-        return new DefaultStaticMethodOverload<>(getEnclosingClass(), methodName, staticReturnType);
+    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnSuperType) {
+        return new DefaultStaticMethodOverload<>(getEnclosingClass(), methodName, staticReturnSuperType);
     }
 }

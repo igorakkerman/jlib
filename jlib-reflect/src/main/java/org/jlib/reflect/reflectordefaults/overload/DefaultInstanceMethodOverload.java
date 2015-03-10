@@ -123,7 +123,7 @@ extends AbstractOverload<ReturnValue> {
 
     @Override
     public <StaticTypeReturnValue>
-    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnType) {
-        return new DefaultInstanceMethodOverload<>(enclosingObject, methodName, staticReturnType);
+    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnSuperType) {
+        return new DefaultInstanceMethodOverload<>(enclosingObject, methodName, staticReturnSuperType);
     }
 }

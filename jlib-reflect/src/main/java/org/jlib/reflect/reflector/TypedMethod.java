@@ -28,7 +28,7 @@ import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface TypedMethod<ReturnValue> {
 
-    TypedMethod<ReturnValue> assertReturns(Class<ReturnValue> staticReturnSuperType)
+    TypedMethod<ReturnValue> withReturnType(Class<ReturnValue> staticReturnSuperType)
     throws NoSubtypeException;
 
     Method get()
