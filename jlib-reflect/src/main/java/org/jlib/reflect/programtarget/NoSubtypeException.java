@@ -34,8 +34,8 @@ extends ClassException {
 
     private final List<String> expectedParentTypeClassNames;
 
-    public NoSubtypeException(final Class<?> clazz, final Class<?> expectedParentType) {
-        this(clazz, singletonList(expectedParentType));
+    public NoSubtypeException(final Class<?> actualType, final Class<?> expectedParentType) {
+        this(actualType, singletonList(expectedParentType));
     }
 
     public NoSubtypeException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
