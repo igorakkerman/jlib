@@ -26,7 +26,7 @@ import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface Overload<ReturnValue> {
 
-    TypedMethod0<?> withoutParameters()
+    TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1>
