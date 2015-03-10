@@ -22,30 +22,31 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programtarget.NoSubtypeException;
 
 public interface Overload<ReturnValue> {
 
     TypedMethod0<?> withoutParameters()
-    throws InvalidMethodParameterTypesException;
+    throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1>
-    TypedMethod1<?, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
-    throws InvalidMethodParameterTypesException;
+    TypedMethod1<ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
+    throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1, Parameter2>
-    TypedMethod2<?, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
                                                                Class<Parameter2> parameter2Type)
-    throws InvalidMethodParameterTypesException;
+    throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1, Parameter2, Parameter3>
-    TypedMethod3<?, Parameter1, Parameter2, Parameter3>
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
                                                 /**/ withParameterTypes(Class<Parameter1> parameter1Type,
                                                                         Class<Parameter2> parameter2Type,
                                                                         Class<Parameter3> parameter3Type)
-    throws InvalidMethodParameterTypesException;
+    throws InvalidMethodParameterTypesException, NoSubtypeException;
 
-    UncheckedTypedMethod<?> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException;
+    UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <StaticTypeObject>
     Overload<StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnType);
