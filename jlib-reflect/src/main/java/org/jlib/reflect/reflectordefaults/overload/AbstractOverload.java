@@ -27,6 +27,7 @@ import org.jlib.reflect.programtarget.MethodLookup;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import static org.jlib.reflect.programtargetreflection.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.reflector.Overload;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.methodFactory;
 import org.jlib.reflect.reflectorfactory.MethodFactory;
 
 public abstract class AbstractOverload<ReturnValue>
@@ -36,7 +37,7 @@ implements Overload<ReturnValue> {
     protected final MethodLookup methodLookup = methodLookupFactory().methodLookup();
 
     // TODO: use DI
-    protected final MethodFactory methodFactory = null; // FIXME: implement
+    protected final MethodFactory methodFactory = methodFactory();
 
     private final Class<?> enclosingClass;
     private final Class<ReturnValue> returnValueType;
