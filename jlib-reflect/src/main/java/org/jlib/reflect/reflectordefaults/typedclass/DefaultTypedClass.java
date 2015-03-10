@@ -26,6 +26,7 @@ import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
 import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
+import static org.jlib.reflect.reflectordefaults.DefaultReflectorFactories.constructorOverloadFactory;
 import org.jlib.reflect.reflectorfactory.ConstructorOverloadFactory;
 import org.jlib.reflect.reflectorfactory.TypedStaticMethodOverloadFactory;
 
@@ -36,7 +37,7 @@ implements TypedClass<Obj> {
     private TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory = typedStaticMethodOverloadFactory();
 
     @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
-    private ConstructorOverloadFactory constructorOverloadFactory; // FIXME: initialize
+    private ConstructorOverloadFactory constructorOverloadFactory = constructorOverloadFactory();
 
     private final Class<?> actualClass;
 

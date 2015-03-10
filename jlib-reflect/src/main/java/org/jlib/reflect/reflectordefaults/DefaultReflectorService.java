@@ -32,11 +32,11 @@ import org.jlib.reflect.reflectorfactory.TypedClassFactory;
 public class DefaultReflectorService
 implements ReflectorService {
 
-    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
-    private ClassLookup classLookup = classLookupFactory().classLookup();
+    // TODO: use DI
+    private final ClassLookup classLookup = classLookupFactory().classLookup();
 
-    @SuppressWarnings("FieldMayBeFinal") // TODO: use DI
-    private TypedClassFactory typedClassFactory = typedClassFactory();
+    // TODO: use DI
+    private final TypedClassFactory typedClassFactory = typedClassFactory();
 
     @Override
     public TypedClass<?> useClass(final String className)
