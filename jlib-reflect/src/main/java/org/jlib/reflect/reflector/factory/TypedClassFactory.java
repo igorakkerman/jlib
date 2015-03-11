@@ -19,15 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.reflector.factory;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.reflector.TypedClass;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public interface TypedClassFactory {
 
-public interface TypedMethod<ReturnValue> {
+    <Value> TypedClass<Value>
+    typedClass(Class<Value> clazz);
 
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    <Value> TypedClass<Value>
+    typedClass(Class<Value> staticType, final Class<?> actualClass)
+    throws NoSubtypeException;
 }

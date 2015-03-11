@@ -21,6 +21,7 @@
 
 package org.jlib.reflect.programtarget;
 
+import java.util.Collection;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
@@ -38,7 +39,7 @@ extends ClassException {
         this(actualType, singletonList(expectedParentType));
     }
 
-    public NoSubtypeException(final Class<?> clazz, final List<Class<?>> expectedParentTypes) {
+    public NoSubtypeException(final Class<?> clazz, final Collection<? extends Class<?>> expectedParentTypes) {
         super(message().with("expectedParentTypes", expectedParentTypes), clazz.getName());
 
         expectedParentTypeClassNames = expectedParentTypes.stream().map(Class::getName).collect(toList());

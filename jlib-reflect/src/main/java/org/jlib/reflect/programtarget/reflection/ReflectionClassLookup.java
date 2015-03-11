@@ -19,15 +19,22 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.programtarget.reflection;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.programtarget.ClassLookup;
+import org.jlib.reflect.programtarget.ClassLookupException;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public class ReflectionClassLookup
+implements ClassLookup {
 
-public interface TypedMethod<ReturnValue> {
-
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    @Override
+    public Class<?> lookupClass(final String className)
+    throws ClassLookupException {
+        try {
+            return Class.forName(className);
+        }
+        catch (final ClassNotFoundException | LinkageError throwable) {
+            throw new ClassLookupException(className, throwable);
+        }
+    }
 }

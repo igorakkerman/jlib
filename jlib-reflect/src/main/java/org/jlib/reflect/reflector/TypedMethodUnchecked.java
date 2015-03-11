@@ -21,13 +21,14 @@
 
 package org.jlib.reflect.reflector;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.programtarget.MethodLookupException;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public interface TypedMethodUnchecked<ReturnType>
+extends TypedMethod<ReturnType> {
 
-public interface TypedMethod<ReturnValue> {
+    MethodReturn<ReturnType> invoke(Object... arguments)
+    throws MethodLookupException;
 
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    <StaticReturnValue>
+    TypedMethodUnchecked<StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
 }

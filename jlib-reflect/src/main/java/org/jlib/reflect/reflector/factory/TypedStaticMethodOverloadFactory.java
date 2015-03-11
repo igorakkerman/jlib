@@ -19,15 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.reflector.factory;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.reflector.Overload;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public interface TypedStaticMethodOverloadFactory {
 
-public interface TypedMethod<ReturnValue> {
-
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    <EnclosingClassObject, ReturnValue>
+    Overload<ReturnValue>
+    /**/ typedStaticMethodOverload(Class<EnclosingClassObject> enclosingClass, String staticMethodName,
+                                   Class<ReturnValue> returnValueClass);
 }

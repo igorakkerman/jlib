@@ -21,39 +21,37 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.ClassException;
 import org.jlib.reflect.programtarget.NoSubtypeException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
 
 public interface TypedClass<Obj> {
 
+    @SuppressWarnings("RedundantThrows")
     Class<Obj> get()
-    throws ClassException;
+    throws ProgramTargetException;
 
     // downcast necessary for parametrized types although not fully typesafe
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "RedundantThrows"})
     default <Val extends Obj>
     Class<Val> downcast()
-    throws ClassException {
+    throws ProgramTargetException {
         return (Class<Val>) get();
     }
 
-    TypedClass<Obj> assertSubtypeOf(Class<?> expectedSuperType)
+    TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
     throws NoSubtypeException;
 
+    @SuppressWarnings("RedundantThrows")
     default Obj instance()
     throws ProgramTargetException {
         return useConstructor().withoutParameters().invoke().get();
     }
 
-    Overload<Obj> useConstructor()
-    throws ClassException;
+    Overload<Obj> useConstructor();
 
-    Overload<Object> useStaticMethod(String staticMethodName)
-    throws ClassException;
+    Overload<Object> useStaticMethod(String staticMethodName);
 
     <StaticTypedObject>
     TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
     throws NoSubtypeException;
-
 }

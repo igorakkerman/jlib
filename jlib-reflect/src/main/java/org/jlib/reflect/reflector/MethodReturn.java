@@ -21,23 +21,17 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.InvalidMethodReturnValueException;
+import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
 import org.jlib.reflect.programtarget.ProgramTargetException;
-import org.jlib.reflect.validator.MethodReturnValueValidator;
-import static org.jlib.reflect.validator.Validators.isEqualTo;
 
 public interface MethodReturn<ReturnValue> {
 
-    MethodReturn<ReturnValue> assertReturned(MethodReturnValueValidator<ReturnValue> validator)
-    throws InvalidMethodReturnValueException;
-
-    default MethodReturn<ReturnValue> assertReturned(final ReturnValue returnValue)
-    throws InvalidMethodReturnValueException {
-        return assertReturned(isEqualTo(returnValue));
-    }
+    MethodReturn<ReturnValue> returning(Class<?>... expectedSuperTypes)
+    throws InvalidMethodReturnTypeException;
 
     Overload<Object> useMethod(String methodName);
 
+    @SuppressWarnings("RedundantThrows")
     ReturnValue get()
     throws ProgramTargetException;
 }

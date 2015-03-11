@@ -21,16 +21,44 @@
 
 package org.jlib.reflect.programtarget;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
+
+import java.util.Collection;
 
 import static org.jlib.core.message.MessageUtility.message;
 
 public class InvalidMethodReturnTypeException
-extends MethodLookupException {
+extends MethodInvocationException {
 
-    private static final long serialVersionUID = - 1192293904380142733L;
+    private static final long serialVersionUID = 6610464823967521411L;
 
-    public InvalidMethodReturnTypeException(final Method method) {
-        super(message(), method);
+    private final Class<?> returnType;
+    private final Collection<? extends Class<?>> expectedReturnValueSuperTypes;
+
+    public InvalidMethodReturnTypeException(final Class<?> returnType,
+                                            final Collection<? extends Class<?>> expectedReturnValueSuperTypes,
+                                            final Executable method) {
+        super(message().with("returnType", returnType)
+                       .with("expectedTypes", expectedReturnValueSuperTypes),
+              method.getDeclaringClass().getName(), method.getName());
+
+        this.returnType = returnType;
+        this.expectedReturnValueSuperTypes = expectedReturnValueSuperTypes;
+    }
+
+    public InvalidMethodReturnTypeException(final Executable method, final Class<?> returnType,
+                                            final Collection<? extends Class<?>> expectedReturnValueSuperTypes,
+                                            final Exception cause) {
+        this(returnType, expectedReturnValueSuperTypes, method);
+
+        initCause(cause);
+    }
+
+    public Class<?> getReturnType() {
+        return returnType;
+    }
+
+    public Collection<? extends Class<?>> getExpectedReturnValueSuperTypes() {
+        return expectedReturnValueSuperTypes;
     }
 }

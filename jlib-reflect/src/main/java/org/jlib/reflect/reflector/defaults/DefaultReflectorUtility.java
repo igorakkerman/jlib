@@ -19,15 +19,21 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.reflector.defaults;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.reflector.TypedClass;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public final class DefaultReflectorUtility {
 
-public interface TypedMethod<ReturnValue> {
+    public static TypedClass<?> useClass(final String className)
+    throws ClassLookupException {
+        return new DefaultReflectorService().useClass(className);
+    }
 
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
+        return new DefaultReflectorService().useClass(concreteClass);
+    }
+
+    private DefaultReflectorUtility() {}
 }

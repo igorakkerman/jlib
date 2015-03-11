@@ -19,15 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.reflector.factory;
 
-import java.lang.reflect.Executable;
+import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.reflector.MethodReturn;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+public interface MethodReturnFactory {
 
-public interface TypedMethod<ReturnValue> {
-
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramTargetException;
+    <ReturnValue> MethodReturn<ReturnValue>
+    methodReturnValue(final ReturnValue returnValue, final MethodInvoker methodInvoker);
 }

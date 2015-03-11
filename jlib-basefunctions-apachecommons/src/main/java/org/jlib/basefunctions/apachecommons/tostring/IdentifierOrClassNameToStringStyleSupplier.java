@@ -26,7 +26,7 @@ import java.util.Optional;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.reflect.programtarget.ProgramTargetException;
-import static org.jlib.reflect.reflectordefaults.DefaultReflectorUtility.useClass;
+import static org.jlib.reflect.reflector.defaults.DefaultReflectorUtility.useClass;
 
 public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {

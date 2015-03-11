@@ -45,7 +45,7 @@ public interface Overload<ReturnValue> {
                                                                         Class<Parameter3> parameter3Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException;
 
-    UncheckedTypedMethod<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+    TypedMethodUnchecked<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <StaticTypeObject>
