@@ -21,15 +21,14 @@
 
 package org.jlib.basefunctions.apachecommons.tostring;
 
-import org.jlib.core.classinstance.ClassInstanceException;
 import org.jlib.core.exception.InvalidStateException;
 
 public class ToStringStyleNotFoundException
 extends InvalidStateException {
 
-    private static final long serialVersionUID = 3897146043064767340L;
+    private static final long serialVersionUID = 6624163853175763323L;
 
-    ToStringStyleNotFoundException(final ClassInstanceException cause) {
+    ToStringStyleNotFoundException(final Exception cause) {
         super(cause);
     }
 }

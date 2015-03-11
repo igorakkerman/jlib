@@ -43,6 +43,7 @@
         <module>jlib-basefunctions-apachecommons</module>
         <module>jlib-text</module>
         <module>jlib-operator</module>
+        <module>jlib-reflect</module>
         <module>jlib-container</module>
         <module>jlib-persistence</module>
         <module>jlib-persistence-jpa</module>
@@ -191,6 +192,12 @@
                 <artifactId>jlib-basefunctions-apachecommons</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-reflect</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>

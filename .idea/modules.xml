@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence/jlib-persistence.iml" filepath="$PROJECT_DIR$/jlib-persistence/jlib-persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" filepath="$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" filepath="$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" filepath="$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
     </modules>
   </component>

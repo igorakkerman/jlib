@@ -23,21 +23,8 @@ package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.classinstance.ClassInstanceService;
-import org.jlib.core.classinstance.ClassInstantiationException;
-
-import static java.lang.String.format;
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Fail.fail;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -52,6 +39,8 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
 
     @Mock
     private NamedToStringStyleSupplier namedToStringStyleSupplier;
+/*
+    TODO: uncomment and use service when available
 
     @Mock
     private ClassInstanceService instanceService;
@@ -113,8 +102,8 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         try {
             // given
             when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-            when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class))./*
-              */ thenThrow(new ClassInstantiationException(CLASS_NAME));
+            when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class)).
+               thenThrow(new ClassInstantiationException(CLASS_NAME));
 
             // when
             configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -136,4 +125,5 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             assertThat(expectedException).hasCauseExactlyInstanceOf(ClassInstantiationException.class);
         }
     }
+    */
 }
