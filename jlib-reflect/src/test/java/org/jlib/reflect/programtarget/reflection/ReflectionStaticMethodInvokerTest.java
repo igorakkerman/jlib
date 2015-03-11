@@ -86,7 +86,7 @@ public class ReflectionStaticMethodInvokerTest {
     public void invokeVoidEmpty()
     throws Exception {
         final Method method = CLASS.getMethod("voidEmpty");
-        new ReflectionInstanceMethodInvoker(method, service).invoke(service);
+        new ReflectionInstanceMethodInvoker(method, service).invoke();
         verify(service).voidEmpty();
         verifyNoMoreInteractions(service);
     }
@@ -95,7 +95,7 @@ public class ReflectionStaticMethodInvokerTest {
     public void invokeVoidString()
     throws Exception {
         final Method method = CLASS.getMethod("voidString", String.class);
-        new ReflectionInstanceMethodInvoker(method, service).invoke(service, "boo");
+        new ReflectionInstanceMethodInvoker(method, service).invoke("boo");
         verify(service).voidString("boo");
         verifyNoMoreInteractions(service);
     }
@@ -105,7 +105,7 @@ public class ReflectionStaticMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("intEmpty");
         when(service.intEmpty()).thenReturn(4711);
-        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke(service)).isEqualTo(4711);
+        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke()).isEqualTo(4711);
         verify(service).intEmpty();
         verifyNoMoreInteractions(service);
     }
@@ -115,7 +115,7 @@ public class ReflectionStaticMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringInt", int.class);
         when(service.stringInt(4711)).thenReturn("boo");
-        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke(service, 4711)).isEqualTo("boo");
+        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke(4711)).isEqualTo("boo");
         verify(service).stringInt(4711);
         verifyNoMoreInteractions(service);
     }
@@ -125,7 +125,7 @@ public class ReflectionStaticMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringString", String.class);
         when(service.stringString("boofar")).thenReturn("raboof");
-        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke(service, "boofar")).isEqualTo("raboof");
+        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke("boofar")).isEqualTo("raboof");
         verify(service).stringString("boofar");
         verifyNoMoreInteractions(service);
     }
@@ -135,7 +135,7 @@ public class ReflectionStaticMethodInvokerTest {
     throws Exception {
         final Method method = CLASS.getMethod("stringString", String.class, String.class);
         when(service.stringString("boofar", "abracadabra")).thenReturn("raboof");
-        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke(service, "boofar", "abracadabra")).isEqualTo("raboof");
+        assertThat(new ReflectionInstanceMethodInvoker(method, service).invoke("boofar", "abracadabra")).isEqualTo("raboof");
         verify(service).stringString("boofar", "abracadabra");
         verifyNoMoreInteractions(service);
     }
