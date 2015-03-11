@@ -114,7 +114,7 @@ extends AbstractOverload<EnclosingClassObject> {
     @Override
     public <StaticTypeEnclosingClassObject>
     Overload<StaticTypeEnclosingClassObject>
-    /**/ withReturnType(final Class<StaticTypeEnclosingClassObject> staticReturnSuperType) {
+    withReturnType(final Class<StaticTypeEnclosingClassObject> staticReturnSuperType) {
         return new DefaultConstructorOverload<>(staticReturnSuperType);
     }
 }
