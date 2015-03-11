@@ -31,5 +31,5 @@ extends TypedMethod<ReturnType> {
 
     <StaticReturnValue>
     TypedMethod3<StaticReturnValue, Argument1, Argument2, Argument3>
-               /**/ withReturnType(Class<StaticReturnValue> staticReturnSuperType);
+    withReturnType(Class<StaticReturnValue> staticReturnSuperType);
 }
