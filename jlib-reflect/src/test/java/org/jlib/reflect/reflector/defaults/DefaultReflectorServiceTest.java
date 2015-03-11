@@ -67,7 +67,7 @@ public class DefaultReflectorServiceTest {
                              .returning(Integer.class)                       // MethodReturnValueReflector
                              .get();                                         // ReturnValue
 
-        Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));
+        Assertions.assertThat(value).isEqualTo(Integer.valueOf(1));
     }
 }
 
