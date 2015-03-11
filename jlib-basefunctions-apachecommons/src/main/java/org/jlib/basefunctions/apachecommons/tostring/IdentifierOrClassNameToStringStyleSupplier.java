@@ -26,13 +26,14 @@ import java.util.Optional;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import org.jlib.reflect.programtarget.ProgramTargetException;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorUtility.useClass;
+import org.jlib.reflect.reflector.ReflectorService;
 
 public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
     private String identifierOrClassName;
     private NamedToStringStyleSupplier namedStyleSupplier;
+    private ReflectorService reflectorService;
 
     @Override
     @SuppressWarnings("unchecked")
@@ -43,9 +44,9 @@ implements ConfigurableToStringStyleSupplier {
 
             return toStringStyle.isPresent() ?
                    toStringStyle.get() :
-                   // TODO: use service instead of static method when available
-                   useClass(identifierOrClassName).withType(ToStringStyle.class)
-                                                  .instance();
+                   reflectorService.useClass(identifierOrClassName)
+                                   .withType(ToStringStyle.class)
+                                   .instance();
         }
         catch (final ProgramTargetException exception) {
             throw new ToStringStyleNotFoundException(exception);
@@ -58,5 +59,9 @@ implements ConfigurableToStringStyleSupplier {
 
     public void setIdentifierOrClassName(final String identifierOrClassName) {
         this.identifierOrClassName = identifierOrClassName;
+    }
+
+    public void setReflectorService(final ReflectorService reflectorService) {
+        this.reflectorService = reflectorService;
     }
 }

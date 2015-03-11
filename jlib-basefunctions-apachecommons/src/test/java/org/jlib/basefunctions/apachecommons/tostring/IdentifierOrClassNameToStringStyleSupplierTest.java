@@ -23,8 +23,21 @@ package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import static java.lang.String.format;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
+import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.reflector.ReflectorService;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.mockito.Answers.RETURNS_DEEP_STUBS;
 import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,17 +52,15 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
 
     @Mock
     private NamedToStringStyleSupplier namedToStringStyleSupplier;
-/*
-    TODO: uncomment and use service when available
 
-    @Mock
-    private ClassInstanceService instanceService;
+    @Mock(answer = RETURNS_DEEP_STUBS)
+    private ReflectorService reflectorService;
 
     @Before
     public void initializeStyleSupplier() {
         configurableSupplier = new IdentifierOrClassNameToStringStyleSupplier();
         configurableSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
-        configurableSupplier.setInstanceService(instanceService);
+        configurableSupplier.setReflectorService(reflectorService);
     }
 
     @Test
@@ -66,7 +77,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         verify(namedToStringStyleSupplier).get(STYLE_ID);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-        verifyNoMoreInteractions(instanceService);
+        verifyNoMoreInteractions(reflectorService);
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -78,7 +89,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
 
         // given
         when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-        when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class)).thenReturn(STYLE);
+        when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance()).thenReturn(STYLE);
 
         // when
         configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -88,8 +99,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         verify(namedToStringStyleSupplier).get(CLASS_NAME);
         verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-        verify(instanceService).getInstanceOf(CLASS_NAME, ToStringStyle.class);
-        verifyNoMoreInteractions(instanceService);
+        verify(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class)).instance();
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -98,12 +108,11 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     @SuppressWarnings("unchecked")
     public void notInstantiatableClassNameShouldFailMappingAndThrowException()
     throws Exception {
-
         try {
             // given
             when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-            when(instanceService.getInstanceOf(CLASS_NAME, ToStringStyle.class)).
-               thenThrow(new ClassInstantiationException(CLASS_NAME));
+            when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance())
+            .thenThrow(new ClassLookupException(CLASS_NAME, new Exception()));
 
             // when
             configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -119,11 +128,9 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             verify(namedToStringStyleSupplier).get(CLASS_NAME);
             verifyNoMoreInteractions(namedToStringStyleSupplier);
 
-            verify(instanceService).getInstanceOf(CLASS_NAME, ToStringStyle.class);
-            verifyNoMoreInteractions(instanceService);
+            verify(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class)).instance();
 
-            assertThat(expectedException).hasCauseExactlyInstanceOf(ClassInstantiationException.class);
+            assertThat(expectedException).hasCauseExactlyInstanceOf(ClassLookupException.class);
         }
     }
-    */
 }
