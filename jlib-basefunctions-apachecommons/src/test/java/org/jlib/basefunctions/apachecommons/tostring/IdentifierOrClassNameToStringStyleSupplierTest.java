@@ -28,12 +28,9 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
-import org.jlib.reflect.programtarget.ClassLookupException;
-import org.jlib.reflect.reflector.ReflectorService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.mockito.Answers.RETURNS_DEEP_STUBS;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -43,41 +40,45 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class IdentifierOrClassNameToStringStyleSupplierTest {
 
+    @SuppressWarnings("serial")
+    private static class TestStyle
+    extends ToStringStyle {}
+
     public static final String STYLE_ID = "MY_STYLE";
     @SuppressWarnings("serial")
-    private static final ToStringStyle STYLE = new ToStringStyle() {};
+    private static final ToStringStyle STYLE = new TestStyle();
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
 
     private IdentifierOrClassNameToStringStyleSupplier configurableSupplier;
 
     @Mock
-    private NamedToStringStyleSupplier namedToStringStyleSupplier;
+    private NamedToStringStyleSupplier namedStyleSupplier;
 
-    @Mock(answer = RETURNS_DEEP_STUBS)
-    private ReflectorService reflectorService;
+    @Mock
+    private ClassNameToStringStyleSupplier classNameStyleSupplier;
 
     @Before
     public void initializeStyleSupplier() {
         configurableSupplier = new IdentifierOrClassNameToStringStyleSupplier();
-        configurableSupplier.setNamedStyleSupplier(namedToStringStyleSupplier);
-        configurableSupplier.setReflectorService(reflectorService);
+        configurableSupplier.setNamedStyleSupplier(namedStyleSupplier);
+        configurableSupplier.setClassNameToStringStyleSupplier(classNameStyleSupplier);
     }
 
     @Test
     public void styleOfMappedIdentifierShouldBeReturned() {
 
         // given
-        when(namedToStringStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
+        when(namedStyleSupplier.get(STYLE_ID)).thenReturn(of(STYLE));
 
         // when
         configurableSupplier.setIdentifierOrClassName(STYLE_ID);
         final ToStringStyle style = configurableSupplier.get();
 
         // then
-        verify(namedToStringStyleSupplier).get(STYLE_ID);
-        verifyNoMoreInteractions(namedToStringStyleSupplier);
+        verify(namedStyleSupplier).get(STYLE_ID);
+        verifyNoMoreInteractions(namedStyleSupplier);
 
-        verifyNoMoreInteractions(reflectorService);
+        verifyNoMoreInteractions(classNameStyleSupplier);
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -88,18 +89,19 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     throws Exception {
 
         // given
-        when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-        when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance()).thenReturn(STYLE);
+        when(namedStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
+        when(classNameStyleSupplier.get(CLASS_NAME)).thenReturn(STYLE);
 
         // when
         configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
         final ToStringStyle style = configurableSupplier.get();
 
         // then
-        verify(namedToStringStyleSupplier).get(CLASS_NAME);
-        verifyNoMoreInteractions(namedToStringStyleSupplier);
+        verify(namedStyleSupplier).get(CLASS_NAME);
+        verifyNoMoreInteractions(namedStyleSupplier);
 
-        verify(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class)).instance();
+        verify(classNameStyleSupplier).get(CLASS_NAME);
+        verifyNoMoreInteractions(classNameStyleSupplier);
 
         assertThat(style).isSameAs(STYLE);
     }
@@ -110,9 +112,9 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     throws Exception {
         try {
             // given
-            when(namedToStringStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
-            when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance())
-            .thenThrow(new ClassLookupException(CLASS_NAME, new Exception()));
+            when(namedStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
+            when(classNameStyleSupplier.get(CLASS_NAME))
+            .thenThrow(new ToStringStyleNotFoundException(new IllegalStateException()));
 
             // when
             configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -125,12 +127,13 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
         catch (final ToStringStyleNotFoundException expectedException) {
 
             // then (success)
-            verify(namedToStringStyleSupplier).get(CLASS_NAME);
-            verifyNoMoreInteractions(namedToStringStyleSupplier);
+            verify(namedStyleSupplier).get(CLASS_NAME);
+            verifyNoMoreInteractions(namedStyleSupplier);
 
-            verify(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class)).instance();
+            verify(classNameStyleSupplier).get(CLASS_NAME);
+            verifyNoMoreInteractions(classNameStyleSupplier);
 
-            assertThat(expectedException).hasCauseExactlyInstanceOf(ClassLookupException.class);
+            assertThat(expectedException).hasCauseExactlyInstanceOf(IllegalStateException.class);
         }
     }
 }

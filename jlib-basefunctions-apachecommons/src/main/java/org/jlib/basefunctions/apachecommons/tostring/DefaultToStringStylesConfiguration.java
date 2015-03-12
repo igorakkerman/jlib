@@ -33,10 +33,12 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
+import org.jlib.reflect.reflector.defaults.DefaultReflectorService;
 
 public final class DefaultToStringStylesConfiguration {
 
-    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.basefunctions.apachecommons.toStringStyle";
+    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME =
+    /*    */ "org.jlib.basefunctions.apachecommons.toStringStyle";
 
     public static final OptionalPropertyValueSupplier
     /**/ TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER =
@@ -57,6 +59,15 @@ public final class DefaultToStringStylesConfiguration {
 
     public static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
     /**/ new MapNamedToStringStyleSupplier(TO_STRING_STYLES);
+
+    public static final ClassNameToStringStyleSupplier CLASS_NAME_STYLE_SUPPLIER;
+
+    static {
+        final ReflectorClassNameToStringStyleSupplier classNameStyleSupplier =
+        /**/ new ReflectorClassNameToStringStyleSupplier();
+        classNameStyleSupplier.setReflectorService(new DefaultReflectorService());
+        CLASS_NAME_STYLE_SUPPLIER = classNameStyleSupplier;
+    }
 
     private DefaultToStringStylesConfiguration() {}
 }

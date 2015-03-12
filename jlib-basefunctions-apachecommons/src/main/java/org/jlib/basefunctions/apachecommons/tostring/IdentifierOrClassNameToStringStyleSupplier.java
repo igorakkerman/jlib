@@ -25,32 +25,22 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
-import org.jlib.reflect.reflector.ReflectorService;
-
 public class IdentifierOrClassNameToStringStyleSupplier
 implements ConfigurableToStringStyleSupplier {
 
     private String identifierOrClassName;
     private NamedToStringStyleSupplier namedStyleSupplier;
-    private ReflectorService reflectorService;
+    private ClassNameToStringStyleSupplier classNameToStringStyleSupplier;
 
     @Override
     @SuppressWarnings("unchecked")
     public ToStringStyle get()
     throws ToStringStyleNotFoundException {
-        try {
-            final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
+        final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
 
-            return toStringStyle.isPresent() ?
-                   toStringStyle.get() :
-                   reflectorService.useClass(identifierOrClassName)
-                                   .withType(ToStringStyle.class)
-                                   .instance();
-        }
-        catch (final ProgramTargetException exception) {
-            throw new ToStringStyleNotFoundException(exception);
-        }
+        return toStringStyle.isPresent() ?
+               toStringStyle.get() :
+               classNameToStringStyleSupplier.get(identifierOrClassName);
     }
 
     public void setNamedStyleSupplier(final NamedToStringStyleSupplier namedStyleSupplier) {
@@ -61,7 +51,7 @@ implements ConfigurableToStringStyleSupplier {
         this.identifierOrClassName = identifierOrClassName;
     }
 
-    public void setReflectorService(final ReflectorService reflectorService) {
-        this.reflectorService = reflectorService;
+    public void setClassNameToStringStyleSupplier(final ClassNameToStringStyleSupplier classNameToStringStyleSupplier) {
+        this.classNameToStringStyleSupplier = classNameToStringStyleSupplier;
     }
 }

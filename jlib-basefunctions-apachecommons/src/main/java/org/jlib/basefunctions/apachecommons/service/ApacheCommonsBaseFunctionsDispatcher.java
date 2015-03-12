@@ -58,9 +58,9 @@ implements BaseFunctionsDispatcher {
         final IdentifierOrClassNameToStringStyleSupplier toStringStyleSupplier =
         /**/ new IdentifierOrClassNameToStringStyleSupplier();
         toStringStyleSupplier.setNamedStyleSupplier(DefaultToStringStylesConfiguration.NAMED_STYLE_SUPPLIER);
+        toStringStyleSupplier.setClassNameToStringStyleSupplier
+                              (DefaultToStringStylesConfiguration.CLASS_NAME_STYLE_SUPPLIER);
         toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
-        // TODO: use service instead of static method when available
-//        toStringStyleSupplier.setInstanceService(ReflectionService.getInstance());
 
         toStringStyle = toStringStyleSupplier.get();
     }
