@@ -22,19 +22,19 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programelement.NoSubtypeException;
-import org.jlib.reflect.programelement.ProgramTargetException;
+import org.jlib.reflect.programelement.ProgramElementException;
 
 public interface TypedClass<Obj> {
 
     @SuppressWarnings("RedundantThrows")
     Class<Obj> get()
-    throws ProgramTargetException;
+    throws ProgramElementException;
 
     // downcast necessary for parametrized types although not fully typesafe
     @SuppressWarnings({"unchecked", "RedundantThrows"})
     default <Val extends Obj>
     Class<Val> downcast()
-    throws ProgramTargetException {
+    throws ProgramElementException {
         return (Class<Val>) get();
     }
 
@@ -43,7 +43,7 @@ public interface TypedClass<Obj> {
 
     @SuppressWarnings("RedundantThrows")
     default Obj instance()
-    throws ProgramTargetException {
+    throws ProgramElementException {
         return useConstructor().withoutParameters().invoke().get();
     }
 

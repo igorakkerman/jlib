@@ -24,8 +24,8 @@ package org.jlib.reflect.reflector.defaults.methodreturn;
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
 import org.jlib.reflect.programelement.MethodInvoker;
-import org.jlib.reflect.programelement.ProgramTargetException;
-import static org.jlib.reflect.programelement.ProgramTargetUtility.assertInstanceOf;
+import org.jlib.reflect.programelement.ProgramElementException;
+import static org.jlib.reflect.programelement.ProgramElementUtility.assertInstanceOf;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.instanceMethodOverloadFactory;
@@ -68,7 +68,7 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public ReturnValue get()
-    throws ProgramTargetException {
+    throws ProgramElementException {
         return returnValue;
     }
 }

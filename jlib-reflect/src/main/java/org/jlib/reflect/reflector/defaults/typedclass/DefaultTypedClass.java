@@ -30,7 +30,7 @@ import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.type
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.constructorOverloadFactory;
 import org.jlib.reflect.reflector.factory.ConstructorOverloadFactory;
 import org.jlib.reflect.reflector.factory.TypedStaticMethodOverloadFactory;
-import static org.jlib.reflect.programelement.ProgramTargetUtility.assertSubtype;
+import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {

@@ -23,7 +23,7 @@ package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.reflect.programelement.ProgramTargetException;
+import org.jlib.reflect.programelement.ProgramElementException;
 import org.jlib.reflect.reflector.ReflectorService;
 
 public class ReflectorClassNameToStringStyleSupplier
@@ -39,7 +39,7 @@ implements ClassNameToStringStyleSupplier {
                                    .withType(ToStringStyle.class)
                                    .instance();
         }
-        catch (final ProgramTargetException exception) {
+        catch (final ProgramElementException exception) {
             throw new ToStringStyleNotFoundException(exception);
         }
     }

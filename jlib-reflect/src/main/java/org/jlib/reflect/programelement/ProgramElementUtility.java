@@ -26,7 +26,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public final class ProgramTargetUtility {
+public final class ProgramElementUtility {
 
     public static void assertInstanceOf(final Object returnValue,
                                         final Collection<? extends Class<?>> expectedSuperTypes,
@@ -54,5 +54,5 @@ public final class ProgramTargetUtility {
             throw new NoSubtypeException(actualType, invalidSuperTypes);
     }
 
-    private ProgramTargetUtility() {}
+    private ProgramElementUtility() {}
 }

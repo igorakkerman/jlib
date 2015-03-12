@@ -24,22 +24,22 @@ package org.jlib.reflect.programelement;
 import org.jlib.core.exception.ApplicationException;
 import org.jlib.core.message.Message;
 
-public abstract class ProgramTargetException
+public abstract class ProgramElementException
 extends ApplicationException {
 
     private static final long serialVersionUID = 2276530860062232111L;
 
-    protected ProgramTargetException() {}
+    protected ProgramElementException() {}
 
-    protected ProgramTargetException(final Message message) {
+    protected ProgramElementException(final Message message) {
         super(message);
     }
 
-    protected ProgramTargetException(final Exception cause) {
+    protected ProgramElementException(final Exception cause) {
         super(cause);
     }
 
-    protected ProgramTargetException(final Message message, final Exception cause) {
+    protected ProgramElementException(final Message message, final Exception cause) {
         super(message, cause);
     }
 }

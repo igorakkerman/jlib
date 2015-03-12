@@ -22,7 +22,7 @@
 package org.jlib.reflect.reflector;
 
 import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programelement.ProgramTargetException;
+import org.jlib.reflect.programelement.ProgramElementException;
 
 public interface MethodReturn<ReturnValue> {
 
@@ -33,5 +33,5 @@ public interface MethodReturn<ReturnValue> {
 
     @SuppressWarnings("RedundantThrows")
     ReturnValue get()
-    throws ProgramTargetException;
+    throws ProgramElementException;
 }

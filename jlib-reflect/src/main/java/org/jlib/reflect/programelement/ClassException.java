@@ -24,7 +24,7 @@ package org.jlib.reflect.programelement;
 import org.jlib.core.message.Message;
 
 public abstract class ClassException
-extends ProgramTargetException {
+extends ProgramElementException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 
