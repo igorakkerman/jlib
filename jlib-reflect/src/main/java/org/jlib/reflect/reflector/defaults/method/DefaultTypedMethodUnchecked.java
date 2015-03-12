@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.MethodLookupException;
+import org.jlib.reflect.programelement.MethodInvoker;
+import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
 

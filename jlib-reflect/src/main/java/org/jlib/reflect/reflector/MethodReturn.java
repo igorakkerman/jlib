@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
+import org.jlib.reflect.programelement.ProgramTargetException;
 
 public interface MethodReturn<ReturnValue> {
 

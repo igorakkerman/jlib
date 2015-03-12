@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programelement.NoSubtypeException;
 
 public interface Overload<ReturnValue> {
 

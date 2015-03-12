@@ -24,7 +24,7 @@ package org.jlib.basefunctions.apachecommons.tostring;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.programelement.ClassLookupException;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.junit.Before;
 import org.junit.Test;

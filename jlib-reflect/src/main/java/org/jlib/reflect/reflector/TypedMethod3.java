@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.MethodLookupException;
+import org.jlib.reflect.programelement.MethodLookupException;
 
 public interface TypedMethod3<ReturnType, Argument1, Argument2, Argument3>
 extends TypedMethod<ReturnType> {

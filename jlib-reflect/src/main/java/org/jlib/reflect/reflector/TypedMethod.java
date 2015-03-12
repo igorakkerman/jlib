@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.programelement.ProgramTargetException;
 
 public interface TypedMethod<ReturnValue> {
 

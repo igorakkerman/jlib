@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.methodReturnFactory;

@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflector.defaults;
 
-import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programelement.MethodInvoker;
+import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;

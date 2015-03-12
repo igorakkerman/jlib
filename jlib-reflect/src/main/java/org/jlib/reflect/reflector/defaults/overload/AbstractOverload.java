@@ -24,10 +24,10 @@ package org.jlib.reflect.reflector.defaults.overload;
 import java.lang.reflect.Method;
 
 import static java.util.Collections.singletonList;
-import org.jlib.reflect.programtarget.MethodLookup;
-import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.programtarget.ProgramTargetUtility.assertSubtype;
-import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.methodLookupFactory;
+import org.jlib.reflect.programelement.MethodLookup;
+import org.jlib.reflect.programelement.NoSubtypeException;
+import static org.jlib.reflect.programelement.ProgramTargetUtility.assertSubtype;
+import static org.jlib.reflect.programelement.reflection.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.reflector.Overload;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.methodFactory;
 import org.jlib.reflect.reflector.factory.MethodFactory;

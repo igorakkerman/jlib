@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults;
 
-import org.jlib.reflect.programtarget.ClassLookupException;
+import org.jlib.reflect.programelement.ClassLookupException;
 import org.jlib.reflect.reflector.TypedClass;
 
 public final class DefaultReflectorUtility {

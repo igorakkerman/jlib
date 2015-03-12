@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
-import org.jlib.reflect.programtarget.ProgramTargetException;
+import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.programelement.ProgramTargetException;
 
 public interface TypedClass<Obj> {
 

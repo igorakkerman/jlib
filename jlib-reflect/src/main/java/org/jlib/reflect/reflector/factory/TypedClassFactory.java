@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector.factory;
 
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.TypedClass;
 
 public interface TypedClassFactory {

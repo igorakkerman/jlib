@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector.factory;
 
-import org.jlib.reflect.programtarget.MethodInvoker;
+import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 
 public interface MethodReturnFactory {

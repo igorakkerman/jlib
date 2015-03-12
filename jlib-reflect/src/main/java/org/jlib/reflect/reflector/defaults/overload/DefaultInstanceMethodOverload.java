@@ -23,11 +23,11 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programtarget.InstanceMethodInvokerFactory;
-import org.jlib.reflect.programtarget.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.NoSubtypeException;
-import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.instanceMethodInvokerFactory;
+import org.jlib.reflect.programelement.InstanceMethodInvokerFactory;
+import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programelement.MethodInvoker;
+import org.jlib.reflect.programelement.NoSubtypeException;
+import static org.jlib.reflect.programelement.reflection.ReflectionFactories.instanceMethodInvokerFactory;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;

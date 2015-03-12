@@ -22,10 +22,10 @@
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
 import static java.util.Arrays.asList;
-import org.jlib.reflect.programtarget.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programtarget.MethodInvoker;
-import org.jlib.reflect.programtarget.ProgramTargetException;
-import static org.jlib.reflect.programtarget.ProgramTargetUtility.assertInstanceOf;
+import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
+import org.jlib.reflect.programelement.MethodInvoker;
+import org.jlib.reflect.programelement.ProgramTargetException;
+import static org.jlib.reflect.programelement.ProgramTargetUtility.assertInstanceOf;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.instanceMethodOverloadFactory;

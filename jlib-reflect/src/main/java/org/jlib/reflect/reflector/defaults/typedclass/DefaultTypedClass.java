@@ -22,15 +22,15 @@
 package org.jlib.reflect.reflector.defaults.typedclass;
 
 import static java.util.Arrays.asList;
-import org.jlib.reflect.programtarget.ClassException;
-import org.jlib.reflect.programtarget.NoSubtypeException;
+import org.jlib.reflect.programelement.ClassException;
+import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.constructorOverloadFactory;
 import org.jlib.reflect.reflector.factory.ConstructorOverloadFactory;
 import org.jlib.reflect.reflector.factory.TypedStaticMethodOverloadFactory;
-import static org.jlib.reflect.programtarget.ProgramTargetUtility.assertSubtype;
+import static org.jlib.reflect.programelement.ProgramTargetUtility.assertSubtype;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {

@@ -21,9 +21,9 @@
 
 package org.jlib.reflect.reflector.defaults;
 
-import org.jlib.reflect.programtarget.ClassLookup;
-import org.jlib.reflect.programtarget.ClassLookupException;
-import static org.jlib.reflect.programtarget.reflection.ReflectionFactories.classLookupFactory;
+import org.jlib.reflect.programelement.ClassLookup;
+import org.jlib.reflect.programelement.ClassLookupException;
+import static org.jlib.reflect.programelement.reflection.ReflectionFactories.classLookupFactory;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.jlib.reflect.reflector.TypedClass;
 import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.typedClassFactory;
