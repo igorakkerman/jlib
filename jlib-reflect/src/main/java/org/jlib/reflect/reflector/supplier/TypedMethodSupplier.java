@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.factory;
+package org.jlib.reflect.reflector.supplier;
 
 import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -28,24 +28,19 @@ import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
 
-public interface MethodFactory {
+public interface TypedMethodSupplier {
 
     <ReturnValue>
     TypedMethod0<ReturnValue> method0(MethodInvoker methodInvoker);
 
     <ReturnValue, Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> method1(MethodInvoker methodInvoker, Class<Parameter1> parameter1Type);
+    TypedMethod1<ReturnValue, Parameter1> method1(MethodInvoker methodInvoker);
 
     <ReturnValue, Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(MethodInvoker methodInvoker,
-                                                              Class<Parameter1> parameter1Type,
-                                                              Class<Parameter2> parameter2Type);
+    TypedMethod2<ReturnValue, Parameter1, Parameter2> method2(MethodInvoker methodInvoker);
 
     <ReturnValue, Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3(MethodInvoker methodInvoker,
-                                                                          Class<Parameter1> parameter1Type,
-                                                                          Class<Parameter2> parameter2Type,
-                                                                          Class<Parameter3> parameter3Type);
+    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3> method3(MethodInvoker methodInvoker);
 
     <ReturnValue>
     TypedMethodUnchecked<ReturnValue> uncheckedParameterTypesMethod(MethodInvoker methodInvoker);

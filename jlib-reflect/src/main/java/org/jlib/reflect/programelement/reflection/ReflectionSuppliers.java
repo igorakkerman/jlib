@@ -21,38 +21,38 @@
 
 package org.jlib.reflect.programelement.reflection;
 
-import org.jlib.reflect.programelement.ClassLookupFactory;
-import org.jlib.reflect.programelement.ConstructorInvokerFactory;
-import org.jlib.reflect.programelement.ConstructorLookupFactory;
-import org.jlib.reflect.programelement.InstanceMethodInvokerFactory;
-import org.jlib.reflect.programelement.MethodLookupFactory;
-import org.jlib.reflect.programelement.StaticMethodInvokerFactory;
+import org.jlib.reflect.programelement.ClassLookupSupplier;
+import org.jlib.reflect.programelement.ConstructorInvokerSupplier;
+import org.jlib.reflect.programelement.ConstructorLookupSupplier;
+import org.jlib.reflect.programelement.InstanceMethodInvokerSupplier;
+import org.jlib.reflect.programelement.MethodLookupSupplier;
+import org.jlib.reflect.programelement.StaticMethodInvokerSupplier;
 
-public final class ReflectionFactories {
+public final class ReflectionSuppliers {
 
-    public static ClassLookupFactory classLookupFactory() {
+    public static ClassLookupSupplier classLookupSupplier() {
         return ReflectionClassLookup::new;
     }
 
-    public static MethodLookupFactory methodLookupFactory() {
+    public static MethodLookupSupplier methodLookupSupplier() {
         return ReflectionMethodLookup::new;
     }
 
-    public static ConstructorLookupFactory constructorLookupFactory(){
+    public static ConstructorLookupSupplier constructorLookupSupplier(){
         return ReflectionConstructorLookup::new;
     }
 
-    public static StaticMethodInvokerFactory staticMethodInvokerFactory() {
+    public static StaticMethodInvokerSupplier staticMethodInvokerSupplier() {
         return ReflectionStaticMethodInvoker::new;
     }
 
-    public static InstanceMethodInvokerFactory instanceMethodInvokerFactory() {
+    public static InstanceMethodInvokerSupplier instanceMethodInvokerSupplier() {
         return ReflectionInstanceMethodInvoker::new;
     }
 
-    public static ConstructorInvokerFactory constructorInvokerFactory() {
+    public static ConstructorInvokerSupplier constructorInvokerSupplier() {
         return ReflectionConstructorInvoker::new;
     }
 
-    private ReflectionFactories() {}
+    private ReflectionSuppliers() {}
 }

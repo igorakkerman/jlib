@@ -21,9 +21,6 @@
 
 package org.jlib.reflect.programelement;
 
-import java.lang.reflect.Constructor;
-
-public interface ConstructorInvokerFactory {
-
-    MethodInvoker constructorInvoker(Constructor<?> constructor);
+public interface MethodLookupSupplier {
+    MethodLookup methodLookup();
 }

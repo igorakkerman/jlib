@@ -23,13 +23,11 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.programelement.ConstructorInvokerFactory;
+import org.jlib.reflect.programelement.ConstructorInvokerSupplier;
 import org.jlib.reflect.programelement.ConstructorLookup;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.NoSubtypeException;
-import static org.jlib.reflect.programelement.reflection.ReflectionFactories.constructorInvokerFactory;
-import static org.jlib.reflect.programelement.reflection.ReflectionFactories.constructorLookupFactory;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -40,11 +38,9 @@ import org.jlib.reflect.reflector.TypedMethodUnchecked;
 public class DefaultConstructorOverload<EnclosingClassObject>
 extends AbstractOverload<EnclosingClassObject> {
 
-    // TODO: use DI
-    private final ConstructorInvokerFactory constructorInvokerFactory = constructorInvokerFactory();
+    private ConstructorInvokerSupplier constructorInvokerSupplier;
 
-    // TODO: use DI
-    private final ConstructorLookup constructorLookup = constructorLookupFactory().constructorLookup();
+    private ConstructorLookup constructorLookup;
 
     public DefaultConstructorOverload(final Class<EnclosingClassObject> enclosingClass) {
         super(enclosingClass, enclosingClass);
@@ -55,10 +51,9 @@ extends AbstractOverload<EnclosingClassObject> {
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Constructor<?> constructor =
         /**/ constructorLookup.lookupConstructor(getEnclosingClass() /* no parameter types */);
-        final MethodInvoker methodInvoker = constructorInvokerFactory.constructorInvoker(constructor);
+        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
 
-        //noinspection ConstantConditions
-        return methodFactory.method0(methodInvoker);
+        return getTypedMethodSupplier().method0(methodInvoker);
     }
 
     @Override
@@ -66,10 +61,9 @@ extends AbstractOverload<EnclosingClassObject> {
     TypedMethod1<EnclosingClassObject, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type);
-        final MethodInvoker methodInvoker = constructorInvokerFactory.constructorInvoker(constructor);
+        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
 
-        //noinspection ConstantConditions
-        return methodFactory.method1(methodInvoker, parameter1Type);
+        return getTypedMethodSupplier().method1(methodInvoker);
     }
 
     @Override
@@ -80,10 +74,9 @@ extends AbstractOverload<EnclosingClassObject> {
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type,
                                                                                parameter2Type);
-        final MethodInvoker methodInvoker = constructorInvokerFactory.constructorInvoker(constructor);
+        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
 
-        //noinspection ConstantConditions
-        return methodFactory.method2(methodInvoker, parameter1Type, parameter2Type);
+        return getTypedMethodSupplier().method2(methodInvoker);
     }
 
     @Override
@@ -95,20 +88,19 @@ extends AbstractOverload<EnclosingClassObject> {
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type,
                                                                                parameter2Type, parameter3Type);
-        final MethodInvoker methodInvoker = constructorInvokerFactory.constructorInvoker(constructor);
+        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
 
-        //noinspection ConstantConditions
-        return methodFactory.method3(methodInvoker, parameter1Type, parameter2Type, parameter3Type);
+        return getTypedMethodSupplier().method3(methodInvoker);
     }
 
     @Override
     public TypedMethodUnchecked<EnclosingClassObject> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameterTypes);
-        final MethodInvoker methodInvoker = constructorInvokerFactory.constructorInvoker(constructor);
+        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
 
         //noinspection ConstantConditions
-        return methodFactory.uncheckedParameterTypesMethod(methodInvoker);
+        return getTypedMethodSupplier().uncheckedParameterTypesMethod(methodInvoker);
     }
 
     @Override
@@ -116,5 +108,19 @@ extends AbstractOverload<EnclosingClassObject> {
     Overload<StaticTypeEnclosingClassObject>
     withReturnType(final Class<StaticTypeEnclosingClassObject> staticReturnSuperType) {
         return new DefaultConstructorOverload<>(staticReturnSuperType);
+    }
+
+    public DefaultConstructorOverload<EnclosingClassObject> withConstructorInvokerSupplier
+    (final ConstructorInvokerSupplier constructorInvokerSupplier) {
+        this.constructorInvokerSupplier = constructorInvokerSupplier;
+
+        return this;
+    }
+
+    public DefaultConstructorOverload<EnclosingClassObject> withConstructorLookup
+    (final ConstructorLookup constructorLookup) {
+        this.constructorLookup = constructorLookup;
+
+        return this;
     }
 }

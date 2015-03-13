@@ -21,9 +21,9 @@
 
 package org.jlib.reflect.programelement;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
 
-public interface InstanceMethodInvokerFactory {
+public interface ConstructorInvokerSupplier {
 
-    MethodInvoker methodInvoker(Method method, Object enclosingObject);
+    MethodInvoker constructorInvoker(Constructor<?> constructor);
 }

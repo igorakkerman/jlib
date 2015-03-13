@@ -19,8 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.reflector.supplier;
 
-public interface MethodLookupFactory {
-    MethodLookup methodLookup();
+import org.jlib.reflect.reflector.Overload;
+
+public interface InstanceMethodOverloadSupplier {
+
+    <EnclosingObject, ReturnValue>
+    Overload<ReturnValue> instanceMethodOverload(EnclosingObject enclosingObject, String methodName,
+                                                 Class<ReturnValue> returnValueType);
 }

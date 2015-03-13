@@ -65,7 +65,7 @@ public final class DefaultToStringStylesConfiguration {
     static {
         final ReflectorClassNameToStringStyleSupplier classNameStyleSupplier =
         /**/ new ReflectorClassNameToStringStyleSupplier();
-        classNameStyleSupplier.setReflectorService(new DefaultReflectorService());
+        classNameStyleSupplier.setReflectorService(DefaultReflectorService.getInstance());
         CLASS_NAME_STYLE_SUPPLIER = classNameStyleSupplier;
     }
 

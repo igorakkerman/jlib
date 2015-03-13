@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -29,10 +28,6 @@ import org.jlib.reflect.reflector.TypedMethod0;
 public class DefaultTypedMethod0<ReturnValue>
 extends AbstractTypedMethod<ReturnValue>
 implements TypedMethod0<ReturnValue> {
-
-    public DefaultTypedMethod0(final MethodInvoker methodInvoker) {
-        super(methodInvoker);
-    }
 
     @Override
     @SuppressWarnings("unchecked")
@@ -47,6 +42,6 @@ implements TypedMethod0<ReturnValue> {
     public <StaticReturnValue>
     TypedMethod0<StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getMethodInvoker());
+        return getTypedMethodSupplier().method0(getMethodInvoker());
     }
 }

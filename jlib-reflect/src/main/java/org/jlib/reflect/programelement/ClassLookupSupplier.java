@@ -19,13 +19,8 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.factory;
+package org.jlib.reflect.programelement;
 
-import org.jlib.reflect.reflector.Overload;
-
-public interface ConstructorOverloadFactory {
-
-    <EnclosingClassObject>
-    Overload<EnclosingClassObject>
-     /**/ constructorOverload(Class<EnclosingClassObject> enclosingClass);
+public interface ClassLookupSupplier {
+    ClassLookup classLookup();
 }

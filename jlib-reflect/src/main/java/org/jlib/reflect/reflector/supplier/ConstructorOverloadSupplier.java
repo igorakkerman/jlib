@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.factory;
+package org.jlib.reflect.reflector.supplier;
 
 import org.jlib.reflect.reflector.Overload;
 
-public interface InstanceMethodOverloadFactory {
+public interface ConstructorOverloadSupplier {
 
-    <EnclosingObject, ReturnValue>
-    Overload<ReturnValue> instanceMethodOverload(EnclosingObject enclosingObject, String methodName,
-                                                 Class<ReturnValue> returnValueType);
+    <EnclosingClassObject>
+    Overload<EnclosingClassObject>
+     /**/ constructorOverload(Class<EnclosingClassObject> enclosingClass);
 }

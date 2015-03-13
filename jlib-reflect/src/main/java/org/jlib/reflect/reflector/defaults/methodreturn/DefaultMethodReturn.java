@@ -28,14 +28,12 @@ import org.jlib.reflect.programelement.ProgramElementException;
 import static org.jlib.reflect.programelement.ProgramElementUtility.assertInstanceOf;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.instanceMethodOverloadFactory;
-import org.jlib.reflect.reflector.factory.InstanceMethodOverloadFactory;
+import org.jlib.reflect.reflector.supplier.InstanceMethodOverloadSupplier;
 
 public class DefaultMethodReturn<ReturnValue>
 implements MethodReturn<ReturnValue> {
 
-    // TODO: use DI
-    private final InstanceMethodOverloadFactory instanceMethodOverloadFactory = instanceMethodOverloadFactory();
+    private InstanceMethodOverloadSupplier instanceMethodOverloadSupplier;
 
     private final ReturnValue returnValue;
     private final MethodInvoker methodInvoker;
@@ -63,12 +61,19 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public Overload<Object> useMethod(final String methodName) {
-        return instanceMethodOverloadFactory.instanceMethodOverload(returnValue, methodName, Object.class);
+        return instanceMethodOverloadSupplier.instanceMethodOverload(returnValue, methodName, Object.class);
     }
 
     @Override
     public ReturnValue get()
     throws ProgramElementException {
         return returnValue;
+    }
+
+    public DefaultMethodReturn<ReturnValue> withInstanceMethodOverloadSupplier
+    (final InstanceMethodOverloadSupplier instanceMethodOverloadSupplier) {
+        this.instanceMethodOverloadSupplier = instanceMethodOverloadSupplier;
+
+        return this;
     }
 }

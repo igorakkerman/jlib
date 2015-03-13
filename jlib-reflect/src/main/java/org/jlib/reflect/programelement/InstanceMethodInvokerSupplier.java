@@ -21,6 +21,9 @@
 
 package org.jlib.reflect.programelement;
 
-public interface ClassLookupFactory {
-    ClassLookup classLookup();
+import java.lang.reflect.Method;
+
+public interface InstanceMethodInvokerSupplier {
+
+    MethodInvoker methodInvoker(Method method, Object enclosingObject);
 }

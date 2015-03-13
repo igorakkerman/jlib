@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.factory;
+package org.jlib.reflect.reflector.supplier;
 
 import org.jlib.reflect.reflector.Overload;
 
-public interface TypedStaticMethodOverloadFactory {
+public interface TypedStaticMethodOverloadSupplier {
 
     <EnclosingClassObject, ReturnValue>
     Overload<ReturnValue>

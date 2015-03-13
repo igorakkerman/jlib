@@ -24,22 +24,19 @@ package org.jlib.reflect.reflector.defaults.typedclass;
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.ClassException;
 import org.jlib.reflect.programelement.NoSubtypeException;
+import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.typedStaticMethodOverloadFactory;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.constructorOverloadFactory;
-import org.jlib.reflect.reflector.factory.ConstructorOverloadFactory;
-import org.jlib.reflect.reflector.factory.TypedStaticMethodOverloadFactory;
-import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
+import org.jlib.reflect.reflector.supplier.ConstructorOverloadSupplier;
+import org.jlib.reflect.reflector.supplier.TypedClassSupplier;
+import org.jlib.reflect.reflector.supplier.TypedStaticMethodOverloadSupplier;
 
 public class DefaultTypedClass<Obj>
 implements TypedClass<Obj> {
 
-    // TODO: use DI
-    private final TypedStaticMethodOverloadFactory typedStaticMethodOverloadFactory = typedStaticMethodOverloadFactory();
-
-    // TODO: use DI
-    private final ConstructorOverloadFactory constructorOverloadFactory = constructorOverloadFactory();
+    private TypedClassSupplier typedClassSupplier;
+    private TypedStaticMethodOverloadSupplier typedStaticMethodOverloadSupplier;
+    private ConstructorOverloadSupplier constructorOverloadSupplier;
 
     private final Class<?> actualClass;
 
@@ -70,7 +67,7 @@ implements TypedClass<Obj> {
     public <StaticReturnValue>
     TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
     throws NoSubtypeException {
-        return new DefaultTypedClass<>(staticType, actualClass);
+        return typedClassSupplier.typedClass(staticType, actualClass);
     }
 
     @Override
@@ -83,16 +80,37 @@ implements TypedClass<Obj> {
 
     @Override
     public Overload<Object> useStaticMethod(final String staticMethodName) {
-        return typedStaticMethodOverloadFactory.typedStaticMethodOverload(getActualClass(), staticMethodName, Object.class);
+        return typedStaticMethodOverloadSupplier.typedStaticMethodOverload(getActualClass(), staticMethodName,
+                                                                           Object.class);
     }
 
     @Override
     public Overload<Obj> useConstructor() {
-        return constructorOverloadFactory.constructorOverload(getActualClass());
+        return constructorOverloadSupplier.constructorOverload(getActualClass());
     }
 
     @SuppressWarnings("unchecked")
     protected Class<Obj> getActualClass() {
         return (Class<Obj>) actualClass;
+    }
+
+    public DefaultTypedClass<Obj> withTypedClassSupplier(final TypedClassSupplier typedClassSupplier) {
+        this.typedClassSupplier = typedClassSupplier;
+
+        return this;
+    }
+
+    public DefaultTypedClass<Obj> withConstructorOverloadSupplier
+    (final ConstructorOverloadSupplier constructorOverloadSupplier) {
+        this.constructorOverloadSupplier = constructorOverloadSupplier;
+
+        return this;
+    }
+
+    public DefaultTypedClass<Obj> withTypedStaticMethodOverloadSupplier
+    (final TypedStaticMethodOverloadSupplier typedStaticMethodOverloadSupplier) {
+        this.typedStaticMethodOverloadSupplier = typedStaticMethodOverloadSupplier;
+
+        return this;
     }
 }

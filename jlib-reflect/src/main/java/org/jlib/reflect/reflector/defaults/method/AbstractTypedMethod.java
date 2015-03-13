@@ -26,21 +26,17 @@ import java.lang.reflect.Executable;
 import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.methodReturnFactory;
-import org.jlib.reflect.reflector.factory.MethodReturnFactory;
+import org.jlib.reflect.reflector.supplier.MethodReturnSupplier;
+import org.jlib.reflect.reflector.supplier.TypedMethodSupplier;
 
 public abstract class AbstractTypedMethod<ReturnValue>
 implements TypedMethod<ReturnValue> {
 
-    private final MethodInvoker methodInvoker;
-    // TODO: use DI
-    private final MethodReturnFactory methodReturnFactory = methodReturnFactory();
+    private TypedMethodSupplier typedMethodSupplier;
+    private MethodReturnSupplier methodReturnSupplier;
+    private MethodInvoker methodInvoker;
 
-    protected AbstractTypedMethod(final MethodInvoker methodInvoker) {
-        this.methodInvoker = methodInvoker;
-    }
-
-    public MethodInvoker getMethodInvoker() {
+    protected MethodInvoker getMethodInvoker() {
         return methodInvoker;
     }
 
@@ -50,6 +46,27 @@ implements TypedMethod<ReturnValue> {
     }
 
     public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return methodReturnFactory.methodReturnValue(returnValue, getMethodInvoker());
+        return methodReturnSupplier.methodReturnValue(returnValue, getMethodInvoker());
+    }
+
+    protected TypedMethodSupplier getTypedMethodSupplier() {
+        return typedMethodSupplier;
+    }
+
+    public void setTypedMethodSupplier(final TypedMethodSupplier typedMethodSupplier) {
+        this.typedMethodSupplier = typedMethodSupplier;
+    }
+
+    protected MethodReturnSupplier getMethodReturnSupplier() {
+        return methodReturnSupplier;
+    }
+
+    public void setMethodReturnSupplier(final MethodReturnSupplier methodReturnSupplier) {
+        this.methodReturnSupplier = methodReturnSupplier;
+    }
+
+    public void setMethodInvoker(final MethodInvoker methodInvoker) {
+        this.methodInvoker = methodInvoker;
     }
 }
+

@@ -19,13 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.factory;
+package org.jlib.reflect.reflector.supplier;
 
-import org.jlib.reflect.programelement.MethodInvoker;
-import org.jlib.reflect.reflector.MethodReturn;
+import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.reflector.TypedClass;
 
-public interface MethodReturnFactory {
+public interface TypedClassSupplier {
 
-    <ReturnValue> MethodReturn<ReturnValue>
-    methodReturnValue(final ReturnValue returnValue, final MethodInvoker methodInvoker);
+    <Value> TypedClass<Value>
+    typedClass(Class<Value> clazz);
+
+    <Value> TypedClass<Value>
+    typedClass(Class<Value> staticType, final Class<?> actualClass)
+    throws NoSubtypeException;
 }

@@ -27,19 +27,14 @@ import static java.util.Collections.singletonList;
 import org.jlib.reflect.programelement.MethodLookup;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
-import static org.jlib.reflect.programelement.reflection.ReflectionFactories.methodLookupFactory;
 import org.jlib.reflect.reflector.Overload;
-import static org.jlib.reflect.reflector.defaults.DefaultReflectorFactories.methodFactory;
-import org.jlib.reflect.reflector.factory.MethodFactory;
+import org.jlib.reflect.reflector.supplier.TypedMethodSupplier;
 
 public abstract class AbstractOverload<ReturnValue>
 implements Overload<ReturnValue> {
 
-    // TODO: use DI
-    protected final MethodLookup methodLookup = methodLookupFactory().methodLookup();
-
-    // TODO: use DI
-    protected final MethodFactory methodFactory = methodFactory();
+    private MethodLookup methodLookup;
+    private TypedMethodSupplier typedMethodSupplier;
 
     private final Class<?> enclosingClass;
     private final Class<ReturnValue> returnValueType;
@@ -57,5 +52,21 @@ implements Overload<ReturnValue> {
     protected void assertReturnValueTypeValid(final Method method)
     throws NoSubtypeException {
         assertSubtype(method.getReturnType(), singletonList(returnValueType));
+    }
+
+    protected MethodLookup getMethodLookup() {
+        return methodLookup;
+    }
+
+    public void setMethodLookup(final MethodLookup methodLookup) {
+        this.methodLookup = methodLookup;
+    }
+
+    protected TypedMethodSupplier getTypedMethodSupplier() {
+        return typedMethodSupplier;
+    }
+
+    public void setTypedMethodSupplier(final TypedMethodSupplier typedMethodSupplier) {
+        this.typedMethodSupplier = typedMethodSupplier;
     }
 }

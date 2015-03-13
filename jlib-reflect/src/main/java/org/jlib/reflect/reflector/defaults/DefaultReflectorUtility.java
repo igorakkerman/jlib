@@ -28,11 +28,11 @@ public final class DefaultReflectorUtility {
 
     public static TypedClass<?> useClass(final String className)
     throws ClassLookupException {
-        return new DefaultReflectorService().useClass(className);
+        return DefaultReflectorService.getInstance().useClass(className);
     }
 
     public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultReflectorService().useClass(concreteClass);
+        return DefaultReflectorService.getInstance().useClass(concreteClass);
     }
 
     private DefaultReflectorUtility() {}
