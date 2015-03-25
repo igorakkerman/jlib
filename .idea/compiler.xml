@@ -44,6 +44,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jlib-base" target="1.5" />
       <module name="jlib-basefunctions" target="1.8" />
       <module name="jlib-basefunctions-apachecommons" target="1.8" />
       <module name="jlib-codec" target="1.8" />
