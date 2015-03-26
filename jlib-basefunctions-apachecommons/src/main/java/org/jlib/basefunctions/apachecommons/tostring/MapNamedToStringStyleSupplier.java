@@ -26,7 +26,7 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import static org.jlib.core.language.OptionalUtility.optionalOf;
+import static org.jlib.core.OptionalUtility.optionalOf;
 
 class MapNamedToStringStyleSupplier
 implements NamedToStringStyleSupplier {

@@ -21,7 +21,7 @@
 
 package org.jlib.basefunctions.apachecommons.tostring;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.exception.InvalidStateException;
 
 public class ToStringStyleNotFoundException
 extends InvalidStateException {

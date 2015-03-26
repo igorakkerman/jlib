@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage.array;
 
-import org.jlib.core.language.Valid;
+import org.jlib.core.Valid;
 
 import org.jlib.container.storage.AbstractLinearIndexStorage;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
@@ -31,8 +31,8 @@ import org.jlib.container.storage.LinearIndexStorage;
 
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
-import static org.jlib.core.array.ArrayUtility.array;
-import static org.jlib.core.math.NumberUtility.count;
+import static org.jlib.array.ArrayUtility.array;
+import static org.jlib.core.IndexUtility.count;
 
 /**
  * {@link LinearIndexStorage} based on an array.

@@ -21,7 +21,7 @@
 
 package org.jlib.container.iterator;
 
-import org.jlib.core.iterator.RemoveIterable;
+import org.jlib.iterator.RemoveIterable;
 
 /**
  * Object providing a {@link ObservedRemoveIterable} over its Items.

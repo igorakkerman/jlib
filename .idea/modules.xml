@@ -2,18 +2,26 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/jlib-array/jlib-array.iml" filepath="$PROJECT_DIR$/jlib-array/jlib-array.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-base.iml" filepath="$PROJECT_DIR$/jlib-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-basefunctions/jlib-basefunctions.iml" filepath="$PROJECT_DIR$/jlib-basefunctions/jlib-basefunctions.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-basefunctions-apachecommons/jlib-basefunctions-apachecommons.iml" filepath="$PROJECT_DIR$/jlib-basefunctions-apachecommons/jlib-basefunctions-apachecommons.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-collection/jlib-collection.iml" filepath="$PROJECT_DIR$/jlib-collection/jlib-collection.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-container/jlib-container.iml" filepath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-exception/jlib-exception.iml" filepath="$PROJECT_DIR$/jlib-exception/jlib-exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-io/jlib-io.iml" filepath="$PROJECT_DIR$/jlib-io/jlib-io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-iterator/jlib-iterator.iml" filepath="$PROJECT_DIR$/jlib-iterator/jlib-iterator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-message/jlib-message.iml" filepath="$PROJECT_DIR$/jlib-message/jlib-message.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-operator/jlib-operator.iml" filepath="$PROJECT_DIR$/jlib-operator/jlib-operator.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence/jlib-persistence.iml" filepath="$PROJECT_DIR$/jlib-persistence/jlib-persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" filepath="$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" filepath="$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" filepath="$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-systemproperty/jlib-systemproperty.iml" filepath="$PROJECT_DIR$/jlib-systemproperty/jlib-systemproperty.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-value/jlib-value.iml" filepath="$PROJECT_DIR$/jlib-value/jlib-value.iml" />
     </modules>
   </component>
 </project>

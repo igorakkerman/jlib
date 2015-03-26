@@ -50,6 +50,11 @@
     <dependencies>
         <dependency>
             <groupId>org.jlib</groupId>
+            <artifactId>jlib-codequality</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
             <artifactId>jlib-core</artifactId>
         </dependency>
 
@@ -60,32 +65,29 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
+            <artifactId>jlib-iterator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
+            <artifactId>jlib-array</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
             <artifactId>jlib-operator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
+        </dependency>
+
+        <!-- unit test dependencies -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <dependency>
@@ -98,9 +100,5 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-codequality</artifactId>
-        </dependency>
     </dependencies>
 </project>

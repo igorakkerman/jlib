@@ -21,8 +21,8 @@
 
 package org.jlib.operator.observer;
 
-import org.jlib.core.exception.InvalidStateException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.InvalidStateException;
+import org.jlib.message.Message;
 
 /**
  * {@link InvalidStateException} thrown during the operation of an observer.

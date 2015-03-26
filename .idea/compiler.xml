@@ -23,14 +23,20 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="jlib" />
+        <module name="jlib-array" />
         <module name="jlib-basefunctions" />
         <module name="jlib-basefunctions-apachecommons" />
         <module name="jlib-codequality" />
+        <module name="jlib-collection" />
         <module name="jlib-container" />
         <module name="jlib-core" />
         <module name="jlib-core (1)" />
         <module name="jlib-corefunctions" />
         <module name="jlib-corefunctions-apachecommons" />
+        <module name="jlib-exception" />
+        <module name="jlib-io" />
+        <module name="jlib-iterator" />
+        <module name="jlib-message" />
         <module name="jlib-object-spi" />
         <module name="jlib-object-spi-apachecommons" />
         <module name="jlib-operation" />
@@ -40,21 +46,28 @@
         <module name="jlib-persistence-jpa" />
         <module name="jlib-reflect" />
         <module name="jlib-spi-apachecommons" />
+        <module name="jlib-systemproperty" />
         <module name="jlib-text" />
+        <module name="jlib-value" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jlib-array" target="1.8" />
       <module name="jlib-base" target="1.5" />
       <module name="jlib-basefunctions" target="1.8" />
       <module name="jlib-basefunctions-apachecommons" target="1.8" />
       <module name="jlib-codec" target="1.8" />
       <module name="jlib-codequality" target="1.8" />
+      <module name="jlib-collection" target="1.8" />
       <module name="jlib-container" target="1.8" />
       <module name="jlib-core" target="1.8" />
       <module name="jlib-core (1)" target="1.8" />
       <module name="jlib-corefunctions" target="1.8" />
       <module name="jlib-corefunctions-apachecommons" target="1.8" />
+      <module name="jlib-exception" target="1.8" />
       <module name="jlib-io" target="1.8" />
+      <module name="jlib-iterator" target="1.8" />
+      <module name="jlib-message" target="1.8" />
       <module name="jlib-object-spi" target="1.8" />
       <module name="jlib-object-spi-apachecommons" target="1.8" />
       <module name="jlib-operation" target="1.8" />
@@ -64,8 +77,10 @@
       <module name="jlib-persistence-jpa" target="1.8" />
       <module name="jlib-reflect" target="1.8" />
       <module name="jlib-spi-apachecommons" target="1.8" />
+      <module name="jlib-systemproperty" target="1.8" />
       <module name="jlib-text" target="1.8" />
       <module name="jlib-unittest" target="1.8" />
+      <module name="jlib-value" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

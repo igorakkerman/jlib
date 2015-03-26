@@ -55,17 +55,19 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <artifactId>jlib-exception</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
+        </dependency>
+
+        <!-- unit test dependencies -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <dependency>

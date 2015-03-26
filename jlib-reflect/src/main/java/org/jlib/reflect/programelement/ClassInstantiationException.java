@@ -21,9 +21,9 @@
 
 package org.jlib.reflect.programelement;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 /**
  * {@link ClassException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for any

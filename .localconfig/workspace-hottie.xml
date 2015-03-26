@@ -1208,10 +1208,10 @@
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
+      <org.jlib.core.collection />
     </option>
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
+      <org.jlib.core.collection />
     </option>
   </component>
   <component name="VcsContentAnnotationSettings">

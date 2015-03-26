@@ -60,12 +60,17 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-reflect</artifactId>
+            <artifactId>jlib-basefunctions</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-basefunctions</artifactId>
+            <artifactId>jlib-systemproperty</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jlib</groupId>
+            <artifactId>jlib-reflect</artifactId>
         </dependency>
 
         <dependency>
@@ -77,6 +82,8 @@
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
         </dependency>
+
+        <!-- unit test dependencies -->
 
         <dependency>
             <groupId>junit</groupId>

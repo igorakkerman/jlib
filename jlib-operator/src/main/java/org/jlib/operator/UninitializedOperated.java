@@ -21,7 +21,7 @@
 
 package org.jlib.operator;
 
-import org.jlib.core.value.Uninitialized;
+import org.jlib.value.Uninitialized;
 
 /**
  * {@link Uninitialized} calling the {@link OptionalValueOperator#operateUnset()} method from

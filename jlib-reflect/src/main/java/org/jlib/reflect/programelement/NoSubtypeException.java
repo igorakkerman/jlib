@@ -26,7 +26,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 public class NoSubtypeException
 extends ClassException {

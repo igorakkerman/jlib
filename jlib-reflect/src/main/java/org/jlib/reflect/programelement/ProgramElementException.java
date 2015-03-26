@@ -21,8 +21,8 @@
 
 package org.jlib.reflect.programelement;
 
-import org.jlib.core.exception.ApplicationException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.ApplicationException;
+import org.jlib.message.Message;
 
 public abstract class ProgramElementException
 extends ApplicationException {

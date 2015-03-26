@@ -21,10 +21,10 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.core.exception.InvalidArgumentException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.InvalidArgumentException;
+import org.jlib.message.Message;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 public abstract class InvalidContainerArgumentException
 extends InvalidArgumentException {

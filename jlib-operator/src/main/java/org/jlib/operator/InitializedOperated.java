@@ -21,7 +21,7 @@
 
 package org.jlib.operator;
 
-import org.jlib.core.value.Initialized;
+import org.jlib.value.Initialized;
 
 /**
  * {@link Initialized} and {@link OperatedValue}.

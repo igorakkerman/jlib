@@ -12,10 +12,8 @@ import org.jlib.basefunctions.ApplicationObject;
 import org.jlib.persistence.IdEntity;
 
 /**
- * <p>
  * Annotate the entity class with
  * {@code @AttributeOverride(name = JpaEntity.FIELD_NAME_ID, column = @Column(name = "myentity_id"))}
- * </p>
  *
  * @param <Self>
  *        own type

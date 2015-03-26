@@ -23,8 +23,8 @@ package org.jlib.reflect.programelement;
 
 import java.lang.reflect.Method;
 
-import org.jlib.core.exception.ApplicationException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.ApplicationException;
+import org.jlib.message.Message;
 
 /**
  * {@link ApplicationException} thrown when a method cannot be identified by its name in a reflective process.

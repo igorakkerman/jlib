@@ -23,7 +23,7 @@ package org.jlib.reflect.programelement;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 public class ConstructorInvocationException
 extends MethodInvocationException {

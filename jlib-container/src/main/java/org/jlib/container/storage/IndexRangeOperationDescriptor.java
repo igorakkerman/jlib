@@ -23,7 +23,7 @@ package org.jlib.container.storage;
 
 import java.io.Serializable;
 
-import org.jlib.core.exception.UnexpectedStateException;
+import org.jlib.exception.UnexpectedStateException;
 
 /**
  * Descriptor of an operation on indexed objects specifying a source index range and a target index.

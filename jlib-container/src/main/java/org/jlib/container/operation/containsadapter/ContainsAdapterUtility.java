@@ -23,7 +23,7 @@ package org.jlib.container.operation.containsadapter;
 
 import java.util.Collection;
 
-import org.jlib.core.array.ArrayUtility;
+import org.jlib.array.ArrayUtility;
 
 import org.jlib.container.operation.ContainsSingle;
 import org.jlib.container.operation.InvalidContainerArgumentException;

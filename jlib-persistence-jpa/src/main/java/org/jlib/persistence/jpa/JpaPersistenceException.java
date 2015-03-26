@@ -23,7 +23,7 @@ package org.jlib.persistence.jpa;
 
 import javax.persistence.PersistenceException;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 public class JpaPersistenceException
 extends PersistenceException {

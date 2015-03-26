@@ -27,7 +27,7 @@ import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 import org.jlib.basefunctions.ApplicationObject;
-import static org.jlib.core.message.MessageUtility.mfmessage;
+import static org.jlib.message.MessageUtility.mfmessage;
 
 public abstract class AbstractCapacityStrategy
 extends ApplicationObject {

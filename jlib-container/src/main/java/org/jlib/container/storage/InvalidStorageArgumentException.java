@@ -21,8 +21,8 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.exception.InvalidArgumentException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.InvalidArgumentException;
+import org.jlib.message.Message;
 
 /**
  * {@link InvalidArgumentException} thrown when an invalid

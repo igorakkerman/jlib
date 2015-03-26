@@ -23,10 +23,10 @@ package org.jlib.container.storage;
 
 import java.io.Serializable;
 
-import org.jlib.core.exception.UnexpectedStateException;
-import org.jlib.core.language.Valid;
+import org.jlib.core.Valid;
 
-import static org.jlib.core.math.NumberUtility.count;
+import static org.jlib.core.IndexUtility.count;
+import org.jlib.exception.UnexpectedStateException;
 
 /**
  * Modifiable {@link Integer} index range.

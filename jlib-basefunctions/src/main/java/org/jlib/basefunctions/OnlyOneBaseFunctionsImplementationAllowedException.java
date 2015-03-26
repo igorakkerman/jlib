@@ -23,9 +23,9 @@ package org.jlib.basefunctions;
 
 import java.util.Collection;
 
-import org.jlib.core.exception.InvalidStateException;
+import org.jlib.exception.InvalidStateException;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 public class OnlyOneBaseFunctionsImplementationAllowedException
 extends InvalidStateException {

@@ -23,10 +23,9 @@ package org.jlib.text;
 
 import java.util.Optional;
 
-import org.jlib.core.iterator.NoItemToRemoveException;
-
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+import org.jlib.iterator.NoItemToRemoveException;
 
 /**
  * Iterator over the {@link Character}s of a {@link StringBuilder}.

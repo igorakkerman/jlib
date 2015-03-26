@@ -21,22 +21,16 @@
 
 package org.jlib.text;
 
-import org.jlib.core.property.PropertyUtility;
 
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 public class TextUtility {
 
     public static final String EMPTY = "";
     public static final String[] EMPTY_STRING_ARRAY = { };
 
-    /** property name of the system's line separator */
-    public static final String LINE_SEPARATOR_PROPERTY_NAME = "line.separator";
-
     /** the system's line separator */
-    public static final String LINE_SEPARATOR = PropertyUtility.getMandatoryProperty(LINE_SEPARATOR_PROPERTY_NAME);
-
     public static StringBuilder clear(final StringBuilder stringBuilder) {
         stringBuilder.setLength(0);
 

@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 public class InvalidStorageIndexException
 extends InvalidStorageArgumentException {

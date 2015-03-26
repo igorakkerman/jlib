@@ -21,8 +21,6 @@
 
 package org.jlib.basefunctions;
 
-import static org.jlib.core.array.ArrayUtility.EMPTY_STRING_ARRAY;
-
 /**
  * Abstract {@link Object} implementing {@link #toString()}, {@link #equals(Object)} and {@link #hashCode()} using the
  * correspondent reflective builders provided by a jlib Core Functions SPI implementation.
@@ -90,6 +88,6 @@ public abstract class ApplicationObject {
     // TODO: implement annotated fields
     @SuppressWarnings("SameReturnValue")
     protected String[] getExcludedFieldNames() {
-        return EMPTY_STRING_ARRAY;
+        return new String[0];
     }
 }

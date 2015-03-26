@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programelement;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 /**
  * Exception thrown when trying to select an {@link Enum} value using some identifier, like a discriminator character in

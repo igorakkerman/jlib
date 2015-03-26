@@ -21,8 +21,8 @@
 
 package org.jlib.operator;
 
-import org.jlib.core.exception.ApplicationException;
-import org.jlib.core.message.Message;
+import org.jlib.exception.ApplicationException;
+import org.jlib.message.Message;
 
 /**
  * {@link ApplicationException} thrown during the operation of an operator.

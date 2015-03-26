@@ -21,9 +21,9 @@
 
 package org.jlib.container.iterator;
 
-import org.jlib.core.iterator.InvalidIterableStateException;
-import org.jlib.core.iterator.NoItemToRemoveException;
-import org.jlib.core.iterator.RemoveIterator;
+import org.jlib.iterator.InvalidIterableStateException;
+import org.jlib.iterator.NoItemToRemoveException;
+import org.jlib.iterator.RemoveIterator;
 
 import org.jlib.operator.observer.Observer;
 import org.jlib.operator.observer.ObserverException;

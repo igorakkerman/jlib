@@ -26,8 +26,6 @@ import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.core.property.OptionalPropertyValueSupplier;
-
 import static org.apache.commons.lang3.builder.ToStringStyle.DEFAULT_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
@@ -39,10 +37,6 @@ public final class DefaultToStringStylesConfiguration {
 
     public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME =
     /*    */ "org.jlib.basefunctions.apachecommons.toStringStyle";
-
-    public static final OptionalPropertyValueSupplier
-    /**/ TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER =
-    /*    */ new OptionalPropertyValueSupplier(TO_STRING_STYLE_NAME_PROPERTY_NAME);
 
     public static final Map<String, ToStringStyle> TO_STRING_STYLES;
 

@@ -60,22 +60,12 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-basefunctions</artifactId>
+            <artifactId>jlib-iterator</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-basefunctions-apachecommons</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <artifactId>jlib-basefunctions</artifactId>
         </dependency>
 
         <dependency>
@@ -83,9 +73,11 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- unit test dependencies -->
+
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
 
         <dependency>
@@ -99,8 +91,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
+            <groupId>org.jlib</groupId>
+            <artifactId>jlib-basefunctions-apachecommons</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

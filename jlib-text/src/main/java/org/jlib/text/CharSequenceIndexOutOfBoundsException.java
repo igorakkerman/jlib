@@ -21,7 +21,7 @@
 
 package org.jlib.text;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 /**
  * Exception thrown when a {@link CharSequence} character index is out of bounds.

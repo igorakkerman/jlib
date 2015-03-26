@@ -24,7 +24,7 @@ package org.jlib.reflect.programelement.reflection;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 import org.jlib.reflect.programelement.ConstructorInvocationException;
 import org.jlib.reflect.programelement.MethodInvocationException;
 import org.jlib.reflect.programelement.MethodInvoker;

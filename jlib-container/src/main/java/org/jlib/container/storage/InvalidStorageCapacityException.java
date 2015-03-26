@@ -21,7 +21,7 @@
 
 package org.jlib.container.storage;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 /**
  * {@link InvalidStorageArgumentException} thrown when an invalid capacity of an {@link LinearIndexStorage} is

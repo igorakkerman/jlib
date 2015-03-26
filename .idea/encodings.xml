@@ -2,17 +2,25 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-array" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-basefunctions" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-basefunctions-apachecommons" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-codequality" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-collection" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-container" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-exception" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-io" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-iterator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-message" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-operator" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-persistence" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-persistence-hibernate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-persistence-jpa" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-reflect" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-systemproperty" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jlib-text" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jlib-value" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

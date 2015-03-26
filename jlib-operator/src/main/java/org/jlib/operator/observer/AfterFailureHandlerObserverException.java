@@ -21,7 +21,7 @@
 
 package org.jlib.operator.observer;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 /**
  * {@link ObserverException} thrown during a {@link Observer#afterFailure)} operation.

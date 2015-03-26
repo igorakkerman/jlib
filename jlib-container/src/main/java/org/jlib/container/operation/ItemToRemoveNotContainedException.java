@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link RemoveSingleByValue} does not contain

@@ -21,7 +21,7 @@
 
 package org.jlib.operator;
 
-import org.jlib.core.value.Accessor;
+import org.jlib.value.Accessor;
 
 /**
  * {@link Accessor} operating on the held Vallue using an

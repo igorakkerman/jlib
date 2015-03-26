@@ -39,7 +39,10 @@ import org.jlib.basefunctions.apachecommons.equals.ApacheCommonsEqualsEngine;
 import org.jlib.basefunctions.apachecommons.hashcode.ApacheCommonsHashCodeEngine;
 import org.jlib.basefunctions.apachecommons.tostring.ApacheCommonsToStringEngine;
 import org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration;
+import static org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration
+              .TO_STRING_STYLE_NAME_PROPERTY_NAME;
 import org.jlib.basefunctions.apachecommons.tostring.IdentifierOrClassNameToStringStyleSupplier;
+import org.jlib.systemproperty.SystemPropertyUtility;
 
 public class ApacheCommonsBaseFunctionsDispatcher
 implements BaseFunctionsDispatcher {
@@ -48,7 +51,7 @@ implements BaseFunctionsDispatcher {
 
     public ApacheCommonsBaseFunctionsDispatcher() {
         final Optional<String> optionalIdentifierOrClassName =
-        /**/ DefaultToStringStylesConfiguration.TO_STRING_STYLE_IDENTIFIER_OR_CLASS_NAME_SUPPLIER.get();
+        /**/ SystemPropertyUtility.getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
 
         if (! optionalIdentifierOrClassName.isPresent()) {
             toStringStyle = DefaultToStringStylesConfiguration.DEFAULT_TO_STRING_STYLE;

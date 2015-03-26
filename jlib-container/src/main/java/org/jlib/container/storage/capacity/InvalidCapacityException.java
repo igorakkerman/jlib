@@ -24,7 +24,7 @@ package org.jlib.container.storage.capacity;
 import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.InvalidStorageArgumentException;
 
-import static org.jlib.core.message.MessageUtility.message;
+import static org.jlib.message.MessageUtility.message;
 
 public class InvalidCapacityException
 extends InvalidStorageArgumentException {

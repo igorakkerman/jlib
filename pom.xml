@@ -38,16 +38,24 @@
 
     <modules>
         <module>jlib-codequality</module>
+        <module>jlib-message</module>
+        <module>jlib-exception</module>
         <module>jlib-core</module>
-        <module>jlib-basefunctions</module>
-        <module>jlib-basefunctions-apachecommons</module>
-        <module>jlib-text</module>
+        <module>jlib-iterator</module>
+        <module>jlib-array</module>
+        <module>jlib-collection</module>
+        <module>jlib-value</module>
         <module>jlib-operator</module>
         <module>jlib-reflect</module>
+        <module>jlib-basefunctions</module>
+        <module>jlib-basefunctions-apachecommons</module>
         <module>jlib-container</module>
         <module>jlib-persistence</module>
         <module>jlib-persistence-jpa</module>
         <module>jlib-persistence-hibernate</module>
+        <module>jlib-systemproperty</module>
+        <module>jlib-text</module>
+        <module>jlib-io</module>
     </modules>
 
     <properties>
@@ -177,6 +185,24 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
+                <artifactId>jlib-message</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-exception</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-value</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
                 <artifactId>jlib-core</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -189,10 +215,41 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
+                <artifactId>jlib-iterator</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-array</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-collection</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-systemproperty</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
+                <artifactId>jlib-io</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jlib</groupId>
                 <artifactId>jlib-basefunctions-apachecommons</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <scope>test</scope>
             </dependency>
+
 
             <dependency>
                 <groupId>org.jlib</groupId>

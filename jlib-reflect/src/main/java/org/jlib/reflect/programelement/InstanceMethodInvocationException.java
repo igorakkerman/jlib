@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.programelement;
 
-import org.jlib.core.message.Message;
+import org.jlib.message.Message;
 
 public class InstanceMethodInvocationException
 extends MethodInvocationException {
