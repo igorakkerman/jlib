@@ -21,9 +21,9 @@
 
 package org.jlib.container.storage;
 
-import org.jlib.core.exception.UnexpectedStateException;
+import org.jlib.exception.UnexpectedStateException;
 
-import static org.jlib.core.message.MessageUtility.mfmessage;
+import static org.jlib.message.MessageUtility.mfmessage;
 
 public abstract class AbstractLinearIndexStorage<Item>
 implements LinearIndexStorage<Item> {
