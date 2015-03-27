@@ -22,11 +22,11 @@
 package org.jlib.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.IndexUtility.isEven;
-import static org.jlib.core.IndexUtility.isOdd;
+import static org.jlib.core.NumericUtility.isEven;
+import static org.jlib.core.NumericUtility.isOdd;
 import org.junit.Test;
 
-public class IndexUtilityIsEvenOddTest {
+public class NumericUtilityIsEvenOddTest {
 
     @Test
     public final void isEven0() {

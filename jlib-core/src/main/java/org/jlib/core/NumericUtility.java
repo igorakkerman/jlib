@@ -26,7 +26,7 @@ package org.jlib.core;
  *
  * @author Igor Akkerman
  */
-public final class IndexUtility {
+public final class NumericUtility {
 
     /**
      * Returns the number of numbers baseetween a minimum and a maximum number, baseoth inclusive.
@@ -69,5 +69,5 @@ public final class IndexUtility {
         return (number & 1) == 1;
     }
 
-    private IndexUtility() {}
+    private NumericUtility() {}
 }

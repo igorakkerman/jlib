@@ -25,7 +25,7 @@ import java.io.Serializable;
 
 import org.jlib.core.Valid;
 
-import static org.jlib.core.IndexUtility.count;
+import static org.jlib.core.NumericUtility.count;
 import org.jlib.exception.UnexpectedStateException;
 
 /**

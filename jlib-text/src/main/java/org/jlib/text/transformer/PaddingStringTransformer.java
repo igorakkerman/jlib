@@ -22,7 +22,7 @@
 package org.jlib.text.transformer;
 
 import org.jlib.basefunctions.ApplicationObject;
-import static org.jlib.core.IndexUtility.isOdd;
+import static org.jlib.core.NumericUtility.isOdd;
 
 /**
  * Skeletal implementation of a {@link StringTransformer} padding a String.

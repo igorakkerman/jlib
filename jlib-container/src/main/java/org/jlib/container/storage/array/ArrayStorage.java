@@ -32,7 +32,7 @@ import org.jlib.container.storage.LinearIndexStorage;
 import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
 import static org.jlib.array.ArrayUtility.array;
-import static org.jlib.core.IndexUtility.count;
+import static org.jlib.core.NumericUtility.count;
 
 /**
  * {@link LinearIndexStorage} based on an array.
