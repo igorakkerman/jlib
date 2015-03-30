@@ -27,9 +27,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>jlib Container Framework</name>
-    <artifactId>jlib-container</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <name>jlib Shared Components</name>
+    <artifactId>jlib-shared</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.jlib</groupId>
@@ -54,31 +54,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-shared</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-basefunctions</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-iterator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-array</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jlib</groupId>
-            <artifactId>jlib-operator</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
         </dependency>
@@ -99,6 +74,5 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-
     </dependencies>
 </project>

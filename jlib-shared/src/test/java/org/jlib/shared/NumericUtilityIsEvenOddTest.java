@@ -19,11 +19,11 @@
  *     limitations under the License.
  */
 
-package org.jlib.core;
+package org.jlib.shared;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.core.NumericUtility.isEven;
-import static org.jlib.core.NumericUtility.isOdd;
+import static org.jlib.shared.NumericUtility.isEven;
+import static org.jlib.shared.NumericUtility.isOdd;
 import org.junit.Test;
 
 public class NumericUtilityIsEvenOddTest {

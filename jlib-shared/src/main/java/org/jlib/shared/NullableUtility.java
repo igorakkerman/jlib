@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core;
+package org.jlib.shared;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 

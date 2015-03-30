@@ -11,7 +11,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="jlib-codequality" />
-    <orderEntry type="module" module-name="jlib-core" />
+    <orderEntry type="library" name="Maven: org.jlib:jlib-core:1.0.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="jlib-iterator" />
     <orderEntry type="module" module-name="jlib-exception" />
     <orderEntry type="module" module-name="jlib-message" />

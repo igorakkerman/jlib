@@ -23,9 +23,9 @@ package org.jlib.container.storage;
 
 import java.io.Serializable;
 
-import org.jlib.core.Valid;
+import org.jlib.shared.Valid;
 
-import static org.jlib.core.NumericUtility.count;
+import static org.jlib.shared.NumericUtility.count;
 import org.jlib.exception.UnexpectedStateException;
 
 /**

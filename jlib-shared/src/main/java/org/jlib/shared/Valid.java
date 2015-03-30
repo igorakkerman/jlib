@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.core;
+package org.jlib.shared;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

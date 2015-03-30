@@ -19,26 +19,10 @@
  *     limitations under the License.
  */
 
-package org.jlib.basefunctions.apachecommons.tostring;
+/**
+ * jlib shared functionality.
+ *
+ * @author Igor Akkerman
+ */
+package org.jlib.shared;
 
-import java.util.Map;
-import java.util.Optional;
-
-import org.apache.commons.lang3.builder.ToStringStyle;
-
-import static org.jlib.shared.OptionalUtility.optionalOf;
-
-class MapNamedToStringStyleSupplier
-implements NamedToStringStyleSupplier {
-
-    private final Map<String, ToStringStyle> toStringStyles;
-
-    MapNamedToStringStyleSupplier(final Map<String, ToStringStyle> toStringStyles) {
-        this.toStringStyles = toStringStyles;
-    }
-
-    @Override
-    public Optional<ToStringStyle> get(final String identifier) {
-        return optionalOf(() -> toStringStyles.get(identifier), toStringStyles.containsKey(identifier));
-    }
-}

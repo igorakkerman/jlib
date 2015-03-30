@@ -55,7 +55,7 @@
 
         <dependency>
             <groupId>org.jlib</groupId>
-            <artifactId>jlib-core</artifactId>
+            <artifactId>jlib-shared</artifactId>
         </dependency>
 
         <dependency>
