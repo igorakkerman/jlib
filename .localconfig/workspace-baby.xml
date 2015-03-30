@@ -26,7 +26,7 @@
     <list default="true" id="1aca1183-447f-4434-8721-ea9cbaaabe48" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jlib-container/jlib-container.iml" afterPath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jlib-core/jlib-core.iml" afterPath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jlib-shared/jlib-shared.iml" afterPath="$PROJECT_DIR$/jlib-shared/jlib-shared.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" afterPath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
@@ -36,7 +36,7 @@
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/jlib-container/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-core/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-shared/target/" />
     <ignored path="$PROJECT_DIR$/jlib-unittest/target/" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -395,12 +395,6 @@
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <org.jlib.core.collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <org.jlib.core.collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />

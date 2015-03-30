@@ -40,7 +40,7 @@
         <module>jlib-codequality</module>
         <module>jlib-message</module>
         <module>jlib-exception</module>
-        <module>jlib-core</module>
+        <module>jlib-shared</module>
         <module>jlib-iterator</module>
         <module>jlib-array</module>
         <module>jlib-collection</module>
@@ -203,7 +203,7 @@
 
             <dependency>
                 <groupId>org.jlib</groupId>
-                <artifactId>jlib-core</artifactId>
+                <artifactId>jlib-shared</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 

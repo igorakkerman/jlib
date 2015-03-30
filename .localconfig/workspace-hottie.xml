@@ -34,21 +34,15 @@
     </list>
     <ignored path="jlib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/jlib-container/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-core/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-shared/target/" />
     <ignored path="$PROJECT_DIR$/jlib-unittest/target/" />
-    <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/jlib-text/target/" />
     <ignored path="$PROJECT_DIR$/jlib-io/target/" />
     <ignored path="$PROJECT_DIR$/jlib-codequality/target/" />
     <ignored path="$PROJECT_DIR$/jlib-codec/target/" />
     <ignored path="$PROJECT_DIR$/jlib-operator/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-object-spi/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-object-spi-apachecommons/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-corefunctions-apachecommons/target/" />
-    <ignored path="$PROJECT_DIR$/jlib-corefunctions/target/" />
     <ignored path="$PROJECT_DIR$/jlib-basefunctions/target/" />
     <ignored path="$PROJECT_DIR$/jlib-basefunctions-apachecommons/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,11 +83,11 @@
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/main/java/org/jlib/object_spi/apachecommons/DefaultIdentifiedToStringStyleSupplier.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/main/java/org/jlib/object_spi/apachecommons/ApacheCommonsObjectMethodForwarder.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/pom.xml" />
-        <option value="$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/property/OptionalPropertyNotSetException.java" />
+        <option value="$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/property/OptionalPropertyNotSetException.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/test/java/org/jlib/object_spi/apachecommons/IdentifierOrClassNamePropertyToStringStyleSupplierTest.java" />
-        <option value="$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/property/PropertyUtility.java" />
+        <option value="$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/property/PropertyUtility.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/test/java/org/jlib/object_spi/apachecommons/Assertions.java" />
-        <option value="$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/reflection/ReflectionUtility.java" />
+        <option value="$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/reflection/ReflectionUtility.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/test/java/org/jlib/object_spi/apachecommons/ToStringStyleIntegrationTest.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/main/java/org/jlib/object_spi/apachecommons/InvalidToStringStyleIdentifierException.java" />
         <option value="$PROJECT_DIR$/jlib-object-spi-apachecommons/src/main/java/org/jlib/object_spi/apachecommons/MapIdentifiedToStringStyleSupplier.java" />
@@ -118,14 +112,14 @@
         <option value="$PROJECT_DIR$/jlib-codec/src/main/java/org/jlib/codec/CodecService.java" />
         <option value="$PROJECT_DIR$/jlib-codec/src/main/java/org/jlib/codec/base64/Base64Service.java" />
         <option value="$PROJECT_DIR$/jlib-codec/src/main/java/org/jlib/codec/quotedprintable/QuotedPrintableService.java" />
-        <option value="$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/language/OptionalUtility.java" />
+        <option value="$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/language/OptionalUtility.java" />
         <option value="$PROJECT_DIR$/jlib-codequality/pom.xml" />
         <option value="$PROJECT_DIR$/jlib-basefunctions/pom.xml" />
         <option value="$PROJECT_DIR$/jlib-basefunctions-apachecommons/pom.xml" />
         <option value="$PROJECT_DIR$/jlib-operator/pom.xml" />
         <option value="$PROJECT_DIR$/jlib-text/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/jlib-core/pom.xml" />
+        <option value="$PROJECT_DIR$/jlib-shared/pom.xml" />
       </list>
     </option>
   </component>
@@ -265,7 +259,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jlib-core" />
+              <option name="myItemId" value="jlib-shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,7 +322,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jlib-core" />
+              <option name="myItemId" value="jlib-shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,7 +421,7 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.jlib.codec.base64" />
-      <recent name="org.jlib.core.text" />
+      <recent name="org.jlib.shared.text" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -435,19 +429,19 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.jlib.codec" />
       <recent name="org.jlib.codec.quotedprintable" />
-      <recent name="org.jlib.core.text.message" />
-      <recent name="org.jlib.core.text" />
+      <recent name="org.jlib.shared.text.message" />
+      <recent name="org.jlib.shared.text" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.jlib.core" />
+      <recent name="org.jlib.shared" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.jlib.object_spi.apachecommons" />
-      <recent name="org.jlib.core.text" />
+      <recent name="org.jlib.shared.text" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.jlib.container.operation" />
-      <recent name="org.jlib.core.text.templateengine" />
+      <recent name="org.jlib.shared.text.templateengine" />
     </key>
   </component>
   <component name="RunManager">
@@ -1207,12 +1201,6 @@
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <org.jlib.core.collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <org.jlib.core.collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1257,7 +1245,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/property/OptionalPropertyValueSupplier.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/property/OptionalPropertyValueSupplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
@@ -1416,21 +1404,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/reflection/ReflectionUtility.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/reflection/ReflectionUtility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5408805">
           <caret line="142" column="67" selection-start-line="142" selection-start-column="67" selection-end-line="142" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/exception/InvalidArgumentException.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/exception/InvalidArgumentException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7861635">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/language/NullableUtility.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/language/NullableUtility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43965518">
           <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
@@ -1465,14 +1453,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/language/OptionalUtility.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/language/OptionalUtility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6809392">
           <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/io/StreamException.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/io/StreamException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
@@ -1536,7 +1524,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/pom.xml">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
@@ -1560,7 +1548,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/property/OptionalPropertyValueSupplier.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/property/OptionalPropertyValueSupplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
@@ -1592,7 +1580,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/IteratorState.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/IteratorState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26984128">
           <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
@@ -1600,7 +1588,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/SingletonIterator.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/SingletonIterator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2261904">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
@@ -1608,7 +1596,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/IterableAware.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/IterableAware.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08994709">
           <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
@@ -1616,7 +1604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/ForwardingIteratorState.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/ForwardingIteratorState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.112433866">
           <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
@@ -1624,7 +1612,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/BidiIterator.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/BidiIterator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3148148">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
@@ -1632,7 +1620,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/BidiIteratorState.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/BidiIteratorState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3148148">
           <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
@@ -1640,7 +1628,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jlib-core/src/main/java/org/jlib/core/iterator/BidiIterable.java">
+    <entry file="file://$PROJECT_DIR$/jlib-shared/src/main/java/org/jlib/core/iterator/BidiIterable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3148148">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
