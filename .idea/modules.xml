@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" filepath="$PROJECT_DIR$/jlib-codequality/jlib-codequality.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-collection/jlib-collection.iml" filepath="$PROJECT_DIR$/jlib-collection/jlib-collection.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-container/jlib-container.iml" filepath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jlib-core/jlib-core.iml" filepath="$PROJECT_DIR$/jlib-core/jlib-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-exception/jlib-exception.iml" filepath="$PROJECT_DIR$/jlib-exception/jlib-exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-io/jlib-io.iml" filepath="$PROJECT_DIR$/jlib-io/jlib-io.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-iterator/jlib-iterator.iml" filepath="$PROJECT_DIR$/jlib-iterator/jlib-iterator.iml" />
@@ -19,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" filepath="$PROJECT_DIR$/jlib-persistence-hibernate/jlib-persistence-hibernate.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" filepath="$PROJECT_DIR$/jlib-persistence-jpa/jlib-persistence-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" filepath="$PROJECT_DIR$/jlib-reflect/jlib-reflect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jlib-shared/jlib-shared.iml" filepath="$PROJECT_DIR$/jlib-shared/jlib-shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-systemproperty/jlib-systemproperty.iml" filepath="$PROJECT_DIR$/jlib-systemproperty/jlib-systemproperty.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-text/jlib-text.iml" filepath="$PROJECT_DIR$/jlib-text/jlib-text.iml" />
       <module fileurl="file://$PROJECT_DIR$/jlib-value/jlib-value.iml" filepath="$PROJECT_DIR$/jlib-value/jlib-value.iml" />
