@@ -21,11 +21,11 @@
 
 package org.jlib.value;
 
-public final class ValueUtility {
+public final class Values {
 
     public static <Val> Named<Val> named(final String name, final Val value) {
         return new InitializedNamed<>(name, value);
     }
 
-    private ValueUtility() {}
+    private Values() {}
 }
