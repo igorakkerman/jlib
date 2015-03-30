@@ -26,7 +26,7 @@ extends Builder<TestObject, Self>{
 
     /**
      * Initializes the built {@link TestObject} with common values to reduce boilerplate code in unit tests.
-     * Should be overridden by concrete builders.
+     * Should be overridden by concrete implementations.
      *
      * @return this {@link TestObjectBuilder}
      */
