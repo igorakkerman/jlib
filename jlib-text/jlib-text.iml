@@ -10,8 +10,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="jlib-codequality" />
     <orderEntry type="library" name="Maven: org.jlib:jlib-core:1.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="jlib-codequality" />
+    <orderEntry type="module" module-name="jlib-shared" />
     <orderEntry type="module" module-name="jlib-iterator" />
     <orderEntry type="module" module-name="jlib-exception" />
     <orderEntry type="module" module-name="jlib-message" />
@@ -22,5 +23,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:1.8.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:1.7.1" level="project" />
+    <orderEntry type="module" module-name="jlib-basefunctions-apachecommons" scope="TEST" />
+    <orderEntry type="module" module-name="jlib-systemproperty" scope="TEST" />
+    <orderEntry type="module" module-name="jlib-reflect" scope="TEST" />
   </component>
 </module>

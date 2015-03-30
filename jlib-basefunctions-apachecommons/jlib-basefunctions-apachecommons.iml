@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="jlib-codequality" />
+    <orderEntry type="module" module-name="jlib-shared" />
     <orderEntry type="module" module-name="jlib-basefunctions" />
     <orderEntry type="module" module-name="jlib-exception" />
     <orderEntry type="module" module-name="jlib-message" />

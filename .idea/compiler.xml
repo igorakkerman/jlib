@@ -29,10 +29,6 @@
         <module name="jlib-codequality" />
         <module name="jlib-collection" />
         <module name="jlib-container" />
-        <module name="jlib-core" />
-        <module name="jlib-core (1)" />
-        <module name="jlib-corefunctions" />
-        <module name="jlib-corefunctions-apachecommons" />
         <module name="jlib-exception" />
         <module name="jlib-io" />
         <module name="jlib-iterator" />
@@ -45,6 +41,7 @@
         <module name="jlib-persistence-hibernate" />
         <module name="jlib-persistence-jpa" />
         <module name="jlib-reflect" />
+        <module name="jlib-shared" />
         <module name="jlib-spi-apachecommons" />
         <module name="jlib-systemproperty" />
         <module name="jlib-text" />
@@ -60,10 +57,6 @@
       <module name="jlib-codequality" target="1.8" />
       <module name="jlib-collection" target="1.8" />
       <module name="jlib-container" target="1.8" />
-      <module name="jlib-core" target="1.8" />
-      <module name="jlib-core (1)" target="1.8" />
-      <module name="jlib-corefunctions" target="1.8" />
-      <module name="jlib-corefunctions-apachecommons" target="1.8" />
       <module name="jlib-exception" target="1.8" />
       <module name="jlib-io" target="1.8" />
       <module name="jlib-iterator" target="1.8" />
@@ -76,6 +69,7 @@
       <module name="jlib-persistence-hibernate" target="1.8" />
       <module name="jlib-persistence-jpa" target="1.8" />
       <module name="jlib-reflect" target="1.8" />
+      <module name="jlib-shared" target="1.8" />
       <module name="jlib-spi-apachecommons" target="1.8" />
       <module name="jlib-systemproperty" target="1.8" />
       <module name="jlib-text" target="1.8" />
