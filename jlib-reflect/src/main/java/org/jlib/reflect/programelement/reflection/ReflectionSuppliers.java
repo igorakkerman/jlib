@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -20,12 +20,6 @@
  */
 
 package org.jlib.reflect.programelement.reflection;
-
-import org.jlib.reflect.programelement.ClassLookupSupplier;
-import org.jlib.reflect.programelement.ConstructorInvokerSupplier;
-import org.jlib.reflect.programelement.ConstructorLookupSupplier;
-import org.jlib.reflect.programelement.InstanceMethodInvokerSupplier;
-import org.jlib.reflect.programelement.StaticMethodInvokerSupplier;
 
 public final class ReflectionSuppliers {
 

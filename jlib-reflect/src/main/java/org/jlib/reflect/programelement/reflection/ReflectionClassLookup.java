@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.programelement.reflection;
 
-import org.jlib.reflect.programelement.ClassLookup;
 import org.jlib.reflect.programelement.ClassLookupException;
 
 public class ReflectionClassLookup

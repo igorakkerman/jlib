@@ -23,7 +23,6 @@ package org.jlib.reflect.programelement.reflection;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.programelement.ConstructorLookup;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 
 public class ReflectionConstructorLookup
