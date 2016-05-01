@@ -33,6 +33,11 @@ import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultStaticMethodOverload<EnclosingClassObject, ReturnValue>
 extends AbstractOverload<ReturnValue> {
@@ -56,8 +61,7 @@ extends AbstractOverload<ReturnValue> {
 
         assertReturnValueTypeValid(method);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().method0(methodInvoker);
+        return new DefaultTypedMethod0<>(methodInvoker);
     }
 
     @Override
@@ -69,7 +73,7 @@ extends AbstractOverload<ReturnValue> {
 
         assertReturnValueTypeValid(method);
 
-        return getTypedMethodSupplier().method1(methodInvoker);
+        return new DefaultTypedMethod1<>(methodInvoker);
     }
 
     @Override
@@ -82,7 +86,7 @@ extends AbstractOverload<ReturnValue> {
 
         assertReturnValueTypeValid(method);
 
-        return getTypedMethodSupplier().method2(methodInvoker);
+        return new DefaultTypedMethod2<>(methodInvoker);
     }
 
     @Override
@@ -98,7 +102,7 @@ extends AbstractOverload<ReturnValue> {
 
         assertReturnValueTypeValid(method);
 
-        return getTypedMethodSupplier().method3(methodInvoker);
+        return new DefaultTypedMethod3<>(methodInvoker);
     }
 
     @Override
@@ -110,7 +114,7 @@ extends AbstractOverload<ReturnValue> {
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return getTypedMethodSupplier().uncheckedParameterTypesMethod(methodInvoker);
+        return new DefaultTypedMethodUnchecked<>(methodInvoker);
     }
 
     protected String getMethodName() {

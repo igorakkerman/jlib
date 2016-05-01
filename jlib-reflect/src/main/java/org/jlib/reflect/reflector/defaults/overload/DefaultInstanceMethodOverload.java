@@ -23,23 +23,24 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programelement.InstanceMethodInvokerSupplier;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.programelement.reflection.ReflectionInstanceMethodInvoker;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
-import org.jlib.reflect.reflector.supplier.InstanceMethodOverloadSupplier;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
 extends AbstractOverload<ReturnValue> {
-
-    private InstanceMethodInvokerSupplier methodInvokerSupplier;
-    private InstanceMethodOverloadSupplier instanceMethodOverloadSupplier;
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
@@ -56,12 +57,12 @@ extends AbstractOverload<ReturnValue> {
     public TypedMethod0<ReturnValue> withoutParameters()
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return getTypedMethodSupplier().method0(methodInvoker);
+        return new DefaultTypedMethod0<>(methodInvoker);
     }
 
     @Override
@@ -69,12 +70,12 @@ extends AbstractOverload<ReturnValue> {
     TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return getTypedMethodSupplier().method1(methodInvoker);
+        return new DefaultTypedMethod1<>(methodInvoker);
     }
 
     @Override
@@ -84,12 +85,12 @@ extends AbstractOverload<ReturnValue> {
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
                                                              parameter2Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return getTypedMethodSupplier().method2(methodInvoker);
+        return new DefaultTypedMethod2<>(methodInvoker);
     }
 
     @Override
@@ -102,44 +103,28 @@ extends AbstractOverload<ReturnValue> {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
                                                              parameter2Type,
                                                              parameter3Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
 
         //noinspection ConstantConditions
-        return getTypedMethodSupplier().method3(methodInvoker);
+        return new DefaultTypedMethod3<>(methodInvoker);
     }
 
     @Override
     public TypedMethodUnchecked<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
     throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameterTypes);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
         assertReturnValueTypeValid(method);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().uncheckedParameterTypesMethod(methodInvoker);
+        return new DefaultTypedMethodUnchecked<>(methodInvoker);
     }
 
     @Override
     public <StaticTypeReturnValue>
     Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnSuperType) {
-        return instanceMethodOverloadSupplier.instanceMethodOverload(enclosingObject, methodName,
-                                                                     staticReturnSuperType);
-    }
-
-    public DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    withMethodInvokerSupplier(final InstanceMethodInvokerSupplier methodInvokerSupplier) {
-        this.methodInvokerSupplier = methodInvokerSupplier;
-
-        return this;
-    }
-
-    public DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    withInstanceMethodOverloadSupplier(final InstanceMethodOverloadSupplier instanceMethodOverloadSupplier) {
-        this.instanceMethodOverloadSupplier = instanceMethodOverloadSupplier;
-
-        return this;
+        return new DefaultInstanceMethodOverload<>(enclosingObject, methodName, staticReturnSuperType);
     }
 }

@@ -21,6 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
+import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
@@ -28,6 +29,10 @@ import org.jlib.reflect.reflector.TypedMethodUnchecked;
 public class DefaultTypedMethodUnchecked<ReturnValue>
 extends AbstractTypedMethod<ReturnValue>
 implements TypedMethodUnchecked<ReturnValue> {
+
+    public DefaultTypedMethodUnchecked(final MethodInvoker methodInvoker) {
+        super(methodInvoker);
+    }
 
     @Override
     @SuppressWarnings("unchecked")
@@ -42,6 +47,6 @@ implements TypedMethodUnchecked<ReturnValue> {
     public <StaticReturnValue>
     TypedMethodUnchecked<StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return getTypedMethodSupplier().uncheckedParameterTypesMethod(getMethodInvoker());
+        return new DefaultTypedMethodUnchecked<>(getMethodInvoker());
     }
 }
