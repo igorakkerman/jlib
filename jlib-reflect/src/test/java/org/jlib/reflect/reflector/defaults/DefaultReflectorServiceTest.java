@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class DefaultReflectorServiceTest {
                              .returning(Integer.class)                       // MethodReturnValueReflector
                              .get();                                         // ReturnValue
 
-        Assertions.assertThat(value).isEqualTo(Integer.valueOf(42));
+        assertThat(value).isEqualTo(Integer.valueOf(42));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class DefaultReflectorServiceTest {
                              .returning(Integer.class)                       // MethodReturnValueReflector
                              .get();                                         // ReturnValue
 
-        Assertions.assertThat(value).isEqualTo(Integer.valueOf(1));
+        assertThat(value).isEqualTo(Integer.valueOf(1));
     }
 }
 
