@@ -25,17 +25,12 @@ import org.jlib.reflect.programelement.ClassLookupSupplier;
 import org.jlib.reflect.programelement.ConstructorInvokerSupplier;
 import org.jlib.reflect.programelement.ConstructorLookupSupplier;
 import org.jlib.reflect.programelement.InstanceMethodInvokerSupplier;
-import org.jlib.reflect.programelement.MethodLookupSupplier;
 import org.jlib.reflect.programelement.StaticMethodInvokerSupplier;
 
 public final class ReflectionSuppliers {
 
     public static ClassLookupSupplier classLookupSupplier() {
         return ReflectionClassLookup::new;
-    }
-
-    public static MethodLookupSupplier methodLookupSupplier() {
-        return ReflectionMethodLookup::new;
     }
 
     public static ConstructorLookupSupplier constructorLookupSupplier(){

@@ -26,11 +26,11 @@ import java.lang.reflect.Method;
 
 import static org.jlib.message.MessageUtility.message;
 import org.jlib.reflect.programelement.InstanceMethodInvocationException;
+import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.MethodLookupException;
-import org.jlib.reflect.programelement.MethodInvoker;
 
 public class ReflectionInstanceMethodInvoker
-implements MethodInvoker {
+implements InstanceMethodInvoker {
 
     private final Method method;
     private final Object enclosingObject;
@@ -38,6 +38,18 @@ implements MethodInvoker {
     public ReflectionInstanceMethodInvoker(final Method method, final Object enclosingObject) {
         this.method = method;
         this.enclosingObject = enclosingObject;
+    }
+
+    @Override
+    public Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException {
+        try {
+            return enclosingClass.getMethod(methodName, parameterTypes);
+        }
+        catch (final NoSuchMethodException exception) {
+            throw new InvalidMethodParameterTypesException(enclosingClass.getName(), methodName, parameterTypes,
+                                                           exception);
+        }
     }
 
     @Override

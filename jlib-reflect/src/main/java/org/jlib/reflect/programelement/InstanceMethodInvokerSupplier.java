@@ -23,7 +23,9 @@ package org.jlib.reflect.programelement;
 
 import java.lang.reflect.Method;
 
+import org.jlib.reflect.programelement.reflection.InstanceMethodInvoker;
+
 public interface InstanceMethodInvokerSupplier {
 
-    MethodInvoker methodInvoker(Method method, Object enclosingObject);
+    InstanceMethodInvoker methodInvoker(Method method, Object enclosingObject);
 }

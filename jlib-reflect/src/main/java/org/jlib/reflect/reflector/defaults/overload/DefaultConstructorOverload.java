@@ -26,7 +26,6 @@ import java.lang.reflect.Constructor;
 import org.jlib.reflect.programelement.ConstructorInvokerSupplier;
 import org.jlib.reflect.programelement.ConstructorLookup;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;

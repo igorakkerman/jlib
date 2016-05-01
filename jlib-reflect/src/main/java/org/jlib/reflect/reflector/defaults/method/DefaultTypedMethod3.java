@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod3;
@@ -30,7 +29,7 @@ public class DefaultTypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
 extends AbstractTypedMethod<ReturnValue>
 implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
 
-    public DefaultTypedMethod3(final MethodInvoker methodInvoker) {
+    public DefaultTypedMethod3(final InstanceMethodInvoker methodInvoker) {
         super(methodInvoker);
     }
 
@@ -39,7 +38,7 @@ implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
     public MethodReturn<ReturnValue> invoke(final Argument1 argument1, final Argument2 argument2,
                                             final Argument3 argument3)
     throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(argument1, argument2);
+        final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke(argument1, argument2);
 
         return methodReturnValue(returnValue);
     }
@@ -48,6 +47,6 @@ implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
     public <StaticReturnValue>
     TypedMethod3<StaticReturnValue, Argument1, Argument2, Argument3>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod3<>(getMethodInvoker());
+        return new DefaultTypedMethod3<>(getLanguageItemSupplier());
     }
 }

@@ -30,7 +30,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-public class ReflectionStaticMethodInvokerTest {
+public class ReflectionStaticLanguageItemSupplierTest {
 
     // TODO: add negative tests (method not found, wrong arguments etc.)
 

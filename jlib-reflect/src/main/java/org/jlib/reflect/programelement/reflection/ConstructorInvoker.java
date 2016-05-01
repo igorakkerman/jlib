@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,8 +19,19 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.programelement.reflection;
 
-public interface MethodLookupSupplier {
-    MethodLookup methodLookup();
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.programelement.MethodInvocationException;
+
+public interface ConstructorInvoker<Obj> {
+
+    Object invoke(Object... arguments)
+    throws MethodInvocationException;
+
+    Constructor<Obj> getConstructor();
+
+    Executable getMethod();
 }

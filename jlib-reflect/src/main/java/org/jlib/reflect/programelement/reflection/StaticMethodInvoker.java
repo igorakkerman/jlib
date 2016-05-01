@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,12 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.programelement.reflection;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
-public interface MethodLookup {
+import org.jlib.reflect.programelement.MethodLookupException;
 
-    Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException;
+public interface StaticMethodInvoker {
+
+    Object invoke(Object... arguments)
+    throws MethodLookupException;
+
+    Executable getMethod();
 }

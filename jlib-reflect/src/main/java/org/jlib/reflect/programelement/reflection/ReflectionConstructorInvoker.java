@@ -27,10 +27,9 @@ import java.lang.reflect.Executable;
 import static org.jlib.message.MessageUtility.message;
 import org.jlib.reflect.programelement.ConstructorInvocationException;
 import org.jlib.reflect.programelement.MethodInvocationException;
-import org.jlib.reflect.programelement.MethodInvoker;
 
 public class ReflectionConstructorInvoker<Obj>
-implements MethodInvoker {
+implements ConstructorInvoker<Obj> {
 
     private final Constructor<Obj> constructor;
 
@@ -49,7 +48,8 @@ implements MethodInvoker {
         }
     }
 
-    protected Constructor<Obj> getConstructor() {
+    @Override
+    public Constructor<Obj> getConstructor() {
         return constructor;
     }
 
@@ -57,6 +57,4 @@ implements MethodInvoker {
     public Executable getMethod() {
         return constructor;
     }
-
-
 }

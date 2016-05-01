@@ -24,15 +24,12 @@ package org.jlib.reflect.reflector.defaults.overload;
 import java.lang.reflect.Method;
 
 import static java.util.Collections.singletonList;
-import org.jlib.reflect.programelement.MethodLookup;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
 import org.jlib.reflect.reflector.Overload;
 
 public abstract class AbstractOverload<ReturnValue>
 implements Overload<ReturnValue> {
-
-    private MethodLookup methodLookup;
 
     private final Class<?> enclosingClass;
     private final Class<ReturnValue> returnValueType;
@@ -48,15 +45,7 @@ implements Overload<ReturnValue> {
         assertSubtype(method.getReturnType(), singletonList(returnValueType));
     }
 
-    protected MethodLookup getMethodLookup() {
-        return methodLookup;
-    }
-
     protected Class<?> getEnclosingClass() {
         return enclosingClass;
-    }
-
-    public void setMethodLookup(final MethodLookup methodLookup) {
-        this.methodLookup = methodLookup;
     }
 }

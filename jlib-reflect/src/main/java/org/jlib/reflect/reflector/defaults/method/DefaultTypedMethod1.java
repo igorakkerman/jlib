@@ -21,7 +21,6 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -30,15 +29,15 @@ public class DefaultTypedMethod1<ReturnValue, Argument1>
 extends AbstractTypedMethod<ReturnValue>
 implements TypedMethod1<ReturnValue, Argument1> {
 
-    public DefaultTypedMethod1(final MethodInvoker methodInvoker) {
-        super(methodInvoker);
+    public DefaultTypedMethod1(final LanguageItemSupplier languageItemSupplier) {
+        super(languageItemSupplier);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Argument1 argument1)
     throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(argument1);
+        final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke(argument1);
 
         return methodReturnValue(returnValue);
     }
@@ -47,6 +46,6 @@ implements TypedMethod1<ReturnValue, Argument1> {
     public <StaticReturnValue>
     TypedMethod1<StaticReturnValue, Argument1>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod1<>(getMethodInvoker());
+        return new DefaultTypedMethod1<>(getLanguageItemSupplier());
     }
 }

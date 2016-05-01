@@ -23,7 +23,6 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
@@ -31,23 +30,23 @@ import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 public abstract class AbstractTypedMethod<ReturnValue>
 implements TypedMethod<ReturnValue> {
 
-    private final MethodInvoker methodInvoker;
+    private final LanguageItemSupplier languageItemSupplier;
 
-    protected AbstractTypedMethod(final MethodInvoker methodInvoker) {
-        this.methodInvoker = methodInvoker;
+    protected AbstractTypedMethod(final LanguageItemSupplier languageItemSupplier) {
+        this.languageItemSupplier = languageItemSupplier;
     }
 
-    protected MethodInvoker getMethodInvoker() {
-        return methodInvoker;
+    protected LanguageItemSupplier getLanguageItemSupplier() {
+        return languageItemSupplier;
     }
 
     @Override
     public Executable get() {
-        return methodInvoker.getMethod();
+        return languageItemSupplier.getMethod();
     }
 
     public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return new DefaultMethodReturn<>(returnValue, getMethodInvoker());
+        return new DefaultMethodReturn<>(returnValue, getLanguageItemSupplier());
     }
 }
 

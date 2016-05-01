@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,23 +21,20 @@
 
 package org.jlib.reflect.programelement.reflection;
 
+import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.MethodLookup;
+import org.jlib.reflect.programelement.MethodLookupException;
 
-public class ReflectionMethodLookup
-implements MethodLookup {
+public interface InstanceMethodInvoker {
 
-    @Override
-    public Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException {
-        try {
-            return enclosingClass.getMethod(methodName, parameterTypes);
-        }
-        catch (final NoSuchMethodException exception) {
-            throw new InvalidMethodParameterTypesException(enclosingClass.getName(), methodName, parameterTypes,
-                                                           exception);
-        }
-    }
+    Method lookupMethod(Class<?> enclosingClass, String methodName, Class<?>... parameterTypes)
+    throws InvalidMethodParameterTypesException;
+
+    @SuppressWarnings("unchecked")
+    Object invoke(Object... arguments)
+    throws MethodLookupException;
+
+    Executable getMethod();
 }

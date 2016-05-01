@@ -25,12 +25,13 @@ import java.util.Collection;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import org.jlib.reflect.programelement.reflection.InstanceMethodInvoker;
 
 public final class ProgramElementUtility {
 
     public static void assertInstanceOf(final Object returnValue,
                                         final Collection<? extends Class<?>> expectedSuperTypes,
-                                        final MethodInvoker methodInvoker)
+                                        final InstanceMethodInvoker methodInvoker)
     throws InvalidMethodReturnTypeException {
 
         final List<Class<?>> invalidSuperTypes =

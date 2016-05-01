@@ -23,7 +23,6 @@ package org.jlib.reflect.reflector.defaults.methodreturn;
 
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programelement.MethodInvoker;
 import org.jlib.reflect.programelement.ProgramElementException;
 import static org.jlib.reflect.programelement.ProgramElementUtility.assertInstanceOf;
 import org.jlib.reflect.reflector.MethodReturn;

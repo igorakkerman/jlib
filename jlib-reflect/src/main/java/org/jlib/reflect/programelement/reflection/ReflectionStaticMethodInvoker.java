@@ -25,12 +25,11 @@ import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
 import static org.jlib.message.MessageUtility.message;
-import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.programelement.MethodInvocationException;
-import org.jlib.reflect.programelement.MethodInvoker;
+import org.jlib.reflect.programelement.MethodLookupException;
 
 public class ReflectionStaticMethodInvoker
-implements MethodInvoker {
+implements StaticMethodInvoker {
 
     private final Method method;
 
