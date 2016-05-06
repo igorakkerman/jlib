@@ -21,10 +21,12 @@
 
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
+import java.lang.reflect.Method;
+
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programelement.ProgramElementException;
 import static org.jlib.reflect.programelement.LanguageElementUtility.assertMethodReturnTypeInstanceOf;
+import org.jlib.reflect.programelement.ProgramElementException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverload;
@@ -33,25 +35,21 @@ public class DefaultMethodReturn<ReturnValue>
 implements MethodReturn<ReturnValue> {
 
     private final ReturnValue returnValue;
-    private final MethodInvoker methodInvoker;
+    private final Method method;
 
-    public DefaultMethodReturn(final ReturnValue returnValue, final MethodInvoker methodInvoker) {
+    public DefaultMethodReturn(final ReturnValue returnValue, final Method method) {
         this.returnValue = returnValue;
-        this.methodInvoker = methodInvoker;
+        this.method = method;
     }
 
     protected ReturnValue getReturnValue() {
         return returnValue;
     }
 
-    protected MethodInvoker getMethodInvoker() {
-        return methodInvoker;
-    }
-
     @Override
     public MethodReturn<ReturnValue> returning(final Class<?>... expectedSuperTypes)
     throws InvalidMethodReturnTypeException {
-        assertMethodReturnTypeInstanceOf(returnValue, asList(expectedSuperTypes), methodInvoker);
+        assertMethodReturnTypeInstanceOf(method, returnValue, asList(expectedSuperTypes));
 
         return this;
     }
