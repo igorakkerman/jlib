@@ -21,13 +21,12 @@
 
 package org.jlib.reflect.reflector;
 
-import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 
 import org.jlib.reflect.programelement.ProgramElementException;
 
 public interface TypedMethod<ReturnValue> {
 
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
+    Method get()
     throws ProgramElementException;
 }

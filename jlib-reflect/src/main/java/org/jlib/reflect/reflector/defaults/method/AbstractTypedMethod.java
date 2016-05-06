@@ -21,8 +21,9 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
@@ -30,23 +31,25 @@ import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 public abstract class AbstractTypedMethod<ReturnValue>
 implements TypedMethod<ReturnValue> {
 
-    private final LanguageItemSupplier languageItemSupplier;
+    private final Method method;
+    private final LanguageElementHelper languageElementHelper;
 
-    protected AbstractTypedMethod(final LanguageItemSupplier languageItemSupplier) {
-        this.languageItemSupplier = languageItemSupplier;
+    protected AbstractTypedMethod(final Method method, final LanguageElementHelper languageElementHelper) {
+        this.method = method;
+        this.languageElementHelper = languageElementHelper;
     }
 
-    protected LanguageItemSupplier getLanguageItemSupplier() {
-        return languageItemSupplier;
+    protected LanguageElementHelper getLanguageElementHelper() {
+        return languageElementHelper;
     }
 
     @Override
-    public Executable get() {
-        return languageItemSupplier.getMethod();
+    public Method get() {
+        return method;
     }
 
     public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return new DefaultMethodReturn<>(returnValue, getLanguageItemSupplier());
+        return new DefaultMethodReturn<>(returnValue, method);
     }
 }
 
