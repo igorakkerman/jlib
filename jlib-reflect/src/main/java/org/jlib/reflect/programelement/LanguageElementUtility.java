@@ -21,6 +21,8 @@
 
 package org.jlib.reflect.programelement;
 
+import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -28,9 +30,8 @@ import static java.util.stream.Collectors.toList;
 
 public final class LanguageElementUtility {
 
-    public static void assertInstanceOf(final Object returnValue,
-                                        final Collection<? extends Class<?>> expectedSuperTypes,
-                                        final InstanceMethodInvoker methodInvoker)
+    public static void assertMethodReturnTypeInstanceOf(final Method method, final Object returnValue,
+                                                        final Collection<? extends Class<?>> expectedSuperTypes)
         throws InvalidMethodReturnTypeException {
 
         final List<Class<?>> invalidSuperTypes =
@@ -39,8 +40,7 @@ public final class LanguageElementUtility {
                               .collect(toList());
 
         if (! invalidSuperTypes.isEmpty())
-            throw new InvalidMethodReturnTypeException(returnValue.getClass(), invalidSuperTypes,
-                                                       methodInvoker.getMethod());
+            throw new InvalidMethodReturnTypeException(method, returnValue.getClass(), invalidSuperTypes);
     }
 
     public static void assertSubtype(final Class<?> actualType, final Collection<? extends Class<?>> expectedSuperTypes)

@@ -24,7 +24,7 @@ package org.jlib.reflect.reflector.defaults.methodreturn;
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
 import org.jlib.reflect.programelement.ProgramElementException;
-import static org.jlib.reflect.programelement.LanguageElementUtility.assertInstanceOf;
+import static org.jlib.reflect.programelement.LanguageElementUtility.assertMethodReturnTypeInstanceOf;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverload;
@@ -51,7 +51,7 @@ implements MethodReturn<ReturnValue> {
     @Override
     public MethodReturn<ReturnValue> returning(final Class<?>... expectedSuperTypes)
     throws InvalidMethodReturnTypeException {
-        assertInstanceOf(returnValue, asList(expectedSuperTypes), methodInvoker);
+        assertMethodReturnTypeInstanceOf(returnValue, asList(expectedSuperTypes), methodInvoker);
 
         return this;
     }
