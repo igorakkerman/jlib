@@ -19,16 +19,14 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.programelement;
 
-import java.lang.reflect.Executable;
+import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+public interface ConstructorLookup {
 
-public interface StaticMethodInvoker {
-
-    Object invoke(Object... arguments)
-    throws MethodLookupException;
-
-    Executable getMethod();
+    <EnclosingClassObject>
+    Constructor<EnclosingClassObject> lookupConstructor(Class<EnclosingClassObject> enclosingClass,
+                                                        Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException;
 }

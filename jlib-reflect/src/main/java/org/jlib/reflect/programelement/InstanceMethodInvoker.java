@@ -19,22 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.programelement;
 
-import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
-
-import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.MethodLookupException;
 
 public interface InstanceMethodInvoker {
 
-    Method lookupMethod(Class<?> enclosingClass, String methodName, Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException;
-
-    @SuppressWarnings("unchecked")
-    Object invoke(Object... arguments)
-    throws MethodLookupException;
-
-    Executable getMethod();
+    <ReturnValue, EnclosingObject>
+    ReturnValue invokeInstanceMethod(EnclosingObject enclosingObject, Method method, Object... arguments)
+        throws MethodInvocationException;
 }

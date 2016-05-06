@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,21 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.programelement;
 
-import org.jlib.reflect.programelement.ClassLookupException;
+import java.lang.reflect.Method;
 
-public class ReflectionClassLookup
-implements ClassLookup {
+public interface StaticMethodInvoker {
 
-    @Override
-    public Class<?> lookupClass(final String className)
-    throws ClassLookupException {
-        try {
-            return Class.forName(className);
-        }
-        catch (final ClassNotFoundException | LinkageError throwable) {
-            throw new ClassLookupException(className, throwable);
-        }
-    }
+    <ReturnValue>
+    ReturnValue invokeStaticMethod(Method method, Object... arguments)
+        throws MethodLookupException;
 }

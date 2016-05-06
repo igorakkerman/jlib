@@ -19,19 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.reflector.defaults.method;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
-
-import org.jlib.reflect.programelement.MethodInvocationException;
-
-public interface ConstructorInvoker<Obj> {
-
-    Object invoke(Object... arguments)
-    throws MethodInvocationException;
-
-    Constructor<Obj> getConstructor();
-
-    Executable getMethod();
+public class LanguageItemSupplier {
 }

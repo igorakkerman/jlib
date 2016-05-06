@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 
 import static java.util.Collections.singletonList;
 import org.jlib.reflect.programelement.NoSubtypeException;
-import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
+import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubtype;
 import org.jlib.reflect.reflector.Overload;
 
 public abstract class AbstractOverload<ReturnValue>
