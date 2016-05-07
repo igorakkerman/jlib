@@ -23,25 +23,21 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Method;
 
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
+@RequiredArgsConstructor
+@Getter(PROTECTED)
 public abstract class AbstractTypedMethod<ReturnValue>
-implements TypedMethod<ReturnValue> {
+    implements TypedMethod<ReturnValue> {
 
-    private final Method method;
     private final LanguageElementHelper languageElementHelper;
-
-    protected AbstractTypedMethod(final Method method, final LanguageElementHelper languageElementHelper) {
-        this.method = method;
-        this.languageElementHelper = languageElementHelper;
-    }
-
-    protected LanguageElementHelper getLanguageElementHelper() {
-        return languageElementHelper;
-    }
+    private final Method method;
 
     @Override
     public Method get() {

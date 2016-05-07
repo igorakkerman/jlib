@@ -21,17 +21,21 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
+import lombok.AccessLevel;
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
 
+@Getter(PROTECTED)
 public class DefaultTypedMethod0<ReturnValue>
 extends AbstractTypedMethod<ReturnValue>
 implements TypedMethod0<ReturnValue> {
 
-    public DefaultTypedMethod0(final LanguageItemSupplier languageItemSupplier) {
-        super(languageItemSupplier);
-    }
+    private final LanguageElementHelper languageElementHelper;
 
     @Override
     @SuppressWarnings("unchecked")
