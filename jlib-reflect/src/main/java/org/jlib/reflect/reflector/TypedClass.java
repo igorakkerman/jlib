@@ -28,23 +28,25 @@ public interface TypedClass<Obj> {
 
     @SuppressWarnings("RedundantThrows")
     Class<Obj> get()
-    throws ProgramElementException;
+        throws ProgramElementException;
 
     // downcast necessary for parametrized types although not fully typesafe
-    @SuppressWarnings({"unchecked", "RedundantThrows"})
+    @SuppressWarnings({ "unchecked", "RedundantThrows" })
     default <Val extends Obj>
     Class<Val> downcast()
-    throws ProgramElementException {
+        throws ProgramElementException {
+
         return (Class<Val>) get();
     }
 
     TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
-    throws NoSubtypeException;
+        throws NoSubtypeException;
 
     @SuppressWarnings("RedundantThrows")
     default Obj instance()
-    throws ProgramElementException {
-        return useConstructor().withoutParameters().invoke().get();
+        throws ProgramElementException {
+
+            return useConstructor().withoutParameters().invoke().get();
     }
 
     Overload<Obj> useConstructor();
@@ -53,5 +55,5 @@ public interface TypedClass<Obj> {
 
     <StaticTypedObject>
     TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
-    throws NoSubtypeException;
+        throws NoSubtypeException;
 }

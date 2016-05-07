@@ -40,7 +40,7 @@ implements TypedMethodUnchecked<ReturnValue> {
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Object... arguments)
     throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getLanguageElementHelper().invoke(arguments);
+        final ReturnValue returnValue = (ReturnValue) getLanguageElementHelper().invokeInstanceMethod(get(), arguments);
 
         return methodReturnValue(returnValue);
     }

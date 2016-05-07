@@ -24,6 +24,7 @@ package org.jlib.reflect.reflector.defaults.overload;
 import java.lang.reflect.Method;
 
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -38,13 +39,14 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-extends AbstractOverload<ReturnValue> {
+    extends AbstractOverload<ReturnValue> {
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
 
     public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
-                                         final Class<ReturnValue> returnValueType) {
+                                         final Class<ReturnValue> returnValueType,
+                                         LanguageElementHelper languageElementHelper) {
         super(enclosingObject.getClass(), returnValueType);
 
         this.enclosingObject = enclosingObject;
@@ -53,7 +55,7 @@ extends AbstractOverload<ReturnValue> {
 
     @Override
     public TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
         final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
@@ -66,7 +68,7 @@ extends AbstractOverload<ReturnValue> {
     @Override
     public <Parameter1>
     TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type);
         final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 
@@ -80,7 +82,7 @@ extends AbstractOverload<ReturnValue> {
     public <Parameter1, Parameter2>
     TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(final Class<Parameter1> parameter1Type,
                                                                          final Class<Parameter2> parameter2Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
                                                              parameter2Type);
         final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
@@ -94,10 +96,10 @@ extends AbstractOverload<ReturnValue> {
     @Override
     public <Parameter1, Parameter2, Parameter3>
     TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
-                                                     /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
-                                                                             final Class<Parameter2> parameter2Type,
-                                                                             final Class<Parameter3> parameter3Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
+    /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
+                            final Class<Parameter2> parameter2Type,
+                            final Class<Parameter3> parameter3Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
                                                              parameter2Type,
                                                              parameter3Type);
@@ -111,7 +113,7 @@ extends AbstractOverload<ReturnValue> {
 
     @Override
     public TypedMethodUnchecked<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameterTypes);
         final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
 

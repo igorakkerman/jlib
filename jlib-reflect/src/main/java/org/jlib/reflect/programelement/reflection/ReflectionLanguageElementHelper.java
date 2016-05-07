@@ -72,7 +72,8 @@ public class ReflectionLanguageElementHelper
         }
     }
 
-    protected Method lookupMethod(final Class<?> enclosingClass, final String methodName, final Class<?>[] parameterTypes)
+    protected Method lookupMethod(final Class<?> enclosingClass, final String methodName,
+                                  final Class<?>[] parameterTypes)
         throws InvalidMethodParameterTypesException {
         try {
             return enclosingClass.getMethod(methodName, parameterTypes);
@@ -87,6 +88,7 @@ public class ReflectionLanguageElementHelper
     public Method lookupInstanceMethod(final Class<?> enclosingClass, final String methodName,
                                        final Class<?>... parameterTypes)
         throws InvalidMethodParameterTypesException {
+
         return lookupMethod(enclosingClass, methodName, parameterTypes);
     }
 
@@ -94,6 +96,7 @@ public class ReflectionLanguageElementHelper
     public Method lookupStaticMethod(final Class<?> enclosingClass, final String methodName,
                                      final Class<?>... parameterTypes)
         throws InvalidMethodParameterTypesException {
+
         return lookupMethod(enclosingClass, methodName, parameterTypes);
     }
 
@@ -102,6 +105,7 @@ public class ReflectionLanguageElementHelper
     public <ReturnValue>
     ReturnValue invokeStaticMethod(final Method method, final Object... arguments)
         throws MethodLookupException {
+
         try {
             return (ReturnValue) method.invoke(/* static */ null, arguments);
         }
@@ -116,6 +120,7 @@ public class ReflectionLanguageElementHelper
     ReturnValue invokeInstanceMethod(final EnclosingObject enclosingObject, final Method method,
                                      final Object... arguments)
         throws MethodInvocationException {
+
         try {
             return (ReturnValue) method.invoke(enclosingObject, arguments);
         }
