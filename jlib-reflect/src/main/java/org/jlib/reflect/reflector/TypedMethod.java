@@ -21,12 +21,12 @@
 
 package org.jlib.reflect.reflector;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
 import org.jlib.reflect.programelement.ProgramElementException;
 
-public interface TypedMethod<ReturnValue> {
+public interface TypedMethod<Exe extends Executable, ReturnValue> {
 
-    Method get()
-    throws ProgramElementException;
+    Exe get()
+        throws ProgramElementException;
 }

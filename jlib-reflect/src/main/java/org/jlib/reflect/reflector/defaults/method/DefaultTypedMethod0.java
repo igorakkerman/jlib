@@ -21,9 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import java.lang.reflect.Method;
-
-import java.util.function.BiFunction;
+import java.lang.reflect.Executable;
 
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
@@ -32,17 +30,17 @@ import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethod0<ReturnValue>
-    extends AbstractTypedMethod<ReturnValue>
-    implements TypedMethod0<ReturnValue> {
+public class DefaultTypedMethod0<Exe extends Executable, ReturnValue>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethod0<Exe, ReturnValue> {
 
     private static final Object[] NO_ARGUMENTS = new Object[0];
 
     public DefaultTypedMethod0(final LanguageElementHelper languageElementHelper,
-                               final InvokeStrategy<ReturnValue> methodInvokeStrategy,
-                               final Method method) {
+                               final InvokeStrategy invokeStrategy,
+                               final Exe executable) {
 
-        super(languageElementHelper, method);
+        super(languageElementHelper, invokeStrategy, executable);
     }
 
     @Override
@@ -50,14 +48,14 @@ public class DefaultTypedMethod0<ReturnValue>
     public MethodReturn<ReturnValue> invoke()
         throws MethodLookupException {
 
-        final ReturnValue returnValue = (ReturnValue) methodInvoker.apply(getMethod(), NO_ARGUMENTS);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(getExecutable(), NO_ARGUMENTS);
 
-        return new DefaultMethodReturn<>(returnValue, getMethod());
+        return new DefaultMethodReturn<>(getLanguageElementHelper(), returnValue, getExecutable());
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod0<StaticReturnValue> withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getLanguageElementHelper(), methodInvoker, getMethod());
+    TypedMethod0<Exe, StaticReturnValue> withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
+        return new DefaultTypedMethod0<>(getLanguageElementHelper(), getInvokeStrategy(), getExecutable());
     }
 }

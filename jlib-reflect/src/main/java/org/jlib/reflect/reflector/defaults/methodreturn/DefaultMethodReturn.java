@@ -21,26 +21,25 @@
 
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
 import static java.util.Arrays.asList;
-import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import static org.jlib.reflect.programelement.LanguageElementUtility.assertMethodReturnTypeInstanceOf;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.programelement.InvalidReturnTypeException;
+import org.jlib.reflect.programelement.LanguageElementHelper;
+import static org.jlib.reflect.programelement.LanguageElementUtility.assertReturnTypeInstanceOf;
 import org.jlib.reflect.programelement.ProgramElementException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverload;
 
-public class DefaultMethodReturn<ReturnValue>
+@RequiredArgsConstructor
+public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
 implements MethodReturn<ReturnValue> {
 
+    private final LanguageElementHelper languageElementHelper;
     private final ReturnValue returnValue;
-    private final Method method;
-
-    public DefaultMethodReturn(final ReturnValue returnValue, final Method method) {
-        this.returnValue = returnValue;
-        this.method = method;
-    }
+    private final Exe executable;
 
     protected ReturnValue getReturnValue() {
         return returnValue;
@@ -48,15 +47,15 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public MethodReturn<ReturnValue> returning(final Class<?>... expectedSuperTypes)
-    throws InvalidMethodReturnTypeException {
-        assertMethodReturnTypeInstanceOf(method, returnValue, asList(expectedSuperTypes));
+        throws InvalidReturnTypeException {
+        assertReturnTypeInstanceOf(executable, returnValue, asList(expectedSuperTypes));
 
         return this;
     }
 
     @Override
     public Overload<Object> useMethod(final String methodName) {
-        return new DefaultInstanceMethodOverload<>(returnValue, methodName, Object.class);
+        return new DefaultInstanceMethodOverload<>(languageElementHelper, returnValue, methodName, Object.class);
     }
 
     @Override

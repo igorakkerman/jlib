@@ -35,15 +35,15 @@ public class DefaultReflectorServiceTest {
     throws Exception {
 
         final Number value = service
-                             .useClass("java.lang.Integer")                  // UntypedClassReflector
-                             .withType(Number.class)                         // TypedClassReflector
-                             .withSupertypes(Integer.class)                  // TypedClassReflector
-                             .useStaticMethod("valueOf")                     // UntypedMethodReflector
-                             .withParameterTypes(int.class)                  // Nethod1Reflector
-                             .withReturnType(Number.class)                   // MethodOverloadReflector
-                             .invoke(42)                                     // MethodReturnValueReflector
-                             .returning(Integer.class)                       // MethodReturnValueReflector
-                             .get();                                         // ReturnValue
+                             .useClass("java.lang.Integer")                  // TypedClass
+                             .withType(Number.class)                         // TypedClass
+                             .withSupertypes(Integer.class)                  // TypedClass
+                             .useStaticMethod("valueOf")                     // Overload
+                             .withParameterTypes(int.class)                  // TypedMethod1
+                             .withReturnType(Number.class)                   // TypedMethod1
+                             .invoke(42)                                     // MethodReturn
+                             .returning(Integer.class)                       // MethodReturn
+                             .get();                                         // Number
 
         assertThat(value).isEqualTo(Integer.valueOf(42));
     }

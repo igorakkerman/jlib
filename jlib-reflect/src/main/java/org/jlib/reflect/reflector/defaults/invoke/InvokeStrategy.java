@@ -24,8 +24,8 @@ package org.jlib.reflect.reflector.defaults.invoke;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
 @FunctionalInterface
-public interface InvokeStrategy<ReturnValue> {
+public interface InvokeStrategy {
 
-    ReturnValue invoke(Object... arguments)
+    Object invoke(Object... arguments)
         throws MethodInvocationException;
 }

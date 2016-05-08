@@ -25,8 +25,6 @@ import java.lang.reflect.Method;
 
 public interface InstanceMethodInvoker {
 
-    public <ReturnValue, EnclosingObject>
-    ReturnValue invokeInstanceMethod(final EnclosingObject enclosingObject, final Method method,
-                                     final Object... arguments)
+    Object invokeInstanceMethod(final Object enclosingObject, final Method method, final Object... arguments)
         throws MethodInvocationException;
 }

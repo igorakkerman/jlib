@@ -21,6 +21,8 @@
 
 package org.jlib.reflect.reflector;
 
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.programelement.ProgramElementException;
 
@@ -46,12 +48,12 @@ public interface TypedClass<Obj> {
     default Obj instance()
         throws ProgramElementException {
 
-            return useConstructor().withoutParameters().invoke().get();
+        return useConstructor().withoutParameters().invoke().get();
     }
 
-    Overload<Obj> useConstructor();
+    Overload<Method, Obj> useConstructor();
 
-    Overload<Object> useStaticMethod(String staticMethodName);
+    Overload<Method, Object> useStaticMethod(String staticMethodName);
 
     <StaticTypedObject>
     TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)

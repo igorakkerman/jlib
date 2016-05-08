@@ -25,7 +25,6 @@ import java.lang.reflect.Method;
 
 public interface StaticMethodInvoker {
 
-    <ReturnValue>
-    ReturnValue invokeStaticMethod(Method method, Object... arguments)
+    Object invokeStaticMethod(Method method, Object... arguments)
         throws MethodInvocationException;
 }

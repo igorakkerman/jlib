@@ -23,7 +23,6 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
-import static org.checkerframework.checker.units.UnitsTools.m;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
@@ -34,7 +33,6 @@ import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
-import org.jlib.reflect.reflector.defaults.invoke.InstanceMethodInvokeStrategy;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
@@ -44,7 +42,8 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     extends AbstractOverload<ReturnValue> {
 
-    public static final Class<?>[] ZERO_PARAMETERS_TYPES = new Class<?>[0];
+    public static final Class<?>[] ZERO_PARAMETERS_TYPES = {};
+    private static final Object[] NO_ARGUMENTS = {};
 
     private final EnclosingObject enclosingObject;
     private final String methodName;
@@ -59,24 +58,20 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     }
 
     @Override
-    public TypedMethod0<ReturnValue> withoutParameters()
+    public TypedMethod0<Method, ReturnValue> withoutParameters()
         throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getLanguageElementHelper().lookupInstanceMethod(getEnclosingClass(), methodName,
                                                                               ZERO_PARAMETERS_TYPES);
-        -> {
-            try {
-                return languageElementHelper.invokeInstanceMethod(enclosingObject, m, a);
-            }
-            catch (MethodInvocationException e) {
-                throw new Exception();
-            }
-        };
-
-        assertReturnValueTypeValid(method);
-
-        //noinspection ConstantConditions
-        return new DefaultTypedMethod0<>(methodInvoker);
+            return new getLanguageElementHelper().invokeInstanceMethod(enclosingObject, method, NO_ARGUMENTS);
     }
+
+    ;
+
+    assertReturnValueTypeValid(method);
+
+    //noinspection ConstantConditions
+    return new DefaultTypedMethod0<>(methodInvoker);
+}
 
     @Override
     public <Parameter1>

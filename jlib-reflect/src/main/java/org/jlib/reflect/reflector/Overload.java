@@ -21,33 +21,35 @@
 
 package org.jlib.reflect.reflector;
 
+import java.lang.reflect.Executable;
+
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.NoSubtypeException;
 
-public interface Overload<ReturnValue> {
+public interface Overload<Exe extends Executable, ReturnValue> {
 
-    TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodParameterTypesException, NoSubtypeException;
+    TypedMethod0<Exe, ReturnValue> withoutParameters()
+        throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException;
+    TypedMethod1<Exe, ReturnValue, Parameter1> withParameterTypes(Class<Parameter1> parameter1Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
-                                                               Class<Parameter2> parameter2Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException;
+    TypedMethod2<Exe, ReturnValue, Parameter1, Parameter2> withParameterTypes(Class<Parameter1> parameter1Type,
+                                                                              Class<Parameter2> parameter2Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
+    TypedMethod3<Exe, ReturnValue, Parameter1, Parameter2, Parameter3>
                                                 /**/ withParameterTypes(Class<Parameter1> parameter1Type,
                                                                         Class<Parameter2> parameter2Type,
                                                                         Class<Parameter3> parameter3Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException;
+        throws InvalidMethodParameterTypesException, NoSubtypeException;
 
-    TypedMethodUnchecked<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException, NoSubtypeException;
+    TypedMethodUnchecked<Exe, ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException, NoSubtypeException;
 
     <StaticTypeObject>
-    Overload<StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnSuperType);
+    Overload<Exe, StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnSuperType);
 }

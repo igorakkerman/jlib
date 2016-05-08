@@ -27,7 +27,7 @@ import java.util.Collection;
 
 import static org.jlib.message.MessageUtility.message;
 
-public class InvalidMethodReturnTypeException
+public class InvalidReturnTypeException
 extends MethodInvocationException {
 
     private static final long serialVersionUID = 6610464823967521411L;
@@ -35,19 +35,19 @@ extends MethodInvocationException {
     private final Class<?> returnType;
     private final Collection<? extends Class<?>> expectedReturnValueSuperTypes;
 
-    public InvalidMethodReturnTypeException(final Executable method, final Class<?> returnType,
-                                            final Collection<? extends Class<?>> expectedReturnValueSuperTypes) {
+    public InvalidReturnTypeException(final Executable executable, final Class<?> returnType,
+                                      final Collection<? extends Class<?>> expectedReturnValueSuperTypes) {
         super(message().with("returnType", returnType)
                        .with("expectedTypes", expectedReturnValueSuperTypes),
-              method.getDeclaringClass().getName(), method.getName());
+              executable.getDeclaringClass().getName(), executable.getName());
 
         this.returnType = returnType;
         this.expectedReturnValueSuperTypes = expectedReturnValueSuperTypes;
     }
 
-    public InvalidMethodReturnTypeException(final Executable method, final Class<?> returnType,
-                                            final Collection<? extends Class<?>> expectedReturnValueSuperTypes,
-                                            final Exception cause) {
+    public InvalidReturnTypeException(final Executable method, final Class<?> returnType,
+                                      final Collection<? extends Class<?>> expectedReturnValueSuperTypes,
+                                      final Exception cause) {
         this(method, returnType, expectedReturnValueSuperTypes);
 
         initCause(cause);
