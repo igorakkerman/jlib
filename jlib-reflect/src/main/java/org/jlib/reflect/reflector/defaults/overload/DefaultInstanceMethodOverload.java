@@ -27,6 +27,7 @@ import java.util.function.BiFunction;
 
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
+import org.jlib.reflect.programelement.MethodInvocationException;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -61,7 +62,14 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     public TypedMethod0<ReturnValue> withoutParameters()
         throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        BiFunction<Method, Object[], ?> invoker = (m, a) -> languageElementHelper.invokeInstanceMethod(enclosingObject, m, a);
+        BiFunction<Method, Object[], ?> invoker = (m, a) -> {
+            try {
+                return languageElementHelper.invokeInstanceMethod(enclosingObject, m, a);
+            }
+            catch (MethodInvocationException e) {
+                throw new Exception();
+            }
+        };
 
         assertReturnValueTypeValid(method);
 

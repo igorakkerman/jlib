@@ -19,13 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.reflector.defaults.method;
 
-import java.lang.reflect.Method;
+import org.jlib.reflect.programelement.MethodInvocationException;
 
-public interface StaticMethodInvoker {
+@FunctionalInterface
+public interface InvokeStrategy<ReturnValue> {
 
-    <ReturnValue>
-    ReturnValue invokeStaticMethod(Method method, Object... arguments)
+    ReturnValue invoke(Object... arguments)
         throws MethodInvocationException;
 }

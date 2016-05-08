@@ -19,13 +19,26 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Method;
 
-public interface StaticMethodInvoker {
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.programelement.LanguageElementHelper;
+import org.jlib.reflect.programelement.MethodInvocationException;
 
-    <ReturnValue>
-    ReturnValue invokeStaticMethod(Method method, Object... arguments)
-        throws MethodInvocationException;
+@RequiredArgsConstructor
+class InstanceInvokeStrategy<EnclosingObject, ReturnValue>
+    implements InvokeStrategy<ReturnValue> {
+
+    private final LanguageElementHelper languageElementHelper;
+    private final EnclosingObject enclosingObject;
+    private final Method method;
+
+    @Override
+    public ReturnValue invoke(final Object... arguments)
+        throws MethodInvocationException {
+
+        return languageElementHelper.invokeInstanceMethod(enclosingObject, method, arguments);
+    }
 }

@@ -31,7 +31,6 @@ import org.jlib.reflect.programelement.InstanceMethodInvocationException;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
-import org.jlib.reflect.programelement.MethodLookupException;
 
 public class ReflectionLanguageElementHelper
     implements LanguageElementHelper {
@@ -104,7 +103,7 @@ public class ReflectionLanguageElementHelper
     @SuppressWarnings("unchecked")
     public <ReturnValue>
     ReturnValue invokeStaticMethod(final Method method, final Object... arguments)
-        throws MethodLookupException {
+        throws MethodInvocationException {
 
         try {
             return (ReturnValue) method.invoke(/* static */ null, arguments);
