@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.defaults.method;
+package org.jlib.reflect.reflector.defaults.invoke;
 
 import org.jlib.reflect.programelement.MethodInvocationException;
 

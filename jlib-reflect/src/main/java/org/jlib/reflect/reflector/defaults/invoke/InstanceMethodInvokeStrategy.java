@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.defaults.method;
+package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Method;
 
@@ -28,7 +28,7 @@ import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
 @RequiredArgsConstructor
-class InstanceInvokeStrategy<EnclosingObject, ReturnValue>
+public class InstanceMethodInvokeStrategy<EnclosingObject, ReturnValue>
     implements InvokeStrategy<ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;

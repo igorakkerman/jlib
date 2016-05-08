@@ -29,6 +29,7 @@ import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
 public class DefaultTypedMethod0<ReturnValue>
@@ -37,14 +38,11 @@ public class DefaultTypedMethod0<ReturnValue>
 
     private static final Object[] NO_ARGUMENTS = new Object[0];
 
-    private final BiFunction<Method, Object[], ?> methodInvoker;
-
     public DefaultTypedMethod0(final LanguageElementHelper languageElementHelper,
-                               final BiFunction<Method, Object[], ?> methodInvoker,
+                               final InvokeStrategy<ReturnValue> methodInvokeStrategy,
                                final Method method) {
 
         super(languageElementHelper, method);
-        this.methodInvoker = methodInvoker;
     }
 
     @Override

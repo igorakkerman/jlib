@@ -23,8 +23,7 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
-import java.util.function.BiFunction;
-
+import static org.checkerframework.checker.units.UnitsTools.m;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
@@ -35,6 +34,7 @@ import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.invoke.InstanceMethodInvokeStrategy;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
@@ -44,15 +44,15 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     extends AbstractOverload<ReturnValue> {
 
+    public static final Class<?>[] ZERO_PARAMETERS_TYPES = new Class<?>[0];
+
     private final EnclosingObject enclosingObject;
     private final String methodName;
 
-    private LanguageElementHelper languageElementHelper;
-
-    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
-                                         final Class<ReturnValue> returnValueType,
-                                         LanguageElementHelper languageElementHelper) {
-        super(enclosingObject.getClass(), returnValueType);
+    public DefaultInstanceMethodOverload(final LanguageElementHelper languageElementHelper,
+                                         final EnclosingObject enclosingObject, final String methodName,
+                                         final Class<ReturnValue> returnValueType) {
+        super(languageElementHelper, enclosingObject.getClass(), returnValueType);
 
         this.enclosingObject = enclosingObject;
         this.methodName = methodName;
@@ -61,8 +61,9 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     @Override
     public TypedMethod0<ReturnValue> withoutParameters()
         throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        BiFunction<Method, Object[], ?> invoker = (m, a) -> {
+        final Method method = getLanguageElementHelper().lookupInstanceMethod(getEnclosingClass(), methodName,
+                                                                              ZERO_PARAMETERS_TYPES);
+        -> {
             try {
                 return languageElementHelper.invokeInstanceMethod(enclosingObject, m, a);
             }

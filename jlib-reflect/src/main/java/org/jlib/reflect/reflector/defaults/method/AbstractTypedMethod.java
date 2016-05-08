@@ -35,7 +35,7 @@ public abstract class AbstractTypedMethod<ReturnValue>
     implements TypedMethod<ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;
-    private final Method method;
+
 
     @Override
     public Method get() {
