@@ -23,6 +23,8 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
+import java.util.function.BiFunction;
+
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.NoSubtypeException;
@@ -44,6 +46,8 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     private final EnclosingObject enclosingObject;
     private final String methodName;
 
+    private LanguageElementHelper languageElementHelper;
+
     public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
                                          final Class<ReturnValue> returnValueType,
                                          LanguageElementHelper languageElementHelper) {
@@ -57,7 +61,7 @@ public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
     public TypedMethod0<ReturnValue> withoutParameters()
         throws InvalidMethodParameterTypesException, NoSubtypeException {
         final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        final MethodInvoker methodInvoker = new ReflectionInstanceMethodInvoker(method, enclosingObject);
+        BiFunction<Method, Object[], ?> invoker = (m, a) -> languageElementHelper.invokeInstanceMethod(enclosingObject, m, a);
 
         assertReturnValueTypeValid(method);
 

@@ -27,11 +27,9 @@ import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod;
-import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = PROTECTED)
 @Getter(PROTECTED)
 public abstract class AbstractTypedMethod<ReturnValue>
     implements TypedMethod<ReturnValue> {
@@ -42,10 +40,6 @@ public abstract class AbstractTypedMethod<ReturnValue>
     @Override
     public Method get() {
         return method;
-    }
-
-    public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return new DefaultMethodReturn<>(returnValue, method);
     }
 }
 

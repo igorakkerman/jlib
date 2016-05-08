@@ -21,35 +21,45 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import lombok.AccessLevel;
-import static lombok.AccessLevel.PROTECTED;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import java.lang.reflect.Method;
+
+import java.util.function.BiFunction;
+
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-@Getter(PROTECTED)
 public class DefaultTypedMethod0<ReturnValue>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod0<ReturnValue> {
+    extends AbstractTypedMethod<ReturnValue>
+    implements TypedMethod0<ReturnValue> {
 
-    private final LanguageElementHelper languageElementHelper;
+    private static final Object[] NO_ARGUMENTS = new Object[0];
+
+    private final BiFunction<Method, Object[], ?> methodInvoker;
+
+    public DefaultTypedMethod0(final LanguageElementHelper languageElementHelper,
+                               final BiFunction<Method, Object[], ?> methodInvoker,
+                               final Method method) {
+
+        super(languageElementHelper, method);
+        this.methodInvoker = methodInvoker;
+    }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke()
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke();
+        throws MethodLookupException {
 
-        return methodReturnValue(returnValue);
+        final ReturnValue returnValue = (ReturnValue) methodInvoker.apply(getMethod(), NO_ARGUMENTS);
+
+        return new DefaultMethodReturn<>(returnValue, getMethod());
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod0<StaticReturnValue>
-    withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getLanguageItemSupplier());
+    TypedMethod0<StaticReturnValue> withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
+        return new DefaultTypedMethod0<>(getLanguageElementHelper(), methodInvoker, getMethod());
     }
 }

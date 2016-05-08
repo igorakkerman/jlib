@@ -24,6 +24,7 @@ package org.jlib.reflect.reflector.defaults.method;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod2;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
 public class DefaultTypedMethod2<ReturnValue, Argument1, Argument2>
 extends AbstractTypedMethod<ReturnValue>
@@ -39,7 +40,7 @@ implements TypedMethod2<ReturnValue, Argument1, Argument2> {
     throws MethodLookupException {
         final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke(argument1, argument2);
 
-        return methodReturnValue(returnValue);
+        return new DefaultMethodReturn<>(returnValue, method);
     }
 
     @Override

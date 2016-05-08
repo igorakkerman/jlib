@@ -27,6 +27,7 @@ import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
 public class DefaultTypedMethodUnchecked<ReturnValue>
 extends AbstractTypedMethod<ReturnValue>
@@ -42,7 +43,7 @@ implements TypedMethodUnchecked<ReturnValue> {
     throws MethodLookupException {
         final ReturnValue returnValue = (ReturnValue) getLanguageElementHelper().invokeInstanceMethod(get(), arguments);
 
-        return methodReturnValue(returnValue);
+        return new DefaultMethodReturn<>(returnValue, method);
     }
 
     @Override

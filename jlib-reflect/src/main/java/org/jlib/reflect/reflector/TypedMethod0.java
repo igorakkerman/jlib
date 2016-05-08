@@ -24,12 +24,11 @@ package org.jlib.reflect.reflector;
 import org.jlib.reflect.programelement.MethodLookupException;
 
 public interface TypedMethod0<ReturnType>
-extends TypedMethod<ReturnType> {
+    extends TypedMethod<ReturnType> {
 
     MethodReturn<ReturnType> invoke()
-    throws MethodLookupException;
+        throws MethodLookupException;
 
     <StaticReturnValue>
-    TypedMethod0<StaticReturnValue>
-    /**/ withReturnType(Class<StaticReturnValue> staticReturnSuperType);
+    TypedMethod0<StaticReturnValue> withReturnType(Class<StaticReturnValue> staticReturnSuperType);
 }
