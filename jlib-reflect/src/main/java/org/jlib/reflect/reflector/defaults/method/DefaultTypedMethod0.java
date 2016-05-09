@@ -37,10 +37,9 @@ public class DefaultTypedMethod0<Exe extends Executable, ReturnValue>
     private static final Object[] NO_ARGUMENTS = new Object[0];
 
     public DefaultTypedMethod0(final LanguageElementHelper languageElementHelper,
-                               final InvokeStrategy invokeStrategy,
-                               final Exe executable) {
+                               final InvokeStrategy<Exe> invokeStrategy) {
 
-        super(languageElementHelper, invokeStrategy, executable);
+        super(languageElementHelper, invokeStrategy);
     }
 
     @Override
@@ -48,14 +47,14 @@ public class DefaultTypedMethod0<Exe extends Executable, ReturnValue>
     public MethodReturn<ReturnValue> invoke()
         throws MethodLookupException {
 
-        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(getExecutable(), NO_ARGUMENTS);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(NO_ARGUMENTS);
 
-        return new DefaultMethodReturn<>(getLanguageElementHelper(), returnValue, getExecutable());
+        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
     TypedMethod0<Exe, StaticReturnValue> withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod0<>(getLanguageElementHelper(), getInvokeStrategy(), getExecutable());
+        return new DefaultTypedMethod0<>(getLanguageElementHelper(), getInvokeStrategy());
     }
 }

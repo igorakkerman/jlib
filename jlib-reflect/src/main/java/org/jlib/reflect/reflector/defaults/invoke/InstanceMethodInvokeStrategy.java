@@ -23,22 +23,26 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Method;
 
-import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
-@RequiredArgsConstructor
-public class InstanceMethodInvokeStrategy<EnclosingObject, ReturnValue>
-    implements InvokeStrategy<ReturnValue> {
+public class InstanceMethodInvokeStrategy<EnclosingObject>
+    extends InvokeStrategy<Method> {
 
-    private final LanguageElementHelper languageElementHelper;
     private final EnclosingObject enclosingObject;
-    private final Method method;
+
+    public InstanceMethodInvokeStrategy(final LanguageElementHelper languageElementHelper,
+                                        final EnclosingObject enclosingObject, final Method executable) {
+
+        super(languageElementHelper, executable);
+
+        this.enclosingObject = enclosingObject;
+    }
 
     @Override
-    public ReturnValue invoke(final Object... arguments)
+    public Object invoke(final Object... arguments)
         throws MethodInvocationException {
 
-        return languageElementHelper.invokeInstanceMethod(enclosingObject, method, arguments);
+        return getLanguageElementHelper().invokeInstanceMethod(enclosingObject, getMethod(), arguments);
     }
 }

@@ -36,12 +36,11 @@ public abstract class AbstractTypedMethod<Exe extends Executable, ReturnValue>
     implements TypedMethod<Exe, ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;
-    private final InvokeStrategy invokeStrategy;
-    private final Exe executable;
+    private final InvokeStrategy<Exe> invokeStrategy;
 
     @Override
     public Exe get() {
-        return executable;
+        return invokeStrategy.getMethod();
     }
 }
 

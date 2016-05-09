@@ -21,11 +21,22 @@
 
 package org.jlib.reflect.reflector.defaults.invoke;
 
+import java.lang.reflect.Executable;
+
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
-@FunctionalInterface
-public interface InvokeStrategy {
+@RequiredArgsConstructor(access = PROTECTED)
+public abstract class InvokeStrategy<Exe extends Executable> {
 
-    Object invoke(Object... arguments)
+    @Getter(PROTECTED)
+    private final LanguageElementHelper languageElementHelper;
+    @Getter
+    private final Exe method;
+
+    public abstract Object invoke(Object... arguments)
         throws MethodInvocationException;
 }

@@ -21,33 +21,40 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod3;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
+public class DefaultTypedMethod3<Exe extends Executable, ReturnValue, Argument1, Argument2, Argument3>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethod3<Exe, ReturnValue, Argument1, Argument2, Argument3> {
 
-    public DefaultTypedMethod3(final InstanceMethodInvoker methodInvoker) {
-        super(methodInvoker);
+    public DefaultTypedMethod3(final LanguageElementHelper languageElementHelper,
+                               final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHelper, invokeStrategy);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Argument1 argument1, final Argument2 argument2,
                                             final Argument3 argument3)
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke(argument1, argument2);
+        throws MethodLookupException {
 
-        return new DefaultMethodReturn<>(returnValue, method);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(argument1, argument2, argument3);
+
+        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod3<StaticReturnValue, Argument1, Argument2, Argument3>
+    TypedMethod3<Exe, StaticReturnValue, Argument1, Argument2, Argument3>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod3<>(getLanguageItemSupplier());
+        return new DefaultTypedMethod3<>(getLanguageElementHelper(), getInvokeStrategy());
     }
 }

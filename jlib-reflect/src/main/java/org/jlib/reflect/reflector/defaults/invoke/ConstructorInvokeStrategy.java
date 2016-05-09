@@ -23,21 +23,21 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Constructor;
 
-import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
-@RequiredArgsConstructor
 public class ConstructorInvokeStrategy<InstantiatedObject>
-    implements InvokeStrategy<InstantiatedObject> {
+    extends InvokeStrategy<Constructor<InstantiatedObject>> {
 
-    private final LanguageElementHelper languageElementHelper;
-    private final Constructor<InstantiatedObject> constructor;
+    public ConstructorInvokeStrategy(final LanguageElementHelper languageElementHelper,
+                                     final Constructor<InstantiatedObject> constructor) {
+        super(languageElementHelper, constructor);
+    }
 
     @Override
-    public InstantiatedObject invoke(final Object... arguments)
+    public Object invoke(final Object... arguments)
         throws MethodInvocationException {
 
-        return languageElementHelper.invokeConstructor(constructor, arguments);
+        return getLanguageElementHelper().invokeConstructor(getMethod(), arguments);
     }
 }

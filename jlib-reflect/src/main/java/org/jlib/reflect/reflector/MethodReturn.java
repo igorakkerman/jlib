@@ -21,6 +21,8 @@
 
 package org.jlib.reflect.reflector;
 
+import java.lang.reflect.Method;
+
 import org.jlib.reflect.programelement.InvalidReturnTypeException;
 import org.jlib.reflect.programelement.ProgramElementException;
 
@@ -29,7 +31,7 @@ public interface MethodReturn<ReturnValue> {
     MethodReturn<ReturnValue> returning(Class<?>... expectedSuperTypes)
         throws InvalidReturnTypeException;
 
-    Overload<Object> useMethod(String methodName);
+    Overload<Method, Object> useMethod(String methodName);
 
     @SuppressWarnings("RedundantThrows")
     ReturnValue get()

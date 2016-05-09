@@ -22,8 +22,11 @@
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
 import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 
 import static java.util.Arrays.asList;
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.programelement.InvalidReturnTypeException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
@@ -38,23 +41,21 @@ public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
 implements MethodReturn<ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;
-    private final ReturnValue returnValue;
+    @Getter(PROTECTED)
     private final Exe executable;
-
-    protected ReturnValue getReturnValue() {
-        return returnValue;
-    }
+    private final ReturnValue returnValue;
 
     @Override
     public MethodReturn<ReturnValue> returning(final Class<?>... expectedSuperTypes)
         throws InvalidReturnTypeException {
+
         assertReturnTypeInstanceOf(executable, returnValue, asList(expectedSuperTypes));
 
         return this;
     }
 
     @Override
-    public Overload<Object> useMethod(final String methodName) {
+    public Overload<Method, Object> useMethod(final String methodName) {
         return new DefaultInstanceMethodOverload<>(languageElementHelper, returnValue, methodName, Object.class);
     }
 

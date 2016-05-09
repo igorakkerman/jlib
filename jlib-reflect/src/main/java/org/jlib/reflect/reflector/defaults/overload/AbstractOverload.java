@@ -21,6 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults.overload;
 
+import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
 import static java.util.Collections.singletonList;
@@ -34,19 +35,14 @@ import org.jlib.reflect.reflector.Overload;
 
 @RequiredArgsConstructor(access = PROTECTED)
 @Getter(PROTECTED)
-public abstract class AbstractOverload<ReturnValue>
-implements Overload<ReturnValue> {
+public abstract class AbstractOverload<Exe extends Executable, ReturnValue>
+implements Overload<Exe, ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;
-    private final Class<?> enclosingClass;
     private final Class<ReturnValue> returnValueType;
 
     protected void assertReturnValueTypeValid(final Method method)
     throws NoSubtypeException {
         assertSubtype(method.getReturnType(), singletonList(returnValueType));
-    }
-
-    protected Class<?> getEnclosingClass() {
-        return enclosingClass;
     }
 }

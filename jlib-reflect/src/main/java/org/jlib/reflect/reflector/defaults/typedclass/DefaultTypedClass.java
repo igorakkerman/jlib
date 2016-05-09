@@ -21,66 +21,73 @@
 
 package org.jlib.reflect.reflector.defaults.typedclass;
 
+import java.lang.reflect.Method;
+
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.ClassException;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubtype;
+import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.defaults.overload.DefaultConstructorOverload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultStaticMethodOverload;
 
 public class DefaultTypedClass<Obj>
-implements TypedClass<Obj> {
+    implements TypedClass<Obj> {
 
+    private final LanguageElementHelper languageElementHelper;
     private final Class<?> actualClass;
 
-    public DefaultTypedClass(final Class<Obj> actualClass) {
+    public DefaultTypedClass(final LanguageElementHelper languageElementHelper, final Class<Obj> actualClass) {
+        this.languageElementHelper = languageElementHelper;
         this.actualClass = actualClass;
     }
 
-    public DefaultTypedClass(final Class<Obj> staticType, final Class<?> actualClass)
-    throws NoSubtypeException {
+    public DefaultTypedClass(final LanguageElementHelper languageElementHelper, final Class<Obj> staticType,
+                             final Class<?> actualClass)
+        throws NoSubtypeException {
+        this.languageElementHelper = languageElementHelper;
         this.actualClass = actualClass;
 
         withSupertypes(staticType);
     }
 
     private void assertValid(final Class<Obj> actualClass, final Class<?> expectedParentType)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         if (expectedParentType.isAssignableFrom(actualClass))
             throw new NoSubtypeException(actualClass, expectedParentType);
     }
 
     @Override
     public Class<Obj> get()
-    throws ClassException {
+        throws ClassException {
         return getActualClass();
     }
 
     @Override
     public <StaticReturnValue>
     TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         return new DefaultTypedClass<>(staticType, actualClass);
     }
 
     @Override
     public TypedClass<Obj> withSupertypes(final Class<?>... expectedParentTypes)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         assertSubtype(actualClass, asList(expectedParentTypes));
 
         return this;
     }
 
     @Override
-    public Overload<Object> useStaticMethod(final String staticMethodName) {
-        return new DefaultStaticMethodOverload<>(getActualClass(), staticMethodName, Object.class);
+    public Overload<Method, Class<Obj>> useStaticMethod(final String staticMethodName) {
+        return new DefaultStaticMethodOverload<>(languageElementHelper, getActualClass(), staticMethodName, Object.class);
     }
 
     @Override
     public Overload<Obj> useConstructor() {
-        return new DefaultConstructorOverload<>(getActualClass());
+        return new DefaultConstructorOverload<>(languageElementHelper, getActualClass());
     }
 
     @SuppressWarnings("unchecked")

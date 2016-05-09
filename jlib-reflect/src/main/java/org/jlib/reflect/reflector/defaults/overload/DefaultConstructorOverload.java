@@ -23,8 +23,8 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.programelement.ConstructorLookup;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
@@ -32,6 +32,7 @@ import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.invoke.ConstructorInvokeStrategy;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
@@ -39,91 +40,84 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultConstructorOverload<EnclosingClassObject>
-extends AbstractOverload<EnclosingClassObject> {
+    extends AbstractOverload<Constructor<EnclosingClassObject>, EnclosingClassObject> {
 
-    private ConstructorInvokerSupplier constructorInvokerSupplier;
+    private static final Class<?>[] NO_PARAMETER_TYPES = {};
 
-    private ConstructorLookup constructorLookup;
-
-    public DefaultConstructorOverload(final Class<EnclosingClassObject> enclosingClass) {
-        super(enclosingClass, enclosingClass);
+    public DefaultConstructorOverload(final LanguageElementHelper languageElementHelper,
+                                      final Class<EnclosingClassObject> enclosingClass) {
+        super(languageElementHelper, enclosingClass);
     }
 
     @Override
-    public TypedMethod0<EnclosingClassObject> withoutParameters()
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Constructor<?> constructor =
-        /**/ constructorLookup.lookupConstructor(getEnclosingClass() /* no parameter types */);
-        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
+    public TypedMethod0<Constructor<EnclosingClassObject>, EnclosingClassObject> withoutParameters()
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        return new DefaultTypedMethod0<>(methodInvoker);
+        final Constructor<EnclosingClassObject> constructor =
+            getLanguageElementHelper().lookupConstructor(getReturnValueType(), NO_PARAMETER_TYPES);
+
+        return new DefaultTypedMethod0<>(getLanguageElementHelper(),
+                                         new ConstructorInvokeStrategy<>(getLanguageElementHelper(), constructor));
     }
 
     @Override
     public <Parameter1>
-    TypedMethod1<EnclosingClassObject, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type);
-        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
+    TypedMethod1<Constructor<EnclosingClassObject>, EnclosingClassObject, Parameter1> withParameterTypes(
+        final Class<Parameter1> parameter1Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        return new DefaultTypedMethod1<>(methodInvoker);
+        final Constructor<EnclosingClassObject> constructor =
+            getLanguageElementHelper().lookupConstructor(getReturnValueType(), parameter1Type);
+
+        return new DefaultTypedMethod1<>(getLanguageElementHelper(),
+                                         new ConstructorInvokeStrategy<>(getLanguageElementHelper(), constructor));
     }
 
     @Override
     public <Parameter1, Parameter2>
-    TypedMethod2<EnclosingClassObject, Parameter1, Parameter2> withParameterTypes(
-                                                                                 final Class<Parameter1> parameter1Type,
-                                                                                 final Class<Parameter2> parameter2Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type,
-                                                                               parameter2Type);
-        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
+    TypedMethod2<Constructor<EnclosingClassObject>, EnclosingClassObject, Parameter1, Parameter2> withParameterTypes(
+        final Class<Parameter1> parameter1Type, final Class<Parameter2> parameter2Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        return new DefaultTypedMethod2<>(methodInvoker);
+        final Constructor<EnclosingClassObject> constructor =
+            getLanguageElementHelper().lookupConstructor(getReturnValueType(), parameter1Type, parameter2Type);
+
+        return new DefaultTypedMethod2<>(getLanguageElementHelper(),
+                                         new ConstructorInvokeStrategy<>(getLanguageElementHelper(), constructor));
     }
 
     @Override
     public <Parameter1, Parameter2, Parameter3>
-    TypedMethod3<EnclosingClassObject, Parameter1, Parameter2, Parameter3>
-                                                     /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
-                                                                             final Class<Parameter2> parameter2Type,
-                                                                             final Class<Parameter3> parameter3Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameter1Type,
-                                                                               parameter2Type, parameter3Type);
-        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
+    TypedMethod3<Constructor<EnclosingClassObject>, EnclosingClassObject, Parameter1, Parameter2, Parameter3>
+    withParameterTypes(
+        final Class<Parameter1> parameter1Type, final Class<Parameter2> parameter2Type,
+        final Class<Parameter3> parameter3Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        return new DefaultTypedMethod3<>(methodInvoker);
+        final Constructor<EnclosingClassObject> constructor =
+            getLanguageElementHelper().lookupConstructor(getReturnValueType(), parameter1Type, parameter2Type,
+                                                         parameter3Type);
+
+        return new DefaultTypedMethod3<>(getLanguageElementHelper(),
+                                         new ConstructorInvokeStrategy<>(getLanguageElementHelper(), constructor));
     }
 
     @Override
-    public TypedMethodUnchecked<EnclosingClassObject> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Constructor<?> constructor = constructorLookup.lookupConstructor(getEnclosingClass(), parameterTypes);
-        final MethodInvoker methodInvoker = constructorInvokerSupplier.constructorInvoker(constructor);
+    public TypedMethodUnchecked<Constructor<EnclosingClassObject>, EnclosingClassObject>
+    withUncheckedParameterTypes(final Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        //noinspection ConstantConditions
-        return new DefaultTypedMethodUnchecked<>(methodInvoker);
+        final Constructor<EnclosingClassObject> constructor =
+            getLanguageElementHelper().lookupConstructor(getReturnValueType(), parameterTypes);
+
+        return new DefaultTypedMethodUnchecked<>
+            (getLanguageElementHelper(), new ConstructorInvokeStrategy<>(getLanguageElementHelper(), constructor));
     }
 
     @Override
     public <StaticTypeEnclosingClassObject>
-    Overload<StaticTypeEnclosingClassObject>
+    Overload<Constructor<EnclosingClassObject>, StaticTypeEnclosingClassObject>
     withReturnType(final Class<StaticTypeEnclosingClassObject> staticReturnSuperType) {
-        return new DefaultConstructorOverload<>(staticReturnSuperType);
-    }
-
-    public DefaultConstructorOverload<EnclosingClassObject> withConstructorInvokerSupplier
-    (final ConstructorInvokerSupplier constructorInvokerSupplier) {
-        this.constructorInvokerSupplier = constructorInvokerSupplier;
-
-        return this;
-    }
-
-    public DefaultConstructorOverload<EnclosingClassObject> withConstructorLookup
-    (final ConstructorLookup constructorLookup) {
-        this.constructorLookup = constructorLookup;
-
-        return this;
+        return new DefaultConstructorOverload<>(getLanguageElementHelper(), getReturnValueType());
     }
 }

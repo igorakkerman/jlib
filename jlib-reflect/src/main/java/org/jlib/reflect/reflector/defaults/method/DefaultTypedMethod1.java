@@ -21,32 +21,39 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod1;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethod1<ReturnValue, Argument1>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod1<ReturnValue, Argument1> {
+public class DefaultTypedMethod1<Exe extends Executable, ReturnValue, Argument1>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethod1<Exe, ReturnValue, Argument1> {
 
-    public DefaultTypedMethod1(final LanguageItemSupplier languageItemSupplier) {
-        super(languageItemSupplier);
+    public DefaultTypedMethod1(final LanguageElementHelper languageElementHelper,
+                               final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHelper, invokeStrategy);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Argument1 argument1)
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getLanguageItemSupplier().invoke(argument1);
+        throws MethodLookupException {
 
-        return new DefaultMethodReturn<>(returnValue, method);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(argument1);
+
+        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod1<StaticReturnValue, Argument1>
+    TypedMethod1<Exe, StaticReturnValue, Argument1>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod1<>(getLanguageItemSupplier());
+        return new DefaultTypedMethod1<>(getLanguageElementHelper(), getInvokeStrategy());
     }
 }

@@ -21,35 +21,38 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Executable;
 
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethodUnchecked<ReturnValue>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethodUnchecked<ReturnValue> {
+public class DefaultTypedMethodUnchecked<Exe extends Executable, ReturnValue>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethodUnchecked<Exe, ReturnValue> {
 
-    public DefaultTypedMethodUnchecked(final Method method, final LanguageElementHelper languageElementHelper) {
-        super(method, languageElementHelper);
+    public DefaultTypedMethodUnchecked(final LanguageElementHelper languageElementHelper,
+                                       final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHelper, invokeStrategy);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Object... arguments)
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getLanguageElementHelper().invokeInstanceMethod(get(), arguments);
+        throws MethodLookupException {
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(arguments);
 
-        return new DefaultMethodReturn<>(returnValue, method);
+        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethodUnchecked<StaticReturnValue>
+    TypedMethodUnchecked<Exe, StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethodUnchecked<>(getLanguageElementHelper());
+        return new DefaultTypedMethodUnchecked<>(getLanguageElementHelper(), getInvokeStrategy());
     }
 }
