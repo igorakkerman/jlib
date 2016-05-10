@@ -21,6 +21,7 @@
 
 package org.jlib.reflect.reflector.defaults.typedclass;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 import static java.util.Arrays.asList;
@@ -69,7 +70,7 @@ public class DefaultTypedClass<Obj>
     public <StaticReturnValue>
     TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
         throws NoSubtypeException {
-        return new DefaultTypedClass<>(staticType, actualClass);
+        return new DefaultTypedClass<>(languageElementHelper, staticType, actualClass);
     }
 
     @Override
@@ -81,12 +82,12 @@ public class DefaultTypedClass<Obj>
     }
 
     @Override
-    public Overload<Method, Class<Obj>> useStaticMethod(final String staticMethodName) {
+    public Overload<Method, Object> useStaticMethod(final String staticMethodName) {
         return new DefaultStaticMethodOverload<>(languageElementHelper, getActualClass(), staticMethodName, Object.class);
     }
 
     @Override
-    public Overload<Obj> useConstructor() {
+    public Overload<Constructor<Obj>, Obj> useConstructor() {
         return new DefaultConstructorOverload<>(languageElementHelper, getActualClass());
     }
 
