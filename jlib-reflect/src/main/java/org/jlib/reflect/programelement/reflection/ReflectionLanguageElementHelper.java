@@ -24,6 +24,8 @@ package org.jlib.reflect.programelement.reflection;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
+import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
 import static org.jlib.message.MessageUtility.message;
 import org.jlib.reflect.programelement.ClassLookupException;
 import org.jlib.reflect.programelement.ConstructorInvocationException;
@@ -32,8 +34,11 @@ import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.MethodInvocationException;
 
+@NoArgsConstructor(access = PRIVATE)
 public class ReflectionLanguageElementHelper
     implements LanguageElementHelper {
+
+    public static ReflectionLanguageElementHelper INSTANCE = new ReflectionLanguageElementHelper();
 
     @Override
     public Class<?> lookupClass(final String className)
@@ -100,13 +105,11 @@ public class ReflectionLanguageElementHelper
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <ReturnValue>
-    ReturnValue invokeStaticMethod(final Method method, final Object... arguments)
+    public Object invokeStaticMethod(final Method method, final Object... arguments)
         throws MethodInvocationException {
 
         try {
-            return (ReturnValue) method.invoke(/* static */ null, arguments);
+            return method.invoke(/* static */ null, arguments);
         }
         catch (final ReflectiveOperationException exception) {
             throw new MethodInvocationException(message(), method.getClass().getName(), method.toString());
@@ -114,14 +117,11 @@ public class ReflectionLanguageElementHelper
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <ReturnValue, EnclosingObject>
-    ReturnValue invokeInstanceMethod(final EnclosingObject enclosingObject, final Method method,
-                                     final Object... arguments)
+    public Object invokeInstanceMethod(final Object enclosingObject, final Method method, final Object... arguments)
         throws MethodInvocationException {
 
         try {
-            return (ReturnValue) method.invoke(enclosingObject, arguments);
+            return method.invoke(enclosingObject, arguments);
         }
         catch (final ReflectiveOperationException exception) {
             throw new InstanceMethodInvocationException(message(), enclosingObject, method.toString());

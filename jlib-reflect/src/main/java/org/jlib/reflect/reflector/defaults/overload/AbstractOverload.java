@@ -36,13 +36,13 @@ import org.jlib.reflect.reflector.Overload;
 @RequiredArgsConstructor(access = PROTECTED)
 @Getter(PROTECTED)
 public abstract class AbstractOverload<Exe extends Executable, ReturnValue>
-implements Overload<Exe, ReturnValue> {
+    implements Overload<Exe, ReturnValue> {
 
     private final LanguageElementHelper languageElementHelper;
     private final Class<ReturnValue> returnValueType;
 
     protected void assertReturnValueTypeValid(final Method method)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         assertSubtype(method.getReturnType(), singletonList(returnValueType));
     }
 }

@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
@@ -40,7 +41,8 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultStaticMethodOverload<ReturnValue>
-    extends AbstractOverload<Method, ReturnValue> {
+    extends AbstractOverload<Method, ReturnValue>
+    implements MethodOverload<ReturnValue> {
 
     public static final Class<?>[] ZERO_PARAMETERS_TYPES = {};
     private static final Object[] NO_ARGUMENTS = {};

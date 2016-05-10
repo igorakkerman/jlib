@@ -22,7 +22,6 @@
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
 import java.lang.reflect.Executable;
-import java.lang.reflect.Method;
 
 import static java.util.Arrays.asList;
 import static lombok.AccessLevel.PROTECTED;
@@ -32,8 +31,8 @@ import org.jlib.reflect.programelement.InvalidReturnTypeException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import static org.jlib.reflect.programelement.LanguageElementUtility.assertReturnTypeInstanceOf;
 import org.jlib.reflect.programelement.ProgramElementException;
+import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverload;
 
 @RequiredArgsConstructor
@@ -55,7 +54,7 @@ implements MethodReturn<ReturnValue> {
     }
 
     @Override
-    public Overload<Method, Object> useMethod(final String methodName) {
+    public MethodOverload<Object> useMethod(final String methodName) {
         return new DefaultInstanceMethodOverload<>(languageElementHelper, returnValue, methodName, Object.class);
     }
 

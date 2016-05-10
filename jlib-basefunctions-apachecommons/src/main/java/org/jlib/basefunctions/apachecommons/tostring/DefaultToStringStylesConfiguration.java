@@ -31,7 +31,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.NO_FIELD_NAMES_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
-import org.jlib.reflect.reflector.defaults.DefaultReflectorService;
+import org.jlib.reflect.reflector.defaults.Reflectors;
 
 public final class DefaultToStringStylesConfiguration {
 
@@ -59,7 +59,7 @@ public final class DefaultToStringStylesConfiguration {
     static {
         final ReflectorClassNameToStringStyleSupplier classNameStyleSupplier =
         /**/ new ReflectorClassNameToStringStyleSupplier();
-        classNameStyleSupplier.setReflectorService(DefaultReflectorService.getInstance());
+        classNameStyleSupplier.setReflectorService(Reflectors.SERVICE);
         CLASS_NAME_STYLE_SUPPLIER = classNameStyleSupplier;
     }
 

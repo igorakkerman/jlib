@@ -49,7 +49,4 @@ public interface Overload<Exe extends Executable, ReturnValue> {
 
     TypedMethodUnchecked<Exe, ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
         throws InvalidMethodParameterTypesException, NoSubtypeException;
-
-    <StaticTypeObject>
-    Overload<Exe, StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnSuperType);
 }

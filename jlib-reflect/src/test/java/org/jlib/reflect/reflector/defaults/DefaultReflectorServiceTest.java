@@ -27,7 +27,7 @@ import org.junit.Test;
 
 public class DefaultReflectorServiceTest {
 
-    private final ReflectorService service = DefaultReflectorService.getInstance();
+    private final ReflectorService service = Reflectors.SERVICE;
 
     @Test
     @SuppressWarnings("UnnecessaryBoxing")

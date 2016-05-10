@@ -21,27 +21,24 @@
 
 package org.jlib.reflect.reflector.defaults;
 
-import lombok.RequiredArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.jlib.reflect.programelement.ClassLookupException;
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.reflector.ReflectorService;
+import org.jlib.reflect.programelement.reflection.ReflectionLanguageElementHelper;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.defaults.typedclass.DefaultTypedClass;
 
-@RequiredArgsConstructor
-public class DefaultReflectorService
-implements ReflectorService {
+@UtilityClass
+public final class Reflectors {
 
-    private final LanguageElementHelper languageElementHelper;
+    public static final DefaultReflectorService SERVICE =
+        new DefaultReflectorService(ReflectionLanguageElementHelper.INSTANCE);
 
-    @Override
-    public TypedClass<?> useClass(final String className)
-    throws ClassLookupException {
-        return useClass(languageElementHelper.lookupClass(className));
+    public static TypedClass<?> useClass(final String className)
+        throws ClassLookupException {
+
+        return SERVICE.useClass(className);
     }
 
-    @Override
-    public <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClass<>(languageElementHelper, concreteClass);
+    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
+        return SERVICE.useClass(concreteClass);
     }
 }

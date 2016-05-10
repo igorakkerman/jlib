@@ -4,7 +4,7 @@
  *     www.jlib.org
  *
  *
- *     Copyright 2005-2015 Igor Akkerman
+ *     Copyright 2005-2016 Igor Akkerman
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,21 +19,13 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector.defaults;
+package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programelement.ClassLookupException;
-import org.jlib.reflect.reflector.TypedClass;
+import java.lang.reflect.Method;
 
-public final class DefaultReflectorUtility {
+public interface MethodOverload<ReturnValue>
+    extends Overload<Method, ReturnValue> {
 
-    public static TypedClass<?> useClass(final String className)
-    throws ClassLookupException {
-        return DefaultReflectorService.getInstance().useClass(className);
-    }
-
-    public static <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return DefaultReflectorService.getInstance().useClass(concreteClass);
-    }
-
-    private DefaultReflectorUtility() {}
+    <StaticTypeObject>
+    Overload<Method, StaticTypeObject> withReturnType(Class<StaticTypeObject> staticReturnSuperType);
 }
