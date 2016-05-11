@@ -47,9 +47,11 @@ public final class LanguageElementUtility {
         throws NoSubtypeException {
 
         final List<Class<?>> invalidSuperTypes =
-            expectedSuperTypes.stream()
-                              .filter(expectedSuperType -> ! expectedSuperType.isAssignableFrom(actualType))
-                              .collect(toList());
+            expectedSuperTypes
+                .stream()
+                .filter(expectedSuperType -> ! (actualType.isPrimitive() && expectedSuperType.equals(Object.class)) &&
+                                             ! expectedSuperType.isAssignableFrom(actualType))
+                .collect(toList());
 
         if (! invalidSuperTypes.isEmpty())
             throw new NoSubtypeException(actualType, invalidSuperTypes);
