@@ -54,7 +54,7 @@ implements MethodReturn<ReturnValue> {
     }
 
     @Override
-    public MethodOverload<Object> useMethod(final String methodName) {
+    public MethodOverload<?> useMethod(final String methodName) {
         return new DefaultInstanceMethodOverload<>(languageElementHelper, returnValue, methodName, Object.class);
     }
 
