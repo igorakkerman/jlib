@@ -23,10 +23,7 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.languageelement.ProgramElementException;
-
 public interface TypedMethod<Exe extends Executable, ReturnValue> {
 
-    Exe get()
-        throws ProgramElementException;
+    Exe get();
 }
