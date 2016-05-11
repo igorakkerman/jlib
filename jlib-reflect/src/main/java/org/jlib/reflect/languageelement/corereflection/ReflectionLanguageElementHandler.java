@@ -38,7 +38,7 @@ import org.jlib.reflect.languageelement.MethodInvocationException;
 public class ReflectionLanguageElementHandler
     implements LanguageElementHandler {
 
-    public static ReflectionLanguageElementHandler INSTANCE = new ReflectionLanguageElementHandler();
+    public static final ReflectionLanguageElementHandler INSTANCE = new ReflectionLanguageElementHandler();
 
     @Override
     public Class<?> lookupClass(final String className)
