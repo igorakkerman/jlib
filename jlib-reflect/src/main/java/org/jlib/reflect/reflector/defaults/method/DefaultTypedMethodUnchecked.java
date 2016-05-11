@@ -21,27 +21,38 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethodUnchecked<ReturnValue>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethodUnchecked<ReturnValue> {
+public class DefaultTypedMethodUnchecked<Exe extends Executable, ReturnValue>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethodUnchecked<Exe, ReturnValue> {
+
+    public DefaultTypedMethodUnchecked(final LanguageElementHandler languageElementHandler,
+                                       final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHandler, invokeStrategy);
+    }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Object... arguments)
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(arguments);
+        throws MethodLookupException {
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(arguments);
 
-        return methodReturnValue(returnValue);
+        return new DefaultMethodReturn<>(getLanguageElementHandler(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethodUnchecked<StaticReturnValue>
+    TypedMethodUnchecked<Exe, StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return getTypedMethodSupplier().uncheckedParameterTypesMethod(getMethodInvoker());
+        return new DefaultTypedMethodUnchecked<>(getLanguageElementHandler(), getInvokeStrategy());
     }
 }

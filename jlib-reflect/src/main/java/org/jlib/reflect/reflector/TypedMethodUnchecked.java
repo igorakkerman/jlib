@@ -21,14 +21,16 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import java.lang.reflect.Executable;
 
-public interface TypedMethodUnchecked<ReturnType>
-extends TypedMethod<ReturnType> {
+import org.jlib.reflect.languageelement.MethodLookupException;
+
+public interface TypedMethodUnchecked<Exe extends Executable, ReturnType>
+    extends TypedMethod<Exe, ReturnType> {
 
     MethodReturn<ReturnType> invoke(Object... arguments)
-    throws MethodLookupException;
+        throws MethodLookupException;
 
     <StaticReturnValue>
-    TypedMethodUnchecked<StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
+    TypedMethodUnchecked<Exe, StaticReturnValue> withReturnType(Class<StaticReturnValue> clazz);
 }

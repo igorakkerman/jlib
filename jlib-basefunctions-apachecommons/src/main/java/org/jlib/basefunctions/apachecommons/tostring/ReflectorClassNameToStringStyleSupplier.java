@@ -23,7 +23,7 @@ package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import org.jlib.reflect.programelement.ProgramElementException;
+import org.jlib.reflect.languageelement.ProgramElementException;
 import org.jlib.reflect.reflector.ReflectorService;
 
 public class ReflectorClassNameToStringStyleSupplier

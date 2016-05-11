@@ -21,27 +21,40 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod0;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethod0<ReturnValue>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod0<ReturnValue> {
+public class DefaultTypedMethod0<Exe extends Executable, ReturnValue>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethod0<Exe, ReturnValue> {
+
+    private static final Object[] NO_ARGUMENTS = new Object[0];
+
+    public DefaultTypedMethod0(final LanguageElementHandler languageElementHandler,
+                               final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHandler, invokeStrategy);
+    }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke()
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke();
+        throws MethodLookupException {
 
-        return methodReturnValue(returnValue);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(NO_ARGUMENTS);
+
+        return new DefaultMethodReturn<>(getLanguageElementHandler(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod0<StaticReturnValue>
-    withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return getTypedMethodSupplier().method0(getMethodInvoker());
+    TypedMethod0<Exe, StaticReturnValue> withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
+        return new DefaultTypedMethod0<>(getLanguageElementHandler(), getInvokeStrategy());
     }
 }

@@ -21,59 +21,46 @@
 
 package org.jlib.reflect.reflector.defaults.methodreturn;
 
-import static java.util.Arrays.asList;
-import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programelement.MethodInvoker;
-import org.jlib.reflect.programelement.ProgramElementException;
-import static org.jlib.reflect.programelement.ProgramElementUtility.assertInstanceOf;
-import org.jlib.reflect.reflector.MethodReturn;
-import org.jlib.reflect.reflector.Overload;
-import org.jlib.reflect.reflector.supplier.InstanceMethodOverloadSupplier;
+import java.lang.reflect.Executable;
 
-public class DefaultMethodReturn<ReturnValue>
+import static java.util.Arrays.asList;
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.languageelement.InvalidReturnTypeException;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import static org.jlib.reflect.languageelement.LanguageElementUtility.assertReturnTypeInstanceOf;
+import org.jlib.reflect.languageelement.ProgramElementException;
+import org.jlib.reflect.reflector.MethodOverload;
+import org.jlib.reflect.reflector.MethodReturn;
+import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverload;
+
+@RequiredArgsConstructor
+public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
 implements MethodReturn<ReturnValue> {
 
-    private InstanceMethodOverloadSupplier instanceMethodOverloadSupplier;
-
+    private final LanguageElementHandler languageElementHandler;
+    @Getter(PROTECTED)
+    private final Exe executable;
     private final ReturnValue returnValue;
-    private final MethodInvoker methodInvoker;
-
-    public DefaultMethodReturn(final ReturnValue returnValue, final MethodInvoker methodInvoker) {
-        this.returnValue = returnValue;
-        this.methodInvoker = methodInvoker;
-    }
-
-    protected ReturnValue getReturnValue() {
-        return returnValue;
-    }
-
-    protected MethodInvoker getMethodInvoker() {
-        return methodInvoker;
-    }
 
     @Override
     public MethodReturn<ReturnValue> returning(final Class<?>... expectedSuperTypes)
-    throws InvalidMethodReturnTypeException {
-        assertInstanceOf(returnValue, asList(expectedSuperTypes), methodInvoker);
+        throws InvalidReturnTypeException {
+
+        assertReturnTypeInstanceOf(executable, returnValue, asList(expectedSuperTypes));
 
         return this;
     }
 
     @Override
-    public Overload<Object> useMethod(final String methodName) {
-        return instanceMethodOverloadSupplier.instanceMethodOverload(returnValue, methodName, Object.class);
+    public MethodOverload<?> useMethod(final String methodName) {
+        return new DefaultInstanceMethodOverload<>(languageElementHandler, returnValue, methodName, Object.class);
     }
 
     @Override
     public ReturnValue get()
     throws ProgramElementException {
         return returnValue;
-    }
-
-    public DefaultMethodReturn<ReturnValue> withInstanceMethodOverloadSupplier
-    (final InstanceMethodOverloadSupplier instanceMethodOverloadSupplier) {
-        this.instanceMethodOverloadSupplier = instanceMethodOverloadSupplier;
-
-        return this;
     }
 }

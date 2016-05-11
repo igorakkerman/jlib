@@ -23,123 +23,118 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programelement.InstanceMethodInvokerSupplier;
-import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.MethodInvoker;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import org.jlib.reflect.languageelement.NoSubtypeException;
+import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
 import org.jlib.reflect.reflector.TypedMethod3;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
-import org.jlib.reflect.reflector.supplier.InstanceMethodOverloadSupplier;
+import org.jlib.reflect.reflector.defaults.invoke.InstanceMethodInvokeStrategy;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod0;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod1;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod2;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
+import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-extends AbstractOverload<ReturnValue> {
+    extends AbstractOverload<Method, ReturnValue>
+    implements MethodOverload<ReturnValue> {
 
-    private InstanceMethodInvokerSupplier methodInvokerSupplier;
-    private InstanceMethodOverloadSupplier instanceMethodOverloadSupplier;
+    public static final Class<?>[] ZERO_PARAMETERS_TYPES = {};
+    private static final Object[] NO_ARGUMENTS = {};
 
     private final EnclosingObject enclosingObject;
+    private final Class<?> enclosingObjectClass;
     private final String methodName;
 
-    public DefaultInstanceMethodOverload(final EnclosingObject enclosingObject, final String methodName,
+    public DefaultInstanceMethodOverload(final LanguageElementHandler languageElementHandler,
+                                         final EnclosingObject enclosingObject,
+                                         final String methodName,
                                          final Class<ReturnValue> returnValueType) {
-        super(enclosingObject.getClass(), returnValueType);
+        super(languageElementHandler, returnValueType);
 
         this.enclosingObject = enclosingObject;
+        enclosingObjectClass = enclosingObject.getClass();
         this.methodName = methodName;
     }
 
     @Override
-    public TypedMethod0<ReturnValue> withoutParameters()
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName /* no parameter types */);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+    public TypedMethod0<Method, ReturnValue> withoutParameters()
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        assertReturnValueTypeValid(method);
+        final Method method = getLanguageElementHandler()
+            .lookupInstanceMethod(enclosingObjectClass, methodName, ZERO_PARAMETERS_TYPES);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().method0(methodInvoker);
+        return new DefaultTypedMethod0<>(getLanguageElementHandler(), strategy(method));
     }
 
     @Override
     public <Parameter1>
-    TypedMethod1<ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+    TypedMethod1<Method, ReturnValue, Parameter1> withParameterTypes(final Class<Parameter1> parameter1Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        assertReturnValueTypeValid(method);
+        final Method method = getLanguageElementHandler()
+            .lookupInstanceMethod(enclosingObjectClass, methodName, parameter1Type);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().method1(methodInvoker);
+        return new DefaultTypedMethod1<>(getLanguageElementHandler(), strategy(method));
     }
 
     @Override
     public <Parameter1, Parameter2>
-    TypedMethod2<ReturnValue, Parameter1, Parameter2> withParameterTypes(final Class<Parameter1> parameter1Type,
-                                                                         final Class<Parameter2> parameter2Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
-                                                             parameter2Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+    TypedMethod2<Method, ReturnValue, Parameter1, Parameter2>
+    withParameterTypes(final Class<Parameter1> parameter1Type,
+                       final Class<Parameter2> parameter2Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        assertReturnValueTypeValid(method);
+        final Method method = getLanguageElementHandler()
+            .lookupInstanceMethod(enclosingObjectClass, methodName, parameter1Type, parameter2Type);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().method2(methodInvoker);
+        return new DefaultTypedMethod2<>(getLanguageElementHandler(), strategy(method));
     }
 
     @Override
     public <Parameter1, Parameter2, Parameter3>
-    TypedMethod3<ReturnValue, Parameter1, Parameter2, Parameter3>
-                                                     /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
-                                                                             final Class<Parameter2> parameter2Type,
-                                                                             final Class<Parameter3> parameter3Type)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameter1Type,
-                                                             parameter2Type,
-                                                             parameter3Type);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+    TypedMethod3<Method, ReturnValue, Parameter1, Parameter2, Parameter3>
+         /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
+                                 final Class<Parameter2> parameter2Type,
+                                 final Class<Parameter3> parameter3Type)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        assertReturnValueTypeValid(method);
+        final Method method = getLanguageElementHandler()
+            .lookupInstanceMethod(enclosingObjectClass, methodName, parameter1Type, parameter2Type, parameter3Type);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().method3(methodInvoker);
+        return new DefaultTypedMethod3<>(getLanguageElementHandler(), strategy(method));
     }
 
     @Override
-    public TypedMethodUnchecked<ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
-    throws InvalidMethodParameterTypesException, NoSubtypeException {
-        final Method method = getMethodLookup().lookupMethod(getEnclosingClass(), methodName, parameterTypes);
-        final MethodInvoker methodInvoker = methodInvokerSupplier.methodInvoker(method, enclosingObject);
+    public TypedMethodUnchecked<Method, ReturnValue> withUncheckedParameterTypes(final Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException, NoSubtypeException {
 
-        assertReturnValueTypeValid(method);
+        final Method method = getLanguageElementHandler()
+            .lookupInstanceMethod(enclosingObjectClass, methodName, parameterTypes);
 
-        //noinspection ConstantConditions
-        return getTypedMethodSupplier().uncheckedParameterTypesMethod(methodInvoker);
+        return new DefaultTypedMethodUnchecked<>(getLanguageElementHandler(), strategy(method));
     }
 
     @Override
     public <StaticTypeReturnValue>
-    Overload<StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnSuperType) {
-        return instanceMethodOverloadSupplier.instanceMethodOverload(enclosingObject, methodName,
-                                                                     staticReturnSuperType);
+    Overload<Method, StaticTypeReturnValue> withReturnType(final Class<StaticTypeReturnValue> staticReturnSuperType) {
+        return new DefaultInstanceMethodOverload<>(getLanguageElementHandler(), enclosingObject, methodName,
+                                                   staticReturnSuperType);
     }
 
-    public DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    withMethodInvokerSupplier(final InstanceMethodInvokerSupplier methodInvokerSupplier) {
-        this.methodInvokerSupplier = methodInvokerSupplier;
+    private InstanceMethodInvokeStrategy<EnclosingObject> strategy(final Method method)
+        throws NoSubtypeException {
 
-        return this;
-    }
+        final InstanceMethodInvokeStrategy<EnclosingObject> invokeStrategy =
+            new InstanceMethodInvokeStrategy<>(getLanguageElementHandler(), enclosingObject, method);
 
-    public DefaultInstanceMethodOverload<EnclosingObject, ReturnValue>
-    withInstanceMethodOverloadSupplier(final InstanceMethodOverloadSupplier instanceMethodOverloadSupplier) {
-        this.instanceMethodOverloadSupplier = instanceMethodOverloadSupplier;
+        assertReturnValueTypeValid(method);
 
-        return this;
+        return invokeStrategy;
     }
 }

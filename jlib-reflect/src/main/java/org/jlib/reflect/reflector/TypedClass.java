@@ -21,37 +21,39 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programelement.NoSubtypeException;
-import org.jlib.reflect.programelement.ProgramElementException;
+import org.jlib.reflect.languageelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.ProgramElementException;
 
 public interface TypedClass<Obj> {
 
     @SuppressWarnings("RedundantThrows")
     Class<Obj> get()
-    throws ProgramElementException;
+        throws ProgramElementException;
 
     // downcast necessary for parametrized types although not fully typesafe
-    @SuppressWarnings({"unchecked", "RedundantThrows"})
+    @SuppressWarnings({ "unchecked", "RedundantThrows" })
     default <Val extends Obj>
     Class<Val> downcast()
-    throws ProgramElementException {
+        throws ProgramElementException {
+
         return (Class<Val>) get();
     }
-
-    TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
-    throws NoSubtypeException;
-
-    @SuppressWarnings("RedundantThrows")
-    default Obj instance()
-    throws ProgramElementException {
-        return useConstructor().withoutParameters().invoke().get();
-    }
-
-    Overload<Obj> useConstructor();
-
-    Overload<Object> useStaticMethod(String staticMethodName);
 
     <StaticTypedObject>
     TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
     throws NoSubtypeException;
+
+    TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
+        throws NoSubtypeException;
+
+    @SuppressWarnings("RedundantThrows")
+    default Obj instance()
+        throws ProgramElementException {
+
+        return useConstructor().withoutParameters().invoke().get();
+    }
+
+    ConstructorOverload<Obj> useConstructor();
+
+    MethodOverload<?> useStaticMethod(String staticMethodName);
 }

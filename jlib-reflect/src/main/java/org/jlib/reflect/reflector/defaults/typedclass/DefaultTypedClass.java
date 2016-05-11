@@ -22,95 +22,76 @@
 package org.jlib.reflect.reflector.defaults.typedclass;
 
 import static java.util.Arrays.asList;
-import org.jlib.reflect.programelement.ClassException;
-import org.jlib.reflect.programelement.NoSubtypeException;
-import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
-import org.jlib.reflect.reflector.Overload;
+import org.jlib.reflect.languageelement.ClassException;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import org.jlib.reflect.languageelement.NoSubtypeException;
+import org.jlib.reflect.reflector.ConstructorOverload;
+import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.TypedClass;
-import org.jlib.reflect.reflector.supplier.ConstructorOverloadSupplier;
-import org.jlib.reflect.reflector.supplier.TypedClassSupplier;
-import org.jlib.reflect.reflector.supplier.TypedStaticMethodOverloadSupplier;
+import org.jlib.reflect.reflector.defaults.overload.DefaultConstructorOverload;
+import org.jlib.reflect.reflector.defaults.overload.DefaultStaticMethodOverload;
 
 public class DefaultTypedClass<Obj>
-implements TypedClass<Obj> {
+    implements TypedClass<Obj> {
 
-    private TypedClassSupplier typedClassSupplier;
-    private TypedStaticMethodOverloadSupplier typedStaticMethodOverloadSupplier;
-    private ConstructorOverloadSupplier constructorOverloadSupplier;
-
+    private final LanguageElementHandler languageElementHandler;
     private final Class<?> actualClass;
 
-    public DefaultTypedClass(final Class<Obj> actualClass) {
+    public DefaultTypedClass(final LanguageElementHandler languageElementHandler, final Class<Obj> actualClass) {
+        this.languageElementHandler = languageElementHandler;
         this.actualClass = actualClass;
     }
 
-    public DefaultTypedClass(final Class<Obj> staticType, final Class<?> actualClass)
-    throws NoSubtypeException {
+    public DefaultTypedClass(final LanguageElementHandler languageElementHandler, final Class<Obj> staticType,
+                             final Class<?> actualClass)
+        throws NoSubtypeException {
+        this.languageElementHandler = languageElementHandler;
         this.actualClass = actualClass;
 
         withSupertypes(staticType);
     }
 
     private void assertValid(final Class<Obj> actualClass, final Class<?> expectedParentType)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         if (expectedParentType.isAssignableFrom(actualClass))
             throw new NoSubtypeException(actualClass, expectedParentType);
     }
 
     @Override
     public Class<Obj> get()
-    throws ClassException {
+        throws ClassException {
         return getActualClass();
     }
 
     @Override
     public <StaticReturnValue>
     TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
-    throws NoSubtypeException {
-        return typedClassSupplier.typedClass(staticType, actualClass);
+        throws NoSubtypeException {
+        return new DefaultTypedClass<>(languageElementHandler, staticType, actualClass);
     }
 
     @Override
     public TypedClass<Obj> withSupertypes(final Class<?>... expectedParentTypes)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         assertSubtype(actualClass, asList(expectedParentTypes));
 
         return this;
     }
 
     @Override
-    public Overload<Object> useStaticMethod(final String staticMethodName) {
-        return typedStaticMethodOverloadSupplier.typedStaticMethodOverload(getActualClass(), staticMethodName,
-                                                                           Object.class);
+    public MethodOverload<?> useStaticMethod(final String staticMethodName) {
+        return new DefaultStaticMethodOverload<>(languageElementHandler, getActualClass(), staticMethodName,
+                                                 Object.class);
     }
 
     @Override
-    public Overload<Obj> useConstructor() {
-        return constructorOverloadSupplier.constructorOverload(getActualClass());
+    public ConstructorOverload<Obj> useConstructor() {
+        return new DefaultConstructorOverload<>(languageElementHandler, getActualClass());
     }
 
     @SuppressWarnings("unchecked")
     protected Class<Obj> getActualClass() {
         return (Class<Obj>) actualClass;
-    }
-
-    public DefaultTypedClass<Obj> withTypedClassSupplier(final TypedClassSupplier typedClassSupplier) {
-        this.typedClassSupplier = typedClassSupplier;
-
-        return this;
-    }
-
-    public DefaultTypedClass<Obj> withConstructorOverloadSupplier
-    (final ConstructorOverloadSupplier constructorOverloadSupplier) {
-        this.constructorOverloadSupplier = constructorOverloadSupplier;
-
-        return this;
-    }
-
-    public DefaultTypedClass<Obj> withTypedStaticMethodOverloadSupplier
-    (final TypedStaticMethodOverloadSupplier typedStaticMethodOverloadSupplier) {
-        this.typedStaticMethodOverloadSupplier = typedStaticMethodOverloadSupplier;
-
-        return this;
     }
 }

@@ -23,11 +23,7 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.ProgramElementException;
+public interface TypedMethod<Exe extends Executable, ReturnValue> {
 
-public interface TypedMethod<ReturnValue> {
-
-    @SuppressWarnings("RedundantThrows")
-    Executable get()
-    throws ProgramElementException;
+    Exe get();
 }

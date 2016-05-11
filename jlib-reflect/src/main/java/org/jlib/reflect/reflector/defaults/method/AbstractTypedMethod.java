@@ -23,50 +23,24 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.MethodInvoker;
-import org.jlib.reflect.reflector.MethodReturn;
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.reflector.TypedMethod;
-import org.jlib.reflect.reflector.supplier.MethodReturnSupplier;
-import org.jlib.reflect.reflector.supplier.TypedMethodSupplier;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 
-public abstract class AbstractTypedMethod<ReturnValue>
-implements TypedMethod<ReturnValue> {
+@RequiredArgsConstructor(access = PROTECTED)
+@Getter(PROTECTED)
+public abstract class AbstractTypedMethod<Exe extends Executable, ReturnValue>
+    implements TypedMethod<Exe, ReturnValue> {
 
-    private TypedMethodSupplier typedMethodSupplier;
-    private MethodReturnSupplier methodReturnSupplier;
-    private MethodInvoker methodInvoker;
-
-    protected MethodInvoker getMethodInvoker() {
-        return methodInvoker;
-    }
+    private final LanguageElementHandler languageElementHandler;
+    private final InvokeStrategy<Exe> invokeStrategy;
 
     @Override
-    public Executable get() {
-        return methodInvoker.getMethod();
-    }
-
-    public MethodReturn<ReturnValue> methodReturnValue(final ReturnValue returnValue) {
-        return methodReturnSupplier.methodReturnValue(returnValue, getMethodInvoker());
-    }
-
-    protected TypedMethodSupplier getTypedMethodSupplier() {
-        return typedMethodSupplier;
-    }
-
-    public void setTypedMethodSupplier(final TypedMethodSupplier typedMethodSupplier) {
-        this.typedMethodSupplier = typedMethodSupplier;
-    }
-
-    protected MethodReturnSupplier getMethodReturnSupplier() {
-        return methodReturnSupplier;
-    }
-
-    public void setMethodReturnSupplier(final MethodReturnSupplier methodReturnSupplier) {
-        this.methodReturnSupplier = methodReturnSupplier;
-    }
-
-    public void setMethodInvoker(final MethodInvoker methodInvoker) {
-        this.methodInvoker = methodInvoker;
+    public Exe get() {
+        return invokeStrategy.getMethod();
     }
 }
 

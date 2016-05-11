@@ -21,28 +21,40 @@
 
 package org.jlib.reflect.reflector.defaults.method;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import java.lang.reflect.Executable;
+
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod3;
+import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
+import org.jlib.reflect.reflector.defaults.methodreturn.DefaultMethodReturn;
 
-public class DefaultTypedMethod3<ReturnValue, Argument1, Argument2, Argument3>
-extends AbstractTypedMethod<ReturnValue>
-implements TypedMethod3<ReturnValue, Argument1, Argument2, Argument3> {
+public class DefaultTypedMethod3<Exe extends Executable, ReturnValue, Argument1, Argument2, Argument3>
+    extends AbstractTypedMethod<Exe, ReturnValue>
+    implements TypedMethod3<Exe, ReturnValue, Argument1, Argument2, Argument3> {
+
+    public DefaultTypedMethod3(final LanguageElementHandler languageElementHandler,
+                               final InvokeStrategy<Exe> invokeStrategy) {
+
+        super(languageElementHandler, invokeStrategy);
+    }
 
     @Override
     @SuppressWarnings("unchecked")
     public MethodReturn<ReturnValue> invoke(final Argument1 argument1, final Argument2 argument2,
                                             final Argument3 argument3)
-    throws MethodLookupException {
-        final ReturnValue returnValue = (ReturnValue) getMethodInvoker().invoke(argument1, argument2);
+        throws MethodLookupException {
 
-        return methodReturnValue(returnValue);
+        final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(argument1, argument2, argument3);
+
+        return new DefaultMethodReturn<>(getLanguageElementHandler(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
-    TypedMethod3<StaticReturnValue, Argument1, Argument2, Argument3>
+    TypedMethod3<Exe, StaticReturnValue, Argument1, Argument2, Argument3>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return getTypedMethodSupplier().method3(getMethodInvoker());
+        return new DefaultTypedMethod3<>(getLanguageElementHandler(), getInvokeStrategy());
     }
 }

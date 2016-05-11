@@ -21,15 +21,15 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programelement.InvalidMethodReturnTypeException;
-import org.jlib.reflect.programelement.ProgramElementException;
+import org.jlib.reflect.languageelement.InvalidReturnTypeException;
+import org.jlib.reflect.languageelement.ProgramElementException;
 
 public interface MethodReturn<ReturnValue> {
 
     MethodReturn<ReturnValue> returning(Class<?>... expectedSuperTypes)
-    throws InvalidMethodReturnTypeException;
+        throws InvalidReturnTypeException;
 
-    Overload<Object> useMethod(String methodName);
+    MethodOverload<?> useMethod(String methodName);
 
     @SuppressWarnings("RedundantThrows")
     ReturnValue get()

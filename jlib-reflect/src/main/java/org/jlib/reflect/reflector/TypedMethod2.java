@@ -21,15 +21,17 @@
 
 package org.jlib.reflect.reflector;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import java.lang.reflect.Executable;
 
-public interface TypedMethod2<ReturnType, Argument1, Argument2>
-extends TypedMethod<ReturnType> {
+import org.jlib.reflect.languageelement.MethodLookupException;
+
+public interface TypedMethod2<Exe extends Executable, ReturnType, Argument1, Argument2>
+    extends TypedMethod<Exe, ReturnType> {
 
     MethodReturn<ReturnType> invoke(Argument1 argument1, Argument2 argument2)
-    throws MethodLookupException;
+        throws MethodLookupException;
 
     <StaticReturnValue>
-    TypedMethod2<StaticReturnValue, Argument1, Argument2>
-    /**/ withReturnType(Class<StaticReturnValue> staticReturnSuperType);
+    TypedMethod2<Exe, StaticReturnValue, Argument1, Argument2> withReturnType(Class<StaticReturnValue>
+                                                                                  staticReturnSuperType);
 }

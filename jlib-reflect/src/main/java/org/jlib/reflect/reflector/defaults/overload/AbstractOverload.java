@@ -21,52 +21,28 @@
 
 package org.jlib.reflect.reflector.defaults.overload;
 
+import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 
 import static java.util.Collections.singletonList;
-import org.jlib.reflect.programelement.MethodLookup;
-import org.jlib.reflect.programelement.NoSubtypeException;
-import static org.jlib.reflect.programelement.ProgramElementUtility.assertSubtype;
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
+import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
-import org.jlib.reflect.reflector.supplier.TypedMethodSupplier;
 
-public abstract class AbstractOverload<ReturnValue>
-implements Overload<ReturnValue> {
+@RequiredArgsConstructor(access = PROTECTED)
+@Getter(PROTECTED)
+public abstract class AbstractOverload<Exe extends Executable, ReturnValue>
+    implements Overload<Exe, ReturnValue> {
 
-    private MethodLookup methodLookup;
-    private TypedMethodSupplier typedMethodSupplier;
-
-    private final Class<?> enclosingClass;
+    private final LanguageElementHandler languageElementHandler;
     private final Class<ReturnValue> returnValueType;
 
-    protected Class<?> getEnclosingClass() {
-        return enclosingClass;
-    }
-
-    public AbstractOverload(final Class<?> enclosingClass,
-                            final Class<ReturnValue> returnValueType) {
-        this.enclosingClass = enclosingClass;
-        this.returnValueType = returnValueType;
-    }
-
     protected void assertReturnValueTypeValid(final Method method)
-    throws NoSubtypeException {
+        throws NoSubtypeException {
         assertSubtype(method.getReturnType(), singletonList(returnValueType));
-    }
-
-    protected MethodLookup getMethodLookup() {
-        return methodLookup;
-    }
-
-    public void setMethodLookup(final MethodLookup methodLookup) {
-        this.methodLookup = methodLookup;
-    }
-
-    protected TypedMethodSupplier getTypedMethodSupplier() {
-        return typedMethodSupplier;
-    }
-
-    public void setTypedMethodSupplier(final TypedMethodSupplier typedMethodSupplier) {
-        this.typedMethodSupplier = typedMethodSupplier;
     }
 }
