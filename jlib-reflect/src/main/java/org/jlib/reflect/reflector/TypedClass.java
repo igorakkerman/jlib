@@ -41,6 +41,10 @@ public interface TypedClass<Obj> {
         return (Class<Val>) get();
     }
 
+    <StaticTypedObject>
+    TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
+    throws NoSubtypeException;
+
     TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
         throws NoSubtypeException;
 
@@ -54,8 +58,4 @@ public interface TypedClass<Obj> {
     Overload<Constructor<Obj>, Obj> useConstructor();
 
     MethodOverload<Object> useStaticMethod(String staticMethodName);
-
-    <StaticTypedObject>
-    TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
-        throws NoSubtypeException;
 }
