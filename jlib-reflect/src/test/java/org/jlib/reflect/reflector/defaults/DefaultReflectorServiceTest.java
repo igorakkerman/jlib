@@ -32,18 +32,22 @@ public class DefaultReflectorServiceTest {
     @Test
     @SuppressWarnings("UnnecessaryBoxing")
     public void staticRun()
-    throws Exception {
+        throws Exception {
 
         final Number value = service
-                             .useClass("java.lang.Integer")                  // TypedClass
-                             .withType(Number.class)                         // TypedClass
-                             .withSupertypes(Integer.class)                  // TypedClass
-                             .useStaticMethod("valueOf")                     // Overload
-                             .withParameterTypes(int.class)                  // TypedMethod1
-                             .withReturnType(Number.class)                   // TypedMethod1
-                             .invoke(42)                                     // MethodReturn
-                             .returning(Integer.class)                       // MethodReturn
-                             .get();                                         // Number
+            .useClass("java.lang.Integer")                  // TypedClass<?>
+            .withType(Number.class)                         // TypedClass<Number>
+            .withSupertypes(
+                Integer.class)                  // TypedClass<Number> (verify actual supertype of instantiated class,
+            // keep static type)
+            .useStaticMethod("valueOf")                     // MethodOverload<?>
+            .withParameterTypes(int.class)                  // TypedMethod1<Method, ?, int>
+            .withReturnType(Number.class)                   // TypedMethod1<Method, Number, int>
+            .invoke(42)                                     // MethodReturn<Number>
+            .returning(
+                Integer.class)                       // MethodReturn<Number> (verify supertype of returned value,
+            // keep static type)
+            .get();                                         // Number
 
         assertThat(value).isEqualTo(Integer.valueOf(42));
     }
@@ -51,21 +55,21 @@ public class DefaultReflectorServiceTest {
     @Test
     @SuppressWarnings("UnnecessaryBoxing")
     public void nonstaticRun()
-    throws Exception {
+        throws Exception {
         final Number value = service
-                             .useClass("java.lang.Integer")                  // UntypedClassReflector
-                             .withType(Number.class)                         // TypedClassReflector
-                             .withSupertypes(Integer.class)                  // TypedClassReflector
-                             .useConstructor()                               // MethodOverloadReflector
-                             .withParameterTypes(int.class)                  // Nethod1Reflector
-                             .invoke(42)                                     // MethodReturn
-                             .returning(Integer.class)                       // MethodReturnValueReflector
-                             .useMethod("compareTo")                         // UntypedMethodReflector
-                             .withReturnType(int.class)                      // MethodOverloadReflector
-                             .withParameterTypes(Integer.class)              // Nethod1Reflector
-                             .invoke(3)                                      // MethodReturnValueReflector
-                             .returning(Integer.class)                       // MethodReturnValueReflector
-                             .get();                                         // ReturnValue
+            .useClass("java.lang.Integer")                  // TypedClass<?>
+            .withType(Number.class)                         // TypedClass<Number>
+            .withSupertypes(Integer.class)                  // TypedClass<Number>
+            .useConstructor()                               // ConstructorOverload<Number>
+            .withParameterTypes(int.class)                  // TypedMethod1<Constructor, Number, int>
+            .invoke(42)                                     // MethodReturn<Number>
+            .returning(Integer.class)                       // MethodReturn<Number>
+            .useMethod("compareTo")                         // MethodOverload<?>
+            .withParameterTypes(Integer.class)              // TypedMethod1<Method, int, Integer>
+            .withReturnType(int.class)                      // TypedMethod1<Method, int, Object>
+            .invoke(3)                                      // MethodReturn<int>
+            .returning(Integer.class)                       // MethodReturn<int>
+            .get();                                         // int
 
         assertThat(value).isEqualTo(Integer.valueOf(1));
     }
