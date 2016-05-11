@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.languageelement.reflection;
+package org.jlib.reflect.languageelement.corereflection;
 
 import java.lang.reflect.Method;
 

@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults;
 
 import lombok.experimental.UtilityClass;
 import org.jlib.reflect.languageelement.ClassLookupException;
-import org.jlib.reflect.languageelement.reflection.ReflectionLanguageElementHandler;
+import org.jlib.reflect.languageelement.corereflection.ReflectionLanguageElementHandler;
 import org.jlib.reflect.reflector.TypedClass;
 
 @UtilityClass
