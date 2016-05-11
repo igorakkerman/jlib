@@ -28,6 +28,7 @@ import org.jlib.reflect.programelement.ClassException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubtype;
 import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
@@ -88,7 +89,7 @@ public class DefaultTypedClass<Obj>
     }
 
     @Override
-    public Overload<Constructor<Obj>, Obj> useConstructor() {
+    public ConstructorOverload<Obj> useConstructor() {
         return new DefaultConstructorOverload<>(languageElementHelper, getActualClass());
     }
 

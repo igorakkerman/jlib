@@ -26,6 +26,7 @@ import java.lang.reflect.Constructor;
 import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
 import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.TypedMethod2;
@@ -39,7 +40,8 @@ import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethod3;
 import org.jlib.reflect.reflector.defaults.method.DefaultTypedMethodUnchecked;
 
 public class DefaultConstructorOverload<EnclosingClassObject>
-    extends AbstractOverload<Constructor<EnclosingClassObject>, EnclosingClassObject> {
+    extends AbstractOverload<Constructor<EnclosingClassObject>, EnclosingClassObject>
+    implements ConstructorOverload<EnclosingClassObject> {
 
     private static final Class<?>[] NO_PARAMETER_TYPES = {};
 
