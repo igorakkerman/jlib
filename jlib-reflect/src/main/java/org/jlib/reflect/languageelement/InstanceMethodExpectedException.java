@@ -19,22 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
+
+import java.lang.reflect.Method;
 
 import static org.jlib.message.MessageUtility.message;
 
-public class InvalidMethodParameterTypesException
+public class InstanceMethodExpectedException
 extends MethodLookupException {
 
-    private static final long serialVersionUID = - 4942289385749320071L;
+    private static final long serialVersionUID = - 3453056833527415771L;
 
-    public InvalidMethodParameterTypesException(final String className, final String methodName,
-                                                final Class<?>[] parameterTypes) {
-        super(message(), className, methodName, parameterTypes);
-    }
-
-    public InvalidMethodParameterTypesException(final String className, final String methodName,
-                                                final Class<?>[] parameterTypes, final Exception cause) {
-        super(message(), className, methodName, parameterTypes, cause);
+    public InstanceMethodExpectedException(final Method method) {
+        super(message(), method);
     }
 }

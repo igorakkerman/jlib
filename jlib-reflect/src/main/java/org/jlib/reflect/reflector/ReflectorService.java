@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector;
 
 import java.util.function.Supplier;
 
-import org.jlib.reflect.programelement.ClassLookupException;
+import org.jlib.reflect.languageelement.ClassLookupException;
 
 public interface ReflectorService {
 

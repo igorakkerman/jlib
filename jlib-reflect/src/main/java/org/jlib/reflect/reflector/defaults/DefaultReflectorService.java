@@ -22,8 +22,8 @@
 package org.jlib.reflect.reflector.defaults;
 
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.programelement.ClassLookupException;
-import org.jlib.reflect.programelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.ClassLookupException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.defaults.typedclass.DefaultTypedClass;

@@ -22,10 +22,10 @@
 package org.jlib.reflect.reflector.defaults.typedclass;
 
 import static java.util.Arrays.asList;
-import org.jlib.reflect.programelement.ClassException;
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubtype;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.ClassException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.TypedClass;

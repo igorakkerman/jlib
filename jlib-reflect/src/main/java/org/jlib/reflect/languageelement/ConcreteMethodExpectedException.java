@@ -19,18 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
 
 import java.lang.reflect.Method;
 
 import static org.jlib.message.MessageUtility.message;
 
-public class StaticMethodExpectedException
+public class ConcreteMethodExpectedException
 extends MethodLookupException {
 
-    private static final long serialVersionUID = - 1272651454980058465L;
+    private static final long serialVersionUID = - 5410080091550763771L;
 
-    public StaticMethodExpectedException(final Method method) {
+    public ConcreteMethodExpectedException(final Method method) {
         super(message(), method);
     }
 }

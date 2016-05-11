@@ -19,18 +19,27 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
 
-import java.lang.reflect.Method;
+import org.jlib.exception.ApplicationException;
+import org.jlib.message.Message;
 
-import static org.jlib.message.MessageUtility.message;
+public abstract class ProgramElementException
+extends ApplicationException {
 
-public class InstanceMethodExpectedException
-extends MethodLookupException {
+    private static final long serialVersionUID = 2276530860062232111L;
 
-    private static final long serialVersionUID = - 3453056833527415771L;
+    protected ProgramElementException() {}
 
-    public InstanceMethodExpectedException(final Method method) {
-        super(message(), method);
+    protected ProgramElementException(final Message message) {
+        super(message);
+    }
+
+    protected ProgramElementException(final Exception cause) {
+        super(cause);
+    }
+
+    protected ProgramElementException(final Message message, final Exception cause) {
+        super(message, cause);
     }
 }

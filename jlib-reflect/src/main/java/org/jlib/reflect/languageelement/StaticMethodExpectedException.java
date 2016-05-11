@@ -19,17 +19,18 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
 
-import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
-import org.jlib.message.Message;
+import static org.jlib.message.MessageUtility.message;
 
-public class ConstructorInvocationException
-extends MethodInvocationException {
+public class StaticMethodExpectedException
+extends MethodLookupException {
 
-    private static final long serialVersionUID = 3435646617089588446L;
+    private static final long serialVersionUID = - 1272651454980058465L;
 
-    public ConstructorInvocationException(final Message message, final Constructor<?> constructor) {
-        super(message, constructor.getDeclaringClass().getName(), constructor.getName());}
+    public StaticMethodExpectedException(final Method method) {
+        super(message(), method);
+    }
 }

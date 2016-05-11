@@ -19,19 +19,16 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.reflector;
+package org.jlib.reflect.languageelement;
 
-import org.jlib.reflect.languageelement.InvalidReturnTypeException;
-import org.jlib.reflect.languageelement.ProgramElementException;
+import org.jlib.message.Message;
 
-public interface MethodReturn<ReturnValue> {
+public class MethodInvocationException
+extends MethodLookupException {
 
-    MethodReturn<ReturnValue> returning(Class<?>... expectedSuperTypes)
-        throws InvalidReturnTypeException;
+    private static final long serialVersionUID = 4654719015582472812L;
 
-    MethodOverload<?> useMethod(String methodName);
-
-    @SuppressWarnings("RedundantThrows")
-    ReturnValue get()
-    throws ProgramElementException;
+    public MethodInvocationException(final Message message, final String className, final String methodName) {
+        super(message, className, methodName);
+    }
 }

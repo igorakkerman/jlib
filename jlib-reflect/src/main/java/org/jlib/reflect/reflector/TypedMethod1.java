@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.MethodLookupException;
+import org.jlib.reflect.languageelement.MethodLookupException;
 
 public interface TypedMethod1<Exe extends Executable, ReturnType, Argument1>
     extends TypedMethod<Exe, ReturnType> {

@@ -23,8 +23,8 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.programelement.MethodInvocationException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.MethodInvocationException;
 
 public class InstanceMethodInvokeStrategy<EnclosingObject>
     extends InvokeStrategy<Method> {

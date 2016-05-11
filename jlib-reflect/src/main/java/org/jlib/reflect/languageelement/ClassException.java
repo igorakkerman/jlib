@@ -19,24 +19,30 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
 
 import org.jlib.message.Message;
 
-public class InstanceMethodInvocationException
-extends MethodInvocationException {
+public abstract class ClassException
+extends ProgramElementException {
 
-    private static final long serialVersionUID = - 7447459566502520725L;
-    private final Object enclosingObject;
+    private static final long serialVersionUID = - 8652252161776673093L;
 
-    public InstanceMethodInvocationException(final Message message, final Object enclosingObject,
-                                             final String methodName) {
-        super(message.with("enclosingObject", enclosingObject), enclosingObject.getClass().getName(), methodName);
+    private final String className;
 
-        this.enclosingObject = enclosingObject;
+    public ClassException(final Message message, final String className) {
+        super(message.with("class", className));
+
+        this.className = className;
     }
 
-    public Object getEnclosingObject() {
-        return enclosingObject;
+    public ClassException(final Message message, final String className, final Throwable cause) {
+        this(message, className);
+
+        initCause(cause);
+    }
+
+    public String getClassName() {
+        return className;
     }
 }

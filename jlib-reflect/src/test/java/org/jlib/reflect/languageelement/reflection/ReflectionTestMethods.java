@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.languageelement.reflection;
 
 @SuppressWarnings({ "EmptyMethod", "SameReturnValue" })
 class ReflectionTestMethods {

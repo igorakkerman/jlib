@@ -23,8 +23,8 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.programelement.MethodLookupException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod1;
 import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;

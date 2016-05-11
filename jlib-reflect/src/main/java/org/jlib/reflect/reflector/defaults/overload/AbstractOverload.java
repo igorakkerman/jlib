@@ -28,9 +28,9 @@ import static java.util.Collections.singletonList;
 import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubtype;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 
 @RequiredArgsConstructor(access = PROTECTED)

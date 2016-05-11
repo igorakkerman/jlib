@@ -23,8 +23,8 @@ package org.jlib.reflect.reflector;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.languageelement.NoSubtypeException;
 
 public interface Overload<Exe extends Executable, ReturnValue> {
 

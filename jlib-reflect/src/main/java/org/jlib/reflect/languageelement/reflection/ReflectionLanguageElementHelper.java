@@ -19,7 +19,7 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement.reflection;
+package org.jlib.reflect.languageelement.reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -27,12 +27,12 @@ import java.lang.reflect.Method;
 import static lombok.AccessLevel.PRIVATE;
 import lombok.NoArgsConstructor;
 import static org.jlib.message.MessageUtility.message;
-import org.jlib.reflect.programelement.ClassLookupException;
-import org.jlib.reflect.programelement.ConstructorInvocationException;
-import org.jlib.reflect.programelement.InstanceMethodInvocationException;
-import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.programelement.MethodInvocationException;
+import org.jlib.reflect.languageelement.ClassLookupException;
+import org.jlib.reflect.languageelement.ConstructorInvocationException;
+import org.jlib.reflect.languageelement.InstanceMethodInvocationException;
+import org.jlib.reflect.languageelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.MethodInvocationException;
 
 @NoArgsConstructor(access = PRIVATE)
 public class ReflectionLanguageElementHelper

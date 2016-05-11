@@ -23,9 +23,9 @@ package org.jlib.reflect.reflector.defaults.overload;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.programelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.programelement.LanguageElementHelper;
-import org.jlib.reflect.programelement.NoSubtypeException;
+import org.jlib.reflect.languageelement.InvalidMethodParameterTypesException;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.TypedMethod0;
 import org.jlib.reflect.reflector.TypedMethod1;

@@ -26,7 +26,7 @@ import java.lang.reflect.Executable;
 import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.programelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHelper;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 

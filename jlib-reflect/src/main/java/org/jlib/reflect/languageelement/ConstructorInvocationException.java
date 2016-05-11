@@ -19,30 +19,17 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
+
+import java.lang.reflect.Constructor;
 
 import org.jlib.message.Message;
 
-public abstract class ClassException
-extends ProgramElementException {
+public class ConstructorInvocationException
+extends MethodInvocationException {
 
-    private static final long serialVersionUID = - 8652252161776673093L;
+    private static final long serialVersionUID = 3435646617089588446L;
 
-    private final String className;
-
-    public ClassException(final Message message, final String className) {
-        super(message.with("class", className));
-
-        this.className = className;
-    }
-
-    public ClassException(final Message message, final String className, final Throwable cause) {
-        this(message, className);
-
-        initCause(cause);
-    }
-
-    public String getClassName() {
-        return className;
-    }
+    public ConstructorInvocationException(final Message message, final Constructor<?> constructor) {
+        super(message, constructor.getDeclaringClass().getName(), constructor.getName());}
 }

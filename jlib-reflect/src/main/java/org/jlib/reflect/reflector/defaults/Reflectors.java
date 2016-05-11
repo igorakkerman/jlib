@@ -22,8 +22,8 @@
 package org.jlib.reflect.reflector.defaults;
 
 import lombok.experimental.UtilityClass;
-import org.jlib.reflect.programelement.ClassLookupException;
-import org.jlib.reflect.programelement.reflection.ReflectionLanguageElementHelper;
+import org.jlib.reflect.languageelement.ClassLookupException;
+import org.jlib.reflect.languageelement.reflection.ReflectionLanguageElementHelper;
 import org.jlib.reflect.reflector.TypedClass;
 
 @UtilityClass
