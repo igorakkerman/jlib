@@ -21,8 +21,6 @@
 
 package org.jlib.reflect.reflector.defaults.typedclass;
 
-import java.lang.reflect.Constructor;
-
 import static java.util.Arrays.asList;
 import org.jlib.reflect.programelement.ClassException;
 import org.jlib.reflect.programelement.LanguageElementHelper;
@@ -30,7 +28,6 @@ import static org.jlib.reflect.programelement.LanguageElementUtility.assertSubty
 import org.jlib.reflect.programelement.NoSubtypeException;
 import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.MethodOverload;
-import org.jlib.reflect.reflector.Overload;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.defaults.overload.DefaultConstructorOverload;
 import org.jlib.reflect.reflector.defaults.overload.DefaultStaticMethodOverload;
@@ -83,7 +80,7 @@ public class DefaultTypedClass<Obj>
     }
 
     @Override
-    public MethodOverload<Object> useStaticMethod(final String staticMethodName) {
+    public MethodOverload<?> useStaticMethod(final String staticMethodName) {
         return new DefaultStaticMethodOverload<>(languageElementHelper, getActualClass(), staticMethodName,
                                                  Object.class);
     }

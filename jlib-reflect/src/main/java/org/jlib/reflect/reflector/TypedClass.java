@@ -55,5 +55,5 @@ public interface TypedClass<Obj> {
 
     ConstructorOverload<Obj> useConstructor();
 
-    MethodOverload<Object> useStaticMethod(String staticMethodName);
+    MethodOverload<?> useStaticMethod(String staticMethodName);
 }
