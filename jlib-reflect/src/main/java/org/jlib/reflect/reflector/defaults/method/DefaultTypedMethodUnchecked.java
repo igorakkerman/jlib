@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethodUnchecked;
@@ -34,10 +34,10 @@ public class DefaultTypedMethodUnchecked<Exe extends Executable, ReturnValue>
     extends AbstractTypedMethod<Exe, ReturnValue>
     implements TypedMethodUnchecked<Exe, ReturnValue> {
 
-    public DefaultTypedMethodUnchecked(final LanguageElementHelper languageElementHelper,
+    public DefaultTypedMethodUnchecked(final LanguageElementHandler languageElementHandler,
                                        final InvokeStrategy<Exe> invokeStrategy) {
 
-        super(languageElementHelper, invokeStrategy);
+        super(languageElementHandler, invokeStrategy);
     }
 
     @Override
@@ -46,13 +46,13 @@ public class DefaultTypedMethodUnchecked<Exe extends Executable, ReturnValue>
         throws MethodLookupException {
         final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(arguments);
 
-        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
+        return new DefaultMethodReturn<>(getLanguageElementHandler(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
     TypedMethodUnchecked<Exe, StaticReturnValue>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethodUnchecked<>(getLanguageElementHelper(), getInvokeStrategy());
+        return new DefaultTypedMethodUnchecked<>(getLanguageElementHandler(), getInvokeStrategy());
     }
 }

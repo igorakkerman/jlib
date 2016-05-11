@@ -26,7 +26,7 @@ import java.lang.reflect.Executable;
 import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.reflector.TypedMethod;
 import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 
@@ -35,7 +35,7 @@ import org.jlib.reflect.reflector.defaults.invoke.InvokeStrategy;
 public abstract class AbstractTypedMethod<Exe extends Executable, ReturnValue>
     implements TypedMethod<Exe, ReturnValue> {
 
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
     private final InvokeStrategy<Exe> invokeStrategy;
 
     @Override

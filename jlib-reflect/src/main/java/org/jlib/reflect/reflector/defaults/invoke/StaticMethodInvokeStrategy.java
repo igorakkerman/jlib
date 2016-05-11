@@ -23,21 +23,21 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodInvocationException;
 
 public class StaticMethodInvokeStrategy
     extends InvokeStrategy<Method> {
 
-    public StaticMethodInvokeStrategy(final LanguageElementHelper languageElementHelper,
+    public StaticMethodInvokeStrategy(final LanguageElementHandler languageElementHandler,
                                       final Method method) {
-        super(languageElementHelper, method);
+        super(languageElementHandler, method);
     }
 
     @Override
     public Object invoke(final Object... arguments)
         throws MethodInvocationException {
 
-        return getLanguageElementHelper().invokeStaticMethod(getMethod(), arguments);
+        return getLanguageElementHandler().invokeStaticMethod(getMethod(), arguments);
     }
 }

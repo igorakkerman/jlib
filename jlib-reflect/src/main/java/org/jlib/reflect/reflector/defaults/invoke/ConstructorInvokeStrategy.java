@@ -23,21 +23,21 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Constructor;
 
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodInvocationException;
 
 public class ConstructorInvokeStrategy<InstantiatedObject>
     extends InvokeStrategy<Constructor<InstantiatedObject>> {
 
-    public ConstructorInvokeStrategy(final LanguageElementHelper languageElementHelper,
+    public ConstructorInvokeStrategy(final LanguageElementHandler languageElementHandler,
                                      final Constructor<InstantiatedObject> constructor) {
-        super(languageElementHelper, constructor);
+        super(languageElementHandler, constructor);
     }
 
     @Override
     public Object invoke(final Object... arguments)
         throws MethodInvocationException {
 
-        return getLanguageElementHelper().invokeConstructor(getMethod(), arguments);
+        return getLanguageElementHandler().invokeConstructor(getMethod(), arguments);
     }
 }

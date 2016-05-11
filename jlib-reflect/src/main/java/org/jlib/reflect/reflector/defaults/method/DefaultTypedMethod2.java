@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults.method;
 
 import java.lang.reflect.Executable;
 
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodLookupException;
 import org.jlib.reflect.reflector.MethodReturn;
 import org.jlib.reflect.reflector.TypedMethod2;
@@ -34,10 +34,10 @@ public class DefaultTypedMethod2<Exe extends Executable, ReturnValue, Argument1,
     extends AbstractTypedMethod<Exe, ReturnValue>
     implements TypedMethod2<Exe, ReturnValue, Argument1, Argument2> {
 
-    public DefaultTypedMethod2(final LanguageElementHelper languageElementHelper,
+    public DefaultTypedMethod2(final LanguageElementHandler languageElementHandler,
                                final InvokeStrategy<Exe> invokeStrategy) {
 
-        super(languageElementHelper, invokeStrategy);
+        super(languageElementHandler, invokeStrategy);
     }
 
     @Override
@@ -47,13 +47,13 @@ public class DefaultTypedMethod2<Exe extends Executable, ReturnValue, Argument1,
 
         final ReturnValue returnValue = (ReturnValue) getInvokeStrategy().invoke(argument1, argument2);
 
-        return new DefaultMethodReturn<>(getLanguageElementHelper(), getInvokeStrategy().getMethod(), returnValue);
+        return new DefaultMethodReturn<>(getLanguageElementHandler(), getInvokeStrategy().getMethod(), returnValue);
     }
 
     @Override
     public <StaticReturnValue>
     TypedMethod2<Exe, StaticReturnValue, Argument1, Argument2>
     withReturnType(final Class<StaticReturnValue> staticReturnSuperType) {
-        return new DefaultTypedMethod2<>(getLanguageElementHelper(), getInvokeStrategy());
+        return new DefaultTypedMethod2<>(getLanguageElementHandler(), getInvokeStrategy());
     }
 }

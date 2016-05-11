@@ -23,14 +23,14 @@ package org.jlib.reflect.reflector.defaults;
 
 import lombok.experimental.UtilityClass;
 import org.jlib.reflect.languageelement.ClassLookupException;
-import org.jlib.reflect.languageelement.reflection.ReflectionLanguageElementHelper;
+import org.jlib.reflect.languageelement.reflection.ReflectionLanguageElementHandler;
 import org.jlib.reflect.reflector.TypedClass;
 
 @UtilityClass
 public final class Reflectors {
 
     public static final DefaultReflectorService SERVICE =
-        new DefaultReflectorService(ReflectionLanguageElementHelper.INSTANCE);
+        new DefaultReflectorService(ReflectionLanguageElementHandler.INSTANCE);
 
     public static TypedClass<?> useClass(final String className)
         throws ClassLookupException {

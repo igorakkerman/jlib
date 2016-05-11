@@ -26,14 +26,14 @@ import java.lang.reflect.Executable;
 import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodInvocationException;
 
 @RequiredArgsConstructor(access = PROTECTED)
 public abstract class InvokeStrategy<Exe extends Executable> {
 
     @Getter(PROTECTED)
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
     @Getter
     private final Exe method;
 

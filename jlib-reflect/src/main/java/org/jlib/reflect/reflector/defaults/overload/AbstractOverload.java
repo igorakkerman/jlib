@@ -28,7 +28,7 @@ import static java.util.Collections.singletonList;
 import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
 import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
@@ -38,7 +38,7 @@ import org.jlib.reflect.reflector.Overload;
 public abstract class AbstractOverload<Exe extends Executable, ReturnValue>
     implements Overload<Exe, ReturnValue> {
 
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
     private final Class<ReturnValue> returnValueType;
 
     protected void assertReturnValueTypeValid(final Method method)

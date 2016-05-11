@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults.invoke;
 
 import java.lang.reflect.Method;
 
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodInvocationException;
 
 public class InstanceMethodInvokeStrategy<EnclosingObject>
@@ -31,10 +31,10 @@ public class InstanceMethodInvokeStrategy<EnclosingObject>
 
     private final EnclosingObject enclosingObject;
 
-    public InstanceMethodInvokeStrategy(final LanguageElementHelper languageElementHelper,
+    public InstanceMethodInvokeStrategy(final LanguageElementHandler languageElementHandler,
                                         final EnclosingObject enclosingObject, final Method executable) {
 
-        super(languageElementHelper, executable);
+        super(languageElementHandler, executable);
 
         this.enclosingObject = enclosingObject;
     }
@@ -43,6 +43,6 @@ public class InstanceMethodInvokeStrategy<EnclosingObject>
     public Object invoke(final Object... arguments)
         throws MethodInvocationException {
 
-        return getLanguageElementHelper().invokeInstanceMethod(enclosingObject, getMethod(), arguments);
+        return getLanguageElementHandler().invokeInstanceMethod(enclosingObject, getMethod(), arguments);
     }
 }

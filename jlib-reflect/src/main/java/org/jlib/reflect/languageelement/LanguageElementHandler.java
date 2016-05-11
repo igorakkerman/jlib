@@ -19,12 +19,12 @@
  *     limitations under the License.
  */
 
-package org.jlib.reflect.programelement;
+package org.jlib.reflect.languageelement;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-public interface LanguageElementHelper {
+public interface LanguageElementHandler {
 
     Class<?> lookupClass(String className)
         throws ClassLookupException;

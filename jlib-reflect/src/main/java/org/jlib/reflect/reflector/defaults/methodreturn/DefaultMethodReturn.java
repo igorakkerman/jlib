@@ -28,7 +28,7 @@ import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.languageelement.InvalidReturnTypeException;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import static org.jlib.reflect.languageelement.LanguageElementUtility.assertReturnTypeInstanceOf;
 import org.jlib.reflect.languageelement.ProgramElementException;
 import org.jlib.reflect.reflector.MethodOverload;
@@ -39,7 +39,7 @@ import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverloa
 public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
 implements MethodReturn<ReturnValue> {
 
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
     @Getter(PROTECTED)
     private final Exe executable;
     private final ReturnValue returnValue;
@@ -55,7 +55,7 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public MethodOverload<?> useMethod(final String methodName) {
-        return new DefaultInstanceMethodOverload<>(languageElementHelper, returnValue, methodName, Object.class);
+        return new DefaultInstanceMethodOverload<>(languageElementHandler, returnValue, methodName, Object.class);
     }
 
     @Override

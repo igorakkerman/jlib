@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults;
 
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.languageelement.ClassLookupException;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.reflector.ReflectorService;
 import org.jlib.reflect.reflector.TypedClass;
 import org.jlib.reflect.reflector.defaults.typedclass.DefaultTypedClass;
@@ -32,16 +32,16 @@ import org.jlib.reflect.reflector.defaults.typedclass.DefaultTypedClass;
 public class DefaultReflectorService
 implements ReflectorService {
 
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
 
     @Override
     public TypedClass<?> useClass(final String className)
     throws ClassLookupException {
-        return useClass(languageElementHelper.lookupClass(className));
+        return useClass(languageElementHandler.lookupClass(className));
     }
 
     @Override
     public <Value> TypedClass<Value> useClass(final Class<Value> concreteClass) {
-        return new DefaultTypedClass<>(languageElementHelper, concreteClass);
+        return new DefaultTypedClass<>(languageElementHandler, concreteClass);
     }
 }

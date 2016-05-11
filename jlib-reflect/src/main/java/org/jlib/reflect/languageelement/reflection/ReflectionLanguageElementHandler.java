@@ -31,14 +31,14 @@ import org.jlib.reflect.languageelement.ClassLookupException;
 import org.jlib.reflect.languageelement.ConstructorInvocationException;
 import org.jlib.reflect.languageelement.InstanceMethodInvocationException;
 import org.jlib.reflect.languageelement.InvalidMethodParameterTypesException;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import org.jlib.reflect.languageelement.MethodInvocationException;
 
 @NoArgsConstructor(access = PRIVATE)
-public class ReflectionLanguageElementHelper
-    implements LanguageElementHelper {
+public class ReflectionLanguageElementHandler
+    implements LanguageElementHandler {
 
-    public static ReflectionLanguageElementHelper INSTANCE = new ReflectionLanguageElementHelper();
+    public static ReflectionLanguageElementHandler INSTANCE = new ReflectionLanguageElementHandler();
 
     @Override
     public Class<?> lookupClass(final String className)

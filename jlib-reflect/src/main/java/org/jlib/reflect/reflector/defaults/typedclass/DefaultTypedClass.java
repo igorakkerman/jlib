@@ -23,7 +23,7 @@ package org.jlib.reflect.reflector.defaults.typedclass;
 
 import static java.util.Arrays.asList;
 import org.jlib.reflect.languageelement.ClassException;
-import org.jlib.reflect.languageelement.LanguageElementHelper;
+import org.jlib.reflect.languageelement.LanguageElementHandler;
 import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
 import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.ConstructorOverload;
@@ -35,18 +35,18 @@ import org.jlib.reflect.reflector.defaults.overload.DefaultStaticMethodOverload;
 public class DefaultTypedClass<Obj>
     implements TypedClass<Obj> {
 
-    private final LanguageElementHelper languageElementHelper;
+    private final LanguageElementHandler languageElementHandler;
     private final Class<?> actualClass;
 
-    public DefaultTypedClass(final LanguageElementHelper languageElementHelper, final Class<Obj> actualClass) {
-        this.languageElementHelper = languageElementHelper;
+    public DefaultTypedClass(final LanguageElementHandler languageElementHandler, final Class<Obj> actualClass) {
+        this.languageElementHandler = languageElementHandler;
         this.actualClass = actualClass;
     }
 
-    public DefaultTypedClass(final LanguageElementHelper languageElementHelper, final Class<Obj> staticType,
+    public DefaultTypedClass(final LanguageElementHandler languageElementHandler, final Class<Obj> staticType,
                              final Class<?> actualClass)
         throws NoSubtypeException {
-        this.languageElementHelper = languageElementHelper;
+        this.languageElementHandler = languageElementHandler;
         this.actualClass = actualClass;
 
         withSupertypes(staticType);
@@ -68,7 +68,7 @@ public class DefaultTypedClass<Obj>
     public <StaticReturnValue>
     TypedClass<StaticReturnValue> withType(final Class<StaticReturnValue> staticType)
         throws NoSubtypeException {
-        return new DefaultTypedClass<>(languageElementHelper, staticType, actualClass);
+        return new DefaultTypedClass<>(languageElementHandler, staticType, actualClass);
     }
 
     @Override
@@ -81,13 +81,13 @@ public class DefaultTypedClass<Obj>
 
     @Override
     public MethodOverload<?> useStaticMethod(final String staticMethodName) {
-        return new DefaultStaticMethodOverload<>(languageElementHelper, getActualClass(), staticMethodName,
+        return new DefaultStaticMethodOverload<>(languageElementHandler, getActualClass(), staticMethodName,
                                                  Object.class);
     }
 
     @Override
     public ConstructorOverload<Obj> useConstructor() {
-        return new DefaultConstructorOverload<>(languageElementHelper, getActualClass());
+        return new DefaultConstructorOverload<>(languageElementHandler, getActualClass());
     }
 
     @SuppressWarnings("unchecked")
