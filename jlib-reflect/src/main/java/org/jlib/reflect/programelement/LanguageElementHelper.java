@@ -21,13 +21,32 @@
 
 package org.jlib.reflect.programelement;
 
-public interface LanguageElementHelper
-    extends ClassLookup,
-            StaticMethodLookup,
-            StaticMethodInvoker,
-            ConstructorLookup,
-            ConstructorInvoker,
-            InstanceMethodLookup,
-            InstanceMethodInvoker {
-    // intentionally blank
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+
+public interface LanguageElementHelper {
+
+    Class<?> lookupClass(String className)
+        throws ClassLookupException;
+
+    Method lookupInstanceMethod(Class<?> enclosingClass, String methodName, Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException;
+
+    Method lookupStaticMethod(Class<?> enclosingClass, String methodName, Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException;
+
+    <EnclosingClassObject>
+    Constructor<EnclosingClassObject> lookupConstructor(Class<EnclosingClassObject> enclosingClass,
+                                                        Class<?>... parameterTypes)
+        throws InvalidMethodParameterTypesException;
+
+    Object invokeInstanceMethod(final Object enclosingObject, final Method method, final Object... arguments)
+        throws MethodInvocationException;
+
+    Object invokeStaticMethod(Method method, Object... arguments)
+        throws MethodInvocationException;
+
+    <InstantiatedObject>
+    InstantiatedObject invokeConstructor(Constructor<InstantiatedObject> constructor, Object... arguments)
+        throws MethodInvocationException;
 }
