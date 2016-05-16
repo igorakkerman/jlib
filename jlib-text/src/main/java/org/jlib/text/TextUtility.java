@@ -23,7 +23,7 @@ package org.jlib.text;
 
 
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class TextUtility {
 

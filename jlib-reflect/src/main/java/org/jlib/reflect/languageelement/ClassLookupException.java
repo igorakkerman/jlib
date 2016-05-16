@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.languageelement;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class ClassLookupException
 extends ClassException {

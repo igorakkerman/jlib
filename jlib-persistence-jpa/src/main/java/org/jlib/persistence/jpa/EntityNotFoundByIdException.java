@@ -23,7 +23,7 @@ package org.jlib.persistence.jpa;
 
 import java.io.Serializable;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class EntityNotFoundByIdException
 extends JpaPersistenceException {

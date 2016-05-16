@@ -22,8 +22,7 @@
 package org.jlib.systemproperty;
 
 import org.jlib.exception.ApplicationException;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link ApplicationException} thrown when trying to retrieve the value of an optional system property that is not set.

@@ -23,7 +23,7 @@ package org.jlib.value.formatter;
 
 import java.util.MissingFormatArgumentException;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,7 +46,7 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEmpty();
+        assertThat(builder.toString()).isEmpty();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("++ value **");
+        assertThat(builder.toString()).isEqualTo("++ value **");
     }
 
     @Test
@@ -72,7 +72,7 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("value: Hallo");
+        assertThat(builder.toString()).isEqualTo("value: Hallo");
     }
 
     @Test
@@ -86,7 +86,7 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("This is a text ... value: Hallo");
+        assertThat(builder.toString()).isEqualTo("This is a text ... value: Hallo");
     }
 
     @Test(expected = MissingFormatArgumentException.class)
@@ -112,6 +112,6 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("value: Hallo {0}");
+        assertThat(builder.toString()).isEqualTo("value: Hallo {0}");
     }
 }

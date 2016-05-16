@@ -25,8 +25,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no next item to return by an {@link Iterator}.

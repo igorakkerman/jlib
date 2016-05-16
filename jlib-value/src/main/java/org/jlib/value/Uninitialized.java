@@ -21,6 +21,9 @@
 
 package org.jlib.value;
 
+import static lombok.AccessLevel.PROTECTED;
+import lombok.NoArgsConstructor;
+
 /**
  * Skeletal implementation of a not initialized {@link Modifiable}.
  *
@@ -29,13 +32,9 @@ package org.jlib.value;
  *
  * @author Igor Akkerman
  */
+@NoArgsConstructor(access = PROTECTED)
 public abstract class Uninitialized<Value>
 implements Modifiable<Value> {
-
-    /**
-     * Creates a new {@link Uninitialized}.
-     */
-    protected Uninitialized() {}
 
     /**
      * Always throws a {@link NotAccessibleException}.

@@ -25,7 +25,7 @@ import java.lang.reflect.Executable;
 
 import java.util.Collection;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class InvalidReturnTypeException
 extends MethodInvocationException {

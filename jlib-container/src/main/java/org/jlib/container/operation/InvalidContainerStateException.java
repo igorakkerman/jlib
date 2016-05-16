@@ -23,8 +23,7 @@ package org.jlib.container.operation;
 
 import org.jlib.exception.InvalidStateException;
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public abstract class InvalidContainerStateException
 extends InvalidStateException {

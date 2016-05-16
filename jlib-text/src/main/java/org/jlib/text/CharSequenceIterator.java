@@ -24,7 +24,7 @@ package org.jlib.text;
 import java.util.Iterator;
 
 import org.jlib.iterator.NoNextItemException;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * <p>

@@ -21,6 +21,12 @@
 
 package org.jlib.value;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+// TODO: verify if order can be changed
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class InitializedNamed<Value>
 extends Initialized<Value>
 implements Named<Value> {
@@ -33,10 +39,5 @@ implements Named<Value> {
         super(value);
 
         this.name = name;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

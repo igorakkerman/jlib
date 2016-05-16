@@ -21,10 +21,10 @@
 
 package org.jlib.container.storage.capacity;
 
-import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.InvalidStorageArgumentException;
+import org.jlib.container.storage.LinearIndexStorage;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class InvalidCapacityException
 extends InvalidStorageArgumentException {

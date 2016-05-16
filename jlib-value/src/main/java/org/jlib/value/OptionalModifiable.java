@@ -26,13 +26,13 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public class OptionalModifiable<Value>
 implements Modifiable<Value> {
 
-    public static <Value> OptionalModifiable<Value> from(final Value value) {
+    public static <Value> OptionalModifiable<Value> of(final Value value) {
         return new OptionalModifiable<>(value);
     }
 
-    public static <Value> OptionalModifiable<Value> fromNullable(@Nullable final Value value) {
+    public static <Value> OptionalModifiable<Value> ofNullable(@Nullable final Value value) {
         return value != null ?
-               from(value) :
+               of(value) :
                new OptionalModifiable<>();
     }
 

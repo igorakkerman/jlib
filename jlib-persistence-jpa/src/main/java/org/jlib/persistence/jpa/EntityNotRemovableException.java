@@ -21,7 +21,7 @@
 
 package org.jlib.persistence.jpa;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class EntityNotRemovableException
 extends JpaPersistenceException {

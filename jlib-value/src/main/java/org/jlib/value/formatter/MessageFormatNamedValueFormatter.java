@@ -23,6 +23,7 @@ package org.jlib.value.formatter;
 
 import java.text.MessageFormat;
 
+import lombok.Data;
 import org.jlib.value.Named;
 
 /**
@@ -35,14 +36,11 @@ import org.jlib.value.Named;
  * operations, which affect its performance.
  * </p>
  */
+@Data
 public class MessageFormatNamedValueFormatter
 implements NamedValueFormatter<Object> {
 
     private final String template;
-
-    public MessageFormatNamedValueFormatter(final String template) {
-        this.template = template;
-    }
 
     @Override
     public void append(final StringBuilder builder, final String name, final Object value) {

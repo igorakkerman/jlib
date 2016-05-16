@@ -30,6 +30,7 @@ package org.jlib.value;
  * @param <Self>
  *        own type
  */
+// TODO: review
 public abstract class Builder<Obj, Self extends Builder<Obj, Self>> {
 
     private Accessible<Obj> object = this::newInstance;
@@ -51,7 +52,7 @@ public abstract class Builder<Obj, Self extends Builder<Obj, Self>> {
      * @return this {@link Builder} to allow chaining
      */
     @SuppressWarnings("unchecked")
-    public Self from(final Obj prototype) {
+    public Self of(final Obj prototype) {
         object = new Initialized<>(prototype);
 
         return (Self) this;

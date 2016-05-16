@@ -21,8 +21,7 @@
 
 package org.jlib.container.operation;
 
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add

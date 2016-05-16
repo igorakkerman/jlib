@@ -53,7 +53,6 @@
       <module name="jlib-base" target="1.5" />
       <module name="jlib-basefunctions" target="8" />
       <module name="jlib-basefunctions-apachecommons" target="8" />
-      <module name="jlib-codec" target="1.8" />
       <module name="jlib-codequality" target="8" />
       <module name="jlib-collection" target="8" />
       <module name="jlib-container" target="8" />
@@ -61,19 +60,14 @@
       <module name="jlib-io" target="8" />
       <module name="jlib-iterator" target="8" />
       <module name="jlib-message" target="8" />
-      <module name="jlib-object-spi" target="1.8" />
-      <module name="jlib-object-spi-apachecommons" target="1.8" />
-      <module name="jlib-operation" target="1.8" />
       <module name="jlib-operator" target="8" />
       <module name="jlib-persistence" target="8" />
       <module name="jlib-persistence-hibernate" target="8" />
       <module name="jlib-persistence-jpa" target="8" />
       <module name="jlib-reflect" target="8" />
       <module name="jlib-shared" target="8" />
-      <module name="jlib-spi-apachecommons" target="1.8" />
       <module name="jlib-systemproperty" target="8" />
       <module name="jlib-text" target="8" />
-      <module name="jlib-unittest" target="1.8" />
       <module name="jlib-value" target="8" />
     </bytecodeTargetLevel>
   </component>

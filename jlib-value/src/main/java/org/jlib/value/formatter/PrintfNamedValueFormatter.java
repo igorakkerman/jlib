@@ -23,14 +23,13 @@ package org.jlib.value.formatter;
 
 import java.util.Formatter;
 
+import lombok.Data;
+
+@Data
 public class PrintfNamedValueFormatter
 implements NamedValueFormatter<Object> {
 
     private final String template;
-
-    public PrintfNamedValueFormatter(final String template) {
-        this.template = template;
-    }
 
     @Override
     public void append(final StringBuilder builder, final String name, final Object value) {
