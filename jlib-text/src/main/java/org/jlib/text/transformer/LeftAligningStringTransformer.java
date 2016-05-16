@@ -29,7 +29,7 @@ package org.jlib.text.transformer;
  * @author Igor Akkerman
  */
 public class LeftAligningStringTransformer
-extends PaddingStringTransformer {
+    extends PaddingStringTransformer {
 
     /**
      * Creates a new LeftAligningStringTransformer.
@@ -44,9 +44,9 @@ extends PaddingStringTransformer {
         super(finalStringLength, paddingCharacter);
     }
 
-
     @Override
-    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder, final boolean additionalPaddingCharacterRequired) {
+    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder,
+                    final boolean additionalPaddingCharacterRequired) {
         stringBuilder.append(halfPadBuilder);
         stringBuilder.append(halfPadBuilder);
         if (additionalPaddingCharacterRequired)

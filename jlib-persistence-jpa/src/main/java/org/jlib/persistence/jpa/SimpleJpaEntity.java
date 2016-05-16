@@ -44,7 +44,7 @@ import org.jlib.persistence.IdEntity;
  */
 @MappedSuperclass
 public abstract class SimpleJpaEntity<ID extends Serializable>
-implements IdEntity<ID> {
+    implements IdEntity<ID> {
 
     @Id
     @GeneratedValue(strategy = AUTO)

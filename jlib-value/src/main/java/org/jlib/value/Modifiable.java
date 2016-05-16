@@ -30,7 +30,7 @@ package org.jlib.value;
  * @author Igor Akkerman
  */
 public interface Modifiable<Value>
-extends Accessor<Value> {
+    extends Accessor<Value> {
 
     /**
      * Registers the new {@link Value}.
@@ -42,5 +42,5 @@ extends Accessor<Value> {
      *         if {@code value} is invalid
      */
     void set(Value value)
-    throws IllegalArgumentException;
+        throws IllegalArgumentException;
 }

@@ -30,7 +30,7 @@ package org.jlib.text.transformer;
  * @author Igor Akkerman
  */
 public class CenteringStringTransformer
-extends PaddingStringTransformer {
+    extends PaddingStringTransformer {
 
     /**
      * Creates a new CenteringStringTransformer.
@@ -45,9 +45,9 @@ extends PaddingStringTransformer {
         super(finalStringLength, paddingCharacter);
     }
 
-
     @Override
-    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder, final boolean additionalPaddingCharacterRequired) {
+    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder,
+                    final boolean additionalPaddingCharacterRequired) {
         stringBuilder.insert(0, halfPadBuilder);
         stringBuilder.append(halfPadBuilder);
 

@@ -31,6 +31,8 @@ import org.jlib.operator.OperatorException;
  */
 public final class ObserverUtility {
 
+    private ObserverUtility() {}
+
     public static <Value> ConsumersObserver<Value> observe() {
         return new ConsumersObserver<>();
     }
@@ -62,7 +64,7 @@ public final class ObserverUtility {
     @SuppressWarnings({ "ProhibitedExceptionDeclared", "ProhibitedExceptionThrown" })
     public static <Value> void operate(final HandledOperator handledOperator, final Value value,
                                        final Observer<Value>... observers)
-    throws RuntimeException {
+        throws RuntimeException {
         try {
             for (final Observer<Value> observer : observers)
                 observer.before(value);
@@ -80,6 +82,4 @@ public final class ObserverUtility {
             throw exception.getCause();
         }
     }
-
-    private ObserverUtility() {}
 }

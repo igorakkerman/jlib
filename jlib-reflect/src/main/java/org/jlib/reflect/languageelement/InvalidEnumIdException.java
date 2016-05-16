@@ -21,7 +21,7 @@
 
 package org.jlib.reflect.languageelement;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * Exception thrown when trying to select an {@link Enum} value using some identifier, like a discriminator character in
@@ -30,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class InvalidEnumIdException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = 1248871337527197565L;
 

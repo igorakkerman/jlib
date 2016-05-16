@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public interface BidiIterable<Item>
-extends Iterable<Item> {
+    extends Iterable<Item> {
 
     /**
      * Returns a new {@link BidiIterator} over the Items of this

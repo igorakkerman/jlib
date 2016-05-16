@@ -26,10 +26,11 @@ import java.lang.reflect.Constructor;
 import org.jlib.message.Message;
 
 public class ConstructorInvocationException
-extends MethodInvocationException {
+    extends MethodInvocationException {
 
     private static final long serialVersionUID = 3435646617089588446L;
 
     public ConstructorInvocationException(final Message message, final Constructor<?> constructor) {
-        super(message, constructor.getDeclaringClass().getName(), constructor.getName());}
+        super(message, constructor.getDeclaringClass().getName(), constructor.getName());
+    }
 }

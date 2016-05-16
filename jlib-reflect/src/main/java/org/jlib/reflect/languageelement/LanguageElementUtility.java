@@ -30,6 +30,8 @@ import static java.util.stream.Collectors.toList;
 
 public final class LanguageElementUtility {
 
+    private LanguageElementUtility() {}
+
     public static void assertReturnTypeInstanceOf(final Executable executable, final Object returnValue,
                                                   final Collection<? extends Class<?>> expectedSuperTypes)
         throws InvalidReturnTypeException {
@@ -56,6 +58,4 @@ public final class LanguageElementUtility {
         if (! invalidSuperTypes.isEmpty())
             throw new NoSubtypeException(actualType, invalidSuperTypes);
     }
-
-    private LanguageElementUtility() {}
 }

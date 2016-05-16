@@ -32,7 +32,7 @@ import org.jlib.iterator.RemoveIterator;
  * @author Igor Akkerman
  */
 public interface ReplaceRemoveIterator<Item>
-extends ReplaceIterator<Item>,
-        RemoveIterator<Item> {
+    extends ReplaceIterator<Item>,
+            RemoveIterator<Item> {
     // unifying interface
 }

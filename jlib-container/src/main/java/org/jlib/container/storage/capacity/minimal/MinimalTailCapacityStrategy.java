@@ -21,13 +21,13 @@
 
 package org.jlib.container.storage.capacity.minimal;
 
+import org.jlib.container.storage.IndexRange;
+import org.jlib.container.storage.IndexRangeOperationDescriptor;
+import org.jlib.container.storage.LinearIndexStorage;
 import org.jlib.container.storage.capacity.AbstractCapacityStrategy;
 import org.jlib.container.storage.capacity.CapacityStrategy;
 import org.jlib.container.storage.capacity.HeadCapacityStrategy;
 import org.jlib.container.storage.capacity.TailCapacityStrategy;
-import org.jlib.container.storage.IndexRange;
-import org.jlib.container.storage.IndexRangeOperationDescriptor;
-import org.jlib.container.storage.LinearIndexStorage;
 
 /**
  * <p>
@@ -45,8 +45,8 @@ import org.jlib.container.storage.LinearIndexStorage;
  * @author Igor Akkerman
  */
 public class MinimalTailCapacityStrategy
-extends AbstractCapacityStrategy
-implements TailCapacityStrategy {
+    extends AbstractCapacityStrategy
+    implements TailCapacityStrategy {
 
     public MinimalTailCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);

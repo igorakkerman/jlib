@@ -24,5 +24,5 @@ package org.jlib.container.operation;
 public interface ContainsSingle<Item> {
 
     boolean contains(Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

@@ -21,10 +21,10 @@
 
 package org.jlib.reflect.languageelement;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class ClassLookupException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = 5664326787354744995L;
 

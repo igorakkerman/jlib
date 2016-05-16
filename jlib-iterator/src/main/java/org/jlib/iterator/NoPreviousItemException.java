@@ -25,8 +25,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when there is no previous item to return by an {@link Iterator}.
@@ -34,7 +33,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class NoPreviousItemException
-extends NoSuchElementException {
+    extends NoSuchElementException {
 
     private static final long serialVersionUID = 314294681315664677L;
 

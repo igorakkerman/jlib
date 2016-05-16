@@ -21,14 +21,13 @@
 
 package org.jlib.text;
 
-
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class TextUtility {
 
     public static final String EMPTY = "";
-    public static final String[] EMPTY_STRING_ARRAY = { };
+    public static final String[] EMPTY_STRING_ARRAY = {};
 
     /** the system's line separator */
     public static StringBuilder clear(final StringBuilder stringBuilder) {
@@ -56,7 +55,7 @@ public class TextUtility {
 
     public static void ensureIndicesValid(final CharSequence charSequence, final int firstCharacterIndex,
                                           final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
+        throws CharSequenceIndexOutOfBoundsException {
 
         if (firstCharacterIndex < 0)
             throw new CharSequenceIndexOutOfBoundsException(charSequence,

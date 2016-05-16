@@ -19,13 +19,11 @@
  *     limitations under the License.
  */
 
-
-
 /**
  * jlib String transformation utilities. This package provides a simple interface for String transformation
  * {@link org.jlib.text.transformer.StringTransformer} and several implementations. The package facade
  * {@link org.jlib.text.transformer.StringTransformers} provides easy access to the provided transformers.
- * 
+ *
  * @author Igor Akkerman
  */
 package org.jlib.text.transformer;

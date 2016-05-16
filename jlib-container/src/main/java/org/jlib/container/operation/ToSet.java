@@ -26,5 +26,5 @@ import java.util.Set;
 public interface ToSet<Item> {
 
     Set<Item> toSet()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

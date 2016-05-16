@@ -30,8 +30,8 @@ import java.util.Iterator;
  *        type of the items traversed by the {@link Iterator}.
  */
 public interface BidiIteratorState<Item, State extends BidiIteratorState<Item, State>>
-extends IteratorState<Item, State>,
-        BidiIterator<Item> {
+    extends IteratorState<Item, State>,
+            BidiIterator<Item> {
 
     /**
      * Returns the previous {@link BidiIteratorState}

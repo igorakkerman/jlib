@@ -27,9 +27,11 @@ package org.jlib.text.templateengine;
  * @param <Argument>
  */
 public final class IgnoreArgumentsTemplateEngine<Argument>
-implements TemplateEngine<Argument> {
+    implements TemplateEngine<Argument> {
 
     private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
+
+    private IgnoreArgumentsTemplateEngine() {}
 
     @SuppressWarnings("unchecked")
     public static <Argument> IgnoreArgumentsTemplateEngine<Argument> getInstance() {
@@ -41,8 +43,6 @@ implements TemplateEngine<Argument> {
                */ IgnoreArgumentsTemplateEngine<Argument> getInstance(final Class<? extends Argument> argumentClass) {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
-
-    private IgnoreArgumentsTemplateEngine() {}
 
     @Override
     @SafeVarargs

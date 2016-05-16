@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 import static lombok.AccessLevel.PRIVATE;
 import lombok.NoArgsConstructor;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 import org.jlib.reflect.languageelement.ClassLookupException;
 import org.jlib.reflect.languageelement.ConstructorInvocationException;
 import org.jlib.reflect.languageelement.InstanceMethodInvocationException;

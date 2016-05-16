@@ -29,7 +29,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public class UnexpectedStateException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = 4388525477338778336L;
 

@@ -28,10 +28,10 @@ public class TextComparators {
     public static final Comparator<?> STRING_LENGTH_COMPARATOR = /*
      */ (compared1, compared2) -> compared1.toString().length() - compared2.toString().length();
 
+    private TextComparators() {}
+
     @SuppressWarnings("unchecked")
     public static <Compared> Comparator<Compared> stringLength() {
         return (Comparator<Compared>) STRING_LENGTH_COMPARATOR;
     }
-
-    private TextComparators() {}
 }

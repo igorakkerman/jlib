@@ -21,8 +21,7 @@
 
 package org.jlib.container.operation;
 
-public interface Count<Item>
- {
+public interface Count<Item> {
 
     /**
      * Returns the number of Items in this {@link Object}.
@@ -33,5 +32,5 @@ public interface Count<Item>
      *         if an error occurs during the operation
      */
     int count()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

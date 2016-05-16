@@ -25,8 +25,7 @@ import java.util.Iterator;
 
 import org.jlib.exception.InvalidStateException;
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterator} claims a state error.
@@ -34,7 +33,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public abstract class InvalidIteratorStateException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = 1706750148627927636L;
 

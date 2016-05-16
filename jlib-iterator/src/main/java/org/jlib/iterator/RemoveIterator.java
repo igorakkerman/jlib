@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public interface RemoveIterator<Item>
-extends Iterator<Item> {
+    extends Iterator<Item> {
 
     /**
      * Removes the last Item returned by this {@link RemoveIterator}.
@@ -47,5 +47,5 @@ extends Iterator<Item> {
     @Override
     @SuppressWarnings("DuplicateThrows")
     void remove()
-    throws NoItemToRemoveException, InvalidIterableStateException;
+        throws NoItemToRemoveException, InvalidIterableStateException;
 }

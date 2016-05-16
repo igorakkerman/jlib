@@ -32,16 +32,16 @@ import java.text.MessageFormat;
  * @author Igor Akkerman
  */
 public final class PrintfTemplateEngine
-implements TemplateEngine<Object> {
+    implements TemplateEngine<Object> {
 
     private static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();
+
+    private PrintfTemplateEngine() {}
 
     @SuppressWarnings("TypeMayBeWeakened")
     public static PrintfTemplateEngine getInstance() {
         return INSTANCE;
     }
-
-    private PrintfTemplateEngine() {}
 
     @Override
     public String applyArguments(final CharSequence template, final Object... arguments) {

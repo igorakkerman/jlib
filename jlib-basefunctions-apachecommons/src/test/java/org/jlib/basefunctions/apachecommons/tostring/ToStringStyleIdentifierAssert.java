@@ -26,25 +26,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.assertj.core.api.AbstractAssert;
 
 public class ToStringStyleIdentifierAssert
-extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
-
-    @SuppressWarnings("UnnecessarilyQualifiedInnerClassAccess")
-    static Initializer assertThatIdentifier(final String actual) {
-        return new Initializer(actual);
-    }
-
-    static class Initializer {
-
-        private final String actual;
-
-        public Initializer(final String actual) {
-            this.actual = actual;
-        }
-
-        public ToStringStyleIdentifierAssert in(final NamedToStringStyleSupplier supplier) {
-            return new ToStringStyleIdentifierAssert(actual, supplier);
-        }
-    }
+    extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
 
     private final NamedToStringStyleSupplier supplier;
 
@@ -52,6 +34,11 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
         super(actual, ToStringStyleIdentifierAssert.class);
 
         this.supplier = supplier;
+    }
+
+    @SuppressWarnings("UnnecessarilyQualifiedInnerClassAccess")
+    static Initializer assertThatIdentifier(final String actual) {
+        return new Initializer(actual);
     }
 
     public ToStringStyleIdentifierAssert isInvalid() {
@@ -70,12 +57,25 @@ extends AbstractAssert<ToStringStyleIdentifierAssert, String> {
     public ToStringStyleIdentifierAssert mapsTo(final ToStringStyle expectedToStringStyle) {
         isNotNull();
 
-        final ToStringStyle actualToStringStyle = supplier.get(actual).get();
+        final ToStringStyle actualToStringStyle = supplier.get(actual).orElseThrow(() -> new IllegalStateException("actualToStringStyle not set"));
 
         if (actualToStringStyle != expectedToStringStyle)
             failWithMessage("Identifier <%s> expected to map to <%s> but maps to <%s>.", actual, expectedToStringStyle,
                             actualToStringStyle);
 
         return this;
+    }
+
+    static class Initializer {
+
+        private final String actual;
+
+        public Initializer(final String actual) {
+            this.actual = actual;
+        }
+
+        public ToStringStyleIdentifierAssert in(final NamedToStringStyleSupplier supplier) {
+            return new ToStringStyleIdentifierAssert(actual, supplier);
+        }
     }
 }

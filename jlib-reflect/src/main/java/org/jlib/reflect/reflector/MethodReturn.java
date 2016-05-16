@@ -33,5 +33,5 @@ public interface MethodReturn<ReturnValue> {
 
     @SuppressWarnings("RedundantThrows")
     ReturnValue get()
-    throws ProgramElementException;
+        throws ProgramElementException;
 }

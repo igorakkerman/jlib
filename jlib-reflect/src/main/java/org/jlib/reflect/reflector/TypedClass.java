@@ -41,7 +41,7 @@ public interface TypedClass<Obj> {
 
     <StaticTypedObject>
     TypedClass<StaticTypedObject> withType(Class<StaticTypedObject> staticType)
-    throws NoSubtypeException;
+        throws NoSubtypeException;
 
     TypedClass<Obj> withSupertypes(Class<?>... expectedSuperType)
         throws NoSubtypeException;

@@ -24,7 +24,7 @@ package org.jlib.container.storage.capacity;
 import org.jlib.container.storage.InvalidStorageIndexException;
 
 public class ForwardingCapacityStrategy
-implements CapacityStrategy {
+    implements CapacityStrategy {
 
     private InitialCapacityStrategy delegateInitialCapacityStrategy;
     private HeadCapacityStrategy delegateHeadCapacityStrategy;
@@ -38,19 +38,19 @@ implements CapacityStrategy {
 
     @Override
     public void ensureHeadCapacity(final int headCapacity)
-    throws InvalidCapacityException {
+        throws InvalidCapacityException {
         delegateHeadCapacityStrategy.ensureHeadCapacity(headCapacity);
     }
 
     @Override
     public void ensureSplitCapacity(final int splitIndex, final int splitCapacity)
-    throws InvalidStorageIndexException, InvalidCapacityException {
+        throws InvalidStorageIndexException, InvalidCapacityException {
         delegateSplitCapacityStrategy.ensureSplitCapacity(splitIndex, splitCapacity);
     }
 
     @Override
     public void ensureTailCapacity(final int tailCapacity)
-    throws InvalidCapacityException {
+        throws InvalidCapacityException {
         delegateTailCapacityStrategy.ensureTailCapacity(tailCapacity);
     }
 

@@ -28,7 +28,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.jlib.basefunctions.EqualsEngine;
 
 public class ApacheCommonsEqualsEngine<Obj>
-implements EqualsEngine<Obj> {
+    implements EqualsEngine<Obj> {
 
     private final EqualsBuilder builder;
     private final Object other;

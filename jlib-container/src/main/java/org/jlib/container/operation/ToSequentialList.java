@@ -36,5 +36,5 @@ public interface ToSequentialList<Item> {
      *         if an error occurs during the operation
      */
     List<Item> toSequentialList()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

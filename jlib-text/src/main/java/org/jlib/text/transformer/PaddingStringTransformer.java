@@ -30,8 +30,8 @@ import static org.jlib.shared.NumericUtility.isOdd;
  * @author Igor Akkerman
  */
 public abstract class PaddingStringTransformer
-extends ApplicationObject
-implements StringTransformer {
+    extends ApplicationObject
+    implements StringTransformer {
 
     /** length of the String to return by this PaddingStringTransformer */
     private final int finalStringLength;

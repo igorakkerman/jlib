@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.jlib.basefunctions.ToStringEngine;
 
 public class ApacheCommonsToStringEngine<Obj>
-implements ToStringEngine<Obj> {
+    implements ToStringEngine<Obj> {
 
     private final ToStringBuilder builder;
 

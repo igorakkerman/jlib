@@ -22,8 +22,8 @@
 package org.jlib.iterator;
 
 public class SingletonIterator<Item, Itble extends SingletonIterable<Item>>
-extends IterableAware<Item, Itble>
-implements BidiIterator<Item> {
+    extends IterableAware<Item, Itble>
+    implements BidiIterator<Item> {
 
     private final Item item;
 
@@ -31,38 +31,6 @@ implements BidiIterator<Item> {
 
     private final BidiIteratorState<Item, SingletonIteratorState> stuck = /*
      */ new StuckIteratorState<>(getIterable());
-
-    private class SingletonIteratorState
-    extends ForwardingIteratorState<Item, Itble, SingletonIteratorState> {
-
-        private SingletonIteratorState(final Itble iterable) {
-            super(iterable, stuck);
-
-            new StuckIteratorState<Item, Itble, SingletonIteratorState>(iterable);
-        }
-    }
-
-    @SuppressWarnings("InstanceVariableOfConcreteClass")
-    private final SingletonIteratorState beforeItem = /*
-     */ new SingletonIteratorState(getIterable()) {
-
-        @Override
-        public SingletonIteratorState nextState() {
-            return afterItem;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-
-        @Override
-        public Item next()
-        throws NoNextItemException {
-            return item;
-        }
-    };
-
     @SuppressWarnings("InstanceVariableOfConcreteClass")
     private final SingletonIteratorState afterItem = /*
      */ new SingletonIteratorState(getIterable()) {
@@ -79,7 +47,27 @@ implements BidiIterator<Item> {
 
         @Override
         public Item previous()
-        throws NoPreviousItemException {
+            throws NoPreviousItemException {
+            return item;
+        }
+    };
+    @SuppressWarnings("InstanceVariableOfConcreteClass")
+    private final SingletonIteratorState beforeItem = /*
+     */ new SingletonIteratorState(getIterable()) {
+
+        @Override
+        public SingletonIteratorState nextState() {
+            return afterItem;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return true;
+        }
+
+        @Override
+        public Item next()
+            throws NoNextItemException {
             return item;
         }
     };
@@ -99,7 +87,7 @@ implements BidiIterator<Item> {
 
     @Override
     public Item previous()
-    throws NoPreviousItemException {
+        throws NoPreviousItemException {
         return delegateIterator.previous();
     }
 
@@ -110,7 +98,17 @@ implements BidiIterator<Item> {
 
     @Override
     public Item next()
-    throws NoNextItemException {
+        throws NoNextItemException {
         return delegateIterator.next();
+    }
+
+    private class SingletonIteratorState
+        extends ForwardingIteratorState<Item, Itble, SingletonIteratorState> {
+
+        private SingletonIteratorState(final Itble iterable) {
+            super(iterable, stuck);
+
+            new StuckIteratorState<Item, Itble, SingletonIteratorState>(iterable);
+        }
     }
 }

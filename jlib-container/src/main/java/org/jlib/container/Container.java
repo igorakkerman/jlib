@@ -31,14 +31,14 @@ import org.jlib.container.operation.ToSequentialList;
 import org.jlib.container.operation.ToSet;
 
 public interface Container<Item>
-extends Iterable<Item>,
-        ContainsSingle<Item>,
-        ContainsMultiple<Item>,
-        Count<Item>,
-        IsEmpty<Item>,
-        ToArray<Item>,
-        ToRandomAccessList<Item>,
-        ToSequentialList<Item>,
-        ToSet<Item> {
+    extends Iterable<Item>,
+            ContainsSingle<Item>,
+            ContainsMultiple<Item>,
+            Count<Item>,
+            IsEmpty<Item>,
+            ToArray<Item>,
+            ToRandomAccessList<Item>,
+            ToSequentialList<Item>,
+            ToSet<Item> {
     // unifying
 }

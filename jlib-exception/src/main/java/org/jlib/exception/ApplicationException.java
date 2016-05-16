@@ -29,7 +29,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class ApplicationException
-extends Exception {
+    extends Exception {
 
     private static final long serialVersionUID = - 7508635402610527176L;
 

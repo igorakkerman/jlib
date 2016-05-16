@@ -30,7 +30,7 @@ package org.jlib.iterator;
  * @author Igor Akkerman
  */
 public interface RemoveIterable<Item>
-extends Iterable<Item> {
+    extends Iterable<Item> {
 
     /**
      * Returns a new {@link RemoveIterator} over the Items of this {@link RemoveIterable}.

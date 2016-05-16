@@ -46,8 +46,8 @@ import org.jlib.persistence.IdEntity;
  */
 @MappedSuperclass
 public abstract class JpaEntity<Self extends JpaEntity<Self, ID>, ID extends Serializable>
-extends ApplicationObject
-implements IdEntity<ID> {
+    extends ApplicationObject
+    implements IdEntity<ID> {
 
     public static final String FIELD_NAME_ID = "id";
 

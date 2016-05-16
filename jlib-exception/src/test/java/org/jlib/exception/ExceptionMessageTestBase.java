@@ -21,9 +21,8 @@
 
 package org.jlib.exception;
 
-import org.jlib.message.Message;
 import org.jlib.message.EagerMessage;
-
+import org.jlib.message.Message;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -55,7 +54,7 @@ public abstract class ExceptionMessageTestBase {
 
     @Test
     public void exceptionShouldHaveCorrectMessage()
-    throws Exception {
+        throws Exception {
         when(message.toString()).thenReturn(MESSAGE_TEXT);
         expectedException.expectMessage(MESSAGE_TEXT);
 
@@ -63,5 +62,5 @@ public abstract class ExceptionMessageTestBase {
     }
 
     protected abstract void throwException()
-    throws Exception;
+        throws Exception;
 }

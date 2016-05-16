@@ -22,8 +22,7 @@
 package org.jlib.systemproperty;
 
 import org.jlib.exception.ApplicationException;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link ApplicationException} thrown when trying to retrieve the value of an optional system property that is not set.
@@ -31,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class OptionalSystemPropertyNotSetException
-extends ApplicationException {
+    extends ApplicationException {
 
     private static final long serialVersionUID = 3031895042066549688L;
 

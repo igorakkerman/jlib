@@ -26,10 +26,10 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class NoSubtypeException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = - 7474100445702869755L;
 

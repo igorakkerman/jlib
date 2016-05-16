@@ -26,16 +26,16 @@ import org.jlib.basefunctions.HashCode;
 import org.jlib.basefunctions.HashCodeEngine;
 
 public class BaseFunctionsIterableHashCode<Item>
-implements HashCode<Iterable<Item>> {
+    implements HashCode<Iterable<Item>> {
 
     private static final BaseFunctionsIterableHashCode<?> INSTANCE = new BaseFunctionsIterableHashCode<>();
+
+    private BaseFunctionsIterableHashCode() {}
 
     @SuppressWarnings("unchecked")
     public static <Item> BaseFunctionsIterableHashCode<Item> getInstance() {
         return (BaseFunctionsIterableHashCode<Item>) INSTANCE;
     }
-
-    private BaseFunctionsIterableHashCode() {}
 
     @Override
     public int hashCode(final Iterable<Item> items) {

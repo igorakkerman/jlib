@@ -29,7 +29,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class InvalidArgumentException
-extends IllegalArgumentException {
+    extends IllegalArgumentException {
 
     private static final long serialVersionUID = 5894034302749387338L;
 

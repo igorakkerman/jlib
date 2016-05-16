@@ -41,5 +41,5 @@ public interface TailCapacityStrategy {
      *         if {@code headOrTailCapacity < 0}
      */
     void ensureTailCapacity(int tailCapacity)
-    throws InvalidCapacityException;
+        throws InvalidCapacityException;
 }

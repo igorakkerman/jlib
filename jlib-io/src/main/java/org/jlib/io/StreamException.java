@@ -26,7 +26,7 @@ import java.io.IOException;
 import org.jlib.message.Message;
 
 public class StreamException
-extends IOException {
+    extends IOException {
 
     private static final long serialVersionUID = - 7676970362884758602L;
 

@@ -32,7 +32,7 @@ import org.jlib.iterator.RemoveIterable;
  * @author Igor Akkerman
  */
 public interface ObservedRemoveIterable<Item>
-extends RemoveIterable<Item> {
+    extends RemoveIterable<Item> {
 
     /**
      * Returns a new {@link ObservedRemoveIterator} over the Items of this {@link ObservedRemoveIterable}.

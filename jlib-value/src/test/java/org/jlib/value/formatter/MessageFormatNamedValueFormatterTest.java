@@ -28,7 +28,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void emptyTemplateShouldProduceEmptyString()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("");
@@ -42,7 +42,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void namePlaceholderShouldOnlyProduceName()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("++ {0} **");
@@ -56,7 +56,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void valuePlaceholderShouldProduceNameValue()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("... {1}");
@@ -70,7 +70,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void nameValuePlaceholderShouldProduceNameValue()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
@@ -84,7 +84,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void textNameValuePlaceholderShouldProduceTextNameValue()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder("This is a text ... ");
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1}");
@@ -98,7 +98,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void nameValueExtraPlaceholderShouldProduceNameValueAndExtraString()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("{0}: {1} {2}");
@@ -112,7 +112,7 @@ public class MessageFormatNamedValueFormatterTest {
 
     @Test
     public void wrongPlaceholderShouldProduceWrongString()
-    throws Exception {
+        throws Exception {
         // given
         final StringBuilder builder = new StringBuilder();
         final NamedValueFormatter<Object> formatter = new MessageFormatNamedValueFormatter("%s: %s {0}");

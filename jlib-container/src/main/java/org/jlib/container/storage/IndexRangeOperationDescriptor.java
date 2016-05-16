@@ -31,8 +31,8 @@ import org.jlib.exception.UnexpectedStateException;
  * @author Igor Akkerman
  */
 public class IndexRangeOperationDescriptor
-implements Cloneable,
-           Serializable {
+    implements Cloneable,
+               Serializable {
 
     private static final long serialVersionUID = - 750513726974596434L;
 

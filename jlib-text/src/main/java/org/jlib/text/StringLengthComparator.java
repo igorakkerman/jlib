@@ -38,17 +38,17 @@ import java.util.Comparator;
  * @author Igor Akkerman
  */
 public class StringLengthComparator<ComparisonObject>
-implements Comparator<ComparisonObject> {
+    implements Comparator<ComparisonObject> {
 
     private static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<>();
+
+    private StringLengthComparator() {}
 
     @SuppressWarnings("unchecked")
     public static <ComparisonObject> /*
                */ StringLengthComparator<ComparisonObject> getInstance() {
         return (StringLengthComparator<ComparisonObject>) INSTANCE;
     }
-
-    private StringLengthComparator() {}
 
     @Override
     public int compare(final ComparisonObject object1, final ComparisonObject object2) {

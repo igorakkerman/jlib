@@ -27,7 +27,7 @@ import org.jlib.container.operation.InvalidContainerStateException;
 import org.jlib.iterator.IterableUtility;
 
 public class IterativeContainsAdapter<Item>
-extends ContainsAdapter<Item> {
+    extends ContainsAdapter<Item> {
 
     public IterativeContainsAdapter(final Iterable<Item> items) {
         super(items);
@@ -35,7 +35,7 @@ extends ContainsAdapter<Item> {
 
     @Override
     public final boolean contains(final Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         return IterableUtility.contains(getItems(), item);
     }

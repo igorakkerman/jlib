@@ -21,22 +21,23 @@
 
 package org.jlib.value;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+// TODO: verify if order can be changed
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class InitializedNamed<Value>
-extends Initialized<Value>
-implements Named<Value> {
+    extends Initialized<Value>
+    implements Named<Value> {
 
     private final String name;
 
     public InitializedNamed(final String name, final Value value)
-    throws IllegalArgumentException {
+        throws IllegalArgumentException {
 
         super(value);
 
         this.name = name;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

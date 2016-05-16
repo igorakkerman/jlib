@@ -22,7 +22,6 @@
 package org.jlib.text;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jlib.text.TextUtility.removeOnce;
 import org.junit.Test;

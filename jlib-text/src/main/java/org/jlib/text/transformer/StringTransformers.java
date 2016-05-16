@@ -32,6 +32,8 @@ import java.util.Locale;
  */
 public final class StringTransformers {
 
+    private StringTransformers() {}
+
     /**
      * Returns a new {@link StringTransformer} centering a substring in a String
      * of the specified length. The String is padded using blanks before and
@@ -242,6 +244,4 @@ public final class StringTransformers {
                                     final Object... values) {
         return new FormattingStringTransformer(locale, format, originalStringValueIndex, values);
     }
-
-    private StringTransformers() {}
 }

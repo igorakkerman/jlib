@@ -32,8 +32,8 @@ import java.util.function.Supplier;
  * @author Igor Akkerman
  */
 public interface Accessible<Value>
-extends Accessor<Value>,
-        Supplier<Value> {
+    extends Accessor<Value>,
+            Supplier<Value> {
 
     /**
      * Returns the {@link Value}. Since the {@link Value} is guaranteed to be accessible, <em>no</em>

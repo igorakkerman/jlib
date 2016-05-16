@@ -29,7 +29,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import static org.jlib.shared.OptionalUtility.optionalOf;
 
 class MapNamedToStringStyleSupplier
-implements NamedToStringStyleSupplier {
+    implements NamedToStringStyleSupplier {
 
     private final Map<String, ToStringStyle> toStringStyles;
 

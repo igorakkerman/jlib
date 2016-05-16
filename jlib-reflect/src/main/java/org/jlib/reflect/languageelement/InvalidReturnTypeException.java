@@ -25,10 +25,10 @@ import java.lang.reflect.Executable;
 
 import java.util.Collection;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class InvalidReturnTypeException
-extends MethodInvocationException {
+    extends MethodInvocationException {
 
     private static final long serialVersionUID = 6610464823967521411L;
 

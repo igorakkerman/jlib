@@ -24,7 +24,7 @@ package org.jlib.container.operation;
 import org.jlib.container.operation.containsadapter.IterativeContainsAdapter;
 
 public class DefaultRetain<Item>
-implements Retain<Item> {
+    implements Retain<Item> {
 
     private final RemoveSingleByValue<Item> removableContainedItems;
 
@@ -40,7 +40,7 @@ implements Retain<Item> {
     @Override
     @SuppressWarnings("TypeMayBeWeakened")
     public void retain(final IterativeContainsAdapter<Item> retainedItems)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item containedItem : containedItems)
             if (! retainedItems.contains(containedItem))

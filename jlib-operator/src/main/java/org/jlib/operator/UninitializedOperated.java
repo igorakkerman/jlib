@@ -33,8 +33,8 @@ import org.jlib.value.Uninitialized;
  * @author Igor Akkerman
  */
 abstract class UninitializedOperated<Value>
-extends Uninitialized<Value>
-implements OperatedValue<Value> {
+    extends Uninitialized<Value>
+    implements OperatedValue<Value> {
 
     protected UninitializedOperated() {}
 

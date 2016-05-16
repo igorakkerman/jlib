@@ -29,16 +29,11 @@ import java.util.ServiceLoader;
 public class BaseFunctionsService {
 
     private static final BaseFunctionsService INSTANCE = new BaseFunctionsService();
-
-    public static BaseFunctionsService getInstance() {
-        return INSTANCE;
-    }
-
     private final BaseFunctionsDispatcher baseFunctionsDispatcher;
 
     private BaseFunctionsService()
-    throws ServiceConfigurationError, NoBaseFunctionsImplementationFoundException,
-           OnlyOneBaseFunctionsImplementationAllowedException {
+        throws ServiceConfigurationError, NoBaseFunctionsImplementationFoundException,
+               OnlyOneBaseFunctionsImplementationAllowedException {
 
         final ServiceLoader<BaseFunctionsDispatcher> loader = ServiceLoader.load(BaseFunctionsDispatcher.class);
 
@@ -52,8 +47,12 @@ public class BaseFunctionsService {
         baseFunctionsDispatcher = baseFunctionsDispatchers.get(0);
     }
 
+    public static BaseFunctionsService getInstance() {
+        return INSTANCE;
+    }
+
     private void assertExactlyOneSpiInClassPath(final List<BaseFunctionsDispatcher> baseFunctionsDispatchers)
-    throws OnlyOneBaseFunctionsImplementationAllowedException {
+        throws OnlyOneBaseFunctionsImplementationAllowedException {
         if (baseFunctionsDispatchers.isEmpty())
             throw new NoBaseFunctionsImplementationFoundException();
 

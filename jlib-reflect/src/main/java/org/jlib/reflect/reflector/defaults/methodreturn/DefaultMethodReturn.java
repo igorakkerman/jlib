@@ -37,7 +37,7 @@ import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverloa
 
 @RequiredArgsConstructor
 public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
-implements MethodReturn<ReturnValue> {
+    implements MethodReturn<ReturnValue> {
 
     private final LanguageElementHandler languageElementHandler;
     @Getter(PROTECTED)
@@ -60,7 +60,7 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public ReturnValue get()
-    throws ProgramElementException {
+        throws ProgramElementException {
         return returnValue;
     }
 }

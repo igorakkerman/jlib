@@ -30,6 +30,8 @@ import java.util.Iterator;
  */
 public final class IterableUtility {
 
+    private IterableUtility() {}
+
     /**
      * Verifies whether the {@link Iterator} instances created by the
      * {@link Iterable#iterator()} methods of the two specified {@link Iterable}
@@ -222,6 +224,4 @@ public final class IterableUtility {
     public static <Item> BidiIterable<Item> singletonIterable(final Item item) {
         return new SingletonIterable<>(item);
     }
-
-    private IterableUtility() {}
 }

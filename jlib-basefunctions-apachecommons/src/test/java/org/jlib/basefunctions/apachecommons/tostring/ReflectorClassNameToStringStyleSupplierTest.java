@@ -37,15 +37,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class ReflectorClassNameToStringStyleSupplierTest {
 
-    @SuppressWarnings("serial")
-    private static class TestStyle
-    extends ToStringStyle {}
-
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
     private static final ToStringStyle STYLE = new TestStyle();
-
     private ReflectorClassNameToStringStyleSupplier classNameStyleSupplier;
-
     @Mock(answer = RETURNS_DEEP_STUBS)
     private ReflectorService reflectorService;
 
@@ -57,7 +51,7 @@ public class ReflectorClassNameToStringStyleSupplierTest {
 
     @Test
     public void getShouldReturnClassFromReflectorServiceUseClass()
-    throws Exception {
+        throws Exception {
         // given
         when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance()).thenReturn(STYLE);
 
@@ -70,12 +64,16 @@ public class ReflectorClassNameToStringStyleSupplierTest {
 
     @Test(expected = ToStringStyleNotFoundException.class)
     public void getShouldThrowExceptionWhenReflectorServiceUseClassThrowsException()
-    throws Exception {
+        throws Exception {
         // given
         when(reflectorService.useClass(CLASS_NAME).withType(ToStringStyle.class).instance())
-        .thenThrow(new ClassLookupException(CLASS_NAME, new Exception()));
+            .thenThrow(new ClassLookupException(CLASS_NAME, new Exception()));
 
         // when
         final ToStringStyle style = classNameStyleSupplier.get(CLASS_NAME);
     }
+
+    @SuppressWarnings("serial")
+    private static class TestStyle
+        extends ToStringStyle {}
 }

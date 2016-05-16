@@ -21,22 +21,21 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.basefunctions.Equals;
-
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jlib.basefunctions.Equals;
 import static org.jlib.iterator.IterableUtility.provideEqualItems;
 
 public final class IterativeEquals<Item>
-implements Equals<Iterable<Item>> {
+    implements Equals<Iterable<Item>> {
 
     private static final IterativeEquals<?> INSTANCE = new IterativeEquals<>();
+
+    private IterativeEquals() {}
 
     @SuppressWarnings("unchecked")
     public static <Item> IterativeEquals<Item> getInstance() {
         return (IterativeEquals<Item>) INSTANCE;
     }
-
-    private IterativeEquals() {}
 
     @Override
     @SuppressWarnings("unchecked")

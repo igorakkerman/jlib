@@ -25,7 +25,7 @@ import org.jlib.exception.ApplicationException;
 import org.jlib.message.Message;
 
 public abstract class ProgramElementException
-extends ApplicationException {
+    extends ApplicationException {
 
     private static final long serialVersionUID = 2276530860062232111L;
 

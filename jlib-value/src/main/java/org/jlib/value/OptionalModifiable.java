@@ -24,20 +24,9 @@ package org.jlib.value;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class OptionalModifiable<Value>
-implements Modifiable<Value> {
-
-    public static <Value> OptionalModifiable<Value> from(final Value value) {
-        return new OptionalModifiable<>(value);
-    }
-
-    public static <Value> OptionalModifiable<Value> fromNullable(@Nullable final Value value) {
-        return value != null ?
-               from(value) :
-               new OptionalModifiable<>();
-    }
+    implements Modifiable<Value> {
 
     private Accessor<Value> delegateAccessor;
-
     private final Accessor<Value> UNINITIALIZED = new Uninitialized<Value>() {
 
         @Override
@@ -54,6 +43,16 @@ implements Modifiable<Value> {
         delegateAccessor = new Initialized<>(value);
     }
 
+    public static <Value> OptionalModifiable<Value> of(final Value value) {
+        return new OptionalModifiable<>(value);
+    }
+
+    public static <Value> OptionalModifiable<Value> ofNullable(@Nullable final Value value) {
+        return value != null ?
+               of(value) :
+               new OptionalModifiable<>();
+    }
+
     @Override
     public void set(final Value value) {
         delegateAccessor = new Initialized<>(value);
@@ -65,7 +64,7 @@ implements Modifiable<Value> {
 
     @Override
     public Value get()
-    throws NotAccessibleException {
+        throws NotAccessibleException {
         return delegateAccessor.get();
     }
 

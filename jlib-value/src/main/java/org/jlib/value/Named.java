@@ -24,7 +24,7 @@ package org.jlib.value;
 import java.util.function.Supplier;
 
 public interface Named<Value>
-extends Supplier<Value> {
+    extends Supplier<Value> {
 
     /**
      * Returns the name of the value.

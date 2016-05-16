@@ -36,7 +36,7 @@ public interface ObservedRemoveMultiple<Item> {
     <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(ContainsIterable items, Observer<Item>... observers)
 
-    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
-           ObserverException;
+        throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
+               ObserverException;
 }
 

@@ -34,8 +34,8 @@ import org.jlib.basefunctions.ApplicationObject;
  * @author Igor Akkerman
  */
 public class CompositeStringTransformer
-extends ApplicationObject
-implements StringTransformer {
+    extends ApplicationObject
+    implements StringTransformer {
 
     /**
      * {@link List} of {@link StringTransformer StringTransformers}

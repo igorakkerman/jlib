@@ -21,13 +21,13 @@
 
 package org.jlib.container.storage.capacity.minimal;
 
-import org.jlib.container.storage.capacity.AbstractSplitCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.LinearIndexStorage;
+import org.jlib.container.storage.capacity.AbstractSplitCapacityStrategy;
 
 public class MinimalSplitCapacityStrategy
-extends AbstractSplitCapacityStrategy {
+    extends AbstractSplitCapacityStrategy {
 
     public MinimalSplitCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);

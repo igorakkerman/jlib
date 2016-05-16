@@ -24,21 +24,21 @@ package org.jlib.exception;
 import org.jlib.message.Message;
 
 public class ApplicationExceptionMessageTest
-extends ExceptionMessageTestBase {
+    extends ExceptionMessageTestBase {
+
+    @Override
+    protected void throwException()
+        throws Exception {
+        throw new AnException(getMessage());
+    }
 
     private static class AnException
-    extends ApplicationException {
+        extends ApplicationException {
 
         private static final long serialVersionUID = 7554398632151450030L;
 
         private AnException(final Message message) {
             super(message);
         }
-    }
-
-    @Override
-    protected void throwException()
-    throws Exception {
-        throw new AnException(getMessage());
     }
 }

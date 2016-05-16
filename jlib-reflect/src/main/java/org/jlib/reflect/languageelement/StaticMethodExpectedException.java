@@ -23,10 +23,10 @@ package org.jlib.reflect.languageelement;
 
 import java.lang.reflect.Method;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class StaticMethodExpectedException
-extends MethodLookupException {
+    extends MethodLookupException {
 
     private static final long serialVersionUID = - 1272651454980058465L;
 

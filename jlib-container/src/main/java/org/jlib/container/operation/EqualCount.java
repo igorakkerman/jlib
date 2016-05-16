@@ -27,12 +27,12 @@ public class EqualCount<Item> {
 
     private static final EqualCount<?> INSTANCE = new EqualCount<>();
 
+    private EqualCount() {}
+
     @SuppressWarnings("unchecked")
     public static <Item> EqualCount<Item> getInstance() {
         return (EqualCount<Item>) INSTANCE;
     }
-
-    private EqualCount() {}
 
     public boolean haveEqualCount(final Count<Item> thisObject, @Nullable final Object otherObject) {
         return otherObject instanceof Count<?> && //

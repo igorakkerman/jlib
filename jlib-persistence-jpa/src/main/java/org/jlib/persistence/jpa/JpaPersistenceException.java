@@ -26,7 +26,7 @@ import javax.persistence.PersistenceException;
 import org.jlib.message.Message;
 
 public class JpaPersistenceException
-extends PersistenceException {
+    extends PersistenceException {
 
     private static final long serialVersionUID = - 4066897986319383761L;
 

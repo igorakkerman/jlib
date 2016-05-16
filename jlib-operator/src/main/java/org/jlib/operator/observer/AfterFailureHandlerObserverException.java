@@ -29,7 +29,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class AfterFailureHandlerObserverException
-extends ObserverException {
+    extends ObserverException {
 
     private static final long serialVersionUID = - 752311177821410591L;
 

@@ -22,8 +22,7 @@
 package org.jlib.reflect.languageelement;
 
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link ClassException} thrown when a class cannot be instantiated. It may be used by factories as a wrapper for any
@@ -32,7 +31,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class ClassInstantiationException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 

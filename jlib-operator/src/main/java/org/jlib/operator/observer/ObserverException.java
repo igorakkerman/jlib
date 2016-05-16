@@ -30,7 +30,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class ObserverException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = - 7621231395096897078L;
 

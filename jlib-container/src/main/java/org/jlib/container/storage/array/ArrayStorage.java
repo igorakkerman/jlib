@@ -21,8 +21,6 @@
 
 package org.jlib.container.storage.array;
 
-import org.jlib.shared.Valid;
-
 import org.jlib.container.storage.AbstractLinearIndexStorage;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.InvalidStorageCapacityException;
@@ -33,6 +31,7 @@ import static java.lang.System.arraycopy;
 import static java.util.Arrays.copyOf;
 import static org.jlib.array.ArrayUtility.array;
 import static org.jlib.shared.NumericUtility.count;
+import org.jlib.shared.Valid;
 
 /**
  * {@link LinearIndexStorage} based on an array.
@@ -44,13 +43,13 @@ import static org.jlib.shared.NumericUtility.count;
  */
 
 public class ArrayStorage<Item>
-extends AbstractLinearIndexStorage<Item> {
+    extends AbstractLinearIndexStorage<Item> {
 
     /** array holding the {@link Item}s */
     private Item[] delegateArray;
 
     public ArrayStorage(final int initialCapacity)
-    throws InvalidStorageCapacityException {
+        throws InvalidStorageCapacityException {
         super(initialCapacity);
 
         delegateArray = array(initialCapacity);
@@ -83,7 +82,7 @@ extends AbstractLinearIndexStorage<Item> {
 
     @Override
     public void shiftItems(final IndexRangeOperationDescriptor... shiftDescriptors)
-    throws IndexOutOfBoundsException {
+        throws IndexOutOfBoundsException {
         copyItemsTo(delegateArray, shiftDescriptors);
     }
 
@@ -107,7 +106,7 @@ extends AbstractLinearIndexStorage<Item> {
      */
     protected void copyItems(final Item[] sourceArray, final Item[] targetArray,
                              final IndexRangeOperationDescriptor copyDescriptor)
-    throws InvalidStorageIndexException {
+        throws InvalidStorageIndexException {
 
         ensureOperationDescriptorValid(copyDescriptor);
 

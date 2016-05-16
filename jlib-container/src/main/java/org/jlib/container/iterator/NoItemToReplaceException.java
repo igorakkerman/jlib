@@ -32,7 +32,7 @@ import org.jlib.iterator.InvalidIteratorStateException;
  * @author Igor Akkerman
  */
 public class NoItemToReplaceException
-extends InvalidIteratorStateException {
+    extends InvalidIteratorStateException {
 
     private static final long serialVersionUID = - 1299720624484946758L;
 

@@ -27,16 +27,16 @@ import org.junit.Test;
 
 public class ApplicationObjectToStringIntegrationTest {
 
+    @Test
+    public void toStringShouldContainClassNameFieldNameAndValue()
+        throws Exception {
+        assertThat(new A().toString()).contains(A.class.getName()).contains("f").contains("42");
+    }
+
     private static class A
-    extends ApplicationObject {
+        extends ApplicationObject {
 
         @SuppressWarnings("UnusedDeclaration")
         private final int f = 42;
-    }
-
-    @Test
-    public void toStringShouldContainClassNameFieldNameAndValue()
-    throws Exception {
-        assertThat(new A().toString()).contains(A.class.getName()).contains("f").contains("42");
     }
 }

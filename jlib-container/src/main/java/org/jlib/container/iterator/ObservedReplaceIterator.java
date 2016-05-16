@@ -34,7 +34,7 @@ import org.jlib.operator.observer.ObserverException;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceIterator<Item>
-extends ReplaceIterator<Item> {
+    extends ReplaceIterator<Item> {
 
     /**
      * Replaces the last traversed Item with the specified value.
@@ -54,7 +54,7 @@ extends ReplaceIterator<Item> {
      */
     @SuppressWarnings("unchecked")
     void replace(Item newItem, Observer<Item>... observers)
-    throws NoItemToReplaceException, ObserverException;
+        throws NoItemToReplaceException, ObserverException;
 
     /**
      * Registers the specified {@link Observer} for the replace operations

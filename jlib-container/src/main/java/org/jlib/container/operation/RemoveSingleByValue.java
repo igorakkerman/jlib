@@ -45,5 +45,5 @@ public interface RemoveSingleByValue<Item> {
      *         if an error occurs during the operation
      */
     void remove(Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

@@ -27,6 +27,8 @@ import java.util.function.Supplier;
 
 public final class OptionalUtility {
 
+    private OptionalUtility() {}
+
     public static <Value> Optional<Value> optionalOf(final Value value, final Predicate<? super Value> predicate) {
         return optionalOf(value, predicate.test(value));
     }
@@ -39,12 +41,10 @@ public final class OptionalUtility {
     public static <Value> Optional<Value> optionalOf(final Value value, final boolean condition) {
         return condition ?
                Optional.of(value) :
-               Optional.<Value>empty();
+               Optional.empty();
     }
 
     public static <Value> Optional<Value> optionalOf(final Supplier<Value> value, final boolean condition) {
         return optionalOf(value.get(), condition);
     }
-
-    private OptionalUtility() {}
 }

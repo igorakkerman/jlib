@@ -30,7 +30,7 @@ package org.jlib.basefunctions;
 public abstract class ApplicationObject {
 
     private static final BaseFunctionsDispatcher BASE_FUNCTIONS_DISPATCHER =
-    /**/ BaseFunctionsService.getInstance().getBaseFunctionsDispatcher();
+        BaseFunctionsService.getInstance().getBaseFunctionsDispatcher();
 
     protected ApplicationObject() {}
 

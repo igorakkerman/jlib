@@ -26,8 +26,8 @@ import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 public abstract class AbstractSplitCapacityStrategy
-extends AbstractCapacityStrategy
-implements SplitCapacityStrategy {
+    extends AbstractCapacityStrategy
+    implements SplitCapacityStrategy {
 
     protected AbstractSplitCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);
@@ -35,7 +35,7 @@ implements SplitCapacityStrategy {
 
     @Override
     public void ensureSplitCapacity(final int splitIndex, final int splitCapacity)
-    throws InvalidStorageIndexException {
+        throws InvalidStorageIndexException {
         ensureIndexValid(splitIndex);
         ensureCapacityValid(splitCapacity);
 

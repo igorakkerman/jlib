@@ -27,7 +27,7 @@ import static org.jlib.text.TextUtility.asIterable;
 import static org.jlib.text.TextUtility.clear;
 
 public class CamelCaseToLowerCaseWordsTransformer
-implements StringTransformer {
+    implements StringTransformer {
 
     @Override
     public void transform(final StringBuilder stringBuilder) {

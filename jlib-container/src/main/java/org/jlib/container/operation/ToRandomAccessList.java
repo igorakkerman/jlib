@@ -38,5 +38,5 @@ public interface ToRandomAccessList<Item> {
      *         if an error occurs during the operation
      */
     List<Item> toRandomAccessList()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

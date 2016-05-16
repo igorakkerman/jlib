@@ -22,7 +22,7 @@
 package org.jlib.container.operation;
 
 public class DefaultContainsMultiple<Item>
-implements ContainsMultiple<Item> {
+    implements ContainsMultiple<Item> {
 
     private final ContainsSingle<Item> containedItems;
 
@@ -34,7 +34,7 @@ implements ContainsMultiple<Item> {
     @Override
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ boolean contains(final ContainsIterable lookupItems)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item lookupItem : lookupItems)
             if (! containedItems.contains(lookupItem))

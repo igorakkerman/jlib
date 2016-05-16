@@ -24,8 +24,8 @@ package org.jlib.iterator;
 import java.util.Iterator;
 
 public class StatefulIterator<Item, Itble extends Iterable<Item>, State extends IteratorState<Item, State>>
-extends IterableAware<Item, Itble>
-implements Iterator<Item> {
+    extends IterableAware<Item, Itble>
+    implements Iterator<Item> {
 
     private State currentState;
 
@@ -42,7 +42,7 @@ implements Iterator<Item> {
 
     @Override
     public final Item next()
-    throws NoNextItemException {
+        throws NoNextItemException {
         final Item nextItem = currentState.next();
 
         currentState = currentState.nextState();

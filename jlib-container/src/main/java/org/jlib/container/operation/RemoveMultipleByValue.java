@@ -29,8 +29,7 @@ package org.jlib.container.operation;
  *
  * @author Igor Akkerman
  */
-public interface RemoveMultipleByValue<Item>
- {
+public interface RemoveMultipleByValue<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s
@@ -48,5 +47,5 @@ public interface RemoveMultipleByValue<Item>
      */
     <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(ContainsIterable items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }
