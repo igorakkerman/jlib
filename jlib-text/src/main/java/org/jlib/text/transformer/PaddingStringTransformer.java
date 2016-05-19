@@ -21,6 +21,9 @@
 
 package org.jlib.text.transformer;
 
+import static lombok.AccessLevel.PROTECTED;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.jlib.basefunctions.ApplicationObject;
 import static org.jlib.shared.NumericUtility.isOdd;
 
@@ -29,6 +32,7 @@ import static org.jlib.shared.NumericUtility.isOdd;
  *
  * @author Igor Akkerman
  */
+@RequiredArgsConstructor(access = PROTECTED)
 public abstract class PaddingStringTransformer
     extends ApplicationObject
     implements StringTransformer {
@@ -37,22 +41,8 @@ public abstract class PaddingStringTransformer
     private final int finalStringLength;
 
     /** character used for padding */
+    @Getter(PROTECTED)
     private final char paddingCharacter;
-
-    /**
-     * Creates a new PaddingStringTransformer.
-     *
-     * @param finalStringLength
-     *        integer specifying the length of the String to return by this
-     *        PaddingStringTransformer
-     *
-     * @param paddingCharacter
-     *        character used for padding
-     */
-    protected PaddingStringTransformer(final int finalStringLength, final char paddingCharacter) {
-        this.finalStringLength = finalStringLength;
-        this.paddingCharacter = paddingCharacter;
-    }
 
     @Override
     public void transform(final StringBuilder stringBuilder) {
@@ -89,13 +79,4 @@ public abstract class PaddingStringTransformer
      */
     protected abstract void pad(StringBuilder stringBuilder, StringBuilder halfPadBuilder,
                                 boolean additionalPaddingCharacterRequired);
-
-    /**
-     * Returns the padding character used by this PaddingStringTransformer.
-     *
-     * @return the padding character
-     */
-    protected char getPaddingCharacter() {
-        return paddingCharacter;
-    }
 }

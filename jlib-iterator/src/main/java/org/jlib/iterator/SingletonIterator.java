@@ -29,48 +29,48 @@ public class SingletonIterator<Item, Itble extends SingletonIterable<Item>>
 
     private final BidiIterator<Item> delegateIterator;
 
-    private final BidiIteratorState<Item, SingletonIteratorState> stuck = /*
-     */ new StuckIteratorState<>(getIterable());
+    private final BidiIteratorState<Item, SingletonIteratorState> stuck = new StuckIteratorState<>(getIterable());
+
     @SuppressWarnings("InstanceVariableOfConcreteClass")
-    private final SingletonIteratorState afterItem = /*
-     */ new SingletonIteratorState(getIterable()) {
+    private final SingletonIteratorState afterItem =
+        new SingletonIteratorState(getIterable()) {
 
-        @Override
-        public SingletonIteratorState previousState() {
-            return beforeItem;
-        }
+            @Override
+            public SingletonIteratorState previousState() {
+                return beforeItem;
+            }
 
-        @Override
-        public boolean hasPrevious() {
-            return true;
-        }
+            @Override
+            public boolean hasPrevious() {
+                return true;
+            }
 
-        @Override
-        public Item previous()
-            throws NoPreviousItemException {
-            return item;
-        }
-    };
+            @Override
+            public Item previous()
+                throws NoPreviousItemException {
+                return item;
+            }
+        };
     @SuppressWarnings("InstanceVariableOfConcreteClass")
-    private final SingletonIteratorState beforeItem = /*
-     */ new SingletonIteratorState(getIterable()) {
+    private final SingletonIteratorState beforeItem =
+        new SingletonIteratorState(getIterable()) {
 
-        @Override
-        public SingletonIteratorState nextState() {
-            return afterItem;
-        }
+            @Override
+            public SingletonIteratorState nextState() {
+                return afterItem;
+            }
 
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
 
-        @Override
-        public Item next()
-            throws NoNextItemException {
-            return item;
-        }
-    };
+            @Override
+            public Item next()
+                throws NoNextItemException {
+                return item;
+            }
+        };
 
     public SingletonIterator(final Itble iterable) {
         super(iterable);

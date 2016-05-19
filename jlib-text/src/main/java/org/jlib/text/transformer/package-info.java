@@ -26,5 +26,6 @@
  *
  * @author Igor Akkerman
  */
+// TODO: Use with Java 8 as functional interface
 package org.jlib.text.transformer;
 

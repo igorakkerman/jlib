@@ -23,6 +23,9 @@ package org.jlib.text;
 
 import java.util.Comparator;
 
+import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
+
 /**
  * <p>
  * Comparator performing the comparison of two objects by comparing the lengths
@@ -35,20 +38,14 @@ import java.util.Comparator;
  *
  * @param <ComparisonObject>
  *        type of the objects to compare
+ *
  * @author Igor Akkerman
  */
+@NoArgsConstructor(access = PRIVATE)
 public class StringLengthComparator<ComparisonObject>
     implements Comparator<ComparisonObject> {
 
-    private static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<>();
-
-    private StringLengthComparator() {}
-
-    @SuppressWarnings("unchecked")
-    public static <ComparisonObject> /*
-               */ StringLengthComparator<ComparisonObject> getInstance() {
-        return (StringLengthComparator<ComparisonObject>) INSTANCE;
-    }
+    public static final StringLengthComparator<?> INSTANCE = new StringLengthComparator<>();
 
     @Override
     public int compare(final ComparisonObject object1, final ComparisonObject object2) {

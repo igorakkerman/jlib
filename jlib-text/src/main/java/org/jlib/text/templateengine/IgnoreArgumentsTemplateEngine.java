@@ -21,26 +21,28 @@
 
 package org.jlib.text.templateengine;
 
+import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
+
 /**
  * {@link TemplateEngine} that always returns the plain template text ignoring the arguments.
  *
  * @param <Argument>
  */
+@NoArgsConstructor(access = PRIVATE)
 public final class IgnoreArgumentsTemplateEngine<Argument>
     implements TemplateEngine<Argument> {
 
-    private static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
-
-    private IgnoreArgumentsTemplateEngine() {}
+    public static final IgnoreArgumentsTemplateEngine<?> INSTANCE = new IgnoreArgumentsTemplateEngine<>();
 
     @SuppressWarnings("unchecked")
-    public static <Argument> IgnoreArgumentsTemplateEngine<Argument> getInstance() {
+    public static <Argument> IgnoreArgumentsTemplateEngine<Argument> instance() {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
 
-    @SuppressWarnings({ "unchecked", "UnusedDeclaration", "UnusedParameters" })
-    public static <Argument> /*
-               */ IgnoreArgumentsTemplateEngine<Argument> getInstance(final Class<? extends Argument> argumentClass) {
+    @SuppressWarnings("unchecked")
+    public static <Argument>
+    IgnoreArgumentsTemplateEngine<Argument> instanceFor(final Class<? extends Argument> argumentClass) {
         return (IgnoreArgumentsTemplateEngine<Argument>) INSTANCE;
     }
 

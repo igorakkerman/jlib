@@ -21,13 +21,16 @@
 
 package org.jlib.text;
 
+import java.util.Comparator;
+
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import static org.jlib.message.Messages.message;
 
-public class TextUtility {
+public class Text {
 
     public static final String EMPTY = "";
-    public static final String[] EMPTY_STRING_ARRAY = {};
+    public static final String[] NO_STRINGS = {};
+    public static final Comparator<?> STRING_LENGTH_COMPARATOR = (compared1, compared2) -> compared1.toString().length() - compared2.toString().length();
 
     /** the system's line separator */
     public static StringBuilder clear(final StringBuilder stringBuilder) {
@@ -48,22 +51,23 @@ public class TextUtility {
         return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex);
     }
 
-    public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex,
-                                                 final int lastCharacterIndex) {
+    public static Iterable<Character> asIterable(final CharSequence characterSequence, final int firstCharacterIndex, final int lastCharacterIndex) {
         return () -> new CharSequenceIterator(characterSequence, firstCharacterIndex, lastCharacterIndex);
     }
 
-    public static void ensureIndicesValid(final CharSequence charSequence, final int firstCharacterIndex,
-                                          final int lastCharacterIndex)
+    public static void ensureIndicesValid(final CharSequence charSequence, final int firstCharacterIndex, final int lastCharacterIndex)
         throws CharSequenceIndexOutOfBoundsException {
 
         if (firstCharacterIndex < 0)
-            throw new CharSequenceIndexOutOfBoundsException(charSequence,
-                                                            message().with("firstCharacterIndex", firstCharacterIndex));
+            throw new CharSequenceIndexOutOfBoundsException(charSequence, message().with("firstCharacterIndex", firstCharacterIndex));
 
         if (firstCharacterIndex > lastCharacterIndex)
-            throw new CharSequenceIndexOutOfBoundsException(charSequence,
-                                                            message().with("firstCharacterIndex", firstCharacterIndex)
-                                                                     .with("lastCharacterIndex", lastCharacterIndex));
+            throw new CharSequenceIndexOutOfBoundsException(charSequence, message().with("firstCharacterIndex", firstCharacterIndex)
+                                                                                   .with("lastCharacterIndex", lastCharacterIndex));
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <Compared> Comparator<Compared> stringLength() {
+        return (Comparator<Compared>) STRING_LENGTH_COMPARATOR;
     }
 }

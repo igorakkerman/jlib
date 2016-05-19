@@ -119,7 +119,6 @@ public class CompositeStringTransformer
 
     @Override
     public void transform(final StringBuilder stringBuilder) {
-        for (final StringTransformer stringTransformer : stringTransformers)
-            stringTransformer.transform(stringBuilder);
+        stringTransformers.forEach(stringTransformer -> stringTransformer.transform(stringBuilder));
     }
 }

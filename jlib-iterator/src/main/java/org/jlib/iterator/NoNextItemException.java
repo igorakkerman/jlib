@@ -45,8 +45,7 @@ public class NoNextItemException
         super(message.with(iteratedName, iterated).toString());
     }
 
-    public NoNextItemException(final String iteratedName, final Object iterated, final Message message,
-                               final Exception cause) {
+    public NoNextItemException(final String iteratedName, final Object iterated, final Message message, final Exception cause) {
         this(iteratedName, iterated, message);
 
         initCause(cause);

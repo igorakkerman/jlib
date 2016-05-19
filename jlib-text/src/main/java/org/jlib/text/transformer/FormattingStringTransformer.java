@@ -103,8 +103,7 @@ public class FormattingStringTransformer
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public FormattingStringTransformer(final Locale locale, final String format, final int originalStringValueIndex,
-                                       final Object... values) {
+    public FormattingStringTransformer(final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
 
         if (originalStringValueIndex < 0 || originalStringValueIndex > values.length)
             throw new IndexOutOfBoundsException(Integer.toString(originalStringValueIndex));

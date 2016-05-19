@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import org.jlib.iterator.IterableUtility;
+import org.jlib.iterator.Iterables;
 
 public class FromIteratorIsEmpty<Item>
     implements IsEmpty<Item> {
@@ -36,6 +36,6 @@ public class FromIteratorIsEmpty<Item>
     @Override
     public boolean isEmpty()
         throws InvalidContainerStateException {
-        return IterableUtility.isEmpty(iterable);
+        return Iterables.isEmpty(iterable);
     }
 }

@@ -23,10 +23,10 @@ package org.jlib.text;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jlib.text.TextUtility.removeOnce;
+import static org.jlib.text.Text.removeOnce;
 import org.junit.Test;
 
-public class TextUtilityTest {
+public class TextTest {
 
     @Test
     public void testRemoveOnceEmptyFromEmpty() {

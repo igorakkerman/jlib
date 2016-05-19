@@ -46,8 +46,7 @@ public class RightCenteringStringTransformer
     }
 
     @Override
-    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder,
-                    final boolean additionalPaddingCharacterRequired) {
+    public void pad(final StringBuilder stringBuilder, final StringBuilder halfPadBuilder, final boolean additionalPaddingCharacterRequired) {
         if (additionalPaddingCharacterRequired)
             halfPadBuilder.append(getPaddingCharacter());
 

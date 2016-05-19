@@ -24,15 +24,16 @@ package org.jlib.text.transformer;
 import java.util.Formatter;
 import java.util.Locale;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Package facade providing access to various {@link StringTransformer
  * StringTransformers}.
  *
  * @author Igor Akkerman
  */
+@UtilityClass
 public final class StringTransformers {
-
-    private StringTransformers() {}
 
     /**
      * Returns a new {@link StringTransformer} centering a substring in a String
@@ -240,8 +241,7 @@ public final class StringTransformers {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public StringTransformer format(final Locale locale, final String format, final int originalStringValueIndex,
-                                    final Object... values) {
+    public StringTransformer format(final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
         return new FormattingStringTransformer(locale, format, originalStringValueIndex, values);
     }
 }

@@ -23,14 +23,15 @@ package org.jlib.iterator;
 
 import java.util.Iterator;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * {@link Iterator} utility.
  *
  * @author Igor Akkerman
  */
-public final class IterableUtility {
-
-    private IterableUtility() {}
+@UtilityClass
+public final class Iterables {
 
     /**
      * Verifies whether the {@link Iterator} instances created by the

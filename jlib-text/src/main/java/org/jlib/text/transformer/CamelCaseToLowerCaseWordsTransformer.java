@@ -23,8 +23,8 @@ package org.jlib.text.transformer;
 
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
-import static org.jlib.text.TextUtility.asIterable;
-import static org.jlib.text.TextUtility.clear;
+import static org.jlib.text.Text.asIterable;
+import static org.jlib.text.Text.clear;
 
 public class CamelCaseToLowerCaseWordsTransformer
     implements StringTransformer {

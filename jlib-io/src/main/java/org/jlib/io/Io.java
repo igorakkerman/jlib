@@ -24,14 +24,15 @@ package org.jlib.io;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Utility class providing static methods for input/output operations.
  *
  * @author Igor Akkerman
  */
-public final class StreamUtility {
-
-    private StreamUtility() {}
+@UtilityClass
+public final class IO {
 
     /**
      * <p>
