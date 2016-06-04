@@ -80,13 +80,13 @@ public class DefaultTypedClass<Obj>
     }
 
     @Override
-    public MethodOverload<?> useStaticMethod(final String staticMethodName) {
+    public MethodOverload<?> staticMethod(final String staticMethodName) {
         return new DefaultStaticMethodOverload<>(languageElementHandler, getActualClass(), staticMethodName,
                                                  Object.class);
     }
 
     @Override
-    public ConstructorOverload<Obj> useConstructor() {
+    public ConstructorOverload<Obj> constructor() {
         return new DefaultConstructorOverload<>(languageElementHandler, getActualClass());
     }
 

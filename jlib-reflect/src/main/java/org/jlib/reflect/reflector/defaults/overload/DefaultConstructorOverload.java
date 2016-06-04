@@ -57,8 +57,7 @@ public class DefaultConstructorOverload<EnclosingClassObject>
         final Constructor<EnclosingClassObject> constructor =
             getLanguageElementHandler().lookupConstructor(getReturnValueType(), NO_PARAMETER_TYPES);
 
-        return new DefaultTypedMethod0<>(getLanguageElementHandler(),
-                                         new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor));
+        return new DefaultTypedMethod0<>(getLanguageElementHandler(), strategy(constructor));
     }
 
     @Override
@@ -70,8 +69,7 @@ public class DefaultConstructorOverload<EnclosingClassObject>
         final Constructor<EnclosingClassObject> constructor =
             getLanguageElementHandler().lookupConstructor(getReturnValueType(), parameter1Type);
 
-        return new DefaultTypedMethod1<>(getLanguageElementHandler(),
-                                         new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor));
+        return new DefaultTypedMethod1<>(getLanguageElementHandler(), strategy(constructor));
     }
 
     @Override
@@ -83,8 +81,7 @@ public class DefaultConstructorOverload<EnclosingClassObject>
         final Constructor<EnclosingClassObject> constructor =
             getLanguageElementHandler().lookupConstructor(getReturnValueType(), parameter1Type, parameter2Type);
 
-        return new DefaultTypedMethod2<>(getLanguageElementHandler(),
-                                         new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor));
+        return new DefaultTypedMethod2<>(getLanguageElementHandler(), strategy(constructor));
     }
 
     @Override
@@ -99,8 +96,7 @@ public class DefaultConstructorOverload<EnclosingClassObject>
             getLanguageElementHandler().lookupConstructor(getReturnValueType(), parameter1Type, parameter2Type,
                                                           parameter3Type);
 
-        return new DefaultTypedMethod3<>(getLanguageElementHandler(),
-                                         new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor));
+        return new DefaultTypedMethod3<>(getLanguageElementHandler(), strategy(constructor));
     }
 
     @Override
@@ -112,6 +108,12 @@ public class DefaultConstructorOverload<EnclosingClassObject>
             getLanguageElementHandler().lookupConstructor(getReturnValueType(), parameterTypes);
 
         return new DefaultTypedMethodUnchecked<>
-            (getLanguageElementHandler(), new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor));
+            (getLanguageElementHandler(), strategy(constructor));
+    }
+
+    private ConstructorInvokeStrategy<EnclosingClassObject> strategy(
+        final Constructor<EnclosingClassObject> constructor) {
+
+        return new ConstructorInvokeStrategy<>(getLanguageElementHandler(), constructor);
     }
 }

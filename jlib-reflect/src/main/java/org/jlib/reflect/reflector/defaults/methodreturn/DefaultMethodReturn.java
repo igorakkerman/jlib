@@ -54,12 +54,12 @@ implements MethodReturn<ReturnValue> {
     }
 
     @Override
-    public MethodOverload<?> useMethod(final String methodName) {
+    public MethodOverload<?> method(final String methodName) {
         return new DefaultInstanceMethodOverload<>(languageElementHandler, returnValue, methodName, Object.class);
     }
 
     @Override
-    public ReturnValue get()
+    public ReturnValue getReturned()
     throws ProgramElementException {
         return returnValue;
     }
