@@ -97,9 +97,9 @@ public class DefaultStaticMethodOverload<ReturnValue>
     @Override
     public <Parameter1, Parameter2, Parameter3>
     TypedMethod3<Method, ReturnValue, Parameter1, Parameter2, Parameter3>
-         /**/ withParameterTypes(final Class<Parameter1> parameter1Type,
-                                 final Class<Parameter2> parameter2Type,
-                                 final Class<Parameter3> parameter3Type)
+    withParameterTypes(final Class<Parameter1> parameter1Type,
+                       final Class<Parameter2> parameter2Type,
+                       final Class<Parameter3> parameter3Type)
         throws InvalidMethodParameterTypesException, NoSubtypeException {
 
         final Method method = getLanguageElementHandler()
