@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 import static org.jlib.message.MessageUtility.message;
 
 public class InstanceMethodExpectedException
-extends MethodLookupException {
+    extends MethodLookupException {
 
     private static final long serialVersionUID = - 3453056833527415771L;
 

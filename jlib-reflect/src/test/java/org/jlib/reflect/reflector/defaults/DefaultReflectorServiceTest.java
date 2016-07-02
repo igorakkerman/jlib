@@ -92,7 +92,7 @@ public class DefaultReflectorServiceTest {
         final CharSequence value = service
             .useClass("java.lang.String")
             .withType(CharSequence.class)
-            .instance(new char[]{'a', 'b', 'c'});
+            .instance(new char[]{ 'a', 'b', 'c' });
 
         assertThat(value).isEqualTo("abc");
     }

@@ -30,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class InvalidEnumIdException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = 1248871337527197565L;
 

@@ -29,7 +29,7 @@ import static java.util.stream.Collectors.toList;
 import static org.jlib.message.MessageUtility.message;
 
 public class NoSubtypeException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = - 7474100445702869755L;
 

@@ -22,7 +22,6 @@
 package org.jlib.reflect.languageelement;
 
 import org.jlib.message.Message;
-
 import static org.jlib.message.MessageUtility.message;
 
 /**
@@ -32,7 +31,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class ClassInstantiationException
-extends ClassException {
+    extends ClassException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 

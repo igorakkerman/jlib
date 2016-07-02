@@ -28,10 +28,11 @@ import org.jlib.reflect.languageelement.ClassLookupException;
 public interface ReflectorService {
 
     TypedClass<?> useClass(final String className)
-    throws ClassLookupException;
+        throws ClassLookupException;
 
     default TypedClass<?> useClass(final Supplier<String> classNameSupplier)
-    throws ClassLookupException {
+        throws ClassLookupException {
+
         return useClass(classNameSupplier.get());
     }
 

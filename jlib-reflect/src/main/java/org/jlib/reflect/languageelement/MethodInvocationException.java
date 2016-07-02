@@ -24,7 +24,7 @@ package org.jlib.reflect.languageelement;
 import org.jlib.message.Message;
 
 public class MethodInvocationException
-extends MethodLookupException {
+    extends MethodLookupException {
 
     private static final long serialVersionUID = 4654719015582472812L;
 

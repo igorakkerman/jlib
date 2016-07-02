@@ -24,7 +24,7 @@ package org.jlib.reflect.languageelement;
 import org.jlib.message.Message;
 
 public abstract class ClassException
-extends ProgramElementException {
+    extends ProgramElementException {
 
     private static final long serialVersionUID = - 8652252161776673093L;
 

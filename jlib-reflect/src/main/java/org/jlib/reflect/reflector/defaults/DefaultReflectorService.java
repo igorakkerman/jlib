@@ -30,13 +30,13 @@ import org.jlib.reflect.reflector.defaults.typedclass.DefaultTypedClass;
 
 @RequiredArgsConstructor
 public class DefaultReflectorService
-implements ReflectorService {
+    implements ReflectorService {
 
     private final LanguageElementHandler languageElementHandler;
 
     @Override
     public TypedClass<?> useClass(final String className)
-    throws ClassLookupException {
+        throws ClassLookupException {
         return useClass(languageElementHandler.lookupClass(className));
     }
 

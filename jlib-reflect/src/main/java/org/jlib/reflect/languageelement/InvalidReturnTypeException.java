@@ -28,7 +28,7 @@ import java.util.Collection;
 import static org.jlib.message.MessageUtility.message;
 
 public class InvalidReturnTypeException
-extends MethodInvocationException {
+    extends MethodInvocationException {
 
     private static final long serialVersionUID = 6610464823967521411L;
 

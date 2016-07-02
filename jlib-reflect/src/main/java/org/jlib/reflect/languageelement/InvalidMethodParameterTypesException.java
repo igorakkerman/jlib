@@ -24,7 +24,7 @@ package org.jlib.reflect.languageelement;
 import static org.jlib.message.MessageUtility.message;
 
 public class InvalidMethodParameterTypesException
-extends MethodLookupException {
+    extends MethodLookupException {
 
     private static final long serialVersionUID = - 4942289385749320071L;
 

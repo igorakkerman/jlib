@@ -24,7 +24,7 @@ package org.jlib.reflect.languageelement;
 import org.jlib.message.Message;
 
 public class InstanceMethodInvocationException
-extends MethodInvocationException {
+    extends MethodInvocationException {
 
     private static final long serialVersionUID = - 7447459566502520725L;
     private final Object enclosingObject;
