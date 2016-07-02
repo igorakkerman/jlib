@@ -29,7 +29,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.languageelement.InvalidReturnTypeException;
 import org.jlib.reflect.languageelement.LanguageElementHandler;
-import static org.jlib.reflect.languageelement.LanguageElementUtility.assertReturnTypeInstanceOf;
+import static org.jlib.reflect.languageelement.LanguageElements.assertReturnTypeInstanceOf;
 import org.jlib.reflect.languageelement.ProgramElementException;
 import org.jlib.reflect.reflector.MethodOverload;
 import org.jlib.reflect.reflector.MethodReturn;
@@ -37,7 +37,7 @@ import org.jlib.reflect.reflector.defaults.overload.DefaultInstanceMethodOverloa
 
 @RequiredArgsConstructor
 public class DefaultMethodReturn<Exe extends Executable, ReturnValue>
-implements MethodReturn<ReturnValue> {
+    implements MethodReturn<ReturnValue> {
 
     private final LanguageElementHandler languageElementHandler;
     @Getter(PROTECTED)
@@ -60,7 +60,7 @@ implements MethodReturn<ReturnValue> {
 
     @Override
     public ReturnValue getReturned()
-    throws ProgramElementException {
+        throws ProgramElementException {
         return returnValue;
     }
 }

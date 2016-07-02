@@ -29,7 +29,7 @@ import static lombok.AccessLevel.PROTECTED;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jlib.reflect.languageelement.LanguageElementHandler;
-import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import static org.jlib.reflect.languageelement.LanguageElements.assertSubtype;
 import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.Overload;
 

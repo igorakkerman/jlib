@@ -27,8 +27,10 @@ import java.util.Collection;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+import lombok.experimental.UtilityClass;
 
-public final class LanguageElementUtility {
+@UtilityClass
+public final class LanguageElements {
 
     public static void assertReturnTypeInstanceOf(final Executable executable, final Object returnValue,
                                                   final Collection<? extends Class<?>> expectedSuperTypes)
@@ -56,6 +58,4 @@ public final class LanguageElementUtility {
         if (! invalidSuperTypes.isEmpty())
             throw new NoSubtypeException(actualType, invalidSuperTypes);
     }
-
-    private LanguageElementUtility() {}
 }

@@ -24,7 +24,7 @@ package org.jlib.reflect.reflector.defaults.typedclass;
 import static java.util.Arrays.asList;
 import org.jlib.reflect.languageelement.ClassException;
 import org.jlib.reflect.languageelement.LanguageElementHandler;
-import static org.jlib.reflect.languageelement.LanguageElementUtility.assertSubtype;
+import static org.jlib.reflect.languageelement.LanguageElements.assertSubtype;
 import org.jlib.reflect.languageelement.NoSubtypeException;
 import org.jlib.reflect.reflector.ConstructorOverload;
 import org.jlib.reflect.reflector.MethodOverload;
