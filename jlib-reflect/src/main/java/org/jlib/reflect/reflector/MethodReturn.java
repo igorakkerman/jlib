@@ -29,9 +29,9 @@ public interface MethodReturn<ReturnValue> {
     MethodReturn<ReturnValue> returning(Class<?>... expectedSuperTypes)
         throws InvalidReturnTypeException;
 
-    MethodOverload<?> useMethod(String methodName);
+    MethodOverload<?> method(String methodName);
 
     @SuppressWarnings("RedundantThrows")
-    ReturnValue get()
+    ReturnValue getReturned()
         throws ProgramElementException;
 }

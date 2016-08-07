@@ -36,8 +36,7 @@ public interface LanguageElementHandler {
         throws InvalidMethodParameterTypesException;
 
     <EnclosingClassObject>
-    Constructor<EnclosingClassObject> lookupConstructor(Class<EnclosingClassObject> enclosingClass,
-                                                        Class<?>... parameterTypes)
+    Constructor<EnclosingClassObject> lookupConstructor(Class<EnclosingClassObject> enclosingClass, Class<?>... parameterTypes)
         throws InvalidMethodParameterTypesException;
 
     Object invokeInstanceMethod(final Object enclosingObject, final Method method, final Object... arguments)

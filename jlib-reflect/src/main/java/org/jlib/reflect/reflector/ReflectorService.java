@@ -32,6 +32,7 @@ public interface ReflectorService {
 
     default TypedClass<?> useClass(final Supplier<String> classNameSupplier)
         throws ClassLookupException {
+
         return useClass(classNameSupplier.get());
     }
 

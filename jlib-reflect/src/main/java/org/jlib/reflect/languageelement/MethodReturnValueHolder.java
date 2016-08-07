@@ -21,34 +21,13 @@
 
 package org.jlib.reflect.languageelement;
 
+import lombok.Value;
+
+@Value
 public class MethodReturnValueHolder<ReturnValue> {
 
     private final ReturnValue returnValue;
     private final String className;
     private final String methodName;
     private final Class<?>[] parameterTypes;
-
-    public MethodReturnValueHolder(final ReturnValue returnValue, final String className, final String methodName,
-                                   final Class<?>... parameterTypes) {
-        this.returnValue = returnValue;
-        this.className = className;
-        this.methodName = methodName;
-        this.parameterTypes = parameterTypes;
-    }
-
-    public ReturnValue getReturnValue() {
-        return returnValue;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public Class<?>[] getParameterTypes() {
-        return parameterTypes;
-    }
 }

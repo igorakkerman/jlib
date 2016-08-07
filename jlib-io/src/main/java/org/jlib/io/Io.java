@@ -32,7 +32,7 @@ import lombok.experimental.UtilityClass;
  * @author Igor Akkerman
  */
 @UtilityClass
-public final class IO {
+public final class Io {
 
     /**
      * <p>

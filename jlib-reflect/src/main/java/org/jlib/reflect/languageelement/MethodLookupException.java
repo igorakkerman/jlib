@@ -34,7 +34,7 @@ import org.jlib.message.Message;
 public abstract class MethodLookupException
     extends ProgramElementException {
 
-    private static final long serialVersionUID = - 3809968471293132878L;
+    private static final long serialVersionUID = 5520301648395354088L;
 
     private final String className;
     private final String methodName;

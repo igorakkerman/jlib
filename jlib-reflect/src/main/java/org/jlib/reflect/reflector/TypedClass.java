@@ -50,10 +50,56 @@ public interface TypedClass<Obj> {
     default Obj instance()
         throws ProgramElementException {
 
-        return useConstructor().withoutParameters().invoke().get();
+        return constructor()
+            .withoutParameters()
+            .invoke()
+            .getReturned();
     }
 
-    ConstructorOverload<Obj> useConstructor();
+    @SuppressWarnings({ "RedundantThrows", "unchecked" })
+    default <Argument1>
+    Obj instance(final Argument1 argument1)
+        throws ProgramElementException {
 
-    MethodOverload<?> useStaticMethod(String staticMethodName);
+        return constructor()
+            .withParameterTypes((Class<Argument1>) argument1.getClass())
+            .invoke(argument1)
+            .getReturned();
+    }
+
+    @SuppressWarnings({ "RedundantThrows", "unchecked" })
+    default <Argument1, Argument2>
+    Obj instance(final Argument1 argument1, final Argument2 argument2)
+        throws ProgramElementException {
+
+        return constructor()
+            .withParameterTypes((Class<Argument1>) argument1.getClass(), (Class<Argument2>) argument2.getClass())
+            .invoke(argument1, argument2)
+            .getReturned();
+    }
+
+    @SuppressWarnings({ "RedundantThrows", "unchecked" })
+    default <Argument1, Argument2, Argument3>
+    Obj instance(final Argument1 argument1, final Argument2 argument2, final Argument3 argument3)
+        throws ProgramElementException {
+
+        return constructor()
+            .withParameterTypes((Class<Argument1>) argument1.getClass(), (Class<Argument2>) argument2.getClass(),
+                                (Class<Argument3>) argument3.getClass())
+            .invoke(argument1, argument2, argument3)
+            .getReturned();
+    }
+
+    default Obj instanceUnchecked(final Object... arguments)
+        throws ProgramElementException {
+
+        return constructor()
+            .withUncheckedParameterTypes()
+            .invoke(arguments)
+            .getReturned();
+    }
+
+    ConstructorOverload<Obj> constructor();
+
+    MethodOverload<?> staticMethod(String staticMethodName);
 }
