@@ -27,7 +27,7 @@ package org.jlib.value;
  * @author Igor Akkerman
  */
 public class NotInitializedException
-extends NotAccessibleException {
+    extends NotAccessibleException {
 
     private static final long serialVersionUID = 4844161228178575622L;
 }

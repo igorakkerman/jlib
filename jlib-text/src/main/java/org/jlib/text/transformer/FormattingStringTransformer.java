@@ -33,7 +33,7 @@ import static java.lang.System.arraycopy;
  * @author Igor Akkerman
  */
 public class FormattingStringTransformer
-implements StringTransformer {
+    implements StringTransformer {
 
     /** {@link Locale} applied when formatting the String */
     private final Locale locale;
@@ -77,7 +77,8 @@ implements StringTransformer {
      *         if {@code originalStringValueIndex < 0 ||
      *         originalStringValueIndex > values.length}
      */
-    public FormattingStringTransformer(final String format, final int originalStringValueIndex, final Object... values) {
+    public FormattingStringTransformer(final String format, final int originalStringValueIndex,
+                                       final Object... values) {
         this(null, format, originalStringValueIndex, values);
     }
 
@@ -103,21 +104,19 @@ implements StringTransformer {
      *         originalStringValueIndex > values.length}
      */
     public FormattingStringTransformer(final Locale locale, final String format, final int originalStringValueIndex, final Object... values) {
-        final int valuesCount = values.length;
 
-        if (originalStringValueIndex < 0 || originalStringValueIndex > valuesCount)
+        if (originalStringValueIndex < 0 || originalStringValueIndex > values.length)
             throw new IndexOutOfBoundsException(Integer.toString(originalStringValueIndex));
 
         this.locale = locale;
         this.format = format;
         this.originalStringValueIndex = originalStringValueIndex;
 
-        this.values = new Object[valuesCount + 1];
+        this.values = new Object[values.length + 1];
         arraycopy(values, 0, this.values, 0, originalStringValueIndex);
         arraycopy(values, originalStringValueIndex, this.values, originalStringValueIndex + 1,
-                  valuesCount - originalStringValueIndex);
+                  values.length - originalStringValueIndex);
     }
-
 
     @Override
     public void transform(final StringBuilder stringBuilder) {
@@ -125,5 +124,4 @@ implements StringTransformer {
         stringBuilder.setLength(0);
         new Formatter(stringBuilder).format(locale, format, values);
     }
-
 }

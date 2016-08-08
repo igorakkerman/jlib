@@ -41,5 +41,5 @@ public interface ContainsMultiple<Item> {
      */
     <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
  */ boolean contains(ContainsIterable items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

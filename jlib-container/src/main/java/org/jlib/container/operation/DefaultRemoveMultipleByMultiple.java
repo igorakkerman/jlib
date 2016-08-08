@@ -22,7 +22,7 @@
 package org.jlib.container.operation;
 
 public class DefaultRemoveMultipleByMultiple<Item>
-implements RemoveMultipleByValue<Item> {
+    implements RemoveMultipleByValue<Item> {
 
     private final Iterable<Item> containedItems;
 
@@ -38,7 +38,7 @@ implements RemoveMultipleByValue<Item> {
     @Override
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable removedItems)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
 
         for (final Item containedItem : containedItems)
             if (removedItems.contains(containedItem))

@@ -30,14 +30,14 @@ import org.junit.Test;
 public class ArrayStorageTest {
 
     public void zeroCapacityStorageShouldReturnCorrectCapacity()
-    throws Exception {
+        throws Exception {
         final ArrayStorage<Integer> storage = new ArrayStorage<>(0);
 
         assertThat(storage.capacity()).isEqualTo(0);
     }
 
     public void positiveCapacityStorageShouldReturnCorrectCapacity()
-    throws Exception {
+        throws Exception {
         final ArrayStorage<Integer> storage = new ArrayStorage<>(5);
 
         assertThat(storage.capacity()).isEqualTo(5);
@@ -45,25 +45,25 @@ public class ArrayStorageTest {
 
     @Test(expected = InvalidStorageCapacityException.class)
     public void negativeCapacityStorageReadShouldThrowException()
-    throws Exception {
+        throws Exception {
         new ArrayStorage<>(- 1);
     }
 
     @Test(expected = InvalidStorageIndexException.class)
     public void zeroCapacityStorageReadShouldThrowException()
-    throws Exception {
+        throws Exception {
         new ArrayStorage<Integer>(0).get(0);
     }
 
     @Test(expected = InvalidStorageIndexException.class)
     public void readNegativeIndexShouldThrowException()
-    throws Exception {
+        throws Exception {
         new ArrayStorage<Integer>(5).get(- 1);
     }
 
     @Test
     public void getPreviouslySetItemShouldReturnCorrectItem()
-    throws Exception {
+        throws Exception {
         final ArrayStorage<String> storage = new ArrayStorage<>(5);
         storage.set(3, "Test");
 
@@ -72,7 +72,7 @@ public class ArrayStorageTest {
 
     @Test
     public void getReplacedItemShouldReturnCorrectItem()
-    throws Exception {
+        throws Exception {
         final ArrayStorage<String> storage = new ArrayStorage<>(5);
         storage.set(3, "Test");
         storage.set(3, "new");
@@ -83,28 +83,28 @@ public class ArrayStorageTest {
     @SuppressWarnings("EmptyMethod")
     @Test
     public void testShiftItems()
-    throws Exception {
+        throws Exception {
         // TODO: implement
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test
     public void testCopyItems()
-    throws Exception {
+        throws Exception {
         // TODO: implement
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test
     public void testGetCapacity()
-    throws Exception {
+        throws Exception {
         // TODO: implement
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test
     public void testEnsureCapacityAndShiftItems()
-    throws Exception {
+        throws Exception {
         // TODO: implement
     }
 }

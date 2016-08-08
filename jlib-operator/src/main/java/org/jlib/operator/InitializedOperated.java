@@ -32,8 +32,8 @@ import org.jlib.value.Initialized;
  * @author Igor Akkerman
  */
 class InitializedOperated<Value>
-extends Initialized<Value>
-implements OperatedValue<Value> {
+    extends Initialized<Value>
+    implements OperatedValue<Value> {
 
     public InitializedOperated(final Value initialValue) {
         super(initialValue);

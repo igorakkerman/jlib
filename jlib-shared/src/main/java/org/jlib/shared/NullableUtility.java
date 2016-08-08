@@ -30,6 +30,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public final class NullableUtility {
 
+    private NullableUtility() {}
+
     /**
      * Returns the hash code of the specified {@link Object} as returned by its
      * {@link Object#hashCode()} method or {@code 0} if the specified
@@ -46,6 +48,4 @@ public final class NullableUtility {
                object.hashCode() :
                0;
     }
-
-    private NullableUtility() {}
 }

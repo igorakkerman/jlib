@@ -34,7 +34,7 @@ import org.jlib.iterator.InvalidIteratorStateException;
  * @author Igor Akkerman
  */
 public interface ReplaceIterator<Item>
-extends Iterator<Item> {
+    extends Iterator<Item> {
 
     /**
      * Replaces the last traversed Item with the specified Item.
@@ -46,5 +46,5 @@ extends Iterator<Item> {
      *         if no Item has been traversed by this {@link ReplaceIterator}
      */
     void replace(Item newItem)
-    throws InvalidIteratorStateException;
+        throws InvalidIteratorStateException;
 }

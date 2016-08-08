@@ -22,6 +22,7 @@
 package org.jlib.value;
 
 public interface AccessibleNamed<Value>
-extends Accessible<Value>, Named<Value> {
+    extends Accessible<Value>,
+            Named<Value> {
     // unifying
 }

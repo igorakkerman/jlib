@@ -60,5 +60,5 @@ public interface ObservedRetain<Item> {
      */
     @SuppressWarnings("unchecked")
     void retain(Iterable<Item> items, Observer<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException;
 }

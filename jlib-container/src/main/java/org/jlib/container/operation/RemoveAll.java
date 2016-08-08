@@ -30,5 +30,5 @@ public interface RemoveAll<Item> {
      *         if an error occurs during the operation
      */
     void removeAll()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

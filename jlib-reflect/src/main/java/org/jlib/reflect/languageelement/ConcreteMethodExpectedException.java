@@ -23,7 +23,7 @@ package org.jlib.reflect.languageelement;
 
 import java.lang.reflect.Method;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class ConcreteMethodExpectedException
     extends MethodLookupException {

@@ -44,7 +44,7 @@ public interface Observer<Value> {
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
     default void before(final Value value)
-    throws RuntimeException {
+        throws RuntimeException {
         // intentionally without functionality
     }
 
@@ -60,7 +60,7 @@ public interface Observer<Value> {
      */
     @SuppressWarnings("ProhibitedExceptionDeclared")
     default void afterSuccess(final Value value)
-    throws RuntimeException {
+        throws RuntimeException {
         // intentionally without functionality
     }
 
@@ -78,7 +78,7 @@ public interface Observer<Value> {
      */
     @SuppressWarnings({ "ProhibitedExceptionDeclared", "UnusedParameters" })
     default void afterFailure(final Value value, final OperatorException operatorException)
-    throws RuntimeException {
+        throws RuntimeException {
         // intentionally without functionality
     }
 }

@@ -30,7 +30,7 @@ package org.jlib.container.iterator;
  * @author Igor Akkerman
  */
 public interface ReplaceIterable<Item>
-extends Iterable<Item> {
+    extends Iterable<Item> {
 
     /**
      * Returns a new {@link ReplaceIterator} over the Items of this {@link ReplaceIterable}.

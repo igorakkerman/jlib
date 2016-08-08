@@ -28,7 +28,6 @@ import org.jlib.iterator.InvalidIterableStateException;
 import org.jlib.iterator.RemoveIterable;
 import org.jlib.iterator.RemoveIterator;
 import org.jlib.iterator.SingletonIterable;
-
 import org.jlib.operator.observer.Observer;
 
 /**
@@ -37,6 +36,8 @@ import org.jlib.operator.observer.Observer;
  * @author Igor Akkerman
  */
 public final class IterableUtility {
+
+    private IterableUtility() {}
 
     /**
      * Removes all Items of the specified {@link RemoveIterable}.
@@ -51,7 +52,7 @@ public final class IterableUtility {
      *         if an error occurs during one of the remove operations
      */
     public static <Item> void removeAll(final RemoveIterable<Item> iterable)
-    throws InvalidIterableStateException {
+        throws InvalidIterableStateException {
         for (final RemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
             iterator.next();
             iterator.remove();
@@ -77,7 +78,7 @@ public final class IterableUtility {
     @SafeVarargs
     public static <Item> void removeAll(final ObservedRemoveIterable<Item> iterable,
                                         final Observer<Item>... observers)
-    throws InvalidIterableStateException {
+        throws InvalidIterableStateException {
         for (final ObservedRemoveIterator<Item> iterator = iterable.iterator(); iterator.hasNext(); ) {
             iterator.next();
             iterator.remove(observers);
@@ -87,6 +88,4 @@ public final class IterableUtility {
     public static <Item> BidiIterable<Item> singletonIterable(final Item item) {
         return new SingletonIterable<>(item);
     }
-
-    private IterableUtility() {}
 }

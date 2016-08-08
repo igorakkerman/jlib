@@ -41,5 +41,5 @@ public interface HeadCapacityStrategy {
      *         if {@code headCapacity < 0}
      */
     void ensureHeadCapacity(int headCapacity)
-    throws InvalidCapacityException;
+        throws InvalidCapacityException;
 }

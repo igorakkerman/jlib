@@ -26,7 +26,7 @@ import java.util.Optional;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class IdentifierOrClassNameToStringStyleSupplier
-implements ConfigurableToStringStyleSupplier {
+    implements ConfigurableToStringStyleSupplier {
 
     private String identifierOrClassName;
     private NamedToStringStyleSupplier namedStyleSupplier;
@@ -35,7 +35,7 @@ implements ConfigurableToStringStyleSupplier {
     @Override
     @SuppressWarnings("unchecked")
     public ToStringStyle get()
-    throws ToStringStyleNotFoundException {
+        throws ToStringStyleNotFoundException {
         final Optional<ToStringStyle> toStringStyle = namedStyleSupplier.get(identifierOrClassName);
 
         return toStringStyle.isPresent() ?

@@ -45,5 +45,5 @@ public interface Retain<Item> {
      *         if an error occurs during the operation
      */
     void retain(IterativeContainsAdapter<Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

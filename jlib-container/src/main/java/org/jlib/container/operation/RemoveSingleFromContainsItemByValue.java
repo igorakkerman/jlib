@@ -30,8 +30,8 @@ package org.jlib.container.operation;
  * @author Igor Akkerman
  */
 public interface RemoveSingleFromContainsItemByValue<Item>
-extends RemoveSingleByValue<Item>,
-        ContainsSingle<Item> {
+    extends RemoveSingleByValue<Item>,
+            ContainsSingle<Item> {
 
     /**
      * Removes all Items from this object for which the specified {@link ContainsSingle}'s
@@ -49,5 +49,5 @@ extends RemoveSingleByValue<Item>,
      */
     @Override
     void remove(Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException;
+        throws InvalidContainerArgumentException, InvalidContainerStateException;
 }

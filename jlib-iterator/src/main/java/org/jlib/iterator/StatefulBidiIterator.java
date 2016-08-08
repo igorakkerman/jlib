@@ -21,9 +21,10 @@
 
 package org.jlib.iterator;
 
-public final class StatefulBidiIterator<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
-extends StatefulIterator<Item, Itble, State>
-implements BidiIterator<Item> {
+public final class StatefulBidiIterator<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item,
+    State>>
+    extends StatefulIterator<Item, Itble, State>
+    implements BidiIterator<Item> {
 
     public StatefulBidiIterator(final Itble iterable, final State initialState) {
         super(iterable, initialState);
@@ -36,7 +37,7 @@ implements BidiIterator<Item> {
 
     @Override
     public final Item previous()
-    throws NoNextItemException {
+        throws NoNextItemException {
         final Item previousItem = getCurrentState().next();
 
         setCurrentState(getCurrentState().nextState());

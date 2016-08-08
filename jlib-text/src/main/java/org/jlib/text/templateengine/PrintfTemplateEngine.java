@@ -23,6 +23,9 @@ package org.jlib.text.templateengine;
 
 import java.text.MessageFormat;
 
+import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
+
 /**
  * {@link TemplateEngine} using the {@link String#format(String, Object...)} printf style template format and processing
  * routine. Implemented as a singleton.
@@ -31,17 +34,12 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
+@NoArgsConstructor(access = PRIVATE)
 public final class PrintfTemplateEngine
-implements TemplateEngine<Object> {
+    implements TemplateEngine<Object> {
 
-    private static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();
-
-    @SuppressWarnings("TypeMayBeWeakened")
-    public static PrintfTemplateEngine getInstance() {
-        return INSTANCE;
-    }
-
-    private PrintfTemplateEngine() {}
+    public static final PrintfTemplateEngine PRINTF_TEMPLATE_ENGINE = new PrintfTemplateEngine();
+    public static final PrintfTemplateEngine INSTANCE = new PrintfTemplateEngine();
 
     @Override
     public String applyArguments(final CharSequence template, final Object... arguments) {

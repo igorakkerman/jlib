@@ -23,7 +23,7 @@ package org.jlib.value.formatter;
 
 import java.util.MissingFormatArgumentException;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class PrintfNamedValueFormatterTest {
 
     @Test
     public void emptyTemplateShouldProduceEmptyString()
-    throws Exception {
+        throws Exception {
         // given
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("");
 
@@ -46,12 +46,12 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEmpty();
+        assertThat(builder.toString()).isEmpty();
     }
 
     @Test
     public void namePlaceholderShouldOnlyProduceName()
-    throws Exception {
+        throws Exception {
         // given
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("++ %s **");
 
@@ -59,12 +59,12 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("++ value **");
+        assertThat(builder.toString()).isEqualTo("++ value **");
     }
 
     @Test
     public void nameValuePlaceholderShouldProduceNameValue()
-    throws Exception {
+        throws Exception {
         // given
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
 
@@ -72,12 +72,12 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("value: Hallo");
+        assertThat(builder.toString()).isEqualTo("value: Hallo");
     }
 
     @Test
     public void textNameValuePlaceholderShouldProduceTextNameValue()
-    throws Exception {
+        throws Exception {
         // given
         builder = new StringBuilder("This is a text ... ");
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s");
@@ -86,12 +86,12 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("This is a text ... value: Hallo");
+        assertThat(builder.toString()).isEqualTo("This is a text ... value: Hallo");
     }
 
     @Test(expected = MissingFormatArgumentException.class)
     public void nameValueExtraPlaceholderShouldProduceException()
-    throws Exception {
+        throws Exception {
         // given
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s %s");
 
@@ -104,7 +104,7 @@ public class PrintfNamedValueFormatterTest {
 
     @Test
     public void wrongPlaceholderShouldProduceWrongString()
-    throws Exception {
+        throws Exception {
         // given
         final NamedValueFormatter<Object> formatter = new PrintfNamedValueFormatter("%s: %s {0}");
 
@@ -112,6 +112,6 @@ public class PrintfNamedValueFormatterTest {
         formatter.append(builder, "value", "Hallo");
 
         // then
-        Assertions.assertThat(builder.toString()).isEqualTo("value: Hallo {0}");
+        assertThat(builder.toString()).isEqualTo("value: Hallo {0}");
     }
 }

@@ -28,7 +28,7 @@ package org.jlib.container.operation;
  * @author Igor Akkerman
  */
 public class SoleItemNotRemoveableException
-extends InvalidContainerStateException {
+    extends InvalidContainerStateException {
 
     private static final long serialVersionUID = - 7467942886021869121L;
 

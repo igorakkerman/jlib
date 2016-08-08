@@ -22,7 +22,7 @@
 package org.jlib.container.operation;
 
 public class IsEmptyFromItemsCount<Item>
-implements IsEmpty<Item> {
+    implements IsEmpty<Item> {
 
     private final Count<Item> delegateContainer;
 
@@ -32,7 +32,7 @@ implements IsEmpty<Item> {
 
     @Override
     public boolean isEmpty()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateContainer.count() == 0;
     }
 }

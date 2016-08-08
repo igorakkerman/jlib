@@ -24,21 +24,21 @@ package org.jlib.exception;
 import org.jlib.message.Message;
 
 public class InvalidStateExceptionMessageTest
-extends ExceptionMessageTestBase {
+    extends ExceptionMessageTestBase {
+
+    @Override
+    protected void throwException()
+        throws Exception {
+        throw new AnException(getMessage());
+    }
 
     private static class AnException
-    extends InvalidStateException {
+        extends InvalidStateException {
 
         private static final long serialVersionUID = - 3505364602724687463L;
 
         private AnException(final Message message) {
             super(message);
         }
-    }
-
-    @Override
-    protected void throwException()
-    throws Exception {
-        throw new AnException(getMessage());
     }
 }

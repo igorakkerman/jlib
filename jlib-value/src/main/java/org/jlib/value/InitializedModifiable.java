@@ -30,8 +30,8 @@ package org.jlib.value;
  * @author Igor Akkerman
  */
 public class InitializedModifiable<Value>
-extends Initialized<Value>
-implements Modifiable<Value> {
+    extends Initialized<Value>
+    implements Modifiable<Value> {
 
     /**
      * Creates a new {@link InitializedModifiable}.
@@ -43,7 +43,7 @@ implements Modifiable<Value> {
      *         if {@code initialValue} is invalid
      */
     public InitializedModifiable(final Value initialValue)
-    throws IllegalArgumentException {
+        throws IllegalArgumentException {
         super(initialValue);
     }
 

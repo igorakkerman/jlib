@@ -30,7 +30,7 @@ import java.util.Iterator;
  *        type of the items traversed by the {@link Iterator}.
  */
 public interface IteratorState<Item, State extends IteratorState<Item, State>>
-extends Iterator<Item> {
+    extends Iterator<Item> {
 
     /**
      * Returns the next {@link IteratorState}

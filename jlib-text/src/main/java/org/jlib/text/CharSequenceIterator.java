@@ -24,7 +24,7 @@ package org.jlib.text;
 import java.util.Iterator;
 
 import org.jlib.iterator.NoNextItemException;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * <p>
@@ -42,7 +42,91 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class CharSequenceIterator
-implements Iterator<Character> {
+    implements Iterator<Character> {
+
+    /** {@link CharSequence} iterated by this CharSequenceIterator */
+    private final CharSequence charSequence;
+    /** index of next iterated character */
+    protected int nextCharacterIndex;
+    /** index of last iterated character */
+    protected int lastCharacterIndex;
+
+    /**
+     * Creates a new CharSequenceIterator over the {@link Character Characters}
+     * of the specified {@link CharSequence}.
+     *
+     * @param charSequence
+     *        {@link CharSequence} to iterate
+     */
+    public CharSequenceIterator(final CharSequence charSequence) {
+        // a call to another constructor would throw an Exception for an empty charSequence
+        // also, the indices checks are skipped here
+        this.charSequence = charSequence;
+
+        nextCharacterIndex = 0;
+        lastCharacterIndex = charSequence.length() - 1;
+    }
+
+    /**
+     * Creates a new CharSequenceIterator over the {@link Character Characters} of the subsequence specified by the
+     * index of its first character (inclusive) contained by the specified {@link CharSequence}.
+     *
+     * @param charSequence
+     *        {@link CharSequence} to traverse
+     *
+     * @param firstCharacterIndex
+     *        integer specifying the index of the first character of the subsequence
+     *
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code firstCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
+     */
+    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex)
+        throws CharSequenceIndexOutOfBoundsException {
+
+        Text.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
+
+        this.charSequence = charSequence;
+        nextCharacterIndex = firstCharacterIndex;
+        lastCharacterIndex = charSequence.length() - 1;
+    }
+
+    /**
+     * Creates a new {@link CharSequenceIterator} over the {@link Character}s of the subsequence specified by the
+     * indices of its first and last {@link Character}s (inclusive) of the specified {@link CharSequence}.
+     *
+     * @param charSequence
+     *        {@link CharSequence} to traverse
+     *
+     * @param firstCharacterIndex
+     *        integer specifying the index of the first character of the
+     *        subsequence
+     *
+     * @param lastCharacterIndex
+     *        integer specifying the index of the last character of the
+     *        subsequence
+     *
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
+     *             <li>{@code lastCharacterIndex > charSequence.length() - 1}</li>
+     *         </ul>
+     */
+    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex,
+                                final int lastCharacterIndex)
+        throws CharSequenceIndexOutOfBoundsException {
+
+        Text.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
+
+        this.charSequence = charSequence;
+        nextCharacterIndex = firstCharacterIndex;
+        this.lastCharacterIndex = lastCharacterIndex;
+    }
 
     /**
      * Returns an {@link Iterable} creating CharSequenceIterators over the
@@ -82,7 +166,7 @@ implements Iterator<Character> {
      *         </ul>
      */
     public static Iterable<Character> iterable(final CharSequence charSequence, final int firstCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
+        throws CharSequenceIndexOutOfBoundsException {
         return () -> new CharSequenceIterator(charSequence, firstCharacterIndex);
     }
 
@@ -116,94 +200,8 @@ implements Iterator<Character> {
      */
     public static Iterable<Character> iterable(final CharSequence charSequence, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
+        throws CharSequenceIndexOutOfBoundsException {
         return () -> new CharSequenceIterator(charSequence, firstCharacterIndex, lastCharacterIndex);
-    }
-
-    /** {@link CharSequence} iterated by this CharSequenceIterator */
-    private final CharSequence charSequence;
-
-    /** index of next iterated character */
-    protected int nextCharacterIndex;
-
-    /** index of last iterated character */
-    protected int lastCharacterIndex;
-
-    /**
-     * Creates a new CharSequenceIterator over the {@link Character Characters}
-     * of the specified {@link CharSequence}.
-     *
-     * @param charSequence
-     *        {@link CharSequence} to iterate
-     */
-    public CharSequenceIterator(final CharSequence charSequence) {
-        // a call to another constructor would throw an Exception for an empty charSequence
-        // also, the indices checks are skipped here
-        this.charSequence = charSequence;
-
-        nextCharacterIndex = 0;
-        lastCharacterIndex = charSequence.length() - 1;
-    }
-
-    /**
-     * Creates a new CharSequenceIterator over the {@link Character Characters} of the subsequence specified by the
-     * index of its first character (inclusive) contained by the specified {@link CharSequence}.
-     *
-     * @param charSequence
-     *        {@link CharSequence} to traverse
-     *
-     * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the subsequence
-     *
-     * @throws CharSequenceIndexOutOfBoundsException
-     *         if one of the following conditions is true:
-     *         <ul>
-     *             <li>{@code firstCharacterIndex < 0}</li>
-     *             <li>{@code firstCharacterIndex > charSequence.length() - 1}</li>
-     *         </ul>
-     */
-    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
-
-        TextUtility.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
-
-        this.charSequence = charSequence;
-        nextCharacterIndex = firstCharacterIndex;
-        lastCharacterIndex = charSequence.length() - 1;
-    }
-
-    /**
-     * Creates a new {@link CharSequenceIterator} over the {@link Character}s of the subsequence specified by the
-     * indices of its first and last {@link Character}s (inclusive) of the specified {@link CharSequence}.
-     *
-     * @param charSequence
-     *        {@link CharSequence} to traverse
-     *
-     * @param firstCharacterIndex
-     *        integer specifying the index of the first character of the
-     *        subsequence
-     *
-     * @param lastCharacterIndex
-     *        integer specifying the index of the last character of the
-     *        subsequence
-     *
-     * @throws CharSequenceIndexOutOfBoundsException
-     *         if one of the following conditions is true:
-     *         <ul>
-     *             <li>{@code firstCharacterIndex < 0}</li>
-     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
-     *             <li>{@code lastCharacterIndex > charSequence.length() - 1}</li>
-     *         </ul>
-     */
-    public CharSequenceIterator(final CharSequence charSequence, final int firstCharacterIndex,
-                                final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
-
-        TextUtility.ensureIndicesValid(charSequence, firstCharacterIndex, charSequence.length() - 1);
-
-        this.charSequence = charSequence;
-        nextCharacterIndex = firstCharacterIndex;
-        this.lastCharacterIndex = lastCharacterIndex;
     }
 
     @Override

@@ -33,5 +33,5 @@ public interface IsEmpty<Item> {
      *         if an error occurs during the operation
      */
     boolean isEmpty()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

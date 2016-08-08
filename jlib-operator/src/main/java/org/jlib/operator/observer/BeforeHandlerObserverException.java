@@ -29,7 +29,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class BeforeHandlerObserverException
-extends ObserverException {
+    extends ObserverException {
 
     private static final long serialVersionUID = 6990611733723791941L;
 

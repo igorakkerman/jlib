@@ -33,8 +33,8 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface StringTransformer
-extends Consumer<StringBuilder>,
-        Function<String, String> {
+    extends Consumer<StringBuilder>,
+            Function<String, String> {
 
     /**
      * Transforms the String contained by the specified {@link StringBuilder}

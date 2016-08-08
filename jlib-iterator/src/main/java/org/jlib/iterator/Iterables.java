@@ -23,12 +23,15 @@ package org.jlib.iterator;
 
 import java.util.Iterator;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * {@link Iterator} utility.
  *
  * @author Igor Akkerman
  */
-public final class IterableUtility {
+@UtilityClass
+public final class Iterables {
 
     /**
      * Verifies whether the {@link Iterator} instances created by the
@@ -222,6 +225,4 @@ public final class IterableUtility {
     public static <Item> BidiIterable<Item> singletonIterable(final Item item) {
         return new SingletonIterable<>(item);
     }
-
-    private IterableUtility() {}
 }

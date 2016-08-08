@@ -23,8 +23,7 @@ package org.jlib.iterator;
 
 import org.jlib.exception.InvalidArgumentException;
 import org.jlib.message.Message;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidIteratorStateException} thrown when the traversed {@link Iterable} claims a state error.
@@ -32,7 +31,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class InvalidIterableArgumentException
-extends InvalidArgumentException {
+    extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 1098504358095886664L;
 

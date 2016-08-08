@@ -33,7 +33,7 @@ import org.jlib.value.Accessor;
  * @author Igor Akkerman
  */
 interface OperatedValue<Value>
-extends Accessor<Value> {
+    extends Accessor<Value> {
 
     /**
      * Operates on the held Vallue using the specified

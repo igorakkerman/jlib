@@ -24,12 +24,15 @@ package org.jlib.io;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Utility class providing static methods for input/output operations.
  *
  * @author Igor Akkerman
  */
-public final class StreamUtility {
+@UtilityClass
+public final class Io {
 
     /**
      * <p>
@@ -76,6 +79,4 @@ public final class StreamUtility {
         // identical functionality to:
         // return (byte) (unsignedInt <= 127 ? unsignedInt : unsignedInt - 256);
     }
-
-    private StreamUtility() {}
 }

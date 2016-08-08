@@ -26,5 +26,5 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public interface ClassNameToStringStyleSupplier {
 
     ToStringStyle get(String className)
-    throws ToStringStyleNotFoundException;
+        throws ToStringStyleNotFoundException;
 }

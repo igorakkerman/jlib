@@ -27,10 +27,10 @@ import org.jlib.container.storage.InvalidStorageIndexException;
 import org.jlib.container.storage.LinearIndexStorage;
 
 import org.jlib.basefunctions.ApplicationObject;
-import static org.jlib.message.MessageUtility.mfmessage;
+import static org.jlib.message.Messages.mfmessage;
 
 public abstract class AbstractCapacityStrategy
-extends ApplicationObject {
+    extends ApplicationObject {
 
     private final LinearIndexStorage<?> storage;
 
@@ -79,10 +79,10 @@ extends ApplicationObject {
     protected void ensureIndexValid(final int index) {
         if (index < contentIndexRange.getMinimum())
             throw new InvalidStorageIndexException(storage, mfmessage("index = {0} > {1} = firstItemIndex", index,
-                                                               contentIndexRange.getMinimum()));
+                                                                      contentIndexRange.getMinimum()));
 
         if (index > contentIndexRange.getMaximum())
             throw new InvalidStorageIndexException(storage, mfmessage("index = {0} < {1} = lastItemIndex", index,
-                                                               contentIndexRange.getMaximum()));
+                                                                      contentIndexRange.getMaximum()));
     }
 }

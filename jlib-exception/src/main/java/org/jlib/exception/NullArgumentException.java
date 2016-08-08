@@ -24,7 +24,7 @@ package org.jlib.exception;
 import org.jlib.message.Message;
 
 public class NullArgumentException
-extends InvalidArgumentException {
+    extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 2292360979135018076L;
 

@@ -21,7 +21,7 @@
 
 package org.jlib.container.operation;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when a {@link RemoveSingleByValue} does not contain
@@ -30,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class ItemToRemoveNotContainedException
-extends InvalidContainerArgumentException {
+    extends InvalidContainerArgumentException {
 
     private static final long serialVersionUID = - 2921569537644842654L;
 
@@ -44,13 +44,13 @@ extends InvalidContainerArgumentException {
      *        Item to retain
      */
     public ItemToRemoveNotContainedException(
-                                             final RemoveMultipleByValue<?> container, final Object item) {
+        final RemoveMultipleByValue<?> container, final Object item) {
         super(container, message(item));
     }
 
     public ItemToRemoveNotContainedException(
-                                             final RemoveMultipleByValue<?> container, final Object item,
-                                             final Exception cause) {
+        final RemoveMultipleByValue<?> container, final Object item,
+        final Exception cause) {
         super(container, message(item), cause);
     }
 }

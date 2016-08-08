@@ -21,8 +21,7 @@
 
 package org.jlib.container.operation;
 
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidContainerArgumentException} thrown when trying to invalidly add
@@ -31,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class ItemAlreadyContainedException
-extends InvalidContainerArgumentException {
+    extends InvalidContainerArgumentException {
 
     private static final long serialVersionUID = 1090527595338576596L;
 

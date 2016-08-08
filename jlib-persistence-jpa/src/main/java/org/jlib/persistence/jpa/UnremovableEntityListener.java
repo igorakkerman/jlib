@@ -27,7 +27,7 @@ public class UnremovableEntityListener {
 
     @PreRemove
     public void forbidRemoval(final SimpleJpaEntity<?> entity)
-    throws EntityNotRemovableException {
+        throws EntityNotRemovableException {
         throw new EntityNotRemovableException(entity);
     }
 }

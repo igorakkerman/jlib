@@ -30,7 +30,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public class OperatorException
-extends ApplicationException {
+    extends ApplicationException {
 
     private static final long serialVersionUID = - 9075612246404744163L;
 

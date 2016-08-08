@@ -29,11 +29,11 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public class CharSequenceIndexOutOfBoundsException
-extends IndexOutOfBoundsException {
+    extends IndexOutOfBoundsException {
 
-    private static final long serialVersionUID = -4883064375950444974L;
+    private static final long serialVersionUID = - 4883064375950444974L;
 
-    public CharSequenceIndexOutOfBoundsException(final CharSequence charSequence, final Message message)  {
+    public CharSequenceIndexOutOfBoundsException(final CharSequence charSequence, final Message message) {
         super(message.with("text", charSequence).toString());
     }
 }

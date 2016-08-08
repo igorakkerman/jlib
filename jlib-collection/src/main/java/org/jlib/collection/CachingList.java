@@ -29,6 +29,7 @@ import java.util.ListIterator;
 import java.util.Spliterator;
 import java.util.function.UnaryOperator;
 
+import lombok.RequiredArgsConstructor;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -79,8 +80,9 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  *
  * @author Igor Akkerman
  */
+@RequiredArgsConstructor
 public final class CachingList<Item>
-implements List<Item> {
+    implements List<Item> {
 
     /** delegate {@link List} */
     private final List<Item> delegate;
@@ -90,16 +92,6 @@ implements List<Item> {
 
     /** last looked up {@link Item}; {@code null} if unset (for performance reasons) */
     private @Nullable Object lastLookedUpItem;
-
-    /**
-     * Creates a new {@link CachingList}.
-     *
-     * @param delegate
-     *        delegate {@link List} to which all calls are delegated
-     */
-    public CachingList(final List<Item> delegate) {
-        this.delegate = delegate;
-    }
 
     @Override
     public boolean contains(final @Nullable Object item) {
@@ -264,9 +256,11 @@ implements List<Item> {
 
     @Override
     public int size() {
-        return delegate.size();}
+        return delegate.size();
+    }
 
     @Override
     public boolean isEmpty() {
-        return delegate.isEmpty();}
+        return delegate.isEmpty();
+    }
 }

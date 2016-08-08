@@ -21,11 +21,12 @@
 
 package org.jlib.value;
 
-public final class Values {
+import lombok.experimental.UtilityClass;
 
-    public static <Val> Named<Val> named(final String name, final Val value) {
+@UtilityClass
+public class Values {
+
+    public static <Value> Named<Value> named(final String name, final Value value) {
         return new InitializedNamed<>(name, value);
     }
-
-    private Values() {}
 }

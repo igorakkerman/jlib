@@ -42,5 +42,5 @@ public interface HandledOperator {
      */
     @SuppressWarnings({ "ProhibitedExceptionDeclared", "RedundantThrows" })
     void operate()
-    throws OperatorException, RuntimeException;
+        throws OperatorException, RuntimeException;
 }

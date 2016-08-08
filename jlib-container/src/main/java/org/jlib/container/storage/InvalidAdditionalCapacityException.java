@@ -21,10 +21,10 @@
 
 package org.jlib.container.storage;
 
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class InvalidAdditionalCapacityException
-extends InvalidStorageArgumentException {
+    extends InvalidStorageArgumentException {
 
     private static final long serialVersionUID = 8571768940498236393L;
 

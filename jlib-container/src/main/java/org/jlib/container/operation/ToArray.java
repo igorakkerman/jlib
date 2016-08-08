@@ -33,5 +33,5 @@ public interface ToArray<Item> {
      *         if an error occurs during the operation
      */
     Item[] toArray()
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

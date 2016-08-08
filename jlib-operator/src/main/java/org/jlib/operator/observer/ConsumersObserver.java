@@ -34,13 +34,16 @@ import org.jlib.operator.OperatorException;
  *        type of observed value
  */
 public class ConsumersObserver<Value>
-implements Observer<Value> {
+    implements Observer<Value> {
 
-    private Consumer<Value> beforeConsumer = value -> {};
+    private Consumer<Value> beforeConsumer = value -> {
+    };
 
-    private Consumer<Value> afterSuccessConsumer = value -> {};
+    private Consumer<Value> afterSuccessConsumer = value -> {
+    };
 
-    private Consumer<Value> afterFailureConsumer = value -> {};
+    private Consumer<Value> afterFailureConsumer = value -> {
+    };
 
     public ConsumersObserver<Value> beforeDo(final Consumer<Value> beforeConsumer) {
         this.beforeConsumer = beforeConsumer;
@@ -62,19 +65,19 @@ implements Observer<Value> {
 
     @Override
     public void before(final Value value)
-    throws RuntimeException {
+        throws RuntimeException {
         beforeConsumer.accept(value);
     }
 
     @Override
     public void afterSuccess(final Value value)
-    throws RuntimeException {
+        throws RuntimeException {
         afterSuccessConsumer.accept(value);
     }
 
     @Override
     public void afterFailure(final Value value, final OperatorException operatorException)
-    throws RuntimeException {
+        throws RuntimeException {
         afterFailureConsumer.accept(value);
     }
 }

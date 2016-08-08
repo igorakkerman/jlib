@@ -22,5 +22,6 @@
 package org.jlib.basefunctions;
 
 public interface ToString<Obj> {
+
     String toString(final Obj object);
 }

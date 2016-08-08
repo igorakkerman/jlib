@@ -22,11 +22,10 @@
 package org.jlib.container.operation;
 
 import org.jlib.exception.InvalidStateException;
-
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 public class ForbiddenCastException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = - 2378979200033998213L;
 

@@ -46,5 +46,5 @@ public interface ObservedRemoveAll<Item> {
      */
     @SuppressWarnings("unchecked")
     void removeAll(Observer<Item>... observers)
-    throws InvalidContainerStateException;
+        throws InvalidContainerStateException;
 }

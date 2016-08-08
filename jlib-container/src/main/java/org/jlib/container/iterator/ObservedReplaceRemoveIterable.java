@@ -30,9 +30,9 @@ package org.jlib.container.iterator;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceRemoveIterable<Item>
-extends ReplaceRemoveIterator<Item>,
-        ObservedReplaceIterator<Item>,
-        ObservedRemoveIterator<Item> {
+    extends ReplaceRemoveIterator<Item>,
+            ObservedReplaceIterator<Item>,
+            ObservedRemoveIterator<Item> {
 
     ObservedReplaceRemoveIterator<Item> iterator();
 }

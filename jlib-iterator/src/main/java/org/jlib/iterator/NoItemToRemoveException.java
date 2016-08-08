@@ -29,7 +29,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public class NoItemToRemoveException
-extends InvalidIteratorStateException {
+    extends InvalidIteratorStateException {
 
     private static final long serialVersionUID = 3354621909113836210L;
 

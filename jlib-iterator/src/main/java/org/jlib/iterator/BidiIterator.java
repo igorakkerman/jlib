@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @author Igor Akkerman
  */
 public interface BidiIterator<Item>
-extends Iterator<Item> {
+    extends Iterator<Item> {
 
     /**
      * Verifies whether this {@link BidiIterator} has a previous Item.
@@ -51,5 +51,5 @@ extends Iterator<Item> {
      *         if there is no previous Item
      */
     Item previous()
-    throws NoPreviousItemException;
+        throws NoPreviousItemException;
 }

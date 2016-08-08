@@ -22,8 +22,8 @@
 package org.jlib.iterator;
 
 public final class StuckIteratorState<Item, Itble extends Iterable<Item>, State extends BidiIteratorState<Item, State>>
-extends IterableAware<Item, Itble>
-implements BidiIteratorState<Item, State> {
+    extends IterableAware<Item, Itble>
+    implements BidiIteratorState<Item, State> {
 
     public StuckIteratorState(final Itble iterable) {
         super(iterable);
@@ -36,7 +36,7 @@ implements BidiIteratorState<Item, State> {
 
     @Override
     public Item previous()
-    throws NoPreviousItemException {
+        throws NoPreviousItemException {
         throw new NoPreviousItemException("iterable", getIterable());
     }
 
@@ -52,7 +52,7 @@ implements BidiIteratorState<Item, State> {
 
     @Override
     public Item next()
-    throws NoNextItemException {
+        throws NoNextItemException {
         throw new NoNextItemException("iterable", getIterable());
     }
 

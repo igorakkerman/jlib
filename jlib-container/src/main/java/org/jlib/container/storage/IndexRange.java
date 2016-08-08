@@ -33,8 +33,8 @@ import org.jlib.shared.Valid;
  * @author Igor Akkerman
  */
 public class IndexRange
-implements Cloneable,
-           Serializable {
+    implements Cloneable,
+               Serializable {
 
     private static final long serialVersionUID = - 7959127796333433937L;
 

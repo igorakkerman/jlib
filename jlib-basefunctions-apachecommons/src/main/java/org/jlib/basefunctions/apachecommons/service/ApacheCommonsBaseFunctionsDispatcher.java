@@ -39,30 +39,27 @@ import org.jlib.basefunctions.apachecommons.equals.ApacheCommonsEqualsEngine;
 import org.jlib.basefunctions.apachecommons.hashcode.ApacheCommonsHashCodeEngine;
 import org.jlib.basefunctions.apachecommons.tostring.ApacheCommonsToStringEngine;
 import org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration;
-import static org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration
-              .TO_STRING_STYLE_NAME_PROPERTY_NAME;
+import static org.jlib.basefunctions.apachecommons.tostring.DefaultToStringStylesConfiguration.TO_STRING_STYLE_NAME_PROPERTY_NAME;
 import org.jlib.basefunctions.apachecommons.tostring.IdentifierOrClassNameToStringStyleSupplier;
 import org.jlib.systemproperty.SystemPropertyUtility;
 
 public class ApacheCommonsBaseFunctionsDispatcher
-implements BaseFunctionsDispatcher {
+    implements BaseFunctionsDispatcher {
 
     private ToStringStyle toStringStyle;
 
     public ApacheCommonsBaseFunctionsDispatcher() {
         final Optional<String> optionalIdentifierOrClassName =
-        /**/ SystemPropertyUtility.getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
+            SystemPropertyUtility.getOptionalProperty(TO_STRING_STYLE_NAME_PROPERTY_NAME);
 
         if (! optionalIdentifierOrClassName.isPresent()) {
             toStringStyle = DefaultToStringStylesConfiguration.DEFAULT_TO_STRING_STYLE;
             return;
         }
 
-        final IdentifierOrClassNameToStringStyleSupplier toStringStyleSupplier =
-        /**/ new IdentifierOrClassNameToStringStyleSupplier();
+        final IdentifierOrClassNameToStringStyleSupplier toStringStyleSupplier = new IdentifierOrClassNameToStringStyleSupplier();
         toStringStyleSupplier.setNamedStyleSupplier(DefaultToStringStylesConfiguration.NAMED_STYLE_SUPPLIER);
-        toStringStyleSupplier.setClassNameToStringStyleSupplier
-                              (DefaultToStringStylesConfiguration.CLASS_NAME_STYLE_SUPPLIER);
+        toStringStyleSupplier.setClassNameToStringStyleSupplier(DefaultToStringStylesConfiguration.CLASS_NAME_STYLE_SUPPLIER);
         toStringStyleSupplier.setIdentifierOrClassName(optionalIdentifierOrClassName.get());
 
         toStringStyle = toStringStyleSupplier.get();

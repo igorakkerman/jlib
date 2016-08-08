@@ -21,10 +21,6 @@
 
 package org.jlib.text;
 
-import java.util.Optional;
-
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
 import org.jlib.iterator.NoItemToRemoveException;
 
 /**
@@ -33,7 +29,76 @@ import org.jlib.iterator.NoItemToRemoveException;
  * @author Igor Akkerman
  */
 public class StringBuilderIterator
-extends CharSequenceIterator {
+    extends CharSequenceIterator {
+
+    /** {@link StringBuilder} iterated by this StringBuilderIterator */
+    private final StringBuilder stringBuilder;
+    /** last {@link Character} returned by {@link #next()} */
+    private Character lastReturnedCharacter = null;
+
+    /**
+     * Creates a new {@link StringBuilderIterator} over the {@link Character}s of the specified {@link StringBuilder}.
+     *
+     * @param stringBuilder
+     *        {@link StringBuilder} to iterate
+     */
+    public StringBuilderIterator(final StringBuilder stringBuilder) {
+        super(stringBuilder);
+        this.stringBuilder = stringBuilder;
+    }
+
+    /**
+     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the index of its
+     * first {@link Character} (inclusive) contained by the specified {@link StringBuilder}.
+     *
+     * @param stringBuilder
+     *        {@link StringBuilder} to iterate
+     *
+     * @param firstCharacterIndex
+     *        integer specifying the index of the first {@link Character} of the  subsequence
+     *
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code firstCharacterIndex > stringBuilder.length() - 1}</li>
+     *         </ul>
+     */
+    public StringBuilderIterator(final StringBuilder stringBuilder, final int firstCharacterIndex)
+        throws CharSequenceIndexOutOfBoundsException {
+        super(stringBuilder, firstCharacterIndex);
+        this.stringBuilder = stringBuilder;
+    }
+
+    /**
+     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the indices of
+     * its first and last {@link Character}s (inclusive) contained by the specified {@link StringBuilder}.
+     *
+     * @param stringBuilder
+     *        {@link StringBuilder} to iterate
+     *
+     * @param firstCharacterIndex
+     *        integer specifying the index of the first {@link Character} of the
+     *        subsequence
+     *
+     * @param lastCharacterIndex
+     *        integer specifying the index of the last {@link Character} of the
+     *        subsequence
+     *
+     * @throws CharSequenceIndexOutOfBoundsException
+     *         if one of the following conditions is true:
+     *         <ul>
+     *             <li>{@code firstCharacterIndex < 0}</li>
+     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
+     *             <li>{@code lastCharacterIndex > stringBuilder.length() - 1}</li>
+     *         </ul>
+     */
+    public StringBuilderIterator(final StringBuilder stringBuilder, final int firstCharacterIndex,
+                                 final int lastCharacterIndex)
+        throws CharSequenceIndexOutOfBoundsException {
+        super(stringBuilder, firstCharacterIndex, lastCharacterIndex);
+        this.stringBuilder = stringBuilder;
+    }
 
     /**
      * Returns an {@link Iterable} creating StringBuilderIterators over the
@@ -72,7 +137,7 @@ extends CharSequenceIterator {
      *         </ul>
      */
     public static Iterable<Character> iterable(final StringBuilder stringBuilder, final int firstCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
+        throws CharSequenceIndexOutOfBoundsException {
         return () -> new StringBuilderIterator(stringBuilder, firstCharacterIndex);
     }
 
@@ -104,84 +169,14 @@ extends CharSequenceIterator {
      */
     public static Iterable<Character> iterable(final StringBuilder stringBuilder, final int firstCharacterIndex,
                                                final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
+        throws CharSequenceIndexOutOfBoundsException {
         return () -> new StringBuilderIterator(stringBuilder, firstCharacterIndex, lastCharacterIndex);
-    }
-
-    /** {@link StringBuilder} iterated by this StringBuilderIterator */
-    private final StringBuilder stringBuilder;
-
-    /** last {@link Character} returned by {@link #next()} */
-    private Optional<Character> lastReturnedCharacter = empty();
-
-    /**
-     * Creates a new {@link StringBuilderIterator} over the {@link Character}s of the specified {@link StringBuilder}.
-     *
-     * @param stringBuilder
-     *        {@link StringBuilder} to iterate
-     */
-    public StringBuilderIterator(final StringBuilder stringBuilder) {
-        super(stringBuilder);
-        this.stringBuilder = stringBuilder;
-    }
-
-    /**
-     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the index of its
-     * first {@link Character} (inclusive) contained by the specified {@link StringBuilder}.
-     *
-     * @param stringBuilder
-     *        {@link StringBuilder} to iterate
-     *
-     * @param firstCharacterIndex
-     *        integer specifying the index of the first {@link Character} of the  subsequence
-     *
-     * @throws CharSequenceIndexOutOfBoundsException
-     *         if one of the following conditions is true:
-     *         <ul>
-     *             <li>{@code firstCharacterIndex < 0}</li>
-     *             <li>{@code firstCharacterIndex > stringBuilder.length() - 1}</li>
-     *         </ul>
-     */
-    public StringBuilderIterator(final StringBuilder stringBuilder, final int firstCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
-        super(stringBuilder, firstCharacterIndex);
-        this.stringBuilder = stringBuilder;
-    }
-
-    /**
-     * Creates a new StringBuilderIterator over the {@link Character}s of the subsequence specified by the indices of
-     * its first and last {@link Character}s (inclusive) contained by the specified {@link StringBuilder}.
-     *
-     * @param stringBuilder
-     *        {@link StringBuilder} to iterate
-     *
-     * @param firstCharacterIndex
-     *        integer specifying the index of the first {@link Character} of the
-     *        subsequence
-     *
-     * @param lastCharacterIndex
-     *        integer specifying the index of the last {@link Character} of the
-     *        subsequence
-     *
-     * @throws CharSequenceIndexOutOfBoundsException
-     *         if one of the following conditions is true:
-     *         <ul>
-     *             <li>{@code firstCharacterIndex < 0}</li>
-     *             <li>{@code lastCharacterIndex < firstCharacterIndex}</li>
-     *             <li>{@code lastCharacterIndex > stringBuilder.length() - 1}</li>
-     *         </ul>
-     */
-    public StringBuilderIterator(final StringBuilder stringBuilder, final int firstCharacterIndex,
-                                 final int lastCharacterIndex)
-    throws CharSequenceIndexOutOfBoundsException {
-        super(stringBuilder, firstCharacterIndex, lastCharacterIndex);
-        this.stringBuilder = stringBuilder;
     }
 
     @Override
     public Character next() {
         final Character lastReturnedCharacter = super.next();
-        this.lastReturnedCharacter = of(lastReturnedCharacter);
+        this.lastReturnedCharacter = lastReturnedCharacter;
         return lastReturnedCharacter;
     }
 
@@ -193,7 +188,7 @@ extends CharSequenceIterator {
      */
     @Override
     public void remove() {
-        if (! lastReturnedCharacter.isPresent())
+        if (lastReturnedCharacter != null)
             throw new NoItemToRemoveException(stringBuilder);
 
         stringBuilder.deleteCharAt(nextCharacterIndex - 1);

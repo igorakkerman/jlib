@@ -35,8 +35,7 @@ import org.jlib.reflect.reflector.defaults.Reflectors;
 
 public final class DefaultToStringStylesConfiguration {
 
-    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME =
-    /*    */ "org.jlib.basefunctions.apachecommons.toStringStyle";
+    public static final String TO_STRING_STYLE_NAME_PROPERTY_NAME = "org.jlib.basefunctions.apachecommons.toStringStyle";
 
     public static final Map<String, ToStringStyle> TO_STRING_STYLES;
 
@@ -54,14 +53,8 @@ public final class DefaultToStringStylesConfiguration {
     public static final MapNamedToStringStyleSupplier NAMED_STYLE_SUPPLIER =
     /**/ new MapNamedToStringStyleSupplier(TO_STRING_STYLES);
 
-    public static final ClassNameToStringStyleSupplier CLASS_NAME_STYLE_SUPPLIER;
-
-    static {
-        final ReflectorClassNameToStringStyleSupplier classNameStyleSupplier =
-        /**/ new ReflectorClassNameToStringStyleSupplier();
-        classNameStyleSupplier.setReflectorService(Reflectors.SERVICE);
-        CLASS_NAME_STYLE_SUPPLIER = classNameStyleSupplier;
-    }
+    public static final ClassNameToStringStyleSupplier CLASS_NAME_STYLE_SUPPLIER
+        = new ReflectorClassNameToStringStyleSupplier().setReflectorService(Reflectors.SERVICE);
 
     private DefaultToStringStylesConfiguration() {}
 }

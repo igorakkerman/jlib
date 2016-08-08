@@ -23,10 +23,15 @@ package org.jlib.iterator;
 
 import java.util.Iterator;
 
-public class StatefulIterator<Item, Itble extends Iterable<Item>, State extends IteratorState<Item, State>>
-extends IterableAware<Item, Itble>
-implements Iterator<Item> {
+import lombok.Getter;
+import lombok.Setter;
 
+public class StatefulIterator<Item, Itble extends Iterable<Item>, State extends IteratorState<Item, State>>
+    extends IterableAware<Item, Itble>
+    implements Iterator<Item> {
+
+    @Getter
+    @Setter
     private State currentState;
 
     public StatefulIterator(final Itble iterable, final State initialState) {
@@ -42,19 +47,11 @@ implements Iterator<Item> {
 
     @Override
     public final Item next()
-    throws NoNextItemException {
+        throws NoNextItemException {
         final Item nextItem = currentState.next();
 
         currentState = currentState.nextState();
 
         return nextItem;
-    }
-
-    protected final State getCurrentState() {
-        return currentState;
-    }
-
-    protected final void setCurrentState(final State currentState) {
-        this.currentState = currentState;
     }
 }

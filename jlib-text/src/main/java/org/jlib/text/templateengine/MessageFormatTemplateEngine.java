@@ -23,6 +23,9 @@ package org.jlib.text.templateengine;
 
 import java.text.MessageFormat;
 
+import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
+
 /**
  * {@link TemplateEngine} using the {@link MessageFormat} template format and processing routine. Implemented as a
  * singleton.
@@ -31,17 +34,12 @@ import java.text.MessageFormat;
  *
  * @author Igor Akkerman
  */
+@NoArgsConstructor(access = PRIVATE)
 public final class MessageFormatTemplateEngine
-implements TemplateEngine<Object> {
+    implements TemplateEngine<Object> {
 
-    private static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
-
-    @SuppressWarnings("TypeMayBeWeakened")
-    public static MessageFormatTemplateEngine getInstance() {
-        return INSTANCE;
-    }
-
-    private MessageFormatTemplateEngine() {}
+    public static final MessageFormatTemplateEngine MESSAGE_FORMAT_TEMPLATE_ENGINE = new MessageFormatTemplateEngine();
+    public static final MessageFormatTemplateEngine INSTANCE = new MessageFormatTemplateEngine();
 
     @Override
     public final String applyArguments(final CharSequence template, final Object... arguments) {

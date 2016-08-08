@@ -22,20 +22,19 @@
 package org.jlib.container.storage;
 
 import org.jlib.exception.UnexpectedStateException;
-
-import static org.jlib.message.MessageUtility.mfmessage;
+import static org.jlib.message.Messages.mfmessage;
 
 public abstract class AbstractLinearIndexStorage<Item>
-implements LinearIndexStorage<Item> {
+    implements LinearIndexStorage<Item> {
 
     protected AbstractLinearIndexStorage(final int initialCapacity)
-    throws InvalidStorageCapacityException {
+        throws InvalidStorageCapacityException {
         ensureCapacityValid("initialCapacity", initialCapacity);
     }
 
     @Override
     public Item get(final int index)
-    throws InvalidStorageIndexException {
+        throws InvalidStorageIndexException {
         ensureIndexValid("index", index);
 
         return safeGet(index);
@@ -45,7 +44,7 @@ implements LinearIndexStorage<Item> {
 
     @Override
     public void set(final int index, final Item item)
-    throws InvalidStorageIndexException {
+        throws InvalidStorageIndexException {
         ensureIndexValid("index", index);
 
         safeSet(index, item);
@@ -62,7 +61,7 @@ implements LinearIndexStorage<Item> {
     }
 
     private void ensureAdditionalCapacityValid(final int additionalCapacity)
-    throws InvalidAdditionalCapacityException {
+        throws InvalidAdditionalCapacityException {
         if (additionalCapacity < 0)
             throw new InvalidAdditionalCapacityException(this, additionalCapacity);
     }
@@ -71,7 +70,7 @@ implements LinearIndexStorage<Item> {
                                                          IndexRangeOperationDescriptor... copyDescriptors);
 
     protected void ensureCapacityValid(final String capacityName, final int capacity)
-    throws InvalidStorageCapacityException {
+        throws InvalidStorageCapacityException {
         if (capacity < 0)
             throw new InvalidStorageCapacityException(this, capacityName, capacity);
     }
@@ -82,7 +81,7 @@ implements LinearIndexStorage<Item> {
 
         if (index > capacity() - 1)
             throw new InvalidStorageIndexException(this, mfmessage("{0} = {1} > {2} = capacity - 1", indexName, index,
-                                                            capacity() - 1));
+                                                                   capacity() - 1));
     }
 
     protected void ensureSourceIndexRangeValid(final int beginIndex, final int endIndex) {
@@ -90,8 +89,9 @@ implements LinearIndexStorage<Item> {
         ensureIndexValid("sourceEndIndex", endIndex);
 
         if (endIndex < beginIndex)
-            throw new InvalidStorageIndexException(this, mfmessage("sourceEndIndex = {0} < {1} = sourceBeginIndex", endIndex,
-                                                            beginIndex));
+            throw new InvalidStorageIndexException(this,
+                                                   mfmessage("sourceEndIndex = {0} < {1} = sourceBeginIndex", endIndex,
+                                                             beginIndex));
     }
 
     protected void ensureOperationDescriptorValid(final IndexRangeOperationDescriptor copyDescriptor) {

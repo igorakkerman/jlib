@@ -43,5 +43,5 @@ public interface Accessor<Value> {
      *         if no {@link Value} can be accessed
      */
     Value get()
-    throws NotAccessibleException;
+        throws NotAccessibleException;
 }

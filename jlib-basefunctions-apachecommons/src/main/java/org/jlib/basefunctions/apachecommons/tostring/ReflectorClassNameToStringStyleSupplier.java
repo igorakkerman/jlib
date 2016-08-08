@@ -23,28 +23,26 @@ package org.jlib.basefunctions.apachecommons.tostring;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import lombok.Setter;
 import org.jlib.reflect.languageelement.ProgramElementException;
 import org.jlib.reflect.reflector.ReflectorService;
+import org.jlib.reflect.reflector.defaults.Reflectors;
 
 public class ReflectorClassNameToStringStyleSupplier
-implements ClassNameToStringStyleSupplier {
+    implements ClassNameToStringStyleSupplier {
 
-    private ReflectorService reflectorService;
+    @Setter
+    @SuppressWarnings("FieldMayBeFinal") // IntelliJ IDEA Lombok plugin bug showing warning
+    private ReflectorService reflectorService = Reflectors.SERVICE;
 
     @Override
     public ToStringStyle get(final String className)
-    throws ToStringStyleNotFoundException {
+        throws ToStringStyleNotFoundException {
         try {
-            return reflectorService.useClass(className)
-                                   .withType(ToStringStyle.class)
-                                   .instance();
+            return reflectorService.useClass(className).withType(ToStringStyle.class).instance();
         }
         catch (final ProgramElementException exception) {
             throw new ToStringStyleNotFoundException(exception);
         }
-    }
-
-    public void setReflectorService(final ReflectorService reflectorService) {
-        this.reflectorService = reflectorService;
     }
 }

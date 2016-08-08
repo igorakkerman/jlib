@@ -30,7 +30,7 @@ package org.jlib.value;
  * @author Igor Akkerman
  */
 public class Initialized<Value>
-implements Accessible<Value> {
+    implements Accessible<Value> {
 
     /** registered {@link Value} */
     private Value value;
@@ -45,7 +45,7 @@ implements Accessible<Value> {
      *         if {@code initialValue} is invalid
      */
     public Initialized(final Value initialValue)
-    throws IllegalArgumentException {
+        throws IllegalArgumentException {
 
         value = initialValue;
 
@@ -67,7 +67,7 @@ implements Accessible<Value> {
      *         if {@code value} is invalid
      */
     protected void set(final Value value)
-    throws IllegalArgumentException {
+        throws IllegalArgumentException {
         assertValid(value);
 
         this.value = value;

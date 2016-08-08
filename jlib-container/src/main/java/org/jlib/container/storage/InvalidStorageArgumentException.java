@@ -31,7 +31,7 @@ import org.jlib.message.Message;
  * @author Igor Akkerman
  */
 public abstract class InvalidStorageArgumentException
-extends InvalidArgumentException {
+    extends InvalidArgumentException {
 
     private static final long serialVersionUID = - 1514836335986845986L;
 

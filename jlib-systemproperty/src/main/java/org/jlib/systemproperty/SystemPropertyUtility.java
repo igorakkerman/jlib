@@ -30,6 +30,8 @@ import java.util.Optional;
  */
 public final class SystemPropertyUtility {
 
+    private SystemPropertyUtility() {}
+
     /**
      * Returns the {@link Optional} value of the system property indicated by the specified key.
      *
@@ -74,7 +76,7 @@ public final class SystemPropertyUtility {
      *         if {@code propertyName} is an empty String
      */
     public static String getOptionalPropertyOrFail(final String propertyName)
-    throws OptionalSystemPropertyNotSetException {
+        throws OptionalSystemPropertyNotSetException {
         final String value = System.getProperty(propertyName);
 
         if (value == null)
@@ -105,7 +107,7 @@ public final class SystemPropertyUtility {
      *         if the specified system property is not set
      */
     public static String getMandatoryProperty(final String propertyName)
-    throws MandatorySystemPropertyNotSetException {
+        throws MandatorySystemPropertyNotSetException {
 
         final String propertyValue = System.getProperty(propertyName);
 
@@ -114,6 +116,4 @@ public final class SystemPropertyUtility {
 
         return propertyValue;
     }
-
-    private SystemPropertyUtility() {}
 }

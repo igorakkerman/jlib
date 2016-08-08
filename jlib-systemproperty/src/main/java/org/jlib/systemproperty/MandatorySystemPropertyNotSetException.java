@@ -22,7 +22,7 @@
 package org.jlib.systemproperty;
 
 import org.jlib.exception.InvalidStateException;
-import static org.jlib.message.MessageUtility.message;
+import static org.jlib.message.Messages.message;
 
 /**
  * {@link InvalidStateException} thrown when trying to retrieve the value of a mandatory property that is not set.
@@ -30,7 +30,7 @@ import static org.jlib.message.MessageUtility.message;
  * @author Igor Akkerman
  */
 public class MandatorySystemPropertyNotSetException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = 8781400138384560958L;
 

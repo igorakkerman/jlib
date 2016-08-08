@@ -27,69 +27,6 @@ import org.junit.Test;
 // Test with class A and B for
 public class ApacheCommonsEqualsEngineTest {
 
-    // root level of inheritance
-    private static class O {}
-
-    // first level of ineheritance
-    private static class A
-    extends O {
-
-        final int ai;
-        final String as;
-
-        public boolean eq(final Object obj) {
-            return super.equals(obj);
-        }
-
-        public A(final int ai, final String as) {
-            this.ai = ai;
-            this.as = as;
-        }
-
-        @Override
-        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
-        public boolean equals(final Object otherObject) {
-            final A otherA = (A) otherObject;
-            // only use add(super::equals) if super class actually checks fields, not only this for identity like Object
-            return new ApacheCommonsEqualsEngine<>(otherA).add(ai, otherA.ai)
-                                                          .add(as, otherA.as)
-                                                          .equal();
-        }
-    }
-
-    // second level of ineheritance
-    private static class B
-    extends A {
-
-        final float bf;
-        final boolean bb;
-
-        public B(final int ai, final String as, final float bf, final boolean bb) {
-            super(ai, as);
-            this.bf = bf;
-            this.bb = bb;
-        }
-
-        @Override
-        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
-        public boolean equals(final Object otherObject) {
-            final B otherB = (B) otherObject;
-            return new ApacheCommonsEqualsEngine<>(otherB).add(super::equals)
-                                                          .add(bf, otherB.bf)
-                                                          .add(bb, otherB.bb)
-                                                          .equal();
-        }
-    }
-
-    // third level of inheritance
-    private static class C
-    extends B {
-
-        public C(final int ai, final String as, final float bf, final boolean bb) {
-            super(ai, as, bf, bb);
-        }
-    }
-
     private static final A A1 = new A(1, "Hallo");
     private static final A A1P = new A(1, "Hallo");
     private static final A A2 = new A(1, "Huhu");
@@ -131,5 +68,68 @@ public class ApacheCommonsEqualsEngineTest {
     @Test
     public void c1c2ShouldNotBeEqual() {
         assertThat(C1).isNotEqualTo(C2);
+    }
+
+    // root level of inheritance
+    private static class O {}
+
+    // first level of ineheritance
+    private static class A
+        extends O {
+
+        final int ai;
+        final String as;
+
+        public A(final int ai, final String as) {
+            this.ai = ai;
+            this.as = as;
+        }
+
+        public boolean eq(final Object obj) {
+            return super.equals(obj);
+        }
+
+        @Override
+        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+        public boolean equals(final Object otherObject) {
+            final A otherA = (A) otherObject;
+            // only use add(super::equals) if super class actually checks fields, not only this for identity like Object
+            return new ApacheCommonsEqualsEngine<>(otherA).add(ai, otherA.ai)
+                                                          .add(as, otherA.as)
+                                                          .equal();
+        }
+    }
+
+    // second level of ineheritance
+    private static class B
+        extends A {
+
+        final float bf;
+        final boolean bb;
+
+        public B(final int ai, final String as, final float bf, final boolean bb) {
+            super(ai, as);
+            this.bf = bf;
+            this.bb = bb;
+        }
+
+        @Override
+        @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+        public boolean equals(final Object otherObject) {
+            final B otherB = (B) otherObject;
+            return new ApacheCommonsEqualsEngine<>(otherB).add(super::equals)
+                                                          .add(bf, otherB.bf)
+                                                          .add(bb, otherB.bb)
+                                                          .equal();
+        }
+    }
+
+    // third level of inheritance
+    private static class C
+        extends B {
+
+        public C(final int ai, final String as, final float bf, final boolean bb) {
+            super(ai, as, bf, bb);
+        }
     }
 }

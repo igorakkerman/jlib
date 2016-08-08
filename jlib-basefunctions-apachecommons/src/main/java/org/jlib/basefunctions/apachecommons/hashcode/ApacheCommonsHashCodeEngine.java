@@ -26,7 +26,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jlib.basefunctions.HashCodeEngine;
 
 public class ApacheCommonsHashCodeEngine<Obj>
-implements HashCodeEngine<Obj> {
+    implements HashCodeEngine<Obj> {
 
     private final HashCodeBuilder builder = new HashCodeBuilder();
 

@@ -21,13 +21,15 @@
 
 package org.jlib.iterator;
 
-public abstract class ForwardingIteratorState<Item, Itble extends BidiIterable<Item>, State extends ForwardingIteratorState<Item, Itble, State>>
-extends IterableAware<Item, Itble>
-implements BidiIteratorState<Item, State> {
+public abstract class ForwardingIteratorState<Item, Itble extends BidiIterable<Item>, State extends
+    ForwardingIteratorState<Item, Itble, State>>
+    extends IterableAware<Item, Itble>
+    implements BidiIteratorState<Item, State> {
 
     private final BidiIteratorState<Item, State> delegateIteratorState;
 
-    protected ForwardingIteratorState(final Itble iterable, final BidiIteratorState<Item, State> delegateIteratorState) {
+    protected ForwardingIteratorState(final Itble iterable,
+                                      final BidiIteratorState<Item, State> delegateIteratorState) {
         super(iterable);
 
         this.delegateIteratorState = delegateIteratorState;
@@ -54,7 +56,7 @@ implements BidiIteratorState<Item, State> {
 
     @Override
     public Item next()
-    throws NoNextItemException {
+        throws NoNextItemException {
         return delegateIteratorState.next();
     }
 
@@ -65,7 +67,7 @@ implements BidiIteratorState<Item, State> {
 
     @Override
     public Item previous()
-    throws NoPreviousItemException {
+        throws NoPreviousItemException {
         return delegateIteratorState.previous();
     }
 }

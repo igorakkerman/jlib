@@ -24,7 +24,7 @@ package org.jlib.value.formatter;
 import org.jlib.value.Named;
 
 public interface NamedValueFormatter<Obj>
-extends ValueFormatter<Obj, Named<Obj>> {
+    extends ValueFormatter<Obj, Named<Obj>> {
 
     @Override
     default void append(final StringBuilder builder, final Named<Obj> value) {

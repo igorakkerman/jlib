@@ -49,5 +49,5 @@ public interface SplitCapacityStrategy {
      *         if {@code capacity < 0}
      */
     void ensureSplitCapacity(int splitIndex, int splitCapacity)
-    throws InvalidCapacityException, InvalidStorageIndexException;
+        throws InvalidCapacityException, InvalidStorageIndexException;
 }

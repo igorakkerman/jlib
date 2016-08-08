@@ -28,6 +28,8 @@ package org.jlib.shared;
  */
 public final class NumericUtility {
 
+    private NumericUtility() {}
+
     /**
      * Returns the number of numbers baseetween a minimum and a maximum number, baseoth inclusive.
      *
@@ -68,6 +70,4 @@ public final class NumericUtility {
     public static boolean isOdd(final int number) {
         return (number & 1) == 1;
     }
-
-    private NumericUtility() {}
 }

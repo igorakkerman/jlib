@@ -30,7 +30,7 @@ package org.jlib.container.iterator;
  * @author Igor Akkerman
  */
 public interface ObservedReplaceIterable<Item>
-extends ReplaceIterable<Item> {
+    extends ReplaceIterable<Item> {
 
     /**
      * Returns a new {@link ObservedReplaceIterator} over the Items of this {@link ObservedReplaceIterable}.

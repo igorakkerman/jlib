@@ -21,11 +21,11 @@
 
 package org.jlib.container.storage.capacity.minimal;
 
-import org.jlib.container.storage.capacity.AbstractCapacityStrategy;
-import org.jlib.container.storage.capacity.HeadCapacityStrategy;
 import org.jlib.container.storage.IndexRange;
 import org.jlib.container.storage.IndexRangeOperationDescriptor;
 import org.jlib.container.storage.LinearIndexStorage;
+import org.jlib.container.storage.capacity.AbstractCapacityStrategy;
+import org.jlib.container.storage.capacity.HeadCapacityStrategy;
 
 /**
  * {@link HeadCapacityStrategy} providing just as much head capacity as needed.
@@ -44,8 +44,8 @@ import org.jlib.container.storage.LinearIndexStorage;
  * @author Igor Akkerman
  */
 public class MinimalHeadCapacityStrategy<Item>
-extends AbstractCapacityStrategy
-implements HeadCapacityStrategy {
+    extends AbstractCapacityStrategy
+    implements HeadCapacityStrategy {
 
     public MinimalHeadCapacityStrategy(final LinearIndexStorage<?> storage, final IndexRange contentIndexRange) {
         super(storage, contentIndexRange);

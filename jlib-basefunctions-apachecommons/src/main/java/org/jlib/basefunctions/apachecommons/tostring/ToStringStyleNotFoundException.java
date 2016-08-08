@@ -24,7 +24,7 @@ package org.jlib.basefunctions.apachecommons.tostring;
 import org.jlib.exception.InvalidStateException;
 
 public class ToStringStyleNotFoundException
-extends InvalidStateException {
+    extends InvalidStateException {
 
     private static final long serialVersionUID = 6624163853175763323L;
 

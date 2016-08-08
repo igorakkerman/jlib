@@ -22,7 +22,7 @@
 package org.jlib.value;
 
 public abstract class TestObjectBuilder<TestObject, Self extends Builder<TestObject, Self>>
-extends Builder<TestObject, Self>{
+    extends Builder<TestObject, Self> {
 
     /**
      * Initializes the built {@link TestObject} with common values to reduce boilerplate code in unit tests.

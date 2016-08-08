@@ -40,20 +40,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class IdentifierOrClassNameToStringStyleSupplierTest {
 
-    @SuppressWarnings("serial")
-    private static class TestStyle
-    extends ToStringStyle {}
-
     public static final String STYLE_ID = "MY_STYLE";
     @SuppressWarnings("serial")
     private static final ToStringStyle STYLE = new TestStyle();
     private static final String CLASS_NAME = "org.jlib.i.do.not.Exist";
-
     private IdentifierOrClassNameToStringStyleSupplier configurableSupplier;
-
     @Mock
     private NamedToStringStyleSupplier namedStyleSupplier;
-
     @Mock
     private ClassNameToStringStyleSupplier classNameStyleSupplier;
 
@@ -86,7 +79,7 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     @Test
     @SuppressWarnings("unchecked")
     public void instantiatedStyleOfClassNameShouldBeRetrurned()
-    throws Exception {
+        throws Exception {
 
         // given
         when(namedStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
@@ -109,12 +102,12 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
     @Test
     @SuppressWarnings("unchecked")
     public void notInstantiatableClassNameShouldFailMappingAndThrowException()
-    throws Exception {
+        throws Exception {
         try {
             // given
             when(namedStyleSupplier.get(CLASS_NAME)).thenReturn(empty());
             when(classNameStyleSupplier.get(CLASS_NAME))
-            .thenThrow(new ToStringStyleNotFoundException(new IllegalStateException()));
+                .thenThrow(new ToStringStyleNotFoundException(new IllegalStateException()));
 
             // when
             configurableSupplier.setIdentifierOrClassName(CLASS_NAME);
@@ -136,4 +129,8 @@ public class IdentifierOrClassNameToStringStyleSupplierTest {
             assertThat(expectedException).hasCauseExactlyInstanceOf(IllegalStateException.class);
         }
     }
+
+    @SuppressWarnings("serial")
+    private static class TestStyle
+        extends ToStringStyle {}
 }

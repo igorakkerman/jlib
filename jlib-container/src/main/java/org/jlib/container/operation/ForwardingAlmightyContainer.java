@@ -41,27 +41,27 @@ import org.jlib.operator.observer.ObserverException;
  * @author Igor Akkerman
  */
 public class ForwardingAlmightyContainer<Item>
-extends ApplicationObject
-implements AlmightyContainer<Item> {
+    extends ApplicationObject
+    implements AlmightyContainer<Item> {
 
     private final AlmightyContainer<Item> disabledAlmightyContainer = new AlmightyContainer<Item>() {
 
         @Override
         public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
             */ boolean contains(final ContainsIterable items)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public int count()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public boolean isEmpty()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
@@ -74,76 +74,76 @@ implements AlmightyContainer<Item> {
         @Override
         public final <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items, final Observer<Item>... observers)
-        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
             throw new ForbiddenCastException(this);
         }
 
         @SafeVarargs
         @Override
         public final void removeAll(final Observer<Item>... observers)
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public void removeAll()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public Item[] toArray()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public List<Item> toRandomAccessList()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public List<Item> toSequentialList()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public Set<Item> toSet()
-        throws InvalidContainerStateException {
+            throws InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public boolean contains(final Item item)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public void remove(final Item item)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @Override
         public void retain(final IterativeContainsAdapter<Item> items)
-        throws InvalidContainerArgumentException, InvalidContainerStateException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException {
             throw new ForbiddenCastException(this);
         }
 
         @SafeVarargs
         @Override
         public final void retain(final Iterable<Item> items, final Observer<Item>... observers)
-        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
+            throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
             throw new ForbiddenCastException(this);
         }
     };
@@ -182,57 +182,57 @@ implements AlmightyContainer<Item> {
 
     @Override
     public void removeAll()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         delegateRemoveAll.removeAll();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void removeAll(final Observer<Item>... observers)
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         delegateObservedRemoveAll.removeAll(observers);
     }
 
     @Override
     public boolean isEmpty()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateIsEmpty.isEmpty();
     }
 
     @Override
     public Set<Item> toSet()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateToSet.toSet();
     }
 
     @Override
     public List<Item> toSequentialList()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateToSequentialList.toSequentialList();
     }
 
     @Override
     public Item[] toArray()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateToArray.toArray();
     }
 
     @Override
     public int count()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateCount.count();
     }
 
     @Override
     public List<Item> toRandomAccessList()
-    throws InvalidContainerStateException {
+        throws InvalidContainerStateException {
         return delegateToRandomAccessList.toRandomAccessList();
     }
 
     @Override
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ boolean contains(final ContainsIterable items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateContainsMultiple.contains(items);
     }
 
@@ -240,27 +240,27 @@ implements AlmightyContainer<Item> {
     @SuppressWarnings({ "unchecked", "DuplicateThrows" })
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items, final Observer<Item>... observers)
-    throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
-           ObserverException {
+        throws ItemToRemoveNotContainedException, InvalidContainerArgumentException, InvalidContainerStateException,
+               ObserverException {
         delegateObservedRemoveMultiple.remove(items, observers);
     }
 
     @Override
     public <ContainsIterable extends Iterable<Item> & ContainsSingle<Item>> /*
         */ void remove(final ContainsIterable items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateRemoveMultipleByValue.remove(items);
     }
 
     @Override
     public void remove(final Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateRemoveSingleByValue.remove(item);
     }
 
     @Override
     public boolean contains(final Item item)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
         return delegateContainsSingle.contains(item);
     }
 
@@ -335,14 +335,14 @@ implements AlmightyContainer<Item> {
 
     @Override
     public void retain(final IterativeContainsAdapter<Item> items)
-    throws InvalidContainerArgumentException, InvalidContainerStateException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException {
         delegateRetain.retain(items);
     }
 
     @SafeVarargs
     @Override
     public final void retain(final Iterable<Item> items, final Observer<Item>... observers)
-    throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
+        throws InvalidContainerArgumentException, InvalidContainerStateException, ObserverException {
         delegateObservedRetain.retain(items, observers);
     }
 }

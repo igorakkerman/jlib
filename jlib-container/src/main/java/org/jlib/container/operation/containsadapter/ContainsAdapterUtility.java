@@ -23,15 +23,16 @@ package org.jlib.container.operation.containsadapter;
 
 import java.util.Collection;
 
-import org.jlib.array.ArrayUtility;
-
 import org.jlib.container.operation.ContainsSingle;
 import org.jlib.container.operation.InvalidContainerArgumentException;
 import org.jlib.container.operation.InvalidContainerStateException;
 
+import org.jlib.array.ArrayUtility;
 import static org.jlib.container.iterator.IterableUtility.singletonIterable;
 
 public final class ContainsAdapterUtility {
+
+    private ContainsAdapterUtility() {}
 
     public static <Item> ContainsAdapter<Item> item(final Item suppliedItem) {
 
@@ -39,7 +40,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidContainerArgumentException, InvalidContainerStateException {
+                throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return suppliedItem.equals(item);
             }
         };
@@ -52,7 +53,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidContainerArgumentException, InvalidContainerStateException {
+                throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return items.contains(item);
             }
         };
@@ -69,7 +70,7 @@ public final class ContainsAdapterUtility {
 
             @Override
             public boolean contains(final Item item)
-            throws InvalidContainerArgumentException, InvalidContainerStateException {
+                throws InvalidContainerArgumentException, InvalidContainerStateException {
                 return items.contains(item);
             }
         };
@@ -79,6 +80,4 @@ public final class ContainsAdapterUtility {
     public static <Item> ContainsAdapter<Item> allOf(final Item... items) {
         return new IterativeContainsAdapter<>(ArrayUtility.iterable(items));
     }
-
-    private ContainsAdapterUtility() {}
 }

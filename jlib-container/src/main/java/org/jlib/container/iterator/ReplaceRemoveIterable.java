@@ -32,8 +32,8 @@ import org.jlib.iterator.RemoveIterable;
  * @author Igor Akkerman
  */
 public interface ReplaceRemoveIterable<Item>
-extends ReplaceIterable<Item>,
-        RemoveIterable<Item> {
+    extends ReplaceIterable<Item>,
+            RemoveIterable<Item> {
 
     /**
      * Returns a new {@link ReplaceRemoveIterator} over the Items of this {@link ReplaceRemoveIterable}.

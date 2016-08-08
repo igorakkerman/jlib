@@ -22,7 +22,7 @@
 package org.jlib.iterator;
 
 public class SingletonIterable<Item>
-implements BidiIterable<Item> {
+    implements BidiIterable<Item> {
 
     private final Item item;
 

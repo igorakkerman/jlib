@@ -38,17 +38,13 @@ public class DefaultReflectorServiceTest {
         final Number value = service
             .useClass("java.lang.Integer")                  // TypedClass<?>
             .withType(Number.class)                         // TypedClass<Number>
-            .withSupertypes(
-                Integer.class)                  // TypedClass<Number> (verify actual supertype of instantiated class,
-            // keep static type)
-            .staticMethod("valueOf")                     // MethodOverload<?>
+            .withSupertypes(Integer.class)                  // TypedClass<Number> (verify actual supertype of instantiated class, keep static type)
+            .staticMethod("valueOf")                        // MethodOverload<?>
             .withParameterTypes(int.class)                  // TypedMethod1<Method, ?, int>
             .withReturnType(Number.class)                   // TypedMethod1<Method, Number, int>
             .invoke(42)                                     // MethodReturn<Number>
-            .returning(
-                Integer.class)                       // MethodReturn<Number> (verify supertype of returned value,
-            // keep static type)
-            .getReturned();                                         // Number
+            .returning(Integer.class)                       // MethodReturn<Number> (verify supertype of returned value, keep static type)
+            .getReturned();                                 // Number
 
         assertThat(value).isEqualTo(Integer.valueOf(42));
     }
@@ -61,16 +57,16 @@ public class DefaultReflectorServiceTest {
             .useClass("java.lang.Integer")                  // TypedClass<?>
             .withType(Number.class)                         // TypedClass<Number>
             .withSupertypes(Integer.class)                  // TypedClass<Number>
-            .constructor()                               // ConstructorOverload<Number>
+            .constructor()                                  // ConstructorOverload<Number>
             .withParameterTypes(int.class)                  // TypedMethod1<Constructor, Number, int>
             .invoke(42)                                     // MethodReturn<Number>
             .returning(Integer.class)                       // MethodReturn<Number>
-            .method("compareTo")                         // MethodOverload<?>
+            .method("compareTo")                            // MethodOverload<?>
             .withParameterTypes(Integer.class)              // TypedMethod1<Method, int, Integer>
             .withReturnType(int.class)                      // TypedMethod1<Method, int, Object>
             .invoke(3)                                      // MethodReturn<int>
             .returning(Integer.class)                       // MethodReturn<int>
-            .getReturned();                                         // int
+            .getReturned();                                 // int
 
         assertThat(value).isEqualTo(Integer.valueOf(1));
     }
