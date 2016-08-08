@@ -1,1571 +1,1274 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
-  jlib - Open Source Java Library
-
-      www.jlib.org
-
-
-      Copyright 2005-2015 Igor Akkerman
-
-      Licensed under the Apache License, Version 2.0 (the "License");
-      you may not use this file except in compliance with the License.
-      You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-      Unless required by applicable law or agreed to in writing, software
-      distributed under the License is distributed on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-      See the License for the specific language governing permissions and
-      limitations under the License.
-  -->
-
-<!--suppress XmlUnboundNsPrefix -->
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-    <component name="ChangeListManager">
-        <list default="true"
-              id="1aca1183-447f-4434-8721-ea9cbaaabe48"
-              name="Default"
-              comment="">
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml"
-                    afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/jlib-container/jlib-container.iml"
-                    afterPath="$PROJECT_DIR$/jlib-container/jlib-container.iml" />
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/jlib-shared/jlib-shared.iml"
-                    afterPath="$PROJECT_DIR$/jlib-shared/jlib-shared.iml" />
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml"
-                    afterPath="$PROJECT_DIR$/jlib-unittest/jlib-unittest.iml" />
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/.idea/misc.xml"
-                    afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-            <change type="MODIFICATION"
-                    beforePath="$PROJECT_DIR$/pom.xml"
-                    afterPath="$PROJECT_DIR$/pom.xml" />
-        </list>
-        <ignored path="jlib.iws" />
-        <ignored path=".idea/workspace.xml" />
-        <ignored path="$PROJECT_DIR$/out/" />
-        <ignored path="$PROJECT_DIR$/target/" />
-        <ignored path="$PROJECT_DIR$/jlib-container/target/" />
-        <ignored path="$PROJECT_DIR$/jlib-shared/target/" />
-        <ignored path="$PROJECT_DIR$/jlib-unittest/target/" />
-        <ignored path=".idea/dataSources.local.xml" />
-        <option name="EXCLUDED_CONVERTED_TO_IGNORED"
-                value="true" />
-        <option name="TRACKING_ENABLED"
-                value="true" />
-        <option name="SHOW_DIALOG"
-                value="false" />
-        <option name="HIGHLIGHT_CONFLICTS"
-                value="true" />
-        <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST"
-                value="false" />
-        <option name="LAST_RESOLUTION"
-                value="IGNORE" />
-    </component>
-    <component name="ChangesViewManager"
-               flattened_view="true"
-               show_ignored="false" />
-    <component name="CreatePatchCommitExecutor">
-        <option name="PATCH_PATH"
-                value="" />
-    </component>
-    <component name="DaemonCodeAnalyzer">
-        <disable_hints />
-    </component>
-    <component name="DatabaseView">
-        <option name="FLATTEN"
-                value="false" />
-        <option name="GROUP_BY_TYPE"
-                value="true" />
-        <option name="SORT_CHILDREN"
-                value="false" />
-        <option name="SHOW_TABLE_CONSTRAINTS"
-                value="true" />
-        <PATH>
+  <component name="ChangeListManager">
+    <list default="true" id="9cc9836f-1640-44f0-a5b1-1d8a672d4441" name="Default" comment="" />
+    <ignored path="jlib.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/jlib-array/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-basefunctions/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-basefunctions-apachecommons/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-codequality/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-collection/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-container/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-exception/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-io/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-iterator/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-message/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-operator/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-persistence/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-persistence-hibernate/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-persistence-jpa/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-reflect/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-shared/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-systemproperty/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-text/target/" />
+    <ignored path="$PROJECT_DIR$/jlib-value/target/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="jlib" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="github" target-branch="master" />
+    </push-targets>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/MethodReturn.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/TypedClass.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/test/java/org/jlib/reflect/reflector/defaults/DefaultReflectorServiceTest.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultConstructorOverload.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultStaticMethodOverload.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElementHandler.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/MethodReturnValueHolder.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElementUtility.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElements.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/MethodLookupException.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ProgramElementException.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ClassInstantiationException.java" />
+        <option value="$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ClassLookupException.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/jlib-array/pom.xml" />
+        <option value="$PROJECT_DIR$/jlib-array/src/main/java/org/jlib/array/ArrayUtility.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jlib" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jlib" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1144" />
+    <option name="y" value="-8" />
+    <option name="width" value="1168" />
+    <option name="height" value="2034" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages ProjectPane="true" />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType ProjectPane="true" />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
             <PATH_ELEMENT>
-                <option name="myItemId" />
-                <option name="myItemType"
-                        value="com.intellij.database.view.DbRootNodeDescriptor" />
+              <option name="myItemId" value="jlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-                <option name="myItemId"
-                        value="PostgreSQL localhost" />
-                <option name="myItemType"
-                        value="com.intellij.database.view.DbNodeDescriptor" />
+              <option name="myItemId" value="jlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-                <option name="myItemId"
-                        value="domains.public" />
-                <option name="myItemType"
-                        value="com.intellij.database.view.DbNodeDescriptor" />
-            </PATH_ELEMENT>
-        </PATH>
-        <PATH>
-            <PATH_ELEMENT>
-                <option name="myItemId" />
-                <option name="myItemType"
-                        value="com.intellij.database.view.DbRootNodeDescriptor" />
+              <option name="myItemId" value="jlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-                <option name="myItemId"
-                        value="PostgreSQL localhost" />
-                <option name="myItemType"
-                        value="com.intellij.database.view.DbNodeDescriptor" />
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-        </PATH>
-    </component>
-    <component name="ExecutionTargetManager"
-               SELECTED_TARGET="default_target" />
-    <component name="FavoritesManager">
-        <favorites_list name="jlib" />
-    </component>
-    <component name="FileEditorManager">
-        <leaf />
-    </component>
-    <component name="Git.Settings">
-        <option name="RECENT_GIT_ROOT_PATH"
-                value="$PROJECT_DIR$" />
-    </component>
-    <component name="JsGulpfileManager">
-        <detection-done>true</detection-done>
-    </component>
-    <component name="ProjectFrameBounds">
-        <option name="x"
-                value="1144" />
-        <option name="y"
-                value="-8" />
-        <option name="width"
-                value="1168" />
-        <option name="height"
-                value="2064" />
-    </component>
-    <component name="ProjectLevelVcsManager"
-               settingsEditedManually="false">
-        <OptionsSetting value="true"
-                        id="Add" />
-        <OptionsSetting value="true"
-                        id="Remove" />
-        <OptionsSetting value="true"
-                        id="Checkout" />
-        <OptionsSetting value="true"
-                        id="Update" />
-        <OptionsSetting value="true"
-                        id="Status" />
-        <OptionsSetting value="true"
-                        id="Edit" />
-        <ConfirmationsSetting value="0"
-                              id="Add" />
-        <ConfirmationsSetting value="0"
-                              id="Remove" />
-    </component>
-    <component name="ProjectView">
-        <navigator currentView="ProjectPane"
-                   proportions=""
-                   version="1">
-            <flattenPackages />
-            <showMembers />
-            <showModules />
-            <showLibraryContents />
-            <hideEmptyPackages />
-            <abbreviatePackageNames />
-            <autoscrollToSource />
-            <autoscrollFromSource />
-            <sortByType />
-        </navigator>
-        <panes>
-            <pane id="Scope" />
-            <pane id="ProjectPane">
-                <subPane>
-                    <PATH>
-                        <PATH_ELEMENT>
-                            <option name="myItemId"
-                                    value="jlib" />
-                            <option name="myItemType"
-                                    value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-                        </PATH_ELEMENT>
-                    </PATH>
-                </subPane>
-            </pane>
-            <pane id="PackagesPane" />
-        </panes>
-    </component>
-    <component name="PropertiesComponent">
-        <property name="GoToClass.includeLibraries"
-                  value="false" />
-        <property name="GoToClass.toSaveIncludeLibraries"
-                  value="false" />
-        <property name="GoToFile.includeJavaFiles"
-                  value="false" />
-        <property name="MemberChooser.sorted"
-                  value="false" />
-        <property name="MemberChooser.showClasses"
-                  value="true" />
-        <property name="MemberChooser.copyJavadoc"
-                  value="false" />
-        <property name="WebServerToolWindowFactoryState"
-                  value="false" />
-        <property name="FullScreen"
-                  value="false" />
-        <property name="options.lastSelected"
-                  value="preferences.pluginManager" />
-        <property name="options.splitter.main.proportions"
-                  value="0.3" />
-        <property name="options.splitter.details.proportions"
-                  value="0.2" />
-        <property name="full.screen.before.presentation.mode"
-                  value="false" />
-        <property name="last_opened_file_path"
-                  value="$PROJECT_DIR$" />
-        <property name="dynamic.classpath"
-                  value="false" />
-        <property name="aspect.path.notification.shown"
-                  value="true" />
-        <property name="project.structure.last.edited"
-                  value="Modules" />
-        <property name="project.structure.proportion"
-                  value="0.0" />
-        <property name="project.structure.side.proportion"
-                  value="0.0" />
-    </component>
-    <component name="RunManager">
-        <configuration default="true"
-                       type="JUnit"
-                       factoryName="JUnit">
-            <extension name="coverage"
-                       enabled="false"
-                       merge="false"
-                       sample_coverage="true"
-                       runner="idea" />
-            <module name="" />
-            <option name="ALTERNATIVE_JRE_PATH_ENABLED"
-                    value="false" />
-            <option name="ALTERNATIVE_JRE_PATH" />
-            <option name="PACKAGE_NAME" />
-            <option name="MAIN_CLASS_NAME" />
-            <option name="METHOD_NAME" />
-            <option name="TEST_OBJECT"
-                    value="class" />
-            <option name="VM_PARAMETERS"
-                    value="-ea" />
-            <option name="PARAMETERS" />
-            <option name="WORKING_DIRECTORY"
-                    value="$MODULE_DIR$" />
-            <option name="ENV_VARIABLES" />
-            <option name="PASS_PARENT_ENVS"
-                    value="true" />
-            <option name="TEST_SEARCH_SCOPE">
-                <value defaultName="moduleWithDependencies" />
-            </option>
-            <envs />
-            <patterns />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="Remote"
-                       factoryName="Remote">
-            <option name="USE_SOCKET_TRANSPORT"
-                    value="true" />
-            <option name="SERVER_MODE"
-                    value="false" />
-            <option name="SHMEM_ADDRESS"
-                    value="javadebug" />
-            <option name="HOST"
-                    value="localhost" />
-            <option name="PORT"
-                    value="5005" />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="JavascriptDebugType"
-                       factoryName="JavaScript Debug">
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="Applet"
-                       factoryName="Applet">
-            <module name="" />
-            <option name="MAIN_CLASS_NAME" />
-            <option name="HTML_FILE_NAME" />
-            <option name="HTML_USED"
-                    value="false" />
-            <option name="WIDTH"
-                    value="400" />
-            <option name="HEIGHT"
-                    value="300" />
-            <option name="POLICY_FILE"
-                    value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-            <option name="VM_PARAMETERS" />
-            <option name="ALTERNATIVE_JRE_PATH_ENABLED"
-                    value="false" />
-            <option name="ALTERNATIVE_JRE_PATH" />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="JarApplication"
-                       factoryName="JAR Application">
-            <extension name="coverage"
-                       enabled="false"
-                       merge="false"
-                       sample_coverage="true"
-                       runner="idea" />
-            <envs />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="Application"
-                       factoryName="Application">
-            <extension name="coverage"
-                       enabled="false"
-                       merge="false"
-                       sample_coverage="true"
-                       runner="idea" />
-            <option name="MAIN_CLASS_NAME" />
-            <option name="VM_PARAMETERS" />
-            <option name="PROGRAM_PARAMETERS" />
-            <option name="WORKING_DIRECTORY"
-                    value="$PROJECT_DIR$" />
-            <option name="ALTERNATIVE_JRE_PATH_ENABLED"
-                    value="false" />
-            <option name="ALTERNATIVE_JRE_PATH" />
-            <option name="ENABLE_SWING_INSPECTOR"
-                    value="false" />
-            <option name="ENV_VARIABLES" />
-            <option name="PASS_PARENT_ENVS"
-                    value="true" />
-            <module name="" />
-            <envs />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="TestNG"
-                       factoryName="TestNG">
-            <extension name="coverage"
-                       enabled="false"
-                       merge="false"
-                       sample_coverage="true"
-                       runner="idea" />
-            <module name="" />
-            <option name="ALTERNATIVE_JRE_PATH_ENABLED"
-                    value="false" />
-            <option name="ALTERNATIVE_JRE_PATH" />
-            <option name="SUITE_NAME" />
-            <option name="PACKAGE_NAME" />
-            <option name="MAIN_CLASS_NAME" />
-            <option name="METHOD_NAME" />
-            <option name="GROUP_NAME" />
-            <option name="TEST_OBJECT"
-                    value="CLASS" />
-            <option name="VM_PARAMETERS"
-                    value="-ea" />
-            <option name="PARAMETERS" />
-            <option name="WORKING_DIRECTORY"
-                    value="$PROJECT_DIR$" />
-            <option name="OUTPUT_DIRECTORY" />
-            <option name="ANNOTATION_TYPE" />
-            <option name="ENV_VARIABLES" />
-            <option name="PASS_PARENT_ENVS"
-                    value="true" />
-            <option name="TEST_SEARCH_SCOPE">
-                <value defaultName="moduleWithDependencies" />
-            </option>
-            <option name="USE_DEFAULT_REPORTERS"
-                    value="false" />
-            <option name="PROPERTIES_FILE" />
-            <envs />
-            <properties />
-            <listeners />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="com.intellij.database.run.ConsoleRunConfigurationType"
-                       factoryName="Query Language Console">
-            <option name="VM_PARAMETERS"
-                    value="" />
-            <option name="USER_CFG_CLASS" />
-            <option name="CONTEXT_PROVIDER" />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="CucumberJavaRunConfigurationType"
-                       factoryName="Cucumber java">
-            <extension name="coverage"
-                       enabled="false"
-                       merge="false"
-                       sample_coverage="true"
-                       runner="idea" />
-            <option name="myFilePath" />
-            <option name="GLUE" />
-            <option name="myNameFilter" />
-            <option name="myGeneratedName" />
-            <option name="MAIN_CLASS_NAME" />
-            <option name="VM_PARAMETERS" />
-            <option name="PROGRAM_PARAMETERS" />
-            <option name="WORKING_DIRECTORY" />
-            <option name="ALTERNATIVE_JRE_PATH_ENABLED"
-                    value="false" />
-            <option name="ALTERNATIVE_JRE_PATH" />
-            <option name="ENABLE_SWING_INSPECTOR"
-                    value="false" />
-            <option name="ENV_VARIABLES" />
-            <option name="PASS_PARENT_ENVS"
-                    value="true" />
-            <module name="" />
-            <envs />
-            <method />
-        </configuration>
-        <configuration default="true"
-                       type="js.build_tools.gulp"
-                       factoryName="Gulp.js">
-            <node-options />
-            <gulpfile />
-            <tasks />
-            <pass-parent-envs>true</pass-parent-envs>
-            <envs />
-            <method />
-        </configuration>
-        <list size="0" />
-        <configuration name="&lt;template&gt;"
-                       type="#org.jetbrains.idea.devkit.run.PluginConfigurationType"
-                       default="true"
-                       selected="false">
-            <option name="VM_PARAMETERS"
-                    value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-        </configuration>
-    </component>
-    <component name="ShelveChangesManager"
-               show_recycled="false" />
-    <component name="TaskManager">
-        <task active="true"
-              id="Default"
-              summary="Default task">
-            <changelist id="1aca1183-447f-4434-8721-ea9cbaaabe48"
-                        name="Default"
-                        comment="" />
-            <created>1414346548618</created>
-            <option name="number"
-                    value="Default" />
-            <updated>1414346548618</updated>
-            <workItem from="1414346435049"
-                      duration="1266000" />
-            <workItem from="1414347731637"
-                      duration="3787000" />
-            <workItem from="1414799153406"
-                      duration="140000" />
-            <workItem from="1414947492579"
-                      duration="2147000" />
-            <workItem from="1415022284561"
-                      duration="731000" />
-            <workItem from="1418488817593"
-                      duration="427000" />
-            <workItem from="1419234315651"
-                      duration="36000" />
-        </task>
-        <servers />
-    </component>
-    <component name="TimeTrackingManager">
-        <option name="totallyTimeSpent"
-                value="8534000" />
-    </component>
-    <component name="ToolWindowManager">
-        <frame x="1144"
-               y="-8"
-               width="1168"
-               height="2064"
-               extended-state="6" />
-        <editor active="false" />
-        <layout>
-            <window_info id="Changes"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32945737"
-                         sideWeight="0.5"
-                         order="11"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1152"
-                         y="1321"
-                         width="1153"
-                         height="404" />
-            <window_info id="Palette"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="TODO"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32940516"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1256"
-                         y="1347"
-                         width="357"
-                         height="625" />
-            <window_info id="IDEtalk"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32911393"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Palette&#9;"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Commander"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="SLIDING"
-                         type="SLIDING"
-                         visible="false"
-                         weight="0.4"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Event Log"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32958984"
-                         sideWeight="0.5"
-                         order="7"
-                         side_tool="true"
-                         content_ui="tabs"
-                         x="1390"
-                         y="1413"
-                         width="786"
-                         height="349" />
-            <window_info id="Application Servers"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="10"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Maven Projects"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.33996382"
-                         sideWeight="0.5"
-                         order="7"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="2024"
-                         y="0"
-                         width="281"
-                         height="932" />
-            <window_info id="Version Control"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32884398"
-                         sideWeight="0.5"
-                         order="8"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1151"
-                         y="-1"
-                         width="1156"
-                         height="2013" />
-            <window_info id="Terminal"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32922253"
-                         sideWeight="0.5"
-                         order="15"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Designer"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Project"
-                         active="true"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.4234234"
-                         sideWeight="0.6700337"
-                         order="1"
-                         side_tool="false"
-                         content_ui="combo"
-                         x="787"
-                         y="-3"
-                         width="366"
-                         height="985" />
-            <window_info id="IDEtalk Messages"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="9"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Database"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32851985"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Structure"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.2490942"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1153"
-                         y="985"
-                         width="364"
-                         height="1066" />
-            <window_info id="UI Designer"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Favorites"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Cvs"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.25"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Message"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="CDI"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="10"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Remote Host"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32942238"
-                         sideWeight="0.5"
-                         order="13"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Hierarchy"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.42028984"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="combo"
-                         x="1842"
-                         y="1323"
-                         width="464"
-                         height="695" />
-            <window_info id="Module Dependencies"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="12"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="JSF"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="9"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Ant Build"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.2490942"
-                         sideWeight="0.5"
-                         order="1"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Debug"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.39977852"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Messages"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32977527"
-                         sideWeight="0.5"
-                         order="12"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="539"
-                         y="966"
-                         width="74"
-                         height="22" />
-            <window_info id="Java Enterprise"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="14"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Documentation"
-                         active="false"
-                         anchor="right"
-                         auto_hide="true"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="8"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="92"
-                         y="92"
-                         width="968"
-                         height="1738" />
-            <window_info id="Inspection"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.39977852"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="File Transfer"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.3299285"
-                         sideWeight="0.5"
-                         order="17"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Run"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32945737"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1517"
-                         y="1335"
-                         width="786"
-                         height="712" />
-            <window_info id="Persistence"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Database Console"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.3297587"
-                         sideWeight="0.5"
-                         order="16"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Problems"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.17109634"
-                         sideWeight="0.5"
-                         order="13"
-                         side_tool="true"
-                         content_ui="tabs"
-                         x="1152"
-                         y="1322"
-                         width="1155"
-                         height="327" />
-            <window_info id="Bean Validation"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="11"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Web"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Find"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="true"
-                         weight="0.32690248"
-                         sideWeight="0.5797101"
-                         order="1"
-                         side_tool="false"
-                         content_ui="tabs" />
-        </layout>
-        <layout-to-restore>
-            <window_info id="Palette"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Cvs"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.25"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="IDEtalk"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32911393"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Message"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Commander"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="SLIDING"
-                         type="SLIDING"
-                         visible="false"
-                         weight="0.4"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Event Log"
-                         active="true"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.32977527"
-                         sideWeight="0.5"
-                         order="7"
-                         side_tool="true"
-                         content_ui="tabs"
-                         x="1517"
-                         y="984"
-                         width="786"
-                         height="349" />
-            <window_info id="Application Servers"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="10"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Maven Projects"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.33996382"
-                         sideWeight="0.5"
-                         order="7"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="2024"
-                         y="0"
-                         width="281"
-                         height="932" />
-            <window_info id="CDI"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="10"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Designer"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Hierarchy"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.42028984"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="combo"
-                         x="1842"
-                         y="1323"
-                         width="464"
-                         height="695" />
-            <window_info id="Module Dependencies"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="12"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Database"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32880434"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Structure"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.2490942"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1153"
-                         y="985"
-                         width="364"
-                         height="1066" />
-            <window_info id="JSF"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="9"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Ant Build"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.2490942"
-                         sideWeight="0.5"
-                         order="1"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="UI Designer"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="0"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Debug"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.39977852"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Changes"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32945737"
-                         sideWeight="0.5"
-                         order="11"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1152"
-                         y="1321"
-                         width="1153"
-                         height="404" />
-            <window_info id="TODO"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32940516"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1256"
-                         y="1347"
-                         width="357"
-                         height="625" />
-            <window_info id="Messages"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32977527"
-                         sideWeight="0.5"
-                         order="12"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="539"
-                         y="966"
-                         width="74"
-                         height="22" />
-            <window_info id="Palette&#9;"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="3"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Java Enterprise"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="14"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Documentation"
-                         active="false"
-                         anchor="right"
-                         auto_hide="true"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="8"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="92"
-                         y="92"
-                         width="968"
-                         height="1738" />
-            <window_info id="Inspection"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.39977852"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Version Control"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32884398"
-                         sideWeight="0.5"
-                         order="8"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1151"
-                         y="-1"
-                         width="1156"
-                         height="2013" />
-            <window_info id="Run"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="false"
-                         weight="0.32945737"
-                         sideWeight="0.5"
-                         order="2"
-                         side_tool="false"
-                         content_ui="tabs"
-                         x="1517"
-                         y="1335"
-                         width="786"
-                         height="712" />
-            <window_info id="Terminal"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32922253"
-                         sideWeight="0.5"
-                         order="15"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Persistence"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="6"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="Project"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.4234234"
-                         sideWeight="0.6700337"
-                         order="1"
-                         side_tool="false"
-                         content_ui="combo"
-                         x="1151"
-                         y="0"
-                         width="366"
-                         height="985" />
-            <window_info id="Problems"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="FLOATING"
-                         visible="true"
-                         weight="0.17109634"
-                         sideWeight="0.5"
-                         order="13"
-                         side_tool="true"
-                         content_ui="tabs"
-                         x="1152"
-                         y="1322"
-                         width="1155"
-                         height="327" />
-            <window_info id="Bean Validation"
-                         active="false"
-                         anchor="right"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.32971016"
-                         sideWeight="0.5"
-                         order="11"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Web"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="5"
-                         side_tool="true"
-                         content_ui="tabs" />
-            <window_info id="IDEtalk Messages"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="9"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Find"
-                         active="false"
-                         anchor="bottom"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="true"
-                         weight="0.32690248"
-                         sideWeight="0.5797101"
-                         order="1"
-                         side_tool="false"
-                         content_ui="tabs" />
-            <window_info id="Favorites"
-                         active="false"
-                         anchor="left"
-                         auto_hide="false"
-                         internal_type="DOCKED"
-                         type="DOCKED"
-                         visible="false"
-                         weight="0.33"
-                         sideWeight="0.5"
-                         order="4"
-                         side_tool="true"
-                         content_ui="tabs" />
-        </layout-to-restore>
-    </component>
-    <component name="Vcs.Log.UiProperties"></component>
-    <component name="VcsContentAnnotationSettings">
-        <option name="myLimit"
-                value="2678400000" />
-    </component>
-    <component name="VcsManagerConfiguration">
-        <option name="myTodoPanelSettings">
-            <TodoPanelSettings />
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\Node.js\node.exe" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="JUnit.DefaultReflectorServiceTest">
+    <configuration default="false" name="DefaultReflectorServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.jlib.reflect.reflector.defaults.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="jlib-reflect" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.jlib.reflect.reflector.defaults" />
+      <option name="MAIN_CLASS_NAME" value="org.jlib.reflect.reflector.defaults.DefaultReflectorServiceTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="BatchConfigurationType" factoryName="Batch">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
         </option>
-    </component>
-    <component name="XDebuggerManager">
-        <breakpoint-manager />
-        <watches-manager />
-    </component>
-    <component name="masterDetails">
-        <states>
-            <state key="ArtifactsStructureConfigurable.UI">
-                <settings>
-                    <artifact-editor />
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-            <state key="FacetStructureConfigurable.UI">
-                <settings>
-                    <last-edited>No facets are configured</last-edited>
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-            <state key="GlobalLibrariesConfigurable.UI">
-                <settings>
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-            <state key="JdkListConfigurable.UI">
-                <settings>
-                    <last-edited>JDK 8</last-edited>
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-            <state key="ModuleStructureConfigurable.UI">
-                <settings>
-                    <last-edited>jlib-base</last-edited>
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                                <option value="0.6" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-            <state key="ProjectLibrariesConfigurable.UI">
-                <settings>
-                    <last-edited>Maven: com.google.code.findbugs:jsr305:1.3.9</last-edited>
-                    <splitter-proportions>
-                        <option name="proportions">
-                            <list>
-                                <option value="0.2" />
-                            </list>
-                        </option>
-                    </splitter-proportions>
-                </settings>
-            </state>
-        </states>
-    </component>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Maven.Clean Verify" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DefaultReflectorServiceTest" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DefaultReflectorServiceTest" />
+      </list>
+    </recent_temporary>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cc9836f-1640-44f0-a5b1-1d8a672d4441" name="Default" comment="" />
+      <created>1465078087251</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1465078087251</updated>
+      <workItem from="1465078089572" duration="2263000" />
+      <workItem from="1465413913595" duration="44000" />
+      <workItem from="1465414695705" duration="192000" />
+      <workItem from="1465424402807" duration="163000" />
+      <workItem from="1465425493346" duration="22000" />
+      <workItem from="1466251322549" duration="34000" />
+      <workItem from="1466251396479" duration="18000" />
+      <workItem from="1466251523037" duration="33000" />
+      <workItem from="1467465090171" duration="2671000" />
+      <workItem from="1467929183427" duration="14000" />
+      <workItem from="1467929233115" duration="557000" />
+      <workItem from="1468141195092" duration="17000" />
+      <workItem from="1468141224510" duration="50000" />
+      <workItem from="1468360093743" duration="13000" />
+      <workItem from="1468360145062" duration="67000" />
+      <workItem from="1468614715441" duration="12000" />
+      <workItem from="1468614738348" duration="312000" />
+      <workItem from="1469472823288" duration="50000" />
+      <workItem from="1469472913715" duration="506000" />
+      <workItem from="1469876386146" duration="148000" />
+      <workItem from="1469876572191" duration="602000" />
+      <workItem from="1469977554339" duration="1557000" />
+      <workItem from="1470471877428" duration="3371000" />
+      <workItem from="1470500271197" duration="1120000" />
+      <workItem from="1470504827475" duration="1230000" />
+    </task>
+    <task id="LOCAL-00001" summary="Usage simplified">
+      <created>1465080113268</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1465080113268</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Formatting optimized">
+      <created>1465414776842</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1465414776842</updated>
+    </task>
+    <task id="LOCAL-00003" summary="IDE Code Style: line margin changed to 150">
+      <created>1467478927928</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1467478927928</updated>
+    </task>
+    <task id="LOCAL-00004" summary="LanguageElementUtility: renamed to LanguageElements and Lombok's @LanguageUtility used">
+      <created>1467479031490</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1467479031490</updated>
+    </task>
+    <task id="LOCAL-00005" summary="LanguageElementUtility: renamed to LanguageElements and Lombok's @LanguageUtility used">
+      <created>1467479108768</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1467479108768</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Formatted according to new style">
+      <created>1467479141930</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1467479141930</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Lombok version updated to 1.16.10, used in jlib-array">
+      <created>1469473394255</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1469473394255</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Formatted according to new style">
+      <created>1470504815835</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1470504815835</updated>
+    </task>
+    <task id="LOCAL-00009" summary="IDE descriptors cleaned">
+      <created>1470505032424</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1470505032424</updated>
+    </task>
+    <task id="LOCAL-00010" summary="IDE descriptors cleaned">
+      <created>1470505090271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1470505090271</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 28m 49s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 29m 59s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 30m 43s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 33m 57s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 35m 54s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultReflectorServiceTest - 2016.06.05 at 00h 40m 38s.xml">
+      <configuration name="DefaultReflectorServiceTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15066000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1144" y="-8" width="1168" height="2034" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32940516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="1" y="1626" width="788" height="328" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3059505" sideWeight="0.5198556" order="8" side_tool="true" content_ui="tabs" x="1390" y="1413" width="786" height="349" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.32129964" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" x="244" y="2" width="380" height="795" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30858347" sideWeight="0.4801444" order="9" side_tool="false" content_ui="tabs" x="1509" y="797" width="437" height="453" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27856767" sideWeight="0.4963899" order="3" side_tool="false" content_ui="tabs" x="1517" y="1335" width="786" height="712" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31036243" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.33574006" sideWeight="0.6700337" order="1" side_tool="false" content_ui="combo" x="625" y="2" width="526" height="1951" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32851985" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.25902528" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" x="1153" y="985" width="364" height="1066" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39948186" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942238" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971016" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32964718" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.42028984" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" x="327" y="1" width="462" height="982" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971016" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.54081094" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="1332" y="822" width="879" height="964" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="1275" y="1810" width="702" height="180" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39948186" sideWeight="0.4927798" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2527646" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="1446" y="960" width="590" height="519" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.17109634" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" x="1152" y="1322" width="1155" height="327" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971016" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942238" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942238" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2490942" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901555" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="1152" y="1321" width="1153" height="404" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942238" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32851985" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33701947" sideWeight="0.5361011" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" show_stripe_button="true" weight="0.31137183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="351" height="983" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
+    <MESSAGE value="Usage simplified" />
+    <MESSAGE value="Formatting optimized" />
+    <MESSAGE value="IDE Code Style: line margin changed to 150" />
+    <MESSAGE value="LanguageElementUtility: renamed to LanguageElements and Lombok's @LanguageUtility used" />
+    <MESSAGE value="Lombok version updated to 1.16.10, used in jlib-array" />
+    <MESSAGE value="Formatted according to new style" />
+    <MESSAGE value="IDE descriptors cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="IDE descriptors cleaned" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultStaticMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultInstanceMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElementHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/Overload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/test/java/org/jlib/reflect/reflector/defaults/DefaultReflectorServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1410">
+          <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/TypedClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultConstructorOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultStaticMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultInstanceMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElementHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/Overload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/InvalidMethodParameterTypesException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/TypedMethod1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/MethodReturn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-exception/src/main/java/org/jlib/exception/ApplicationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/ReflectorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="494" column="52" selection-start-line="494" selection-start-column="52" selection-end-line="494" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="3332" column="21" selection-start-line="3332" selection-start-column="21" selection-end-line="3332" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="165" column="32" selection-start-line="165" selection-start-column="32" selection-end-line="165" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/jre/lib/rt.jar!/sun/reflect/misc/ReflectUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="140" column="23" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="2377" column="41" selection-start-line="2377" selection-start-column="41" selection-end-line="2377" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/reflect/Constructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/invoke/ConstructorInvokeStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ClassLookupException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ClassInstantiationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ProgramElementException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/MethodLookupException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="58" column="63" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/ClassException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/LanguageElementHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultInstanceMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/corereflection/ReflectionLanguageElementHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultStaticMethodOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/defaults/overload/DefaultConstructorOverload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/TypedClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/test/java/org/jlib/reflect/reflector/defaults/DefaultReflectorServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/languageelement/MethodReturnValueHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-reflect/src/main/java/org/jlib/reflect/reflector/Overload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/util/function/BinaryOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_1_0_2.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" />
+    <entry file="file://$PROJECT_DIR$/jlib-base.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dictionaries/Igor_Akkerman.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-array/src/main/java/org/jlib/array/ArrayUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/util/stream/Stream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="606" column="6" selection-start-line="606" selection-start-column="6" selection-end-line="606" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-array/src/main/java/org/jlib/array/ArrayIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jlib-array/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>groovy-2.4.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>JDK 8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>jlib-array</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
 </project>
