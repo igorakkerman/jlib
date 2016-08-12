@@ -28,7 +28,7 @@ public class EntityNotRemovableException
 
     private static final long serialVersionUID = - 1447346532598234746L;
 
-    public EntityNotRemovableException(final SimpleJpaEntity<?> entity) {
+    public EntityNotRemovableException(final JpaEntity<?> entity) {
         super(message().with("entity", entity));
     }
 }

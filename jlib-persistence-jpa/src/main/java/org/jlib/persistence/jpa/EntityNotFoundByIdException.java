@@ -30,8 +30,8 @@ public class EntityNotFoundByIdException
 
     private static final long serialVersionUID = - 1759980190869513392L;
 
-    public <Id extends Serializable> /*
-        */ EntityNotFoundByIdException(final Class<? extends SimpleJpaEntity<Id>> entityClass, final Id id) {
+    public <Id extends Serializable>
+    EntityNotFoundByIdException(final Class<? extends JpaEntity<Id>> entityClass, final Id id) {
         super(message().with("class", entityClass)
                        .with("id", id));
     }

@@ -28,28 +28,23 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import static javax.persistence.GenerationType.AUTO;
-import static org.apache.commons.lang3.ArrayUtils.add;
-import org.jlib.basefunctions.ApplicationObject;
 import org.jlib.persistence.IdEntity;
 
 /**
  * <p>
+ * Basic {@link IdEntity}.
+ * </p>
+ * <p>
  * Annotate the entity class with
  * {@code @AttributeOverride(name = JpaEntity.FIELD_NAME_ID, column = @Column(name = "myentity_id"))}
  * </p>
- *
- * @param <Self>
- *        own type
- *
+
  * @param <ID>
  *        type of the id
  */
 @MappedSuperclass
-public abstract class JpaEntity<Self extends JpaEntity<Self, ID>, ID extends Serializable>
-    extends ApplicationObject
+public abstract class JpaEntity<ID extends Serializable>
     implements IdEntity<ID> {
-
-    public static final String FIELD_NAME_ID = "id";
 
     @Id
     @GeneratedValue(strategy = AUTO)
@@ -58,10 +53,5 @@ public abstract class JpaEntity<Self extends JpaEntity<Self, ID>, ID extends Ser
     @Override
     public ID getId() {
         return id;
-    }
-
-    @Override
-    protected String[] getExcludedFieldNames() {
-        return add(super.getExcludedFieldNames(), "id");
     }
 }

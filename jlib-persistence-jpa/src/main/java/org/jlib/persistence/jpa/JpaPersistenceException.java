@@ -34,11 +34,11 @@ public class JpaPersistenceException
         super(message.toString());
     }
 
-    public JpaPersistenceException(final Throwable cause) {
+    public JpaPersistenceException(final Exception cause) {
         super(cause);
     }
 
-    public JpaPersistenceException(final Message message, final Throwable cause) {
+    public JpaPersistenceException(final Message message, final Exception cause) {
         super(message.toString(), cause);
     }
 }
