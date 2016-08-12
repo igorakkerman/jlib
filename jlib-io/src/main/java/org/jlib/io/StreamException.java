@@ -37,11 +37,11 @@ public class StreamException
         super(message.toString());
     }
 
-    public StreamException(final Message message, final Throwable cause) {
+    public StreamException(final Message message, final Exception cause) {
         super(message.toString(), cause);
     }
 
-    public StreamException(final Throwable cause) {
+    public StreamException(final Exception cause) {
         super(cause);
     }
 }
