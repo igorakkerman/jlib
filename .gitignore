@@ -1,6 +1,19 @@
+# Maven
 target
-*.iml
-/.idea/workspace.xml
-/.idea/libraries/Maven*
-/.idea/libraries/Gradle*
+
+# Gradle
+.gradle
+gen
+bin
+out
+build
+
+# IntelliJ IDEA
+**/.idea/workspace.xml
+**/.idea/libraries
+
+# Android
+local.properties
+
+# Windows
 Thumbs.db
