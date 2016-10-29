@@ -23,6 +23,7 @@ package org.jlib.message;
 
 import org.jlib.value.Named;
 
+@SuppressWarnings("UnnecessaryFinalOnLocalVariableOrParameter")
 public interface Message {
 
     Message with(String argumentName, Object argumentValue);

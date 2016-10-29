@@ -21,6 +21,7 @@
 
 package org.jlib.message;
 
+import org.assertj.core.api.Assertions;
 import static org.jlib.message.MessageAssert.assertThat;
 import static org.jlib.message.Messages.message;
 import static org.jlib.value.Values.named;
@@ -66,28 +67,29 @@ public class EagerMessageTest {
     public void messageWithNoTextAndSingleArgument() {
         final Message message = message().with("dummyName", "Dummy Value");
 
-        assertThat(message).isEqualTo("[dummyName='Dummy Value']");
+        Assertions.assertThat("x").isEqualToIgnoringCase("y");
+        assertThat(message.with("x", "y")).showsAs("[dummyName='Dummy Value']");
     }
 
     @Test
     public void messageWithNoTextAndMultipleArguments() {
         final Message message = message().with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message).isEqualTo("[dummyName='1' dummerName='Dummer Value']");
+        assertThat(message).showsAs("[dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
     public void messageWithTextAndNoArguments() {
         final Message message = message("Something went wrong.");
 
-        assertThat(message).isEqualTo("Something went wrong.");
+        assertThat(message).showsAs("Something went wrong.");
     }
 
     @Test
     public void messageWithTextAndEmptyArgumentsList() {
         final Message message = message("Something went wrong.").with();
 
-        assertThat(message).isEqualTo("Something went wrong.");
+        assertThat(message).showsAs("Something went wrong.");
     }
 
     @Test
@@ -95,14 +97,14 @@ public class EagerMessageTest {
         final Message message =
             message("Something went wrong.").with("dummyName", 1).with("dummerName", "Dummer Value");
 
-        assertThat(message).isEqualTo("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
+        assertThat(message).showsAs("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
     public void messageWithTextAndNamedArgument() {
         final Message message = message("Something went wrong.").with(named("dummyName", 1));
 
-        assertThat(message).isEqualTo("Something went wrong. [dummyName='1']");
+        assertThat(message).showsAs("Something went wrong. [dummyName='1']");
     }
 
     @Test
@@ -114,7 +116,7 @@ public class EagerMessageTest {
             message("Something went wrong.").with(named("dummyName", 1),
                                                   named("dummerName", "Dummer Value"));
 
-        assertThat(message).isEqualTo("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
+        assertThat(message).showsAs("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
     }
 
     @Test
@@ -123,7 +125,7 @@ public class EagerMessageTest {
             message("Something went wrong.").with(named("dummyName", 1),
                                                   named("dummerName", "Dummer Value"));
 
-        assertThat(message).isEqualTo("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
+        assertThat(message).showsAs("Something went wrong. [dummyName='1' dummerName='Dummer Value']");
     }
 
     @Test
@@ -132,7 +134,7 @@ public class EagerMessageTest {
             message("Something went wrong.", COLON_PRINTF_CONFIG).with("dummyName", 1)
                                                                  .with("dummerName", "Dummer Value");
 
-        assertThat(message).isEqualTo("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
+        assertThat(message).showsAs("Something went wrong. (dummyName: 1; dummerName: Dummer Value)");
     }
 
     @Test
@@ -141,6 +143,6 @@ public class EagerMessageTest {
             message("Something went wrong.", COLON_MF_CONFIG).with("dummyName", 1)
                                                              .with("dummerName", "Dummer Value");
 
-        assertThat(message).isEqualTo("Something went wrong. dummyName: 1; dummerName: Dummer Value");
+        assertThat(message).showsAs("Something went wrong. dummyName: 1; dummerName: Dummer Value");
     }
 }

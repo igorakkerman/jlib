@@ -27,9 +27,10 @@ public interface NamedValueFormatter<Obj>
     extends ValueFormatter<Obj, Named<Obj>> {
 
     @Override
+    @SuppressWarnings("UnnecessaryFinalOnLocalVariableOrParameter")
     default void append(final StringBuilder builder, final Named<Obj> value) {
         append(builder, value.getName(), value.get());
     }
 
-    void append(final StringBuilder builder, final String name, final Obj value);
+    void append(StringBuilder builder, String name, Obj value);
 }

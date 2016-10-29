@@ -22,25 +22,42 @@
 package org.jlib.message;
 
 import org.assertj.core.api.AbstractAssert;
+import org.assertj.core.api.WritableAssertionInfo;
+import static org.assertj.core.error.ShouldBeEqual.shouldBeEqual;
+import org.assertj.core.internal.Failures;
 import org.assertj.core.internal.Objects;
 import org.assertj.core.internal.Strings;
 
 public class MessageAssert
     extends AbstractAssert<MessageAssert, Message> {
 
-    public MessageAssert(final Message actual) {
-        super(actual, MessageAssert.class);
-    }
-
     public static MessageAssert assertThat(final Message actual) {
         return new MessageAssert(actual);
     }
 
-    public MessageAssert isEqualTo(final String expected) {
+    public MessageAssert(final Message actual) {
+        super(actual, MessageAssert.class);
+    }
+
+    public MessageAssert showsAs(final String expected) {
         isNotNull();
+
+        if (! actual.toString().equals(expected))
+            throw Failures.instance().failure(info, shouldBeEqual(actual, expected, comparisonStrategy, info.representation()));
+
         // TODO: change method call, otherwise stacktrace starts here
-        Objects.instance().assertEqual(info, actual.toString(), expected);
+        assertEqual(info, actual.toString(), expected);
+        if ()
+            Objects.instance().assertEqual(info, actual.toString(), expected);
         return this;
+    }
+
+    private void assertEqual(final WritableAssertionInfo info, final String s, final String expected) {
+        if (areEqual
+            (actual, expected)) {
+            return;
+        }
+        throw failures.failure(info, shouldBeEqual(actual, expected, comparisonStrategy, info.representation()));
     }
 
     public MessageAssert isEmpty() {
