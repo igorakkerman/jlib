@@ -31,5 +31,5 @@ public interface NamedValueFormatter<Obj>
         append(builder, value.getName(), value.get());
     }
 
-    void append(final StringBuilder builder, final String name, final Obj value);
+    void append(StringBuilder builder, String name, Obj value);
 }
