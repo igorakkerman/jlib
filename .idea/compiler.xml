@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
-    <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />
@@ -14,14 +12,10 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="jlib" />
         <module name="jlib-array" />
         <module name="jlib-basefunctions" />
@@ -32,6 +26,7 @@
         <module name="jlib-exception" />
         <module name="jlib-io" />
         <module name="jlib-iterator" />
+        <module name="jlib-math" />
         <module name="jlib-message" />
         <module name="jlib-object-spi" />
         <module name="jlib-object-spi-apachecommons" />
@@ -59,6 +54,7 @@
       <module name="jlib-exception" target="8" />
       <module name="jlib-io" target="8" />
       <module name="jlib-iterator" target="8" />
+      <module name="jlib-math" target="8" />
       <module name="jlib-message" target="8" />
       <module name="jlib-operator" target="8" />
       <module name="jlib-persistence" target="8" />
@@ -68,6 +64,7 @@
       <module name="jlib-shared" target="8" />
       <module name="jlib-systemproperty" target="8" />
       <module name="jlib-text" target="8" />
+      <module name="jlib-text (1)" target="8" />
       <module name="jlib-value" target="8" />
     </bytecodeTargetLevel>
   </component>
