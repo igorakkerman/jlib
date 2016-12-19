@@ -54,7 +54,7 @@ public class BigDecimalCollectorsTest {
 
     @Test
     public void summingx() {
-        assertThat(Stream.of(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3))
+        assertThat(Stream.of(ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3))
                          .collect(summing()))
             .isEqualTo(BigDecimal.valueOf(6));
     }
