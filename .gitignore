@@ -9,6 +9,7 @@ out
 build
 
 # IntelliJ IDEA
+*.iml
 **/.idea/workspace.xml
 **/.idea/libraries
 
