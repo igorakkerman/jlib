@@ -22,6 +22,8 @@
 package org.jlib.text;
 
 import java.util.Comparator;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import static org.jlib.message.Messages.message;
@@ -69,5 +71,27 @@ public class Text {
     @SuppressWarnings("unchecked")
     public static <Compared> Comparator<Compared> stringLength() {
         return (Comparator<Compared>) STRING_LENGTH_COMPARATOR;
+    }
+
+    @SafeVarargs
+    public static void splitInto(final String compositeString, final String regex, final Consumer<String>... elementConsumers) {
+
+        final String[] elements = compositeString.split(regex);
+
+        if (elementConsumers.length < elements.length)
+            throw new IllegalArgumentException(String.format(
+                "Too few elementConsumers. #elementConsumers=%d. #elements=%d.",
+                elementConsumers.length,
+                elements.length));
+
+        if (elementConsumers.length > elements.length)
+            throw new IllegalArgumentException(String.format(
+                "Too many elementConsumers. #elementConsumers=%d. #elements=%d.",
+                elementConsumers.length,
+                elements.length));
+
+        IntStream
+            .range(0, elements.length)
+            .forEach(index -> elementConsumers[index].accept(elements[index]));
     }
 }
