@@ -40,7 +40,7 @@ public class TextTest {
 
     @Test
     public void testRemoveOnceAll() {
-        assertThat(removeOnce("Blub", "Blub").isEmpty());
+        assertThat(removeOnce("Blub", "Blub")).isEmpty();
     }
 
     @Test
