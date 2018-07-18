@@ -128,11 +128,9 @@
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
       <option name="WRAP_COMMENTS" value="true" />
-      <option name="PARENT_SETTINGS_INSTALLED" value="true" />
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
       <option name="WRAP_COMMENTS" value="true" />
-      <option name="PARENT_SETTINGS_INSTALLED" value="true" />
     </codeStyleSettings>
     <codeStyleSettings language="yaml">
       <indentOptions>
