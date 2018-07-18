@@ -23,8 +23,8 @@ plugins {
     id 'java'
     id 'io.franzbecker.gradle-lombok' version '1.14'
     id 'maven-publish'
+    id 'net.researchgate.release' version '2.7.0'
 }
-
 group = 'org.jlib'
 version = '1.0.0-SNAPSHOT'
 description = 'jlib AWS Lambda Logback Adapter'
@@ -34,8 +34,7 @@ task sourceJar(type: Jar) {
 }
 
 repositories {
-    mavenLocal()
-    jcenter()
+    mavenCentral()
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -75,7 +74,31 @@ publishing {
             artifact sourceJar {
                 classifier "sources"
             }
+            pom {
+                url = 'https://www.jlib.org/'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Igor Akkerman'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/jlib-framework/jlib-awslambda-logback.git'
+                    url = 'https://github.com/jlib-framework/jlib-awslambda-logback'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            def stagingRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : stagingRepoUrl
         }
     }
 }
-
