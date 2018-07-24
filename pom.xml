@@ -38,24 +38,11 @@
 
     <modules>
         <module>jlib-codequality</module>
-        <module>jlib-message</module>
-        <module>jlib-exception</module>
         <module>jlib-shared</module>
-        <module>jlib-iterator</module>
-        <module>jlib-array</module>
-        <module>jlib-collection</module>
-        <module>jlib-value</module>
-        <module>jlib-operator</module>
-        <module>jlib-reflect</module>
         <module>jlib-basefunctions</module>
         <module>jlib-basefunctions-apachecommons</module>
-        <module>jlib-container</module>
         <module>jlib-persistence</module>
         <module>jlib-persistence-jpa</module>
-        <module>jlib-persistence-hibernate</module>
-        <module>jlib-systemproperty</module>
-        <module>jlib-text</module>
-        <module>jlib-math</module>
         <module>jlib-io</module>
     </modules>
 

@@ -17,30 +17,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jlib" />
-        <module name="jlib-array" />
         <module name="jlib-basefunctions" />
         <module name="jlib-basefunctions-apachecommons" />
         <module name="jlib-codequality" />
-        <module name="jlib-collection" />
-        <module name="jlib-container" />
-        <module name="jlib-exception" />
         <module name="jlib-io" />
-        <module name="jlib-iterator" />
-        <module name="jlib-math" />
-        <module name="jlib-message" />
         <module name="jlib-object-spi" />
         <module name="jlib-object-spi-apachecommons" />
         <module name="jlib-operation" />
-        <module name="jlib-operator" />
         <module name="jlib-persistence" />
-        <module name="jlib-persistence-hibernate" />
         <module name="jlib-persistence-jpa" />
-        <module name="jlib-reflect" />
         <module name="jlib-shared" />
         <module name="jlib-spi-apachecommons" />
-        <module name="jlib-systemproperty" />
-        <module name="jlib-text" />
-        <module name="jlib-value" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
